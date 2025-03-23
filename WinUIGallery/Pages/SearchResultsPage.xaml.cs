@@ -32,12 +32,12 @@ public sealed partial class SearchResultsPage : ItemsPageBase
     public IEnumerable<Filter> Filters
     {
         get { return _filters; }
-        set { this.SetProperty(ref _filters, value); }
+        set { SetProperty(ref _filters, value); }
     }
 
     public SearchResultsPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -57,10 +57,7 @@ public sealed partial class SearchResultsPage : ItemsPageBase
         _selectedFilter = (Filter)resultsNavView.SelectedItem;
     }
 
-    private void OnResultsNavViewLoaded(object sender, RoutedEventArgs e)
-    {
-        resultsNavView.Focus(FocusState.Programmatic);
-    }
+    private void OnResultsNavViewLoaded(object sender, RoutedEventArgs e) => resultsNavView.Focus(FocusState.Programmatic);
 
     private void OnResultsNavViewSelectionChanged(object sender, NavigationViewSelectionChangedEventArgs e)
     {
@@ -100,7 +97,7 @@ public sealed partial class SearchResultsPage : ItemsPageBase
                         }
                         return flag;
                     }).ToList();
-                int numberOfMatchingItems = matchingItems.Count();
+                int numberOfMatchingItems = matchingItems.Count;
 
                 if (numberOfMatchingItems > 0)
                 {
@@ -138,10 +135,7 @@ public sealed partial class SearchResultsPage : ItemsPageBase
         }
     }
 
-    protected override bool GetIsNarrowLayoutState()
-    {
-        return LayoutVisualStates.CurrentState == NarrowLayout;
-    }
+    protected override bool GetIsNarrowLayoutState() => LayoutVisualStates.CurrentState == NarrowLayout;
 }
 
 /// <summary>
@@ -156,45 +150,39 @@ public sealed class Filter : INotifyPropertyChanged
 
     public Filter(string name, int count, List<ControlInfoDataItem> controlInfoList, bool active = false)
     {
-        this.Name = name;
-        this.Count = count;
-        this.Active = active;
-        this.Items = controlInfoList;
+        Name = name;
+        Count = count;
+        Active = active;
+        Items = controlInfoList;
     }
 
-    public override string ToString()
-    {
-        return Description;
-    }
+    public override string ToString() => Description;
 
     public List<ControlInfoDataItem> Items
     {
         get { return _items; }
-        set { this.SetProperty(ref _items, value); }
+        set { SetProperty(ref _items, value); }
     }
 
     public string Name
     {
         get { return _name; }
-        set { if (this.SetProperty(ref _name, value)) this.NotifyPropertyChanged(nameof(Description)); }
+        set { if (SetProperty(ref _name, value)) NotifyPropertyChanged(nameof(Description)); }
     }
 
     public int Count
     {
         get { return _count; }
-        set { if (this.SetProperty(ref _count, value)) this.NotifyPropertyChanged(nameof(Description)); }
+        set { if (SetProperty(ref _count, value)) NotifyPropertyChanged(nameof(Description)); }
     }
 
     public bool? Active
     {
         get { return _active; }
-        set { this.SetProperty(ref _active, value); }
+        set { SetProperty(ref _active, value); }
     }
 
-    public string Description
-    {
-        get { return string.Format("{0} ({1})", _name, _count); }
-    }
+    public string Description => string.Format("{0} ({1})", _name, _count);
 
     /// <summary>
     /// Multicast event for property change notifications.
@@ -215,10 +203,10 @@ public sealed class Filter : INotifyPropertyChanged
     /// desired value.</returns>
     private bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
     {
-        if (object.Equals(storage, value)) return false;
+        if (Equals(storage, value)) return false;
 
         storage = value;
-        this.NotifyPropertyChanged(propertyName);
+        NotifyPropertyChanged(propertyName);
         return true;
     }
 
@@ -228,8 +216,5 @@ public sealed class Filter : INotifyPropertyChanged
     /// <param name="propertyName">Name of the property used to notify listeners.  This
     /// value is optional and can be provided automatically when invoked from compilers
     /// that support <see cref="CallerMemberNameAttribute"/>.</param>
-    private void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+    private void NotifyPropertyChanged([CallerMemberName] string propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }

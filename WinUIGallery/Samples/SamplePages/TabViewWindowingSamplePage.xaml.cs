@@ -14,7 +14,7 @@ public sealed partial class TabViewWindowingSamplePage : Page
 
     public TabViewWindowingSamplePage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         Loaded += TabViewWindowingSamplePage_Loaded;
     }
@@ -38,16 +38,13 @@ public sealed partial class TabViewWindowingSamplePage : Page
         // Main Window -- add some default items
         for (int i = 0; i < 3; i++)
         {
-            Tabs.TabItems.Add(new TabViewItem() { IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = $"Item {i}", Content = new TabContentSampleControl() { DataContext = $"Page {i}" } });
+            Tabs.TabItems.Add(new TabViewItem() { IconSource = new SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = $"Item {i}", Content = new TabContentSampleControl() { DataContext = $"Page {i}" } });
         }
 
         Tabs.SelectedIndex = 0;
     }
 
-    public void AddTabToTabs(TabViewItem tab)
-    {
-        Tabs.TabItems.Add(tab);
-    }
+    public void AddTabToTabs(TabViewItem tab) => Tabs.TabItems.Add(tab);
 
     private void Tabs_TabTearOutWindowRequested(TabView sender, TabViewTabTearOutWindowRequestedEventArgs args)
     {
@@ -78,10 +75,7 @@ public sealed partial class TabViewWindowingSamplePage : Page
         }
     }
 
-    private void Tabs_ExternalTornOutTabsDropping(TabView sender, TabViewExternalTornOutTabsDroppingEventArgs args)
-    {
-        args.AllowDrop = true;
-    }
+    private void Tabs_ExternalTornOutTabsDropping(TabView sender, TabViewExternalTornOutTabsDroppingEventArgs args) => args.AllowDrop = true;
 
     private void Tabs_ExternalTornOutTabsDropped(TabView sender, TabViewExternalTornOutTabsDroppedEventArgs args)
     {

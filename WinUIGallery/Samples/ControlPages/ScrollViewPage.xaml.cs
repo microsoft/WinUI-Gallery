@@ -15,20 +15,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
 using Windows.Globalization.NumberFormatting;
-using Windows.Storage;
 
 namespace WinUIGallery.ControlPages;
 
 public sealed partial class ScrollViewPage : Page
 {
     // Cache for storing Example3 C# sample code content
-    private readonly Dictionary<string, string> _example3CodeCache = new();
+    private readonly Dictionary<string, string> _example3CodeCache = [];
 
     public ScrollViewPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
-        this.Loaded += ScrollViewPage_Loaded;
+        Loaded += ScrollViewPage_Loaded;
     }
 
     // Example1
@@ -36,13 +35,13 @@ public sealed partial class ScrollViewPage : Page
     {
         scrollView1.ZoomTo(4.0f, null, new ScrollingZoomOptions(ScrollingAnimationMode.Enabled, ScrollingSnapPointsMode.Ignore));
 
-        IncrementNumberRounder rounder = new IncrementNumberRounder
+        IncrementNumberRounder rounder = new()
         {
             Increment = 0.1,
             RoundingAlgorithm = RoundingAlgorithm.RoundHalfUp
         };
 
-        DecimalFormatter formatter = new DecimalFormatter
+        DecimalFormatter formatter = new()
         {
             IntegerDigits = 2,
             FractionDigits = 1,
@@ -50,7 +49,7 @@ public sealed partial class ScrollViewPage : Page
         };
         nbZoomFactor.NumberFormatter = formatter;
 
-        this.Loaded -= ScrollViewPage_Loaded;
+        Loaded -= ScrollViewPage_Loaded;
     }
 
     private void CmbZoomMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -66,10 +65,7 @@ public sealed partial class ScrollViewPage : Page
 
     private void NbZoomFactor_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs e)
     {
-        if (scrollView1 != null)
-        {
-            scrollView1.ZoomTo((float)e.NewValue, null);
-        }
+        scrollView1?.ZoomTo((float)e.NewValue, null);
     }
 
     private void CmbHorizontalScrollMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -138,25 +134,11 @@ public sealed partial class ScrollViewPage : Page
                 // Only value smaller than -30 or greater than 30 trigger a scroll
                 if (e.NewValue < e.OldValue)
                 {
-                    if (scrollView2.VerticalOffset == 0)
-                    {
-                        verticalConstantVelocity = 30;
-                    }
-                    else
-                    {
-                        verticalConstantVelocity = -30;
-                    }
+                    verticalConstantVelocity = scrollView2.VerticalOffset == 0 ? 30 : -30;
                 }
                 else
                 {
-                    if (scrollView2.VerticalOffset == scrollView2.ScrollableHeight)
-                    {
-                        verticalConstantVelocity = -30;
-                    }
-                    else
-                    {
-                        verticalConstantVelocity = 30;
-                    }
+                    verticalConstantVelocity = scrollView2.VerticalOffset == scrollView2.ScrollableHeight ? -30 : 30;
                 }
             }
             else if (e.NewValue < 30.0 && scrollView2.VerticalOffset == 0)
@@ -179,10 +161,7 @@ public sealed partial class ScrollViewPage : Page
     // Example3
     private void BtnScrollWithAnimation_Click(object sender, RoutedEventArgs e)
     {
-        if (scrollView3 != null)
-        {
-            scrollView3.ScrollTo(scrollView3.HorizontalOffset, GetTargetVerticalOffset(), new ScrollingScrollOptions(ScrollingAnimationMode.Enabled, ScrollingSnapPointsMode.Ignore));
-        }
+        scrollView3?.ScrollTo(scrollView3.HorizontalOffset, GetTargetVerticalOffset(), new ScrollingScrollOptions(ScrollingAnimationMode.Enabled, ScrollingSnapPointsMode.Ignore));
     }
 
     private void ScrollView_ScrollAnimationStarting(ScrollView sender, ScrollingScrollAnimationStartingEventArgs e)
@@ -251,48 +230,23 @@ public sealed partial class ScrollViewPage : Page
         }
     }
 
-    private double GetTargetVerticalOffset()
-    {
-        if (scrollView3.VerticalOffset > scrollView3.ScrollableHeight / 2.0)
-        {
-            return scrollView3.ScrollableHeight / 5.0;
-        }
-        else
-        {
-            return 4.0 * scrollView3.ScrollableHeight / 5.0;
-        }
-    }
+    private double GetTargetVerticalOffset() => scrollView3.VerticalOffset > scrollView3.ScrollableHeight / 2.0
+            ? scrollView3.ScrollableHeight / 5.0
+            : 4.0 * scrollView3.ScrollableHeight / 5.0;
 
-    private void cmbVerticalAnimation_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        UpdateExample3Content();
-    }
+    private void cmbVerticalAnimation_SelectionChanged(object sender, SelectionChangedEventArgs e) => UpdateExample3Content();
 
-    private void nbAnimationDuration_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
-    {
-        UpdateExample3Content();
-    }
+    private void nbAnimationDuration_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args) => UpdateExample3Content();
 
     private void UpdateExample3Content()
     {
-        string sampleCodeFileName = null;
-
-        switch (cmbVerticalAnimation.SelectedIndex)
+        string sampleCodeFileName = cmbVerticalAnimation.SelectedIndex switch
         {
-            case 0:
-                sampleCodeFileName = "ScrollViewSample3_DefaultAnimation_cs";
-                break;
-            case 1:
-                sampleCodeFileName = "ScrollViewSample3_AccordionAnimation_cs";
-                break;
-            case 2:
-                sampleCodeFileName = "ScrollViewSample3_TeleportationAnimation_cs";
-                break;
-            default:
-                sampleCodeFileName = null;
-                break;
-        }
-
+            0 => "ScrollViewSample3_DefaultAnimation_cs",
+            1 => "ScrollViewSample3_AccordionAnimation_cs",
+            2 => "ScrollViewSample3_TeleportationAnimation_cs",
+            _ => null,
+        };
         if (sampleCodeFileName != null)
         {
             Example3.CSharp = GetExample3CodeContent(sampleCodeFileName);

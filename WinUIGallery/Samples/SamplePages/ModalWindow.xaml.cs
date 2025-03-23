@@ -13,7 +13,7 @@ public sealed partial class ModalWindow : Window
 
     public ModalWindow()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         appWindow = GetAppWindowForCurrentWindow();
         appWindow.Resize(new Windows.Graphics.SizeInt32(400,300));
 
@@ -71,19 +71,11 @@ public sealed partial class ModalWindow : Window
     [DllImport("User32.dll", CharSet = CharSet.Auto, EntryPoint = "SetWindowLong")]
     public static extern IntPtr SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
 
-    private void ModalWindow_Closed(object sender, WindowEventArgs args)
-    {
+    private void ModalWindow_Closed(object sender, WindowEventArgs args) =>
         // Reactivate the main application window when the modal window closes.
         App.StartupWindow.Activate();
-    }
 
-    private void OKButton_Click(object sender, RoutedEventArgs e)
-    {
-        this.Close();
-    }
+    private void OKButton_Click(object sender, RoutedEventArgs e) => Close();
 
-    private void CancelButton_Click(object sender, RoutedEventArgs e)
-    {
-        this.Close();
-    }
+    private void CancelButton_Click(object sender, RoutedEventArgs e) => Close();
 }

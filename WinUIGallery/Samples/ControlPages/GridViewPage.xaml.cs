@@ -22,8 +22,8 @@ public sealed partial class GridViewPage : ItemsPageBase
 
     public GridViewPage()
     {
-        this.InitializeComponent();
-        this.DataContext = this;
+        InitializeComponent();
+        DataContext = this;
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -32,8 +32,8 @@ public sealed partial class GridViewPage : ItemsPageBase
 
         // Get data objects and place them into an ObservableCollection
         List<CustomDataObject> tempList = CustomDataObject.GetDataObjects();
-        ObservableCollection<CustomDataObject> Items = new ObservableCollection<CustomDataObject>(tempList);
-        ObservableCollection<CustomDataObject> Items2 = new ObservableCollection<CustomDataObject>(tempList);
+        ObservableCollection<CustomDataObject> Items = [.. tempList];
+        ObservableCollection<CustomDataObject> Items2 = [.. tempList];
         BasicGridView.ItemsSource = Items2;
         ContentGridView.ItemsSource = Items;
         StyledGrid.ItemsSource = Items;
@@ -53,7 +53,7 @@ public sealed partial class GridViewPage : ItemsPageBase
         if (tag != null)
         {
             string template = tag.ToString();
-            ContentGridView.ItemTemplate = (DataTemplate)this.Resources[template];
+            ContentGridView.ItemTemplate = (DataTemplate)Resources[template];
             itemTemplate.Value = template;
 
             if (template == "ImageTemplate")
@@ -131,32 +131,13 @@ public sealed partial class GridViewPage : ItemsPageBase
         }
     }
 
-    private void ContentGridView_ItemClick(object sender, ItemClickEventArgs e)
-    {
-        ClickOutput.Text = "You clicked " + (e.ClickedItem as CustomDataObject).Title + ".";
-    }
+    private void ContentGridView_ItemClick(object sender, ItemClickEventArgs e) => ClickOutput.Text = "You clicked " + (e.ClickedItem as CustomDataObject).Title + ".";
 
-    private void BasicGridView_ItemClick(object sender, ItemClickEventArgs e)
-    {
-        ClickOutput0.Text = "You clicked " + (e.ClickedItem as CustomDataObject).Title + ".";
-    }
+    private void BasicGridView_ItemClick(object sender, ItemClickEventArgs e) => ClickOutput0.Text = "You clicked " + (e.ClickedItem as CustomDataObject).Title + ".";
 
-    private void ItemClickCheckBox_Click(object sender, RoutedEventArgs e)
-    {
-        ClickOutput.Text = string.Empty;
-    }
+    private void ItemClickCheckBox_Click(object sender, RoutedEventArgs e) => ClickOutput.Text = string.Empty;
 
-    private void FlowDirectionCheckBox_Click(object sender, RoutedEventArgs e)
-    {
-        if (ContentGridView.FlowDirection == FlowDirection.LeftToRight)
-        {
-            ContentGridView.FlowDirection = FlowDirection.RightToLeft;
-        }
-        else
-        {
-            ContentGridView.FlowDirection = FlowDirection.LeftToRight;
-        }
-    }
+    private void FlowDirectionCheckBox_Click(object sender, RoutedEventArgs e) => ContentGridView.FlowDirection = ContentGridView.FlowDirection == FlowDirection.LeftToRight ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
 
     private void SelectionModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -192,7 +173,7 @@ public sealed partial class GridViewPage : ItemsPageBase
     }
     
 
-    private void NumberBox_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
+    private void NumberBox_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
     {
         if(StyledGridIWG == null) { return; }
 

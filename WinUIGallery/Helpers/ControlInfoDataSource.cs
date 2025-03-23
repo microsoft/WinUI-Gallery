@@ -21,13 +21,7 @@ public sealed class ControlInfoDataSource
 
     private static readonly ControlInfoDataSource _instance;
 
-    public static ControlInfoDataSource Instance
-    {
-        get
-        {
-            return _instance;
-        }
-    }
+    public static ControlInfoDataSource Instance => _instance;
 
     static ControlInfoDataSource()
     {
@@ -38,11 +32,8 @@ public sealed class ControlInfoDataSource
 
     #endregion
 
-    private readonly IList<ControlInfoDataGroup> _groups = new List<ControlInfoDataGroup>();
-    public IList<ControlInfoDataGroup> Groups
-    {
-        get { return this._groups; }
-    }
+    private readonly IList<ControlInfoDataGroup> _groups = [];
+    public IList<ControlInfoDataGroup> Groups => _groups;
 
     public async Task<IEnumerable<ControlInfoDataGroup>> GetGroupsAsync()
     {
@@ -56,8 +47,7 @@ public sealed class ControlInfoDataSource
         await _instance.GetControlInfoDataAsync();
         // Simple linear search is acceptable for small data sets
         var matches = _instance.Groups.Where((group) => group.UniqueId.Equals(uniqueId));
-        if (matches.Count() == 1) return matches.First();
-        return null;
+        return matches.Count() == 1 ? matches.First() : null;
     }
 
     public static async Task<ControlInfoDataItem> GetItemAsync(string uniqueId)
@@ -65,23 +55,21 @@ public sealed class ControlInfoDataSource
         await _instance.GetControlInfoDataAsync();
         // Simple linear search is acceptable for small data sets
         var matches = _instance.Groups.SelectMany(group => group.Items).Where((item) => item.UniqueId.Equals(uniqueId));
-        if (matches.Count() > 0) return matches.First();
-        return null;
+        return matches.Any() ? matches.First() : null;
     }
 
     public static async Task<ControlInfoDataGroup> GetGroupFromItemAsync(string uniqueId)
     {
         await _instance.GetControlInfoDataAsync();
         var matches = _instance.Groups.Where((group) => group.Items.FirstOrDefault(item => item.UniqueId.Equals(uniqueId)) != null);
-        if (matches.Count() == 1) return matches.First();
-        return null;
+        return matches.Count() == 1 ? matches.First() : null;
     }
 
     private async Task GetControlInfoDataAsync()
     {
         lock (_lock)
         {
-            if (this.Groups.Count() != 0)
+            if (Groups.Count != 0)
             {
                 return;
             }

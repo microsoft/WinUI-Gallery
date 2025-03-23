@@ -17,7 +17,6 @@ using Windows.ApplicationModel.DataTransfer;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
-using WinUIGallery.Models;
 using WinUIGallery.Helpers;
 using WinUIGallery.Pages;
 
@@ -25,11 +24,11 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class ListViewPage : ItemsPageBase
 {
-    ObservableCollection<Contact> contacts1 = new ObservableCollection<Contact>();
-    ObservableCollection<Contact> contacts2 = new ObservableCollection<Contact>();
-    ObservableCollection<Contact> contacts3 = new ObservableCollection<Contact>();
-    ObservableCollection<Contact> contacts3Filtered = new ObservableCollection<Contact>();
-    ObservableCollection<Contact> contacts4ContextMenu = new ObservableCollection<Contact>();
+    ObservableCollection<Contact> contacts1 = [];
+    ObservableCollection<Contact> contacts2 = [];
+    ObservableCollection<Contact> contacts3 = [];
+    ObservableCollection<Contact> contacts3Filtered = [];
+    ObservableCollection<Contact> contacts4ContextMenu = [];
 
     ItemsStackPanel stackPanelObj;
 
@@ -37,18 +36,16 @@ public sealed partial class ListViewPage : ItemsPageBase
 
     public ListViewPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         // Add first item to inverted list so it's not empty
         AddItemToEnd();
         BaseExample.Loaded += BaseExample_Loaded;
     }
 
-    private void BaseExample_Loaded(object sender, RoutedEventArgs e)
-    {
+    private void BaseExample_Loaded(object sender, RoutedEventArgs e) =>
         // Set focus so the first item of the listview has focus
         // instead of some item which is not visible on page load
         BaseExample.Focus(FocusState.Programmatic);
-    }
 
     protected override async void OnNavigatedTo(NavigationEventArgs e)
     {
@@ -64,12 +61,12 @@ public sealed partial class ListViewPage : ItemsPageBase
         contacts2.Add(new Contact("Santa", "Claus", "North Pole Toy Factory Inc."));
         DragDropListView2.ItemsSource = contacts2;
 
-        Control4.ItemsSource = WinUIGallery.ControlPages.CustomDataObject.GetDataObjects();
+        Control4.ItemsSource = CustomDataObject.GetDataObjects();
         ContactsCVS.Source = await Contact.GetContactsGroupedAsync();
 
         // Initialize list of contacts to be filtered
         contacts3 = await Contact.GetContactsAsync();
-        contacts3Filtered = new ObservableCollection<Contact>(contacts3);
+        contacts3Filtered = [.. contacts3];
 
         // Initializze list of contacts for context menu sample
         contacts4ContextMenu = await Contact.GetContactsAsync();
@@ -111,7 +108,7 @@ public sealed partial class ListViewPage : ItemsPageBase
     private void Source_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
     {
         // Prepare a string with one dragged item per line
-        StringBuilder items = new StringBuilder();
+        StringBuilder items = new();
         foreach (Contact item in e.Items)
         {
             if (items.Length > 0) { items.AppendLine(); }
@@ -128,15 +125,9 @@ public sealed partial class ListViewPage : ItemsPageBase
 
     }
 
-    private void Target_DragOver(object sender, DragEventArgs e)
-    {
-        e.AcceptedOperation = DataPackageOperation.Move;
-    }
+    private void Target_DragOver(object sender, DragEventArgs e) => e.AcceptedOperation = DataPackageOperation.Move;
 
-    private void Source_DragOver(object sender, DragEventArgs e)
-    {
-        e.AcceptedOperation = DataPackageOperation.Move;
-    }
+    private void Source_DragOver(object sender, DragEventArgs e) => e.AcceptedOperation = DataPackageOperation.Move;
 
     private async void ListView_Drop(object sender, DragEventArgs e)
     {
@@ -152,7 +143,7 @@ public sealed partial class ListViewPage : ItemsPageBase
 
                 // Create Contact object from string, add to existing target ListView
                 string[] info = item.Split(" ", 3);
-                Contact temp = new Contact(info[0], info[1], info[2]);
+                Contact temp = new(info[0], info[1], info[2]);
 
                 // Find the insertion index:
                 Windows.Foundation.Point pos = e.GetPosition(target.ItemsPanelRoot);
@@ -235,11 +226,9 @@ public sealed partial class ListViewPage : ItemsPageBase
         }
     }
 
-    private void Target_DragEnter(object sender, DragEventArgs e)
-    {
+    private void Target_DragEnter(object sender, DragEventArgs e) =>
         // We don't want to show the Move icon
         e.DragUIOverride.IsGlyphVisible = false;
-    }
 
     //===================================================================================================================
     // Grouped Headers Example
@@ -248,21 +237,11 @@ public sealed partial class ListViewPage : ItemsPageBase
     {
         if (StickySwitch != null)
         {
-            if (StickySwitch.IsOn == true)
-            {
-                stackPanelObj.AreStickyGroupHeadersEnabled = true;
-            }
-            else
-            {
-                stackPanelObj.AreStickyGroupHeadersEnabled = false;
-            }
+            stackPanelObj.AreStickyGroupHeadersEnabled = StickySwitch.IsOn == true;
         }
     }
 
-    private void StackPanel_loaded(object sender, RoutedEventArgs e)
-    {
-        stackPanelObj = sender as ItemsStackPanel;
-    }
+    private void StackPanel_loaded(object sender, RoutedEventArgs e) => stackPanelObj = sender as ItemsStackPanel;
 
     //===================================================================================================================
     // Filtered List Example
@@ -303,33 +282,25 @@ public sealed partial class ListViewPage : ItemsPageBase
         UIHelper.AnnounceActionForAccessibility(FilteredListView, $"Found {filtered.Count()} contacts", "ContactListViewFilteredActivityId");
     }
 
-    private bool Filter(Contact contact)
-    {
+    private bool Filter(Contact contact) =>
         // When the text in any filter is changed, contact list is ran through all three filters to make sure
         // they can properly interact with each other (i.e. they can all be applied at the same time).
 
-        return contact.FirstName.Contains(FilterByFirstName.Text, StringComparison.InvariantCultureIgnoreCase) &&
+        contact.FirstName.Contains(FilterByFirstName.Text, StringComparison.InvariantCultureIgnoreCase) &&
                contact.LastName.Contains(FilterByLastName.Text, StringComparison.InvariantCultureIgnoreCase) &&
                contact.Company.Contains(FilterByCompany.Text, StringComparison.InvariantCultureIgnoreCase);
-    }
 
     //===================================================================================================================
     // Inverted List Example
     //===================================================================================================================
 
-    private void AddItemToEnd()
-    {
-        InvertedListView.Items.Add(
+    private void AddItemToEnd() => InvertedListView.Items.Add(
             new Message("Message " + ++messageNumber, DateTime.Now, HorizontalAlignment.Right)
             );
-    }
 
-    private void MessageReceived(object sender, RoutedEventArgs e)
-    {
-        InvertedListView.Items.Add(
+    private void MessageReceived(object sender, RoutedEventArgs e) => InvertedListView.Items.Add(
             new Message("Message " + ++messageNumber, DateTime.Now, HorizontalAlignment.Left)
             );
-    }
 
     //===================================================================================================================
     // ListView with Images Sample
@@ -337,7 +308,7 @@ public sealed partial class ListViewPage : ItemsPageBase
 
     private void TextBlock_IsTextTrimmedChanged(TextBlock sender, IsTextTrimmedChangedEventArgs args)
     {
-        var textBlock = sender as TextBlock;
+        var textBlock = sender;
         var text = textBlock.IsTextTrimmed ? textBlock.Text : string.Empty;
 
         ToolTipService.SetToolTip(textBlock, text);
@@ -356,46 +327,30 @@ public sealed partial class ListViewPage : ItemsPageBase
     }
 }
 
-public class Message
+public class Message(string text, DateTime dateTime, HorizontalAlignment align)
 {
-    public string MsgText { get; private set; }
-    public DateTime MsgDateTime { get; private set; }
-    public HorizontalAlignment MsgAlignment { get; set; }
-    public Message(string text, DateTime dateTime, HorizontalAlignment align)
-    {
-        MsgText = text;
-        MsgDateTime = dateTime;
-        MsgAlignment = align;
-    }
+    public string MsgText { get; private set; } = text;
+    public DateTime MsgDateTime { get; private set; } = dateTime;
+    public HorizontalAlignment MsgAlignment { get; set; } = align;
 
-    public override string ToString()
-    {
-        return MsgDateTime.ToString() + " " + MsgText;
-    }
+    public override string ToString() => MsgDateTime.ToString() + " " + MsgText;
 }
 
-public class Contact
+public class Contact(string firstName, string lastName, string company)
 {
     #region Properties
-    public string FirstName { get; private set; }
-    public string LastName { get; private set; }
-    public string Company { get; private set; }
+    public string FirstName { get; private set; } = firstName;
+    public string LastName { get; private set; } = lastName;
+    public string Company { get; private set; } = company;
     public string Name => FirstName + " " + LastName;
     #endregion
 
-    public Contact(string firstName, string lastName, string company)
-    {
-        FirstName = firstName;
-        LastName = lastName;
-        Company = company;
-    }
-
     #region Public Methods
-    public async static Task<ObservableCollection<Contact>> GetContactsAsync()
+    public static async Task<ObservableCollection<Contact>> GetContactsAsync()
     {
         IList<string> lines = await FileLoader.LoadLines("Assets/SampleMedia/Contacts.txt");
 
-        ObservableCollection<Contact> contacts = new ObservableCollection<Contact>();
+        ObservableCollection<Contact> contacts = [];
 
         for (int i = 0; i < lines.Count - 2; i += 3)
         {
@@ -412,25 +367,16 @@ public class Contact
                     orderby g.Key
                     select new GroupInfoList(g) { Key = g.Key };
 
-        return new ObservableCollection<GroupInfoList>(query);
+        return [.. query];
     }
 
-    public override string ToString()
-    {
-        return $"{Name}, {Company}";
-    }
+    public override string ToString() => $"{Name}, {Company}";
     #endregion
 }
 
-public class GroupInfoList : List<object>
+public class GroupInfoList(IEnumerable<object> items) : List<object>(items)
 {
-    public GroupInfoList(IEnumerable<object> items) : base(items)
-    {
-    }
     public object Key { get; set; }
 
-    public override string ToString()
-    {
-        return "Group " + Key.ToString();
-    }
+    public override string ToString() => "Group " + Key.ToString();
 }

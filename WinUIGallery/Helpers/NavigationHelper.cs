@@ -1,20 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Windows.ApplicationModel.Core;
 using Windows.Foundation.Metadata;
 using Windows.System;
-using Microsoft.UI.Dispatching;
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.UI.Core;
 using Microsoft.UI.Input;
-using static CommunityToolkit.WinUI.Animations.Expressions.ExpressionValues;
 
 namespace WinUIGallery.Helpers;
 
@@ -46,8 +38,8 @@ namespace WinUIGallery.Helpers;
 /// </code>
 ///
 /// 2) Register the page to call into the NavigationManager whenever the page participates
-///     in navigation by overriding the <see cref="Microsoft.UI.Xaml.Controls.Page.OnNavigatedTo"/>
-///     and <see cref="Microsoft.UI.Xaml.Controls.Page.OnNavigatedFrom"/> events.
+///     in navigation by overriding the <see cref="Page.OnNavigatedTo"/>
+///     and <see cref="Page.OnNavigatedFrom"/> events.
 /// <code>
 ///     protected override void OnNavigatedTo(NavigationEventArgs e)
 ///     {
@@ -60,21 +52,16 @@ namespace WinUIGallery.Helpers;
 ///     }
 /// </code>
 /// </example>
-[Windows.Foundation.Metadata.WebHostHidden]
-public class NavigationHelper : DependencyObject
+/// <remarks>
+/// Initializes a new instance of the <see cref="NavigationHelper"/> class.
+/// </remarks>
+/// <param name="page">A reference to the current page used for navigation.
+/// This reference allows for frame manipulation.</param>
+[WebHostHidden]
+public class NavigationHelper(Page page) : DependencyObject
 {
-    private Page Page { get; set; }
-    private Frame Frame { get { return this.Page.Frame; } }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="NavigationHelper"/> class.
-    /// </summary>
-    /// <param name="page">A reference to the current page used for navigation.
-    /// This reference allows for frame manipulation.</param>
-    public NavigationHelper(Page page)
-    {
-        this.Page = page;
-    }
+    private Page Page { get; set; } = page;
+    private Frame Frame => Page.Frame;
 
     #region Process lifetime management
 
@@ -103,15 +90,15 @@ public class NavigationHelper : DependencyObject
     /// property provides the group to be displayed.</param>
     public void OnNavigatedTo(NavigationEventArgs e)
     {
-        var frameState = SuspensionManager.SessionStateForFrame(this.Frame);
-        this._pageKey = "Page-" + this.Frame.BackStackDepth;
+        var frameState = SuspensionManager.SessionStateForFrame(Frame);
+        _pageKey = "Page-" + Frame.BackStackDepth;
 
         if (e.NavigationMode == NavigationMode.New)
         {
             // Clear existing state for forward navigation when adding a new page to the
             // navigation stack
-            var nextPageKey = this._pageKey;
-            int nextPageIndex = this.Frame.BackStackDepth;
+            var nextPageKey = _pageKey;
+            int nextPageIndex = Frame.BackStackDepth;
             while (frameState.Remove(nextPageKey))
             {
                 nextPageIndex++;
@@ -119,14 +106,14 @@ public class NavigationHelper : DependencyObject
             }
 
             // Pass the navigation parameter to the new page
-            this.LoadState?.Invoke(this, new LoadStateEventArgs(e.Parameter, null));
+            LoadState?.Invoke(this, new LoadStateEventArgs(e.Parameter, null));
         }
         else
         {
             // Pass the navigation parameter and preserved page state to the page, using
             // the same strategy for loading suspended state and recreating pages discarded
             // from cache
-            this.LoadState?.Invoke(this, new LoadStateEventArgs(e.Parameter, (Dictionary<string, object>)frameState[this._pageKey]));
+            LoadState?.Invoke(this, new LoadStateEventArgs(e.Parameter, (Dictionary<string, object>)frameState[_pageKey]));
         }
     }
 
@@ -139,9 +126,9 @@ public class NavigationHelper : DependencyObject
     /// property provides the group to be displayed.</param>
     public void OnNavigatedFrom(NavigationEventArgs e)
     {
-        var frameState = SuspensionManager.SessionStateForFrame(this.Frame);
+        var frameState = SuspensionManager.SessionStateForFrame(Frame);
         var pageState = new Dictionary<string, object>();
-        this.SaveState?.Invoke(this, new SaveStateEventArgs(pageState));
+        SaveState?.Invoke(this, new SaveStateEventArgs(pageState));
         frameState[_pageKey] = pageState;
     }
 
@@ -165,7 +152,7 @@ public class NavigationHelper : DependencyObject
 ///     }
 /// </code>
 /// </example>
-[Windows.Foundation.Metadata.WebHostHidden]
+[WebHostHidden]
 public class RootFrameNavigationHelper
 {
     private Frame Frame { get; set; }
@@ -186,13 +173,13 @@ public class RootFrameNavigationHelper
             return;
         }
 
-        this.Frame = rootFrame;
-        this.Frame.Navigated += (s, e) =>
+        Frame = rootFrame;
+        Frame.Navigated += (s, e) =>
         {
             // Update the Back button whenever a navigation occurs.
             UpdateBackButton();
         };
-        this.CurrentNavView = currentNavView;
+        CurrentNavView = currentNavView;
 
         CurrentNavView.BackRequested += NavView_BackRequested;
         CurrentNavView.PointerPressed += CurrentNavView_PointerPressed;
@@ -263,23 +250,20 @@ public class RootFrameNavigationHelper
         }
     }
 
-    private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
-    {
-        TryGoBack();
-    }
+    private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args) => TryGoBack();
 
     private bool TryGoBack()
     {
         bool navigated = false;
         // Don't go back if the nav pane is overlayed.
-        if (this.CurrentNavView.IsPaneOpen && (this.CurrentNavView.DisplayMode == NavigationViewDisplayMode.Compact || this.CurrentNavView.DisplayMode == NavigationViewDisplayMode.Minimal))
+        if (CurrentNavView.IsPaneOpen && (CurrentNavView.DisplayMode == NavigationViewDisplayMode.Compact || CurrentNavView.DisplayMode == NavigationViewDisplayMode.Minimal))
         {
             return navigated;
         }
 
-        if (this.Frame.CanGoBack)
+        if (Frame.CanGoBack)
         {
-            this.Frame.GoBack();
+            Frame.GoBack();
             navigated = true;
         }
 
@@ -289,18 +273,15 @@ public class RootFrameNavigationHelper
     private bool TryGoForward()
     {
         bool navigated = false;
-        if (this.Frame.CanGoForward)
+        if (Frame.CanGoForward)
         {
-            this.Frame.GoForward();
+            Frame.GoForward();
             navigated = true;
         }
         return navigated;
     }
 
-    private void UpdateBackButton()
-    {
-        this.CurrentNavView.IsBackEnabled = this.Frame.CanGoBack ? true : false;
-    }
+    private void UpdateBackButton() => CurrentNavView.IsBackEnabled = Frame.CanGoBack;
 }
 
 /// <summary>
@@ -315,54 +296,41 @@ public delegate void SaveStateEventHandler(object sender, SaveStateEventArgs e);
 /// <summary>
 /// Class used to hold the event data required when a page attempts to load state.
 /// </summary>
-public class LoadStateEventArgs : EventArgs
+/// <remarks>
+/// Initializes a new instance of the <see cref="LoadStateEventArgs"/> class.
+/// </remarks>
+/// <param name="navigationParameter">
+/// The parameter value passed to <see cref="Frame.Navigate(Type, object)"/>
+/// when this page was initially requested.
+/// </param>
+/// <param name="pageState">
+/// A dictionary of state preserved by this page during an earlier
+/// session.  This will be null the first time a page is visited.
+/// </param>
+public class LoadStateEventArgs(object navigationParameter, Dictionary<string, object> pageState) : EventArgs()
 {
     /// <summary>
     /// The parameter value passed to <see cref="Frame.Navigate(Type, object)"/>
     /// when this page was initially requested.
     /// </summary>
-    public object NavigationParameter { get; private set; }
+    public object NavigationParameter { get; private set; } = navigationParameter;
     /// <summary>
     /// A dictionary of state preserved by this page during an earlier
     /// session.  This will be null the first time a page is visited.
     /// </summary>
-    public Dictionary<string, object> PageState { get; private set; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="LoadStateEventArgs"/> class.
-    /// </summary>
-    /// <param name="navigationParameter">
-    /// The parameter value passed to <see cref="Frame.Navigate(Type, object)"/>
-    /// when this page was initially requested.
-    /// </param>
-    /// <param name="pageState">
-    /// A dictionary of state preserved by this page during an earlier
-    /// session.  This will be null the first time a page is visited.
-    /// </param>
-    public LoadStateEventArgs(object navigationParameter, Dictionary<string, object> pageState)
-        : base()
-    {
-        this.NavigationParameter = navigationParameter;
-        this.PageState = pageState;
-    }
+    public Dictionary<string, object> PageState { get; private set; } = pageState;
 }
 /// <summary>
 /// Class used to hold the event data required when a page attempts to save state.
 /// </summary>
-public class SaveStateEventArgs : EventArgs
+/// <remarks>
+/// Initializes a new instance of the <see cref="SaveStateEventArgs"/> class.
+/// </remarks>
+/// <param name="pageState">An empty dictionary to be populated with serializable state.</param>
+public class SaveStateEventArgs(Dictionary<string, object> pageState) : EventArgs()
 {
     /// <summary>
     /// An empty dictionary to be populated with serializable state.
     /// </summary>
-    public Dictionary<string, object> PageState { get; private set; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SaveStateEventArgs"/> class.
-    /// </summary>
-    /// <param name="pageState">An empty dictionary to be populated with serializable state.</param>
-    public SaveStateEventArgs(Dictionary<string, object> pageState)
-        : base()
-    {
-        this.PageState = pageState;
-    }
+    public Dictionary<string, object> PageState { get; private set; } = pageState;
 }

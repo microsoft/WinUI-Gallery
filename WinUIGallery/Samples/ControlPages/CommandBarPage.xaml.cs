@@ -33,14 +33,11 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
 
     public event PropertyChangedEventHandler PropertyChanged;
 
-    public void OnPropertyChanged(string PropertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
-    }
+    public void OnPropertyChanged(string PropertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
 
     public CommandBarPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         AddKeyboardAccelerators();
     }
 
@@ -56,10 +53,7 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
         PrimaryCommandBar.IsSticky = false;
     }
 
-    private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-    {
-        SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
-    }
+    private void OnElementClicked(object sender, RoutedEventArgs e) => SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
 
     private void AddSecondaryCommands_Click(object sender, RoutedEventArgs e)
     {
@@ -68,9 +62,11 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
 
         if (PrimaryCommandBar.SecondaryCommands.Count == 1)
         {
-            var newButton = new AppBarButton();
-            newButton.Icon = new SymbolIcon(Symbol.Add);
-            newButton.Label = "Button 1";
+            var newButton = new AppBarButton
+            {
+                Icon = new SymbolIcon(Symbol.Add),
+                Label = "Button 1"
+            };
             newButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
             {
                 Key = Windows.System.VirtualKey.N,
@@ -90,9 +86,11 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
             });
             PrimaryCommandBar.SecondaryCommands.Add(new AppBarSeparator());
 
-            newButton = new AppBarButton();
-            newButton.Icon = new SymbolIcon(Symbol.FontDecrease);
-            newButton.Label = "Button 3";
+            newButton = new AppBarButton
+            {
+                Icon = new SymbolIcon(Symbol.FontDecrease),
+                Label = "Button 3"
+            };
             newButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
             {
                 Key = Windows.System.VirtualKey.Subtract,
@@ -100,9 +98,11 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
             });
             PrimaryCommandBar.SecondaryCommands.Add(newButton);
 
-            newButton = new AppBarButton();
-            newButton.Icon = new SymbolIcon(Symbol.FontIncrease);
-            newButton.Label = "Button 4";
+            newButton = new AppBarButton
+            {
+                Icon = new SymbolIcon(Symbol.FontIncrease),
+                Label = "Button 4"
+            };
             newButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
             {
                 Key = Windows.System.VirtualKey.Add,
@@ -114,10 +114,7 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
         MultipleButtons = true;
     }
 
-    private void RemoveSecondaryCommands_Click(object sender, RoutedEventArgs e)
-    {
-        RemoveSecondaryCommands();
-    }
+    private void RemoveSecondaryCommands_Click(object sender, RoutedEventArgs e) => RemoveSecondaryCommands();
 
     protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
     {

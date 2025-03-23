@@ -79,20 +79,11 @@ sealed class LottieLogo1 : IAnimatedVisualSource
         Vector2KeyFrameAnimation _vector2Animation_07;
 
         // Rectangle Path 1
-        CompositionColorBrush ColorBrush_AlmostDarkTurquoise_FF00D1C1()
-        {
-            return _c.CreateColorBrush(Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x00, 0xD1, 0xC1));
-        }
+        CompositionColorBrush ColorBrush_AlmostDarkTurquoise_FF00D1C1() => _c.CreateColorBrush(Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x00, 0xD1, 0xC1));
 
-        CompositionColorBrush ColorBrush_AlmostTeal_FF007A87()
-        {
-            return _colorBrush_AlmostTeal_FF007A87 = _c.CreateColorBrush(Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x00, 0x7A, 0x87));
-        }
+        CompositionColorBrush ColorBrush_AlmostTeal_FF007A87() => _colorBrush_AlmostTeal_FF007A87 = _c.CreateColorBrush(Microsoft.UI.ColorHelper.FromArgb(0xFF, 0x00, 0x7A, 0x87));
 
-        CompositionColorBrush ColorBrush_White()
-        {
-            return _colorBrush_White = _c.CreateColorBrush(Microsoft.UI.ColorHelper.FromArgb(0xFF, 0xFF, 0xFF, 0xFF));
-        }
+        CompositionColorBrush ColorBrush_White() => _colorBrush_White = _c.CreateColorBrush(Microsoft.UI.ColorHelper.FromArgb(0xFF, 0xFF, 0xFF, 0xFF));
 
         CompositionPath CompositionPath_00()
         {
@@ -1446,178 +1437,91 @@ sealed class LottieLogo1 : IAnimatedVisualSource
 
         // Transforms: Dot-Y
         //   Position
-        CubicBezierEasingFunction CubicBezierEasingFunction_00()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0, 0), new Vector2(0, 0.811999977F));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_00() => _c.CreateCubicBezierEasingFunction(new Vector2(0, 0), new Vector2(0, 0.811999977F));
 
         // Transforms: Dot-Y
         //   Position
-        CubicBezierEasingFunction CubicBezierEasingFunction_01()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.389999986F, 0.707000017F), new Vector2(0.708000004F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_01() => _c.CreateCubicBezierEasingFunction(new Vector2(0.389999986F, 0.707000017F), new Vector2(0.708000004F, 1));
 
-        CubicBezierEasingFunction CubicBezierEasingFunction_02()
-        {
-            return _cubicBezierEasingFunction_02 = _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.180000007F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_02() => _cubicBezierEasingFunction_02 = _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.180000007F, 1));
 
-        CubicBezierEasingFunction CubicBezierEasingFunction_03()
-        {
-            return _cubicBezierEasingFunction_03 = _c.CreateCubicBezierEasingFunction(new Vector2(0.819999993F, 0), new Vector2(0.833000004F, 0.833000004F));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_03() => _cubicBezierEasingFunction_03 = _c.CreateCubicBezierEasingFunction(new Vector2(0.819999993F, 0), new Vector2(0.833000004F, 0.833000004F));
 
-        CubicBezierEasingFunction CubicBezierEasingFunction_04()
-        {
-            return _cubicBezierEasingFunction_04 = _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.833000004F, 0.833000004F));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_04() => _cubicBezierEasingFunction_04 = _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.833000004F, 0.833000004F));
 
-        CubicBezierEasingFunction CubicBezierEasingFunction_05()
-        {
-            return _cubicBezierEasingFunction_05 = _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.666999996F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_05() => _cubicBezierEasingFunction_05 = _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.666999996F, 1));
 
         // Position
-        CubicBezierEasingFunction CubicBezierEasingFunction_06()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0), new Vector2(0.666999996F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_06() => _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0), new Vector2(0.666999996F, 1));
 
-        CubicBezierEasingFunction CubicBezierEasingFunction_07()
-        {
-            return _cubicBezierEasingFunction_07 = _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.119999997F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_07() => _cubicBezierEasingFunction_07 = _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.119999997F, 1));
 
-        CubicBezierEasingFunction CubicBezierEasingFunction_08()
-        {
-            return _cubicBezierEasingFunction_08 = _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0), new Vector2(0.119999997F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_08() => _cubicBezierEasingFunction_08 = _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0), new Vector2(0.119999997F, 1));
 
         // Position
-        CubicBezierEasingFunction CubicBezierEasingFunction_09()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.119999997F, 0.119999997F));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_09() => _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.119999997F, 0.119999997F));
 
         // TStart
-        CubicBezierEasingFunction CubicBezierEasingFunction_10()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.300999999F, 0), new Vector2(0.833000004F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_10() => _c.CreateCubicBezierEasingFunction(new Vector2(0.300999999F, 0), new Vector2(0.833000004F, 1));
 
-        CubicBezierEasingFunction CubicBezierEasingFunction_11()
-        {
-            return _cubicBezierEasingFunction_11 = _c.CreateCubicBezierEasingFunction(new Vector2(0.300999999F, 0), new Vector2(0.666999996F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_11() => _cubicBezierEasingFunction_11 = _c.CreateCubicBezierEasingFunction(new Vector2(0.300999999F, 0), new Vector2(0.666999996F, 1));
 
-        CubicBezierEasingFunction CubicBezierEasingFunction_12()
-        {
-            return _cubicBezierEasingFunction_12 = _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.0599999987F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_12() => _cubicBezierEasingFunction_12 = _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.0599999987F, 1));
 
         // Layer (Shape): T1b-B
         //   Path 1
         //     Path 1.PathGeometry
         //       TrimEnd
-        CubicBezierEasingFunction CubicBezierEasingFunction_13()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.209999993F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_13() => _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.209999993F, 1));
 
         // Radius
-        CubicBezierEasingFunction CubicBezierEasingFunction_14()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.333000004F, 0), new Vector2(0.666999996F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_14() => _c.CreateCubicBezierEasingFunction(new Vector2(0.333000004F, 0), new Vector2(0.666999996F, 1));
 
-        CubicBezierEasingFunction CubicBezierEasingFunction_15()
-        {
-            return _cubicBezierEasingFunction_15 = _c.CreateCubicBezierEasingFunction(new Vector2(0.180000007F, 0), new Vector2(0.34799999F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_15() => _cubicBezierEasingFunction_15 = _c.CreateCubicBezierEasingFunction(new Vector2(0.180000007F, 0), new Vector2(0.34799999F, 1));
 
-        CubicBezierEasingFunction CubicBezierEasingFunction_16()
-        {
-            return _cubicBezierEasingFunction_16 = _c.CreateCubicBezierEasingFunction(new Vector2(0.693000019F, 0), new Vector2(0.270000011F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_16() => _cubicBezierEasingFunction_16 = _c.CreateCubicBezierEasingFunction(new Vector2(0.693000019F, 0), new Vector2(0.270000011F, 1));
 
         // Transforms: O-B
         //   Ellipse Path 1
         //     Ellipse Path 1.EllipseGeometry
         //       TrimStart
-        CubicBezierEasingFunction CubicBezierEasingFunction_17()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 1), new Vector2(0.432000011F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_17() => _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 1), new Vector2(0.432000011F, 1));
 
         // Transforms: T1a-Y
         //   Path 1
         //     Path 1.PathGeometry
         //       TrimEnd
-        CubicBezierEasingFunction CubicBezierEasingFunction_18()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.672999978F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_18() => _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.672999978F, 1));
 
         // Transforms: N
         //   Position
-        CubicBezierEasingFunction CubicBezierEasingFunction_19()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.25999999F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_19() => _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.25999999F, 1));
 
         // Transforms: N
         //   Position
-        CubicBezierEasingFunction CubicBezierEasingFunction_20()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.74000001F, 0), new Vector2(0.833000004F, 0.833000004F));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_20() => _c.CreateCubicBezierEasingFunction(new Vector2(0.74000001F, 0), new Vector2(0.833000004F, 0.833000004F));
 
         // TStart
-        CubicBezierEasingFunction CubicBezierEasingFunction_21()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.703000009F, 0.856999993F));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_21() => _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.703000009F, 0.856999993F));
 
         // TStart
-        CubicBezierEasingFunction CubicBezierEasingFunction_22()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.333000004F, 0.202000007F), new Vector2(0.938000023F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_22() => _c.CreateCubicBezierEasingFunction(new Vector2(0.333000004F, 0.202000007F), new Vector2(0.938000023F, 1));
 
-        CubicBezierEasingFunction CubicBezierEasingFunction_23()
-        {
-            return _cubicBezierEasingFunction_23 = _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.337000012F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_23() => _cubicBezierEasingFunction_23 = _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.337000012F, 1));
 
         // TStart
-        CubicBezierEasingFunction CubicBezierEasingFunction_24()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.703000009F, 0.82099998F));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_24() => _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.166999996F), new Vector2(0.703000009F, 0.82099998F));
 
         // TStart
-        CubicBezierEasingFunction CubicBezierEasingFunction_25()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.0370000005F, 0.167999998F), new Vector2(0.263000011F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_25() => _c.CreateCubicBezierEasingFunction(new Vector2(0.0370000005F, 0.167999998F), new Vector2(0.263000011F, 1));
 
         // Transforms: Dot1
         //   Position
-        CubicBezierEasingFunction CubicBezierEasingFunction_26()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.823000014F, 0), new Vector2(0.833000004F, 0.833000004F));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_26() => _c.CreateCubicBezierEasingFunction(new Vector2(0.823000014F, 0), new Vector2(0.833000004F, 0.833000004F));
 
-        CubicBezierEasingFunction CubicBezierEasingFunction_27()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.197999999F), new Vector2(0.638000011F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_27() => _c.CreateCubicBezierEasingFunction(new Vector2(0.166999996F, 0.197999999F), new Vector2(0.638000011F, 1));
 
-        CubicBezierEasingFunction CubicBezierEasingFunction_28()
-        {
-            return _c.CreateCubicBezierEasingFunction(new Vector2(0.523000002F, 0), new Vector2(0.795000017F, 1));
-        }
+        CubicBezierEasingFunction CubicBezierEasingFunction_28() => _c.CreateCubicBezierEasingFunction(new Vector2(0.523000002F, 0), new Vector2(0.795000017F, 1));
 
         // Transforms: O-Y
         //   Ellipse Path 1
@@ -2075,10 +1979,7 @@ sealed class LottieLogo1 : IAnimatedVisualSource
             return result;
         }
 
-        LinearEasingFunction LinearEasingFunction()
-        {
-            return _linearEasingFunction = _c.CreateLinearEasingFunction();
-        }
+        LinearEasingFunction LinearEasingFunction() => _linearEasingFunction = _c.CreateLinearEasingFunction();
 
         // Transforms: E3-Y
         //   Path 1

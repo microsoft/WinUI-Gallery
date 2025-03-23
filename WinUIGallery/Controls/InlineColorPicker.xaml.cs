@@ -40,22 +40,19 @@ public sealed partial class InlineColorPicker : UserControl
 
     public InlineColorPicker()
     {
-        this.InitializeComponent();
-        this.Loaded += InlineColorPicker_Loaded;
+        InitializeComponent();
+        Loaded += InlineColorPicker_Loaded;
     }
 
-    private void InlineColorPicker_Loaded(object sender, RoutedEventArgs e)
-    {
-        ColorHex.Text = Color.ToString().Replace("#FF","#");
-    }
+    private void InlineColorPicker_Loaded(object sender, RoutedEventArgs e) => ColorHex.Text = Color.ToString().Replace("#FF", "#");
 
     public SolidColorBrush GetSolidColorBrush(string hex)
     {
         hex = hex.Replace("#", string.Empty);
-        byte r = (byte)(Convert.ToUInt32(hex.Substring(0, 2), 16));
-        byte g = (byte)(Convert.ToUInt32(hex.Substring(2, 2), 16));
-        byte b = (byte)(Convert.ToUInt32(hex.Substring(4, 2), 16));
-        SolidColorBrush myBrush = new SolidColorBrush(Microsoft.UI.ColorHelper.FromArgb(255, r, g, b));
+        byte r = (byte)Convert.ToUInt32(hex.Substring(0, 2), 16);
+        byte g = (byte)Convert.ToUInt32(hex.Substring(2, 2), 16);
+        byte b = (byte)Convert.ToUInt32(hex.Substring(4, 2), 16);
+        SolidColorBrush myBrush = new(Microsoft.UI.ColorHelper.FromArgb(255, r, g, b));
         return myBrush;
     }
 
@@ -67,10 +64,7 @@ public sealed partial class InlineColorPicker : UserControl
         ColorChanged?.Invoke(this, args.NewColor);
     }
 
-    private void PickerFlyout_Opened(object sender, object e)
-    {
-        Picker.Color = ((SolidColorBrush)ColorPreview.Fill).Color;
-    }
+    private void PickerFlyout_Opened(object sender, object e) => Picker.Color = ((SolidColorBrush)ColorPreview.Fill).Color;
 
     private void ColorHex_TextChanged(object sender, TextChangedEventArgs e)
     {

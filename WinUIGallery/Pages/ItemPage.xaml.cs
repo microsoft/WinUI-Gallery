@@ -38,7 +38,7 @@ public sealed partial class ItemPage : Page
 
     public ItemPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         Loaded += (s, e) => SetInitialVisuals();
     }
 
@@ -50,13 +50,10 @@ public sealed partial class ItemPage : Page
             pageHeader.ToggleThemeAction = OnToggleTheme;
             navigationRootPage.NavigationViewLoaded = OnNavigationViewLoaded;
             
-            this.Focus(FocusState.Programmatic);
+            Focus(FocusState.Programmatic);
         }
     }
-    private void OnNavigationViewLoaded()
-    {
-        NavigationRootPage.GetForElement(this).EnsureNavigationSelection(this.Item.UniqueId);
-    }
+    private void OnNavigationViewLoaded() => NavigationRootPage.GetForElement(this).EnsureNavigationSelection(Item.UniqueId);
 
     protected override async void OnNavigatedTo(NavigationEventArgs e)
     {
@@ -78,7 +75,7 @@ public sealed partial class ItemPage : Page
                 pageHeader.SetControlSourceLink(WinUIBaseUrl, item.SourcePath);
                 pageHeader.SetSamplePageSourceLinks(GalleryBaseUrl, pageName);
                 System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
-                this.contentFrame.Navigate(pageType);
+                contentFrame.Navigate(pageType);
             }
             args.NavigationRootPage.EnsureNavigationSelection(item?.UniqueId);
         }
@@ -110,7 +107,7 @@ public sealed partial class ItemPage : Page
         {
             MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            dynMethod.Invoke(innerPage, new object[] { e });
+            dynMethod.Invoke(innerPage, [e]);
         }
 
         base.OnNavigatedFrom(e);
@@ -120,11 +117,7 @@ public sealed partial class ItemPage : Page
     {
         UIElement element = (UIElement)obj;
         Window window = WindowHelper.GetWindowForElement(element);
-        if (window != null)
-        {
-            return (ItemPage)window.Content;
-        }
-        return null;
+        return window != null ? (ItemPage)window.Content : null;
     }
 
     private void OnToggleTheme()
@@ -136,7 +129,7 @@ public sealed partial class ItemPage : Page
 
     private void SetControlExamplesTheme(ElementTheme theme)
     {
-        var controlExamples = (this.contentFrame.Content as UIElement)?.GetDescendantsOfType<SampleThemeListener>();
+        var controlExamples = (contentFrame.Content as UIElement)?.GetDescendantsOfType<SampleThemeListener>();
 
         if (controlExamples != null)
         {
@@ -145,9 +138,9 @@ public sealed partial class ItemPage : Page
             {
                 controlExample.RequestedTheme = theme;
             }
-            if(controlExamples.Count() == 0)
+            if(!controlExamples.Any())
             {
-                this.RequestedTheme = theme;
+                RequestedTheme = theme;
             }
         }
     }

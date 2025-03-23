@@ -29,7 +29,7 @@ public sealed partial class HomePageHeaderImage : UserControl
     private const string GradientSizeKey = "GradientSize";
     public HomePageHeaderImage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void OnLoaded(object sender, RoutedEventArgs e)
@@ -98,15 +98,9 @@ public sealed partial class HomePageHeaderImage : UserControl
             AnimateImage();
         }
     }
-    private void SetBottomGradientStartPoint()
-    {
-        _bottomGradientStartPointAnimation?.Properties.InsertScalar(GradientSizeKey, 180);
-    }
+    private void SetBottomGradientStartPoint() => _bottomGradientStartPointAnimation?.Properties.InsertScalar(GradientSizeKey, 180);
 
-    private void OnImageOpened(object sender, RoutedEventArgs e)
-    {
-        AnimateImage();
-    }
+    private void OnImageOpened(object sender, RoutedEventArgs e) => AnimateImage();
 
     private void AnimateImage()
     {

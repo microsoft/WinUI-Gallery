@@ -15,7 +15,7 @@ public sealed partial class ScratchPadPage : Page
 {
     public ScratchPadPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         var xamlStr = ReadScratchPadXAMLinLocalSettings();
 
@@ -34,28 +34,21 @@ public sealed partial class ScratchPadPage : Page
         SetEmptyScratchPadContent();
     }
 
-    private void SetEmptyScratchPadContent()
+    private void SetEmptyScratchPadContent() => scratchPad.Content = new TextBlock()
     {
-        scratchPad.Content = new TextBlock()
-        {
-            Text = "Click the Load button to load the content below.",
-            HorizontalAlignment = HorizontalAlignment.Center,
-            VerticalAlignment = VerticalAlignment.Center,
-            TextWrapping = TextWrapping.Wrap
-        };
-    }
+        Text = "Click the Load button to load the content below.",
+        HorizontalAlignment = HorizontalAlignment.Center,
+        VerticalAlignment = VerticalAlignment.Center,
+        TextWrapping = TextWrapping.Wrap
+    };
 
-    private string GetDefaultScratchXAML()
-    {
-        return
-@"<StackPanel  BorderThickness=""1"" BorderBrush=""Green"" CornerRadius=""4"" Padding=""3"">
+    private string GetDefaultScratchXAML() => @"<StackPanel  BorderThickness=""1"" BorderBrush=""Green"" CornerRadius=""4"" Padding=""3"">
     <!-- Note: {x:Bind} is not supported in Scratch Pad. -->
     <TextBlock>This is a sample TextBlock.</TextBlock>
     <Button Content=""Click me!""/>
 
     <!-- Note: Syntax highlighting updates on 'Load'. -->
 </StackPanel>";
-    }
 
     public string ReadScratchPadXAMLinLocalSettings()
     {
@@ -99,13 +92,15 @@ public sealed partial class ScratchPadPage : Page
 
     private async void ResetToDefaultClick(object sender, RoutedEventArgs e)
     {
-        ContentDialog dialog = new ContentDialog();
-        dialog.XamlRoot = this.XamlRoot;
-        dialog.Title = "Are you sure you want to reset?";
-        dialog.Content = "Resetting to the default content will replace your current content. Are you sure you want to reset?";
-        dialog.PrimaryButtonText = "Reset";
-        dialog.CloseButtonText = "Cancel";
-        dialog.DefaultButton = ContentDialogButton.Primary;
+        ContentDialog dialog = new()
+        {
+            XamlRoot = XamlRoot,
+            Title = "Are you sure you want to reset?",
+            Content = "Resetting to the default content will replace your current content. Are you sure you want to reset?",
+            PrimaryButtonText = "Reset",
+            CloseButtonText = "Cancel",
+            DefaultButton = ContentDialogButton.Primary
+        };
 
         var result = await dialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
@@ -124,7 +119,7 @@ public sealed partial class ScratchPadPage : Page
     {
         xml = xml.Trim();
 
-        char[] chars = { ' ', '/', '>' };
+        char[] chars = [' ', '/', '>'];
         var insertIndex = xml.IndexOfAny(chars);
         if (insertIndex < 0)
         {
@@ -137,8 +132,7 @@ public sealed partial class ScratchPadPage : Page
 
     private void LoadContent()
     {
-        string newText;
-        textbox.TextDocument.GetText(TextGetOptions.None, out newText);
+        textbox.TextDocument.GetText(TextGetOptions.None, out string newText);
         //System.Diagnostics.Debug.WriteLine("new text: " + newText);
 
         SaveScratchPadXAMLinLocalSettings(newText);
@@ -181,12 +175,11 @@ public sealed partial class ScratchPadPage : Page
 
     private string GetTextboxTextPreviousLine()
     {
-        string newText;
-        textbox.TextDocument.GetText(TextGetOptions.None, out newText);
+        textbox.TextDocument.GetText(TextGetOptions.None, out string newText);
         var selectionIndex = textbox.TextDocument.Selection.StartPosition;
         if (selectionIndex > 0)
         {
-            char[] eolChars = { '\r', '\n' };
+            char[] eolChars = ['\r', '\n'];
             var endOfLineIndex = newText.LastIndexOfAny(eolChars, selectionIndex - 1);
             if (endOfLineIndex > 0)
             {
@@ -226,17 +219,16 @@ public sealed partial class ScratchPadPage : Page
         m_lastChangeFromTyping = true;
         switch (e.Key)
         {
-            case Windows.System.VirtualKey.Tab:
+            case VirtualKey.Tab:
                 if (textbox.TextDocument.Selection.Length > 1)
                 {
-                    var isShiftKeyDown = ((int)InputKeyboardSource.GetKeyStateForCurrentThread(Windows.System.VirtualKey.Shift) &
+                    var isShiftKeyDown = ((int)InputKeyboardSource.GetKeyStateForCurrentThread(VirtualKey.Shift) &
                         (int)Windows.UI.Core.CoreVirtualKeyStates.Down) == (int)Windows.UI.Core.CoreVirtualKeyStates.Down;
-                    string text;
-                    textbox.TextDocument.GetText(TextGetOptions.None, out text);
+                    textbox.TextDocument.GetText(TextGetOptions.None, out string text);
 
                     var selectionStart = textbox.TextDocument.Selection.StartPosition;
                     var selectionEnd = selectionStart + textbox.TextDocument.Selection.Length;
-                    char[] eolChars = { '\r', '\n' };
+                    char[] eolChars = ['\r', '\n'];
                     var startOfLineIndex = text.LastIndexOfAny(eolChars, selectionStart) + 1;
                     if (startOfLineIndex >= 0)
                     {
@@ -299,10 +291,7 @@ public sealed partial class ScratchPadPage : Page
         }
     }
 
-    private void LoadClick(object sender, RoutedEventArgs e)
-    {
-        LoadContentAndApplyFormatting();
-    }
+    private void LoadClick(object sender, RoutedEventArgs e) => LoadContentAndApplyFormatting();
 
     bool m_lastChangeFromTyping = false;
     string m_oldText = "";
@@ -319,8 +308,7 @@ public sealed partial class ScratchPadPage : Page
                 loadStatus.Opacity = 0.5; // dim the message which is now old
             }
 
-            string newText;
-            textbox.TextDocument.GetText(TextGetOptions.None, out newText);
+            textbox.TextDocument.GetText(TextGetOptions.None, out string newText);
             if (newText.Length == m_oldText.Length + 1)
             {
                 // Added just one character
@@ -333,7 +321,7 @@ public sealed partial class ScratchPadPage : Page
                     {
                         var tagName = newText.Substring(tagStartIndex + 1);
 
-                        char[] chars = { ' ', '/', '>', '\t', '\r', '\n' };
+                        char[] chars = [' ', '/', '>', '\t', '\r', '\n'];
                         var nameEndIndex = tagName.IndexOfAny(chars);
                         if (nameEndIndex > 0)
                         {
@@ -350,7 +338,7 @@ public sealed partial class ScratchPadPage : Page
                 {
                     // Might want to auto-insert quotes for a property. Check if this appears
                     // to be inside a tag and just after a property name.
-                    char[] tagChars = { '<', '>' };
+                    char[] tagChars = ['<', '>'];
                     var lastTagIndex = newText.LastIndexOfAny(tagChars, selectionIndex);
                     if (lastTagIndex >= 0 && newText[lastTagIndex] == '<')
                     {
@@ -380,13 +368,9 @@ public sealed partial class ScratchPadPage : Page
     }
 }
 
-public class XamlTextFormatter
+public class XamlTextFormatter(RichEditBox richEditBox)
 {
-    private RichEditBox m_richEditBox;
-    public XamlTextFormatter(RichEditBox richEditBox)
-    {
-        m_richEditBox = richEditBox;
-    }
+    private RichEditBox m_richEditBox = richEditBox;
 
     enum ZoneType
     {
@@ -406,8 +390,7 @@ public class XamlTextFormatter
         var doc = m_richEditBox.Document;
         doc.BeginUndoGroup();
 
-        string rebText;
-        doc.GetText(TextGetOptions.None, out rebText);
+        doc.GetText(TextGetOptions.None, out string rebText);
 
         var startIndex = 0;
         var currentZoneType = ZoneType.Unknown;

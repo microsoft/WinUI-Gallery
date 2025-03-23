@@ -23,7 +23,7 @@ public sealed class ValidatedPasswordBox : Control
 
     public ValidatedPasswordBox()
     {
-        this.DefaultStyleKey = typeof(ValidatedPasswordBox);
+        DefaultStyleKey = typeof(ValidatedPasswordBox);
     }
 
     public string Password

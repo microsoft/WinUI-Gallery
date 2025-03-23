@@ -16,7 +16,7 @@ public sealed partial class PasswordBoxPage : Page
 {
     public PasswordBoxPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
@@ -37,15 +37,5 @@ public sealed partial class PasswordBoxPage : Page
         }
     }
 
-    private void RevealModeCheckbox_Changed(object sender, RoutedEventArgs e)
-    {
-        if (revealModeCheckBox.IsChecked == true)
-        {
-            passworBoxWithRevealmode.PasswordRevealMode = PasswordRevealMode.Visible;
-        }
-        else
-        {
-            passworBoxWithRevealmode.PasswordRevealMode = PasswordRevealMode.Hidden;
-        }
-    }
+    private void RevealModeCheckbox_Changed(object sender, RoutedEventArgs e) => passworBoxWithRevealmode.PasswordRevealMode = revealModeCheckBox.IsChecked == true ? PasswordRevealMode.Visible : PasswordRevealMode.Hidden;
 }

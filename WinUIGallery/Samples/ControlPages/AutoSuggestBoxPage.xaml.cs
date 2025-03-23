@@ -11,8 +11,8 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class AutoSuggestBoxPage : Page
 {
-    private List<string> Cats = new List<string>()
-    {
+    private List<string> Cats =
+    [
         "Abyssinian",
         "Aegean",
         "American Bobtail",
@@ -110,11 +110,11 @@ public sealed partial class AutoSuggestBoxPage : Page
         "Ukrainian Levkoy",
         "Wila Krungthep",
         "York Chocolate"
-    };
+    ];
 
     public AutoSuggestBoxPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
@@ -144,10 +144,7 @@ public sealed partial class AutoSuggestBoxPage : Page
         }
     }
 
-    private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
-    {
-        SuggestionOutput.Text = args.SelectedItem.ToString();
-    }
+    private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args) => SuggestionOutput.Text = args.SelectedItem.ToString();
 
     /// <summary>
     /// This event gets fired anytime the text in the TextBox gets updated.
@@ -164,10 +161,7 @@ public sealed partial class AutoSuggestBoxPage : Page
         {
             var suggestions = SearchControls(sender.Text);
 
-            if (suggestions.Count > 0)
-                sender.ItemsSource = suggestions;
-            else
-                sender.ItemsSource = new string[] { "No results found" };
+            sender.ItemsSource = suggestions.Count > 0 ? suggestions : (new string[] { "No results found" });
         }
     }
 

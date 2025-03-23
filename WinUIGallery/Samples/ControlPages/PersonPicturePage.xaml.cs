@@ -6,6 +6,6 @@ public sealed partial class PersonPicturePage : Page
 {
     public PersonPicturePage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

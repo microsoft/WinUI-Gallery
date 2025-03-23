@@ -1,25 +1,15 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WinUIGallery.Helpers;
 
 class LanguageList
 {
     private List<Language> _languages;
-    public List<Language> Languages
-    {
-        get { return _languages; }
-    }
+    public List<Language> Languages => _languages;
 
     public LanguageList()
     {
-        if (_languages == null)
-        {
-            _languages = new List<Language>();
-        }
+        _languages ??= [];
 
         _languages.Add(new Language("English", "en"));
         _languages.Add(new Language("Arabic", "ar"));
@@ -110,15 +100,9 @@ class LanguageList
 
     }
 
-    public class Language
+    public class Language(string name, string code)
     {
-        public string Name { get; set; }
-        public string Code { get; set; }
-
-        public Language(string name, string code)
-        {
-            Name = name;
-            Code = code;
-        }
+        public string Name { get; set; } = name;
+        public string Code { get; set; } = code;
     }
 }

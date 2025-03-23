@@ -61,17 +61,12 @@ public sealed class ControlExampleSubstitution : DependencyObject
         object value = Value;
 
         // For solid color brushes, use the underlying color.
-        if (value is SolidColorBrush)
+        if (value is SolidColorBrush brush)
         {
-            value = ((SolidColorBrush)value).Color;
+            value = brush.Color;
         }
 
-        if (value == null)
-        {
-            return string.Empty;
-        }
-
-        return value.ToString();
+        return value == null ? string.Empty : value.ToString();
     }
 }
 
@@ -145,7 +140,7 @@ public sealed partial class ControlExample : UserControl
     }
 
     private static readonly GridLength defaultExampleHeight =
-        new GridLength(1, GridUnitType.Star);
+        new(1, GridUnitType.Star);
 
     public static readonly DependencyProperty ExampleHeightProperty = DependencyProperty.Register("ExampleHeight", typeof(GridLength), typeof(ControlExample), new PropertyMetadata(defaultExampleHeight));
     public GridLength ExampleHeight
@@ -168,7 +163,7 @@ public sealed partial class ControlExample : UserControl
         set { SetValue(WebViewWidthProperty, value); }
     }
 
-    public new static readonly DependencyProperty HorizontalContentAlignmentProperty = DependencyProperty.Register("HorizontalContentAlignment", typeof(HorizontalAlignment), typeof(ControlExample), new PropertyMetadata(HorizontalAlignment.Left));
+    public static new readonly DependencyProperty HorizontalContentAlignmentProperty = DependencyProperty.Register("HorizontalContentAlignment", typeof(HorizontalAlignment), typeof(ControlExample), new PropertyMetadata(HorizontalAlignment.Left));
     public new HorizontalAlignment HorizontalContentAlignment
     {
         get { return (HorizontalAlignment)GetValue(HorizontalContentAlignmentProperty); }
@@ -184,15 +179,12 @@ public sealed partial class ControlExample : UserControl
 
     public ControlExample()
     {
-        this.InitializeComponent();
-        Substitutions = new List<ControlExampleSubstitution>();
-        this.Loaded += ControlExample_Loaded;
+        InitializeComponent();
+        Substitutions = [];
+        Loaded += ControlExample_Loaded;
     }
 
-    private void ControlExample_Loaded(object sender, RoutedEventArgs e)
-    {
-        HeaderTextPresenter.Visibility = string.IsNullOrEmpty(HeaderText) ? Visibility.Collapsed : Visibility.Visible;
-    }
+    private void ControlExample_Loaded(object sender, RoutedEventArgs e) => HeaderTextPresenter.Visibility = string.IsNullOrEmpty(HeaderText) ? Visibility.Collapsed : Visibility.Visible;
 
     private enum SyntaxHighlightLanguage { Xml, CSharp };
 
@@ -223,24 +215,15 @@ public sealed partial class ControlExample : UserControl
     private static void OnXamlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var ctrl = (ControlExample)d;
-        if (ctrl != null)
-        {
-            ctrl.SelectorBarItem_Loaded(ctrl.SelectorBarXamlItem, null);
-        }
+        ctrl?.SelectorBarItem_Loaded(ctrl.SelectorBarXamlItem, null);
     }
     private static void OnCSharpChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var ctrl = (ControlExample)d;
-        if (ctrl != null)
-        {
-            ctrl.SelectorBarItem_Loaded(ctrl.SelectorBarCSharpItem, null);
-        }
+        ctrl?.SelectorBarItem_Loaded(ctrl.SelectorBarCSharpItem, null);
     }
 
-    private void SelectorBarControl_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
-    {
-        HandlePresenterVisibility();
-    }
+    private void SelectorBarControl_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args) => HandlePresenterVisibility();
 
     private void HandlePresenterVisibility()
     {

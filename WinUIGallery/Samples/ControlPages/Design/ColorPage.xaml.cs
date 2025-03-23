@@ -14,7 +14,7 @@ public sealed partial class ColorPage : Page
 
     public ColorPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void PageSelector_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
@@ -38,8 +38,5 @@ public sealed partial class ColorPage : Page
         previousSelectedIndex = currentSelectedIndex;
     }
 
-    private void PageSelector_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-    {
-        PageSelector.SelectedItem = PageSelector.Items[0];
-    }
+    private void PageSelector_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e) => PageSelector.SelectedItem = PageSelector.Items[0];
 }

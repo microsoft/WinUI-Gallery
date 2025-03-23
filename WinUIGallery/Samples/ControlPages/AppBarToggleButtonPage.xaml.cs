@@ -9,8 +9,6 @@
 //*********************************************************
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Navigation;
 
 namespace WinUIGallery.ControlPages;
 
@@ -18,7 +16,7 @@ public sealed partial class AppBarToggleButtonPage : Page
 {
     public AppBarToggleButtonPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void AppBarButton_Click(object sender, RoutedEventArgs e)

@@ -16,19 +16,13 @@ public sealed partial class ToggleButtonPage : Page
 {
     public ToggleButtonPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         // Set initial output value.
         Control1Output.Text = (bool)Toggle1.IsChecked ? "On" : "Off";
     }
 
-    private void ToggleButton_Checked(object sender, RoutedEventArgs e)
-    {
-        Control1Output.Text = "On";
-    }
+    private void ToggleButton_Checked(object sender, RoutedEventArgs e) => Control1Output.Text = "On";
 
-    private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
-    {
-        Control1Output.Text = "Off";
-    }
+    private void ToggleButton_Unchecked(object sender, RoutedEventArgs e) => Control1Output.Text = "Off";
 }

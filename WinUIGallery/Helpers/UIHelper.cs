@@ -12,10 +12,7 @@ public static class UIHelper
     {
     }
 
-    public static IEnumerable<T> GetDescendantsOfType<T>(this DependencyObject start) where T : DependencyObject
-    {
-        return start.GetDescendants().OfType<T>();
-    }
+    public static IEnumerable<T> GetDescendantsOfType<T>(this DependencyObject start) where T : DependencyObject => start.GetDescendants().OfType<T>();
 
     public static IEnumerable<DependencyObject> GetDescendants(this DependencyObject start)
     {
@@ -43,7 +40,7 @@ public static class UIHelper
         }
     }
 
-    static public UIElement FindElementByName(UIElement element, string name)
+    public static UIElement FindElementByName(UIElement element, string name)
     {
         if (element.XamlRoot != null && element.XamlRoot.Content != null)
         {
@@ -57,7 +54,7 @@ public static class UIHelper
     }
 
     // Confirmation of Action
-    static public void AnnounceActionForAccessibility(UIElement ue, string annoucement, string activityID)
+    public static void AnnounceActionForAccessibility(UIElement ue, string annoucement, string activityID)
     {
         var peer = FrameworkElementAutomationPeer.FromElement(ue);
         peer.RaiseNotificationEvent(AutomationNotificationKind.ActionCompleted,

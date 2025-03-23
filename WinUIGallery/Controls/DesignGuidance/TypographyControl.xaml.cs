@@ -11,7 +11,7 @@ public sealed partial class TypographyControl : UserControl
 {
     public TypographyControl()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     public static readonly DependencyProperty ExampleProperty = DependencyProperty.Register(nameof(Example), typeof(string), typeof(TypographyControl), new PropertyMetadata(""));
@@ -64,7 +64,7 @@ public sealed partial class TypographyControl : UserControl
 
     private void CopyToClipboardButton_Click(object sender, RoutedEventArgs e)
     {
-        DataPackage package = new DataPackage();
+        DataPackage package = new();
         package.SetText(ResourceName);
         Clipboard.SetContent(package);
     }

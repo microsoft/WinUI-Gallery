@@ -10,10 +10,10 @@ public sealed partial class CalendarViewPage : Page
 {
     public CalendarViewPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
-        List<string> calendarIdentifiers = new List<string>()
-        {
+        List<string> calendarIdentifiers =
+        [
             CalendarIdentifiers.Gregorian,
             CalendarIdentifiers.Hebrew,
             CalendarIdentifiers.Hijri,
@@ -24,7 +24,7 @@ public sealed partial class CalendarViewPage : Page
             CalendarIdentifiers.Taiwan,
             CalendarIdentifiers.Thai,
             CalendarIdentifiers.UmAlQura,
-        };
+        ];
 
         calendarIdentifier.ItemsSource = calendarIdentifiers;
         calendarIdentifier.SelectedItem = CalendarIdentifiers.Gregorian;
@@ -35,7 +35,7 @@ public sealed partial class CalendarViewPage : Page
 
     private void SelectionMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (Enum.TryParse<CalendarViewSelectionMode>((sender as ComboBox).SelectedItem.ToString(), out CalendarViewSelectionMode selectionMode))
+        if (Enum.TryParse((sender as ComboBox).SelectedItem.ToString(), out CalendarViewSelectionMode selectionMode))
         {
             Control1.SelectionMode = selectionMode;
         }

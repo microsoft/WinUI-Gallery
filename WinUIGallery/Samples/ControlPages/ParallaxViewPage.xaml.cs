@@ -9,7 +9,7 @@ public sealed partial class ParallaxViewPage : ItemsPageBase
 {
     public ParallaxViewPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)

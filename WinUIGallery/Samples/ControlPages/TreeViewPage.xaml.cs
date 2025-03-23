@@ -10,8 +10,8 @@ public sealed partial class TreeViewPage : Page
 
     public TreeViewPage()
     {
-        this.InitializeComponent();
-        this.DataContext = this;
+        InitializeComponent();
+        DataContext = this;
         DataSource = GetData();
 
         InitializeSampleTreeView(sampleTreeView);
@@ -20,32 +20,38 @@ public sealed partial class TreeViewPage : Page
 
     private void InitializeSampleTreeView(TreeView sampleTreeView)
     {
-        TreeViewNode workFolder = new TreeViewNode() { Content = "Work Documents" };
-        workFolder.IsExpanded = true;
+        TreeViewNode workFolder = new()
+        {
+            Content = "Work Documents",
+            IsExpanded = true
+        };
 
         workFolder.Children.Add(new TreeViewNode() { Content = "XYZ Functional Spec" });
         workFolder.Children.Add(new TreeViewNode() { Content = "Feature Schedule" });
 
-        TreeViewNode remodelFolder = new TreeViewNode() { Content = "Home Remodel" };
-        remodelFolder.IsExpanded = true;
+        TreeViewNode remodelFolder = new()
+        {
+            Content = "Home Remodel",
+            IsExpanded = true
+        };
 
         remodelFolder.Children.Add(new TreeViewNode() { Content = "Contractor Contact Info" });
         remodelFolder.Children.Add(new TreeViewNode() { Content = "Paint Color Scheme" });
 
-        TreeViewNode personalFolder = new TreeViewNode() { Content = "Personal Documents" };
-        personalFolder.IsExpanded = true;
+        TreeViewNode personalFolder = new()
+        {
+            Content = "Personal Documents",
+            IsExpanded = true
+        };
         personalFolder.Children.Add(remodelFolder);
 
         sampleTreeView.RootNodes.Add(workFolder);
         sampleTreeView.RootNodes.Add(personalFolder);
     }
 
-    private ObservableCollection<ExplorerItem> GetData()
-    {
-        return new ObservableCollection<ExplorerItem>
-        {
-            new ExplorerItem
-            {
+    private ObservableCollection<ExplorerItem> GetData() =>
+    [
+            new() {
                 Name = "Documents",
                 Type = ExplorerItem.ExplorerItemType.Folder,
                 Children =
@@ -54,8 +60,7 @@ public sealed partial class TreeViewPage : Page
                     new ExplorerItem { Name = "BudgetReport", Type = ExplorerItem.ExplorerItemType.File }
                 }
             },
-            new ExplorerItem
-            {
+            new() {
                 Name = "Projects",
                 Type = ExplorerItem.ExplorerItemType.Folder,
                 Children =
@@ -63,8 +68,7 @@ public sealed partial class TreeViewPage : Page
                     new ExplorerItem { Name = "Project Plan", Type = ExplorerItem.ExplorerItemType.File }
                 }
             }
-        };
-    }
+    ];
 }
 
 public class ExplorerItem
@@ -77,7 +81,7 @@ public class ExplorerItem
 
     public string Name { get; set; }
     public ExplorerItemType Type { get; set; }
-    public ObservableCollection<ExplorerItem> Children { get; set; } = new ObservableCollection<ExplorerItem>();
+    public ObservableCollection<ExplorerItem> Children { get; set; } = [];
 }
 
 class ExplorerItemTemplateSelector : DataTemplateSelector

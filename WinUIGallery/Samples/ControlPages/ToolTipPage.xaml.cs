@@ -15,7 +15,7 @@ public sealed partial class ToolTipPage : Page
 {
     public ToolTipPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
 }

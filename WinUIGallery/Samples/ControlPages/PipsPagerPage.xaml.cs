@@ -5,8 +5,8 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class PipsPagerPage : Page
 {
-    public List<string> Pictures = new List<string>()
-    {
+    public List<string> Pictures =
+    [
         "ms-appx:///Assets/SampleMedia/LandscapeImage1.jpg",
         "ms-appx:///Assets/SampleMedia/LandscapeImage2.jpg",
         "ms-appx:///Assets/SampleMedia/LandscapeImage3.jpg",
@@ -15,68 +15,44 @@ public sealed partial class PipsPagerPage : Page
         "ms-appx:///Assets/SampleMedia/LandscapeImage6.jpg",
         "ms-appx:///Assets/SampleMedia/LandscapeImage7.jpg",
         "ms-appx:///Assets/SampleMedia/LandscapeImage8.jpg",
-    };
+    ];
     public PipsPagerPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void OrientationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         string orientation = e.AddedItems[0].ToString();
 
-        switch (orientation)
+        TestPipsPager2.Orientation = orientation switch
         {
-            case "Vertical":
-                TestPipsPager2.Orientation = Orientation.Vertical;
-                break;
-
-            case "Horizontal":
-            default:
-                TestPipsPager2.Orientation = Orientation.Horizontal;
-                break;
-        }
+            "Vertical" => Orientation.Vertical,
+            _ => Orientation.Horizontal,
+        };
     }
 
     private void PrevButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     { 
         string prevButtonVisibility = e.AddedItems[0].ToString();
 
-        switch (prevButtonVisibility)
+        TestPipsPager2.PreviousButtonVisibility = prevButtonVisibility switch
         {
-            case "Visible":
-                TestPipsPager2.PreviousButtonVisibility = PipsPagerButtonVisibility.Visible;
-                break;
-
-            case "VisibleOnPointerOver":
-                TestPipsPager2.PreviousButtonVisibility = PipsPagerButtonVisibility.VisibleOnPointerOver;
-                break;
-
-            case "Collapsed":
-            default:
-                TestPipsPager2.PreviousButtonVisibility = PipsPagerButtonVisibility.Collapsed;
-                break;
-        }
+            "Visible" => PipsPagerButtonVisibility.Visible,
+            "VisibleOnPointerOver" => PipsPagerButtonVisibility.VisibleOnPointerOver,
+            _ => PipsPagerButtonVisibility.Collapsed,
+        };
     }
 
     private void NextButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         string nextButtonVisibility = e.AddedItems[0].ToString();
 
-        switch (nextButtonVisibility)
+        TestPipsPager2.NextButtonVisibility = nextButtonVisibility switch
         {
-            case "Visible":
-                TestPipsPager2.NextButtonVisibility = PipsPagerButtonVisibility.Visible;
-                break;
-
-            case "VisibleOnPointerOver":
-                TestPipsPager2.NextButtonVisibility = PipsPagerButtonVisibility.VisibleOnPointerOver;
-                break;
-
-            case "Collapsed":
-            default:
-                TestPipsPager2.NextButtonVisibility = PipsPagerButtonVisibility.Collapsed;
-                break;
-        }
+            "Visible" => PipsPagerButtonVisibility.Visible,
+            "VisibleOnPointerOver" => PipsPagerButtonVisibility.VisibleOnPointerOver,
+            _ => PipsPagerButtonVisibility.Collapsed,
+        };
     }
 }

@@ -66,12 +66,12 @@ public sealed partial class SampleCodePresenter : UserControl
     public bool IsEmpty => string.IsNullOrEmpty(Code) && string.IsNullOrEmpty(CodeSourceFile);
 
     private string actualCode = "";
-    private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
+    private static Regex SubstitutionPattern = new(@"\$\(([^\)]+)\)");
     private RichTextBlock sampleCodeRTB;
 
     public SampleCodePresenter()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private static void OnDependencyPropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs args)
@@ -83,17 +83,7 @@ public sealed partial class SampleCodePresenter : UserControl
         }
     }
 
-    private void ReevaluateVisibility()
-    {
-        if (IsEmpty)
-        {
-            Visibility = Visibility.Collapsed;
-        }
-        else
-        {
-            Visibility = Visibility.Visible;
-        }
-    }
+    private void ReevaluateVisibility() => Visibility = IsEmpty ? Visibility.Collapsed : Visibility.Visible;
 
     private void SampleCodePresenter_Loaded(object sender, RoutedEventArgs e)
     {
@@ -110,37 +100,26 @@ public sealed partial class SampleCodePresenter : UserControl
 
     private string GetSampleLanguageVisualState()
     {
-        switch (SampleType)
+        return SampleType switch
         {
-            case SampleCodePresenterType.XAML:
-                return "XAMLSample";
-            case SampleCodePresenterType.CSharp:
-                return "CSharpSample";
-            default:
-                return "InlineSample";
-        }
+            SampleCodePresenterType.XAML => "XAMLSample",
+            SampleCodePresenterType.CSharp => "CSharpSample",
+            _ => "InlineSample",
+        };
     }
 
-    private void CodePresenter_Loaded(object sender, RoutedEventArgs e)
-    {
-        GenerateSyntaxHighlightedContent();
-    }
+    private void CodePresenter_Loaded(object sender, RoutedEventArgs e) => GenerateSyntaxHighlightedContent();
 
-    private void SampleCodePresenter_ActualThemeChanged(FrameworkElement sender, object args)
-    {
+    private void SampleCodePresenter_ActualThemeChanged(FrameworkElement sender, object args) =>
         // If the theme has changed after the user has already opened the app (ie. via settings), then the new locally set theme will overwrite the colors that are set during Loaded.
         // Therefore we need to re-format the REB to use the correct colors.
         GenerateSyntaxHighlightedContent();
-    }
 
-    private void OnValueChanged(ControlExampleSubstitution sender, object e)
-    {
-        GenerateSyntaxHighlightedContent();
-    }
+    private void OnValueChanged(ControlExampleSubstitution sender, object e) => GenerateSyntaxHighlightedContent();
 
     private Uri GetDerivedSource(string sourceRelativePath)
     {
-        Uri derivedSource = new Uri(new Uri("ms-appx:///Samples/SampleCode/"), sourceRelativePath);
+        Uri derivedSource = new(new Uri("ms-appx:///Samples/SampleCode/"), sourceRelativePath);
 
         return derivedSource;
     }
@@ -173,8 +152,7 @@ public sealed partial class SampleCodePresenter : UserControl
     {
         if (sourceRelativePath != null && sourceRelativePath.EndsWith("txt"))
         {
-            string sampleString = null;
-            StorageFile file = null;
+            StorageFile file;
             if (!NativeHelper.IsAppPackaged)
             {
                 var relativePath = GetDerivedSourceUnpackaged(sourceRelativePath);
@@ -187,7 +165,7 @@ public sealed partial class SampleCodePresenter : UserControl
                 file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
             }
 
-            sampleString = await FileIO.ReadTextAsync(file);
+            string sampleString = await FileIO.ReadTextAsync(file);
 
             FormatAndRenderSampleFromString(sampleString, presenter, highlightLanguage);
         }
@@ -247,14 +225,7 @@ public sealed partial class SampleCodePresenter : UserControl
     {
         if (sender is RichTextBlock sampleCode)
         {
-            if (!string.IsNullOrEmpty(sampleCode.SelectedText))
-            {
-                CopyButtonBorder.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                CopyButtonBorder.Visibility = Visibility.Visible;
-            }
+            CopyButtonBorder.Visibility = !string.IsNullOrEmpty(sampleCode.SelectedText) ? Visibility.Collapsed : Visibility.Visible;
         }
     }
 
@@ -314,7 +285,7 @@ public sealed partial class SampleCodePresenter : UserControl
 
     private void CopyCodeButton_Click(object sender, RoutedEventArgs e)
     {
-        DataPackage package = new DataPackage();
+        DataPackage package = new();
         package.SetText(actualCode);
         Clipboard.SetContent(package);
     }
@@ -325,7 +296,7 @@ public sealed partial class SampleCodePresenter : UserControl
         if (horizontalScrollBar != null)
         {
             // Create a timer and store it in the ScrollBar's Tag property.
-            DispatcherTimer scrollTimer = new DispatcherTimer
+            DispatcherTimer scrollTimer = new()
             {
                 Interval = TimeSpan.FromMilliseconds(500)
             };

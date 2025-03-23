@@ -7,14 +7,8 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using WinUIGallery.Helpers;
 using WASDK = Microsoft.WindowsAppSDK;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
@@ -62,21 +56,13 @@ public class ControlInfoDataItem
 
     public string SourcePath { get; set; }
 
-    public override string ToString()
-    {
-        return this.Title;
-    }
+    public override string ToString() => Title;
 }
 
-public class ControlInfoDocLink
+public class ControlInfoDocLink(string title, string uri)
 {
-    public ControlInfoDocLink(string title, string uri)
-    {
-        this.Title = title;
-        this.Uri = uri.Replace("X.Y", string.Format("{0}.{1}", WASDK.Release.Major, WASDK.Release.Minor));
-    }
-    public string Title { get; set; }
-    public string Uri { get; set; }
+    public string Title { get; set; } = title;
+    public string Uri { get; set; } = uri.Replace("X.Y", string.Format("{0}.{1}", WASDK.Release.Major, WASDK.Release.Minor));
 }
 
 
@@ -96,8 +82,5 @@ public class ControlInfoDataGroup
     public string Folder { get; set; }
     public ObservableCollection<ControlInfoDataItem> Items { get; set; }
 
-    public override string ToString()
-    {
-        return this.Title;
-    }
+    public override string ToString() => Title;
 }

@@ -19,17 +19,17 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class ComboBoxPage : Page
 {
-    public List<Tuple<string, FontFamily>> Fonts { get; } = new List<Tuple<string, FontFamily>>()
-        {
-            new Tuple<string, FontFamily>("Arial", new FontFamily("Arial")),
-            new Tuple<string, FontFamily>("Comic Sans MS", new FontFamily("Comic Sans MS")),
-            new Tuple<string, FontFamily>("Courier New", new FontFamily("Courier New")),
-            new Tuple<string, FontFamily>("Segoe UI", new FontFamily("Segoe UI")),
-            new Tuple<string, FontFamily>("Times New Roman", new FontFamily("Times New Roman"))
-        };
+    public List<Tuple<string, FontFamily>> Fonts { get; } =
+        [
+            new("Arial", new FontFamily("Arial")),
+            new("Comic Sans MS", new FontFamily("Comic Sans MS")),
+            new("Courier New", new FontFamily("Courier New")),
+            new("Segoe UI", new FontFamily("Segoe UI")),
+            new("Times New Roman", new FontFamily("Times New Roman"))
+        ];
 
-    public List<double> FontSizes { get; } = new List<double>()
-        {
+    public List<double> FontSizes { get; } =
+        [
             8,
             9,
             10,
@@ -44,47 +44,34 @@ public sealed partial class ComboBoxPage : Page
             36,
             48,
             72
-        };
+        ];
 
     public ComboBoxPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void ColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         string colorName = e.AddedItems[0].ToString();
-        Windows.UI.Color color;
-        switch (colorName)
+        var color = colorName switch
         {
-            case "Yellow":
-                color = Colors.Yellow;
-                break;
-            case "Green":
-                color = Colors.Green;
-                break;
-            case "Blue":
-                color = Colors.Blue;
-                break;
-            case "Red":
-                color = Colors.Red;
-                break;
-            default:
-                throw new Exception($"Invalid argument: {colorName}");
-        }
+            "Yellow" => Colors.Yellow,
+            "Green" => Colors.Green,
+            "Blue" => Colors.Blue,
+            "Red" => Colors.Red,
+            _ => throw new Exception($"Invalid argument: {colorName}"),
+        };
         Control1Output.Fill = new SolidColorBrush(color);
     }
 
-    private void Combo2_Loaded(object sender, RoutedEventArgs e)
-    {
-        Combo2.SelectedIndex = 2;
-    }
+    private void Combo2_Loaded(object sender, RoutedEventArgs e) => Combo2.SelectedIndex = 2;
 
     private void Combo3_Loaded(object sender, RoutedEventArgs e)
     {
         Combo3.SelectedIndex = 2;
 
-        if ((ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7)))
+        if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
         {
             Combo3.TextSubmitted += Combo3_TextSubmitted;
         }
@@ -107,11 +94,13 @@ public sealed partial class ComboBoxPage : Page
             // If the item is invalid, reject it and revert the text. 
             sender.Text = sender.SelectedValue.ToString();
 
-            var dialog = new ContentDialog();
-            dialog.Content = "The font size must be a number between 8 and 100.";
-            dialog.CloseButtonText = "Close";
-            dialog.DefaultButton = ContentDialogButton.Close;
-            dialog.XamlRoot = sender.XamlRoot;
+            var dialog = new ContentDialog
+            {
+                Content = "The font size must be a number between 8 and 100.",
+                CloseButtonText = "Close",
+                DefaultButton = ContentDialogButton.Close,
+                XamlRoot = sender.XamlRoot
+            };
             _ = dialog.ShowAsync();
         }
 

@@ -14,10 +14,10 @@ public sealed partial class SplitButtonPage : Page
 
     public SplitButtonPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
-        myRichEditBox.Document.Selection.SetText(Microsoft.UI.Text.TextSetOptions.None,
+        myRichEditBox.Document.Selection.SetText(TextSetOptions.None,
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
             "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor commodo ullamcorper a lacus.");
     }
@@ -29,22 +29,19 @@ public sealed partial class SplitButtonPage : Page
         myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = color;
         CurrentColor.Background = new SolidColorBrush(color);
 
-        myRichEditBox.Focus(Microsoft.UI.Xaml.FocusState.Keyboard);
+        myRichEditBox.Focus(FocusState.Keyboard);
         currentColor = color;
 
         // Delay required to circumvent GridView bug: https://github.com/microsoft/microsoft-ui-xaml/issues/6350
         Task.Delay(10).ContinueWith(_ => myColorButton.Flyout.Hide(), TaskScheduler.FromCurrentSynchronizationContext());
     }
-    
-    private void RevealColorButton_Click(object sender, RoutedEventArgs e)
-    {
-        myColorButtonReveal.Flyout.Hide();
-    }
 
-    private void myColorButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
+    private void RevealColorButton_Click(object sender, RoutedEventArgs e) => myColorButtonReveal.Flyout.Hide();
+
+    private void myColorButton_Click(SplitButton sender, SplitButtonClickEventArgs args)
     {
         var border = (Border)sender.Content;
-        var color = ((Microsoft.UI.Xaml.Media.SolidColorBrush)border.Background).Color;
+        var color = ((SolidColorBrush)border.Background).Color;
 
         myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = color;
         currentColor = color;

@@ -6,13 +6,7 @@ namespace WinUIGallery.Converters;
 
 public sealed class BooleanToInvertedVisibilityConverter : IValueConverter
 {
-    public object Convert(object value, Type targetType, object parameter, string language)
-    {
-        return (bool)value ? Visibility.Collapsed : Visibility.Visible;
-    }
+    public object Convert(object value, Type targetType, object parameter, string language) => (bool)value ? Visibility.Collapsed : Visibility.Visible;
 
-    public object ConvertBack(object value, Type targetType, object parameter, string language)
-    {
-        return (Visibility)value == Visibility.Collapsed;
-    }
+    public object ConvertBack(object value, Type targetType, object parameter, string language) => (Visibility)value == Visibility.Collapsed;
 }

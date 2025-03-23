@@ -23,13 +23,13 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class IconographyPage : Page
 {
-    public List<double> FontSizes { get; } = new()
-        {
+    public List<double> FontSizes { get; } =
+        [
             16,
             24,
             32,
             48
-        };
+        ];
 
     private string currentSearch = null;
 
@@ -48,12 +48,11 @@ public sealed partial class IconographyPage : Page
     public IconographyPage()
     {
         // Fill filtered items
-        this.InitializeComponent();
+        InitializeComponent();
         IconsItemsView.Loaded += IconsItemsView_Loaded;
     }
 
-    private void IconsItemsView_Loaded(object sender, RoutedEventArgs e)
-    {
+    private void IconsItemsView_Loaded(object sender, RoutedEventArgs e) =>
         // Delegate loading of icons, so we have smooth navigating to this page
         // and not unnecessarily block UI Thread
         Task.Run(delegate ()
@@ -67,7 +66,6 @@ public sealed partial class IconographyPage : Page
                 SidePanel.Visibility = Visibility.Visible;
             });
         });
-    }
     private void SetSampleCodePresenterCode(IconData value)
     {
         XAMLCodePresenter.Code = $"<FontIcon Glyph=\"{value.TextGlyph}\" />";
@@ -75,10 +73,7 @@ public sealed partial class IconographyPage : Page
         CSharpCodePresenter.Code = $"FontIcon icon = new FontIcon();" + Environment.NewLine + "icon.Glyph = \"" + value.CodeGlyph + "\";";
     }
 
-    private void SearchTextBox_TextChanged(object sender, AutoSuggestBoxTextChangedEventArgs args)
-    {
-        Filter((sender as AutoSuggestBox).Text);
-    }
+    private void SearchTextBox_TextChanged(object sender, AutoSuggestBoxTextChangedEventArgs args) => Filter((sender as AutoSuggestBox).Text);
 
     public void Filter(string search)
     {
@@ -101,9 +96,9 @@ public sealed partial class IconographyPage : Page
                     return;
                 }
 
-                var fitsFilter = filter.All(entry => item.Code.Contains(entry, System.StringComparison.CurrentCultureIgnoreCase)
-                        || item.Name.Contains(entry, System.StringComparison.CurrentCultureIgnoreCase)
-                        || item.Tags.Any(tag => string.IsNullOrEmpty(tag) is false && tag.Contains(entry, System.StringComparison.CurrentCultureIgnoreCase)));
+                var fitsFilter = filter.All(entry => item.Code.Contains(entry, StringComparison.CurrentCultureIgnoreCase)
+                        || item.Name.Contains(entry, StringComparison.CurrentCultureIgnoreCase)
+                        || item.Tags.Any(tag => string.IsNullOrEmpty(tag) is false && tag.Contains(entry, StringComparison.CurrentCultureIgnoreCase)));
 
                 if (fitsFilter)
                 {

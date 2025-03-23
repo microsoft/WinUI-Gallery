@@ -18,7 +18,7 @@ public sealed partial class ViewboxPage : Page
 {
     public ViewboxPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void StretchDirectionButton_Checked(object sender, RoutedEventArgs e)

@@ -7,15 +7,13 @@ public sealed partial class TemperatureConverterControl : UserControl
 {
     public TemperatureConverterControl()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void Button_Click(object sender, RoutedEventArgs e)
     {
         string input = InputTextBox.Text;
-        double celsius = 0;
-
-        bool isNumber = double.TryParse(input, out celsius);
+        bool isNumber = double.TryParse(input, out double celsius);
 
         if (isNumber)
         {

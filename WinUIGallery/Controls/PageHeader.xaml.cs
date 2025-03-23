@@ -34,7 +34,7 @@ public sealed partial class PageHeader : UserControl
 
     public PageHeader()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         CopyLinkAction = OnCopyLink;
     }
 
@@ -63,11 +63,11 @@ public sealed partial class PageHeader : UserControl
 
     private void OnCopyLinkButtonClick(object sender, RoutedEventArgs e)
     {
-        this.CopyLinkAction?.Invoke();
+        CopyLinkAction?.Invoke();
 
         if (ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip)
         {
-            this.CopyLinkButtonTeachingTip.IsOpen = true;
+            CopyLinkButtonTeachingTip.IsOpen = true;
         }
     }
 
@@ -80,17 +80,11 @@ public sealed partial class PageHeader : UserControl
     private void OnCopyDontShowAgainButtonClick(TeachingTip sender, object args)
     {
         ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = false;
-        this.CopyLinkButtonTeachingTip.IsOpen = false;
+        CopyLinkButtonTeachingTip.IsOpen = false;
     }
 
-    private void OnCopyLink()
-    {
-        ProtocolActivationClipboardHelper.Copy(this.Item);
-    }
-    public async void OnFeedBackButtonClick(object sender, RoutedEventArgs e)
-    {
-         await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
-    }
+    private void OnCopyLink() => ProtocolActivationClipboardHelper.Copy(Item);
+    public async void OnFeedBackButtonClick(object sender, RoutedEventArgs e) => await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
 
     private void UserControl_Loaded(object sender, RoutedEventArgs e)
     {

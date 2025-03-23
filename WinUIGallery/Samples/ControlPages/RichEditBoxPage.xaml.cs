@@ -8,7 +8,6 @@
 //
 //*********************************************************
 using System;
-using System.Collections.Generic;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -20,7 +19,6 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI;
 using System.Runtime.InteropServices;
-using WinRT;
 
 namespace WinUIGallery.ControlPages;
 
@@ -28,11 +26,11 @@ public sealed partial class RichEditBoxPage : Page
 {
     [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto, PreserveSig = true, SetLastError = false)]
     public static extern IntPtr GetActiveWindow();
-    private Windows.UI.Color currentColor = Microsoft.UI.Colors.Green;
+    private Windows.UI.Color currentColor = Colors.Green;
 
     public RichEditBoxPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void Menu_Opening(object sender, object e)
@@ -40,7 +38,7 @@ public sealed partial class RichEditBoxPage : Page
         CommandBarFlyout myFlyout = sender as CommandBarFlyout;
         if (myFlyout != null && myFlyout.Target == REBCustom)
         {
-            AppBarButton myButton = new AppBarButton
+            AppBarButton myButton = new()
             {
                 Command = new StandardUICommand(StandardUICommandKind.Share)
             };
@@ -51,7 +49,7 @@ public sealed partial class RichEditBoxPage : Page
             CommandBarFlyout muxFlyout = sender as CommandBarFlyout;
             if (muxFlyout != null && muxFlyout.Target == REBCustom)
             {
-                AppBarButton myButton = new AppBarButton
+                AppBarButton myButton = new()
                 {
                     Command = new StandardUICommand(StandardUICommandKind.Share)
                 };
@@ -64,8 +62,10 @@ public sealed partial class RichEditBoxPage : Page
     private async void OpenButton_Click(object sender, RoutedEventArgs e)
     {
         // Open a text file.
-        FileOpenPicker open = new FileOpenPicker();
-        open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+        FileOpenPicker open = new()
+        {
+            SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+        };
         open.FileTypeFilter.Add(".rtf");
 
         // When running on win32, FileOpenPicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
@@ -79,24 +79,22 @@ public sealed partial class RichEditBoxPage : Page
 
         if (file != null)
         {
-            using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
-                await file.OpenAsync(Windows.Storage.FileAccessMode.Read))
-            {
-                // Load the file into the Document property of the RichEditBox.
-                editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
-            }
+            using Windows.Storage.Streams.IRandomAccessStream randAccStream =
+                await file.OpenAsync(FileAccessMode.Read);
+            // Load the file into the Document property of the RichEditBox.
+            editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
         }
     }
 
     private async void SaveButton_Click(object sender, RoutedEventArgs e)
     {
-        FileSavePicker savePicker = new FileSavePicker
+        FileSavePicker savePicker = new()
         {
             SuggestedStartLocation = PickerLocationId.DocumentsLibrary
         };
 
         // Dropdown of file types the user can save the file as
-        savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
+        savePicker.FileTypeChoices.Add("Rich Text", [".rtf"]);
 
         // Default file name if the user does not type one in or select a file to replace
         savePicker.SuggestedFileName = "New Document";
@@ -116,7 +114,7 @@ public sealed partial class RichEditBoxPage : Page
             CachedFileManager.DeferUpdates(file);
             // write to file
             using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
-                await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
+                await file.OpenAsync(FileAccessMode.ReadWrite))
             {
                 editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
             }
@@ -127,33 +125,27 @@ public sealed partial class RichEditBoxPage : Page
             if (status != FileUpdateStatus.Complete)
             {
                 Windows.UI.Popups.MessageDialog errorBox =
-                    new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
+                    new("File " + file.Name + " couldn't be saved.");
                 await errorBox.ShowAsync();
             }
         }
     }
 
-    private void BoldButton_Click(object sender, RoutedEventArgs e)
-    {
-        editor.Document.Selection.CharacterFormat.Bold = FormatEffect.Toggle;
-    }
+    private void BoldButton_Click(object sender, RoutedEventArgs e) => editor.Document.Selection.CharacterFormat.Bold = FormatEffect.Toggle;
 
-    private void ItalicButton_Click(object sender, RoutedEventArgs e)
-    {
-        editor.Document.Selection.CharacterFormat.Italic = FormatEffect.Toggle;
-    }
+    private void ItalicButton_Click(object sender, RoutedEventArgs e) => editor.Document.Selection.CharacterFormat.Italic = FormatEffect.Toggle;
 
     private void ColorButton_Click(object sender, RoutedEventArgs e)
     {
         // Extract the color of the button that was clicked.
         Button clickedColor = (Button)sender;
         var rectangle = (Microsoft.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
-        var color = ((Microsoft.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
+        var color = ((SolidColorBrush)rectangle.Fill).Color;
 
         editor.Document.Selection.CharacterFormat.ForegroundColor = color;
 
         fontColorButton.Flyout.Hide();
-        editor.Focus(Microsoft.UI.Xaml.FocusState.Keyboard);
+        editor.Focus(FocusState.Keyboard);
         currentColor = color;
     }
 
@@ -161,8 +153,8 @@ public sealed partial class RichEditBoxPage : Page
     {
         FindBoxRemoveHighlights();
 
-        Windows.UI.Color highlightBackgroundColor = (Windows.UI.Color)App.Current.Resources["SystemColorHighlightColor"];
-        Windows.UI.Color highlightForegroundColor = (Windows.UI.Color)App.Current.Resources["SystemColorHighlightTextColor"];
+        Windows.UI.Color highlightBackgroundColor = (Windows.UI.Color)Application.Current.Resources["SystemColorHighlightColor"];
+        Windows.UI.Color highlightForegroundColor = (Windows.UI.Color)Application.Current.Resources["SystemColorHighlightTextColor"];
 
         string textToFind = findBox.Text;
         if (textToFind != null)
@@ -192,7 +184,7 @@ public sealed partial class RichEditBoxPage : Page
         
         // reset colors to correct defaults for Focused state
         ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
-        SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
+        SolidColorBrush background = (SolidColorBrush)Application.Current.Resources["TextControlBackgroundFocused"];
 
         if (background != null)
         {

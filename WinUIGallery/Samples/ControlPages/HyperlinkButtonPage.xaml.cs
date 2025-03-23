@@ -17,11 +17,8 @@ public sealed partial class HyperlinkButtonPage : Page
 {
     public HyperlinkButtonPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
-    private void GoToHyperlinkButton_Click(object sender, RoutedEventArgs e)
-    {
-        NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), "ToggleButton");
-    }
+    private void GoToHyperlinkButton_Click(object sender, RoutedEventArgs e) => NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), "ToggleButton");
 }

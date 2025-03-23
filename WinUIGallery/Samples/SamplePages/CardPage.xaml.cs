@@ -13,7 +13,7 @@ public sealed partial class CardPage : Page
 
     public CardPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         // Populate the collection with some items.
         var items = new List<int>();

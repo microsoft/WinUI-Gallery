@@ -1,10 +1,8 @@
-using System;
 using Windows.Foundation.Metadata;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 using ICommand = System.Windows.Input.ICommand;
 
 namespace WinUIGallery.ControlPages;
@@ -14,19 +12,16 @@ public class ListItemData
     public string Text { get; set; }
     public ICommand Command { get; set; }
 
-    public override string ToString()
-    {
-        return Text;
-    }
+    public override string ToString() => Text;
 }
 
 public sealed partial class StandardUICommandPage : Page
 {
-    ObservableCollection<ListItemData> collection = new ObservableCollection<ListItemData>();
+    ObservableCollection<ListItemData> collection = [];
 
     public StandardUICommandPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void DeleteCommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)
@@ -62,10 +57,7 @@ public sealed partial class StandardUICommandPage : Page
         }
     }
 
-    private void ListViewSwipeContainer_PointerExited(object sender, PointerRoutedEventArgs e)
-    {
-        VisualStateManager.GoToState(sender as Control, "HoverButtonsHidden", true);
-    }
+    private void ListViewSwipeContainer_PointerExited(object sender, PointerRoutedEventArgs e) => VisualStateManager.GoToState(sender as Control, "HoverButtonsHidden", true);
 
     private void ControlExample_Loaded(object sender, RoutedEventArgs e)
     {
@@ -92,9 +84,9 @@ public sealed partial class StandardUICommandPage : Page
 
     private void ListViewRight_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
     {
-        MenuFlyout flyout = new MenuFlyout();
+        MenuFlyout flyout = new();
         ListItemData data = (ListItemData)args.Item;
-        MenuFlyoutItem item = new MenuFlyoutItem() { Command = data.Command };
+        MenuFlyoutItem item = new() { Command = data.Command };
         flyout.Opened += delegate (object element, object e) {
             MenuFlyout flyoutElement = element as MenuFlyout;
             ListViewItem elementToHighlight = flyoutElement.Target as ListViewItem;

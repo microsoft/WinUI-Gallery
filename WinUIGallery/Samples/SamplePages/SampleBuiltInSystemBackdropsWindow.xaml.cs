@@ -109,17 +109,14 @@ public sealed partial class SampleBuiltInSystemBackdropsWindow : Window
 
         return false; // Acrylic is not supported on this system
     }
-    
-    private void BackdropComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+    private void BackdropComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) => SetBackdrop(backdropComboBox.SelectedIndex switch
     {
-        SetBackdrop(backdropComboBox.SelectedIndex switch
-        {
-            1 => BackdropType.MicaAlt,
-            2 => BackdropType.Acrylic,
-            3 => BackdropType.None,
-            _ => BackdropType.Mica
-        });
-    }
+        1 => BackdropType.MicaAlt,
+        2 => BackdropType.Acrylic,
+        3 => BackdropType.None,
+        _ => BackdropType.Mica
+    });
 
     private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {

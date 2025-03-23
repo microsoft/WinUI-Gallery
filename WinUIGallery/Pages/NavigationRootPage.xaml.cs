@@ -41,17 +41,10 @@ public sealed partial class NavigationRootPage : Page
     {
         UIElement element = (UIElement)obj;
         Window window = WindowHelper.GetWindowForElement(element);
-        if (window != null)
-        {
-            return (NavigationRootPage)window.Content;
-        }
-        return null;
+        return window != null ? (NavigationRootPage)window.Content : null;
     }
 
-    public Microsoft.UI.Xaml.Controls.NavigationView NavigationView
-    {
-        get { return NavigationViewControl; }
-    }
+    public NavigationView NavigationView => NavigationViewControl;
 
     public Action NavigationViewLoaded { get; set; }
 
@@ -71,7 +64,7 @@ public sealed partial class NavigationRootPage : Page
 
     public NavigationRootPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
         _navHelper = new RootFrameNavigationHelper(rootFrame, NavigationViewControl);
@@ -79,7 +72,7 @@ public sealed partial class NavigationRootPage : Page
         SetDeviceFamily();
         AddNavigationMenuItems();
 
-        this.GotFocus += (object sender, RoutedEventArgs e) =>
+        GotFocus += (object sender, RoutedEventArgs e) =>
         {
             // helpful for debugging focus problems w/ keyboard & gamepad
             if (FocusManager.GetFocusedElement() is FrameworkElement focus)
@@ -98,7 +91,7 @@ public sealed partial class NavigationRootPage : Page
             window.Title = AppTitleText;
             window.ExtendsContentIntoTitleBar = true;
             window.Activated += Window_Activated;
-            window.SetTitleBar(this.AppTitleBar);
+            window.SetTitleBar(AppTitleBar);
 
             AppWindow appWindow = WindowHelper.GetAppWindow(window);
             appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
@@ -141,20 +134,18 @@ public sealed partial class NavigationRootPage : Page
 
     // this handles updating the caption button colors correctly when indows system theme is changed
     // while the app is open
-    private void _settings_ColorValuesChanged(UISettings sender, object args)
-    {
+    private void _settings_ColorValuesChanged(UISettings sender, object args) =>
         // This calls comes off-thread, hence we will need to dispatch it to current app's thread
         dispatcherQueue.TryEnqueue(() =>
         {
             _ = TitleBarHelper.ApplySystemThemeToCaptionButtons(App.StartupWindow);
         });
-    }
 
     // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
     // Please call this function rather than rootFrame.Navigate to navigate the rootFrame.
     public void Navigate(Type pageType, object targetPageArguments = null, NavigationTransitionInfo navigationTransitionInfo = null)
     {
-        NavigationRootPageArgs args = new NavigationRootPageArgs
+        NavigationRootPageArgs args = new()
         {
             NavigationRootPage = this,
             Parameter = targetPageArguments
@@ -164,7 +155,7 @@ public sealed partial class NavigationRootPage : Page
 
     public void EnsureNavigationSelection(string id)
     {
-        foreach (object rawGroup in this.NavigationView.MenuItems)
+        foreach (object rawGroup in NavigationView.MenuItems)
         {
             if (rawGroup is NavigationViewItem group)
             {
@@ -209,7 +200,7 @@ public sealed partial class NavigationRootPage : Page
             var itemGroup = new NavigationViewItem() { Content = group.Title, Tag = group.UniqueId, DataContext = group, Icon = GetIcon(group.IconGlyph) };
 
             var groupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {group.Title} samples", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = group };
-            groupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
+            groupMenuFlyoutItem.Click += OnMenuFlyoutItemClick;
             itemGroup.ContextFlyout = new MenuFlyout() { Items = { groupMenuFlyoutItem } };
 
             AutomationProperties.SetName(itemGroup, group.Title);
@@ -220,7 +211,7 @@ public sealed partial class NavigationRootPage : Page
                 var itemInGroup = new NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item };
 
                 var itemInGroupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {item.Title} sample", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = item };
-                itemInGroupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
+                itemInGroupMenuFlyoutItem.Click += OnMenuFlyoutItemClick;
                 itemInGroup.ContextFlyout = new MenuFlyout() { Items = { itemInGroupMenuFlyoutItem } };
 
                 itemGroup.MenuItems.Add(itemInGroup);
@@ -247,15 +238,12 @@ public sealed partial class NavigationRootPage : Page
         }
     }
 
-    private static IconElement GetIcon(string imagePath)
-    {
-        return imagePath.ToLowerInvariant().EndsWith(".png") ?
-                    (IconElement)new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute), ShowAsMonochrome = false } :
-                    (IconElement)new FontIcon()
+    private static IconElement GetIcon(string imagePath) => imagePath.ToLowerInvariant().EndsWith(".png") ?
+                    new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute), ShowAsMonochrome = false } :
+                    new FontIcon()
                     {
                         Glyph = imagePath
                     };
-    }
 
     private void SetDeviceFamily()
     {
@@ -280,7 +268,7 @@ public sealed partial class NavigationRootPage : Page
     private void OnNavigationViewControlLoaded(object sender, RoutedEventArgs e)
     {
         // Delay necessary to ensure NavigationView visual state can match navigation
-        Task.Delay(500).ContinueWith(_ => this.NavigationViewLoaded?.Invoke(), TaskScheduler.FromCurrentSynchronizationContext());
+        Task.Delay(500).ContinueWith(_ => NavigationViewLoaded?.Invoke(), TaskScheduler.FromCurrentSynchronizationContext());
 
         var navigationView = sender as NavigationView;
         navigationView.RegisterPropertyChangedCallback(NavigationView.IsPaneOpenProperty, OnIsPaneOpenChanged);
@@ -378,29 +366,29 @@ public sealed partial class NavigationRootPage : Page
             }
             else
             {
-                if (selectedItem.DataContext is ControlInfoDataGroup)
+                switch (selectedItem.DataContext)
                 {
-                    var itemId = ((ControlInfoDataGroup)selectedItem.DataContext).UniqueId;
-                    Navigate(typeof(SectionPage), itemId);
-                }
-                else if (selectedItem.DataContext is ControlInfoDataItem)
-                {
-                    var item = (ControlInfoDataItem)selectedItem.DataContext;
-                    Navigate(typeof(ItemPage), item.UniqueId);
+                    case ControlInfoDataGroup group:
+                        {
+                            var itemId = group.UniqueId;
+                            Navigate(typeof(SectionPage), itemId);
+                            break;
+                        }
+
+                    case ControlInfoDataItem:
+                        {
+                            var item = (ControlInfoDataItem)selectedItem.DataContext;
+                            Navigate(typeof(ItemPage), item.UniqueId);
+                            break;
+                        }
                 }
             }
         }
     }
 
-    private void OnRootFrameNavigated(object sender, NavigationEventArgs e)
-    {
-        TestContentLoadedCheckBox.IsChecked = true;
-    }
+    private void OnRootFrameNavigated(object sender, NavigationEventArgs e) => TestContentLoadedCheckBox.IsChecked = true;
 
-    private void OnRootFrameNavigating(object sender, NavigatingCancelEventArgs e)
-    {
-        TestContentLoadedCheckBox.IsChecked = false;
-    }
+    private void OnRootFrameNavigating(object sender, NavigatingCancelEventArgs e) => TestContentLoadedCheckBox.IsChecked = false;
 
     private void OnControlsSearchBoxTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
     {
@@ -434,14 +422,9 @@ public sealed partial class NavigationRootPage : Page
                     suggestions.Add(item);
                 }
             }
-            if (suggestions.Count > 0)
-            {
-                controlsSearchBox.ItemsSource = suggestions.OrderByDescending(i => i.Title.StartsWith(sender.Text, StringComparison.CurrentCultureIgnoreCase)).ThenBy(i => i.Title);
-            }
-            else
-            {
-                controlsSearchBox.ItemsSource = new string[] { "No results found" };
-            }
+            controlsSearchBox.ItemsSource = suggestions.Count > 0
+                ? suggestions.OrderByDescending(i => i.Title.StartsWith(sender.Text, StringComparison.CurrentCultureIgnoreCase)).ThenBy(i => i.Title)
+                : (new string[] { "No results found" });
         }
     }
 
@@ -471,7 +454,7 @@ public sealed partial class NavigationRootPage : Page
         foreach (object rawItem in NavigationView.MenuItems)
         {
             // Check if we encountered the separator
-            if (!(rawItem is NavigationViewItem))
+            if (rawItem is not NavigationViewItem)
             {
                 // Skipping this item
                 continue;
@@ -531,10 +514,7 @@ public sealed partial class NavigationRootPage : Page
         }
         return changedSelection;
     }
-    private void CtrlF_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
-    {
-        controlsSearchBox.Focus(FocusState.Programmatic);
-    }
+    private void CtrlF_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args) => controlsSearchBox.Focus(FocusState.Programmatic);
 
     #region Helpers for test automation
 
@@ -564,21 +544,15 @@ public sealed partial class NavigationRootPage : Page
         }
     }
 
-    private static void WaitForIdleWorker(IAsyncAction action)
-    {
-        _error = IdleSynchronizer.TryWait(out _log);
-    }
+    private static void WaitForIdleWorker(IAsyncAction action) => _error = IdleSynchronizer.TryWait(out _log);
 
-    private void CloseAppInvokerButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-    {
-        Application.Current.Exit();
-    }
+    private void CloseAppInvokerButton_Click(object sender, RoutedEventArgs e) => Application.Current.Exit();
 
-    private void GoBackInvokerButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void GoBackInvokerButton_Click(object sender, RoutedEventArgs e)
     {
-        if (this.rootFrame.CanGoBack)
+        if (rootFrame.CanGoBack)
         {
-            this.rootFrame.GoBack();
+            rootFrame.GoBack();
         }
     }
 

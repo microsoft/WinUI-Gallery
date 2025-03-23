@@ -3,11 +3,9 @@ using System;
 using System.Collections.ObjectModel;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
-using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Dispatching;
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
@@ -19,10 +17,10 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class PullToRefreshPage : Page
 {
-    private ObservableCollection<string> items1 = new ObservableCollection<string>();
-    private ObservableCollection<string> items2 = new ObservableCollection<string>();
-    private DispatcherTimer timer1 = new DispatcherTimer();
-    private DispatcherTimer timer2 = new DispatcherTimer();
+    private ObservableCollection<string> items1 = [];
+    private ObservableCollection<string> items2 = [];
+    private DispatcherTimer timer1 = new();
+    private DispatcherTimer timer2 = new();
     private Visual visualizerContentVisual;
     private static RefreshContainer rc2;
     private RefreshVisualizer rv2;
@@ -43,7 +41,7 @@ public sealed partial class PullToRefreshPage : Page
 
     public PullToRefreshPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))
         {
@@ -55,8 +53,8 @@ public sealed partial class PullToRefreshPage : Page
             rv2.RefreshStateChanged +=
                 new TypedEventHandler<RefreshVisualizer, RefreshStateChangedEventArgs>(rv2_RefreshStateChanged);
 
-            Image ptrImage = new Image();
-            AccessibilitySettings accessibilitySettings = new AccessibilitySettings();
+            Image ptrImage = new();
+            AccessibilitySettings accessibilitySettings = new();
             // Checking light theme
             if ((ThemeHelper.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light) 
                 && !accessibilitySettings.HighContrast)
@@ -81,7 +79,7 @@ public sealed partial class PullToRefreshPage : Page
             rv2.Content = ptrImage;
             rc2.Visualizer = rv2;
 
-            ListView lv2 = new ListView
+            ListView lv2 = new()
             {
                 Width = 200,
                 Height = 200,
@@ -111,14 +109,14 @@ public sealed partial class PullToRefreshPage : Page
                 items2.Add(c);
             lv2.ItemsSource = items2;
 
-            this.Loaded += PullToRefreshPage_Loaded;
+            Loaded += PullToRefreshPage_Loaded;
         }
     }
 
     private void PullToRefreshPage_Loaded(object sender, RoutedEventArgs e)
     {
         visualizerContentVisual = ElementCompositionPreview.GetElementVisual(rv2.Content);
-        this.Loaded -= PullToRefreshPage_Loaded;
+        Loaded -= PullToRefreshPage_Loaded;
     }
 
     private void Timer1_Tick(object sender, object e)
@@ -157,11 +155,11 @@ public sealed partial class PullToRefreshPage : Page
     {
         items1.Insert(0, "NewControl " + items1AddedCount++);
         timer1.Stop();
-        if (this.RefreshCompletionDeferral1 != null)
+        if (RefreshCompletionDeferral1 != null)
         {
-            this.RefreshCompletionDeferral1.Complete();
-            this.RefreshCompletionDeferral1.Dispose();
-            this.RefreshCompletionDeferral1 = null;
+            RefreshCompletionDeferral1.Complete();
+            RefreshCompletionDeferral1.Dispose();
+            RefreshCompletionDeferral1 = null;
         }
     }
 
@@ -169,11 +167,11 @@ public sealed partial class PullToRefreshPage : Page
     {
         items2.Insert(0, "New Friend " + items2AddedCount++);
         timer2.Stop();
-        if (this.RefreshCompletionDeferral2 != null)
+        if (RefreshCompletionDeferral2 != null)
         {
-            this.RefreshCompletionDeferral2.Complete();
-            this.RefreshCompletionDeferral2.Dispose();
-            this.RefreshCompletionDeferral2 = null;
+            RefreshCompletionDeferral2.Complete();
+            RefreshCompletionDeferral2.Dispose();
+            RefreshCompletionDeferral2 = null;
         }
     }
 
@@ -186,19 +184,16 @@ public sealed partial class PullToRefreshPage : Page
 
     private void rc_RefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
     {
-        this.RefreshCompletionDeferral1 = args.GetDeferral();
+        RefreshCompletionDeferral1 = args.GetDeferral();
         //Do some work to show new content!
         timer1.Start();
     }
     private void rc2_RefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
     {
-        this.RefreshCompletionDeferral2 = args.GetDeferral();
+        RefreshCompletionDeferral2 = args.GetDeferral();
         //Do some work to show new content!
         timer2.Start();
     }
 
-    private void rv2_RefreshStateChanged(RefreshVisualizer sender, RefreshStateChangedEventArgs args)
-    {
-        visualizerContentVisual.StopAnimation("RotationAngle");
-    }
+    private void rv2_RefreshStateChanged(RefreshVisualizer sender, RefreshStateChangedEventArgs args) => visualizerContentVisual.StopAnimation("RotationAngle");
 }

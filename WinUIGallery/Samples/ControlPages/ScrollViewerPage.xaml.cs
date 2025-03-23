@@ -7,7 +7,6 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
@@ -18,7 +17,7 @@ public sealed partial class ScrollViewerPage : Page
 {
     public ScrollViewerPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         ScrollViewerControl.ZoomToFactor(4.0f);
     }
 
@@ -41,10 +40,7 @@ public sealed partial class ScrollViewerPage : Page
 
     private void ZoomSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
     {
-        if (ScrollViewerControl != null)
-        {
-            ScrollViewerControl.ChangeView(null, null, (float)e.NewValue);
-        }
+        ScrollViewerControl?.ChangeView(null, null, (float)e.NewValue);
     }
 
     private void hsmCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -91,10 +87,7 @@ public sealed partial class ScrollViewerPage : Page
         }
     }
 
-    private void ScrollViewerControl_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
-    {
-        ZoomSlider.Value = ScrollViewerControl.ZoomFactor;
-    }
+    private void ScrollViewerControl_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e) => ZoomSlider.Value = ScrollViewerControl.ZoomFactor;
 
     private void ScrollViewerControl_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
     {

@@ -9,8 +9,6 @@
 //*********************************************************
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Input;
 
 namespace WinUIGallery.ControlPages;
 
@@ -18,7 +16,7 @@ public sealed partial class MenuFlyoutPage : Page
 {
     public MenuFlyoutPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)

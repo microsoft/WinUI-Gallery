@@ -6,19 +6,15 @@ public sealed partial class ColorPickerPage : Page
 {
     public ColorPickerPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void ColorSpectrumShapeRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        switch(ColorSpectrumShapeRadioButtons.SelectedItem)
+        colorPicker.ColorSpectrumShape = ColorSpectrumShapeRadioButtons.SelectedItem switch
         {
-            case "Box":
-                colorPicker.ColorSpectrumShape = Microsoft.UI.Xaml.Controls.ColorSpectrumShape.Box;
-                break;
-            default:
-                colorPicker.ColorSpectrumShape = Microsoft.UI.Xaml.Controls.ColorSpectrumShape.Ring;
-                break;
-        }
+            "Box" => ColorSpectrumShape.Box,
+            _ => ColorSpectrumShape.Ring,
+        };
     }
 }

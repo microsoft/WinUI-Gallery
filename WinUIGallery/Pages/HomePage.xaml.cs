@@ -19,7 +19,7 @@ public sealed partial class HomePage : ItemsPageBase
 {
     public HomePage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     public string WinAppSdkDetails => VersionHelper.WinAppSdkDetails;
@@ -36,12 +36,12 @@ public sealed partial class HomePage : ItemsPageBase
 
     private ObservableCollection<GroupInfoList> FormatData()
     {
-        var query = from item in this.Items
+        var query = from item in Items
                     group item by item.BadgeString into g
                     orderby g.Key
                     select new GroupInfoList(g) { Key = g.Key };
 
-        ObservableCollection<GroupInfoList> groupList = new ObservableCollection<GroupInfoList>(query);
+        ObservableCollection<GroupInfoList> groupList = [.. query];
 
         //Move Preview samples to the back of the list
         var previewGroup = groupList.ElementAt(1);
@@ -70,22 +70,14 @@ public sealed partial class HomePage : ItemsPageBase
         return groupList;
     }
 
-    protected override bool GetIsNarrowLayoutState()
-    {
-        return LayoutVisualStates.CurrentState == NarrowLayout;
-    }
+    protected override bool GetIsNarrowLayoutState() => LayoutVisualStates.CurrentState == NarrowLayout;
 }
 
-public class GroupInfoList : List<object>
+public class GroupInfoList(IEnumerable<object> items) : List<object>(items)
 {
-    public GroupInfoList(IEnumerable<object> items) : base(items) { }
-
     public object Key { get; set; }
 
     public string Title { get; set; }
 
-    public override string ToString()
-    {
-        return Title;
-    }
+    public override string ToString() => Title;
 }

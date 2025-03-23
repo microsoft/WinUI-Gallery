@@ -9,6 +9,6 @@ public sealed partial class BackgroundSection : Page
 {
     public BackgroundSection()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

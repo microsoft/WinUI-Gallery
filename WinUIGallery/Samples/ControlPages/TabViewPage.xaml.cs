@@ -10,7 +10,7 @@ namespace WinUIGallery.ControlPages;
 public class MyData
 {
     public string DataHeader { get; set; }
-    public Microsoft.UI.Xaml.Controls.IconSource DataIconSource { get; set; }
+    public IconSource DataIconSource { get; set; }
     public object DataContent { get; set; }
 }
 
@@ -20,7 +20,7 @@ public sealed partial class TabViewPage : Page
 
     public TabViewPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         // Launching isn't supported yet on Desktop
         // Blocked on Task 27517663: DCPP Preview 2 Bug: Dragging in TabView windowing sample causes app to crash
@@ -38,33 +38,25 @@ public sealed partial class TabViewPage : Page
         }
     }
 
-    private void TabView_BringIntoViewRequested(UIElement sender, BringIntoViewRequestedEventArgs args)
-    {
+    private void TabView_BringIntoViewRequested(UIElement sender, BringIntoViewRequestedEventArgs args) =>
         // The TabView control is firing this event when TabWidthMode is set to `SizeToContent` or `Compact`.
         // This will work around an auto-scroll issue when the page is loaded.
         args.Handled = true;
-    }
 
-    private void TabView_AddButtonClick(TabView sender, object args)
-    {
-        sender.TabItems.Add(CreateNewTab(sender.TabItems.Count));
-    }
+    private void TabView_AddButtonClick(TabView sender, object args) => sender.TabItems.Add(CreateNewTab(sender.TabItems.Count));
 
-    private void TabView_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
-    {
-        sender.TabItems.Remove(args.Tab);
-    }
+    private void TabView_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args) => sender.TabItems.Remove(args.Tab);
 
     private TabViewItem CreateNewTab(int index)
     {
-        TabViewItem newItem = new TabViewItem
+        TabViewItem newItem = new()
         {
             Header = $"Document {index}",
-            IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document }
+            IconSource = new SymbolIconSource() { Symbol = Symbol.Document }
         };
 
         // The content of the tab is often a frame that contains a page, though it could be any UIElement.
-        Frame frame = new Frame();
+        Frame frame = new();
 
         switch (index % 3)
         {
@@ -88,7 +80,7 @@ public sealed partial class TabViewPage : Page
     #region ItemsSourceSample
     private void InitializeDataBindingSampleData()
     {
-        myDatas = new ObservableCollection<MyData>();
+        myDatas = [];
 
         for (int index = 0; index < 3; index++)
         {
@@ -101,10 +93,10 @@ public sealed partial class TabViewPage : Page
         var newData = new MyData
         {
             DataHeader = $"MyData Doc {index}",
-            DataIconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }
+            DataIconSource = new SymbolIconSource() { Symbol = Symbol.Placeholder }
         };
 
-        Frame frame = new Frame();
+        Frame frame = new();
 
         switch (index % 3)
         {
@@ -124,17 +116,13 @@ public sealed partial class TabViewPage : Page
         return newData;
     }
 
-    private void TabViewItemsSourceSample_AddTabButtonClick(TabView sender, object args)
-    {
+    private void TabViewItemsSourceSample_AddTabButtonClick(TabView sender, object args) =>
         // Add a new MyData item to the collection. TabView automatically generates a TabViewItem.
         myDatas.Add(CreateNewMyData(myDatas.Count));
-    }
 
-    private void TabViewItemsSourceSample_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
-    {
+    private void TabViewItemsSourceSample_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args) =>
         // Remove the requested MyData object from the collection.
         myDatas.Remove(args.Item as MyData);
-    }
     #endregion
 
     #region KeyboardAcceleratorSample
@@ -148,7 +136,7 @@ public sealed partial class TabViewPage : Page
 
     private void CloseSelectedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
     {
-        var InvokedTabView = (args.Element as TabView);
+        var InvokedTabView = args.Element as TabView;
 
         // Only close the selected tab if it is closeable
         if (((TabViewItem)InvokedTabView.SelectedItem).IsClosable)
@@ -161,7 +149,7 @@ public sealed partial class TabViewPage : Page
 
     private void NavigateToNumberedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
     {
-        var InvokedTabView = (args.Element as TabView);
+        var InvokedTabView = args.Element as TabView;
 
         int tabToSelect = 0;
 
@@ -245,7 +233,7 @@ public sealed partial class TabViewPage : Page
         TabView4.CloseButtonOverlayMode = overlayMode;
     }
 
-    private void TabViewWindowingButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void TabViewWindowingButton_Click(object sender, RoutedEventArgs e)
     {
         var tabViewSample = new TabViewWindowingSamplePage();
 

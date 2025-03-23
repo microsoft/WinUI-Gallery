@@ -10,7 +10,7 @@ public sealed partial class TileGallery : UserControl
 {
     public TileGallery()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void scroller_ViewChanging(object sender, ScrollViewerViewChangingEventArgs e)
@@ -49,20 +49,7 @@ public sealed partial class TileGallery : UserControl
         ScrollBackBtn.Focus(FocusState.Programmatic);
     }
 
-    private void scroller_SizeChanged(object sender, SizeChangedEventArgs e)
-    {
-        UpdateScrollButtonsVisibility();
-    }
+    private void scroller_SizeChanged(object sender, SizeChangedEventArgs e) => UpdateScrollButtonsVisibility();
 
-    private void UpdateScrollButtonsVisibility()
-    {
-        if (scroller.ScrollableWidth > 0)
-        {
-            ScrollForwardBtn.Visibility = Visibility.Visible;
-        }
-        else
-        {
-            ScrollForwardBtn.Visibility = Visibility.Collapsed;
-        }
-    }
+    private void UpdateScrollButtonsVisibility() => ScrollForwardBtn.Visibility = scroller.ScrollableWidth > 0 ? Visibility.Visible : Visibility.Collapsed;
 }

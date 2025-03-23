@@ -29,7 +29,7 @@ public static class ThemeHelper
                 }
             }
 
-            return EnumHelper.GetEnum<ElementTheme>(App.Current.RequestedTheme.ToString());
+            return EnumHelper.GetEnum<ElementTheme>(Application.Current.RequestedTheme.ToString());
         }
     }
 
@@ -80,12 +80,7 @@ public static class ThemeHelper
         }
     }
 
-    public static bool IsDarkTheme()
-    {
-        if (RootTheme == ElementTheme.Default)
-        {
-            return Application.Current.RequestedTheme == ApplicationTheme.Dark;
-        }
-        return RootTheme == ElementTheme.Dark;
-    }
+    public static bool IsDarkTheme() => RootTheme == ElementTheme.Default
+            ? Application.Current.RequestedTheme == ApplicationTheme.Dark
+            : RootTheme == ElementTheme.Dark;
 }

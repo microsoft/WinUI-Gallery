@@ -1,6 +1,5 @@
 using System;
 using System.Numerics;
-using Windows.Foundation.Metadata;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
@@ -15,16 +14,13 @@ public sealed partial class XamlCompInteropPage : Page
 {
     public XamlCompInteropPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     Compositor _compositor = Microsoft.UI.Xaml.Media.CompositionTarget.GetCompositorForCurrentThread();
     private SpringVector3NaturalMotionAnimation _springAnimation;
 
-    private void NaturalMotionExample_Loaded(object sender, RoutedEventArgs e)
-    {
-        UpdateSpringAnimation(1.0f);
-    }
+    private void NaturalMotionExample_Loaded(object sender, RoutedEventArgs e) => UpdateSpringAnimation(1.0f);
 
     private void UpdateSpringAnimation(float finalValue)
     {
@@ -50,28 +46,22 @@ public sealed partial class XamlCompInteropPage : Page
         return 0.6f;
     }
 
-    TimeSpan GetPeriod()
-    {
-        return TimeSpan.FromMilliseconds(PeriodSlider.Value);
-    }
+    TimeSpan GetPeriod() => TimeSpan.FromMilliseconds(PeriodSlider.Value);
 
-    private void StartAnimationIfAPIPresent(UIElement sender, Microsoft.UI.Composition.CompositionAnimation animation)
-    {
-        (sender as UIElement).StartAnimation(animation);
-    }
+    private void StartAnimationIfAPIPresent(UIElement sender, CompositionAnimation animation) => sender.StartAnimation(animation);
 
     private void element_PointerEntered(object sender, PointerRoutedEventArgs e)
     {
         UpdateSpringAnimation(1.5f);
 
-        StartAnimationIfAPIPresent((sender as UIElement), _springAnimation);
+        StartAnimationIfAPIPresent(sender as UIElement, _springAnimation);
     }
 
     private void element_PointerExited(object sender, PointerRoutedEventArgs e)
     {
         UpdateSpringAnimation(1f);
 
-        StartAnimationIfAPIPresent((sender as UIElement), _springAnimation);
+        StartAnimationIfAPIPresent(sender as UIElement, _springAnimation);
     }
 
 
@@ -116,18 +106,18 @@ public sealed partial class XamlCompInteropPage : Page
         //   xOffset = The starting horizontal offset for the element. 
         //   yOffset = The starting vertical offset for the element.
 
-        String radius = "(source.ActualSize.X / 2)"; // Since the layout is a circle, width and height are equivalent meaning we could use X or Y. We'll use X.
-        String theta = ".02 * " + radius + " + ((2 * Pi)/total)*index"; // The first value is the rate of angular change based on radius. The last value spaces the buttons equally.
-        String xOffset = radius; // We offset x by radius because the buttons naturally layout along the left edge. We need to move them to center of the circle first.
-        String yOffset = "0"; // We don't need to offset y because the buttons naturally layout vertically centered.
+        string radius = "(source.ActualSize.X / 2)"; // Since the layout is a circle, width and height are equivalent meaning we could use X or Y. We'll use X.
+        string theta = ".02 * " + radius + " + ((2 * Pi)/total)*index"; // The first value is the rate of angular change based on radius. The last value spaces the buttons equally.
+        string xOffset = radius; // We offset x by radius because the buttons naturally layout along the left edge. We need to move them to center of the circle first.
+        string yOffset = "0"; // We don't need to offset y because the buttons naturally layout vertically centered.
 
         // We combine X, Y, and Z subchannels into a single animation because we can only start a single animation on Translation.
-        String expression = string.Format("Vector3({0}*cos({1})+{2}, {0}*sin({1})+{3},0)", radius, theta, xOffset, yOffset);
+        string expression = string.Format("Vector3({0}*cos({1})+{2}, {0}*sin({1})+{3},0)", radius, theta, xOffset, yOffset);
 
         int totalElements = 8;
         for (int i = 0; i < totalElements; i++)
         {
-            Button element = new Button() { Content = "Button" };
+            Button element = new() { Content = "Button" };
             AutomationProperties.SetName(element, "Button " + i);
 
             LayoutPanel.Children.Add(element);

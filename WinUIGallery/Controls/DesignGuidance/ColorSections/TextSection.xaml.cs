@@ -9,6 +9,6 @@ public sealed partial class TextSection : Page
 {
     public TextSection()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

@@ -13,7 +13,7 @@ public sealed partial class SampleWindow6 : Window
 
     public SampleWindow6(string InitialSize)
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         appWindow = GetAppWindowForCurrentWindow();
 

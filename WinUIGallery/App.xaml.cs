@@ -36,10 +36,7 @@ sealed partial class App : Application
     /// <summary>
     /// Get the initial window created for this app.
     /// </summary>
-    public static Window StartupWindow
-    {
-        get => startupWindow;
-    }
+    public static Window StartupWindow => startupWindow;
 
     /// <summary>
     /// Initializes the singleton Application object. This is the first line of authored code
@@ -186,10 +183,7 @@ sealed partial class App : Application
     /// </summary>
     /// <param name="sender">The Frame which failed navigation</param>
     /// <param name="e">Details about the navigation failure</param>
-    void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
-    {
-        throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
-    }
+    void OnNavigationFailed(object sender, NavigationFailedEventArgs e) => throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
 
     /// <summary>
     /// Prevents the app from crashing when a exception gets thrown and notifies the user.

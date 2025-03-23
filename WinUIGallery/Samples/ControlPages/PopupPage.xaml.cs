@@ -1,17 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -25,7 +13,7 @@ namespace WinUIGallery.ControlPages
     {
         public PopupPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         // Handles the Click event on the Button on the page and opens the Popup. 
@@ -45,9 +33,6 @@ namespace WinUIGallery.ControlPages
             IsLightDismissEnabledToggleSwitch.IsEnabled = true;
         }
 
-        private void PopupClosed(object sender, object e)
-        {
-            IsLightDismissEnabledToggleSwitch.IsEnabled = true;
-        }
+        private void PopupClosed(object sender, object e) => IsLightDismissEnabledToggleSwitch.IsEnabled = true;
     }
 }

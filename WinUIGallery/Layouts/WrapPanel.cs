@@ -213,7 +213,7 @@ public class WrapPanel : Panel
     /// Measures the child elements of a
     /// <see cref="T:WinRTXamlToolkit.Controls.WrapPanel" /> in anticipation
     /// of arranging them during the
-    /// <see cref="Microsoft.UI.Xaml.FrameworkElement.ArrangeOverride(Windows.Foundation.Size)" />
+    /// <see cref="FrameworkElement.ArrangeOverride(Size)" />
     /// pass.
     /// </summary>
     /// <param name="constraint">
@@ -232,16 +232,16 @@ public class WrapPanel : Panel
         // that the line might represent a row or a column depending on the
         // orientation.
         Orientation o = Orientation;
-        OrientedSize lineSize = new OrientedSize(o);
-        OrientedSize totalSize = new OrientedSize(o);
-        OrientedSize maximumSize = new OrientedSize(o, constraint.Width, constraint.Height);
+        OrientedSize lineSize = new(o);
+        OrientedSize totalSize = new(o);
+        OrientedSize maximumSize = new(o, constraint.Width, constraint.Height);
 
         // Determine the constraints for individual items
         double itemWidth = ItemWidth;
         double itemHeight = ItemHeight;
         bool hasFixedWidth = !double.IsNaN(itemWidth);
         bool hasFixedHeight = !double.IsNaN(itemHeight);
-        Size itemSize = new Size(
+        Size itemSize = new(
             hasFixedWidth ? itemWidth : constraint.Width,
             hasFixedHeight ? itemHeight : constraint.Height);
 
@@ -250,7 +250,7 @@ public class WrapPanel : Panel
         {
             // Determine the size of the element
             element.Measure(itemSize);
-            OrientedSize elementSize = new OrientedSize(
+            OrientedSize elementSize = new(
                 o,
                 hasFixedWidth ? itemWidth : element.DesiredSize.Width,
                 hasFixedHeight ? itemHeight : element.DesiredSize.Height);
@@ -315,8 +315,8 @@ public class WrapPanel : Panel
         // size available to fill.  Note that the line might represent a row
         // or a column depending on the orientation.
         Orientation o = Orientation;
-        OrientedSize lineSize = new OrientedSize(o);
-        OrientedSize maximumSize = new OrientedSize(o, finalSize.Width, finalSize.Height);
+        OrientedSize lineSize = new(o);
+        OrientedSize maximumSize = new(o, finalSize.Width, finalSize.Height);
 
         // Determine the constraints for individual items
         double itemWidth = ItemWidth;
@@ -325,8 +325,8 @@ public class WrapPanel : Panel
         bool hasFixedHeight = !double.IsNaN(itemHeight);
         double indirectOffset = 0;
         double? directDelta = (o == Orientation.Horizontal) ?
-            (hasFixedWidth ? (double?)itemWidth : null) :
-            (hasFixedHeight ? (double?)itemHeight : null);
+            (hasFixedWidth ? itemWidth : null) :
+            (hasFixedHeight ? itemHeight : null);
 
         // Measure each of the Children.  We will process the elements one
         // line at a time, just like during measure, but we will wait until
@@ -341,7 +341,7 @@ public class WrapPanel : Panel
             UIElement element = children[lineEnd];
 
             // Get the size of the element
-            OrientedSize elementSize = new OrientedSize(
+            OrientedSize elementSize = new(
                 o,
                 hasFixedWidth ? itemWidth : element.DesiredSize.Width,
                 hasFixedHeight ? itemHeight : element.DesiredSize.Height);
@@ -417,7 +417,7 @@ public class WrapPanel : Panel
         {
             // Get the size of the element
             UIElement element = children[index];
-            OrientedSize elementSize = new OrientedSize(o, element.DesiredSize.Width, element.DesiredSize.Height);
+            OrientedSize elementSize = new(o, element.DesiredSize.Width, element.DesiredSize.Height);
 
             // Determine if we should use the element's desired size or the
             // fixed item width or height
@@ -470,12 +470,10 @@ internal static class NumericExtensions
     /// </summary>
     /// <param name="value">The number to check.</param>
     /// <returns>True if the number is zero, false otherwise.</returns>
-    public static bool IsZero(this double value)
-    {
+    public static bool IsZero(this double value) =>
         // We actually consider anything within an order of magnitude of
         // epsilon to be zero
-        return Math.Abs(value) < 2.2204460492503131E-15;
-    }
+        Math.Abs(value) < 2.2204460492503131E-15;
 #endif
 
     /// <summary>
@@ -488,7 +486,7 @@ internal static class NumericExtensions
     public static bool IsNaN(this double value)
     {
         // Get the double as an unsigned long
-        NanUnion union = new NanUnion { FloatingValue = value };
+        NanUnion union = new() { FloatingValue = value };
 
         // An IEEE 754 double precision floating point number is NaN if its
         // exponent equals 2047 and it has a non-zero mantissa.
@@ -510,10 +508,7 @@ internal static class NumericExtensions
     /// True if the first number is greater than the second, false
     /// otherwise.
     /// </returns>
-    public static bool IsGreaterThan(double left, double right)
-    {
-        return (left > right) && !AreClose(left, right);
-    }
+    public static bool IsGreaterThan(double left, double right) => (left > right) && !AreClose(left, right);
 
     /// <summary>
     /// Determine if two numbers are close in value.
@@ -548,10 +543,7 @@ internal static class NumericExtensions
     /// True if the first number is less than or close to the second, false
     /// otherwise.
     /// </returns>
-    public static bool IsLessThanOrClose(double left, double right)
-    {
-        return (left < right) || AreClose(left, right);
-    }
+    public static bool IsLessThanOrClose(double left, double right) => (left < right) || AreClose(left, right);
 #endif
 }
 
@@ -576,10 +568,7 @@ internal struct OrientedSize
     /// <summary>
     /// Gets the orientation of the structure.
     /// </summary>
-    public Orientation Orientation
-    {
-        get { return _orientation; }
-    }
+    public Orientation Orientation => _orientation;
 
     /// <summary>
     /// The size dimension that grows directly with layout placement.

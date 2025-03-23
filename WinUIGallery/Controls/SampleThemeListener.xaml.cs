@@ -9,6 +9,6 @@ public sealed partial class SampleThemeListener : UserControl
 {
     public SampleThemeListener()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

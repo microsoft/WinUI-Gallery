@@ -1,17 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
 using Windows.Media.Capture.Frames;
 using Windows.Media.Capture;
 using Microsoft.UI.Xaml.Media.Imaging;
@@ -27,7 +19,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
 {
     public CaptureElementPreviewPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         StartCaptureElement();
 
@@ -40,7 +32,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         captureContainer.Children.Add(expandToFillContainer);
         expandToFillContainer.Children.Add(sv);
 
-        this.Unloaded += this.CaptureElementPreviewPage_Unloaded;
+        Unloaded += CaptureElementPreviewPage_Unloaded;
     }
 
     private void CaptureElementPreviewPage_Unloaded(object sender, RoutedEventArgs e)
@@ -55,7 +47,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
     private MediaFrameSourceGroup mediaFrameSourceGroup;
     private MediaCapture mediaCapture;
 
-    async private void StartCaptureElement()
+    private async void StartCaptureElement()
     {
         var groups = await MediaFrameSourceGroup.FindAllAsync();
         if (groups.Count == 0)
@@ -69,7 +61,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         mediaCapture = new MediaCapture();
         var mediaCaptureInitializationSettings = new MediaCaptureInitializationSettings()
         {
-            SourceGroup = this.mediaFrameSourceGroup,
+            SourceGroup = mediaFrameSourceGroup,
             SharingMode = MediaCaptureSharingMode.SharedReadOnly,
             StreamingCaptureMode = StreamingCaptureMode.Video,
             MemoryPreference = MediaCaptureMemoryPreference.Cpu
@@ -77,7 +69,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         await mediaCapture.InitializeAsync(mediaCaptureInitializationSettings);
 
         // Set the MediaPlayerElement's Source property to the MediaSource for the mediaCapture.
-        var frameSource = mediaCapture.FrameSources[this.mediaFrameSourceGroup.SourceInfos[0].Id];
+        var frameSource = mediaCapture.FrameSources[mediaFrameSourceGroup.SourceInfos[0].Id];
         captureElement.Source = Windows.Media.Core.MediaSource.CreateFromMediaFrameSource(frameSource);
     }
 
@@ -85,10 +77,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
 
     public event PropertyChangedEventHandler PropertyChanged;
 
-    public void OnPropertyChanged(string PropertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
-    }
+    public void OnPropertyChanged(string PropertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
 
     private void MirrorToggleSwitch_Toggled(object sender, RoutedEventArgs e)
     {
@@ -110,7 +99,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         OnPropertyChanged("MirrorTextReplacement");
     }
 
-    async private void CapturePhoto_Click(object sender, RoutedEventArgs e)
+    private async void CapturePhoto_Click(object sender, RoutedEventArgs e)
     {
         // Capture a photo to a stream
         var imgFormat = ImageEncodingProperties.CreateJpeg();
@@ -119,7 +108,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         stream.Seek(0);
 
         // Show the photo in an Image element
-        BitmapImage bmpImage = new BitmapImage();
+        BitmapImage bmpImage = new();
         await bmpImage.SetSourceAsync(stream);
         var image = new Image() { Source = bmpImage };
         snapshots.Children.Insert(0, image);

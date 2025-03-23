@@ -1,17 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Shapes;
 
 namespace WinUIGallery.ControlPages;
@@ -22,7 +13,7 @@ public sealed partial class ThemeTransitionPage : Page
     private int _itemCount = 10;
     public ThemeTransitionPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         for (int i = 0; i < _itemCount; i++)
         {
@@ -44,10 +35,7 @@ public sealed partial class ThemeTransitionPage : Page
         ShowPopupButton.Focus(FocusState.Programmatic);
     }
 
-    private void ContentRefreshButton_Click(object sender, RoutedEventArgs e)
-    {
-        AddItemsToContentListView(true);
-    }
+    private void ContentRefreshButton_Click(object sender, RoutedEventArgs e) => AddItemsToContentListView(true);
 
     private void AddItemsToContentListView(bool ShowDifferentContent = false)
     {
@@ -72,10 +60,7 @@ public sealed partial class ThemeTransitionPage : Page
             AddRemoveListView.Items.RemoveAt(0);
     }
 
-    private void RepositionButton_Click(object sender, RoutedEventArgs e)
-    {
-        MiddleElement.Visibility = MiddleElement.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-    }
+    private void RepositionButton_Click(object sender, RoutedEventArgs e) => MiddleElement.Visibility = MiddleElement.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
 
     private void EntranceAddButton_Click(object sender, RoutedEventArgs e)
     {
@@ -83,15 +68,12 @@ public sealed partial class ThemeTransitionPage : Page
 
         for (int i = 0; i < value; i++)
         {
-            Thickness thickness = new Thickness(5.0);
+            Thickness thickness = new(5.0);
             EntranceStackPanel.Children.Add(new Rectangle() { Width = 50, Height = 50, Margin = thickness, Fill = new SolidColorBrush(Microsoft.UI.Colors.LightBlue) });
         }
     }
 
-    private void EntranceClearButton_Click(object sender, RoutedEventArgs e)
-    {
-        EntranceStackPanel.Children.Clear();
-    }
+    private void EntranceClearButton_Click(object sender, RoutedEventArgs e) => EntranceStackPanel.Children.Clear();
 
     private void AddDeleteButton_Click(object sender, RoutedEventArgs e)
     {

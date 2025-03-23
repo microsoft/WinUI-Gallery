@@ -16,6 +16,6 @@ public sealed partial class SpacingPage : Page
 {
     public SpacingPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

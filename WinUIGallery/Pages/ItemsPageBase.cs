@@ -35,10 +35,7 @@ public abstract class ItemsPageBase : Page, INotifyPropertyChanged
     /// <summary>
     /// Gets a value indicating whether the application's view is currently in "narrow" mode - i.e. on a mobile-ish device.
     /// </summary>
-    protected virtual bool GetIsNarrowLayoutState()
-    {
-        throw new NotImplementedException();
-    }
+    protected virtual bool GetIsNarrowLayoutState() => throw new NotImplementedException();
 
     protected void OnItemGridViewContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
     {
@@ -87,8 +84,5 @@ public abstract class ItemsPageBase : Page, INotifyPropertyChanged
         return true;
     }
 
-    protected void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+    protected void NotifyPropertyChanged([CallerMemberName] string propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }

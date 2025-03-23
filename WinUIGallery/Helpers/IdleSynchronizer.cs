@@ -39,7 +39,7 @@ public class IdleSynchronizer
     private Handle OpenNamedEvent(uint processId, uint threadId, string eventNamePrefix)
     {
         string eventName = string.Format("{0}.{1}.{2}", eventNamePrefix, processId, threadId);
-        Handle handle = new Handle(
+        Handle handle = new(
             NativeMethods.OpenEvent(
                 (uint)(SyncObjectAccess.EVENT_MODIFY_STATE | SyncObjectAccess.SYNCHRONIZE),
                 false /* inherit handle */,
@@ -55,18 +55,10 @@ public class IdleSynchronizer
                     eventNamePrefix));
         }
 
-        if (!handle.IsValid)
-        {
-            throw new Exception("Failed to open " + eventName + " handle.");
-        }
-
-        return handle;
+        return !handle.IsValid ? throw new Exception("Failed to open " + eventName + " handle.") : handle;
     }
 
-    private Handle OpenNamedEvent(DispatcherQueue dispatcherQueue, string eventNamePrefix)
-    {
-        return OpenNamedEvent(NativeMethods.GetCurrentProcessId(), GetUIThreadId(dispatcherQueue), eventNamePrefix);
-    }
+    private Handle OpenNamedEvent(DispatcherQueue dispatcherQueue, string eventNamePrefix) => OpenNamedEvent(NativeMethods.GetCurrentProcessId(), GetUIThreadId(dispatcherQueue), eventNamePrefix);
 
     private uint GetUIThreadId(DispatcherQueue dispatcherQueue)
     {
@@ -77,7 +69,7 @@ public class IdleSynchronizer
         }
         else
         {
-            AutoResetEvent threadIdReceivedEvent = new AutoResetEvent(false);
+            AutoResetEvent threadIdReceivedEvent = new(false);
 
             dispatcherQueue.TryEnqueue(
                 DispatcherQueuePriority.Normal,
@@ -95,18 +87,7 @@ public class IdleSynchronizer
 
     private static IdleSynchronizer instance = null;
 
-    public static IdleSynchronizer Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                throw new Exception("Init() must be called on the UI thread before retrieving Instance.");
-            }
-
-            return instance;
-        }
-    }
+    public static IdleSynchronizer Instance => instance ?? throw new Exception("Init() must be called on the UI thread before retrieving Instance.");
 
     public string Log { get; set; }
     public int TickCountBegin { get; set; }
@@ -125,20 +106,11 @@ public class IdleSynchronizer
 
     public static void Init()
     {
-        DispatcherQueue dispatcherQueue = DispatcherQueue.GetForCurrentThread();
-
-        if (dispatcherQueue == null)
-        {
-            throw new Exception("Init() must be called on the UI thread.");
-        }
-
+        DispatcherQueue dispatcherQueue = DispatcherQueue.GetForCurrentThread() ?? throw new Exception("Init() must be called on the UI thread.");
         instance = new IdleSynchronizer(dispatcherQueue);
     }
 
-    public static void Wait()
-    {
-        Wait(out _);
-    }
+    public static void Wait() => Wait(out _);
 
     public static void Wait(out string logMessage)
     {
@@ -150,15 +122,9 @@ public class IdleSynchronizer
         }
     }
 
-    public static string TryWait()
-    {
-        return Instance.WaitInternal(out _);
-    }
+    public static string TryWait() => Instance.WaitInternal(out _);
 
-    public static string TryWait(out string logMessage)
-    {
-        return Instance.WaitInternal(out logMessage);
-    }
+    public static string TryWait(out string logMessage) => Instance.WaitInternal(out logMessage);
 
     public void AddLog(string message)
     {
@@ -226,8 +192,7 @@ public class IdleSynchronizer
                 hadAnimations = false;
             }
 
-            bool hadDeferredAnimationOperations;
-            errorString = WaitForDeferredAnimationOperationsComplete(out hadDeferredAnimationOperations);
+            errorString = WaitForDeferredAnimationOperationsComplete(out bool hadDeferredAnimationOperations);
             if (errorString.Length > 0) { return errorString; }
             AddLog("After WaitForDeferredAnimationOperationsComplete");
 
@@ -250,41 +215,32 @@ public class IdleSynchronizer
     {
         uint waitResult = NativeMethods.WaitForSingleObject(m_rootVisualResetHandle.NativeHandle, 5000);
 
-        if (waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT)
-        {
-            return "Waiting for root visual reset handle returned an invalid value.";
-        }
-
-        return string.Empty;
+        return waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT
+            ? "Waiting for root visual reset handle returned an invalid value."
+            : string.Empty;
     }
 
     private string WaitForImageDecodingIdle()
     {
         uint waitResult = NativeMethods.WaitForSingleObject(m_imageDecodingIdleHandle.NativeHandle, 5000);
 
-        if (waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT)
-        {
-            return "Waiting for image decoding idle handle returned an invalid value.";
-        }
-
-        return string.Empty;
+        return waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT
+            ? "Waiting for image decoding idle handle returned an invalid value."
+            : string.Empty;
     }
 
     string WaitForFontDownloadsIdle()
     {
         uint waitResult = NativeMethods.WaitForSingleObject(m_fontDownloadsIdleHandle.NativeHandle, 5000);
 
-        if (waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT)
-        {
-            return "Waiting for font downloads handle returned an invalid value.";
-        }
-
-        return string.Empty;
+        return waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT
+            ? "Waiting for font downloads handle returned an invalid value."
+            : string.Empty;
     }
 
     void WaitForIdleDispatcher()
     {
-        AutoResetEvent shouldContinueEvent = new AutoResetEvent(false);
+        AutoResetEvent shouldContinueEvent = new(false);
 
         // DispatcherQueueTimer runs at below idle priority, so we can use it to ensure that we only raise the event when we're idle.
         var timer = m_dispatcherQueue.CreateTimer();
@@ -327,7 +283,7 @@ public class IdleSynchronizer
 
         AddLog("WaitForAnimationsComplete: After Wait(m_hasAnimationsHandle)");
 
-        bool hasAnimations = (waitResult == NativeMethods.WAIT_OBJECT_0);
+        bool hasAnimations = waitResult == NativeMethods.WAIT_OBJECT_0;
 
         if (hasAnimations)
         {
@@ -374,7 +330,7 @@ public class IdleSynchronizer
             return "HasDeferredAnimationOperations handle wait returned an invalid value.";
         }
 
-        bool hasDeferredAnimationOperations = (waitResult == NativeMethods.WAIT_OBJECT_0);
+        bool hasDeferredAnimationOperations = waitResult == NativeMethods.WAIT_OBJECT_0;
 
         if (hasDeferredAnimationOperations)
         {
@@ -406,13 +362,7 @@ internal class Handle
 {
     public IntPtr NativeHandle { get; private set; }
 
-    public bool IsValid
-    {
-        get
-        {
-            return NativeHandle != IntPtr.Zero;
-        }
-    }
+    public bool IsValid => NativeHandle != IntPtr.Zero;
 
     public Handle(IntPtr nativeHandle)
     {
@@ -450,12 +400,12 @@ internal static class NativeMethods
     public static extern IntPtr OpenEvent(uint dwDesiredAccess, bool bInheritHandle, string lpName);
 
     [DllImport("kernel32.dll", SetLastError = true)]
-    public static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);
+    public static extern uint WaitForSingleObject(IntPtr hHandle, uint dwMilliseconds);
 
-    public const UInt32 INFINITE = 0xFFFFFFFF;
-    public const UInt32 WAIT_ABANDONED = 0x00000080;
-    public const UInt32 WAIT_OBJECT_0 = 0x00000000;
-    public const UInt32 WAIT_TIMEOUT = 0x00000102;
+    public const uint INFINITE = 0xFFFFFFFF;
+    public const uint WAIT_ABANDONED = 0x00000080;
+    public const uint WAIT_OBJECT_0 = 0x00000000;
+    public const uint WAIT_TIMEOUT = 0x00000102;
 
     [DllImport("kernel32.dll", SetLastError = true)]
     public static extern bool ResetEvent(IntPtr hEvent);

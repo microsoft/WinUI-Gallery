@@ -19,7 +19,7 @@ public sealed class CounterControl : Control
 
     public CounterControl()
     {
-        this.DefaultStyleKey = typeof(CounterControl);
+        DefaultStyleKey = typeof(CounterControl);
     }
 
     public int Count

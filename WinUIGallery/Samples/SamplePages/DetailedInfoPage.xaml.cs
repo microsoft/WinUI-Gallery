@@ -11,15 +11,13 @@ public sealed partial class DetailedInfoPage : Page
     public CustomDataObject DetailedObject { get; set; }
     public DetailedInfoPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         GoBackButton.Loaded += GoBackButton_Loaded;
     }
 
-    private void GoBackButton_Loaded(object sender, RoutedEventArgs e)
-    {
+    private void GoBackButton_Loaded(object sender, RoutedEventArgs e) =>
         // When we land in page, put focus on the back button
         GoBackButton.Focus(FocusState.Programmatic);
-    }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
@@ -29,12 +27,8 @@ public sealed partial class DetailedInfoPage : Page
         DetailedObject = e.Parameter as CustomDataObject;
 
         ConnectedAnimation imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("ForwardConnectedAnimation");
-        if (imageAnimation != null)
-        {
-            // Connected animation + coordinated animation
-            imageAnimation.TryStart(detailedImage, new UIElement[] { coordinatedPanel });
-
-        }
+        // Connected animation + coordinated animation
+        imageAnimation?.TryStart(detailedImage, new UIElement[] { coordinatedPanel });
     }
 
     // Create connected animation back to collection page.
@@ -45,8 +39,5 @@ public sealed partial class DetailedInfoPage : Page
         ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("BackConnectedAnimation", detailedImage);
     }
 
-    private void BackButton_Click(object sender, RoutedEventArgs e)
-    {
-        Frame.GoBack();
-    }
+    private void BackButton_Click(object sender, RoutedEventArgs e) => Frame.GoBack();
 }

@@ -5,7 +5,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Controls.Primitives;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
@@ -14,7 +13,7 @@ public sealed partial class ImplicitTransitionPage : Page
 {
     public ImplicitTransitionPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         SetupImplicitTransitionsIfAPIAvailable();
     }
@@ -32,7 +31,7 @@ public sealed partial class ImplicitTransitionPage : Page
     private void OpacityButton_Click(object sender, RoutedEventArgs e)
     {
         // If the implicit animation API is not present, simply no-op. 
-        if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
+        if (!ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7)) return;
         var customValue = EnsureValueIsNumber(OpacityNumberBox);
         OpacityRectangle.Opacity = customValue;
         OpacityValue.Value = customValue;
@@ -41,7 +40,7 @@ public sealed partial class ImplicitTransitionPage : Page
     }
     private void RotationButton_Click(object sender, RoutedEventArgs e)
     {
-        RotationRectangle.CenterPoint = new System.Numerics.Vector3((float)RotationRectangle.ActualWidth / 2, (float)RotationRectangle.ActualHeight / 2, 0f);
+        RotationRectangle.CenterPoint = new Vector3((float)RotationRectangle.ActualWidth / 2, (float)RotationRectangle.ActualHeight / 2, 0f);
 
         RotationRectangle.Rotation = EnsureValueIsNumber(RotationNumberBox);
         // announce visual change to automation

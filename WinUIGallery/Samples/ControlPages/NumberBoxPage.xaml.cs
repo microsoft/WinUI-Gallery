@@ -8,7 +8,6 @@
 //
 //*********************************************************
 using Windows.Globalization.NumberFormatting;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace WinUIGallery.ControlPages;
@@ -17,19 +16,19 @@ public sealed partial class NumberBoxPage : Page
 {
     public NumberBoxPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         SetNumberBoxNumberFormatter();
     }
 
     private void SetNumberBoxNumberFormatter()
     {
-        IncrementNumberRounder rounder = new IncrementNumberRounder
+        IncrementNumberRounder rounder = new()
         {
             Increment = 0.25,
             RoundingAlgorithm = RoundingAlgorithm.RoundHalfUp
         };
 
-        DecimalFormatter formatter = new DecimalFormatter
+        DecimalFormatter formatter = new()
         {
             IntegerDigits = 1,
             FractionDigits = 2,

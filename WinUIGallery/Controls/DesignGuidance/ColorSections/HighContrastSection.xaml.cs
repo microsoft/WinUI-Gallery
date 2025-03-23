@@ -9,6 +9,6 @@ public sealed partial class HighContrastSection : Page
 {
     public HighContrastSection()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

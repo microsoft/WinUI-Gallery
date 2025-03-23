@@ -7,7 +7,6 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -21,13 +20,13 @@ public sealed partial class SelectorBarPage : Page
 {
     int previousSelectedIndex = 0;
 
-    public ObservableCollection<SolidColorBrush> PinkColorCollection = new ObservableCollection<SolidColorBrush>();
-    public ObservableCollection<SolidColorBrush> PlumColorCollection = new ObservableCollection<SolidColorBrush>();
-    public ObservableCollection<SolidColorBrush> PowderBlueColorCollection = new ObservableCollection<SolidColorBrush>();
+    public ObservableCollection<SolidColorBrush> PinkColorCollection = [];
+    public ObservableCollection<SolidColorBrush> PlumColorCollection = [];
+    public ObservableCollection<SolidColorBrush> PowderBlueColorCollection = [];
 
     public SelectorBarPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         PopulateColorCollections();
     }
@@ -36,27 +35,14 @@ public sealed partial class SelectorBarPage : Page
     {
         SelectorBarItem selectedItem = sender.SelectedItem;
         int currentSelectedIndex = sender.Items.IndexOf(selectedItem);
-        System.Type pageType;
-
-        switch (currentSelectedIndex)
+        System.Type pageType = currentSelectedIndex switch
         {
-            case 0:
-                pageType = typeof(SamplePage1);
-                break;
-            case 1:
-                pageType = typeof(SamplePage2);
-                break;
-            case 2:
-                pageType = typeof(SamplePage3);
-                break;
-            case 3:
-                pageType = typeof(SamplePage4);
-                break;
-            default:
-                pageType = typeof(SamplePage5);
-                break;
-        }
-
+            0 => typeof(SamplePage1),
+            1 => typeof(SamplePage2),
+            2 => typeof(SamplePage3),
+            3 => typeof(SamplePage4),
+            _ => typeof(SamplePage5),
+        };
         var slideNavigationTransitionEffect = currentSelectedIndex - previousSelectedIndex > 0 ? SlideNavigationTransitionEffect.FromRight : SlideNavigationTransitionEffect.FromLeft;
 
         ContentFrame.Navigate(pageType, null, new SlideNavigationTransitionInfo() { Effect = slideNavigationTransitionEffect });
@@ -82,25 +68,25 @@ public sealed partial class SelectorBarPage : Page
 
     private void PopulateColorCollections()
     {
-        SolidColorBrush solidColorBrush = new SolidColorBrush(Microsoft.UI.Colors.Pink);
+        SolidColorBrush solidColorBrush = new(Microsoft.UI.Colors.Pink);
 
         for (int colorInstance = 0; colorInstance < 5; colorInstance++)
         {
-            this.PinkColorCollection.Add(solidColorBrush);
+            PinkColorCollection.Add(solidColorBrush);
         }
 
         solidColorBrush = new SolidColorBrush(Microsoft.UI.Colors.Plum);
 
         for (int colorInstance = 0; colorInstance < 7; colorInstance++)
         {
-            this.PlumColorCollection.Add(solidColorBrush);
+            PlumColorCollection.Add(solidColorBrush);
         }
 
         solidColorBrush = new SolidColorBrush(Microsoft.UI.Colors.PowderBlue);
 
         for (int colorInstance = 0; colorInstance < 4; colorInstance++)
         {
-            this.PowderBlueColorCollection.Add(solidColorBrush);
+            PowderBlueColorCollection.Add(solidColorBrush);
         }
     }
 }

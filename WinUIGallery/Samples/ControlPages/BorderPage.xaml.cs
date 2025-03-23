@@ -19,7 +19,7 @@ public sealed partial class BorderPage : Page
 {
     public BorderPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void ThicknessSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)

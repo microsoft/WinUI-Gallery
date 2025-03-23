@@ -14,12 +14,12 @@ public sealed partial class CollectionPage : Page
 
     public CollectionPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
 
         // Ensure that the MainPage is only created once, and cached during navigation.
-        this.NavigationCacheMode = NavigationCacheMode.Enabled;
+        NavigationCacheMode = NavigationCacheMode.Enabled;
 
-        collection.ItemsSource = WinUIGallery.ControlPages.CustomDataObject.GetDataObjects();
+        collection.ItemsSource = CustomDataObject.GetDataObjects();
     }
 
     private async void collection_Loaded(object sender, RoutedEventArgs e)
@@ -69,7 +69,7 @@ public sealed partial class CollectionPage : Page
 
     private void TextBlock_IsTextTrimmedChanged(TextBlock sender, IsTextTrimmedChangedEventArgs args)
     {
-        var textBlock = sender as TextBlock;
+        var textBlock = sender;
         var text = textBlock.IsTextTrimmed ? textBlock.Text : string.Empty;
 
         ToolTipService.SetToolTip(textBlock, text);

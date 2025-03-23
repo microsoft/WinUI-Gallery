@@ -9,6 +9,6 @@ public sealed partial class SignalSection : Page
 {
     public SignalSection()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

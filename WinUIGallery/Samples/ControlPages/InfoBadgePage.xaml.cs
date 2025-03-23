@@ -8,7 +8,7 @@ public sealed partial class InfoBadgePage : Page
 {
     public InfoBadgePage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
     public double InfoBadgeOpacity
     {
@@ -26,26 +26,23 @@ public sealed partial class InfoBadgePage : Page
         switch (paneDisplayMode)
         {
             case "LeftExpanded":
-                nvSample1.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
+                nvSample1.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
                 nvSample1.IsPaneOpen = true;
                 break;
 
             case "LeftCompact":
-                nvSample1.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.LeftCompact;
+                nvSample1.PaneDisplayMode = NavigationViewPaneDisplayMode.LeftCompact;
                 nvSample1.IsPaneOpen = false;
                 break;
 
             case "Top":
-                nvSample1.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
+                nvSample1.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
                 nvSample1.IsPaneOpen = true;
                 break;
         }
     }
 
-    private void ToggleInfoBadgeOpacity_Toggled(object sender, RoutedEventArgs e)
-    {
-        InfoBadgeOpacity = (InfoBadgeOpacity == 0.0) ? 1.0 : 0.0;
-    }
+    private void ToggleInfoBadgeOpacity_Toggled(object sender, RoutedEventArgs e) => InfoBadgeOpacity = (InfoBadgeOpacity == 0.0) ? 1.0 : 0.0;
 
     public void InfoBadgeStyleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -79,7 +76,7 @@ public sealed partial class InfoBadgePage : Page
         }
     }
 
-    private void ValueNumberBox_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
+    private void ValueNumberBox_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
     {
         if ((int)args.NewValue >= -1)
         {

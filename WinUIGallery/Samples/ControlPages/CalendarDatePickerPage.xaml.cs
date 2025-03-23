@@ -6,6 +6,6 @@ public sealed partial class CalendarDatePickerPage : Page
 {
     public CalendarDatePickerPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 }

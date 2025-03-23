@@ -22,12 +22,9 @@ public sealed partial class SemanticZoomPage : Page
 
     public SemanticZoomPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
-    public IEnumerable<ControlInfoDataGroup> Groups
-    {
-        get { return this._groups; }
-    }
+    public IEnumerable<ControlInfoDataGroup> Groups => _groups;
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
@@ -36,8 +33,5 @@ public sealed partial class SemanticZoomPage : Page
         _groups = ControlInfoDataSource.Instance.Groups;
     }
 
-    private void List_GotFocus(object sender, RoutedEventArgs e)
-    {
-        Control1.StartBringIntoView();
-    }
+    private void List_GotFocus(object sender, RoutedEventArgs e) => Control1.StartBringIntoView();
 }

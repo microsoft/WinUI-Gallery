@@ -15,10 +15,10 @@ public sealed partial class ProgressBarPage : Page
 {
     public ProgressBarPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
-    private void ProgressValue_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
+    private void ProgressValue_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
     {
         // Value might be NaN, which is not valid as value, thus we need to handle changes ourselves
        

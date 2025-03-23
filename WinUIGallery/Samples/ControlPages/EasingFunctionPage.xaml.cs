@@ -1,52 +1,36 @@
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
-using Microsoft.UI.Xaml.Navigation;
 
 namespace WinUIGallery.ControlPages;
 
-public class NamedEasingFunction
+public class NamedEasingFunction(string name, EasingFunctionBase easingFunctionBase)
 {
-    public string Name { get; private set; }
-    public EasingFunctionBase EasingFunctionBase { get; private set; }
-    public NamedEasingFunction(string name, EasingFunctionBase easingFunctionBase)
-    {
-        this.Name = name;
-        this.EasingFunctionBase = easingFunctionBase;
-    }
+    public string Name { get; private set; } = name;
+    public EasingFunctionBase EasingFunctionBase { get; private set; } = easingFunctionBase;
 }
 
 public sealed partial class EasingFunctionPage : Page
 {
-    private List<NamedEasingFunction> EasingFunctions { get; } = new List<NamedEasingFunction>()
-        {
-        new NamedEasingFunction("BackEase", new BackEase()),
-        new NamedEasingFunction("BounceEase", new BounceEase()),
-        new NamedEasingFunction("CircleEase", new CircleEase()),
-        new NamedEasingFunction("CubicEase", new CubicEase()),
-        new NamedEasingFunction("ElasticEase", new ElasticEase()),
-        new NamedEasingFunction("ExponentialEase", new ExponentialEase()),
-        new NamedEasingFunction("PowerEase", new PowerEase()),
-        new NamedEasingFunction("QuadraticEase", new QuadraticEase()),
-        new NamedEasingFunction("QuarticEase", new QuarticEase()),
-        new NamedEasingFunction("QuinticEase", new QuinticEase()),
-        new NamedEasingFunction("SineEase", new SineEase())
-        };
+    private List<NamedEasingFunction> EasingFunctions { get; } =
+        [
+        new("BackEase", new BackEase()),
+        new("BounceEase", new BounceEase()),
+        new("CircleEase", new CircleEase()),
+        new("CubicEase", new CubicEase()),
+        new("ElasticEase", new ElasticEase()),
+        new("ExponentialEase", new ExponentialEase()),
+        new("PowerEase", new PowerEase()),
+        new("QuadraticEase", new QuadraticEase()),
+        new("QuarticEase", new QuarticEase()),
+        new("QuinticEase", new QuinticEase()),
+        new("SineEase", new SineEase())
+        ];
 
     public EasingFunctionPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void Button1_Click(object sender, RoutedEventArgs e)
@@ -88,8 +72,5 @@ public sealed partial class EasingFunctionPage : Page
         else return EasingMode.EaseInOut;
     }
 
-    private void EasingComboBox_Loaded(object sender, RoutedEventArgs e)
-    {
-        EasingComboBox.SelectedIndex = 0;
-    }
+    private void EasingComboBox_Loaded(object sender, RoutedEventArgs e) => EasingComboBox.SelectedIndex = 0;
 }

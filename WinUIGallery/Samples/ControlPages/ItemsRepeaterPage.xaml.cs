@@ -17,11 +17,11 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class ItemsRepeaterPage : ItemsPageBase
 {
-    private Random random = new Random();
+    private Random random = new();
     private int MaxLength = 425;
 
     public ObservableCollection<Bar> BarItems;
-    public MyItemsSource filteredRecipeData = new MyItemsSource(null);
+    public MyItemsSource filteredRecipeData = new(null);
     public List<Recipe> staticRecipeData;
     private bool IsSortDescending = false;
 
@@ -30,13 +30,13 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
 
     public ItemsRepeaterPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         InitializeData();
         repeater2.ItemsSource = Enumerable.Range(0, 500);
     }
 
-    public List<String> ColorList = new List<String>()
-    {
+    public List<string> ColorList =
+    [
             "Blue",
             "BlueViolet",
             "Crimson",
@@ -57,19 +57,16 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
             "OrangeRed",
             "Firebrick",
             "DarkKhaki"
-    };
+    ];
     private void InitializeData()
     {
-        if (BarItems == null)
-        {
-            BarItems = new ObservableCollection<Bar>();
-        }
-        BarItems.Add(new Bar(300, this.MaxLength));
-        BarItems.Add(new Bar(25, this.MaxLength));
-        BarItems.Add(new Bar(175, this.MaxLength));
+        BarItems ??= [];
+        BarItems.Add(new Bar(300, MaxLength));
+        BarItems.Add(new Bar(25, MaxLength));
+        BarItems.Add(new Bar(175, MaxLength));
 
-        List<object> basicData = new List<object>
-        {
+        List<object> basicData =
+        [
             64,
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             128,
@@ -79,16 +76,16 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
             512,
             "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             1024
-        };
+        ];
         MixedTypeRepeater.ItemsSource = basicData;
 
-        List<NestedCategory> nestedCategories = new List<NestedCategory>
-        {
+        List<NestedCategory> nestedCategories =
+        [
             new NestedCategory("Fruits", GetFruits()),
             new NestedCategory("Vegetables", GetVegetables()),
             new NestedCategory("Grains", GetGrains()),
             new NestedCategory("Proteins", GetProteins())
-        };
+        ];
 
 
         outerRepeater.ItemsSource = nestedCategories;
@@ -120,30 +117,18 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
 
     }
 
-    private ObservableCollection<string> GetFruits()
-    {
-        return new ObservableCollection<string> { "Apricots", "Bananas", "Grapes", "Strawberries", "Watermelon", "Plums", "Blueberries" };
-    }
+    private ObservableCollection<string> GetFruits() => new ObservableCollection<string> { "Apricots", "Bananas", "Grapes", "Strawberries", "Watermelon", "Plums", "Blueberries" };
 
-    private ObservableCollection<string> GetVegetables()
-    {
-        return new ObservableCollection<string> { "Broccoli", "Spinach", "Sweet potato", "Cauliflower", "Onion", "Brussels sprouts", "Carrots" };
-    }
-    private ObservableCollection<string> GetGrains()
-    {
-        return new ObservableCollection<string> { "Rice", "Quinoa", "Pasta", "Bread", "Farro", "Oats", "Barley" };
-    }
-    private ObservableCollection<string> GetProteins()
-    {
-        return new ObservableCollection<string> { "Steak", "Chicken", "Tofu", "Salmon", "Pork", "Chickpeas", "Eggs" };
-    }
+    private ObservableCollection<string> GetVegetables() => new ObservableCollection<string> { "Broccoli", "Spinach", "Sweet potato", "Cauliflower", "Onion", "Brussels sprouts", "Carrots" };
+    private ObservableCollection<string> GetGrains() => new ObservableCollection<string> { "Rice", "Quinoa", "Pasta", "Bread", "Farro", "Oats", "Barley" };
+    private ObservableCollection<string> GetProteins() => new ObservableCollection<string> { "Steak", "Chicken", "Tofu", "Salmon", "Pork", "Chickpeas", "Eggs" };
 
     // ==========================================================================
     // Basic, non-interactive ItemsRepeater
     // ==========================================================================
     private void AddBtn_Click(object sender, RoutedEventArgs e)
     {
-        BarItems.Add(new Bar(random.Next(this.MaxLength), this.MaxLength));
+        BarItems.Add(new Bar(random.Next(MaxLength), MaxLength));
         DeleteBtn.IsEnabled = true;
     }
 
@@ -162,7 +147,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     private void RadioBtn_Click(object sender, SelectionChangedEventArgs e)
     {
         string itemTemplateKey = string.Empty;
-        var selected = (sender as Microsoft.UI.Xaml.Controls.RadioButtons).SelectedItem;
+        var selected = (sender as RadioButtons).SelectedItem;
         if (selected == null)
         {
             // No point in continuing if selected element is null
@@ -170,7 +155,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
         }
         var layoutKey = ((FrameworkElement)selected).Tag as string;
 
-        if (layoutKey.Equals(nameof(this.VerticalStackLayout))) // we used x:Name in the resources which both acts as the x:Key value and creates a member field by the same name
+        if (layoutKey.Equals(nameof(VerticalStackLayout))) // we used x:Name in the resources which both acts as the x:Key value and creates a member field by the same name
         {
             layout.Value = layoutKey;
             itemTemplateKey = "HorizontalBarTemplate";
@@ -185,7 +170,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     </Border>
 </DataTemplate>";
         }
-        else if (layoutKey.Equals(nameof(this.HorizontalStackLayout)))
+        else if (layoutKey.Equals(nameof(HorizontalStackLayout)))
         {
             layout.Value = layoutKey;
             itemTemplateKey = "VerticalBarTemplate";
@@ -200,7 +185,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     </Border>
 </DataTemplate>";
         }
-        else if (layoutKey.Equals(nameof(this.UniformGridLayout)))
+        else if (layoutKey.Equals(nameof(UniformGridLayout)))
         {
             layout.Value = layoutKey;
             itemTemplateKey = "CircularTemplate";
@@ -217,7 +202,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     </Grid>
 </DataTemplate>";
         }
-        repeater.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
+        repeater.Layout = Resources[layoutKey] as VirtualizingLayout;
         repeater.ItemTemplate = Resources[itemTemplateKey] as DataTemplate;
         repeater.ItemsSource = BarItems;
 
@@ -231,7 +216,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     {
         string layoutKey = ((FrameworkElement)sender).Tag as string;
 
-        repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
+        repeater2.Layout = Resources[layoutKey] as VirtualizingLayout;
 
         layout2.Value = layoutKey;
 
@@ -291,7 +276,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
 
     /* This function occurs each time an element is made ready for use.
      * This is necessary for virtualization. */
-    private void OnElementPrepared(Microsoft.UI.Xaml.Controls.ItemsRepeater sender, Microsoft.UI.Xaml.Controls.ItemsRepeaterElementPreparedEventArgs args)
+    private void OnElementPrepared(ItemsRepeater sender, ItemsRepeaterElementPreparedEventArgs args)
     {
         var item = ElementCompositionPreview.GetElementVisual(args.Element);
         var svVisual = ElementCompositionPreview.GetElementVisual(Animated_ScrollViewer);
@@ -333,14 +318,13 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     {
         // Initialize list of recipes for varied image size layout sample
         var rnd = new Random();
-        List<Recipe> tempList = new List<Recipe>(
-                                    Enumerable.Range(0, 1000).Select(k =>
+        List<Recipe> tempList = [.. Enumerable.Range(0, 1000).Select(k =>
                                         new Recipe
                                         {
                                             Num = k,
                                             Name = "Recipe " + k.ToString(),
                                             Color = ColorList[rnd.Next(0, 19)]
-                                        }));
+                                        })];
 
         foreach (Recipe rec in tempList)
         {
@@ -350,7 +334,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
             string grainOption = GetGrains()[rnd.Next(0, 6)];
             string proteinOption = GetProteins()[rnd.Next(0, 6)];
             rec.Ingredients = "\n" + fruitOption + "\n" + vegOption + "\n" + grainOption + "\n" + proteinOption;
-            rec.IngList = new List<string>() { fruitOption, vegOption, grainOption, proteinOption };
+            rec.IngList = [fruitOption, vegOption, grainOption, proteinOption];
 
             // Add extra ingredients so items have varied heights in the layout
             rec.RandomizeIngredients();
@@ -359,10 +343,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
         return tempList;
     }
 
-    public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e)
-    {
-        UpdateSortAndFilter();
-    }
+    public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e) => UpdateSortAndFilter();
 
     private void OnSortAscClick(object sender, RoutedEventArgs e)
     {
@@ -388,8 +369,8 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
         var filteredTypes = staticRecipeData.Where(i => i.Ingredients.Contains(FilterRecipes.Text, StringComparison.InvariantCultureIgnoreCase));
         // Sort the recipes by whichever sorting mode was last selected (least to most ingredients by default)
         var sortedFilteredTypes = IsSortDescending ?
-            filteredTypes.OrderByDescending(i => i.IngList.Count()) :
-            filteredTypes.OrderBy(i => i.IngList.Count());
+            filteredTypes.OrderByDescending(i => i.IngList.Count) :
+            filteredTypes.OrderBy(i => i.IngList.Count);
         // Re-initialize MyItemsSource object with this newly filtered data
         filteredRecipeData.InitializeCollection(sortedFilteredTypes);
 
@@ -424,15 +405,10 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     }
 }
 
-public class NestedCategory
+public class NestedCategory(string catName, ObservableCollection<string> catItems)
 {
-    public string CategoryName { get; set; }
-    public ObservableCollection<string> CategoryItems { get; set; }
-    public NestedCategory(string catName, ObservableCollection<string> catItems)
-    {
-        CategoryName = catName;
-        CategoryItems = catItems;
-    }
+    public string CategoryName { get; set; } = catName;
+    public ObservableCollection<string> CategoryItems { get; set; } = catItems;
 }
 
 
@@ -480,27 +456,16 @@ public class StringOrIntTemplateSelector : DataTemplateSelector
     }
 }
 
-public class Bar
+public class Bar(double length, int max)
 {
-    public Bar(double length, int max)
-    {
-        Length = length;
-        MaxLength = max;
+    public double Length { get; set; } = length;
+    public int MaxLength { get; set; } = max;
 
-        Height = length / 4;
-        MaxHeight = max / 4;
+    public double Height { get; set; } = length / 4;
+    public double MaxHeight { get; set; } = max / 4;
 
-        Diameter = length / 6;
-        MaxDiameter = max / 6;
-    }
-    public double Length { get; set; }
-    public int MaxLength { get; set; }
-
-    public double Height { get; set; }
-    public double MaxHeight { get; set; }
-
-    public double Diameter { get; set; }
-    public double MaxDiameter { get; set; }
+    public double Diameter { get; set; } = length / 6;
+    public double MaxDiameter { get; set; } = max / 6;
 }
 
 public class Recipe
@@ -510,28 +475,23 @@ public class Recipe
     public List<string> IngList { get; set; }
     public string Name { get; set; }
     public string Color { get; set; }
-    public int NumIngredients
-    {
-        get
-        {
-            return IngList.Count();
-        }
-    }
+    public int NumIngredients => IngList.Count;
 
     public void RandomizeIngredients()
     {
         // To give the items different heights, give recipes random numbers of random ingredients
-        Random rndNum = new Random();
-        Random rndIng = new Random();
+        Random rndNum = new();
+        Random rndIng = new();
 
-        ObservableCollection<string> extras = new ObservableCollection<string>{
+        ObservableCollection<string> extras =
+        [
                                                      "Garlic",
                                                      "Lemon",
                                                      "Butter",
                                                      "Lime",
                                                      "Feta Cheese",
                                                      "Parmesan Cheese",
-                                                     "Breadcrumbs"};
+                                                     "Breadcrumbs"];
         for (int i = 0; i < rndNum.Next(0, 4); i++)
         {
             string newIng = extras[rndIng.Next(0, 6)];
@@ -546,9 +506,9 @@ public class Recipe
 }
 
 // Custom data source class that assigns elements unique IDs, making filtering easier
-public class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndexMapping, INotifyCollectionChanged
+public class MyItemsSource : IList, IKeyIndexMapping, INotifyCollectionChanged
 {
-    private List<Recipe> inner = new List<Recipe>();
+    private List<Recipe> inner = [];
 
     public MyItemsSource(IEnumerable<Recipe> collection)
     {
@@ -567,7 +527,7 @@ public class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndexMapping,
     }
 
     #region IReadOnlyList<T>
-    public int Count => this.inner != null ? this.inner.Count : 0;
+    public int Count => inner != null ? inner.Count : 0;
 
     public object this[int index]
     {
@@ -582,7 +542,7 @@ public class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndexMapping,
         }
     }
 
-    public IEnumerator<Recipe> GetEnumerator() => this.inner.GetEnumerator();
+    public IEnumerator<Recipe> GetEnumerator() => inner.GetEnumerator();
 
     #endregion
 
@@ -592,10 +552,7 @@ public class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndexMapping,
     #endregion
 
     #region IKeyIndexMapping
-    public string KeyFromIndex(int index)
-    {
-        return inner[index].Num.ToString();
-    }
+    public string KeyFromIndex(int index) => inner[index].Num.ToString();
 
     public int IndexFromKey(string key)
     {
@@ -612,50 +569,23 @@ public class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndexMapping,
     #endregion
 
     #region Unused List methods
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        throw new NotImplementedException();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => throw new NotImplementedException();
 
-    public int Add(object value)
-    {
-        throw new NotImplementedException();
-    }
+    public int Add(object value) => throw new NotImplementedException();
 
-    public void Clear()
-    {
-        throw new NotImplementedException();
-    }
+    public void Clear() => throw new NotImplementedException();
 
-    public bool Contains(object value)
-    {
-        throw new NotImplementedException();
-    }
+    public bool Contains(object value) => throw new NotImplementedException();
 
-    public int IndexOf(object value)
-    {
-        throw new NotImplementedException();
-    }
+    public int IndexOf(object value) => throw new NotImplementedException();
 
-    public void Insert(int index, object value)
-    {
-        throw new NotImplementedException();
-    }
+    public void Insert(int index, object value) => throw new NotImplementedException();
 
-    public void Remove(object value)
-    {
-        throw new NotImplementedException();
-    }
+    public void Remove(object value) => throw new NotImplementedException();
 
-    public void RemoveAt(int index)
-    {
-        throw new NotImplementedException();
-    }
+    public void RemoveAt(int index) => throw new NotImplementedException();
 
-    public void CopyTo(Array array, int index)
-    {
-        throw new NotImplementedException();
-    }
+    public void CopyTo(Array array, int index) => throw new NotImplementedException();
 
     public bool IsFixedSize => throw new NotImplementedException();
 

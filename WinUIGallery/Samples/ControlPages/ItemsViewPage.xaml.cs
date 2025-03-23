@@ -31,14 +31,14 @@ public sealed partial class ItemsViewPage : ItemsPageBase
 
     public ItemsViewPage()
     {
-        this.InitializeComponent();
-        this.DataContext = this;
-        this.Loaded += ItemsViewPage_Loaded;
+        InitializeComponent();
+        DataContext = this;
+        Loaded += ItemsViewPage_Loaded;
     }
 
     private void ItemsViewPage_Loaded(object sender, RoutedEventArgs e)
     {
-        this.Loaded -= ItemsViewPage_Loaded;
+        Loaded -= ItemsViewPage_Loaded;
 
         if (SwappableLayoutsItemsView != null)
         {
@@ -50,7 +50,7 @@ public sealed partial class ItemsViewPage : ItemsPageBase
 
         // Get data objects and place them into an ObservableCollection
         List<CustomDataObject> tempList = CustomDataObject.GetDataObjects(includeAllItems: true);
-        ObservableCollection<CustomDataObject> Items = new ObservableCollection<CustomDataObject>(tempList);
+        ObservableCollection<CustomDataObject> Items = [.. tempList];
 
         if (BasicItemsView != null)
         {
@@ -76,10 +76,7 @@ public sealed partial class ItemsViewPage : ItemsPageBase
     }
 
     // Example1
-    private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e)
-    {
-        tblBasicInvokeOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
-    }
+    private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e) => tblBasicInvokeOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
 
     // Example2
     private void ApplyLinedFlowLayoutLineHeight()
@@ -229,10 +226,7 @@ public sealed partial class ItemsViewPage : ItemsPageBase
     }
 
     // Example3
-    private void SwappableSelectionModesItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e)
-    {
-        tblInvocationOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
-    }
+    private void SwappableSelectionModesItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e) => tblInvocationOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
 
     private void SwappableSelectionModesItemsView_SelectionChanged(ItemsView sender, ItemsViewSelectionChangedEventArgs e)
     {

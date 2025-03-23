@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using WinUIGallery.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -15,7 +14,7 @@ public sealed partial class ClipboardPage : Page
 
     public ClipboardPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         richEditBox.Document.SetText(Microsoft.UI.Text.TextSetOptions.None, "This text will be copied to the clipboard.");
 
     }
@@ -33,14 +32,11 @@ public sealed partial class ClipboardPage : Page
         Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
         // Automatically hide the confirmation text after 2 seconds
-        if (dispatcherQueue != null)
-        {
-            dispatcherQueue.TryEnqueue(async () =>
+        dispatcherQueue?.TryEnqueue(async () =>
             {
                 await Task.Delay(2000);
                 VisualStateManager.GoToState(this, "ConfirmationClipboardCollapsed", false);
             });
-        }
 
     }
 

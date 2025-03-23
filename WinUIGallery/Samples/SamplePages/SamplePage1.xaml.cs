@@ -9,7 +9,7 @@ public sealed partial class SamplePage1 : Page
 {
     public SamplePage1()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     public void PrepareConnectedAnimation(ConnectedAnimationConfiguration config)
@@ -27,9 +27,6 @@ public sealed partial class SamplePage1 : Page
         base.OnNavigatedTo(e);
 
         var anim = ConnectedAnimationService.GetForCurrentView().GetAnimation("BackwardConnectedAnimation");
-        if (anim != null)
-        {
-            anim.TryStart(SourceElement);
-        }
+        anim?.TryStart(SourceElement);
     }
 }

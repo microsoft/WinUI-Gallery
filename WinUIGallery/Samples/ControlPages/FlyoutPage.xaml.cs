@@ -9,8 +9,6 @@
 //*********************************************************
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Input;
 
 namespace WinUIGallery.ControlPages;
 
@@ -18,12 +16,12 @@ public sealed partial class FlyoutPage : Page
 {
     public FlyoutPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     private void DeleteConfirmation_Click(object sender, RoutedEventArgs e)
     {
-        if (this.Control1.Flyout is Flyout f)
+        if (Control1.Flyout is Flyout f)
         {
             f.Hide();
         }

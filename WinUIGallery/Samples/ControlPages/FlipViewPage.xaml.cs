@@ -18,7 +18,7 @@ public sealed partial class FlipViewPage : ItemsPageBase
 {
     public FlipViewPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
