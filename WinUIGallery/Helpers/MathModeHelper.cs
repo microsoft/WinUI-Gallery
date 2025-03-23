@@ -89,7 +89,7 @@ public static class MathModeHelper
             new("Structures/Superscript_Light.png", "Structures/Superscript_Dark.png", "Superscript", "\\begin^\\end "),
             new("Structures/Subscript_Light.png", "Structures/Subscript_Dark.png", "Subscript", "\\begin_\\end "),
             new("Structures/SuperscriptSubscript_Light.png", "Structures/SuperscriptSubscript_Dark.png", "Superscript and Subscript", "()^_"),
-            new("Structures/SuperscriptSubscriptLeft_Light.png", "Structures/SuperscriptSubscriptLeft_Dark.png", "Superscript and Subscript", "(^_)"),
+            new("Structures/SuperscriptSubscriptLeft_Light.png", "Structures/SuperscriptSubscriptLeft_Dark.png", "Left Superscript and Subscript", "(^_)"),
             new("Structures/SquareRoot_Light.png", "Structures/SquareRoot_Dark.png", "Square Root", "\\sqrt "),
             new("Structures/RadicalWithDegree_Light.png", "Structures/RadicalWithDegree_Dark.png", "Radical with Degree", "\\sqrt(&)"),
             new("Structures/SquareRootWithDegree_Light.png", "Structures/SquareRootWithDegree_Dark.png", "Square Root with Degree", "\\sqrt(2&)"),
@@ -98,40 +98,54 @@ public static class MathModeHelper
         return structures;
     }
 
+    // Import the necessary functions from user32.dll to manipulate keyboard input.
     [DllImport("user32.dll")]
     private static extern IntPtr LoadKeyboardLayout(string pwszKLID, uint Flags);
 
     [DllImport("user32.dll")]
-    private static extern IntPtr GetKeyboardLayout(uint idThread);
-
-    [DllImport("user32.dll")]
-    private static extern short VkKeyScanA(char ch); // Enforce US layout
+    private static extern short VkKeyScanA(char ch); // Converts a character to its virtual-key code for the current keyboard layout.
 
     [DllImport("user32.dll", SetLastError = true)]
     private static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, int dwExtraInfo);
 
-    private const uint KLF_ACTIVATE = 1;
-    private const byte VK_SHIFT = 0x10;
-    private const uint KEYEVENTF_KEYUP = 0x0002;
+    // Constants for keyboard events.
+    private const uint KLF_ACTIVATE = 1; // Activates the specified keyboard layout.
+    private const byte VK_SHIFT = 0x10; // Virtual-key code for the Shift key.
+    private const uint KEYEVENTF_KEYUP = 0x0002; // Flag indicating a key release event.
+    private const string en_US = "00000409"; // The identifier for the US English keyboard layout.
 
+    /// <summary>
+    /// Simulates typing a command character by character using virtual keyboard events.
+    /// This is necessary because math formulas are rendered dynamically as they are typed.
+    /// If text is simply set in a RichEditBox, it will not trigger formula rendering.
+    /// </summary>
     public static void TypeCommand(string text)
     {
+        // Set the application language to English (US).
         ApplicationLanguages.PrimaryLanguageOverride = "en-US";
-        LoadKeyboardLayout("00000409", KLF_ACTIVATE); // en-US layout
 
+        // Load and activate the US English keyboard layout.
+        LoadKeyboardLayout(en_US, KLF_ACTIVATE);
+
+        // Append a space at the end to ensure the formula is fully processed.
         foreach (char c in (text + " "))
         {
+            // Get the virtual-key code for the character.
             short vks = VkKeyScanA(c);
             byte keyCode = (byte)(vks & 0xFF);
-            bool shiftRequired = (vks & 0x100) != 0;
+            bool shiftRequired = (vks & 0x100) != 0; // Check if the Shift key is needed.
 
+            // Press the Shift key if required.
             if (shiftRequired)
             {
                 keybd_event(VK_SHIFT, 0, 0, 0);
             }
-            keybd_event(keyCode, 0, 0, 0);
-            keybd_event(keyCode, 0, 2, 0);
 
+            // Simulate key press and release.
+            keybd_event(keyCode, 0, 0, 0); // Key press
+            keybd_event(keyCode, 0, 2, 0); // Key release
+
+            // Release the Shift key if it was pressed.
             if (shiftRequired)
             {
                 keybd_event(VK_SHIFT, 0, KEYEVENTF_KEYUP, 0);
