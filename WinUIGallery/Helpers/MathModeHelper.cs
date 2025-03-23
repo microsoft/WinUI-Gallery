@@ -81,7 +81,7 @@ public static class MathModeHelper
 
         return symbols;
     }
-    public static ObservableCollection<MathStucture> GetStructureCollection()
+    public static ObservableCollection<MathStucture> GetStructuresCollection()
     {
         var structures = new ObservableCollection<MathStucture>
         {

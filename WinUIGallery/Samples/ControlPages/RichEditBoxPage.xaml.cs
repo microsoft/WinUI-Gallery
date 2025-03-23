@@ -30,7 +30,7 @@ public sealed partial class RichEditBoxPage : Page
     public static extern IntPtr GetActiveWindow();
     private Windows.UI.Color currentColor = Microsoft.UI.Colors.Green;
     ObservableCollection<MathSymbol> SymbolsCollection = MathModeHelper.GetSymbolsCollection();
-    ObservableCollection<MathStucture> StructuresCollection = MathModeHelper.GetStructureCollection();
+    ObservableCollection<MathStucture> StructuresCollection = MathModeHelper.GetStructuresCollection();
     public RichEditBoxPage()
     {
         this.InitializeComponent();
