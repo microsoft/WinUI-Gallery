@@ -69,13 +69,12 @@ public class UnitTests
         };
         for (int i = 0; i < 4; i++) 
         {
-            Button button = new()
+            wrapPanel.Children.Add(new Button()
             {
                 Width = 120,
                 Height = 80,
                 Content = $"Button {i}"
-            };
-            wrapPanel.Children.Add(button);
+            });
         }
 
         UnitTestApp.UnitTestAppWindow.AddToVisualTree(wrapPanel);
