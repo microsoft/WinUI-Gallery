@@ -62,7 +62,7 @@ public class UnitTests
     [UITestMethod]
     public void TestWrapGrid()
     {
-        WinUIGallery.Layouts.WrapPanel wrapPanel = new WinUIGallery.Layouts.WrapPanel();
+        Layouts.WrapPanel wrapPanel = new Layouts.WrapPanel();
         wrapPanel.Width = 250;
         wrapPanel.Height = 250;
         for (int i = 0; i < 4; i++) 
