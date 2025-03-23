@@ -79,12 +79,10 @@ public sealed partial class RichEditBoxPage : Page
 
         if (file != null)
         {
-            using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
-                await file.OpenAsync(FileAccessMode.Read))
-            {
-                // Load the file into the Document property of the RichEditBox.
-                editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
-            }
+            using Windows.Storage.Streams.IRandomAccessStream randAccStream =
+                await file.OpenAsync(FileAccessMode.Read);
+            // Load the file into the Document property of the RichEditBox.
+            editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
         }
     }
 

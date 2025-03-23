@@ -71,11 +71,9 @@ internal sealed class SuspensionManager
             // Get an output stream for the SessionState file and write the state asynchronously
             StorageFolder localFolder = WindowHelper.GetAppLocalFolder();
             StorageFile file = await localFolder.CreateFileAsync(sessionStateFilename, CreationCollisionOption.ReplaceExisting);
-            using (Stream fileStream = await file.OpenStreamForWriteAsync())
-            {
-                sessionData.Seek(0, SeekOrigin.Begin);
-                await sessionData.CopyToAsync(fileStream);
-            }
+            using Stream fileStream = await file.OpenStreamForWriteAsync();
+            sessionData.Seek(0, SeekOrigin.Begin);
+            await sessionData.CopyToAsync(fileStream);
         }
         catch (Exception e)
         {
