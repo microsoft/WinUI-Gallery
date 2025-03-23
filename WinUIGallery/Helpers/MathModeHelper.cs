@@ -78,9 +78,9 @@ public static class MathModeHelper
             new("\u220F", "Product", "\\prod", "U+220F"),
             new("\u2210", "Coproduct", "\\coprod", "U+2210")
         };
-
         return symbols;
     }
+
     public static ObservableCollection<MathStucture> GetStructuresCollection()
     {
         var structures = new ObservableCollection<MathStucture>
@@ -135,6 +135,11 @@ public static class MathModeHelper
             new("LargeOperators/SummationWithStackedLimits_Light.png", "LargeOperators/SummationWithStackedLimits_Dark.png", "Summation with Stacked Limits", "\\sum24"),
             new("LargeOperators/SummationWithLowerLimit_Light.png", "LargeOperators/SummationWithLowerLimit_Dark.png", "Summation with Lower Limit", "\\sum12"),
             new("LargeOperators/SummationWithStackedLowerLimit_Light.png", "LargeOperators/SummationWithStackedLowerLimit_Dark.png", "Summation with Stacked Lower Limit", "\\sum8"),
+            new("LargeOperators/Product_Light.png", "LargeOperators/Product_Dark.png", "Product", "\\prod4"),
+            new("LargeOperators/ProductWithLimits_Light.png", "LargeOperators/ProductWithLimits_Dark.png", "Product with Limits", "\\prod28"),
+            new("LargeOperators/ProductWithStackedLimits_Light.png", "LargeOperators/ProductWithStackedLimits_Dark.png", "Product with Stacked Limits", "\\prod24"),
+            new("LargeOperators/ProductWithLowerLimit_Light.png", "LargeOperators/ProductWithLowerLimit_Dark.png", "Product with Lower Limit", "\\prod12"),
+            new("LargeOperators/ProductWithStackedLowerLimit_Light.png", "LargeOperators/ProductWithStackedLowerLimit_Dark.png", "Product with Stacked Lower Limit", "\\prod8"),
         };
         return integrals;
     }
