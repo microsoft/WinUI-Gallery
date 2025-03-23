@@ -126,6 +126,19 @@ public static class MathModeHelper
         return integrals;
     }
 
+    public static ObservableCollection<MathStucture> GetLargeOperatorsCollection()
+    {
+        var integrals = new ObservableCollection<MathStucture>
+        {
+            new("LargeOperators/Summation_Light.png", "LargeOperators/Summation_Dark.png", "Summation", "\\sum4"),
+            new("LargeOperators/SummationWithLimits_Light.png", "LargeOperators/SummationWithLimits_Dark.png", "Summation with Limits", "\\sum28"),
+            new("LargeOperators/SummationWithStackedLimits_Light.png", "LargeOperators/SummationWithStackedLimits_Dark.png", "Summation with Stacked Limits", "\\sum24"),
+            new("LargeOperators/SummationWithLowerLimit_Light.png", "LargeOperators/SummationWithLowerLimit_Dark.png", "Summation with Lower Limit", "\\sum12"),
+            new("LargeOperators/SummationWithStackedLowerLimit_Light.png", "LargeOperators/SummationWithStackedLowerLimit_Dark.png", "Summation with Stacked Lower Limit", "\\sum8"),
+        };
+        return integrals;
+    }
+
     // Import the necessary functions from user32.dll to manipulate keyboard input.
     [DllImport("user32.dll")]
     private static extern IntPtr LoadKeyboardLayout(string pwszKLID, uint Flags);

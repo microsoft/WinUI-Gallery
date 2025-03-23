@@ -32,6 +32,7 @@ public sealed partial class RichEditBoxPage : Page
     ObservableCollection<MathSymbol> SymbolsCollection = MathModeHelper.GetSymbolsCollection();
     ObservableCollection<MathStucture> StructuresCollection = MathModeHelper.GetStructuresCollection();
     ObservableCollection<MathStucture> IntegralsCollection = MathModeHelper.GetIntegralsCollection();
+    ObservableCollection<MathStucture> LargeOperators = MathModeHelper.GetLargeOperatorsCollection();
     public RichEditBoxPage()
     {
         this.InitializeComponent();
@@ -283,13 +284,17 @@ public sealed partial class RichEditBoxPage : Page
             {
                 StructuresTable.Visibility = Visibility.Visible;
                 SymbolsTable.Visibility = Visibility.Collapsed;
-                if(selectorBar.SelectedItem.Tag.ToString() == "Structures")
+                switch (selectorBar.SelectedItem.Tag.ToString())
                 {
-                    MathStructuresItems.ItemsSource = StructuresCollection;
-                }
-                else
-                {
-                    MathStructuresItems.ItemsSource = IntegralsCollection;
+                    case "Structures":
+                        MathStructuresItems.ItemsSource = StructuresCollection;
+                        break;
+                    case "Integrals":
+                        MathStructuresItems.ItemsSource = IntegralsCollection;
+                        break;
+                    case "LargeOperators":
+                        MathStructuresItems.ItemsSource = LargeOperators;
+                        break;
                 }
             }
         }
