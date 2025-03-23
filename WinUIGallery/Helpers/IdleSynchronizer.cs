@@ -106,13 +106,7 @@ public class IdleSynchronizer
 
     public static void Init()
     {
-        DispatcherQueue dispatcherQueue = DispatcherQueue.GetForCurrentThread();
-
-        if (dispatcherQueue == null)
-        {
-            throw new Exception("Init() must be called on the UI thread.");
-        }
-
+        DispatcherQueue dispatcherQueue = DispatcherQueue.GetForCurrentThread() ?? throw new Exception("Init() must be called on the UI thread.");
         instance = new IdleSynchronizer(dispatcherQueue);
     }
 
