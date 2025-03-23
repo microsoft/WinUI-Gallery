@@ -253,10 +253,7 @@ internal class ActivityFeedLayoutState
     {
         get
         {
-            if (_layoutRects == null)
-            {
-                _layoutRects = [];
-            }
+            _layoutRects ??= [];
 
             return _layoutRects;
         }

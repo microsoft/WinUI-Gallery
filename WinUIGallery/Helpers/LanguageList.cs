@@ -9,10 +9,7 @@ class LanguageList
 
     public LanguageList()
     {
-        if (_languages == null)
-        {
-            _languages = [];
-        }
+        _languages ??= [];
 
         _languages.Add(new Language("English", "en"));
         _languages.Add(new Language("Arabic", "ar"));

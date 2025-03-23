@@ -60,10 +60,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     ];
     private void InitializeData()
     {
-        if (BarItems == null)
-        {
-            BarItems = [];
-        }
+        BarItems ??= [];
         BarItems.Add(new Bar(300, MaxLength));
         BarItems.Add(new Bar(25, MaxLength));
         BarItems.Add(new Bar(175, MaxLength));
