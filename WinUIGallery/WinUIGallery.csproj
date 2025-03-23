@@ -188,6 +188,8 @@
         <None Remove="Assets\MathModeImages\Integrals\TripleIntegral_Light.png" />
         <None Remove="Assets\MathModeImages\Structures\CubicRoot_Dark.png" />
         <None Remove="Assets\MathModeImages\Structures\CubicRoot_Light.png" />
+        <None Remove="Assets\MathModeImages\Structures\LinearFraction_Dark.png" />
+        <None Remove="Assets\MathModeImages\Structures\LinearFraction_Light.png" />
         <None Remove="Assets\MathModeImages\Structures\RadicalWithDegree_Dark.png" />
         <None Remove="Assets\MathModeImages\Structures\RadicalWithDegree_Light.png" />
         <None Remove="Assets\MathModeImages\Structures\SquareRootWithDegree_Dark.png" />
@@ -412,8 +414,12 @@
         <Content Include="Assets\MathModeImages\Integrals\TripleIntegral_Light.png" />
         <Content Include="Assets\MathModeImages\Structures\CubicRoot_Dark.png" />
         <Content Include="Assets\MathModeImages\Structures\CubicRoot_Light.png" />
+        <Content Include="Assets\MathModeImages\Structures\LinearFraction_Dark.png" />
+        <Content Include="Assets\MathModeImages\Structures\LinearFraction_Light.png" />
         <Content Include="Assets\MathModeImages\Structures\RadicalWithDegree_Dark.png" />
         <Content Include="Assets\MathModeImages\Structures\RadicalWithDegree_Light.png" />
+        <Content Include="Assets\MathModeImages\Structures\SkewedFraction_Dark.png" />
+        <Content Include="Assets\MathModeImages\Structures\SkewedFraction_Light.png" />
         <Content Include="Assets\MathModeImages\Structures\SquareRootWithDegree_Dark.png" />
         <Content Include="Assets\MathModeImages\Structures\SquareRootWithDegree_Light.png" />
         <Content Include="Assets\MathModeImages\Structures\SquareRoot_Dark.png" />

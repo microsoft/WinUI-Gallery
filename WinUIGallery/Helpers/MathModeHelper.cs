@@ -86,6 +86,8 @@ public static class MathModeHelper
         var structures = new ObservableCollection<MathStucture>
         {
             new("Structures/StackedFraction_Light.png", "Structures/StackedFraction_Dark.png", "Stacked Fraction", "/"),
+            new("Structures/SkewedFraction_Light.png", "Structures/SkewedFraction_Dark.png", "Skewed Fraction","\\sdiv "),
+            new("Structures/LinearFraction_Light.png", "Structures/LinearFraction_Dark.png", "Linear Fraction", "\\ldiv "),
             new("Structures/Superscript_Light.png", "Structures/Superscript_Dark.png", "Superscript", "\\begin^\\end "),
             new("Structures/Subscript_Light.png", "Structures/Subscript_Dark.png", "Subscript", "\\begin_\\end "),
             new("Structures/SuperscriptSubscript_Light.png", "Structures/SuperscriptSubscript_Dark.png", "Superscript and Subscript", "\\open\\close^_ "),
