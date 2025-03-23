@@ -81,13 +81,13 @@ public class UnitTests
         UnitTestApp.UnitTestAppWindow.AddToVisualTree(wrapPanel);
         wrapPanel.UpdateLayout();
 
-        List<Rect> expectedLayouts = new()
-        {
+        List<Rect> expectedLayouts =
+        [
             new Rect(0,    0, 120,  80),
             new Rect(120,  0, 120,  80),
             new Rect(0,   80, 120,  80),
             new Rect(120, 80, 120,  80)
-        };
+        ];
         for (int i = 0; i < 4; i++)
         {
             var actualLayout = LayoutInformation.GetLayoutSlot(wrapPanel.Children[i] as FrameworkElement);
