@@ -15,7 +15,6 @@
 //******************************************************************************
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading;
 
 namespace WinUIGallery.UITests.Tests;
 

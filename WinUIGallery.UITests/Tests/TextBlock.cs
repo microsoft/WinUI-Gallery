@@ -17,8 +17,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
 
-using System.Threading;
-
 namespace WinUIGallery.UITests.Tests;
 
 [TestClass]

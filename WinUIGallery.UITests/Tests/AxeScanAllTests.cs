@@ -1,19 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VisualStudio.TestPlatform;
 using OpenQA.Selenium.Appium.Windows;
 using System;
 using System.Linq;
 using System.Text.Json;
-using System.IO;
-using System.Collections.ObjectModel;
-using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
 using System.Reflection;
 using Newtonsoft.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
 using System.Threading;
-using static System.Net.WebRequestMethods;
 
 namespace WinUIGallery.UITests.Tests;
 
