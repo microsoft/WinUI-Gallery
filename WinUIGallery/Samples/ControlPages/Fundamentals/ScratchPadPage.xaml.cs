@@ -119,7 +119,7 @@ public sealed partial class ScratchPadPage : Page
     {
         xml = xml.Trim();
 
-        char[] chars = { ' ', '/', '>' };
+        char[] chars = [' ', '/', '>'];
         var insertIndex = xml.IndexOfAny(chars);
         if (insertIndex < 0)
         {
@@ -181,7 +181,7 @@ public sealed partial class ScratchPadPage : Page
         var selectionIndex = textbox.TextDocument.Selection.StartPosition;
         if (selectionIndex > 0)
         {
-            char[] eolChars = { '\r', '\n' };
+            char[] eolChars = ['\r', '\n'];
             var endOfLineIndex = newText.LastIndexOfAny(eolChars, selectionIndex - 1);
             if (endOfLineIndex > 0)
             {
@@ -231,7 +231,7 @@ public sealed partial class ScratchPadPage : Page
 
                     var selectionStart = textbox.TextDocument.Selection.StartPosition;
                     var selectionEnd = selectionStart + textbox.TextDocument.Selection.Length;
-                    char[] eolChars = { '\r', '\n' };
+                    char[] eolChars = ['\r', '\n'];
                     var startOfLineIndex = text.LastIndexOfAny(eolChars, selectionStart) + 1;
                     if (startOfLineIndex >= 0)
                     {
@@ -325,7 +325,7 @@ public sealed partial class ScratchPadPage : Page
                     {
                         var tagName = newText.Substring(tagStartIndex + 1);
 
-                        char[] chars = { ' ', '/', '>', '\t', '\r', '\n' };
+                        char[] chars = [' ', '/', '>', '\t', '\r', '\n'];
                         var nameEndIndex = tagName.IndexOfAny(chars);
                         if (nameEndIndex > 0)
                         {
@@ -342,7 +342,7 @@ public sealed partial class ScratchPadPage : Page
                 {
                     // Might want to auto-insert quotes for a property. Check if this appears
                     // to be inside a tag and just after a property name.
-                    char[] tagChars = { '<', '>' };
+                    char[] tagChars = ['<', '>'];
                     var lastTagIndex = newText.LastIndexOfAny(tagChars, selectionIndex);
                     if (lastTagIndex >= 0 && newText[lastTagIndex] == '<')
                     {

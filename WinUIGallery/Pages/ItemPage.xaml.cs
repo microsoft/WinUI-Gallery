@@ -107,7 +107,7 @@ public sealed partial class ItemPage : Page
         {
             MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            dynMethod.Invoke(innerPage, new object[] { e });
+            dynMethod.Invoke(innerPage, [e]);
         }
 
         base.OnNavigatedFrom(e);
