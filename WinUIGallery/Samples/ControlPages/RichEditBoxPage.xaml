@@ -208,7 +208,7 @@
             </RelativePanel>
         </controls:ControlExample>
 
-        <controls:ControlExample x:Name="MathModeExample" HeaderText="Rich edit text document in math mode">
+        <controls:ControlExample x:Name="MathModeExample" HeaderText="Rich edit box in math mode">
             <controls:ControlExample.Resources>
                 <Style x:Key="ItemStyle1"
                        TargetType="Grid">
