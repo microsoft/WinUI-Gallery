@@ -154,7 +154,12 @@ public static class MathModeHelper
             new("LargeOperators/LogicalOrWithLimits_Light.png", "LargeOperators/LogicalOrWithLimits_Dark.png", "Logical OR with Limits", "\\bigvee28"),
             new("LargeOperators/LogicalOrWithStackedLimits_Light.png", "LargeOperators/LogicalOrWithStackedLimits_Dark.png", "Logical OR with Stacked Limits", "\\bigvee24"),
             new("LargeOperators/LogicalOrWithLowerLimit_Light.png", "LargeOperators/LogicalOrWithLowerLimit_Dark.png", "Logical OR with Lower Limit", "\\bigvee12"),
-            new("LargeOperators/LogicalOrWithStackedLowerLimit_Light.png", "LargeOperators/LogicalOrWithStackedLowerLimit_Dark.png", "Logical OR with Stacked Lower Limit", "\\bigvee8")
+            new("LargeOperators/LogicalOrWithStackedLowerLimit_Light.png", "LargeOperators/LogicalOrWithStackedLowerLimit_Dark.png", "Logical OR with Stacked Lower Limit", "\\bigvee8"),
+            new("LargeOperators/LogicalAnd_Light.png", "LargeOperators/LogicalAnd_Dark.png", "Logical AND", "\\bigwedge4"),
+            new("LargeOperators/LogicalAndWithLimits_Light.png", "LargeOperators/LogicalAndWithLimits_Dark.png", "Logical AND with Limits", "\\bigwedge28"),
+            new("LargeOperators/LogicalAndWithStackedLimits_Light.png", "LargeOperators/LogicalAndWithStackedLimits_Dark.png", "Logical AND with Stacked Limits", "\\bigwedge24"),
+            new("LargeOperators/LogicalAndWithLowerLimit_Light.png", "LargeOperators/LogicalAndWithLowerLimit_Dark.png", "Logical AND with Lower Limit", "\\bigwedge12"),
+            new("LargeOperators/LogicalAndWithStackedLowerLimit_Light.png", "LargeOperators/LogicalAndWithStackedLowerLimit_Dark.png", "Logical AND with Stacked Lower Limit", "\\bigwedge8")
         };
         return integrals;
     }
