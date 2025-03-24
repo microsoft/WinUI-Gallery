@@ -146,6 +146,7 @@
         <None Remove="Assets\ControlImages\AppWindow.png" />
         <None Remove="Assets\ControlImages\CodeTagIcon.png" />
         <None Remove="Assets\ControlImages\Accessibility.png" />
+        <None Remove="Assets\ControlImages\ContentIsland.png" />
         <None Remove="Assets\ControlImages\Popup.png" />
         <None Remove="Assets\Design\Cards.dark.png" />
         <None Remove="Assets\Design\Cards.light.png" />
@@ -317,6 +318,15 @@
         <None Remove="Assets\HomeHeaderTiles\Header-WinUI.png" />
         <None Remove="Assets\SampleMedia\Dark_Image.png" />
         <None Remove="Assets\SampleMedia\Light_Image.png" />
+        <None Remove="Assets\SceneNode\DamagedHelmet1.bmp" />
+        <None Remove="Assets\SceneNode\DamagedHelmet2.bmp" />
+        <None Remove="Assets\SceneNode\DamagedHelmet3.bmp" />
+        <None Remove="Assets\SceneNode\DamagedHelmet4.bmp" />
+        <None Remove="Assets\SceneNode\DamagedHelmet5.bmp" />
+        <None Remove="Assets\SceneNode\DamagedHelmet6.bin" />
+        <None Remove="Assets\SceneNode\DamagedHelmet7.bin" />
+        <None Remove="Assets\SceneNode\DamagedHelmet8.bin" />
+        <None Remove="Assets\SceneNode\DamagedHelmet9.bin" />
         <None Remove="Assets\Tiles\AppList.scale-100.png" />
         <None Remove="Assets\Tiles\AppList.scale-100_altform-colorful_theme-light.png" />
         <None Remove="Assets\Tiles\AppList.scale-125.png" />
@@ -463,8 +473,6 @@
         <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
         <None Remove="Samples\SamplePages\SampleWindow2.xaml" />
-        <None Remove="Samples\SamplePages\SampleWindow5.xaml" />
-        <None Remove="Samples\SamplePages\SampleWindow6.xaml" />
         <None Remove="Styles\Button.xaml" />
         <None Remove="Styles\Grid.xaml" />
         <None Remove="Styles\GridViewItem.xaml" />
@@ -476,6 +484,7 @@
         <Content Include="Assets\ControlImages\AppWindow.png" />
         <Content Include="Assets\ControlImages\CodeTagIcon.png" />
         <Content Include="Assets\ControlImages\Accessibility.png" />
+        <Content Include="Assets\ControlImages\ContentIsland.png" />
         <Content Include="Assets\ControlImages\CustomControls.png" />
         <Content Include="Assets\ControlImages\Popup.png" />
         <Content Include="Assets\Design\Cards.dark.png" />
@@ -666,6 +675,15 @@
         <Content Include="Assets\HomeHeaderTiles\Header-WinUI.png" />
         <Content Include="Assets\SampleMedia\Dark_Image.png" />
         <Content Include="Assets\SampleMedia\Light_Image.png" />
+        <Content Include="Assets\SceneNode\DamagedHelmet1.bmp" />
+        <Content Include="Assets\SceneNode\DamagedHelmet2.bmp" />
+        <Content Include="Assets\SceneNode\DamagedHelmet3.bmp" />
+        <Content Include="Assets\SceneNode\DamagedHelmet4.bmp" />
+        <Content Include="Assets\SceneNode\DamagedHelmet5.bmp" />
+        <Content Include="Assets\SceneNode\DamagedHelmet6.bin" />
+        <Content Include="Assets\SceneNode\DamagedHelmet7.bin" />
+        <Content Include="Assets\SceneNode\DamagedHelmet8.bin" />
+        <Content Include="Assets\SceneNode\DamagedHelmet9.bin" />
         <Content Include="Assets\Tiles\AppList.scale-100.png" />
         <Content Include="Assets\Tiles\AppList.scale-100_altform-colorful_theme-light.png" />
         <Content Include="Assets\Tiles\AppList.scale-125.png" />
@@ -803,11 +821,11 @@
         <Content Include="Samples\SampleCode\AppWindow\AppWindowSample2_cs.txt" />
         <Content Include="Samples\SampleCode\AppWindow\AppWindowSample2_xaml.txt" />
         <Content Include="Samples\SampleCode\AppWindow\AppWindowSample3_xaml.txt" />
-        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample4_cs.txt" />
-        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample4_xaml.txt" />
         <Content Include="Samples\SampleCode\AppWindow\AppWindowSample5_cs.txt" />
         <Content Include="Samples\SampleCode\AppWindow\AppWindowSample5_xaml.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample6_cs.txt" />
         <Content Include="Samples\SampleCode\AppWindow\AppWindowSample6_xaml.txt" />
+        <Content Include="Samples\SampleCode\AppWindow\AppWindowSample7_xaml.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample1_cs.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample1_xaml.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample2_cs.txt" />
@@ -824,7 +842,7 @@
       </Page>
     </ItemGroup>
     <ItemGroup>
-      <Page Update="Samples\SamplePages\SampleWindow6.xaml">
+      <Page Update="Samples\SamplePages\SampleWindow7.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
@@ -834,7 +852,7 @@
       </Page>
     </ItemGroup>  
     <ItemGroup>
-      <Page Update="Samples\SamplePages\SampleWindow5.xaml">
+      <Page Update="Samples\SamplePages\SampleWindow6.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
