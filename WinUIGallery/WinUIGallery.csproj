@@ -509,7 +509,7 @@
         <Content Include="Assets\MathModeImages\Accents\Grave_Light.png" />
         <Content Include="Assets\MathModeImages\Accents\GroupingCharacterAbove_Light.png" />
         <Content Include="Assets\MathModeImages\Accents\GroupingCharacterBelow_Light.png" />
-        <Content Include="Assets\MathModeImages\Accents\GroupingCharacterBlow_Dark.png" />
+        <Content Include="Assets\MathModeImages\Accents\GroupingCharacterBelow_Dark.png" />
         <Content Include="Assets\MathModeImages\Accents\GroupingCharacterAbove_Dark.png" />
         <Content Include="Assets\MathModeImages\Accents\Hat_Dark.png" />
         <Content Include="Assets\MathModeImages\Accents\Hat_Light.png" />
