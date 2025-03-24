@@ -145,6 +145,11 @@ public static class MathModeHelper
             new("LargeOperators/UnionWithStackedLimits_Light.png", "LargeOperators/UnionWithStackedLimits_Dark.png", "Union with Stacked Limits", "\\bigcup24"),
             new("LargeOperators/UnionWithLowerLimit_Light.png", "LargeOperators/UnionWithLowerLimit_Dark.png", "Union with Lower Limit", "\\bigcup12"),
             new("LargeOperators/UnionWithStackedLowerLimit_Light.png", "LargeOperators/UnionWithStackedLowerLimit_Dark.png", "Union with Stacked Lower Limit", "\\bigcup8"),
+            new("LargeOperators/Intersection_Light.png", "LargeOperators/Intersection_Dark.png", "Intersection", "\\bigcap4"),
+            new("LargeOperators/IntersectionWithLimits_Light.png", "LargeOperators/IntersectionWithLimits_Dark.png", "Intersection with Limits", "\\bigcap28"),
+            new("LargeOperators/IntersectionWithStackedLimits_Light.png", "LargeOperators/IntersectionWithStackedLimits_Dark.png", "Intersection with Stacked Limits", "\\bigcap24"),
+            new("LargeOperators/IntersectionWithLowerLimit_Light.png", "LargeOperators/IntersectionWithLowerLimit_Dark.png", "Intersection with Lower Limit", "\\bigcap12"),
+            new("LargeOperators/IntersectionWithStackedLowerLimit_Light.png", "LargeOperators/IntersectionWithStackedLowerLimit_Dark.png", "Intersection with Stacked Lower Limit", "\\bigcap8"),
         };
         return integrals;
     }

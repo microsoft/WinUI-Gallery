@@ -196,6 +196,16 @@
         <None Remove="Assets\MathModeImages\LargeOperators\CoProductWithStackedLowerLimit_Light.png" />
         <None Remove="Assets\MathModeImages\LargeOperators\CoProduct_Dark.png" />
         <None Remove="Assets\MathModeImages\LargeOperators\CoProduct_Light.png" />
+        <None Remove="Assets\MathModeImages\LargeOperators\IntersectionWithLimits_Dark.png" />
+        <None Remove="Assets\MathModeImages\LargeOperators\IntersectionWithLimits_Light.png" />
+        <None Remove="Assets\MathModeImages\LargeOperators\IntersectionWithLowerLimit_Dark.png" />
+        <None Remove="Assets\MathModeImages\LargeOperators\IntersectionWithLowerLimit_Light.png" />
+        <None Remove="Assets\MathModeImages\LargeOperators\IntersectionWithStackedLimits_Dark.png" />
+        <None Remove="Assets\MathModeImages\LargeOperators\IntersectionWithStackedLimits_Light.png" />
+        <None Remove="Assets\MathModeImages\LargeOperators\IntersectionWithStackedLowerLimit_Dark.png" />
+        <None Remove="Assets\MathModeImages\LargeOperators\IntersectionWithStackedLowerLimit_Light.png" />
+        <None Remove="Assets\MathModeImages\LargeOperators\Intersection_Dark.png" />
+        <None Remove="Assets\MathModeImages\LargeOperators\Intersection_Light.png" />
         <None Remove="Assets\MathModeImages\LargeOperators\ProductWithLimits_Dark.png" />
         <None Remove="Assets\MathModeImages\LargeOperators\ProductWithLimits_Light.png" />
         <None Remove="Assets\MathModeImages\LargeOperators\ProductWithLowerLimit_Dark.png" />
