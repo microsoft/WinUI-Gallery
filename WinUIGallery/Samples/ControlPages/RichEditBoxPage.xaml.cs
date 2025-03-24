@@ -275,6 +275,8 @@ public sealed partial class RichEditBoxPage : Page
     {
         if(sender is SelectorBar selectorBar)
         {
+            if (selectorBar.SelectedItem.Tag == null) return;
+
             if (selectorBar.SelectedItem.Tag.ToString() == "Symbols")
             {
                 SymbolsTable.Visibility = Visibility.Visible;
