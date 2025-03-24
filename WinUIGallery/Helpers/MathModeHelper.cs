@@ -140,11 +140,16 @@ public static class MathModeHelper
             new("LargeOperators/ProductWithStackedLimits_Light.png", "LargeOperators/ProductWithStackedLimits_Dark.png", "Product with Stacked Limits", "\\prod24"),
             new("LargeOperators/ProductWithLowerLimit_Light.png", "LargeOperators/ProductWithLowerLimit_Dark.png", "Product with Lower Limit", "\\prod12"),
             new("LargeOperators/ProductWithStackedLowerLimit_Light.png", "LargeOperators/ProductWithStackedLowerLimit_Dark.png", "Product with Stacked Lower Limit", "\\prod8"),
-            new("LargeOperators/CoProduct_Light.png", "LargeOperators/CoProduct_Dark.png", "CoProduct", "\\amalg4"),
-            new("LargeOperators/CoProductWithLimits_Light.png", "LargeOperators/CoProductWithLimits_Dark.png", "CoProduct with Limits", "\\amalg28"),
-            new("LargeOperators/CoProductWithStackedLimits_Light.png", "LargeOperators/CoProductWithStackedLimits_Dark.png", "CoProduct with Stacked Limits", "\\amalg24"),
-            new("LargeOperators/CoProductWithLowerLimit_Light.png", "LargeOperators/CoProductWithLowerLimit_Dark.png", "CoProduct with Lower Limit", "\\amalg12"),
-            new("LargeOperators/CoProductWithStackedLowerLimit_Light.png", "LargeOperators/CoProductWithStackedLowerLimit_Dark.png", "CoProduct with Stacked Lower Limit", "\\amalg8"),
+            new("LargeOperators/CoProduct_Light.png", "LargeOperators/CoProduct_Dark.png", "CoProduct", "\\coprod4"),
+            new("LargeOperators/CoProductWithLimits_Light.png", "LargeOperators/CoProductWithLimits_Dark.png", "CoProduct with Limits", "\\coprod28"),
+            new("LargeOperators/CoProductWithStackedLimits_Light.png", "LargeOperators/CoProductWithStackedLimits_Dark.png", "CoProduct with Stacked Limits", "\\coprod24"),
+            new("LargeOperators/CoProductWithLowerLimit_Light.png", "LargeOperators/CoProductWithLowerLimit_Dark.png", "CoProduct with Lower Limit", "\\coprod12"),
+            new("LargeOperators/CoProductWithStackedLowerLimit_Light.png", "LargeOperators/CoProductWithStackedLowerLimit_Dark.png", "CoProduct with Stacked Lower Limit", "\\coprod8"),
+            new("LargeOperators/Union_Light.png", "LargeOperators/Union_Dark.png", "Union", "\\bigcup4"),
+            new("LargeOperators/UnionWithLimits_Light.png", "LargeOperators/UnionWithLimits_Dark.png", "Union with Limits", "\\bigcup28"),
+            new("LargeOperators/UnionWithStackedLimits_Light.png", "LargeOperators/UnionWithStackedLimits_Dark.png", "Union with Stacked Limits", "\\bigcup24"),
+            new("LargeOperators/UnionWithLowerLimit_Light.png", "LargeOperators/UnionWithLowerLimit_Dark.png", "Union with Lower Limit", "\\bigcup12"),
+            new("LargeOperators/UnionWithStackedLowerLimit_Light.png", "LargeOperators/UnionWithStackedLowerLimit_Dark.png", "Union with Stacked Lower Limit", "\\bigcup8"),
         };
         return integrals;
     }
@@ -177,7 +182,7 @@ public static class MathModeHelper
     {
         ApplicationLanguages.PrimaryLanguageOverride = "en-US";
 
-        // Converts `"en-US"` locale name to LCID number.
+        // Converts "en-US" locale name to LCID number.
         uint lcid = LocaleNameToLCID("en-US", 0);
 
         // Convert LCID to hexadecimal string format for LoadKeyboardLayout
