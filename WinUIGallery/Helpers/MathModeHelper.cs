@@ -47,8 +47,6 @@ public static class MathModeHelper
             new("\u2235", "Because", "\\because", "U+2235"),
             new("\u221D", "Proportional To", "\\propto", "U+221D"),
             new("\u221A", "Square Root", "\\surd", "U+221A"),
-            new("\u0305", "Overline", "\\overline()", "U+0305"),
-            new("\u0332", "Underline", "\\underline()", "U+0332"),
             new("\u03C0", "Pi", "\\pi", "U+03C0"),
             new("\u03B1", "Alpha", "\\alpha", "U+03B1"),
             new("\u03B2", "Beta", "\\beta", "U+03B2"),
