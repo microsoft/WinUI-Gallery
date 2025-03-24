@@ -257,7 +257,7 @@
                                   HorizontalScrollMode="Auto"
                                   VerticalScrollBarVisibility="Hidden"
                                   BorderThickness="1"
-                                  BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                                  BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
                                   CornerRadius="4">
                         <ContentPresenter>
                             <Grid Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}">
@@ -266,6 +266,8 @@
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
                                 <Grid HorizontalAlignment="Stretch"
+                                      BorderThickness="0,0,0,1"
+                                      BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
                                       Padding="12 16">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="100" />
@@ -307,7 +309,9 @@
                                             <DataTemplate x:DataType="helper:MathSymbol">
                                                 <Grid x:Name="SymbolDataTemplate"
                                                       Padding="12"
-                                                      Loading="SymbolDataTemplate_Loading">
+                                                      Loading="SymbolDataTemplate_Loading"
+                                                      BorderThickness="0,0,0,1"
+                                                      BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="100" />
                                                         <ColumnDefinition Width="200" />
@@ -359,7 +363,7 @@
                                   VerticalScrollBarVisibility="Hidden"
                                   Visibility="Collapsed"
                                   BorderThickness="1"
-                                  BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                                  BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
                                   CornerRadius="4">
                         <ContentPresenter>
                             <Grid Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}">
@@ -368,7 +372,9 @@
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
                                 <Grid HorizontalAlignment="Stretch"
-                                      Padding="12 16">
+                                      Padding="12 16"
+                                      BorderThickness="0,0,0,1"
+                                      BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="150" />
                                         <ColumnDefinition Width="250" />
@@ -400,7 +406,9 @@
                                             <DataTemplate x:DataType="helper:MathStucture">
                                                 <Grid x:Name="StructureDataTemplate"
                                                       Padding="12"
-                                                      Loading="StructureDataTemplate_Loading">
+                                                      Loading="StructureDataTemplate_Loading"
+                                                      BorderThickness="0,0,0,1"
+                                                      BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="150" />
                                                         <ColumnDefinition Width="250" />
