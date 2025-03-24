@@ -192,7 +192,7 @@ public sealed partial class SampleWindow1 : Window
                                 with <Run FontWeight="SemiBold">OverlappedPresenter</Run>
                                 , if the title bar
                                 (<Run FontWeight="SemiBold">HasTitleBar = true</Run>) is enabled, the window must have a border
-                                (<Run FontWeight="SemiBold">HasBorder = true</Run>). Setting<Run FontWeight="SemiBold">HasBorder</Run>
+                                (<Run FontWeight="SemiBold">HasBorder = true</Run>). Setting <Run FontWeight="SemiBold">HasBorder</Run>
                                 to <Run FontWeight="SemiBold">false</Run>
                                 while <Run FontWeight="SemiBold">HasTitleBar</Run>
                                 is <Run FontWeight="SemiBold">true</Run>
