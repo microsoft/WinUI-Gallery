@@ -150,6 +150,11 @@ public static class MathModeHelper
             new("LargeOperators/IntersectionWithStackedLimits_Light.png", "LargeOperators/IntersectionWithStackedLimits_Dark.png", "Intersection with Stacked Limits", "\\bigcap24"),
             new("LargeOperators/IntersectionWithLowerLimit_Light.png", "LargeOperators/IntersectionWithLowerLimit_Dark.png", "Intersection with Lower Limit", "\\bigcap12"),
             new("LargeOperators/IntersectionWithStackedLowerLimit_Light.png", "LargeOperators/IntersectionWithStackedLowerLimit_Dark.png", "Intersection with Stacked Lower Limit", "\\bigcap8"),
+            new("LargeOperators/LogicalOr_Light.png", "LargeOperators/LogicalOr_Dark.png", "Logical OR", "\\bigvee4"),
+            new("LargeOperators/LogicalOrWithLimits_Light.png", "LargeOperators/LogicalOrWithLimits_Dark.png", "Logical OR with Limits", "\\bigvee28"),
+            new("LargeOperators/LogicalOrWithStackedLimits_Light.png", "LargeOperators/LogicalOrWithStackedLimits_Dark.png", "Logical OR with Stacked Limits", "\\bigvee24"),
+            new("LargeOperators/LogicalOrWithLowerLimit_Light.png", "LargeOperators/LogicalOrWithLowerLimit_Dark.png", "Logical OR with Lower Limit", "\\bigvee12"),
+            new("LargeOperators/LogicalOrWithStackedLowerLimit_Light.png", "LargeOperators/LogicalOrWithStackedLowerLimit_Dark.png", "Logical OR with Stacked Lower Limit", "\\bigvee8")
         };
         return integrals;
     }
