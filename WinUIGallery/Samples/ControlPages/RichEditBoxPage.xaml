@@ -244,8 +244,8 @@
                                              Tag="Integrals" />
                             <SelectorBarItem Text="Large Operators"
                                              Tag="LargeOperators" />
-                            <SelectorBarItem Text="Accent"
-                                             Tag="Accent" />
+                            <SelectorBarItem Text="Accents"
+                                             Tag="Accents" />
                             <SelectorBarItem Text="Limits &amp; Log"
                                              Tag="LimitsAndLog" />
                             <SelectorBarItem Text="Matrices"

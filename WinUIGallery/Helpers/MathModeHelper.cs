@@ -80,17 +80,17 @@ public static class MathModeHelper
     {
         var structures = new ObservableCollection<MathStucture>
         {
-            new("Structures/StackedFraction_Light.png", "Structures/StackedFraction_Dark.png", "Stacked Fraction", "/"),
-            new("Structures/SkewedFraction_Light.png", "Structures/SkewedFraction_Dark.png", "Skewed Fraction","\\sdiv "),
-            new("Structures/LinearFraction_Light.png", "Structures/LinearFraction_Dark.png", "Linear Fraction", "\\ldiv "),
-            new("Structures/Superscript_Light.png", "Structures/Superscript_Dark.png", "Superscript", "\\begin^\\end "),
-            new("Structures/Subscript_Light.png", "Structures/Subscript_Dark.png", "Subscript", "\\begin_\\end "),
-            new("Structures/SuperscriptSubscript_Light.png", "Structures/SuperscriptSubscript_Dark.png", "Superscript and Subscript", "\\open\\close^_ "),
-            new("Structures/SuperscriptSubscriptLeft_Light.png", "Structures/SuperscriptSubscriptLeft_Dark.png", "Left Superscript and Subscript", "(^_)"),
-            new("Structures/SquareRoot_Light.png", "Structures/SquareRoot_Dark.png", "Square Root", "\\sqrt "),
-            new("Structures/RadicalWithDegree_Light.png", "Structures/RadicalWithDegree_Dark.png", "Radical with Degree", "\\sqrt(&)"),
-            new("Structures/SquareRootWithDegree_Light.png", "Structures/SquareRootWithDegree_Dark.png", "Square Root with Degree", "\\sqrt(2&)"),
-            new("structures/CubicRoot_Light.png", "structures/CubicRoot_Dark.png", "Cubic Root", "\\cbrt "),
+            new("Structures/StackedFraction", "Stacked Fraction", "/"),
+            new("Structures/SkewedFraction", "Skewed Fraction","\\sdiv "),
+            new("Structures/LinearFraction", "Linear Fraction", "\\ldiv "),
+            new("Structures/Superscript", "Superscript", "\\begin^\\end "),
+            new("Structures/Subscript", "Subscript", "\\begin_\\end "),
+            new("Structures/SuperscriptSubscript", "Superscript and Subscript", "\\open\\close^_ "),
+            new("Structures/SuperscriptSubscriptLeft", "Left Superscript and Subscript", "(^_)"),
+            new("Structures/SquareRoot", "Square Root", "\\sqrt "),
+            new("Structures/RadicalWithDegree", "Radical with Degree", "\\sqrt(&)"),
+            new("Structures/SquareRootWithDegree", "Square Root with Degree", "\\sqrt(2&)"),
+            new("structures/CubicRoot", "Cubic Root", "\\cbrt "),
         };
         return structures;
     }
@@ -99,24 +99,24 @@ public static class MathModeHelper
     {
         var integrals = new ObservableCollection<MathStucture>
         {
-            new("Integrals/Integral_Light.png", "Integrals/Integral_Dark.png", "Integral", "\\int4"),
-            new("Integrals/IntegralWithLimits_Light.png", "Integrals/IntegralWithLimits_Dark.png", "Integral with Limits", "\\int24"),
-            new("Integrals/IntegralWithStackedLimits_Light.png", "Integrals/IntegralWithStackedLimits_Dark.png", "Integral with Stacked Limits", "\\int28"),
-            new("Integrals/DoubleIntegral_Light.png", "Integrals/DoubleIntegral_Dark.png", "Double Integral", "\\iint4"),
-            new("Integrals/DoubleIntegralWithLimits_Light.png", "Integrals/DoubleIntegralWithLimits_Dark.png", "Double Integral with Limits", "\\iint24"),
-            new("Integrals/DoubleIntegralWithStackedLimits_Light.png", "Integrals/DoubleIntegralWithStackedLimits_Dark.png", "Double Integral with Stacked Limits", "\\iint28"),
-            new("Integrals/TripleIntegral_Light.png", "Integrals/TripleIntegral_Dark.png", "Triple Integral", "\\iiint4"),
-            new("Integrals/TripleIntegralWithLimits_Light.png", "Integrals/TripleIntegralWithLimits_Dark.png", "Triple Integral with Limits", "\\iiint24"),
-            new("Integrals/TripleIntegralWithStackedLimits_Light.png", "Integrals/TripleIntegralWithStackedLimits_Dark.png", "Triple Integral with Stacked Limits", "\\iiint28"),
-            new("Integrals/ContourIntegral_Light.png", "Integrals/ContourIntegral_Dark.png", "Contour Integral", "\\oint4"),
-            new("Integrals/ContourIntegralWithLimits_Light.png", "Integrals/ContourIntegralWithLimits_Dark.png", "Contour Integral with Limits", "\\oint24"),
-            new("Integrals/ContourIntegralWithStackedLimits_Light.png", "Integrals/ContourIntegralWithStackedLimits_Dark.png", "Contour Integral with Stacked Limits", "\\oint28"),
-            new("Integrals/DoubleContourIntegral_Light.png", "Integrals/DoubleContourIntegral_Dark.png", "Double Contour Integral", "\\oiint4"),
-            new("Integrals/DoubleContourIntegralWithLimits_Light.png", "Integrals/DoubleContourIntegralWithLimits_Dark.png", "Double Contour Integral with Limits", "\\oiint24"),
-            new("Integrals/DoubleContourIntegralWithStackedLimits_Light.png", "Integrals/DoubleContourIntegralWithStackedLimits_Dark.png", "Double Contour Integral with Stacked Limits", "\\oiint28"),
-            new("Integrals/TripleContourIntegral_Light.png", "Integrals/TripleContourIntegral_Dark.png", "Triple Contour Integral", "\\oiiint4"),
-            new("Integrals/TripleContourIntegralWithLimits_Light.png", "Integrals/TripleContourIntegralWithLimits_Dark.png", "Triple Contour Integral with Limits", "\\oiiint24"),
-            new("Integrals/TripleContourIntegralWithStackedLimits_Light.png", "Integrals/TripleContourIntegralWithStackedLimits_Dark.png", "Triple Contour Integral with Stacked Limits", "\\oiiint28"),
+            new("Integrals/Integral", "Integral", "\\int4"),
+            new("Integrals/IntegralWithLimits", "Integral with Limits", "\\int24"),
+            new("Integrals/IntegralWithStackedLimits", "Integral with Stacked Limits", "\\int28"),
+            new("Integrals/DoubleIntegral", "Double Integral", "\\iint4"),
+            new("Integrals/DoubleIntegralWithLimits", "Double Integral with Limits", "\\iint24"),
+            new("Integrals/DoubleIntegralWithStackedLimits", "Double Integral with Stacked Limits", "\\iint28"),
+            new("Integrals/TripleIntegral", "Triple Integral", "\\iiint4"),
+            new("Integrals/TripleIntegralWithLimits", "Triple Integral with Limits", "\\iiint24"),
+            new("Integrals/TripleIntegralWithStackedLimits", "Triple Integral with Stacked Limits", "\\iiint28"),
+            new("Integrals/ContourIntegral", "Contour Integral", "\\oint4"),
+            new("Integrals/ContourIntegralWithLimits", "Contour Integral with Limits", "\\oint24"),
+            new("Integrals/ContourIntegralWithStackedLimits", "Contour Integral with Stacked Limits", "\\oint28"),
+            new("Integrals/DoubleContourIntegral", "Double Contour Integral", "\\oiint4"),
+            new("Integrals/DoubleContourIntegralWithLimits", "Double Contour Integral with Limits", "\\oiint24"),
+            new("Integrals/DoubleContourIntegralWithStackedLimits", "Double Contour Integral with Stacked Limits", "\\oiint28"),
+            new("Integrals/TripleContourIntegral", "Triple Contour Integral", "\\oiiint4"),
+            new("Integrals/TripleContourIntegralWithLimits", "Triple Contour Integral with Limits", "\\oiiint24"),
+            new("Integrals/TripleContourIntegralWithStackedLimits", "Triple Contour Integral with Stacked Limits", "\\oiiint28"),
         };
         return integrals;
     }
@@ -125,43 +125,73 @@ public static class MathModeHelper
     {
         var integrals = new ObservableCollection<MathStucture>
         {
-            new("LargeOperators/Summation_Light.png", "LargeOperators/Summation_Dark.png", "Summation", "\\sum4"),
-            new("LargeOperators/SummationWithLimits_Light.png", "LargeOperators/SummationWithLimits_Dark.png", "Summation with Limits", "\\sum28"),
-            new("LargeOperators/SummationWithStackedLimits_Light.png", "LargeOperators/SummationWithStackedLimits_Dark.png", "Summation with Stacked Limits", "\\sum24"),
-            new("LargeOperators/SummationWithLowerLimit_Light.png", "LargeOperators/SummationWithLowerLimit_Dark.png", "Summation with Lower Limit", "\\sum12"),
-            new("LargeOperators/SummationWithStackedLowerLimit_Light.png", "LargeOperators/SummationWithStackedLowerLimit_Dark.png", "Summation with Stacked Lower Limit", "\\sum8"),
-            new("LargeOperators/Product_Light.png", "LargeOperators/Product_Dark.png", "Product", "\\prod4"),
-            new("LargeOperators/ProductWithLimits_Light.png", "LargeOperators/ProductWithLimits_Dark.png", "Product with Limits", "\\prod28"),
-            new("LargeOperators/ProductWithStackedLimits_Light.png", "LargeOperators/ProductWithStackedLimits_Dark.png", "Product with Stacked Limits", "\\prod24"),
-            new("LargeOperators/ProductWithLowerLimit_Light.png", "LargeOperators/ProductWithLowerLimit_Dark.png", "Product with Lower Limit", "\\prod12"),
-            new("LargeOperators/ProductWithStackedLowerLimit_Light.png", "LargeOperators/ProductWithStackedLowerLimit_Dark.png", "Product with Stacked Lower Limit", "\\prod8"),
-            new("LargeOperators/CoProduct_Light.png", "LargeOperators/CoProduct_Dark.png", "CoProduct", "\\coprod4"),
-            new("LargeOperators/CoProductWithLimits_Light.png", "LargeOperators/CoProductWithLimits_Dark.png", "CoProduct with Limits", "\\coprod28"),
-            new("LargeOperators/CoProductWithStackedLimits_Light.png", "LargeOperators/CoProductWithStackedLimits_Dark.png", "CoProduct with Stacked Limits", "\\coprod24"),
-            new("LargeOperators/CoProductWithLowerLimit_Light.png", "LargeOperators/CoProductWithLowerLimit_Dark.png", "CoProduct with Lower Limit", "\\coprod12"),
-            new("LargeOperators/CoProductWithStackedLowerLimit_Light.png", "LargeOperators/CoProductWithStackedLowerLimit_Dark.png", "CoProduct with Stacked Lower Limit", "\\coprod8"),
-            new("LargeOperators/Union_Light.png", "LargeOperators/Union_Dark.png", "Union", "\\bigcup4"),
-            new("LargeOperators/UnionWithLimits_Light.png", "LargeOperators/UnionWithLimits_Dark.png", "Union with Limits", "\\bigcup28"),
-            new("LargeOperators/UnionWithStackedLimits_Light.png", "LargeOperators/UnionWithStackedLimits_Dark.png", "Union with Stacked Limits", "\\bigcup24"),
-            new("LargeOperators/UnionWithLowerLimit_Light.png", "LargeOperators/UnionWithLowerLimit_Dark.png", "Union with Lower Limit", "\\bigcup12"),
-            new("LargeOperators/UnionWithStackedLowerLimit_Light.png", "LargeOperators/UnionWithStackedLowerLimit_Dark.png", "Union with Stacked Lower Limit", "\\bigcup8"),
-            new("LargeOperators/Intersection_Light.png", "LargeOperators/Intersection_Dark.png", "Intersection", "\\bigcap4"),
-            new("LargeOperators/IntersectionWithLimits_Light.png", "LargeOperators/IntersectionWithLimits_Dark.png", "Intersection with Limits", "\\bigcap28"),
-            new("LargeOperators/IntersectionWithStackedLimits_Light.png", "LargeOperators/IntersectionWithStackedLimits_Dark.png", "Intersection with Stacked Limits", "\\bigcap24"),
-            new("LargeOperators/IntersectionWithLowerLimit_Light.png", "LargeOperators/IntersectionWithLowerLimit_Dark.png", "Intersection with Lower Limit", "\\bigcap12"),
-            new("LargeOperators/IntersectionWithStackedLowerLimit_Light.png", "LargeOperators/IntersectionWithStackedLowerLimit_Dark.png", "Intersection with Stacked Lower Limit", "\\bigcap8"),
-            new("LargeOperators/LogicalOr_Light.png", "LargeOperators/LogicalOr_Dark.png", "Logical OR", "\\bigvee4"),
-            new("LargeOperators/LogicalOrWithLimits_Light.png", "LargeOperators/LogicalOrWithLimits_Dark.png", "Logical OR with Limits", "\\bigvee28"),
-            new("LargeOperators/LogicalOrWithStackedLimits_Light.png", "LargeOperators/LogicalOrWithStackedLimits_Dark.png", "Logical OR with Stacked Limits", "\\bigvee24"),
-            new("LargeOperators/LogicalOrWithLowerLimit_Light.png", "LargeOperators/LogicalOrWithLowerLimit_Dark.png", "Logical OR with Lower Limit", "\\bigvee12"),
-            new("LargeOperators/LogicalOrWithStackedLowerLimit_Light.png", "LargeOperators/LogicalOrWithStackedLowerLimit_Dark.png", "Logical OR with Stacked Lower Limit", "\\bigvee8"),
-            new("LargeOperators/LogicalAnd_Light.png", "LargeOperators/LogicalAnd_Dark.png", "Logical AND", "\\bigwedge4"),
-            new("LargeOperators/LogicalAndWithLimits_Light.png", "LargeOperators/LogicalAndWithLimits_Dark.png", "Logical AND with Limits", "\\bigwedge28"),
-            new("LargeOperators/LogicalAndWithStackedLimits_Light.png", "LargeOperators/LogicalAndWithStackedLimits_Dark.png", "Logical AND with Stacked Limits", "\\bigwedge24"),
-            new("LargeOperators/LogicalAndWithLowerLimit_Light.png", "LargeOperators/LogicalAndWithLowerLimit_Dark.png", "Logical AND with Lower Limit", "\\bigwedge12"),
-            new("LargeOperators/LogicalAndWithStackedLowerLimit_Light.png", "LargeOperators/LogicalAndWithStackedLowerLimit_Dark.png", "Logical AND with Stacked Lower Limit", "\\bigwedge8")
+            new("LargeOperators/Summation", "Summation", "\\sum4"),
+            new("LargeOperators/SummationWithLimits", "Summation with Limits", "\\sum28"),
+            new("LargeOperators/SummationWithStackedLimits", "Summation with Stacked Limits", "\\sum24"),
+            new("LargeOperators/SummationWithLowerLimit", "Summation with Lower Limit", "\\sum12"),
+            new("LargeOperators/SummationWithStackedLowerLimit", "Summation with Stacked Lower Limit", "\\sum8"),
+            new("LargeOperators/Product", "Product", "\\prod4"),
+            new("LargeOperators/ProductWithLimits", "Product with Limits", "\\prod28"),
+            new("LargeOperators/ProductWithStackedLimits", "Product with Stacked Limits", "\\prod24"),
+            new("LargeOperators/ProductWithLowerLimit", "Product with Lower Limit", "\\prod12"),
+            new("LargeOperators/ProductWithStackedLowerLimit", "Product with Stacked Lower Limit", "\\prod8"),
+            new("LargeOperators/CoProduct", "CoProduct", "\\coprod4"),
+            new("LargeOperators/CoProductWithLimits", "CoProduct with Limits", "\\coprod28"),
+            new("LargeOperators/CoProductWithStackedLimits", "CoProduct with Stacked Limits", "\\coprod24"),
+            new("LargeOperators/CoProductWithLowerLimit", "CoProduct with Lower Limit", "\\coprod12"),
+            new("LargeOperators/CoProductWithStackedLowerLimit", "CoProduct with Stacked Lower Limit", "\\coprod8"),
+            new("LargeOperators/Union", "Union", "\\bigcup4"),
+            new("LargeOperators/UnionWithLimits", "Union with Limits", "\\bigcup28"),
+            new("LargeOperators/UnionWithStackedLimits", "Union with Stacked Limits", "\\bigcup24"),
+            new("LargeOperators/UnionWithLowerLimit", "Union with Lower Limit", "\\bigcup12"),
+            new("LargeOperators/UnionWithStackedLowerLimit", "Union with Stacked Lower Limit", "\\bigcup8"),
+            new("LargeOperators/Intersection", "Intersection", "\\bigcap4"),
+            new("LargeOperators/IntersectionWithLimits", "Intersection with Limits", "\\bigcap28"),
+            new("LargeOperators/IntersectionWithStackedLimits", "Intersection with Stacked Limits", "\\bigcap24"),
+            new("LargeOperators/IntersectionWithLowerLimit", "Intersection with Lower Limit", "\\bigcap12"),
+            new("LargeOperators/IntersectionWithStackedLowerLimit", "Intersection with Stacked Lower Limit", "\\bigcap8"),
+            new("LargeOperators/LogicalOr", "Logical OR", "\\bigvee4"),
+            new("LargeOperators/LogicalOrWithLimits", "Logical OR with Limits", "\\bigvee28"),
+            new("LargeOperators/LogicalOrWithStackedLimits", "Logical OR with Stacked Limits", "\\bigvee24"),
+            new("LargeOperators/LogicalOrWithLowerLimit", "Logical OR with Lower Limit", "\\bigvee12"),
+            new("LargeOperators/LogicalOrWithStackedLowerLimit", "Logical OR with Stacked Lower Limit", "\\bigvee8"),
+            new("LargeOperators/LogicalAnd", "Logical AND", "\\bigwedge4"),
+            new("LargeOperators/LogicalAndWithLimits", "Logical AND with Limits", "\\bigwedge28"),
+            new("LargeOperators/LogicalAndWithStackedLimits", "Logical AND with Stacked Limits", "\\bigwedge24"),
+            new("LargeOperators/LogicalAndWithLowerLimit", "Logical AND with Lower Limit", "\\bigwedge12"),
+            new("LargeOperators/LogicalAndWithStackedLowerLimit", "Logical AND with Stacked Lower Limit", "\\bigwedge8")
         };
         return integrals;
+    }
+
+    public static ObservableCollection<MathStucture> GetAccentsCollection()
+    {
+        var accents = new ObservableCollection<MathStucture>
+        {
+            new("Accents/Dot", "Dot", "\\dot "),
+            new("Accents/DoubleDot", "Double Dot", "\\ddot "),
+            new("Accents/TripleDot", "Triple Dot", "\\dddot "),
+            new("Accents/Hat", "Hat", "\\hat "),
+            new("Accents/Check", "Check", "\\check "),
+            new("Accents/Acute", "Acute", "\\acute "),
+            new("Accents/Grave", "Grave", "\\grave "),
+            new("Accents/Breve", "Breve", "\\breve "),
+            new("Accents/Tilde", "Tilde", "\\tilde "),
+            new("Accents/Bar", "Bar", "\\bar "),
+            new("Accents/DoubleOverbar", "Double Overbar", "\\Bar "),
+            new("Accents/Overbrace", "Overbrace", "\\open\\overbrace\\close "),
+            new("Accents/Underbrace", "Underbrace", "\\open\\underbrace\\close "),
+            new("Accents/GroupingCharacterAbove", "Grouping Character Above", "\\overbrace\\above "),
+            new("Accents/GroupingCharacterBelow", "Grouping Character Below", "\\underbrace\\below "),
+            new("Accents/LeftwardsArrowAbove", "Leftwards Arrow Above", "\\lvec "),
+            new("Accents/RightwardsArrowAbove", "Rightwards Arrow Above", "\\vec "),
+            new("Accents/Left-RightArrowAbove", "Left-Right Arrow Above", "\\open\\tvec\\close "),
+            new("Accents/LeftwardsHarpoonAbove", "Leftwards Harpoon Above", "\\lhvec "),
+            new("Accents/RightwardsHarpoonAbove", "Rightwards Harpoon Above", "\\hvec "),
+            new("Accents/Overbar", "Overbar", "\\overline "),
+            new("Accents/Underbar", "Underbar", "\\underline ")
+        };
+        return accents;
     }
 
     // Import the necessary functions from user32.dll to manipulate keyboard input.
@@ -196,7 +226,7 @@ public static class MathModeHelper
         uint lcid = LocaleNameToLCID("en-US", 0);
 
         // Convert LCID to hexadecimal string format for LoadKeyboardLayout
-        string klid = lcid.ToString("X8"); // Format LCID as 4-digit hex
+        string klid = lcid.ToString("X8"); // Format LCID as 8-digit hex
 
         // Load the keyboard layout
         LoadKeyboardLayout(klid, KLF_ACTIVATE);
@@ -251,10 +281,10 @@ public class MathStucture
     public string Name { get; set; }
     public string Command { get; set; }
 
-    public MathStucture(string LightImageUri, string DarkImageUri, string name, string command)
+    public MathStucture(string ImageUri, string name, string command)
     {
-        LightImageSource = "ms-appx:///Assets/MathModeImages/" + LightImageUri;
-        DarkImageSource = "ms-appx:///Assets/MathModeImages/" + DarkImageUri;
+        LightImageSource = "ms-appx:///Assets/MathModeImages/" + ImageUri + "_Light.png";
+        DarkImageSource = "ms-appx:///Assets/MathModeImages/" + ImageUri + "_Dark.png";
         Name = name;
         Command = command;
     }

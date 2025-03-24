@@ -33,6 +33,8 @@ public sealed partial class RichEditBoxPage : Page
     ObservableCollection<MathStucture> StructuresCollection = MathModeHelper.GetStructuresCollection();
     ObservableCollection<MathStucture> IntegralsCollection = MathModeHelper.GetIntegralsCollection();
     ObservableCollection<MathStucture> LargeOperators = MathModeHelper.GetLargeOperatorsCollection();
+    ObservableCollection<MathStucture> AccentsOperators = MathModeHelper.GetAccentsCollection();
+
     public RichEditBoxPage()
     {
         this.InitializeComponent();
@@ -296,6 +298,9 @@ public sealed partial class RichEditBoxPage : Page
                         break;
                     case "LargeOperators":
                         MathStructuresItems.ItemsSource = LargeOperators;
+                        break;
+                    case "Accents":
+                        MathStructuresItems.ItemsSource = AccentsOperators;
                         break;
                 }
             }
