@@ -140,6 +140,11 @@ public static class MathModeHelper
             new("LargeOperators/ProductWithStackedLimits_Light.png", "LargeOperators/ProductWithStackedLimits_Dark.png", "Product with Stacked Limits", "\\prod24"),
             new("LargeOperators/ProductWithLowerLimit_Light.png", "LargeOperators/ProductWithLowerLimit_Dark.png", "Product with Lower Limit", "\\prod12"),
             new("LargeOperators/ProductWithStackedLowerLimit_Light.png", "LargeOperators/ProductWithStackedLowerLimit_Dark.png", "Product with Stacked Lower Limit", "\\prod8"),
+            new("LargeOperators/CoProduct_Light.png", "LargeOperators/CoProduct_Dark.png", "CoProduct", "\\amalg4"),
+            new("LargeOperators/CoProductWithLimits_Light.png", "LargeOperators/CoProductWithLimits_Dark.png", "CoProduct with Limits", "\\amalg28"),
+            new("LargeOperators/CoProductWithStackedLimits_Light.png", "LargeOperators/CoProductWithStackedLimits_Dark.png", "CoProduct with Stacked Limits", "\\amalg24"),
+            new("LargeOperators/CoProductWithLowerLimit_Light.png", "LargeOperators/CoProductWithLowerLimit_Dark.png", "CoProduct with Lower Limit", "\\amalg12"),
+            new("LargeOperators/CoProductWithStackedLowerLimit_Light.png", "LargeOperators/CoProductWithStackedLowerLimit_Dark.png", "CoProduct with Stacked Lower Limit", "\\amalg8"),
         };
         return integrals;
     }

@@ -426,7 +426,7 @@
                                                                    ActualThemeChanged="DarkThemeImage_ActualThemeChanged" />
                                                         </StackPanel>
                                                         <ToolTipService.ToolTip>
-                                                            <x:String>Insert Symbol</x:String>
+                                                            <x:String>Insert Structure</x:String>
                                                         </ToolTipService.ToolTip>
                                                     </Button>
                                                     <TextBlock Grid.Column="1"
