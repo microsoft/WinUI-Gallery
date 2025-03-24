@@ -159,11 +159,14 @@ public static class MathModeHelper
     [DllImport("user32.dll", SetLastError = true)]
     private static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, int dwExtraInfo);
 
+    // Import the LocaleNameToLCID function from kernel32.dll
+    [DllImport("Kernel32.dll", SetLastError = true)]
+    private static extern uint LocaleNameToLCID([MarshalAs(UnmanagedType.LPWStr)] string lpName, uint dwFlags);
+
     // Constants for keyboard events.
     private const uint KLF_ACTIVATE = 1; // Activates the specified keyboard layout.
     private const byte VK_SHIFT = 0x10; // Virtual-key code for the Shift key.
     private const uint KEYEVENTF_KEYUP = 0x0002; // Flag indicating a key release event.
-    private const string en_US = "00000409"; // The identifier for the US English keyboard layout.
 
     /// <summary>
     /// Simulates typing a command character by character using virtual keyboard events.
@@ -174,8 +177,14 @@ public static class MathModeHelper
     {
         ApplicationLanguages.PrimaryLanguageOverride = "en-US";
 
-        // Load and activate the US English keyboard layout.
-        LoadKeyboardLayout(en_US, KLF_ACTIVATE);
+        // Converts `"en-US"` locale name to LCID number.
+        uint lcid = LocaleNameToLCID("en-US", 0);
+
+        // Convert LCID to hexadecimal string format for LoadKeyboardLayout
+        string klid = lcid.ToString("X8"); // Format LCID as 4-digit hex
+
+        // Load the keyboard layout
+        LoadKeyboardLayout(klid, KLF_ACTIVATE);
 
         // Append a space at the end to ensure the formula is fully processed.
         foreach (char c in (text + " "))
