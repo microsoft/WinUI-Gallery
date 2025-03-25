@@ -20,7 +20,7 @@
                         Width="50"
                         HorizontalAlignment="Left"
                         ShowAsMonochrome="False"
-                        UriSource="ms-appx:///Assets/slices.png" />
+                        UriSource="ms-appx:///Assets/SampleMedia/Slices.png" />
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
@@ -32,7 +32,7 @@
             </controls:ControlExample.Options>
             <controls:ControlExample.Xaml>
                 <x:String>
-                    &lt;BitmapIcon x:Name="SlicesIcon" UriSource="ms-appx:///Assets/slices.png" Width="50" ShowAsMonochrome="$(ShowAsMonochrome)"/&gt;
+                    &lt;BitmapIcon x:Name="SlicesIcon" UriSource="ms-appx:///Assets/SampleMedia/Slices.png" Width="50" ShowAsMonochrome="$(ShowAsMonochrome)"/&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
@@ -69,7 +69,7 @@
                         x:Name="ImageExample1"
                         Width="100"
                         AutomationProperties.Name="ImageExample1">
-                        <ImageIcon Source="/Assets/slices.png" />
+                        <ImageIcon Source="/Assets/SampleMedia/Slices.png" />
                     </Button>
                 </StackPanel>
             </controls:ControlExample.Example>

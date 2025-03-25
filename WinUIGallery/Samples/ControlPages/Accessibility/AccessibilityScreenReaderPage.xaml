@@ -219,7 +219,7 @@ AutomationProperties.Name="Contacts"&gt;
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;!-- Add "alt text" to this image so screen reader users can understand it --&gt;
-&lt;Image AutomationProperties.Name="Grapes" Source="ms-appx:///Assets/grapes.jpg"/&gt;
+&lt;Image AutomationProperties.Name="Grapes" Source="ms-appx:///Assets/SampleMedia/grapes.jpg"/&gt;
                     </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>

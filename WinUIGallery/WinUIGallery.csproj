@@ -685,6 +685,7 @@
         <Content Include="Assets\MathModeImages\Structures\Superscript_Dark.png" />
         <Content Include="Assets\MathModeImages\Structures\Superscript_Light.png" />
         <Content Include="Assets\ninegrid.gif" />
+        <Content Include="Assets\SampleMedia\ninegrid.gif" />
         <Content Include="Assets\SampleMedia\folder.png" />
         <Content Include="Assets\GalleryHeaderImage.png" />
         <Content Include="Assets\Design\Geometry.dark.png" />
