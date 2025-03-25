@@ -1,7 +1,9 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using System;
 using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
-using Windows.Globalization;
 
 namespace WinUIGallery.Helpers;
 
@@ -206,66 +208,12 @@ public static class MathModeHelper
         return limitAndFunctions;
     }
 
-    // Import the necessary functions from user32.dll to manipulate keyboard input.
-    [DllImport("user32.dll")]
-    private static extern IntPtr LoadKeyboardLayout(string pwszKLID, uint Flags);
-
-    [DllImport("user32.dll")]
-    private static extern short VkKeyScanA(char ch); // Converts a character to its virtual-key code for the current keyboard layout.
-
-    [DllImport("user32.dll", SetLastError = true)]
-    private static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, int dwExtraInfo);
-
-    // Import the LocaleNameToLCID function from kernel32.dll
-    [DllImport("Kernel32.dll", SetLastError = true)]
-    private static extern uint LocaleNameToLCID([MarshalAs(UnmanagedType.LPWStr)] string lpName, uint dwFlags);
-
-    // Constants for keyboard events.
-    private const uint KLF_ACTIVATE = 1; // Activates the specified keyboard layout.
-    private const byte VK_SHIFT = 0x10; // Virtual-key code for the Shift key.
-    private const uint KEYEVENTF_KEYUP = 0x0002; // Flag indicating a key release event.
-
-    /// <summary>
-    /// Simulates typing a command character by character using virtual keyboard events.
-    /// This is necessary because math formulas are rendered dynamically as they are typed.
-    /// If text is simply set in a RichEditBox, it will not trigger formula rendering.
-    /// </summary>
     public static void TypeCommand(string text)
     {
-        ApplicationLanguages.PrimaryLanguageOverride = "en-US";
-
-        // Converts "en-US" locale name to LCID number.
-        uint lcid = LocaleNameToLCID("en-US", 0);
-
-        // Convert LCID to hexadecimal string format for LoadKeyboardLayout
-        string klid = lcid.ToString("X8"); // Format LCID as 8-digit hex
-
-        // Load the keyboard layout
-        LoadKeyboardLayout(klid, KLF_ACTIVATE);
-
         // Append a space at the end to ensure the formula is fully processed.
         foreach (char c in (text + " "))
         {
-            // Get the virtual-key code for the character.
-            short vks = VkKeyScanA(c);
-            byte keyCode = (byte)(vks & 0xFF);
-            bool shiftRequired = (vks & 0x100) != 0; // Check if the Shift key is needed.
-
-            // Press the Shift key if required.
-            if (shiftRequired)
-            {
-                keybd_event(VK_SHIFT, 0, 0, 0);
-            }
-
-            // Simulate key press and release.
-            keybd_event(keyCode, 0, 0, 0); // Key press
-            keybd_event(keyCode, 0, 2, 0); // Key release
-
-            // Release the Shift key if it was pressed.
-            if (shiftRequired)
-            {
-                keybd_event(VK_SHIFT, 0, KEYEVENTF_KEYUP, 0);
-            }
+            KeyboardInputSender.SendUnicodeCharacter(c);
         }
     }
 }
@@ -299,5 +247,120 @@ public class MathStucture
         DarkImageSource = "ms-appx:///Assets/MathModeImages/" + ImageUri + "_Dark.png";
         Name = name;
         Command = command;
+    }
+}
+
+public class KeyboardInputSender
+{
+    [StructLayout(LayoutKind.Sequential)]
+    struct INPUT
+    {
+        public uint type;
+        public InputUnion u;
+    }
+
+    [StructLayout(LayoutKind.Explicit)]
+    struct InputUnion
+    {
+        [FieldOffset(0)] public MOUSEINPUT mi;
+        [FieldOffset(0)] public KEYBDINPUT ki;
+        [FieldOffset(0)] public HARDWAREINPUT hi;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct MOUSEINPUT
+    {
+        public int dx;
+        public int dy;
+        public uint mouseData;
+        public uint dwFlags;
+        public uint time;
+        public IntPtr dwExtraInfo;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct KEYBDINPUT
+    {
+        public ushort wVk;
+        public ushort wScan;
+        public uint dwFlags;
+        public uint time;
+        public IntPtr dwExtraInfo;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct HARDWAREINPUT
+    {
+        public uint uMsg;
+        public ushort wParamL;
+        public ushort wParamH;
+    }
+
+    const uint INPUT_KEYBOARD = 1;
+    const uint KEYEVENTF_KEYUP = 0x0002;
+    const uint KEYEVENTF_UNICODE = 0x0004;
+
+    [DllImport("user32.dll", SetLastError = true)]
+    static extern uint SendInput(uint nInputs, INPUT[] pInputs, int cbSize);
+
+    /// <summary>
+    /// Sends a single Unicode character as keyboard input to the active window.
+    /// </summary>
+    /// <param name="character">The Unicode character to send.</param>
+    /// <remarks>
+    /// This method uses the SendInput API to simulate keyboard input for Unicode characters,
+    /// witout the need to switch keyboard layouts or input methods.
+    /// 
+    /// - The first input simulates a key press (keydown) using the Unicode scan code.
+    /// - The second input simulates a key release (keyup) to complete the character entry.
+    /// 
+    /// If the input fails, it throws a Win32 exception with the system error code.
+    /// </remarks>
+    public static void SendUnicodeCharacter(char character)
+    {
+        INPUT[] inputs = new INPUT[2];
+        int structSize = Marshal.SizeOf(typeof(INPUT));
+
+        // Key Down (Unicode)
+        inputs[0] = new INPUT
+        {
+            type = INPUT_KEYBOARD,
+            u = new InputUnion
+            {
+                ki = new KEYBDINPUT
+                {
+                    wVk = 0, // Virtual key is not used for Unicode input
+                    wScan = character, // Unicode character to send
+                    dwFlags = KEYEVENTF_UNICODE, // Unicode flag for key down
+                    time = 0,
+                    dwExtraInfo = IntPtr.Zero
+                }
+            }
+        };
+
+        // Key Up (Unicode)
+        inputs[1] = new INPUT
+        {
+            type = INPUT_KEYBOARD,
+            u = new InputUnion
+            {
+                ki = new KEYBDINPUT
+                {
+                    wVk = 0,
+                    wScan = character,
+                    dwFlags = KEYEVENTF_UNICODE | KEYEVENTF_KEYUP, // Unicode key up event
+                    time = 0,
+                    dwExtraInfo = IntPtr.Zero
+                }
+            }
+        };
+
+        uint result = SendInput((uint)inputs.Length, inputs, structSize);
+
+        if (result == 0)
+        {
+            int error = Marshal.GetLastWin32Error();
+            throw new System.ComponentModel.Win32Exception(error);
+        }
     }
 }
