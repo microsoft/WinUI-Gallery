@@ -246,8 +246,8 @@
                                              Tag="LargeOperators" />
                             <SelectorBarItem Text="Accents"
                                              Tag="Accents" />
-                            <SelectorBarItem Text="Limits &amp; Log"
-                                             Tag="LimitsAndLog" />
+                            <SelectorBarItem Text="Limit &amp; Functions"
+                                             Tag="LimitAndFunctions" />
                             <SelectorBarItem Text="Matrices"
                                              Tag="Matrices"/>
                         </SelectorBar> 

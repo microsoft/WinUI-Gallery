@@ -192,6 +192,20 @@ public static class MathModeHelper
         return accents;
     }
 
+    public static ObservableCollection<MathStucture> GetLimitAndFunctionsCollection()
+    {
+        var limitAndFunctions = new ObservableCollection<MathStucture>
+        {
+            new("LimitAndFunctions/Limit", "Limit", "\\lim\\below(\\dots)"),
+            new("LimitAndFunctions/Minimum", "Minimum", "\\min\\below(\\dots)"),
+            new("LimitAndFunctions/Maximum", "Maximum", "\\max\\below(\\dots)"),
+            new("LimitAndFunctions/LogarithmWithEmptyBase", "Logarithm with Empty Base", "\\log_"),
+            new("LimitAndFunctions/LogarithmWithNoBase", "Logarithm with No Base", "\\log"),
+            new("LimitAndFunctions/NaturalLogarithm", "Natural Logarithm", "\\ln")
+        };
+        return limitAndFunctions;
+    }
+
     // Import the necessary functions from user32.dll to manipulate keyboard input.
     [DllImport("user32.dll")]
     private static extern IntPtr LoadKeyboardLayout(string pwszKLID, uint Flags);
