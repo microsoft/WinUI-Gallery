@@ -32,7 +32,7 @@ public sealed partial class SettingsPage : Page
         }
     }
 
-    public string WinAppSdkRuntimeDetails => App.WinAppSdkRuntimeDetails;
+    public string WinAppSdkRuntimeDetails => VersionHelper.WinAppSdkRuntimeDetails;
     private int lastNavigationSelectionMode = 0;
     public enum ComputeSharpAnimationState { NONE, WIPE, RIPPLE };
     public static ComputeSharpAnimationState computeSharpAnimationState = ComputeSharpAnimationState.NONE;
@@ -104,7 +104,7 @@ public sealed partial class SettingsPage : Page
         string color;
         if (selectedTheme != null)
         {
-            ThemeHelper.RootTheme = App.GetEnum<ElementTheme>(selectedTheme);
+            ThemeHelper.RootTheme = EnumHelper.GetEnum<ElementTheme>(selectedTheme);
             if (selectedTheme == "Dark")
             {
                 TitleBarHelper.SetCaptionButtonColors(window, Colors.White);
