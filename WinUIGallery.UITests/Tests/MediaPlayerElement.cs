@@ -45,7 +45,7 @@ public class MediaPlayerElement : TestBase
         // Play the video
         play.Click();
         Thread.Sleep(1000);
-        
+
         // Pause the video
         play.Click();
     }

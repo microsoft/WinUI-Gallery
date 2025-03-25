@@ -28,13 +28,13 @@ public class CheckBox : TestBase
     [ClassInitialize]
     public static void ClassInitialize(TestContext context)
     {
-		OpenControlPage("CheckBox");
-		checkBoxElement1 = Session.FindElementByName("Two-state");
+        OpenControlPage("CheckBox");
+        checkBoxElement1 = Session.FindElementByName("Two-state");
         checkBoxElement2 = Session.FindElementByName("Three-state");
         Assert.IsNotNull(checkBoxElement2);
     }
 
-	[TestMethod]
+    [TestMethod]
     public void Click()
     {
         var checkBoxEventOutput = Session.FindElementByAccessibilityId("Control2Output");
