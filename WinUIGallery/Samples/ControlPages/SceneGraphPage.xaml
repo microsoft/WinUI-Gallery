@@ -10,10 +10,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:shaders="using:WinUIGallery.Shaders"
     mc:Ignorable="d">
-    <Grid>
-        <StackPanel Spacing="64">
+    <Grid RowSpacing="64">
+		
             <controls:ControlExample
-                x:Name="Example1"
+                x:Name="Example1" VerticalAlignment="Top"
                 CSharpSource="ContentDialog/ContentDialogSample1_cs.txt"
                 HeaderText="A basic dialog that with a custom shader animation when closing."
                 XamlSource="ContentDialog/ContentDialogSample1_xaml.txt">
@@ -25,7 +25,7 @@
                         Style="{StaticResource AccentButtonStyle}" />
                 </controls:ControlExample.Example>
             </controls:ControlExample>
-            <controls:ControlExample HeaderText="Custom effects with .">
+            <controls:ControlExample Margin="0,320,0,0" Grid.Row="1" HeaderText="Custom effects with SceneGraph and custom shaders.">
                 <controls:ControlExample.Example>
                     <Grid RowSpacing="16">
                         <Grid.RowDefinitions>
@@ -63,10 +63,10 @@
                             </Grid>
                             <Grid x:Name="rootFrameInFront" />
                         </Grid>
+					
                     </Grid>
                 </controls:ControlExample.Example>
             </controls:ControlExample>
-        </StackPanel>
-        <shaders:OverlayPanel x:Name="overlayPanel" />
+		<shaders:OverlayPanel x:Name="overlayPanel" />
     </Grid>
 </Page>
