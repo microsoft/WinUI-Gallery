@@ -526,7 +526,7 @@ mathEditor.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
                         <Paragraph>
                             <Run FontWeight="SemiBold">SetMathML</Run> and
                             <Run FontWeight="SemiBold">GetMathML</Run>
-                            can be used to save and restore equations.
+                            can be used to restore and save equations.
                         </Paragraph>
                     </RichTextBlock>
 
