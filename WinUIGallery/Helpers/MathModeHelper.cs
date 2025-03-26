@@ -210,14 +210,27 @@ public static class MathModeHelper
         return limitAndFunctions;
     }
 
+    /// <summary>
+    /// Simulates typing a Unicode Nearly Plain-Text (NPT) command.
+    /// </summary>
+    /// <param name="text">The NPT command to be typed.</param>
+    /// <remarks>
+    /// This method simulates keyboard input by sending each character of the NPT command  
+    /// using `SendUnicodeCharacter()`.  
+    /// 
+    /// - A space is appended at the end to ensure the RichEditBox fully processes the command.  
+    /// - Used for entering math expressions in a way that triggers proper rendering.  
+    /// - Works by sequentially sending Unicode characters, mimicking real keyboard input.  
+    /// </remarks>
     public static void TypeCommand(string text)
     {
-        // Append a space at the end to ensure the formula is fully processed.
+        // Append a space at the end to ensure the formula is fully processed by the RichEditBox.
         foreach (char c in (text + " "))
         {
             KeyboardInputSender.SendUnicodeCharacter(c);
         }
     }
+
 
     /// <summary>
     /// Formats the given MathML string by parsing it into an XDocument
