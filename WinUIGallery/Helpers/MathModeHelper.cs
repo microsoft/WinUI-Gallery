@@ -205,7 +205,13 @@ public static class MathModeHelper
             new("LimitAndFunctions/Maximum", "Maximum", "\\max\\below(\\dots)"),
             new("LimitAndFunctions/LogarithmWithEmptyBase", "Logarithm with Empty Base", "\\log_"),
             new("LimitAndFunctions/LogarithmWithNoBase", "Logarithm with No Base", "\\log"),
-            new("LimitAndFunctions/NaturalLogarithm", "Natural Logarithm", "\\ln")
+            new("LimitAndFunctions/NaturalLogarithm", "Natural Logarithm", "\\ln"),
+            new("LimitAndFunctions/SineFunction", "Sine Function", "\\sin"),
+            new("LimitAndFunctions/CosineFunction", "Cosine Function", "\\cos"),
+            new("LimitAndFunctions/TangentFunction", "Tangent Function", "\\tan"),
+            new("LimitAndFunctions/CosecantFunction", "Cosecant Function", "\\csc"),
+            new("LimitAndFunctions/SecantFunction", "Secant Function", "\\sec"),
+            new("LimitAndFunctions/CotangentFunction", "Cotangent Function", "\\cot"),
         };
         return limitAndFunctions;
     }
