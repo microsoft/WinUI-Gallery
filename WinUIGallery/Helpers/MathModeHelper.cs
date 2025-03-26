@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
@@ -218,6 +219,20 @@ public static class MathModeHelper
         }
     }
 
+    /// <summary>
+    /// Formats the given MathML string by parsing it into an XDocument
+    /// and returning a properly indented string representation.
+    /// </summary>
+    /// <param name="mathML">The MathML string to format.</param>
+    /// <returns>
+    /// A well-formatted MathML string with proper indentation.
+    /// If parsing fails, returns the original input.
+    /// </returns>
+    /// <remarks>
+    /// This method uses XDocument for XML formatting.
+    /// If parsing fails, it logs an error using Debug.WriteLine and returns the original MathML string.
+    /// Consider additional error handling if needed.
+    /// </remarks>
     public static string FormatMathML(string mathML)
     {
         try
@@ -227,7 +242,7 @@ public static class MathModeHelper
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error formatting MathML: {ex.Message}");
+            Debug.WriteLine($"Error formatting MathML: {ex.Message}");
             return mathML; // Return the original in case of an error
         }
     }
