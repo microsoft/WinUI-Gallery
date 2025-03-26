@@ -332,7 +332,7 @@
         <Content Include="Assets\Design\Cards.light.png" />
         <Content Include="Assets\Design\Dialog.dark.png" />
         <Content Include="Assets\Design\Dialog.light.png" />
-        <Content Include="Assets\ninegrid.gif" />
+        <Content Include="Assets\SampleMedia\ninegrid.gif" />
         <Content Include="Assets\SampleMedia\folder.png" />
         <Content Include="Assets\GalleryHeaderImage.png" />
         <Content Include="Assets\Design\Geometry.dark.png" />
