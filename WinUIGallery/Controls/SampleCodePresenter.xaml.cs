@@ -260,9 +260,9 @@ public sealed partial class SampleCodePresenter : UserControl
 
     private RichTextBlockFormatter GenerateRichTextFormatter()
     {
-        var formatter = new RichTextBlockFormatter(ThemeHelper.ActualTheme);
+        var formatter = new RichTextBlockFormatter(ActualTheme);
 
-        if (ThemeHelper.ActualTheme == ElementTheme.Dark)
+        if (ActualTheme == ElementTheme.Dark)
         {
             UpdateFormatterDarkThemeColors(formatter);
         }
