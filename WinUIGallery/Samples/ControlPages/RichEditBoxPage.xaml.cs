@@ -43,6 +43,7 @@ public sealed partial class RichEditBoxPage : Page
         MathEditor.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
         MathModeDescription.Text = "Math mode enables users to have input automatically recognized and converted to math expression while being received.\r\nFor example, \"4^2\" is converted to \"4\u00b2\", and \"\\pi\" is converted to \"\u03c0\".\r\nEnabling math mode in a RichEditBox automatically switches the input font to Cambria Math. Additionally, toggling math mode clears any existing content and undo stack.";
         MathSymbolsItems.ItemsSource = SymbolsCollection;
+        mathEditor2.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
     }
 
     private void Menu_Opening(object sender, object e)
@@ -401,6 +402,33 @@ public sealed partial class RichEditBoxPage : Page
             {
                 MathModeHelper.TypeCommand(insertionBtn.Tag.ToString());
             }
+        }
+    }
+
+    private void mathEditor2_TextChanged(object sender, RoutedEventArgs e)
+    {
+        string extractedMathML;
+        mathEditor2.Document.GetMathML(out extractedMathML);
+        if (!string.IsNullOrEmpty(extractedMathML))
+        {
+            MathmlPresenter.Code = MathModeHelper.FormatMathML(extractedMathML);
+        }
+        else
+        {
+            MathmlPresenter.Code = "<!-- No MathML content -->";
+        }
+    }
+
+    private void SetMathmlEquationBtn_Click(object sender, RoutedEventArgs e)
+    {
+        string equationMathML = "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\r\n  <mml:mi mathcolor=\"#000000\">E</mml:mi>\r\n  <mml:mo mathcolor=\"#000000\">=</mml:mo>\r\n  <mml:mi mathcolor=\"#000000\">m</mml:mi>\r\n  <mml:msup>\r\n    <mml:mrow>\r\n      <mml:mi mathcolor=\"#000000\">c</mml:mi>\r\n    </mml:mrow>\r\n    <mml:mrow>\r\n      <mml:mn mathcolor=\"#000000\">2</mml:mn>\r\n    </mml:mrow>\r\n  </mml:msup>\r\n</mml:math>";
+        if(mathEditor2.ActualTheme == ElementTheme.Dark)
+        {
+            mathEditor2.Document.SetMathML(equationMathML.Replace("mathcolor=\"#000000\"", "mathcolor=\"#FFFFFF\""));
+        }
+        else
+        {
+            mathEditor2.Document.SetMathML(equationMathML.Replace("mathcolor=\"#FFFFFF\"", "mathcolor=\"#000000\""));
         }
     }
 }

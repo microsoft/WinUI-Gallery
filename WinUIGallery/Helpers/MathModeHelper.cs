@@ -4,6 +4,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
+using System.Xml.Linq;
 
 namespace WinUIGallery.Helpers;
 
@@ -214,6 +215,20 @@ public static class MathModeHelper
         foreach (char c in (text + " "))
         {
             KeyboardInputSender.SendUnicodeCharacter(c);
+        }
+    }
+
+    public static string FormatMathML(string mathML)
+    {
+        try
+        {
+            XDocument doc = XDocument.Parse(mathML);
+            return doc.ToString(); // This automatically formats with proper indentation
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error formatting MathML: {ex.Message}");
+            return mathML; // Return the original in case of an error
         }
     }
 }
