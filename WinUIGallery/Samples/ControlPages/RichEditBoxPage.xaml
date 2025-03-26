@@ -231,11 +231,24 @@
             </controls:ControlExample.Resources>
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
-                    <TextBlock x:Name="MathModeDescription"
-                               TextWrapping="Wrap" />
+                    <RichTextBlock>
+                        <Paragraph Margin="0,0,0,4">
+                            Math mode enables users to have input automatically recognized and converted to math expressions while being received.
+                        </Paragraph>
+                        <Paragraph Margin="0,0,0,4">
+                            It uses
+                            <Hyperlink NavigateUri="https://www.unicode.org/notes/tn28/">Unicode Nearly Plain-Text Encoding of Mathematics</Hyperlink>, which allows mathematical notation to be represented in a linear format and automatically converted into proper math equations.
+                        </Paragraph>
+                        <Paragraph Margin="0,0,0,4">
+                            For example, "4^2" is converted to "4&#x00b2;", and "\pi" is converted to "&#x03c0;".
+                        </Paragraph>
+                        <Paragraph>
+                            Enabling math mode in a RichEditBox automatically switches the input font to Cambria Math. Additionally, toggling math mode clears any existing content and undo stack.
+                        </Paragraph>
+                    </RichTextBlock>
                     <RichEditBox x:Name="MathEditor"
                                  Height="80"
-                                 Width="478"
+                                 Width="724"
                                  FontSize="16"
                                  HorizontalAlignment="Left" />
                     <ScrollViewer HorizontalScrollBarVisibility="Auto"
@@ -267,7 +280,8 @@
                                   VerticalScrollBarVisibility="Hidden"
                                   BorderThickness="1"
                                   BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
-                                  CornerRadius="4">
+                                  CornerRadius="4"
+                                  HorizontalAlignment="Left">
                         <ContentPresenter>
                             <Grid Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}">
                                 <Grid.RowDefinitions>
@@ -281,8 +295,8 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="100" />
                                         <ColumnDefinition Width="200" />
-                                        <ColumnDefinition Width="150" />
-                                        <ColumnDefinition Width="150" />
+                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition Width="200" />
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                                Style="{StaticResource CaptionTextBlockStyle}"
@@ -295,7 +309,7 @@
                                     <TextBlock Grid.Column="2"
                                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                                Style="{StaticResource CaptionTextBlockStyle}"
-                                               Text="Command" />
+                                               Text="Unicode NPT Command" />
                                     <TextBlock Grid.Column="3"
                                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                                Style="{StaticResource CaptionTextBlockStyle}"
@@ -324,8 +338,8 @@
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="100" />
                                                         <ColumnDefinition Width="200" />
-                                                        <ColumnDefinition Width="150" />
-                                                        <ColumnDefinition Width="150" />
+                                                        <ColumnDefinition Width="200" />
+                                                        <ColumnDefinition Width="200" />
                                                     </Grid.ColumnDefinitions>
                                                     <Button x:Name="InsertSymbolBtn"
                                                             Width="48"
@@ -373,7 +387,8 @@
                                   Visibility="Collapsed"
                                   BorderThickness="1"
                                   BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
-                                  CornerRadius="4">
+                                  CornerRadius="4"
+                                  HorizontalAlignment="Left">
                         <ContentPresenter>
                             <Grid Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}">
                                 <Grid.RowDefinitions>
@@ -387,7 +402,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="150" />
                                         <ColumnDefinition Width="250" />
-                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition Width="300" />
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                                Style="{StaticResource CaptionTextBlockStyle}"
@@ -400,7 +415,7 @@
                                     <TextBlock Grid.Column="2"
                                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                                Style="{StaticResource CaptionTextBlockStyle}"
-                                               Text="Command" />
+                                               Text="Unicode NPT Command" />
                                 </Grid>
                                 <ScrollView Grid.Row="1"
                                             HorizontalScrollBarVisibility="Auto"
@@ -421,7 +436,7 @@
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="150" />
                                                         <ColumnDefinition Width="250" />
-                                                        <ColumnDefinition Width="200" />
+                                                        <ColumnDefinition Width="300" />
                                                     </Grid.ColumnDefinitions>
                                                     <Button x:Name="InsertStructureBtn"
                                                             VerticalAlignment="Center"
@@ -518,7 +533,7 @@ mathEditor.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
                     <RichEditBox x:Name="mathEditor2"
                                  FontSize="16"
                                  Height="80"
-                                 Width="478"
+                                 Width="724"
                                  HorizontalAlignment="Left"
                                  TextChanged="mathEditor2_TextChanged" />
                     <TextBlock FontWeight="SemiBold"

@@ -41,7 +41,6 @@ public sealed partial class RichEditBoxPage : Page
         this.InitializeComponent();
 
         MathEditor.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
-        MathModeDescription.Text = "Math mode enables users to have input automatically recognized and converted to math expression while being received.\r\nFor example, \"4^2\" is converted to \"4\u00b2\", and \"\\pi\" is converted to \"\u03c0\".\r\nEnabling math mode in a RichEditBox automatically switches the input font to Cambria Math. Additionally, toggling math mode clears any existing content and undo stack.";
         MathSymbolsItems.ItemsSource = SymbolsCollection;
         mathEditor2.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
     }
