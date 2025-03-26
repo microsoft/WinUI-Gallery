@@ -10,12 +10,12 @@ using WinUIGallery.Shaders;
 
 namespace WinUIGallery.ControlPages;
 
-public sealed partial class SceneGraphPage : Page
+public sealed partial class EffectsPage : Page
 {
     // The bitmap that holds the screen capture of the dialog so we can run shaders on it.
     private CanvasRenderTarget m_canvasRenderTarget;
 
-    public SceneGraphPage()
+    public EffectsPage()
     {
         this.InitializeComponent();
     }
