@@ -5,26 +5,22 @@
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:shaders="using:WinUIGallery.Shaders"
     mc:Ignorable="d">
-    <Grid>
-        <StackPanel>
-            <controls:ControlExample
-                x:Name="Example1"
-                CSharpSource="ContentDialog/ContentDialogSample1_cs.txt"
-                HeaderText="A basic content dialog with content."
-                XamlSource="ContentDialog/ContentDialogSample1_xaml.txt">
-                <controls:ControlExample.Example>
-                    <StackPanel Orientation="Horizontal">
-                        <Button
-                            x:Name="ShowDialog"
-                            Click="ShowDialog_Click"
-                            Content="Show dialog" />
-                        <TextBlock x:Name="DialogResult" Style="{StaticResource OutputTextBlockStyle}" />
-                    </StackPanel>
-                </controls:ControlExample.Example>
-            </controls:ControlExample>
-        </StackPanel>
-        <shaders:OverlayPanel x:Name="overlayPanel"/>
-    </Grid>
+    <StackPanel>
+        <controls:ControlExample
+            x:Name="Example1"
+            CSharpSource="ContentDialog/ContentDialogSample1_cs.txt"
+            HeaderText="A basic content dialog with content."
+            XamlSource="ContentDialog/ContentDialogSample1_xaml.txt">
+            <controls:ControlExample.Example>
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        x:Name="ShowDialog"
+                        Click="ShowDialog_Click"
+                        Content="Show dialog" />
+                    <TextBlock x:Name="DialogResult" Style="{StaticResource OutputTextBlockStyle}" />
+                </StackPanel>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+    </StackPanel>
 </Page>
