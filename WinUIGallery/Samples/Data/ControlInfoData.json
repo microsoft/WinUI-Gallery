@@ -3685,6 +3685,22 @@
           ]
         },
         {
+          "UniqueId": "SceneGraph",
+          "Title": "SceneGraph",
+          "ApiNamespace": "Microsoft.UI.Content",
+          "Subtitle": "To do",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ContentIsland.png",
+          "Description": "To do",
+          "Content": "<p>Look at the <i>SceneGraphPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "ContentIsland - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.content.contentisland"
+            }
+          ]
+        },
+        {
           "UniqueId": "FilePicker",
           "Title": "FilePicker",
           "ApiNamespace": "Windows.Storage.Pickers",
