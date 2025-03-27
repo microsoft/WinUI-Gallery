@@ -2,18 +2,38 @@
 // Licensed under the MIT License.
 
 using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
 namespace WinUIGallery.Helpers;
 
+/// <summary>
+/// Represents different categories of mathematical structures.
+/// </summary>
+public enum StructuresCategory
+{
+    BasicStructures,
+    Integrals,
+    LargeOperators,
+    Accents,
+    LimitAndFunctions,
+    Matrices
+}
+
 public static class MathModeHelper
 {
-    public static ObservableCollection<MathSymbol> GetSymbolsCollection()
+    /// <summary>
+    /// Retrieves a collection of commonly used mathematical symbols.
+    /// </summary>
+    /// <returns>
+    /// An <see cref="List{MathSymbol}"/> containing mathematical symbols, 
+    /// their descriptions, Unicode NPT representations, and Unicode values.
+    /// </returns>
+    public static List<MathSymbol> GetSymbols()
     {
-        var symbols = new ObservableCollection<MathSymbol>
+        var symbols = new List<MathSymbol>
         {
             new("\u221E", "Infinity", "\\infty", "U+221E"),
             new("\u2248", "Approximately Equal", "\\approx", "U+2248"),
@@ -78,9 +98,19 @@ public static class MathModeHelper
         return symbols;
     }
 
-    public static ObservableCollection<MathStructure> GetStructuresCollection()
+    /// <summary>
+    /// Retrieves a collection of mathematical structures based on the specified category.
+    /// Uses collection initializers for better performance and readability.
+    /// </summary>
+    /// <param name="category">The category of mathematical items to retrieve.</param>
+    /// <returns>
+    /// A <see cref="List{MathStructure}"/> containing mathematical items related to the specified category.
+    /// </returns>
+    public static List<MathStructure> GetStructures(StructuresCategory category)
     {
-        var structures = new ObservableCollection<MathStructure>
+        return category switch
+        {
+            StructuresCategory.BasicStructures => new List<MathStructure>
         {
             new("Structures/StackedFraction", "stacked fraction", "/"),
             new("Structures/SkewedFraction", "Skewed fraction","\\sdiv "),
@@ -93,13 +123,9 @@ public static class MathModeHelper
             new("Structures/RadicalWithDegree", "Radical with degree", "\\sqrt(&)"),
             new("Structures/SquareRootWithDegree", "Square root with degree", "\\sqrt(2&)"),
             new("structures/CubicRoot", "Cubic root", "\\cbrt "),
-        };
-        return structures;
-    }
+        },
 
-    public static ObservableCollection<MathStructure> GetIntegralsCollection()
-    {
-        var integrals = new ObservableCollection<MathStructure>
+            StructuresCategory.Integrals => new List<MathStructure>
         {
             new("Integrals/Integral", "Integral", "\\int4"),
             new("Integrals/IntegralWithLimits", "Integral with limits", "\\int24"),
@@ -119,13 +145,10 @@ public static class MathModeHelper
             new("Integrals/TripleContourIntegral", "Triple contour integral", "\\oiiint4"),
             new("Integrals/TripleContourIntegralWithLimits", "Triple contour integral with limits", "\\oiiint24"),
             new("Integrals/TripleContourIntegralWithStackedLimits", "Triple contour integral with stacked limits", "\\oiiint28"),
-        };
-        return integrals;
-    }
+            new("Integrals/TripleContourIntegralWithStackedLimits", "Triple contour integral with stacked limits", "\\oiiint28"),
+        },
 
-    public static ObservableCollection<MathStructure> GetLargeOperatorsCollection()
-    {
-        var integrals = new ObservableCollection<MathStructure>
+            StructuresCategory.LargeOperators => new List<MathStructure>
         {
             new("LargeOperators/Summation", "Summation", "\\sum4"),
             new("LargeOperators/SummationWithLimits", "Summation with limits", "\\sum28"),
@@ -162,13 +185,9 @@ public static class MathModeHelper
             new("LargeOperators/LogicalAndWithStackedLimits", "Logical AND with stacked limits", "\\bigwedge24"),
             new("LargeOperators/LogicalAndWithLowerLimit", "Logical AND with lower limit", "\\bigwedge12"),
             new("LargeOperators/LogicalAndWithStackedLowerLimit", "Logical AND with stacked lower limit", "\\bigwedge8")
-        };
-        return integrals;
-    }
+        },
 
-    public static ObservableCollection<MathStructure> GetAccentsCollection()
-    {
-        var accents = new ObservableCollection<MathStructure>
+            StructuresCategory.Accents => new List<MathStructure>
         {
             new("Accents/Dot", "Dot", "\\dot "),
             new("Accents/DoubleDot", "Double dot", "\\ddot "),
@@ -192,13 +211,9 @@ public static class MathModeHelper
             new("Accents/RightwardsHarpoonAbove", "Rightwards harpoon above", "\\hvec "),
             new("Accents/Overbar", "Overbar", "\\overline "),
             new("Accents/Underbar", "Underbar", "\\underline ")
-        };
-        return accents;
-    }
+        },
 
-    public static ObservableCollection<MathStructure> GetLimitAndFunctionsCollection()
-    {
-        var limitAndFunctions = new ObservableCollection<MathStructure>
+            StructuresCategory.LimitAndFunctions => new List<MathStructure>
         {
             new("LimitAndFunctions/Limit", "Limit", "\\lim\\below(\\dots)"),
             new("LimitAndFunctions/Minimum", "Minimum", "\\min\\below(\\dots)"),
@@ -230,13 +245,9 @@ public static class MathModeHelper
             new("LimitAndFunctions/InverseHyperbolicCosecantFunction", "Inverse hyperbolic cosecant function", "\\csch^-1"),
             new("LimitAndFunctions/InverseHyperbolicSecantFunction", "Inverse hyperbolic secant function", "\\sech^-1"),
             new("LimitAndFunctions/InverseHyperbolicCotangentFunction", "Inverse hyperbolic cotangent function", "\\coth^-1")
-        };
-        return limitAndFunctions;
-    }
+        },
 
-    public static ObservableCollection<MathStructure> GetMatricesCollection()
-    {
-        var matrices = new ObservableCollection<MathStructure>
+            StructuresCategory.Matrices => new List<MathStructure>
         {
             new("Matrices/1x2EmptyMatrix", "1\u00D72 empty matrix", "\\matrix(\\open\\close  &\\open\\close  )"),
             new("Matrices/2x1EmptyMatrix", "2\u00D71 empty matrix", "\\matrix(\\open\\close  @\\open\\close  )"),
@@ -247,8 +258,10 @@ public static class MathModeHelper
             new("Matrices/2x2IdentityMatrix", "2\u00D72 identity matrix", "\\matrix(1&@&1)"),
             new("Matrices/3x3IdentityMatrixWithZeros", "3\u00D73 identity matrix with zeors", "\\matrix(1&0&0@0&1&0@0&0&1)"),
             new("Matrices/3x3IdentityMatrix", "3\u00D73 Identity matrix", "\\matrix(1&&@&1&@&&1)")
+        },
+
+            _ => new List<MathStructure>()
         };
-        return matrices;
     }
 
     /// <summary>

@@ -19,7 +19,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using System.Runtime.InteropServices;
-using System.Collections.ObjectModel;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
@@ -29,20 +28,20 @@ public sealed partial class RichEditBoxPage : Page
     [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto, PreserveSig = true, SetLastError = false)]
     public static extern IntPtr GetActiveWindow();
     private Windows.UI.Color currentColor = Microsoft.UI.Colors.Green;
-    ObservableCollection<MathSymbol> SymbolsCollection = MathModeHelper.GetSymbolsCollection();
-    ObservableCollection<MathStructure> StructuresCollection = MathModeHelper.GetStructuresCollection();
-    ObservableCollection<MathStructure> IntegralsCollection = MathModeHelper.GetIntegralsCollection();
-    ObservableCollection<MathStructure> LargeOperators = MathModeHelper.GetLargeOperatorsCollection();
-    ObservableCollection<MathStructure> AccentsOperators = MathModeHelper.GetAccentsCollection();
-    ObservableCollection<MathStructure> LimitAndFunctions = MathModeHelper.GetLimitAndFunctionsCollection();
-    ObservableCollection<MathStructure> Matrices = MathModeHelper.GetMatricesCollection();
+    private List<MathSymbol> Symbols = MathModeHelper.GetSymbols();
+    private List<MathStructure> BasicStructures;
+    private List<MathStructure> Integrals;
+    private List<MathStructure> LargeOperators;
+    private List<MathStructure> Accents;
+    private List<MathStructure> LimitAndFunctions;
+    private List<MathStructure> Matrices;
 
     public RichEditBoxPage()
     {
         this.InitializeComponent();
 
         MathEditor.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
-        MathSymbolsItems.ItemsSource = SymbolsCollection;
+        MathSymbolsItems.ItemsSource = Symbols;
         mathEditor2.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
     }
 
@@ -293,21 +292,45 @@ public sealed partial class RichEditBoxPage : Page
                 switch (selectorBar.SelectedItem.Tag.ToString())
                 {
                     case "Structures":
-                        MathStructuresItems.ItemsSource = StructuresCollection;
+                        if (BasicStructures == null)
+                        {
+                            BasicStructures = MathModeHelper.GetStructures(StructuresCategory.BasicStructures);
+                        }
+                        MathStructuresItems.ItemsSource = BasicStructures;
                         break;
                     case "Integrals":
-                        MathStructuresItems.ItemsSource = IntegralsCollection;
+                        if (Integrals == null)
+                        {
+                            Integrals = MathModeHelper.GetStructures(StructuresCategory.Integrals);
+                        }
+                        MathStructuresItems.ItemsSource = Integrals;
                         break;
                     case "LargeOperators":
+                        if (LargeOperators == null)
+                        {
+                            LargeOperators = MathModeHelper.GetStructures(StructuresCategory.LargeOperators);
+                        }
                         MathStructuresItems.ItemsSource = LargeOperators;
                         break;
                     case "Accents":
-                        MathStructuresItems.ItemsSource = AccentsOperators;
+                        if (Accents == null)
+                        {
+                            Accents = MathModeHelper.GetStructures(StructuresCategory.Accents);
+                        }
+                        MathStructuresItems.ItemsSource = Accents;
                         break;
                     case "LimitAndFunctions":
+                        if (LimitAndFunctions == null)
+                        {
+                            LimitAndFunctions = MathModeHelper.GetStructures(StructuresCategory.LimitAndFunctions);
+                        }
                         MathStructuresItems.ItemsSource = LimitAndFunctions;
                         break;
                     case "Matrices":
+                        if (Matrices == null)
+                        {
+                            Matrices = MathModeHelper.GetStructures(StructuresCategory.Matrices);
+                        }
                         MathStructuresItems.ItemsSource = Matrices;
                         break;
                 }
