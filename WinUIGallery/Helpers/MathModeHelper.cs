@@ -19,38 +19,38 @@ public static class MathModeHelper
             new("\u2248", "Approximately Equal", "\\approx", "U+2248"),
             new("\u00D7", "Multiplication", "\\times", "U+00D7"),
             new("\u00F7", "Division", "\\div", "U+00F7"),
-            new("\u00B1", "Plus-Minus", "\\pm", "U+00B1"),
-            new("\u2213", "Minus-Plus", "\\mp", "U+2213"),
-            new("\u22C5", "Dot Product", "\\cdot", "U+22C5"),
-            new("\u2218", "Function Composition", "\\circ", "U+2218"),
-            new("\u22C6", "Star Operator", "\\star", "U+22C6"),
-            new("\u2022", "Bullet Operator", "\\bullet", "U+2022"),
-            new("\u2295", "Direct Sum", "\\oplus", "U+2295"),
-            new("\u2297", "Tensor Product", "\\otimes", "U+2297"),
+            new("\u00B1", "Plus-minus", "\\pm", "U+00B1"),
+            new("\u2213", "Minus-plus", "\\mp", "U+2213"),
+            new("\u22C5", "Dot product", "\\cdot", "U+22C5"),
+            new("\u2218", "Function composition", "\\circ", "U+2218"),
+            new("\u22C6", "Star operator", "\\star", "U+22C6"),
+            new("\u2022", "Bullet operator", "\\bullet", "U+2022"),
+            new("\u2295", "Direct sum", "\\oplus", "U+2295"),
+            new("\u2297", "Tensor product", "\\otimes", "U+2297"),
             new("\u2229", "Intersection", "\\cap", "U+2229"),
             new("\u222A", "Union", "\\cup", "U+222A"),
-            new("\u2216", "Set Difference", "\\setminus", "U+2216"),
-            new("\u2205", "Empty Set", "\\emptyset", "U+2205"),
+            new("\u2216", "Set difference", "\\setminus", "U+2216"),
+            new("\u2205", "Empty set", "\\emptyset", "U+2205"),
             new("\u2283", "Superset", "\\supset", "U+2283"),
             new("\u2282", "Subset", "\\subset", "U+2282"),
-            new("\u2287", "Superset or Equal", "\\supseteq", "U+2287"),
-            new("\u2286", "Subset or Equal", "\\subseteq", "U+2286"),
+            new("\u2287", "Superset or equal", "\\supseteq", "U+2287"),
+            new("\u2286", "Subset or equal", "\\subseteq", "U+2286"),
             new("\u22A5", "Perpendicular", "\\perp", "U+22A5"),
             new("\u2225", "Parallel", "\\parallel", "U+2225"),
-            new("\u2226", "Not Parallel", "\\nparallel", "U+2226"),
+            new("\u2226", "Not parallel", "\\nparallel", "U+2226"),
             new("\u21D2", "Implies", "\\Rightarrow", "U+21D2"),
-            new("\u21D0", "Left Implies", "\\Leftarrow", "U+21D0"),
-            new("\u21D4", "If and Only If", "\\Leftrightarrow", "U+21D4"),
-            new("\u2200", "For All", "\\forall", "U+2200"),
-            new("\u2203", "There Exists", "\\exists", "U+2203"),
-            new("\u2204", "Does Not Exist", "\\nexists", "U+2204"),
+            new("\u21D0", "Left implies", "\\Leftarrow", "U+21D0"),
+            new("\u21D4", "If and only if", "\\Leftrightarrow", "U+21D4"),
+            new("\u2200", "For all", "\\forall", "U+2200"),
+            new("\u2203", "There exists", "\\exists", "U+2203"),
+            new("\u2204", "Does not exist", "\\nexists", "U+2204"),
             new("\u00AC", "Logical NOT", "\\neg", "U+00AC"),
             new("\u2228", "Logical OR", "\\lor", "U+2228"),
             new("\u2227", "Logical AND", "\\land", "U+2227"),
             new("\u2234", "Therefore", "\\therefore", "U+2234"),
             new("\u2235", "Because", "\\because", "U+2235"),
-            new("\u221D", "Proportional To", "\\propto", "U+221D"),
-            new("\u221A", "Square Root", "\\surd", "U+221A"),
+            new("\u221D", "Proportional to", "\\propto", "U+221D"),
+            new("\u221A", "Square root", "\\surd", "U+221A"),
             new("\u03C0", "Pi", "\\pi", "U+03C0"),
             new("\u03B1", "Alpha", "\\alpha", "U+03B1"),
             new("\u03B2", "Beta", "\\beta", "U+03B2"),
@@ -78,101 +78,101 @@ public static class MathModeHelper
         return symbols;
     }
 
-    public static ObservableCollection<MathStucture> GetStructuresCollection()
+    public static ObservableCollection<MathStructure> GetStructuresCollection()
     {
-        var structures = new ObservableCollection<MathStucture>
+        var structures = new ObservableCollection<MathStructure>
         {
-            new("Structures/StackedFraction", "Stacked Fraction", "/"),
-            new("Structures/SkewedFraction", "Skewed Fraction","\\sdiv "),
-            new("Structures/LinearFraction", "Linear Fraction", "\\ldiv "),
+            new("Structures/StackedFraction", "stacked fraction", "/"),
+            new("Structures/SkewedFraction", "Skewed fraction","\\sdiv "),
+            new("Structures/LinearFraction", "Linear fraction", "\\ldiv "),
             new("Structures/Superscript", "Superscript", "\\begin^\\end "),
             new("Structures/Subscript", "Subscript", "\\begin_\\end "),
-            new("Structures/SuperscriptSubscript", "Superscript and Subscript", "\\open\\close^_ "),
-            new("Structures/SuperscriptSubscriptLeft", "Left Superscript and Subscript", "(^_)"),
-            new("Structures/SquareRoot", "Square Root", "\\sqrt "),
-            new("Structures/RadicalWithDegree", "Radical with Degree", "\\sqrt(&)"),
-            new("Structures/SquareRootWithDegree", "Square Root with Degree", "\\sqrt(2&)"),
-            new("structures/CubicRoot", "Cubic Root", "\\cbrt "),
+            new("Structures/SuperscriptSubscript", "Superscript and subscript", "\\open\\close^_ "),
+            new("Structures/SuperscriptSubscriptLeft", "Left superscript and subscript", "(^_)"),
+            new("Structures/SquareRoot", "Square root", "\\sqrt "),
+            new("Structures/RadicalWithDegree", "Radical with degree", "\\sqrt(&)"),
+            new("Structures/SquareRootWithDegree", "Square root with degree", "\\sqrt(2&)"),
+            new("structures/CubicRoot", "Cubic root", "\\cbrt "),
         };
         return structures;
     }
 
-    public static ObservableCollection<MathStucture> GetIntegralsCollection()
+    public static ObservableCollection<MathStructure> GetIntegralsCollection()
     {
-        var integrals = new ObservableCollection<MathStucture>
+        var integrals = new ObservableCollection<MathStructure>
         {
             new("Integrals/Integral", "Integral", "\\int4"),
-            new("Integrals/IntegralWithLimits", "Integral with Limits", "\\int24"),
-            new("Integrals/IntegralWithStackedLimits", "Integral with Stacked Limits", "\\int28"),
-            new("Integrals/DoubleIntegral", "Double Integral", "\\iint4"),
-            new("Integrals/DoubleIntegralWithLimits", "Double Integral with Limits", "\\iint24"),
-            new("Integrals/DoubleIntegralWithStackedLimits", "Double Integral with Stacked Limits", "\\iint28"),
-            new("Integrals/TripleIntegral", "Triple Integral", "\\iiint4"),
-            new("Integrals/TripleIntegralWithLimits", "Triple Integral with Limits", "\\iiint24"),
-            new("Integrals/TripleIntegralWithStackedLimits", "Triple Integral with Stacked Limits", "\\iiint28"),
-            new("Integrals/ContourIntegral", "Contour Integral", "\\oint4"),
-            new("Integrals/ContourIntegralWithLimits", "Contour Integral with Limits", "\\oint24"),
-            new("Integrals/ContourIntegralWithStackedLimits", "Contour Integral with Stacked Limits", "\\oint28"),
-            new("Integrals/DoubleContourIntegral", "Double Contour Integral", "\\oiint4"),
-            new("Integrals/DoubleContourIntegralWithLimits", "Double Contour Integral with Limits", "\\oiint24"),
-            new("Integrals/DoubleContourIntegralWithStackedLimits", "Double Contour Integral with Stacked Limits", "\\oiint28"),
-            new("Integrals/TripleContourIntegral", "Triple Contour Integral", "\\oiiint4"),
-            new("Integrals/TripleContourIntegralWithLimits", "Triple Contour Integral with Limits", "\\oiiint24"),
-            new("Integrals/TripleContourIntegralWithStackedLimits", "Triple Contour Integral with Stacked Limits", "\\oiiint28"),
+            new("Integrals/IntegralWithLimits", "Integral with limits", "\\int24"),
+            new("Integrals/IntegralWithStackedLimits", "Integral with stacked limits", "\\int28"),
+            new("Integrals/DoubleIntegral", "Double integral", "\\iint4"),
+            new("Integrals/DoubleIntegralWithLimits", "Double integral with limits", "\\iint24"),
+            new("Integrals/DoubleIntegralWithStackedLimits", "Double Integral with stacked limits", "\\iint28"),
+            new("Integrals/TripleIntegral", "Triple integral", "\\iiint4"),
+            new("Integrals/TripleIntegralWithLimits", "Triple integral with limits", "\\iiint24"),
+            new("Integrals/TripleIntegralWithStackedLimits", "Triple integral with stacked limits", "\\iiint28"),
+            new("Integrals/ContourIntegral", "Contour integral", "\\oint4"),
+            new("Integrals/ContourIntegralWithLimits", "Contour integral with limits", "\\oint24"),
+            new("Integrals/ContourIntegralWithStackedLimits", "Contour integral with stacked limits", "\\oint28"),
+            new("Integrals/DoubleContourIntegral", "Double contour integral", "\\oiint4"),
+            new("Integrals/DoubleContourIntegralWithLimits", "Double contour integral with limits", "\\oiint24"),
+            new("Integrals/DoubleContourIntegralWithStackedLimits", "Double contour integral with stacked limits", "\\oiint28"),
+            new("Integrals/TripleContourIntegral", "Triple contour integral", "\\oiiint4"),
+            new("Integrals/TripleContourIntegralWithLimits", "Triple contour integral with limits", "\\oiiint24"),
+            new("Integrals/TripleContourIntegralWithStackedLimits", "Triple contour integral with stacked limits", "\\oiiint28"),
         };
         return integrals;
     }
 
-    public static ObservableCollection<MathStucture> GetLargeOperatorsCollection()
+    public static ObservableCollection<MathStructure> GetLargeOperatorsCollection()
     {
-        var integrals = new ObservableCollection<MathStucture>
+        var integrals = new ObservableCollection<MathStructure>
         {
             new("LargeOperators/Summation", "Summation", "\\sum4"),
-            new("LargeOperators/SummationWithLimits", "Summation with Limits", "\\sum28"),
-            new("LargeOperators/SummationWithStackedLimits", "Summation with Stacked Limits", "\\sum24"),
-            new("LargeOperators/SummationWithLowerLimit", "Summation with Lower Limit", "\\sum12"),
-            new("LargeOperators/SummationWithStackedLowerLimit", "Summation with Stacked Lower Limit", "\\sum8"),
+            new("LargeOperators/SummationWithLimits", "Summation with limits", "\\sum28"),
+            new("LargeOperators/SummationWithStackedLimits", "Summation with stacked limits", "\\sum24"),
+            new("LargeOperators/SummationWithLowerLimit", "Summation with lower limit", "\\sum12"),
+            new("LargeOperators/SummationWithStackedLowerLimit", "Summation with stacked lower limit", "\\sum8"),
             new("LargeOperators/Product", "Product", "\\prod4"),
-            new("LargeOperators/ProductWithLimits", "Product with Limits", "\\prod28"),
-            new("LargeOperators/ProductWithStackedLimits", "Product with Stacked Limits", "\\prod24"),
-            new("LargeOperators/ProductWithLowerLimit", "Product with Lower Limit", "\\prod12"),
-            new("LargeOperators/ProductWithStackedLowerLimit", "Product with Stacked Lower Limit", "\\prod8"),
+            new("LargeOperators/ProductWithLimits", "Product with limits", "\\prod28"),
+            new("LargeOperators/ProductWithStackedLimits", "Product with stacked limits", "\\prod24"),
+            new("LargeOperators/ProductWithLowerLimit", "Product with lower limit", "\\prod12"),
+            new("LargeOperators/ProductWithStackedLowerLimit", "Product with stacked lower limit", "\\prod8"),
             new("LargeOperators/CoProduct", "CoProduct", "\\coprod4"),
-            new("LargeOperators/CoProductWithLimits", "CoProduct with Limits", "\\coprod28"),
-            new("LargeOperators/CoProductWithStackedLimits", "CoProduct with Stacked Limits", "\\coprod24"),
-            new("LargeOperators/CoProductWithLowerLimit", "CoProduct with Lower Limit", "\\coprod12"),
-            new("LargeOperators/CoProductWithStackedLowerLimit", "CoProduct with Stacked Lower Limit", "\\coprod8"),
+            new("LargeOperators/CoProductWithLimits", "CoProduct with limits", "\\coprod28"),
+            new("LargeOperators/CoProductWithStackedLimits", "CoProduct with stacked limits", "\\coprod24"),
+            new("LargeOperators/CoProductWithLowerLimit", "CoProduct with lower limit", "\\coprod12"),
+            new("LargeOperators/CoProductWithStackedLowerLimit", "CoProduct with stacked lower limit", "\\coprod8"),
             new("LargeOperators/Union", "Union", "\\bigcup4"),
             new("LargeOperators/UnionWithLimits", "Union with Limits", "\\bigcup28"),
-            new("LargeOperators/UnionWithStackedLimits", "Union with Stacked Limits", "\\bigcup24"),
-            new("LargeOperators/UnionWithLowerLimit", "Union with Lower Limit", "\\bigcup12"),
-            new("LargeOperators/UnionWithStackedLowerLimit", "Union with Stacked Lower Limit", "\\bigcup8"),
+            new("LargeOperators/UnionWithStackedLimits", "Union with stacked limits", "\\bigcup24"),
+            new("LargeOperators/UnionWithLowerLimit", "Union with lower limit", "\\bigcup12"),
+            new("LargeOperators/UnionWithStackedLowerLimit", "Union with stacked lower limit", "\\bigcup8"),
             new("LargeOperators/Intersection", "Intersection", "\\bigcap4"),
             new("LargeOperators/IntersectionWithLimits", "Intersection with Limits", "\\bigcap28"),
-            new("LargeOperators/IntersectionWithStackedLimits", "Intersection with Stacked Limits", "\\bigcap24"),
-            new("LargeOperators/IntersectionWithLowerLimit", "Intersection with Lower Limit", "\\bigcap12"),
-            new("LargeOperators/IntersectionWithStackedLowerLimit", "Intersection with Stacked Lower Limit", "\\bigcap8"),
+            new("LargeOperators/IntersectionWithStackedLimits", "Intersection with stacked limits", "\\bigcap24"),
+            new("LargeOperators/IntersectionWithLowerLimit", "Intersection with lower limit", "\\bigcap12"),
+            new("LargeOperators/IntersectionWithStackedLowerLimit", "Intersection with stacked lower limit", "\\bigcap8"),
             new("LargeOperators/LogicalOr", "Logical OR", "\\bigvee4"),
             new("LargeOperators/LogicalOrWithLimits", "Logical OR with Limits", "\\bigvee28"),
-            new("LargeOperators/LogicalOrWithStackedLimits", "Logical OR with Stacked Limits", "\\bigvee24"),
-            new("LargeOperators/LogicalOrWithLowerLimit", "Logical OR with Lower Limit", "\\bigvee12"),
-            new("LargeOperators/LogicalOrWithStackedLowerLimit", "Logical OR with Stacked Lower Limit", "\\bigvee8"),
+            new("LargeOperators/LogicalOrWithStackedLimits", "Logical OR with stacked limits", "\\bigvee24"),
+            new("LargeOperators/LogicalOrWithLowerLimit", "Logical OR with lower limit", "\\bigvee12"),
+            new("LargeOperators/LogicalOrWithStackedLowerLimit", "Logical OR with stacked lower limit", "\\bigvee8"),
             new("LargeOperators/LogicalAnd", "Logical AND", "\\bigwedge4"),
             new("LargeOperators/LogicalAndWithLimits", "Logical AND with Limits", "\\bigwedge28"),
-            new("LargeOperators/LogicalAndWithStackedLimits", "Logical AND with Stacked Limits", "\\bigwedge24"),
-            new("LargeOperators/LogicalAndWithLowerLimit", "Logical AND with Lower Limit", "\\bigwedge12"),
-            new("LargeOperators/LogicalAndWithStackedLowerLimit", "Logical AND with Stacked Lower Limit", "\\bigwedge8")
+            new("LargeOperators/LogicalAndWithStackedLimits", "Logical AND with stacked limits", "\\bigwedge24"),
+            new("LargeOperators/LogicalAndWithLowerLimit", "Logical AND with lower limit", "\\bigwedge12"),
+            new("LargeOperators/LogicalAndWithStackedLowerLimit", "Logical AND with stacked lower limit", "\\bigwedge8")
         };
         return integrals;
     }
 
-    public static ObservableCollection<MathStucture> GetAccentsCollection()
+    public static ObservableCollection<MathStructure> GetAccentsCollection()
     {
-        var accents = new ObservableCollection<MathStucture>
+        var accents = new ObservableCollection<MathStructure>
         {
             new("Accents/Dot", "Dot", "\\dot "),
-            new("Accents/DoubleDot", "Double Dot", "\\ddot "),
-            new("Accents/TripleDot", "Triple Dot", "\\dddot "),
+            new("Accents/DoubleDot", "Double dot", "\\ddot "),
+            new("Accents/TripleDot", "Triple dot", "\\dddot "),
             new("Accents/Hat", "Hat", "\\hat "),
             new("Accents/Check", "Check", "\\check "),
             new("Accents/Acute", "Acute", "\\acute "),
@@ -180,73 +180,73 @@ public static class MathModeHelper
             new("Accents/Breve", "Breve", "\\breve "),
             new("Accents/Tilde", "Tilde", "\\tilde "),
             new("Accents/Bar", "Bar", "\\bar "),
-            new("Accents/DoubleOverbar", "Double Overbar", "\\Bar "),
+            new("Accents/DoubleOverbar", "Double overbar", "\\Bar "),
             new("Accents/Overbrace", "Overbrace", "\\open\\overbrace\\close "),
             new("Accents/Underbrace", "Underbrace", "\\open\\underbrace\\close "),
-            new("Accents/GroupingCharacterAbove", "Grouping Character Above", "\\overbrace\\above "),
-            new("Accents/GroupingCharacterBelow", "Grouping Character Below", "\\underbrace\\below "),
-            new("Accents/LeftwardsArrowAbove", "Leftwards Arrow Above", "\\lvec "),
-            new("Accents/RightwardsArrowAbove", "Rightwards Arrow Above", "\\vec "),
-            new("Accents/Left-RightArrowAbove", "Left-Right Arrow Above", "\\open\\tvec\\close "),
-            new("Accents/LeftwardsHarpoonAbove", "Leftwards Harpoon Above", "\\lhvec "),
-            new("Accents/RightwardsHarpoonAbove", "Rightwards Harpoon Above", "\\hvec "),
+            new("Accents/GroupingCharacterAbove", "Grouping character above", "\\overbrace\\above "),
+            new("Accents/GroupingCharacterBelow", "Grouping character below", "\\underbrace\\below "),
+            new("Accents/LeftwardsArrowAbove", "Leftwards arrow above", "\\lvec "),
+            new("Accents/RightwardsArrowAbove", "Rightwards arrow above", "\\vec "),
+            new("Accents/Left-RightArrowAbove", "Left-Right arrow above", "\\open\\tvec\\close "),
+            new("Accents/LeftwardsHarpoonAbove", "Leftwards harpoon above", "\\lhvec "),
+            new("Accents/RightwardsHarpoonAbove", "Rightwards harpoon above", "\\hvec "),
             new("Accents/Overbar", "Overbar", "\\overline "),
             new("Accents/Underbar", "Underbar", "\\underline ")
         };
         return accents;
     }
 
-    public static ObservableCollection<MathStucture> GetLimitAndFunctionsCollection()
+    public static ObservableCollection<MathStructure> GetLimitAndFunctionsCollection()
     {
-        var limitAndFunctions = new ObservableCollection<MathStucture>
+        var limitAndFunctions = new ObservableCollection<MathStructure>
         {
             new("LimitAndFunctions/Limit", "Limit", "\\lim\\below(\\dots)"),
             new("LimitAndFunctions/Minimum", "Minimum", "\\min\\below(\\dots)"),
             new("LimitAndFunctions/Maximum", "Maximum", "\\max\\below(\\dots)"),
-            new("LimitAndFunctions/LogarithmWithEmptyBase", "Logarithm with Empty Base", "\\log_"),
-            new("LimitAndFunctions/LogarithmWithNoBase", "Logarithm with No Base", "\\log"),
-            new("LimitAndFunctions/NaturalLogarithm", "Natural Logarithm", "\\ln"),
-            new("LimitAndFunctions/SineFunction", "Sine Function", "\\sin"),
-            new("LimitAndFunctions/CosineFunction", "Cosine Function", "\\cos"),
-            new("LimitAndFunctions/TangentFunction", "Tangent Function", "\\tan"),
-            new("LimitAndFunctions/CosecantFunction", "Cosecant Function", "\\csc"),
-            new("LimitAndFunctions/SecantFunction", "Secant Function", "\\sec"),
-            new("LimitAndFunctions/CotangentFunction", "Cotangent Function", "\\cot"),
-            new("LimitAndFunctions/InverseSineFunction", "Inverse Sine Function", "\\sin^-1"),
-            new("LimitAndFunctions/InverseCosineFunction", "Inverse Cosine Function", "\\cos^-1"),
-            new("LimitAndFunctions/InverseTangentFunction", "Inverse Tangent Function", "\\tan^-1"),
-            new("LimitAndFunctions/InverseCosecantFunction", "Inverse Cosecant Function", "\\csc^-1"),
-            new("LimitAndFunctions/InverseSecantFunction", "Inverse Secant Function", "\\sec^-1"),
-            new("LimitAndFunctions/InverseCotangentFunction", "Inverse Cotangent Function", "\\cot^-1"),
-            new("LimitAndFunctions/HyperbolicSineFunction", "Hyperbolic Sine Function", "\\sinh"),
-            new("LimitAndFunctions/HyperbolicCosineFunction", "Hyperbolic Cosine Function", "\\cosh"),
-            new("LimitAndFunctions/HyperbolicTangentFunction", "Hyperbolic Tangent Function", "\\tanh"),
-            new("LimitAndFunctions/HyperbolicCosecantFunction", "Hyperbolic Cosecant Function", "\\csch"),
-            new("LimitAndFunctions/HyperbolicSecantFunction", "Hyperbolic Secant Function", "\\sech"),
-            new("LimitAndFunctions/HyperbolicCotangentFunction", "Hyperbolic Cotangent Function", "\\coth"),
-            new("LimitAndFunctions/InverseHyperbolicSineFunction", "Inverse Hyperbolic Sine Function", "\\sinh^-1"),
-            new("LimitAndFunctions/InverseHyperbolicCosineFunction", "Inverse Hyperbolic Cosine Function", "\\cosh^-1"),
-            new("LimitAndFunctions/InverseHyperbolicTangentFunction", "Inverse Hyperbolic Tangent Function", "\\tanh^-1"),
-            new("LimitAndFunctions/InverseHyperbolicCosecantFunction", "Inverse Hyperbolic Cosecant Function", "\\csch^-1"),
-            new("LimitAndFunctions/InverseHyperbolicSecantFunction", "Inverse Hyperbolic Secant Function", "\\sech^-1"),
-            new("LimitAndFunctions/InverseHyperbolicCotangentFunction", "Inverse Hyperbolic Cotangent Function", "\\coth^-1")
+            new("LimitAndFunctions/LogarithmWithEmptyBase", "Logarithm with empty base", "\\log_"),
+            new("LimitAndFunctions/LogarithmWithNoBase", "Logarithm with no base", "\\log"),
+            new("LimitAndFunctions/NaturalLogarithm", "Natural logarithm", "\\ln"),
+            new("LimitAndFunctions/SineFunction", "Sine function", "\\sin"),
+            new("LimitAndFunctions/CosineFunction", "Cosine function", "\\cos"),
+            new("LimitAndFunctions/TangentFunction", "Tangent function", "\\tan"),
+            new("LimitAndFunctions/CosecantFunction", "Cosecant function", "\\csc"),
+            new("LimitAndFunctions/SecantFunction", "Secant function", "\\sec"),
+            new("LimitAndFunctions/CotangentFunction", "Cotangent function", "\\cot"),
+            new("LimitAndFunctions/InverseSineFunction", "Inverse sine function", "\\sin^-1"),
+            new("LimitAndFunctions/InverseCosineFunction", "Inverse cosine function", "\\cos^-1"),
+            new("LimitAndFunctions/InverseTangentFunction", "Inverse tangent function", "\\tan^-1"),
+            new("LimitAndFunctions/InverseCosecantFunction", "Inverse cosecant function", "\\csc^-1"),
+            new("LimitAndFunctions/InverseSecantFunction", "Inverse secant function", "\\sec^-1"),
+            new("LimitAndFunctions/InverseCotangentFunction", "Inverse cotangent function", "\\cot^-1"),
+            new("LimitAndFunctions/HyperbolicSineFunction", "Hyperbolic sine function", "\\sinh"),
+            new("LimitAndFunctions/HyperbolicCosineFunction", "Hyperbolic cosine function", "\\cosh"),
+            new("LimitAndFunctions/HyperbolicTangentFunction", "Hyperbolic tangent function", "\\tanh"),
+            new("LimitAndFunctions/HyperbolicCosecantFunction", "Hyperbolic cosecant function", "\\csch"),
+            new("LimitAndFunctions/HyperbolicSecantFunction", "Hyperbolic secant function", "\\sech"),
+            new("LimitAndFunctions/HyperbolicCotangentFunction", "Hyperbolic cotangent function", "\\coth"),
+            new("LimitAndFunctions/InverseHyperbolicSineFunction", "Inverse hyperbolic sine function", "\\sinh^-1"),
+            new("LimitAndFunctions/InverseHyperbolicCosineFunction", "Inverse hyperbolic cosine function", "\\cosh^-1"),
+            new("LimitAndFunctions/InverseHyperbolicTangentFunction", "Inverse hyperbolic tangent function", "\\tanh^-1"),
+            new("LimitAndFunctions/InverseHyperbolicCosecantFunction", "Inverse hyperbolic cosecant function", "\\csch^-1"),
+            new("LimitAndFunctions/InverseHyperbolicSecantFunction", "Inverse hyperbolic secant function", "\\sech^-1"),
+            new("LimitAndFunctions/InverseHyperbolicCotangentFunction", "Inverse hyperbolic cotangent function", "\\coth^-1")
         };
         return limitAndFunctions;
     }
 
-    public static ObservableCollection<MathStucture> GetMatricesCollection()
+    public static ObservableCollection<MathStructure> GetMatricesCollection()
     {
-        var matrices = new ObservableCollection<MathStucture>
+        var matrices = new ObservableCollection<MathStructure>
         {
-            new("Matrices/1x2EmptyMatrix", "1\u00D72 Empty Matrix", "\\matrix(\\open\\close  &\\open\\close  )"),
-            new("Matrices/2x1EmptyMatrix", "2\u00D71 Empty Matrix", "\\matrix(\\open\\close  @\\open\\close  )"),
-            new("Matrices/2x2EmptyMatrix", "2\u00D72 Empty Matrix", "\\matrix(\\open\\close  &\\open\\close  @\\open\\close  &\\open\\close  )"),
-            new("Matrices/1x3EmptyMatrix", "1\u00D73 Empty Matrix", "\\matrix(\\open\\close  &\\open\\close  &\\open\\close  )"),
-            new("Matrices/3x1EmptyMatrix", "3\u00D71 Empty Matrix", "\\matrix(\\open\\close  @\\open\\close  @\\open\\close  )"),
-            new("Matrices/2x2IdentityMatrixWithZeros", "2\u00D72 Identity Matrix with Zeors", "\\matrix(1&0@0&1)"),
-            new("Matrices/2x2IdentityMatrix", "2\u00D72 Identity Matrix", "\\matrix(1&@&1)"),
-            new("Matrices/3x3IdentityMatrixWithZeros", "3\u00D73 Identity Matrix with Zeors", "\\matrix(1&0&0@0&1&0@0&0&1)"),
-            new("Matrices/3x3IdentityMatrix", "3\u00D73 Identity Matrix", "\\matrix(1&&@&1&@&&1)")
+            new("Matrices/1x2EmptyMatrix", "1\u00D72 empty matrix", "\\matrix(\\open\\close  &\\open\\close  )"),
+            new("Matrices/2x1EmptyMatrix", "2\u00D71 empty matrix", "\\matrix(\\open\\close  @\\open\\close  )"),
+            new("Matrices/2x2EmptyMatrix", "2\u00D72 empty matrix", "\\matrix(\\open\\close  &\\open\\close  @\\open\\close  &\\open\\close  )"),
+            new("Matrices/1x3EmptyMatrix", "1\u00D73 empty matrix", "\\matrix(\\open\\close  &\\open\\close  &\\open\\close  )"),
+            new("Matrices/3x1EmptyMatrix", "3\u00D71 empty matrix", "\\matrix(\\open\\close  @\\open\\close  @\\open\\close  )"),
+            new("Matrices/2x2IdentityMatrixWithZeros", "2\u00D72 ddentity matrix with zeors", "\\matrix(1&0@0&1)"),
+            new("Matrices/2x2IdentityMatrix", "2\u00D72 identity matrix", "\\matrix(1&@&1)"),
+            new("Matrices/3x3IdentityMatrixWithZeros", "3\u00D73 identity matrix with zeors", "\\matrix(1&0&0@0&1&0@0&0&1)"),
+            new("Matrices/3x3IdentityMatrix", "3\u00D73 Identity matrix", "\\matrix(1&&@&1&@&&1)")
         };
         return matrices;
     }
@@ -318,14 +318,14 @@ public class MathSymbol
     }
 }
 
-public class MathStucture
+public class MathStructure
 {
     public string LightImageSource { get; set; }
     public string DarkImageSource { get; set; }
     public string Name { get; set; }
     public string Command { get; set; }
 
-    public MathStucture(string ImageUri, string name, string command)
+    public MathStructure(string ImageUri, string name, string command)
     {
         LightImageSource = "ms-appx:///Assets/MathModeImages/" + ImageUri + "_Light.png";
         DarkImageSource = "ms-appx:///Assets/MathModeImages/" + ImageUri + "_Dark.png";

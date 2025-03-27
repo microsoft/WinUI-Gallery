@@ -30,12 +30,12 @@ public sealed partial class RichEditBoxPage : Page
     public static extern IntPtr GetActiveWindow();
     private Windows.UI.Color currentColor = Microsoft.UI.Colors.Green;
     ObservableCollection<MathSymbol> SymbolsCollection = MathModeHelper.GetSymbolsCollection();
-    ObservableCollection<MathStucture> StructuresCollection = MathModeHelper.GetStructuresCollection();
-    ObservableCollection<MathStucture> IntegralsCollection = MathModeHelper.GetIntegralsCollection();
-    ObservableCollection<MathStucture> LargeOperators = MathModeHelper.GetLargeOperatorsCollection();
-    ObservableCollection<MathStucture> AccentsOperators = MathModeHelper.GetAccentsCollection();
-    ObservableCollection<MathStucture> LimitAndFunctions = MathModeHelper.GetLimitAndFunctionsCollection();
-    ObservableCollection<MathStucture> Matrices = MathModeHelper.GetMatricesCollection();
+    ObservableCollection<MathStructure> StructuresCollection = MathModeHelper.GetStructuresCollection();
+    ObservableCollection<MathStructure> IntegralsCollection = MathModeHelper.GetIntegralsCollection();
+    ObservableCollection<MathStructure> LargeOperators = MathModeHelper.GetLargeOperatorsCollection();
+    ObservableCollection<MathStructure> AccentsOperators = MathModeHelper.GetAccentsCollection();
+    ObservableCollection<MathStructure> LimitAndFunctions = MathModeHelper.GetLimitAndFunctionsCollection();
+    ObservableCollection<MathStructure> Matrices = MathModeHelper.GetMatricesCollection();
 
     public RichEditBoxPage()
     {

@@ -427,7 +427,7 @@
                                             <StackLayout Orientation="Vertical" />
                                         </ItemsRepeater.Layout>
                                         <ItemsRepeater.ItemTemplate>
-                                            <DataTemplate x:DataType="helper:MathStucture">
+                                            <DataTemplate x:DataType="helper:MathStructure">
                                                 <Grid x:Name="StructureDataTemplate"
                                                       Padding="12"
                                                       Loading="StructureDataTemplate_Loading"
