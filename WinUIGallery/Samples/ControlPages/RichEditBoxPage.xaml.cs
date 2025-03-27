@@ -35,6 +35,7 @@ public sealed partial class RichEditBoxPage : Page
     ObservableCollection<MathStucture> LargeOperators = MathModeHelper.GetLargeOperatorsCollection();
     ObservableCollection<MathStucture> AccentsOperators = MathModeHelper.GetAccentsCollection();
     ObservableCollection<MathStucture> LimitAndFunctions = MathModeHelper.GetLimitAndFunctionsCollection();
+    ObservableCollection<MathStucture> Matrices = MathModeHelper.GetMatricesCollection();
 
     public RichEditBoxPage()
     {
@@ -305,6 +306,9 @@ public sealed partial class RichEditBoxPage : Page
                         break;
                     case "LimitAndFunctions":
                         MathStructuresItems.ItemsSource = LimitAndFunctions;
+                        break;
+                    case "Matrices":
+                        MathStructuresItems.ItemsSource = Matrices;
                         break;
                 }
             }

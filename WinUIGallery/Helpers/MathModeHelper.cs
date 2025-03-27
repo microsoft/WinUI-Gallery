@@ -234,6 +234,23 @@ public static class MathModeHelper
         return limitAndFunctions;
     }
 
+    public static ObservableCollection<MathStucture> GetMatricesCollection()
+    {
+        var matrices = new ObservableCollection<MathStucture>
+        {
+            new("Matrices/1x2EmptyMatrix", "1\u00D72 Empty Matrix", "\\matrix(\\open\\close  &\\open\\close  )"),
+            new("Matrices/2x1EmptyMatrix", "2\u00D71 Empty Matrix", "\\matrix(\\open\\close  @\\open\\close  )"),
+            new("Matrices/2x2EmptyMatrix", "2\u00D72 Empty Matrix", "\\matrix(\\open\\close  &\\open\\close  @\\open\\close  &\\open\\close  )"),
+            new("Matrices/1x3EmptyMatrix", "1\u00D73 Empty Matrix", "\\matrix(\\open\\close  &\\open\\close  &\\open\\close  )"),
+            new("Matrices/3x1EmptyMatrix", "3\u00D71 Empty Matrix", "\\matrix(\\open\\close  @\\open\\close  @\\open\\close  )"),
+            new("Matrices/2x2IdentityMatrixWithZeros", "2\u00D72 Identity Matrix with Zeors", "\\matrix(1&0@0&1)"),
+            new("Matrices/2x2IdentityMatrix", "2\u00D72 Identity Matrix", "\\matrix(1&@&1)"),
+            new("Matrices/3x3IdentityMatrixWithZeros", "3\u00D73 Identity Matrix with Zeors", "\\matrix(1&0&0@0&1&0@0&0&1)"),
+            new("Matrices/3x3IdentityMatrix", "3\u00D73 Identity Matrix", "\\matrix(1&&@&1&@&&1)")
+        };
+        return matrices;
+    }
+
     /// <summary>
     /// Simulates typing a Unicode Nearly Plain-Text (NPT) command.
     /// </summary>
