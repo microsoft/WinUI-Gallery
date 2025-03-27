@@ -212,6 +212,12 @@ public static class MathModeHelper
             new("LimitAndFunctions/CosecantFunction", "Cosecant Function", "\\csc"),
             new("LimitAndFunctions/SecantFunction", "Secant Function", "\\sec"),
             new("LimitAndFunctions/CotangentFunction", "Cotangent Function", "\\cot"),
+            new("LimitAndFunctions/InverseSineFunction", "Inverse Sine Function", "\\sin^-1"),
+            new("LimitAndFunctions/InverseCosineFunction", "Inverse Cosine Function", "\\cos^-1"),
+            new("LimitAndFunctions/InverseTangentFunction", "Inverse Tangent Function", "\\tan^-1"),
+            new("LimitAndFunctions/InverseCosecantFunction", "Inverse Cosecant Function", "\\csc^-1"),
+            new("LimitAndFunctions/InverseSecantFunction", "Inverse Secant Function", "\\sec^-1"),
+            new("LimitAndFunctions/InverseCotangentFunction", "Inverse Cotangent Function", "\\cot^-1"),
         };
         return limitAndFunctions;
     }
