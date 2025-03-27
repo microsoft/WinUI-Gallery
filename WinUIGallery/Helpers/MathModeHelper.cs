@@ -218,6 +218,18 @@ public static class MathModeHelper
             new("LimitAndFunctions/InverseCosecantFunction", "Inverse Cosecant Function", "\\csc^-1"),
             new("LimitAndFunctions/InverseSecantFunction", "Inverse Secant Function", "\\sec^-1"),
             new("LimitAndFunctions/InverseCotangentFunction", "Inverse Cotangent Function", "\\cot^-1"),
+            new("LimitAndFunctions/HyperbolicSineFunction", "Hyperbolic Sine Function", "\\sinh"),
+            new("LimitAndFunctions/HyperbolicCosineFunction", "Hyperbolic Cosine Function", "\\cosh"),
+            new("LimitAndFunctions/HyperbolicTangentFunction", "Hyperbolic Tangent Function", "\\tanh"),
+            new("LimitAndFunctions/HyperbolicCosecantFunction", "Hyperbolic Cosecant Function", "\\csch"),
+            new("LimitAndFunctions/HyperbolicSecantFunction", "Hyperbolic Secant Function", "\\sech"),
+            new("LimitAndFunctions/HyperbolicCotangentFunction", "Hyperbolic Cotangent Function", "\\coth"),
+            new("LimitAndFunctions/InverseHyperbolicSineFunction", "Inverse Hyperbolic Sine Function", "\\sinh^-1"),
+            new("LimitAndFunctions/InverseHyperbolicCosineFunction", "Inverse Hyperbolic Cosine Function", "\\cosh^-1"),
+            new("LimitAndFunctions/InverseHyperbolicTangentFunction", "Inverse Hyperbolic Tangent Function", "\\tanh^-1"),
+            new("LimitAndFunctions/InverseHyperbolicCosecantFunction", "Inverse Hyperbolic Cosecant Function", "\\csch^-1"),
+            new("LimitAndFunctions/InverseHyperbolicSecantFunction", "Inverse Hyperbolic Secant Function", "\\sech^-1"),
+            new("LimitAndFunctions/InverseHyperbolicCotangentFunction", "Inverse Hyperbolic Cotangent Function", "\\coth^-1")
         };
         return limitAndFunctions;
     }
