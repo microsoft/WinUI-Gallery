@@ -378,6 +378,8 @@
         <None Remove="Assets\MathModeImages\Structures\SquareRootWithDegree_Light.png" />
         <None Remove="Assets\MathModeImages\Structures\SquareRoot_Dark.png" />
         <None Remove="Assets\MathModeImages\Structures\SquareRoot_Light.png" />
+        <None Remove="Assets\MathModeImages\Structures\StackObject_Dark.png" />
+        <None Remove="Assets\MathModeImages\Structures\StackObject_Light.png" />
         <None Remove="Assets\MathModeImages\Structures\Subscript_Dark.png" />
         <None Remove="Assets\MathModeImages\Structures\Subscript_Light.png" />
         <None Remove="Assets\MathModeImages\Structures\SuperscriptSubscriptLeft_Dark.png" />
@@ -808,6 +810,8 @@
         <Content Include="Assets\MathModeImages\Structures\SquareRoot_Light.png" />
         <Content Include="Assets\MathModeImages\Structures\StackedFraction_Dark.png" />
         <Content Include="Assets\MathModeImages\Structures\StackedFraction_Light.png" />
+        <Content Include="Assets\MathModeImages\Structures\StackObject_Dark.png" />
+        <Content Include="Assets\MathModeImages\Structures\StackObject_Light.png" />
         <Content Include="Assets\MathModeImages\Structures\Subscript_Dark.png" />
         <Content Include="Assets\MathModeImages\Structures\Subscript_Light.png" />
         <Content Include="Assets\MathModeImages\Structures\SuperscriptSubscriptLeft_Dark.png" />

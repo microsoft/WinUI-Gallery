@@ -115,6 +115,7 @@ public static class MathModeHelper
             new("Structures/StackedFraction", "stacked fraction", "/"),
             new("Structures/SkewedFraction", "Skewed fraction","\\sdiv "),
             new("Structures/LinearFraction", "Linear fraction", "\\ldiv "),
+            new("Structures/StackObject", "Stack Object", "\\atop "),
             new("Structures/Superscript", "Superscript", "\\begin^\\end "),
             new("Structures/Subscript", "Subscript", "\\begin_\\end "),
             new("Structures/SuperscriptSubscript", "Superscript and subscript", "\\open\\close^_ "),
@@ -249,11 +250,11 @@ public static class MathModeHelper
 
             StructuresCategory.Matrices => new List<MathStructure>
         {
-            new("Matrices/1x2EmptyMatrix", "1\u00D72 empty matrix", "\\matrix(\\open\\close  &\\open\\close  )"),
-            new("Matrices/2x1EmptyMatrix", "2\u00D71 empty matrix", "\\matrix(\\open\\close  @\\open\\close  )"),
-            new("Matrices/2x2EmptyMatrix", "2\u00D72 empty matrix", "\\matrix(\\open\\close  &\\open\\close  @\\open\\close  &\\open\\close  )"),
-            new("Matrices/1x3EmptyMatrix", "1\u00D73 empty matrix", "\\matrix(\\open\\close  &\\open\\close  &\\open\\close  )"),
-            new("Matrices/3x1EmptyMatrix", "3\u00D71 empty matrix", "\\matrix(\\open\\close  @\\open\\close  @\\open\\close  )"),
+            new("Matrices/1x2EmptyMatrix", "1\u00D72 empty matrix", "\\matrix(\u251C\u2524 &\u251C\u2524 )"),
+            new("Matrices/2x1EmptyMatrix", "2\u00D71 empty matrix", "\\matrix(\u251C\u2524 @\u251C\u2524 )"),
+            new("Matrices/2x2EmptyMatrix", "2\u00D72 empty matrix", "\\matrix(\u251C\u2524 &\u251C\u2524 @\u251C\u2524 &\u251C\u2524 )"),
+            new("Matrices/1x3EmptyMatrix", "1\u00D73 empty matrix", "\\matrix(\u251C\u2524 &\u251C\u2524 &\u251C\u2524 )"),
+            new("Matrices/3x1EmptyMatrix", "3\u00D71 empty matrix", "\\matrix(\u251C\u2524 @\u251C\u2524 @\u251C\u2524 )"),
             new("Matrices/2x2IdentityMatrixWithZeros", "2\u00D72 ddentity matrix with zeors", "\\matrix(1&0@0&1)"),
             new("Matrices/2x2IdentityMatrix", "2\u00D72 identity matrix", "\\matrix(1&@&1)"),
             new("Matrices/3x3IdentityMatrixWithZeros", "3\u00D73 identity matrix with zeors", "\\matrix(1&0&0@0&1&0@0&0&1)"),
