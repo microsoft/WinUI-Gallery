@@ -262,6 +262,12 @@ public sealed partial class TabViewPage : Page
 
     private void TabViewContextMenu_Opening(object sender, object e)
     {
-        TabViewHelper.PopulateTabViewContextMenu((MenuFlyout)sender);
+        var menuFlyout = (MenuFlyout)sender; 
+        TabViewHelper.PopulateTabViewContextMenu(menuFlyout);
+        // If the context menu ended up with no items at all, then we'll prevent it from being shown.
+        if (menuFlyout.Items.Count == 0)
+        {
+            menuFlyout.Hide();
+        }
     }
 }
