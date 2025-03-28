@@ -8,6 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:samplepages="using:WinUIGallery.SamplePages"
     mc:Ignorable="d">
+    <Page.Resources>
+        <MenuFlyout x:Name="TabViewContextMenu" Opening="TabViewContextMenu_Opening" />
+    </Page.Resources>
 
     <StackPanel>
         <controls:ControlExample CSharpSource="TabView\TabViewBasicSample_cs.txt" HeaderText="A TabView with support for adding, closing, and rearranging tabs">
@@ -37,19 +40,19 @@
                     SelectedIndex="0"
                     TabCloseRequested="TabView_TabCloseRequested">
                     <TabView.TabItems>
-                        <TabViewItem Header="Document 0">
+                        <TabViewItem Header="Document 0" ContextFlyout="{x:Bind TabViewContextMenu}">
                             <TabViewItem.IconSource>
                                 <SymbolIconSource Symbol="Placeholder" />
                             </TabViewItem.IconSource>
                             <samplepages:SamplePage1 />
                         </TabViewItem>
-                        <TabViewItem Header="Document 1">
+                        <TabViewItem Header="Document 1" ContextFlyout="{x:Bind TabViewContextMenu}">
                             <TabViewItem.IconSource>
                                 <SymbolIconSource Symbol="Placeholder" />
                             </TabViewItem.IconSource>
                             <samplepages:SamplePage2 />
                         </TabViewItem>
-                        <TabViewItem Header="Document 2">
+                        <TabViewItem Header="Document 2" ContextFlyout="{x:Bind TabViewContextMenu}">
                             <TabViewItem.IconSource>
                                 <SymbolIconSource Symbol="Placeholder" />
                             </TabViewItem.IconSource>
@@ -279,19 +282,19 @@
                     SelectedIndex="0"
                     TabWidthMode="SizeToContent">
                     <TabView.TabItems>
-                        <TabViewItem Header="Home" IsClosable="False">
+                        <TabViewItem Header="Home" IsClosable="False" ContextFlyout="{x:Bind TabViewContextMenu}">
                             <TabViewItem.IconSource>
                                 <SymbolIconSource Symbol="Home" />
                             </TabViewItem.IconSource>
                             <samplepages:SamplePage1 />
                         </TabViewItem>
-                        <TabViewItem Header="Tab 2 Has Longer Text" IsClosable="False">
+                        <TabViewItem Header="Tab 2 Has Longer Text" IsClosable="False" ContextFlyout="{x:Bind TabViewContextMenu}">
                             <TabViewItem.IconSource>
                                 <SymbolIconSource Symbol="MusicInfo" />
                             </TabViewItem.IconSource>
                             <samplepages:SamplePage2 />
                         </TabViewItem>
-                        <TabViewItem Header="Third Tab" IsClosable="False">
+                        <TabViewItem Header="Third Tab" IsClosable="False" ContextFlyout="{x:Bind TabViewContextMenu}">
                             <TabViewItem.IconSource>
                                 <SymbolIconSource Symbol="Placeholder" />
                             </TabViewItem.IconSource>
@@ -330,21 +333,21 @@
                     IsAddTabButtonVisible="False"
                     SelectedIndex="0">
                     <TabView.TabItems>
-                        <TabViewItem Header="Home">
+                        <TabViewItem Header="Home" ContextFlyout="{x:Bind TabViewContextMenu}">
                             <TabViewItem.IconSource>
                                 <SymbolIconSource Symbol="Home" />
                             </TabViewItem.IconSource>
                             <samplepages:SamplePage1 />
                         </TabViewItem>
-                        <TabViewItem Header="Tab 2 Has Longer Text">
+                        <TabViewItem Header="Tab 2 Has Longer Text" ContextFlyout="{x:Bind TabViewContextMenu}">
                             <TabViewItem.IconSource>
                                 <SymbolIconSource Symbol="MusicInfo" />
                             </TabViewItem.IconSource>
                             <samplepages:SamplePage2 />
                         </TabViewItem>
-                        <TabViewItem Header="Third Tab">
+                        <TabViewItem Header="Third Tab" ContextFlyout="{x:Bind TabViewContextMenu}">
                             <TabViewItem.IconSource>
-                                <SymbolIconSource Symbol="Placeholder" />
+                                <SymbolIconSource Symbol="Placeholder"/>
                             </TabViewItem.IconSource>
                             <samplepages:SamplePage3 />
                         </TabViewItem>
@@ -387,17 +390,17 @@
                         SelectedIndex="0"
                         TabWidthMode="SizeToContent">
                         <TabView.TabItems>
-                            <TabViewItem Header="CMD Prompt" IsClosable="False">
+                            <TabViewItem Header="CMD Prompt" IsClosable="False" ContextFlyout="{x:Bind TabViewContextMenu}">
                                 <TabViewItem.IconSource>
                                     <BitmapIconSource ShowAsMonochrome="False" UriSource="ms-appx:///Assets/SampleMedia/cmd.png" />
                                 </TabViewItem.IconSource>
                             </TabViewItem>
-                            <TabViewItem Header="PowerShell" IsClosable="False">
+                            <TabViewItem Header="PowerShell" IsClosable="False" ContextFlyout="{x:Bind TabViewContextMenu}">
                                 <TabViewItem.IconSource>
                                     <BitmapIconSource ShowAsMonochrome="False" UriSource="ms-appx:///Assets/SampleMedia/powershell.png" />
                                 </TabViewItem.IconSource>
                             </TabViewItem>
-                            <TabViewItem Header="Windows Subsystem for Linux" IsClosable="False">
+                            <TabViewItem Header="Windows Subsystem for Linux" IsClosable="False" ContextFlyout="{x:Bind TabViewContextMenu}">
                                 <TabViewItem.IconSource>
                                     <BitmapIconSource ShowAsMonochrome="False" UriSource="ms-appx:///Assets/SampleMedia/linux.png" />
                                 </TabViewItem.IconSource>
