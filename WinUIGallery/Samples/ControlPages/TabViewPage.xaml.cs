@@ -60,7 +60,8 @@ public sealed partial class TabViewPage : Page
         TabViewItem newItem = new TabViewItem
         {
             Header = $"Document {index}",
-            IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document }
+            IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document },
+            ContextFlyout = TabViewContextMenu
         };
 
         // The content of the tab is often a frame that contains a page, though it could be any UIElement.
@@ -257,5 +258,16 @@ public sealed partial class TabViewPage : Page
         tabViewSample.SetupWindowMinSize(newWindow);
 
         newWindow.Activate();
+    }
+
+    private void TabViewContextMenu_Opening(object sender, object e)
+    {
+        var menuFlyout = (MenuFlyout)sender; 
+        TabViewHelper.PopulateTabViewContextMenu(menuFlyout);
+        // If the context menu ended up with no items at all, then we'll prevent it from being shown.
+        if (menuFlyout.Items.Count == 0)
+        {
+            menuFlyout.Hide();
+        }
     }
 }
