@@ -86,24 +86,24 @@
 
             <StackPanel>
                 <TextBlock Text="The normal image" />
-                <Image Height="82" Source="/Assets/ninegrid.gif" />
+                <Image Height="82" Source="/Assets/SampleMedia/ninegrid.gif" />
                 <TextBlock Text="Image stretched evenly" />
                 <Image
                     Height="164"
                     NineGrid="3,3,3,3"
-                    Source="/Assets/ninegrid.gif" />
+                    Source="/Assets/SampleMedia/ninegrid.gif" />
                 <TextBlock Text="Image stretched using nine grid" />
                 <Image
                     Height="164"
                     NineGrid="30,20,30,20"
-                    Source="/Assets/ninegrid.gif" />
+                    Source="/Assets/SampleMedia/ninegrid.gif" />
             </StackPanel>
 
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;Image Source="/Assets/ninegrid.gif" Height="82" /&gt;
-&lt;Image Source="/Assets/ninegrid.gif" NineGrid="3,3,3,3" Height="164" /&gt;
-&lt;Image Source="/Assets/ninegrid.gif" NineGrid="30,20,30,20" Height="164" /&gt;
+&lt;Image Source="/Assets/SampleMedia/ninegrid.gif" Height="82" /&gt;
+&lt;Image Source="/Assets/SampleMedia/ninegrid.gif" NineGrid="3,3,3,3" Height="164" /&gt;
+&lt;Image Source="/Assets/SampleMedia/ninegrid.gif" NineGrid="30,20,30,20" Height="164" /&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>
