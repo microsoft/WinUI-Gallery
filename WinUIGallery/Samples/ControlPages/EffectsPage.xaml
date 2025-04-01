@@ -10,23 +10,29 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:shaders="using:WinUIGallery.Shaders"
     mc:Ignorable="d">
-    <Grid RowSpacing="64">
-		
-            <controls:ControlExample
-                x:Name="Example1" VerticalAlignment="Top"
-                CSharpSource="ContentDialog/ContentDialogSample1_cs.txt"
-                HeaderText="A basic dialog that with a custom shader animation when closing."
-                XamlSource="ContentDialog/ContentDialogSample1_xaml.txt">
-                <controls:ControlExample.Example>
-                    <Button
-                        x:Name="ShowDialog"
-                        Click="ShowDialog_Click"
-                        Content="Show dialog"
-                        Style="{StaticResource AccentButtonStyle}" />
-                </controls:ControlExample.Example>
-            </controls:ControlExample>
-            <controls:ControlExample Margin="0,320,0,0" Grid.Row="1" HeaderText="Custom effects with SceneGraph and custom shaders.">
-                <controls:ControlExample.Example>
+
+    <!--  This grid should be replaced with a StackPanel, but that breaks the samples 🤷  -->
+    <!--<StackPanel Orientation="Vertical" Spacing="48">--> 
+    <!--  Uncomment to break  -->
+    <Grid>
+        <controls:ControlExample
+            x:Name="Example1"
+            VerticalAlignment="Top"
+            CSharpSource="ContentDialog/ContentDialogSample1_cs.txt"
+            HeaderText="A basic dialog that with a custom shader animation when closing."
+            XamlSource="ContentDialog/ContentDialogSample1_xaml.txt">
+            <controls:ControlExample.Example>
+                <Button
+                    x:Name="ShowDialog"
+                    Click="ShowDialog_Click"
+                    Content="Show dialog"
+                    Style="{StaticResource AccentButtonStyle}" />
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+        <controls:ControlExample Margin="0,320,0,0" HeaderText="Custom effects with SceneGraph and custom shaders."> 
+            <!--  This margin is hardcoded - but should be removed and these 2 control examples should be part of a StackPanel  -->
+            <controls:ControlExample.Example>
+                <Grid>
                     <Grid RowSpacing="16">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -63,10 +69,15 @@
                             </Grid>
                             <Grid x:Name="rootFrameInFront" />
                         </Grid>
-					
                     </Grid>
-                </controls:ControlExample.Example>
-            </controls:ControlExample>
-		<shaders:OverlayPanel x:Name="overlayPanel" />
+                    <!--  This doesn't work  -->
+                    <!--<shaders:OverlayPanel x:Name="overlayPanel" />-->
+                </Grid>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+
+        <!--  This should be part of the ControlExample  -->
+        <shaders:OverlayPanel x:Name="overlayPanel" />
     </Grid>
+    <!--</StackPanel>-->
 </Page>
