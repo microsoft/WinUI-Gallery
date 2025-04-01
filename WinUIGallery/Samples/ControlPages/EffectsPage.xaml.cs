@@ -14,6 +14,8 @@ public sealed partial class EffectsPage : Page
 {
     // The bitmap that holds the screen capture of the dialog so we can run shaders on it.
     private CanvasRenderTarget m_canvasRenderTarget;
+    private bool m_isCapturePending = false;
+    private CanvasRenderTarget m_fullBitmap;
 
     public EffectsPage()
     {
@@ -140,12 +142,4 @@ public sealed partial class EffectsPage : Page
         overlayPanel.AddOverlay(shaderPanel, offset);
         shaderPanel.ShaderCompleted += (s, e) => overlayPanel.ClearOverlay(shaderPanel);
     }
-
-    private bool m_firstNavigation = true;
-    private bool m_isCapturePending = false;
-    private bool m_blockNavigate = false;
-    private CanvasRenderTarget m_fullBitmap;
-    private DateTime m_lastNavigationTime = DateTime.Now;
-
-
 }

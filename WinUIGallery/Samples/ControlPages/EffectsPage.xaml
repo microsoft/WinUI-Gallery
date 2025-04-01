@@ -12,7 +12,7 @@
     mc:Ignorable="d">
 
     <!--  This grid should be replaced with a StackPanel, but that breaks the samples 🤷  -->
-    <!--<StackPanel Orientation="Vertical" Spacing="48">--> 
+    <!--<StackPanel Orientation="Vertical" Spacing="48">-->
     <!--  Uncomment to break  -->
     <Grid>
         <controls:ControlExample
@@ -29,8 +29,8 @@
                     Style="{StaticResource AccentButtonStyle}" />
             </controls:ControlExample.Example>
         </controls:ControlExample>
-        <controls:ControlExample Margin="0,320,0,0" HeaderText="Custom effects with SceneGraph and custom shaders."> 
-            <!--  This margin is hardcoded - but should be removed and these 2 control examples should be part of a StackPanel  -->
+        <controls:ControlExample Margin="0,320,0,0" HeaderText="Custom effects with SceneGraph and custom shaders.">
+            <!--  This margin is hardcoded - and should be removed and these 2 control examples should be part of a StackPanel  -->
             <controls:ControlExample.Example>
                 <Grid>
                     <Grid RowSpacing="16">
