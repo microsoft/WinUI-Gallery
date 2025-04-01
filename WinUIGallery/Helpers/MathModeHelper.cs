@@ -255,9 +255,9 @@ public static class MathModeHelper
             new("Matrices/2x2EmptyMatrix", "2\u00D72 empty matrix", "\\matrix(\u251C\u2524 &\u251C\u2524 @\u251C\u2524 &\u251C\u2524 )"),
             new("Matrices/1x3EmptyMatrix", "1\u00D73 empty matrix", "\\matrix(\u251C\u2524 &\u251C\u2524 &\u251C\u2524 )"),
             new("Matrices/3x1EmptyMatrix", "3\u00D71 empty matrix", "\\matrix(\u251C\u2524 @\u251C\u2524 @\u251C\u2524 )"),
-            new("Matrices/2x2IdentityMatrixWithZeros", "2\u00D72 ddentity matrix with zeors", "\\matrix(1&0@0&1)"),
+            new("Matrices/2x2IdentityMatrixWithZeros", "2\u00D72 identity matrix with zeros", "\\matrix(1&0@0&1)"),
             new("Matrices/2x2IdentityMatrix", "2\u00D72 identity matrix", "\\matrix(1&@&1)"),
-            new("Matrices/3x3IdentityMatrixWithZeros", "3\u00D73 identity matrix with zeors", "\\matrix(1&0&0@0&1&0@0&0&1)"),
+            new("Matrices/3x3IdentityMatrixWithZeros", "3\u00D73 identity matrix with zeros", "\\matrix(1&0&0@0&1&0@0&0&1)"),
             new("Matrices/3x3IdentityMatrix", "3\u00D73 Identity matrix", "\\matrix(1&&@&1&@&&1)")
         },
 
