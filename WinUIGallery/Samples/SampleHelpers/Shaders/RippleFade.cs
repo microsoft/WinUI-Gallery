@@ -1,8 +1,5 @@
 using ComputeSharp;
 using ComputeSharp.D2D1;
-using Microsoft.UI.Composition.Interactions;
-using System;
-using Windows.UI.ViewManagement.Core;
 
 namespace WinUIGallery.Shaders;
 

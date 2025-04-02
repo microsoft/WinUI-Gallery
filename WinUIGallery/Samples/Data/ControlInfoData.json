@@ -3699,9 +3699,9 @@
           "UniqueId": "Effects",
           "Title": "Effects",
           "ApiNamespace": "Microsoft.UI.Content",
-          "Subtitle": "To do",
+          "Subtitle": "Advanced visual effects using the SceneGraph.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ContentIsland.png",
-          "Description": "To do",
+          "Description": "Shows how to leverage the SceneGraph to create advanced visual effects.",
           "Content": "<p>Look at the <i>SceneGraphPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
           "Docs": [
