@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -50,7 +51,8 @@ public sealed partial class SampleWindow1 : Window
 
     private void Show_Click(object sender, RoutedEventArgs e)
     {
-        appWindow.Show();
+        appWindow.Hide();
+        Task.Delay(3000).ContinueWith(Task => appWindow.Show());
     }
 
     private void Hide_Click(object sender, RoutedEventArgs e)

@@ -19,7 +19,7 @@
                        TextAlignment="Center" />
         <Button x:Name="Close"
                 Click="Close_Click"
-                Width="150"
+                Width="200"
                 HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center">

@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -44,7 +45,8 @@ public sealed partial class SampleWindow3 : Window
 
     private void RestoreBtn_Click(object sender, RoutedEventArgs e)
     {
-        presenter.Restore();
+        presenter.Minimize();
+        Task.Delay(3000).ContinueWith(t => presenter.Restore());
     }
 
     private void CloseBtn_Click(object sender, RoutedEventArgs e)

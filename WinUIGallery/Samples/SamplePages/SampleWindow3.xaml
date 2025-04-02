@@ -18,19 +18,19 @@
         <Button x:Name="MaximizeBtn"
                 Content="Maximize"
                 Click="MaximizeBtn_Click"
-                Width="150" />
-        <Button x:Name="RestoreBtn"
-                Content="Restore"
-                Click="RestoreBtn_Click"
-                Width="150" />
+                Width="200" />
         <Button x:Name="MinimizeBtn"
                 Content="Minimize"
                 Click="MinimizeBtn_Click"
-                Width="150" />
-
+                Width="200" />
+        <Button x:Name="RestoreBtn"
+                Click="RestoreBtn_Click"
+                Width="200" >
+            <TextBlock Text="Minimize and restore the window after 3 seconds" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
+        </Button>
         <Button x:Name="CloseBtn"
                 Click="CloseBtn_Click"
-                Width="150"
+                Width="200"
                 Margin="0,16,0,0">
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center">
