@@ -16,6 +16,7 @@ public sealed partial class SampleWindow7 : Window
         this.InitializeComponent();
 
         appWindow = GetAppWindowForCurrentWindow();
+        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
 
         presenter = CompactOverlayPresenter.Create();
         presenter.InitialSize = InitialSize switch

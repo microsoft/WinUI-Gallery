@@ -138,7 +138,8 @@ public sealed partial class SampleWindow1 : Window
                     
     private void Show_Click(object sender, RoutedEventArgs e)
     {
-        appWindow.Show();
+        appWindow.Hide();
+        Task.Delay(3000).ContinueWith(t => appWindow.Show());
     }
 
     private void Hide_Click(object sender, RoutedEventArgs e)
@@ -288,6 +289,7 @@ public sealed partial class SampleWindow3 : Window
         this.InitializeComponent();
 
         appWindow = GetAppWindowForCurrentWindow();
+        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
 
         presenter = OverlappedPresenter.Create();
         presenter.IsAlwaysOnTop = $(IsAlwaysOnTop);
@@ -386,6 +388,8 @@ public sealed partial class SampleWindow4 : Window
         this.InitializeComponent();
 
         appWindow = GetAppWindowForCurrentWindow();
+        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+
         appWindow.Resize(new Windows.Graphics.SizeInt32(800, 500));
         presenter = OverlappedPresenter.Create();
         presenter.IsMaximizable = false;
@@ -416,7 +420,8 @@ public sealed partial class SampleWindow4 : Window
 
     private void RestoreBtn_Click(object sender, RoutedEventArgs e)
     {
-        presenter.Restore();
+        presenter.Minimize();
+        Task.Delay(3000).ContinueWith(t => presenter.Restore());
     }
 
     private void CloseBtn_Click(object sender, RoutedEventArgs e)
@@ -504,6 +509,7 @@ public sealed partial class SampleWindow7 : Window
         this.InitializeComponent();
 
         appWindow = GetAppWindowForCurrentWindow();
+        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
 
         // Creates a CompactOverlay (Picture-in-Picture) presenter
         presenter = CompactOverlayPresenter.Create();

@@ -14,6 +14,7 @@ public sealed partial class SampleWindow6 : Window
     {
         this.InitializeComponent();
         appWindow = GetAppWindowForCurrentWindow();
+        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
 
         // Set the window to Full-Screen mode
         appWindow.SetPresenter(AppWindowPresenterKind.FullScreen);
