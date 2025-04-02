@@ -7,7 +7,7 @@ public sealed partial class UnitTestAppWindow : Window
 {
     public UnitTestAppWindow()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     public Grid RootGrid
@@ -20,11 +20,11 @@ public sealed partial class UnitTestAppWindow : Window
 
     public void AddToVisualTree(UIElement element)
     {
-        this.RootGrid.Children.Add(element);
+        RootGrid.Children.Add(element);
     }
 
     public void CleanupVisualTree()
     {
-        this.RootGrid.Children.Clear();
+        RootGrid.Children.Clear();
     }
 }

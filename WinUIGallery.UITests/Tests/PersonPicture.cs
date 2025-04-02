@@ -15,24 +15,23 @@
 //******************************************************************************
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading;
 
 namespace WinUIGallery.UITests.Tests;
 
 [TestClass]
 public class PersonPicture : TestBase
 {
-	[ClassInitialize]
-	public static void ClassInitialize(TestContext context)
-	{
-		OpenControlPage("PersonPicture");
-	}
+    [ClassInitialize]
+    public static void ClassInitialize(TestContext context)
+    {
+        OpenControlPage("PersonPicture");
+    }
 
-	[TestMethod]
-	public void SwitchOptions()
-	{
-		GetElementByName("Profile Image").Click();
-		GetElementByName("Display Name").Click();
-		GetElementByName("Initials").Click();
-	}
+    [TestMethod]
+    public void SwitchOptions()
+    {
+        GetElementByName("Profile Image").Click();
+        GetElementByName("Display Name").Click();
+        GetElementByName("Initials").Click();
+    }
 }
