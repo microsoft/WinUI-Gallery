@@ -28,11 +28,11 @@ public class Button : TestBase
     public static void ClassInitialize(TestContext context)
     {
         OpenControlPage("Button");
-			buttonElement = Session.FindElementByAccessibilityId("Button1");
+        buttonElement = Session.FindElementByAccessibilityId("Button1");
         Assert.IsNotNull(buttonElement);
     }
 
-		[TestMethod]
+    [TestMethod]
     public void Button_Click()
     {
 
