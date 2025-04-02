@@ -77,6 +77,6 @@ internal readonly partial struct RippleFade(float time, int2 resolution) : ID2D1
         float4 green = D2D.SampleInputAtPosition(0, uvGreen);
         float4 blue = D2D.SampleInputAtPosition(0, uvBlue);
 
-        return new float4(red.R, green.G, blue.B, 1);
+        return new float4(red.R, green.G, blue.B, green.A);
     }
 }
