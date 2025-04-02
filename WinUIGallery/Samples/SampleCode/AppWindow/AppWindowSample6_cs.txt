@@ -1,19 +1,20 @@
-using System;
+﻿using System;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using WinRT.Interop;
 
-namespace WinUIGallery.Samples.SamplePages;
+namespace YourNamespace;
 
-public sealed partial class SampleWindow5 : Window
+public sealed partial class SampleWindow6 : Window
 {
     private AppWindow appWindow;
 
-    public SampleWindow5()
+    public SampleWindow6()
     {
         this.InitializeComponent();
         appWindow = GetAppWindowForCurrentWindow();
+        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
 
         // Set the window to Full-Screen mode
         appWindow.SetPresenter(AppWindowPresenterKind.FullScreen);
