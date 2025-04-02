@@ -24,6 +24,7 @@ public sealed partial class SampleWindow4 : Window
         presenter.PreferredMaximumHeight = MaxHeight;
         presenter.IsMaximizable = false;
         appWindow.SetPresenter(presenter);
+        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
     }
 
     private AppWindow GetAppWindowForCurrentWindow()

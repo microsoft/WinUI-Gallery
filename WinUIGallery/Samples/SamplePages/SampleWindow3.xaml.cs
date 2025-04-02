@@ -22,6 +22,7 @@ public sealed partial class SampleWindow3 : Window
         presenter.IsResizable = IsResizable;
         presenter.SetBorderAndTitleBar(HasBorder,HasTitleBar);
         appWindow.SetPresenter(presenter);
+        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
     }
 
     private AppWindow GetAppWindowForCurrentWindow()
