@@ -10,6 +10,7 @@
         {
           "UniqueId": "XamlResources",
           "Title": "Resources",
+          "IsNew": true,
           "Subtitle": "Reusable definitions for shared values to ensure consistency and maintainability.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
           "Description": "In WinUI 3, XAML resources are reusable objects like colors, brushes, or strings, defined once and used throughout your app to maintain consistency and simplify updates. These resources are typically stored in a ResourceDictionary for better organization and scalability. Special theme resources adapt automatically to light or dark modes, ensuring a seamless look across themes.",
@@ -31,6 +32,7 @@
         {
           "UniqueId": "XamlStyles",
           "Title": "Style",
+          "IsNew": true,
           "Subtitle": "A XAML style is a Reusable property settings to define consistent UI design elements.",
           "BaseClasses": [
             "Object",
@@ -53,6 +55,7 @@
         {
           "UniqueId": "Binding",
           "Title": "Binding",
+          "IsNew": true,
           "Subtitle": "Connecting UI elements to data for automatic synchronization and updates.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
           "Description": "Binding in WinUI 3 is a way to connect a property of a control to a source, such as another property, a data object, or a view model. It keeps the data synchronized between the source and the target control, enabling dynamic updates.",
@@ -82,6 +85,7 @@
         {
           "UniqueId": "Templates",
           "Title": "Templates",
+          "IsNew": true,
           "Subtitle": "Customize controls' visuals, item layouts, and data presentation in XAML.",
           "BaseClasses": [
             "Object",
@@ -113,6 +117,7 @@
         {
           "UniqueId": "CustomUserControls",
           "Title": "Custom & User Controls",
+          "IsNew": true,
           "Subtitle": "Create reusable UI components with custom functionality and appearance.",
           "BaseClasses": [
             "Object",
@@ -200,6 +205,7 @@
         {
           "UniqueId": "Iconography",
           "Title": "Iconography",
+          "IsUpdated": true,
           "Subtitle": "Icons are a visual design language that can be used to communicate information quickly and effectively.",
           "ImagePath": "ms-appx:///Assets/ControlImages/IconElement.png",
           "Docs": [
@@ -596,7 +602,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/MenuFlyout.png",
           "Description": "A MenuFlyout displays lightweight UI that is light dismissed by clicking or tapping off of it. Use it to let the user choose from a contextual list of simple commands or options.",
           "Content": "<p>Look at the <i>MenuFlyoutPage.xaml</i> file in Visual Studio to see the full code.</p>",
-          "IsUpdated": true,
           "SourcePath": "/CommonStyles/MenuFlyout_themeresources.xaml",
           "Docs": [
             {
@@ -713,7 +718,6 @@
           "Subtitle": "An object which is used to define the look and feel of a given command.",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarSeparator.png",
           "Description": "An object which is used to define the look and feel of a given command, which can be reused across your app, and which is understood natively by the standard XAML controls.",
-          "IsUpdated": true,
           "Docs": [
             {
               "Title": "Guidelines",
@@ -865,7 +869,6 @@
           "Description": "The ItemsView lets you show a collection of items using scrollable & swappable layouts.",
           "Content": "<p><b>ItemsView</b> can contain a collection of items of any type. To populate the view, set the <b>ItemsSource</b> property to a data source.</p><p>Set a <b>Layout</b> to define how the items are laid out.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ItemsViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "SourcePath": "/ItemsView",
-          "IsNew": true,
           "Docs": [
             {
               "Title": "ItemsView - API",
@@ -937,7 +940,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/ListView.png",
           "Description": "The ListView lets you show a collection of items in a list that scrolls vertically.",
           "Content": "<p><b>ListView</b> is an <b>ItemsControl</b>, so it can contain a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
           "SourcePath": "/CommonStyles/ListViewItem_themeresources.xaml",
           "Docs": [
             {
@@ -1016,7 +1018,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/TreeView.png",
           "Description": "The TreeView control is a hierarchical list pattern with expanding and collapsing nodes that contain nested items. ",
           "Content": "<p><b>PullToRefresh</b> can be used for a collection of items of any type. To populate the view, add items to the <b>Items</b> collection, or set the <b>ItemsSource</b> property to a data source.</p><p>Set an <b>ItemTemplate</b> to define the look of individual items.</p><p>Look at the <i>ListViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
           "SourcePath": "/TreeView",
           "Docs": [
             {
@@ -1681,7 +1682,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/InfoBadge.png",
           "Description": "Badging is a non-intrusive and intuitive way to display notifications or bring focus to an area within an app - whether that be for notifications, indicating new content, or showing an alert.",
           "Content": "<p>Look at the <i>InfoBadgePage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
           "SourcePath": "/InfoBadge",
           "Docs": [
             {
@@ -1937,7 +1937,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/TeachingTip.png",
           "Description": "The XAML TeachingTip Control provides a way for your app to guide and inform users in your application with a non-invasive and content rich notification. TeachingTip can be used for bringing focus to a new or important feature, teaching users how to perform a task, or enhancing the user workflow by providing contextually relevant information to their task at hand.",
           "Content": "<p>Look at the <i>TeachingTip.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
           "SourcePath": "/TeachingTip",
           "Docs": [
             {
@@ -1978,7 +1977,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/AnnotatedScrollbar.png",
           "Description": "The AnnotatedScrollBar lets you navigate through a large collection of items via a clickable rail with labels which act as markers.",
           "Content": "<p><b>AnnotatedScrollBar</b> can be connected to a scrollable container, like a ScrollView, via its <b>ScrollController</b> property.</p><p>Populate the <b>Labels</b> property with special values that act as markers.</p><p>Set the <b>LabelTemplate</b> and <b>DetailLabelTemplate</b> data templates to define the labels' and more granular tooltips' looks.</p><p>Look at the <i>AnnotatedScrollBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
           "SourcePath": "/AnnotatedScrollBar",
           "Docs": [
             {
@@ -2038,8 +2036,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/ScrollView.png",
           "Description": "A ScrollView lets a user scroll, pan, and zoom to see content that's larger than the viewable area. The ItemsView has a ScrollView built into its control template to provide automatic scrolling.",
           "Content": "<p>Look at the <i>ScrollViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
-          "IsUpdated": true,
           "SourcePath": "/ScrollView",
           "Docs": [
             {
@@ -2349,7 +2345,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/SplitView.png",
           "Description": "Use a SplitView to display content, such as navigation options, in a pane on the side.  There are multiple options for displaying the pane, namely CompactOverlay, Compact, Overlay, Inline.  If you are looking for a reference to the hamburger pattern, please see the links in the documentation below.",
           "Content": "<p>Look at the <i>SplitViewPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
           "SourcePath": "/SplitView",
           "Docs": [
             {
@@ -2448,7 +2443,6 @@
           "Subtitle": "A container control that scales its content to a specified size.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Viewbox.png",
           "Description": "Use a Viewbox control scale content up or down to a specified size.",
-          "IsNew": true,
           "Content": "<p>Look at the <i>ViewboxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "Docs": [
             {
@@ -2688,7 +2682,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/CaptureElement.png",
           "Description": "You can use a MediaPlayerElement control to show a camera preview with a MediaCapture object.",
           "IsNew": true,
-          "IsUpdated": true,
           "Docs": [
             {
               "Title": "MediaCapture - API",
@@ -2742,7 +2735,6 @@
           "Subtitle": "Displays a symbolic map of the Earth.",
           "ImagePath": "ms-appx:///Assets/ControlImages/MapControl.png",
           "Description": "Displays a symbolic map of the Earth",
-          "IsNew": true,
           "Docs": [
             {
               "Title": "MapControl - API",
@@ -2902,7 +2894,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/AnimatedIcon.png",
           "Description": "An element that displays and controls an icon that animates when the user interacts with the control.",
           "Content": "<p>Look at the <i>AnimatedIconPage.xaml</i> and <i>AnimatedIconPage.xaml.cs</i> files in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
           "SourcePath": "/AnimatedIcon",
           "Docs": [
             {
@@ -3074,7 +3065,6 @@
           "Description": "System backdrops provide a transparency effect for the window background. Mica and Acrylic are the current supported backdrops. There are two options for applying a backdrop: first, to use built-in Mica/Acrylic types, which have no customization and are simple to apply. The second is to create a customizable backdrop, which requires more code.",
           "Content": "<p>Look at the <i>SampleSystemBackdropsWindow.xaml.cs</i> file in Visual Studio to see the full code for applying a backdrop.</p>",
           "SourcePath": "/Materials",
-          "IsUpdated": true,
           "BaseClasses": [
             "Object",
             "DependencyObject"
@@ -3129,7 +3119,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/AutoSuggestBox.png",
           "Description": "A text control that makes suggestions to users as they type. The app is notified when text has been changed by the user and is responsible for providing relevant suggestions for this control to display.",
           "Content": "<p>Look at the <i>AutoSuggestBoxPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
           "SourcePath": "/AutoSuggestBox",
           "Docs": [
             {
@@ -3163,7 +3152,6 @@
           "Description": "Use NumberBox to allow users to enter algebraic equations and numeric input in your app.",
           "Content": "<p>Look at the <i>NumberBox.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "SourcePath": "/NumberBox",
-          "IsUpdated": true,
           "Docs": [
             {
               "Title": "NumberBox - API",
