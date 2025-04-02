@@ -139,7 +139,7 @@ public sealed partial class SampleWindow1 : Window
     private void Show_Click(object sender, RoutedEventArgs e)
     {
         appWindow.Hide();
-        Task.Delay(3000).ContinueWith(Task => appWindow.Show());
+        Task.Delay(3000).ContinueWith(t => appWindow.Show());
     }
 
     private void Hide_Click(object sender, RoutedEventArgs e)
