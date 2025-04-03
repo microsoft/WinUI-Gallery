@@ -17,6 +17,7 @@ public sealed partial class SampleWindow7 : Window
 
         appWindow = GetAppWindowForCurrentWindow();
         appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        appWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
 
         presenter = CompactOverlayPresenter.Create();
         presenter.InitialSize = InitialSize switch

@@ -26,6 +26,7 @@ public sealed partial class SampleWindow4 : Window
         presenter.IsMaximizable = false;
         appWindow.SetPresenter(presenter);
         appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        appWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
     }
 
     private AppWindow GetAppWindowForCurrentWindow()

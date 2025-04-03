@@ -16,7 +16,7 @@ public sealed partial class SampleWindow1 : Window
         this.InitializeComponent();
     }
 
-    public SampleWindow1(string WindowTitle, Int32 Width, Int32 Height, Int32 X, Int32 Y)
+    public SampleWindow1(string WindowTitle, Int32 Width, Int32 Height, Int32 X, Int32 Y, string TitleBarPreferredTheme)
     {
         this.InitializeComponent();
 
@@ -32,8 +32,24 @@ public sealed partial class SampleWindow1 : Window
         // Set the window position on screen
         appWindow.Move(new Windows.Graphics.PointInt32(X, Y));
 
-        // Set the window icon
-        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        // Set the preferred theme for the title bar
+        appWindow.TitleBar.PreferredTheme = TitleBarPreferredTheme switch
+        {
+            "UseDefaultAppMode" => TitleBarTheme.UseDefaultAppMode,
+            "Legacy" => TitleBarTheme.Legacy,
+            "Light" => TitleBarTheme.Light,
+            "Dark" => TitleBarTheme.Dark,
+            _ => appWindow.TitleBar.PreferredTheme
+        };
+
+        // Set the taskbar icon (displayed in the taskbar)
+        appWindow.SetTaskbarIcon("Assets/Tiles/GalleryIcon.ico");
+
+        // Set the title bar icon (displayed in the window's title bar)
+        appWindow.SetTitleBarIcon("Assets/Tiles/GalleryIcon.ico");
+
+        // Set the window icon (affects both taskbar and title bar, can be omitted if the above two are set)
+        // appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico"); 
     }
 
     //Returrns the AppWindow instance associated with the current window.

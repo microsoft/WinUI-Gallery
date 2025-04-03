@@ -15,8 +15,11 @@ public sealed partial class ModalWindow : Window
     {
         this.InitializeComponent();
         appWindow = GetAppWindowForCurrentWindow();
+        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        appWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
         appWindow.Resize(new Windows.Graphics.SizeInt32(400,300));
 
+        // Create an OverlappedPresenter configured for a dialog window.
         OverlappedPresenter presenter = OverlappedPresenter.CreateForDialog();
 
         // Set this modal window's owner (the main application window).

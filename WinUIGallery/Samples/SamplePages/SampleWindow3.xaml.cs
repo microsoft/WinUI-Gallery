@@ -24,6 +24,7 @@ public sealed partial class SampleWindow3 : Window
         presenter.SetBorderAndTitleBar(HasBorder,HasTitleBar);
         appWindow.SetPresenter(presenter);
         appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        appWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
     }
 
     private AppWindow GetAppWindowForCurrentWindow()
@@ -41,6 +42,12 @@ public sealed partial class SampleWindow3 : Window
     private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
     {
         presenter.Minimize();
+    }
+
+    private void MaximizeRestoreBtn_Click(object sender, RoutedEventArgs e)
+    {
+        presenter.Maximize();
+        Task.Delay(3000).ContinueWith(t => presenter.Restore());
     }
 
     private void RestoreBtn_Click(object sender, RoutedEventArgs e)
