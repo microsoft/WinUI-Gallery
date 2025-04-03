@@ -17,6 +17,7 @@ public sealed partial class ModalWindow : Window
         appWindow = GetAppWindowForCurrentWindow();
         appWindow.Resize(new Windows.Graphics.SizeInt32(400,300));
         appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        appWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
 
         OverlappedPresenter presenter = OverlappedPresenter.CreateForDialog();
 
