@@ -8,6 +8,9 @@
     <ColorCodeVersion>2.0.15</ColorCodeVersion>
     <CommunityToolkitWinUIVersion>8.1.240916</CommunityToolkitWinUIVersion>
     <MicrosoftCsWinRTPackageVersion>2.2.0</MicrosoftCsWinRTPackageVersion>
+    <ComputeSharpD2D1Version>3.1.0</ComputeSharpD2D1Version>
+    <ComputeSharpWinUIVersion>3.1.0</ComputeSharpWinUIVersion>
+
     <!-- We have multiple projects in the same directory, which means we need to separate their output paths-->
     <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <BaseOutputPath>bin\$(MSBuildProjectName)\</BaseOutputPath>
