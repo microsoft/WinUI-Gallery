@@ -350,7 +350,6 @@
         <None Remove="Assets\MathModeImages\LimitAndFunctions\SineFunction_Light.png" />
         <None Remove="Assets\MathModeImages\LimitAndFunctions\TangentFunction_Dark.png" />
         <None Remove="Assets\MathModeImages\LimitAndFunctions\TangentFunction_Light.png" />
-        <None Remove="Assets\MathModeImages\Matrices\1x2EmptyMatrixLight.png" />
         <None Remove="Assets\MathModeImages\Matrices\1x2EmptyMatrix_Dark.png" />
         <None Remove="Assets\MathModeImages\Matrices\1x3EmptyMatrix_Dark.png" />
         <None Remove="Assets\MathModeImages\Matrices\1x3EmptyMatrix_Light.png" />
@@ -778,7 +777,7 @@
         <Content Include="Assets\MathModeImages\LimitAndFunctions\SineFunction_Light.png" />
         <Content Include="Assets\MathModeImages\LimitAndFunctions\TangentFunction_Dark.png" />
         <Content Include="Assets\MathModeImages\LimitAndFunctions\TangentFunction_Light.png" />
-        <Content Include="Assets\MathModeImages\Matrices\1x2EmptyMatrixLight.png" />
+        <Content Include="Assets\MathModeImages\Matrices\1x2EmptyMatrix_Light.png" />
         <Content Include="Assets\MathModeImages\Matrices\1x2EmptyMatrix_Dark.png" />
         <Content Include="Assets\MathModeImages\Matrices\1x3EmptyMatrix_Dark.png" />
         <Content Include="Assets\MathModeImages\Matrices\1x3EmptyMatrix_Light.png" />
