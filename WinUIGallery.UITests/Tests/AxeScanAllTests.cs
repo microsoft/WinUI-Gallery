@@ -1,30 +1,24 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VisualStudio.TestPlatform;
 using OpenQA.Selenium.Appium.Windows;
 using System;
 using System.Linq;
 using System.Text.Json;
-using System.IO;
-using System.Collections.ObjectModel;
-using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
 using System.Reflection;
 using Newtonsoft.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
 using System.Threading;
-using static System.Net.WebRequestMethods;
 
 namespace WinUIGallery.UITests.Tests;
 
 [TestClass]
 public class AxeScanAll : TestBase
-{       
+{
     public static readonly string jsonUri = "ControlInfoData.json";
     public static new WindowsDriver<WindowsElement> Session => SessionManager.Session;
 
     public static string[] ExclusionList =
-    {
+    [
         "WebView2", // 46668961: Web contents from WebView2 are throwing null BoundingRectangle errors.
         "Icons", // https://github.com/CommunityToolkit/Windows/issues/240 External toolkit SettingsExpander does not pass Axe testing
         // https://github.com/microsoft/axe-windows/issues/662
@@ -32,7 +26,7 @@ public class AxeScanAll : TestBase
         "PersonPicture",
         "MapControl",
         "TabView"
-    };
+    ];
 
     public class ControlInfoData
     {
@@ -43,7 +37,7 @@ public class AxeScanAll : TestBase
     {
         [JsonProperty("UniqueId")]
         public string UniqueId { get; set; }
-      
+
         [JsonProperty("Items")]
         public List<Item> Items { get; set; }
     }
@@ -77,7 +71,7 @@ public class AxeScanAll : TestBase
                 {
                     continue;
                 }
-                testCases.Add(new object[] { sectionName, pageName });
+                testCases.Add([sectionName, pageName]);
             }
         }
 
@@ -147,7 +141,7 @@ public class AxeScanAll : TestBase
                 Logger.LogMessage(exc.Message);
                 SessionManager.TakeScreenshot($"{sectionName}.{pageName}");
             }
-           
+
         }
     }
 

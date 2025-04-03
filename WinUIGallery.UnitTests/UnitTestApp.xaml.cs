@@ -8,10 +8,10 @@ public partial class UnitTestApp : Application
 {
     public UnitTestApp()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
-    protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+    protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
         Microsoft.VisualStudio.TestPlatform.TestExecutor.UnitTestClient.CreateDefaultUI();
 

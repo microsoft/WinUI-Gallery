@@ -62,30 +62,31 @@ public class UnitTests
     [UITestMethod]
     public void TestWrapGrid()
     {
-        WinUIGallery.Layouts.WrapPanel wrapPanel = new WinUIGallery.Layouts.WrapPanel();
-        wrapPanel.Width = 250;
-        wrapPanel.Height = 250;
+        Layouts.WrapPanel wrapPanel = new()
+        {
+            Width = 250,
+            Height = 250
+        };
         for (int i = 0; i < 4; i++) 
         {
-            Button button = new Button
+            wrapPanel.Children.Add(new Button()
             {
                 Width = 120,
                 Height = 80,
                 Content = $"Button {i}"
-            };
-            wrapPanel.Children.Add(button);
+            });
         }
 
         UnitTestApp.UnitTestAppWindow.AddToVisualTree(wrapPanel);
         wrapPanel.UpdateLayout();
 
-        List<Rect> expectedLayouts = new List<Rect>
-        {
+        List<Rect> expectedLayouts =
+        [
             new Rect(0,    0, 120,  80),
             new Rect(120,  0, 120,  80),
             new Rect(0,   80, 120,  80),
             new Rect(120, 80, 120,  80)
-        };
+        ];
         for (int i = 0; i < 4; i++)
         {
             var actualLayout = LayoutInformation.GetLayoutSlot(wrapPanel.Children[i] as FrameworkElement);
@@ -99,11 +100,11 @@ public class UnitTests
     public void MultiThreadTest()
     {
         Border border = null;
-        AutoResetEvent borderSizeChanged = new AutoResetEvent(false);
+        AutoResetEvent borderSizeChanged = new(false);
 
         ExecuteOnUIThread(() =>
         {
-            Grid grid = new Grid
+            Grid grid = new()
             {
                 Width = 200,
             };
@@ -147,7 +148,7 @@ public class UnitTests
 
     private void ExecuteOnUIThread(Action action)
     {
-        AutoResetEvent done = new AutoResetEvent(false);
+        AutoResetEvent done = new(false);
         DispatcherQueue dispatcherQueue = UnitTestApp.UnitTestAppWindow.DispatcherQueue;
         if (dispatcherQueue.HasThreadAccess)
         {
