@@ -25,8 +25,20 @@
                 Label="Delete"
                 ToolTipService.ToolTip="Delete" />
             <CommandBarFlyout.SecondaryCommands>
-                <AppBarButton Click="OnElementClicked" Label="Resize" />
-                <AppBarButton Click="OnElementClicked" Label="Move" />
+                <AppBarButton Click="OnElementClicked" Label="Something that seems like it is too long of a string for this flyout and still fit" />
+                <AppBarButton Click="OnElementClicked"
+Label="another super long string, this time with a subflyout that seems like it is too long for this flyout and won't fit">
+                    <AppBarButton.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Text="Bluetooth" />
+                            <MenuFlyoutItem Text="Desktop (shortcut)" />
+                            <MenuFlyoutItem Text="Compressed file" />
+                            <MenuFlyoutItem Text="Compress and email" />
+                            <MenuFlyoutItem Text="Compress to .7z" />
+                            <MenuFlyoutItem Text="Compress to .zip" />
+                        </MenuFlyout>
+                    </AppBarButton.Flyout>
+                </AppBarButton>
             </CommandBarFlyout.SecondaryCommands>
         </CommandBarFlyout>
     </Page.Resources>

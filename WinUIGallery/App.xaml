@@ -69,6 +69,13 @@
                 NullValue="Visible" />
             <converters:BooleanToValueConverter x:Key="booleanToValueConverter" />
             <converters:DoubleToThicknessConverter x:Key="doubleToThicknessConverter" />
+            <Style TargetType="CommandBarFlyoutCommandBar" BasedOn="{StaticResource DefaultCommandBarFlyoutCommandBarStyle}">
+                <Setter Property="MaxWidth" Value="1000"/>
+                <Setter Property="CommandBarOverflowPresenterStyle" Value="{StaticResource OverrideCBFOverflowPresenterStyle}"/>
+            </Style>
+            <Style x:Name="OverrideCBFOverflowPresenterStyle" TargetType="CommandBarOverflowPresenter" BasedOn="{StaticResource CommandBarFlyoutCommandBarOverflowPresenterStyle}">
+                <Setter Property="MaxWidth" Value="1000"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
