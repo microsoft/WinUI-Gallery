@@ -24,8 +24,7 @@
             IsBackButtonVisible="{x:Bind rootFrame.CanGoBack, Mode=OneWay}"
             IsPaneToggleButtonVisible="True"
             PaneToggleRequested="TitleBar_PaneToggleRequested"
-            Style="{StaticResource StretchableContentTitleBarStyle}"
-            Subtitle="Dev">
+            Style="{StaticResource StretchableContentTitleBarStyle}">
             <TitleBar.IconSource>
                 <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
             </TitleBar.IconSource>
