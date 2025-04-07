@@ -11,7 +11,6 @@ public sealed partial class SampleWindow3 : Window
 {
     private AppWindow appWindow;
     private OverlappedPresenter presenter;
-    private bool IsMaximized = false;
 
     public SampleWindow3(bool IsAlwaysOnTop, bool IsMaximizable, bool IsMinimizable, bool IsResizable, bool HasBorder, bool HasTitleBar)
     {
