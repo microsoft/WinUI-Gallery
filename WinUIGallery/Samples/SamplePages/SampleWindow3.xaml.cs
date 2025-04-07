@@ -11,6 +11,7 @@ public sealed partial class SampleWindow3 : Window
 {
     private AppWindow appWindow;
     private OverlappedPresenter presenter;
+    private bool IsMaximized = false;
 
     public SampleWindow3(bool IsAlwaysOnTop, bool IsMaximizable, bool IsMinimizable, bool IsResizable, bool HasBorder, bool HasTitleBar)
     {
@@ -25,6 +26,8 @@ public sealed partial class SampleWindow3 : Window
         appWindow.SetPresenter(presenter);
         appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
         appWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
+
+        SizeChanged += SampleWindow3_SizeChanged;
     }
 
     private AppWindow GetAppWindowForCurrentWindow()
@@ -34,20 +37,26 @@ public sealed partial class SampleWindow3 : Window
         return AppWindow.GetFromWindowId(myWndId);
     }
 
-    private void MaximizeBtn_Click(object sender, RoutedEventArgs e)
+    private void MaximizeRestoreBtn_Click(object sender, RoutedEventArgs e)
     {
-        presenter.Maximize();
+        if (presenter.State == OverlappedPresenterState.Maximized)
+        {
+            presenter.Restore();
+        }
+        else
+        {
+            presenter.Maximize();
+        }
+    }
+
+    private void SampleWindow3_SizeChanged(object sender, WindowSizeChangedEventArgs e)
+    {
+        MaximizeRestoreBtn.Content = presenter.State == OverlappedPresenterState.Maximized ? "Restore" : "Maximize";
     }
 
     private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
     {
         presenter.Minimize();
-    }
-
-    private void MaximizeRestoreBtn_Click(object sender, RoutedEventArgs e)
-    {
-        presenter.Maximize();
-        Task.Delay(3000).ContinueWith(t => presenter.Restore());
     }
 
     private void RestoreBtn_Click(object sender, RoutedEventArgs e)

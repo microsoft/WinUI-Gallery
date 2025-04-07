@@ -89,12 +89,10 @@
 
                     <TextBlock FontWeight="SemiBold"
                                Text="TitleBar theme" />
-                    <ComboBox x:Name="TitleBarPreferredTheme" SelectedIndex="0" HorizontalAlignment="Stretch">
-                        <x:String>UseDefaultAppMode</x:String>
-                        <x:String>Legacy</x:String>
-                        <x:String>Light</x:String>
-                        <x:String>Dark</x:String>
-                    </ComboBox>
+                    <ComboBox x:Name="TitleBarPreferredTheme"
+                              ItemsSource="{x:Bind TitleBarThemes}"
+                              SelectedItem="{x:Bind SelectedTheme, Mode=TwoWay}"
+                              HorizontalAlignment="Stretch" />
                 </StackPanel>
             </controls:ControlExample.Options>
 

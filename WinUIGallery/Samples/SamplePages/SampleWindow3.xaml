@@ -15,19 +15,14 @@
     <StackPanel HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Spacing="10">
-        <Button x:Name="MaximizeBtn"
-                Content="Maximize"
-                Click="MaximizeBtn_Click"
-                Width="200" />
+        <Button x:Name="MaximizeRestoreBtn"
+                Click="MaximizeRestoreBtn_Click"
+                Width="200"
+                Content="Maximize" />
         <Button x:Name="MinimizeBtn"
                 Content="Minimize"
                 Click="MinimizeBtn_Click"
                 Width="200" />
-        <Button x:Name="MaximizeRestoreBtn"
-                Click="MaximizeRestoreBtn_Click"
-                Width="200">
-            <TextBlock Text="Maximize and restore the window after 3 seconds" TextWrapping="WrapWholeWords" TextAlignment="Center" />
-        </Button>
         <Button x:Name="RestoreBtn"
                 Click="RestoreBtn_Click"
                 Width="200" >

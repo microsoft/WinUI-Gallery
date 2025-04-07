@@ -4,6 +4,7 @@ using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using WinRT.Interop;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Samples.SamplePages;
 
@@ -16,7 +17,7 @@ public sealed partial class SampleWindow1 : Window
         this.InitializeComponent();
     }
 
-    public SampleWindow1(string WindowTitle, Int32 Width, Int32 Height, Int32 X, Int32 Y, string TitleBarPreferredTheme)
+    public SampleWindow1(string WindowTitle, Int32 Width, Int32 Height, Int32 X, Int32 Y, TitleBarTheme TitleBarPreferredTheme)
     {
         this.InitializeComponent();
 
@@ -33,14 +34,7 @@ public sealed partial class SampleWindow1 : Window
         appWindow.Move(new Windows.Graphics.PointInt32(X, Y));
 
         // Set the preferred theme for the title bar
-        appWindow.TitleBar.PreferredTheme = TitleBarPreferredTheme switch
-        {
-            "UseDefaultAppMode" => TitleBarTheme.UseDefaultAppMode,
-            "Legacy" => TitleBarTheme.Legacy,
-            "Light" => TitleBarTheme.Light,
-            "Dark" => TitleBarTheme.Dark,
-            _ => appWindow.TitleBar.PreferredTheme
-        };
+        appWindow.TitleBar.PreferredTheme = TitleBarPreferredTheme;
 
         // Set the taskbar icon (displayed in the taskbar)
         appWindow.SetTaskbarIcon("Assets/Tiles/GalleryIcon.ico");
