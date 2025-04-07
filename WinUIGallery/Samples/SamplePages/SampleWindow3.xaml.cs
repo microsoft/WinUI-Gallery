@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -14,17 +15,15 @@ public sealed partial class SampleWindow3 : Window
     public SampleWindow3(bool IsAlwaysOnTop, bool IsMaximizable, bool IsMinimizable, bool IsResizable, bool HasBorder, bool HasTitleBar)
     {
         this.InitializeComponent();
-
         appWindow = GetAppWindowForCurrentWindow();
-
         presenter = OverlappedPresenter.Create();
         presenter.IsAlwaysOnTop = IsAlwaysOnTop;
         presenter.IsMaximizable = IsMaximizable;
         presenter.IsMinimizable = IsMinimizable;
         presenter.IsResizable = IsResizable;
         presenter.SetBorderAndTitleBar(HasBorder,HasTitleBar);
-
         appWindow.SetPresenter(presenter);
+        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
     }
 
     private AppWindow GetAppWindowForCurrentWindow()
@@ -46,7 +45,8 @@ public sealed partial class SampleWindow3 : Window
 
     private void RestoreBtn_Click(object sender, RoutedEventArgs e)
     {
-        presenter.Restore();
+        presenter.Minimize();
+        Task.Delay(3000).ContinueWith(t => presenter.Restore());
     }
 
     private void CloseBtn_Click(object sender, RoutedEventArgs e)

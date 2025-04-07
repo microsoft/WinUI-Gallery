@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="WinUIGallery.Samples.SamplePages.SampleWindow4"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery.Samples.SamplePages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <StackPanel
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Spacing="10">
+        <Button
+            x:Name="MinimizeBtn"
+            Width="200"
+            Click="MinimizeBtn_Click"
+            Content="Minimize" />
+
+        <Button x:Name="RestoreBtn"
+                Click="RestoreBtn_Click"
+                Width="200" >
+            <TextBlock Text="Minimize and restore the window after 3 seconds" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
+        </Button>
+
+        <Button
+            x:Name="CloseBtn"
+            Width="200"
+            Margin="0,16,0,0"
+            Click="CloseBtn_Click">
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                <SymbolIcon
+                    Margin="0,0,4,0"
+                    Foreground="{ThemeResource SystemFillColorCriticalBrush}"
+                    Symbol="Cancel" />
+                <TextBlock Foreground="{ThemeResource SystemFillColorCriticalBrush}" Text="Close" />
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</Window>

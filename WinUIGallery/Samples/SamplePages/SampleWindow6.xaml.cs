@@ -9,24 +9,15 @@ namespace WinUIGallery.Samples.SamplePages;
 public sealed partial class SampleWindow6 : Window
 {
     private AppWindow appWindow;
-    private CompactOverlayPresenter presenter;
 
-    public SampleWindow6(string InitialSize)
+    public SampleWindow6()
     {
         this.InitializeComponent();
-
         appWindow = GetAppWindowForCurrentWindow();
+        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
 
-        presenter = CompactOverlayPresenter.Create();
-        presenter.InitialSize = InitialSize switch
-        {
-            "Small" => CompactOverlaySize.Small,
-            "Medium" => CompactOverlaySize.Medium,
-            "Large" => CompactOverlaySize.Large,
-            _ => presenter.InitialSize
-        };
-
-        appWindow.SetPresenter(presenter);
+        // Set the window to Full-Screen mode
+        appWindow.SetPresenter(AppWindowPresenterKind.FullScreen);
     }
 
     private AppWindow GetAppWindowForCurrentWindow()
@@ -34,5 +25,10 @@ public sealed partial class SampleWindow6 : Window
         IntPtr hWnd = WindowNative.GetWindowHandle(this);
         WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
         return AppWindow.GetFromWindowId(myWndId);
+    }
+
+    private void Close_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
     }
 }

@@ -39,8 +39,11 @@
         <RichTextBlock>
             <Paragraph>
                 Acrylic Brush might fall back to SolidColorbrush in certain scenarios.
-                If you can't see the Acrylic effect, please refer to <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/acrylic#usability-and-adaptability">Acrylic brush adaptability documentation</Hyperlink>
-                .</Paragraph>
+                If you can't see the Acrylic effect, please refer to
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/acrylic#usability-and-adaptability">Acrylic brush adaptability documentation</Hyperlink>.
+                Acrylic Brush uses in-app acrylic. See
+                <Hyperlink Click="SystemBackdropLink_Click">SystemBackdrops (Mica/Acrylic)</Hyperlink> for background acrylic.
+            </Paragraph>
         </RichTextBlock>
         <controls:ControlExample x:Name="Example1" HeaderText="Default in-app acrylic brush.">
             <controls:ControlExample.Example>
@@ -74,41 +77,6 @@
             <controls:ControlExample.Xaml>
                 <x:String>
                     &lt;Rectangle Fill="{ThemeResource AcrylicInAppFillColorDefaultBrush}" /&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
-        </controls:ControlExample>
-        <controls:ControlExample x:Name="Example2" HeaderText="Default background acrylic brush.">
-            <controls:ControlExample.Example>
-                <Grid
-                    x:Name="Example2Grid"
-                    Width="320"
-                    Height="200">
-                    <Grid>
-                        <Rectangle
-                            Width="100"
-                            Height="200"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Fill="Aqua" />
-                        <Ellipse
-                            Width="152"
-                            Height="152"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Fill="Magenta" />
-                        <Rectangle
-                            Width="80"
-                            Height="100"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Bottom"
-                            Fill="Yellow" />
-                    </Grid>
-                    <Rectangle Margin="12" Fill="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" />
-                </Grid>
-            </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String>
-                    &lt;Rectangle Fill="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" /&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>
