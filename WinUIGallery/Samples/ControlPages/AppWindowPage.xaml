@@ -317,6 +317,8 @@ public sealed partial class SampleWindow3 : Window
         presenter.SetBorderAndTitleBar($(HasBorder),$(HasTitleBar));
 
         appWindow.SetPresenter(presenter);
+                    
+        SizeChanged += SampleWindow3_SizeChanged;
     }
 
     private AppWindow GetAppWindowForCurrentWindow()
@@ -326,9 +328,21 @@ public sealed partial class SampleWindow3 : Window
         return AppWindow.GetFromWindowId(myWndId);
     }
 
-    private void MaximizeBtn_Click(object sender, RoutedEventArgs e)
+    private void MaximizeRestoreBtn_Click(object sender, RoutedEventArgs e)
     {
-        presenter.Maximize();
+        if (presenter.State == OverlappedPresenterState.Maximized)
+        {
+            presenter.Restore();
+        }
+        else
+        {
+            presenter.Maximize();
+        }
+    }
+
+    private void SampleWindow3_SizeChanged(object sender, WindowSizeChangedEventArgs e)
+    {
+        MaximizeRestoreBtn.Content = presenter.State == OverlappedPresenterState.Maximized ? "Restore" : "Maximize";
     }
 
     private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
@@ -338,7 +352,8 @@ public sealed partial class SampleWindow3 : Window
 
     private void RestoreBtn_Click(object sender, RoutedEventArgs e)
     {
-        presenter.Restore();
+        presenter.Minimize();
+        Task.Delay(3000).ContinueWith(t => presenter.Restore());
     }
 
     private void CloseBtn_Click(object sender, RoutedEventArgs e)
@@ -425,11 +440,6 @@ public sealed partial class SampleWindow4 : Window
         IntPtr hWnd = WindowNative.GetWindowHandle(this);
         WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
         return AppWindow.GetFromWindowId(myWndId);
-    }
-
-    private void MaximizeBtn_Click(object sender, RoutedEventArgs e)
-    {
-        presenter.Maximize();
     }
 
     private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
