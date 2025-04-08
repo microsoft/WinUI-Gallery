@@ -269,7 +269,7 @@ public sealed partial class RichEditBoxPage : Page
             var selection = MathEditor.Document.Selection;
             if (selection != null)
             {
-                MathModeHelper.TypeCommand(insertionBtn.Tag.ToString());
+                InputSender.SendUnicodeText(insertionBtn.Tag.ToString());
             }
         }
     }
@@ -426,7 +426,7 @@ public sealed partial class RichEditBoxPage : Page
             var selection = MathEditor.Document.Selection;
             if (selection != null)
             {
-                MathModeHelper.TypeCommand(insertionBtn.Tag.ToString());
+                InputSender.SendUnicodeText(insertionBtn.Tag.ToString());
             }
         }
     }

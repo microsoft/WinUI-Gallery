@@ -112,180 +112,156 @@ public static class MathModeHelper
         {
             StructuresCategory.BasicStructures => new List<MathStructure>
         {
-            new("Structures/StackedFraction", "stacked fraction", "/"),
-            new("Structures/SkewedFraction", "Skewed fraction","\\sdiv "),
-            new("Structures/LinearFraction", "Linear fraction", "\\ldiv "),
-            new("Structures/StackObject", "Stack Object", "\\atop "),
-            new("Structures/Superscript", "Superscript", "\\begin^\\end "),
-            new("Structures/Subscript", "Subscript", "\\begin_\\end "),
-            new("Structures/SuperscriptSubscript", "Superscript and subscript", "\\open\\close^_ "),
-            new("Structures/SuperscriptSubscriptLeft", "Left superscript and subscript", "(^_)"),
-            new("Structures/SquareRoot", "Square root", "\\sqrt "),
-            new("Structures/RadicalWithDegree", "Radical with degree", "\\sqrt(&)"),
-            new("Structures/SquareRootWithDegree", "Square root with degree", "\\sqrt(2&)"),
-            new("structures/CubicRoot", "Cubic root", "\\cbrt "),
+            new("Structures/StackedFraction", "stacked fraction", "/", "/ "),
+            new("Structures/SkewedFraction", "Skewed fraction","\\sdiv ", "\u2044 "),
+            new("Structures/LinearFraction", "Linear fraction", "\\ldiv ", "\u2215 "),
+            new("Structures/StackObject", "Stack Object", "\\atop ", "\u00A6 "),
+            new("Structures/Superscript", "Superscript", "\\begin^\\end ", "\u3016^\u3017 "),
+            new("Structures/Subscript", "Subscript", "\\begin_\\end ", "\u3016_\u3017 "),
+            new("Structures/SuperscriptSubscript", "Superscript and subscript", "\\open\\close^_ ", "\u251C\u2524^_  "),
+            new("Structures/SuperscriptSubscriptLeft", "Left superscript and subscript", "(^_)", "(^_) "),
+            new("Structures/SquareRoot", "Square root", "\\sqrt ", "\u221A "),
+            new("Structures/RadicalWithDegree", "Radical with degree", "\\sqrt(&)", "\u221A(&) "),
+            new("Structures/SquareRootWithDegree", "Square root with degree", "\\sqrt(2&)", "\u221A(2&) "),
+            new("structures/CubicRoot", "Cubic root", "\\cbrt ", "\u221B "),
         },
 
             StructuresCategory.Integrals => new List<MathStructure>
         {
-            new("Integrals/Integral", "Integral", "\\int4"),
-            new("Integrals/IntegralWithLimits", "Integral with limits", "\\int24"),
-            new("Integrals/IntegralWithStackedLimits", "Integral with stacked limits", "\\int28"),
-            new("Integrals/DoubleIntegral", "Double integral", "\\iint4"),
-            new("Integrals/DoubleIntegralWithLimits", "Double integral with limits", "\\iint24"),
-            new("Integrals/DoubleIntegralWithStackedLimits", "Double Integral with stacked limits", "\\iint28"),
-            new("Integrals/TripleIntegral", "Triple integral", "\\iiint4"),
-            new("Integrals/TripleIntegralWithLimits", "Triple integral with limits", "\\iiint24"),
-            new("Integrals/TripleIntegralWithStackedLimits", "Triple integral with stacked limits", "\\iiint28"),
-            new("Integrals/ContourIntegral", "Contour integral", "\\oint4"),
-            new("Integrals/ContourIntegralWithLimits", "Contour integral with limits", "\\oint24"),
-            new("Integrals/ContourIntegralWithStackedLimits", "Contour integral with stacked limits", "\\oint28"),
-            new("Integrals/DoubleContourIntegral", "Double contour integral", "\\oiint4"),
-            new("Integrals/DoubleContourIntegralWithLimits", "Double contour integral with limits", "\\oiint24"),
-            new("Integrals/DoubleContourIntegralWithStackedLimits", "Double contour integral with stacked limits", "\\oiint28"),
-            new("Integrals/TripleContourIntegral", "Triple contour integral", "\\oiiint4"),
-            new("Integrals/TripleContourIntegralWithLimits", "Triple contour integral with limits", "\\oiiint24"),
-            new("Integrals/TripleContourIntegralWithStackedLimits", "Triple contour integral with stacked limits", "\\oiiint28"),
-            new("Integrals/TripleContourIntegralWithStackedLimits", "Triple contour integral with stacked limits", "\\oiiint28"),
-        },
+            new("Integrals/Integral", "Integral", "\\int4", "\u222B4 "),
+            new("Integrals/IntegralWithLimits", "Integral with limits", "\\int24", "\u222B24 "),
+            new("Integrals/IntegralWithStackedLimits", "Integral with stacked limits", "\\int28", "\u222B28 "),
+            new("Integrals/DoubleIntegral", "Double integral", "\\iint4", "\u222C4 "),
+            new("Integrals/DoubleIntegralWithLimits", "Double integral with limits", "\\iint24", "\u222C24 "),
+            new("Integrals/DoubleIntegralWithStackedLimits", "Double Integral with stacked limits", "\\iint28", "\u222C28 "),
+            new("Integrals/TripleIntegral", "Triple integral", "\\iiint4", "\u222C4 "),
+            new("Integrals/TripleIntegralWithLimits", "Triple integral with limits", "\\iiint24", "\u222D24 "),
+            new("Integrals/TripleIntegralWithStackedLimits", "Triple integral with stacked limits", "\\iiint28", "\u222D28 "),
+            new("Integrals/ContourIntegral", "Contour integral", "\\oint4", "\u222E4 "),
+            new("Integrals/ContourIntegralWithLimits", "Contour integral with limits", "\\oint24", "\u222E24 "),
+            new("Integrals/ContourIntegralWithStackedLimits", "Contour integral with stacked limits", "\\oint28", "\u222E28 "),
+            new("Integrals/DoubleContourIntegral", "Double contour integral", "\\oiint4", "\u222F4 "),
+            new("Integrals/DoubleContourIntegralWithLimits", "Double contour integral with limits", "\\oiint24", "\u222F24 "),
+            new("Integrals/DoubleContourIntegralWithStackedLimits", "Double contour integral with stacked limits", "\\oiint28", "\u222F28 "),
+            new("Integrals/TripleContourIntegral", "Triple contour integral", "\\oiiint4", "\u22304 "),
+            new("Integrals/TripleContourIntegralWithLimits", "Triple contour integral with limits", "\\oiiint24", "\u223024 "),
+            new("Integrals/TripleContourIntegralWithStackedLimits", "Triple contour integral with stacked limits", "\\oiiint28", "\u223028 ")        },
 
             StructuresCategory.LargeOperators => new List<MathStructure>
         {
-            new("LargeOperators/Summation", "Summation", "\\sum4"),
-            new("LargeOperators/SummationWithLimits", "Summation with limits", "\\sum28"),
-            new("LargeOperators/SummationWithStackedLimits", "Summation with stacked limits", "\\sum24"),
-            new("LargeOperators/SummationWithLowerLimit", "Summation with lower limit", "\\sum12"),
-            new("LargeOperators/SummationWithStackedLowerLimit", "Summation with stacked lower limit", "\\sum8"),
-            new("LargeOperators/Product", "Product", "\\prod4"),
-            new("LargeOperators/ProductWithLimits", "Product with limits", "\\prod28"),
-            new("LargeOperators/ProductWithStackedLimits", "Product with stacked limits", "\\prod24"),
-            new("LargeOperators/ProductWithLowerLimit", "Product with lower limit", "\\prod12"),
-            new("LargeOperators/ProductWithStackedLowerLimit", "Product with stacked lower limit", "\\prod8"),
-            new("LargeOperators/CoProduct", "CoProduct", "\\coprod4"),
-            new("LargeOperators/CoProductWithLimits", "CoProduct with limits", "\\coprod28"),
-            new("LargeOperators/CoProductWithStackedLimits", "CoProduct with stacked limits", "\\coprod24"),
-            new("LargeOperators/CoProductWithLowerLimit", "CoProduct with lower limit", "\\coprod12"),
-            new("LargeOperators/CoProductWithStackedLowerLimit", "CoProduct with stacked lower limit", "\\coprod8"),
-            new("LargeOperators/Union", "Union", "\\bigcup4"),
-            new("LargeOperators/UnionWithLimits", "Union with Limits", "\\bigcup28"),
-            new("LargeOperators/UnionWithStackedLimits", "Union with stacked limits", "\\bigcup24"),
-            new("LargeOperators/UnionWithLowerLimit", "Union with lower limit", "\\bigcup12"),
-            new("LargeOperators/UnionWithStackedLowerLimit", "Union with stacked lower limit", "\\bigcup8"),
-            new("LargeOperators/Intersection", "Intersection", "\\bigcap4"),
-            new("LargeOperators/IntersectionWithLimits", "Intersection with Limits", "\\bigcap28"),
-            new("LargeOperators/IntersectionWithStackedLimits", "Intersection with stacked limits", "\\bigcap24"),
-            new("LargeOperators/IntersectionWithLowerLimit", "Intersection with lower limit", "\\bigcap12"),
-            new("LargeOperators/IntersectionWithStackedLowerLimit", "Intersection with stacked lower limit", "\\bigcap8"),
-            new("LargeOperators/LogicalOr", "Logical OR", "\\bigvee4"),
-            new("LargeOperators/LogicalOrWithLimits", "Logical OR with Limits", "\\bigvee28"),
-            new("LargeOperators/LogicalOrWithStackedLimits", "Logical OR with stacked limits", "\\bigvee24"),
-            new("LargeOperators/LogicalOrWithLowerLimit", "Logical OR with lower limit", "\\bigvee12"),
-            new("LargeOperators/LogicalOrWithStackedLowerLimit", "Logical OR with stacked lower limit", "\\bigvee8"),
-            new("LargeOperators/LogicalAnd", "Logical AND", "\\bigwedge4"),
-            new("LargeOperators/LogicalAndWithLimits", "Logical AND with Limits", "\\bigwedge28"),
-            new("LargeOperators/LogicalAndWithStackedLimits", "Logical AND with stacked limits", "\\bigwedge24"),
-            new("LargeOperators/LogicalAndWithLowerLimit", "Logical AND with lower limit", "\\bigwedge12"),
-            new("LargeOperators/LogicalAndWithStackedLowerLimit", "Logical AND with stacked lower limit", "\\bigwedge8")
+            new("LargeOperators/Summation", "Summation", "\\sum4", "\u22114 "),
+            new("LargeOperators/SummationWithLimits", "Summation with limits", "\\sum28", "\u221128 "),
+            new("LargeOperators/SummationWithStackedLimits", "Summation with stacked limits", "\\sum24", "\u221124 "),
+            new("LargeOperators/SummationWithLowerLimit", "Summation with lower limit", "\\sum12", "\u221112 "),
+            new("LargeOperators/SummationWithStackedLowerLimit", "Summation with stacked lower limit", "\\sum8", "\u22118 "),
+            new("LargeOperators/Product", "Product", "\\prod4", "\u220F4 "),
+            new("LargeOperators/ProductWithLimits", "Product with limits", "\\prod28", "\u220F28 "),
+            new("LargeOperators/ProductWithStackedLimits", "Product with stacked limits", "\\prod24", "\u220F24 "),
+            new("LargeOperators/ProductWithLowerLimit", "Product with lower limit", "\\prod12", "\u220F12 "),
+            new("LargeOperators/ProductWithStackedLowerLimit", "Product with stacked lower limit", "\\prod8", "\u220F8 "),
+            new("LargeOperators/CoProduct", "CoProduct", "\\coprod4", "\u22104 "),
+            new("LargeOperators/CoProductWithLimits", "CoProduct with limits", "\\coprod28", "\u221028 "),
+            new("LargeOperators/CoProductWithStackedLimits", "CoProduct with stacked limits", "\\coprod24", "\u221024 "),
+            new("LargeOperators/CoProductWithLowerLimit", "CoProduct with lower limit", "\\coprod12", "\u221012 "),
+            new("LargeOperators/CoProductWithStackedLowerLimit", "CoProduct with stacked lower limit", "\\coprod8", "\u22108 "),
+            new("LargeOperators/Union", "Union", "\\bigcup4", "\u22C34 "),
+            new("LargeOperators/UnionWithLimits", "Union with Limits", "\\bigcup28", "\u22C328 "),
+            new("LargeOperators/UnionWithStackedLimits", "Union with stacked limits", "\\bigcup24", "\u22C324 "),
+            new("LargeOperators/UnionWithLowerLimit", "Union with lower limit", "\\bigcup12", "\u22C312 "),
+            new("LargeOperators/UnionWithStackedLowerLimit", "Union with stacked lower limit", "\\bigcup8", "\u22C38 "),
+            new("LargeOperators/Intersection", "Intersection", "\\bigcap4", "\u22C24 "),
+            new("LargeOperators/IntersectionWithLimits", "Intersection with Limits", "\\bigcap28", "\u22C24 "),
+            new("LargeOperators/IntersectionWithStackedLimits", "Intersection with stacked limits", "\\bigcap24", "\u22C224 "),
+            new("LargeOperators/IntersectionWithLowerLimit", "Intersection with lower limit", "\\bigcap12", "\u22C212 "),
+            new("LargeOperators/IntersectionWithStackedLowerLimit", "Intersection with stacked lower limit", "\\bigcap8", "\u22C28 "),
+            new("LargeOperators/LogicalOr", "Logical OR", "\\bigvee4", "\u22C14 "),
+            new("LargeOperators/LogicalOrWithLimits", "Logical OR with Limits", "\\bigvee28", "\u22C128 "),
+            new("LargeOperators/LogicalOrWithStackedLimits", "Logical OR with stacked limits", "\\bigvee24", "\u22C124 "),
+            new("LargeOperators/LogicalOrWithLowerLimit", "Logical OR with lower limit", "\\bigvee12", "\u22C112 "),
+            new("LargeOperators/LogicalOrWithStackedLowerLimit", "Logical OR with stacked lower limit", "\\bigvee8", "\u22C18 "),
+            new("LargeOperators/LogicalAnd", "Logical AND", "\\bigwedge4", "\u22C04 "),
+            new("LargeOperators/LogicalAndWithLimits", "Logical AND with Limits", "\\bigwedge28", "\u22C028 "),
+            new("LargeOperators/LogicalAndWithStackedLimits", "Logical AND with stacked limits", "\\bigwedge24", "\u22C024 "),
+            new("LargeOperators/LogicalAndWithLowerLimit", "Logical AND with lower limit", "\\bigwedge12", "\u22C012 "),
+            new("LargeOperators/LogicalAndWithStackedLowerLimit", "Logical AND with stacked lower limit", "\\bigwedge8", "\u22C08 ")
         },
 
             StructuresCategory.Accents => new List<MathStructure>
         {
-            new("Accents/Dot", "Dot", "\\dot "),
-            new("Accents/DoubleDot", "Double dot", "\\ddot "),
-            new("Accents/TripleDot", "Triple dot", "\\dddot "),
-            new("Accents/Hat", "Hat", "\\hat "),
-            new("Accents/Check", "Check", "\\check "),
-            new("Accents/Acute", "Acute", "\\acute "),
-            new("Accents/Grave", "Grave", "\\grave "),
-            new("Accents/Breve", "Breve", "\\breve "),
-            new("Accents/Tilde", "Tilde", "\\tilde "),
-            new("Accents/Bar", "Bar", "\\bar "),
-            new("Accents/DoubleOverbar", "Double overbar", "\\Bar "),
-            new("Accents/Overbrace", "Overbrace", "\\open\\overbrace\\close "),
-            new("Accents/Underbrace", "Underbrace", "\\open\\underbrace\\close "),
-            new("Accents/GroupingCharacterAbove", "Grouping character above", "\\overbrace\\above "),
-            new("Accents/GroupingCharacterBelow", "Grouping character below", "\\underbrace\\below "),
-            new("Accents/LeftwardsArrowAbove", "Leftwards arrow above", "\\lvec "),
-            new("Accents/RightwardsArrowAbove", "Rightwards arrow above", "\\vec "),
-            new("Accents/Left-RightArrowAbove", "Left-Right arrow above", "\\open\\tvec\\close "),
-            new("Accents/LeftwardsHarpoonAbove", "Leftwards harpoon above", "\\lhvec "),
-            new("Accents/RightwardsHarpoonAbove", "Rightwards harpoon above", "\\hvec "),
-            new("Accents/Overbar", "Overbar", "\\overline "),
-            new("Accents/Underbar", "Underbar", "\\underline ")
+            new("Accents/Dot", "Dot", "\\dot ", "\u0307 "),
+            new("Accents/DoubleDot", "Double dot", "\\ddot ", "\u0308 "),
+            new("Accents/TripleDot", "Triple dot", "\\dddot ", "\u20DB "),
+            new("Accents/Hat", "Hat", "\\hat ", "\u0302 "),
+            new("Accents/Check", "Check", "\\check ", "\u030C "),
+            new("Accents/Acute", "Acute", "\\acute ", "\u0301 "),
+            new("Accents/Grave", "Grave", "\\grave ", "\u0300 "),
+            new("Accents/Breve", "Breve", "\\breve ", "\u0306 "),
+            new("Accents/Tilde", "Tilde", "\\tilde ", "\u0303 "),
+            new("Accents/Bar", "Bar", "\\bar ", "\u0305 "),
+            new("Accents/DoubleOverbar", "Double overbar", "\\Bar ", "\u033F "),
+            new("Accents/Overbrace", "Overbrace", "\\open\\overbrace\\close ", "\u251C\u23DE\u2524 "),
+            new("Accents/Underbrace", "Underbrace", "\\open\\underbrace\\close ", "\u251C\u20D0\u2524 "),
+            new("Accents/GroupingCharacterAbove", "Grouping character above", "\\overbrace\\above ", "\u23DE\u2534 "),
+            new("Accents/GroupingCharacterBelow", "Grouping character below", "\\underbrace\\below ", "\u23DF\u252C "),
+            new("Accents/LeftwardsArrowAbove", "Leftwards arrow above", "\\lvec ", "\u20D6 "),
+            new("Accents/RightwardsArrowAbove", "Rightwards arrow above", "\\vec ", "\u20D7 "),
+            new("Accents/Left-RightArrowAbove", "Left-Right arrow above", "\\open\\tvec\\close ", "\u251C\u20E1\u2524 "),
+            new("Accents/LeftwardsHarpoonAbove", "Leftwards harpoon above", "\\lhvec ", "\u20D0 "),
+            new("Accents/RightwardsHarpoonAbove", "Rightwards harpoon above", "\\hvec ", "\u20D1 "),
+            new("Accents/Overbar", "Overbar", "\\overline ", "\u00AF "),
+            new("Accents/Underbar", "Underbar", "\\underline ", "\u2581 ")
         },
 
             StructuresCategory.LimitAndFunctions => new List<MathStructure>
         {
-            new("LimitAndFunctions/Limit", "Limit", "\\lim\\below(\\dots)"),
-            new("LimitAndFunctions/Minimum", "Minimum", "\\min\\below(\\dots)"),
-            new("LimitAndFunctions/Maximum", "Maximum", "\\max\\below(\\dots)"),
-            new("LimitAndFunctions/LogarithmWithEmptyBase", "Logarithm with empty base", "\\log_"),
-            new("LimitAndFunctions/LogarithmWithNoBase", "Logarithm with no base", "\\log"),
-            new("LimitAndFunctions/NaturalLogarithm", "Natural logarithm", "\\ln"),
-            new("LimitAndFunctions/SineFunction", "Sine function", "\\sin"),
-            new("LimitAndFunctions/CosineFunction", "Cosine function", "\\cos"),
-            new("LimitAndFunctions/TangentFunction", "Tangent function", "\\tan"),
-            new("LimitAndFunctions/CosecantFunction", "Cosecant function", "\\csc"),
-            new("LimitAndFunctions/SecantFunction", "Secant function", "\\sec"),
-            new("LimitAndFunctions/CotangentFunction", "Cotangent function", "\\cot"),
-            new("LimitAndFunctions/InverseSineFunction", "Inverse sine function", "\\sin^-1"),
-            new("LimitAndFunctions/InverseCosineFunction", "Inverse cosine function", "\\cos^-1"),
-            new("LimitAndFunctions/InverseTangentFunction", "Inverse tangent function", "\\tan^-1"),
-            new("LimitAndFunctions/InverseCosecantFunction", "Inverse cosecant function", "\\csc^-1"),
-            new("LimitAndFunctions/InverseSecantFunction", "Inverse secant function", "\\sec^-1"),
-            new("LimitAndFunctions/InverseCotangentFunction", "Inverse cotangent function", "\\cot^-1"),
-            new("LimitAndFunctions/HyperbolicSineFunction", "Hyperbolic sine function", "\\sinh"),
-            new("LimitAndFunctions/HyperbolicCosineFunction", "Hyperbolic cosine function", "\\cosh"),
-            new("LimitAndFunctions/HyperbolicTangentFunction", "Hyperbolic tangent function", "\\tanh"),
-            new("LimitAndFunctions/HyperbolicCosecantFunction", "Hyperbolic cosecant function", "\\csch"),
-            new("LimitAndFunctions/HyperbolicSecantFunction", "Hyperbolic secant function", "\\sech"),
-            new("LimitAndFunctions/HyperbolicCotangentFunction", "Hyperbolic cotangent function", "\\coth"),
-            new("LimitAndFunctions/InverseHyperbolicSineFunction", "Inverse hyperbolic sine function", "\\sinh^-1"),
-            new("LimitAndFunctions/InverseHyperbolicCosineFunction", "Inverse hyperbolic cosine function", "\\cosh^-1"),
-            new("LimitAndFunctions/InverseHyperbolicTangentFunction", "Inverse hyperbolic tangent function", "\\tanh^-1"),
-            new("LimitAndFunctions/InverseHyperbolicCosecantFunction", "Inverse hyperbolic cosecant function", "\\csch^-1"),
-            new("LimitAndFunctions/InverseHyperbolicSecantFunction", "Inverse hyperbolic secant function", "\\sech^-1"),
-            new("LimitAndFunctions/InverseHyperbolicCotangentFunction", "Inverse hyperbolic cotangent function", "\\coth^-1")
+            new("LimitAndFunctions/Limit", "Limit", "lim\\below(\\dots) ", "lim\u252C(\u2026) "),
+            new("LimitAndFunctions/Minimum", "Minimum", "min\\below(\\dots) ", "min\u252C(\u2026) "),
+            new("LimitAndFunctions/Maximum", "Maximum", "max\\below(\\dots) ", "max\u252C(\u2026) "),
+            new("LimitAndFunctions/LogarithmWithEmptyBase", "Logarithm with empty base", "log_ "),
+            new("LimitAndFunctions/LogarithmWithNoBase", "Logarithm with no base", "log "),
+            new("LimitAndFunctions/NaturalLogarithm", "Natural logarithm", "ln "),
+            new("LimitAndFunctions/SineFunction", "Sine function", "sin "),
+            new("LimitAndFunctions/CosineFunction", "Cosine function", "cos "),
+            new("LimitAndFunctions/TangentFunction", "Tangent function", "tan "),
+            new("LimitAndFunctions/CosecantFunction", "Cosecant function", "csc "),
+            new("LimitAndFunctions/SecantFunction", "Secant function", "sec "),
+            new("LimitAndFunctions/CotangentFunction", "Cotangent function", "cot "),
+            new("LimitAndFunctions/InverseSineFunction", "Inverse sine function", "sin^-1 "),
+            new("LimitAndFunctions/InverseCosineFunction", "Inverse cosine function", "cos^-1 "),
+            new("LimitAndFunctions/InverseTangentFunction", "Inverse tangent function", "tan^-1 "),
+            new("LimitAndFunctions/InverseCosecantFunction", "Inverse cosecant function", "csc^-1 "),
+            new("LimitAndFunctions/InverseSecantFunction", "Inverse secant function", "sec^-1 "),
+            new("LimitAndFunctions/InverseCotangentFunction", "Inverse cotangent function", "cot^-1 "),
+            new("LimitAndFunctions/HyperbolicSineFunction", "Hyperbolic sine function", "sinh "),
+            new("LimitAndFunctions/HyperbolicCosineFunction", "Hyperbolic cosine function", "cosh "),
+            new("LimitAndFunctions/HyperbolicTangentFunction", "Hyperbolic tangent function", "tanh "),
+            new("LimitAndFunctions/HyperbolicCosecantFunction", "Hyperbolic cosecant function", "csch "),
+            new("LimitAndFunctions/HyperbolicSecantFunction", "Hyperbolic secant function", "sech "),
+            new("LimitAndFunctions/HyperbolicCotangentFunction", "Hyperbolic cotangent function", "coth "),
+            new("LimitAndFunctions/InverseHyperbolicSineFunction", "Inverse hyperbolic sine function", "sinh^-1 "),
+            new("LimitAndFunctions/InverseHyperbolicCosineFunction", "Inverse hyperbolic cosine function", "cosh^-1 "),
+            new("LimitAndFunctions/InverseHyperbolicTangentFunction", "Inverse hyperbolic tangent function", "tanh^-1 "),
+            new("LimitAndFunctions/InverseHyperbolicCosecantFunction", "Inverse hyperbolic cosecant function", "csch^-1 "),
+            new("LimitAndFunctions/InverseHyperbolicSecantFunction", "Inverse hyperbolic secant function", "sech^-1 "),
+            new("LimitAndFunctions/InverseHyperbolicCotangentFunction", "Inverse hyperbolic cotangent function", "coth^-1 ")
         },
 
             StructuresCategory.Matrices => new List<MathStructure>
         {
-            new("Matrices/1x2EmptyMatrix", "1\u00D72 empty matrix", "\\matrix(\u251C\u2524 &\u251C\u2524 )"),
-            new("Matrices/2x1EmptyMatrix", "2\u00D71 empty matrix", "\\matrix(\u251C\u2524 @\u251C\u2524 )"),
-            new("Matrices/2x2EmptyMatrix", "2\u00D72 empty matrix", "\\matrix(\u251C\u2524 &\u251C\u2524 @\u251C\u2524 &\u251C\u2524 )"),
-            new("Matrices/1x3EmptyMatrix", "1\u00D73 empty matrix", "\\matrix(\u251C\u2524 &\u251C\u2524 &\u251C\u2524 )"),
-            new("Matrices/3x1EmptyMatrix", "3\u00D71 empty matrix", "\\matrix(\u251C\u2524 @\u251C\u2524 @\u251C\u2524 )"),
-            new("Matrices/2x2IdentityMatrixWithZeros", "2\u00D72 identity matrix with zeros", "\\matrix(1&0@0&1)"),
-            new("Matrices/2x2IdentityMatrix", "2\u00D72 identity matrix", "\\matrix(1&@&1)"),
-            new("Matrices/3x3IdentityMatrixWithZeros", "3\u00D73 identity matrix with zeros", "\\matrix(1&0&0@0&1&0@0&0&1)"),
-            new("Matrices/3x3IdentityMatrix", "3\u00D73 Identity matrix", "\\matrix(1&&@&1&@&&1)")
+            new("Matrices/1x2EmptyMatrix", "1\u00D72 empty matrix", "\\matrix(\\open\\close &\\open\\close  ) ", "\u25A0(\u251C\u2524 &\u251C\u2524 ) "),
+            new("Matrices/2x1EmptyMatrix", "2\u00D71 empty matrix", "\\matrix(\\open\\close @\\open\\close  ) ", "\u25A0(\u251C\u2524 @\u251C\u2524 ) "),
+            new("Matrices/2x2EmptyMatrix", "2\u00D72 empty matrix", "\\matrix(\\open\\close &\\open\\close @\\open\\close &\\open\\close  ) ", "\u25A0(\u251C\u2524 &\u251C\u2524 @\u251C\u2524 &\u251C\u2524 ) "),
+            new("Matrices/1x3EmptyMatrix", "1\u00D73 empty matrix", "\\matrix(\\open\\close &\\open\\close &\\open\\close  )", "\u25A0(\u251C\u2524 &\u251C\u2524 &\u251C\u2524 ) "),
+            new("Matrices/3x1EmptyMatrix", "3\u00D71 empty matrix", "\\matrix(\\open\\close @\\open\\close @\\open\\close  )", "\u25A0(\u251C\u2524 @\u251C\u2524 @\u251C\u2524 ) "),
+            new("Matrices/2x2IdentityMatrixWithZeros", "2\u00D72 identity matrix with zeros", "\\matrix(1&0@0&1) ", "\u25A0(1&0@0&1) "),
+            new("Matrices/2x2IdentityMatrix", "2\u00D72 identity matrix", "\\matrix(1&@&1) ", "\u25A0(1&@&1) "),
+            new("Matrices/3x3IdentityMatrixWithZeros", "3\u00D73 identity matrix with zeros", "\\matrix(1&0&0@0&1&0@0&0&1) ", "\u25A0(1&0&0@0&1&0@0&0&1) "),
+            new("Matrices/3x3IdentityMatrix", "3\u00D73 Identity matrix", "\\matrix(1&&@&1&@&&1) ", "\u25A0(1&&@&1&@&&1) ")
         },
 
             _ => new List<MathStructure>()
         };
     }
-
-    /// <summary>
-    /// Simulates typing a Unicode Nearly Plain-Text (NPT) command.
-    /// </summary>
-    /// <param name="text">The NPT command to be typed.</param>
-    /// <remarks>
-    /// This method simulates keyboard input by sending each character of the NPT command  
-    /// using `SendUnicodeCharacter()`.  
-    /// 
-    /// - A space is appended at the end to ensure the RichEditBox fully processes the command.  
-    /// - Used for entering math expressions in a way that triggers proper rendering.  
-    /// - Works by sequentially sending Unicode characters, mimicking real keyboard input.  
-    /// </remarks>
-    public static void TypeCommand(string text)
-    {
-        // Append a space at the end to ensure the formula is fully processed by the RichEditBox.
-        foreach (char c in (text + " "))
-        {
-            KeyboardInputSender.SendUnicodeCharacter(c);
-        }
-    }
-
 
     /// <summary>
     /// Formats the given MathML string by parsing it into an XDocument
@@ -320,14 +296,14 @@ public class MathSymbol
 {
     public string Value { get; set; }
     public string Name { get; set; }
-    public string Command { get; set; }
+    public string UnicodeNPT { get; set; }
     public string Unicode { get; set; }
 
-    public MathSymbol(string value, string name, string command, string unicode)
+    public MathSymbol(string value, string name, string unicodeNPT, string unicode)
     {
         Value = value;
         Name = name;
-        Command = command;
+        UnicodeNPT = unicodeNPT;
         Unicode = unicode;
     }
 }
@@ -337,18 +313,29 @@ public class MathStructure
     public string LightImageSource { get; set; }
     public string DarkImageSource { get; set; }
     public string Name { get; set; }
-    public string Command { get; set; }
+    public string UnicodeNPT { get; set; }
+    public string Unicode { get; set; }
 
-    public MathStructure(string ImageUri, string name, string command)
+    public MathStructure(string ImageUri, string name, string unicodeNPT, string unicode)
     {
         LightImageSource = "ms-appx:///Assets/MathModeImages/" + ImageUri + "_Light.png";
         DarkImageSource = "ms-appx:///Assets/MathModeImages/" + ImageUri + "_Dark.png";
         Name = name;
-        Command = command;
+        UnicodeNPT = unicodeNPT;
+        Unicode = unicode;
+    }
+
+    public MathStructure(string ImageUri, string name, string sharedUnicode)
+    {
+        LightImageSource = "ms-appx:///Assets/MathModeImages/" + ImageUri + "_Light.png";
+        DarkImageSource = "ms-appx:///Assets/MathModeImages/" + ImageUri + "_Dark.png";
+        Name = name;
+        UnicodeNPT = sharedUnicode;
+        Unicode = sharedUnicode;
     }
 }
 
-public class KeyboardInputSender
+public static class InputSender
 {
     [StructLayout(LayoutKind.Sequential)]
     struct INPUT
@@ -459,6 +446,24 @@ public class KeyboardInputSender
         {
             int error = Marshal.GetLastWin32Error();
             throw new System.ComponentModel.Win32Exception(error);
+        }
+    }
+
+    /// <summary>
+    /// Sends a sequence of Unicode characters individually.
+    /// </summary>
+    /// <param name="unicodeText">The Unicode string to be sent character by character.</param>
+    /// <remarks>
+    /// This method sends each character in the provided Unicode string using <c>SendUnicodeCharacter()</c>.  
+    /// 
+    /// - Intended for feeding Unicode input to text-processing components.  
+    /// - Can be used for entering structured expressions like math formulas.  
+    /// </remarks>
+    public static void SendUnicodeText(string unicodeText)
+    {
+        foreach (char c in unicodeText)
+        {
+            SendUnicodeCharacter(c);
         }
     }
 }

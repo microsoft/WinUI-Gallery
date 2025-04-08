@@ -345,7 +345,7 @@
                                                             Width="48"
                                                             VerticalAlignment="Center"
                                                             Click="InsertSymbolBtn_Click"
-                                                            Tag="{x:Bind Command}"
+                                                            Tag="{x:Bind Value}"
                                                             IsTabStop="False">
                                                         <TextBlock Grid.Column="0"
                                                                    Text="{x:Bind Value}"
@@ -361,7 +361,7 @@
                                                                TextWrapping="Wrap"
                                                                VerticalAlignment="Center" />
                                                     <TextBlock Grid.Column="2"
-                                                               Text="{x:Bind Command}"
+                                                               Text="{x:Bind UnicodeNPT}"
                                                                TextWrapping="Wrap"
                                                                FontFamily="Consolas"
                                                                IsTextSelectionEnabled="True"
@@ -415,7 +415,7 @@
                                     <TextBlock Grid.Column="2"
                                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                                Style="{StaticResource CaptionTextBlockStyle}"
-                                               Text="Unicode NPT Command" />
+                                               Text="Unicode Nearly Plain Text" />
                                 </Grid>
                                 <ScrollView Grid.Row="1"
                                             HorizontalScrollBarVisibility="Auto"
@@ -440,7 +440,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Button x:Name="InsertStructureBtn"
                                                             VerticalAlignment="Center"
-                                                            Tag="{x:Bind Command}"
+                                                            Tag="{x:Bind Unicode}"
                                                             IsTabStop="False"
                                                             Padding="-8 4 -8 -8"
                                                             Width="80"
@@ -466,7 +466,7 @@
                                                                TextWrapping="Wrap"
                                                                VerticalAlignment="Center" />
                                                     <TextBlock Grid.Column="2"
-                                                               Text="{x:Bind Command}"
+                                                               Text="{x:Bind UnicodeNPT}"
                                                                TextWrapping="Wrap"
                                                                FontFamily="Consolas"
                                                                IsTextSelectionEnabled="True"
