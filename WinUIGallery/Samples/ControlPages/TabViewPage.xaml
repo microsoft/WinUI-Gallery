@@ -12,10 +12,6 @@
         <MenuFlyout x:Name="TabViewContextMenu" Opening="TabViewContextMenu_Opening" />
     </Page.Resources>
 
-    <Page.Resources>
-        <MenuFlyout x:Name="TabViewContextMenu" Opening="TabViewContextMenu_Opening" />
-    </Page.Resources>
-
     <StackPanel>
         <controls:ControlExample CSharpSource="TabView\TabViewBasicSample_cs.txt" HeaderText="A TabView with support for adding, closing, and rearranging tabs">
             <controls:ControlExample.Example>
