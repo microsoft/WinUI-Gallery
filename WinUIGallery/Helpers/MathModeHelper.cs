@@ -478,5 +478,4 @@ public static class InputSender
             }
         }
     }
-
 }
