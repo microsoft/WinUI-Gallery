@@ -8,6 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:samplepages="using:WinUIGallery.SamplePages"
     mc:Ignorable="d">
+    <Page.Resources>
+        <MenuFlyout x:Name="TabViewContextMenu" Opening="TabViewContextMenu_Opening" />
+    </Page.Resources>
 
     <Page.Resources>
         <MenuFlyout x:Name="TabViewContextMenu" Opening="TabViewContextMenu_Opening" />
@@ -349,7 +352,7 @@
                         </TabViewItem>
                         <TabViewItem Header="Third Tab" ContextFlyout="{x:Bind TabViewContextMenu}">
                             <TabViewItem.IconSource>
-                                <SymbolIconSource Symbol="Placeholder" />
+                                <SymbolIconSource Symbol="Placeholder"/>
                             </TabViewItem.IconSource>
                             <samplepages:SamplePage3 />
                         </TabViewItem>
@@ -418,17 +421,17 @@
     &lt;TabView.TabItems&gt;
         &lt;TabViewItem Header="CMD Prompt"&gt;
             &lt;TabViewItem.IconSource&gt;
-                &lt;BitmapIconSource UriSource="/Assets/TabViewIcons/cmd.png" ShowAsMonochrome="False" /&gt;
+                &lt;BitmapIconSource UriSource="/Assets/SampleMedia/cmd.png" ShowAsMonochrome="False" /&gt;
             &lt;/TabViewItem.IconSource&gt;
         &lt;/TabViewItem&gt;
         &lt;TabViewItem Header="PowerShell"&gt;
             &lt;TabViewItem.IconSource&gt;
-                &lt;BitmapIconSource UriSource="/Assets/TabViewIcons/powershell.png" ShowAsMonochrome="False" /&gt;
+                &lt;BitmapIconSource UriSource="/Assets/SampleMedia/powershell.png" ShowAsMonochrome="False" /&gt;
             &lt;/TabViewItem.IconSource&gt;
         &lt;/TabViewItem&gt;
         &lt;TabViewItem Header="Windows Subsystem for Linux"&gt;
             &lt;TabViewItem.IconSource&gt;
-                &lt;BitmapIconSource UriSource="/Assets/TabViewIcons/linux.png" ShowAsMonochrome="False" /&gt;
+                &lt;BitmapIconSource UriSource="/Assets/SampleMedia/linux.png" ShowAsMonochrome="False" /&gt;
             &lt;/TabViewItem.IconSource&gt;
         &lt;/TabViewItem&gt;
     &lt;/TabView.TabItems&gt;

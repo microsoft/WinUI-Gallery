@@ -7,11 +7,15 @@ namespace WinUIGallery.Helpers;
 
 public static class TabViewHelper
 {
-    public static void PopulateTabViewContextMenu(MenuFlyout contextMenu)
+    public static void PopulateTabViewContextMenu(MenuFlyout menuFlyout)
     {
-        contextMenu.Items.Clear();
+        menuFlyout.Items.Clear();
 
-        var item = (TabViewItem)contextMenu.Target;
+        var item = (TabViewItem)menuFlyout.Target;
+        if(item == null)
+        {
+            return;
+        }
         ListView tabViewListView = null;
         TabView tabView = null;
 
@@ -69,7 +73,7 @@ public static class TabViewHelper
                     tabView.TabItems.Insert(index - 1, item);
                 }
             };
-            contextMenu.Items.Add(moveLeftItem);
+            menuFlyout.Items.Add(moveLeftItem);
         }
 
         if (index < tabViewListView.Items.Count - 1)
@@ -90,13 +94,13 @@ public static class TabViewHelper
                     tabView.TabItems.Insert(index + 1, item);
                 }
             };
-            contextMenu.Items.Add(moveRightItem);
+            menuFlyout.Items.Add(moveRightItem);
         }
 
         // If the context menu ended up with no items at all, then we'll prevent it from being shown.
-        if (contextMenu.Items.Count == 0)
+        if (menuFlyout.Items.Count == 0)
         {
-            contextMenu.Hide();
+            menuFlyout.Hide();
         }
     }
 }

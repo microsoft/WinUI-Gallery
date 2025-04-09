@@ -15,6 +15,7 @@ public sealed partial class SampleWindow2 : Window
     {
         this.InitializeComponent();
         appWindow = GetAppWindowForCurrentWindow();
+        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
 
         // Center the window on the screen.
         CenterWindow(appWindow);

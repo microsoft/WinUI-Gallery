@@ -16,16 +16,12 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Threading;
-using System.Xml.Linq;
 
 namespace WinUIGallery.UITests;
 
@@ -33,14 +29,14 @@ namespace WinUIGallery.UITests;
 public class SessionManager
 {
     private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
-    private static readonly string[] WinUIGalleryAppIDs = new string[]{
+    private static readonly string[] WinUIGalleryAppIDs = [
         // WinUI 3 Gallery apps built in the lab
         "Microsoft.WinUI3ControlsGallery.Debug_grv3cx5qrw0gp!App",
         "Microsoft.WinUI3ControlsGallery_grv3cx5qrw0gp!App",
         // WinUI 3 Gallery apps built locally
         "Microsoft.WinUI3ControlsGallery.Debug_8wekyb3d8bbwe!App",
         "Microsoft.WinUI3ControlsGallery_8wekyb3d8bbwe!App"
-    };
+    ];
 
     private static uint appIdIndex = 0;
 
@@ -118,7 +114,7 @@ public class SessionManager
             Assert.IsNotNull(_session);
             Assert.IsNotNull(_session.SessionId);
             AxeHelper.InitializeAxe();
-            
+
             // Dismiss the disclaimer window that may pop up on the very first application launch
             // If the disclaimer is not found, this throws an exception, so lets catch that
             try
@@ -202,7 +198,7 @@ public class SessionManager
                 message = $"{indent}{root.TagName} [{root.Text}]";
             }
 
-            Logger.LogMessage(message.Replace("{", "{{").Replace("}","}}"));
+            Logger.LogMessage(message.Replace("{", "{{").Replace("}", "}}"));
         }
 
         foreach (WindowsElement child in root.FindElementsByXPath("*/*"))
@@ -213,7 +209,7 @@ public class SessionManager
 
     private static void TryInitializeSession()
     {
-        AppiumOptions appiumOptions = new AppiumOptions();
+        AppiumOptions appiumOptions = new();
         appiumOptions.AddAdditionalCapability("app", WinUIGalleryAppIDs[appIdIndex]);
         appiumOptions.AddAdditionalCapability("deviceName", "WindowsPC");
         try
