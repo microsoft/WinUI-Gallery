@@ -454,16 +454,29 @@ public static class InputSender
     /// </summary>
     /// <param name="unicodeText">The Unicode string to be sent character by character.</param>
     /// <remarks>
-    /// This method sends each character in the provided Unicode string using <c>SendUnicodeCharacter()</c>.  
+    /// This method uses <c>SendUnicodeCharacter()</c> to simulate keyboard input for each character
+    /// in the provided string using the Win32 <c>SendInput</c> API.
     /// 
-    /// - Intended for feeding Unicode input to text-processing components.  
-    /// - Can be used for entering structured expressions like math formulas.  
+    /// Ideal for scenarios where text integrity is critical, such as math editors, programming environments, or input automation.
+    /// 
+    /// If a character fails to send, a detailed exception is thrown with the Unicode code point that caused the failure.
     /// </remarks>
     public static void SendUnicodeText(string unicodeText)
     {
         foreach (char c in unicodeText)
         {
-            SendUnicodeCharacter(c);
+            try
+            {
+                SendUnicodeCharacter(c);
+            }
+            catch (System.ComponentModel.Win32Exception ex)
+            {
+                throw new Exception(
+                    $"Failed to send character '{c}' (U+{((int)c):X4}). Unicode text input aborted.",
+                    ex
+                );
+            }
         }
     }
+
 }
