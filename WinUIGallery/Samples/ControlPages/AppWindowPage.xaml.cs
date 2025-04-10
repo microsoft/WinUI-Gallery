@@ -1,24 +1,19 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+
 using WinUIGallery.Samples.SamplePages;
 
 namespace WinUIGallery.ControlPages;
 
 public sealed partial class AppWindowPage : Page
 {
+    private IReadOnlyList<TitleBarTheme> TitleBarThemes = Enum.GetValues(typeof(TitleBarTheme)).Cast<TitleBarTheme>().ToList();
+    private TitleBarTheme SelectedTheme = TitleBarTheme.UseDefaultAppMode;
+
     public AppWindowPage()
     {
         this.InitializeComponent();
@@ -26,7 +21,7 @@ public sealed partial class AppWindowPage : Page
 
     private void ShowSampleWindow1(object sender, RoutedEventArgs e)
     {
-        SampleWindow1 window = new SampleWindow1(WindowTitle.Text, (Int32)WindowWidth.Value, (Int32)WindowHeight.Value, (Int32)XPoint.Value, (Int32)YPoint.Value);
+        SampleWindow1 window = new SampleWindow1(WindowTitle.Text, (Int32)WindowWidth.Value, (Int32)WindowHeight.Value, (Int32)XPoint.Value, (Int32)YPoint.Value, SelectedTheme);
         window.Activate();
     }
 
