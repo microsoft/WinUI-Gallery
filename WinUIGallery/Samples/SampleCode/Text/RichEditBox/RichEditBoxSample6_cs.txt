@@ -20,9 +20,22 @@ private void mathEditor2_TextChanged(object sender, RoutedEventArgs e)
 
 private void SetMathmlEquationBtn_Click(object sender, RoutedEventArgs e)
 {
-    // Defines an equation in MathML format (E = mc²)
-    string equationMathML = "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\r\n  <mml:mi mathcolor=\"#000000\">E</mml:mi>\r\n  <mml:mo mathcolor=\"#000000\">=</mml:mo>\r\n  <mml:mi mathcolor=\"#000000\">m</mml:mi>\r\n  <mml:msup>\r\n    <mml:mrow>\r\n      <mml:mi mathcolor=\"#000000\">c</mml:mi>\r\n    </mml:mrow>\r\n    <mml:mrow>\r\n      <mml:mn mathcolor=\"#000000\">2</mml:mn>\r\n    </mml:mrow>\r\n  </mml:msup>\r\n</mml:math>";
-
+    // Defines a formula in MathML format
+    string equationMathML = "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">" +
+        "\r\n  <mml:mi mathcolor=\"#000000\">x</mml:mi>\r\n" +
+        "  <mml:mo mathcolor=\"#000000\">\u2208</mml:mo>\r\n" +
+        "  <mml:mi mathcolor=\"#000000\">P</mml:mi>\r\n" +
+        "  <mml:mfenced>\r\n" +
+        "    <mml:mrow>\r\n" +
+        "      <mml:mi mathcolor=\"#000000\">A</mml:mi>\r\n" +
+        "    </mml:mrow>\r\n" +
+        "  </mml:mfenced>\r\n" +
+        "  <mml:mo mathcolor=\"#000000\">\u2194</mml:mo>\r\n" +
+        "  <mml:mi mathcolor=\"#000000\">x</mml:mi>\r\n" +
+        "  <mml:mo mathcolor=\"#000000\">\u2286</mml:mo>\r\n" +
+        "  <mml:mi mathcolor=\"#000000\">A</mml:mi>\r\n" +
+        "</mml:math>";
+    
     // Adjusts text color based on the current app theme
     if (mathEditor2.ActualTheme == ElementTheme.Dark)
     {

@@ -447,7 +447,21 @@ public sealed partial class RichEditBoxPage : Page
 
     private void SetMathmlEquationBtn_Click(object sender, RoutedEventArgs e)
     {
-        string equationMathML = "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\r\n  <mml:mi mathcolor=\"#000000\">E</mml:mi>\r\n  <mml:mo mathcolor=\"#000000\">=</mml:mo>\r\n  <mml:mi mathcolor=\"#000000\">m</mml:mi>\r\n  <mml:msup>\r\n    <mml:mrow>\r\n      <mml:mi mathcolor=\"#000000\">c</mml:mi>\r\n    </mml:mrow>\r\n    <mml:mrow>\r\n      <mml:mn mathcolor=\"#000000\">2</mml:mn>\r\n    </mml:mrow>\r\n  </mml:msup>\r\n</mml:math>";
+        string equationMathML = "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">" +
+            "\r\n  <mml:mi mathcolor=\"#000000\">x</mml:mi>\r\n" +
+            "  <mml:mo mathcolor=\"#000000\">\u2208</mml:mo>\r\n" +
+            "  <mml:mi mathcolor=\"#000000\">P</mml:mi>\r\n" +
+            "  <mml:mfenced>\r\n" +
+            "    <mml:mrow>\r\n" +
+            "      <mml:mi mathcolor=\"#000000\">A</mml:mi>\r\n" +
+            "    </mml:mrow>\r\n" +
+            "  </mml:mfenced>\r\n" +
+            "  <mml:mo mathcolor=\"#000000\">\u2194</mml:mo>\r\n" +
+            "  <mml:mi mathcolor=\"#000000\">x</mml:mi>\r\n" +
+            "  <mml:mo mathcolor=\"#000000\">\u2286</mml:mo>\r\n" +
+            "  <mml:mi mathcolor=\"#000000\">A</mml:mi>\r\n" +
+            "</mml:math>";
+
         if(mathEditor2.ActualTheme == ElementTheme.Dark)
         {
             mathEditor2.Document.SetMathML(equationMathML.Replace("mathcolor=\"#000000\"", "mathcolor=\"#FFFFFF\""));
