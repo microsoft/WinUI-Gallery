@@ -307,6 +307,7 @@
         <None Remove="Controls\HomePageHeaderImage.xaml" />
         <None Remove="Controls\PageHeader.xaml" />
         <None Remove="Controls\SampleThemeListener.xaml" />
+        <None Remove="MainWindow.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml" />
@@ -314,11 +315,15 @@
         <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
         <None Remove="Samples\SamplePages\SampleWindow2.xaml" />
+        <None Remove="Samples\SamplePages\SampleWindow5.xaml" />
+        <None Remove="Samples\SamplePages\SampleWindow6.xaml" />
+        <None Remove="Samples\SamplePages\TitleBarWindow.xaml" />
         <None Remove="Styles\Button.xaml" />
         <None Remove="Styles\Grid.xaml" />
         <None Remove="Styles\GridViewItem.xaml" />
         <None Remove="Styles\ItemTemplates.xaml" />
         <None Remove="Styles\TextBlock.xaml" />
+        <None Remove="Styles\TitleBar.xaml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -506,6 +511,18 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Page Update="Samples\SamplePages\TitleBarWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Styles\TitleBar.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
       <Page Update="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
@@ -552,6 +569,12 @@
     </ItemGroup>
     <ItemGroup>
       <Page Update="Samples\ControlPages\AppWindowPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="MainWindow.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
