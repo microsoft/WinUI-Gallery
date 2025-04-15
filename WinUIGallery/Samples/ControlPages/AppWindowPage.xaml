@@ -90,77 +90,56 @@
                     <TextBlock FontWeight="SemiBold"
                                Text="TitleBar theme" />
                     <ComboBox x:Name="TitleBarPreferredTheme"
-                              ItemsSource="{x:Bind TitleBarThemes}"
-                              SelectedItem="{x:Bind SelectedTheme, Mode=TwoWay}"
+                              ItemsSource="{x:Bind titleBarThemes}"
+                              SelectedItem="{x:Bind selectedTheme, Mode=TwoWay}"
                               HorizontalAlignment="Stretch" />
                 </StackPanel>
             </controls:ControlExample.Options>
 
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
-using System;
-using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
-using WinRT.Interop;
 
 namespace YourNamespace;
                     
 public sealed partial class SampleWindow1 : Window
-{
-    private AppWindow appWindow;
-                    
+{                   
     public SampleWindow1()
     {
         this.InitializeComponent();
 
-        // Retrieve the AppWindow instance for the current window
-        appWindow = GetAppWindowForCurrentWindow();
-
         // Set the window title
-        appWindow.Title = "$(WindowTitle)";
+        AppWindow.Title = "$(WindowTitle)";
 
         // Set the window size (including borders)
-        appWindow.Resize(new Windows.Graphics.SizeInt32($(Width), $(Height)));
+        AppWindow.Resize(new Windows.Graphics.SizeInt32($(Width), $(Height)));
 
         // Set the window position on screen
-        appWindow.Move(new Windows.Graphics.PointInt32($(X), $(Y)));
+        AppWindow.Move(new Windows.Graphics.PointInt32($(X), $(Y)));
         
         // Set the preferred theme for the title bar
-        appWindow.TitleBar.PreferredTheme = TitleBarTheme.$(TitleBarPreferredTheme);
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.$(TitleBarPreferredTheme);
         
         // Set the taskbar icon (displayed in the taskbar)
-        appWindow.SetTaskbarIcon("Assets/Tiles/GalleryIcon.ico");
+        AppWindow.SetTaskbarIcon("Assets/Tiles/GalleryIcon.ico");
 
         // Set the title bar icon (displayed in the window's title bar)
-        appWindow.SetTitleBarIcon("Assets/Tiles/GalleryIcon.ico");
+        AppWindow.SetTitleBarIcon("Assets/Tiles/GalleryIcon.ico");
 
         // Set the window icon (affects both taskbar and title bar, can be omitted if the above two are set)
-        // appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico"); 
-    }
-
-    //Returrns the AppWindow instance associated with the current window.
-    private AppWindow GetAppWindowForCurrentWindow()
-    {
-        // Get the native window handle
-        IntPtr hWnd = WindowNative.GetWindowHandle(this);
-
-        // Retrieve the WindowId from the window handle
-        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
-
-        // Return the AppWindow instance associated with the given WindowId
-        return AppWindow.GetFromWindowId(myWndId);
+        // AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico"); 
     }
                     
     private void Show_Click(object sender, RoutedEventArgs e)
     {
-        appWindow.Hide();
-        Task.Delay(3000).ContinueWith(t => appWindow.Show());
+        AppWindow.Hide();
+        Task.Delay(3000).ContinueWith(t => AppWindow.Show());
     }
 
     private void Hide_Click(object sender, RoutedEventArgs e)
     {
-        appWindow.Hide();
+        AppWindow.Hide();
     }
 
     private void Close_Click(object sender, RoutedEventArgs e)
@@ -288,48 +267,36 @@ public sealed partial class SampleWindow1 : Window
             </controls:ControlExample.Options>
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
-using System;
-using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
-using WinRT.Interop;
+using System.Threading.Tasks;
 
 namespace YourNamespace;
-                    
+
 public sealed partial class SampleWindow3 : Window
 {
-    private AppWindow appWindow;
-    private OverlappedPresenter presenter;
-
     public SampleWindow3()
     {
         this.InitializeComponent();
 
-        appWindow = GetAppWindowForCurrentWindow();
-        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
-        appWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
-
-        presenter = OverlappedPresenter.Create();
+        AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode; 
+        OverlappedPresenter presenter = OverlappedPresenter.Create();
+        
         presenter.IsAlwaysOnTop = $(IsAlwaysOnTop);
         presenter.IsMaximizable = $(IsMaximizable);
         presenter.IsMinimizable = $(IsMinimizable);
         presenter.IsResizable = $(IsResizable);
-        presenter.SetBorderAndTitleBar($(HasBorder),$(HasTitleBar));
+        presenter.SetBorderAndTitleBar($(HasBorder), $(HasTitleBar));
 
-        appWindow.SetPresenter(presenter);
-                    
+        AppWindow.SetPresenter(presenter);
+
         SizeChanged += SampleWindow3_SizeChanged;
-    }
-
-    private AppWindow GetAppWindowForCurrentWindow()
-    {
-        IntPtr hWnd = WindowNative.GetWindowHandle(this);
-        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
-        return AppWindow.GetFromWindowId(myWndId);
     }
 
     private void MaximizeRestoreBtn_Click(object sender, RoutedEventArgs e)
     {
+        OverlappedPresenter presenter = (OverlappedPresenter)AppWindow.Presenter;
         if (presenter.State == OverlappedPresenterState.Maximized)
         {
             presenter.Restore();
@@ -342,16 +309,19 @@ public sealed partial class SampleWindow3 : Window
 
     private void SampleWindow3_SizeChanged(object sender, WindowSizeChangedEventArgs e)
     {
+        OverlappedPresenter presenter = (OverlappedPresenter)AppWindow.Presenter;
         MaximizeRestoreBtn.Content = presenter.State == OverlappedPresenterState.Maximized ? "Restore" : "Maximize";
     }
 
     private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
     {
+        OverlappedPresenter presenter = (OverlappedPresenter)AppWindow.Presenter;
         presenter.Minimize();
     }
 
     private void RestoreBtn_Click(object sender, RoutedEventArgs e)
     {
+        OverlappedPresenter presenter = (OverlappedPresenter)AppWindow.Presenter;
         presenter.Minimize();
         Task.Delay(3000).ContinueWith(t => presenter.Restore());
     }
@@ -403,52 +373,41 @@ public sealed partial class SampleWindow3 : Window
             </controls:ControlExample.Options>
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
-using System;
-using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
-using WinRT.Interop;
+using System.Threading.Tasks;
 
-namespace YourNamespace;
-                    
+namespace WinUIGallery.Samples.SamplePages;
+
 public sealed partial class SampleWindow4 : Window
 {
-    private AppWindow appWindow;
-    private OverlappedPresenter presenter;
-
-    public SampleWindow4()
+    public SampleWindow4(int MinWidth, int MinHeight, int MaxWidth, int MaxHeight)
     {
         this.InitializeComponent();
 
-        appWindow = GetAppWindowForCurrentWindow();
-        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
-        appWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
+        AppWindow.Resize(new Windows.Graphics.SizeInt32(800, 500));
+        AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
 
-        appWindow.Resize(new Windows.Graphics.SizeInt32(800, 500));
-        presenter = OverlappedPresenter.Create();
+        OverlappedPresenter presenter = OverlappedPresenter.Create();
+        presenter.PreferredMinimumWidth = MinWidth;
+        presenter.PreferredMinimumHeight = MinHeight;
+        presenter.PreferredMaximumWidth = MaxWidth;
+        presenter.PreferredMaximumHeight = MaxHeight;
         presenter.IsMaximizable = false;
-        presenter.PreferredMinimumWidth = $(MinWidth);
-        presenter.PreferredMinimumHeight = $(MinHeight);
-        presenter.PreferredMaximumWidth = $(MaxWidth);
-        presenter.PreferredMaximumHeight = $(MaxHeight);
 
-        appWindow.SetPresenter(presenter);
-    }
-
-    private AppWindow GetAppWindowForCurrentWindow()
-    {
-        IntPtr hWnd = WindowNative.GetWindowHandle(this);
-        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
-        return AppWindow.GetFromWindowId(myWndId);
+        AppWindow.SetPresenter(presenter);
     }
 
     private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
     {
+        OverlappedPresenter presenter = (OverlappedPresenter)AppWindow.Presenter;
         presenter.Minimize();
     }
 
     private void RestoreBtn_Click(object sender, RoutedEventArgs e)
     {
+        OverlappedPresenter presenter = (OverlappedPresenter)AppWindow.Presenter;
         presenter.Minimize();
         Task.Delay(3000).ContinueWith(t => presenter.Restore());
     }
@@ -520,42 +479,28 @@ public sealed partial class SampleWindow4 : Window
             </controls:ControlExample.Options>
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
-using System;
-using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
-using WinRT.Interop;
 
 namespace YourNamespace;
 
 public sealed partial class SampleWindow7 : Window
 {
-    private AppWindow appWindow;
-    private CompactOverlayPresenter presenter;
-
-    public SampleWindow7()
+    public SampleWindow7(string InitialSize)
     {
         this.InitializeComponent();
 
-        appWindow = GetAppWindowForCurrentWindow();
-        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
-        appWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
+        AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
 
         // Creates a CompactOverlay (Picture-in-Picture) presenter
-        presenter = CompactOverlayPresenter.Create();
+        CompactOverlayPresenter presenter = CompactOverlayPresenter.Create();
 
         // Sets the initial size of the CompactOverlay window
         presenter.InitialSize = CompactOverlaySize.$(InitialSize);
 
         // Applies the CompactOverlay presenter to the window
-        appWindow.SetPresenter(presenter);
-    }
-
-    private AppWindow GetAppWindowForCurrentWindow()
-    {
-        IntPtr hWnd = WindowNative.GetWindowHandle(this);
-        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
-        return AppWindow.GetFromWindowId(myWndId);
+        AppWindow.SetPresenter(presenter);
     }
 }
                 </x:String>

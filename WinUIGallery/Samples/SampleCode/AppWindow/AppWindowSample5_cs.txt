@@ -1,58 +1,47 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using Microsoft.UI;
+﻿using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+using System;
+using System.Runtime.InteropServices;
 using WinRT.Interop;
 
 namespace YourNamespace;
 
 public sealed partial class ModalWindow : Window
 {
-    private AppWindow appWindow;
-
     public ModalWindow()
     {
         this.InitializeComponent();
-        appWindow = GetAppWindowForCurrentWindow();
-        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
-        appWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
-        appWindow.Resize(new Windows.Graphics.SizeInt32(400,300));
+        AppWindow.Resize(new Windows.Graphics.SizeInt32(400, 300));
+        AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
 
-        // Create an OverlappedPresenter configured for a dialog window.
         OverlappedPresenter presenter = OverlappedPresenter.CreateForDialog();
 
         // Set this modal window's owner (the main application window).
         // The main window can be retrieved from App.xaml.cs if it's set as a static property.
-        SetOwnership(appWindow, App.StartupWindow);
+        SetWindowOwner(owner: App.StartupWindow);
 
         // Make the window modal (blocks interaction with the owner window until closed).
         presenter.IsModal = true;
 
         // Apply the presenter settings to the AppWindow.
-        appWindow.SetPresenter(presenter);
+        AppWindow.SetPresenter(presenter);
 
         // Show the modal window.
-        appWindow.Show();
+        AppWindow.Show();
 
         Closed += ModalWindow_Closed;
     }
 
-    private AppWindow GetAppWindowForCurrentWindow()
-    {
-        IntPtr hWnd = WindowNative.GetWindowHandle(this);
-        WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
-        return AppWindow.GetFromWindowId(myWndId);
-    }
-
     // Sets the owner window of the modal window.
-    private void SetOwnership(AppWindow ownedAppWindow, Window ownerWindow)
+    private void SetWindowOwner(Window owner)
     {
         // Get the HWND (window handle) of the owner window (main window).
-        IntPtr ownerHwnd = WindowNative.GetWindowHandle(ownerWindow);
+        IntPtr ownerHwnd = WindowNative.GetWindowHandle(owner);
 
         // Get the HWND of the AppWindow (modal window).
-        IntPtr ownedHwnd = Win32Interop.GetWindowFromWindowId(ownedAppWindow.Id);
+        IntPtr ownedHwnd = Win32Interop.GetWindowFromWindowId(AppWindow.Id);
 
         // Set the owner window using SetWindowLongPtr for 64-bit systems
         // or SetWindowLong for 32-bit systems.
@@ -62,7 +51,7 @@ public sealed partial class ModalWindow : Window
         }
         else // 32-bit system
         {
-            SetWindowLong(ownedHwnd, -8, ownerHwnd);
+            SetWindowLong(ownedHwnd, -8, ownerHwnd); // -8 = GWL_HWNDPARENT
         }
     }
 
