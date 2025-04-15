@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
@@ -8,11 +8,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\Directory.Build.props = ..\Directory.Build.props
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinUIGallery", "WinUIGallery\WinUIGallery.csproj", "{D78F3B56-340D-44F0-9AF1-320D473BA611}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinUIGallery.UnitTests", "WinUIGallery.UnitTests\WinUIGallery.UnitTests.csproj", "{94B9B3F5-AF8E-4401-876B-115C44986161}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinUIGallery.UnitTests", "tests\WinUIGallery.UnitTests\WinUIGallery.UnitTests.csproj", "{94B9B3F5-AF8E-4401-876B-115C44986161}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUIGallery.UITests", "WinUIGallery.UITests\WinUIGallery.UITests.csproj", "{8ED42919-1635-44E4-A670-9329B07F1398}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUIGallery.UITests", "tests\WinUIGallery.UITests\WinUIGallery.UITests.csproj", "{8ED42919-1635-44E4-A670-9329B07F1398}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -245,6 +247,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{94B9B3F5-AF8E-4401-876B-115C44986161} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
+		{8ED42919-1635-44E4-A670-9329B07F1398} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5B033CDA-6491-405C-A05B-CEE6AC4060B9}
