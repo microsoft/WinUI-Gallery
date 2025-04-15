@@ -32,10 +32,11 @@ public sealed partial class SampleWindow1 : Window
         // appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico"); 
     }
 
-    private void Show_Click(object sender, RoutedEventArgs e)
+    private async void Show_Click(object sender, RoutedEventArgs e)
     {
         AppWindow.Hide();
-        Task.Delay(3000).ContinueWith(t => AppWindow.Show());
+        await Task.Delay(3000);
+        AppWindow.Show();
     }
 
     private void Hide_Click(object sender, RoutedEventArgs e)
