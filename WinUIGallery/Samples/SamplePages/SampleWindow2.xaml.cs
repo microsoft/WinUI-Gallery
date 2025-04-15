@@ -19,19 +19,8 @@ public sealed partial class SampleWindow2 : Window
     // Centers the given AppWindow on the screen based on the available display area.
     private void CenterWindow()
     {
-        if (AppWindow == null) return; // Ensure the AppWindow instance is valid.
-
-        // Get the display area associated with the window.
-        DisplayArea displayArea = DisplayArea.GetFromWindowId(AppWindow.Id, DisplayAreaFallback.Nearest);
-        if (displayArea == null) return; // Ensure the display area is valid.
-
-        // Calculate the centered position within the work area.
-        RectInt32 workArea = displayArea.WorkArea;
-        PointInt32 centeredPosition = new PointInt32(
-            (workArea.Width - AppWindow.Size.Width) / 2,
-            (workArea.Height - AppWindow.Size.Height) / 2
-        );
-
-        AppWindow.Move(centeredPosition); // Move the window to the calculated position.
+        var area = DisplayArea.GetFromWindowId(AppWindow.Id, DisplayAreaFallback.Nearest)?.WorkArea;
+        if (area == null) return;
+        AppWindow.Move(new PointInt32((area.Value.Width - AppWindow.Size.Width) / 2, (area.Value.Height - AppWindow.Size.Height) / 2));
     }
 }
