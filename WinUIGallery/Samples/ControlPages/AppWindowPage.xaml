@@ -86,6 +86,13 @@
                             SpinButtonPlacementMode="Inline"
                             Value="50" />
                     </Grid>
+
+                    <TextBlock FontWeight="SemiBold"
+                               Text="TitleBar theme" />
+                    <ComboBox x:Name="TitleBarPreferredTheme"
+                              ItemsSource="{x:Bind TitleBarThemes}"
+                              SelectedItem="{x:Bind SelectedTheme, Mode=TwoWay}"
+                              HorizontalAlignment="Stretch" />
                 </StackPanel>
             </controls:ControlExample.Options>
 
@@ -118,9 +125,18 @@ public sealed partial class SampleWindow1 : Window
 
         // Set the window position on screen
         appWindow.Move(new Windows.Graphics.PointInt32($(X), $(Y)));
+        
+        // Set the preferred theme for the title bar
+        appWindow.TitleBar.PreferredTheme = TitleBarTheme.$(TitleBarPreferredTheme);
+        
+        // Set the taskbar icon (displayed in the taskbar)
+        appWindow.SetTaskbarIcon("Assets/Tiles/GalleryIcon.ico");
 
-        // Set the window icon
-        appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        // Set the title bar icon (displayed in the window's title bar)
+        appWindow.SetTitleBarIcon("Assets/Tiles/GalleryIcon.ico");
+
+        // Set the window icon (affects both taskbar and title bar, can be omitted if the above two are set)
+        // appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico"); 
     }
 
     //Returrns the AppWindow instance associated with the current window.
@@ -161,6 +177,7 @@ public sealed partial class SampleWindow1 : Window
                 <controls:ControlExampleSubstitution Key="Height" Value="{x:Bind WindowHeight.Value, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="X" Value="{x:Bind XPoint.Value, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="Y" Value="{x:Bind YPoint.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="TitleBarPreferredTheme" Value="{x:Bind TitleBarPreferredTheme.SelectedItem, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
@@ -290,6 +307,7 @@ public sealed partial class SampleWindow3 : Window
 
         appWindow = GetAppWindowForCurrentWindow();
         appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        appWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
 
         presenter = OverlappedPresenter.Create();
         presenter.IsAlwaysOnTop = $(IsAlwaysOnTop);
@@ -299,6 +317,8 @@ public sealed partial class SampleWindow3 : Window
         presenter.SetBorderAndTitleBar($(HasBorder),$(HasTitleBar));
 
         appWindow.SetPresenter(presenter);
+                    
+        SizeChanged += SampleWindow3_SizeChanged;
     }
 
     private AppWindow GetAppWindowForCurrentWindow()
@@ -308,9 +328,21 @@ public sealed partial class SampleWindow3 : Window
         return AppWindow.GetFromWindowId(myWndId);
     }
 
-    private void MaximizeBtn_Click(object sender, RoutedEventArgs e)
+    private void MaximizeRestoreBtn_Click(object sender, RoutedEventArgs e)
     {
-        presenter.Maximize();
+        if (presenter.State == OverlappedPresenterState.Maximized)
+        {
+            presenter.Restore();
+        }
+        else
+        {
+            presenter.Maximize();
+        }
+    }
+
+    private void SampleWindow3_SizeChanged(object sender, WindowSizeChangedEventArgs e)
+    {
+        MaximizeRestoreBtn.Content = presenter.State == OverlappedPresenterState.Maximized ? "Restore" : "Maximize";
     }
 
     private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
@@ -320,7 +352,8 @@ public sealed partial class SampleWindow3 : Window
 
     private void RestoreBtn_Click(object sender, RoutedEventArgs e)
     {
-        presenter.Restore();
+        presenter.Minimize();
+        Task.Delay(3000).ContinueWith(t => presenter.Restore());
     }
 
     private void CloseBtn_Click(object sender, RoutedEventArgs e)
@@ -389,6 +422,7 @@ public sealed partial class SampleWindow4 : Window
 
         appWindow = GetAppWindowForCurrentWindow();
         appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        appWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
 
         appWindow.Resize(new Windows.Graphics.SizeInt32(800, 500));
         presenter = OverlappedPresenter.Create();
@@ -406,11 +440,6 @@ public sealed partial class SampleWindow4 : Window
         IntPtr hWnd = WindowNative.GetWindowHandle(this);
         WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
         return AppWindow.GetFromWindowId(myWndId);
-    }
-
-    private void MaximizeBtn_Click(object sender, RoutedEventArgs e)
-    {
-        presenter.Maximize();
     }
 
     private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
@@ -510,6 +539,7 @@ public sealed partial class SampleWindow7 : Window
 
         appWindow = GetAppWindowForCurrentWindow();
         appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        appWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
 
         // Creates a CompactOverlay (Picture-in-Picture) presenter
         presenter = CompactOverlayPresenter.Create();
