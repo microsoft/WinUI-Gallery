@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="272" />
                 <ColumnDefinition Width="136" />
                 <ColumnDefinition Width="112" />
-                <ColumnDefinition Width="164" />
+                <ColumnDefinition Width="194" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBlock

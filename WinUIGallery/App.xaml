@@ -21,7 +21,6 @@
                 <XamlControlsResources />
                 <local:ItemTemplates />
                 <ResourceDictionary Source="/Controls/CopyButton.xaml" />
-                <ResourceDictionary Source="/Styles/Button.xaml" />
                 <ResourceDictionary Source="/Styles/Grid.xaml" />
                 <ResourceDictionary Source="/Styles/GridViewItem.xaml" />
                 <ResourceDictionary Source="/Styles/TextBlock.xaml" />

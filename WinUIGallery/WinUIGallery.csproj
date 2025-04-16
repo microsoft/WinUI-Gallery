@@ -314,7 +314,6 @@
         <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
         <None Remove="Samples\SamplePages\SampleWindow2.xaml" />
-        <None Remove="Styles\Button.xaml" />
         <None Remove="Styles\Grid.xaml" />
         <None Remove="Styles\GridViewItem.xaml" />
         <None Remove="Styles\ItemTemplates.xaml" />
@@ -597,11 +596,6 @@
     </ItemGroup>
     <ItemGroup>
       <Page Update="Styles\Grid.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </Page>
-    </ItemGroup>
-    <ItemGroup>
-      <Page Update="Styles\Button.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
