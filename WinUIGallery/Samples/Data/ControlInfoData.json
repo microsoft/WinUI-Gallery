@@ -3692,6 +3692,70 @@
           ]
         }
       ]
+    },
+    {
+      "UniqueId": "Notifications",
+      "Title": "Notifications",
+      "ImagePath": "",
+      "IconGlyph": "",
+      "Items": [
+        {
+          "UniqueId": "AppNotification",
+          "Title": "AppNotification",
+          "BaseClasses": [
+            "Object"
+          ],
+          "ApiNamespace": "Microsoft.Windows.Notifications",
+          "Subtitle": "Send notifications that appear in the Action Center and as toast popups.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppNotification.png",
+          "Description": "Send rich, interactive notifications from your app. Notifications can include text, images, and actions.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "AppNotification - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.appnotification"
+            },
+            {
+              "Title": "AppNotificationManager - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.appnotificationmanager"
+            },
+            {
+              "Title": "AppNotificationBuilder - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.builder.appnotificationbuilder"
+            },
+            {
+              "Title": "Toast notifications",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/shell/tiles-and-notifications/toast-notifications-overview"
+            }
+          ]
+        },
+        {
+          "UniqueId": "BadgeNotificationManager",
+          "Title": "BadgeNotificationManager",
+          "BaseClasses": [
+            "Object"
+          ],
+          "ApiNamespace": "Microsoft.Windows.BadgeNotifications",
+          "Subtitle": "Display numeric or glyph badges on your app's taskbar icon.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/BadgeNotification.png",
+          "Description": "Badge notifications provide a lightweight way to convey status or alerts through small overlays on your app's icon.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "BadgeUpdateManager - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.badgenotifications.badgenotificationmanager"
+            },
+            {
+              "Title": "BadgeNotificationGlyph Enum",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.badgenotifications.badgenotificationglyph"
+            },
+            {
+              "Title": "Badge notifications",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/shell/tiles-and-notifications/badges"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

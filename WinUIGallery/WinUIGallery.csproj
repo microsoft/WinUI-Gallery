@@ -307,6 +307,8 @@
         <None Remove="Controls\HomePageHeaderImage.xaml" />
         <None Remove="Controls\PageHeader.xaml" />
         <None Remove="Controls\SampleThemeListener.xaml" />
+        <None Remove="Samples\ControlPages\AppNotificationPage.xaml" />
+        <None Remove="Samples\ControlPages\BadgeNotificationManagerPage.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml" />
@@ -503,6 +505,18 @@
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample3_xaml.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_cs.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_xaml.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Samples\ControlPages\BadgeNotificationManagerPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Samples\ControlPages\AppNotificationPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
 
     <ItemGroup>
