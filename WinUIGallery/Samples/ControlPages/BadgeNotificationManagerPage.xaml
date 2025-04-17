@@ -12,22 +12,23 @@
     <StackPanel>
         <controls:ControlExample HeaderText="Setting badge notifications with count">
             <StackPanel Spacing="8">
-                <Button Content="Set Badge Count"
+                <Button Content="Set badge as count"
                         Width="160"
                         Click="SetBadgeCountButton_Click" />
-                <Button Content="Clear Badge"
+                <Button Content="Clear badge"
                         Width="160"
                         Click="ClearBadgeButton_Click" />
             </StackPanel>
             <controls:ControlExample.Options>
                 <NumberBox x:Name="BadgeCountBox"
-                           Header="Badge Count"
+                           Header="Badge count"
                            Value="5"
                            Minimum="1"
                            SpinButtonPlacementMode="Inline"
                            SmallChange="1"
                            LargeChange="10"
-                           Width="160" />
+                           Width="160"
+                           ValueChanged="BadgeCountBox_ValueChanged"/>
             </controls:ControlExample.Options>
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
@@ -45,19 +46,20 @@ private void ClearBadgeButton_Click(object sender, RoutedEventArgs e)
         </controls:ControlExample>
         <controls:ControlExample HeaderText="Setting badge notifications with Glyph">
             <StackPanel Spacing="8">
-                <Button Content="Set Badge Glyph"
+                <Button Content="Set badge glyph"
                         Width="160"
                         Click="SetBadgeGlyphButton_Click" />
-                <Button Content="Clear Badge"
+                <Button Content="Clear badge"
                         Width="160"
                         Click="ClearBadgeButton_Click" />
             </StackPanel>
             <controls:ControlExample.Options>
-                <ComboBox x:Name="BadgeNotificationGlyphs"
+                <ComboBox x:Name="BadgeNotificationGlyphsCombo"
                           Header="BadgeNotificationGlyph"
                           ItemsSource="{x:Bind badgeNotificationGlyphs}"
                           SelectedItem="{x:Bind selectedGlyph, Mode=TwoWay}"
-                          Width="160" />
+                          Width="160"
+                          SelectionChanged="BadgeNotificationGlyphsCombo_SelectionChanged"/>
             </controls:ControlExample.Options>
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
@@ -74,7 +76,7 @@ private void ClearBadgeButton_Click(object sender, RoutedEventArgs e)
             </controls:ControlExample.CSharp>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="SelectedGlyph"
-                                                     Value="{x:Bind BadgeNotificationGlyphs.SelectedItem, Mode=OneWay}" />
+                                                     Value="{x:Bind BadgeNotificationGlyphsCombo.SelectedItem, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>
