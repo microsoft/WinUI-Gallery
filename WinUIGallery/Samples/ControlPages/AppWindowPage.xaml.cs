@@ -11,8 +11,8 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class AppWindowPage : Page
 {
-    private IReadOnlyList<TitleBarTheme> TitleBarThemes = Enum.GetValues(typeof(TitleBarTheme)).Cast<TitleBarTheme>().ToList();
-    private TitleBarTheme SelectedTheme = TitleBarTheme.UseDefaultAppMode;
+    private IReadOnlyList<TitleBarTheme> titleBarThemes = Enum.GetValues(typeof(TitleBarTheme)).Cast<TitleBarTheme>().ToList();
+    private TitleBarTheme selectedTheme = TitleBarTheme.UseDefaultAppMode;
 
     public AppWindowPage()
     {
@@ -21,7 +21,7 @@ public sealed partial class AppWindowPage : Page
 
     private void ShowSampleWindow1(object sender, RoutedEventArgs e)
     {
-        SampleWindow1 window = new SampleWindow1(WindowTitle.Text, (Int32)WindowWidth.Value, (Int32)WindowHeight.Value, (Int32)XPoint.Value, (Int32)YPoint.Value, SelectedTheme);
+        SampleWindow1 window = new SampleWindow1(WindowTitle.Text, (int)WindowWidth.Value, (int)WindowHeight.Value, (int)XPoint.Value, (int)YPoint.Value, selectedTheme);
         window.Activate();
     }
 
