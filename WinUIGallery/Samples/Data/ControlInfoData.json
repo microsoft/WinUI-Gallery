@@ -3639,67 +3639,6 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "Clipboard",
-          "Title": "Clipboard",
-          "ApiNamespace": "Windows.ApplicationModel.DataTransfer",
-          "Subtitle": "Copy and paste to and from the system Clipboard.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Clipboard.png",
-          "Description": "Copy and paste to and from the system Clipboard.",
-          "Content": "<p>Look at the <i>ClipboardPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "Docs": [
-            {
-              "Title": "Clipboard - API",
-              "Uri": "https://learn.microsoft.com/uwp/api/windows.applicationmodel.datatransfer.clipboard"
-            }
-          ],
-          "RelatedControls": [
-            "FilePicker"
-          ]
-        },
-        {
-          "UniqueId": "ContentIsland",
-          "Title": "ContentIsland",
-          "ApiNamespace": "Microsoft.UI.Content",
-          "Subtitle": "Create ContentIslands to host other frameworks in your app.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/ContentIsland.png",
-          "Description": "Create ContentIslands to host other frameworks in your app.",
-          "Content": "<p>Look at the <i>ContentIslandPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsNew": true,
-          "Docs": [
-            {
-              "Title": "ContentIsland - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.content.contentisland"
-            }
-          ]
-        },
-        {
-          "UniqueId": "FilePicker",
-          "Title": "FilePicker",
-          "ApiNamespace": "Windows.Storage.Pickers",
-          "Subtitle": "Access files and folders through the file pickers.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/FilePicker.png",
-          "Description": "Shows how to access files and folders by letting the user choose them through the file pickers and how to save a file so that the user can specify the name, file type, and location of a file to save.",
-          "Content": "<p>Look at the <i>FilePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
-          "IsUpdated": true,
-          "Docs": [
-            {
-              "Title": "FilePicker - API",
-              "Uri": "https://learn.microsoft.com/uwp/api/Windows.Storage.Pickers"
-            }
-          ],
-          "RelatedControls": [
-            "Clipboard"
-          ]
-        }
-      ]
-    },
-    {
-      "UniqueId": "Notifications",
-      "Title": "Notifications",
-      "ImagePath": "",
-      "IconGlyph": "",
-      "Items": [
-        {
           "UniqueId": "AppNotification",
           "Title": "AppNotification",
           "BaseClasses": [
@@ -3753,6 +3692,59 @@
               "Title": "Badge notifications",
               "Uri": "https://learn.microsoft.com/windows/apps/design/shell/tiles-and-notifications/badges"
             }
+          ]
+        },
+        {
+          "UniqueId": "Clipboard",
+          "Title": "Clipboard",
+          "ApiNamespace": "Windows.ApplicationModel.DataTransfer",
+          "Subtitle": "Copy and paste to and from the system Clipboard.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Clipboard.png",
+          "Description": "Copy and paste to and from the system Clipboard.",
+          "Content": "<p>Look at the <i>ClipboardPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "Docs": [
+            {
+              "Title": "Clipboard - API",
+              "Uri": "https://learn.microsoft.com/uwp/api/windows.applicationmodel.datatransfer.clipboard"
+            }
+          ],
+          "RelatedControls": [
+            "FilePicker"
+          ]
+        },
+        {
+          "UniqueId": "ContentIsland",
+          "Title": "ContentIsland",
+          "ApiNamespace": "Microsoft.UI.Content",
+          "Subtitle": "Create ContentIslands to host other frameworks in your app.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ContentIsland.png",
+          "Description": "Create ContentIslands to host other frameworks in your app.",
+          "Content": "<p>Look at the <i>ContentIslandPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "ContentIsland - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.content.contentisland"
+            }
+          ]
+        },
+        {
+          "UniqueId": "FilePicker",
+          "Title": "FilePicker",
+          "ApiNamespace": "Windows.Storage.Pickers",
+          "Subtitle": "Access files and folders through the file pickers.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/FilePicker.png",
+          "Description": "Shows how to access files and folders by letting the user choose them through the file pickers and how to save a file so that the user can specify the name, file type, and location of a file to save.",
+          "Content": "<p>Look at the <i>FilePickerPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsUpdated": true,
+          "Docs": [
+            {
+              "Title": "FilePicker - API",
+              "Uri": "https://learn.microsoft.com/uwp/api/Windows.Storage.Pickers"
+            }
+          ],
+          "RelatedControls": [
+            "Clipboard"
           ]
         }
       ]
