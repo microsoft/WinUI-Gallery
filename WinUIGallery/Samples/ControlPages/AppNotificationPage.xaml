@@ -13,10 +13,9 @@
                     Margin="0,16,0,0">
             <InfoBar IsOpen="True"
                      Severity="Informational"
-                     Title="Note"
                      IsIconVisible="True"
                      IsClosable="False">
-                <RichTextBlock Margin="0,-16,12,12"
+                <RichTextBlock Margin="0,12,12,12"
                                IsTextSelectionEnabled="False">
                     <Paragraph>
                         <Run Text="The" />
