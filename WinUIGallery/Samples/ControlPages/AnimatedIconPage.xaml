@@ -22,7 +22,10 @@
                             Lottie-Windows
                         </Hyperlink>
                         .
-                        For guidance on how to properly structure your animation file see the AnimatedIcon Guidance page.<LineBreak />
+                        For guidance on how to properly structure your animation file see the AnimatedIcon Guidance page.
+                        Warning: <Hyperlink NavigateUri="https://github.com/microsoft/microsoft-ui-xaml/issues/10243">
+                            AnimatedChevronRightDownSmallVisualSource and AnimatedChevronUpDownSmallVisualSource don't work properly
+                        </Hyperlink>.<LineBreak />
                     </TextBlock>
                     <Button
                         Width="75"
