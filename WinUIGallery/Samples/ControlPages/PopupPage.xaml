@@ -24,12 +24,12 @@
                         VerticalOffset="{x:Bind VerticalOffset.Value, Mode=OneWay}">
                         <Border
                             Width="200"
-                            Height="150"
-                            Padding="20"
+                            Height="160"
+                            Padding="24"
                             Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"
                             BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
                             BorderThickness="1"
-                            CornerRadius="8">
+                            CornerRadius="{StaticResource OverlayCornerRadius}">
                             <StackPanel
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
@@ -93,9 +93,8 @@ private void ClosePopupClicked(object sender, RoutedEventArgs e)
                 <x:String xml:space="preserve">
 &lt;Grid x:Name="Output" HorizontalAlignment="Left" VerticalAlignment="Top" &gt;
     &lt;Button Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked" /&gt;
-    &lt;Popup x:Name="StandardPopup" VerticalOffset="$(VerticalOffset)" HorizontalOffset="$(HorizontalOffset)" IsLightDismissEnabled="$(IsLightDismissEnabled)"
-           BorderThickness="1" BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"&gt;
-        &lt;Border Padding="20" CornerRadius="8" Width="200" Height="150"
+    &lt;Popup x:Name="StandardPopup" VerticalOffset="$(VerticalOffset)" HorizontalOffset="$(HorizontalOffset)" IsLightDismissEnabled="$(IsLightDismissEnabled)"&gt;
+        &lt;Border Padding="20" CornerRadius="{StaticResource OverlayCornerRadius}" Width="200" Height="160" BorderThickness="1" BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
                 Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"&gt;
             &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8"&gt;
                 &lt;TextBlock Text="Simple Popup" FontSize="16" HorizontalAlignment="Center" /&gt;
