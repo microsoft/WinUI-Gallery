@@ -18,11 +18,12 @@ private void mathEditor2_TextChanged(object sender, RoutedEventArgs e)
     }
 }
 
-private void SetMathmlEquationBtn_Click(object sender, RoutedEventArgs e)
+private void SetMathmlFormulaBtn_Click(object sender, RoutedEventArgs e)
 {
     // Defines a formula in MathML format
-    string equationMathML = "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">" +
-        "\r\n  <mml:mi mathcolor=\"#000000\">x</mml:mi>\r\n" +
+    string formulaMathML =
+        "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\r\n" +
+        "  <mml:mi mathcolor=\"#000000\">x</mml:mi>\r\n" +
         "  <mml:mo mathcolor=\"#000000\">\u2208</mml:mo>\r\n" +
         "  <mml:mi mathcolor=\"#000000\">P</mml:mi>\r\n" +
         "  <mml:mfenced>\r\n" +
@@ -35,16 +36,16 @@ private void SetMathmlEquationBtn_Click(object sender, RoutedEventArgs e)
         "  <mml:mo mathcolor=\"#000000\">\u2286</mml:mo>\r\n" +
         "  <mml:mi mathcolor=\"#000000\">A</mml:mi>\r\n" +
         "</mml:math>";
-    
+
     // Adjusts text color based on the current app theme
-    if (mathEditor2.ActualTheme == ElementTheme.Dark)
+    if(mathEditor2.ActualTheme == ElementTheme.Dark)
     {
         // If in dark mode, set text color to white
-        mathEditor2.Document.SetMathML(equationMathML.Replace("mathcolor=\"#000000\"", "mathcolor=\"#FFFFFF\""));
+        mathEditor2.Document.SetMathML(formulaMathML.Replace("mathcolor=\"#000000\"", "mathcolor=\"#FFFFFF\""));
     }
     else
     {
         // If in light mode, set text color to black
-        mathEditor2.Document.SetMathML(equationMathML.Replace("mathcolor=\"#FFFFFF\"", "mathcolor=\"#000000\""));
+        mathEditor2.Document.SetMathML(formulaMathML.Replace("mathcolor=\"#FFFFFF\"", "mathcolor=\"#000000\""));
     }
 }
