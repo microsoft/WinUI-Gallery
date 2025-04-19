@@ -289,7 +289,7 @@ mathEditor.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
                         <Paragraph Margin="0,0,0,4">
                             Setting the math mode in the
                             <Run FontWeight="SemiBold">RichEditBox</Run> is necessary 
-                            to use these methods. it can be enableed using
+                            to use these methods. it can be enabled using
                             <Run FontFamily="Consolas">SetMathMode(RichEditMathMode.MathOnly)</Run> .
                         </Paragraph>
 
