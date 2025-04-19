@@ -79,19 +79,30 @@ AppNotificationManager.Default.Show(notification);
         <controls:ControlExample HeaderText="Informational notification with logo and custom audio">
             <Button Content="Show informational notification with logo and custom audio"
                     Click="ShowInformationalNotificationWithLogoButton_Click" />
+            <controls:ControlExample.Options>
+                <ComboBox x:Name="AppNotificationSoundEventsCombo"
+                          Header="AppNotificationSoundEvent"
+                          ItemsSource="{x:Bind appNotificationSoundEvents}"
+                          SelectedItem="{x:Bind selectedAppNotificationSoundEvent, Mode=TwoWay}"
+                          Width="180" />
+            </controls:ControlExample.Options>
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 AppNotification notification = new AppNotificationBuilder()
     .AddText("Control Highlight: PersonPicture")
     .AddText("Use the PersonPicture control to display user avatars with initials or images.")
     .SetAppLogoOverride(new Uri("ms-appx:///Assets/ControlImages/PersonPicture.png"), AppNotificationImageCrop.Circle)
-    .SetAudioEvent(AppNotificationSoundEvent.SMS)
+    .SetAudioEvent(AppNotificationSoundEvent.$(SelectedAppNotificationSoundEvent))
     .SetTimeStamp(DateTime.Now)                
     .BuildNotification();
 
 AppNotificationManager.Default.Show(notification);
                 </x:String>
             </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="SelectedAppNotificationSoundEvent"
+                                                     Value="{x:Bind AppNotificationSoundEventsCombo.SelectedItem, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
         <controls:ControlExample HeaderText="Visual notification with hero image and attribution">

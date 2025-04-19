@@ -3,11 +3,23 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.AppNotifications.Builder;
 using Microsoft.Windows.AppNotifications;
 using System;
+using System.Collections.Generic;
 
 namespace WinUIGallery.ControlPages;
 
 public sealed partial class AppNotificationPage : Page
 {
+    private IReadOnlyList<AppNotificationSoundEvent> appNotificationSoundEvents = new List<AppNotificationSoundEvent> 
+    {
+        AppNotificationSoundEvent.Default,
+        AppNotificationSoundEvent.IM,
+        AppNotificationSoundEvent.Reminder,
+        AppNotificationSoundEvent.SMS,
+        AppNotificationSoundEvent.Alarm,
+        AppNotificationSoundEvent.Call
+    };
+    private AppNotificationSoundEvent selectedAppNotificationSoundEvent = AppNotificationSoundEvent.Default;
+
     public AppNotificationPage()
     {
         this.InitializeComponent();
@@ -19,7 +31,7 @@ public sealed partial class AppNotificationPage : Page
             .AddText("Control Highlight: PersonPicture")
             .AddText("Use the PersonPicture control to display user avatars with initials or images.")
             .SetAppLogoOverride(new Uri("ms-appx:///Assets/ControlImages/PersonPicture.png"), AppNotificationImageCrop.Circle)
-            .SetAudioEvent(AppNotificationSoundEvent.SMS)
+            .SetAudioEvent(selectedAppNotificationSoundEvent)
             .SetTimeStamp(DateTime.Now)
             .BuildNotification();
 
