@@ -62,7 +62,7 @@
         </StackPanel>
 
         <controls:ControlExample HeaderText="Basic notification">
-            <Button Content="Show notification with custom audio"
+            <Button Content="Show notification"
                     Click="ShowNotificationButton_Click" />
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
