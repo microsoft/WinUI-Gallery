@@ -3670,7 +3670,7 @@
         },
         {
           "UniqueId": "BadgeNotificationManager",
-          "Title": "BadgeNotificationManager",
+          "Title": "Badge notifications",
           "BaseClasses": [
             "Object"
           ],
