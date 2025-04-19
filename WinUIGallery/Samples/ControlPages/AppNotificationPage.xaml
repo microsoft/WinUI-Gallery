@@ -76,8 +76,8 @@ AppNotificationManager.Default.Show(notification);
             </controls:ControlExample.CSharp>
         </controls:ControlExample>
 
-        <controls:ControlExample HeaderText="Informational notification with logo and audio">
-            <Button Content="Show informational notification with logo and audio"
+        <controls:ControlExample HeaderText="Informational notification with logo and custom audio">
+            <Button Content="Show informational notification with logo and custom audio"
                     Click="ShowInformationalNotificationWithLogoButton_Click" />
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
