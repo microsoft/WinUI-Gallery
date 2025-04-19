@@ -267,7 +267,7 @@ mathEditor.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
                                  CSharpSource="Text\RichEditBox\RichEditBoxSample6_cs.txt">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="16">
-                    <RichTextBlock IsTextSelectionEnabled="False">
+                    <RichTextBlock>
                         <Paragraph Margin="0,0,0,4">
                             The
                             <Run FontWeight="SemiBold">SetMathML</Run> method takes a
