@@ -19,6 +19,8 @@ public sealed partial class AppNotificationPage : Page
             .AddText("Control Highlight: PersonPicture")
             .AddText("Use the PersonPicture control to display user avatars with initials or images.")
             .SetAppLogoOverride(new Uri("ms-appx:///Assets/ControlImages/PersonPicture.png"), AppNotificationImageCrop.Circle)
+            .SetAudioEvent(AppNotificationSoundEvent.SMS)
+            .SetTimeStamp(DateTime.Now)
             .BuildNotification();
 
         AppNotificationManager.Default.Show(notification);
@@ -41,8 +43,6 @@ public sealed partial class AppNotificationPage : Page
         AppNotification notification = new AppNotificationBuilder()
             .AddText("Welcome to WinUI 3 Gallery")
             .AddText("Explore interactive samples and discover the power of modern Windows UI.")
-            .SetAudioEvent(AppNotificationSoundEvent.SMS)
-            .SetTimeStamp(DateTime.Now)
             .BuildNotification();
 
         AppNotificationManager.Default.Show(notification);

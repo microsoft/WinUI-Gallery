@@ -61,7 +61,7 @@
                      IsClosable="False" />
         </StackPanel>
 
-        <controls:ControlExample HeaderText="Notification with custom audio">
+        <controls:ControlExample HeaderText="Basic notification">
             <Button Content="Show notification with custom audio"
                     Click="ShowNotificationButton_Click" />
             <controls:ControlExample.CSharp>
@@ -69,8 +69,6 @@
 AppNotification notification = new AppNotificationBuilder()
     .AddText("Welcome to WinUI 3 Gallery")
     .AddText("Explore interactive samples and discover the power of modern Windows UI.")
-    .SetAudioEvent(AppNotificationSoundEvent.SMS)
-    .SetTimeStamp(DateTime.Now)
     .BuildNotification();
 
 AppNotificationManager.Default.Show(notification);
@@ -78,8 +76,8 @@ AppNotificationManager.Default.Show(notification);
             </controls:ControlExample.CSharp>
         </controls:ControlExample>
 
-        <controls:ControlExample HeaderText="Informational notification with logo">
-            <Button Content="Show informational notification with logo"
+        <controls:ControlExample HeaderText="Informational notification with logo and audio">
+            <Button Content="Show informational notification with logo and audio"
                     Click="ShowInformationalNotificationWithLogoButton_Click" />
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
@@ -87,6 +85,8 @@ AppNotification notification = new AppNotificationBuilder()
     .AddText("Control Highlight: PersonPicture")
     .AddText("Use the PersonPicture control to display user avatars with initials or images.")
     .SetAppLogoOverride(new Uri("ms-appx:///Assets/ControlImages/PersonPicture.png"), AppNotificationImageCrop.Circle)
+    .SetAudioEvent(AppNotificationSoundEvent.SMS)
+    .SetTimeStamp(DateTime.Now)                
     .BuildNotification();
 
 AppNotificationManager.Default.Show(notification);
