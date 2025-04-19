@@ -104,7 +104,8 @@
                             <TabViewItem
                                 Content="{x:Bind DataContent}"
                                 Header="{x:Bind DataHeader}"
-                                IconSource="{x:Bind DataIconSource}" />
+                                IconSource="{x:Bind DataIconSource}"
+				ContextFlyout="{x:Bind TabViewContextMenu}"  />
                         </DataTemplate>
                     </TabView.TabItemTemplate>
                 </TabView>
