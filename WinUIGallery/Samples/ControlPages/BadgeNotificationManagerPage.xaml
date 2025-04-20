@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="WinUIGallery.ControlPages.BadgeNotificationManagerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUIGallery.ControlPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:WinUIGallery.Controls"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <controls:ControlExample HeaderText="Setting badge notifications with count">
+            <StackPanel Spacing="8">
+                <Button Content="Set badge as count"
+                        Width="160"
+                        Click="SetBadgeCountButton_Click" />
+                <Button Content="Clear badge"
+                        Width="160"
+                        Click="ClearBadgeButton_Click" />
+            </StackPanel>
+            <controls:ControlExample.Options>
+                <NumberBox x:Name="BadgeCountBox"
+                           Header="Badge count"
+                           Value="5"
+                           Minimum="1"
+                           SpinButtonPlacementMode="Inline"
+                           SmallChange="1"
+                           LargeChange="10"
+                           Width="160"
+                           ValueChanged="BadgeCountBox_ValueChanged"/>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private void SetBadgeCountButton_Click(object sender, RoutedEventArgs e)
+{
+    BadgeNotificationManager.Current.SetBadgeAsCount((uint)BadgeCountBox.Value);
+}
+
+private void ClearBadgeButton_Click(object sender, RoutedEventArgs e)
+{
+    BadgeNotificationManager.Current.ClearBadge();
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+        <controls:ControlExample HeaderText="Setting badge notifications with Glyph">
+            <StackPanel Spacing="8">
+                <Button Content="Set badge glyph"
+                        Width="160"
+                        Click="SetBadgeGlyphButton_Click" />
+                <Button Content="Clear badge"
+                        Width="160"
+                        Click="ClearBadgeButton_Click" />
+            </StackPanel>
+            <controls:ControlExample.Options>
+                <ComboBox x:Name="BadgeNotificationGlyphsCombo"
+                          Header="BadgeNotificationGlyph"
+                          ItemsSource="{x:Bind badgeNotificationGlyphs}"
+                          SelectedItem="{x:Bind selectedGlyph, Mode=TwoWay}"
+                          Width="160"
+                          SelectionChanged="BadgeNotificationGlyphsCombo_SelectionChanged"/>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private void SetBadgeGlyphButton_Click(object sender, RoutedEventArgs e)
+{
+    BadgeNotificationManager.Current.SetBadgeAsGlyph($(SelectedGlyph));
+}
+
+private void ClearBadgeButton_Click(object sender, RoutedEventArgs e)
+{
+    BadgeNotificationManager.Current.ClearBadge();
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="SelectedGlyph"
+                                                     Value="{x:Bind BadgeNotificationGlyphsCombo.SelectedItem, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>
