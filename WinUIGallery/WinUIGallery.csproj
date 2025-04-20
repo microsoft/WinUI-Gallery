@@ -143,7 +143,9 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Remove="Assets\ControlImages\AppNotification.png" />
         <None Remove="Assets\ControlImages\AppWindow.png" />
+        <None Remove="Assets\ControlImages\BadgeNotification.png" />
         <None Remove="Assets\ControlImages\CodeTagIcon.png" />
         <None Remove="Assets\ControlImages\Accessibility.png" />
         <None Remove="Assets\ControlImages\ContentIsland.png" />
@@ -307,6 +309,8 @@
         <None Remove="Controls\HomePageHeaderImage.xaml" />
         <None Remove="Controls\PageHeader.xaml" />
         <None Remove="Controls\SampleThemeListener.xaml" />
+        <None Remove="Samples\ControlPages\AppNotificationPage.xaml" />
+        <None Remove="Samples\ControlPages\BadgeNotificationManagerPage.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml" />
@@ -322,7 +326,9 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Content Include="Assets\ControlImages\AppNotification.png" />
         <Content Include="Assets\ControlImages\AppWindow.png" />
+        <Content Include="Assets\ControlImages\BadgeNotification.png" />
         <Content Include="Assets\ControlImages\CodeTagIcon.png" />
         <Content Include="Assets\ControlImages\Accessibility.png" />
         <Content Include="Assets\ControlImages\ContentIsland.png" />
@@ -504,6 +510,18 @@
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_cs.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_xaml.txt" />
         <Content Include="Samples\SampleCode\Text\RichEditBox\RichEditBoxSample6_cs.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Samples\ControlPages\BadgeNotificationManagerPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Samples\ControlPages\AppNotificationPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
 
     <ItemGroup>
