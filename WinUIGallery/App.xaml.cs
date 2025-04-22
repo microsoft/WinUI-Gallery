@@ -16,6 +16,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Microsoft.Windows.AppLifecycle;
 using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
+using Microsoft.Windows.BadgeNotifications;
 using Windows.ApplicationModel.Activation;
 using WinUIGallery.Helpers;
 using WinUIGallery.Pages;
@@ -77,6 +78,11 @@ sealed partial class App : Application
         registeredKeyPressedHook = SetWindowKeyHook(keyEventHook);
 
         EnsureWindow();
+
+        startupWindow.Closed += (s, e) =>
+        {
+            BadgeNotificationManager.Current.ClearBadge();
+        };
     }
 
     private int KeyEventHook(int nCode, IntPtr wParam, IntPtr lParam)
