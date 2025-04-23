@@ -109,8 +109,7 @@
                             How to get the font
                         </Paragraph>
                         <Paragraph>
-                            Segoe Fluent Icons comes preinstalled on Windows 11. On Windows 10, it requires a manual installation. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>
-                            .</Paragraph>
+                            Segoe Fluent Icons comes preinstalled on Windows 11. On Windows 10, it requires a manual installation. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>.</Paragraph>
                     </RichTextBlock>
                 </toolkit:SettingsCard>
                 <toolkit:SettingsCard
