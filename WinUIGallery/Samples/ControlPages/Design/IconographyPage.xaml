@@ -42,21 +42,21 @@
             <ItemContainer
                 Width="96"
                 Height="96"
-                Margin="4"
                 AutomationProperties.Name="{Binding Name}"
-                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                CornerRadius="{StaticResource ControlCornerRadius}"
                 ToolTipService.ToolTip="{Binding Name}">
-                <Grid>
+                <Grid
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="{StaticResource ControlCornerRadius}">
                     <!--  Icon  -->
                     <Viewbox
-                        Grid.Row="1"
                         Width="28"
                         Height="28"
-                        Margin="0,0,0,10">
+                        Margin="0,0,0,16">
                         <FontIcon
                             x:Name="IconGlyph"
-                            Grid.Row="1"
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
                             Glyph="{Binding Character}" />
                     </Viewbox>
@@ -64,8 +64,7 @@
                     <!--  Icon name/descriptor  -->
                     <TextBlock
                         x:Name="IconName"
-                        Grid.Row="2"
-                        Margin="6,0,6,8"
+                        Margin="8,0,8,8"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
@@ -94,12 +93,11 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Text="With the release of Windows 11, Segoe Fluent Icons is the recommended icon font." />
 
         <toolkit:SettingsExpander
             Grid.Row="1"
             AutomationProperties.AccessibilityView="Raw"
-            Header="Instructions on how to use Segoe Fluent Icons"
+            Header="How to use Segoe Fluent Icons"
             IsExpanded="False">
             <toolkit:SettingsExpander.Items>
                 <toolkit:SettingsCard
@@ -111,8 +109,7 @@
                             How to get the font
                         </Paragraph>
                         <Paragraph>
-                            On Windows 11: There's nothing you need to do, the font comes with Windows.<LineBreak />
-                            On Windows 10: Segoe Fluent Icons is not included by default on Windows 10. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>.</Paragraph>
+                            Segoe Fluent Icons comes preinstalled on Windows 11. On Windows 10, it requires a manual installation. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>.</Paragraph>
                     </RichTextBlock>
                 </toolkit:SettingsCard>
                 <toolkit:SettingsCard
@@ -122,12 +119,12 @@
                     <StackPanel Orientation="Vertical" Spacing="8">
                         <RichTextBlock TextWrapping="Wrap">
                             <Paragraph FontWeight="SemiBold">
-                                How to use the font
+                                How to use
                             </Paragraph>
                             <Paragraph>
                                 If you don't specify a FontFamily,
                                 or you specify a FontFamily that is not available on the system at runtime,
-                                the <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.fonticon">FontIcon</Hyperlink>
+                                a <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.fonticon">FontIcon</Hyperlink>
                                 falls back to the default font family defined by the SymbolThemeFontFamily resource.</Paragraph>
                             <Paragraph>
                                 An icon with a 16-epx font size is the equivalent of a 16x16-epx icon, to make sizing and positioning more predictable.
@@ -169,14 +166,18 @@
                     <ColumnDefinition Width="316" />
                 </Grid.ColumnDefinitions>
                 <ItemsView
-                        x:Name="IconsItemsView"
-                        MinWidth="100"
-                        HorizontalAlignment="Stretch"
-                        ItemTemplate="{StaticResource IconTemplate}"
-                        SelectionChanged="IconsItemsView_SelectionChanged"
-                        TabFocusNavigation="Once">
+                    x:Name="IconsItemsView"
+                    MinWidth="100"
+                    Padding="8"
+                    HorizontalAlignment="Stretch"
+                    ItemTemplate="{StaticResource IconTemplate}"
+                    SelectionChanged="IconsItemsView_SelectionChanged"
+                    TabFocusNavigation="Once">
                     <ItemsView.Layout>
-                        <UniformGridLayout Orientation="Horizontal" />
+                        <UniformGridLayout
+                            MinColumnSpacing="8"
+                            MinRowSpacing="8"
+                            Orientation="Horizontal" />
                     </ItemsView.Layout>
                 </ItemsView>
 

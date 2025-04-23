@@ -18,15 +18,15 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <XamlControlsResources />
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <local:ItemTemplates />
-                <ResourceDictionary Source="/Controls/CopyButton.xaml" />
-                <ResourceDictionary Source="/Styles/Button.xaml" />
-                <ResourceDictionary Source="/Styles/Grid.xaml" />
-                <ResourceDictionary Source="/Styles/GridViewItem.xaml" />
-                <ResourceDictionary Source="/Styles/TextBlock.xaml" />
-                <ResourceDictionary Source="/Samples/ControlPages/Fundamentals/Controls/CounterControl.xaml" />
-                <ResourceDictionary Source="/Samples/ControlPages/Fundamentals/Controls/ValidatedPasswordBox.xaml" />
+                <ResourceDictionary Source="ms-appx:///Controls/CopyButton.xaml" />
+                <ResourceDictionary Source="ms-appx:///Styles/Button.xaml" />
+                <ResourceDictionary Source="ms-appx:///Styles/Grid.xaml" />
+                <ResourceDictionary Source="ms-appx:///Styles/GridViewItem.xaml" />
+                <ResourceDictionary Source="ms-appx:///Styles/TextBlock.xaml" />
+                <ResourceDictionary Source="ms-appx:///Samples/ControlPages/Fundamentals/Controls/CounterControl.xaml" />
+                <ResourceDictionary Source="ms-appx:///Samples/ControlPages/Fundamentals/Controls/ValidatedPasswordBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <ResourceDictionary.ThemeDictionaries>
