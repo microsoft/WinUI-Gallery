@@ -236,10 +236,10 @@
                         <ItemsView
                             x:Name="TagsItemsView"
                             Margin="0,8,0,4"
-                            x:Load="{x:Bind SelectedItem.Tags, Converter={StaticResource emptyCollectionToFalseConverter}}"
+                            x:Load="{x:Bind SelectedItem.Tags, Converter={StaticResource emptyCollectionToFalseConverter}, Mode=OneWay}"
                             IsItemInvokedEnabled="True"
                             ItemInvoked="TagsItemsView_ItemInvoked"
-                            ItemsSource="{x:Bind SelectedItem.Tags}"
+                            ItemsSource="{x:Bind SelectedItem.Tags, Mode=OneWay}"
                             SelectionMode="None">
                             <ItemsView.Layout>
                                 <toolkit:WrapLayout HorizontalSpacing="4" VerticalSpacing="4" />
@@ -251,8 +251,8 @@
                                         AutomationProperties.Name="{x:Bind}"
                                         CornerRadius="12">
                                         <Grid
-                                            Padding="8,0"
-                                            Height="24"
+                                            Padding="8,2"
+                                            MinHeight="24"
                                             Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                                             BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                                             BorderThickness="1"
