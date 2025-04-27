@@ -5,17 +5,18 @@
     xmlns:models="using:WinUIGallery.Models">
 
     <DataTemplate x:Key="ControlItemTemplate" x:DataType="models:ControlInfoDataItem">
-        <UserControl>
-            <Grid
-                x:Name="controlRoot"
-                Width="360"
-                Height="90"
-                Padding="8"
-                HorizontalAlignment="Stretch"
-                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                BorderThickness="1"
-                CornerRadius="{StaticResource ControlCornerRadius}">
+        <Grid
+            x:Name="controlRoot"
+            Width="360"
+            Height="86"
+            Padding="8"
+            HorizontalAlignment="Stretch"
+            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+            BorderThickness="1"
+            ColumnSpacing="16"
+            CornerRadius="{StaticResource OverlayCornerRadius}">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
@@ -23,9 +24,8 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-
                 <Image
                     x:Name="gridImage"
                     Grid.RowSpan="2"
@@ -38,6 +38,7 @@
                 <TextBlock
                     x:Name="titleText"
                     Grid.Column="1"
+                    Margin="0,12,0,0"
                     VerticalAlignment="Bottom"
                     Style="{StaticResource BodyStrongTextBlockStyle}"
                     Text="{x:Bind Title}"
@@ -51,33 +52,31 @@
                     Style="{StaticResource CaptionTextBlockStyle}"
                     Text="{x:Bind Subtitle}"
                     TextTrimming="CharacterEllipsis" />
-                <!--<InfoBadge
+                <InfoBadge
                     Grid.Column="2"
-                    Margin="4"
                     VerticalAlignment="Top"
                     Style="{StaticResource AttentionIconInfoBadgeStyle}"
-                    Visibility="{x:Bind BadgeString, Converter={StaticResource nullToVisibilityConverter}}" />-->
-
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="LayoutVisualStates">
-                        <VisualState x:Name="WideLayout">
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters />
-                        </VisualState>
-                        <VisualState x:Name="NarrowLayout">
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="0" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="controlRoot.Width" Value="Auto" />
-                                <Setter Target="controlRoot.Height" Value="120" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
+                    Visibility="{x:Bind BadgeString, Converter={StaticResource nullToVisibilityConverter}}" />
             </Grid>
-        </UserControl>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="LayoutVisualStates">
+                    <VisualState x:Name="WideLayout">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters />
+                    </VisualState>
+                    <VisualState x:Name="NarrowLayout">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="0" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="controlRoot.Width" Value="Auto" />
+                            <Setter Target="controlRoot.Height" Value="120" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
     </DataTemplate>
 </ResourceDictionary>
