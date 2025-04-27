@@ -21,44 +21,42 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-                <Grid Width="72" CornerRadius="{ThemeResource ControlCornerRadius}">
-                    <Image
-                        x:Name="gridImage"
-                        Width="48"
-                        VerticalAlignment="Center"
-                        AutomationProperties.Name="{x:Bind Title}"
-                        Source="{x:Bind ImagePath}"
-                        Stretch="Uniform" />
-                </Grid>
-                <StackPanel
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Margin="16,0,0,0"
+                <Image
+                    x:Name="gridImage"
+                    Grid.RowSpan="2"
+                    Width="48"
+                    Margin="8,0,16,0"
                     VerticalAlignment="Center"
-                    Orientation="Vertical"
-                    Spacing="2">
-                    <TextBlock
-                        x:Name="titleText"
-                        Style="{StaticResource BodyStrongTextBlockStyle}"
-                        Text="{x:Bind Title}"
-                        TextLineBounds="TrimToCapHeight"
-                        TextWrapping="NoWrap" />
-                    <TextBlock
-                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                        RelativePanel.Below="titleText"
-                        Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="{x:Bind Subtitle}"
-                        TextTrimming="CharacterEllipsis" />
-                </StackPanel>
-
-                <InfoBadge
+                    AutomationProperties.Name="{x:Bind Title}"
+                    Source="{x:Bind ImagePath}"
+                    Stretch="Uniform" />
+                <TextBlock
+                    x:Name="titleText"
+                    Grid.Column="1"
+                    VerticalAlignment="Bottom"
+                    Style="{StaticResource BodyStrongTextBlockStyle}"
+                    Text="{x:Bind Title}"
+                    TextLineBounds="TrimToCapHeight"
+                    TextWrapping="NoWrap" />
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                    RelativePanel.Below="titleText"
+                    Style="{StaticResource CaptionTextBlockStyle}"
+                    Text="{x:Bind Subtitle}"
+                    TextTrimming="CharacterEllipsis" />
+                <!--<InfoBadge
                     Grid.Column="2"
-                    Width="10"
                     Margin="4"
                     VerticalAlignment="Top"
                     Style="{StaticResource AttentionIconInfoBadgeStyle}"
-                    Visibility="{x:Bind BadgeString, Converter={StaticResource nullToVisibilityConverter}}" />
+                    Visibility="{x:Bind BadgeString, Converter={StaticResource nullToVisibilityConverter}}" />-->
 
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="LayoutVisualStates">
