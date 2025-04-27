@@ -195,6 +195,7 @@
                         <Border
                             Margin="0,0,0,24"
                             HorizontalAlignment="Left"
+                            Background="{ThemeResource ControlFillColorDefaultBrush}"
                             BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
                             BorderThickness="1">
                             <FontIcon
