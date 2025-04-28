@@ -28,8 +28,13 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
     public CaptureElementPreviewPage()
     {
         this.InitializeComponent();
+        this.Loaded += CaptureElementPreviewPage_Loaded;
+        this.Unloaded += this.CaptureElementPreviewPage_Unloaded;
+    }
 
-        StartCaptureElement();
+    private async void CaptureElementPreviewPage_Loaded(object sender, RoutedEventArgs e)
+    {
+        await StartCaptureElement();
 
         // Move the ScrollViewer from the captureContainer under an ExpandToFillContainer.
         // This will allow the snapshots column to use all available height without
@@ -39,8 +44,6 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         captureContainer.Children.Remove(sv);
         captureContainer.Children.Add(expandToFillContainer);
         expandToFillContainer.Children.Add(sv);
-
-        this.Unloaded += this.CaptureElementPreviewPage_Unloaded;
     }
 
     private void CaptureElementPreviewPage_Unloaded(object sender, RoutedEventArgs e)
@@ -55,30 +58,57 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
     private MediaFrameSourceGroup mediaFrameSourceGroup;
     private MediaCapture mediaCapture;
 
-    async private void StartCaptureElement()
+    private async Task StartCaptureElement()
     {
-        var groups = await MediaFrameSourceGroup.FindAllAsync();
-        if (groups.Count == 0)
+        try
         {
-            frameSourceName.Text = "No camera devices found.";
-            return;
+            var groups = await MediaFrameSourceGroup.FindAllAsync();
+            if (groups.Count == 0)
+            {
+                frameSourceName.Text = "No camera devices found.";
+                return;
+            }
+            mediaFrameSourceGroup = groups.First();
+
+            frameSourceName.Text = "Viewing: " + mediaFrameSourceGroup.DisplayName;
+            mediaCapture = new MediaCapture();
+            var mediaCaptureInitializationSettings = new MediaCaptureInitializationSettings()
+            {
+                SourceGroup = this.mediaFrameSourceGroup,
+                SharingMode = MediaCaptureSharingMode.SharedReadOnly,
+                StreamingCaptureMode = StreamingCaptureMode.Video,
+                MemoryPreference = MediaCaptureMemoryPreference.Cpu
+            };
+            await mediaCapture.InitializeAsync(mediaCaptureInitializationSettings);
+
+            // Set the MediaPlayerElement's Source property to the MediaSource for the mediaCapture.
+            var frameSource = mediaCapture.FrameSources[this.mediaFrameSourceGroup.SourceInfos[0].Id];
+            captureElement.Source = Windows.Media.Core.MediaSource.CreateFromMediaFrameSource(frameSource);
         }
-        mediaFrameSourceGroup = groups.First();
-
-        frameSourceName.Text = "Viewing: " + mediaFrameSourceGroup.DisplayName;
-        mediaCapture = new MediaCapture();
-        var mediaCaptureInitializationSettings = new MediaCaptureInitializationSettings()
+        catch (UnauthorizedAccessException)
         {
-            SourceGroup = this.mediaFrameSourceGroup,
-            SharingMode = MediaCaptureSharingMode.SharedReadOnly,
-            StreamingCaptureMode = StreamingCaptureMode.Video,
-            MemoryPreference = MediaCaptureMemoryPreference.Cpu
-        };
-        await mediaCapture.InitializeAsync(mediaCaptureInitializationSettings);
+            var dialog = new ContentDialog()
+            {
+                Title = "Camera access denied",
+                Content = "Please check your camera permissions.",
+                CloseButtonText = "OK",
+                XamlRoot = this.XamlRoot,
+            };
 
-        // Set the MediaPlayerElement's Source property to the MediaSource for the mediaCapture.
-        var frameSource = mediaCapture.FrameSources[this.mediaFrameSourceGroup.SourceInfos[0].Id];
-        captureElement.Source = Windows.Media.Core.MediaSource.CreateFromMediaFrameSource(frameSource);
+            await dialog.ShowAsync();
+        }
+        catch (Exception ex)
+        {
+            var dialog = new ContentDialog()
+            {
+                Title = "Error",
+                Content = ex.Message,
+                CloseButtonText = "OK",
+                XamlRoot = this.XamlRoot,
+            };
+
+            await dialog.ShowAsync();
+        }
     }
 
     public string MirrorTextReplacement = ""; // starts not mirrored, so no text in that case
