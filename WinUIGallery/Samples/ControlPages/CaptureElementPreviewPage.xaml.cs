@@ -20,6 +20,8 @@ using Windows.Storage.Streams;
 using System.ComponentModel;
 using WinUIGallery.Helpers;
 using System.Threading.Tasks;
+using Microsoft.UI.Xaml.Documents;
+using Windows.System;
 
 namespace WinUIGallery.ControlPages;
 
@@ -87,10 +89,21 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         }
         catch (UnauthorizedAccessException)
         {
+            var hyperlink = new Hyperlink() { Inlines = { new Run() { Text = "camera settings" } } };
+            hyperlink.Click += async (_, _) => await Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-webcam"));
+
             var dialog = new ContentDialog()
             {
                 Title = "Camera access denied",
-                Content = "Please check your camera permissions.",
+                Content = new TextBlock()
+                {
+                    Inlines =
+                    {
+                        new Run() { Text = "Please check your " },
+                        hyperlink,
+                        new Run() { Text = "." }
+                    }
+                },
                 CloseButtonText = "OK",
                 XamlRoot = this.XamlRoot,
             };
