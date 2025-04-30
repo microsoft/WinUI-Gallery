@@ -20,10 +20,9 @@
 
     <StackPanel>
 
-        <controls:ControlExample
-            VerticalAlignment="Top"
-            HorizontalContentAlignment="Stretch"
-            HeaderText="A simple text editor using RichEditBox.">
+        <controls:ControlExample VerticalAlignment="Top"
+                                 HorizontalContentAlignment="Stretch"
+                                 HeaderText="A simple text editor using RichEditBox.">
             <RichEditBox AutomationProperties.Name="simple text editor" />
             <controls:ControlExample.Xaml>
                 <x:String>
@@ -32,139 +31,151 @@
             </controls:ControlExample.Xaml>
         </controls:ControlExample>
 
-        <controls:ControlExample
-            CSharpSource="Text\RichEditBox\RichEditBoxSample4_cs.txt"
-            HeaderText="Customizing RichEditBox's CommandBarFlyout - Adding 'Share'"
-            XamlSource="Text\RichEditBox\RichEditBoxSample4_Xaml.txt">
-            <RichEditBox
-                x:Name="REBCustom"
-                Width="800"
-                Height="200"
-                AutomationProperties.Name="editor with custom menu"
-                Loaded="REBCustom_Loaded"
-                Unloaded="REBCustom_Unloaded" />
+        <controls:ControlExample CSharpSource="Text\RichEditBox\RichEditBoxSample4_cs.txt"
+                                 HeaderText="Customizing RichEditBox's CommandBarFlyout - Adding 'Share'"
+                                 XamlSource="Text\RichEditBox\RichEditBoxSample4_Xaml.txt">
+            <RichEditBox x:Name="REBCustom"
+                         Width="800"
+                         Height="200"
+                         AutomationProperties.Name="editor with custom menu"
+                         Loaded="REBCustom_Loaded"
+                         Unloaded="REBCustom_Unloaded" />
 
         </controls:ControlExample>
 
-        <controls:ControlExample
-            VerticalAlignment="Top"
-            HorizontalContentAlignment="Stretch"
-            CSharpSource="Text\RichEditBox\RichEditBoxSample3_cs.txt"
-            HeaderText="A custom editor with RichEditBox."
-            XamlSource="Text\RichEditBox\RichEditBoxSample3_Xaml.txt">
-            <RelativePanel Margin="0,0,0,20" HorizontalAlignment="Stretch">
+        <controls:ControlExample VerticalAlignment="Top"
+                                 HorizontalContentAlignment="Stretch"
+                                 CSharpSource="Text\RichEditBox\RichEditBoxSample3_cs.txt"
+                                 HeaderText="A custom editor with RichEditBox."
+                                 XamlSource="Text\RichEditBox\RichEditBoxSample3_Xaml.txt">
+            <RelativePanel Margin="0,0,0,20"
+                           HorizontalAlignment="Stretch">
                 <RelativePanel.Resources>
                     <ResourceDictionary>
                         <Style TargetType="Button">
-                            <Setter Property="BorderThickness" Value="0" />
-                            <Setter Property="Background" Value="Transparent" />
-                            <Setter Property="Margin" Value="0,0,8,0" />
+                            <Setter Property="BorderThickness"
+                                    Value="0" />
+                            <Setter Property="Background"
+                                    Value="Transparent" />
+                            <Setter Property="Margin"
+                                    Value="0,0,8,0" />
                         </Style>
 
                         <ResourceDictionary.ThemeDictionaries>
                             <ResourceDictionary x:Key="HighContrast">
-                                <StaticResource x:Key="ButtonBackgroundPointerOver" ResourceKey="SystemColorHighlightColor" />
+                                <StaticResource x:Key="ButtonBackgroundPointerOver"
+                                                ResourceKey="SystemColorHighlightColor" />
                             </ResourceDictionary>
                         </ResourceDictionary.ThemeDictionaries>
                     </ResourceDictionary>
                 </RelativePanel.Resources>
-                <Button
-                    x:Name="openFileButton"
-                    AutomationProperties.Name="Open file"
-                    Click="OpenButton_Click"
-                    ToolTipService.ToolTip="Open file">
+                <Button x:Name="openFileButton"
+                        AutomationProperties.Name="Open file"
+                        Click="OpenButton_Click"
+                        ToolTipService.ToolTip="Open file">
                     <Button.Content>
                         <FontIcon Glyph="&#xE8E5;" />
                     </Button.Content>
                 </Button>
-                <Button
-                    AutomationProperties.Name="Save file"
-                    Click="SaveButton_Click"
-                    RelativePanel.RightOf="openFileButton"
-                    ToolTipService.ToolTip="Save file">
+                <Button AutomationProperties.Name="Save file"
+                        Click="SaveButton_Click"
+                        RelativePanel.RightOf="openFileButton"
+                        ToolTipService.ToolTip="Save file">
                     <Button.Content>
                         <FontIcon Glyph="&#xE74E;" />
                     </Button.Content>
                 </Button>
-                <Button
-                    AutomationProperties.Name="Bold"
-                    Click="BoldButton_Click"
-                    RelativePanel.LeftOf="italicButton"
-                    ToolTipService.ToolTip="Bold">
+                <Button AutomationProperties.Name="Bold"
+                        Click="BoldButton_Click"
+                        RelativePanel.LeftOf="italicButton"
+                        ToolTipService.ToolTip="Bold">
                     <Button.Content>
                         <FontIcon Glyph="&#xE8DD;" />
                     </Button.Content>
                 </Button>
-                <Button
-                    x:Name="italicButton"
-                    AutomationProperties.Name="Italic"
-                    Click="ItalicButton_Click"
-                    RelativePanel.LeftOf="fontColorButton"
-                    ToolTipService.ToolTip="Italic">
+                <Button x:Name="italicButton"
+                        AutomationProperties.Name="Italic"
+                        Click="ItalicButton_Click"
+                        RelativePanel.LeftOf="fontColorButton"
+                        ToolTipService.ToolTip="Italic">
                     <Button.Content>
                         <FontIcon Glyph="&#xE8DB;" />
                     </Button.Content>
                 </Button>
 
-                <DropDownButton
-                    x:Name="fontColorButton"
-                    AutomationProperties.Name="Font color"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    RelativePanel.AlignRightWithPanel="True"
-                    ToolTipService.ToolTip="Font color">
+                <DropDownButton x:Name="fontColorButton"
+                                AutomationProperties.Name="Font color"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                RelativePanel.AlignRightWithPanel="True"
+                                ToolTipService.ToolTip="Font color">
                     <SymbolIcon Symbol="FontColor" />
                     <DropDownButton.Flyout>
                         <Flyout Placement="Bottom">
-                            <VariableSizedWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal">
+                            <VariableSizedWrapGrid MaximumRowsOrColumns="3"
+                                                   Orientation="Horizontal">
                                 <VariableSizedWrapGrid.Resources>
                                     <Style TargetType="Rectangle">
-                                        <Setter Property="Width" Value="32" />
-                                        <Setter Property="Height" Value="32" />
+                                        <Setter Property="Width"
+                                                Value="32" />
+                                        <Setter Property="Height"
+                                                Value="32" />
                                     </Style>
                                     <Style TargetType="Button">
-                                        <Setter Property="Padding" Value="0" />
-                                        <Setter Property="MinWidth" Value="0" />
-                                        <Setter Property="MinHeight" Value="0" />
-                                        <Setter Property="Margin" Value="6" />
+                                        <Setter Property="Padding"
+                                                Value="0" />
+                                        <Setter Property="MinWidth"
+                                                Value="0" />
+                                        <Setter Property="MinHeight"
+                                                Value="0" />
+                                        <Setter Property="Margin"
+                                                Value="6" />
                                     </Style>
                                 </VariableSizedWrapGrid.Resources>
-                                <Button AutomationProperties.Name="Red" Click="ColorButton_Click">
+                                <Button AutomationProperties.Name="Red"
+                                        Click="ColorButton_Click">
                                     <Button.Content>
                                         <Rectangle Fill="Red" />
                                     </Button.Content>
                                 </Button>
-                                <Button AutomationProperties.Name="Orange" Click="ColorButton_Click">
+                                <Button AutomationProperties.Name="Orange"
+                                        Click="ColorButton_Click">
                                     <Button.Content>
                                         <Rectangle Fill="Orange" />
                                     </Button.Content>
                                 </Button>
-                                <Button AutomationProperties.Name="Yellow" Click="ColorButton_Click">
+                                <Button AutomationProperties.Name="Yellow"
+                                        Click="ColorButton_Click">
                                     <Button.Content>
                                         <Rectangle Fill="Yellow" />
                                     </Button.Content>
                                 </Button>
-                                <Button AutomationProperties.Name="Green" Click="ColorButton_Click">
+                                <Button AutomationProperties.Name="Green"
+                                        Click="ColorButton_Click">
                                     <Button.Content>
                                         <Rectangle Fill="Green" />
                                     </Button.Content>
                                 </Button>
-                                <Button AutomationProperties.Name="Blue" Click="ColorButton_Click">
+                                <Button AutomationProperties.Name="Blue"
+                                        Click="ColorButton_Click">
                                     <Button.Content>
                                         <Rectangle Fill="Blue" />
                                     </Button.Content>
                                 </Button>
-                                <Button AutomationProperties.Name="Indigo" Click="ColorButton_Click">
+                                <Button AutomationProperties.Name="Indigo"
+                                        Click="ColorButton_Click">
                                     <Button.Content>
                                         <Rectangle Fill="Indigo" />
                                     </Button.Content>
                                 </Button>
-                                <Button AutomationProperties.Name="Violet" Click="ColorButton_Click">
+                                <Button AutomationProperties.Name="Violet"
+                                        Click="ColorButton_Click">
                                     <Button.Content>
                                         <Rectangle Fill="Violet" />
                                     </Button.Content>
                                 </Button>
-                                <Button AutomationProperties.Name="Gray" Click="ColorButton_Click">
+                                <Button AutomationProperties.Name="Gray"
+                                        Click="ColorButton_Click">
                                     <Button.Content>
                                         <Rectangle Fill="Gray" />
                                     </Button.Content>
@@ -174,37 +185,161 @@
                     </DropDownButton.Flyout>
                 </DropDownButton>
 
-                <RichEditBox
-                    x:Name="editor"
-                    Height="200"
-                    MinWidth="300"
-                    AutomationProperties.Name="Custom editor"
-                    GotFocus="Editor_GotFocus"
-                    RelativePanel.AlignLeftWithPanel="True"
-                    RelativePanel.AlignRightWithPanel="True"
-                    RelativePanel.Below="openFileButton"
-                    TextChanged="Editor_TextChanged" />
-                <StackPanel
-                    Margin="0,10,0,0"
-                    Orientation="Horizontal"
-                    RelativePanel.AlignLeftWith="editor"
-                    RelativePanel.Below="editor">
-                    <TextBlock
-                        x:Name="findBoxLabel"
-                        Margin="0,0,0,4"
-                        VerticalAlignment="Center"
-                        Text="Find:" />
-                    <TextBox
-                        x:Name="findBox"
-                        Width="224"
-                        Margin="10,0,0,0"
-                        GotFocus="{x:Bind FindBoxHighlightMatches}"
-                        LostFocus="{x:Bind FindBoxRemoveHighlights}"
-                        PlaceholderText="Enter search text"
-                        TextChanged="{x:Bind FindBoxHighlightMatches}" />
+                <RichEditBox x:Name="editor"
+                             Height="200"
+                             MinWidth="300"
+                             AutomationProperties.Name="Custom editor"
+                             GotFocus="Editor_GotFocus"
+                             RelativePanel.AlignLeftWithPanel="True"
+                             RelativePanel.AlignRightWithPanel="True"
+                             RelativePanel.Below="openFileButton"
+                             TextChanged="Editor_TextChanged" />
+                <StackPanel Margin="0,10,0,0"
+                            Orientation="Horizontal"
+                            RelativePanel.AlignLeftWith="editor"
+                            RelativePanel.Below="editor">
+                    <TextBlock x:Name="findBoxLabel"
+                               Margin="0,0,0,4"
+                               VerticalAlignment="Center"
+                               Text="Find:" />
+                    <TextBox x:Name="findBox"
+                             Width="224"
+                             Margin="10,0,0,0"
+                             GotFocus="{x:Bind FindBoxHighlightMatches}"
+                             LostFocus="{x:Bind FindBoxRemoveHighlights}"
+                             PlaceholderText="Enter search text"
+                             TextChanged="{x:Bind FindBoxHighlightMatches}" />
                 </StackPanel>
             </RelativePanel>
         </controls:ControlExample>
 
+        <controls:ControlExample x:Name="MathModeExample"
+                                 HeaderText="Rich edit box in math mode">
+            <controls:ControlExample.Resources>
+                <Style x:Key="ItemStyle1"
+                       TargetType="Grid">
+                    <Setter Property="Background"
+                            Value="{ThemeResource CardBackgroundFillColorDefaultBrush}" />
+                </Style>
+                <Style x:Key="ItemStyle2"
+                       TargetType="Grid">
+                    <Setter Property="Background"
+                            Value="{ThemeResource CardBackgroundFillColorSecondaryBrush}" />
+                </Style>
+            </controls:ControlExample.Resources>
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <RichTextBlock>
+                        <Paragraph Margin="0,0,0,4">
+                            Math mode enables users to have input automatically recognized and converted to math expressions while being received.
+                        </Paragraph>
+                        <Paragraph Margin="0,0,0,4">
+                            It uses
+                            <Hyperlink NavigateUri="https://www.unicode.org/notes/tn28/">Unicode Nearly Plain-Text Encoding of Mathematics</Hyperlink>, which allows mathematical notation to be represented in a linear format and automatically converted into proper math equations.
+                        </Paragraph>
+                        <Paragraph Margin="0,0,0,4">
+                            For example, "4^2" is converted to "4&#x00b2;", and "\pi" is converted to "&#x03c0;".
+                        </Paragraph>
+                        <Paragraph>
+                            Enabling math mode in a RichEditBox automatically switches the input font to Cambria Math. Additionally, toggling math mode clears any existing content and undo stack.
+                        </Paragraph>
+                    </RichTextBlock>
+                    <RichEditBox x:Name="MathEditor"
+                                 Height="80"
+                                 Width="724"
+                                 FontSize="16"
+                                 HorizontalAlignment="Left" />
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;RichEditBox x:Name="mathEditor" FontSize="16" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+mathEditor.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+        <controls:ControlExample HeaderText="Working with MathML in RichEditBox"
+                                 HorizontalContentAlignment="Stretch"
+                                 CSharpSource="Text\RichEditBox\RichEditBoxSample6_cs.txt">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="16">
+                    <RichTextBlock>
+                        <Paragraph Margin="0,0,0,4">
+                            The
+                            <Run FontWeight="SemiBold">SetMathML</Run> method takes a
+                            <Hyperlink NavigateUri="https://www.w3.org/Math/">MathML</Hyperlink>
+                            string and displays the equation in the
+                            <Run FontWeight="SemiBold">RichEditBox</Run> .  
+                            It replaces any existing equation with the new one.
+                        </Paragraph>
+
+                        <Paragraph Margin="0,0,0,4">
+                            The
+                            <Run FontWeight="SemiBold">GetMathML</Run> method retrieves the MathML string of the 
+                            equation from the
+                            <Run FontWeight="SemiBold">RichEditBox</Run> . However, it only works if the 
+                            equation is in a single line. If the text spans multiple lines, it returns 
+                            an empty string, but the equation will still be rendered correctly.
+                        </Paragraph>
+
+                        <Paragraph Margin="0,0,0,4">
+                            Setting the math mode in the
+                            <Run FontWeight="SemiBold">RichEditBox</Run> is necessary 
+                            to use these methods. it can be enabled using
+                            <Run FontFamily="Consolas">SetMathMode(RichEditMathMode.MathOnly)</Run> .
+                        </Paragraph>
+
+                        <Paragraph>
+                            <Run FontWeight="SemiBold">SetMathML</Run> and
+                            <Run FontWeight="SemiBold">GetMathML</Run>
+                            can be used to restore and save equations.
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichEditBox x:Name="mathEditor2"
+                                 FontSize="16"
+                                 Height="80"
+                                 Width="724"
+                                 HorizontalAlignment="Left"
+                                 TextChanged="mathEditor2_TextChanged" />
+                    <TextBlock FontWeight="SemiBold"
+                               Text="MathML Code"
+                               Margin="0,0,0,-8" />
+                    <ScrollViewer MaxHeight="450"
+                                  HorizontalScrollMode="Disabled"
+                                  VerticalScrollMode="Auto"
+                                  Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                  CornerRadius="4"
+                                  HorizontalAlignment="Stretch"
+                                  Padding="0,8,8,0">
+                        <controls:SampleCodePresenter x:Name="MathmlPresenter"
+                                                      SampleType="XAML">
+                            <controls:SampleCodePresenter.Code>
+                                <x:String xml:space="preserve">
+&lt;!-- No MathML content --&gt;
+                                </x:String>
+                            </controls:SampleCodePresenter.Code>
+                        </controls:SampleCodePresenter>
+                    </ScrollViewer>
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <StackPanel>
+                    <Button x:Name="SetMathmlFormulaBtn"
+                            Click="SetMathmlFormulaBtn_Click"
+                            Content="Set sample formula"
+                            Style="{StaticResource AccentButtonStyle}"/>
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;RichEditBox x:Name="mathEditor2" FontSize="16" /&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

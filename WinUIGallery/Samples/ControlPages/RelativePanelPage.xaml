@@ -19,7 +19,6 @@
     mc:Ignorable="d">
 
     <controls:ControlExample
-        HorizontalAlignment="Left"
         VerticalAlignment="Top"
         ExampleHeight="Auto"
         HeaderText="A RelativePanel control.">
