@@ -96,7 +96,7 @@ private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestB
                     Margin="0,8,0,0"
                     HorizontalAlignment="Left"
                     Visibility="Collapsed">
-                    <Image x:Name="ControlImage" Height="110" />
+                    <Image x:Name="ControlImage" Height="75" />
                     <TextBlock
                         x:Name="ControlTitle"
                         Margin="8,0,0,0"
