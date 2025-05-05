@@ -372,7 +372,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A button that's styled for use in a CommandBar.",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarButton.png",
-          "Description": "App bar buttons differ from standard buttons in several ways:\n- Their default appearance is a transparent background with a smaller size.\n- You use the Label and Icon properties to set the content instead of the Content property. The Content property is ignored.\n- The button's IsCompact property controls its size.",
+          "Description": "AppBarButton differs from standard buttons in several ways:\n- Their default appearance is a transparent background with a smaller size.\n- You use the Label and Icon properties to set the content instead of the Content property. The Content property is ignored.\n- The button's IsCompact property controls its size.",
           "SourcePath": "/CommonStyles/AppBarButton_themeresources.xaml",
           "Docs": [
             {
@@ -1194,7 +1194,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A two-part button that displays a flyout when its secondary part is clicked.",
           "ImagePath": "ms-appx:///Assets/ControlImages/SplitButton.png",
-          "Description": "The splitbutton is a dropdown button, but with an addition execution hit target.",
+          "Description": "The SplitButton is a dropdown button, but with an addition execution hit target.",
           "SourcePath": "/SplitButton",
           "Docs": [
             {
@@ -2110,7 +2110,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Common vertical layout for top-level areas of your app via a collapsible navigation menu.",
           "ImagePath": "ms-appx:///Assets/ControlImages/NavigationView.png",
-          "Description": "The navigation view control provides a common vertical layout for top-level areas of your app via a collapsible navigation menu.",
+          "Description": "The NavigationView control provides a common vertical layout for top-level areas of your app via a collapsible navigation menu.",
           "SourcePath": "/NavigationView",
           "Docs": [
             {
