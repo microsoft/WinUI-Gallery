@@ -373,7 +373,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A button that's styled for use in a CommandBar.",
           "ImagePath": "ms-appx:///Assets/ControlImages/AppBarButton.png",
-          "Description": "App bar buttons differ from standard buttons in several ways:\n- Their default appearance is a transparent background with a smaller size.\n- You use the Label and Icon properties to set the content instead of the Content property. The Content property is ignored.\n- The button's IsCompact property controls its size.",
+          "Description": "AppBarButton differs from standard buttons in several ways:\n- Their default appearance is a transparent background with a smaller size.\n- You use the Label and Icon properties to set the content instead of the Content property. The Content property is ignored.\n- The button's IsCompact property controls its size.",
           "Content": "<p>You can open the app bar and toggle the IsCompact button to see how the app bar buttons on this page change.</p><p>Use the <b>Label</b> and <b>Icon</b> properties to define the content of the app bar buttons. Set the <b>Label</b> property to a string to specify the text label. The label is shown by default but is hidden when the button is in its compact state, so you also need to specify a meaningful icon. To do that, set the button's <b>Icon</b> property to an element derived from the <b>IconElement</b> class. Four kinds of icon elements are provided:</p><p><b>FontIcon</b> - The icon is based on a glyph from the specified font family.</p><p><b>BitmapIcon</b> - The icon is based on a bitmap image file with the specified Uri.</p><p><b>PathIcon</b> - The icon is based on Path data.</p><p><b>SymbolIcon</b> - The icon is based on a predefined list of glyphs from the Segoe UI Symbol font.</p><p>Look at the <i>AppBarButtonPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "SourcePath": "/CommonStyles/AppBarButton_themeresources.xaml",
           "Docs": [
@@ -1365,7 +1365,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A two-part button that displays a flyout when its secondary part is clicked.",
           "ImagePath": "ms-appx:///Assets/ControlImages/SplitButton.png",
-          "Description": "The splitbutton is a dropdown button, but with an addition execution hit target.",
+          "Description": "The SplitButton is a dropdown button, but with an addition execution hit target.",
           "SourcePath": "/SplitButton",
           "Docs": [
             {
@@ -2512,7 +2512,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Common vertical layout for top-level areas of your app via a collapsible navigation menu.",
           "ImagePath": "ms-appx:///Assets/ControlImages/NavigationView.png",
-          "Description": "The navigation view control provides a common vertical layout for top-level areas of your app via a collapsible navigation menu.",
+          "Description": "The NavigationView control provides a common vertical layout for top-level areas of your app via a collapsible navigation menu.",
           "SourcePath": "/NavigationView",
           "Docs": [
             {
