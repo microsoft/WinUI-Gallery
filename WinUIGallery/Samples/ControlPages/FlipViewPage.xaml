@@ -16,7 +16,7 @@
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:models="using:WinUIGallery.Models"
     xmlns:pages="using:WinUIGallery.Pages">
-    <StackPanel HorizontalAlignment="Left">
+    <StackPanel>
         <controls:ControlExample
             x:Name="Example1"
             ExampleHeight="Auto"

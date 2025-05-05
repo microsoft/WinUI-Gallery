@@ -18,7 +18,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel HorizontalAlignment="Left">
+    <StackPanel>
         <controls:ControlExample HeaderText="A NumberBox that evaluates expressions." XamlSource="NumberBox/NumberBoxSample1_xaml.txt">
             <controls:ControlExample.Example>
                 <NumberBox
