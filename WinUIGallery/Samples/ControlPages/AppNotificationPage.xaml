@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page x:Class="WinUIGallery.ControlPages.AppNotificationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:WinUIGallery.ControlPages"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controls="using:WinUIGallery.Controls"
+      mc:Ignorable="d">
+
+    <StackPanel>
+        <StackPanel Spacing="8"
+                    Margin="0,16,0,0">
+            <InfoBar IsOpen="True"
+                     Severity="Informational"
+                     IsIconVisible="True"
+                     IsClosable="False">
+                <RichTextBlock Margin="0,12,12,12"
+                               IsTextSelectionEnabled="False">
+                    <Paragraph>
+                        <Run Text="The" />
+                        <Run Text="AppNotificationManager"
+                             FontWeight="SemiBold" />
+                        <Run Text="class has a dependency on the" />
+                        <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/windows-app-sdk/deployment-architecture#singleton-package">
+                            <Run Text="Singleton package" />
+                        </Hyperlink>
+                        <Run Text=". Because of that dependency, there are certain considerations to be aware of if you're calling these APIs from a" />
+                        <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/package-and-deploy/deploy-overview">
+                            <Run Text="self-contained app" />
+                        </Hyperlink>
+                        <Run Text=". For more info, and specifics, see" />
+                        <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/package-and-deploy/self-contained-deploy/deploy-self-contained-apps#dependencies-on-additional-msix-packages">
+                            <Run Text="Dependencies on additional MSIX packages" />
+                        </Hyperlink>
+                        <Run Text="." />
+                    </Paragraph>
+                </RichTextBlock>
+            </InfoBar>
+
+            <InfoBar IsOpen="True"
+                     Severity="Informational"
+                     IsIconVisible="True"
+                     IsClosable="False">
+                <RichTextBlock Margin="0,12,12,12"
+                               IsTextSelectionEnabled="False">
+                    <Paragraph>
+                        <Run Text="If" />
+                        <Run Text="Do Not Disturb"
+                             FontWeight="SemiBold" />
+                        <Run Text="mode is enabled in system settings, these notifications will not appear as toast popups, but they will still be added to the notification center and can be viewed there." />
+                    </Paragraph>
+                </RichTextBlock>
+            </InfoBar>
+
+            <InfoBar IsOpen="True"
+                     Severity="Warning"
+                     Title="App notifications should not be noisy"
+                     Message="App notifications are designed to convey timely and relevant information without disrupting the user experience. Excessive use of sound, prolonged durations, or overly attention-seeking visuals can lead to user fatigue and diminish the overall effectiveness of notifications."
+                     IsIconVisible="True"
+                     IsClosable="False" />
+        </StackPanel>
+
+        <controls:ControlExample HeaderText="Basic notification">
+            <Button Content="Show notification"
+                    Click="ShowNotificationButton_Click" />
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+AppNotification notification = new AppNotificationBuilder()
+    .AddText("Welcome to WinUI 3 Gallery")
+    .AddText("Explore interactive samples and discover the power of modern Windows UI.")
+    .BuildNotification();
+
+AppNotificationManager.Default.Show(notification);
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="Informational notification with logo and custom audio">
+            <Button Content="Show informational notification with logo and custom audio"
+                    Click="ShowInformationalNotificationWithLogoButton_Click" />
+            <controls:ControlExample.Options>
+                <ComboBox x:Name="AppNotificationSoundEventsCombo"
+                          Header="AppNotificationSoundEvent"
+                          ItemsSource="{x:Bind appNotificationSoundEvents}"
+                          SelectedItem="{x:Bind selectedAppNotificationSoundEvent, Mode=TwoWay}"
+                          Width="180" />
+            </controls:ControlExample.Options>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+AppNotification notification = new AppNotificationBuilder()
+    .AddText("Control Highlight: PersonPicture")
+    .AddText("Use the PersonPicture control to display user avatars with initials or images.")
+    .SetAppLogoOverride(new Uri("ms-appx:///Assets/ControlImages/PersonPicture.png"), AppNotificationImageCrop.Circle)
+    .SetAudioEvent(AppNotificationSoundEvent.$(SelectedAppNotificationSoundEvent))
+    .SetTimeStamp(DateTime.Now)                
+    .BuildNotification();
+
+AppNotificationManager.Default.Show(notification);
+                </x:String>
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="SelectedAppNotificationSoundEvent"
+                                                     Value="{x:Bind AppNotificationSoundEventsCombo.SelectedItem, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="Visual notification with hero image and attribution">
+            <Button Content="Show visual notification with hero image and attribution"
+                    Click="ShowVisualNotificationWithHeroImageButton_Click" />
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+AppNotification notification = new AppNotificationBuilder()
+    .AddText("Harbor Scene with Boats")
+    .AddText("A quiet harbor with boats gently anchored in view.")
+    .SetHeroImage(new Uri("ms-appx:///Assets/SampleMedia/LandscapeImage5.jpg"))
+    .SetAttributionText("WinUI gallery assets")
+    .BuildNotification();
+
+AppNotificationManager.Default.Show(notification);
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="Notification with AppNotification controls">
+            <Button Content="Show notification with AppNotification controls"
+                    Click="ShowNotificationWithControlsButton_Click" />
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+AppNotification notification = new AppNotificationBuilder()
+    .AddText("Survey")
+    .AddText("Please select your satisfaction level and leave a comment.")
+    .AddComboBox(new AppNotificationComboBox("satisfaction")
+        .AddItem("1", "Very Bad")
+        .AddItem("2", "Bad")
+        .AddItem("3", "Neutral")
+        .AddItem("4", "Good")
+        .AddItem("5", "Excellent")
+        .SetSelectedItem("3"))
+    .AddTextBox("comment", "Leave a comment here...","")
+    .AddButton(new AppNotificationButton("Submit")
+        .AddArgument("action", "submit_survey"))
+    .BuildNotification();
+
+AppNotificationManager.Default.Show(notification);
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="Notification with ProgressBar">
+            <Button Content="Show notification with progress bar"
+                    Click="ShowNotificationWithProgressBarButton_Click" />
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+AppNotification notification = new AppNotificationBuilder()
+    .AddText("Progress Bar Example")
+    .AddText("This is a sample notification showing how to use a progress bar.")
+    .AddProgressBar(new AppNotificationProgressBar()
+        {
+            Title = "Demo Progress",
+            Value = 0.6, // 60%
+            ValueStringOverride = "60%",
+            Status = "In progress..."
+        })
+    .BuildNotification();
+
+AppNotificationManager.Default.Show(notification);
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>
