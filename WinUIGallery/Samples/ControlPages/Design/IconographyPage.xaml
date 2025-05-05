@@ -189,8 +189,8 @@
                     BorderThickness="1,0,0,0"
                     DataContext="{x:Bind}"
                     Visibility="Collapsed">
-                    <ScrollViewer Padding="16,16,8,16">
-                        <StackPanel Spacing="2">
+                    <ScrollViewer>
+                        <StackPanel Spacing="2" Margin="16,16,8,16">
                             <Border
                                 Margin="0,0,0,24"
                                 Padding="8"
