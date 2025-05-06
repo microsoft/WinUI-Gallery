@@ -168,7 +168,7 @@
                 <ItemsView
                     x:Name="IconsItemsView"
                     MinWidth="100"
-                    Padding="8"
+                    Padding="16"
                     HorizontalAlignment="Stretch"
                     ItemTemplate="{StaticResource IconTemplate}"
                     SelectionChanged="IconsItemsView_SelectionChanged"
@@ -184,92 +184,99 @@
                 <Grid
                     x:Name="SidePanel"
                     Grid.Column="1"
-                    Padding="16,16,8,16"
                     Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
                     BorderThickness="1,0,0,0"
                     DataContext="{x:Bind}"
                     Visibility="Collapsed">
-                    <StackPanel Spacing="2">
-                        <FontIcon
-                            Margin="0,0,0,24"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            FontSize="48"
-                            Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
-                        <TextBlock
-                            FontSize="12"
-                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                            Text="Icon name" />
-                        <controls:SampleCodePresenter Code="{Binding SelectedItem.Name, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
-                        <TextBlock
-                            FontSize="12"
-                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                            Text="Text glyph" />
-                        <controls:SampleCodePresenter Code="{Binding SelectedItem.TextGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
-                        <TextBlock
-                            FontSize="12"
-                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                            Text="Code glyph" />
-                        <controls:SampleCodePresenter Code="{Binding SelectedItem.CodeGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
-                        <TextBlock
-                            FontSize="12"
-                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                            Text="XAML" />
-                        <controls:SampleCodePresenter x:Name="XAMLCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
-                        <TextBlock
-                            FontSize="12"
-                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                            Text="C#" />
-                        <controls:SampleCodePresenter x:Name="CSharpCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
-                        <TextBlock
-                            Margin="0,4,0,0"
-                            FontSize="12"
-                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                            Text="Tags" />
-                        <ItemsView
-                            x:Name="TagsItemsView"
-                            Margin="0,8,0,4"
-                            x:Load="{x:Bind SelectedItem.Tags, Mode=OneWay, Converter={StaticResource emptyCollectionToFalseConverter}}"
-                            IsItemInvokedEnabled="True"
-                            ItemInvoked="TagsItemsView_ItemInvoked"
-                            ItemsSource="{x:Bind SelectedItem.Tags, Mode=OneWay}"
-                            SelectionMode="None">
-                            <ItemsView.Layout>
-                                <toolkit:WrapLayout HorizontalSpacing="4" VerticalSpacing="4" />
-                            </ItemsView.Layout>
-                            <ItemsView.ItemTemplate>
-                                <DataTemplate x:DataType="x:String">
-                                    <ItemContainer
-                                        HorizontalAlignment="Left"
-                                        AutomationProperties.Name="{x:Bind}"
-                                        CornerRadius="12">
-                                        <Grid
-                                            Padding="8,3,8,4"
-                                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                            BorderThickness="1"
+                    <ScrollViewer>
+                        <StackPanel Spacing="2" Margin="16,16,8,16">
+                            <Border
+                                Margin="0,0,0,24"
+                                Padding="8"
+                                HorizontalAlignment="Left"
+                                Background="{ThemeResource ControlFillColorDefaultBrush}"
+                                BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                                BorderThickness="1"
+                                CornerRadius="{StaticResource ControlCornerRadius}">
+                                <FontIcon
+                                    FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                    FontSize="48"
+                                    Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
+                            </Border>
+                            <TextBlock
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="Icon name" />
+                            <controls:SampleCodePresenter Code="{Binding SelectedItem.Name, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <TextBlock
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="Text glyph" />
+                            <controls:SampleCodePresenter Code="{Binding SelectedItem.TextGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <TextBlock
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="Code glyph" />
+                            <controls:SampleCodePresenter Code="{Binding SelectedItem.CodeGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <TextBlock
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="XAML" />
+                            <controls:SampleCodePresenter x:Name="XAMLCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <TextBlock
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="C#" />
+                            <controls:SampleCodePresenter x:Name="CSharpCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <TextBlock
+                                Margin="0,4,0,0"
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="Tags" />
+                            <ItemsView
+                                x:Name="TagsItemsView"
+                                Margin="0,8,0,4"
+                                x:Load="{x:Bind SelectedItem.Tags, Converter={StaticResource emptyCollectionToFalseConverter}, Mode=OneWay}"
+                                IsItemInvokedEnabled="True"
+                                ItemInvoked="TagsItemsView_ItemInvoked"
+                                ItemsSource="{x:Bind SelectedItem.Tags, Mode=OneWay}"
+                                SelectionMode="None">
+                                <ItemsView.Layout>
+                                    <toolkit:WrapLayout HorizontalSpacing="4" VerticalSpacing="4" />
+                                </ItemsView.Layout>
+                                <ItemsView.ItemTemplate>
+                                    <DataTemplate x:DataType="x:String">
+                                        <ItemContainer
+                                            HorizontalAlignment="Left"
+                                            AutomationProperties.Name="{x:Bind}"
                                             CornerRadius="12">
-                                            <TextBlock
-                                                Grid.Column="1"
-                                                VerticalAlignment="Center"
-                                                FontSize="12"
-                                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                                Text="{x:Bind}"
-                                                TextTrimming="CharacterEllipsis" />
-                                        </Grid>
-                                    </ItemContainer>
-                                </DataTemplate>
-                            </ItemsView.ItemTemplate>
-                        </ItemsView>
-                        <TextBlock
-                            x:Name="NoTagsTextBlock"
-                            Grid.Row="1"
-                            Margin="0,4,0,0"
-                            x:Load="{x:Bind SelectedItem.Tags, Mode=OneWay, Converter={StaticResource emptyCollectionToTrueConverter}}"
-                            Text="No tags available." />
-                    </StackPanel>
+                                            <Grid
+                                                MinHeight="24"
+                                                Padding="8,2"
+                                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                                BorderThickness="1"
+                                                CornerRadius="12">
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                                    Text="{x:Bind}"
+                                                    TextTrimming="CharacterEllipsis" />
+                                            </Grid>
+                                        </ItemContainer>
+                                    </DataTemplate>
+                                </ItemsView.ItemTemplate>
+                            </ItemsView>
+                            <TextBlock
+                                x:Name="NoTagsTextBlock"
+                                Grid.Row="1"
+                                Margin="0,4,0,0"
+                                x:Load="{x:Bind SelectedItem.Tags, Mode=OneWay, Converter={StaticResource emptyCollectionToTrueConverter}}"
+                                Text="No tags available." />
+                        </StackPanel>
+                    </ScrollViewer>
                 </Grid>
             </Grid>
         </controls:SampleThemeListener>
