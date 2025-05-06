@@ -1,20 +1,8 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
-using System;
-using System.Collections.Generic;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using WinUIGallery.Helpers;
 using WASDK = Microsoft.WindowsAppSDK;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
@@ -49,14 +37,11 @@ public class ControlInfoDataItem
     public string Subtitle { get; set; }
     public string Description { get; set; }
     public string ImagePath { get; set; }
-    public string IconGlyph { get; set; }
     public string BadgeString { get; set; }
-    public string Content { get; set; }
     public bool IsNew { get; set; }
     public bool IsUpdated { get; set; }
     public bool IsPreview { get; set; }
     public ObservableCollection<ControlInfoDocLink> Docs { get; set; }
-    public ObservableCollection<string> RelatedControls { get; set; }
 
     public bool IncludedInBuild { get; set; }
 
@@ -87,11 +72,7 @@ public class ControlInfoDataGroup
 {
     public string UniqueId { get; set; }
     public string Title { get; set; }
-    public string Subtitle { get; set; }
-    public string Description { get; set; }
-    public string ImagePath { get; set; }
     public string IconGlyph { get; set; }
-    public string ApiNamespace { get; set; }
     public bool IsSpecialSection { get; set; }
     public string Folder { get; set; }
     public ObservableCollection<ControlInfoDataItem> Items { get; set; }
