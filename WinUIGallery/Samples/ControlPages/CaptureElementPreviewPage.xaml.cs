@@ -36,56 +36,9 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
 
     private async void CaptureElementPreviewPage_Loaded(object sender, RoutedEventArgs e)
     {
-        await StartCaptureElement();
-
-        // Move the ScrollViewer from the captureContainer under an ExpandToFillContainer.
-        // This will allow the snapshots column to use all available height without
-        // influencing the height.
-        var expandToFillContainer = new ExpandToFillContainer();
-        var sv = captureContainer.Children[0];
-        captureContainer.Children.Remove(sv);
-        captureContainer.Children.Add(expandToFillContainer);
-        expandToFillContainer.Children.Add(sv);
-    }
-
-    private void CaptureElementPreviewPage_Unloaded(object sender, RoutedEventArgs e)
-    {
-        // Needs to run as task to unblock UI thread
-        if (mediaCapture != null)
-        {
-            new Task(mediaCapture.Dispose).Start();
-        }
-    }
-
-    private MediaFrameSourceGroup mediaFrameSourceGroup;
-    private MediaCapture mediaCapture;
-
-    private async Task StartCaptureElement()
-    {
         try
         {
-            var groups = await MediaFrameSourceGroup.FindAllAsync();
-            if (groups.Count == 0)
-            {
-                frameSourceName.Text = "No camera devices found.";
-                return;
-            }
-            mediaFrameSourceGroup = groups.First();
-
-            frameSourceName.Text = "Viewing: " + mediaFrameSourceGroup.DisplayName;
-            mediaCapture = new MediaCapture();
-            var mediaCaptureInitializationSettings = new MediaCaptureInitializationSettings()
-            {
-                SourceGroup = this.mediaFrameSourceGroup,
-                SharingMode = MediaCaptureSharingMode.SharedReadOnly,
-                StreamingCaptureMode = StreamingCaptureMode.Video,
-                MemoryPreference = MediaCaptureMemoryPreference.Cpu
-            };
-            await mediaCapture.InitializeAsync(mediaCaptureInitializationSettings);
-
-            // Set the MediaPlayerElement's Source property to the MediaSource for the mediaCapture.
-            var frameSource = mediaCapture.FrameSources[this.mediaFrameSourceGroup.SourceInfos[0].Id];
-            captureElement.Source = Windows.Media.Core.MediaSource.CreateFromMediaFrameSource(frameSource);
+            await StartCaptureElement();
         }
         catch (UnauthorizedAccessException)
         {
@@ -116,6 +69,53 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
 
             await dialog.ShowAsync();
         }
+
+        // Move the ScrollViewer from the captureContainer under an ExpandToFillContainer.
+        // This will allow the snapshots column to use all available height without
+        // influencing the height.
+        var expandToFillContainer = new ExpandToFillContainer();
+        var sv = captureContainer.Children[0];
+        captureContainer.Children.Remove(sv);
+        captureContainer.Children.Add(expandToFillContainer);
+        expandToFillContainer.Children.Add(sv);
+    }
+
+    private void CaptureElementPreviewPage_Unloaded(object sender, RoutedEventArgs e)
+    {
+        // Needs to run as task to unblock UI thread
+        if (mediaCapture != null)
+        {
+            new Task(mediaCapture.Dispose).Start();
+        }
+    }
+
+    private MediaFrameSourceGroup mediaFrameSourceGroup;
+    private MediaCapture mediaCapture;
+
+    private async Task StartCaptureElement()
+    {
+        var groups = await MediaFrameSourceGroup.FindAllAsync();
+        if (groups.Count == 0)
+        {
+            frameSourceName.Text = "No camera devices found.";
+            return;
+        }
+        mediaFrameSourceGroup = groups.First();
+
+        frameSourceName.Text = "Viewing: " + mediaFrameSourceGroup.DisplayName;
+        mediaCapture = new MediaCapture();
+        var mediaCaptureInitializationSettings = new MediaCaptureInitializationSettings()
+        {
+            SourceGroup = this.mediaFrameSourceGroup,
+            SharingMode = MediaCaptureSharingMode.SharedReadOnly,
+            StreamingCaptureMode = StreamingCaptureMode.Video,
+            MemoryPreference = MediaCaptureMemoryPreference.Cpu
+        };
+        await mediaCapture.InitializeAsync(mediaCaptureInitializationSettings);
+
+        // Set the MediaPlayerElement's Source property to the MediaSource for the mediaCapture.
+        var frameSource = mediaCapture.FrameSources[this.mediaFrameSourceGroup.SourceInfos[0].Id];
+        captureElement.Source = Windows.Media.Core.MediaSource.CreateFromMediaFrameSource(frameSource);
     }
 
     public string MirrorTextReplacement = ""; // starts not mirrored, so no text in that case
