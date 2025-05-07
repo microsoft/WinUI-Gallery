@@ -89,26 +89,20 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         }
         catch (UnauthorizedAccessException)
         {
-            var hyperlink = new Hyperlink() { Inlines = { new Run() { Text = "camera settings" } } };
-            hyperlink.Click += async (_, _) => await Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-webcam"));
-
             var dialog = new ContentDialog()
             {
                 Title = "Camera access denied",
-                Content = new TextBlock()
-                {
-                    Inlines =
-                    {
-                        new Run() { Text = "Please check your " },
-                        hyperlink,
-                        new Run() { Text = "." }
-                    }
-                },
-                CloseButtonText = "OK",
+                Content = "Please enable camera access in the privacy settings.",
+                PrimaryButtonText = "Privacy Settings",
+                CloseButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.XamlRoot,
             };
 
-            await dialog.ShowAsync();
+            if (await dialog.ShowAsync() is ContentDialogResult.Primary)
+            {
+                await Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-webcam"));
+            }
         }
         catch (Exception ex)
         {
