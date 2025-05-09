@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="UnselectedAdaptiveSelectorBarItemStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource SubtleButtonStyle}">
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="CornerRadius"
+                Value="14" />
+        <Setter Property="Background"
+                Value="{ThemeResource AccentFillColorDisabledBrush}" />
+    </Style>
+    <Style x:Key="SelectedAdaptiveSelectorBarItemStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource AccentButtonStyle}">
+        <Setter Property="CornerRadius"
+                Value="14" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+    </Style>
+</ResourceDictionary>

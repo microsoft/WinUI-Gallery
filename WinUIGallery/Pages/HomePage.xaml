@@ -15,96 +15,55 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:local="using:WinUIGallery.Pages"
-    HighContrastAdjustment="None"
-    NavigationCacheMode="Enabled">
-
-    <Page.Resources>
-        <CollectionViewSource x:Name="itemsCVS" IsSourceGrouped="true" />
-    </Page.Resources>
+    HighContrastAdjustment="None">
 
     <!--  This grid acts as a root panel for the page.  -->
-    <Grid>
-        <VisualStateManager.VisualStateGroups>
-            <!--  Visual states reflect the application's window size  -->
-            <VisualStateGroup x:Name="LayoutVisualStates">
-                <VisualState x:Name="WideLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="NarrowLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="learnMoreGrid.Margin" Value="16,36,0,36" />
-                        <Setter Target="itemGridView.Padding" Value="4,0,4,36" />
-                        <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource IndentedGridViewItemStyleSmall}" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-        <GridView
-            x:Name="itemGridView"
-            Padding="24,0,24,0"
-            AutomationProperties.AutomationId="ItemGridView"
-            AutomationProperties.Name="Items In Group"
-            ContainerContentChanging="OnItemGridViewContainerContentChanging"
-            IsItemClickEnabled="True"
-            IsSwipeEnabled="False"
-            ItemClick="OnItemGridViewItemClick"
-            ItemContainerStyle="{StaticResource IndentedGridViewItemStyle}"
-            ItemTemplate="{StaticResource ControlItemTemplate}"
-            ItemsSource="{x:Bind itemsCVS.View, Mode=OneWay}"
-            Loaded="OnItemGridViewLoaded"
-            SelectionMode="None">
-            <GridView.Header>
-                <Grid x:Name="HeaderGrid" Margin="-24,0,-24,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="204" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <controls:HomePageHeaderImage
-                        Grid.RowSpan="2"
-                        Height="396"
-                        VerticalAlignment="Top" />
+    <ScrollView CornerRadius="0">
+        <Grid x:Name="HeaderGrid"
+              Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="204" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <controls:HomePageHeaderImage Grid.RowSpan="2"
+                                          Height="396"
+                                          VerticalAlignment="Top"/>
 
-                    <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
-                    <StackPanel
-                        Margin="36,0,0,0"
+            <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
+            <StackPanel Margin="36,0,0,0"
                         VerticalAlignment="Center"
                         Orientation="Vertical">
-                        <TextBlock
-                            x:Name="smallHeaderSubtitleText"
-                            FontSize="18"
-                            Text="{x:Bind WinAppSdkDetails}" />
-                        <TextBlock
-                            x:Name="smallHeaderText"
-                            Style="{StaticResource TitleLargeTextBlockStyle}"
-                            Text="{StaticResource AppTitleName}" />
-                    </StackPanel>
+                <TextBlock x:Name="smallHeaderSubtitleText"
+                           FontSize="18"
+                           Text="{x:Bind WinAppSdkDetails}" />
+                <TextBlock x:Name="smallHeaderText"
+                           Style="{StaticResource TitleLargeTextBlockStyle}"
+                           Text="{StaticResource AppTitleName}" />
+            </StackPanel>
 
-                    <controls:TileGallery
-                        x:Name="headerTileGallery"
-                        Grid.Row="1"
-                        Margin="0,0,0,0" />
-                </Grid>
-            </GridView.Header>
-
-            <GridView.GroupStyle>
-                <GroupStyle>
-                    <GroupStyle.HeaderTemplate>
-                        <DataTemplate x:DataType="local:GroupInfoList">
-                            <TextBlock
-                                x:Name="pageSubtitle"
-                                Margin="4,32,0,0"
-                                AutomationProperties.HeadingLevel="Level1"
-                                Style="{StaticResource SubtitleTextBlockStyle}"
-                                Text="{x:Bind Title}" />
-                        </DataTemplate>
-                    </GroupStyle.HeaderTemplate>
-                </GroupStyle>
-            </GridView.GroupStyle>
-        </GridView>
-    </Grid>
+            <controls:TileGallery x:Name="headerTileGallery"
+                                  Grid.Row="1" />
+            <controls:AdaptiveSelectorBar x:Name="SampleFilterBar"
+                                          Grid.Row="2"
+                                          Margin="36,24,16,36"
+                                          SelectionChanged="SampleFilterBar_SelectionChanged">
+                <controls:AdaptiveSelectorBar.Items>
+                    <controls:AdaptiveSelectorBarItem DisplayText="Recently added"
+                                                      FontIconGlyph="&#xECC8;"
+                                                      Tag="RecentlyAdded"
+                                                      IsSelected="True" />
+                    <controls:AdaptiveSelectorBarItem DisplayText="Recently updated"
+                                                      FontIconGlyph="&#xECC5;"
+                                                      Tag="RecentlyUpdated" />
+                    <controls:AdaptiveSelectorBarItem DisplayText="Recently visited"
+                                                      FontIconGlyph="&#xE823;"
+                                                      Tag="RecentlyVisited" />
+                    <controls:AdaptiveSelectorBarItem DisplayText="Favorite samples"
+                                                      FontIconGlyph="&#xE734;"
+                                                      Tag="FavoriteSamples" />
+                </controls:AdaptiveSelectorBar.Items>
+            </controls:AdaptiveSelectorBar>
+        </Grid>
+    </ScrollView>
 </local:ItemsPageBase>

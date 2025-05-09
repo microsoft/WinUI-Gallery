@@ -9,8 +9,10 @@
 //*********************************************************
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.UI.Xaml.Navigation;
+using WinUIGallery.Controls;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Pages;
@@ -31,7 +33,7 @@ public sealed partial class HomePage : ItemsPageBase
         menuItem.IsSelected = true;
 
         Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items.Where(i => i.BadgeString != null)).OrderBy(i => i.Title).ToList();
-        itemsCVS.Source = FormatData();
+        //itemsCVS.Source = FormatData();
     }
 
     private ObservableCollection<GroupInfoList> FormatData()
@@ -70,9 +72,32 @@ public sealed partial class HomePage : ItemsPageBase
         return groupList;
     }
 
-    protected override bool GetIsNarrowLayoutState()
+    private void SampleFilterBar_SelectionChanged(object sender, AdaptiveSelectorBarItem e)
     {
-        return LayoutVisualStates.CurrentState == NarrowLayout;
+        if (e == null || e.Tag == null)
+            return;
+
+        string selectedTag = e.Tag.ToString();
+        Debug.WriteLine($"SampleFilterBar selection changed: {selectedTag}");
+
+        switch (selectedTag)
+        {
+            case "RecentlyAdded":
+                // TODO: Apply recently added filter
+                break;
+            case "RecentlyUpdated":
+                // TODO: Apply recently updated filter
+                break;
+            case "RecentlyVisited":
+                // TODO: Apply recently visited filter
+                break;
+            case "FavoriteSamples":
+                // TODO: Apply favorite samples filter
+                break;
+            default:
+                Debug.WriteLine("Unknown filter tag.");
+                break;
+        }
     }
 }
 

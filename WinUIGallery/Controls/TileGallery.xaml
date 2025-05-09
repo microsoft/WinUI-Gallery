@@ -128,6 +128,7 @@
         <ScrollViewer
             x:Name="scroller"
             HorizontalScrollBarVisibility="Hidden"
+            VerticalScrollBarVisibility="Hidden"
             HorizontalScrollMode="Enabled"
             SizeChanged="scroller_SizeChanged"
             VerticalScrollMode="Disabled"
