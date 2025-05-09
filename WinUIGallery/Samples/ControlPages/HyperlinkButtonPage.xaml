@@ -25,7 +25,7 @@
                     x:Name="Control1"
                     Content="Microsoft home page"
                     IsEnabled="{x:Bind DisableControl1.IsChecked.Value.Equals(x:False), Mode=OneWay}"
-                    NavigateUri="http://www.microsoft.com" />
+                    NavigateUri="https://www.microsoft.com" />
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
                 <StackPanel>
@@ -34,7 +34,7 @@
             </controls:ControlExample.Options>
             <controls:ControlExample.Xaml>
                 <x:String>
-                    &lt;HyperlinkButton Content="Microsoft home page" NavigateUri="http://www.microsoft.com" $(IsEnabled)/&gt;
+                    &lt;HyperlinkButton Content="Microsoft home page" NavigateUri="https://www.microsoft.com" $(IsEnabled)/&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
