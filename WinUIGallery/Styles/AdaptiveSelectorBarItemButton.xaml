@@ -10,7 +10,7 @@
         <Setter Property="CornerRadius"
                 Value="14" />
         <Setter Property="Background"
-                Value="{ThemeResource AccentFillColorDisabledBrush}" />
+                Value="{ThemeResource ControlAltFillColorSecondaryBrush}" />
     </Style>
     <Style x:Key="SelectedAdaptiveSelectorBarItemStyle"
            TargetType="Button"

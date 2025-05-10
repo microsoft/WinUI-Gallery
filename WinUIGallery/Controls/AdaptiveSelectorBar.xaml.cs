@@ -29,7 +29,7 @@ public sealed partial class AdaptiveSelectorBar : UserControl
     private bool _isUpdatingLayout;
 
     /// <summary>
-    /// Identifies the <see cref="ItemsProperty"/> dependency property.
+    /// Identifies the <see cref="Items"/> dependency property.
     /// XAML dependency property for binding the list of items.
     /// </summary>
     public static readonly DependencyProperty ItemsProperty =
