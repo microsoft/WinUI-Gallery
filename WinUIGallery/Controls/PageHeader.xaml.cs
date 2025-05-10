@@ -7,6 +7,9 @@ using WinUIGallery.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Uri = System.Uri;
+using System.Collections.Generic;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using System.Diagnostics;
 
 namespace WinUIGallery.Controls;
 
@@ -31,6 +34,8 @@ public sealed partial class PageHeader : UserControl
     }
 
     private ControlInfoDataItem _item;
+
+    private const int _maxRecentlyVisitedPages = 15;
 
     public PageHeader()
     {
@@ -98,5 +103,45 @@ public sealed partial class PageHeader : UserControl
         {
             APIDetailsBtn.Visibility = Visibility.Collapsed;
         }
+        if (Item != null)
+        {
+            FavoriteButton.IsChecked = StringListSettingsHelper.Contains(SettingsKeys.Favorites, Item.UniqueId);
+            StringListSettingsHelper.AddItem(SettingsKeys.RecentlyVisited, Item.UniqueId, InsertPosition.First, _maxRecentlyVisitedPages);
+            TestMethod(SettingsKeys.RecentlyVisited);
+        }
+    }
+
+    private string GetFavoriteGlyph(bool? isFavorite)
+    {
+        return (bool)isFavorite ? "\uE735" : "\uE734";
+    }
+
+    private string GetFavoriteToolTip(bool? isFavorite)
+    {
+        return (bool)isFavorite ? "Remove from favorites" : "Add to favorites";
+    }
+
+    private void FavoriteButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is ToggleButton toggleButton && Item != null)
+        {
+            if (toggleButton.IsChecked == true)
+            {
+                StringListSettingsHelper.AddItem(SettingsKeys.Favorites, Item.UniqueId);
+            }
+            else
+            {
+                StringListSettingsHelper.RemoveItem(SettingsKeys.Favorites, Item.UniqueId);
+            }
+        }
+
+        TestMethod(SettingsKeys.Favorites);
+    }
+
+    // Will be removed in the future
+    private void TestMethod(string key)
+    {
+        List<string> favorites = StringListSettingsHelper.GetList(key);
+        Debug.WriteLine(key + ": " + string.Join(", ", favorites));
     }
 }
