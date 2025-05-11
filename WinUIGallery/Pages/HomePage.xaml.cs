@@ -8,12 +8,13 @@
 //
 //*********************************************************
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Navigation;
 using WinUIGallery.Controls;
 using WinUIGallery.Helpers;
+using WinUIGallery.Models;
 
 namespace WinUIGallery.Pages;
 
@@ -32,44 +33,10 @@ public sealed partial class HomePage : ItemsPageBase
         var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.NavigationRootPage.NavigationView.MenuItems.First();
         menuItem.IsSelected = true;
 
-        Items = ControlInfoDataSource.Instance.Groups.SelectMany(g => g.Items.Where(i => i.BadgeString != null)).OrderBy(i => i.Title).ToList();
-        //itemsCVS.Source = FormatData();
-    }
-
-    private ObservableCollection<GroupInfoList> FormatData()
-    {
-        var query = from item in this.Items
-                    group item by item.BadgeString into g
-                    orderby g.Key
-                    select new GroupInfoList(g) { Key = g.Key };
-
-        ObservableCollection<GroupInfoList> groupList = new ObservableCollection<GroupInfoList>(query);
-
-        //Move Preview samples to the back of the list
-        var previewGroup = groupList.ElementAt(1);
-        if (previewGroup?.Key.ToString() == "Preview")
-        {
-            groupList.RemoveAt(1);
-            groupList.Insert(groupList.Count, previewGroup);
-        }
-
-        foreach (var item in groupList)
-        {
-            switch (item.Key.ToString())
-            {
-                case "New":
-                    item.Title = "Recently added samples";
-                    break;
-                case "Updated":
-                    item.Title = "Recently updated samples";
-                    break;
-                case "Preview":
-                    item.Title = "Preview samples";
-                    break;
-            }
-        }
-
-        return groupList;
+        Items = ControlInfoDataSource.Instance.Groups
+            .SelectMany(g => g.Items)
+            .OrderBy(i => i.Title)
+            .ToList();
     }
 
     private void SampleFilterBar_SelectionChanged(object sender, AdaptiveSelectorBarItem e)
@@ -83,34 +50,58 @@ public sealed partial class HomePage : ItemsPageBase
         switch (selectedTag)
         {
             case "RecentlyAdded":
-                // TODO: Apply recently added filter
+                itemsRepeater.ItemsSource = Items
+                    .Where(i => i.IsNew)
+                    .ToList();
                 break;
             case "RecentlyUpdated":
-                // TODO: Apply recently updated filter
+                itemsRepeater.ItemsSource = Items
+                    .Where(i => i.IsUpdated && !i.IsNew)
+                    .ToList();
                 break;
             case "RecentlyVisited":
-                // TODO: Apply recently visited filter
+                itemsRepeater.ItemsSource = GetValidItems(SettingsKeys.RecentlyVisited);
                 break;
             case "FavoriteSamples":
-                // TODO: Apply favorite samples filter
+                itemsRepeater.ItemsSource = GetValidItems(SettingsKeys.Favorites);
+                break;
+            case "PreviewSamples":
+                itemsRepeater.ItemsSource = Items
+                    .Where(i => i.IsNew)
+                    .ToList();
+                break;
+            case "AllSamples":
+                itemsRepeater.ItemsSource = Items;
                 break;
             default:
                 Debug.WriteLine("Unknown filter tag.");
                 break;
         }
     }
-}
 
-public class GroupInfoList : List<object>
-{
-    public GroupInfoList(IEnumerable<object> items) : base(items) { }
-
-    public object Key { get; set; }
-
-    public string Title { get; set; }
-
-    public override string ToString()
+    public List<ControlInfoDataItem> GetValidItems(string settingsKey)
     {
-        return Title;
+        List<string> keyList = StringListSettingsHelper.GetList(settingsKey);
+
+        if (keyList == null || keyList.Count == 0)
+            return new List<ControlInfoDataItem>();
+
+        Dictionary<string,ControlInfoDataItem> itemMap = Items.ToDictionary(i => i.UniqueId);
+
+        List<ControlInfoDataItem> result = new();
+
+        foreach (string id in keyList)
+        {
+            if (itemMap.TryGetValue(id, out var item))
+            {
+                result.Add(item);
+            }
+            else
+            {
+               StringListSettingsHelper.RemoveItem(settingsKey, id);
+            }
+        }
+
+        return result;
     }
 }

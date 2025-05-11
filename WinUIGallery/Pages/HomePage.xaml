@@ -18,11 +18,12 @@
     HighContrastAdjustment="None">
 
     <!--  This grid acts as a root panel for the page.  -->
-    <ScrollView CornerRadius="0">
+    <ScrollViewer CornerRadius="0">
         <Grid x:Name="HeaderGrid"
               Margin="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="204" />
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
@@ -46,7 +47,7 @@
                                   Grid.Row="1" />
             <controls:AdaptiveSelectorBar x:Name="SampleFilterBar"
                                           Grid.Row="2"
-                                          Margin="36,24,16,36"
+                                          Margin="36,24"
                                           SelectionChanged="SampleFilterBar_SelectionChanged">
                 <controls:AdaptiveSelectorBar.Items>
                     <controls:AdaptiveSelectorBarItem DisplayText="Recently added"
@@ -62,8 +63,24 @@
                     <controls:AdaptiveSelectorBarItem DisplayText="Favorite samples"
                                                       FontIconGlyph="&#xE734;"
                                                       Tag="FavoriteSamples" />
+                    <controls:AdaptiveSelectorBarItem DisplayText="View all samples"
+                                                      FontIconGlyph="&#xE8A9;"
+                                                      Tag="AllSamples" />
                 </controls:AdaptiveSelectorBar.Items>
             </controls:AdaptiveSelectorBar>
+            <StackPanel Grid.Row="3"
+                        Padding="36,0,36,36">
+                <ItemsRepeater x:Name="itemsRepeater"
+                               Grid.Row="1"
+                               AutomationProperties.AutomationId="itemsRepeater"
+                               AutomationProperties.Name="Items In Group"
+                               ItemTemplate="{StaticResource ControlItemTemplate}">
+                    <ItemsRepeater.Layout>
+                        <UniformGridLayout MinColumnSpacing="12"
+                                           MinRowSpacing="12"/>
+                    </ItemsRepeater.Layout>
+                </ItemsRepeater>
+            </StackPanel>
         </Grid>
-    </ScrollView>
+    </ScrollViewer>
 </local:ItemsPageBase>
