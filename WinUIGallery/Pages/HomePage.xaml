@@ -18,7 +18,7 @@
     HighContrastAdjustment="None">
 
     <!--  This grid acts as a root panel for the page.  -->
-    <ScrollViewer CornerRadius="0">
+    <ScrollView CornerRadius="0">
         <Grid x:Name="HeaderGrid"
               Margin="0">
             <Grid.RowDefinitions>
@@ -80,7 +80,24 @@
                                            MinRowSpacing="12"/>
                     </ItemsRepeater.Layout>
                 </ItemsRepeater>
+                <StackPanel x:Name="fallBackMessage"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Spacing="4"
+                            Visibility="Collapsed"
+                            Padding="36,12,36,36">
+
+                    <TextBlock x:Name="fallBackMessageTitle"
+                               Style="{StaticResource BodyStrongTextBlockStyle}"
+                               HorizontalAlignment="Center"
+                               TextWrapping="Wrap" />
+
+                    <TextBlock x:Name="fallBackMessageSubtitle"
+                               Style="{StaticResource BodyTextBlockStyle}"
+                               HorizontalAlignment="Center"
+                               TextWrapping="Wrap" />
+                </StackPanel>
             </StackPanel>
         </Grid>
-    </ScrollViewer>
+    </ScrollView>
 </local:ItemsPageBase>

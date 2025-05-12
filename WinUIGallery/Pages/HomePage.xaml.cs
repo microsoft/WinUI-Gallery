@@ -10,8 +10,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
 using WinUIGallery.Controls;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
@@ -45,37 +45,53 @@ public sealed partial class HomePage : ItemsPageBase
             return;
 
         string selectedTag = e.Tag.ToString();
-        Debug.WriteLine($"SampleFilterBar selection changed: {selectedTag}");
+        List<ControlInfoDataItem> filteredItems = [];
 
         switch (selectedTag)
         {
             case "RecentlyAdded":
-                itemsRepeater.ItemsSource = Items
-                    .Where(i => i.IsNew)
-                    .ToList();
+                filteredItems = Items.Where(i => i.IsNew).ToList();
                 break;
             case "RecentlyUpdated":
-                itemsRepeater.ItemsSource = Items
-                    .Where(i => i.IsUpdated && !i.IsNew)
-                    .ToList();
+                filteredItems = Items.Where(i => i.IsUpdated && !i.IsNew).ToList();
                 break;
             case "RecentlyVisited":
-                itemsRepeater.ItemsSource = GetValidItems(SettingsKeys.RecentlyVisited);
+                filteredItems = GetValidItems(SettingsKeys.RecentlyVisited);
                 break;
             case "FavoriteSamples":
-                itemsRepeater.ItemsSource = GetValidItems(SettingsKeys.Favorites);
+                filteredItems = GetValidItems(SettingsKeys.Favorites);
                 break;
             case "PreviewSamples":
-                itemsRepeater.ItemsSource = Items
-                    .Where(i => i.IsNew)
-                    .ToList();
+                filteredItems = Items.Where(i => i.IsNew).ToList();
                 break;
             case "AllSamples":
-                itemsRepeater.ItemsSource = Items;
+                filteredItems = (List<ControlInfoDataItem>)Items;
                 break;
             default:
                 Debug.WriteLine("Unknown filter tag.");
                 break;
+        }
+
+        itemsRepeater.ItemsSource = filteredItems;
+
+        if (filteredItems.Count == 0 && (selectedTag == "RecentlyVisited" || selectedTag == "FavoriteSamples"))
+        {
+            fallBackMessage.Visibility = Visibility.Visible;
+
+            if (selectedTag == "RecentlyVisited")
+            {
+                fallBackMessageTitle.Text = "No recently visited samples.";
+                fallBackMessageSubtitle.Text = "Samples you view will show up here.";
+            }
+            else if (selectedTag == "FavoriteSamples")
+            {
+                fallBackMessageTitle.Text = "No favorite samples yet.";
+                fallBackMessageSubtitle.Text = "Mark samples as favorites to see them here.";
+            }
+        }
+        else
+        {
+            fallBackMessage.Visibility = Visibility.Collapsed;
         }
     }
 
