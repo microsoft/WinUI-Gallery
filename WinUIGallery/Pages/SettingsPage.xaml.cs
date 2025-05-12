@@ -39,6 +39,8 @@ public sealed partial class SettingsPage : Page
     {
         this.InitializeComponent();
         Loaded += OnSettingsPageLoaded;
+        ClearVisitedSamplesCard.IsEnabled = StringListSettingsHelper.GetList(SettingsKeys.RecentlyVisited).Count > 0;
+        UnfavoriteSamplesCard.IsEnabled = StringListSettingsHelper.GetList(SettingsKeys.Favorites).Count > 0;
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -166,5 +168,19 @@ public sealed partial class SettingsPage : Page
     {
         await Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
     
+    }
+
+    private void ClearRecentlyVisitedSamples_Click(object sender, RoutedEventArgs e)
+    {
+        ClearRecentlyVisitedSamplesFlyout.Hide();
+        StringListSettingsHelper.ClearList(SettingsKeys.RecentlyVisited);
+        ClearVisitedSamplesCard.IsEnabled = false;
+    }
+
+    private void UnfavoriteAllSamples_Click(object sender, RoutedEventArgs e)
+    {
+        UnfavoriteAllSamplesFlyout.Hide();
+        StringListSettingsHelper.ClearList(SettingsKeys.Favorites);
+        UnfavoriteSamplesCard.IsEnabled = false;
     }
 }
