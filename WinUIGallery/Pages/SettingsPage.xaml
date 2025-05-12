@@ -93,7 +93,8 @@
                                 <toolkit:SettingsCard.HeaderIcon>
                                     <FontIcon Glyph="&#xEA99;" />
                                 </toolkit:SettingsCard.HeaderIcon>
-                                <Button Content="Clear list">
+                                <Button Content="Clear list"
+                                        MinWidth="120">
                                     <Button.Flyout>
                                         <Flyout x:Name="ClearRecentlyVisitedSamplesFlyout"
                                                 Placement="LeftEdgeAlignedBottom">
@@ -105,7 +106,8 @@
                                                            Text="This will permanently remove all recently visited samples." />
                                                 <Button Click="ClearRecentlyVisitedSamples_Click"
                                                         Content="Yes, clear"
-                                                        Style="{StaticResource CriticalButtonStyle}" />
+                                                        Style="{StaticResource CriticalButtonStyle}"
+                                                        MinWidth="120"/>
                                             </StackPanel>
                                         </Flyout>
                                     </Button.Flyout>
@@ -117,7 +119,8 @@
                                 <toolkit:SettingsCard.HeaderIcon>
                                     <FontIcon Glyph="&#xE8D9;" />
                                 </toolkit:SettingsCard.HeaderIcon>
-                                <Button Content="Unfavorite all">
+                                <Button Content="Unfavorite all"
+                                        MinWidth="120">
                                     <Button.Flyout>
                                         <Flyout x:Name="UnfavoriteAllSamplesFlyout"
                                                 Placement="LeftEdgeAlignedBottom">
@@ -129,7 +132,8 @@
                                                            Text="This will remove all samples from your favorites." />
                                                 <Button Click="UnfavoriteAllSamples_Click"
                                                         Content="Yes, unfavorite"
-                                                        Style="{ThemeResource CriticalButtonStyle}" />
+                                                        Style="{ThemeResource CriticalButtonStyle}"
+                                                        MinWidth="120" />
                                             </StackPanel>
                                         </Flyout>
                                     </Button.Flyout>
