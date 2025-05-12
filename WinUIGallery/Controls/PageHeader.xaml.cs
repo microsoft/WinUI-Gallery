@@ -7,9 +7,7 @@ using WinUIGallery.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Uri = System.Uri;
-using System.Collections.Generic;
 using Microsoft.UI.Xaml.Controls.Primitives;
-using System.Diagnostics;
 
 namespace WinUIGallery.Controls;
 
@@ -107,7 +105,6 @@ public sealed partial class PageHeader : UserControl
         {
             FavoriteButton.IsChecked = StringListSettingsHelper.Contains(SettingsKeys.Favorites, Item.UniqueId);
             StringListSettingsHelper.AddItem(SettingsKeys.RecentlyVisited, Item.UniqueId, InsertPosition.First, _maxRecentlyVisitedPages);
-            TestMethod(SettingsKeys.RecentlyVisited);
         }
     }
 
@@ -134,14 +131,5 @@ public sealed partial class PageHeader : UserControl
                 StringListSettingsHelper.RemoveItem(SettingsKeys.Favorites, Item.UniqueId);
             }
         }
-
-        TestMethod(SettingsKeys.Favorites);
-    }
-
-    // Will be removed in the future
-    private void TestMethod(string key)
-    {
-        List<string> favorites = StringListSettingsHelper.GetList(key);
-        Debug.WriteLine(key + ": " + string.Join(", ", favorites));
     }
 }
