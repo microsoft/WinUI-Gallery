@@ -81,14 +81,15 @@
                         </toolkit:SettingsExpander.Items>
                     </toolkit:SettingsExpander>
 
-                    <toolkit:SettingsExpander Description="Manage samples personalization preferences"
-                                              Header="Samples Options">
+                    <toolkit:SettingsExpander x:Name="SamplesSettingsExpander"
+                                              Description="Manage samples personalization preferences"
+                                              Header="Sample preferences">
                         <toolkit:SettingsExpander.HeaderIcon>
                             <FontIcon Glyph="&#xE8A9;" />
                         </toolkit:SettingsExpander.HeaderIcon>
                         <toolkit:SettingsExpander.Items>
                             <toolkit:SettingsCard x:Name="ClearVisitedSamplesCard"
-                                                  Header="Clear Recently Visited"
+                                                  Header="Clear recently visited"
                                                   Description="Clear the list of recently visited samples.">
                                 <toolkit:SettingsCard.HeaderIcon>
                                     <FontIcon Glyph="&#xEA99;" />
@@ -114,7 +115,7 @@
                                 </Button>
                             </toolkit:SettingsCard>
                             <toolkit:SettingsCard x:Name="UnfavoriteSamplesCard"
-                                                  Header="Unfavorite All Samples"
+                                                  Header="Unfavorite all samples"
                                                   Description="Remove all samples from your favorites list.">
                                 <toolkit:SettingsCard.HeaderIcon>
                                     <FontIcon Glyph="&#xE8D9;" />

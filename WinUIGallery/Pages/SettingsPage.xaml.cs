@@ -41,6 +41,7 @@ public sealed partial class SettingsPage : Page
         Loaded += OnSettingsPageLoaded;
         ClearVisitedSamplesCard.IsEnabled = StringListSettingsHelper.GetList(SettingsKeys.RecentlyVisited).Count > 0;
         UnfavoriteSamplesCard.IsEnabled = StringListSettingsHelper.GetList(SettingsKeys.Favorites).Count > 0;
+        SamplesSettingsExpander.IsExpanded = StringListSettingsHelper.GetList(SettingsKeys.RecentlyVisited).Count > 0 || StringListSettingsHelper.GetList(SettingsKeys.Favorites).Count > 0;
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -175,6 +176,7 @@ public sealed partial class SettingsPage : Page
         ClearRecentlyVisitedSamplesFlyout.Hide();
         StringListSettingsHelper.ClearList(SettingsKeys.RecentlyVisited);
         ClearVisitedSamplesCard.IsEnabled = false;
+        SamplesSettingsExpander.IsExpanded = StringListSettingsHelper.GetList(SettingsKeys.RecentlyVisited).Count > 0 || StringListSettingsHelper.GetList(SettingsKeys.Favorites).Count > 0;
     }
 
     private void UnfavoriteAllSamples_Click(object sender, RoutedEventArgs e)
@@ -182,5 +184,6 @@ public sealed partial class SettingsPage : Page
         UnfavoriteAllSamplesFlyout.Hide();
         StringListSettingsHelper.ClearList(SettingsKeys.Favorites);
         UnfavoriteSamplesCard.IsEnabled = false;
+        SamplesSettingsExpander.IsExpanded = StringListSettingsHelper.GetList(SettingsKeys.RecentlyVisited).Count > 0 || StringListSettingsHelper.GetList(SettingsKeys.Favorites).Count > 0;
     }
 }
