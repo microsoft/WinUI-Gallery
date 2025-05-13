@@ -33,7 +33,7 @@ public sealed partial class PageHeader : UserControl
 
     private ControlInfoDataItem _item;
 
-    private const int _maxRecentlyVisitedPages = 15;
+    private const int _maxRecentlyVisitedPages = 7;
 
     public PageHeader()
     {
