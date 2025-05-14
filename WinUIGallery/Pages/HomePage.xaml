@@ -18,7 +18,8 @@
     HighContrastAdjustment="None">
 
     <!--  This grid acts as a root panel for the page.  -->
-    <ScrollView CornerRadius="0">
+    <ScrollViewer CornerRadius="0"
+                  VerticalScrollBarVisibility="Auto">
         <Grid x:Name="HeaderGrid"
               Margin="0">
             <Grid.RowDefinitions>
@@ -45,59 +46,83 @@
 
             <controls:TileGallery x:Name="headerTileGallery"
                                   Grid.Row="1" />
-            <controls:AdaptiveSelectorBar x:Name="SampleFilterBar"
-                                          Grid.Row="2"
-                                          Margin="36,24"
-                                          SelectionChanged="SampleFilterBar_SelectionChanged">
-                <controls:AdaptiveSelectorBar.Items>
-                    <controls:AdaptiveSelectorBarItem DisplayText="Recently added"
-                                                      FontIconGlyph="&#xECC8;"
-                                                      Tag="RecentlyAdded"
-                                                      IsSelected="True" />
-                    <controls:AdaptiveSelectorBarItem DisplayText="Recently updated"
-                                                      FontIconGlyph="&#xECC5;"
-                                                      Tag="RecentlyUpdated" />
-                    <controls:AdaptiveSelectorBarItem DisplayText="Recently visited"
-                                                      FontIconGlyph="&#xE823;"
-                                                      Tag="RecentlyVisited" />
-                    <controls:AdaptiveSelectorBarItem DisplayText="Favorite samples"
-                                                      FontIconGlyph="&#xE734;"
-                                                      Tag="FavoriteSamples" />
-                    <controls:AdaptiveSelectorBarItem DisplayText="View all samples"
-                                                      FontIconGlyph="&#xE8A9;"
-                                                      Tag="AllSamples" />
-                </controls:AdaptiveSelectorBar.Items>
-            </controls:AdaptiveSelectorBar>
-            <StackPanel Grid.Row="3"
-                        Padding="36,0,36,36">
-                <ItemsRepeater x:Name="itemsRepeater"
-                               Grid.Row="1"
-                               AutomationProperties.AutomationId="itemsRepeater"
-                               AutomationProperties.Name="Items In Group"
-                               ItemTemplate="{StaticResource ControlItemTemplate}">
-                    <ItemsRepeater.Layout>
-                        <UniformGridLayout MinColumnSpacing="12"
-                                           MinRowSpacing="12"/>
-                    </ItemsRepeater.Layout>
-                </ItemsRepeater>
-                <StackPanel x:Name="fallBackMessage"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Spacing="4"
-                            Visibility="Collapsed"
-                            Padding="36,12,36,36">
-
-                    <TextBlock x:Name="fallBackMessageTitle"
-                               Style="{StaticResource BodyStrongTextBlockStyle}"
+            <SelectorBar Grid.Row="2"
+                         Margin="36,16,0,16"
+                         SelectionChanged="CategorySelectorBar_SelectionChanged"
+                         Style="{StaticResource TokenViewSelectorBarItemStyle}">
+                <SelectorBarItem Text="Recent"
+                                 Icon="Clock"
+                                 IsSelected="True"
+                                 Tag="Recent" />
+                <SelectorBarItem Text="Favorites"
+                                 Icon="Favorite"
+                                 Tag="Favorites" />
+            </SelectorBar>
+            <Grid Grid.Row="3"
+                  Padding="36,0,36,36">
+                <StackPanel x:Name="RecentSamplesPanel"
+                            Grid.Row="1"
+                            Spacing="12">
+                    <TextBlock x:Name="RecentlyVisitedTiltle"
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                               Text="Recently Visited"
                                HorizontalAlignment="Center"
-                               TextWrapping="Wrap" />
-
-                    <TextBlock x:Name="fallBackMessageSubtitle"
-                               Style="{StaticResource BodyTextBlockStyle}"
-                               HorizontalAlignment="Center"
-                               TextWrapping="Wrap" />
+                               Margin="0,-16,0,0"/>
+                    <controls:HorizontalScrollContainer x:Name="RecentlyVisitedContainer"
+                                                        Margin="-36,0,-36,12">
+                        <controls:HorizontalScrollContainer.Source>
+                            <ItemsRepeater ItemTemplate="{StaticResource ControlItemTemplate}"
+                                           ItemsSource="{x:Bind RecentlyVisitedSamplesList, Mode=OneWay}">
+                                <ItemsRepeater.Layout>
+                                    <StackLayout Spacing="12"
+                                                 Orientation="Horizontal" />
+                                </ItemsRepeater.Layout>
+                            </ItemsRepeater>
+                        </controls:HorizontalScrollContainer.Source>
+                    </controls:HorizontalScrollContainer>
+                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}"
+                               Text="Recently added" />
+                    <ItemsRepeater ItemTemplate="{StaticResource ControlItemTemplate}"
+                                   ItemsSource="{x:Bind RecentlyAddedSamplesList, Mode=OneWay}"
+                                   Margin="0,0,0,12">
+                        <ItemsRepeater.Layout>
+                            <UniformGridLayout MinColumnSpacing="12"
+                                               MinRowSpacing="12"/>
+                        </ItemsRepeater.Layout>
+                    </ItemsRepeater>
+                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}"
+                               Text="Recently updated" />
+                    <ItemsRepeater ItemTemplate="{StaticResource ControlItemTemplate}"
+                                   ItemsSource="{x:Bind RecentlyUpdatedSamplesList, Mode=OneWay}">
+                        <ItemsRepeater.Layout>
+                            <UniformGridLayout MinColumnSpacing="12"
+                                               MinRowSpacing="12" />
+                        </ItemsRepeater.Layout>
+                    </ItemsRepeater>
                 </StackPanel>
-            </StackPanel>
+                <StackPanel x:Name="FavoriteSamplesPanel">
+                    <ItemsRepeater x:Name="FavoriteSamples"
+                                   ItemTemplate="{StaticResource ControlItemTemplate}"
+                                   ItemsSource="{x:Bind FavoriteSamplesList, Mode=OneWay}">
+                        <ItemsRepeater.Layout>
+                            <UniformGridLayout MinColumnSpacing="12"
+                                               MinRowSpacing="12" />
+                        </ItemsRepeater.Layout>
+                    </ItemsRepeater>
+                    <StackPanel x:Name="FavoriteSamplesFallbackMessage">
+                        <Image Height="62" Source="/Assets/ControlImages/RatingControl.png"/>
+                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}"
+                                   Text="No favorites yet"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,8" />
+                        <TextBlock Style="{StaticResource BodyTextBlockStyle}"
+                                   Text="Add a sample to your favorites by clicking the star icon in the sample's page header."
+                                   HorizontalAlignment="Center"
+                                   MaxWidth="280"
+                                   TextAlignment="Center" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
         </Grid>
-    </ScrollView>
+    </ScrollViewer>
 </local:ItemsPageBase>

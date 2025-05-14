@@ -307,6 +307,7 @@
         <None Remove="Controls\DesignGuidance\ColorTile.xaml" />
         <None Remove="Controls\DesignGuidance\TypographyControl.xaml" />
         <None Remove="Controls\HomePageHeaderImage.xaml" />
+        <None Remove="Controls\HorizontalScrollContainer.xaml" />
         <None Remove="Controls\PageHeader.xaml" />
         <None Remove="Controls\SampleThemeListener.xaml" />
         <None Remove="Samples\ControlPages\AppNotificationPage.xaml" />
@@ -318,12 +319,13 @@
         <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
         <None Remove="Samples\SamplePages\SampleWindow2.xaml" />
-        <None Remove="Styles\AdaptiveSelectorBarItemButton.xaml" />
         <None Remove="Styles\Button.xaml" />
+        <None Remove="Styles\ClickableItem.xaml" />
         <None Remove="Styles\CriticalButtonStyle.xaml" />
         <None Remove="Styles\Grid.xaml" />
         <None Remove="Styles\GridViewItem.xaml" />
         <None Remove="Styles\ItemTemplates.xaml" />
+        <None Remove="Styles\SelectorBar.xaml" />
         <None Remove="Styles\TextBlock.xaml" />
     </ItemGroup>
 
@@ -515,19 +517,25 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Page Update="Styles\SelectorBar.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Styles\ClickableItem.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Controls\HorizontalScrollContainer.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
       <Page Update="Styles\CriticalButtonStyle.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </Page>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Page Update="Styles\AdaptiveSelectorBarItemButton.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </Page>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Page Update="Controls\AdaptiveSelectorBar.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
