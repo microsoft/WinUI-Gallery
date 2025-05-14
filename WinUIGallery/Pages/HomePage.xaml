@@ -49,14 +49,22 @@
             <SelectorBar Grid.Row="2"
                          Margin="36,16,0,16"
                          SelectionChanged="CategorySelectorBar_SelectionChanged"
-                         Style="{StaticResource TokenViewSelectorBarItemStyle}">
+                         Style="{StaticResource TokenViewSelectorBarStyle}">
                 <SelectorBarItem Text="Recent"
                                  Icon="Clock"
                                  IsSelected="True"
-                                 Tag="Recent" />
+                                 Tag="Recent"
+                                 Style="{StaticResource TokenViewSelectorBarItemStyle}"
+                                 MinWidth="120"
+                                 HorizontalContentAlignment="Center"
+                                 Padding="24,5,24,6"
+                                 Margin="0,0,8,0"/>
                 <SelectorBarItem Text="Favorites"
                                  Icon="Favorite"
-                                 Tag="Favorites" />
+                                 Tag="Favorites"
+                                 Style="{StaticResource TokenViewSelectorBarItemStyle}"
+                                 Padding="24,5,24,6"
+                                 HorizontalContentAlignment="Center"/>
             </SelectorBar>
             <Grid Grid.Row="3"
                   Padding="36,0,36,36">
