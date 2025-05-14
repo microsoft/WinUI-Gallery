@@ -183,7 +183,7 @@
         <Setter Property="BorderThickness"
                 Value="{ThemeResource TokenItemBorderThickness}" />
         <Setter Property="Padding"
-                Value="11,5,11,6" />
+                Value="23,5,23,6" />
         <Setter Property="CornerRadius"
                 Value="16" />
         <Setter Property="HorizontalAlignment"
