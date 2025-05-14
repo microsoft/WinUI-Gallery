@@ -3,7 +3,6 @@
 
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
-using WASDK = Microsoft.WindowsAppSDK;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
 // model.  The property names chosen coincide with data bindings in the standard item templates.
@@ -55,11 +54,6 @@ public class ControlInfoDataItem
 
 public class ControlInfoDocLink
 {
-    public ControlInfoDocLink(string title, string uri)
-    {
-        this.Title = title;
-        this.Uri = uri.Replace("X.Y", string.Format("{0}.{1}", WASDK.Release.Major, WASDK.Release.Minor));
-    }
     public string Title { get; set; }
     public string Uri { get; set; }
 }
