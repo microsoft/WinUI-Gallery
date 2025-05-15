@@ -43,8 +43,7 @@
                 Width="96"
                 Height="96"
                 AutomationProperties.Name="{Binding Name}"
-                CornerRadius="{StaticResource ControlCornerRadius}"
-                ToolTipService.ToolTip="{Binding Name}">
+                CornerRadius="{StaticResource ControlCornerRadius}">
                 <Grid
                     Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
