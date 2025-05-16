@@ -8,6 +8,8 @@ using Microsoft.UI.Windowing;
 using Microsoft.UI;
 using Microsoft.UI.Composition;
 using System;
+using Windows.UI.ViewManagement;
+using Microsoft.UI.System;
 
 namespace WinUIGallery.SamplePages;
 
@@ -125,6 +127,7 @@ public sealed partial class SampleSystemBackdropsWindow : Window
         {
             // Hooking up the policy object.
             configurationSource = new SystemBackdropConfiguration();
+            configurationSource.IsHighContrast = ThemeSettings.CreateForWindowId(this.AppWindow.Id).HighContrast;
             Activated += Window_Activated;
             Closed += Window_Closed;
             ((FrameworkElement)Content).ActualThemeChanged += Window_ThemeChanged;
@@ -200,6 +203,7 @@ public sealed partial class SampleSystemBackdropsWindow : Window
 
     private void SetConfigurationSourceTheme()
     {
+        configurationSource.IsHighContrast = ThemeSettings.CreateForWindowId(this.AppWindow.Id).HighContrast;
         configurationSource.Theme = (SystemBackdropTheme)((FrameworkElement)Content).ActualTheme;
     }
 
