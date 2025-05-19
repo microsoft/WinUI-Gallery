@@ -96,5 +96,11 @@ public static class TabViewHelper
             };
             menuFlyout.Items.Add(moveRightItem);
         }
+
+        // If the context menu ended up with no items at all, then we'll prevent it from being shown.
+        if (menuFlyout.Items.Count == 0)
+        {
+            menuFlyout.Hide();
+        }
     }
 }
