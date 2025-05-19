@@ -54,12 +54,11 @@
                                  Icon="Clock"
                                  IsSelected="True"
                                  Tag="Recent"
-                                 Style="{StaticResource TokenViewSelectorBarItemStyle}"
-                                 Margin="0,0,8,0"/>
+                                 Style="{StaticResource TokenViewSelectorBarItemStyle}" />
                 <SelectorBarItem Text="Favorites"
                                  Icon="Favorite"
                                  Tag="Favorites"
-                                 Style="{StaticResource TokenViewSelectorBarItemStyle}"/>
+                                 Style="{StaticResource TokenViewSelectorBarItemStyle}" />
             </SelectorBar>
             <Grid Grid.Row="3"
                   Padding="36,0,36,36">
@@ -68,9 +67,9 @@
                             Spacing="12">
                     <TextBlock x:Name="RecentlyVisitedTiltle"
                                Style="{StaticResource SubtitleTextBlockStyle}"
-                               Text="Recently Visited"
+                               Text="Recently visited"
                                HorizontalAlignment="Center"
-                               Margin="0,-16,0,0"/>
+                               Margin="0,0,0,0"/>
                     <controls:HorizontalScrollContainer x:Name="RecentlyVisitedContainer"
                                                         Margin="-36,0,-36,12">
                         <controls:HorizontalScrollContainer.Source>
