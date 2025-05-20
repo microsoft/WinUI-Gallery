@@ -8,6 +8,8 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Uri = System.Uri;
 using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.Windows.AppNotifications.Builder;
+using Microsoft.Windows.AppNotifications;
 
 namespace WinUIGallery.Controls;
 
@@ -124,7 +126,15 @@ public sealed partial class PageHeader : UserControl
         {
             if (toggleButton.IsChecked == true)
             {
-                StringListSettingsHelper.AddItem(SettingsKeys.Favorites, Item.UniqueId);
+                if (!StringListSettingsHelper.AddItem(SettingsKeys.Favorites, Item.UniqueId))
+                {
+                    AppNotificationManager.Default.Show(new AppNotificationBuilder()
+                        .AddText("Favorites limit reached")
+                        .AddText("You cannot add more favorites. Please remove some first.")
+                        .BuildNotification());
+
+                    toggleButton.IsChecked = false; // revert toggle state since add failed
+                }
             }
             else
             {

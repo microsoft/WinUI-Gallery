@@ -1,6 +1,7 @@
 ﻿using Microsoft.Windows.Storage;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace WinUIGallery.Helpers;
@@ -24,6 +25,7 @@ public enum InsertPosition
 /// <summary>
 /// Helper for storing and managing string-based lists (e.g., favorites, history)
 /// in LocalSettings of ApplicationData using a compact, delimiter-based format.
+/// Ensures data does not exceed size limits by refusing to save if too large.
 /// </summary>
 public static class StringListSettingsHelper
 {
@@ -35,48 +37,48 @@ public static class StringListSettingsHelper
 
     /// <summary>
     /// Adds an item to the list for the given key, ignoring duplicates, appended at the end.
+    /// Returns true if save succeeded; false if data size limit exceeded or inputs invalid.
     /// </summary>
     /// <param name="key">Settings key</param>
     /// <param name="item">Item to add</param>
-    public static void AddItem(string key, string item)
+    /// <returns>True if item added and saved; false if save rejected due to size or input.</returns>
+    public static bool AddItem(string key, string item)
     {
-        AddItem(key, item, InsertPosition.Last, 0);
+        return AddItem(key, item, InsertPosition.Last, 0);
     }
 
     /// <summary>
     /// Adds an item to the list at the specified position, ignoring duplicates.
+    /// Returns true if save succeeded; false otherwise.
     /// </summary>
-    /// <param name="key">Settings key</param>
-    /// <param name="item">Item to add</param>
-    /// <param name="position">Insert at First or Last</param>
-    public static void AddItem(string key, string item, InsertPosition position)
+    public static bool AddItem(string key, string item, InsertPosition position)
     {
-        AddItem(key, item, position, 0);
+        return AddItem(key, item, position, 0);
     }
 
     /// <summary>
     /// Adds an item to the list with a maximum size limit. Trims older items if limit exceeded.
+    /// Returns true if save succeeded; false otherwise.
     /// </summary>
-    /// <param name="key">Settings key</param>
-    /// <param name="item">Item to add</param>
-    /// <param name="maxSize">Max number of items to retain. Zero or negative means unlimited.</param>
-    public static void AddItem(string key, string item, int maxSize)
+    public static bool AddItem(string key, string item, int maxSize)
     {
-        AddItem(key, item, InsertPosition.Last, maxSize);
+        return AddItem(key, item, InsertPosition.Last, maxSize);
     }
 
     /// <summary>
     /// Adds an item to the list at the specified position, with optional max size limit.
     /// Duplicate values are moved to the new position if already present.
+    /// Returns true if save succeeded; false if save rejected due to size or invalid input.
     /// </summary>
     /// <param name="key">Settings key</param>
     /// <param name="item">Item to add</param>
     /// <param name="position">Insert at First or Last</param>
-    /// <param name="maxSize">Max number of items. Zero or negative disables trimming.</param>
-    public static void AddItem(string key, string item, InsertPosition position, int maxSize)
+    /// <param name="maxSize">Max number of items; zero or negative disables trimming.</param>
+    /// <returns>True if item added and saved successfully; false otherwise.</returns>
+    public static bool AddItem(string key, string item, InsertPosition position, int maxSize)
     {
         if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(item))
-            return;
+            return false;
 
         bool enforceSizeLimit = maxSize > 0;
         var list = GetList(key);
@@ -99,21 +101,24 @@ public static class StringListSettingsHelper
                 list.RemoveRange(0, excess); // Remove from start
         }
 
-        SaveList(key, list);
+        return SaveList(key, list);
     }
 
     /// <summary>
     /// Removes an item from the list under the specified key, if present.
+    /// Returns true if item removed and saved; false otherwise.
     /// </summary>
     /// <param name="key">Settings key</param>
     /// <param name="item">Item to remove</param>
-    public static void RemoveItem(string key, string item)
+    /// <returns>True if removed and saved; false if not found or save failed.</returns>
+    public static bool RemoveItem(string key, string item)
     {
         var list = GetList(key);
         if (list.Remove(item))
         {
-            SaveList(key, list);
+            return SaveList(key, list);
         }
+        return false;
     }
 
     /// <summary>
@@ -151,14 +156,26 @@ public static class StringListSettingsHelper
     }
 
     /// <summary>
-    /// Internal method to save the string list back to settings using delimiter serialization.
+    /// Saves the list back to LocalSettings using delimiter serialization.
+    /// Returns false if the serialized string exceeds size limit.
     /// </summary>
     /// <param name="key">Settings key</param>
     /// <param name="items">List of strings to save</param>
-    private static void SaveList(string key, List<string> items)
+    /// <returns>True if save successful; false if size limit exceeded.</returns>
+    private static bool SaveList(string key, List<string> items)
     {
         string joined = string.Join(Delimiter, items);
+        int byteSize = System.Text.Encoding.Unicode.GetByteCount(joined);
+
+        // If the size exceeds or equals 8 KB (8192 bytes), reject the save operation
+        if (byteSize >= 8192)
+        {
+            Debug.WriteLine($"Storage limit exceeded for key: {key}.");
+            return false;
+        }
+
         appData.LocalSettings.Values[key] = joined;
+        return true;
     }
 }
 
