@@ -8,15 +8,16 @@
 //
 //*********************************************************
 
+using CommunityToolkit.WinUI;
+using CommunityToolkit.WinUI.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using WinUIGallery.Helpers;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using System.Threading;
-using CommunityToolkit.WinUI.Controls;
 using WinUIGallery.Models;
 
 namespace WinUIGallery.ControlPages;
@@ -49,6 +50,8 @@ public sealed partial class IconographyPage : Page
     {
         // Fill filtered items
         this.InitializeComponent();
+        this.Loaded += (sender, e) => OverrideUpperScrollViewer(isEnabled: false);
+        this.Unloaded += (sender, e) => OverrideUpperScrollViewer(isEnabled: true);
         IconsItemsView.Loaded += IconsItemsView_Loaded;
     }
 
@@ -70,9 +73,22 @@ public sealed partial class IconographyPage : Page
     }
     private void SetSampleCodePresenterCode(IconData value)
     {
-        XAMLCodePresenter.Code = $"<FontIcon Glyph=\"{value.TextGlyph}\" />";
+        XAMLCodePresenterFont.Code = $"<FontIcon Glyph=\"{value.TextGlyph}\" />";
 
-        CSharpCodePresenter.Code = $"FontIcon icon = new FontIcon();" + Environment.NewLine + "icon.Glyph = \"" + value.CodeGlyph + "\";";
+        CSharpCodePresenterFont.Code = "FontIcon icon = new FontIcon();" + Environment.NewLine + $"icon.Glyph = \"{value.CodeGlyph}\";";
+
+        if (value.SymbolName != null)
+        {
+            XAMLCodePresenterSymbol.Code = $"<SymbolIcon Symbol=\"{value.SymbolName}\" />";
+
+            CSharpCodePresenterSymbol.Code = "SymbolIcon icon = new SymbolIcon();" + Environment.NewLine + $"icon.Symbol = Symbol.{value.SymbolName};";
+        }
+        else
+        {
+            XAMLCodePresenterSymbol.Code = null;
+
+            CSharpCodePresenterSymbol.Code = null;
+        }
     }
 
     private void SearchTextBox_TextChanged(object sender, AutoSuggestBoxTextChangedEventArgs args)
@@ -158,6 +174,22 @@ public sealed partial class IconographyPage : Page
         if (args.InvokedItem is string tag)
         {
             IconsAutoSuggestBox.Text = tag;
+        }
+    }
+
+    ScrollBarVisibility oldOuterScrollingValue;
+    private void OverrideUpperScrollViewer(bool isEnabled)
+    {
+        var scrollViewer = this.FindAscendant<ScrollViewer>();
+
+        if (isEnabled)
+        {
+            scrollViewer.VerticalScrollBarVisibility = oldOuterScrollingValue;
+        }
+        else
+        {
+            oldOuterScrollingValue = scrollViewer.VerticalScrollBarVisibility;
+            scrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
         }
     }
 }
