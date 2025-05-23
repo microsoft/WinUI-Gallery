@@ -57,7 +57,7 @@
                     Style="{ThemeResource BodyTextBlockStyle}"
                     Text="{x:Bind Item.Description}"
                     Visibility="{x:Bind Item.Description, Converter={StaticResource stringVisibilityConverter}}" />
-                <Frame x:Name="contentFrame" Grid.Row="2" />
+                <Frame x:Name="contentFrame" Grid.Row="1" />
             </Grid>
         </ScrollViewer>
 

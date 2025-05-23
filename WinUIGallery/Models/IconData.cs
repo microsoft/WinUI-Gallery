@@ -1,3 +1,4 @@
+using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
@@ -13,6 +14,8 @@ public class IconData
     public string Character => char.ConvertFromUtf32(Convert.ToInt32(Code, 16));
     public string CodeGlyph => "\\u" + Code;
     public string TextGlyph => "&#x" + Code + ";";
+
+    public string SymbolName => Enum.TryParse<Symbol>(Name, out var symbol) ? symbol.ToString() : null;
 }
 [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
 [JsonSerializable(typeof(List<IconData>))]
