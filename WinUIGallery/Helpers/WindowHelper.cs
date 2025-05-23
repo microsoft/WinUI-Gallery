@@ -45,13 +45,6 @@ public class WindowHelper
         _activeWindows.Add(window);
     }
 
-    static public AppWindow GetAppWindow(Window window)
-    {
-        IntPtr hWnd = WindowNative.GetWindowHandle(window);
-        WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
-        return AppWindow.GetFromWindowId(wndId);
-    }
-
     static public Window GetWindowForElement(UIElement element)
     {
         if (element.XamlRoot != null)

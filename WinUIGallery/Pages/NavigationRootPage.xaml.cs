@@ -101,7 +101,7 @@ public sealed partial class NavigationRootPage : Page
             window.Activated += Window_Activated;
             window.SetTitleBar(this.AppTitleBar);
 
-            AppWindow appWindow = WindowHelper.GetAppWindow(window);
+            AppWindow appWindow = window.AppWindow;
             appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
             appWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
             _settings = new UISettings();

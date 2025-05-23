@@ -16,25 +16,9 @@
                         "type": "string",
                         "description": "The name of the control group. Will be displayed on the control group page and navigation"
                     },
-                    "Subtitle": {
-                        "type": "string",
-                        "description": "Not used. Can leave empty"
-                    },
-                    "Description": {
-                        "type": "string",
-                        "description": "Not used. Can leave empty"
-                    },
-                    "ImagePath": {
-                        "type": "string",
-                        "description": "Not used. Can leave empty"
-                    },
                     "IconGlyph": {
                         "type": "string",
                         "description": "Glyph of this control group. Will be displayed as an icon for the NavigationViewItem of this control group"
-                    },
-                    "ApiNamespace": {
-                        "type": "string",
-                        "description": "ApiNamespace of a control group is not used. Can leave empty"
                     },
                     "IsSpecialSection": {
                         "type": "boolean",
@@ -76,14 +60,6 @@
                                     "type": "string",
                                     "description": "An image icon of this control. Will be displayed on the overriew card of this control. Should be a uri starts with ms-appx:///Assets/ControlImages/..."
                                 },
-                                "IconGlyph": {
-                                    "type": "string",
-                                    "description": "Not used. Leave empty"
-                                },
-                                "Content": {
-                                    "type": "string",
-                                    "description": "Not used. Leave empty"
-                                },
                                 "IsNew": {
                                     "type": "boolean",
                                     "default": true,
@@ -112,14 +88,6 @@
                                     },
                                     "description": "Add a link to the doc in the Documentation dropdown on the detail page of this control"
                                 },
-                                "RelatedControls": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string",
-                                        "description": "ID of the related control"
-                                    },
-                                    "description": "Array of names of the related control"
-                                }
                             },
                             "required": [ "UniqueId", "Title"]
                         }

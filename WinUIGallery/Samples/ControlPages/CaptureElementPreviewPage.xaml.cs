@@ -20,6 +20,8 @@ using Windows.Storage.Streams;
 using System.ComponentModel;
 using WinUIGallery.Helpers;
 using System.Threading.Tasks;
+using Microsoft.UI.Xaml.Documents;
+using Windows.System;
 
 namespace WinUIGallery.ControlPages;
 
@@ -28,8 +30,45 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
     public CaptureElementPreviewPage()
     {
         this.InitializeComponent();
+        this.Loaded += CaptureElementPreviewPage_Loaded;
+        this.Unloaded += this.CaptureElementPreviewPage_Unloaded;
+    }
 
-        StartCaptureElement();
+    private async void CaptureElementPreviewPage_Loaded(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            await StartCaptureElement();
+        }
+        catch (UnauthorizedAccessException)
+        {
+            var dialog = new ContentDialog()
+            {
+                Title = "Camera access denied",
+                Content = "Please enable camera access in the privacy settings.",
+                PrimaryButtonText = "Privacy Settings",
+                CloseButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = this.XamlRoot,
+            };
+
+            if (await dialog.ShowAsync() is ContentDialogResult.Primary)
+            {
+                await Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-webcam"));
+            }
+        }
+        catch (Exception ex)
+        {
+            var dialog = new ContentDialog()
+            {
+                Title = "Error",
+                Content = ex.Message,
+                CloseButtonText = "OK",
+                XamlRoot = this.XamlRoot,
+            };
+
+            await dialog.ShowAsync();
+        }
 
         // Move the ScrollViewer from the captureContainer under an ExpandToFillContainer.
         // This will allow the snapshots column to use all available height without
@@ -39,8 +78,6 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         captureContainer.Children.Remove(sv);
         captureContainer.Children.Add(expandToFillContainer);
         expandToFillContainer.Children.Add(sv);
-
-        this.Unloaded += this.CaptureElementPreviewPage_Unloaded;
     }
 
     private void CaptureElementPreviewPage_Unloaded(object sender, RoutedEventArgs e)
@@ -55,7 +92,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
     private MediaFrameSourceGroup mediaFrameSourceGroup;
     private MediaCapture mediaCapture;
 
-    async private void StartCaptureElement()
+    private async Task StartCaptureElement()
     {
         var groups = await MediaFrameSourceGroup.FindAllAsync();
         if (groups.Count == 0)

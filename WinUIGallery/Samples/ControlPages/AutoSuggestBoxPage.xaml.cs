@@ -225,7 +225,7 @@ public sealed partial class AutoSuggestBoxPage : Page
             ControlDetails.Visibility = Visibility.Visible;
 
 
-            BitmapImage image = control.IconGlyph == null? null : new BitmapImage(new Uri(control.IconGlyph));
+            BitmapImage image = control.ImagePath == null? null : new BitmapImage(new Uri(control.ImagePath));
             ControlImage.Source = image;
 
             ControlTitle.Text = control.Title;
