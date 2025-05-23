@@ -24,7 +24,6 @@ namespace WinUIGallery.Pages;
 public sealed partial class HomePage : ItemsPageBase
 {
     IReadOnlyList<ControlInfoDataItem> RecentlyVisitedSamplesList;
-    IReadOnlyList<ControlInfoDataItem> RecentlyAddedSamplesList;
     IReadOnlyList<ControlInfoDataItem> RecentlyUpdatedSamplesList;
     IReadOnlyList<ControlInfoDataItem> FavoriteSamplesList;
 
@@ -47,8 +46,7 @@ public sealed partial class HomePage : ItemsPageBase
             .ToList();
 
         RecentlyVisitedSamplesList = GetValidItems(SettingsKeys.RecentlyVisited);
-        RecentlyAddedSamplesList = Items.Where(i => i.IsNew).ToList();
-        RecentlyUpdatedSamplesList = Items.Where(i => i.IsUpdated && !i.IsNew).ToList();
+        RecentlyUpdatedSamplesList = Items.Where(i => i.IsNew || i.IsUpdated).ToList();
         FavoriteSamplesList = GetValidItems(SettingsKeys.Favorites);
 
         if (RecentlyVisitedSamplesList.Count > 0)

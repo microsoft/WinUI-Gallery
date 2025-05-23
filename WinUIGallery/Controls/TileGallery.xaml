@@ -128,9 +128,9 @@
         <ScrollViewer
             x:Name="scroller"
             HorizontalScrollBarVisibility="Hidden"
-            VerticalScrollBarVisibility="Hidden"
             HorizontalScrollMode="Enabled"
             SizeChanged="scroller_SizeChanged"
+            VerticalScrollBarVisibility="Hidden"
             VerticalScrollMode="Disabled"
             ViewChanging="scroller_ViewChanging">
             <Grid x:Name="ContentGrid" Margin="36,0,36,0">
@@ -163,7 +163,7 @@
                     </local:HeaderTile>
                     <local:HeaderTile
                         Title="Community Toolkit"
-                        Description="An open-source collection of helper functions, controls, and app services."
+                        Description="A collection of helper functions, controls, and app services."
                         Link="https://apps.microsoft.com/store/detail/windows-community-toolkit-sample-app/9NBLGGH4TLCQ">
                         <local:HeaderTile.Source>
                             <Image Source="/Assets/HomeHeaderTiles/Header-Toolkit.png" />
@@ -176,7 +176,7 @@
                         <local:HeaderTile.Source>
                             <FontIcon
                                 Margin="0,8,0,0"
-                                FontSize="44"
+                                FontSize="24"
                                 Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                                 Glyph="&#xE943;" />
                         </local:HeaderTile.Source>

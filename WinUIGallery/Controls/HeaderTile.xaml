@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:WinUIGallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Width="220"
-    Height="216"
+    Width="232"
+    Height="172"
     mc:Ignorable="d">
 
     <Grid
@@ -51,7 +51,7 @@
                 VerticalAlignment="Stretch"
                 RowSpacing="16">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="56" />
+                    <RowDefinition Height="36" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <FontIcon
@@ -59,23 +59,21 @@
                     Margin="-12"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    FontSize="16"
-                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                    FontSize="14"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                     Glyph="&#xE8A7;" />
                 <ContentPresenter
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Content="{x:Bind Source, Mode=OneWay}" />
-
                 <StackPanel
                     Grid.Row="1"
                     Orientation="Vertical"
                     Spacing="4">
                     <TextBlock
                         x:Name="TitleText"
-                        FontSize="18"
                         Foreground="{ThemeResource TextFillColorPrimaryBrush}"
-                        Style="{StaticResource BodyTextBlockStyle}"
+                        Style="{StaticResource BodyStrongTextBlockStyle}"
                         Text="{x:Bind Title, Mode=OneWay}" />
                     <TextBlock
                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
