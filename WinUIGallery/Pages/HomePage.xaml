@@ -80,7 +80,7 @@
                     Grid.Row="1"
                     Spacing="12">
                     <TextBlock
-                        x:Name="RecentlyVisitedTiltle"
+                        x:Name="RecentlyVisitedTitle"
                         FontSize="16"
                         Style="{StaticResource BodyStrongTextBlockStyle}"
                         Text="Recently visited" />
