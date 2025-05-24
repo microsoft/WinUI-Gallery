@@ -7,6 +7,9 @@ using WinUIGallery.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Uri = System.Uri;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.Windows.AppNotifications.Builder;
+using Microsoft.Windows.AppNotifications;
 
 namespace WinUIGallery.Controls;
 
@@ -31,6 +34,8 @@ public sealed partial class PageHeader : UserControl
     }
 
     private ControlInfoDataItem _item;
+
+    private const int _maxRecentlyVisitedPages = 7;
 
     public PageHeader()
     {
@@ -97,6 +102,44 @@ public sealed partial class PageHeader : UserControl
         if (Item == null || (string.IsNullOrEmpty(Item.ApiNamespace) && Item.BaseClasses == null))
         {
             APIDetailsBtn.Visibility = Visibility.Collapsed;
+        }
+        if (Item != null)
+        {
+            FavoriteButton.IsChecked = StringListSettingsHelper.Contains(SettingsKeys.Favorites, Item.UniqueId);
+            StringListSettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, Item.UniqueId, InsertPosition.First, _maxRecentlyVisitedPages);
+        }
+    }
+
+    private string GetFavoriteGlyph(bool? isFavorite)
+    {
+        return (bool)isFavorite ? "\uE735" : "\uE734";
+    }
+
+    private string GetFavoriteToolTip(bool? isFavorite)
+    {
+        return (bool)isFavorite ? "Remove from favorites" : "Add to favorites";
+    }
+
+    private void FavoriteButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is ToggleButton toggleButton && Item != null)
+        {
+            if (toggleButton.IsChecked == true)
+            {
+                if (!StringListSettingsHelper.TryAddItem(SettingsKeys.Favorites, Item.UniqueId))
+                {
+                    AppNotificationManager.Default.Show(new AppNotificationBuilder()
+                        .AddText("Favorites limit reached")
+                        .AddText("You cannot add more favorites. Please remove some first.")
+                        .BuildNotification());
+
+                    toggleButton.IsChecked = false; // revert toggle state since add failed
+                }
+            }
+            else
+            {
+                StringListSettingsHelper.TryRemoveItem(SettingsKeys.Favorites, Item.UniqueId);
+            }
         }
     }
 }
