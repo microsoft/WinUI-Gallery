@@ -42,27 +42,27 @@ public static class StringListSettingsHelper
     /// <param name="key">Settings key</param>
     /// <param name="item">Item to add</param>
     /// <returns>True if item added and saved; false if save rejected due to size or input.</returns>
-    public static bool AddItem(string key, string item)
+    public static bool TryAddItem(string key, string item)
     {
-        return AddItem(key, item, InsertPosition.Last, 0);
+        return TryAddItem(key, item, InsertPosition.Last, 0);
     }
 
     /// <summary>
     /// Adds an item to the list at the specified position, ignoring duplicates.
     /// Returns true if save succeeded; false otherwise.
     /// </summary>
-    public static bool AddItem(string key, string item, InsertPosition position)
+    public static bool TryAddItem(string key, string item, InsertPosition position)
     {
-        return AddItem(key, item, position, 0);
+        return TryAddItem(key, item, position, 0);
     }
 
     /// <summary>
     /// Adds an item to the list with a maximum size limit. Trims older items if limit exceeded.
     /// Returns true if save succeeded; false otherwise.
     /// </summary>
-    public static bool AddItem(string key, string item, int maxSize)
+    public static bool TryAddItem(string key, string item, int maxSize)
     {
-        return AddItem(key, item, InsertPosition.Last, maxSize);
+        return TryAddItem(key, item, InsertPosition.Last, maxSize);
     }
 
     /// <summary>
@@ -75,7 +75,7 @@ public static class StringListSettingsHelper
     /// <param name="position">Insert at First or Last</param>
     /// <param name="maxSize">Max number of items; zero or negative disables trimming.</param>
     /// <returns>True if item added and saved successfully; false otherwise.</returns>
-    public static bool AddItem(string key, string item, InsertPosition position, int maxSize)
+    public static bool TryAddItem(string key, string item, InsertPosition position, int maxSize)
     {
         if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(item))
             return false;
@@ -101,7 +101,7 @@ public static class StringListSettingsHelper
                 list.RemoveRange(0, excess); // Remove from start
         }
 
-        return SaveList(key, list);
+        return TrySaveList(key, list);
     }
 
     /// <summary>
@@ -111,12 +111,12 @@ public static class StringListSettingsHelper
     /// <param name="key">Settings key</param>
     /// <param name="item">Item to remove</param>
     /// <returns>True if removed and saved; false if not found or save failed.</returns>
-    public static bool RemoveItem(string key, string item)
+    public static bool TryRemoveItem(string key, string item)
     {
         var list = GetList(key);
         if (list.Remove(item))
         {
-            return SaveList(key, list);
+            return TrySaveList(key, list);
         }
         return false;
     }
@@ -162,7 +162,7 @@ public static class StringListSettingsHelper
     /// <param name="key">Settings key</param>
     /// <param name="items">List of strings to save</param>
     /// <returns>True if save successful; false if size limit exceeded.</returns>
-    private static bool SaveList(string key, List<string> items)
+    private static bool TrySaveList(string key, List<string> items)
     {
         string joined = string.Join(Delimiter, items);
         int byteSize = System.Text.Encoding.Unicode.GetByteCount(joined);

@@ -106,7 +106,7 @@ public sealed partial class PageHeader : UserControl
         if (Item != null)
         {
             FavoriteButton.IsChecked = StringListSettingsHelper.Contains(SettingsKeys.Favorites, Item.UniqueId);
-            StringListSettingsHelper.AddItem(SettingsKeys.RecentlyVisited, Item.UniqueId, InsertPosition.First, _maxRecentlyVisitedPages);
+            StringListSettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, Item.UniqueId, InsertPosition.First, _maxRecentlyVisitedPages);
         }
     }
 
@@ -126,7 +126,7 @@ public sealed partial class PageHeader : UserControl
         {
             if (toggleButton.IsChecked == true)
             {
-                if (!StringListSettingsHelper.AddItem(SettingsKeys.Favorites, Item.UniqueId))
+                if (!StringListSettingsHelper.TryAddItem(SettingsKeys.Favorites, Item.UniqueId))
                 {
                     AppNotificationManager.Default.Show(new AppNotificationBuilder()
                         .AddText("Favorites limit reached")
@@ -138,7 +138,7 @@ public sealed partial class PageHeader : UserControl
             }
             else
             {
-                StringListSettingsHelper.RemoveItem(SettingsKeys.Favorites, Item.UniqueId);
+                StringListSettingsHelper.TryRemoveItem(SettingsKeys.Favorites, Item.UniqueId);
             }
         }
     }

@@ -91,7 +91,7 @@ public sealed partial class HomePage : ItemsPageBase
             }
             else
             {
-               StringListSettingsHelper.RemoveItem(settingsKey, id);
+               StringListSettingsHelper.TryRemoveItem(settingsKey, id);
             }
         }
 
