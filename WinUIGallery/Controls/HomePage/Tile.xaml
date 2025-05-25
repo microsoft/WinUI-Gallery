@@ -1,5 +1,5 @@
 <UserControl
-    x:Class="WinUIGallery.Controls.HeaderTile"
+    x:Class="WinUIGallery.Controls.Tile"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -45,7 +45,7 @@
             VerticalContentAlignment="Stretch"
             AutomationProperties.LabeledBy="{Binding ElementName=TitleText}"
             CornerRadius="{StaticResource OverlayCornerRadius}"
-            NavigateUri="{x:Bind Link, Mode=OneWay}">
+            NavigateUri="{x:Bind Link}">
             <Grid
                 Padding="24"
                 VerticalAlignment="Stretch"
@@ -65,7 +65,7 @@
                 <ContentPresenter
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Content="{x:Bind Source, Mode=OneWay}" />
+                    Content="{x:Bind Source}" />
                 <StackPanel
                     Grid.Row="1"
                     Orientation="Vertical"
@@ -74,11 +74,11 @@
                         x:Name="TitleText"
                         Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                         Style="{StaticResource BodyStrongTextBlockStyle}"
-                        Text="{x:Bind Title, Mode=OneWay}" />
+                        Text="{x:Bind Title}" />
                     <TextBlock
                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="{x:Bind Description, Mode=OneWay}" />
+                        Text="{x:Bind Description}" />
                 </StackPanel>
             </Grid>
         </HyperlinkButton>

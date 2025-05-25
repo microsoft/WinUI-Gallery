@@ -17,7 +17,7 @@ public sealed partial class HorizontalScrollContainer : UserControl
     }
 
     public static readonly DependencyProperty SourceProperty =
-        DependencyProperty.Register("Source", typeof(object), typeof(TileGallery), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(Source), typeof(object), typeof(HorizontalScrollContainer), new PropertyMetadata(null));
 
     private void Scroller_ViewChanging(object sender, ScrollViewerViewChangingEventArgs e)
     {

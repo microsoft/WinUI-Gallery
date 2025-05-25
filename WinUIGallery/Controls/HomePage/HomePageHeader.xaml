@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<UserControl
+    x:Class="WinUIGallery.Controls.Header"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <ImageSource x:Key="StoreIcon">/Assets/HomeHeaderTiles/Header-Store.light.png</ImageSource>
+                    <LinearGradientBrush x:Name="BackgroundGradient" StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="0.0" Color="#CED8E4" />
+                        <GradientStop Offset="1.0" Color="#D5DBE3" />
+                    </LinearGradientBrush>
+                    <x:Double x:Key="ImageOpacity">0.9</x:Double>
+                    <LinearGradientBrush x:Key="OverlayRadialGradient" StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="0" Color="#FFFFFFFF" />
+                        <GradientStop Offset="0.75" Color="#FFFFFFFF" />
+                        <GradientStop Offset="0.85" Color="#00FFFFFF" />
+                        <GradientStop Offset="1" Color="#00FFFFFF" />
+                    </LinearGradientBrush>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <ImageSource x:Key="StoreIcon">/Assets/HomeHeaderTiles/Header-Store.dark.png</ImageSource>
+                    <SolidColorBrush x:Key="BackgroundGradient" Color="#020B20" />
+                    <x:Double x:Key="ImageOpacity">0.8</x:Double>
+                    <LinearGradientBrush x:Key="OverlayRadialGradient" StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="0" Color="#FF000000" />
+                        <GradientStop Offset="0.75" Color="#FF000000" />
+                        <GradientStop Offset="0.85" Color="#00000000" />
+                        <GradientStop Offset="1" Color="#00000000" />
+                    </LinearGradientBrush>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="HighContrast">
+                    <ImageSource x:Key="StoreIcon">/Assets/HomeHeaderTiles/Header-Store.dark.png</ImageSource>
+                    <SolidColorBrush x:Key="BackgroundGradient" Color="Black" />
+                    <x:Double x:Key="ImageOpacity">0.8</x:Double>
+                    <LinearGradientBrush x:Key="OverlayRadialGradient" StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="0" Color="#FF000000" />
+                        <GradientStop Offset="0.55" Color="#FF000000" />
+                        <GradientStop Offset="0.95" Color="#00000000" />
+                    </LinearGradientBrush>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="HeaderGrid" Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <local:OpacityMaskView
+                Grid.RowSpan="3"
+                Height="320"
+                VerticalAlignment="Stretch">
+                <local:OpacityMaskView.OpacityMask>
+                    <Rectangle Fill="{ThemeResource OverlayRadialGradient}" />
+                </local:OpacityMaskView.OpacityMask>
+                <Grid
+                    x:Name="ImageGrid"
+                    Margin="0,-100,0,0"
+                    Background="{ThemeResource BackgroundGradient}">
+                    <Image
+                        x:Name="HeroImage"
+                        Opacity="{ThemeResource ImageOpacity}"
+                        Source="/Assets/GalleryHeaderImage.png"
+                        Stretch="UniformToFill" />
+                </Grid>
+
+            </local:OpacityMaskView>
+            <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
+            <StackPanel
+                Margin="36,36,0,0"
+                VerticalAlignment="Center"
+                Orientation="Vertical">
+                <TextBlock x:Name="smallHeaderSubtitleText" Text="{x:Bind WinAppSdkDetails}" />
+                <TextBlock
+                    x:Name="smallHeaderText"
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Text="{StaticResource AppTitleName}" />
+            </StackPanel>
+
+            <local:HorizontalScrollContainer Grid.Row="2" Margin="0,-12,0,0">
+                <local:HorizontalScrollContainer.Source>
+                    <StackPanel Orientation="Horizontal" Spacing="12">
+                        <local:Tile
+                            Title="Getting started"
+                            Description="Get started with WinUI and explore detailed documentation."
+                            Link="https://learn.microsoft.com/windows/apps/get-started/">
+                            <local:Tile.Source>
+                                <Image Source="/Assets/HomeHeaderTiles/Header-WinUI.png" />
+                            </local:Tile.Source>
+                        </local:Tile>
+                        <local:Tile
+                            Title="Design"
+                            Description="Guidelines and toolkits for creating stunning WinUI experiences."
+                            Link="https://learn.microsoft.com/windows/apps/design/">
+                            <local:Tile.Source>
+                                <Image Source="/Assets/HomeHeaderTiles/Header-WindowsDesign.png" />
+                            </local:Tile.Source>
+                        </local:Tile>
+                        <local:Tile
+                            Title="WinUI on GitHub"
+                            Description="Explore the WinUI source code and repository."
+                            Link="https://github.com/microsoft/microsoft-ui-xaml">
+                            <local:Tile.Source>
+                                <Viewbox>
+                                    <PathIcon Data="{StaticResource GitHubIconPath}" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                                </Viewbox>
+                            </local:Tile.Source>
+                        </local:Tile>
+                        <local:Tile
+                            Title="Community Toolkit"
+                            Description="A collection of helper functions, controls, and app services."
+                            Link="https://apps.microsoft.com/store/detail/windows-community-toolkit-sample-app/9NBLGGH4TLCQ">
+                            <local:Tile.Source>
+                                <Image Source="/Assets/HomeHeaderTiles/Header-Toolkit.png" />
+                            </local:Tile.Source>
+                        </local:Tile>
+                        <local:Tile
+                            Title="Code samples"
+                            Description="Find samples that demonstrate specific tasks, features, and APIs."
+                            Link="https://learn.microsoft.com/windows/apps/get-started/samples">
+                            <local:Tile.Source>
+                                <FontIcon
+                                    Margin="0,8,0,0"
+                                    FontSize="24"
+                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                    Glyph="&#xE943;" />
+                            </local:Tile.Source>
+                        </local:Tile>
+                        <local:Tile
+                            Title="Partner Center"
+                            Description="Upload your app to the Store."
+                            Link="https://developer.microsoft.com/windows/">
+                            <local:Tile.Source>
+                                <Image Source="{ThemeResource StoreIcon}" />
+                            </local:Tile.Source>
+                        </local:Tile>
+                    </StackPanel>
+                </local:HorizontalScrollContainer.Source>
+            </local:HorizontalScrollContainer>
+        </Grid>
+    </Grid>
+</UserControl>

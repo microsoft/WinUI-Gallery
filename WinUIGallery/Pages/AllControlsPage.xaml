@@ -26,10 +26,10 @@
         </Grid.RowDefinitions>
 
         <Grid x:Name="HeaderGrid" CornerRadius="8,0,0,0">
-            <controls:HomePageHeaderImage
+            <!--<controls:HomePageHeaderImage
                 Grid.RowSpan="2"
                 Height="200"
-                VerticalAlignment="Top" />
+                VerticalAlignment="Top" />-->
 
             <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
             <TextBlock
