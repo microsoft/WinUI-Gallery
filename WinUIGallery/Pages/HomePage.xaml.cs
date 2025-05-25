@@ -46,12 +46,12 @@ public sealed partial class HomePage : ItemsPageBase
 
         if (RecentlyVisitedSamplesList.Count > 0)
         {
-            RecentlyVisitedTiltle.Visibility = Visibility.Visible;
+            RecentlyVisitedTitle.Visibility = Visibility.Visible;
             RecentlyVisitedContainer.Visibility = Visibility.Visible;
         }
         else
         {
-            RecentlyVisitedTiltle.Visibility = Visibility.Collapsed;
+            RecentlyVisitedTitle.Visibility = Visibility.Collapsed;
             RecentlyVisitedContainer.Visibility = Visibility.Collapsed;
         }
 
@@ -86,7 +86,7 @@ public sealed partial class HomePage : ItemsPageBase
             }
             else
             {
-               StringListSettingsHelper.RemoveItem(settingsKey, id);
+               StringListSettingsHelper.TryRemoveItem(settingsKey, id);
             }
         }
 
