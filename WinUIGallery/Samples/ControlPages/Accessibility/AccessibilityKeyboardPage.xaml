@@ -48,11 +48,10 @@
 
         <RichTextBlock>
             <Paragraph>
-                To use the keyboard with a control, the control must have focus. The most common way to receive focus is via<Bold>Tab navigation</Bold>
-                , which cycles through controls that are<Bold>tab stops</Bold>
-                .
-                The order of these tab stops is called the<Bold>tab order</Bold>
-                .<LineBreak />
+                To use the keyboard with a control, the control must have focus. The most common way to receive focus is via <Bold>Tab navigation</Bold>,
+                which cycles through controls that are <Bold>tab stops</Bold>.
+                The order of these tab stops is called the <Bold>tab order</Bold>.
+                <LineBreak />
             </Paragraph>
             <Paragraph>
                 All interactive controls, like buttons, should be tab stops (unless they are in a group that's accessible in some other way), but non-interactive controls, like labels, should not.
@@ -218,8 +217,8 @@
 
         <RichTextBlock>
             <Paragraph>
-                Users expect groups of similar, related controls to be navigable via<Bold>Arrow keys</Bold>
-                , too. This can be instead of<Italic>or</Italic>
+                Users expect groups of similar, related controls to be navigable via <Bold>Arrow keys</Bold>
+                , too. This can be instead of <Italic>or</Italic>
                 in addition to tab navigation, depending on the situation.<LineBreak />
             </Paragraph>
             <Paragraph>
@@ -393,9 +392,8 @@
                 adding a few keyboard shortcuts for common actions can make your app much easier to use.<LineBreak />
             </Paragraph>
             <Paragraph>
-                WinUI 3 offers 2 types of keyboard shortcuts:<Bold>Accelerators</Bold>
-                and<Bold>Access keys</Bold>
-                .
+                WinUI 3 offers 2 types of keyboard shortcuts: <Bold>Accelerators</Bold>
+                and <Bold>Access keys</Bold>.
                 Accelerators invoke specific app commands, while access keys set focus to specific parts of your UI.</Paragraph>
         </RichTextBlock>
 
@@ -565,7 +563,7 @@ private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
                 Access keys are keyboard shortcuts, starting with Alt, that move system focus around your UI.<LineBreak />
             </Paragraph>
             <Paragraph>
-                When users press the Alt key, WinUI shows<Bold>Key Tips</Bold>
+                When users press the Alt key, WinUI shows <Bold>Key Tips</Bold>
                 next to each control with an access key,
                 so users can discover them. WinUI also populates AccessKey UIA property, so screen reader users can learn
                 access keys, too.<LineBreak />

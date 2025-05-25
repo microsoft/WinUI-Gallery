@@ -53,7 +53,7 @@
 
         <RichTextBlock>
             <Paragraph>
-                An<Bold>accessible name</Bold>
+                An <Bold>accessible name</Bold>
                 is a short, descriptive text string that a screen reader uses to describe a UI element.<LineBreak />
             </Paragraph>
             <Paragraph>
@@ -125,10 +125,9 @@
 
                     <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
                         <Paragraph>
-                            Screen readers will read this these TextBoxes as<Bold>Name</Bold>
-                            ,<Bold>Nickname</Bold>
-                            , and<Bold>Email</Bold>
-                            . The names are automatically derived from their headers or placeholders.<LineBreak />
+                            Screen readers will read this these TextBoxes as <Bold>Name</Bold>,
+                            <Bold>Nickname</Bold> and <Bold>Email</Bold>.
+                            The names are automatically derived from their headers or placeholders.<LineBreak />
                         </Paragraph>
                         <Paragraph>
                             When both Header and PlaceholderText are present, Header is used as name and PlaceholderText is used as description.
@@ -177,8 +176,8 @@
                     </ListView>
                     <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
                         <Paragraph>
-                            Screen readers will read this ListView as<Bold>Contacts</Bold>
-                            , while each item will be read using its respective text content.</Paragraph>
+                            Screen readers will read this ListView as <Bold>Contacts</Bold>,
+                            while each item will be read using its respective text content.</Paragraph>
                     </RichTextBlock>
                 </StackPanel>
             </controls:ControlExample.Example>
@@ -210,8 +209,8 @@ AutomationProperties.Name="Contacts"&gt;
 
                     <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
                         <Paragraph>
-                            The image above will be read out as<Bold>Grapes</Bold>
-                            . To navigate in Narrator through elements that aren't focusable, use Caps + Left/Right arrow.</Paragraph>
+                            The image above will be read out as <Bold>Grapes</Bold>.
+                            To navigate in Narrator through elements that aren't focusable, use Caps + Left/Right arrow.</Paragraph>
                     </RichTextBlock>
                 </StackPanel>
             </controls:ControlExample.Example>
@@ -233,7 +232,7 @@ AutomationProperties.Name="Contacts"&gt;
 
         <RichTextBlock>
             <Paragraph>
-                Controls with accessible names can be used as labels for other controls. They should be removed from the UIA tree (see<Bold>Visual tree</Bold>
+                Controls with accessible names can be used as labels for other controls. They should be removed from the UIA tree (see <Bold>Visual tree</Bold>
                 below), to avoid being redundant.</Paragraph>
         </RichTextBlock>
 
@@ -251,8 +250,8 @@ AutomationProperties.Name="Contacts"&gt;
                         AutomationProperties.LabeledBy="{x:Bind InputLabel}" />
                     <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
                         <Paragraph>
-                            The TextBox above is labeled by the TextBlock and will be read as<Bold>Searching Photos:</Bold>
-                            .</Paragraph>
+                            The TextBox above is labeled by the TextBlock and will be read as <Bold>Searching Photos</Bold>.
+                        </Paragraph>
                     </RichTextBlock>
                 </StackPanel>
             </controls:ControlExample.Example>
@@ -715,8 +714,8 @@ AutomationProperties.Name="Contacts"&gt;
                 You can also group controls together manually, even if the
                 controls don't have a visible heading or landmark, by adding
                 an accessible name to the parent container. When entering a
-                region with a name or a landmark, Narrator will read it out as<Bold>Context</Bold>
-                . Narrator users can control their<Bold>Context level</Bold>
+                region with a name or a landmark, Narrator will read it out as <Bold>Context</Bold>.
+                Narrator users can control their <Bold>Context level</Bold>
                 in Settings.<LineBreak />
             </Paragraph>
             <Paragraph>
