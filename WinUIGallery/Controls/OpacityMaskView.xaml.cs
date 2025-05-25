@@ -99,7 +99,7 @@ public partial class OpacityMaskView : ContentControl
             return;
         }
 
-        UIElement opacityMask = (UIElement)e.NewValue;
+        UIElement? opacityMask = (UIElement?)e.NewValue;
         maskBrush.Mask = opacityMask is null ? null : self._mask;
     }
 }

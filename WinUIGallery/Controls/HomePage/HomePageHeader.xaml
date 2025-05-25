@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <UserControl
-    x:Class="WinUIGallery.Controls.Header"
+    x:Class="WinUIGallery.Controls.HomePageHeader"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -63,7 +63,7 @@
 
             <local:OpacityMaskView
                 Grid.RowSpan="3"
-                Height="320"
+                Height="400"
                 VerticalAlignment="Stretch">
                 <local:OpacityMaskView.OpacityMask>
                     <Rectangle Fill="{ThemeResource OverlayRadialGradient}" />
@@ -82,17 +82,20 @@
             </local:OpacityMaskView>
             <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
             <StackPanel
-                Margin="36,36,0,0"
+                Margin="36,48,0,0"
                 VerticalAlignment="Center"
                 Orientation="Vertical">
-                <TextBlock x:Name="smallHeaderSubtitleText" Text="{x:Bind WinAppSdkDetails}" />
+                <TextBlock
+                    x:Name="smallHeaderSubtitleText"
+                    FontSize="18"
+                    Text="{x:Bind WinAppSdkDetails}" />
                 <TextBlock
                     x:Name="smallHeaderText"
-                    Style="{StaticResource TitleTextBlockStyle}"
+                    Style="{StaticResource TitleLargeTextBlockStyle}"
                     Text="{StaticResource AppTitleName}" />
             </StackPanel>
 
-            <local:HorizontalScrollContainer Grid.Row="2" Margin="0,-12,0,0">
+            <local:HorizontalScrollContainer Grid.Row="2" Margin="0,56,0,0">
                 <local:HorizontalScrollContainer.Source>
                     <StackPanel Orientation="Horizontal" Spacing="12">
                         <local:Tile
