@@ -44,27 +44,8 @@ public sealed partial class HomePage : ItemsPageBase
         RecentlyUpdatedSamplesList = Items.Where(i => i.IsNew || i.IsUpdated).ToList();
         FavoriteSamplesList = GetValidItems(SettingsKeys.Favorites);
 
-        if (RecentlyVisitedSamplesList.Count > 0)
-        {
-            RecentlyVisitedTitle.Visibility = Visibility.Visible;
-            RecentlyVisitedContainer.Visibility = Visibility.Visible;
-        }
-        else
-        {
-            RecentlyVisitedTitle.Visibility = Visibility.Collapsed;
-            RecentlyVisitedContainer.Visibility = Visibility.Collapsed;
-        }
-
-        if (FavoriteSamplesList.Count > 0)
-        {
-            FavoriteSamplesFallbackMessage.Visibility = Visibility.Collapsed;
-            FavoriteSamples.Visibility = Visibility.Visible;
-        }
-        else
-        {
-            FavoriteSamplesFallbackMessage.Visibility = Visibility.Visible;
-            FavoriteSamples.Visibility = Visibility.Collapsed;
-        }
+        VisualStateManager.GoToState(this, RecentlyVisitedSamplesList.Count > 0 ? "Recent" : "NoRecent", true);
+        VisualStateManager.GoToState(this, FavoriteSamplesList.Count > 0 ? "Favorites" : "NoFavorites", true);
     }
 
     public List<ControlInfoDataItem> GetValidItems(string settingsKey)

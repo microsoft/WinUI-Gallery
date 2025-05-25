@@ -123,7 +123,10 @@
                                     <UniformGridLayout MinColumnSpacing="12" MinRowSpacing="12" />
                                 </ItemsRepeater.Layout>
                             </ItemsRepeater>
-                            <StackPanel x:Name="FavoriteSamplesFallbackMessage" Margin="24,36">
+                            <StackPanel
+                                x:Name="FavoriteSamplesFallbackMessage"
+                                Margin="24,36"
+                                Visibility="Collapsed">
                                 <Image Height="36" Source="/Assets/ControlImages/RatingControl.png" />
                                 <TextBlock
                                     Margin="0,8,0,8"
@@ -142,5 +145,25 @@
                 </toolkit:SwitchPresenter>
             </Grid>
         </ScrollViewer>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="FavoritesVisibilityStates">
+                <VisualState x:Name="Favorites" />
+                <VisualState x:Name="NoFavorites">
+                    <VisualState.Setters>
+                        <Setter Target="FavoriteSamplesFallbackMessage.Visibility" Value="Visible" />
+                        <Setter Target="FavoriteSamples.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="RecentVisibilityStates">
+                <VisualState x:Name="Recent" />
+                <VisualState x:Name="NoRecent">
+                    <VisualState.Setters>
+                        <Setter Target="RecentlyVisitedTitle.Visibility" Value="Collapsed" />
+                        <Setter Target="RecentlyVisitedContainer.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </local:ItemsPageBase>
