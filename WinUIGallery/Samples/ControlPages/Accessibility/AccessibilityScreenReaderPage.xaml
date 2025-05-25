@@ -88,8 +88,8 @@
                     <Button Content="Download survey" />
                     <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
                         <Paragraph>
-                            Screen readers will read this this button as<Bold>Download survey</Bold>
-                            . The name is automatically derived from the Button's Content.</Paragraph>
+                            Screen readers will read this this button as <Bold>Download survey</Bold>.
+                            The name is automatically derived from the Button's Content.</Paragraph>
                     </RichTextBlock>
                 </StackPanel>
             </controls:ControlExample.Example>
