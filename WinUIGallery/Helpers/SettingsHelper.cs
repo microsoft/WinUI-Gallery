@@ -26,7 +26,7 @@ public enum InsertPosition
 /// Helper for storing and managing string-based lists (e.g., favorites, history)
 /// in LocalSettings of ApplicationData using a compact, delimiter-based format.
 /// </summary>
-public static class StringListSettingsHelper
+public static class SettingsHelper
 {
     // An instance of ApplicationData for the current user.
     private static ApplicationData appData = ApplicationData.GetDefault();

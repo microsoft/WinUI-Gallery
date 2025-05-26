@@ -39,9 +39,9 @@ public sealed partial class SettingsPage : Page
     {
         this.InitializeComponent();
         Loaded += OnSettingsPageLoaded;
-        ClearVisitedSamplesCard.IsEnabled = StringListSettingsHelper.GetList(SettingsKeys.RecentlyVisited).Count > 0;
-        UnfavoriteSamplesCard.IsEnabled = StringListSettingsHelper.GetList(SettingsKeys.Favorites).Count > 0;
-        SamplesSettingsExpander.IsExpanded = StringListSettingsHelper.GetList(SettingsKeys.RecentlyVisited).Count > 0 || StringListSettingsHelper.GetList(SettingsKeys.Favorites).Count > 0;
+        ClearVisitedSamplesCard.IsEnabled = SettingsHelper.GetList(SettingsKeys.RecentlyVisited).Count > 0;
+        UnfavoriteSamplesCard.IsEnabled = SettingsHelper.GetList(SettingsKeys.Favorites).Count > 0;
+        SamplesSettingsExpander.IsExpanded = SettingsHelper.GetList(SettingsKeys.RecentlyVisited).Count > 0 || SettingsHelper.GetList(SettingsKeys.Favorites).Count > 0;
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -174,16 +174,16 @@ public sealed partial class SettingsPage : Page
     private void ClearRecentlyVisitedSamples_Click(object sender, RoutedEventArgs e)
     {
         ClearRecentlyVisitedSamplesFlyout.Hide();
-        StringListSettingsHelper.ClearList(SettingsKeys.RecentlyVisited);
+        SettingsHelper.ClearList(SettingsKeys.RecentlyVisited);
         ClearVisitedSamplesCard.IsEnabled = false;
-        SamplesSettingsExpander.IsExpanded = StringListSettingsHelper.GetList(SettingsKeys.RecentlyVisited).Count > 0 || StringListSettingsHelper.GetList(SettingsKeys.Favorites).Count > 0;
+        SamplesSettingsExpander.IsExpanded = SettingsHelper.GetList(SettingsKeys.RecentlyVisited).Count > 0 || SettingsHelper.GetList(SettingsKeys.Favorites).Count > 0;
     }
 
     private void UnfavoriteAllSamples_Click(object sender, RoutedEventArgs e)
     {
         UnfavoriteAllSamplesFlyout.Hide();
-        StringListSettingsHelper.ClearList(SettingsKeys.Favorites);
+        SettingsHelper.ClearList(SettingsKeys.Favorites);
         UnfavoriteSamplesCard.IsEnabled = false;
-        SamplesSettingsExpander.IsExpanded = StringListSettingsHelper.GetList(SettingsKeys.RecentlyVisited).Count > 0 || StringListSettingsHelper.GetList(SettingsKeys.Favorites).Count > 0;
+        SamplesSettingsExpander.IsExpanded = SettingsHelper.GetList(SettingsKeys.RecentlyVisited).Count > 0 || SettingsHelper.GetList(SettingsKeys.Favorites).Count > 0;
     }
 }
