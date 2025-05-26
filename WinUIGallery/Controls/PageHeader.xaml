@@ -266,11 +266,12 @@
                         <FontIcon FontSize="16" Glyph="&#xED15;" />
                     </Button.Content>
                 </Button>
-                <AppBarSeparator Visibility="{x:Bind ThemeButtonVisibility, Mode=OneWay}" />
+                <AppBarSeparator />
                 <ToggleButton x:Name="FavoriteButton"
                               Height="32"
                               Margin="4,0,0,0"
-                              Click="FavoriteButton_Click">
+                              Click="FavoriteButton_Click"
+                              AutomationProperties.Name="Favorite sample">
                     <ToggleButton.Content>
                         <FontIcon FontSize="16"
                                   Glyph="{x:Bind GetFavoriteGlyph(FavoriteButton.IsChecked), Mode=OneWay}" />

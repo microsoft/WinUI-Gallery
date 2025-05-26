@@ -134,7 +134,7 @@ public sealed partial class PageHeader : UserControl
                         XamlRoot = this.XamlRoot,
                         RequestedTheme = this.ActualTheme,
                         Title = "Favorites limit reached",
-                        Content = "Adding more favorites is not possible at this time. Some must be removed first.",
+                        Content = "Adding more favorites is not possible at this time.\nSome must be removed first.",
                         CloseButtonText = "OK",
                         CloseButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style
                     };
