@@ -55,9 +55,9 @@ public static class StringListSettingsHelper
         // Prevent duplicates by removing if already exists
         list.Remove(item);
 
-        // Check if trimming is enabled and list size is at the limit
+        // Check if trimming is not enabled and list size is at the limit
         if (!trimEnabled && enforceSizeLimit && list.Count >= maxSize)
-            return false; // Do not add item if trimming is enabled and size limit is reached
+            return false; // Do not add item if trimming is not enabled and size limit is reached
 
         // Add item at the specified position
         if (position == InsertPosition.First)
