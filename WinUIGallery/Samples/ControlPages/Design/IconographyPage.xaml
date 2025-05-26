@@ -78,8 +78,9 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Margin="0,8,8,0"
-                        Width="8"
-                        Height="8"
+                        Width="6"
+                        Height="6"
+                        Opacity="0.4"
                         Visibility="{Binding SymbolName, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}"
                         ToolTipService.ToolTip="This icon is included in the Microsoft.UI.Xaml.Controls.Symbol enum" />
                 </Grid>
