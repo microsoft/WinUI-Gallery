@@ -28,6 +28,9 @@ public enum InsertPosition
 /// </summary>
 public static class SettingsHelper
 {
+    // The maximum number of items to keep in the Favorites list.
+    public const int MaxRecentlyVisitedSamples = 7;
+
     // An instance of ApplicationData for the current user.
     private static ApplicationData appData = ApplicationData.GetDefault();
 

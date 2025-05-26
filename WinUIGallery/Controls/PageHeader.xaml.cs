@@ -33,8 +33,6 @@ public sealed partial class PageHeader : UserControl
 
     private ControlInfoDataItem _item;
 
-    private const int _maxRecentlyVisitedPages = 7;
-
     public PageHeader()
     {
         this.InitializeComponent();
@@ -104,7 +102,7 @@ public sealed partial class PageHeader : UserControl
         if (Item != null)
         {
             FavoriteButton.IsChecked = SettingsHelper.Contains(SettingsKeys.Favorites, Item.UniqueId);
-            SettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, Item.UniqueId, InsertPosition.First, _maxRecentlyVisitedPages);
+            SettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, Item.UniqueId, InsertPosition.First, SettingsHelper.MaxRecentlyVisitedSamples);
         }
     }
 
