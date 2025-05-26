@@ -1,10 +1,11 @@
 // Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License.
 
-using System;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
+using System;
 using WinUIGallery.Controls;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -15,6 +16,7 @@ public sealed partial class ColorPage : Page
     public ColorPage()
     {
         this.InitializeComponent();
+        this.SuspendOuterScrolling();
     }
 
     private void PageSelector_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
