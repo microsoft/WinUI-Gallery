@@ -26,15 +26,11 @@
         </Grid.RowDefinitions>
 
         <Grid x:Name="HeaderGrid" CornerRadius="8,0,0,0">
-            <!--<controls:HomePageHeaderImage
-                Grid.RowSpan="2"
-                Height="200"
-                VerticalAlignment="Top" />-->
 
             <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
             <TextBlock
                 x:Name="smallHeaderText"
-                Margin="36,0,0,0"
+                Margin="36,24,0,0"
                 VerticalAlignment="Center"
                 Style="{StaticResource TitleTextBlockStyle}"
                 Text="{StaticResource ControlsName}" />
@@ -47,13 +43,13 @@
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
             IsItemClickEnabled="True"
-            ItemClick="OnItemGridViewItemClick"
             IsSwipeEnabled="False"
+            ItemClick="OnItemGridViewItemClick"
             ItemContainerStyle="{StaticResource IndentedGridViewItemStyle}"
             ItemTemplate="{StaticResource ControlItemTemplate}"
             ItemsSource="{x:Bind Items, Mode=OneWay}"
             Loaded="OnItemGridViewLoaded"
-            SelectionMode="None"/>
+            SelectionMode="None" />
         <VisualStateManager.VisualStateGroups>
             <!--  Visual states reflect the application's window size  -->
             <VisualStateGroup x:Name="LayoutVisualStates">
