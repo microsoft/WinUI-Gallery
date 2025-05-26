@@ -17,8 +17,10 @@
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:WinUIGallery.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    helpers:PageScrollBehaviorHelper.SuppressHostScrolling="True"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -157,7 +159,6 @@
 
         <controls:SampleThemeListener
             Grid.Row="3"
-            MaxHeight="600"
             VerticalAlignment="Top"
             IsTabStop="True">
             <Grid Style="{ThemeResource GalleryTileGridStyle}">
@@ -190,7 +191,7 @@
                     DataContext="{x:Bind}"
                     Visibility="Collapsed">
                     <ScrollViewer>
-                        <StackPanel Spacing="2" Margin="16,16,8,16">
+                        <StackPanel Margin="16,16,8,16" Spacing="2">
                             <Border
                                 Margin="0,0,0,24"
                                 Padding="8"
