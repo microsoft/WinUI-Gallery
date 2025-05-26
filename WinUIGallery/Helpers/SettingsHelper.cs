@@ -41,10 +41,9 @@ public static class SettingsHelper
     /// <param name="key">Settings key</param>
     /// <param name="item">Item to add</param>
     /// <param name="position">Insert at First or Last</param>
-    /// <param name="maxSize">Max number of items; zero or negative disables trimming.</param>
-    /// <param name="trimEnabled">If false, prevents adding an item when size exceeds maxSize. Default is true.</param>
+    /// <param name="maxSize">Max number of items; zero or negative disables trimming, default is zero</param>
     /// <returns>True if item added and saved successfully; false otherwise.</returns>
-    public static bool TryAddItem(string key, string item, InsertPosition position, int maxSize, bool trimEnabled = true)
+    public static bool TryAddItem(string key, string item, InsertPosition position, int maxSize = 0)
     {
         if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(item))
             return false;
@@ -54,10 +53,6 @@ public static class SettingsHelper
 
         // Prevent duplicates by removing if already exists
         list.Remove(item);
-
-        // Check if trimming is not enabled and list size is at the limit
-        if (!trimEnabled && enforceSizeLimit && list.Count >= maxSize)
-            return false; // Do not add item if trimming is not enabled and size limit is reached
 
         // Add item at the specified position
         if (position == InsertPosition.First)
