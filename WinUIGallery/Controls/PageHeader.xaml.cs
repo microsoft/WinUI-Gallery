@@ -103,8 +103,8 @@ public sealed partial class PageHeader : UserControl
         }
         if (Item != null)
         {
-            FavoriteButton.IsChecked = StringListSettingsHelper.Contains(SettingsKeys.Favorites, Item.UniqueId);
-            StringListSettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, Item.UniqueId, InsertPosition.First, _maxRecentlyVisitedPages);
+            FavoriteButton.IsChecked = SettingsHelper.Contains(SettingsKeys.Favorites, Item.UniqueId);
+            SettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, Item.UniqueId, InsertPosition.First, _maxRecentlyVisitedPages);
         }
     }
 
@@ -124,7 +124,7 @@ public sealed partial class PageHeader : UserControl
         {
             if (toggleButton.IsChecked == true)
             {
-                if (!StringListSettingsHelper.TryAddItem(SettingsKeys.Favorites, Item.UniqueId, InsertPosition.Last, maxSize:12, trimEnabled:false))
+                if (!SettingsHelper.TryAddItem(SettingsKeys.Favorites, Item.UniqueId, InsertPosition.Last, maxSize:12, trimEnabled:false))
                 {
                     // Revert toggle state since add failed
                     toggleButton.IsChecked = false;
@@ -143,7 +143,7 @@ public sealed partial class PageHeader : UserControl
             }
             else
             {
-                StringListSettingsHelper.TryRemoveItem(SettingsKeys.Favorites, Item.UniqueId);
+                SettingsHelper.TryRemoveItem(SettingsKeys.Favorites, Item.UniqueId);
             }
         }
     }

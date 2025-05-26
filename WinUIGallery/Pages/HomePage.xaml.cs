@@ -50,7 +50,7 @@ public sealed partial class HomePage : ItemsPageBase
 
     public List<ControlInfoDataItem> GetValidItems(string settingsKey)
     {
-        List<string> keyList = StringListSettingsHelper.GetList(settingsKey);
+        List<string> keyList = SettingsHelper.GetList(settingsKey);
 
         if (keyList == null || keyList.Count == 0)
             return new List<ControlInfoDataItem>();
@@ -67,7 +67,7 @@ public sealed partial class HomePage : ItemsPageBase
             }
             else
             {
-               StringListSettingsHelper.TryRemoveItem(settingsKey, id);
+               SettingsHelper.TryRemoveItem(settingsKey, id);
             }
         }
 
