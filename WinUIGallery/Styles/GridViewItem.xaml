@@ -8,6 +8,13 @@
     </Style>
 
     <Style
+        x:Key="NoWrapGridViewItemStyle"
+        BasedOn="{StaticResource DefaultGridViewItemStyle}"
+        TargetType="GridViewItem">
+        <Setter Property="Margin" Value="0,0,12,0" />
+    </Style>
+
+    <Style
         x:Key="IndentedGridViewItemStyle"
         BasedOn="{StaticResource DefaultGridViewItemStyle}"
         TargetType="GridViewItem">

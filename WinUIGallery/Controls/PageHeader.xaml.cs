@@ -8,8 +8,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Uri = System.Uri;
 using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.Windows.AppNotifications.Builder;
-using Microsoft.Windows.AppNotifications;
 
 namespace WinUIGallery.Controls;
 
@@ -120,20 +118,27 @@ public sealed partial class PageHeader : UserControl
         return (bool)isFavorite ? "Remove from favorites" : "Add to favorites";
     }
 
-    private void FavoriteButton_Click(object sender, RoutedEventArgs e)
+    private async void FavoriteButton_Click(object sender, RoutedEventArgs e)
     {
         if (sender is ToggleButton toggleButton && Item != null)
         {
             if (toggleButton.IsChecked == true)
             {
-                if (!StringListSettingsHelper.TryAddItem(SettingsKeys.Favorites, Item.UniqueId))
-                {
-                    AppNotificationManager.Default.Show(new AppNotificationBuilder()
-                        .AddText("Favorites limit reached")
-                        .AddText("You cannot add more favorites. Please remove some first.")
-                        .BuildNotification());
+                // Revert toggle state since add failed
+                toggleButton.IsChecked = false;
 
-                    toggleButton.IsChecked = false; // revert toggle state since add failed
+                if (!StringListSettingsHelper.TryAddItem(SettingsKeys.Favorites, Item.UniqueId, InsertPosition.Last, maxSize:12, trimEnabled:false))
+                {
+                    var contentDialog = new ContentDialog
+                    {
+                        XamlRoot = this.XamlRoot,
+                        RequestedTheme = this.ActualTheme,
+                        Title = "Favorites limit reached",
+                        Content = "Adding more favorites is not possible at this time. Some must be removed first.",
+                        CloseButtonText = "OK",
+                        CloseButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style
+                    };
+                    await contentDialog.ShowAsync();
                 }
             }
             else

@@ -102,7 +102,7 @@
                                             <StackPanel Spacing="8"
                                                         Width="240">
                                                 <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}"
-                                                           Text="Clear Recently Visited?" />
+                                                           Text="Clear recently visited?" />
                                                 <TextBlock Style="{ThemeResource BodyTextBlockStyle}"
                                                            Text="This will permanently remove all recently visited samples." />
                                                 <Button Click="ClearRecentlyVisitedSamples_Click"
@@ -128,7 +128,7 @@
                                             <StackPanel Spacing="8"
                                                         Width="240">
                                                 <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}"
-                                                           Text="Unfavorite All Samples?" />
+                                                           Text="Unfavorite all samples?" />
                                                 <TextBlock Style="{ThemeResource BodyTextBlockStyle}"
                                                            Text="This will remove all samples from your favorites." />
                                                 <Button Click="UnfavoriteAllSamples_Click"

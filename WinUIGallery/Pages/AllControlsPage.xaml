@@ -47,13 +47,13 @@
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
             IsItemClickEnabled="True"
-            IsSwipeEnabled="False"
             ItemClick="OnItemGridViewItemClick"
+            IsSwipeEnabled="False"
             ItemContainerStyle="{StaticResource IndentedGridViewItemStyle}"
             ItemTemplate="{StaticResource ControlItemTemplate}"
             ItemsSource="{x:Bind Items, Mode=OneWay}"
             Loaded="OnItemGridViewLoaded"
-            SelectionMode="None" />
+            SelectionMode="None"/>
         <VisualStateManager.VisualStateGroups>
             <!--  Visual states reflect the application's window size  -->
             <VisualStateGroup x:Name="LayoutVisualStates">

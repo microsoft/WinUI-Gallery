@@ -5,30 +5,27 @@
     xmlns:models="using:WinUIGallery.Models">
 
     <DataTemplate x:Key="ControlItemTemplate" x:DataType="models:ControlInfoDataItem">
-        <Button
-            Padding="0"
-            Click="ControlItemTemplate_Click"
-            CornerRadius="{StaticResource OverlayCornerRadius}"
-            Style="{StaticResource ClickableItem}"
-            Tag="{x:Bind}">
-            <Grid
-                x:Name="controlRoot"
-                Width="300"
-                Height="96"
-                Padding="8"
-                HorizontalAlignment="Stretch"
-                ColumnSpacing="16">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Image
+        <Grid x:Name="controlRoot"
+              Width="300"
+              Height="96"
+              Padding="8"
+              HorizontalAlignment="Stretch"
+              ColumnSpacing="16"
+              CornerRadius="{StaticResource OverlayCornerRadius}"
+              Background="{ThemeResource ControlFillColorDefaultBrush}"
+              BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+              BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image
                         x:Name="gridImage"
                         Grid.RowSpan="2"
                         Width="32"
@@ -37,7 +34,7 @@
                         AutomationProperties.Name="{x:Bind Title}"
                         Source="{x:Bind ImagePath}"
                         Stretch="Uniform" />
-                    <TextBlock
+                <TextBlock
                         x:Name="titleText"
                         Grid.Column="1"
                         Margin="0,12,0,0"
@@ -46,7 +43,7 @@
                         Text="{x:Bind Title}"
                         TextLineBounds="TrimToCapHeight"
                         TextWrapping="NoWrap" />
-                    <TextBlock
+                <TextBlock
                         Grid.Row="1"
                         Grid.Column="1"
                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
@@ -54,27 +51,26 @@
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="{x:Bind Subtitle}"
                         TextTrimming="CharacterEllipsis" />
-                </Grid>
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="LayoutVisualStates">
-                        <VisualState x:Name="WideLayout">
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters />
-                        </VisualState>
-                        <VisualState x:Name="NarrowLayout">
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="0" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="controlRoot.Width" Value="Auto" />
-                                <Setter Target="controlRoot.Height" Value="120" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
             </Grid>
-        </Button>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="LayoutVisualStates">
+                    <VisualState x:Name="WideLayout">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters />
+                    </VisualState>
+                    <VisualState x:Name="NarrowLayout">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="0" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="controlRoot.Width" Value="Auto" />
+                            <Setter Target="controlRoot.Height" Value="120" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
     </DataTemplate>
 </ResourceDictionary>

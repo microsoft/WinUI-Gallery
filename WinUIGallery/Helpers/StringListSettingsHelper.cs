@@ -36,41 +36,6 @@ public static class StringListSettingsHelper
     private const char Delimiter = '\u001f';
 
     /// <summary>
-    /// Adds an item to the list for the given key, ignoring duplicates, appended at the end.
-    /// </summary>
-    /// <param name="key">Settings key</param>
-    /// <param name="item">Item to add</param>
-    /// <returns>True if item added and saved; false if save rejected due to size or input.</returns>
-    public static bool TryAddItem(string key, string item)
-    {
-        return TryAddItem(key, item, InsertPosition.Last, 0);
-    }
-
-    /// <summary>
-    /// Adds an item to the list at the specified position, ignoring duplicates.
-    /// </summary>
-    /// <param name="key">Settings key</param>
-    /// <param name="item">Item to add</param>
-    /// <param name="position">Insert at First or Last</param>
-    /// <returns>True if item added and saved successfully; false otherwise.</returns>
-    public static bool TryAddItem(string key, string item, InsertPosition position)
-    {
-        return TryAddItem(key, item, position, 0);
-    }
-
-    /// <summary>
-    /// Adds an item to the list with a maximum size limit. Trims older items if limit exceeded.
-    /// </summary>
-    /// <param name="key">Settings key</param>
-    /// <param name="item">Item to add</param>
-    /// <param name="maxSize">Max number of items; zero or negative disables trimming.</param>
-    /// <returns>True if item added and saved successfully; false otherwise.</returns>
-    public static bool TryAddItem(string key, string item, int maxSize)
-    {
-        return TryAddItem(key, item, InsertPosition.Last, maxSize);
-    }
-
-    /// <summary>
     /// Adds an item to the list at the specified position, with optional max size limit.
     /// Duplicate values are moved to the new position if already present.
     /// </summary>
@@ -78,8 +43,9 @@ public static class StringListSettingsHelper
     /// <param name="item">Item to add</param>
     /// <param name="position">Insert at First or Last</param>
     /// <param name="maxSize">Max number of items; zero or negative disables trimming.</param>
+    /// <param name="trimEnabled">If true, prevents adding an item when size exceeds maxSize. Default is true.</param>
     /// <returns>True if item added and saved successfully; false otherwise.</returns>
-    public static bool TryAddItem(string key, string item, InsertPosition position, int maxSize)
+    public static bool TryAddItem(string key, string item, InsertPosition position, int maxSize, bool trimEnabled = true)
     {
         if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(item))
             return false;
@@ -90,6 +56,11 @@ public static class StringListSettingsHelper
         // Prevent duplicates by removing if already exists
         list.Remove(item);
 
+        // Check if trimming is enabled and list size is at the limit
+        if (!trimEnabled && enforceSizeLimit && list.Count >= maxSize)
+            return false; // Do not add item if trimming is enabled and size limit is reached
+
+        // Add item at the specified position
         if (position == InsertPosition.First)
             list.Insert(0, item);
         else

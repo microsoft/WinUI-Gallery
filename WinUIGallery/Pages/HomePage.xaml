@@ -91,11 +91,17 @@
                                 Text="Recently visited" />
                             <controls:HorizontalScrollContainer x:Name="RecentlyVisitedContainer" Margin="-36,0,-36,12">
                                 <controls:HorizontalScrollContainer.Source>
-                                    <ItemsRepeater ItemTemplate="{StaticResource ControlItemTemplate}" ItemsSource="{x:Bind RecentlyVisitedSamplesList, Mode=OneWay}">
-                                        <ItemsRepeater.Layout>
-                                            <StackLayout Orientation="Horizontal" Spacing="12" />
-                                        </ItemsRepeater.Layout>
-                                    </ItemsRepeater>
+                                    <GridView ItemTemplate="{StaticResource ControlItemTemplate}"
+                                              ItemsSource="{x:Bind RecentlyVisitedSamplesList, Mode=OneWay}"
+                                              ItemContainerStyle="{StaticResource NoWrapGridViewItemStyle}"
+                                              IsItemClickEnabled="True"
+                                              ItemClick="OnItemGridViewItemClick"
+                                              ContainerContentChanging="OnItemGridViewContainerContentChanging"
+                                              IsSwipeEnabled="False"
+                                              Loaded="OnItemGridViewLoaded"
+                                              SelectionMode="None"
+                                              AutomationProperties.AutomationId="RecentlyVisitedGridViw"
+                                              AutomationProperties.Name="Recently visited samples"/>
                                 </controls:HorizontalScrollContainer.Source>
                             </controls:HorizontalScrollContainer>
                             <TextBlock
@@ -103,11 +109,17 @@
                                 FontSize="16"
                                 Style="{StaticResource BodyStrongTextBlockStyle}"
                                 Text="Recently added or updated" />
-                            <ItemsRepeater ItemTemplate="{StaticResource ControlItemTemplate}" ItemsSource="{x:Bind RecentlyUpdatedSamplesList, Mode=OneWay}">
-                                <ItemsRepeater.Layout>
-                                    <UniformGridLayout MinColumnSpacing="12" MinRowSpacing="12" />
-                                </ItemsRepeater.Layout>
-                            </ItemsRepeater>
+                            <GridView ItemTemplate="{StaticResource ControlItemTemplate}"
+                                      ItemsSource="{x:Bind RecentlyUpdatedSamplesList, Mode=OneWay}"
+                                      ItemContainerStyle="{StaticResource GridViewItemStyle}"
+                                      IsItemClickEnabled="True"
+                                      ItemClick="OnItemGridViewItemClick"
+                                      ContainerContentChanging="OnItemGridViewContainerContentChanging"
+                                      IsSwipeEnabled="False"
+                                      Loaded="OnItemGridViewLoaded"
+                                      SelectionMode="None"
+                                      AutomationProperties.AutomationId="RecentlyAddedAndUpdatedGridView"
+                                      AutomationProperties.Name="Recently added and updated Samples" />
                         </StackPanel>
                     </toolkit:Case>
                     <toolkit:Case Value="Favorites">
@@ -115,14 +127,19 @@
                             x:Name="FavoriteSamplesPanel"
                             animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
                             animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}">
-                            <ItemsRepeater
+                            <GridView
                                 x:Name="FavoriteSamples"
                                 ItemTemplate="{StaticResource ControlItemTemplate}"
-                                ItemsSource="{x:Bind FavoriteSamplesList, Mode=OneWay}">
-                                <ItemsRepeater.Layout>
-                                    <UniformGridLayout MinColumnSpacing="12" MinRowSpacing="12" />
-                                </ItemsRepeater.Layout>
-                            </ItemsRepeater>
+                                ItemsSource="{x:Bind FavoriteSamplesList, Mode=OneWay}"
+                                ItemContainerStyle="{StaticResource GridViewItemStyle}"
+                                IsItemClickEnabled="True"
+                                ItemClick="OnItemGridViewItemClick"
+                                ContainerContentChanging="OnItemGridViewContainerContentChanging"
+                                IsSwipeEnabled="False"
+                                Loaded="OnItemGridViewLoaded"
+                                SelectionMode="None"
+                                AutomationProperties.AutomationId="FavoriteSamplesGridView"
+                                AutomationProperties.Name="Favorite Samples" />
                             <StackPanel
                                 x:Name="FavoriteSamplesFallbackMessage"
                                 Margin="24,36"
