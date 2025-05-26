@@ -90,7 +90,7 @@
                 <SolidColorBrush x:Key="CriticalButtonForegroundPressed"
                                  Color="{ThemeResource SystemColorHighlightTextColor}" />
                 <SolidColorBrush x:Key="CriticalButtonForegroundDisabled"
-                                 Color="{ThemeResource SystemChromeGrayColor}" />
+                                 Color="{ThemeResource SystemColorGrayTextColor}" />
             </ResourceDictionary>
 
         </ResourceDictionary.ThemeDictionaries>
