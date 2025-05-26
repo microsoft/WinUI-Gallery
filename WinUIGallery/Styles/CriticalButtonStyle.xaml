@@ -5,6 +5,8 @@
 
             <!-- Light Theme -->
             <ResourceDictionary x:Key="Default">
+                <SolidColorBrush x:Key="CriticalButtonBackground"
+                                 Color="#C22B1C" />
                 <SolidColorBrush x:Key="CriticalButtonBackgroundPointerOver"
                                  Color="#D13D2E" />
                 <SolidColorBrush x:Key="CriticalButtonBackgroundPressed"
@@ -33,6 +35,8 @@
 
             <!-- Dark Theme -->
         <ResourceDictionary x:Key="Dark">
+                <SolidColorBrush x:Key="CriticalButtonBackground"
+                                 Color="#FF99A4" />
                 <SolidColorBrush x:Key="CriticalButtonBackgroundPointerOver"
                                  Color="#E68590" />
                 <SolidColorBrush x:Key="CriticalButtonBackgroundPressed"
@@ -61,30 +65,32 @@
 
             <!-- High Contrast -->
             <ResourceDictionary x:Key="HighContrast">
+                <SolidColorBrush x:Key="CriticalButtonBackground"
+                                 Color="{ThemeResource SystemColorButtonFaceColor}" />
                 <SolidColorBrush x:Key="CriticalButtonBackgroundPointerOver"
-                                 Color="Yellow" />
+                                 Color="{ThemeResource SystemColorHighlightColor}" />
                 <SolidColorBrush x:Key="CriticalButtonBackgroundPressed"
-                                 Color="Black" />
+                                 Color="{ThemeResource SystemColorHighlightColor}" />
                 <SolidColorBrush x:Key="CriticalButtonBackgroundDisabled"
-                                 Color="Gray" />
+                                 Color="{ThemeResource SystemColorButtonFaceColor}" />
 
                 <SolidColorBrush x:Key="CriticalButtonBorderBrush"
-                                 Color="White" />
+                                 Color="{ThemeResource SystemColorButtonFaceColor}" />
                 <SolidColorBrush x:Key="CriticalButtonBorderBrushPointerOver"
-                                 Color="White" />
+                                 Color="{ThemeResource SystemColorHighlightColor}" />
                 <SolidColorBrush x:Key="CriticalButtonBorderBrushPressed"
-                                 Color="White" />
+                                 Color="{ThemeResource SystemColorHighlightColor}" />
                 <SolidColorBrush x:Key="CriticalButtonBorderBrushDisabled"
-                                 Color="White" />
+                                 Color="{ThemeResource SystemColorButtonFaceColor}" />
 
                 <SolidColorBrush x:Key="CriticalButtonForeground"
-                                 Color="White" />
+                                 Color="{ThemeResource SystemColorButtonTextColor}" />
                 <SolidColorBrush x:Key="CriticalButtonForegroundPointerOver"
-                                 Color="Black" />
+                                 Color="{ThemeResource SystemColorHighlightTextColor}" />
                 <SolidColorBrush x:Key="CriticalButtonForegroundPressed"
-                                 Color="White" />
+                                 Color="{ThemeResource SystemColorHighlightTextColor}" />
                 <SolidColorBrush x:Key="CriticalButtonForegroundDisabled"
-                                 Color="Black" />
+                                 Color="{ThemeResource SystemChromeGrayColor}" />
             </ResourceDictionary>
 
         </ResourceDictionary.ThemeDictionaries>
@@ -94,7 +100,7 @@
         <Setter Property="Foreground"
                 Value="{ThemeResource CriticalButtonForeground}" />
         <Setter Property="Background"
-                Value="{ThemeResource SystemFillColorCriticalBrush}" />
+                Value="{ThemeResource CriticalButtonBackground}" />
         <Setter Property="BackgroundSizing"
                 Value="OuterBorderEdge" />
         <Setter Property="BorderBrush"
