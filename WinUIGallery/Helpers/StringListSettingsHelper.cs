@@ -25,7 +25,6 @@ public enum InsertPosition
 /// <summary>
 /// Helper for storing and managing string-based lists (e.g., favorites, history)
 /// in LocalSettings of ApplicationData using a compact, delimiter-based format.
-/// Ensures data does not exceed size limits by refusing to save if too large.
 /// </summary>
 public static class StringListSettingsHelper
 {
@@ -43,7 +42,7 @@ public static class StringListSettingsHelper
     /// <param name="item">Item to add</param>
     /// <param name="position">Insert at First or Last</param>
     /// <param name="maxSize">Max number of items; zero or negative disables trimming.</param>
-    /// <param name="trimEnabled">If true, prevents adding an item when size exceeds maxSize. Default is true.</param>
+    /// <param name="trimEnabled">If false, prevents adding an item when size exceeds maxSize. Default is true.</param>
     /// <returns>True if item added and saved successfully; false otherwise.</returns>
     public static bool TryAddItem(string key, string item, InsertPosition position, int maxSize, bool trimEnabled = true)
     {
