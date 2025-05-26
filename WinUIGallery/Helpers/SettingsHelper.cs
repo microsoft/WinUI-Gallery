@@ -110,7 +110,15 @@ public static class SettingsHelper
     /// <returns>True if item exists, false otherwise</returns>
     public static bool Contains(string key, string item)
     {
-        return GetList(key).Contains(item);
+        string raw = appData.LocalSettings.Values[key] as string;
+        if (string.IsNullOrEmpty(raw))
+            return false;
+
+        var set = new HashSet<string>(
+            raw.Split(Delimiter, StringSplitOptions.RemoveEmptyEntries)
+        );
+
+        return set.Contains(item);
     }
 
     /// <summary>
