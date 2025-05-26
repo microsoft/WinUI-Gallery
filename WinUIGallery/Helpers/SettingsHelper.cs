@@ -128,6 +128,19 @@ public static class SettingsHelper
     }
 
     /// <summary>
+    /// Checks whether a serialized list exists under the specified key in LocalSettings.
+    /// </summary>
+    /// <param name="key">The settings key to check.</param>
+    /// <returns>
+    /// True if the key exists and contains a non-empty serialized string; otherwise, false.
+    /// </returns>
+    public static bool HasList(string key)
+    {
+        string raw = appData.LocalSettings.Values[key] as string;
+        return !string.IsNullOrEmpty(raw);
+    }
+
+    /// <summary>
     /// Saves the list back to LocalSettings using delimiter serialization.
     /// </summary>
     /// <param name="key">Settings key</param>
