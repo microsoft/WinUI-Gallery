@@ -14,6 +14,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Animation;
 using WinUIGallery.Models;
 
 namespace WinUIGallery.Pages;
@@ -51,6 +52,15 @@ public abstract class ItemsPageBase : Page, INotifyPropertyChanged
         {
             args.ItemContainer.IsEnabled = item.IncludedInBuild;
         }
+    }
+
+    protected void OnItemGridViewItemClick(object sender, ItemClickEventArgs e)
+    {
+        var item = (ControlInfoDataItem)e.ClickedItem;
+
+        _itemId = item.UniqueId;
+
+        NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), _itemId, new DrillInNavigationTransitionInfo());
     }
 
     protected void OnItemGridViewLoaded(object sender, RoutedEventArgs e)
