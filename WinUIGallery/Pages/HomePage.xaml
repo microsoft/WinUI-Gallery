@@ -100,7 +100,7 @@
                                               IsSwipeEnabled="False"
                                               Loaded="OnItemGridViewLoaded"
                                               SelectionMode="None"
-                                              AutomationProperties.AutomationId="RecentlyVisitedGridViw"
+                                              AutomationProperties.AutomationId="RecentlyVisitedGridView"
                                               AutomationProperties.Name="Recently visited samples"/>
                                 </controls:HorizontalScrollContainer.Source>
                             </controls:HorizontalScrollContainer>
