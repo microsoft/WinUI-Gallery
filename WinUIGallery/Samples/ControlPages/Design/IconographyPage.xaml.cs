@@ -8,7 +8,6 @@
 //
 //*********************************************************
 
-using CommunityToolkit.WinUI;
 using CommunityToolkit.WinUI.Controls;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -50,8 +49,7 @@ public sealed partial class IconographyPage : Page
     {
         // Fill filtered items
         this.InitializeComponent();
-        this.Loaded += (sender, e) => OverrideUpperScrollViewer(isEnabled: false);
-        this.Unloaded += (sender, e) => OverrideUpperScrollViewer(isEnabled: true);
+        this.SuspendOuterScrolling();
         IconsItemsView.Loaded += IconsItemsView_Loaded;
     }
 
@@ -177,19 +175,4 @@ public sealed partial class IconographyPage : Page
         }
     }
 
-    ScrollBarVisibility oldOuterScrollingValue;
-    private void OverrideUpperScrollViewer(bool isEnabled)
-    {
-        var scrollViewer = this.FindAscendant<ScrollViewer>();
-
-        if (isEnabled)
-        {
-            scrollViewer.VerticalScrollBarVisibility = oldOuterScrollingValue;
-        }
-        else
-        {
-            oldOuterScrollingValue = scrollViewer.VerticalScrollBarVisibility;
-            scrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
-        }
-    }
 }
