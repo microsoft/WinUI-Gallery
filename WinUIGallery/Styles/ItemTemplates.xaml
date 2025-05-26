@@ -5,81 +5,78 @@
     xmlns:models="using:WinUIGallery.Models">
 
     <DataTemplate x:Key="ControlItemTemplate" x:DataType="models:ControlInfoDataItem">
-        <UserControl>
-            <Grid
-                x:Name="controlRoot"
-                Width="360"
-                Height="90"
-                Padding="8"
-                HorizontalAlignment="Stretch"
-                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                BorderThickness="1"
-                CornerRadius="{StaticResource ControlCornerRadius}">
+        <Grid
+            x:Name="controlRoot"
+            Width="360"
+            Height="86"
+            Padding="8"
+            HorizontalAlignment="Stretch"
+            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+            BorderThickness="1"
+            ColumnSpacing="16"
+            CornerRadius="{StaticResource OverlayCornerRadius}">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-
-                <Grid Width="72" CornerRadius="{ThemeResource ControlCornerRadius}">
-                    <Image
-                        x:Name="gridImage"
-                        Width="48"
-                        VerticalAlignment="Center"
-                        AutomationProperties.Name="{x:Bind Title}"
-                        Source="{x:Bind ImagePath}"
-                        Stretch="Uniform" />
-                </Grid>
-                <StackPanel
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Margin="16,0,0,0"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image
+                    x:Name="gridImage"
+                    Grid.RowSpan="2"
+                    Width="48"
+                    Margin="8,0,16,0"
                     VerticalAlignment="Center"
-                    Orientation="Vertical"
-                    Spacing="2">
-                    <TextBlock
-                        x:Name="titleText"
-                        Style="{StaticResource BodyStrongTextBlockStyle}"
-                        Text="{x:Bind Title}"
-                        TextLineBounds="TrimToCapHeight"
-                        TextWrapping="NoWrap" />
-                    <TextBlock
-                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                        RelativePanel.Below="titleText"
-                        Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="{x:Bind Subtitle}"
-                        TextTrimming="CharacterEllipsis" />
-                </StackPanel>
-
+                    AutomationProperties.Name="{x:Bind Title}"
+                    Source="{x:Bind ImagePath}"
+                    Stretch="Uniform" />
+                <TextBlock
+                    x:Name="titleText"
+                    Grid.Column="1"
+                    Margin="0,12,0,0"
+                    VerticalAlignment="Bottom"
+                    Style="{StaticResource BodyStrongTextBlockStyle}"
+                    Text="{x:Bind Title}"
+                    TextLineBounds="TrimToCapHeight"
+                    TextWrapping="NoWrap" />
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                    RelativePanel.Below="titleText"
+                    Style="{StaticResource CaptionTextBlockStyle}"
+                    Text="{x:Bind Subtitle}"
+                    TextTrimming="CharacterEllipsis" />
                 <InfoBadge
                     Grid.Column="2"
-                    Width="10"
-                    Margin="4"
                     VerticalAlignment="Top"
                     Style="{StaticResource AttentionIconInfoBadgeStyle}"
                     Visibility="{x:Bind BadgeString, Converter={StaticResource nullToVisibilityConverter}}" />
-
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="LayoutVisualStates">
-                        <VisualState x:Name="WideLayout">
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters />
-                        </VisualState>
-                        <VisualState x:Name="NarrowLayout">
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="0" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="controlRoot.Width" Value="Auto" />
-                                <Setter Target="controlRoot.Height" Value="120" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
             </Grid>
-        </UserControl>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="LayoutVisualStates">
+                    <VisualState x:Name="WideLayout">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters />
+                    </VisualState>
+                    <VisualState x:Name="NarrowLayout">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="0" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="controlRoot.Width" Value="Auto" />
+                            <Setter Target="controlRoot.Height" Value="120" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
     </DataTemplate>
 </ResourceDictionary>

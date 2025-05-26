@@ -18,9 +18,9 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI;
 using System.Runtime.InteropServices;
-using WinRT;
+using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace WinUIGallery.ControlPages;
 
@@ -33,6 +33,9 @@ public sealed partial class RichEditBoxPage : Page
     public RichEditBoxPage()
     {
         this.InitializeComponent();
+
+        MathEditor.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
+        mathEditor2.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
     }
 
     private void Menu_Opening(object sender, object e)
@@ -228,6 +231,62 @@ public sealed partial class RichEditBoxPage : Page
         if (editor.Document.Selection.CharacterFormat.ForegroundColor != currentColor)
         {
             editor.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
+        }
+    }
+
+    private void mathEditor2_TextChanged(object sender, RoutedEventArgs e)
+    {
+        string extractedMathML;
+        mathEditor2.Document.GetMathML(out extractedMathML);
+        if (!string.IsNullOrEmpty(extractedMathML))
+        {
+            MathmlPresenter.Code = FormatMathML(extractedMathML);
+        }
+        else
+        {
+            MathmlPresenter.Code = "<!-- No MathML content -->";
+        }
+    }
+
+    private void SetMathmlFormulaBtn_Click(object sender, RoutedEventArgs e)
+    {
+        string formulaMathML =
+            "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\r\n" +
+            "  <mml:mi mathcolor=\"#000000\">x</mml:mi>\r\n" +
+            "  <mml:mo mathcolor=\"#000000\">\u2208</mml:mo>\r\n" +
+            "  <mml:mi mathcolor=\"#000000\">P</mml:mi>\r\n" +
+            "  <mml:mfenced>\r\n" +
+            "    <mml:mrow>\r\n" +
+            "      <mml:mi mathcolor=\"#000000\">A</mml:mi>\r\n" +
+            "    </mml:mrow>\r\n" +
+            "  </mml:mfenced>\r\n" +
+            "  <mml:mo mathcolor=\"#000000\">\u2194</mml:mo>\r\n" +
+            "  <mml:mi mathcolor=\"#000000\">x</mml:mi>\r\n" +
+            "  <mml:mo mathcolor=\"#000000\">\u2286</mml:mo>\r\n" +
+            "  <mml:mi mathcolor=\"#000000\">A</mml:mi>\r\n" +
+            "</mml:math>";
+
+        if(mathEditor2.ActualTheme == ElementTheme.Dark)
+        {
+            mathEditor2.Document.SetMathML(formulaMathML.Replace("mathcolor=\"#000000\"", "mathcolor=\"#FFFFFF\""));
+        }
+        else
+        {
+            mathEditor2.Document.SetMathML(formulaMathML.Replace("mathcolor=\"#FFFFFF\"", "mathcolor=\"#000000\""));
+        }
+    }
+
+    private static string FormatMathML(string mathML)
+    {
+        try
+        {
+            XDocument doc = XDocument.Parse(mathML);
+            return doc.ToString(); // This automatically formats with proper indentation
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Error formatting MathML: {ex.Message}");
+            return mathML; // Return the original in case of an error
         }
     }
 }

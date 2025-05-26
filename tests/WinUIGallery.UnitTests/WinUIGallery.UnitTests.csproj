@@ -51,7 +51,7 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WinUIGallery\WinUIGallery.csproj" />
+    <ProjectReference Include="..\..\WinUIGallery\WinUIGallery.csproj" />
   </ItemGroup>
 
   <!-- 

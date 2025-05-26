@@ -26,6 +26,7 @@ using Windows.Foundation;
 using Windows.System.Profile;
 using Windows.UI.ViewManagement;
 using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.Windows.BadgeNotifications;
 
 namespace WinUIGallery.Pages;
 
@@ -100,11 +101,16 @@ public sealed partial class NavigationRootPage : Page
             window.Activated += Window_Activated;
             window.SetTitleBar(this.AppTitleBar);
 
-            AppWindow appWindow = WindowHelper.GetAppWindow(window);
+            AppWindow appWindow = window.AppWindow;
             appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
             appWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
             _settings = new UISettings();
             _settings.ColorValuesChanged += _settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event because the triggerTitleBarRepaint workaround no longer works
+        };
+
+        rootFrame.Navigated += (_, _) =>
+        {
+            BadgeNotificationManager.Current.ClearBadge();
         };
     }
 
