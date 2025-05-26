@@ -10,33 +10,35 @@
     Loaded="SampleCodePresenter_Loaded"
     mc:Ignorable="d">
 
-    <Grid Background="{x:Bind Background, Mode=OneWay}"
-          BorderBrush="{x:Bind BorderBrush, Mode=OneWay}"
-          BorderThickness="{x:Bind BorderThickness, Mode=OneWay}"
-          CornerRadius="{x:Bind CornerRadius, Mode=OneWay}">
+    <Grid
+        Background="{x:Bind Background, Mode=OneWay}"
+        BorderBrush="{x:Bind BorderBrush, Mode=OneWay}"
+        BorderThickness="{x:Bind BorderThickness, Mode=OneWay}"
+        CornerRadius="{x:Bind CornerRadius, Mode=OneWay}">
         <ScrollViewer
             x:Name="CodeScrollViewer"
             VerticalAlignment="{x:Bind VerticalContentAlignment, Mode=OneWay}"
             HorizontalScrollBarVisibility="Auto"
             HorizontalScrollMode="Auto"
+            Loaded="CodeScrollViewer_Loaded"
             VerticalScrollBarVisibility="Auto"
-            VerticalScrollMode="Auto"
-            Loaded="CodeScrollViewer_Loaded">
+            VerticalScrollMode="Auto">
             <ContentPresenter
                 x:Name="CodePresenter"
                 Padding="16,0,16,16"
                 Loaded="CodePresenter_Loaded" />
         </ScrollViewer>
-        <Border x:Name="CopyButtonBorder"
-                Margin="0,0,8,0"
-                CornerRadius="{ThemeResource ControlCornerRadius}"
-                Background="{ThemeResource ControlOnImageFillColorDefaultBrush}"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                Width="30" Height="30">
-            <local:CopyButton x:Name="CopyCodeButton"                              
-                              Click="CopyCodeButton_Click"
-                              Content="&#xE8C8;" />
+        <Border
+            x:Name="CopyButtonBorder"
+            Margin="0,0,8,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Background="{ThemeResource ControlOnImageFillColorDefaultBrush}"
+            CornerRadius="{ThemeResource ControlCornerRadius}">
+            <local:CopyButton
+                x:Name="CopyCodeButton"
+                Click="CopyCodeButton_Click"
+                Content="&#xE8C8;" />
         </Border>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="SampleProgrammingLanguageState">
