@@ -124,11 +124,11 @@ public sealed partial class PageHeader : UserControl
         {
             if (toggleButton.IsChecked == true)
             {
-                // Revert toggle state since add failed
-                toggleButton.IsChecked = false;
-
                 if (!StringListSettingsHelper.TryAddItem(SettingsKeys.Favorites, Item.UniqueId, InsertPosition.Last, maxSize:12, trimEnabled:false))
                 {
+                    // Revert toggle state since add failed
+                    toggleButton.IsChecked = false;
+
                     var contentDialog = new ContentDialog
                     {
                         XamlRoot = this.XamlRoot,
