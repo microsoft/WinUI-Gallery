@@ -8,7 +8,9 @@
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:core="using:WinUIGallery"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:WinUIGallery.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    helpers:PageScrollBehaviorHelper.SuppressHostScrolling="True"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -49,6 +51,8 @@
             <SelectorBarItem Text="Signal" />
             <SelectorBarItem Text="High Contrast" />
         </SelectorBar>
-        <Frame x:Name="NavigationFrame" Grid.Row="3" />
+        <ScrollViewer Grid.Row="3">
+            <Frame x:Name="NavigationFrame" VerticalAlignment="Stretch" />
+        </ScrollViewer>
     </Grid>
 </Page>
