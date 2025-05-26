@@ -7,11 +7,12 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using System;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.Windows.ApplicationModel.WindowsAppRuntime;
+using System;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.System;
 using WinUIGallery.Helpers;
@@ -32,7 +33,9 @@ public sealed partial class SettingsPage : Page
         }
     }
 
-    public string WinAppSdkRuntimeDetails => VersionHelper.WinAppSdkRuntimeDetails;
+    public string WindowsAppSDKVersion => $"{ReleaseInfo.Major}.{ReleaseInfo.Minor}.{ReleaseInfo.Patch}";
+    public string WindowsAppSDKRuntime => $"{RuntimeInfo.AsString}";
+
     private int lastNavigationSelectionMode = 0;
 
     public SettingsPage()

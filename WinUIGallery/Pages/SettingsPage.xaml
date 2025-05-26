@@ -95,6 +95,18 @@
                             IsTextSelectionEnabled="True"
                             Text="{x:Bind Version}" />
                         <toolkit:SettingsExpander.Items>
+                            <toolkit:SettingsCard Header="Windows App SDK">
+                                <TextBlock
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    IsTextSelectionEnabled="True"
+                                    Text="{x:Bind WindowsAppSDKVersion}" />
+                            </toolkit:SettingsCard>
+                            <toolkit:SettingsCard Header="Windows App SDK runtime">
+                                <TextBlock
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    IsTextSelectionEnabled="True"
+                                    Text="{x:Bind WindowsAppSDKRuntime}" />
+                            </toolkit:SettingsCard>
                             <toolkit:SettingsCard
                                 x:Name="toCloneRepoCard"
                                 Click="toCloneRepoCard_Click"
@@ -124,7 +136,7 @@
                                 ContentAlignment="Vertical"
                                 Header="Dependencies &amp; references">
                                 <StackPanel Margin="-12,0,0,0" Orientation="Vertical">
-                                    <HyperlinkButton Content="{x:Bind WinAppSdkRuntimeDetails}" NavigateUri="https://aka.ms/windowsappsdk" />
+                                    <HyperlinkButton Content="Windows App SDK" NavigateUri="https://aka.ms/windowsappsdk" />
                                     <HyperlinkButton Content="WinUI 3" NavigateUri="https://aka.ms/winui" />
                                     <HyperlinkButton Content="Windows Community Toolkit" NavigateUri="https://aka.ms/toolkit/windows" />
                                     <HyperlinkButton Content="ColorCode-Universal" NavigateUri="https://github.com/WilliamABradley/ColorCode-Universal" />
