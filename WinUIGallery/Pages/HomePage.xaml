@@ -93,7 +93,7 @@
                                 <controls:HorizontalScrollContainer.Source>
                                     <GridView ItemTemplate="{StaticResource ControlItemTemplate}"
                                               ItemsSource="{x:Bind RecentlyVisitedSamplesList, Mode=OneWay}"
-                                              ItemContainerStyle="{StaticResource NoWrapGridViewItemStyle}"
+                                              ItemContainerStyle="{StaticResource SingleRowGridViewItemStyle}"
                                               IsItemClickEnabled="True"
                                               ItemClick="OnItemGridViewItemClick"
                                               ContainerContentChanging="OnItemGridViewContainerContentChanging"
