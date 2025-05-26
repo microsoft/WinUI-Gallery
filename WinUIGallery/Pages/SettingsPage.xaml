@@ -107,7 +107,6 @@
                                                            Text="This will permanently remove all recently visited samples." />
                                                 <Button Click="ClearRecentlyVisitedSamples_Click"
                                                         Content="Yes, clear"
-                                                        Style="{StaticResource CriticalButtonStyle}"
                                                         MinWidth="120"/>
                                             </StackPanel>
                                         </Flyout>
@@ -133,7 +132,6 @@
                                                            Text="This will remove all samples from your favorites." />
                                                 <Button Click="UnfavoriteAllSamples_Click"
                                                         Content="Yes, unfavorite"
-                                                        Style="{ThemeResource CriticalButtonStyle}"
                                                         MinWidth="120" />
                                             </StackPanel>
                                         </Flyout>

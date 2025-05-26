@@ -320,7 +320,6 @@
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
         <None Remove="Samples\SamplePages\SampleWindow2.xaml" />
         <None Remove="Styles\Button.xaml" />
-        <None Remove="Styles\CriticalButtonStyle.xaml" />
         <None Remove="Styles\Grid.xaml" />
         <None Remove="Styles\GridViewItem.xaml" />
         <None Remove="Styles\ItemTemplates.xaml" />
@@ -529,12 +528,6 @@
 
     <ItemGroup>
       <Page Update="Controls\HorizontalScrollContainer.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </Page>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Page Update="Styles\CriticalButtonStyle.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>

@@ -27,7 +27,6 @@
                 <ResourceDictionary Source="ms-appx:///Styles/GridViewItem.xaml" />
                 <ResourceDictionary Source="ms-appx:///Styles/TextBlock.xaml" />
                 <ResourceDictionary Source="ms-appx:///Styles/SelectorBar.xaml" />
-                <ResourceDictionary Source="ms-appx:///Styles/CriticalButtonStyle.xaml" />
                 <ResourceDictionary Source="ms-appx:///Samples/ControlPages/Fundamentals/Controls/CounterControl.xaml" />
                 <ResourceDictionary Source="ms-appx:///Samples/ControlPages/Fundamentals/Controls/ValidatedPasswordBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
