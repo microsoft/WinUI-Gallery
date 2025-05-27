@@ -23,29 +23,49 @@ public enum InsertPosition
 }
 
 /// <summary>
-/// Helper for storing and managing string-based lists (e.g., favorites, history)
-/// in LocalSettings of ApplicationData using a compact, delimiter-based format.
+/// Provides utility methods for managing application settings, including operations for storing, retrieving,  and
+/// manipulating lists of strings in the application's local settings.
 /// </summary>
+/// <remarks>The <see cref="SettingsHelper"/> class is designed to simplify common tasks related to application
+/// settings,  such as adding or removing items from lists, checking for existence, and enforcing constraints like size
+/// limits.  It operates on key-value pairs stored in the application's local settings and ensures compatibility with
+/// JSON-safe  serialization. This class is static and cannot be instantiated.</remarks>
 public static class SettingsHelper
 {
-    // The maximum number of items to keep in the Favorites list.
+    /// <summary>
+    /// The maximum number of items to retain in the Favorites list.
+    /// </summary>
+    /// <remarks>This constant defines the upper limit for the number of recently visited samples  that can be
+    /// stored in the Favorites list. It is intended to ensure consistent behavior when managing the list.</remarks>
     public const int MaxRecentlyVisitedSamples = 7;
 
-    // An instance of ApplicationData for the current user.
+    /// <summary>
+    /// An instance of ApplicationData for the current user.
+    /// </summary>
     private static ApplicationData appData = ApplicationData.GetDefault();
 
-    // Unit Separator: invisible, JSON-safe delimiter for internal string serialization.
-    private const char Delimiter = '\u001f';
+    /// <summary>
+    /// Information Separator: Represents an invisible, JSON-safe delimiter used for internal string serialization.
+    /// </summary>
+    /// <remarks>This delimiter is intended for separating values in serialized strings where compatibility
+    /// with JSON is a concern. It is not intended for public use or modification.</remarks>
+    private const char delimiter = '\u001f';
 
     /// <summary>
-    /// Adds an item to the list at the specified position, with optional max size limit.
-    /// Duplicate values are moved to the new position if already present.
+    /// Attempts to add an item to a list associated with the specified key, ensuring no duplicates and optionally
+    /// enforcing a size limit.
     /// </summary>
-    /// <param name="key">Settings key</param>
-    /// <param name="item">Item to add</param>
-    /// <param name="position">Insert at First or Last</param>
-    /// <param name="maxSize">Max number of items; zero or negative disables trimming, default is zero</param>
-    /// <returns>True if item added and saved successfully; false otherwise.</returns>
+    /// <remarks>If the item already exists in the list, it will be removed before being re-added at the
+    /// specified position. When a size limit is enforced, excess items are removed from the opposite end of the list
+    /// relative to the insertion position.</remarks>
+    /// <param name="key">The key identifying the list to which the item will be added. Cannot be null, empty, or whitespace.</param>
+    /// <param name="item">The item to add to the list. Cannot be null, empty, or whitespace.</param>
+    /// <param name="position">The position at which to insert the item in the list. Use <see cref="InsertPosition.First"/> to insert at the
+    /// beginning, or <see cref="InsertPosition.Last"/> to insert at the end.</param>
+    /// <param name="maxSize">The maximum allowed size of the list. If greater than zero, the list will be trimmed to this size after adding
+    /// the item. Defaults to 0, meaning no size limit is enforced.</param>
+    /// <returns><see langword="true"/> if the item was successfully added to the list and the list was saved; otherwise, <see
+    /// langword="false"/>.</returns>
     public static bool TryAddItem(string key, string item, InsertPosition position, int maxSize = 0)
     {
         if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(item))
@@ -77,11 +97,15 @@ public static class SettingsHelper
     }
 
     /// <summary>
-    /// Removes an item from the list under the specified key, if present.
+    /// Attempts to remove the specified item from the list associated with the given key.
     /// </summary>
-    /// <param name="key">Settings key</param>
-    /// <param name="item">Item to remove</param>
-    /// <returns>True if removed and saved; false if not found or save failed.</returns>
+    /// <remarks>This method retrieves the list associated with the specified key, removes the item if it
+    /// exists, and attempts to save the updated list. If the key does not exist or the item is not found in the list,
+    /// the method returns <see langword="false"/>.</remarks>
+    /// <param name="key">The key identifying the list from which the item should be removed. Cannot be null or empty.</param>
+    /// <param name="item">The item to remove from the list. Cannot be null.</param>
+    /// <returns><see langword="true"/> if the item was successfully removed and the updated list was saved; otherwise, <see
+    /// langword="false"/>.</returns>
     public static bool TryRemoveItem(string key, string item)
     {
         var list = GetList(key);
@@ -93,24 +117,32 @@ public static class SettingsHelper
     }
 
     /// <summary>
-    /// Retrieves the list of strings stored under the given key.
+    /// Retrieves a list of strings associated with the specified key from the application's local settings.
     /// </summary>
-    /// <param name="key">Settings key</param>
-    /// <returns>List of strings (returns an empty list if none exist).</returns>
+    /// <remarks>The stored value is expected to be a delimited string. The method splits the string using a
+    /// predefined delimiter  and removes any empty entries from the resulting list.</remarks>
+    /// <param name="key">The key used to locate the stored value in the application's local settings. Cannot be null.</param>
+    /// <returns>A list of strings parsed from the stored value associated with the specified key.  Returns an empty list if the
+    /// key does not exist or the stored value is null.</returns>
     public static List<string> GetList(string key)
     {
         string raw = appData.LocalSettings.Values[key] as string;
         return raw != null
-            ? raw.Split(Delimiter, StringSplitOptions.RemoveEmptyEntries).ToList()
+            ? raw.Split(delimiter, StringSplitOptions.RemoveEmptyEntries).ToList()
             : new List<string>();
     }
 
     /// <summary>
-    /// Checks whether the specified item exists in the list stored under the key.
+    /// Determines whether the specified item exists within the set of values associated with the given key.
     /// </summary>
-    /// <param name="key">Settings key</param>
-    /// <param name="item">Item to check for</param>
-    /// <returns>True if item exists, false otherwise</returns>
+    /// <remarks>The method retrieves a delimited string of values stored under the specified key in
+    /// application settings, splits it into individual items, and checks whether the specified item is present in the
+    /// resulting set. If the key does not exist or contains an empty value, the method returns <see
+    /// langword="false"/>.</remarks>
+    /// <param name="key">The key used to retrieve the stored set of values. Cannot be null or empty.</param>
+    /// <param name="item">The item to search for within the set of values. Cannot be null.</param>
+    /// <returns><see langword="true"/> if the item exists in the set of values associated with the key; otherwise, <see
+    /// langword="false"/>.</returns>
     public static bool Contains(string key, string item)
     {
         string raw = appData.LocalSettings.Values[key] as string;
@@ -118,26 +150,29 @@ public static class SettingsHelper
             return false;
 
         var set = new HashSet<string>(
-            raw.Split(Delimiter, StringSplitOptions.RemoveEmptyEntries)
+            raw.Split(delimiter, StringSplitOptions.RemoveEmptyEntries)
         );
 
         return set.Contains(item);
     }
 
     /// <summary>
-    /// Deletes the value stored under the given key.
+    /// Deletes the specified key and its associated value from the application's local settings.
     /// </summary>
-    /// <param name="key">LocalSettings key.</param>
+    /// <remarks>This method removes the key-value pair from the local settings storage. If the key does not
+    /// exist,  no action is taken.</remarks>
+    /// <param name="key">The key of the setting to remove. Cannot be <see langword="null"/> or empty.</param>
     public static void Delete(string key)
     {
         appData.LocalSettings.Values.Remove(key);
     }
 
     /// <summary>
-    /// Checks whether a value exists for the given key and is non-empty.
+    /// Determines whether a specified key exists in the application's local settings.
     /// </summary>
-    /// <param name="key">LocalSettings key.</param>
-    /// <returns>True if the key exists and is non-empty; false otherwise.</returns>
+    /// <param name="key">The key to check for existence in the local settings. Cannot be null or empty.</param>
+    /// <returns><see langword="true"/> if the specified key exists and its associated value is not null or empty;  otherwise,
+    /// <see langword="false"/>.</returns>
     public static bool Exists(string key)
     {
         string raw = appData.LocalSettings.Values[key] as string;
@@ -145,14 +180,18 @@ public static class SettingsHelper
     }
 
     /// <summary>
-    /// Saves the list back to LocalSettings using delimiter serialization.
+    /// Attempts to save a list of strings to the application's local settings storage.
     /// </summary>
-    /// <param name="key">Settings key</param>
-    /// <param name="items">List of strings to save</param>
-    /// <returns>True if save successful; false if size limit exceeded.</returns>
+    /// <remarks>The method joins the list of strings into a single string using a predefined delimiter and
+    /// calculates its size in bytes. If the size exceeds or equals 8 KB (8192 bytes), the save operation is rejected,
+    /// and the method returns <see langword="false"/>.</remarks>
+    /// <param name="key">The unique key used to store the list in local settings. Cannot be null or empty.</param>
+    /// <param name="items">The list of strings to save. Cannot be null.</param>
+    /// <returns><see langword="true"/> if the list is successfully saved; otherwise, <see langword="false"/> if the total size
+    /// of the list exceeds the storage limit.</returns>
     private static bool TrySaveList(string key, List<string> items)
     {
-        string joined = string.Join(Delimiter, items);
+        string joined = string.Join(delimiter, items);
         int byteSize = System.Text.Encoding.Unicode.GetByteCount(joined);
 
         // If the size exceeds or equals 8 KB (8192 bytes), reject the save operation
@@ -167,6 +206,11 @@ public static class SettingsHelper
     }
 }
 
+/// <summary>
+/// Provides constant keys used for accessing application settings.
+/// </summary>
+/// <remarks>This class defines string constants that represent keys for various settings in the application.
+/// These keys can be used to retrieve or store values in a settings dictionary or configuration file.</remarks>
 public static class SettingsKeys
 {
     /// <summary>

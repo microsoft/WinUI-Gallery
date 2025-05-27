@@ -102,6 +102,8 @@ public sealed partial class PageHeader : UserControl
         if (Item != null)
         {
             FavoriteButton.IsChecked = SettingsHelper.Contains(SettingsKeys.Favorites, Item.UniqueId);
+
+            // Mark the sample as recently visited
             SettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, Item.UniqueId, InsertPosition.First, SettingsHelper.MaxRecentlyVisitedSamples);
         }
     }
