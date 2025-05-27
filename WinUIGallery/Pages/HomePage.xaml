@@ -110,7 +110,7 @@
                                 Style="{StaticResource BodyStrongTextBlockStyle}"
                                 Text="Recently added or updated" />
                             <GridView ItemTemplate="{StaticResource ControlItemTemplate}"
-                                      ItemsSource="{x:Bind RecentlyUpdatedSamplesList, Mode=OneWay}"
+                                      ItemsSource="{x:Bind RecentlyAddedOrUpdatedSamplesList, Mode=OneWay}"
                                       ItemContainerStyle="{StaticResource GridViewItemStyle}"
                                       IsItemClickEnabled="True"
                                       ItemClick="OnItemGridViewItemClick"
