@@ -33,10 +33,10 @@ public enum InsertPosition
 public static class SettingsHelper
 {
     /// <summary>
-    /// The maximum number of items to retain in the Favorites list.
+    /// The maximum number of items to retain in the recently visited list.
     /// </summary>
-    /// <remarks>This constant defines the upper limit for the number of recently visited samples  that can be
-    /// stored in the Favorites list. It is intended to ensure consistent behavior when managing the list.</remarks>
+    /// <remarks>This constant defines the upper limit for the number of recently visited samples that can be
+    /// stored in the recently visited list. It is intended to ensure consistent behavior when managing the list.</remarks>
     public const int MaxRecentlyVisitedSamples = 7;
 
     /// <summary>
