@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     //*********************************************************
     //
     // Copyright (c) Microsoft. All rights reserved.
@@ -88,16 +88,14 @@
             NotEmptyValue="False" />
     </Page.Resources>
 
-    <Grid HorizontalAlignment="Stretch" RowSpacing="8">
+    <Grid RowSpacing="8">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <toolkit:SettingsExpander
-            Grid.Row="1"
             AutomationProperties.AccessibilityView="Raw"
             Header="How to use Segoe Fluent Icons"
             IsExpanded="False">
@@ -143,7 +141,7 @@
         </toolkit:SettingsExpander>
 
         <StackPanel
-            Grid.Row="2"
+            Grid.Row="1"
             Margin="0,24,0,0"
             Spacing="8">
             <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" />
@@ -158,19 +156,17 @@
         </StackPanel>
 
         <controls:SampleThemeListener
-            Grid.Row="3"
-            VerticalAlignment="Top"
+            Grid.Row="2"
             IsTabStop="True">
             <Grid Style="{ThemeResource GalleryTileGridStyle}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="316" />
+                    <ColumnDefinition Width="334" />
                 </Grid.ColumnDefinitions>
                 <ItemsView
                     x:Name="IconsItemsView"
                     MinWidth="100"
                     Padding="16"
-                    HorizontalAlignment="Stretch"
                     ItemTemplate="{StaticResource IconTemplate}"
                     SelectionChanged="IconsItemsView_SelectionChanged"
                     TabFocusNavigation="Once">
@@ -223,13 +219,25 @@
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="XAML" />
-                            <controls:SampleCodePresenter x:Name="XAMLCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
+                                Text="FontIcon XAML" />
+                            <controls:SampleCodePresenter x:Name="XAMLCodePresenterFont" Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="C#" />
-                            <controls:SampleCodePresenter x:Name="CSharpCodePresenter" Style="{StaticResource CodeValuePresenterStyle}" />
+                                Text="FontIcon C#" />
+                            <controls:SampleCodePresenter x:Name="CSharpCodePresenterFont" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <TextBlock
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="SymbolIcon XAML"
+                                Visibility="{Binding SelectedItem.SymbolName, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}"/>
+                            <controls:SampleCodePresenter x:Name="XAMLCodePresenterSymbol" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <TextBlock
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="SymbolIcon C#"
+                                Visibility="{Binding SelectedItem.SymbolName, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}"/>
+                            <controls:SampleCodePresenter x:Name="CSharpCodePresenterSymbol" Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Margin="0,4,0,0"
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
