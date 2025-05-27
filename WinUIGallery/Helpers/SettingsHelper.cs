@@ -125,22 +125,20 @@ public static class SettingsHelper
     }
 
     /// <summary>
-    /// Clears the entire list stored under the given key.
+    /// Deletes the value stored under the given key.
     /// </summary>
-    /// <param name="key">Settings key</param>
-    public static void ClearList(string key)
+    /// <param name="key">LocalSettings key.</param>
+    public static void Delete(string key)
     {
         appData.LocalSettings.Values.Remove(key);
     }
 
     /// <summary>
-    /// Checks whether a serialized list exists under the specified key in LocalSettings.
+    /// Checks whether a value exists for the given key and is non-empty.
     /// </summary>
-    /// <param name="key">The settings key to check.</param>
-    /// <returns>
-    /// True if the key exists and contains a non-empty serialized string; otherwise, false.
-    /// </returns>
-    public static bool HasList(string key)
+    /// <param name="key">LocalSettings key.</param>
+    /// <returns>True if the key exists and is non-empty; false otherwise.</returns>
+    public static bool Exists(string key)
     {
         string raw = appData.LocalSettings.Values[key] as string;
         return !string.IsNullOrEmpty(raw);
