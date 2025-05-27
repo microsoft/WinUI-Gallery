@@ -176,7 +176,7 @@ public sealed partial class SettingsPage : Page
         ClearRecentlyVisitedSamplesFlyout.Hide();
         SettingsHelper.ClearList(SettingsKeys.RecentlyVisited);
         ClearVisitedSamplesCard.IsEnabled = false;
-        SamplesSettingsExpander.IsExpanded = !ClearVisitedSamplesCard.IsEnabled && !UnfavoriteSamplesCard.IsEnabled;
+        SamplesSettingsExpander.IsExpanded = ClearVisitedSamplesCard.IsEnabled || UnfavoriteSamplesCard.IsEnabled;
     }
 
     private void UnfavoriteAllSamples_Click(object sender, RoutedEventArgs e)
@@ -184,6 +184,6 @@ public sealed partial class SettingsPage : Page
         UnfavoriteAllSamplesFlyout.Hide();
         SettingsHelper.ClearList(SettingsKeys.Favorites);
         UnfavoriteSamplesCard.IsEnabled = false;
-        SamplesSettingsExpander.IsExpanded = !ClearVisitedSamplesCard.IsEnabled && !UnfavoriteSamplesCard.IsEnabled;
+        SamplesSettingsExpander.IsExpanded = ClearVisitedSamplesCard.IsEnabled || UnfavoriteSamplesCard.IsEnabled;
     }
 }
