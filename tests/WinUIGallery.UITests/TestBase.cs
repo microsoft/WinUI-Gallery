@@ -36,6 +36,7 @@ public class TestBase
         }
         return null;
     }
+
     private static WindowsElement WaitForPageHeader(string name)
     {
         for (int i = 0; i < 100; i++)
