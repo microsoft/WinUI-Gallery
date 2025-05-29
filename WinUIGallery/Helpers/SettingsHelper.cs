@@ -108,6 +108,11 @@ public static class SettingsHelper
     /// langword="false"/>.</returns>
     public static bool TryRemoveItem(string key, string item)
     {
+        if (!Exists(key) || !Contains(key, item))
+        {
+            return false;
+        }
+
         var list = GetList(key);
         if (list.Remove(item))
         {
