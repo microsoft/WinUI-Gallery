@@ -1,6 +1,6 @@
-# Tools Folder
+# `scripts` Folder
 
-The Tools folder contains a set of tools and utilities that are repeatedly used by developers to assist in managing and developing the WinUI Gallery. These tools streamline various development tasks, providing functionality to track, manage, and organize files within the repository.
+The `scripts` folder contains a set of tools and utilities that are repeatedly used by developers to assist in managing and developing the WinUI Gallery. These tools streamline various development tasks, providing functionality to track, manage, and organize files within the repository.
 
 > **Note**: Before running any PowerShell script, you must set the execution policy to allow locally created scripts to run. Use the following command to set the policy:
 > 
@@ -13,13 +13,13 @@ The Tools folder contains a set of tools and utilities that are repeatedly used 
 ## Running scripts
 
 #### 1st Way: From File Explorer
-- Step 1: Navigate to the `Tools` folder.
+- Step 1: Navigate to the `scripts` folder.
 - Step 2: Right-click the `Get-LatestAddedSamples.ps1` script and select **Run with PowerShell**.
 - Step 3: The script will output a list of newly added files along with their first commit dates.
 
 #### 2nd Way: From Visual Studio
 - Step 1: Open `WinUIGallery` project in Visual Studio.
-- Step 2: Navigate to the **Tools** menu and select **Open PowerShell Window**.
+- Step 2: Navigate to the **scripts** menu and select **Open PowerShell Window**.
 - Step 3: In the PowerShell window, type the following command:
   ```powershell
   ..\scripts\Get-LatestAddedSamples.ps1
