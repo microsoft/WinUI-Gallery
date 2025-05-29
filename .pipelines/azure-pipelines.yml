@@ -28,7 +28,7 @@ steps:
       displayName: Generate Test Signing Certificate
       inputs:
         targetType: filePath
-        filePath: build/GenerateTestPFX.ps1
+        filePath: scripts/GenerateTestPFX.ps1
 
     - task: DotNetCoreCLI@2
       displayName: Build WinUI Gallery Package

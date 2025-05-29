@@ -22,7 +22,7 @@ The Tools folder contains a set of tools and utilities that are repeatedly used 
 - Step 2: Navigate to the **Tools** menu and select **Open PowerShell Window**.
 - Step 3: In the PowerShell window, type the following command:
   ```powershell
-  ..\Tools\Get-LatestAddedSamples.ps1
+  ..\scripts\Get-LatestAddedSamples.ps1
   ```
 - Step 4: The script will output the list of added files.
 
