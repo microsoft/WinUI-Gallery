@@ -1,4 +1,7 @@
-﻿using Microsoft.UI.Xaml;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+using Microsoft.UI.Xaml;
 using Microsoft.VisualStudio.TestTools.UnitTesting.AppContainer;
 using System;
 
