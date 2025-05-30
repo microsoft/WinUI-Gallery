@@ -1,4 +1,6 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<!--  Copyright (c) Microsoft Corporation. Licensed under the MIT License.  -->
+<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <RootNamespace>WinUIGallery.UITests</RootNamespace>
@@ -18,9 +20,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Include="$(MSBuildThisFileDirectory)..\..\WinUIGallery\Samples\Data\ControlInfoData.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
+        <None Include="$(MSBuildThisFileDirectory)..\..\WinUIGallery\Samples\Data\ControlInfoData.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>

@@ -80,4 +80,3 @@ Please follow the guidelines below to maintain test reliability and reduce test 
 
 1. Provide a complete set of interactions (if applicable) for each new control
 1. Aim for simple and reliable scenario using the least amount of test steps
-
