@@ -26,17 +26,11 @@ public enum InsertPosition
 /// Provides utility methods for managing application settings, including operations for storing, retrieving,  and
 /// manipulating lists of strings in the application's local settings.
 /// </summary>
-/// <remarks>The <see cref="SettingsHelper"/> class is designed to simplify common tasks related to application
-/// settings,  such as adding or removing items from lists, checking for existence, and enforcing constraints like size
-/// limits.  It operates on key-value pairs stored in the application's local settings and ensures compatibility with
-/// JSON-safe  serialization. This class is static and cannot be instantiated.</remarks>
 public static class SettingsHelper
 {
     /// <summary>
     /// The maximum number of items to retain in the recently visited list.
     /// </summary>
-    /// <remarks>This constant defines the upper limit for the number of recently visited samples that can be
-    /// stored in the recently visited list. It is intended to ensure consistent behavior when managing the list.</remarks>
     public const int MaxRecentlyVisitedSamples = 7;
 
     /// <summary>
@@ -55,9 +49,6 @@ public static class SettingsHelper
     /// Attempts to add an item to a list associated with the specified key, ensuring no duplicates and optionally
     /// enforcing a size limit.
     /// </summary>
-    /// <remarks>If the item already exists in the list, it will be removed before being re-added at the
-    /// specified position. When a size limit is enforced, excess items are removed from the opposite end of the list
-    /// relative to the insertion position.</remarks>
     /// <param name="key">The key identifying the list to which the item will be added. Cannot be null, empty, or whitespace.</param>
     /// <param name="item">The item to add to the list. Cannot be null, empty, or whitespace.</param>
     /// <param name="position">The position at which to insert the item in the list. Use <see cref="InsertPosition.First"/> to insert at the
@@ -99,9 +90,6 @@ public static class SettingsHelper
     /// <summary>
     /// Attempts to remove the specified item from the list associated with the given key.
     /// </summary>
-    /// <remarks>This method retrieves the list associated with the specified key, removes the item if it
-    /// exists, and attempts to save the updated list. If the key does not exist or the item is not found in the list,
-    /// the method returns <see langword="false"/>.</remarks>
     /// <param name="key">The key identifying the list from which the item should be removed. Cannot be null or empty.</param>
     /// <param name="item">The item to remove from the list. Cannot be null.</param>
     /// <returns><see langword="true"/> if the item was successfully removed and the updated list was saved; otherwise, <see
@@ -124,8 +112,6 @@ public static class SettingsHelper
     /// <summary>
     /// Retrieves a list of strings associated with the specified key from the application's local settings.
     /// </summary>
-    /// <remarks>The stored value is expected to be a delimited string. The method splits the string using a
-    /// predefined delimiter  and removes any empty entries from the resulting list.</remarks>
     /// <param name="key">The key used to locate the stored value in the application's local settings. Cannot be null.</param>
     /// <returns>A list of strings parsed from the stored value associated with the specified key.  Returns an empty list if the
     /// key does not exist or the stored value is null.</returns>
@@ -140,10 +126,6 @@ public static class SettingsHelper
     /// <summary>
     /// Determines whether the specified item exists within the set of values associated with the given key.
     /// </summary>
-    /// <remarks>The method retrieves a delimited string of values stored under the specified key in
-    /// application settings, splits it into individual items, and checks whether the specified item is present in the
-    /// resulting set. If the key does not exist or contains an empty value, the method returns <see
-    /// langword="false"/>.</remarks>
     /// <param name="key">The key used to retrieve the stored set of values. Cannot be null or empty.</param>
     /// <param name="item">The item to search for within the set of values. Cannot be null.</param>
     /// <returns><see langword="true"/> if the item exists in the set of values associated with the key; otherwise, <see
@@ -164,8 +146,6 @@ public static class SettingsHelper
     /// <summary>
     /// Deletes the specified key and its associated value from the application's local settings.
     /// </summary>
-    /// <remarks>This method removes the key-value pair from the local settings storage. If the key does not
-    /// exist,  no action is taken.</remarks>
     /// <param name="key">The key of the setting to remove. Cannot be <see langword="null"/> or empty.</param>
     public static void Delete(string key)
     {
@@ -187,9 +167,6 @@ public static class SettingsHelper
     /// <summary>
     /// Attempts to save a list of strings to the application's local settings storage.
     /// </summary>
-    /// <remarks>The method joins the list of strings into a single string using a predefined delimiter and
-    /// calculates its size in bytes. If the size exceeds or equals 8 KB (8192 bytes), the save operation is rejected,
-    /// and the method returns <see langword="false"/>.</remarks>
     /// <param name="key">The unique key used to store the list in local settings. Cannot be null or empty.</param>
     /// <param name="items">The list of strings to save. Cannot be null.</param>
     /// <returns><see langword="true"/> if the list is successfully saved; otherwise, <see langword="false"/> if the total size
@@ -214,8 +191,6 @@ public static class SettingsHelper
 /// <summary>
 /// Provides constant keys used for accessing application settings.
 /// </summary>
-/// <remarks>This class defines string constants that represent keys for various settings in the application.
-/// These keys can be used to retrieve or store values in a settings dictionary or configuration file.</remarks>
 public static class SettingsKeys
 {
     /// <summary>
