@@ -121,11 +121,7 @@ public sealed partial class PageHeader : UserControl
         {
             if (toggleButton.IsChecked == true)
             {
-                if (!SettingsHelper.TryAddItem(SettingsKeys.Favorites, Item.UniqueId, InsertPosition.Last))
-                {
-                    // Revert toggle state since add failed
-                    toggleButton.IsChecked = false;
-                }
+                SettingsHelper.TryAddItem(SettingsKeys.Favorites, Item.UniqueId, InsertPosition.Last);
             }
             else
             {
