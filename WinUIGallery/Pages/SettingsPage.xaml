@@ -38,6 +38,9 @@
             VerticalScrollMode="Auto">
             <Border>
                 <StackPanel MaxWidth="1064" Spacing="{StaticResource SettingsCardSpacing}">
+                    <StackPanel.ChildrenTransitions>
+                        <RepositionThemeTransition />
+                    </StackPanel.ChildrenTransitions>
                     <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Appearance &amp; behavior" />
                     <toolkit:SettingsCard Description="Select which app theme to display" Header="App theme">
                         <toolkit:SettingsCard.HeaderIcon>
