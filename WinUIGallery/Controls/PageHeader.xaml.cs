@@ -118,7 +118,7 @@ public sealed partial class PageHeader : UserControl
         return (bool)isFavorite ? "Remove from favorites" : "Add to favorites";
     }
 
-    private async void FavoriteButton_Click(object sender, RoutedEventArgs e)
+    private void FavoriteButton_Click(object sender, RoutedEventArgs e)
     {
         if (sender is ToggleButton toggleButton && Item != null)
         {
@@ -128,17 +128,6 @@ public sealed partial class PageHeader : UserControl
                 {
                     // Revert toggle state since add failed
                     toggleButton.IsChecked = false;
-
-                    var contentDialog = new ContentDialog
-                    {
-                        XamlRoot = this.XamlRoot,
-                        RequestedTheme = this.ActualTheme,
-                        Title = "Favorites limit reached",
-                        Content = "Adding more favorites is not possible at this time.\nSome must be removed first.",
-                        CloseButtonText = "OK",
-                        CloseButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style
-                    };
-                    await contentDialog.ShowAsync();
                 }
             }
             else
