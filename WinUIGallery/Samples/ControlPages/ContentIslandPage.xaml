@@ -24,7 +24,7 @@
                 </Style.Setters>
             </Style>
         </Grid.Resources>
-        <controls:ControlExample HeaderText="A basic content dialog with content." SourceCodeVisibility="Collapsed">
+        <controls:ControlExample HeaderText="A basic content island with content." SourceCodeVisibility="Collapsed">
             <controls:ControlExample.Example>
                 <Grid RowSpacing="8">
                     <Grid.RowDefinitions>
