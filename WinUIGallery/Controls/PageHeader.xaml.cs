@@ -7,6 +7,7 @@ using WinUIGallery.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Uri = System.Uri;
+using Microsoft.UI.Xaml.Controls.Primitives;
 
 namespace WinUIGallery.Controls;
 
@@ -97,6 +98,35 @@ public sealed partial class PageHeader : UserControl
         if (Item == null || (string.IsNullOrEmpty(Item.ApiNamespace) && Item.BaseClasses == null))
         {
             APIDetailsBtn.Visibility = Visibility.Collapsed;
+        }
+        if (Item != null)
+        {
+            FavoriteButton.IsChecked = SettingsHelper.Contains(SettingsKeys.Favorites, Item.UniqueId);
+        }
+    }
+
+    private string GetFavoriteGlyph(bool? isFavorite)
+    {
+        return (bool)isFavorite ? "\uE735" : "\uE734";
+    }
+
+    private string GetFavoriteToolTip(bool? isFavorite)
+    {
+        return (bool)isFavorite ? "Remove from favorites" : "Add to favorites";
+    }
+
+    private void FavoriteButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is ToggleButton toggleButton && Item != null)
+        {
+            if (toggleButton.IsChecked == true)
+            {
+                SettingsHelper.TryAddItem(SettingsKeys.Favorites, Item.UniqueId, InsertPosition.Last);
+            }
+            else
+            {
+                SettingsHelper.TryRemoveItem(SettingsKeys.Favorites, Item.UniqueId);
+            }
         }
     }
 }
