@@ -112,6 +112,7 @@
         <PackageReference Include="CommunityToolkit.WinUI.Converters" />
         <PackageReference Include="CommunityToolkit.WinUI.Animations" />
         <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" />
+        <PackageReference Include="Microsoft.Telemetry.Inbox.Managed" />
         <Manifest Include="$(ApplicationManifest)" />
         <!-- System.Private.Uri is pulled in transitively through ColorCode.Core and contains vulnerabilities
           CVE-2019-0657, CVE-2019-0980, and CVE-2019-0981. Since no meta-package depends on version 4.3.2, which
@@ -127,6 +128,7 @@
         <PackageReference Update="CommunityToolkit.WinUI.Converters" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Animations" Version="$(CommunityToolkitWinUIVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Controls.Primitives" Version="$(CommunityToolkitWinUIVersion)" />
+        <PackageReference Update="Microsoft.Telemetry.Inbox.Managed" Version="$(MicrosoftTelemetryVersion)" />
         <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
         <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
         <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
