@@ -1,18 +1,5 @@
-﻿//******************************************************************************
-//
-// Copyright (c) 2024 Microsoft Corporation. All rights reserved.
-//
-// This code is licensed under the MIT License (MIT).
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
-//
-//******************************************************************************
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 using Axe.Windows.Automation;
 using Axe.Windows.Core.Enums;
@@ -40,16 +27,16 @@ public class AxeHelper
     {
         // Bug 1474: Disabling Rules NameReasonableLength and BoundingRectangleNotNull temporarily
         var testResult = AccessibilityScanner.Scan(null).WindowScanOutputs.SelectMany(output => output.Errors)
-                .Where(rule => rule.Rule.ID != RuleId.NameIsInformative)
-                .Where(rule => rule.Rule.ID != RuleId.NameExcludesControlType)
-                .Where(rule => rule.Rule.ID != RuleId.NameExcludesLocalizedControlType)
-                .Where(rule => rule.Rule.ID != RuleId.SiblingUniqueAndFocusable)
-                .Where(rule => rule.Rule.ID != RuleId.NameReasonableLength)
-                .Where(rule => rule.Rule.ID != RuleId.BoundingRectangleNotNull)
-                .Where(rule => rule.Rule.ID != RuleId.BoundingRectangleNotNullListViewXAML)
-                .Where(rule => rule.Rule.ID != RuleId.BoundingRectangleNotNullTextBlockXAML)
-                .Where(rule => rule.Rule.ID != RuleId.NameNotNull)
-                .Where(rule => rule.Rule.ID != RuleId.ChromiumComponentsShouldUseWebScanner);
+            .Where(rule => rule.Rule.ID != RuleId.NameIsInformative)
+            .Where(rule => rule.Rule.ID != RuleId.NameExcludesControlType)
+            .Where(rule => rule.Rule.ID != RuleId.NameExcludesLocalizedControlType)
+            .Where(rule => rule.Rule.ID != RuleId.SiblingUniqueAndFocusable)
+            .Where(rule => rule.Rule.ID != RuleId.NameReasonableLength)
+            .Where(rule => rule.Rule.ID != RuleId.BoundingRectangleNotNull)
+            .Where(rule => rule.Rule.ID != RuleId.BoundingRectangleNotNullListViewXAML)
+            .Where(rule => rule.Rule.ID != RuleId.BoundingRectangleNotNullTextBlockXAML)
+            .Where(rule => rule.Rule.ID != RuleId.NameNotNull)
+            .Where(rule => rule.Rule.ID != RuleId.ChromiumComponentsShouldUseWebScanner);
 
         if (testResult.Any())
         {
