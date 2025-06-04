@@ -306,7 +306,8 @@
         <None Remove="Controls\DesignGuidance\ColorSections\TextSection.xaml" />
         <None Remove="Controls\DesignGuidance\ColorTile.xaml" />
         <None Remove="Controls\DesignGuidance\TypographyControl.xaml" />
-        <None Remove="Controls\HomePageHeaderImage.xaml" />
+        <None Remove="Controls\HorizontalScrollContainer.xaml" />
+        <None Remove="Controls\OpacityMaskView.xaml" />
         <None Remove="Controls\PageHeader.xaml" />
         <None Remove="Controls\SampleThemeListener.xaml" />
         <None Remove="Samples\ControlPages\AppNotificationPage.xaml" />
@@ -322,6 +323,7 @@
         <None Remove="Styles\Grid.xaml" />
         <None Remove="Styles\GridViewItem.xaml" />
         <None Remove="Styles\ItemTemplates.xaml" />
+        <None Remove="Styles\SelectorBar.xaml" />
         <None Remove="Styles\TextBlock.xaml" />
     </ItemGroup>
 
@@ -513,6 +515,24 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Page Update="Controls\OpacityMaskView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Styles\SelectorBar.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Controls\HorizontalScrollContainer.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
       <Page Update="Samples\ControlPages\BadgeNotificationManagerPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
@@ -590,11 +610,6 @@
         </Page>
     </ItemGroup>
     <ItemGroup>
-        <Page Update="Controls\HomePageHeaderImage.xaml">
-            <Generator>MSBuild:Compile</Generator>
-        </Page>
-    </ItemGroup>
-    <ItemGroup>
         <Page Update="Controls\PageHeader.xaml">
             <Generator>MSBuild:Compile</Generator>
         </Page>
@@ -621,6 +636,11 @@
     </ItemGroup>
     <ItemGroup>
       <Page Update="Styles\Button.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+    <ItemGroup>
+      <Page Update="Controls\HomePage\HomePageHeader.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
