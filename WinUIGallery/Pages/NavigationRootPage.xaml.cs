@@ -168,12 +168,11 @@ public sealed partial class NavigationRootPage : Page
         rootFrame.Navigate(pageType, args, navigationTransitionInfo);
 
         // Ensure the NavigationView selection is set to the correct item to mark the sample's page as visited
-        if (!pageType.Equals(typeof(ItemPage)) || targetPageArguments == null)
+        if (pageType.Equals(typeof(ItemPage)) && targetPageArguments != null)
         {
-            return;
+            // Mark the item sample's page visited
+            SettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, targetPageArguments.ToString(), InsertPosition.First, SettingsHelper.MaxRecentlyVisitedSamples);
         }
-        // Mark the item sample's page visited
-        SettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, targetPageArguments.ToString(), InsertPosition.First, SettingsHelper.MaxRecentlyVisitedSamples);
     }
 
     public void EnsureNavigationSelection(string id)
