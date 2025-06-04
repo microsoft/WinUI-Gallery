@@ -1,19 +1,25 @@
-// Copyright (c) Microsoft Corporation and Contributors.
-// Licensed under the MIT License.
-
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace WinUIGallery.Controls;
 
-public sealed partial class TileGallery : UserControl
+public sealed partial class HorizontalScrollContainer : UserControl
 {
-    public TileGallery()
+    public HorizontalScrollContainer()
     {
         this.InitializeComponent();
     }
 
-    private void scroller_ViewChanging(object sender, ScrollViewerViewChangingEventArgs e)
+    public object Source
+    {
+        get => (object)GetValue(SourceProperty);
+        set => SetValue(SourceProperty, value);
+    }
+
+    public static readonly DependencyProperty SourceProperty =
+        DependencyProperty.Register(nameof(Source), typeof(object), typeof(HorizontalScrollContainer), new PropertyMetadata(null));
+
+    private void Scroller_ViewChanging(object sender, ScrollViewerViewChangingEventArgs e)
     {
         if (e.FinalView.HorizontalOffset < 1)
         {
@@ -37,7 +43,8 @@ public sealed partial class TileGallery : UserControl
     private void ScrollBackBtn_Click(object sender, RoutedEventArgs e)
     {
         scroller.ChangeView(scroller.HorizontalOffset - scroller.ViewportWidth, null, null);
-        // Manually focus to ScrollForwardBtn since this button disappears after scrolling to the end.          
+
+        // Manually focus to ScrollForwardBtn since this button disappears after scrolling to the end.
         ScrollForwardBtn.Focus(FocusState.Programmatic);
     }
 
@@ -45,11 +52,11 @@ public sealed partial class TileGallery : UserControl
     {
         scroller.ChangeView(scroller.HorizontalOffset + scroller.ViewportWidth, null, null);
 
-        // Manually focus to ScrollBackBtn since this button disappears after scrolling to the end.    
+        // Manually focus to ScrollBackBtn since this button disappears after scrolling to the end.
         ScrollBackBtn.Focus(FocusState.Programmatic);
     }
 
-    private void scroller_SizeChanged(object sender, SizeChangedEventArgs e)
+    private void Scroller_SizeChanged(object sender, SizeChangedEventArgs e)
     {
         UpdateScrollButtonsVisibility();
     }
