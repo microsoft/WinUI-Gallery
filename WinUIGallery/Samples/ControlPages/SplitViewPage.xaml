@@ -22,12 +22,13 @@
     <StackPanel>
         <controls:ControlExample HeaderText="A basic SplitView.">
 
-            <Grid Height="300" VerticalAlignment="Top">
+            <Grid Height="300" Width="400" VerticalAlignment="Top">
                 <SplitView
                     x:Name="splitView"
                     CompactPaneLength="{x:Bind compactPaneLengthSlider.Value, Mode=OneWay}"
                     DisplayMode="CompactOverlay"
                     IsPaneOpen="{x:Bind togglePaneButton.IsChecked, Mode=TwoWay, Converter={StaticResource nullableBooleanToBooleanConverter}}"
+                    Width="400" 
                     IsTabStop="False"
                     OpenPaneLength="{x:Bind openPaneLengthSlider.Value, Mode=OneWay}"
                     PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
