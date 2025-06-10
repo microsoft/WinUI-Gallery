@@ -112,8 +112,7 @@ public sealed partial class ListViewPage : ItemsPageBase
     private void ListView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
     {
         var contactsToMove = e.Items.OfType<Contact>().ToList();
-        var contactsToMoveAsJson = JsonSerializer.Serialize(contactsToMove);
-        e.Data.SetText(contactsToMoveAsJson);
+        e.Data.Properties["contacts"] = contactsToMove;
         e.Data.RequestedOperation = DataPackageOperation.Move;
     }
 
@@ -131,11 +130,11 @@ public sealed partial class ListViewPage : ItemsPageBase
     {
         ListView target = (ListView)sender;
 
-        if (e.DataView.Contains(StandardDataFormats.Text))
+        if (e.DataView.Properties["contacts"] != null)
         {
             DragOperationDeferral def = e.GetDeferral();
-            var contactsToMoveAsJson = await e.DataView.GetTextAsync();
-            var contactsToMove = JsonSerializer.Deserialize<List<Contact>>(contactsToMoveAsJson);
+            var contactsToMove = (List<Contact>)e.DataView.Properties["contacts"];
+
             foreach (var contactToMove in contactsToMove)
             {
                 // Find the insertion index:
