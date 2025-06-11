@@ -1,24 +1,22 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Windows.Storage;
+using Microsoft.Windows.Storage;
 using WinUIGallery.Pages;
 
 namespace WinUIGallery.Helpers;
 
 public static class NavigationOrientationHelper
 {
-
-    private const string IsLeftModeKey = "NavigationIsOnLeftMode";
     private static bool _isLeftMode = true;
-
+    private static ApplicationData appData = ApplicationData.GetDefault();
     public static bool IsLeftMode()
     {
         if (NativeHelper.IsAppPackaged)
         {
-            var valueFromSettings = ApplicationData.Current.LocalSettings.Values[IsLeftModeKey];
+            var valueFromSettings = appData.LocalSettings.Values[SettingsKeys.IsLeftMode];
             if (valueFromSettings == null)
             {
-                ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = true;
+                appData.LocalSettings.Values[SettingsKeys.IsLeftMode] = true;
                 valueFromSettings = true;
             }
             return (bool)valueFromSettings;
@@ -34,7 +32,7 @@ public static class NavigationOrientationHelper
         UpdateNavigationViewForElement(isLeftMode, element);
         if (NativeHelper.IsAppPackaged)
         {
-            ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = isLeftMode;
+            appData.LocalSettings.Values[SettingsKeys.IsLeftMode] = isLeftMode;
         }
         else
         {
