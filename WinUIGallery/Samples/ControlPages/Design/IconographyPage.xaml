@@ -185,6 +185,7 @@
                     BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
                     BorderThickness="1,0,0,0"
                     DataContext="{x:Bind}"
+                    CornerRadius="0,8,8,0"
                     Visibility="Collapsed">
                     <ScrollViewer>
                         <StackPanel Margin="16,16,8,16" Spacing="2">
