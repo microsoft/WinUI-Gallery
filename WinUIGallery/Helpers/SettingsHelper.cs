@@ -187,19 +187,3 @@ public static class SettingsHelper
         return true;
     }
 }
-
-/// <summary>
-/// Provides constant keys used for accessing application settings.
-/// </summary>
-public static class SettingsKeys
-{
-    /// <summary>
-    /// Key for the list of favorited Pages.
-    /// </summary>
-    public const string Favorites = "Favorites";
-
-    /// <summary>
-    /// Key for the list of recently visited Pages.
-    /// </summary>
-    public const string RecentlyVisited = "RecentlyVisited";
-}

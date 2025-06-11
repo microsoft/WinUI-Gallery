@@ -1,5 +1,5 @@
 using Microsoft.UI.Xaml;
-using Windows.Storage;
+using Microsoft.Windows.Storage;
 
 namespace WinUIGallery.Helpers;
 
@@ -8,7 +8,7 @@ namespace WinUIGallery.Helpers;
 /// </summary>
 public static class ThemeHelper
 {
-    private const string SelectedAppThemeKey = "SelectedAppTheme";
+    private static ApplicationData appData = ApplicationData.GetDefault();
 
     /// <summary>
     /// Gets the current actual theme of the app based on the requested theme of the
@@ -62,7 +62,7 @@ public static class ThemeHelper
 
             if (NativeHelper.IsAppPackaged)
             {
-                ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey] = value.ToString();
+                appData.LocalSettings.Values[SettingsKeys.SelectedAppTheme] = value.ToString();
             }
         }
     }
@@ -71,7 +71,7 @@ public static class ThemeHelper
     {
         if (NativeHelper.IsAppPackaged)
         {
-            string savedTheme = ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey]?.ToString();
+            string savedTheme = appData.LocalSettings.Values[SettingsKeys.SelectedAppTheme]?.ToString();
 
             if (savedTheme != null)
             {
