@@ -89,6 +89,9 @@
     </Page.Resources>
 
     <Grid RowSpacing="8">
+        <Grid.ChildrenTransitions>
+            <RepositionThemeTransition/>
+        </Grid.ChildrenTransitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
