@@ -91,7 +91,7 @@ extends:
           displayName: Generate Test Signing Certificate
           inputs:
             targetType: filePath
-            filePath: build/GenerateTestPFX.ps1
+            filePath: scripts/GenerateTestPFX.ps1
 
         # Build (Product)
         - task: DotNetCoreCLI@2
