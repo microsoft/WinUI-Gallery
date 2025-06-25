@@ -1,18 +1,11 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
-using System;
-using System.Collections.ObjectModel;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
+using System;
+using System.Collections.ObjectModel;
 
 namespace WinUIGallery.ControlPages;
 
@@ -182,6 +175,6 @@ public sealed partial class AnnotatedScrollBarPage : Page
 
     private int GetItemsPerRow()
     {
-        return (itemsRepeater == null || itemsRepeater.ActualWidth == 0) ? 1 : (int) Math.Max(itemsRepeater.ActualWidth / ItemWidth, 1);
+        return (itemsRepeater == null || itemsRepeater.ActualWidth == 0) ? 1 : (int)Math.Max(itemsRepeater.ActualWidth / ItemWidth, 1);
     }
 }

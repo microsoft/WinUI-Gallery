@@ -1,9 +1,10 @@
-using Windows.Foundation.Metadata;
-using Microsoft.UI;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
+using Windows.Foundation.Metadata;
 
 namespace WinUIGallery.ControlPages;
 
@@ -22,7 +23,7 @@ public sealed partial class CommandBarFlyoutPage : Page
 
     private void ShowMenu(bool isTransient)
     {
-        if(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
+        if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
         {
             FlyoutShowOptions myOption = new FlyoutShowOptions
             {

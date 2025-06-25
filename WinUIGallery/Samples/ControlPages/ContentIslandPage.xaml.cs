@@ -1,11 +1,14 @@
-using System;
-using System.Numerics;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Composition;
 using Microsoft.UI.Content;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Shapes;
+using System;
+using System.Numerics;
 
 namespace WinUIGallery.ControlPages;
 

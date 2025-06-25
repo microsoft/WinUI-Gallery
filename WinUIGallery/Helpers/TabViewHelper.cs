@@ -1,7 +1,10 @@
-using System.Collections;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using System.Collections;
 
 namespace WinUIGallery.Helpers;
 
@@ -12,7 +15,7 @@ public static class TabViewHelper
         menuFlyout.Items.Clear();
 
         var item = (TabViewItem)menuFlyout.Target;
-        if(item == null)
+        if (item == null)
         {
             return;
         }

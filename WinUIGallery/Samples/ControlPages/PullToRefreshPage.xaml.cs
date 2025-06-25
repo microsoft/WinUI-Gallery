@@ -1,19 +1,20 @@
-using WinUIGallery.Helpers;
-using System;
-using System.Collections.ObjectModel;
-using Windows.Foundation;
-using Windows.Foundation.Metadata;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Composition;
 using Microsoft.UI.Dispatching;
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
+using System;
+using System.Collections.ObjectModel;
+using Windows.Foundation;
+using Windows.Foundation.Metadata;
+using Windows.UI.ViewManagement;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -58,7 +59,7 @@ public sealed partial class PullToRefreshPage : Page
             Image ptrImage = new Image();
             AccessibilitySettings accessibilitySettings = new AccessibilitySettings();
             // Checking light theme
-            if ((ThemeHelper.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light) 
+            if ((ThemeHelper.RootTheme == ElementTheme.Light || Application.Current.RequestedTheme == ApplicationTheme.Light)
                 && !accessibilitySettings.HighContrast)
             {
                 ptrImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/SampleMedia/SunBlack.png"));
