@@ -108,7 +108,7 @@ public sealed partial class MainWindow : Window
         // This calls comes off-thread, hence we will need to dispatch it to current app's thread
         dispatcherQueue.TryEnqueue(() =>
         {
-            _ = TitleBarHelper.ApplySystemThemeToCaptionButtons(this);
+            _ = TitleBarHelper.ApplySystemThemeToCaptionButtons(this, rootFrame.ActualTheme);
         });
     }
 
