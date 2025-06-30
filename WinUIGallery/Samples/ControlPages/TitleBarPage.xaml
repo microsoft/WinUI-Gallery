@@ -25,20 +25,6 @@
     </Page.Resources>
 
     <StackPanel>
-        <InfoBar
-            Margin="0,12"
-            IsClosable="False"
-            IsOpen="True">
-            <TextBlock>
-                TitleBar control is now available in <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/windows-app-sdk/experimental-channel#required-c-project-changes-for-16-experimental1">Experimental</Hyperlink>
-                !
-                Preview samples for TitleBar at <Hyperlink NavigateUri="https://github.com/microsoft/WinUI-Gallery/blob/feature/TitleBarExperimental/WinUIGallery/ControlPages/TitleBarPage.xaml">feature/TitleBarExperimental</Hyperlink>
-            </TextBlock>
-
-        </InfoBar>
-
-
-
         <controls:ControlExample CSharpSource="Window\TitleBar\TitleBarSample2.txt" HeaderText="Default titlebar (when no user defined titlebar is set)">
             <controls:ControlExample.Example>
                 <StackPanel Orientation="Vertical" Spacing="10">
