@@ -1,7 +1,10 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.Windows.AppNotifications.Builder;
 using Microsoft.Windows.AppNotifications;
+using Microsoft.Windows.AppNotifications.Builder;
 using System;
 using System.Collections.Generic;
 
@@ -9,7 +12,7 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class AppNotificationPage : Page
 {
-    private IReadOnlyList<AppNotificationSoundEvent> appNotificationSoundEvents = new List<AppNotificationSoundEvent> 
+    private IReadOnlyList<AppNotificationSoundEvent> appNotificationSoundEvents = new List<AppNotificationSoundEvent>
     {
         AppNotificationSoundEvent.Default,
         AppNotificationSoundEvent.IM,
@@ -72,7 +75,7 @@ public sealed partial class AppNotificationPage : Page
                 .AddItem("4", "Good")
                 .AddItem("5", "Excellent")
                 .SetSelectedItem("3"))
-            .AddTextBox("comment", "Leave a comment here...","")
+            .AddTextBox("comment", "Leave a comment here...", "")
             .AddButton(new AppNotificationButton("Submit")
                 .AddArgument("action", "submit_survey"))
             .BuildNotification();
@@ -86,12 +89,12 @@ public sealed partial class AppNotificationPage : Page
             .AddText("Progress Bar Example")
             .AddText("This is a sample notification showing how to use a progress bar.")
             .AddProgressBar(new AppNotificationProgressBar()
-                {
-                    Title = "Demo Progress",
-                    Value = 0.6, // 60%
-                    ValueStringOverride = "60%",
-                    Status = "In progress..."
-                })
+            {
+                Title = "Demo Progress",
+                Value = 0.6, // 60%
+                ValueStringOverride = "60%",
+                Status = "In progress..."
+            })
             .BuildNotification();
 
         AppNotificationManager.Default.Show(notification);

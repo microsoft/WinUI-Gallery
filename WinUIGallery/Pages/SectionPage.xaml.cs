@@ -1,14 +1,8 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
-using System.Linq;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml.Navigation;
+using System.Linq;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Pages;
@@ -30,7 +24,7 @@ public sealed partial class SectionPage : ItemsPageBase
         NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
         NavigationRootPage navigationRootPage = args.NavigationRootPage;
         var group = await ControlInfoDataSource.GetGroupAsync((string)args.Parameter);
-   
+
         var menuItem = (Microsoft.UI.Xaml.Controls.NavigationViewItemBase)navigationRootPage.NavigationView.MenuItems.Single(i => (string)((Microsoft.UI.Xaml.Controls.NavigationViewItemBase)i).Tag == group.UniqueId);
         menuItem.IsSelected = true;
         TitleTxt.Text = group.Title;

@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 
@@ -20,7 +23,7 @@ internal class TitleBarHelper
         {
             color = Colors.Black;
         }
-        SetCaptionButtonColors(window,color);
+        SetCaptionButtonColors(window, color);
         return color;
     }
 

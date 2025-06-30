@@ -1,26 +1,20 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
-using System;
-using System.Collections.Generic;
-using Windows.Foundation.Metadata;
-using Windows.Storage;
-using Windows.Storage.Pickers;
-using Windows.Storage.Provider;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using System.Runtime.InteropServices;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Xml.Linq;
+using Windows.Foundation.Metadata;
+using Windows.Storage;
+using Windows.Storage.Pickers;
+using Windows.Storage.Provider;
 
 namespace WinUIGallery.ControlPages;
 
@@ -192,7 +186,7 @@ public sealed partial class RichEditBoxPage : Page
     private void Editor_GotFocus(object sender, RoutedEventArgs e)
     {
         editor.Document.GetText(TextGetOptions.UseCrlf, out _);
-        
+
         // reset colors to correct defaults for Focused state
         ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
         SolidColorBrush background = (SolidColorBrush)App.Current.Resources["TextControlBackgroundFocused"];
@@ -266,7 +260,7 @@ public sealed partial class RichEditBoxPage : Page
             "  <mml:mi mathcolor=\"#000000\">A</mml:mi>\r\n" +
             "</mml:math>";
 
-        if(mathEditor2.ActualTheme == ElementTheme.Dark)
+        if (mathEditor2.ActualTheme == ElementTheme.Dark)
         {
             mathEditor2.Document.SetMathML(formulaMathML.Replace("mathcolor=\"#000000\"", "mathcolor=\"#FFFFFF\""));
         }
