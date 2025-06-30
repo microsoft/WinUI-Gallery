@@ -1,7 +1,10 @@
-using Windows.Foundation.Metadata;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
+using Windows.Foundation.Metadata;
 
 namespace WinUIGallery.SamplePages;
 

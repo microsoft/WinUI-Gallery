@@ -1,7 +1,10 @@
-using System;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using System;
 using Windows.UI;
 
 namespace WinUIGallery.Controls;
@@ -20,7 +23,8 @@ public sealed partial class InlineColorPicker : UserControl
     public Color Color
     {
         get { return (Color)GetValue(ColorProperty); }
-        set {
+        set
+        {
             ColorBrush = new SolidColorBrush(value);
             SetValue(ColorProperty, value);
         }
@@ -35,7 +39,7 @@ public sealed partial class InlineColorPicker : UserControl
     }
     public static readonly DependencyProperty ColorBrushProperty =
         DependencyProperty.Register("ColorBrush", typeof(SolidColorBrush), typeof(InlineColorPicker), new PropertyMetadata(new SolidColorBrush(Microsoft.UI.Colors.White)));
-    
+
     public event EventHandler<Color> ColorChanged;
 
     public InlineColorPicker()
@@ -46,7 +50,7 @@ public sealed partial class InlineColorPicker : UserControl
 
     private void InlineColorPicker_Loaded(object sender, RoutedEventArgs e)
     {
-        ColorHex.Text = Color.ToString().Replace("#FF","#");
+        ColorHex.Text = Color.ToString().Replace("#FF", "#");
     }
 
     public SolidColorBrush GetSolidColorBrush(string hex)

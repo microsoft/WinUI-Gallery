@@ -1,10 +1,12 @@
-using System;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using WinUIGallery.Helpers;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using System;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 

@@ -1,5 +1,8 @@
-using System.Collections.Generic;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml.Controls;
+using System.Collections.Generic;
 
 namespace WinUIGallery.ControlPages;
 
@@ -39,7 +42,7 @@ public sealed partial class PipsPagerPage : Page
     }
 
     private void PrevButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    { 
+    {
         string prevButtonVisibility = e.AddedItems[0].ToString();
 
         switch (prevButtonVisibility)
