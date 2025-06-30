@@ -1,20 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Windows.ApplicationModel.Core;
-using Windows.Foundation.Metadata;
-using Windows.System;
-using Microsoft.UI.Dispatching;
-using Microsoft.UI.Windowing;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using System;
+using System.Collections.Generic;
+using Windows.System;
 using Windows.UI.Core;
-using Microsoft.UI.Input;
-using static CommunityToolkit.WinUI.Animations.Expressions.ExpressionValues;
 
 namespace WinUIGallery.Helpers;
 

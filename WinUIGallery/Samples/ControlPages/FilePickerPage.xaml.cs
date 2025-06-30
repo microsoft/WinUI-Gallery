@@ -1,19 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using WinUIGallery.Helpers;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Documents;
-using Microsoft.UI.Xaml.Media;
-using Windows.ApplicationModel.DataTransfer;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using Windows.Storage;
 using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 using Windows.Storage.Provider;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 

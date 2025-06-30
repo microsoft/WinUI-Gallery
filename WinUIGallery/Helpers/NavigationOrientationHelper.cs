@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Windows.Storage;
@@ -56,5 +59,5 @@ public static class NavigationOrientationHelper
             Grid.SetRow(_navView, 1);
         }
     }
-    
+
 }

@@ -1,15 +1,15 @@
-// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using System;
-using System.Numerics;
-using System.Threading.Tasks;
 using Microsoft.Graphics.Canvas;
 using Microsoft.Graphics.Canvas.UI.Composition;
 using Microsoft.Graphics.DirectX;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Composition.Scenes;
 using Microsoft.UI.Content;
+using System;
+using System.Numerics;
+using System.Threading.Tasks;
 
 class HelmetScenario
 {
@@ -50,7 +50,7 @@ class HelmetScenario
         sceneNode0.Transform.Scale = new Vector3(170);
         sceneNode0.Transform.Orientation = new Quaternion(0.70710683f, 0.0f, 0.0f, 0.70710683f);
         worldNode.Children.Add(sceneNode0);
-            
+
         var sceneNodeForTheGLTFMesh0 = SceneNode.Create(compositor);
         sceneNode0.Children.Add(sceneNodeForTheGLTFMesh0);
 

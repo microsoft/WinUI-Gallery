@@ -1,10 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using WinUIGallery.Samples.SamplePages;
 
 namespace WinUIGallery.ControlPages;
@@ -45,7 +47,7 @@ public sealed partial class AppWindowPage : Page
 
     private void HasBorder_Toggled(object sender, RoutedEventArgs e)
     {
-        if(!HasBorder.IsOn)
+        if (!HasBorder.IsOn)
         {
             HasTitleBar.IsOn = false;
         }

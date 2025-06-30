@@ -1,17 +1,11 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
-using System;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using System;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.System;
 using WinUIGallery.Helpers;
@@ -105,7 +99,7 @@ public sealed partial class SettingsPage : Page
             }
             else
             {
-                color = TitleBarHelper.ApplySystemThemeToCaptionButtons(window) == Colors.White  ? "Dark" : "Light";
+                color = TitleBarHelper.ApplySystemThemeToCaptionButtons(window) == Colors.White ? "Dark" : "Light";
             }
             // announce visual change to automation
             UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {color}",
@@ -168,7 +162,7 @@ public sealed partial class SettingsPage : Page
     private async void bugRequestCard_Click(object sender, RoutedEventArgs e)
     {
         await Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
-    
+
     }
 
     private void ClearRecentlyVisitedSamples_Click(object sender, RoutedEventArgs e)
