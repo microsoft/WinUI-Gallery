@@ -1,7 +1,8 @@
 ![WinUI Gallery hero image](./.github/assets/ReadmeHero-dark.png)
 
 <h1 align="center">WinUI 3 Gallery</h1>
-<p align="center">Sample gallery application for <a style="text-decoration:none" href="https://docs.microsoft.com/windows/apps/winui">WinUI 3</a> controls & <a style="text-decoration:none" href="https://github.com/microsoft/WindowsAppSDK">Windows App SDK</a> APIs</p>
+<p align="center">Companion app for <a style="text-decoration:none" href="https://docs.microsoft.com/windows/apps/winui">WinUI</a> & <a style="text-decoration:none" href="https://github.com/microsoft/WindowsAppSDK">Windows App SDK</a> APIs</p>
+
 
 This app demonstrates all of the WinUI 3 controls and styles available to make a modern Windows app with the Windows App SDK. It is the interactive companion to the [Fluent Design guidelines](https://docs.microsoft.com/windows/apps/design/basics/) and shows the usage of [WinUI](https://docs.microsoft.com/windows/apps/winui/). 
 
