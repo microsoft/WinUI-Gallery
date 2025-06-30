@@ -1,9 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Imaging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
 
@@ -121,22 +124,22 @@ public sealed partial class AutoSuggestBoxPage : Page
     {
         // Since selecting an item will also change the text,
         // only listen to changes caused by user entering text.
-        if(args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+        if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
         {
             var suitableItems = new List<string>();
             var splitText = sender.Text.ToLower().Split(" ");
-            foreach(var cat in Cats)
+            foreach (var cat in Cats)
             {
-                var found = splitText.All((key)=>
+                var found = splitText.All((key) =>
                 {
                     return cat.ToLower().Contains(key);
                 });
-                if(found)
+                if (found)
                 {
                     suitableItems.Add(cat);
                 }
             }
-            if(suitableItems.Count == 0)
+            if (suitableItems.Count == 0)
             {
                 suitableItems.Add("No results found");
             }
@@ -191,7 +194,7 @@ public sealed partial class AutoSuggestBoxPage : Page
         {
             //Do a fuzzy search based on the text
             var suggestions = SearchControls(sender.Text);
-            if(suggestions.Count > 0)
+            if (suggestions.Count > 0)
             {
                 SelectControl(suggestions.FirstOrDefault());
             }
@@ -225,7 +228,7 @@ public sealed partial class AutoSuggestBoxPage : Page
             ControlDetails.Visibility = Visibility.Visible;
 
 
-            BitmapImage image = control.ImagePath == null? null : new BitmapImage(new Uri(control.ImagePath));
+            BitmapImage image = control.ImagePath == null ? null : new BitmapImage(new Uri(control.ImagePath));
             ControlImage.Source = image;
 
             ControlTitle.Text = control.Title;

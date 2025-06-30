@@ -1,9 +1,12 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Animation;
 using System;
 using System.Collections.Generic;
-using Microsoft.UI.Xaml.Controls;
 using WinUIGallery.SamplePages;
-using Microsoft.UI.Xaml.Media.Animation;
-using Microsoft.UI.Xaml;
 
 namespace WinUIGallery.ControlPages;
 
@@ -25,11 +28,11 @@ public sealed partial class ConnectedAnimationPage : Page
 
     private ConnectedAnimationConfiguration GetConfiguration()
     {
-        if(this.ConfigurationPanel == null)
+        if (this.ConfigurationPanel == null)
         {
             return null;
         }
-        
+
         var selectedName = (ConfigurationPanel.SelectedItem as RadioButton).Content.ToString();
         switch (selectedName)
         {

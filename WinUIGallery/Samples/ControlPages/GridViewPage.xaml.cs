@@ -1,12 +1,6 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
@@ -190,14 +184,14 @@ public sealed partial class GridViewPage : ItemsPageBase
         // Now we can change StyledGrid's MaximumRowsorColumns property within its ItemsPanel>ItemsPanelTemplate>ItemsWrapGrid.
         StyledGridIWG.MaximumRowsOrColumns = 3;
     }
-    
+
 
     private void NumberBox_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
     {
-        if(StyledGridIWG == null) { return; }
+        if (StyledGridIWG == null) { return; }
 
         // Only update either max-row value or margins
-        if(sender == WrapItemCount)
+        if (sender == WrapItemCount)
         {
             StyledGridIWG.MaximumRowsOrColumns = (int)WrapItemCount.Value;
             return;

@@ -1,7 +1,10 @@
-using System.Collections.ObjectModel;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
+using System.Collections.ObjectModel;
 using WinUIGallery.Helpers;
 using WinUIGallery.SamplePages;
 
@@ -262,7 +265,7 @@ public sealed partial class TabViewPage : Page
 
     private void TabViewContextMenu_Opening(object sender, object e)
     {
-        var menuFlyout = (MenuFlyout)sender; 
+        var menuFlyout = (MenuFlyout)sender;
         TabViewHelper.PopulateTabViewContextMenu(menuFlyout);
         // If the context menu ended up with no items at all, then we'll prevent it from being shown.
         if (menuFlyout.Items.Count == 0)

@@ -1,8 +1,11 @@
-using System.Collections.Generic;
-using System.Linq;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Media;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace WinUIGallery.Helpers;
 

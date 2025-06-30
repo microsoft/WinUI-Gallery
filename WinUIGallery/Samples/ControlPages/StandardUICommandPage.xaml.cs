@@ -1,10 +1,11 @@
-using System;
-using Windows.Foundation.Metadata;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
+using Windows.Foundation.Metadata;
 using ICommand = System.Windows.Input.ICommand;
 
 namespace WinUIGallery.ControlPages;
@@ -95,7 +96,8 @@ public sealed partial class StandardUICommandPage : Page
         MenuFlyout flyout = new MenuFlyout();
         ListItemData data = (ListItemData)args.Item;
         MenuFlyoutItem item = new MenuFlyoutItem() { Command = data.Command };
-        flyout.Opened += delegate (object element, object e) {
+        flyout.Opened += delegate (object element, object e)
+        {
             MenuFlyout flyoutElement = element as MenuFlyout;
             ListViewItem elementToHighlight = flyoutElement.Target as ListViewItem;
             elementToHighlight.IsSelected = true;

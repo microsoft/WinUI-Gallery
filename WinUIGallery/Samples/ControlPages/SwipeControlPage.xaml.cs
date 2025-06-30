@@ -1,16 +1,7 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
-using Microsoft.UI;
-using Microsoft.UI.Xaml;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
 using System.Collections.ObjectModel;
 
 namespace WinUIGallery.ControlPages;
@@ -37,7 +28,7 @@ public sealed partial class SwipeControlPage : Page
     {
         isArchived = !isArchived;
 
-        if(isArchived)
+        if (isArchived)
         {
             ((TextBlock)args.SwipeControl.Content).Text = "Archived - Swipe Left";
         }
@@ -92,7 +83,7 @@ public sealed partial class SwipeControlPage : Page
 
     private void CheckAcceptFlagBool(SwipeControl swipeCtrl)
     {
-        if(isAccepted && !isFlagged)
+        if (isAccepted && !isFlagged)
         {
             ((TextBlock)swipeCtrl.Content).Text = "Swipe Right - Accepted";
         }
