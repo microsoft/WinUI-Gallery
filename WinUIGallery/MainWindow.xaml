@@ -227,7 +227,7 @@
                             Content="Spacing"
                             Tag="Spacing">
                             <NavigationViewItem.Icon>
-                                <FontIcon Glyph="&#xE8A9;" />
+                                <FontIcon Glyph="&#xE8B3;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
                         <NavigationViewItem

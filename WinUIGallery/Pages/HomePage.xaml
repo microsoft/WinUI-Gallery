@@ -13,94 +13,171 @@
     x:Class="WinUIGallery.Pages.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:animations="using:CommunityToolkit.WinUI.Animations"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:local="using:WinUIGallery.Pages"
-    HighContrastAdjustment="None"
-    NavigationCacheMode="Enabled">
-
-    <Page.Resources>
-        <CollectionViewSource x:Name="itemsCVS" IsSourceGrouped="true" />
-    </Page.Resources>
-
-    <!--  This grid acts as a root panel for the page.  -->
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    HighContrastAdjustment="None">
     <Grid>
-        <GridView
-            x:Name="itemGridView"
-            Padding="24,0,24,0"
-            AutomationProperties.AutomationId="ItemGridView"
-            AutomationProperties.Name="Items In Group"
-            ContainerContentChanging="OnItemGridViewContainerContentChanging"
-            IsItemClickEnabled="True"
-            IsSwipeEnabled="False"
-            ItemClick="OnItemGridViewItemClick"
-            ItemContainerStyle="{StaticResource IndentedGridViewItemStyle}"
-            ItemTemplate="{StaticResource ControlItemTemplate}"
-            ItemsSource="{x:Bind itemsCVS.View, Mode=OneWay}"
-            Loaded="OnItemGridViewLoaded"
-            SelectionMode="None">
-            <GridView.Header>
-                <Grid x:Name="HeaderGrid" Margin="-24,0,-24,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="204" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <controls:HomePageHeaderImage
-                        Grid.RowSpan="2"
-                        Height="396"
-                        VerticalAlignment="Top" />
+        <Grid.Resources>
+            <animations:ImplicitAnimationSet x:Name="ShowTransitions">
+                <animations:OffsetAnimation
+                    EasingMode="EaseOut"
+                    From="0,24,0"
+                    To="0"
+                    Duration="0:0:0.4" />
+                <animations:OpacityAnimation
+                    EasingMode="EaseOut"
+                    From="0"
+                    To="1"
+                    Duration="0:0:0.2" />
+            </animations:ImplicitAnimationSet>
+            <animations:ImplicitAnimationSet x:Name="HideTransitions">
+                <animations:OffsetAnimation
+                    EasingMode="EaseOut"
+                    From="0"
+                    To="0,24,0"
+                    Duration="0:0:0.2" />
+                <animations:OpacityAnimation
+                    EasingMode="EaseOut"
+                    From="1"
+                    To="0"
+                    Duration="0:0:0.1" />
+            </animations:ImplicitAnimationSet>
+        </Grid.Resources>
 
-                    <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
-                    <StackPanel
-                        Margin="36,0,0,0"
-                        VerticalAlignment="Center"
-                        Orientation="Vertical">
-                        <TextBlock
-                            x:Name="smallHeaderSubtitleText"
-                            FontSize="18"
-                            Text="{x:Bind WinAppSdkDetails}" />
-                        <TextBlock
-                            x:Name="smallHeaderText"
-                            Style="{StaticResource TitleLargeTextBlockStyle}"
-                            Text="{StaticResource AppTitleName}" />
-                    </StackPanel>
-
-                    <controls:TileGallery
-                        x:Name="headerTileGallery"
-                        Grid.Row="1"
-                        Margin="0,0,0,0" />
-                </Grid>
-            </GridView.Header>
-
-            <GridView.GroupStyle>
-                <GroupStyle>
-                    <GroupStyle.HeaderTemplate>
-                        <DataTemplate x:DataType="local:GroupInfoList">
+        <!--  This grid acts as a root panel for the page.  -->
+        <ScrollViewer CornerRadius="0" VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:HomePageHeader />
+                <SelectorBar
+                    x:Name="FilterBar"
+                    Grid.Row="1"
+                    Margin="36,24,0,16"
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource TokenViewSelectorBarStyle}">
+                    <SelectorBarItem
+                        Icon="Clock"
+                        IsSelected="True"
+                        Style="{StaticResource TokenViewSelectorBarItemStyle}"
+                        Tag="Recent"
+                        Text="Recent" />
+                    <SelectorBarItem
+                        Icon="Favorite"
+                        Style="{StaticResource TokenViewSelectorBarItemStyle}"
+                        Tag="Favorites"
+                        Text="Favorites" />
+                </SelectorBar>
+                <toolkit:SwitchPresenter
+                    Grid.Row="2"
+                    Margin="36,0,36,36"
+                    Value="{Binding SelectedItem.Tag, ElementName=FilterBar}">
+                    <toolkit:Case Value="Recent">
+                        <StackPanel
+                            x:Name="RecentSamplesPanel"
+                            Grid.Row="1"
+                            animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
+                            Spacing="12">
                             <TextBlock
-                                x:Name="pageSubtitle"
-                                Margin="4,32,0,0"
-                                AutomationProperties.HeadingLevel="Level1"
-                                Style="{StaticResource SubtitleTextBlockStyle}"
-                                Text="{x:Bind Title}" />
-                        </DataTemplate>
-                    </GroupStyle.HeaderTemplate>
-                </GroupStyle>
-            </GridView.GroupStyle>
-        </GridView>
+                                x:Name="RecentlyVisitedTitle"
+                                FontSize="16"
+                                Style="{StaticResource BodyStrongTextBlockStyle}"
+                                Text="Recently visited" />
+                            <controls:HorizontalScrollContainer x:Name="RecentlyVisitedContainer" Margin="-36,0,-36,12">
+                                <controls:HorizontalScrollContainer.Source>
+                                    <GridView ItemTemplate="{StaticResource ControlItemTemplate}"
+                                              ItemsSource="{x:Bind RecentlyVisitedSamplesList, Mode=OneWay}"
+                                              ItemContainerStyle="{StaticResource SingleRowGridViewItemStyle}"
+                                              IsItemClickEnabled="True"
+                                              ItemClick="OnItemGridViewItemClick"
+                                              ContainerContentChanging="OnItemGridViewContainerContentChanging"
+                                              IsSwipeEnabled="False"
+                                              Loaded="OnItemGridViewLoaded"
+                                              SelectionMode="None"
+                                              AutomationProperties.AutomationId="RecentlyVisitedGridView"
+                                              AutomationProperties.Name="Recently visited samples"/>
+                                </controls:HorizontalScrollContainer.Source>
+                            </controls:HorizontalScrollContainer>
+                            <TextBlock
+                                Margin="0,12,0,0"
+                                FontSize="16"
+                                Style="{StaticResource BodyStrongTextBlockStyle}"
+                                Text="Recently added or updated" />
+                            <GridView ItemTemplate="{StaticResource ControlItemTemplate}"
+                                      ItemsSource="{x:Bind RecentlyAddedOrUpdatedSamplesList, Mode=OneWay}"
+                                      ItemContainerStyle="{StaticResource GridViewItemStyle}"
+                                      IsItemClickEnabled="True"
+                                      ItemClick="OnItemGridViewItemClick"
+                                      ContainerContentChanging="OnItemGridViewContainerContentChanging"
+                                      IsSwipeEnabled="False"
+                                      Loaded="OnItemGridViewLoaded"
+                                      SelectionMode="None"
+                                      AutomationProperties.AutomationId="RecentlyAddedAndUpdatedGridView"
+                                      AutomationProperties.Name="Recently added and updated Samples" />
+                        </StackPanel>
+                    </toolkit:Case>
+                    <toolkit:Case Value="Favorites">
+                        <StackPanel
+                            x:Name="FavoriteSamplesPanel"
+                            animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                            animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}">
+                            <GridView
+                                x:Name="FavoriteSamples"
+                                ItemTemplate="{StaticResource ControlItemTemplate}"
+                                ItemsSource="{x:Bind FavoriteSamplesList, Mode=OneWay}"
+                                ItemContainerStyle="{StaticResource GridViewItemStyle}"
+                                IsItemClickEnabled="True"
+                                ItemClick="OnItemGridViewItemClick"
+                                ContainerContentChanging="OnItemGridViewContainerContentChanging"
+                                IsSwipeEnabled="False"
+                                Loaded="OnItemGridViewLoaded"
+                                SelectionMode="None"
+                                AutomationProperties.AutomationId="FavoriteSamplesGridView"
+                                AutomationProperties.Name="Favorite Samples" />
+                            <StackPanel
+                                x:Name="FavoriteSamplesFallbackMessage"
+                                Margin="24,36"
+                                Visibility="Collapsed">
+                                <Image Height="36" Source="/Assets/ControlImages/RatingControl.png" />
+                                <TextBlock
+                                    Margin="0,8,0,8"
+                                    HorizontalAlignment="Center"
+                                    Style="{StaticResource BodyStrongTextBlockStyle}"
+                                    Text="No favorites yet" />
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    Style="{StaticResource BodyTextBlockStyle}"
+                                    Text="Favorite samples by clicking the star icon on the sample page."
+                                    TextAlignment="Center" />
+                            </StackPanel>
+                        </StackPanel>
+                    </toolkit:Case>
+                </toolkit:SwitchPresenter>
+            </Grid>
+        </ScrollViewer>
         <VisualStateManager.VisualStateGroups>
-            <!--  Visual states reflect the application's window size  -->
-            <VisualStateGroup x:Name="LayoutVisualStates">
-                <VisualState x:Name="WideLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="NarrowLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
+            <VisualStateGroup x:Name="FavoritesVisibilityStates">
+                <VisualState x:Name="Favorites" />
+                <VisualState x:Name="NoFavorites">
                     <VisualState.Setters>
-                        <Setter Target="itemGridView.Padding" Value="4,0,4,36" />
-                        <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource IndentedGridViewItemStyleSmall}" />
+                        <Setter Target="FavoriteSamplesFallbackMessage.Visibility" Value="Visible" />
+                        <Setter Target="FavoriteSamples.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="RecentVisibilityStates">
+                <VisualState x:Name="Recent" />
+                <VisualState x:Name="NoRecent">
+                    <VisualState.Setters>
+                        <Setter Target="RecentlyVisitedTitle.Visibility" Value="Collapsed" />
+                        <Setter Target="RecentlyVisitedContainer.Visibility" Value="Collapsed" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
