@@ -518,6 +518,11 @@
     ]
   },
   {
+    "Code": "E733",
+    "Name": "Blocked",
+    "Tags": []
+  },
+  {
     "Code": "E734",
     "Name": "FavoriteStar",
     "Tags": [
@@ -1362,8 +1367,18 @@
     ]
   },
   {
+    "Code": "E794",
+    "Name": "Effects",
+    "Tags": []
+  },
+  {
     "Code": "E799",
     "Name": "AspectRatio",
+    "Tags": []
+  },
+  {
+    "Code": "E7A1",
+    "Name": "Contrast",
     "Tags": []
   },
   {
@@ -1398,6 +1413,11 @@
     "Tags": [
       "cut"
     ]
+  },
+  {
+    "Code": "E7AA",
+    "Name": "PhotoCollection",
+    "Tags": []
   },
   {
     "Code": "E7AC",
@@ -2819,7 +2839,7 @@
   },
   {
     "Code": "E87C",
-    "Name": "JpnRomaji",
+    "Name": "JpnRomanji",
     "Tags": [
       "english",
       "Japanese",
@@ -2830,7 +2850,7 @@
   },
   {
     "Code": "E87D",
-    "Name": "JpnRomajiLock",
+    "Name": "JpnRomanjiLock",
     "Tags": [
       "english",
       "Japanese",
@@ -2841,7 +2861,7 @@
   },
   {
     "Code": "E87E",
-    "Name": "JpnRomajiShift",
+    "Name": "JpnRomanjiShift",
     "Tags": [
       "english",
       "Japanese",
@@ -2852,7 +2872,7 @@
   },
   {
     "Code": "E87F",
-    "Name": "JpnRomajiShiftLock",
+    "Name": "JpnRomanjiShiftLock",
     "Tags": [
       "Japanese",
       "transliteration",
@@ -5472,6 +5492,11 @@
     ]
   },
   {
+    "Code": "E9A4",
+    "Name": "TextBulletListSquare",
+    "Tags": []
+  },
+  {
     "Code": "E9A6",
     "Name": "FitPage",
     "Tags": [
@@ -6382,6 +6407,11 @@
     ]
   },
   {
+    "Code": "EA85",
+    "Name": "VolumeDisabled",
+    "Tags": []
+  },
+  {
     "Code": "EA86",
     "Name": "Puzzle",
     "Tags": [
@@ -6547,6 +6577,31 @@
     ]
   },
   {
+    "Code": "EAC7",
+    "Name": "DesktopLeafTwo",
+    "Tags": []
+  },
+  {
+    "Code": "EAD4",
+    "Name": "Emojiplay",
+    "Tags": []
+  },
+  {
+    "Code": "EAD5",
+    "Name": "EmojiBrush",
+    "Tags": []
+  },
+  {
+    "Code": "EAD6",
+    "Name": "EyeTracking",
+    "Tags": []
+  },
+  {
+    "Code": "EAD7",
+    "Name": "EyeTrackingText",
+    "Tags": []
+  },
+  {
     "Code": "EADF",
     "Name": "Trackers",
     "Tags": [
@@ -6601,6 +6656,21 @@
       "fall",
       "market"
     ]
+  },
+  {
+    "Code": "EB19",
+    "Name": "ClicktoDoOff",
+    "Tags": []
+  },
+  {
+    "Code": "EB1D",
+    "Name": "ClicktoDo",
+    "Tags": []
+  },
+  {
+    "Code": "EB3B",
+    "Name": "GenericApp",
+    "Tags": []
   },
   {
     "Code": "EB3C",
@@ -7921,6 +7991,11 @@
     ]
   },
   {
+    "Code": "EC34",
+    "Name": "FormatText",
+    "Tags": []
+  },
+  {
     "Code": "EC37",
     "Name": "MobSignal1",
     "Tags": [
@@ -8116,7 +8191,6 @@
       "quick",
       "maximum",
       "performance"
-
     ]
   },
   {
@@ -8416,6 +8490,11 @@
     ]
   },
   {
+    "Code": "EC83",
+    "Name": "UpdateStatusDot2",
+    "Tags": []
+  },
+  {
     "Code": "EC87",
     "Name": "Draw",
     "Tags": [
@@ -8451,6 +8530,11 @@
     ]
   },
   {
+    "Code": "EC91",
+    "Name": "Uninstall",
+    "Tags": []
+  },
+  {
     "Code": "EC92",
     "Name": "DateTime",
     "Tags": [
@@ -8467,6 +8551,11 @@
       "virtual",
       "headset"
     ]
+  },
+  {
+    "Code": "EC9C",
+    "Name": "CloudNotSynced",
+    "Tags": []
   },
   {
     "Code": "ECA5",
@@ -8813,6 +8902,11 @@
       "language",
       "cc"
     ]
+  },
+  {
+    "Code": "ED21",
+    "Name": "RestartUpdate2",
+    "Tags": []
   },
   {
     "Code": "ED25",
@@ -9632,6 +9726,31 @@
     ]
   },
   {
+    "Code": "EE41",
+    "Name": "FullHiraganaPrivateMode",
+    "Tags": []
+  },
+  {
+    "Code": "EE42",
+    "Name": "FullKatakanaPrivateMode",
+    "Tags": []
+  },
+  {
+    "Code": "EE43",
+    "Name": "HalfAlphaPrivateMode",
+    "Tags": []
+  },
+  {
+    "Code": "EE44",
+    "Name": "HalfKatakanaPrivateMode",
+    "Tags": []
+  },
+  {
+    "Code": "EE45",
+    "Name": "FullAlphaPrivateMode",
+    "Tags": []
+  },
+  {
     "Code": "EE47",
     "Name": "MiniExpand2Mirrored",
     "Tags": [
@@ -9749,6 +9868,11 @@
     ]
   },
   {
+    "Code": "EE7E",
+    "Name": "FIDOPasskey",
+    "Tags": []
+  },
+  {
     "Code": "EE92",
     "Name": "TrackersMirrored",
     "Tags": [
@@ -9769,6 +9893,21 @@
   {
     "Code": "EE94",
     "Name": "Wheel",
+    "Tags": []
+  },
+  {
+    "Code": "EE95",
+    "Name": "StopSolid",
+    "Tags": []
+  },
+  {
+    "Code": "EEA0",
+    "Name": "RAM",
+    "Tags": []
+  },
+  {
+    "Code": "EEA1",
+    "Name": "CPU",
     "Tags": []
   },
   {
@@ -9997,6 +10136,11 @@
     ]
   },
   {
+    "Code": "EF60",
+    "Name": "TextEdit",
+    "Tags": []
+  },
+  {
     "Code": "EF6B",
     "Name": "LandscapeOrientation",
     "Tags": [
@@ -10042,6 +10186,16 @@
       "audio",
       "talking"
     ]
+  },
+  {
+    "Code": "EFDA",
+    "Name": "AppIconDefaultAdd",
+    "Tags": []
+  },
+  {
+    "Code": "EFFF",
+    "Name": "CRMScheduleReports",
+    "Tags": []
   },
   {
     "Code": "F000",
@@ -11605,6 +11759,86 @@
     ]
   },
   {
+    "Code": "F112",
+    "Name": "ReadOutLoud",
+    "Tags": []
+  },
+  {
+    "Code": "F117",
+    "Name": "ProjectToDevice",
+    "Tags": []
+  },
+  {
+    "Code": "F120",
+    "Name": "TaskManagerApp",
+    "Tags": []
+  },
+  {
+    "Code": "F196",
+    "Name": "Beaker",
+    "Tags": []
+  },
+  {
+    "Code": "F1B1",
+    "Name": "PowerButtonUpdate2",
+    "Tags": []
+  },
+  {
+    "Code": "F1E8",
+    "Name": "LeafTwo",
+    "Tags": []
+  },
+  {
+    "Code": "F232",
+    "Name": "GridViewSmall",
+    "Tags": []
+  },
+  {
+    "Code": "F27C",
+    "Name": "Earbudsingle",
+    "Tags": []
+  },
+  {
+    "Code": "F27F",
+    "Name": "HearingAid",
+    "Tags": []
+  },
+  {
+    "Code": "F285",
+    "Name": "MobSnooze",
+    "Tags": []
+  },
+  {
+    "Code": "F2A3",
+    "Name": "MobNotificationBell",
+    "Tags": []
+  },
+  {
+    "Code": "F2A5",
+    "Name": "MobNotificationBellFilled",
+    "Tags": []
+  },
+  {
+    "Code": "F2A8",
+    "Name": "MobSnoozeFilled",
+    "Tags": []
+  },
+  {
+    "Code": "F2C7",
+    "Name": "BulletedList2",
+    "Tags": []
+  },
+  {
+    "Code": "F2C8",
+    "Name": "BulletedList2Mirrored",
+    "Tags": []
+  },
+  {
+    "Code": "F2D9",
+    "Name": "CirclePause",
+    "Tags": []
+  },
+  {
     "Code": "F32A",
     "Name": "PassiveAuthentication",
     "Tags": [
@@ -11777,6 +12011,11 @@
     ]
   },
   {
+    "Code": "F432",
+    "Name": "BatterySaver",
+    "Tags": []
+  },
+  {
     "Code": "F439",
     "Name": "DynamicLock",
     "Tags": [
@@ -11809,7 +12048,7 @@
       "writing",
       "touch",
       "input",
-      "tool"    
+      "tool"
     ]
   },
   {
@@ -11980,6 +12219,11 @@
       "decoration",
       "image"
     ]
+  },
+  {
+    "Code": "F4BD",
+    "Name": "Snooze",
+    "Tags": []
   },
   {
     "Code": "F4BE",
@@ -13120,6 +13364,31 @@
     ]
   },
   {
+    "Code": "F67B",
+    "Name": "Pen",
+    "Tags": []
+  },
+  {
+    "Code": "F683",
+    "Name": "TextSelect",
+    "Tags": []
+  },
+  {
+    "Code": "F684",
+    "Name": "TextNavigate",
+    "Tags": []
+  },
+  {
+    "Code": "F698",
+    "Name": "PinyinIMELogo2",
+    "Tags": []
+  },
+  {
+    "Code": "F69B",
+    "Name": "UserRemove",
+    "Tags": []
+  },
+  {
     "Code": "F69E",
     "Name": "CHTLanguageBar",
     "Tags": [
@@ -13159,6 +13428,21 @@
       "emoticons",
       "input"
     ]
+  },
+  {
+    "Code": "F6C4",
+    "Name": "PhoneScreen",
+    "Tags": []
+  },
+  {
+    "Code": "F6C5",
+    "Name": "AlertUrgent",
+    "Tags": []
+  },
+  {
+    "Code": "F6C6",
+    "Name": "PhoneDesktop",
+    "Tags": []
   },
   {
     "Code": "F6FA",
@@ -13941,5 +14225,70 @@
       "interaction",
       "notification"
     ]
+  },
+  {
+    "Code": "F8C0",
+    "Name": "VPNOverlay",
+    "Tags": []
+  },
+  {
+    "Code": "F8C1",
+    "Name": "VPNRoamingOverly",
+    "Tags": []
+  },
+  {
+    "Code": "F8C2",
+    "Name": "WifiVPN3",
+    "Tags": []
+  },
+  {
+    "Code": "F8C3",
+    "Name": "WifiVPN4",
+    "Tags": []
+  },
+  {
+    "Code": "F8C4",
+    "Name": "WifiVPN5",
+    "Tags": []
+  },
+  {
+    "Code": "F8C5",
+    "Name": "SignalBarsVPN2",
+    "Tags": []
+  },
+  {
+    "Code": "F8C6",
+    "Name": "SignalBarsVPN3",
+    "Tags": []
+  },
+  {
+    "Code": "F8C7",
+    "Name": "SignalBarsVPN4",
+    "Tags": []
+  },
+  {
+    "Code": "F8C8",
+    "Name": "SignalBarsVPN5",
+    "Tags": []
+  },
+  {
+    "Code": "F8C9",
+    "Name": "SignalBarsVPNRoaming3",
+    "Tags": []
+  },
+  {
+    "Code": "F8CA",
+    "Name": "SignalBarsVPNRoaming4",
+    "Tags": []
+  },
+  {
+    "Code": "F8CB",
+    "Name": "SignalBarsVPNRoaming5",
+    "Tags": []
+  },
+  {
+    "Code": "F8CC",
+    "Name": "EthernetVPN",
+    "Tags": []
   }
 ]
