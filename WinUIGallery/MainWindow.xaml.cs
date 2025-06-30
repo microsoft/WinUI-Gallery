@@ -16,7 +16,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI.ViewManagement;
-using WinUIGallery.ControlPages;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
 using WinUIGallery.Pages;
@@ -27,7 +26,6 @@ public sealed partial class MainWindow : Window
 {
     public Windows.System.VirtualKey ArrowKey;
     public Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
-    private RootFrameNavigationHelper _navHelper;
     private UISettings _settings;
 
     public NavigationView NavigationView
@@ -42,7 +40,6 @@ public sealed partial class MainWindow : Window
         this.InitializeComponent();
         SetWindowProperties();
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
-        _navHelper = new RootFrameNavigationHelper(rootFrame, NavigationViewControl);
     }
 
     private void RootGrid_Loaded(object sender, RoutedEventArgs e)
