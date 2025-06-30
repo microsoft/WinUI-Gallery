@@ -1,5 +1,7 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI;
-using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -35,7 +37,7 @@ public sealed partial class SplitButtonPage : Page
         // Delay required to circumvent GridView bug: https://github.com/microsoft/microsoft-ui-xaml/issues/6350
         Task.Delay(10).ContinueWith(_ => myColorButton.Flyout.Hide(), TaskScheduler.FromCurrentSynchronizationContext());
     }
-    
+
     private void RevealColorButton_Click(object sender, RoutedEventArgs e)
     {
         myColorButtonReveal.Flyout.Hide();
@@ -52,7 +54,7 @@ public sealed partial class SplitButtonPage : Page
 
     private void MyRichEditBox_TextChanged(object sender, RoutedEventArgs e)
     {
-        if(myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor != currentColor)
+        if (myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor != currentColor)
         {
             myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
         }

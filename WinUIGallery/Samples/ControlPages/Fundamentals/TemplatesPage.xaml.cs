@@ -1,5 +1,8 @@
-using System.IO;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml.Controls;
+using System.IO;
 using Windows.Storage;
 
 namespace WinUIGallery.ControlPages;

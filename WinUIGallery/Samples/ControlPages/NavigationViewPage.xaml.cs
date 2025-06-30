@@ -1,13 +1,16 @@
-using WinUIGallery.SamplePages;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using Microsoft.UI.Xaml;
 using System.Linq;
 using Windows.System;
-using Microsoft.UI.Xaml.Automation;
 using WinUIGallery.Models;
+using WinUIGallery.SamplePages;
 
 namespace WinUIGallery.ControlPages;
 
@@ -51,7 +54,8 @@ public sealed partial class NavigationViewPage : Page
         if (toggleOn)
         {
             return Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
-        } else
+        }
+        else
         {
             return Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
         }

@@ -1,16 +1,6 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
@@ -31,7 +21,6 @@ public sealed partial class HomePage : ItemsPageBase
     {
         this.InitializeComponent();
     }
-
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
@@ -57,7 +46,7 @@ public sealed partial class HomePage : ItemsPageBase
         if (keyList == null || keyList.Count == 0)
             return new List<ControlInfoDataItem>();
 
-        Dictionary<string,ControlInfoDataItem> itemMap = Items.ToDictionary(i => i.UniqueId);
+        Dictionary<string, ControlInfoDataItem> itemMap = Items.ToDictionary(i => i.UniqueId);
 
         List<ControlInfoDataItem> result = new();
 
@@ -69,7 +58,7 @@ public sealed partial class HomePage : ItemsPageBase
             }
             else
             {
-               SettingsHelper.TryRemoveItem(settingsKey, id);
+                SettingsHelper.TryRemoveItem(settingsKey, id);
             }
         }
 

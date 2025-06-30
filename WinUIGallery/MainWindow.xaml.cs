@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
@@ -17,9 +20,6 @@ using WinUIGallery.ControlPages;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
 using WinUIGallery.Pages;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace WinUIGallery;
 

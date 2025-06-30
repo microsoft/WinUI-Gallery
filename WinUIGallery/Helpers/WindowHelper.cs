@@ -1,22 +1,12 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
-using Microsoft.UI;
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Storage;
-using WinRT.Interop;
 
 namespace WinUIGallery.Helpers;
 
@@ -36,7 +26,8 @@ public class WindowHelper
 
     static public void TrackWindow(Window window)
     {
-        window.Closed += (sender,args) => {
+        window.Closed += (sender, args) =>
+        {
             _activeWindows.Remove(window);
         };
         _activeWindows.Add(window);
@@ -72,7 +63,7 @@ public class WindowHelper
         return 0.0;
     }
 
-    static public List<Window> ActiveWindows { get { return _activeWindows; }}
+    static public List<Window> ActiveWindows { get { return _activeWindows; } }
 
     static private List<Window> _activeWindows = new List<Window>();
 
