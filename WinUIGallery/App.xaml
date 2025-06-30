@@ -21,9 +21,12 @@
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <local:ItemTemplates />
                 <ResourceDictionary Source="ms-appx:///Controls/CopyButton.xaml" />
+                <ResourceDictionary Source="ms-appx:///Controls/OpacityMaskView.xaml" />
+                <ResourceDictionary Source="ms-appx:///Styles/Button.xaml" />
                 <ResourceDictionary Source="ms-appx:///Styles/Grid.xaml" />
                 <ResourceDictionary Source="ms-appx:///Styles/GridViewItem.xaml" />
                 <ResourceDictionary Source="ms-appx:///Styles/TextBlock.xaml" />
+                <ResourceDictionary Source="ms-appx:///Styles/SelectorBar.xaml" />
                 <ResourceDictionary Source="ms-appx:///Samples/ControlPages/Fundamentals/Controls/CounterControl.xaml" />
                 <ResourceDictionary Source="ms-appx:///Samples/ControlPages/Fundamentals/Controls/ValidatedPasswordBox.xaml" />
             </ResourceDictionary.MergedDictionaries>

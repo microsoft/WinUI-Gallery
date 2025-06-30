@@ -65,7 +65,7 @@ sealed partial class App : Application
         startupWindow.ExtendsContentIntoTitleBar = true;
 
         win32WindowHelper = new Win32WindowHelper(startupWindow);
-        win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 500, y = 500 });
+        win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 532, y = 500 });
 
 #if DEBUG
         if (Debugger.IsAttached)
