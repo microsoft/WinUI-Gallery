@@ -120,12 +120,6 @@ public sealed partial class MainWindow : Window
     public void Navigate(Type pageType, object targetPageArguments = null, NavigationTransitionInfo navigationTransitionInfo = null)
     {
         rootFrame.Navigate(pageType, targetPageArguments, navigationTransitionInfo);
-        NavigationRootPageArgs args = new NavigationRootPageArgs
-        {
-            NavigationRootPage = this,
-            Parameter = targetPageArguments
-        };
-        rootFrame.Navigate(pageType, args, navigationTransitionInfo);
 
         // Ensure the NavigationView selection is set to the correct item to mark the sample's page as visited
         if (pageType.Equals(typeof(ItemPage)) && targetPageArguments != null)

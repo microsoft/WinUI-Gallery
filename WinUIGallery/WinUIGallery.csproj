@@ -517,6 +517,8 @@
 
     <ItemGroup>
       <Page Update="MainWindow.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+	  </Page>
       <Page Update="Controls\OpacityMaskView.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
