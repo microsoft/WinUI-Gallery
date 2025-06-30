@@ -1,13 +1,15 @@
-using System;
-using System.Numerics;
-using Windows.Foundation.Metadata;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
+using System;
 using System.Globalization;
+using System.Numerics;
 
 namespace WinUIGallery.ControlPages;
 
@@ -41,7 +43,7 @@ public sealed partial class XamlCompInteropPage : Page
 
     float GetDampingRatio()
     {
-        if(DampingStackPanel.SelectedItem != null)
+        if (DampingStackPanel.SelectedItem != null)
         {
             // We need to specify the InvariantCulture since the decimal point depends on the
             // system language and might parse "0.8" to 8 since the decimal point is a different character
@@ -81,7 +83,7 @@ public sealed partial class XamlCompInteropPage : Page
         anim.Expression = "Vector3(1/scaleElement.Scale.X, 1/scaleElement.Scale.Y, 1)";
         anim.Target = "Scale";
 
-        anim.SetExpressionReferenceParameter("scaleElement", rectangle);            
+        anim.SetExpressionReferenceParameter("scaleElement", rectangle);
 
         StartAnimationIfAPIPresent(ellipse, anim);
     }

@@ -1,17 +1,10 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
-using System;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
+using System;
 using Windows.UI;
 
 namespace WinUIGallery.ControlPages;

@@ -1,28 +1,22 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using WinUIGallery.Helpers;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using ColorCode;
 using ColorCode.Common;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Media;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
-using System.Reflection;
-using System.IO;
-using Microsoft.UI.Xaml.Automation;
-using Microsoft.UI.Xaml.Controls.Primitives;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Controls;
 
@@ -205,7 +199,7 @@ public sealed partial class SampleCodePresenter : UserControl
         // Also trim out spaces at the end of each line
         sampleString = string.Join('\n', sampleString.Split('\n').Select(s => s.TrimEnd()));
 
-        if(Substitutions != null)
+        if (Substitutions != null)
         {
             // Perform any applicable substitutions.
             sampleString = SubstitutionPattern.Replace(sampleString, match =>

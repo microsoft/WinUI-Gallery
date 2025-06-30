@@ -1,12 +1,14 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Navigation;
+using Microsoft.Windows.BadgeNotifications;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,19 +16,11 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using WinUIGallery.Models;
-using WinUIGallery.Helpers;
-using Microsoft.UI.Windowing;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Automation;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.System.Profile;
 using Windows.UI.ViewManagement;
-using Microsoft.UI.Xaml.Media.Animation;
-using Microsoft.Windows.BadgeNotifications;
+using WinUIGallery.Helpers;
+using WinUIGallery.Models;
 
 namespace WinUIGallery.Pages;
 
@@ -284,7 +278,7 @@ public sealed partial class NavigationRootPage : Page
 
     private void OnHomeMenuItemLoaded(object sender, RoutedEventArgs e)
     {
-        if ( NavigationViewControl.DisplayMode == NavigationViewDisplayMode.Expanded)
+        if (NavigationViewControl.DisplayMode == NavigationViewDisplayMode.Expanded)
         {
             controlsSearchBox.Focus(FocusState.Keyboard);
         }

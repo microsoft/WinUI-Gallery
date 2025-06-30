@@ -1,15 +1,6 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
-using System;
-using System.Diagnostics;
-using System.Linq;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
@@ -17,6 +8,9 @@ using Microsoft.Windows.AppLifecycle;
 using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
 using Microsoft.Windows.BadgeNotifications;
+using System;
+using System.Diagnostics;
+using System.Linq;
 using Windows.ApplicationModel.Activation;
 using WinUIGallery.Helpers;
 using WinUIGallery.Pages;
