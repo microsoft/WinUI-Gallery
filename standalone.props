@@ -8,6 +8,7 @@
     <ColorCodeVersion>2.0.15</ColorCodeVersion>
     <CommunityToolkitWinUIVersion>8.2.250402</CommunityToolkitWinUIVersion>
     <MicrosoftCsWinRTPackageVersion>2.2.0</MicrosoftCsWinRTPackageVersion>
+    <MicrosoftTelemetryVersion>10.0.25148.1001-220626-1600.rs-fun-deploy-dev5</MicrosoftTelemetryVersion>
     <!-- We have multiple projects in the same directory, which means we need to separate their output paths-->
     <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <BaseOutputPath>bin\$(MSBuildProjectName)\</BaseOutputPath>
