@@ -1,23 +1,22 @@
-![WinUI Gallery hero image](docs/images/WinUIGalleryLanding.PNG)
+![WinUI Gallery hero image](./.github/assets/ReadmeHero-dark.png)
 
-<h1 align="center">
-    WinUI 3 Gallery
-</h1>
+<h1 align="center">WinUI 3 Gallery</h1>
+<p align="center">Companion app for <a style="text-decoration:none" href="https://docs.microsoft.com/windows/apps/winui">WinUI</a> & <a style="text-decoration:none" href="https://github.com/microsoft/WindowsAppSDK">Windows App SDK</a> APIs</p>
 
-[![Build Status](https://dev.azure.com/ms/microsoft-ui-xaml/_apis/build/status%2Fmicrosoft.WinUI-Gallery?branchName=main)](https://dev.azure.com/ms/microsoft-ui-xaml/_build/latest?definitionId=612&branchName=main) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
 
-### Accompanying Sample App for [WinAppSDK](https://github.com/microsoft/WindowsAppSDK)
+This app demonstrates all of the WinUI 3 controls and styles available to make a modern Windows app with the Windows App SDK. It is the interactive companion to the [Fluent Design guidelines](https://docs.microsoft.com/windows/apps/design/basics/) and shows the usage of [WinUI](https://docs.microsoft.com/windows/apps/winui/) through interactive samples, tools and code snippets. 
 
-This app demonstrates all of the WinUI 3 controls and styles available to make a modern Windows app with the [Windows App SDK](https://github.com/microsoft/WindowsAppSDK). It is the interactive companion to the [Fluent Design Guidelines](https://docs.microsoft.com/windows/apps/design/basics/) and shows the usage of the [WinUI](https://docs.microsoft.com/windows/apps/winui/) APIs. 
+
 
 <p align="center">
-<img src="docs/images/winui-gallery.png" alt="WinUI 3 Gallery" width="400"/>
+  <img src="./.github/assets/Screenshot-light.png" alt="WinUI 3 Gallery" width="400"/>
 </p>
 <p align="center">
-<a href="https://apps.microsoft.com/detail/WinUI%203%20Gallery/9P3JFPWWDZRC?launch=true
-	&mode=mini">
-	<img alt="Store badge" src="docs/images/storeBadge.png" width="200"/>
-</a>
+  <a style="text-decoration:none" href="https://apps.microsoft.com/detail/9NGHP3DX8HDX?launch=true&mode=full">
+    <picture>
+      <source media="(prefers-color-scheme: light)" srcset="./.github/assets/StoreBadge-dark.png" width="220" />
+      <img src="./.github/assets/StoreBadge-light.png" width="220" />
+  </picture></a>
 </p>
 
 ## ⭐ Features
@@ -55,7 +54,7 @@ Quick start guide to building the WinUI 3 Gallery:
 
 ### 2. Clone the Repository
 
-```shell
+```powershell
 git clone https://github.com/microsoft/WinUI-Gallery.git
 ```
 
