@@ -12,7 +12,7 @@ This app demonstrates all of the WinUI 3 controls and styles available to make a
   <img src="./.github/assets/Screenshot-light.png" alt="WinUI 3 Gallery" width="400"/>
 </p>
 <p align="center">
-  <a style="text-decoration:none" href="https://apps.microsoft.com/detail/WinUI%203%20Gallery/9P3JFPWWDZRC?launch=true&mode=mini">
+  <a style="text-decoration:none" href="https://apps.microsoft.com/detail/9P3JFPWWDZRC?launch=true&mode=full">
     <picture>
       <source media="(prefers-color-scheme: light)" srcset="./.github/assets/StoreBadge-dark.png" width="220" />
       <img src="./.github/assets/StoreBadge-light.png" width="220" />
