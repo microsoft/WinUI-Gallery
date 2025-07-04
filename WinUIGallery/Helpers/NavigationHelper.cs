@@ -181,11 +181,6 @@ public class RootFrameNavigationHelper
         }
 
         this.Frame = rootFrame;
-        this.Frame.Navigated += (s, e) =>
-        {
-            // Update the Back button whenever a navigation occurs.
-            UpdateBackButton();
-        };
         this.CurrentNavView = currentNavView;
 
         CurrentNavView.BackRequested += NavView_BackRequested;
@@ -289,11 +284,6 @@ public class RootFrameNavigationHelper
             navigated = true;
         }
         return navigated;
-    }
-
-    private void UpdateBackButton()
-    {
-        this.CurrentNavView.IsBackEnabled = this.Frame.CanGoBack ? true : false;
     }
 }
 
