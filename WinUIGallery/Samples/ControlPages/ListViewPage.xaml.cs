@@ -120,7 +120,7 @@ public sealed partial class ListViewPage : ItemsPageBase
         e.AcceptedOperation = DataPackageOperation.Move;
     }
 
-    private async void ListView_Drop(object sender, DragEventArgs e)
+    private void ListView_Drop(object sender, DragEventArgs e)
     {
         ListView target = (ListView)sender;
 
