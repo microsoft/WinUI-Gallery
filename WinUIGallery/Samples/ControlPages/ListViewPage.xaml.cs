@@ -9,11 +9,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 using WinUIGallery.Helpers;
-using WinUIGallery.Models;
 using WinUIGallery.Pages;
 
 namespace WinUIGallery.ControlPages;
