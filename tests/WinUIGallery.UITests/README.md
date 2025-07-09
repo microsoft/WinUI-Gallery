@@ -10,19 +10,19 @@ The easiest way to deploy the WinUI 3 Gallery for unit test execution is to simp
 
 1. Generate the test signing certificate:
 
-```shell
-    PS> .\build\GenerateTestPfx.ps1
+```powershell
+    PS> .\scripts\GenerateTestPfx.ps1
 ```
 
 1. Build and publish the WinUI 3 Gallery from the command line, e.g.:
 
-```shell
+```powershell
     >dotnet.exe publish WinUIGallery.sln /p:AppxPackageDir=AppxPackages\ /p:platform=x64 /p:PublishProfile=./WinUIGallery/Properties/PublishProfiles/win-x64.pubxml
 ```
 
 1. Locate the WinUI 3 Gallery package output folder from above and deploy for testing:
 
-```shell
+```powershell
     PS> .\WinUIGallery\AppxPackages\WinUIGallery.Desktop_Test\Install.ps1
 ```
 
@@ -34,7 +34,7 @@ The test runner (vstest.console.exe and VS Test Explorer) should automatically l
 
 1. Run WinAppDriver:
 
-```shell
+```powershell
     >C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe
 ```
 

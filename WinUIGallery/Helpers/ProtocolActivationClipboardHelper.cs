@@ -4,7 +4,7 @@
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.DataTransfer;
-using Windows.Storage;
+using Microsoft.Windows.Storage;
 using WinUIGallery.Models;
 
 namespace WinUIGallery.Helpers;
@@ -14,8 +14,8 @@ namespace WinUIGallery.Helpers;
 /// </summary>
 public static class ProtocolActivationClipboardHelper
 {
-    private const string ShowCopyLinkTeachingTipKey = "ShowCopyLinkTeachingTip";
     private static bool _showCopyLinkTeachingTip = true;
+    private static ApplicationData appData = ApplicationData.GetDefault();
 
     public static bool ShowCopyLinkTeachingTip
     {
@@ -23,10 +23,10 @@ public static class ProtocolActivationClipboardHelper
         {
             if (NativeHelper.IsAppPackaged)
             {
-                object valueFromSettings = ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey];
+                object valueFromSettings = appData.LocalSettings.Values[SettingsKeys.ShowCopyLinkTeachingTip];
                 if (valueFromSettings == null)
                 {
-                    ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey] = true;
+                    appData.LocalSettings.Values[SettingsKeys.ShowCopyLinkTeachingTip] = true;
                     valueFromSettings = true;
                 }
                 return (bool)valueFromSettings;
@@ -41,7 +41,7 @@ public static class ProtocolActivationClipboardHelper
         {
             if (NativeHelper.IsAppPackaged)
             {
-                ApplicationData.Current.LocalSettings.Values[ShowCopyLinkTeachingTipKey] = value;
+                appData.LocalSettings.Values[SettingsKeys.ShowCopyLinkTeachingTip] = value;
 
             }
             else

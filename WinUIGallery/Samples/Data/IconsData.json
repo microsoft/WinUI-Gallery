@@ -494,6 +494,20 @@
     ]
   },
   {
+    "Code": "E72F",
+    "Name": "BlockedSite",
+    "Tags": [
+      "private",
+      "security",
+      "access",
+      "protected",
+      "safety",
+      "permission",
+      "access",
+      "protection"
+    ]
+  },
+  {
     "Code": "E730",
     "Name": "ReportHacked",
     "Tags": [
