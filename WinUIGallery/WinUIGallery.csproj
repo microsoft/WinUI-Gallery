@@ -33,6 +33,8 @@
         <WindowsAppSdkIncludeVersionInfo>true</WindowsAppSdkIncludeVersionInfo>
         <PublishProfile>win-$(Platform).pubxml</PublishProfile>
         <PublishAot>false</PublishAot>
+		<IsAotCompatible>true</IsAotCompatible>
+		<CsWinRTAotWarningLevel>2</CsWinRTAotWarningLevel>
         <PublishSingleFile Condition="'$(PublishSingleFile)' == '' and '$(Packaged)' != 'true'">true</PublishSingleFile>
         <WindowsAppSdkSelfContained Condition="'$(WindowsAppSdkSelfContained)' == '' and '$(PublishSingleFile)' == 'true'">true</WindowsAppSdkSelfContained>
         <!-- Enable ExplicitlyIncludeVersionInfo workaround by setting WindowsAppSdkSelfContained earlier than the mock package would -->
