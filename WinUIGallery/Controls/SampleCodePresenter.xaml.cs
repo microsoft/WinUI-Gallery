@@ -12,7 +12,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
@@ -172,7 +171,9 @@ public sealed partial class SampleCodePresenter : UserControl
             if (!NativeHelper.IsAppPackaged)
             {
                 var relativePath = GetDerivedSourceUnpackaged(sourceRelativePath);
-                var sourcePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), relativePath));
+
+                var sourcePath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, relativePath));
+
                 file = await StorageFile.GetFileFromPathAsync(sourcePath);
             }
             else

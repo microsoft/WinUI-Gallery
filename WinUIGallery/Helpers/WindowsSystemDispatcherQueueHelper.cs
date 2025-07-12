@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Windows.System;
 
@@ -32,7 +33,8 @@ partial class WindowsSystemDispatcherQueueHelper
         if (m_dispatcherQueueController == IntPtr.Zero)
         {
             DispatcherQueueOptions options;
-            options.dwSize = Marshal.SizeOf(typeof(DispatcherQueueOptions));
+            options.dwSize = Unsafe.SizeOf<DispatcherQueueOptions>();
+
             options.threadType = 2;    // DQTYPE_THREAD_CURRENT
             options.apartmentType = 2; // DQTAT_COM_STA
 
