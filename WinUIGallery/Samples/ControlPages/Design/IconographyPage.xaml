@@ -19,7 +19,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:WinUIGallery.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls" 
+    xmlns:models="using:WinUIGallery.Models"
     helpers:PageScrollBehaviorHelper.SuppressHostScrolling="True"
     mc:Ignorable="d">
 
@@ -40,13 +41,13 @@
             <Setter Property="Margin" Value="0,0,0,8" />
         </Style>
 
-        <DataTemplate x:Key="IconTemplate">
+        <DataTemplate x:Key="IconTemplate" x:DataType="models:IconData">
             <ItemContainer
                 Width="96"
                 Height="96"
-                AutomationProperties.Name="{Binding Name}"
+                AutomationProperties.Name="{x:Bind Name}"
                 CornerRadius="{StaticResource ControlCornerRadius}"
-                ToolTipService.ToolTip="{Binding Name}">
+                ToolTipService.ToolTip="{x:Bind Name}">
                 <Grid
                     Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
@@ -60,7 +61,7 @@
                         <FontIcon
                             x:Name="IconGlyph"
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="{Binding Character}" />
+                            Glyph="{x:Bind Character}" />
                     </Viewbox>
 
                     <!--  Icon name/descriptor  -->
@@ -71,7 +72,7 @@
                         VerticalAlignment="Bottom"
                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="{Binding Name}"
+                        Text="{x:Bind Name}"
                         TextTrimming="CharacterEllipsis"
                         TextWrapping="NoWrap" />
                 </Grid>

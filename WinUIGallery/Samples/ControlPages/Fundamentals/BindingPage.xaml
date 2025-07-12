@@ -148,10 +148,10 @@ public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <TextBlock FontWeight="SemiBold" Text="Title:" />
-                    <TextBlock FontSize="16" Text="{Binding Title}" />
+                    <TextBlock FontSize="16" Text="{x:Bind ViewModel.Title, Mode=OneWay}" />
 
                     <TextBlock FontWeight="SemiBold" Text="Description:" />
-                    <TextBlock FontSize="16" Text="{Binding Description}" />
+                    <TextBlock FontSize="16" Text="{x:Bind ViewModel.Description, Mode=OneWay}" />
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
@@ -183,7 +183,7 @@ public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <TextBlock Text="{Binding NonExistentProperty, FallbackValue='Default Text'}" />
-                    <TextBlock Text="{Binding NullString, TargetNullValue='Anonymous User'}" />
+                    <TextBlock Text="{x:Bind ViewModel.NullString, Mode=OneWay, TargetNullValue='Anonymous User'}" />
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
