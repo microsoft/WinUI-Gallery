@@ -107,6 +107,10 @@
             just add versionless PackageReferences here.  They will be updated to their actual versions by either the Packages.props file
             in the WinUI repo, or the next ItemGroup below when standalone. -->
     <ItemGroup>
+        <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.183">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Microsoft.WindowsAppSDK" />
         <PackageReference Include="ColorCode.Core" />
         <PackageReference Include="Microsoft.Graphics.Win2D" />

@@ -22,7 +22,7 @@ public static partial class ProtocolActivationClipboardHelper
     {
         get
         {
-            if (NativeHelper.IsAppPackaged)
+            if (NativeMethods.IsAppPackaged)
             {
                 object valueFromSettings = appData.LocalSettings.Values[SettingsKeys.ShowCopyLinkTeachingTip];
                 if (valueFromSettings == null)
@@ -40,7 +40,7 @@ public static partial class ProtocolActivationClipboardHelper
 
         set
         {
-            if (NativeHelper.IsAppPackaged)
+            if (NativeMethods.IsAppPackaged)
             {
                 appData.LocalSettings.Values[SettingsKeys.ShowCopyLinkTeachingTip] = value;
 

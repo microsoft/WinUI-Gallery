@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using System;
-using System.Runtime.InteropServices;
 using System.Threading;
 using Microsoft.UI.Dispatching;
 using Windows.Foundation;
@@ -41,7 +40,7 @@ public partial class IdleSynchronizer
         string eventName = string.Format("{0}.{1}.{2}", eventNamePrefix, processId, threadId);
         Handle handle = new Handle(
             NativeMethods.OpenEvent(
-                (uint)(SyncObjectAccess.EVENT_MODIFY_STATE | SyncObjectAccess.SYNCHRONIZE),
+                (uint)(NativeMethods.SyncObjectAccess.EVENT_MODIFY_STATE | NativeMethods.SyncObjectAccess.SYNCHRONIZE),
                 false /* inherit handle */,
                 eventName));
 
@@ -50,7 +49,7 @@ public partial class IdleSynchronizer
             // Warning: Opening a session wide event handle, test may listen for events coming from the wrong process
             handle = new Handle(
                 NativeMethods.OpenEvent(
-                    (uint)(SyncObjectAccess.EVENT_MODIFY_STATE | SyncObjectAccess.SYNCHRONIZE),
+                    (uint)(NativeMethods.SyncObjectAccess.EVENT_MODIFY_STATE | NativeMethods.SyncObjectAccess.SYNCHRONIZE),
                     false /* inherit handle */,
                     eventNamePrefix));
         }
@@ -444,47 +443,3 @@ internal class Handle
     }
 }
 
-internal static class NativeMethods
-{
-    [DllImport("Kernel32.dll", SetLastError = true)]
-    public static extern IntPtr OpenEvent(uint dwDesiredAccess, bool bInheritHandle, string lpName);
-
-    [DllImport("kernel32.dll", SetLastError = true)]
-    public static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);
-
-    public const UInt32 INFINITE = 0xFFFFFFFF;
-    public const UInt32 WAIT_ABANDONED = 0x00000080;
-    public const UInt32 WAIT_OBJECT_0 = 0x00000000;
-    public const UInt32 WAIT_TIMEOUT = 0x00000102;
-
-    [DllImport("kernel32.dll", SetLastError = true)]
-    public static extern bool ResetEvent(IntPtr hEvent);
-
-    [DllImport("kernel32.dll", SetLastError = true)]
-    public static extern bool CloseHandle(IntPtr hObject);
-
-    [DllImport("kernel32.dll")]
-    public static extern uint GetCurrentProcessId();
-
-    [DllImport("kernel32.dll")]
-    public static extern uint GetCurrentThreadId();
-}
-
-[Flags]
-public enum SyncObjectAccess : uint
-{
-    DELETE = 0x00010000,
-    READ_CONTROL = 0x00020000,
-    WRITE_DAC = 0x00040000,
-    WRITE_OWNER = 0x00080000,
-    SYNCHRONIZE = 0x00100000,
-    EVENT_ALL_ACCESS = 0x001F0003,
-    EVENT_MODIFY_STATE = 0x00000002,
-    MUTEX_ALL_ACCESS = 0x001F0001,
-    MUTEX_MODIFY_STATE = 0x00000001,
-    SEMAPHORE_ALL_ACCESS = 0x001F0003,
-    SEMAPHORE_MODIFY_STATE = 0x00000002,
-    TIMER_ALL_ACCESS = 0x001F0003,
-    TIMER_MODIFY_STATE = 0x00000002,
-    TIMER_QUERY_STATE = 0x00000001
-}

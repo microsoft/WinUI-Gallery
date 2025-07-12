@@ -168,7 +168,7 @@ public sealed partial class SampleCodePresenter : UserControl
         {
             string sampleString = null;
             StorageFile file = null;
-            if (!NativeHelper.IsAppPackaged)
+            if (!NativeMethods.IsAppPackaged)
             {
                 var relativePath = GetDerivedSourceUnpackaged(sourceRelativePath);
 

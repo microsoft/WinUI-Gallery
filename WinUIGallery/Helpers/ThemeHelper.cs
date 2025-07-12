@@ -63,7 +63,7 @@ public static partial class ThemeHelper
                 }
             }
 
-            if (NativeHelper.IsAppPackaged)
+            if (NativeMethods.IsAppPackaged)
             {
                 appData.LocalSettings.Values[SettingsKeys.SelectedAppTheme] = value.ToString();
             }
@@ -72,7 +72,7 @@ public static partial class ThemeHelper
 
     public static void Initialize()
     {
-        if (NativeHelper.IsAppPackaged)
+        if (NativeMethods.IsAppPackaged)
         {
             string savedTheme = appData.LocalSettings.Values[SettingsKeys.SelectedAppTheme]?.ToString();
 

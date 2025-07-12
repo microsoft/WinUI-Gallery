@@ -12,7 +12,7 @@ public static partial class NavigationOrientationHelper
     private static ApplicationData appData = ApplicationData.GetDefault();
     public static bool IsLeftMode()
     {
-        if (NativeHelper.IsAppPackaged)
+        if (NativeMethods.IsAppPackaged)
         {
             var valueFromSettings = appData.LocalSettings.Values[SettingsKeys.IsLeftMode];
             if (valueFromSettings == null)
@@ -31,7 +31,7 @@ public static partial class NavigationOrientationHelper
     public static void IsLeftModeForElement(bool isLeftMode)
     {
         UpdateNavigationViewForElement(isLeftMode);
-        if (NativeHelper.IsAppPackaged)
+        if (NativeMethods.IsAppPackaged)
         {
             appData.LocalSettings.Values[SettingsKeys.IsLeftMode] = isLeftMode;
         }

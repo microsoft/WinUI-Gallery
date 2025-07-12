@@ -68,7 +68,7 @@ partial class SceneNodeCommon
 
     public static async Task<MemoryBuffer> LoadMemoryBufferFromUriAsync(string relativePath)
     {
-        if (NativeHelper.IsAppPackaged)
+        if (NativeMethods.IsAppPackaged)
         {
             Uri baseUri = new Uri("ms-appx:///");
             Uri uri = new Uri(baseUri, relativePath);
@@ -92,7 +92,7 @@ partial class SceneNodeCommon
 
     public static async Task<CanvasBitmap> LoadIntoCanvasBitmap(ICanvasResourceCreator creator, string relativePath)
     {
-        if (NativeHelper.IsAppPackaged)
+        if (NativeMethods.IsAppPackaged)
         {
             Uri baseUri = new Uri("ms-appx:///");
             return await CanvasBitmap.LoadAsync(

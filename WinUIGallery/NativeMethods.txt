@@ -1,0 +1,9 @@
+﻿GetCurrentPackageFullName
+GetModuleHandle
+GetDpiForWindow
+SetWindowLong32
+SetWindowLongPtr64
+CallWindowProc
+GetCurrentThreadId
+SetWindowsHookEx
+CallNextHookEx
