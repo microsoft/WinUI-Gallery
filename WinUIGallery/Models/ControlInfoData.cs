@@ -14,7 +14,7 @@ using System.Text.Json.Serialization;
 
 namespace WinUIGallery.Models;
 
-public class Root
+public partial class Root
 {
     public ObservableCollection<ControlInfoDataGroup> Groups { get; set; }
 }
@@ -27,7 +27,7 @@ internal partial class RootContext : JsonSerializerContext
 /// <summary>
 /// Generic item data model.
 /// </summary>
-public class ControlInfoDataItem
+public partial class ControlInfoDataItem
 {
     public string UniqueId { get; set; }
     public string Title { get; set; }
@@ -52,7 +52,7 @@ public class ControlInfoDataItem
     }
 }
 
-public class ControlInfoDocLink
+public partial class ControlInfoDocLink
 {
     public string Title { get; set; }
     public string Uri { get; set; }
@@ -62,7 +62,7 @@ public class ControlInfoDocLink
 /// <summary>
 /// Generic group data model.
 /// </summary>
-public class ControlInfoDataGroup
+public partial class ControlInfoDataGroup
 {
     public string UniqueId { get; set; }
     public string Title { get; set; }

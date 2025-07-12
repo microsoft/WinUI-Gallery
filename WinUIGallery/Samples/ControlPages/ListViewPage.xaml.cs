@@ -415,7 +415,7 @@ public class Contact
     #endregion
 }
 
-public class GroupInfoList : List<object>
+public partial class GroupInfoList : List<object>
 {
     public GroupInfoList(IEnumerable<object> items) : base(items)
     {

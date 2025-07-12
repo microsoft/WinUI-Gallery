@@ -9,7 +9,7 @@ using Windows.Foundation;
 
 namespace WinUIGallery.Helpers;
 
-public class IdleSynchronizer
+public partial class IdleSynchronizer
 {
     const uint s_idleTimeoutMs = 100000;
     const int s_defaultWaitForEventMs = 10000;

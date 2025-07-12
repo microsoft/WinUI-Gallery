@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace WinUIGallery.Helpers;
 
-internal static class Win32
+internal static partial class Win32
 {
     [DllImport("user32.dll", CharSet = CharSet.Auto)]
     public static extern IntPtr SendMessage(IntPtr hWnd, int Msg, int wParam, IntPtr lParam);

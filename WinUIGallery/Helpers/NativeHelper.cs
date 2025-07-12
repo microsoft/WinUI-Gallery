@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace WinUIGallery.Helpers;
 
-internal class NativeHelper
+internal partial class NativeHelper
 {
     public const int ERROR_SUCCESS = 0;
     public const int ERROR_INSUFFICIENT_BUFFER = 122;

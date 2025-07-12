@@ -6,7 +6,7 @@ using Microsoft.UI.Xaml;
 
 namespace WinUIGallery.Helpers;
 
-internal class TitleBarHelper
+internal partial class TitleBarHelper
 {
     // workaround as AppWindow TitleBar doesn't update caption button colors correctly when changed while app is running
     // https://task.ms/44172495

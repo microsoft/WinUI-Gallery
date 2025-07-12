@@ -13,7 +13,7 @@ namespace WinUIGallery.Helpers;
 /// <summary>
 /// Class providing functionality to support generating and copying protocol activation URIs.
 /// </summary>
-public static class ProtocolActivationClipboardHelper
+public static partial class ProtocolActivationClipboardHelper
 {
     private static bool _showCopyLinkTeachingTip = true;
     private static ApplicationData appData = ApplicationData.GetDefault();

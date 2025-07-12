@@ -6,7 +6,7 @@ using System;
 
 namespace WinUIGallery.Converters;
 
-public sealed class BooleanToValueConverter : IValueConverter
+public sealed partial class BooleanToValueConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {

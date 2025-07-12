@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace WinUIGallery.Helpers;
 
-class LanguageList
+partial class LanguageList
 {
     private List<Language> _languages;
     public List<Language> Languages

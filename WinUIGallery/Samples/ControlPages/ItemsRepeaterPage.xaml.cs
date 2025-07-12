@@ -439,7 +439,7 @@ public class NestedCategory
 }
 
 
-public class MyDataTemplateSelector : DataTemplateSelector
+public partial class MyDataTemplateSelector : DataTemplateSelector
 {
     public DataTemplate Normal { get; set; }
     public DataTemplate Accent { get; set; }
@@ -457,7 +457,7 @@ public class MyDataTemplateSelector : DataTemplateSelector
     }
 }
 
-public class StringOrIntTemplateSelector : DataTemplateSelector
+public partial class StringOrIntTemplateSelector : DataTemplateSelector
 {
     // Define the (currently empty) data templates to return
     // These will be "filled-in" in the XAML code.
@@ -549,7 +549,7 @@ public class Recipe
 }
 
 // Custom data source class that assigns elements unique IDs, making filtering easier
-public class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndexMapping, INotifyCollectionChanged
+public partial class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndexMapping, INotifyCollectionChanged
 {
     private List<Recipe> inner = new List<Recipe>();
 

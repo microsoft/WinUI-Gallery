@@ -8,7 +8,7 @@ using WinUIGallery.Pages;
 
 namespace WinUIGallery.Helpers;
 
-public static class NavigationOrientationHelper
+public static partial class NavigationOrientationHelper
 {
     private static bool _isLeftMode = true;
     private static ApplicationData appData = ApplicationData.GetDefault();

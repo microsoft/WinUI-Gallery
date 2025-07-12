@@ -11,7 +11,7 @@ using Windows.Storage;
 
 namespace WinUIGallery.Helpers;
 
-internal class FileLoader
+internal partial class FileLoader
 {
     public static async Task<string> LoadText(string relativeFilePath)
     {

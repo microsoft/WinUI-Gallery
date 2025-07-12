@@ -17,7 +17,7 @@ using Windows.Storage.Streams;
 using WinRT;
 using WinUIGallery.Helpers;
 
-class SceneNodeCommon
+partial class SceneNodeCommon
 {
     public static CompositionMipmapSurface LoadMipmapFromBitmap(
         CompositionGraphicsDevice graphicsDevice, CanvasBitmap canvasBitmap)

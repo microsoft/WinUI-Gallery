@@ -12,7 +12,8 @@
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
         <NoWarn>
-            0108;   <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
+            CA2000;
+			0108;   <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
             8305    <!-- 'x' is for evaluation purposes only and is subject to change or removal in future updates. -->
         </NoWarn>
         <MSBuildWarningsAsMessages>

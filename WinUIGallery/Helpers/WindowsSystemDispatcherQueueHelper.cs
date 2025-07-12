@@ -7,7 +7,7 @@ using Windows.System;
 
 namespace WinUIGallery.Helpers;
 
-class WindowsSystemDispatcherQueueHelper
+partial class WindowsSystemDispatcherQueueHelper
 {
     [StructLayout(LayoutKind.Sequential)]
     struct DispatcherQueueOptions

@@ -15,7 +15,7 @@ namespace WinUIGallery.Helpers;
 // of all active Windows.  The app code must call WindowHelper.CreateWindow
 // rather than "new Window" so we can keep track of all the relevant
 // windows.  In the future, we would like to support this in platform APIs.
-public class WindowHelper
+public partial class WindowHelper
 {
     static public Window CreateWindow()
     {

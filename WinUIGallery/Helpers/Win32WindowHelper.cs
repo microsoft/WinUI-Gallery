@@ -7,7 +7,7 @@ using static WinUIGallery.Helpers.Win32;
 
 namespace WinUIGallery.Helpers;
 
-internal class Win32WindowHelper
+internal partial class Win32WindowHelper
 {
     private static WinProc newWndProc = null;
     private static nint oldWndProc = nint.Zero;

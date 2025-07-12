@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace WinUIGallery.Samples.ControlPages.Fundamentals.Controls;
 
-public sealed class ValidatedPasswordBox : Control
+public sealed partial class ValidatedPasswordBox : Control
 {
     public static readonly DependencyProperty PasswordProperty =
         DependencyProperty.Register(nameof(Password), typeof(string), typeof(ValidatedPasswordBox), new PropertyMetadata(string.Empty, OnPasswordChanged));
