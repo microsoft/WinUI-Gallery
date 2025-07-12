@@ -7,3 +7,9 @@ CallWindowProc
 GetCurrentThreadId
 SetWindowsHookEx
 CallNextHookEx
+WaitForSingleObject
+ResetEvent
+OpenEvent
+CloseHandle
+GetCurrentProcessId
+GetCurrentThreadId

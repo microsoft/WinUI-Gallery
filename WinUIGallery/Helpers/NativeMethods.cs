@@ -9,29 +9,6 @@ using Windows.Win32.Foundation;
 namespace WinUIGallery.Helpers;
 internal partial class NativeMethods
 {
-    [DllImport("Kernel32.dll", SetLastError = true)]
-    public static extern IntPtr OpenEvent(uint dwDesiredAccess, bool bInheritHandle, string lpName);
-
-    [DllImport("kernel32.dll", SetLastError = true)]
-    public static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);
-
-    public const UInt32 INFINITE = 0xFFFFFFFF;
-    public const UInt32 WAIT_ABANDONED = 0x00000080;
-    public const UInt32 WAIT_OBJECT_0 = 0x00000000;
-    public const UInt32 WAIT_TIMEOUT = 0x00000102;
-
-    [DllImport("kernel32.dll", SetLastError = true)]
-    public static extern bool ResetEvent(IntPtr hEvent);
-
-    [DllImport("kernel32.dll", SetLastError = true)]
-    public static extern bool CloseHandle(IntPtr hObject);
-
-    [DllImport("kernel32.dll")]
-    public static extern uint GetCurrentProcessId();
-
-    [DllImport("kernel32.dll")]
-    public static extern uint GetCurrentThreadId();
-
     [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
     internal static extern int SetWindowLong32(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc);
 
@@ -81,24 +58,6 @@ internal partial class NativeMethods
         WM_GETMINMAXINFO = 0x0024,
     }
 
-    [Flags]
-    public enum SyncObjectAccess : uint
-    {
-        DELETE = 0x00010000,
-        READ_CONTROL = 0x00020000,
-        WRITE_DAC = 0x00040000,
-        WRITE_OWNER = 0x00080000,
-        SYNCHRONIZE = 0x00100000,
-        EVENT_ALL_ACCESS = 0x001F0003,
-        EVENT_MODIFY_STATE = 0x00000002,
-        MUTEX_ALL_ACCESS = 0x001F0001,
-        MUTEX_MODIFY_STATE = 0x00000001,
-        SEMAPHORE_ALL_ACCESS = 0x001F0003,
-        SEMAPHORE_MODIFY_STATE = 0x00000002,
-        TIMER_ALL_ACCESS = 0x001F0003,
-        TIMER_MODIFY_STATE = 0x00000002,
-        TIMER_QUERY_STATE = 0x00000001
-    }
     public static bool IsAppPackaged { get; } = GetCurrentPackageName() != null;
     public static string GetCurrentPackageName()
     {
