@@ -62,7 +62,6 @@ public sealed partial class MainWindow : Window
         this.AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
         this.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
 
-        // TO DO: replace this with the new MinWidth/MinHeight AppWindow APIs in 1.7 Stable
         Win32WindowHelper win32WindowHelper = new Win32WindowHelper(this);
         win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 640, y = 500 });
     }
