@@ -203,23 +203,23 @@
                                 <FontIcon
                                     FontFamily="{StaticResource SymbolThemeFontFamily}"
                                     FontSize="48"
-                                    Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
+                                    Glyph="{x:Bind SelectedItem.Character, Mode=OneWay}" />
                             </Border>
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="Icon name" />
-                            <controls:SampleCodePresenter Code="{Binding SelectedItem.Name, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <controls:SampleCodePresenter Code="{x:Bind SelectedItem.Name, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="Text glyph" />
-                            <controls:SampleCodePresenter Code="{Binding SelectedItem.TextGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <controls:SampleCodePresenter Code="{x:Bind SelectedItem.TextGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="Code glyph" />
-                            <controls:SampleCodePresenter Code="{Binding SelectedItem.CodeGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <controls:SampleCodePresenter Code="{x:Bind SelectedItem.CodeGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
@@ -234,13 +234,13 @@
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="SymbolIcon XAML"
-                                Visibility="{Binding SelectedItem.SymbolName, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}"/>
+                                Visibility="{x:Bind SelectedItem.SymbolName, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}"/>
                             <controls:SampleCodePresenter x:Name="XAMLCodePresenterSymbol" Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="SymbolIcon C#"
-                                Visibility="{Binding SelectedItem.SymbolName, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}"/>
+                                Visibility="{x:Bind SelectedItem.SymbolName, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}"/>
                             <controls:SampleCodePresenter x:Name="CSharpCodePresenterSymbol" Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Margin="0,4,0,0"

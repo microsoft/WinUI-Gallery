@@ -40,7 +40,7 @@ BreadcrumbBar1.ItemsSource = new string[] { "Home", "Documents", "Design", "Nort
                 <BreadcrumbBar x:Name="BreadcrumbBar2">
                     <BreadcrumbBar.ItemTemplate>
                         <DataTemplate x:DataType="l:Folder">
-                            <BreadcrumbBarItem AutomationProperties.Name="{Binding Name}" Content="{Binding}">
+                            <BreadcrumbBarItem AutomationProperties.Name="{x:Bind Name}" Content="{Binding}">
                                 <BreadcrumbBarItem.ContentTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Name}" />

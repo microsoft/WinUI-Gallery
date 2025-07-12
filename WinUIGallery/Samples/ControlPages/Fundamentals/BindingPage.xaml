@@ -139,7 +139,7 @@ public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
                         Width="300"
                         Header="Enter Text:" />
 
-                    <TextBlock Text="The input is not empty." Visibility="{Binding Text, ElementName=InputTextBox, Converter={StaticResource emptyStringToVisibilityConverter}}" />
+                    <TextBlock Text="The input is not empty." Visibility="{x:Bind InputTextBox.Text, Mode=OneWay, Converter={StaticResource emptyStringToVisibilityConverter}}" />
                 </StackPanel>
             </controls:ControlExample.Example>
         </controls:ControlExample>

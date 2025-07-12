@@ -17,7 +17,7 @@
                     VerticalAlignment="Top"
                     DisplayName="{x:Bind DisplayNameRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter='Jane Doe'}"
                     Initials="{x:Bind InitialsRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter='SB'}"
-                    ProfilePicture="{Binding IsChecked, ElementName=ProfileImageRadio, Converter={StaticResource booleanToValueConverter}, ConverterParameter='https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png'}" />
+                    ProfilePicture="{x:Bind ProfileImageRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter='https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png'}" />
             </controls:ControlExample.Example>
 
             <controls:ControlExample.Options>
