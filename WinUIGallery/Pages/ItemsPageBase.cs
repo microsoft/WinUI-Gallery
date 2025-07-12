@@ -54,7 +54,7 @@ public abstract class ItemsPageBase : Page, INotifyPropertyChanged
 
         _itemId = item.UniqueId;
 
-        NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), _itemId, new DrillInNavigationTransitionInfo());
+        App.MainWindow.Navigate(typeof(ItemPage), _itemId, new DrillInNavigationTransitionInfo());
     }
 
     protected void OnItemGridViewLoaded(object sender, RoutedEventArgs e)

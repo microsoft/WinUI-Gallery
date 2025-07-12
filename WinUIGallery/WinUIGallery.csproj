@@ -310,6 +310,7 @@
         <None Remove="Controls\OpacityMaskView.xaml" />
         <None Remove="Controls\PageHeader.xaml" />
         <None Remove="Controls\SampleThemeListener.xaml" />
+        <None Remove="MainWindow.xaml" />
         <None Remove="Samples\ControlPages\AppNotificationPage.xaml" />
         <None Remove="Samples\ControlPages\BadgeNotificationManagerPage.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml" />
@@ -515,6 +516,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Page Update="MainWindow.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+	  </Page>
       <Page Update="Controls\OpacityMaskView.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
