@@ -94,8 +94,8 @@ public sealed partial class ItemPage : Page
         pageHeader.ToggleThemeAction = null;
         pageHeader.CopyLinkAction = null;
 
-        //// We use reflection to call the OnNavigatedFrom function the user leaves this page
-        //// See this PR for more information: https://github.com/microsoft/WinUI-Gallery/pull/145
+        // We use reflection to call the OnNavigatedFrom function the user leaves this page
+        // See this PR for more information: https://github.com/microsoft/WinUI-Gallery/pull/145
         Frame contentFrameAsFrame = contentFrame as Frame;
         Page innerPage = contentFrameAsFrame.Content as Page;
         if (innerPage != null)
