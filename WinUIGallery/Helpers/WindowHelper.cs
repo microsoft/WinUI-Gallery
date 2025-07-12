@@ -19,10 +19,7 @@ public class WindowHelper
 {
     static public Window CreateWindow()
     {
-        Window newWindow = new Window
-        {
-            SystemBackdrop = new MicaBackdrop()
-        };
+        MainWindow newWindow = new MainWindow();
         TrackWindow(newWindow);
         return newWindow;
     }
