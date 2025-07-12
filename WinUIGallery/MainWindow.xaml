@@ -27,7 +27,7 @@
             <TitleBar.LeftHeader>
                 <ImageIcon Source="/Assets/Tiles/GalleryIcon.ico"
                            Height="16"
-                           Margin="0 0 8 0"/>
+                           Margin="0, 0, 8, 0"/>
             </TitleBar.LeftHeader>
             <TitleBar.Content>
                 <AutoSuggestBox
