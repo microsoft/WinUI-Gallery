@@ -62,6 +62,7 @@ public partial class ControlInfoDocLink
 /// <summary>
 /// Generic group data model.
 /// </summary>
+[WinRT.GeneratedBindableCustomPropertyAttribute]
 public partial class ControlInfoDataGroup
 {
     public string UniqueId { get; set; }
