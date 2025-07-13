@@ -23,6 +23,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     private Random random = new Random();
     private int MaxLength = 425;
 
+    public ObservableCollection<int> Numbers { get; } = new ObservableCollection<int>(Enumerable.Range(0, 500));
     public ObservableCollection<Bar> BarItems;
     public MyItemsSource filteredRecipeData = new MyItemsSource(null);
     public List<Recipe> staticRecipeData;
@@ -35,7 +36,6 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     {
         this.InitializeComponent();
         InitializeData();
-        repeater2.ItemsSource = Enumerable.Range(0, 500);
     }
 
     public List<String> ColorList = new List<String>()
