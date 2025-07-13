@@ -58,6 +58,7 @@ internal sealed partial class SuspensionManager
     /// <returns>An asynchronous task that reflects when session state has been saved.</returns>
     [UnconditionalSuppressMessage("ReflectionAnalysis", "IL2026",
         Justification = "From manual inspection, _sessionState only serializes Dictionaries of strings")]
+    [RequiresDynamicCode("Calls System.Runtime.Serialization.XmlObjectSerializer.WriteObject(Stream, Object)")]
     public static async Task SaveAsync()
     {
         try
@@ -103,6 +104,7 @@ internal sealed partial class SuspensionManager
     /// completes.</returns>
     [UnconditionalSuppressMessage("ReflectionAnalysis", "IL2026",
         Justification = "From manual inspection, _sessionState only serializes Dictionaries of strings")]
+    [RequiresDynamicCode("Calls System.Runtime.Serialization.XmlObjectSerializer.ReadObject(Stream)")]
     public static async Task RestoreAsync()
     {
         _sessionState = new Dictionary<string, object>();
