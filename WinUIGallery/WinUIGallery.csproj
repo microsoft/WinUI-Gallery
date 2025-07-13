@@ -33,7 +33,7 @@
         <SingleProject Condition="'$(SolutionName)' == 'WinUIGallery.DesktopWap'">false</SingleProject>
         <WindowsAppSdkIncludeVersionInfo>true</WindowsAppSdkIncludeVersionInfo>
         <PublishProfile>win-$(Platform).pubxml</PublishProfile>
-        <PublishAot>false</PublishAot>
+        <PublishAot>true</PublishAot>
 		<IsAotCompatible>true</IsAotCompatible>
 		<CsWinRTAotWarningLevel>2</CsWinRTAotWarningLevel>
         <PublishSingleFile Condition="'$(PublishSingleFile)' == '' and '$(Packaged)' != 'true'">true</PublishSingleFile>
