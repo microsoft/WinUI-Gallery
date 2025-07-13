@@ -247,7 +247,7 @@ internal sealed partial class SuspensionManager
         frameState["Navigation"] = frame.GetNavigationState();
     }
 }
-public class SuspensionManagerException : Exception
+public partial class SuspensionManagerException : Exception
 {
     public SuspensionManagerException()
     {
