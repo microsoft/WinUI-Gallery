@@ -11,7 +11,6 @@ using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
@@ -541,12 +540,12 @@ public sealed partial class MainWindow : Window
 
         var workItem = new Windows.System.Threading.WorkItemHandler((IAsyncAction _) =>
         {
-            while (!IsDebuggerPresent())
+            while (!Windows.Win32.PInvoke.IsDebuggerPresent())
             {
                 Thread.Sleep(1000);
             }
 
-            DebugBreak();
+            Windows.Win32.PInvoke.DebugBreak();
 
             dispatcherQueue.TryEnqueue(
                 Microsoft.UI.Dispatching.DispatcherQueuePriority.Low,
@@ -558,12 +557,6 @@ public sealed partial class MainWindow : Window
 
         var asyncAction = Windows.System.Threading.ThreadPool.RunAsync(workItem);
     }
-
-    [DllImport("kernel32.dll")]
-    private static extern bool IsDebuggerPresent();
-
-    [DllImport("kernel32.dll")]
-    private static extern void DebugBreak();
 
     #endregion
 

@@ -11,3 +11,6 @@ OpenEvent
 CloseHandle
 GetCurrentProcessId
 GetCurrentThreadId
+IsDebuggerPresent
+DebugBreak
+GetActiveWindow

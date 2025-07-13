@@ -15,10 +15,28 @@ internal partial class NativeMethods
     [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr")]
     internal static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc);
 
+    [DllImport("User32.dll", CharSet = CharSet.Auto, EntryPoint = "SetWindowLongPtr")]
+    internal static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+    [DllImport("User32.dll", CharSet = CharSet.Auto, EntryPoint = "SetWindowLong")]
+    internal static extern IntPtr SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+
     [DllImport("user32.dll")]
     internal static extern IntPtr CallWindowProc(IntPtr lpPrevWndFunc, IntPtr hWnd, WindowMessage Msg, IntPtr wParam, IntPtr lParam);
+    
+    [StructLayout(LayoutKind.Sequential)]
+    internal struct DispatcherQueueOptions
+    {
+        internal int dwSize;
+        internal int threadType;
+        internal int apartmentType;
+    }
 
-    public unsafe static void SetWindowKeyHook()
+    // Avoid using CreateDispatcherQueueController with CsWin32 — it may cause a crash.
+    [DllImport("CoreMessaging.dll")]
+    internal static unsafe extern int CreateDispatcherQueueController(DispatcherQueueOptions options, IntPtr* instance);
+    internal unsafe static void SetWindowKeyHook()
     {
         delegate* unmanaged[Stdcall]<int, WPARAM, LPARAM, LRESULT> callback = &HookCallback;
 
@@ -38,7 +56,7 @@ internal partial class NativeMethods
         }
     }
 
-    public static bool IsKeyDownHook(IntPtr lWord)
+    internal static bool IsKeyDownHook(IntPtr lWord)
     {
         // The 30th bit tells what the previous key state is with 0 being the "UP" state
         // For more info see https://learn.microsoft.com/windows/win32/winmsg/keyboardproc#lparam-in
@@ -58,8 +76,8 @@ internal partial class NativeMethods
         WM_GETMINMAXINFO = 0x0024,
     }
 
-    public static bool IsAppPackaged { get; } = GetCurrentPackageName() != null;
-    public static string GetCurrentPackageName()
+    internal static bool IsAppPackaged { get; } = GetCurrentPackageName() != null;
+    internal static string GetCurrentPackageName()
     {
         unsafe
         {
