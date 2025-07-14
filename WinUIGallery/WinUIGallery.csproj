@@ -34,6 +34,7 @@
         <WindowsAppSdkIncludeVersionInfo>true</WindowsAppSdkIncludeVersionInfo>
         <PublishProfile>win-$(Platform).pubxml</PublishProfile>
         <PublishAot>true</PublishAot>
+		<DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
 		<IsAotCompatible>true</IsAotCompatible>
 		<CsWinRTAotWarningLevel>2</CsWinRTAotWarningLevel>
         <PublishSingleFile Condition="'$(PublishSingleFile)' == '' and '$(Packaged)' != 'true'">true</PublishSingleFile>
