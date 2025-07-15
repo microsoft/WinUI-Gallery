@@ -14,7 +14,7 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace AnimatedVisuals;
 
-sealed class LottieLogo1 : IAnimatedVisualSource
+sealed partial class LottieLogo1 : IAnimatedVisualSource
 {
     public IAnimatedVisual TryCreateAnimatedVisual(Compositor compositor, out object diagnostics)
     {
@@ -22,7 +22,7 @@ sealed class LottieLogo1 : IAnimatedVisualSource
         return new AnimatedVisual(compositor);
     }
     
-    sealed class AnimatedVisual : IAnimatedVisual
+    sealed partial class AnimatedVisual : IAnimatedVisual
     {
         const long c_durationTicks = 59670000;
         readonly Compositor _c;

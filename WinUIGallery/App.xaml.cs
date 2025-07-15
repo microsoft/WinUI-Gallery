@@ -3,7 +3,6 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
 using Microsoft.Windows.AppLifecycle;
 using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
@@ -14,7 +13,7 @@ using System.Linq;
 using Windows.ApplicationModel.Activation;
 using WinUIGallery.Helpers;
 using WinUIGallery.Pages;
-using static WinUIGallery.Helpers.Win32;
+using static WinUIGallery.Helpers.NativeMethods;
 
 namespace WinUIGallery;
 
@@ -23,18 +22,7 @@ namespace WinUIGallery;
 /// </summary>
 sealed partial class App : Application
 {
-    private static Window startupWindow;
-    private static Win32WindowHelper win32WindowHelper;
-    private static int registeredKeyPressedHook = 0;
-    private HookProc keyEventHook;
-
-    /// <summary>
-    /// Get the initial window created for this app.
-    /// </summary>
-    public static Window StartupWindow
-    {
-        get => startupWindow;
-    }
+    internal static MainWindow MainWindow { get; private set; } = null!;
 
     /// <summary>
     /// Initializes the singleton Application object. This is the first line of authored code
@@ -55,11 +43,8 @@ sealed partial class App : Application
     {
         IdleSynchronizer.Init();
 
-        startupWindow = WindowHelper.CreateWindow();
-        startupWindow.ExtendsContentIntoTitleBar = true;
-
-        win32WindowHelper = new Win32WindowHelper(startupWindow);
-        win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 532, y = 500 });
+        MainWindow = new MainWindow();
+        WindowHelper.TrackWindow(MainWindow);
 
 #if DEBUG
         if (Debugger.IsAttached)
@@ -68,25 +53,14 @@ sealed partial class App : Application
         }
 #endif
 
-        keyEventHook = KeyEventHook;
-        registeredKeyPressedHook = SetWindowKeyHook(keyEventHook);
+        SetWindowKeyHook();
 
         EnsureWindow();
 
-        startupWindow.Closed += (s, e) =>
+        MainWindow.Closed += (s, e) =>
         {
             BadgeNotificationManager.Current.ClearBadge();
         };
-    }
-
-    private int KeyEventHook(int nCode, IntPtr wParam, IntPtr lParam)
-    {
-        if (nCode >= 0 && IsKeyDownHook(lParam))
-        {
-            RootFrameNavigationHelper.RaiseKeyPressed((uint)wParam);
-        }
-
-        return CallNextHookEx(registeredKeyPressedHook, nCode, wParam, lParam);
     }
 
     private void DebugSettings_BindingFailed(object sender, BindingFailedEventArgs e)
@@ -106,7 +80,7 @@ sealed partial class App : Application
         await ControlInfoDataSource.Instance.GetGroupsAsync();
         await IconsDataSource.Instance.LoadIcons();
 
-        Frame rootFrame = GetRootFrame();
+        MainWindow.AddNavigationMenuItems();
 
         ThemeHelper.Initialize();
 
@@ -138,57 +112,16 @@ sealed partial class App : Application
             }
         }
 
-        var rootPage = StartupWindow.Content as NavigationRootPage;
-        rootPage.Navigate(targetPageType, targetPageArguments);
+        MainWindow.Navigate(targetPageType, targetPageArguments);
 
         if (targetPageType == typeof(HomePage))
         {
-            var navItem = (NavigationViewItem)rootPage.NavigationView.MenuItems[0];
+            var navItem = (NavigationViewItem)MainWindow.NavigationView.MenuItems[0];
             navItem.IsSelected = true;
         }
 
         // Activate the startup window.
-        StartupWindow.Activate();
-    }
-
-    /// <summary>
-    /// Gets the frame of the StartupWindow.
-    /// </summary>
-    /// <returns>The frame of the StartupWindow.</returns>
-    /// <exception cref="Exception">Thrown if the window doesn't have a frame with the name "rootFrame".</exception>
-    public Frame GetRootFrame()
-    {
-        Frame rootFrame;
-        if (StartupWindow.Content is NavigationRootPage rootPage)
-        {
-            rootFrame = (Frame)rootPage.FindName("rootFrame");
-        }
-        else
-        {
-            rootPage = new NavigationRootPage();
-            rootFrame = (Frame)rootPage.FindName("rootFrame");
-            if (rootFrame == null)
-            {
-                throw new Exception("Root frame not found");
-            }
-            SuspensionManager.RegisterFrame(rootFrame, "AppFrame");
-            rootFrame.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
-            rootFrame.NavigationFailed += OnNavigationFailed;
-
-            StartupWindow.Content = rootPage;
-        }
-
-        return rootFrame;
-    }
-
-    /// <summary>
-    /// Invoked when Navigation to a certain page fails
-    /// </summary>
-    /// <param name="sender">The Frame which failed navigation</param>
-    /// <param name="e">Details about the navigation failure</param>
-    void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
-    {
-        throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
+        MainWindow.Activate();
     }
 
     /// <summary>

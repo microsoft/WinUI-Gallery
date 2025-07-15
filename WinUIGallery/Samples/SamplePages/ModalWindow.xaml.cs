@@ -5,8 +5,8 @@ using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using System;
-using System.Runtime.InteropServices;
 using WinRT.Interop;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Samples.SamplePages;
 
@@ -23,7 +23,7 @@ public sealed partial class ModalWindow : Window
 
         // Set this modal window's owner (the main application window).
         // The main window can be retrieved from App.xaml.cs if it's set as a static property.
-        SetWindowOwner(owner: App.StartupWindow);
+        SetWindowOwner(owner: App.MainWindow);
 
         // Make the window modal (blocks interaction with the owner window until closed).
         presenter.IsModal = true;
@@ -50,26 +50,18 @@ public sealed partial class ModalWindow : Window
         // or SetWindowLong for 32-bit systems.
         if (IntPtr.Size == 8) // Check if the system is 64-bit
         {
-            SetWindowLongPtr(ownedHwnd, -8, ownerHwnd); // -8 = GWLP_HWNDPARENT
+            NativeMethods.SetWindowLongPtr(ownedHwnd, -8, ownerHwnd); // -8 = GWLP_HWNDPARENT
         }
         else // 32-bit system
         {
-            SetWindowLong(ownedHwnd, -8, ownerHwnd); // -8 = GWL_HWNDPARENT
+            NativeMethods.SetWindowLong(ownedHwnd, -8, ownerHwnd); // -8 = GWL_HWNDPARENT
         }
     }
-
-    // Import the Windows API function SetWindowLongPtr for modifying window properties on 64-bit systems.
-    [DllImport("User32.dll", CharSet = CharSet.Auto, EntryPoint = "SetWindowLongPtr")]
-    public static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
-
-    // Import the Windows API function SetWindowLong for modifying window properties on 32-bit systems.
-    [DllImport("User32.dll", CharSet = CharSet.Auto, EntryPoint = "SetWindowLong")]
-    public static extern IntPtr SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
 
     private void ModalWindow_Closed(object sender, WindowEventArgs args)
     {
         // Reactivate the main application window when the modal window closes.
-        App.StartupWindow.Activate();
+        App.MainWindow.Activate();
     }
 
     private void OKButton_Click(object sender, RoutedEventArgs e)

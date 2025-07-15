@@ -21,7 +21,7 @@
     <StackPanel>
         <controls:ControlExample x:Name="Example1" HeaderText="A BreadcrumbBar control">
             <controls:ControlExample.Example>
-                <BreadcrumbBar x:Name="BreadcrumbBar1" />
+                <BreadcrumbBar x:Name="BreadcrumbBar1" ItemsSource="{x:Bind FolderString}"/>
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
@@ -37,13 +37,13 @@ BreadcrumbBar1.ItemsSource = new string[] { "Home", "Documents", "Design", "Nort
 
         <controls:ControlExample x:Name="Example2" HeaderText="BreadCrumbBar Control with Custom DataTemplate">
             <controls:ControlExample.Example>
-                <BreadcrumbBar x:Name="BreadcrumbBar2">
+                <BreadcrumbBar x:Name="BreadcrumbBar2" ItemsSource="{x:Bind Folders, Mode=OneWay}">
                     <BreadcrumbBar.ItemTemplate>
                         <DataTemplate x:DataType="l:Folder">
-                            <BreadcrumbBarItem AutomationProperties.Name="{Binding Name}" Content="{Binding}">
+                            <BreadcrumbBarItem>
                                 <BreadcrumbBarItem.ContentTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Name}" />
+                                    <DataTemplate x:DataType="l:Folder">
+                                        <TextBlock Text="{x:Bind Name}" AutomationProperties.Name="{x:Bind Name}"/>
                                     </DataTemplate>
                                 </BreadcrumbBarItem.ContentTemplate>
                             </BreadcrumbBarItem>

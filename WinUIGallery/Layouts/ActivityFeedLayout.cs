@@ -10,7 +10,7 @@ using VirtualizingLayoutContext = Microsoft.UI.Xaml.Controls.VirtualizingLayoutC
 
 namespace WinUIGallery.Layouts;
 
-class ActivityFeedLayout : VirtualizingLayout
+partial class ActivityFeedLayout : VirtualizingLayout
 {
     #region Layout parameters
 
@@ -244,7 +244,7 @@ class ActivityFeedLayout : VirtualizingLayout
     #endregion
 }
 
-internal class ActivityFeedLayoutState
+internal partial class ActivityFeedLayoutState
 {
     public int FirstRealizedIndex { get; set; }
 

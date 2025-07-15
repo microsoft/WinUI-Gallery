@@ -16,7 +16,7 @@ namespace WinUIGallery.Helpers;
 /// ControlInfoSource initializes with data read from a static json file included in the
 /// project.  This provides sample data at both design-time and run-time.
 /// </summary>
-public sealed class ControlInfoDataSource
+public sealed partial class ControlInfoDataSource
 {
     private static readonly object _lock = new();
 

@@ -8,7 +8,7 @@ using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Controls;
 
-public sealed class CopyButton : Button
+public sealed partial class CopyButton : Button
 {
     public CopyButton()
     {

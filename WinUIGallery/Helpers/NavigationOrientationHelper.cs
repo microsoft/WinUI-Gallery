@@ -1,20 +1,18 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.Storage;
-using WinUIGallery.Pages;
 
 namespace WinUIGallery.Helpers;
 
-public static class NavigationOrientationHelper
+public static partial class NavigationOrientationHelper
 {
     private static bool _isLeftMode = true;
     private static ApplicationData appData = ApplicationData.GetDefault();
     public static bool IsLeftMode()
     {
-        if (NativeHelper.IsAppPackaged)
+        if (NativeMethods.IsAppPackaged)
         {
             var valueFromSettings = appData.LocalSettings.Values[SettingsKeys.IsLeftMode];
             if (valueFromSettings == null)
@@ -30,10 +28,10 @@ public static class NavigationOrientationHelper
         }
     }
 
-    public static void IsLeftModeForElement(bool isLeftMode, UIElement element)
+    public static void IsLeftModeForElement(bool isLeftMode)
     {
-        UpdateNavigationViewForElement(isLeftMode, element);
-        if (NativeHelper.IsAppPackaged)
+        UpdateNavigationViewForElement(isLeftMode);
+        if (NativeMethods.IsAppPackaged)
         {
             appData.LocalSettings.Values[SettingsKeys.IsLeftMode] = isLeftMode;
         }
@@ -43,19 +41,16 @@ public static class NavigationOrientationHelper
         }
     }
 
-    public static void UpdateNavigationViewForElement(bool isLeftMode, UIElement element)
+    public static void UpdateNavigationViewForElement(bool isLeftMode)
     {
-        NavigationView _navView = NavigationRootPage.GetForElement(element).NavigationView;
+        NavigationView _navView = App.MainWindow.NavigationView;
         if (isLeftMode)
         {
             _navView.PaneDisplayMode = NavigationViewPaneDisplayMode.Auto;
-            Grid.SetRow(_navView, 0);
         }
         else
         {
             _navView.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
-            Grid.SetRow(_navView, 1);
         }
     }
-
 }
