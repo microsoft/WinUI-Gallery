@@ -1,4 +1,4 @@
-﻿private void TestButtonClick3(object sender, RoutedEventArgs e)
+﻿private void TestButton3Click(object sender, RoutedEventArgs e)
 {
     TestButton3TeachingTip.IsOpen = true;
 }
