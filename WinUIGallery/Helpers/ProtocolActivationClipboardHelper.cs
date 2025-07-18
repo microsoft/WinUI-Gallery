@@ -6,6 +6,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.DataTransfer;
 using Microsoft.Windows.Storage;
 using WinUIGallery.Models;
+using Uri = System.Uri;
 
 namespace WinUIGallery.Helpers;
 
@@ -53,14 +54,23 @@ public static class ProtocolActivationClipboardHelper
 
     public static void Copy(ControlInfoDataItem item)
     {
-        var uri = new Uri($"winui3gallery://item/{item.UniqueId}", UriKind.Absolute);
-        ProtocolActivationClipboardHelper.Copy(uri, $"{Package.Current.DisplayName} - {item.Title} Sample");
+        var uri = new Uri($"{GetAppName()}://item/{item.UniqueId}", UriKind.Absolute);
+        Copy(uri, $"{Package.Current.DisplayName} - {item.Title} Sample");
     }
 
     public static void Copy(ControlInfoDataGroup group)
     {
-        var uri = new Uri($"winui3gallery://category/{group.UniqueId}", UriKind.Absolute);
-        ProtocolActivationClipboardHelper.Copy(uri, $"{Package.Current.DisplayName} - {group.Title} Samples");
+        var uri = new Uri($"{GetAppName()}://category/{group.UniqueId}", UriKind.Absolute);
+        Copy(uri, $"{Package.Current.DisplayName} - {group.Title} Samples");
+    }
+
+    private static string GetAppName()
+    {
+#if DEBUG
+        return "winui3gallerydev";
+#else
+        return "winui3gallery";
+#endif
     }
 
     private static void Copy(Uri uri, string displayName)
