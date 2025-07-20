@@ -196,7 +196,7 @@
                             <Grid Margin="0,0,0,24"
                                   HorizontalAlignment="Stretch">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
                                 <Border Margin="0,0,8,0"
@@ -215,7 +215,7 @@
                                       Visibility="{Binding SelectedItem.IsSegoeFluentOnly}"
                                       ToolTipService.ToolTip="This icon is only available in Segoe Fluent Icons (the default icon font on Windows 11). On Windows 10, MDL2 is used by default, so the icon may not appear unless Segoe Fluent Icons is installed.">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
                                     <FontIcon FontSize="16"
