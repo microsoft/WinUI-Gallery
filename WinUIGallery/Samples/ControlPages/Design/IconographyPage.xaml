@@ -94,21 +94,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel
-            Grid.Row="0"
-            Spacing="8">
-            <RichTextBlock TextWrapping="Wrap"
-                           IsTextSelectionEnabled="True">
-                <Paragraph>
-                    <Run Text="The icons below use" />
-                    <Run Text="Segoe Fluent Icons"
-                         FontWeight="SemiBold" />
-                    <Run Text="on Windows 11 and" />
-                    <Run Text="Segoe MDL2 Icons."
-                         FontWeight="SemiBold" />
-                </Paragraph>
-            </RichTextBlock>
-
+        <StackPanel Grid.Row="0"
+                    Spacing="8"
+                    Margin="0,8,0,0">
             <AutoSuggestBox
                 x:Name="IconsAutoSuggestBox"
                 MinWidth="304"

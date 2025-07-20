@@ -207,6 +207,7 @@
           "Title": "Iconography",
           "IsUpdated": true,
           "Subtitle": "Icons are a visual design language that can be used to communicate information quickly and effectively.",
+          "Description": "The icons below use Segoe Fluent Icons on Windows 11 and Segoe MDL2 Icons.",
           "ImagePath": "ms-appx:///Assets/ControlImages/IconElement.png",
           "Docs": [
             {
