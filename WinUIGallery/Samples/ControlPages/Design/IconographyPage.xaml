@@ -222,7 +222,7 @@
                                       HorizontalAlignment="Stretch"
                                       Visibility="{Binding SelectedItem.IsSegoeFluentOnly}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
                                     <FontIcon FontSize="16"
