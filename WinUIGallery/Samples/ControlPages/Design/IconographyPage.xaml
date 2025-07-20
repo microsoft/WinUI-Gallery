@@ -204,7 +204,7 @@
                             <Grid Margin="0,0,0,24"
                                   HorizontalAlignment="Stretch">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
                                 <Border Margin="0,0,8,0"
