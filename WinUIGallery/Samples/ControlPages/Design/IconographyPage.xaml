@@ -53,14 +53,6 @@
                     BorderThickness="1"
                     CornerRadius="{StaticResource ControlCornerRadius}">
 
-                    <FontIcon FontSize="16"
-                              Margin="8"
-                              Foreground="{ThemeResource SystemFillColorCriticalBrush}"
-                              Glyph="&#xE7BA;"
-                              HorizontalAlignment="Right"
-                              VerticalAlignment="Top"
-                              Visibility="{Binding IsSegoeFluentOnly}"/>
-
                     <!--  Icon  -->
                     <Viewbox
                         Width="28"
