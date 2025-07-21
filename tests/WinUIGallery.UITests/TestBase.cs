@@ -14,7 +14,7 @@ public class TestBase
 
     public static void OpenControlPage(string name)
     {
-        var search = Session.FindElementByName("Search");
+        var search = Session.FindElementByName("Search controls and samples...");
         search.Clear();
 
         search.SendKeys(name);

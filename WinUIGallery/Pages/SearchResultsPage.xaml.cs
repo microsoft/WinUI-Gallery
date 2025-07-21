@@ -38,10 +38,10 @@ public sealed partial class SearchResultsPage : ItemsPageBase
     {
         base.OnNavigatedTo(e);
 
-        NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
-        var queryText = args.Parameter?.ToString().ToLower();
-
-        BuildFilterList(queryText);
+        if (e.Parameter is string queryText)
+        {
+            BuildFilterList(queryText);
+        }
     }
 
     protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)

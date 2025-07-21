@@ -8,145 +8,106 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
-using Microsoft.Windows.BadgeNotifications;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
-using Windows.System.Profile;
 using Windows.UI.ViewManagement;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
+using WinUIGallery.Pages;
 
-namespace WinUIGallery.Pages;
+namespace WinUIGallery;
 
-public sealed partial class NavigationRootPage : Page
+public sealed partial class MainWindow : Window
 {
     public Windows.System.VirtualKey ArrowKey;
     public Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
-    private RootFrameNavigationHelper _navHelper;
     private UISettings _settings;
 
-
-    public static NavigationRootPage GetForElement(object obj)
-    {
-        UIElement element = (UIElement)obj;
-        Window window = WindowHelper.GetWindowForElement(element);
-        if (window != null)
-        {
-            return (NavigationRootPage)window.Content;
-        }
-        return null;
-    }
-
-    public Microsoft.UI.Xaml.Controls.NavigationView NavigationView
+    public NavigationView NavigationView
     {
         get { return NavigationViewControl; }
     }
 
     public Action NavigationViewLoaded { get; set; }
 
-    public DeviceType DeviceFamily { get; set; }
-
-    public string AppTitleText
-    {
-        get
-        {
-#if DEBUG
-            return "WinUI 3 Gallery Dev";
-#else
-            return "WinUI 3 Gallery";
-#endif
-        }
-    }
-
-    public NavigationRootPage()
+    public MainWindow()
     {
         this.InitializeComponent();
+        SetWindowProperties();
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
-
-        _navHelper = new RootFrameNavigationHelper(rootFrame, NavigationViewControl);
-
-        SetDeviceFamily();
-        AddNavigationMenuItems();
-
-        this.GotFocus += (object sender, RoutedEventArgs e) =>
-        {
-            // helpful for debugging focus problems w/ keyboard & gamepad
-            if (FocusManager.GetFocusedElement() is FrameworkElement focus)
-            {
-                Debug.WriteLine("got focus: " + focus.Name + " (" + focus.GetType().ToString() + ")");
-            }
-        };
-
-        // remove the solid-colored backgrounds behind the caption controls and system back button if we are in left mode
-        // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
-        Loaded += delegate (object sender, RoutedEventArgs e)
-        {
-            NavigationOrientationHelper.UpdateNavigationViewForElement(NavigationOrientationHelper.IsLeftMode(), this);
-
-            Window window = WindowHelper.GetWindowForElement(sender as UIElement);
-            window.Title = AppTitleText;
-            window.ExtendsContentIntoTitleBar = true;
-            window.Activated += Window_Activated;
-            window.SetTitleBar(this.AppTitleBar);
-
-            AppWindow appWindow = window.AppWindow;
-            appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
-            appWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
-            _settings = new UISettings();
-            _settings.ColorValuesChanged += _settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event because the triggerTitleBarRepaint workaround no longer works
-        };
-
-        rootFrame.Navigated += (_, _) =>
-        {
-            BadgeNotificationManager.Current.ClearBadge();
-        };
     }
 
-    private void Window_Activated(object sender, WindowActivatedEventArgs args)
+    private void RootGrid_Loaded(object sender, RoutedEventArgs e)
     {
-        if (args.WindowActivationState == WindowActivationState.Deactivated)
-        {
-            VisualStateManager.GoToState(this, "Deactivated", true);
-        }
-        else
-        {
-            VisualStateManager.GoToState(this, "Activated", true);
-        }
+        NavigationOrientationHelper.UpdateNavigationViewForElement(NavigationOrientationHelper.IsLeftMode());
+        _settings = new UISettings();
+        _settings.ColorValuesChanged += _settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event because the triggerTitleBarRepaint workaround no longer works
+    }
+
+    private void SetWindowProperties()
+    {
+#if DEBUG
+        this.Title = "WinUI 3 Gallery Dev";
+        titleBar.Subtitle = "Dev";
+#else
+        this.Title = "WinUI 3 Gallery";
+#endif
+        this.ExtendsContentIntoTitleBar = true;
+        this.SetTitleBar(titleBar);
+        this.AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        this.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
+
+        Win32WindowHelper win32WindowHelper = new Win32WindowHelper(this);
+        win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 640, y = 500 });
     }
 
     private void OnPaneDisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
     {
         if (sender.PaneDisplayMode == NavigationViewPaneDisplayMode.Top)
         {
-            VisualStateManager.GoToState(this, "Top", true);
+            titleBar.IsPaneToggleButtonVisible = false;
         }
         else
         {
-            if (args.DisplayMode == NavigationViewDisplayMode.Minimal)
-            {
-                VisualStateManager.GoToState(this, "Compact", true);
-            }
-            else
-            {
-                VisualStateManager.GoToState(this, "Default", true);
-            }
+            titleBar.IsPaneToggleButtonVisible = true;
         }
     }
 
-    // this handles updating the caption button colors correctly when indows system theme is changed
+    /// <summary>
+    /// Gets the frame of the StartupWindow.
+    /// </summary>
+    /// <returns>The frame of the StartupWindow.</returns>
+    /// <exception cref="Exception">Thrown if the window doesn't have a frame with the name "rootFrame".</exception>
+    public Frame GetRootFrame()
+    {
+        SuspensionManager.RegisterFrame(rootFrame, "AppFrame");
+        rootFrame.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
+        rootFrame.NavigationFailed += OnNavigationFailed;
+        return rootFrame;
+    }
+
+    /// <summary>
+    /// Invoked when Navigation to a certain page fails
+    /// </summary>
+    /// <param name="sender">The Frame which failed navigation</param>
+    /// <param name="e">Details about the navigation failure</param>
+    void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+    {
+        throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
+    }
+    // this handles updating the caption button colors correctly when windows system theme is changed
     // while the app is open
     private void _settings_ColorValuesChanged(UISettings sender, object args)
     {
         // This calls comes off-thread, hence we will need to dispatch it to current app's thread
         dispatcherQueue.TryEnqueue(() =>
         {
-            _ = TitleBarHelper.ApplySystemThemeToCaptionButtons(App.StartupWindow);
+            _ = TitleBarHelper.ApplySystemThemeToCaptionButtons(this, rootFrame.ActualTheme);
         });
     }
 
@@ -154,12 +115,7 @@ public sealed partial class NavigationRootPage : Page
     // Please call this function rather than rootFrame.Navigate to navigate the rootFrame.
     public void Navigate(Type pageType, object targetPageArguments = null, NavigationTransitionInfo navigationTransitionInfo = null)
     {
-        NavigationRootPageArgs args = new NavigationRootPageArgs
-        {
-            NavigationRootPage = this,
-            Parameter = targetPageArguments
-        };
-        rootFrame.Navigate(pageType, args, navigationTransitionInfo);
+        rootFrame.Navigate(pageType, targetPageArguments, navigationTransitionInfo);
 
         // Ensure the NavigationView selection is set to the correct item to mark the sample's page as visited
         if (pageType.Equals(typeof(ItemPage)) && targetPageArguments != null)
@@ -209,7 +165,7 @@ public sealed partial class NavigationRootPage : Page
         }
     }
 
-    private void AddNavigationMenuItems()
+    public void AddNavigationMenuItems()
     {
         foreach (var group in ControlInfoDataSource.Instance.Groups.OrderBy(i => i.Title).Where(i => !i.IsSpecialSection))
         {
@@ -262,18 +218,6 @@ public sealed partial class NavigationRootPage : Page
                     {
                         Glyph = imagePath
                     };
-    }
-
-    private void SetDeviceFamily()
-    {
-        var familyName = AnalyticsInfo.VersionInfo.DeviceFamily;
-
-        if (!Enum.TryParse(familyName.Replace("Windows.", string.Empty), out DeviceType parsedDeviceType))
-        {
-            parsedDeviceType = DeviceType.Other;
-        }
-
-        DeviceFamily = parsedDeviceType;
     }
 
     private void OnHomeMenuItemLoaded(object sender, RoutedEventArgs e)
@@ -623,18 +567,16 @@ public sealed partial class NavigationRootPage : Page
 
     #endregion
 
-}
+    private void TitleBar_PaneToggleRequested(TitleBar sender, object args)
+    {
+        NavigationViewControl.IsPaneOpen = !NavigationViewControl.IsPaneOpen;
+    }
 
-public class NavigationRootPageArgs
-{
-    public NavigationRootPage NavigationRootPage;
-    public object Parameter;
-}
-
-public enum DeviceType
-{
-    Desktop,
-    Mobile,
-    Other,
-    Xbox
+    private void TitleBar_BackRequested(TitleBar sender, object args)
+    {
+        if (this.rootFrame.CanGoBack)
+        {
+            this.rootFrame.GoBack();
+        }
+    }
 }
