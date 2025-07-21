@@ -37,7 +37,7 @@
                     VerticalAlignment="Center"
                     x:FieldModifier="public"
                     KeyboardAcceleratorPlacementMode="Hidden"
-                    PlaceholderText="Search controls and samples.."
+                    PlaceholderText="Search controls and samples..."
                     QueryIcon="Find"
                     QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
                     TextChanged="OnControlsSearchBoxTextChanged">

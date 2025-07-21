@@ -53,6 +53,7 @@
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                     BorderThickness="1"
                     CornerRadius="{StaticResource ControlCornerRadius}">
+
                     <!--  Icon  -->
                     <Viewbox
                         Width="28"
@@ -193,19 +194,44 @@
                     Visibility="Collapsed">
                     <ScrollViewer>
                         <StackPanel Margin="16,16,8,16" Spacing="2">
-                            <Border
-                                Margin="0,0,0,24"
-                                Padding="8"
-                                HorizontalAlignment="Left"
-                                Background="{ThemeResource ControlFillColorDefaultBrush}"
-                                BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
-                                BorderThickness="1"
-                                CornerRadius="{StaticResource ControlCornerRadius}">
-                                <FontIcon
-                                    FontFamily="{StaticResource SymbolThemeFontFamily}"
-                                    FontSize="48"
-                                    Glyph="{x:Bind SelectedItem.Character, Mode=OneWay}" />
-                            </Border>
+                            <Grid Margin="0,0,0,24"
+                                  HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Border Margin="0,0,8,0"
+                                        Padding="8"
+                                        HorizontalAlignment="Left"
+                                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                                        BorderThickness="1"
+                                        CornerRadius="{StaticResource ControlCornerRadius}">
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                              FontSize="48"
+                                              Glyph="{x:Bind SelectedItem.Character, Mode=OneWay}" />
+                                </Border>
+                                <Grid Grid.Column="1"
+                                      HorizontalAlignment="Stretch"
+                                      Visibility="{x:Bind SelectedItem.IsSegoeFluentOnly, Mode=OneWay}"
+                                      ToolTipService.ToolTip="This icon is only available in Segoe Fluent Icons (the default icon font on Windows 11). On Windows 10, Segoe MDL2 Assets is used by default, so the icon may not appear unless Segoe Fluent Icons is installed.">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <FontIcon FontSize="16"
+                                              Margin="0,6,8,0"
+                                              Foreground="{ThemeResource SystemFillColorCriticalBrush}"
+                                              Glyph="&#xE7BA;"
+                                              VerticalAlignment="Top" />
+                                    <TextBlock Grid.Column="1"
+                                               Margin="0,0,8,0"
+                                               Text="Only supported in Segoe Fluent Icons"
+                                               TextWrapping="Wrap"
+                                               Foreground="{ThemeResource SystemFillColorCriticalBrush}"
+                                               VerticalAlignment="Top" />
+                                </Grid>
+                            </Grid>
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
