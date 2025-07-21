@@ -93,19 +93,16 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="0"
-                    Spacing="8"
-                    Margin="0,8,0,0">
-            <AutoSuggestBox
-                x:Name="IconsAutoSuggestBox"
-                MinWidth="304"
-                MaxWidth="320"
-                HorizontalAlignment="Left"
-                PlaceholderText="Search icons by name, code, or tags"
-                QueryIcon="Find"
-                TextChanged="SearchTextBox_TextChanged" />
-        </StackPanel>
+        
+        <AutoSuggestBox
+            x:Name="IconsAutoSuggestBox"
+            MinWidth="304"
+            MaxWidth="320"
+            HorizontalAlignment="Left"
+            PlaceholderText="Search icons by name, code, or tags"
+            QueryIcon="Find"
+            Margin="0,16,0,0"
+            TextChanged="SearchTextBox_TextChanged" />
 
         <controls:SampleThemeListener
             Grid.Row="1"
