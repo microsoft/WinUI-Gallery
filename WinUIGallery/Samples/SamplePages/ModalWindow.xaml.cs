@@ -23,7 +23,7 @@ public sealed partial class ModalWindow : Window
 
         // Set this modal window's owner (the main application window).
         // The main window can be retrieved from App.xaml.cs if it's set as a static property.
-        SetWindowOwner(owner: App.StartupWindow);
+        SetWindowOwner(owner: App.MainWindow);
 
         // Make the window modal (blocks interaction with the owner window until closed).
         presenter.IsModal = true;
@@ -69,7 +69,7 @@ public sealed partial class ModalWindow : Window
     private void ModalWindow_Closed(object sender, WindowEventArgs args)
     {
         // Reactivate the main application window when the modal window closes.
-        App.StartupWindow.Activate();
+        App.MainWindow.Activate();
     }
 
     private void OKButton_Click(object sender, RoutedEventArgs e)

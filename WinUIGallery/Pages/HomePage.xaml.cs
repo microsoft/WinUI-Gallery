@@ -24,9 +24,7 @@ public sealed partial class HomePage : ItemsPageBase
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
-        NavigationRootPageArgs args = (NavigationRootPageArgs)e.Parameter;
-        var menuItem = (NavigationViewItem)args.NavigationRootPage.NavigationView.MenuItems.First();
-        menuItem.IsSelected = true;
+        ((NavigationViewItem)App.MainWindow.NavigationView.MenuItems.First()).IsSelected = true;
 
         Items = ControlInfoDataSource.Instance.Groups
             .SelectMany(g => g.Items)
