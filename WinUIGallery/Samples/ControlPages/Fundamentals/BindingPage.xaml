@@ -179,18 +179,16 @@ public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
             </InfoBar.ActionButton>
         </InfoBar>
 
-        <controls:ControlExample HeaderText="Binding with FallbackValue and TargetNullValue">
+        <controls:ControlExample HeaderText="Binding with TargetNullValue">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
-                    <TextBlock Text="{Binding NonExistentProperty, FallbackValue='Default Text'}" />
                     <TextBlock Text="{x:Bind ViewModel.NullString, Mode=OneWay, TargetNullValue='Anonymous User'}" />
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;!--FallbackValue and TargetNullValue properties help handle scenarios where the binding source is missing or null--&gt;
-&lt;TextBlock Text="{Binding NonExistentProperty, FallbackValue='Default Text'}" /&gt;
-&lt;TextBlock Text="{Binding NullString, TargetNullValue='Anonymous User'}" /&gt;
+&lt;!--TargetNullValue property help handle scenarios where the binding source is null--&gt;
+&lt;TextBlock Text="{Binding ViewModel.NullString, Mode=OneWay, TargetNullValue='Anonymous User'}" /&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
             <controls:ControlExample.CSharp>
