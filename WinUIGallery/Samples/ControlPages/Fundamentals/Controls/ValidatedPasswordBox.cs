@@ -2,7 +2,10 @@
 // Licensed under the MIT License.
 
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Documents;
+using Microsoft.UI.Xaml.Media;
 using System.Linq;
 
 namespace WinUIGallery.Samples.ControlPages.Fundamentals.Controls;
@@ -86,7 +89,6 @@ public sealed class ValidatedPasswordBox : Control
             PasswordInput.PasswordChanged += (sender, e) =>
             {
                 Password = PasswordInput.Password;
-                UpdateValidationMessages();
             };
         }
 
@@ -106,26 +108,59 @@ public sealed class ValidatedPasswordBox : Control
         bool hasNumber = Password.Any(char.IsDigit);
 
         IsValid = hasMinLength && hasUppercase && hasNumber;
-
-        if (MissingUppercaseText is not null)
+        var validationRichText = GetTemplateChild("ValidationRichText") as RichTextBlock;
+        if (validationRichText != null)
         {
-            MissingUppercaseText.Visibility = (hasUppercase || string.IsNullOrEmpty(Password)) ? Visibility.Collapsed : Visibility.Visible;
-        }
+            validationRichText.Blocks.Clear();
 
-        if (MissingNumberText is not null)
-        {
-            MissingNumberText.Visibility = (hasNumber || string.IsNullOrEmpty(Password)) ? Visibility.Collapsed : Visibility.Visible;
-        }
-
-        if (TooShortText is not null)
-        {
-            TooShortText.Visibility = (hasMinLength || string.IsNullOrEmpty(Password)) ? Visibility.Collapsed : Visibility.Visible;
-        }
-
-        if (ValidPasswordText is not null)
-        {
-            ValidPasswordText.Visibility = IsValid ? Visibility.Visible : Visibility.Collapsed;
+            Paragraph paragraph = new();
+            if (!hasUppercase && !string.IsNullOrEmpty(Password))
+            {
+                AddValidationLine(paragraph, "\uEA39", "Missing uppercase", "SystemFillColorCriticalBrush");
+            }
+            if (!hasNumber && !string.IsNullOrEmpty(Password))
+            {
+                AddValidationLine(paragraph, "\uEA39", "Missing number", "SystemFillColorCriticalBrush");
+            }
+            if (!hasMinLength && !string.IsNullOrEmpty(Password))
+            {
+                AddValidationLine(paragraph, "\uEA39", "Too short!", "SystemFillColorCriticalBrush");
+            }
+            if (IsValid)
+            {
+                AddValidationLine(paragraph, "\uE930", "Password is valid", "SystemFillColorSuccessBrush");
+            }
+            if (paragraph.Inlines.Count > 0)
+            {
+                validationRichText.Blocks.Add(paragraph);
+                var peer = FrameworkElementAutomationPeer.FromElement(validationRichText)
+                            ?? FrameworkElementAutomationPeer.CreatePeerForElement(validationRichText);
+                peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+            }
         }
     }
+    private void AddValidationLine(Paragraph paragraph, string iconGlyph, string message, string resourceBrushKey)
+    {
+        var icon = new FontIcon
+        {
+            Glyph = iconGlyph,
+            FontSize = 14,
+            Foreground = (Brush)Application.Current.Resources[resourceBrushKey]
+        };
+
+        InlineUIContainer iconContainer = new() { Child = icon };
+
+        paragraph.Inlines.Add(iconContainer);
+        paragraph.Inlines.Add(new Run { Text = " " });
+
+        paragraph.Inlines.Add(new Run
+        {
+            Text = message,
+            Foreground = (Brush)Application.Current.Resources[resourceBrushKey]
+        });
+
+        paragraph.Inlines.Add(new LineBreak());
+    }
 }
+
 
