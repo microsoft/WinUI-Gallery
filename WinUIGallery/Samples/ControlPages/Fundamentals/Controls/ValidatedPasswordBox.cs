@@ -114,21 +114,24 @@ public sealed class ValidatedPasswordBox : Control
             validationRichText.Blocks.Clear();
 
             Paragraph paragraph = new();
-            if (!hasUppercase && !string.IsNullOrEmpty(Password))
-            {
-                AddValidationLine(paragraph, "\uEA39", "Missing uppercase", "SystemFillColorCriticalBrush");
-            }
-            if (!hasNumber && !string.IsNullOrEmpty(Password))
-            {
-                AddValidationLine(paragraph, "\uEA39", "Missing number", "SystemFillColorCriticalBrush");
-            }
-            if (!hasMinLength && !string.IsNullOrEmpty(Password))
-            {
-                AddValidationLine(paragraph, "\uEA39", "Too short!", "SystemFillColorCriticalBrush");
-            }
             if (IsValid)
             {
                 AddValidationLine(paragraph, "\uE930", "Password is valid", "SystemFillColorSuccessBrush");
+            }
+            else
+            {
+                if (!hasUppercase && !string.IsNullOrEmpty(Password))
+                {
+                    AddValidationLine(paragraph, "\uEA39", "Missing uppercase", "SystemFillColorCriticalBrush");
+                }
+                if (!hasNumber && !string.IsNullOrEmpty(Password))
+                {
+                    AddValidationLine(paragraph, "\uEA39", "Missing number", "SystemFillColorCriticalBrush");
+                }
+                if (!hasMinLength && !string.IsNullOrEmpty(Password))
+                {
+                    AddValidationLine(paragraph, "\uEA39", "Too short!", "SystemFillColorCriticalBrush");
+                }
             }
             if (paragraph.Inlines.Count > 0)
             {
