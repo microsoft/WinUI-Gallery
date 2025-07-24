@@ -90,77 +90,23 @@
     </Page.Resources>
 
     <Grid RowSpacing="8">
-        <Grid.ChildrenTransitions>
-            <RepositionThemeTransition/>
-        </Grid.ChildrenTransitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-        <toolkit:SettingsExpander
-            AutomationProperties.AccessibilityView="Raw"
-            Header="How to use Segoe Fluent Icons"
-            IsExpanded="False">
-            <toolkit:SettingsExpander.Items>
-                <toolkit:SettingsCard
-                    Padding="16,8"
-                    AutomationProperties.Name="How to get the font"
-                    ContentAlignment="Left">
-                    <RichTextBlock TextWrapping="Wrap">
-                        <Paragraph FontWeight="SemiBold">
-                            How to get the font
-                        </Paragraph>
-                        <Paragraph>
-                            Segoe Fluent Icons comes preinstalled on Windows 11. On Windows 10, it requires a manual installation. You can download it <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">here</Hyperlink>.</Paragraph>
-                    </RichTextBlock>
-                </toolkit:SettingsCard>
-                <toolkit:SettingsCard
-                    Padding="16,8"
-                    AutomationProperties.Name="How to use the font"
-                    ContentAlignment="Left">
-                    <StackPanel Orientation="Vertical" Spacing="8">
-                        <RichTextBlock TextWrapping="Wrap">
-                            <Paragraph FontWeight="SemiBold">
-                                How to use
-                            </Paragraph>
-                            <Paragraph>
-                                If you don't specify a FontFamily,
-                                or you specify a FontFamily that is not available on the system at runtime,
-                                a <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.fonticon">FontIcon</Hyperlink>
-                                falls back to the default font family defined by the SymbolThemeFontFamily resource.</Paragraph>
-                            <Paragraph>
-                                An icon with a 16-epx font size is the equivalent of a 16x16-epx icon, to make sizing and positioning more predictable.
-                                For optimal appearance, use these specific sizes: 16, 20, 24, 32, 40, 48, and 64. Deviating from these font sizes could lead to less crisp or blurry outcomes.
-                            </Paragraph>
-                            <Paragraph>
-                                All glyphs in Segoe Fluent Icons have the same fixed width with a consistent height and left origin point, so <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#layering-and-mirroring">layering</Hyperlink>
-                                and colorization effects can be achieved by drawing glyphs directly on top of each other.</Paragraph>
-                        </RichTextBlock>
-                        <controls:SampleCodePresenter CodeSourceFile="Icons/FontIconSample2_xaml.txt" SampleType="XAML" />
-                    </StackPanel>
-                </toolkit:SettingsCard>
-            </toolkit:SettingsExpander.Items>
-        </toolkit:SettingsExpander>
-
-        <StackPanel
-            Grid.Row="1"
-            Margin="0,24,0,0"
-            Spacing="8">
-            <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="Fluent Icons Library" />
-            <AutoSuggestBox
-                x:Name="IconsAutoSuggestBox"
-                MinWidth="304"
-                MaxWidth="320"
-                HorizontalAlignment="Left"
-                PlaceholderText="Search icons by name, code, or tags"
-                QueryIcon="Find"
-                TextChanged="SearchTextBox_TextChanged" />
-        </StackPanel>
+        
+        <AutoSuggestBox
+            x:Name="IconsAutoSuggestBox"
+            MinWidth="304"
+            MaxWidth="320"
+            HorizontalAlignment="Left"
+            PlaceholderText="Search icons by name, code, or tags"
+            QueryIcon="Find"
+            Margin="0,16,0,0"
+            TextChanged="SearchTextBox_TextChanged" />
 
         <controls:SampleThemeListener
-            Grid.Row="2"
+            Grid.Row="1"
             IsTabStop="True">
             <Grid Style="{ThemeResource GalleryTileGridStyle}">
                 <Grid.ColumnDefinitions>
