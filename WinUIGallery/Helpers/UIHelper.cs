@@ -60,10 +60,12 @@ public static class UIHelper
     }
 
     // Confirmation of Action
-    static public void AnnounceActionForAccessibility(UIElement ue, string annoucement, string activityID)
+    static public void AnnounceActionForAccessibility(UIElement ue, string announcement, string activityID)
     {
-        var peer = FrameworkElementAutomationPeer.FromElement(ue);
-        peer.RaiseNotificationEvent(AutomationNotificationKind.ActionCompleted,
-                                    AutomationNotificationProcessing.ImportantMostRecent, annoucement, activityID);
+        if (FrameworkElementAutomationPeer.FromElement(ue) is AutomationPeer peer)
+        {
+            peer.RaiseNotificationEvent(AutomationNotificationKind.ActionCompleted,
+                                        AutomationNotificationProcessing.ImportantMostRecent, announcement, activityID);
+        }
     }
 }
