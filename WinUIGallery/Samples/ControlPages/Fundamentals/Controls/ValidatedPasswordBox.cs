@@ -144,6 +144,10 @@ public sealed class ValidatedPasswordBox : Control
     }
     private void AddValidationLine(Paragraph paragraph, string iconGlyph, string message, string resourceBrushKey)
     {
+        if(paragraph.Inlines.Any())
+        {
+            paragraph.Inlines.Add(new LineBreak());
+        }
         var icon = new FontIcon
         {
             Glyph = iconGlyph,
@@ -161,8 +165,6 @@ public sealed class ValidatedPasswordBox : Control
             Text = message,
             Foreground = (Brush)Application.Current.Resources[resourceBrushKey]
         });
-
-        paragraph.Inlines.Add(new LineBreak());
     }
 }
 
