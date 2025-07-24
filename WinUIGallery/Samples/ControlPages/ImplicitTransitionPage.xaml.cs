@@ -1,11 +1,13 @@
-using System;
-using System.Numerics;
-using Windows.Foundation.Metadata;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Controls.Primitives;
+using System;
+using System.Numerics;
+using Windows.Foundation.Metadata;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
@@ -139,7 +141,7 @@ public sealed partial class ImplicitTransitionPage : Page
 
     private float EnsureValueIsNumber(NumberBox numberBox)
     {
-        if(double.IsNaN(numberBox.Value))
+        if (double.IsNaN(numberBox.Value))
         {
             numberBox.Value = 0;
         }

@@ -1,26 +1,19 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 
 namespace WinUIGallery.Helpers;
 
-
 internal class TitleBarHelper
 {
-    // workaround as Appwindow titlebar doesn't update caption button colors correctly when changed while app is running
+    // workaround as AppWindow TitleBar doesn't update caption button colors correctly when changed while app is running
     // https://task.ms/44172495
-    public static Windows.UI.Color ApplySystemThemeToCaptionButtons(Window window)
+    public static Windows.UI.Color ApplySystemThemeToCaptionButtons(Window window, ElementTheme currentTheme)
     {
-        var frame = (Application.Current as WinUIGallery.App).GetRootFrame() as FrameworkElement;
-        Windows.UI.Color color;
-        if (frame.ActualTheme == ElementTheme.Dark)
-        {
-            color = Colors.White;
-        }
-        else
-        {
-            color = Colors.Black;
-        }
-        SetCaptionButtonColors(window,color);
+        var color = currentTheme == ElementTheme.Dark ? Colors.White : Colors.Black;
+        SetCaptionButtonColors(window, color);
         return color;
     }
 

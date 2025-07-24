@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml.Controls;
 
 namespace WinUIGallery.ControlPages;
@@ -11,7 +14,7 @@ public sealed partial class ColorPickerPage : Page
 
     private void ColorSpectrumShapeRadioButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        switch(ColorSpectrumShapeRadioButtons.SelectedItem)
+        switch (ColorSpectrumShapeRadioButtons.SelectedItem)
         {
             case "Box":
                 colorPicker.ColorSpectrumShape = Microsoft.UI.Xaml.Controls.ColorSpectrumShape.Box;

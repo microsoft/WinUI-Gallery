@@ -1,11 +1,14 @@
-using System;
-using System.Linq;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Input;
 using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Markup;
+using System;
+using System.Linq;
 using Windows.Storage;
 using Windows.System;
 
@@ -13,6 +16,15 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class ScratchPadPage : Page
 {
+    // The name of the ApplicationData container used to store all ScratchPad-related settings.
+    private const string containerKey = "ScratchPad";
+
+    // The key under the ScratchPad container for storing the XAML composite value.
+    private const string xamlCompositeValueKey = "ScratchPadXAML";
+
+    // The key within the XAML composite value that stores the number of 4KB segments.
+    private const string xamlSegmentCountKey = "count";
+
     public ScratchPadPage()
     {
         this.InitializeComponent();
@@ -59,16 +71,16 @@ public sealed partial class ScratchPadPage : Page
 
     public string ReadScratchPadXAMLinLocalSettings()
     {
-        var appData = ApplicationData.Current;
-        if (appData.LocalSettings.Containers.ContainsKey("ScratchPad"))
+        var appData = Microsoft.Windows.Storage.ApplicationData.GetDefault();
+        if (appData.LocalSettings.Containers.ContainsKey(containerKey))
         {
-            var scratchPadContainer = appData.LocalSettings.CreateContainer("ScratchPad", ApplicationDataCreateDisposition.Existing);
-            if (scratchPadContainer != null && scratchPadContainer.Values.ContainsKey("ScratchPadXAML"))
+            var scratchPadContainer = appData.LocalSettings.CreateContainer(containerKey, Microsoft.Windows.Storage.ApplicationDataCreateDisposition.Existing);
+            if (scratchPadContainer != null && scratchPadContainer.Values.ContainsKey(xamlCompositeValueKey))
             {
                 // String values are limited to 4K characters. Use a composite value to support a longer string.
-                var compositeStr = scratchPadContainer.Values["ScratchPadXAML"] as ApplicationDataCompositeValue;
+                var compositeStr = scratchPadContainer.Values[xamlCompositeValueKey] as ApplicationDataCompositeValue;
                 var xamlStr = "";
-                int count = (int)compositeStr["count"];
+                int count = (int)compositeStr[xamlSegmentCountKey];
                 for (int i = 0; i < count; i++)
                 {
                     xamlStr += compositeStr[i.ToString()];
@@ -81,8 +93,8 @@ public sealed partial class ScratchPadPage : Page
 
     public void SaveScratchPadXAMLinLocalSettings(string xamlStr)
     {
-        var appData = ApplicationData.Current;
-        var scratchPadContainer = appData.LocalSettings.CreateContainer("ScratchPad", ApplicationDataCreateDisposition.Always);
+        var appData = Microsoft.Windows.Storage.ApplicationData.GetDefault();
+        var scratchPadContainer = appData.LocalSettings.CreateContainer(containerKey, Microsoft.Windows.Storage.ApplicationDataCreateDisposition.Existing);
         // String values are limited to 4K characters. Use a composite value to support a longer string.
         var compositeStr = new ApplicationDataCompositeValue();
         int count = 0;
@@ -93,8 +105,8 @@ public sealed partial class ScratchPadPage : Page
             count++;
             xamlStr = xamlStr.Substring(len);
         }
-        compositeStr["count"] = count;
-        scratchPadContainer.Values["ScratchPadXAML"] = compositeStr;
+        compositeStr[xamlSegmentCountKey] = count;
+        scratchPadContainer.Values[xamlCompositeValueKey] = compositeStr;
     }
 
     private async void ResetToDefaultClick(object sender, RoutedEventArgs e)

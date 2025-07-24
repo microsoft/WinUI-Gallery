@@ -1,6 +1,9 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
-using Microsoft.UI.Xaml.Controls;
 using Windows.Globalization;
 using WinUIGallery.Helpers;
 

@@ -1,15 +1,17 @@
-using WinUIGallery.Helpers;
-using Microsoft.UI.Xaml;
-using WinRT;// required to support Window.As<ICompositionSupportsSystemBackdrop>()
-using Microsoft.UI.Composition.SystemBackdrops;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Windowing;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI;
 using Microsoft.UI.Composition;
-using System;
-using Windows.UI.ViewManagement;
+using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.System;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using System;
+using WinRT;// required to support Window.As<ICompositionSupportsSystemBackdrop>()
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.SamplePages;
 
@@ -176,7 +178,7 @@ public sealed partial class SampleSystemBackdropsWindow : Window
 
     private void Window_Activated(object sender, WindowActivatedEventArgs args)
     {
-        if(configurationSource != null)
+        if (configurationSource != null)
             configurationSource.IsInputActive = args.WindowActivationState != WindowActivationState.Deactivated;
     }
 
@@ -209,7 +211,7 @@ public sealed partial class SampleSystemBackdropsWindow : Window
 
     private void BackdropComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        SetBackdrop((BackdropType) backdropComboBox.SelectedItem);
+        SetBackdrop((BackdropType)backdropComboBox.SelectedItem);
     }
 
     private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

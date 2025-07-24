@@ -207,15 +207,20 @@
           "Title": "Iconography",
           "IsUpdated": true,
           "Subtitle": "Icons are a visual design language that can be used to communicate information quickly and effectively.",
+          "Description": "The icons below use Segoe Fluent Icons on Windows 11 and Segoe MDL2 Assets on Windows 10.",
           "ImagePath": "ms-appx:///Assets/ControlImages/IconElement.png",
           "Docs": [
             {
-              "Title": "Iconography in Windows 11",
+              "Title": "Iconography in Windows",
               "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/iconography#system-icons"
             },
             {
               "Title": "Segoe Fluent Icons font",
               "Uri": "https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font"
+            },
+            {
+              "Title": "Segoe MDL2 Assets font",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/segoe-ui-symbol-font"
             }
           ]
         },

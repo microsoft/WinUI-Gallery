@@ -1,18 +1,21 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.Graphics.Canvas;
+using Microsoft.Graphics.Canvas.UI.Composition;
+using Microsoft.Graphics.DirectX;
+using Microsoft.UI.Composition;
+using Microsoft.UI.Composition.Scenes;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Microsoft.Graphics.Canvas;
-using Microsoft.Graphics.DirectX;
-using Microsoft.UI.Composition;
-using Microsoft.UI.Composition.Scenes;
 using Windows.Foundation;
 using Windows.Graphics;
 using Windows.Storage;
 using Windows.Storage.Streams;
 using WinRT;
 using WinUIGallery.Helpers;
-using Microsoft.Graphics.Canvas.UI.Composition;
 
 class SceneNodeCommon
 {
@@ -45,14 +48,14 @@ class SceneNodeCommon
     }
 
     public static SceneSurfaceMaterialInput CreateMaterial(
-        Compositor compositor, 
+        Compositor compositor,
         CompositionMipmapSurface mipmap,
         SceneMeshRendererComponent rendererComponent,
         string mapping)
     {
         var materialInput = SceneSurfaceMaterialInput.Create(compositor);
         materialInput.Surface = mipmap;
-        materialInput.BitmapInterpolationMode = 
+        materialInput.BitmapInterpolationMode =
             CompositionBitmapInterpolationMode.MagLinearMinLinearMipLinear;
 
         materialInput.WrappingUMode = SceneWrappingMode.Repeat;

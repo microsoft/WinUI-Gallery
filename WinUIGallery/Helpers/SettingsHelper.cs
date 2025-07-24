@@ -1,4 +1,7 @@
-﻿using Microsoft.Windows.Storage;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.Windows.Storage;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -186,20 +189,4 @@ public static class SettingsHelper
         appData.LocalSettings.Values[key] = joined;
         return true;
     }
-}
-
-/// <summary>
-/// Provides constant keys used for accessing application settings.
-/// </summary>
-public static class SettingsKeys
-{
-    /// <summary>
-    /// Key for the list of favorited Pages.
-    /// </summary>
-    public const string Favorites = "Favorites";
-
-    /// <summary>
-    /// Key for the list of recently visited Pages.
-    /// </summary>
-    public const string RecentlyVisited = "RecentlyVisited";
 }

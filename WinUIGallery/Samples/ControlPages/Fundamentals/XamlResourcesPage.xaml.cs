@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml.Controls;
 using WinUIGallery.Pages;
 
@@ -12,6 +15,6 @@ public sealed partial class XamlResourcesPage : Page
 
     private void Hyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
     {
-        NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), "Color");
+        App.MainWindow.Navigate(typeof(ItemPage), "Color");
     }
 }

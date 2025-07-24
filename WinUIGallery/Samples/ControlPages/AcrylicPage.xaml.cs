@@ -1,10 +1,13 @@
-using System.Linq;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Documents;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
+using System.Linq;
 using WinUIGallery.Pages;
 
 namespace WinUIGallery.ControlPages;
@@ -31,29 +34,29 @@ public sealed partial class AcrylicPage : Page
         if ((Slider)sender == OpacitySliderLumin)
             shape = CustomAcrylicShapeLumin;
 
-        ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).TintOpacity = e.NewValue;
+        ((AcrylicBrush)shape.Fill).TintOpacity = e.NewValue;
     }
 
     private void ColorSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         Rectangle shape = CustomAcrylicShapeInApp;
-        ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).TintColor = ((SolidColorBrush)e.AddedItems.First()).Color;
+        ((AcrylicBrush)shape.Fill).TintColor = ((SolidColorBrush)e.AddedItems.First()).Color;
     }
 
     private void FallbackColorSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         Rectangle shape = CustomAcrylicShapeInApp;
-        ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).FallbackColor = ((SolidColorBrush)e.AddedItems.First()).Color;
+        ((AcrylicBrush)shape.Fill).FallbackColor = ((SolidColorBrush)e.AddedItems.First()).Color;
     }
 
     private void LuminositySlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
     {
         Rectangle shape = CustomAcrylicShapeLumin;
-        ((Microsoft.UI.Xaml.Media.AcrylicBrush)shape.Fill).TintLuminosityOpacity = e.NewValue;
+        ((AcrylicBrush)shape.Fill).TintLuminosityOpacity = e.NewValue;
     }
 
     private void SystemBackdropLink_Click(Hyperlink sender, HyperlinkClickEventArgs args)
     {
-        NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), "SystemBackdrops");
+        App.MainWindow.Navigate(typeof(ItemPage), "SystemBackdrops");
     }
 }

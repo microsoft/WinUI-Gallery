@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml.Controls;
 
 namespace WinUIGallery.ControlPages;
@@ -24,7 +27,7 @@ public sealed partial class ExpanderPage : Page
             case "Up":
                 Expander1.ExpandDirection = Microsoft.UI.Xaml.Controls.ExpandDirection.Up;
                 Expander1.VerticalAlignment = Microsoft.UI.Xaml.VerticalAlignment.Bottom;
-                break;   
+                break;
         }
     }
 }

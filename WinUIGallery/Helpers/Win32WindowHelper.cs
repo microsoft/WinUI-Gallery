@@ -1,5 +1,8 @@
-using System.Runtime.InteropServices;
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 using Microsoft.UI.Xaml;
+using System.Runtime.InteropServices;
 using static WinUIGallery.Helpers.Win32;
 
 namespace WinUIGallery.Helpers;

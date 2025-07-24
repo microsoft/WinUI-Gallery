@@ -1,12 +1,9 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,10 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
-using WinUIGallery.Models;
 using WinUIGallery.Helpers;
 using WinUIGallery.Pages;
 
@@ -108,24 +101,11 @@ public sealed partial class ListViewPage : ItemsPageBase
     // Drag/Drop Example
     //===================================================================================================================
 
-    private void Source_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
+    private void ListView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
     {
-        // Prepare a string with one dragged item per line
-        StringBuilder items = new StringBuilder();
-        foreach (Contact item in e.Items)
-        {
-            if (items.Length > 0) { items.AppendLine(); }
-            if (item.ToString() != null)
-            {
-                // Append name from contact object onto data string
-                items.Append(item.ToString() + " " + item.Company);
-            }
-        }
-        // Set the content of the DataPackage
-        e.Data.SetText(items.ToString());
-
+        var contactsToMove = e.Items.OfType<Contact>().ToList();
+        e.Data.Properties["contacts"] = contactsToMove;
         e.Data.RequestedOperation = DataPackageOperation.Move;
-
     }
 
     private void Target_DragOver(object sender, DragEventArgs e)
@@ -138,22 +118,17 @@ public sealed partial class ListViewPage : ItemsPageBase
         e.AcceptedOperation = DataPackageOperation.Move;
     }
 
-    private async void ListView_Drop(object sender, DragEventArgs e)
+    private void ListView_Drop(object sender, DragEventArgs e)
     {
         ListView target = (ListView)sender;
 
-        if (e.DataView.Contains(StandardDataFormats.Text))
+        if (e.DataView.Properties["contacts"] != null)
         {
             DragOperationDeferral def = e.GetDeferral();
-            string s = await e.DataView.GetTextAsync();
-            string[] items = s.Split('\n');
-            foreach (string item in items)
+            var contactsToMove = (List<Contact>)e.DataView.Properties["contacts"];
+
+            foreach (var contactToMove in contactsToMove)
             {
-
-                // Create Contact object from string, add to existing target ListView
-                string[] info = item.Split(" ", 3);
-                Contact temp = new Contact(info[0], info[1], info[2]);
-
                 // Find the insertion index:
                 Windows.Foundation.Point pos = e.GetPosition(target.ItemsPanelRoot);
 
@@ -193,11 +168,11 @@ public sealed partial class ListViewPage : ItemsPageBase
                 if (target.Name == "DragDropListView")
                 {
                     // Find the ItemsSource for the target ListView and insert
-                    contacts1.Insert(index, temp);
+                    contacts1.Insert(index, contactToMove);
                     //Go through source list and remove the items that are being moved
                     foreach (Contact contact in DragDropListView2.Items)
                     {
-                        if (contact.FirstName == temp.FirstName && contact.LastName == temp.LastName && contact.Company == temp.Company)
+                        if (contact.FirstName == contactToMove.FirstName && contact.LastName == contactToMove.LastName && contact.Company == contactToMove.Company)
                         {
                             contacts2.Remove(contact);
                             break;
@@ -206,10 +181,10 @@ public sealed partial class ListViewPage : ItemsPageBase
                 }
                 else if (target.Name == "DragDropListView2")
                 {
-                    contacts2.Insert(index, temp);
+                    contacts2.Insert(index, contactToMove);
                     foreach (Contact contact in DragDropListView.Items)
                     {
-                        if (contact.FirstName == temp.FirstName && contact.LastName == temp.LastName && contact.Company == temp.Company)
+                        if (contact.FirstName == contactToMove.FirstName && contact.LastName == contactToMove.LastName && contact.Company == contactToMove.Company)
                         {
                             contacts1.Remove(contact);
                             break;
@@ -220,18 +195,6 @@ public sealed partial class ListViewPage : ItemsPageBase
 
             e.AcceptedOperation = DataPackageOperation.Move;
             def.Complete();
-        }
-    }
-
-    private void Target_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
-    {
-        if (e.Items.Count == 1)
-        {
-            // Prepare ListViewItem to be moved
-            Contact tmp = (Contact)e.Items[0];
-
-            e.Data.SetText(tmp.FirstName + " " + tmp.LastName + " " + tmp.Company);
-            e.Data.RequestedOperation = DataPackageOperation.Move;
         }
     }
 

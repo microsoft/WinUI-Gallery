@@ -1,20 +1,14 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Animation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media.Animation;
 using WinUIGallery.Models;
 
 namespace WinUIGallery.Pages;
@@ -60,7 +54,7 @@ public abstract class ItemsPageBase : Page, INotifyPropertyChanged
 
         _itemId = item.UniqueId;
 
-        NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), _itemId, new DrillInNavigationTransitionInfo());
+        App.MainWindow.Navigate(typeof(ItemPage), _itemId, new DrillInNavigationTransitionInfo());
     }
 
     protected void OnItemGridViewLoaded(object sender, RoutedEventArgs e)
