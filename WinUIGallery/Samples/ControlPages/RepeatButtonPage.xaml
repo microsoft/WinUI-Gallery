@@ -28,7 +28,9 @@
                 <TextBlock
                     x:Name="Control1Output"
                     Margin="8,0,0,0"
-                    VerticalAlignment="Center" />
+                    VerticalAlignment="Center"
+                    AutomationProperties.LiveSetting="Polite"
+                    AutomationProperties.Name="Control output" />
             </StackPanel>
 
             <controls:ControlExample.Options>
