@@ -21,7 +21,7 @@
     <StackPanel>
         <controls:ControlExample x:Name="Example1" HeaderText="A BreadcrumbBar control">
             <controls:ControlExample.Example>
-                <BreadcrumbBar x:Name="BreadcrumbBar1" ItemsSource="{x:Bind FolderString}"/>
+                <BreadcrumbBar x:Name="BreadcrumbBar1" ItemsSource="{x:Bind FoldersString}"/>
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">

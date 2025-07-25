@@ -24,7 +24,7 @@ public sealed partial class BreadcrumbBarPage : Page
 
     public ObservableCollection<Folder> Folders { get; } = new();
 
-    public readonly string[] FolderString = new string[] { "Home", "Documents", "Design", "Northwind", "Images", "Folder1", "Folder2", "Folder3" };
+    public readonly string[] FoldersString = new string[] { "Home", "Documents", "Design", "Northwind", "Images", "Folder1", "Folder2", "Folder3" };
     public BreadcrumbBarPage()
     {
         this.InitializeComponent();
