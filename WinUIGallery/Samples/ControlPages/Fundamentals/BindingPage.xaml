@@ -45,12 +45,12 @@
                             <TextBlock FontWeight="SemiBold" Text="OneWay binding" />
                             <TextBox
                                 x:Name="SourceTextBoxOneWay"
-                                Width="200"
+                                MinWidth="380"
                                 HorizontalAlignment="Left"
                                 PlaceholderText="Enter text here" />
                             <TextBox
                                 x:Name="TargetTextBoxOneWay"
-                                Width="200"
+                                MinWidth="380"
                                 HorizontalAlignment="Left"
                                 PlaceholderText="Mirrors above text"
                                 Text="{x:Bind SourceTextBoxOneWay.Text, Mode=OneWay}" />
@@ -62,12 +62,12 @@
                             <TextBlock FontWeight="SemiBold" Text="TwoWay binding" />
                             <TextBox
                                 x:Name="SourceTextBoxTwoWay"
-                                Width="200"
+                                MinWidth="380"
                                 HorizontalAlignment="Left"
                                 PlaceholderText="Enter text here" />
                             <TextBox
                                 x:Name="TargetTextBoxTwoWay"
-                                Width="200"
+                                MinWidth="380"
                                 HorizontalAlignment="Left"
                                 PlaceholderText="Mirrors and edits above text"
                                 Text="{x:Bind SourceTextBoxTwoWay.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />

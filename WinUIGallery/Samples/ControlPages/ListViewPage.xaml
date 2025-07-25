@@ -13,9 +13,9 @@
     x:Class="WinUIGallery.ControlPages.ListViewPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:models="using:WinUIGallery.Models"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:local="using:WinUIGallery.ControlPages"
+    xmlns:models="using:WinUIGallery.Models"
     xmlns:pages="using:WinUIGallery.Pages">
     <Page.Resources>
         <DataTemplate x:Key="ImageTextListMailFolderTemplate" x:DataType="models:ControlInfoDataItem">
@@ -113,9 +113,10 @@
             HeaderText="Basic ListView with Simple DataTemplate"
             XamlSource="ListView\ListViewSample1_xaml.txt">
             <StackPanel>
-                <TextBlock Margin="0,0,0,15">
-                    This is a basic ListView that has the full source code below.<LineBreak />
-                    Other samples on this page display only the additional markup needed to customize a simple ListView like this one.</TextBlock>
+                <TextBlock
+                    Margin="0,0,0,16"
+                    Text="This is a basic ListView that has the full source code below. Other samples on this page display only the additional markup needed to customize a simple ListView like this one."
+                    TextWrapping="Wrap" />
                 <ListView
                     x:Name="BaseExample"
                     Width="350"
