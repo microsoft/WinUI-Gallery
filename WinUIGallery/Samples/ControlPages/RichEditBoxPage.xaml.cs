@@ -20,8 +20,6 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class RichEditBoxPage : Page
 {
-    [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto, PreserveSig = true, SetLastError = false)]
-    public static extern IntPtr GetActiveWindow();
     private Windows.UI.Color currentColor = Microsoft.UI.Colors.Green;
 
     public RichEditBoxPage()
@@ -68,7 +66,7 @@ public sealed partial class RichEditBoxPage : Page
         // When running on win32, FileOpenPicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
         if (Window.Current == null)
         {
-            IntPtr hwnd = GetActiveWindow();
+            IntPtr hwnd = Windows.Win32.PInvoke.GetActiveWindow();
             WinRT.Interop.InitializeWithWindow.Initialize(open, hwnd);
         }
 
@@ -101,7 +99,7 @@ public sealed partial class RichEditBoxPage : Page
         // When running on win32, FileSavePicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
         if (Window.Current == null)
         {
-            IntPtr hwnd = GetActiveWindow();
+            IntPtr hwnd = Windows.Win32.PInvoke.GetActiveWindow();
             WinRT.Interop.InitializeWithWindow.Initialize(savePicker, hwnd);
         }
 

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace WinUIGallery.ControlPages;
 
-public class NamedEasingFunction
+public partial class NamedEasingFunction
 {
     public string Name { get; private set; }
     public EasingFunctionBase EasingFunctionBase { get; private set; }
@@ -64,7 +64,8 @@ public sealed partial class EasingFunctionPage : Page
 
     private void Button4_Click(object sender, RoutedEventArgs e)
     {
-        var easingFunction = EasingComboBox.SelectedValue as EasingFunctionBase;
+        var selectedItem = EasingComboBox.SelectedItem as NamedEasingFunction;
+        var easingFunction = selectedItem.EasingFunctionBase;
         easingFunction.EasingMode = GetEaseValue();
         (Storyboard4.Children[0] as DoubleAnimation).EasingFunction = easingFunction;
 
@@ -78,10 +79,5 @@ public sealed partial class EasingFunctionPage : Page
         if (easeOutRB.IsChecked == true) return EasingMode.EaseOut;
         else if (easeInRB.IsChecked == true) return EasingMode.EaseIn;
         else return EasingMode.EaseInOut;
-    }
-
-    private void EasingComboBox_Loaded(object sender, RoutedEventArgs e)
-    {
-        EasingComboBox.SelectedIndex = 0;
     }
 }

@@ -15,7 +15,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:helper="using:WinUIGallery.Helpers"
     mc:Ignorable="d">
     <StackPanel>
         <controls:ControlExample x:Name="Example1" HeaderText="A ListBox with items defined inline and its minimum width set.">
@@ -55,14 +56,18 @@
                     <ListBox
                         x:Name="ListBox2"
                         Height="164"
-                        DisplayMemberPath="Item1"
                         HighContrastAdjustment="Auto"
-                        ItemsSource="{x:Bind Fonts}"
-                        Loaded="ListBox2_Loaded"
-                        SelectedValuePath="Item2" />
+                        SelectedIndex="2"
+                        ItemsSource="{x:Bind helper:FontHelper.Fonts}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="helper:FontItem">
+                                <TextBlock Text="{x:Bind Name}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                     <TextBlock
                         x:Name="Control2Output"
-                        FontFamily="{x:Bind (FontFamily)ListBox2.SelectedValue, Mode=OneWay}"
+                        FontFamily="{x:Bind ((helper:FontItem)ListBox2.SelectedItem).Font, Mode=OneWay}"
                         Style="{StaticResource OutputTextBlockStyle}"
                         Text="You can set the font used for this text." />
                 </StackPanel>

@@ -11,7 +11,7 @@ using System;
 using System.Numerics;
 using System.Threading.Tasks;
 
-class HelmetScenario
+partial class HelmetScenario
 {
     public static async Task<ContentIsland> CreateIsland(Compositor compositor)
     {

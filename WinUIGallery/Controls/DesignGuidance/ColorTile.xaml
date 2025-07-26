@@ -52,7 +52,12 @@
                 Click="CopyBrushNameButton_Click"
                 Content="&#xE8C8;"
                 Foreground="{x:Bind Foreground, Mode=OneWay}"
-                ToolTipService.ToolTip="Copy brush name" />
+                ToolTipService.ToolTip="Copy brush name">
+                <local:CopyButton.Resources>
+                    <SolidColorBrush x:Key="CopyButtonPointerOverForegroundBrush" Color="{x:Bind Foreground, Mode=OneWay, Converter={StaticResource brushToColorConverter}}" />
+                    <SolidColorBrush x:Key="CopyButtonPressedForegroundBrush" Color="{x:Bind Foreground, Mode=OneWay, Converter={StaticResource brushToColorConverter}}" />
+                </local:CopyButton.Resources>
+            </local:CopyButton>
 
             <TextBlock
                 Grid.Row="1"

@@ -11,21 +11,12 @@
         <controls:ControlExample x:Name="Example1" HeaderText="Select different looks for the person picture.">
 
             <controls:ControlExample.Example>
-                <PersonPicture
-                    x:Name="personPicture"
-                    Height="300"
-                    VerticalAlignment="Top"
-                    DisplayName="{x:Bind DisplayNameRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter='Jane Doe'}"
-                    Initials="{x:Bind InitialsRadio.IsChecked, Mode=OneWay, Converter={StaticResource booleanToValueConverter}, ConverterParameter='SB'}"
-                    ProfilePicture="{Binding IsChecked, ElementName=ProfileImageRadio, Converter={StaticResource booleanToValueConverter}, ConverterParameter='https://learn.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png'}" />
+                <PersonPicture x:Name="personPicture" Height="300" VerticalAlignment="Top" />
             </controls:ControlExample.Example>
 
             <controls:ControlExample.Options>
-                <RadioButtons Header="Profile type">
-                    <RadioButton
-                        x:Name="ProfileImageRadio"
-                        Content="Profile Image"
-                        IsChecked="True" />
+                <RadioButtons SelectedIndex="0" Header="Profile type" SelectionChanged="RadioButtons_SelectionChanged">
+                    <RadioButton x:Name="ProfileImageRadio" Content="Profile Image" IsChecked="True"/>
                     <RadioButton x:Name="DisplayNameRadio" Content="Display Name" />
                     <RadioButton x:Name="InitialsRadio" Content="Initials" />
                 </RadioButtons>

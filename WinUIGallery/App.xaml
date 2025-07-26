@@ -69,8 +69,8 @@
                 x:Key="inverseNullToVisibilityConverter"
                 NonNullValue="Collapsed"
                 NullValue="Visible" />
-            <converters:BooleanToValueConverter x:Key="booleanToValueConverter" />
             <converters:DoubleToThicknessConverter x:Key="doubleToThicknessConverter" />
+            <converters:BrushToColorConverter x:Key="brushToColorConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

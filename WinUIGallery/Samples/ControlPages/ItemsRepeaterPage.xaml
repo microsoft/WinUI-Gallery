@@ -320,6 +320,7 @@ private void InitializeData()
                     <ItemsRepeater
                         x:Name="repeater2"
                         Margin="0,0,12,0"
+                        ItemsSource="{x:Bind Numbers}"
                         HorizontalAlignment="Stretch"
                         ItemTemplate="{StaticResource MyDataTemplateSelector}"
                         Layout="{StaticResource MyFeedLayout}" />

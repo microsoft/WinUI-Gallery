@@ -139,7 +139,7 @@ public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
                         Width="300"
                         Header="Enter Text:" />
 
-                    <TextBlock Text="The input is not empty." Visibility="{Binding Text, ElementName=InputTextBox, Converter={StaticResource emptyStringToVisibilityConverter}}" />
+                    <TextBlock Text="The input is not empty." Visibility="{x:Bind InputTextBox.Text, Mode=OneWay, Converter={StaticResource emptyStringToVisibilityConverter}}" />
                 </StackPanel>
             </controls:ControlExample.Example>
         </controls:ControlExample>
@@ -148,10 +148,10 @@ public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <TextBlock FontWeight="SemiBold" Text="Title:" />
-                    <TextBlock FontSize="16" Text="{Binding Title}" />
+                    <TextBlock FontSize="16" Text="{x:Bind ViewModel.Title, Mode=OneWay}" />
 
                     <TextBlock FontWeight="SemiBold" Text="Description:" />
-                    <TextBlock FontSize="16" Text="{Binding Description}" />
+                    <TextBlock FontSize="16" Text="{x:Bind ViewModel.Description, Mode=OneWay}" />
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
@@ -179,18 +179,16 @@ public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
             </InfoBar.ActionButton>
         </InfoBar>
 
-        <controls:ControlExample HeaderText="Binding with FallbackValue and TargetNullValue">
+        <controls:ControlExample HeaderText="Binding with TargetNullValue">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
-                    <TextBlock Text="{Binding NonExistentProperty, FallbackValue='Default Text'}" />
-                    <TextBlock Text="{Binding NullString, TargetNullValue='Anonymous User'}" />
+                    <TextBlock Text="{x:Bind ViewModel.NullString, Mode=OneWay, TargetNullValue='Anonymous User'}" />
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;!--FallbackValue and TargetNullValue properties help handle scenarios where the binding source is missing or null--&gt;
-&lt;TextBlock Text="{Binding NonExistentProperty, FallbackValue='Default Text'}" /&gt;
-&lt;TextBlock Text="{Binding NullString, TargetNullValue='Anonymous User'}" /&gt;
+&lt;!--TargetNullValue property help handle scenarios where the binding source is null--&gt;
+&lt;TextBlock Text="{Binding ViewModel.NullString, Mode=OneWay, TargetNullValue='Anonymous User'}" /&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
             <controls:ControlExample.CSharp>

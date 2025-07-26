@@ -7,7 +7,7 @@ using System;
 
 namespace WinUIGallery.Converters;
 
-public class NullToVisibilityConverter : IValueConverter
+public partial class NullToVisibilityConverter : IValueConverter
 {
     public Visibility NullValue { get; set; } = Visibility.Collapsed;
     public Visibility NonNullValue { get; set; } = Visibility.Visible;

@@ -121,8 +121,8 @@
                                         <HyperlinkButton
                                             HorizontalAlignment="Stretch"
                                             HorizontalContentAlignment="Left"
-                                            NavigateUri="{Binding Uri}"
-                                            ToolTipService.ToolTip="{Binding Uri}">
+                                            NavigateUri="{x:Bind Uri}"
+                                            ToolTipService.ToolTip="{x:Bind Uri}">
                                             <TextBlock Text="{x:Bind Title}" />
                                         </HyperlinkButton>
                                     </DataTemplate>

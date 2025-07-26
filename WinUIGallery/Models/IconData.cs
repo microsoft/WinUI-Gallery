@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 
 namespace WinUIGallery.Models;
 
-public class IconData
+public partial class IconData
 {
     public string Name { get; set; }
     public string Code { get; set; }

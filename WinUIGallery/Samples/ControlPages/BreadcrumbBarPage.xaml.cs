@@ -10,20 +10,29 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class BreadcrumbBarPage : Page
 {
-    readonly List<Folder> folders = new() {
-            new Folder { Name = "Home"},
-            new Folder { Name = "Folder1" },
-            new Folder { Name = "Folder2" },
-            new Folder { Name = "Folder3" },
+    // We use a separate _defaultFolders list to preserve the original folder structure,
+    // because BreadcrumbBar2.ItemsSource is bound directly to the Folders collection.
+    // When a breadcrumb item is clicked, items are removed directly from Folders,
+    // which means we lose access to the full original list.
+    private readonly List<Folder> _defaultFolders = new()
+    {
+        new Folder { Name = "Home" },
+        new Folder { Name = "Folder1" },
+        new Folder { Name = "Folder2" },
+        new Folder { Name = "Folder3" },
     };
 
+    public ObservableCollection<Folder> Folders { get; } = new();
+
+    public readonly string[] FoldersString = new string[] { "Home", "Documents", "Design", "Northwind", "Images", "Folder1", "Folder2", "Folder3" };
     public BreadcrumbBarPage()
     {
         this.InitializeComponent();
-        BreadcrumbBar1.ItemsSource = new string[] { "Home", "Documents", "Design", "Northwind", "Images", "Folder1", "Folder2", "Folder3" };
 
-        BreadcrumbBar2.ItemsSource = new ObservableCollection<Folder>(folders);
         BreadcrumbBar2.ItemClicked += BreadcrumbBar2_ItemClicked;
+        Folders.Clear();
+        foreach (var folder in _defaultFolders)
+            Folders.Add(folder);
     }
 
     private void BreadcrumbBar2_ItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
@@ -37,11 +46,18 @@ public sealed partial class BreadcrumbBarPage : Page
 
     private void ResetSampleButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
+        // To restore the BreadcrumbBar to its initial state, we compare Folders (the live collection)
+        // with _defaultFolders (the original state), and add back any missing items.
+        // This ensures reset works even after user navigation modifies the ItemsSource.
         var items = BreadcrumbBar2.ItemsSource as ObservableCollection<Folder>;
-        for (int i = items.Count; i < folders.Count; i++)
+        foreach (var folder in _defaultFolders)
         {
-            items.Add(folders[i]);
+            if (!items.Contains(folder))
+            {
+                items.Add(folder);
+            }
         }
+
 
         // Announce reset success notifiication.
         UIHelper.AnnounceActionForAccessibility(ResetSampleBtn, "BreadcrumbBar sample reset successful.", "BreadCrumbBarSampleResetNotificationId");

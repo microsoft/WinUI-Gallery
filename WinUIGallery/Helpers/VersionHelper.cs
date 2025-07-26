@@ -4,7 +4,7 @@
 using Microsoft.Windows.ApplicationModel.WindowsAppRuntime;
 
 namespace WinUIGallery.Helpers;
-internal static class VersionHelper
+internal static partial class VersionHelper
 {
     public static string WinAppSdkDetails =>
         $"Windows App SDK {ReleaseInfo.Major}.{ReleaseInfo.Minor}";

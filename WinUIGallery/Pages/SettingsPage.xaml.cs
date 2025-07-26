@@ -21,7 +21,7 @@ public sealed partial class SettingsPage : Page
     {
         get
         {
-            var version = System.Reflection.Assembly.GetEntryAssembly().GetName().Version;
+            var version = ProcessInfoHelper.GetVersion();
             return string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
         }
     }

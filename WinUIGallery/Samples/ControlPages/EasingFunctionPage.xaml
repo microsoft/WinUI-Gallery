@@ -182,11 +182,15 @@
                 <StackPanel>
                     <ComboBox
                         x:Name="EasingComboBox"
+                        SelectedIndex="0"
                         AutomationProperties.Name="Easing type"
-                        DisplayMemberPath="Name"
-                        ItemsSource="{x:Bind EasingFunctions}"
-                        Loaded="EasingComboBox_Loaded"
-                        SelectedValuePath="EasingFunctionBase" />
+                        ItemsSource="{x:Bind EasingFunctions}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="local:NamedEasingFunction">
+                                <TextBlock Text="{x:Bind Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                     <RadioButtons>
                         <RadioButton
                             x:Name="easeOutRB"

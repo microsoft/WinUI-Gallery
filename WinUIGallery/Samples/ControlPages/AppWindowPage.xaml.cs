@@ -6,14 +6,14 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using WinUIGallery.Samples.SamplePages;
 
 namespace WinUIGallery.ControlPages;
 
 public sealed partial class AppWindowPage : Page
 {
-    private IReadOnlyList<TitleBarTheme> titleBarThemes = Enum.GetValues(typeof(TitleBarTheme)).Cast<TitleBarTheme>().ToList();
+    private IReadOnlyList<TitleBarTheme> titleBarThemes { get; set; } = new List<TitleBarTheme>(Enum.GetValues<TitleBarTheme>());
+
     private TitleBarTheme selectedTheme = TitleBarTheme.UseDefaultAppMode;
 
     public AppWindowPage()
