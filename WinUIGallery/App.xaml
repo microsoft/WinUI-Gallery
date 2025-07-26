@@ -70,6 +70,7 @@
                 NonNullValue="Collapsed"
                 NullValue="Visible" />
             <converters:DoubleToThicknessConverter x:Key="doubleToThicknessConverter" />
+            <converters:BrushToColorConverter x:Key="brushToColorConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
