@@ -13,10 +13,10 @@ public sealed partial class ThemeShadowPage : Page
     public ThemeShadowPage()
     {
         this.InitializeComponent();
-        Loaded += AcrylicPage_Loaded;
+        Loaded += ThemeShadowPage_Loaded;
     }
 
-    private void AcrylicPage_Loaded(object sender, RoutedEventArgs e)
+    private void ThemeShadowPage_Loaded(object sender, RoutedEventArgs e)
     {
         TranslationSliderInApp.Value = 32;
     }

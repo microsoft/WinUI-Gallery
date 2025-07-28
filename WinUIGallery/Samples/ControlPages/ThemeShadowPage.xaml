@@ -50,17 +50,9 @@
             </controls:ControlExample.Xaml>
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
-private void MakeRedButton_Click(object sender, RoutedEventArgs e)
+private void ShadowRect_Loaded(object sender, RoutedEventArgs e)
 {
-    ColorRectangle.Fill = new SolidColorBrush(Colors.Red);
-}
-private void MakeBlueButton_Click(object sender, RoutedEventArgs e)
-{
-    ColorRectangle.Fill = new SolidColorBrush(Colors.Blue);
-}
-private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
-{
-    ColorRectangle.Fill = new SolidColorBrush(Colors.Chartreuse);
+    shadow.Receivers.Add(ShadowCastGrid);
 }
                 </x:String>
             </controls:ControlExample.CSharp>
