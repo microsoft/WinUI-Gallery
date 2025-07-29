@@ -44,7 +44,7 @@
                 <x:String xml:space="preserve">
 &lt;Grid&gt;
     &lt;Grid x:Name="ShadowCastGrid"/&gt;
-    &lt;Border x:Name="ShadowRect" Translation="0,0,$(TranslationSlider)" Loaded="ShadowRect_Loaded" Width="200" Height="200" CornerRadius="{ThemeResource OverlayCornerRadius}" Fill="{ThemeResource CardBackgroundFillColorDefaultBrush}"/&gt;
+    &lt;Border x:Name="ShadowRect" Translation="0,0,$(TranslationSlider)" Loaded="ShadowRect_Loaded" Width="200" Height="200" CornerRadius="{ThemeResource OverlayCornerRadius}" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"/&gt;
         &lt;Border.Shadow&gt;
             &lt;ThemeShadow x:Name="shadow"/&gt;
         &lt;/Border.Shadow&gt;
