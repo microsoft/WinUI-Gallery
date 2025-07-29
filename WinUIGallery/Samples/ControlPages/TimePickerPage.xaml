@@ -14,6 +14,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:sys="using:System"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -30,18 +31,20 @@
             x:Name="Example2"
             HeaderText="A TimePicker with a header and minute increments specified."
             RelativePanel.Below="Example1">
-            <TimePicker Header="Arrival time" MinuteIncrement="15" />
+            <TimePicker Header="Arrival time" MinuteIncrement="15"/>
             <controls:ControlExample.Xaml>
                 <x:String>
                     &lt;TimePicker Header="Arrival time" MinuteIncrement="15" /&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>
-        <controls:ControlExample x:Name="Example3" HeaderText="A TimePicker using a 24-hour clock.">
-            <TimePicker ClockIdentifier="24HourClock" Header="24 hour clock" />
+        <controls:ControlExample x:Name="Example3" HeaderText="A TimePicker using a 24-hour clock, initialized to current time.">
+            <TimePicker ClockIdentifier="24HourClock" Header="24 hour clock" SelectedTime="{x:Bind sys:DateTime.Now.TimeOfDay}"/>
             <controls:ControlExample.Xaml>
                 <x:String>
-                    &lt;TimePicker ClockIdentifier="24HourClock" Header="24 hour clock" /&gt;
+                    &lt;xmlns:sys="using:System"&gt;
+                    
+                    &lt;TimePicker ClockIdentifier="24HourClock" Header="24 hour clock" SelectedTime="{x:Bind sys:DateTime.Now.TimeOfDay}" /&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>

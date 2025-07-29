@@ -145,5 +145,31 @@
                 </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example6" HeaderText="An AppBarButton that opens a Flyout containing an input control.">
+            <StackPanel Orientation="Horizontal">
+                <AppBarButton
+                    AllowFocusOnInteraction="True"
+                    Icon="Edit"
+                    Label="Edit">
+                    <AppBarButton.Flyout>
+                        <Flyout>
+                            <TextBox MinWidth="240" PlaceholderText="Input text here" />
+                        </Flyout>
+                    </AppBarButton.Flyout>
+                </AppBarButton>
+            </StackPanel>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;AppBarButton AllowFocusOnInteraction="True" Icon="Edit" Label="Edit"&gt;
+    &lt;AppBarButton.Flyout&gt;
+        &lt;Flyout/&gt;
+            &lt;TextBox MinWidth="240" PlaceholderText="Input text here"/&gt;
+        &lt;Flyout/&gt;
+    &lt;AppBarButton.Flyout&gt;
+&lt;/AppBarButton&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
     </StackPanel>
 </Page>
