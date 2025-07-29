@@ -2653,7 +2653,7 @@
               "Uri": "https://learn.microsoft.com/windows/apps/design/layout/depth-shadow"
             },
             {
-              "Title": "ThemeShadow  - API",
+              "Title": "ThemeShadow - API",
               "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.themeshadow"
             }
           ]
