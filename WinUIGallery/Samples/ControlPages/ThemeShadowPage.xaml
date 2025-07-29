@@ -8,7 +8,7 @@
     xmlns:media="using:Microsoft.UI.Xaml.Media"
     mc:Ignorable="d">
     <StackPanel>
-        <controls:ControlExample x:Name="Example3" HeaderText="Simple ThemeShadow applied to a Border">
+        <controls:ControlExample x:Name="Example3" HeaderText="ThemeShadow applied to a Border">
             <controls:ControlExample.Example>
                 <Grid x:Name="Example3Grid" Padding="36">
                     <Grid x:Name="ShadowCastGrid" />
