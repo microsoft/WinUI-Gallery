@@ -17,7 +17,9 @@
     <StackPanel>
         <controls:ControlExample x:Name="Example1" HeaderText="Content inside of a ScrollView.">
             <StackPanel Spacing="16">
-                <TextBlock Text="This ScrollView allows horizontal and vertical scrolling, as well as zooming. Change the settings on the right to alter those capabilities or the built-in scrollbars' visibility." />
+                <TextBlock
+                    Text="This ScrollView allows horizontal and vertical scrolling, as well as zooming. Change the settings on the right to alter those capabilities or the built-in scrollbars' visibility."
+                    TextWrapping="Wrap" />
 
                 <ScrollView
                     x:Name="scrollView1"
@@ -186,7 +188,9 @@
 
         <controls:ControlExample x:Name="Example2" HeaderText="Constant velocity scrolling.">
             <StackPanel Spacing="16">
-                <TextBlock Text="Set the vertical velocity to a value greater than 30 to scroll down, or a value smaller than -30 to scroll up at a constant speed." />
+                <TextBlock
+                    Text="Set the vertical velocity to a value greater than 30 to scroll down, or a value smaller than -30 to scroll up at a constant speed."
+                    TextWrapping="Wrap" />
 
                 <ScrollView
                     x:Name="scrollView2"
@@ -264,7 +268,9 @@
 
         <controls:ControlExample x:Name="Example3" HeaderText="Programmatic scroll with custom animation.">
             <StackPanel Spacing="16">
-                <TextBlock Text="Pick an animation type and its duration and then click the button on the right to launch a programmatic scroll." />
+                <TextBlock
+                    Text="Pick an animation type and its duration and then click the button on the right to launch a programmatic scroll."
+                    TextWrapping="Wrap" />
 
                 <ScrollView
                     x:Name="scrollView3"
