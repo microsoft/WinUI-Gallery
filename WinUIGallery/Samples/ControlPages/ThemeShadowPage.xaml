@@ -8,17 +8,17 @@
     xmlns:media="using:Microsoft.UI.Xaml.Media"
     mc:Ignorable="d">
     <StackPanel>
-        <controls:ControlExample x:Name="Example3" HeaderText="Custom acrylic in-app brush.">
+        <controls:ControlExample x:Name="Example3" HeaderText="Simple ThemeShadow applied to a Border">
             <controls:ControlExample.Example>
-                <Grid
-                    x:Name="Example3Grid" Padding="36">
-                    <Grid x:Name="ShadowCastGrid"/>
-                    <Border Loaded="ShadowRect_Loaded"
-                            Width="200"
-                            Height="200"
-                            CornerRadius="{ThemeResource OverlayCornerRadius}"
-                            x:Name="ShadowRect"
-                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                <Grid x:Name="Example3Grid" Padding="36">
+                    <Grid x:Name="ShadowCastGrid" />
+                    <Border
+                        x:Name="ShadowRect"
+                        Width="200"
+                        Height="200"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        CornerRadius="{ThemeResource OverlayCornerRadius}"
+                        Loaded="ShadowRect_Loaded">
                         <Border.Shadow>
                             <ThemeShadow x:Name="shadow" />
                         </Border.Shadow>
@@ -26,16 +26,19 @@
                 </Grid>
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
-                <Slider x:Name="TranslationSliderInApp"
-                        Width="200"
-                        HorizontalAlignment="Left"
-                        AutomationProperties.Name="shadow intensity"
-                        IsFocusEngagementEnabled="False"
-                        Maximum="64" Header="Z-translation"
-                        Minimum="0" Value="32"
-                        SmallChange="1"
-                        StepFrequency="1"
-                        ValueChanged="TranslationSliderInApp_ValueChanged" />
+                <Slider
+                    x:Name="TranslationSliderInApp"
+                    Width="200"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.Name="shadow intensity"
+                    Header="Z-translation"
+                    IsFocusEngagementEnabled="False"
+                    Maximum="64"
+                    Minimum="0"
+                    SmallChange="1"
+                    StepFrequency="1"
+                    ValueChanged="TranslationSliderInApp_ValueChanged"
+                    Value="32" />
             </controls:ControlExample.Options>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
