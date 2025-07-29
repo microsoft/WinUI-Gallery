@@ -2638,17 +2638,20 @@
         {
           "UniqueId": "ThemeShadow",
           "Title": "ThemeShadow",
-          "ApiNamespace": "Microsoft.UI.Composition.SystemBackdrops",
+          "ApiNamespace": "Microsoft.UI.Xaml.Media",
           "Subtitle": "Adds a depth-aware shadow to UI elements using system lighting.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ThemeShadow.png",
           "Description": "Realistic shadow effect to UI elements using the system's lighting and depth to enhance visual hierarchy.",
-          "SourcePath": "/Materials",
           "BaseClasses": [
             "Object",
             "DependencyObject",
             "Shadow"
           ],
           "Docs": [
+            {
+              "Title": "Z-depth and shadow design guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/depth-shadow"
+            },
             {
               "Title": "ThemeShadow  - API",
               "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.themeshadow"
