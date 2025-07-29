@@ -49,7 +49,7 @@
                     <ToggleSwitch
                         x:Name="IsLightDismissEnabledToggleSwitch"
                         Header="IsLightDismissEnabled"
-                        IsOn="False"
+                        IsOn="True"
                         OffContent="False"
                         OnContent="True" />
                     <NumberBox
