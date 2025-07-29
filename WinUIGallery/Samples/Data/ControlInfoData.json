@@ -2641,7 +2641,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Media",
           "Subtitle": "Adds a depth-aware shadow to UI elements using system lighting.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ThemeShadow.png",
-          "Description": "Realistic shadow effect to UI elements using the system's lighting and depth to enhance visual hierarchy.",
+          "Description": "A realistic shadow effect to UI elements using the system's lighting and depth to enhance visual hierarchy.",
           "BaseClasses": [
             "Object",
             "DependencyObject",
