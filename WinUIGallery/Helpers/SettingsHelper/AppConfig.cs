@@ -5,7 +5,7 @@ using System.IO;
 
 namespace WinUIGallery.Helpers;
 
-public class AppConfig
+public partial class AppConfig
 {
     internal static readonly string RootDirectoryPath = Path.Combine(GetAppDataFolderPath(), ProcessInfoHelper.ProductNameAndVersion);
     internal static readonly string AppConfigPath = Path.Combine(RootDirectoryPath, "AppConfig.json");

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WinUIGallery.Helpers;
 
-public static class ListExtensions
+public static partial class ListExtensions
 {
     public static void AddFirstFavoriteOrRecentlyVisited(this List<string> list, string item, bool isFavorite)
     {
