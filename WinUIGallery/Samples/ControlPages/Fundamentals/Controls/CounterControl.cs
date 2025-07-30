@@ -66,6 +66,9 @@ public sealed class CounterControl : Control
         if (CountText is not null)
         {
             CountText.Text = Count.ToString();
+            // Update automation name to provide context about the mode and current value
+            var modeName = Mode == CounterMode.Increment ? "Increment" : "Decrement";
+            Microsoft.UI.Xaml.Automation.AutomationProperties.SetName(CountText, $"{modeName} counter value {Count}");
         }
     }
 
@@ -73,7 +76,10 @@ public sealed class CounterControl : Control
     {
         if (ActionButton is not null)
         {
-            ActionButton.Content = Mode == CounterMode.Increment ? "Increase" : "Decrease";
+            var buttonText = Mode == CounterMode.Increment ? "Increase" : "Decrease";
+            ActionButton.Content = buttonText;
+            // Set automation name to provide better context for screen readers
+            Microsoft.UI.Xaml.Automation.AutomationProperties.SetName(ActionButton, $"{buttonText} counter");
         }
     }
 }

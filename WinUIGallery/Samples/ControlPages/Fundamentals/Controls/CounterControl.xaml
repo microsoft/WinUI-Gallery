@@ -13,7 +13,9 @@
                         <TextBlock x:Name="CountText"
                                    FontSize="20"
                                    Text="0"
-                                   HorizontalAlignment="Center" />
+                                   HorizontalAlignment="Center"
+                                   AutomationProperties.LiveSetting="Polite"
+                                   AutomationProperties.Name="Counter value" />
                         <Button x:Name="ActionButton"
                                 Content="Increase"
                                 HorizontalAlignment="Center"
