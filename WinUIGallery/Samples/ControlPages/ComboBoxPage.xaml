@@ -14,6 +14,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:helper="using:WinUIGallery.Helpers"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -57,14 +58,18 @@
                     <ComboBox
                         x:Name="Combo2"
                         MinWidth="200"
-                        DisplayMemberPath="Item1"
-                        Header="Font"
-                        ItemsSource="{x:Bind Fonts}"
-                        Loaded="Combo2_Loaded"
-                        SelectedValuePath="Item2" />
+                        Header="Font" 
+                        SelectedIndex="2"
+                        ItemsSource="{x:Bind helper:FontHelper.Fonts}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="helper:FontItem">
+                                <TextBlock Text="{x:Bind Name}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                     <TextBlock
                         x:Name="Control2Output"
-                        FontFamily="{x:Bind (FontFamily)Combo2.SelectedValue, Mode=OneWay}"
+                        FontFamily="{x:Bind ((helper:FontItem)Combo2.SelectedItem).Font, Mode=OneWay}"
                         Style="{StaticResource OutputTextBlockStyle}"
                         Text="You can set the font used for this text." />
                 </StackPanel>

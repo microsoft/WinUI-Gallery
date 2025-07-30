@@ -5,20 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using Windows.Storage;
 
 namespace WinUIGallery.Helpers;
 
-internal class FileLoader
+internal partial class FileLoader
 {
     public static async Task<string> LoadText(string relativeFilePath)
     {
         StorageFile file = null;
-        if (!NativeHelper.IsAppPackaged)
+        if (!NativeMethods.IsAppPackaged)
         {
-            var sourcePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), relativeFilePath));
+            var sourcePath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, relativeFilePath));
+
             file = await StorageFile.GetFileFromPathAsync(sourcePath);
 
         }

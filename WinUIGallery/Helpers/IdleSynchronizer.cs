@@ -6,10 +6,11 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Microsoft.UI.Dispatching;
 using Windows.Foundation;
+using Windows.Win32.Foundation;
 
 namespace WinUIGallery.Helpers;
 
-public class IdleSynchronizer
+public partial class IdleSynchronizer
 {
     const uint s_idleTimeoutMs = 100000;
     const int s_defaultWaitForEventMs = 10000;
@@ -24,38 +25,30 @@ public class IdleSynchronizer
 
     private DispatcherQueue m_dispatcherQueue = null;
 
-    private Handle m_hasAnimationsHandle;
-    private Handle m_animationsCompleteHandle;
-    private Handle m_hasDeferredAnimationOperationsHandle;
-    private Handle m_deferredAnimationOperationsCompleteHandle;
-    private Handle m_rootVisualResetHandle;
-    private Handle m_imageDecodingIdleHandle;
-    private Handle m_fontDownloadsIdleHandle;
+    private SafeHandle m_hasAnimationsHandle;
+    private SafeHandle m_animationsCompleteHandle;
+    private SafeHandle m_hasDeferredAnimationOperationsHandle;
+    private SafeHandle m_deferredAnimationOperationsCompleteHandle;
+    private SafeHandle m_rootVisualResetHandle;
+    private SafeHandle m_imageDecodingIdleHandle;
+    private SafeHandle m_fontDownloadsIdleHandle;
 
     private bool m_waitForAnimationsIsDisabled = false;
     private bool m_isRS2OrHigherInitialized = false;
     private bool m_isRS2OrHigher = false;
 
-    private Handle OpenNamedEvent(uint processId, uint threadId, string eventNamePrefix)
+    private SafeHandle OpenNamedEvent(uint processId, uint threadId, string eventNamePrefix)
     {
         string eventName = string.Format("{0}.{1}.{2}", eventNamePrefix, processId, threadId);
-        Handle handle = new Handle(
-            NativeMethods.OpenEvent(
-                (uint)(SyncObjectAccess.EVENT_MODIFY_STATE | SyncObjectAccess.SYNCHRONIZE),
-                false /* inherit handle */,
-                eventName));
 
-        if (!handle.IsValid)
+        var handle = Windows.Win32.PInvoke.OpenEvent(Windows.Win32.System.Threading.SYNCHRONIZATION_ACCESS_RIGHTS.EVENT_MODIFY_STATE | Windows.Win32.System.Threading.SYNCHRONIZATION_ACCESS_RIGHTS.SYNCHRONIZATION_SYNCHRONIZE, false, eventName);
+        if (handle.IsInvalid)
         {
             // Warning: Opening a session wide event handle, test may listen for events coming from the wrong process
-            handle = new Handle(
-                NativeMethods.OpenEvent(
-                    (uint)(SyncObjectAccess.EVENT_MODIFY_STATE | SyncObjectAccess.SYNCHRONIZE),
-                    false /* inherit handle */,
-                    eventNamePrefix));
+            handle = Windows.Win32.PInvoke.OpenEvent(Windows.Win32.System.Threading.SYNCHRONIZATION_ACCESS_RIGHTS.EVENT_MODIFY_STATE | Windows.Win32.System.Threading.SYNCHRONIZATION_ACCESS_RIGHTS.SYNCHRONIZATION_SYNCHRONIZE, false, eventNamePrefix);
         }
 
-        if (!handle.IsValid)
+        if (handle.IsInvalid)
         {
             throw new Exception("Failed to open " + eventName + " handle.");
         }
@@ -63,9 +56,9 @@ public class IdleSynchronizer
         return handle;
     }
 
-    private Handle OpenNamedEvent(DispatcherQueue dispatcherQueue, string eventNamePrefix)
+    private SafeHandle OpenNamedEvent(DispatcherQueue dispatcherQueue, string eventNamePrefix)
     {
-        return OpenNamedEvent(NativeMethods.GetCurrentProcessId(), GetUIThreadId(dispatcherQueue), eventNamePrefix);
+        return OpenNamedEvent(Windows.Win32.PInvoke.GetCurrentProcessId(), GetUIThreadId(dispatcherQueue), eventNamePrefix);
     }
 
     private uint GetUIThreadId(DispatcherQueue dispatcherQueue)
@@ -73,7 +66,7 @@ public class IdleSynchronizer
         uint threadId = 0;
         if (dispatcherQueue.HasThreadAccess)
         {
-            threadId = NativeMethods.GetCurrentThreadId();
+            threadId = Windows.Win32.PInvoke.GetCurrentThreadId();
         }
         else
         {
@@ -83,7 +76,7 @@ public class IdleSynchronizer
                 DispatcherQueuePriority.Normal,
                 new DispatcherQueueHandler(() =>
                 {
-                    threadId = NativeMethods.GetCurrentThreadId();
+                    threadId = Windows.Win32.PInvoke.GetCurrentThreadId();
                     threadIdReceivedEvent.Set();
                 }));
 
@@ -248,9 +241,9 @@ public class IdleSynchronizer
 
     private string WaitForRootVisualReset()
     {
-        uint waitResult = NativeMethods.WaitForSingleObject(m_rootVisualResetHandle.NativeHandle, 5000);
+        var waitResult = Windows.Win32.PInvoke.WaitForSingleObject(m_rootVisualResetHandle, 5000);
 
-        if (waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT)
+        if (waitResult != WAIT_EVENT.WAIT_OBJECT_0 && waitResult != WAIT_EVENT.WAIT_TIMEOUT)
         {
             return "Waiting for root visual reset handle returned an invalid value.";
         }
@@ -260,21 +253,20 @@ public class IdleSynchronizer
 
     private string WaitForImageDecodingIdle()
     {
-        uint waitResult = NativeMethods.WaitForSingleObject(m_imageDecodingIdleHandle.NativeHandle, 5000);
+        var waitResult = Windows.Win32.PInvoke.WaitForSingleObject(m_imageDecodingIdleHandle, 5000);
 
-        if (waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT)
+        if (waitResult != WAIT_EVENT.WAIT_OBJECT_0 && waitResult != WAIT_EVENT.WAIT_TIMEOUT)
         {
             return "Waiting for image decoding idle handle returned an invalid value.";
         }
-
         return string.Empty;
     }
 
     string WaitForFontDownloadsIdle()
     {
-        uint waitResult = NativeMethods.WaitForSingleObject(m_fontDownloadsIdleHandle.NativeHandle, 5000);
+        var waitResult = Windows.Win32.PInvoke.WaitForSingleObject(m_fontDownloadsIdleHandle, 5000);
 
-        if (waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT)
+        if (waitResult != WAIT_EVENT.WAIT_OBJECT_0 && waitResult != WAIT_EVENT.WAIT_TIMEOUT)
         {
             return "Waiting for font downloads handle returned an invalid value.";
         }
@@ -308,8 +300,7 @@ public class IdleSynchronizer
     string WaitForAnimationsComplete(out bool hadAnimations)
     {
         hadAnimations = false;
-
-        if (!NativeMethods.ResetEvent(m_animationsCompleteHandle.NativeHandle))
+        if (!Windows.Win32.PInvoke.ResetEvent(m_animationsCompleteHandle))
         {
             return "Failed to reset AnimationsComplete handle.";
         }
@@ -318,24 +309,24 @@ public class IdleSynchronizer
 
         // This will be signaled if and only if XAML plans to at some point in the near
         // future set the animations complete event.
-        uint waitResult = NativeMethods.WaitForSingleObject(m_hasAnimationsHandle.NativeHandle, 0);
+        var waitResult = Windows.Win32.PInvoke.WaitForSingleObject(m_hasAnimationsHandle, 0);
 
-        if (waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT)
+        if (waitResult != WAIT_EVENT.WAIT_OBJECT_0 && waitResult != WAIT_EVENT.WAIT_TIMEOUT)
         {
             return "HasAnimations handle wait returned an invalid value.";
         }
-
+        
         AddLog("WaitForAnimationsComplete: After Wait(m_hasAnimationsHandle)");
 
-        bool hasAnimations = (waitResult == NativeMethods.WAIT_OBJECT_0);
+        bool hasAnimations = (waitResult == WAIT_EVENT.WAIT_OBJECT_0);
 
         if (hasAnimations)
         {
-            uint animationCompleteWaitResult = NativeMethods.WaitForSingleObject(m_animationsCompleteHandle.NativeHandle, s_idleTimeoutMs);
+            var animationCompleteWaitResult = Windows.Win32.PInvoke.WaitForSingleObject(m_animationsCompleteHandle, s_idleTimeoutMs);
 
             AddLog("WaitForAnimationsComplete: HasAnimations, After Wait(m_animationsCompleteHandle)");
 
-            if (animationCompleteWaitResult != NativeMethods.WAIT_OBJECT_0)
+            if (animationCompleteWaitResult != WAIT_EVENT.WAIT_OBJECT_0)
             {
                 if (!IsRS2OrHigher())
                 {
@@ -359,28 +350,27 @@ public class IdleSynchronizer
     string WaitForDeferredAnimationOperationsComplete(out bool hadDeferredAnimationOperations)
     {
         hadDeferredAnimationOperations = false;
-
-        if (!NativeMethods.ResetEvent(m_deferredAnimationOperationsCompleteHandle.NativeHandle))
+        if (!Windows.Win32.PInvoke.ResetEvent(m_deferredAnimationOperationsCompleteHandle))
         {
             return "Failed to reset DeferredAnimationOperations handle.";
         }
 
         // This will be signaled if and only if XAML plans to at some point in the near
         // future set the animations complete event.
-        uint waitResult = NativeMethods.WaitForSingleObject(m_hasDeferredAnimationOperationsHandle.NativeHandle, 0);
+        var waitResult = Windows.Win32.PInvoke.WaitForSingleObject(m_hasDeferredAnimationOperationsHandle, 0);
 
-        if (waitResult != NativeMethods.WAIT_OBJECT_0 && waitResult != NativeMethods.WAIT_TIMEOUT)
+        if (waitResult != WAIT_EVENT.WAIT_OBJECT_0 && waitResult != WAIT_EVENT.WAIT_TIMEOUT)
         {
             return "HasDeferredAnimationOperations handle wait returned an invalid value.";
         }
 
-        bool hasDeferredAnimationOperations = (waitResult == NativeMethods.WAIT_OBJECT_0);
+        bool hasDeferredAnimationOperations = (waitResult == WAIT_EVENT.WAIT_OBJECT_0);
 
         if (hasDeferredAnimationOperations)
         {
-            uint animationCompleteWaitResult = NativeMethods.WaitForSingleObject(m_deferredAnimationOperationsCompleteHandle.NativeHandle, s_idleTimeoutMs);
+            var animationCompleteWaitResult = Windows.Win32.PInvoke.WaitForSingleObject(m_deferredAnimationOperationsCompleteHandle, s_idleTimeoutMs);
 
-            if (animationCompleteWaitResult != NativeMethods.WAIT_OBJECT_0 && animationCompleteWaitResult != NativeMethods.WAIT_TIMEOUT)
+            if (animationCompleteWaitResult != WAIT_EVENT.WAIT_OBJECT_0 && animationCompleteWaitResult != WAIT_EVENT.WAIT_TIMEOUT)
             {
                 return "Deferred animation operations complete wait took longer than idle timeout.";
             }
@@ -439,52 +429,8 @@ internal class Handle
 
     public void Release()
     {
-        NativeMethods.CloseHandle(NativeHandle);
+        Windows.Win32.PInvoke.CloseHandle(new HANDLE(NativeHandle));
         NativeHandle = IntPtr.Zero;
     }
 }
 
-internal static class NativeMethods
-{
-    [DllImport("Kernel32.dll", SetLastError = true)]
-    public static extern IntPtr OpenEvent(uint dwDesiredAccess, bool bInheritHandle, string lpName);
-
-    [DllImport("kernel32.dll", SetLastError = true)]
-    public static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);
-
-    public const UInt32 INFINITE = 0xFFFFFFFF;
-    public const UInt32 WAIT_ABANDONED = 0x00000080;
-    public const UInt32 WAIT_OBJECT_0 = 0x00000000;
-    public const UInt32 WAIT_TIMEOUT = 0x00000102;
-
-    [DllImport("kernel32.dll", SetLastError = true)]
-    public static extern bool ResetEvent(IntPtr hEvent);
-
-    [DllImport("kernel32.dll", SetLastError = true)]
-    public static extern bool CloseHandle(IntPtr hObject);
-
-    [DllImport("kernel32.dll")]
-    public static extern uint GetCurrentProcessId();
-
-    [DllImport("kernel32.dll")]
-    public static extern uint GetCurrentThreadId();
-}
-
-[Flags]
-public enum SyncObjectAccess : uint
-{
-    DELETE = 0x00010000,
-    READ_CONTROL = 0x00020000,
-    WRITE_DAC = 0x00040000,
-    WRITE_OWNER = 0x00080000,
-    SYNCHRONIZE = 0x00100000,
-    EVENT_ALL_ACCESS = 0x001F0003,
-    EVENT_MODIFY_STATE = 0x00000002,
-    MUTEX_ALL_ACCESS = 0x001F0001,
-    MUTEX_MODIFY_STATE = 0x00000001,
-    SEMAPHORE_ALL_ACCESS = 0x001F0003,
-    SEMAPHORE_MODIFY_STATE = 0x00000002,
-    TIMER_ALL_ACCESS = 0x001F0003,
-    TIMER_MODIFY_STATE = 0x00000002,
-    TIMER_QUERY_STATE = 0x00000001
-}

@@ -13,15 +13,6 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class ComboBoxPage : Page
 {
-    public List<Tuple<string, FontFamily>> Fonts { get; } = new List<Tuple<string, FontFamily>>()
-        {
-            new Tuple<string, FontFamily>("Arial", new FontFamily("Arial")),
-            new Tuple<string, FontFamily>("Comic Sans MS", new FontFamily("Comic Sans MS")),
-            new Tuple<string, FontFamily>("Courier New", new FontFamily("Courier New")),
-            new Tuple<string, FontFamily>("Segoe UI", new FontFamily("Segoe UI")),
-            new Tuple<string, FontFamily>("Times New Roman", new FontFamily("Times New Roman"))
-        };
-
     public List<double> FontSizes { get; } = new List<double>()
         {
             8,
@@ -67,11 +58,6 @@ public sealed partial class ComboBoxPage : Page
                 throw new Exception($"Invalid argument: {colorName}");
         }
         Control1Output.Fill = new SolidColorBrush(color);
-    }
-
-    private void Combo2_Loaded(object sender, RoutedEventArgs e)
-    {
-        Combo2.SelectedIndex = 2;
     }
 
     private void Combo3_Loaded(object sender, RoutedEventArgs e)

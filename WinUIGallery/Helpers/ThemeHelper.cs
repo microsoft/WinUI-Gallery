@@ -9,7 +9,7 @@ namespace WinUIGallery.Helpers;
 /// <summary>
 /// Class providing functionality around switching and restoring theme settings
 /// </summary>
-public static class ThemeHelper
+public static partial class ThemeHelper
 {
     private static ApplicationData appData = ApplicationData.GetDefault();
 
@@ -63,7 +63,7 @@ public static class ThemeHelper
                 }
             }
 
-            if (NativeHelper.IsAppPackaged)
+            if (NativeMethods.IsAppPackaged)
             {
                 appData.LocalSettings.Values[SettingsKeys.SelectedAppTheme] = value.ToString();
             }
@@ -72,7 +72,7 @@ public static class ThemeHelper
 
     public static void Initialize()
     {
-        if (NativeHelper.IsAppPackaged)
+        if (NativeMethods.IsAppPackaged)
         {
             string savedTheme = appData.LocalSettings.Values[SettingsKeys.SelectedAppTheme]?.ToString();
 
