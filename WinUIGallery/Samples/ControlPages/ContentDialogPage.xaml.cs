@@ -15,6 +15,13 @@ public sealed partial class ContentDialogPage : Page
         this.InitializeComponent();
     }
 
+    private void SetDialogResultText(TextBlock targetTextBlock, string text)
+    {
+        targetTextBlock.Text = text;
+        var peer = FrameworkElementAutomationPeer.FromElement(targetTextBlock) ?? FrameworkElementAutomationPeer.CreatePeerForElement(targetTextBlock);
+        peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+    }
+
     private async void ShowDialog_Click(object sender, RoutedEventArgs e)
     {
         ContentDialogExample dialog = new ContentDialogExample();
@@ -32,21 +39,15 @@ public sealed partial class ContentDialogPage : Page
 
         if (result == ContentDialogResult.Primary)
         {
-            DialogResult.Text = "User saved their work";
-            var peer = FrameworkElementAutomationPeer.FromElement(DialogResult) ?? FrameworkElementAutomationPeer.CreatePeerForElement(DialogResult);
-            peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+            SetDialogResultText(DialogResult, "User saved their work");
         }
         else if (result == ContentDialogResult.Secondary)
         {
-            DialogResult.Text = "User did not save their work";
-            var peer = FrameworkElementAutomationPeer.FromElement(DialogResult) ?? FrameworkElementAutomationPeer.CreatePeerForElement(DialogResult);
-            peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+            SetDialogResultText(DialogResult, "User did not save their work");
         }
         else
         {
-            DialogResult.Text = "User cancelled the dialog";
-            var peer = FrameworkElementAutomationPeer.FromElement(DialogResult) ?? FrameworkElementAutomationPeer.CreatePeerForElement(DialogResult);
-            peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+            SetDialogResultText(DialogResult, "User cancelled the dialog");
         }
     }
 
@@ -67,21 +68,15 @@ public sealed partial class ContentDialogPage : Page
 
         if (result == ContentDialogResult.Primary)
         {
-            DialogResultNoDefault.Text = "User deleted the file";
-            var peer = FrameworkElementAutomationPeer.FromElement(DialogResultNoDefault) ?? FrameworkElementAutomationPeer.CreatePeerForElement(DialogResultNoDefault);
-            peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+            SetDialogResultText(DialogResultNoDefault, "User deleted the file");
         }
         else if (result == ContentDialogResult.Secondary)
         {
-            DialogResultNoDefault.Text = "User kept the file";
-            var peer = FrameworkElementAutomationPeer.FromElement(DialogResultNoDefault) ?? FrameworkElementAutomationPeer.CreatePeerForElement(DialogResultNoDefault);
-            peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+            SetDialogResultText(DialogResultNoDefault, "User kept the file");
         }
         else
         {
-            DialogResultNoDefault.Text = "User cancelled the dialog";
-            var peer = FrameworkElementAutomationPeer.FromElement(DialogResultNoDefault) ?? FrameworkElementAutomationPeer.CreatePeerForElement(DialogResultNoDefault);
-            peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+            SetDialogResultText(DialogResultNoDefault, "User cancelled the dialog");
         }
     }
 }
