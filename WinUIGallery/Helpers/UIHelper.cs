@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace WinUIGallery.Helpers;
 
-public static class UIHelper
+public static partial class UIHelper
 {
     static UIHelper()
     {

@@ -9,7 +9,7 @@ namespace WinUIGallery.Helpers;
 /// Provides an attached property to indicate whether a page manages its own scrolling.
 /// This can be used by a hosting container (like ItemsPage) to disable page level scrolling.
 /// </summary>
-public static class PageScrollBehaviorHelper
+public static partial class PageScrollBehaviorHelper
 {
     /// <summary>
     /// Identifies the IsSelfScrolling attached property.

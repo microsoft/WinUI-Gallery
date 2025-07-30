@@ -130,18 +130,17 @@ public sealed partial class TitleBarPage : Page
     public void UpdateTitleBarColor()
     {
         var window = WindowHelper.GetWindowForElement(this);
-        var titleBarElement = UIHelper.FindElementByName(this, "AppTitleBar");
-        var titleBarAppNameElement = UIHelper.FindElementByName(this, "AppTitle");
+        var titleBarElement = UIHelper.FindElementByName(this, "titleBar") as TitleBar;
 
-        (titleBarElement as Border).Background = new SolidColorBrush(currentBgColor); // Changing titlebar uielement's color.
+        titleBarElement.Background = new SolidColorBrush(currentBgColor); // Changing titlebar uielement's color.
 
         if (currentFgColor != Colors.Transparent)
         {
-            (titleBarAppNameElement as TextBlock).Foreground = new SolidColorBrush(currentFgColor);
+            titleBarElement.Foreground = new SolidColorBrush(currentFgColor);
         }
         else
         {
-            (titleBarAppNameElement as TextBlock).Foreground = Application.Current.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush;
+            titleBarElement.Foreground = Application.Current.Resources["TextFillColorPrimaryBrush"] as SolidColorBrush;
         }
 
         TitleBarHelper.SetCaptionButtonColors(window, currentFgColor);
