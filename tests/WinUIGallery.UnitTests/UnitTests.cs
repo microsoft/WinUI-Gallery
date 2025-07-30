@@ -17,6 +17,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using WinUIGallery.Helpers;
+using WinUIGallery.ControlPages;
 
 namespace WinUIGallery.UnitTests;
 
@@ -180,6 +181,76 @@ public class UnitTests
             if(exception != null)
             {
                 Assert.Fail(exception.ToString());
+            }
+        }
+    }
+
+    [UITestMethod]
+    public void TestFlipViewAutomationProperties()
+    {
+        FlipView flipView = new()
+        {
+            Height = 270,
+            MaxWidth = 400
+        };
+        
+        // Set the LocalizedControlType as done in the FlipViewPage
+        Microsoft.UI.Xaml.Automation.AutomationProperties.SetLocalizedControlType(flipView, "FlipView");
+        
+        // Add some test items
+        flipView.Items.Add(new Rectangle() { Fill = new SolidColorBrush(Colors.Red), Width = 100, Height = 100 });
+        flipView.Items.Add(new Rectangle() { Fill = new SolidColorBrush(Colors.Blue), Width = 100, Height = 100 });
+        
+        UnitTestApp.UnitTestAppWindow.AddToVisualTree(flipView);
+        flipView.UpdateLayout();
+        
+        // Verify that the LocalizedControlType is set correctly
+        var localizedControlType = Microsoft.UI.Xaml.Automation.AutomationProperties.GetLocalizedControlType(flipView);
+        Assert.AreEqual("FlipView", localizedControlType, "FlipView should have LocalizedControlType set to 'FlipView'");
+        
+        // Verify that the control is accessible
+        Assert.IsNotNull(flipView, "FlipView should be created successfully");
+        Assert.AreEqual(2, flipView.Items.Count, "FlipView should contain 2 items");
+    }
+    
+    [UITestMethod]
+    public void TestFlipViewPageAutomationProperties()
+    {
+        // Create an instance of FlipViewPage to test the actual implementation
+        FlipViewPage flipViewPage = new();
+        
+        UnitTestApp.UnitTestAppWindow.AddToVisualTree(flipViewPage);
+        flipViewPage.UpdateLayout();
+        
+        // Find FlipView controls in the page and verify their LocalizedControlType
+        var flipViews = FindVisualChildren<FlipView>(flipViewPage);
+        
+        Assert.IsTrue(flipViews.Count() >= 3, "FlipViewPage should contain at least 3 FlipView controls");
+        
+        foreach (var flipView in flipViews)
+        {
+            var localizedControlType = Microsoft.UI.Xaml.Automation.AutomationProperties.GetLocalizedControlType(flipView);
+            Assert.AreEqual("FlipView", localizedControlType, 
+                $"FlipView should have LocalizedControlType set to 'FlipView' for accessibility compliance");
+        }
+    }
+    
+    private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+    {
+        if (depObj != null)
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                if (child != null && child is T)
+                {
+                    yield return (T)child;
+                }
+
+                foreach (T childOfChild in FindVisualChildren<T>(child))
+                {
+                    yield return childOfChild;
+                }
             }
         }
     }
