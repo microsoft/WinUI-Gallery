@@ -4,6 +4,7 @@
 
     <!-- Style definition for CounterControl -->
     <Style TargetType="local:CounterControl">
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <!-- ControlTemplate defines the structure of CounterControl -->
