@@ -30,7 +30,7 @@
                             BorderThickness="1"
                             CornerRadius="{StaticResource OverlayCornerRadius}">
                             <StackPanel Spacing="8">
-                                <TextBlock FontSize="16" Text="Simple popup" />
+                                <TextBlock FontSize="16" Text="Simple Popup" />
                                 <Button Click="ClosePopupClicked" Content="Close" />
                             </StackPanel>
                         </Grid>
