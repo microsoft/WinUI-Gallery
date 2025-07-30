@@ -22,8 +22,8 @@
     <StackPanel Margin="0,12,0,0">
         <RichTextBlock>
             <Paragraph>
-                <Run>To fully customize the title bar area without using the TitleBar control, visit</Run>
-                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/title-bar#full-customization">Microsoft Learn</Hyperlink>
+                <Run>For full title bar customization without using the TitleBar control, see the</Run>
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/title-bar#full-customization">documentation</Hyperlink>
                 <Run>.</Run>
             </Paragraph>
         </RichTextBlock>
