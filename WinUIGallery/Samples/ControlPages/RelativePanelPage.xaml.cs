@@ -3,20 +3,62 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using System.ComponentModel;
 
 namespace WinUIGallery.ControlPages;
 
-public sealed partial class RelativePanelPage : Page
+public sealed partial class RelativePanelPage : Page, INotifyPropertyChanged
 {
     public RelativePanelPage()
     {
         this.InitializeComponent();
     }
 
-    public string PositionProperty { get; private set; } = "RelativePanel.Above";
-    public string PositionValue { get; private set; } = "FixedElement";
-    public string AlignmentProperty { get; private set; } = "";
-    public string AlignmentValue { get; private set; } = "";
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    private string _positionProperty = "";
+    public string PositionProperty 
+    { 
+        get => _positionProperty;
+        private set
+        {
+            _positionProperty = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PositionProperty)));
+        }
+    }
+
+    private string _positionValue = "";
+    public string PositionValue 
+    { 
+        get => _positionValue;
+        private set
+        {
+            _positionValue = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PositionValue)));
+        }
+    }
+
+    private string _alignmentProperty = "";
+    public string AlignmentProperty 
+    { 
+        get => _alignmentProperty;
+        private set
+        {
+            _alignmentProperty = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AlignmentProperty)));
+        }
+    }
+
+    private string _alignmentValue = "";
+    public string AlignmentValue 
+    { 
+        get => _alignmentValue;
+        private set
+        {
+            _alignmentValue = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AlignmentValue)));
+        }
+    }
 
     private void PositionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
