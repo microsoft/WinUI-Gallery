@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using WinUIGallery.Models;
 
 namespace WinUIGallery.Helpers;
-internal class IconsDataSource
+internal partial class IconsDataSource
 {
     public static IconsDataSource Instance { get; } = new();
 

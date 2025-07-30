@@ -3,11 +3,11 @@
 
 using Microsoft.UI.Xaml;
 using System.Runtime.InteropServices;
-using static WinUIGallery.Helpers.Win32;
+using static WinUIGallery.Helpers.NativeMethods;
 
 namespace WinUIGallery.Helpers;
 
-internal class Win32WindowHelper
+internal partial class Win32WindowHelper
 {
     private static WinProc newWndProc = null;
     private static nint oldWndProc = nint.Zero;
@@ -41,7 +41,7 @@ internal class Win32WindowHelper
         switch (Msg)
         {
             case WindowMessage.WM_GETMINMAXINFO:
-                var dpi = GetDpiForWindow(hWnd);
+                var dpi = Windows.Win32.PInvoke.GetDpiForWindow(new Windows.Win32.Foundation.HWND(hWnd));
                 var scalingFactor = (float)dpi / 96;
 
                 var minMaxInfo = Marshal.PtrToStructure<MINMAXINFO>(lParam);
