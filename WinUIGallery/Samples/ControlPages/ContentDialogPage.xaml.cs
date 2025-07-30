@@ -28,6 +28,7 @@ public sealed partial class ContentDialogPage : Page
 
         // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
         dialog.XamlRoot = this.XamlRoot;
+        dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
         dialog.Title = "Save your work?";
         dialog.PrimaryButtonText = "Save";
         dialog.SecondaryButtonText = "Don't Save";
@@ -57,6 +58,7 @@ public sealed partial class ContentDialogPage : Page
 
         // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
         dialog.XamlRoot = this.XamlRoot;
+        dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
         dialog.Title = "Delete file?";
         dialog.PrimaryButtonText = "Delete";
         dialog.SecondaryButtonText = "Keep";
