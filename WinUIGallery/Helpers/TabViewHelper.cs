@@ -8,7 +8,7 @@ using System.Collections;
 
 namespace WinUIGallery.Helpers;
 
-public static class TabViewHelper
+public static partial class TabViewHelper
 {
     public static void PopulateTabViewContextMenu(MenuFlyout menuFlyout)
     {

@@ -21,7 +21,7 @@ namespace WinUIGallery.Helpers;
 /// carry across sessions, but that should be discarded when an application crashes or is
 /// upgraded.
 /// </summary>
-internal sealed class SuspensionManager
+internal sealed partial class SuspensionManager
 {
     private static Dictionary<string, object> _sessionState = new Dictionary<string, object>();
     private static List<Type> _knownTypes = new List<Type>();
@@ -58,6 +58,7 @@ internal sealed class SuspensionManager
     /// <returns>An asynchronous task that reflects when session state has been saved.</returns>
     [UnconditionalSuppressMessage("ReflectionAnalysis", "IL2026",
         Justification = "From manual inspection, _sessionState only serializes Dictionaries of strings")]
+    [RequiresDynamicCode("Calls System.Runtime.Serialization.XmlObjectSerializer.WriteObject(Stream, Object)")]
     public static async Task SaveAsync()
     {
         try
@@ -103,6 +104,7 @@ internal sealed class SuspensionManager
     /// completes.</returns>
     [UnconditionalSuppressMessage("ReflectionAnalysis", "IL2026",
         Justification = "From manual inspection, _sessionState only serializes Dictionaries of strings")]
+    [RequiresDynamicCode("Calls System.Runtime.Serialization.XmlObjectSerializer.ReadObject(Stream)")]
     public static async Task RestoreAsync()
     {
         _sessionState = new Dictionary<string, object>();
@@ -247,7 +249,7 @@ internal sealed class SuspensionManager
         frameState["Navigation"] = frame.GetNavigationState();
     }
 }
-public class SuspensionManagerException : Exception
+public partial class SuspensionManagerException : Exception
 {
     public SuspensionManagerException()
     {

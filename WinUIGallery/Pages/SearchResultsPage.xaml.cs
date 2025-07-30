@@ -141,7 +141,7 @@ public sealed partial class SearchResultsPage : ItemsPageBase
 /// <summary>
 /// View model describing one of the filters available for viewing search results.
 /// </summary>
-public sealed class Filter : INotifyPropertyChanged
+public sealed partial class Filter : INotifyPropertyChanged
 {
     private string _name;
     private int _count;
