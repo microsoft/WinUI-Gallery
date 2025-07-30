@@ -10,6 +10,7 @@
     Margin="0,16,0,0"
     d:DesignHeight="250"
     d:DesignWidth="1000"
+    IsTabStop="False"
     mc:Ignorable="d">
     <UserControl.Resources>
         <animations:ImplicitAnimationSet x:Name="ShowTransitions">
@@ -37,7 +38,7 @@
                 Duration="0:0:0.1" />
         </animations:ImplicitAnimationSet>
     </UserControl.Resources>
-    <Grid x:Name="rootGrid">
+    <Grid x:Name="rootGrid" IsTabStop="False">
         <Grid.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.ThemeDictionaries>
@@ -84,7 +85,7 @@
             </Paragraph>
         </RichTextBlock>
 
-        <Grid Grid.Row="2" CornerRadius="8">
+        <Grid Grid.Row="2" CornerRadius="8" IsTabStop="False">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
@@ -96,6 +97,7 @@
                     x:Name="ExampleContainer"
                     x:FieldModifier="Public"
                     CornerRadius="8,8,0,0"
+                    IsTabStop="False"
                     Style="{ThemeResource GalleryTileGridStyle}">
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -118,7 +120,8 @@
                         BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                         BorderThickness="{ThemeResource ControlExampleDisplayBorderThickness}"
                         Content="{x:Bind Example}"
-                        CornerRadius="8,8,0,0" />
+                        CornerRadius="8,8,0,0"
+                        IsTabStop="False" />
 
                     <!--  Output Display  -->
                     <StackPanel
@@ -130,9 +133,10 @@
                         Background="{ThemeResource ControlExampleDisplayBrush}"
                         CornerRadius="8"
                         Orientation="Vertical"
+                        IsTabStop="False"
                         Visibility="{x:Bind Output, Converter={StaticResource nullToVisibilityConverter}}">
                         <TextBlock Text="Output:" />
-                        <ContentPresenter x:Name="OutputPresenter" Content="{x:Bind Output}" />
+                        <ContentPresenter x:Name="OutputPresenter" Content="{x:Bind Output}" IsTabStop="False" />
                     </StackPanel>
 
                     <!--  Options Display  -->
@@ -146,6 +150,7 @@
                         BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
                         BorderThickness="1,0,0,0"
                         Content="{x:Bind Options}"
+                        IsTabStop="False"
                         Visibility="{x:Bind Options, Converter={StaticResource nullToVisibilityConverter}}" />
                 </Grid>
             </local:SampleThemeListener>
@@ -163,7 +168,7 @@
                 <Expander.Header>
                     <TextBlock Text="Source code" />
                 </Expander.Header>
-                <Grid RowSpacing="16">
+                <Grid RowSpacing="16" IsTabStop="False">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
@@ -185,8 +190,8 @@
                     </SelectorBar>
 
                     <!--  using animations:Implicit... with Grid.Row causes Grid.Row to have no effect, Therefore, the Grid.Row is applied in the grid  -->
-                    <Grid Grid.Row="1" x:DefaultBindMode="OneWay">
-                        <ContentPresenter x:Name="XamlContentPresenter" Visibility="Collapsed">
+                    <Grid Grid.Row="1" x:DefaultBindMode="OneWay" IsTabStop="False">
+                        <ContentPresenter x:Name="XamlContentPresenter" Visibility="Collapsed" IsTabStop="False">
                             <local:SampleCodePresenter
                                 x:Name="XamlPresenter"
                                 animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
@@ -196,7 +201,7 @@
                                 SampleType="XAML"
                                 Substitutions="{x:Bind Substitutions}" />
                         </ContentPresenter>
-                        <ContentPresenter x:Name="CSharpContentPresenter" Visibility="Collapsed">
+                        <ContentPresenter x:Name="CSharpContentPresenter" Visibility="Collapsed" IsTabStop="False">
                             <local:SampleCodePresenter
                                 x:Name="CSharpPresenter"
                                 animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
