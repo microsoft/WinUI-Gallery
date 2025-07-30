@@ -133,6 +133,7 @@
                             x:Name="ContentPresenter"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            AutomationProperties.AccessibilityView="Raw"
                             Content="{TemplateBinding Content}"
                             ContentTemplate="{TemplateBinding ContentTemplate}"
                             ContentTransitions="{TemplateBinding ContentTransitions}"
@@ -146,16 +147,17 @@
                         </ContentPresenter>
                         <ContentPresenter
                             x:Name="CopySuccessGlyph"
+                            AutomationProperties.AccessibilityView="Raw"
                             Foreground="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource ButtonForeground}}"
                             Opacity="0"
                             RenderTransformOrigin=".5,.5">
                             <ContentPresenter.RenderTransform>
                                 <ScaleTransform x:Name="CopyToClipboardSuccessTextScaleTransform" />
                             </ContentPresenter.RenderTransform>
-                            <FontIcon 
-                                FontSize="{TemplateBinding FontSize}" 
-                                Glyph="&#xE73E;" 
-                                AutomationProperties.AccessibilityView="Raw" />
+                            <FontIcon
+                                AutomationProperties.AccessibilityView="Raw"
+                                FontSize="{TemplateBinding FontSize}"
+                                Glyph="&#xE73E;" />
                         </ContentPresenter>
 
                         <VisualStateManager.VisualStateGroups>
