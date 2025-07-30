@@ -16,6 +16,7 @@
                         <GradientStop Offset="0.0" Color="#CED8E4" />
                         <GradientStop Offset="1.0" Color="#D5DBE3" />
                     </LinearGradientBrush>
+                    <SolidColorBrush x:Key="ForegroundBrush" Color="Black" />
                     <x:Double x:Key="ImageOpacity">0.9</x:Double>
                     <LinearGradientBrush x:Key="OverlayRadialGradient" StartPoint="0.5,0" EndPoint="0.5,1">
                         <GradientStop Offset="0" Color="#FFFFFFFF" />
@@ -28,6 +29,7 @@
                     <ImageSource x:Key="StoreIcon">/Assets/HomeHeaderTiles/Header-Store.dark.png</ImageSource>
                     <SolidColorBrush x:Key="BackgroundGradient" Color="#020B20" />
                     <x:Double x:Key="ImageOpacity">0.8</x:Double>
+                    <SolidColorBrush x:Key="ForegroundBrush" Color="White" />
                     <LinearGradientBrush x:Key="OverlayRadialGradient" StartPoint="0.5,0" EndPoint="0.5,1">
                         <GradientStop Offset="0" Color="#FF000000" />
                         <GradientStop Offset="0.75" Color="#FF000000" />
@@ -38,6 +40,7 @@
                 <ResourceDictionary x:Key="HighContrast">
                     <ImageSource x:Key="StoreIcon">/Assets/HomeHeaderTiles/Header-Store.dark.png</ImageSource>
                     <SolidColorBrush x:Key="BackgroundGradient" Color="Black" />
+                    <SolidColorBrush x:Key="ForegroundBrush" Color="White" />
                     <x:Double x:Key="ImageOpacity">0.8</x:Double>
                     <LinearGradientBrush x:Key="OverlayRadialGradient" StartPoint="0.5,0" EndPoint="0.5,1">
                         <GradientStop Offset="0" Color="#FF000000" />
@@ -88,9 +91,11 @@
                 <TextBlock
                     x:Name="smallHeaderSubtitleText"
                     FontSize="18"
+                    Foreground="{ThemeResource ForegroundBrush}"
                     Text="{x:Bind WinAppSdkDetails}" />
                 <TextBlock
                     x:Name="smallHeaderText"
+                    Foreground="{ThemeResource ForegroundBrush}"
                     Style="{StaticResource TitleLargeTextBlockStyle}"
                     Text="{StaticResource AppTitleName}" />
             </StackPanel>
