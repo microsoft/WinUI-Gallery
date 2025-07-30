@@ -68,10 +68,7 @@ public sealed class CounterControl : Control
         if (CountText is not null)
         {
             CountText.Text = Count.ToString();
-            // Update automation name to provide context about the mode and current value
-            var modeName = Mode == CounterMode.Increment ? "Increment" : "Decrement";
-            AutomationProperties.SetName(CountText, $"{modeName} counter value {Count}");
-            
+
             // Raise LiveRegionChanged event to notify screen readers of the content change
             var peer = FrameworkElementAutomationPeer.FromElement(CountText) ?? FrameworkElementAutomationPeer.CreatePeerForElement(CountText);
             peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
