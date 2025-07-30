@@ -88,7 +88,8 @@
                                 x:Name="RecentlyVisitedTitle"
                                 FontSize="16"
                                 Style="{StaticResource BodyStrongTextBlockStyle}"
-                                Text="Recently visited" />
+                                Text="Recently visited"
+                                AutomationProperties.HeadingLevel="Level2" />
                             <controls:HorizontalScrollContainer x:Name="RecentlyVisitedContainer" Margin="-36,0,-36,12">
                                 <controls:HorizontalScrollContainer.Source>
                                     <GridView ItemTemplate="{StaticResource ControlItemTemplate}"
@@ -108,7 +109,8 @@
                                 Margin="0,12,0,0"
                                 FontSize="16"
                                 Style="{StaticResource BodyStrongTextBlockStyle}"
-                                Text="Recently added or updated" />
+                                Text="Recently added or updated"
+                                AutomationProperties.HeadingLevel="Level2" />
                             <GridView ItemTemplate="{StaticResource ControlItemTemplate}"
                                       ItemsSource="{x:Bind RecentlyAddedOrUpdatedSamplesList, Mode=OneWay}"
                                       ItemContainerStyle="{StaticResource GridViewItemStyle}"
