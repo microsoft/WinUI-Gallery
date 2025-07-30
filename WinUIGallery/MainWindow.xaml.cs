@@ -120,7 +120,8 @@ public sealed partial class MainWindow : Window
         if (pageType.Equals(typeof(ItemPage)) && targetPageArguments != null)
         {
             // Mark the item sample's page visited
-            SettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, targetPageArguments.ToString(), InsertPosition.First, SettingsHelper.MaxRecentlyVisitedSamples);
+            SettingsHelper.Config.RecentlyVisited.AddFirstFavoriteOrRecentlyVisited(targetPageArguments.ToString(), false);
+            SettingsHelper.Save();
         }
     }
 
