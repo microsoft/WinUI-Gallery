@@ -23,8 +23,7 @@
         <RichTextBlock>
             <Paragraph>
                 <Run>For full title bar customization without using the TitleBar control, see the</Run>
-                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/title-bar#full-customization">documentation</Hyperlink>
-                <Run>.</Run>
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/title-bar#full-customization">documentation</Hyperlink><Run>.</Run>
             </Paragraph>
         </RichTextBlock>
 
