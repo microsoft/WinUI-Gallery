@@ -64,7 +64,6 @@
                         Grid.Row="0"
                         Grid.Column="1"
                         Margin="10,-5,0,0"
-                        AutomationProperties.AccessibilityView="Raw"
                         AutomationProperties.Name="Minimum"
                         SpinButtonPlacementMode="Compact"
                         Value="500" />
@@ -80,7 +79,6 @@
                         Grid.Row="1"
                         Grid.Column="1"
                         Margin="10,5,0,0"
-                        AutomationProperties.AccessibilityView="Raw"
                         AutomationProperties.Name="Maximum"
                         SpinButtonPlacementMode="Compact"
                         Value="1000" />
@@ -96,7 +94,6 @@
                         Grid.Row="2"
                         Grid.Column="1"
                         Margin="10,5,0,0"
-                        AutomationProperties.AccessibilityView="Raw"
                         AutomationProperties.Name="Step Frequency"
                         Minimum="1"
                         SpinButtonPlacementMode="Compact"
@@ -113,7 +110,6 @@
                         Grid.Row="3"
                         Grid.Column="1"
                         Margin="10,5,0,0"
-                        AutomationProperties.AccessibilityView="Raw"
                         AutomationProperties.Name="Small Change"
                         SpinButtonPlacementMode="Compact"
                         Value="10" />
