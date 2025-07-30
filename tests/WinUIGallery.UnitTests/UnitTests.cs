@@ -12,8 +12,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting.AppContainer;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
@@ -188,288 +191,10 @@ public class UnitTests
     [TestMethod]
     public async Task TestExternalLinksValidity()
     {
-        // List of all external links found in NavigateUri attributes across XAML files and ControlInfoData.json
-        var externalLinks = new List<string>
-        {
-            // Links from NavigateUri attributes in XAML files
-            "https://accessibilityinsights.io/",
-            "https://aka.ms/lottie",
-            "https://aka.ms/toolkit/windows",
-            "https://aka.ms/windowsappsdk",
-            "https://aka.ms/winui",
-            "https://github.com/CommunityToolkit/MVVM-Samples",
-            "https://github.com/Microsoft/Win2D",
-            "https://github.com/WilliamABradley/ColorCode-Universal",
-            "https://go.microsoft.com/fwlink/?LinkId=521839",
-            "https://go.microsoft.com/fwlink/?LinkId=822631",
-            "https://learn.microsoft.com/accessibility-tools-docs/items/uwpxaml/control_fulldescription_describedby_helptext",
-            "https://learn.microsoft.com/azure/azure-maps/how-to-manage-account-keys",
-            "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview",
-            "https://learn.microsoft.com/windows/apps/design/accessibility/basic-accessibility-information",
-            "https://learn.microsoft.com/windows/apps/design/accessibility/basic-accessibility-information#accessible-name",
-            "https://learn.microsoft.com/windows/apps/design/accessibility/basic-accessibility-information#influencing-the-ui-automation-tree-views",
-            "https://learn.microsoft.com/windows/apps/design/accessibility/basic-accessibility-information#name-from-inner-text",
-            "https://learn.microsoft.com/windows/apps/design/accessibility/keyboard-accessibility",
-            "https://learn.microsoft.com/windows/apps/design/accessibility/landmarks-and-headings",
-            "https://learn.microsoft.com/windows/apps/design/downloads/#fonts",
-            "https://learn.microsoft.com/windows/apps/design/input/access-keys",
-            "https://learn.microsoft.com/windows/apps/design/input/focus-navigation",
-            "https://learn.microsoft.com/windows/apps/design/input/keyboard-accelerators",
-            "https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions",
-            "https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#control-group",
-            "https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#home-and-end-keys",
-            "https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#navigation",
-            "https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#page-up-and-page-down-keys",
-            "https://learn.microsoft.com/windows/apps/design/style/acrylic#usability-and-adaptability",
-            "https://learn.microsoft.com/windows/apps/develop/data-binding/data-binding-in-depth#xbind-and-binding-feature-comparison",
-            "https://learn.microsoft.com/windows/apps/package-and-deploy/deploy-overview",
-            "https://learn.microsoft.com/windows/apps/package-and-deploy/self-contained-deploy/deploy-self-contained-apps#dependencies-on-additional-msix-packages",
-            "https://learn.microsoft.com/windows/apps/windows-app-sdk/deployment-architecture#singleton-package",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.compositionshape",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputnonclientpointersource",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.appwindowtitlebar",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Documents.Hyperlink",
-            "https://www.microsoft.com",
-            "https://www.unicode.org/notes/tn28/",
-            "https://www.w3.org/Math/",
-            
-            // Links from ControlInfoData.json
-            "https://aka.ms/WinUI/3.0-figma-toolkit",
-            "https://github.com/CommunityToolkit/Lottie-Windows",
-            "https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlBottomUpList",
-            "https://github.com/MicrosoftEdge/WebView2Samples",
-            "https://github.com/microsoft/Windows-universal-samples/tree/master/Samples/XamlDragAndDrop",
-            "https://github.com/microsoft/microsoft-ui-xaml/blob/main/src/controls/dev/CommonStyles/Common_themeresources_any.xaml",
-            "https://learn.microsoft.com/microsoft-edge/webview2/gettingstarted/winui",
-            "https://learn.microsoft.com/previous-versions/windows/apps/hh465055(v=win.10)",
-            "https://learn.microsoft.com/uwp/api/Windows.Storage.Pickers",
-            "https://learn.microsoft.com/uwp/api/windows.applicationmodel.datatransfer.clipboard",
-            "https://learn.microsoft.com/uwp/api/windows.media.capture.mediacapture",
-            "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility",
-            "https://learn.microsoft.com/windows/apps/design/accessibility/accessible-text-requirements",
-            "https://learn.microsoft.com/windows/apps/design/basics/content-basics",
-            "https://learn.microsoft.com/windows/apps/design/controls/animated-icon",
-            "https://learn.microsoft.com/windows/apps/design/controls/auto-suggest-box",
-            "https://learn.microsoft.com/windows/apps/design/controls/breadcrumbbar",
-            "https://learn.microsoft.com/windows/apps/design/controls/buttons",
-            "https://learn.microsoft.com/windows/apps/design/controls/buttons#create-a-split-button",
-            "https://learn.microsoft.com/windows/apps/design/controls/buttons#create-a-toggle-split-button",
-            "https://learn.microsoft.com/windows/apps/design/controls/calendar-date-picker",
-            "https://learn.microsoft.com/windows/apps/design/controls/calendar-view",
-            "https://learn.microsoft.com/windows/apps/design/controls/checkbox",
-            "https://learn.microsoft.com/windows/apps/design/controls/collection-commanding",
-            "https://learn.microsoft.com/windows/apps/design/controls/color-picker",
-            "https://learn.microsoft.com/windows/apps/design/controls/combo-box",
-            "https://learn.microsoft.com/windows/apps/design/controls/command-bar",
-            "https://learn.microsoft.com/windows/apps/design/controls/command-bar-flyout",
-            "https://learn.microsoft.com/windows/apps/design/controls/commanding#command-experiences-using-the-standarduicommand-class",
-            "https://learn.microsoft.com/windows/apps/design/controls/commanding#command-experiences-using-the-xamluicommand-class",
-            "https://learn.microsoft.com/windows/apps/design/controls/date-picker",
-            "https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts",
-            "https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/dialogs",
-            "https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/teaching-tip",
-            "https://learn.microsoft.com/windows/apps/design/controls/expander",
-            "https://learn.microsoft.com/windows/apps/design/controls/flipview",
-            "https://learn.microsoft.com/windows/apps/design/controls/hyperlinks",
-            "https://learn.microsoft.com/windows/apps/design/controls/images-imagebrushes",
-            "https://learn.microsoft.com/windows/apps/design/controls/info-badge",
-            "https://learn.microsoft.com/windows/apps/design/controls/infobar",
-            "https://learn.microsoft.com/windows/apps/design/controls/inverted-lists",
-            "https://learn.microsoft.com/windows/apps/design/controls/items-repeater",
-            "https://learn.microsoft.com/windows/apps/design/controls/lists",
-            "https://learn.microsoft.com/windows/apps/design/controls/listview-and-gridview",
-            "https://learn.microsoft.com/windows/apps/design/controls/listview-filtering",
-            "https://learn.microsoft.com/windows/apps/design/controls/media-playback",
-            "https://learn.microsoft.com/windows/apps/design/controls/menus",
-            "https://learn.microsoft.com/windows/apps/design/controls/navigationview",
-            "https://learn.microsoft.com/windows/apps/design/controls/number-box",
-            "https://learn.microsoft.com/windows/apps/design/controls/page-header",
-            "https://learn.microsoft.com/windows/apps/design/controls/parallax",
-            "https://learn.microsoft.com/windows/apps/design/controls/person-picture",
-            "https://learn.microsoft.com/windows/apps/design/controls/pivot",
-            "https://learn.microsoft.com/windows/apps/design/controls/progress-controls",
-            "https://learn.microsoft.com/windows/apps/design/controls/pull-to-refresh",
-            "https://learn.microsoft.com/windows/apps/design/controls/radio-button",
-            "https://learn.microsoft.com/windows/apps/design/controls/rating",
-            "https://learn.microsoft.com/windows/apps/design/controls/scroll-controls",
-            "https://learn.microsoft.com/windows/apps/design/controls/slider",
-            "https://learn.microsoft.com/windows/apps/design/controls/split-view",
-            "https://learn.microsoft.com/windows/apps/design/controls/swipe",
-            "https://learn.microsoft.com/windows/apps/design/controls/tab-view",
-            "https://learn.microsoft.com/windows/apps/design/controls/text-controls",
-            "https://learn.microsoft.com/windows/apps/design/controls/time-picker",
-            "https://learn.microsoft.com/windows/apps/design/controls/tooltips",
-            "https://learn.microsoft.com/windows/apps/design/controls/tree-view",
-            "https://learn.microsoft.com/windows/apps/design/controls/two-pane-view",
-            "https://learn.microsoft.com/windows/apps/design/input/access-keys",
-            "https://learn.microsoft.com/windows/apps/design/input/focus-navigation",
-            "https://learn.microsoft.com/windows/apps/design/input/keyboard-accelerators",
-            "https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions",
-            "https://learn.microsoft.com/windows/apps/design/layout/grid-tutorial",
-            "https://learn.microsoft.com/windows/apps/design/layout/layout-panels",
-            "https://learn.microsoft.com/windows/apps/design/layout/layout-panels#grid",
-            "https://learn.microsoft.com/windows/apps/design/layout/show-multiple-views",
-            "https://learn.microsoft.com/windows/apps/design/motion",
-            "https://learn.microsoft.com/windows/apps/design/motion/connected-animation",
-            "https://learn.microsoft.com/windows/apps/design/motion/motion-in-practice#implicit-animations",
-            "https://learn.microsoft.com/windows/apps/design/motion/page-transitions",
-            "https://learn.microsoft.com/windows/apps/design/motion/parallax",
-            "https://learn.microsoft.com/windows/apps/design/motion/timing-and-easing",
-            "https://learn.microsoft.com/windows/apps/design/motion/xaml-animation#animations-available-in-the-library",
-            "https://learn.microsoft.com/windows/apps/design/motion/xaml-property-animations",
-            "https://learn.microsoft.com/windows/apps/design/shell/tiles-and-notifications/badges",
-            "https://learn.microsoft.com/windows/apps/design/shell/tiles-and-notifications/toast-notifications-overview",
-            "https://learn.microsoft.com/windows/apps/design/signature-experiences/color",
-            "https://learn.microsoft.com/windows/apps/design/signature-experiences/geometry",
-            "https://learn.microsoft.com/windows/apps/design/signature-experiences/iconography#system-icons",
-            "https://learn.microsoft.com/windows/apps/design/signature-experiences/typography",
-            "https://learn.microsoft.com/windows/apps/design/style/acrylic",
-            "https://learn.microsoft.com/windows/apps/design/style/icons",
-            "https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font",
-            "https://learn.microsoft.com/windows/apps/design/style/segoe-ui-symbol-font",
-            "https://learn.microsoft.com/windows/apps/design/style/sound",
-            "https://learn.microsoft.com/windows/apps/design/style/spacing",
-            "https://learn.microsoft.com/windows/apps/design/style/typography",
-            "https://learn.microsoft.com/windows/apps/design/style/xaml-control-templates",
-            "https://learn.microsoft.com/windows/apps/design/style/xaml-resource-dictionary",
-            "https://learn.microsoft.com/windows/apps/design/style/xaml-styles",
-            "https://learn.microsoft.com/windows/apps/design/style/xaml-theme-resources",
-            "https://learn.microsoft.com/windows/apps/design/style/xaml-theme-resources#the-xaml-type-ramp",
-            "https://learn.microsoft.com/windows/apps/develop/data-binding/",
-            "https://learn.microsoft.com/windows/apps/windows-app-sdk/composition",
-            "https://learn.microsoft.com/windows/apps/winui/winui3/xaml-templated-controls-csharp-winui-3",
-            "https://learn.microsoft.com/windows/communitytoolkit/animations/lottie",
-            "https://learn.microsoft.com/windows/communitytoolkit/animations/lottie#tutorials",
-            "https://learn.microsoft.com/windows/uwp/xaml-platform/binding-markup-extension",
-            "https://learn.microsoft.com/windows/uwp/xaml-platform/x-bind-markup-extension",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.systembackdrops.desktopacryliccontroller",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.systembackdrops.micacontroller",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.content.contentisland",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.appwindow",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.appwindowpresenter",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.compactoverlaypresenter",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.fullscreenpresenter",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.overlappedpresenter",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Controls.MenuBar",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Controls.NavigationView",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Controls.Parallaxview",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Controls.PersonPicture",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Controls.RefreshContainer",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Controls.RefreshVisualizer",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Controls.TreeView",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.animatedicon",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.animatedvisualplayer",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.appbarbutton",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.appbarseparator",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.appbartogglebutton",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.autosuggestbox",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.bitmapicon",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.border",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.breadcrumbbar",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.button",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.calendardatepicker",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.calendarview",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.canvas",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.checkbox",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.combobox",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.comboboxitem",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.commandbar",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.commandbarflyout",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.control",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.controltemplate",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.datepicker",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.dropdownbutton",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.expander",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.flipview",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.fonticon",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.grid",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.gridview",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.hyperlinkbutton",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.image",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.imageicon",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.infobadge",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.infobar",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemspaneltemplate",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemsrepeater",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemsview",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.listbox",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.listboxitem",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.listview",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.mapcontrol",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.MediaPlayerElement",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.menuflyout",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.menuflyoutitem",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.menuflyoutseparator",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.menuflyoutsubitem",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.numberbox",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.passwordbox",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.pathicon",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.pivot",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.progressbar",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.progressring",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.radiobutton",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.radiobuttons",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.radiomenuflyoutitem",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.relativepanel",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.richeditbox",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.richtextblock",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.scrollviewer",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.selectorbar",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.selectorbaritem",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.slider",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.splitbutton",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.splitview",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.stacklayout",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.stackpanel",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.swipecontrol",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.swipeitems",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.symbolicon",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabview",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.teachingtip",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.textblock",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.textbox",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.timepicker",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.togglemenuflyoutitem",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.togglesplitbutton",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.toggleswitch",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tooltip",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.twopaneview",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.uniformgridlayout",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.usercontrol",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.variablesizedwrapgrid",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.Viewbox",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.webview2",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Data.CollectionViewSource",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.binding",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.ivalueconverter",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.datatemplate",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.elementsoundplayer",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.input.standarduicommand",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.input.xamluicommand",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.markup.xamlreader",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.animation.connectedanimation",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.animation.connectedanimationservice",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.animation.easingfunctionbase",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.acrylicbrush",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.desktopacrylicbackdrop",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.micabackdrop",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.RadialGradientBrush",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.systembackdrop",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Media.Animation.NavigationThemeTransition",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.resourcedictionary",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.shapes",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.style",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.uielement.transitions#Windows_UI_Xaml_UIElement_Transitions",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window.extendscontentintotitlebar",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.appnotification",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.appnotificationmanager",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.appnotifications.builder.appnotificationbuilder",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.badgenotifications.badgenotificationglyph",
-            "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.badgenotifications.badgenotificationmanager",
-            "https://learn.microsoft.com/windows/winui/api/microsoft.ui.xaml.controls.animatedvisualplayer",
-            "https://ms-windows-store://pdp/?productid=9N3J5TG8FF7F"
-        };
+        // Dynamically discover all external links from the project
+        var externalLinks = await GetAllExternalLinksAsync();
+        
+        Assert.IsTrue(externalLinks.Count > 0, "No external links found in project");
 
         using var httpClient = new HttpClient();
         httpClient.Timeout = TimeSpan.FromSeconds(30); // Set reasonable timeout
@@ -531,7 +256,7 @@ public class UnitTests
         {
             Assert.Inconclusive($"More than 50% of links failed ({failedLinks.Count}/{externalLinks.Count}), " +
                               "which may indicate test environment network restrictions. " +
-                              $"Checked {checkedCount} links.");
+                              $"Checked {checkedCount} links. Found {externalLinks.Count} total external links.");
         }
         
         // Assert that no links failed with actual HTTP errors (not network issues)
@@ -543,6 +268,192 @@ public class UnitTests
             var failureMessage = $"The following external links returned HTTP errors:\n{string.Join("\n", httpErrorFailures)}";
             Assert.Fail(failureMessage);
         }
+    }
+
+    /// <summary>
+    /// Dynamically discovers all external links from XAML files and ControlInfoData.json
+    /// </summary>
+    private async Task<List<string>> GetAllExternalLinksAsync()
+    {
+        var allLinks = new HashSet<string>();
+        
+        // Get the project root directory (assuming test is running in bin/Debug/net8.0-windows10.0.19041.0 or similar)
+        var testDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        var projectRoot = GetProjectRootDirectory(testDirectory);
+        
+        if (projectRoot == null)
+        {
+            throw new DirectoryNotFoundException("Could not find project root directory");
+        }
+
+        // Discover links from XAML files
+        var xamlLinks = await GetExternalLinksFromXamlFilesAsync(projectRoot);
+        foreach (var link in xamlLinks)
+        {
+            allLinks.Add(link);
+        }
+
+        // Discover links from ControlInfoData.json
+        var jsonLinks = await GetExternalLinksFromControlInfoDataAsync(projectRoot);
+        foreach (var link in jsonLinks)
+        {
+            allLinks.Add(link);
+        }
+
+        return allLinks.ToList();
+    }
+
+    /// <summary>
+    /// Finds the project root directory by looking for the .sln file
+    /// </summary>
+    private string GetProjectRootDirectory(string startPath)
+    {
+        var directory = new DirectoryInfo(startPath);
+        
+        while (directory != null)
+        {
+            if (directory.GetFiles("*.sln").Any())
+            {
+                return directory.FullName;
+            }
+            directory = directory.Parent;
+        }
+        
+        return null;
+    }
+
+    /// <summary>
+    /// Extracts external links from NavigateUri attributes in XAML files
+    /// </summary>
+    private async Task<List<string>> GetExternalLinksFromXamlFilesAsync(string projectRoot)
+    {
+        var links = new List<string>();
+        
+        // Find all XAML files in the WinUIGallery directory
+        var winUIGalleryPath = Path.Combine(projectRoot, "WinUIGallery");
+        if (!Directory.Exists(winUIGalleryPath))
+        {
+            return links;
+        }
+
+        var xamlFiles = Directory.GetFiles(winUIGalleryPath, "*.xaml", SearchOption.AllDirectories);
+        
+        // Regex to find NavigateUri attributes with URLs
+        var navigateUriRegex = new Regex(@"NavigateUri\s*=\s*[""']([^""']+)[""']", RegexOptions.IgnoreCase);
+        
+        foreach (var xamlFile in xamlFiles)
+        {
+            try
+            {
+                var content = await File.ReadAllTextAsync(xamlFile);
+                var matches = navigateUriRegex.Matches(content);
+                
+                foreach (Match match in matches)
+                {
+                    var uri = match.Groups[1].Value;
+                    if (IsExternalLink(uri))
+                    {
+                        links.Add(uri);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log but don't fail for individual file reading issues
+                System.Diagnostics.Debug.WriteLine($"Failed to read XAML file {xamlFile}: {ex.Message}");
+            }
+        }
+        
+        return links;
+    }
+
+    /// <summary>
+    /// Extracts external links from the ControlInfoData.json file
+    /// </summary>
+    private async Task<List<string>> GetExternalLinksFromControlInfoDataAsync(string projectRoot)
+    {
+        var links = new List<string>();
+        
+        var controlInfoDataPath = Path.Combine(projectRoot, "WinUIGallery", "Samples", "Data", "ControlInfoData.json");
+        
+        if (!File.Exists(controlInfoDataPath))
+        {
+            return links;
+        }
+
+        try
+        {
+            var jsonContent = await File.ReadAllTextAsync(controlInfoDataPath);
+            using var document = JsonDocument.Parse(jsonContent);
+            
+            if (document.RootElement.TryGetProperty("Groups", out var groups))
+            {
+                foreach (var group in groups.EnumerateArray())
+                {
+                    if (group.TryGetProperty("Items", out var items))
+                    {
+                        foreach (var item in items.EnumerateArray())
+                        {
+                            if (item.TryGetProperty("Docs", out var docs))
+                            {
+                                foreach (var doc in docs.EnumerateArray())
+                                {
+                                    if (doc.TryGetProperty("Uri", out var uri))
+                                    {
+                                        var uriValue = uri.GetString();
+                                        if (!string.IsNullOrEmpty(uriValue) && IsExternalLink(uriValue))
+                                        {
+                                            links.Add(uriValue);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Failed to parse ControlInfoData.json: {ex.Message}");
+        }
+        
+        return links;
+    }
+
+    /// <summary>
+    /// Determines if a URI is an external link that should be validated
+    /// </summary>
+    private static bool IsExternalLink(string uri)
+    {
+        if (string.IsNullOrWhiteSpace(uri))
+            return false;
+            
+        // Consider HTTP/HTTPS links as external
+        if (uri.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+            uri.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+        
+        // Consider ms-windows-store:// links as external
+        if (uri.StartsWith("ms-windows-store://", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+        
+        // Exclude internal/local URIs
+        if (uri.StartsWith("ms-appx://", StringComparison.OrdinalIgnoreCase) ||
+            uri.StartsWith("ms-appdata://", StringComparison.OrdinalIgnoreCase) ||
+            uri.StartsWith("ms-resource://", StringComparison.OrdinalIgnoreCase) ||
+            uri.StartsWith("/", StringComparison.OrdinalIgnoreCase) ||
+            uri.StartsWith("./", StringComparison.OrdinalIgnoreCase) ||
+            uri.StartsWith("../", StringComparison.OrdinalIgnoreCase))
+        {
+            return false;
+        }
+        
+        return false;
     }
 
     [TestCleanup]
