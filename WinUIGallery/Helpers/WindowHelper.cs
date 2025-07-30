@@ -2,7 +2,6 @@
 // Licensed under the MIT License.
 
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,7 +14,7 @@ namespace WinUIGallery.Helpers;
 // of all active Windows.  The app code must call WindowHelper.CreateWindow
 // rather than "new Window" so we can keep track of all the relevant
 // windows.  In the future, we would like to support this in platform APIs.
-public class WindowHelper
+public partial class WindowHelper
 {
     static public Window CreateWindow()
     {
@@ -70,7 +69,7 @@ public class WindowHelper
     static public StorageFolder GetAppLocalFolder()
     {
         StorageFolder localFolder;
-        if (!NativeHelper.IsAppPackaged)
+        if (!NativeMethods.IsAppPackaged)
         {
             localFolder = Task.Run(async () => await StorageFolder.GetFolderFromPathAsync(System.AppContext.BaseDirectory)).Result;
         }
