@@ -17,7 +17,7 @@
                         <Button x:Name="ActionButton"
                                 Content="Increase"
                                 HorizontalAlignment="Center"
-                                Width="100" />
+                                MinWidth="100" />
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
