@@ -224,7 +224,13 @@ public sealed partial class SampleCodePresenter : UserControl
         var formatter = GenerateRichTextFormatter();
         if (SampleType == SampleCodePresenterType.Inline)
         {
-            CodeScrollViewer.Content = new TextBlock() { FontFamily = new FontFamily("Consolas, Cascadia Code"), Text = actualCode, IsTextSelectionEnabled = true, TextTrimming = TextTrimming.CharacterEllipsis };
+            CodeScrollViewer.Content = new TextBlock() { 
+                FontFamily = new FontFamily("Consolas, Cascadia Code"), 
+                Text = actualCode, 
+                IsTextSelectionEnabled = true, 
+                TextTrimming = TextTrimming.WordEllipsis,  // Changed from CharacterEllipsis to WordEllipsis for better readability
+                TextWrapping = TextWrapping.Wrap  // Allow wrapping to prevent truncation
+            };
             CodeScrollViewer.UpdateLayout();
         }
         else

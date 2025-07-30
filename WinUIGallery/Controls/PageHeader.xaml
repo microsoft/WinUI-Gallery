@@ -33,6 +33,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Spacing="4">
             <TextBlock
+                x:Name="TitleTextBlock"
                 AutomationProperties.AutomationId="PageHeader"
                 Style="{StaticResource TitleTextBlockStyle}"
                 Text="{x:Bind Item.Title}"
@@ -92,8 +93,12 @@
                 </Button.Flyout>
             </Button>
         </StackPanel>
-        <Grid Grid.Row="1" Margin="0,12,0,12">
-            <StackPanel Orientation="Horizontal" Spacing="4">
+        <Grid x:Name="ActionButtonsGrid" Grid.Row="1" Margin="0,12,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="LeftButtonsPanel" Grid.Column="0" Orientation="Horizontal" Spacing="4">
                 <DropDownButton
                     AutomationProperties.Name="Documentation"
                     ToolTipService.ToolTip="Documentation"
@@ -101,7 +106,7 @@
                     <DropDownButton.Content>
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <FontIcon FontSize="16" Glyph="&#xE8A5;" />
-                            <TextBlock Text="Documentation" />
+                            <TextBlock x:Name="DocumentationText" Text="Documentation" />
                         </StackPanel>
                     </DropDownButton.Content>
                     <DropDownButton.Flyout>
@@ -137,7 +142,7 @@
                             <Viewbox Height="18">
                                 <PathIcon Data="{StaticResource GitHubIconPath}" />
                             </Viewbox>
-                            <TextBlock Text="Source" />
+                            <TextBlock x:Name="SourceText" Text="Source" />
                         </StackPanel>
                     </DropDownButton.Content>
                     <DropDownButton.Flyout>
@@ -217,7 +222,7 @@
                     </DropDownButton.Flyout>
                 </DropDownButton>
             </StackPanel>
-            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+            <StackPanel x:Name="RightButtonsPanel" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button
                     x:Name="ThemeButton"
                     Height="32"
@@ -284,5 +289,37 @@
                 </ToggleButton>
             </StackPanel>
         </Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="740" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NarrowLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- Allow title text to wrap in narrow layout -->
+                        <Setter Target="TitleTextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Target="TitleTextBlock.MaxLines" Value="2" />
+                        <!-- Hide text labels in buttons to save space -->
+                        <Setter Target="DocumentationText.Visibility" Value="Collapsed" />
+                        <Setter Target="SourceText.Visibility" Value="Collapsed" />
+                        <!-- Arrange action buttons grid vertically when too narrow -->
+                        <Setter Target="ActionButtonsGrid.RowDefinitions" Value="Auto,Auto" />
+                        <Setter Target="ActionButtonsGrid.ColumnDefinitions" Value="*" />
+                        <Setter Target="LeftButtonsPanel.Grid.Row" Value="0" />
+                        <Setter Target="LeftButtonsPanel.Grid.Column" Value="0" />
+                        <Setter Target="LeftButtonsPanel.HorizontalAlignment" Value="Center" />
+                        <Setter Target="LeftButtonsPanel.Margin" Value="0,0,0,8" />
+                        <Setter Target="RightButtonsPanel.Grid.Row" Value="1" />
+                        <Setter Target="RightButtonsPanel.Grid.Column" Value="0" />
+                        <Setter Target="RightButtonsPanel.HorizontalAlignment" Value="Center" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </UserControl>
