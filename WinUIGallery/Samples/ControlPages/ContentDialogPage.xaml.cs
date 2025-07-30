@@ -45,4 +45,35 @@ public sealed partial class ContentDialogPage : Page
             DialogResult.Text = "User cancelled the dialog";
         }
     }
+
+    private async void ShowDialogNoDefault_Click(object sender, RoutedEventArgs e)
+    {
+        ContentDialogExample dialog = new ContentDialogExample();
+
+        // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+        dialog.XamlRoot = this.XamlRoot;
+        dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+        dialog.Title = "Delete file?";
+        dialog.PrimaryButtonText = "Delete";
+        dialog.SecondaryButtonText = "Keep";
+        dialog.CloseButtonText = "Cancel";
+        dialog.DefaultButton = ContentDialogButton.None;
+        dialog.Content = new ContentDialogContent();
+        dialog.RequestedTheme = (VisualTreeHelper.GetParent(sender as Button) as StackPanel).ActualTheme;
+
+        var result = await dialog.ShowAsync();
+
+        if (result == ContentDialogResult.Primary)
+        {
+            DialogResultNoDefault.Text = "User deleted the file";
+        }
+        else if (result == ContentDialogResult.Secondary)
+        {
+            DialogResultNoDefault.Text = "User kept the file";
+        }
+        else
+        {
+            DialogResultNoDefault.Text = "User cancelled the dialog";
+        }
+    }
 }

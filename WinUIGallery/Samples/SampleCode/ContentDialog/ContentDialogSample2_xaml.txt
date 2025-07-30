@@ -1,0 +1,12 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.ContentDialogContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <!-- Content body -->
+        <TextBlock Text="Are you sure you want to delete this file?" TextWrapping="Wrap" />
+        <TextBlock Text="This action cannot be undone." TextWrapping="Wrap" Margin="0,8,0,0" FontWeight="SemiBold"/>
+    </StackPanel>
+
+</Page>
