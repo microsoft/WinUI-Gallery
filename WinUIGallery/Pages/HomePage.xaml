@@ -76,7 +76,7 @@
                 <toolkit:SwitchPresenter
                     Grid.Row="2"
                     Margin="36,0,36,36"
-                    Value="{Binding SelectedItem.Tag, ElementName=FilterBar}">
+                    Value="{x:Bind FilterBar.SelectedItem.Tag, Mode=OneWay}">
                     <toolkit:Case Value="Recent">
                         <StackPanel
                             x:Name="RecentSamplesPanel"

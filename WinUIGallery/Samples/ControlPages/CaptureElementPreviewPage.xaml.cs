@@ -161,7 +161,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
     }
 }
 
-class ExpandToFillContainer : Grid
+partial class ExpandToFillContainer : Grid
 {
     protected override Size MeasureOverride(Size availableSize)
     {

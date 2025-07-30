@@ -83,7 +83,7 @@ public class ExplorerItem
     public ObservableCollection<ExplorerItem> Children { get; set; } = new ObservableCollection<ExplorerItem>();
 }
 
-class ExplorerItemTemplateSelector : DataTemplateSelector
+partial class ExplorerItemTemplateSelector : DataTemplateSelector
 {
     public DataTemplate FolderTemplate { get; set; }
     public DataTemplate FileTemplate { get; set; }
