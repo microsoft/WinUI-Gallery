@@ -40,80 +40,32 @@
         <!--  SLIDER WITH RANGE AND STEPS  -->
         <controls:ControlExample x:Name="Example2" HeaderText="A Slider with range and steps specified.">
             <controls:ControlExample.Options>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" MinWidth="80" />
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock
-                        x:Name="MinimumLabel"
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Margin="0,0,0,0"
-                        Text="Minimum:" />
+                <StackPanel
+                    MinWidth="168"
+                    Orientation="Vertical"
+                    Spacing="16">
                     <NumberBox
                         x:Name="MinimumValue"
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Margin="10,-5,0,0"
-                        AutomationProperties.Name="Minimum"
-                        SpinButtonPlacementMode="Compact"
+                        Header="Minimum"
+                        SpinButtonPlacementMode="Inline"
                         Value="500" />
-
-                    <TextBlock
-                        x:Name="MaximumLabel"
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Margin="0,7,0,0"
-                        Text="Maximum:" />
                     <NumberBox
                         x:Name="MaximumValue"
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Margin="10,5,0,0"
-                        AutomationProperties.Name="Maximum"
-                        SpinButtonPlacementMode="Compact"
+                        Header="Maximum"
+                        SpinButtonPlacementMode="Inline"
                         Value="1000" />
-
-                    <TextBlock
-                        x:Name="StepFrequencyLabel"
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        Margin="0,5,0,0"
-                        Text="StepFrequency:" />
                     <NumberBox
                         x:Name="StepFrequencyValue"
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Margin="10,5,0,0"
-                        AutomationProperties.Name="Step Frequency"
+                        Header="StepFrequency"
                         Minimum="1"
-                        SpinButtonPlacementMode="Compact"
+                        SpinButtonPlacementMode="Inline"
                         Value="10" />
-
-                    <TextBlock
-                        x:Name="SmallChangeLabel"
-                        Grid.Row="3"
-                        Grid.Column="0"
-                        Margin="0,5,0,0"
-                        Text="SmallChange:" />
                     <NumberBox
                         x:Name="SmallChangeValue"
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        Margin="10,5,0,0"
-                        AutomationProperties.Name="Small Change"
-                        SpinButtonPlacementMode="Compact"
+                        Header="SmallChange"
+                        SpinButtonPlacementMode="Inline"
                         Value="10" />
-                </Grid>
+                </StackPanel>
             </controls:ControlExample.Options>
             <controls:ControlExample.Example>
                 <StackPanel
