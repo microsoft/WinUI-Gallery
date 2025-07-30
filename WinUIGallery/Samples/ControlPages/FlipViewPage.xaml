@@ -32,7 +32,7 @@
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;FlipView MaxWidth="400" Height="270" AutomationProperties.LocalizedControlType="FlipView"&gt;
+&lt;FlipView MaxWidth="400" Height="270"&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="Cliff"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/grapes.jpg" AutomationProperties.Name="Grapes"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/rainier.jpg" AutomationProperties.Name="Rainier"/&gt;
@@ -82,7 +82,7 @@
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;FlipView MaxWidth="400" Height="180" BorderBrush="Black" BorderThickness="1" AutomationProperties.LocalizedControlType="FlipView" ItemsSource="{x:Bind Items, Mode=OneWay}"&gt;
+&lt;FlipView MaxWidth="400" Height="180" BorderBrush="Black" BorderThickness="1" ItemsSource="{x:Bind Items, Mode=OneWay}"&gt;
     &lt;FlipView.ItemTemplate&gt;
         &lt;DataTemplate x:DataType="data:ControlInfoDataItem"&gt;
             &lt;Grid&gt;
@@ -114,7 +114,7 @@
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;FlipView MaxWidth="400" Height="270" AutomationProperties.LocalizedControlType="FlipView"&gt;
+&lt;FlipView MaxWidth="400" Height="270"&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="Cliff"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/grapes.jpg" AutomationProperties.Name="Grapes"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/rainier.jpg" AutomationProperties.Name="Rainier"/&gt;
