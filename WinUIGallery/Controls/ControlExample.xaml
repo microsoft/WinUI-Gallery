@@ -69,6 +69,7 @@
             x:Name="HeaderTextPresenter"
             Margin="0,12"
             AutomationProperties.HeadingLevel="Level3"
+            IsTabStop="False"
             Style="{ThemeResource BodyStrongTextBlockStyle}"
             Text="{x:Bind HeaderText}" />
 
