@@ -1,0 +1,58 @@
+<!-- Sample showing UI for connected animation configuration selection -->
+<Page x:Class="YourApp.SamplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Configuration selection panel -->
+        <StackPanel Grid.Row="0" Margin="12">
+            <TextBlock Text="Animation Configuration" 
+                       Style="{ThemeResource BaseTextBlockStyle}" 
+                       Margin="0,0,0,6"/>
+            
+            <!-- RadioButtons for configuration selection -->
+            <RadioButtons x:Name="ConfigurationPanel" SelectedIndex="0">
+                <RadioButton Content="Default" />
+                <RadioButton Content="Gravity" />
+                <RadioButton Content="Direct" />
+                <RadioButton Content="Basic" />
+            </RadioButtons>
+            
+            <!-- Navigation button -->
+            <Button Content="Navigate with Animation" 
+                    Click="NavigateButton_Click"
+                    Margin="0,12,0,0"
+                    HorizontalAlignment="Stretch"/>
+        </StackPanel>
+        
+        <!-- Content area with source element for animation -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Source element for connected animation -->
+            <Grid x:Name="SourceElement"
+                  Grid.Column="0"
+                  Width="150"
+                  Height="150"
+                  Margin="12"
+                  Background="{ThemeResource SystemAccentColor}"/>
+            
+            <!-- Additional content -->
+            <StackPanel Grid.Column="1" Margin="12">
+                <TextBlock Text="Source Page Content" 
+                           Style="{ThemeResource TitleTextBlockStyle}"/>
+                <TextBlock Text="Click the navigation button to see the connected animation with different configurations."
+                           TextWrapping="Wrap"
+                           Margin="0,6,0,0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

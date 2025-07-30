@@ -30,7 +30,10 @@
                 MaxHeight="700" />
         </controls:ControlExample>
 
-        <controls:ControlExample CSharpSource="Motion/ConnectedAnimation/ConnectedAnimationSample3_cs.txt" HeaderText="A simple connected animation">
+        <controls:ControlExample 
+            CSharpSource="Motion/ConnectedAnimation/ConnectedAnimationSample3_cs.txt" 
+            XamlSource="Motion/ConnectedAnimation/ConnectedAnimationSample3_xaml.txt"
+            HeaderText="A simple connected animation">
             <controls:ControlExample.Options>
                 <StackPanel>
                     <Button

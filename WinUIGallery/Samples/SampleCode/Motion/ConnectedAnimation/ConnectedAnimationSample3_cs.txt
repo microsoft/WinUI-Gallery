@@ -1,8 +1,48 @@
-﻿// Prepare animation on Source page
+﻿// Prepare animation on Source page with configuration
 private void NavigateButton_Click(object sender, RoutedEventArgs e)
 {
-    ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("ForwardConnectedAnimation", SourceElement);
+    var anim = ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("ForwardConnectedAnimation", SourceElement);
+    
+    // Apply different animation configurations based on selection
+    var config = GetAnimationConfiguration();
+    if (config != null)
+    {
+        anim.Configuration = config;
+    }
+    
     Frame.Navigate(typeof(DestinationPage), null, new SuppressNavigationTransitionInfo());
+}
+
+// Method to get the selected animation configuration
+private ConnectedAnimationConfiguration GetAnimationConfiguration()
+{
+    // Get the selected configuration from UI (e.g., RadioButtons)
+    var selectedConfig = GetSelectedConfigurationName(); // Implementation depends on your UI
+    
+    switch (selectedConfig)
+    {
+        case "Gravity":
+            return new GravityConnectedAnimationConfiguration();
+        case "Direct":
+            return new DirectConnectedAnimationConfiguration();
+        case "Basic":
+            return new BasicConnectedAnimationConfiguration();
+        default:
+            return null; // Uses default configuration
+    }
+}
+
+// Alternative: Create configurations directly
+private void ExampleConfigurationUsage()
+{
+    // Gravity configuration (default) - smooth, physics-based animation
+    var gravityConfig = new GravityConnectedAnimationConfiguration();
+    
+    // Direct configuration - straight-line animation, faster
+    var directConfig = new DirectConnectedAnimationConfiguration();
+    
+    // Basic configuration - simple animation without physics
+    var basicConfig = new BasicConnectedAnimationConfiguration();
 }
 
 // Start animation on Destination page
@@ -13,6 +53,19 @@ protected override void OnNavigatedTo(NavigationEventArgs e)
     var anim = ConnectedAnimationService.GetForCurrentView().GetAnimation("ForwardConnectedAnimation");
     if (anim != null)
     {
+        // Apply configuration on destination if needed
+        // (Usually done on source page, but can be modified here)
         anim.TryStart(DestinationElement);
+    }
+}
+
+// Example: Preparing return animation with configuration
+public void PrepareReturnAnimation(ConnectedAnimationConfiguration config)
+{
+    var anim = ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("BackwardConnectedAnimation", DestinationElement);
+    
+    if (config != null)
+    {
+        anim.Configuration = config;
     }
 }
