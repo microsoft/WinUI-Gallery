@@ -92,7 +92,8 @@
                 <TextBlock
                     x:Name="smallHeaderText"
                     Style="{StaticResource TitleLargeTextBlockStyle}"
-                    Text="{StaticResource AppTitleName}" />
+                    Text="{StaticResource AppTitleName}"
+                    AutomationProperties.HeadingLevel="Level1" />
             </StackPanel>
 
             <local:HorizontalScrollContainer Grid.Row="2" Margin="0,56,0,0">

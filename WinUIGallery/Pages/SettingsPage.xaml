@@ -30,7 +30,8 @@
             MaxWidth="1064"
             Margin="36,24,36,0"
             Style="{StaticResource TitleTextBlockStyle}"
-            Text="Settings" />
+            Text="Settings"
+            AutomationProperties.HeadingLevel="Level1" />
         <ScrollView
             Grid.Row="1"
             Padding="36,0,36,0"
