@@ -22,7 +22,7 @@
             ExampleHeight="Auto"
             HeaderText="A simple FlipView with items declared inline.">
             <controls:ControlExample.Example>
-                <FlipView Height="270" MaxWidth="400">
+                <FlipView Height="270" MaxWidth="400" AutomationProperties.LocalizedControlType="FlipView">
                     <Image AutomationProperties.Name="Cliff" Source="ms-appx:///Assets/SampleMedia/cliff.jpg" />
                     <Image AutomationProperties.Name="Grapes" Source="ms-appx:///Assets/SampleMedia/grapes.jpg" />
                     <Image AutomationProperties.Name="Rainier" Source="ms-appx:///Assets/SampleMedia/rainier.jpg" />
@@ -32,7 +32,7 @@
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;FlipView MaxWidth="400" Height="270"&gt;
+&lt;FlipView MaxWidth="400" Height="270" AutomationProperties.LocalizedControlType="FlipView"&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="Cliff"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/grapes.jpg" AutomationProperties.Name="Grapes"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/rainier.jpg" AutomationProperties.Name="Rainier"/&gt;
@@ -49,6 +49,7 @@
                     MaxWidth="400"
                     BorderBrush="Black"
                     BorderThickness="1"
+                    AutomationProperties.LocalizedControlType="FlipView"
                     ItemsSource="{x:Bind Items, Mode=OneWay}">
                     <FlipView.ItemTemplate>
                         <DataTemplate x:DataType="models:ControlInfoDataItem">
@@ -81,7 +82,7 @@
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;FlipView MaxWidth="400" Height="180" BorderBrush="Black" BorderThickness="1" ItemsSource="{x:Bind Items, Mode=OneWay}"&gt;
+&lt;FlipView MaxWidth="400" Height="180" BorderBrush="Black" BorderThickness="1" AutomationProperties.LocalizedControlType="FlipView" ItemsSource="{x:Bind Items, Mode=OneWay}"&gt;
     &lt;FlipView.ItemTemplate&gt;
         &lt;DataTemplate x:DataType="data:ControlInfoDataItem"&gt;
             &lt;Grid&gt;
@@ -98,7 +99,7 @@
         </controls:ControlExample>
         <controls:ControlExample x:Name="Example3" HeaderText="Vertical FlipView">
             <controls:ControlExample.Example>
-                <FlipView Height="270" MaxWidth="400">
+                <FlipView Height="270" MaxWidth="400" AutomationProperties.LocalizedControlType="FlipView">
                     <Image AutomationProperties.Name="Cliff" Source="ms-appx:///Assets/SampleMedia/cliff.jpg" />
                     <Image AutomationProperties.Name="Grapes" Source="ms-appx:///Assets/SampleMedia/grapes.jpg" />
                     <Image AutomationProperties.Name="Rainier" Source="ms-appx:///Assets/SampleMedia/rainier.jpg" />
@@ -113,7 +114,7 @@
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;FlipView MaxWidth="400" Height="270"&gt;
+&lt;FlipView MaxWidth="400" Height="270" AutomationProperties.LocalizedControlType="FlipView"&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="Cliff"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/grapes.jpg" AutomationProperties.Name="Grapes"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/rainier.jpg" AutomationProperties.Name="Rainier"/&gt;
@@ -124,7 +125,7 @@
                 &lt;VirtualizingStackPanel Orientation="Vertical"/&gt;
             &lt;/ItemsPanelTemplate&gt;
         &lt;/FlipView.ItemsPanel&gt;
-&lt;FlipView&gt;
+&lt;/FlipView&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>
