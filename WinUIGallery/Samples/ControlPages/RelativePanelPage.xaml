@@ -18,48 +18,262 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <controls:ControlExample
-        VerticalAlignment="Top"
-        ExampleHeight="Auto"
-        HeaderText="A RelativePanel control.">
-        <RelativePanel Width="300">
-            <Rectangle
-                x:Name="Rectangle1"
-                Width="50"
-                Height="50"
-                Fill="Red" />
-            <Rectangle
-                x:Name="Rectangle2"
-                Width="50"
-                Height="50"
-                Margin="8,0,0,0"
-                Fill="Blue"
-                RelativePanel.RightOf="Rectangle1" />
-            <Rectangle
-                x:Name="Rectangle3"
-                Width="50"
-                Height="50"
-                Fill="Green"
-                RelativePanel.AlignRightWithPanel="True" />
-            <Rectangle
-                x:Name="Rectangle4"
-                Width="50"
-                Height="50"
-                Margin="0,8,0,0"
-                Fill="Yellow"
-                RelativePanel.AlignHorizontalCenterWith="Rectangle3"
-                RelativePanel.Below="Rectangle3" />
-        </RelativePanel>
-        <controls:ControlExample.Xaml>
-            <x:String xml:space="preserve">
-&lt;RelativePanel  Width="300"&gt;
+    <StackPanel>
+        <RichTextBlock Margin="0,0,0,20">
+            <Paragraph>
+                <Run FontWeight="SemiBold">RelativePanel</Run> positions child elements by defining relationships between elements and in relation to the panel. Unlike StackPanel (which arranges elements sequentially) or Grid (which uses rows and columns), RelativePanel creates flexible layouts through element relationships.
+            </Paragraph>
+        </RichTextBlock>
+
+        <controls:ControlExample
+            VerticalAlignment="Top"
+            ExampleHeight="Auto"
+            HeaderText="Basic element positioning">
+            <RelativePanel Width="300" Height="200" Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+                <Rectangle
+                    x:Name="Rectangle1"
+                    Width="50"
+                    Height="50"
+                    Fill="Red" />
+                <Rectangle
+                    x:Name="Rectangle2"
+                    Width="50"
+                    Height="50"
+                    Margin="8,0,0,0"
+                    Fill="Blue"
+                    RelativePanel.RightOf="Rectangle1" />
+                <Rectangle
+                    x:Name="Rectangle3"
+                    Width="50"
+                    Height="50"
+                    Fill="Green"
+                    RelativePanel.AlignRightWithPanel="True" />
+                <Rectangle
+                    x:Name="Rectangle4"
+                    Width="50"
+                    Height="50"
+                    Margin="0,8,0,0"
+                    Fill="Yellow"
+                    RelativePanel.AlignHorizontalCenterWith="Rectangle3"
+                    RelativePanel.Below="Rectangle3" />
+            </RelativePanel>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;RelativePanel Width="300" Height="200"&gt;
+    &lt;!-- Red rectangle positioned at default (0,0) --&gt;
     &lt;Rectangle x:Name="Rectangle1" Fill="Red" Height="50" Width="50"/&gt;
-    &lt;Rectangle x:Name="Rectangle2" Fill="Blue" Height="50" Width="50" RelativePanel.RightOf="Rectangle1" Margin="8,0,0,0"/&gt;
-    &lt;Rectangle x:Name="Rectangle3" Fill="Green" Height="50" Width="50" RelativePanel.AlignRightWithPanel="True"/&gt;
-    &lt;Rectangle x:Name="Rectangle4" Fill="Yellow" Height="50" Width="50" RelativePanel.Below="Rectangle3" RelativePanel.AlignHorizontalCenterWith="Rectangle3" Margin="0,8,0,0"/&gt;
+    
+    &lt;!-- Blue rectangle positioned to the right of red rectangle --&gt;
+    &lt;Rectangle x:Name="Rectangle2" Fill="Blue" Height="50" Width="50" 
+               RelativePanel.RightOf="Rectangle1" Margin="8,0,0,0"/&gt;
+    
+    &lt;!-- Green rectangle aligned to right edge of panel --&gt;
+    &lt;Rectangle x:Name="Rectangle3" Fill="Green" Height="50" Width="50" 
+               RelativePanel.AlignRightWithPanel="True"/&gt;
+    
+    &lt;!-- Yellow rectangle below green, horizontally centered with green --&gt;
+    &lt;Rectangle x:Name="Rectangle4" Fill="Yellow" Height="50" Width="50" 
+               RelativePanel.Below="Rectangle3" 
+               RelativePanel.AlignHorizontalCenterWith="Rectangle3" 
+               Margin="0,8,0,0"/&gt;
 &lt;/RelativePanel&gt;
-            </x:String>
-        </controls:ControlExample.Xaml>
-    </controls:ControlExample>
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            VerticalAlignment="Top"
+            ExampleHeight="Auto"
+            HeaderText="Panel alignment properties">
+            <RelativePanel Width="300" Height="200" Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+                <Rectangle
+                    x:Name="TopLeft"
+                    Width="40"
+                    Height="40"
+                    Fill="Purple"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    RelativePanel.AlignTopWithPanel="True" />
+                <Rectangle
+                    x:Name="TopCenter"
+                    Width="40"
+                    Height="40"
+                    Fill="Orange"
+                    RelativePanel.AlignTopWithPanel="True"
+                    RelativePanel.AlignHorizontalCenterWithPanel="True" />
+                <Rectangle
+                    x:Name="Center"
+                    Width="40"
+                    Height="40"
+                    Fill="Pink"
+                    RelativePanel.AlignHorizontalCenterWithPanel="True"
+                    RelativePanel.AlignVerticalCenterWithPanel="True" />
+                <Rectangle
+                    x:Name="BottomRight"
+                    Width="40"
+                    Height="40"
+                    Fill="Cyan"
+                    RelativePanel.AlignBottomWithPanel="True"
+                    RelativePanel.AlignRightWithPanel="True" />
+            </RelativePanel>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;RelativePanel Width="300" Height="200"&gt;
+    &lt;!-- Top-left corner --&gt;
+    &lt;Rectangle Fill="Purple" Height="40" Width="40"
+               RelativePanel.AlignLeftWithPanel="True"
+               RelativePanel.AlignTopWithPanel="True" /&gt;
+    
+    &lt;!-- Top-center --&gt;
+    &lt;Rectangle Fill="Orange" Height="40" Width="40"
+               RelativePanel.AlignTopWithPanel="True"
+               RelativePanel.AlignHorizontalCenterWithPanel="True" /&gt;
+    
+    &lt;!-- Perfect center --&gt;
+    &lt;Rectangle Fill="Pink" Height="40" Width="40"
+               RelativePanel.AlignHorizontalCenterWithPanel="True"
+               RelativePanel.AlignVerticalCenterWithPanel="True" /&gt;
+    
+    &lt;!-- Bottom-right corner --&gt;
+    &lt;Rectangle Fill="Cyan" Height="40" Width="40"
+               RelativePanel.AlignBottomWithPanel="True"
+               RelativePanel.AlignRightWithPanel="True" /&gt;
+&lt;/RelativePanel&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            VerticalAlignment="Top"
+            ExampleHeight="Auto"
+            HeaderText="Conflicting relationships">
+            <StackPanel Spacing="12">
+                <RichTextBlock>
+                    <Paragraph>
+                        <Run>When conflicting positioning rules are applied, RelativePanel resolves them using a priority system. Panel alignment properties take precedence over element-to-element relationships.</Run>
+                    </Paragraph>
+                </RichTextBlock>
+                <RelativePanel Width="300" Height="150" Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+                    <Rectangle
+                        x:Name="Anchor"
+                        Width="60"
+                        Height="40"
+                        Fill="Gray"
+                        RelativePanel.AlignHorizontalCenterWithPanel="True"
+                        RelativePanel.AlignVerticalCenterWithPanel="True" />
+                    <Rectangle
+                        x:Name="Conflicted"
+                        Width="50"
+                        Height="30"
+                        Fill="Red"
+                        RelativePanel.LeftOf="Anchor"
+                        RelativePanel.AlignRightWithPanel="True" />
+                    <TextBlock
+                        x:Name="Label"
+                        Text="Conflicted element"
+                        RelativePanel.Below="Conflicted"
+                        RelativePanel.AlignLeftWith="Conflicted"
+                        FontSize="12" />
+                </RelativePanel>
+            </StackPanel>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;RelativePanel Width="300" Height="150"&gt;
+    &lt;!-- Anchor element in center --&gt;
+    &lt;Rectangle x:Name="Anchor" Fill="Gray" Height="40" Width="60"
+               RelativePanel.AlignHorizontalCenterWithPanel="True"
+               RelativePanel.AlignVerticalCenterWithPanel="True" /&gt;
+    
+    &lt;!-- Conflicting rules: LeftOf="Anchor" vs AlignRightWithPanel="True" --&gt;
+    &lt;!-- Panel alignment wins, element appears at right edge --&gt;
+    &lt;Rectangle x:Name="Conflicted" Fill="Red" Height="30" Width="50"
+               RelativePanel.LeftOf="Anchor"
+               RelativePanel.AlignRightWithPanel="True" /&gt;
+    
+    &lt;TextBlock Text="Conflicted element"
+               RelativePanel.Below="Conflicted"
+               RelativePanel.AlignLeftWith="Conflicted" /&gt;
+&lt;/RelativePanel&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            VerticalAlignment="Top"
+            ExampleHeight="Auto"
+            HeaderText="Interactive positioning">
+            <RelativePanel x:Name="InteractivePanel" Width="300" Height="200" Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+                <Rectangle
+                    x:Name="FixedElement"
+                    Width="60"
+                    Height="40"
+                    Fill="LightGray"
+                    RelativePanel.AlignHorizontalCenterWithPanel="True"
+                    RelativePanel.AlignVerticalCenterWithPanel="True" />
+                <TextBlock
+                    Text="Fixed"
+                    FontSize="12"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    RelativePanel.AlignHorizontalCenterWith="FixedElement"
+                    RelativePanel.AlignVerticalCenterWith="FixedElement" />
+                <Rectangle
+                    x:Name="MovableElement"
+                    Width="50"
+                    Height="30"
+                    Fill="DodgerBlue" />
+            </RelativePanel>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <ComboBox
+                        x:Name="PositionComboBox"
+                        Header="Position relative to gray element"
+                        PlaceholderText="Select position"
+                        SelectionChanged="PositionComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Above" Tag="Above" />
+                        <ComboBoxItem Content="Below" Tag="Below" />
+                        <ComboBoxItem Content="Left of" Tag="LeftOf" />
+                        <ComboBoxItem Content="Right of" Tag="RightOf" />
+                    </ComboBox>
+                    
+                    <ComboBox
+                        x:Name="AlignmentComboBox"
+                        Header="Panel alignment"
+                        PlaceholderText="Select alignment"
+                        SelectionChanged="AlignmentComboBox_SelectionChanged">
+                        <ComboBoxItem Content="None" Tag="None" />
+                        <ComboBoxItem Content="Top" Tag="Top" />
+                        <ComboBoxItem Content="Bottom" Tag="Bottom" />
+                        <ComboBoxItem Content="Left" Tag="Left" />
+                        <ComboBoxItem Content="Right" Tag="Right" />
+                        <ComboBoxItem Content="Center Horizontal" Tag="CenterH" />
+                        <ComboBoxItem Content="Center Vertical" Tag="CenterV" />
+                    </ComboBox>
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;RelativePanel Width="300" Height="200"&gt;
+    &lt;!-- Fixed reference element --&gt;
+    &lt;Rectangle x:Name="FixedElement" Fill="LightGray" Height="40" Width="60"
+               RelativePanel.AlignHorizontalCenterWithPanel="True"
+               RelativePanel.AlignVerticalCenterWithPanel="True" /&gt;
+    
+    &lt;!-- Movable element with dynamic positioning --&gt;
+    &lt;Rectangle x:Name="MovableElement" Fill="DodgerBlue" Height="30" Width="50"
+               $(PositionProperty)="$(PositionValue)"
+               $(AlignmentProperty)="$(AlignmentValue)" /&gt;
+&lt;/RelativePanel&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="PositionProperty" Value="{x:Bind PositionProperty, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="PositionValue" Value="{x:Bind PositionValue, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="AlignmentProperty" Value="{x:Bind AlignmentProperty, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="AlignmentValue" Value="{x:Bind AlignmentValue, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+    </StackPanel>
 
 </Page>
