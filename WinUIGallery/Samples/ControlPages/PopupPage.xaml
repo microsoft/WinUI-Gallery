@@ -22,25 +22,18 @@
                         HorizontalOffset="{x:Bind HorizontalOffset.Value, Mode=OneWay}"
                         IsLightDismissEnabled="{x:Bind IsLightDismissEnabledToggleSwitch.IsOn, Mode=OneWay}"
                         VerticalOffset="{x:Bind VerticalOffset.Value, Mode=OneWay}">
-                        <Border
-                            Width="200"
-                            Height="160"
-                            Padding="24"
+                        <Grid
+                            MinWidth="240"
+                            Padding="16"
                             Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"
                             BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
                             BorderThickness="1"
                             CornerRadius="{StaticResource OverlayCornerRadius}">
-                            <StackPanel
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Spacing="8">
-                                <TextBlock
-                                    HorizontalAlignment="Center"
-                                    FontSize="16"
-                                    Text="Simple Popup" />
+                            <StackPanel Spacing="8">
+                                <TextBlock FontSize="16" Text="Simple popup" />
                                 <Button Click="ClosePopupClicked" Content="Close" />
                             </StackPanel>
-                        </Border>
+                        </Grid>
                     </Popup>
                 </Grid>
             </controls:ControlExample.Example>
