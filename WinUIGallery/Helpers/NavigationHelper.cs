@@ -55,7 +55,7 @@ namespace WinUIGallery.Helpers;
 /// </code>
 /// </example>
 [Windows.Foundation.Metadata.WebHostHidden]
-public class NavigationHelper : DependencyObject
+public partial class NavigationHelper : DependencyObject
 {
     private Page Page { get; set; }
     private Frame Frame { get { return this.Page.Frame; } }
@@ -160,7 +160,7 @@ public class NavigationHelper : DependencyObject
 /// </code>
 /// </example>
 [Windows.Foundation.Metadata.WebHostHidden]
-public class RootFrameNavigationHelper
+public partial class RootFrameNavigationHelper
 {
     private Frame Frame { get; set; }
     private NavigationView CurrentNavView { get; set; }
@@ -299,7 +299,7 @@ public delegate void SaveStateEventHandler(object sender, SaveStateEventArgs e);
 /// <summary>
 /// Class used to hold the event data required when a page attempts to load state.
 /// </summary>
-public class LoadStateEventArgs : EventArgs
+public partial class LoadStateEventArgs : EventArgs
 {
     /// <summary>
     /// The parameter value passed to <see cref="Frame.Navigate(Type, object)"/>
@@ -333,7 +333,7 @@ public class LoadStateEventArgs : EventArgs
 /// <summary>
 /// Class used to hold the event data required when a page attempts to save state.
 /// </summary>
-public class SaveStateEventArgs : EventArgs
+public partial class SaveStateEventArgs : EventArgs
 {
     /// <summary>
     /// An empty dictionary to be populated with serializable state.

@@ -13,7 +13,7 @@ using System.Linq;
 using Windows.ApplicationModel.Activation;
 using WinUIGallery.Helpers;
 using WinUIGallery.Pages;
-using static WinUIGallery.Helpers.Win32;
+using static WinUIGallery.Helpers.NativeMethods;
 
 namespace WinUIGallery;
 
@@ -23,8 +23,6 @@ namespace WinUIGallery;
 sealed partial class App : Application
 {
     internal static MainWindow MainWindow { get; private set; } = null!;
-    private static int registeredKeyPressedHook = 0;
-    private HookProc keyEventHook;
 
     /// <summary>
     /// Initializes the singleton Application object. This is the first line of authored code
@@ -55,8 +53,7 @@ sealed partial class App : Application
         }
 #endif
 
-        keyEventHook = KeyEventHook;
-        registeredKeyPressedHook = SetWindowKeyHook(keyEventHook);
+        SetWindowKeyHook();
 
         EnsureWindow();
 
@@ -64,16 +61,6 @@ sealed partial class App : Application
         {
             BadgeNotificationManager.Current.ClearBadge();
         };
-    }
-
-    private int KeyEventHook(int nCode, IntPtr wParam, IntPtr lParam)
-    {
-        if (nCode >= 0 && IsKeyDownHook(lParam))
-        {
-            RootFrameNavigationHelper.RaiseKeyPressed((uint)wParam);
-        }
-
-        return CallNextHookEx(registeredKeyPressedHook, nCode, wParam, lParam);
     }
 
     private void DebugSettings_BindingFailed(object sender, BindingFailedEventArgs e)
