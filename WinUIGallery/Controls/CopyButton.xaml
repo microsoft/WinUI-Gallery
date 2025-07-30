@@ -148,6 +148,7 @@
                             x:Name="ContentPresenter"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            AutomationProperties.AccessibilityView="Raw"
                             Content="{TemplateBinding Content}"
                             ContentTemplate="{TemplateBinding ContentTemplate}"
                             ContentTransitions="{TemplateBinding ContentTransitions}"
@@ -161,13 +162,17 @@
                         </ContentPresenter>
                         <ContentPresenter
                             x:Name="CopySuccessGlyph"
+                            AutomationProperties.AccessibilityView="Raw"
                             Foreground="{TemplateBinding Foreground}"
                             Opacity="0"
                             RenderTransformOrigin=".5,.5">
                             <ContentPresenter.RenderTransform>
                                 <ScaleTransform x:Name="CopyToClipboardSuccessTextScaleTransform" />
                             </ContentPresenter.RenderTransform>
-                            <FontIcon FontSize="{TemplateBinding FontSize}" Glyph="&#xE73E;" />
+                            <FontIcon
+                                AutomationProperties.AccessibilityView="Raw"
+                                FontSize="{TemplateBinding FontSize}"
+                                Glyph="&#xE73E;" />
                         </ContentPresenter>
 
                         <VisualStateManager.VisualStateGroups>
