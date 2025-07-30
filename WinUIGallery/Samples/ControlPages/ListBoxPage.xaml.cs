@@ -1,29 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using System;
-using System.Collections.Generic;
 
 namespace WinUIGallery.ControlPages;
 
 public sealed partial class ListBoxPage : Page
 {
-    private List<Tuple<string, FontFamily>> _fonts = new List<Tuple<string, FontFamily>>()
-    {
-        new Tuple<string, FontFamily>("Arial", new FontFamily("Arial")),
-        new Tuple<string, FontFamily>("Comic Sans MS", new FontFamily("Comic Sans MS")),
-        new Tuple<string, FontFamily>("Courier New", new FontFamily("Courier New")),
-        new Tuple<string, FontFamily>("Segoe UI", new FontFamily("Segoe UI")),
-        new Tuple<string, FontFamily>("Times New Roman", new FontFamily("Times New Roman"))
-    };
-
-    public List<Tuple<string, FontFamily>> Fonts
-    {
-        get { return _fonts; }
-    }
     public ListBoxPage()
     {
         this.InitializeComponent();
@@ -47,10 +31,5 @@ public sealed partial class ListBoxPage : Page
                 Control1Output.Fill = new SolidColorBrush(Microsoft.UI.Colors.Red);
                 break;
         }
-    }
-
-    private void ListBox2_Loaded(object sender, RoutedEventArgs e)
-    {
-        ListBox2.SelectedIndex = 2;
     }
 }

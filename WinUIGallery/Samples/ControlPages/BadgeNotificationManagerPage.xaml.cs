@@ -6,13 +6,12 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.BadgeNotifications;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace WinUIGallery.ControlPages;
 
 public sealed partial class BadgeNotificationManagerPage : Page
 {
-    private IReadOnlyList<BadgeNotificationGlyph> badgeNotificationGlyphs = Enum.GetValues(typeof(BadgeNotificationGlyph)).Cast<BadgeNotificationGlyph>().ToList();
+    private IReadOnlyList<BadgeNotificationGlyph> badgeNotificationGlyphs = new List<BadgeNotificationGlyph>(Enum.GetValues<BadgeNotificationGlyph>());
     private BadgeNotificationGlyph selectedGlyph = BadgeNotificationGlyph.Activity;
     private bool isBadgeSetted = false;
 
