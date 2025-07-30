@@ -91,7 +91,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <local:SampleThemeListener>
+            <local:SampleThemeListener IsTabStop="False">
                 <Grid
                     x:Name="ExampleContainer"
                     x:FieldModifier="Public"
