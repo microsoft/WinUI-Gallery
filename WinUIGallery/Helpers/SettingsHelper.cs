@@ -6,9 +6,11 @@ using System.IO;
 namespace WinUIGallery.Helpers;
 
 /// <summary>
-/// Provides utility methods for managing application settings, including operations for storing, retrieving,  and
-/// manipulating lists of strings in the application's local settings.
+/// Provides utility methods for initializing and saving application settings.
 /// </summary>
+/// <remarks>The <see cref="SettingsHelper"/> class is responsible for managing the application's configuration
+/// settings. It ensures that the necessary directories and configuration files are created and provides methods to
+/// initialize and persist the configuration.</remarks>
 public static partial class SettingsHelper
 {
     public static void Init()
