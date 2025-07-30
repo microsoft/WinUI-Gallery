@@ -12,7 +12,7 @@ public enum CounterMode
     Decrement
 }
 
-public sealed class CounterControl : Control
+public sealed partial class CounterControl : Control
 {
     public static readonly DependencyProperty CountProperty =
         DependencyProperty.Register(nameof(Count), typeof(int), typeof(CounterControl), new PropertyMetadata(0));
