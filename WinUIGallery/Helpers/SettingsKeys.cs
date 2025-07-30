@@ -5,7 +5,7 @@ namespace WinUIGallery.Helpers;
 /// <summary>
 /// Provides constant keys used for accessing application settings.
 /// </summary>
-public static class SettingsKeys
+public static partial class SettingsKeys
 {
     /// <summary>
     /// The key used to store or retrieve the selected application theme.
