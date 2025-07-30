@@ -4,8 +4,7 @@
 using System.Collections.Generic;
 
 namespace WinUIGallery.Helpers;
-
-class LanguageList
+partial class LanguageList
 {
     private List<Language> _languages;
     public List<Language> Languages
@@ -107,17 +106,5 @@ class LanguageList
         _languages.Add(new Language("Welsh", "cy"));
         _languages.Add(new Language("Wolof", "wo"));
 
-    }
-
-    public class Language
-    {
-        public string Name { get; set; }
-        public string Code { get; set; }
-
-        public Language(string name, string code)
-        {
-            Name = name;
-            Code = code;
-        }
     }
 }

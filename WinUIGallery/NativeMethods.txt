@@ -1,0 +1,16 @@
+﻿GetCurrentPackageFullName
+GetModuleHandle
+GetDpiForWindow
+CallWindowProc
+GetCurrentThreadId
+SetWindowsHookEx
+CallNextHookEx
+WaitForSingleObject
+ResetEvent
+OpenEvent
+CloseHandle
+GetCurrentProcessId
+GetCurrentThreadId
+IsDebuggerPresent
+DebugBreak
+GetActiveWindow
