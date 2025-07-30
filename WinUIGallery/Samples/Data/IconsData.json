@@ -6,7 +6,8 @@
       "menu",
       "hamburger",
       "line",
-      "three"
+      "three",
+      "symbol-icon"
     ]
   },
   {
@@ -75,7 +76,8 @@
       "marker",
       "destination",
       "place",
-      "position"
+      "position",
+      "symbol-icon"
     ]
   },
   {
@@ -159,7 +161,8 @@
       "pencil",
       "update",
       "create",
-      "draw"
+      "draw",
+      "symbol-icon"
     ]
   },
   {
@@ -169,7 +172,8 @@
       "+",
       "plus",
       "addition",
-      "new"
+      "new",
+      "symbol-icon"
     ]
   },
   {
@@ -181,7 +185,8 @@
       "stop",
       "exit",
       "abort",
-      "reject"
+      "reject",
+      "symbol-icon"
     ]
   },
   {
@@ -192,7 +197,8 @@
       "dots",
       "overflow",
       "menu",
-      "navigation"
+      "navigation",
+      "symbol-icon"
     ]
   },
   {
@@ -201,7 +207,8 @@
     "Tags": [
       "gear",
       "options",
-      "cog"
+      "cog",
+      "symbol-icon"
     ]
   },
   {
@@ -214,7 +221,8 @@
       "content",
       "camera",
       "recording",
-      "capture"
+      "capture",
+      "symbol-icon"
     ]
   },
   {
@@ -225,7 +233,8 @@
       "email",
       "delivery",
       "message",
-      "letter"
+      "letter",
+      "symbol-icon"
     ]
   },
   {
@@ -238,7 +247,8 @@
       "team",
       "organization",
       "contact",
-      "guest"
+      "guest",
+      "symbol-icon"
     ]
   },
   {
@@ -250,7 +260,8 @@
       "small screen",
       "cellular telephone",
       "apple",
-      "android"
+      "android",
+      "symbol-icon"
     ]
   },
   {
@@ -260,7 +271,8 @@
       "save",
       "share",
       "post",
-      "favorite"
+      "favorite",
+      "symbol-icon"
     ]
   },
   {
@@ -273,7 +285,8 @@
       "cart",
       "online",
       "currency",
-      "product"
+      "product",
+      "symbol-icon"
     ]
   },
   {
@@ -283,7 +296,8 @@
       "control",
       "playback",
       "start",
-      "begin"
+      "begin",
+      "symbol-icon"
     ]
   },
   {
@@ -293,7 +307,8 @@
       "link",
       "share",
       "web",
-      "internet"
+      "internet",
+      "symbol-icon"
     ]
   },
   {
@@ -302,7 +317,8 @@
     "Tags": [
       "dropdown",
       "sort",
-      "line"
+      "line",
+      "symbol-icon"
     ]
   },
   {
@@ -311,7 +327,8 @@
     "Tags": [
       "plugin",
       "square",
-      "stack"
+      "stack",
+      "symbol-icon"
     ]
   },
   {
@@ -321,7 +338,8 @@
       "zoom in",
       "zoom out",
       "magnifying glass",
-      "search"
+      "search",
+      "symbol-icon"
     ]
   },
   {
@@ -331,7 +349,8 @@
       "zoom in",
       "zoom out",
       "magnifying glass",
-      "search"
+      "search",
+      "symbol-icon"
     ]
   },
   {
@@ -342,7 +361,8 @@
       "voice",
       "record",
       "sound",
-      "speech"
+      "speech",
+      "symbol-icon"
     ]
   },
   {
@@ -352,7 +372,8 @@
       "magnifying glass",
       "zoom",
       "inspect",
-      "review"
+      "review",
+      "symbol-icon"
     ]
   },
   {
@@ -361,7 +382,8 @@
     "Tags": [
       "image",
       "photography",
-      "picture"
+      "picture",
+      "symbol-icon"
     ]
   },
   {
@@ -370,7 +392,8 @@
     "Tags": [
       "image",
       "photography",
-      "picture"
+      "picture",
+      "symbol-icon"
     ]
   },
   {
@@ -380,7 +403,8 @@
       "paper plane",
       "mail",
       "message",
-      "email"
+      "email",
+      "symbol-icon"
     ]
   },
   {
@@ -432,7 +456,8 @@
       "file",
       "sheet",
       "paper",
-      "text"
+      "text",
+      "symbol-icon"
     ]
   },
   {
@@ -443,7 +468,8 @@
       "next",
       "send",
       "right",
-      "proceed"
+      "proceed",
+      "symbol-icon"
     ]
   },
   {
@@ -454,7 +480,8 @@
       "previous",
       "return",
       "left",
-      "rewind"
+      "rewind",
+      "symbol-icon"
     ]
   },
   {
@@ -465,7 +492,8 @@
       "update",
       "restart",
       "circle",
-      "sync"
+      "sync",
+      "symbol-icon"
     ]
   },
   {
@@ -476,7 +504,8 @@
       "square",
       "forward",
       "right",
-      "send"
+      "send",
+      "symbol-icon"
     ]
   },
   {
@@ -517,7 +546,8 @@
       "alert",
       "breach",
       "shield",
-      "warning"
+      "warning",
+      "symbol-icon"
     ]
   },
   {
@@ -545,7 +575,8 @@
       "favorite",
       "highlight",
       "bookmark",
-      "like"
+      "like",
+      "symbol-icon"
     ]
   },
   {
@@ -556,7 +587,8 @@
       "favorite",
       "highlight",
       "bookmark",
-      "like"
+      "like",
+      "symbol-icon"
     ]
   },
   {
@@ -586,7 +618,8 @@
     "Name": "Remove",
     "Tags": [
       "-",
-      "delete"
+      "delete",
+      "symbol-icon"
     ]
   },
   {
@@ -649,7 +682,8 @@
       "arrow",
       "restore",
       "window",
-      "return"
+      "return",
+      "symbol-icon"
     ]
   },
   {
@@ -661,7 +695,8 @@
       "maximize",
       "view",
       "screen",
-      "zoom"
+      "zoom",
+      "symbol-icon"
     ]
   },
   {
@@ -764,7 +799,8 @@
       "copy",
       "fax",
       "office",
-      "ink"
+      "ink",
+      "symbol-icon"
     ]
   },
   {
@@ -773,7 +809,8 @@
     "Tags": [
       "arrow",
       "increase",
-      "rise"
+      "rise",
+      "symbol-icon"
     ]
   },
   {
@@ -803,7 +840,8 @@
       "can",
       "remove",
       "edit",
-      "byee"
+      "byee",
+      "symbol-icon"
     ]
   },
   {
@@ -813,7 +851,8 @@
       "floppy",
       "disk",
       "device",
-      "old"
+      "old",
+      "symbol-icon"
     ]
   },
   {
@@ -822,7 +861,8 @@
     "Tags": [
       "sound",
       "silence",
-      "volume"
+      "volume",
+      "symbol-icon"
     ]
   },
   {
@@ -1000,7 +1040,8 @@
       "type",
       "key",
       "device",
-      "digital"
+      "digital",
+      "symbol-icon"
     ]
   },
   {
@@ -1020,7 +1061,8 @@
       "sound",
       "audio",
       "level",
-      "speaker"
+      "speaker",
+      "symbol-icon"
     ]
   },
   {
@@ -1030,7 +1072,8 @@
       "control",
       "playback",
       "start",
-      "begin"
+      "begin",
+      "symbol-icon"
     ]
   },
   {
@@ -1039,7 +1082,8 @@
     "Tags": [
       "control",
       "playback",
-      "freeze"
+      "freeze",
+      "symbol-icon"
     ]
   },
   {
@@ -1081,7 +1125,8 @@
       "face",
       "smiley",
       "emote",
-      "feeling"
+      "feeling",
+      "symbol-icon"
     ]
   },
   {
@@ -1136,7 +1181,8 @@
       "web",
       "world",
       "earth",
-      "global"
+      "global",
+      "symbol-icon"
     ]
   },
   {
@@ -1169,7 +1215,8 @@
     "Code": "E778",
     "Name": "HangUp",
     "Tags": [
-      "phone"
+      "phone",
+      "symbol-icon"
     ]
   },
   {
@@ -1178,7 +1225,8 @@
     "Tags": [
       "person",
       "user",
-      "details"
+      "details",
+      "symbol-icon"
     ]
   },
   {
@@ -1189,7 +1237,8 @@
       "delete",
       "unattach",
       "clear",
-      "disengage"
+      "disengage",
+      "symbol-icon"
     ]
   },
   {
@@ -1197,7 +1246,8 @@
     "Name": "Contact",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "symbol-icon"
     ]
   },
   {
@@ -1209,7 +1259,8 @@
       "playback",
       "audio",
       "recording",
-      "message"
+      "message",
+      "symbol-icon"
     ]
   },
   {
@@ -1226,7 +1277,8 @@
     "Tags": [
       "clipboard",
       "copy",
-      "memory"
+      "memory",
+      "symbol-icon"
     ]
   },
   {
@@ -1235,7 +1287,8 @@
     "Tags": [
       "contacts",
       "directory",
-      "list"
+      "list",
+      "symbol-icon"
     ]
   },
   {
@@ -1284,7 +1337,8 @@
       "presentation",
       "gallery",
       "photos",
-      "show"
+      "show",
+      "symbol-icon"
     ]
   },
   {
@@ -1293,7 +1347,8 @@
     "Tags": [
       "time",
       "date",
-      "planning"
+      "planning",
+      "symbol-icon"
     ]
   },
   {
@@ -1321,7 +1376,8 @@
       "edit",
       "shorten",
       "clip",
-      "crop"
+      "crop",
+      "symbol-icon"
     ]
   },
   {
@@ -1329,7 +1385,8 @@
     "Name": "NewWindow",
     "Tags": [
       "open",
-      "launch"
+      "launch",
+      "symbol-icon"
     ]
   },
   {
@@ -1339,7 +1396,8 @@
       "floppy",
       "disk",
       "device",
-      "old"
+      "old",
+      "symbol-icon"
     ]
   },
   {
@@ -1411,7 +1469,8 @@
     "Tags": [
       "arrow",
       "restore",
-      "forward"
+      "forward",
+      "symbol-icon"
     ]
   },
   {
@@ -1421,14 +1480,16 @@
       "arrow",
       "revert",
       "back",
-      "cancel"
+      "cancel",
+      "symbol-icon"
     ]
   },
   {
     "Code": "E7A8",
     "Name": "Crop",
     "Tags": [
-      "cut"
+      "cut",
+      "symbol-icon"
     ]
   },
   {
@@ -1446,7 +1507,8 @@
       "associate",
       "file",
       "choose",
-      "viewer"
+      "viewer",
+      "symbol-icon"
     ]
   },
   {
@@ -1459,7 +1521,8 @@
       "canvas",
       "horizontal",
       "vertical",
-      "flip"
+      "flip",
+      "symbol-icon"
     ]
   },
   {
@@ -1476,7 +1539,9 @@
   {
     "Code": "E7B5",
     "Name": "SetlockScreen",
-    "Tags": []
+    "Tags": [
+      "symbol-icon"
+    ]
   },
   {
     "Code": "E7B7",
@@ -1486,7 +1551,8 @@
       "marker",
       "destination",
       "place",
-      "position"
+      "position",
+      "symbol-icon"
     ]
   },
   {
@@ -1564,7 +1630,8 @@
     "Tags": [
       "urgent",
       "important",
-      "look"
+      "look",
+      "symbol-icon"
     ]
   },
   {
@@ -1584,7 +1651,8 @@
       "file",
       "sheet",
       "paper",
-      "text"
+      "text",
+      "symbol-icon"
     ]
   },
   {
@@ -1609,7 +1677,8 @@
       "gallery",
       "images",
       "pictures",
-      "search"
+      "search",
+      "symbol-icon"
     ]
   },
   {
@@ -1647,7 +1716,8 @@
       "arrow",
       "interact",
       "click",
-      "hand"
+      "hand",
+      "symbol-icon"
     ]
   },
   {
@@ -1676,7 +1746,8 @@
       "marker",
       "edit",
       "draw",
-      "focus"
+      "focus",
+      "symbol-icon"
     ]
   },
   {
@@ -1733,7 +1804,8 @@
     "Code": "E7EE",
     "Name": "OtherUser",
     "Tags": [
-      "person"
+      "person",
+      "symbol-icon"
     ]
   },
   {
@@ -1743,7 +1815,8 @@
       "elevated",
       "permissions",
       "control",
-      "rights"
+      "rights",
+      "symbol-icon"
     ]
   },
   {
@@ -1754,7 +1827,8 @@
       "text",
       "caption",
       "speech",
-      "accessibility"
+      "accessibility",
+      "symbol-icon"
     ]
   },
   {
@@ -2007,7 +2081,8 @@
       "safety",
       "location",
       "space",
-      "wfh"
+      "wfh",
+      "symbol-icon"
     ]
   },
   {
@@ -2158,7 +2233,8 @@
       "history",
       "latest",
       "new",
-      "update"
+      "update",
+      "symbol-icon"
     ]
   },
   {
@@ -3055,7 +3131,8 @@
       "eye",
       "focus",
       "look",
-      "password"
+      "password",
+      "symbol-icon"
     ]
   },
   {
@@ -3075,7 +3152,8 @@
       "control",
       "playback",
       "start",
-      "begin"
+      "begin",
+      "symbol-icon"
     ]
   },
   {
@@ -3086,7 +3164,8 @@
       "skip",
       "jump",
       "fast forward",
-      "play"
+      "play",
+      "symbol-icon"
     ]
   },
   {
@@ -3098,7 +3177,8 @@
       "cancel",
       "delete",
       "remove",
-      "exit"
+      "exit",
+      "symbol-icon"
     ]
   },
   {
@@ -3109,7 +3189,8 @@
       "update",
       "refresh",
       "sync",
-      "refresh"
+      "refresh",
+      "symbol-icon"
     ]
   },
   {
@@ -3120,7 +3201,8 @@
       "file",
       "save",
       "retrieve",
-      "transfer"
+      "transfer",
+      "symbol-icon"
     ]
   },
   {
@@ -3132,7 +3214,8 @@
       "support",
       "guide",
       "assistance",
-      "info"
+      "info",
+      "symbol-icon"
     ]
   },
   {
@@ -3142,7 +3225,8 @@
       "file",
       "send",
       "transfer",
-      "cloud"
+      "cloud",
+      "symbol-icon"
     ]
   },
   {
@@ -3152,7 +3236,8 @@
       "face",
       "smiley",
       "emote",
-      "feeling"
+      "feeling",
+      "symbol-icon"
     ]
   },
   {
@@ -3164,7 +3249,8 @@
       "file",
       "sheet",
       "paper",
-      "text"
+      "text",
+      "symbol-icon"
     ]
   },
   {
@@ -3175,7 +3261,8 @@
       "leave",
       "message",
       "conversation",
-      "disconnect"
+      "disconnect",
+      "symbol-icon"
     ]
   },
   {
@@ -3188,7 +3275,8 @@
       "email",
       "delivery",
       "message",
-      "letter"
+      "letter",
+      "symbol-icon"
     ]
   },
   {
@@ -3200,7 +3288,8 @@
       "picture",
       "flip",
       "switch",
-      "direction"
+      "direction",
+      "symbol-icon"
     ]
   },
   {
@@ -3210,7 +3299,8 @@
       "sidebar",
       "hide",
       "exit",
-      "collapse"
+      "collapse",
+      "symbol-icon"
     ]
   },
   {
@@ -3220,7 +3310,8 @@
       "sidebar",
       "expand",
       "menu",
-      "show"
+      "show",
+      "symbol-icon"
     ]
   },
   {
@@ -3228,7 +3319,8 @@
     "Name": "PreviewLink",
     "Tags": [
       "content",
-      "block"
+      "block",
+      "symbol-icon"
     ]
   },
   {
@@ -3237,7 +3329,8 @@
     "Tags": [
       "image",
       "photography",
-      "picture"
+      "picture",
+      "symbol-icon"
     ]
   },
   {
@@ -3246,7 +3339,8 @@
     "Tags": [
       "zoom out",
       "magnifying glass",
-      "search"
+      "search",
+      "symbol-icon"
     ]
   },
   {
@@ -3256,7 +3350,8 @@
       "read",
       "list",
       "bullet points",
-      "formatting"
+      "formatting",
+      "symbol-icon"
     ]
   },
   {
@@ -3267,7 +3362,8 @@
       "file",
       "sheet",
       "paper",
-      "text"
+      "text",
+      "symbol-icon"
     ]
   },
   {
@@ -3280,7 +3376,8 @@
       "paper",
       "text",
       "secure",
-      "lock"
+      "lock",
+      "symbol-icon"
     ]
   },
   {
@@ -3299,7 +3396,8 @@
     "Name": "MailFill",
     "Tags": [
       "email",
-      "message"
+      "message",
+      "symbol-icon"
     ]
   },
   {
@@ -3308,7 +3406,8 @@
     "Tags": [
       "list",
       "browse",
-      "expand"
+      "expand",
+      "symbol-icon"
     ]
   },
   {
@@ -3319,7 +3418,8 @@
       "camera",
       "conversation",
       "meeting",
-      "connect"
+      "connect",
+      "symbol-icon"
     ]
   },
   {
@@ -3331,7 +3431,8 @@
       "swap",
       "toggle",
       "shift",
-      "alternate"
+      "alternate",
+      "symbol-icon"
     ]
   },
   {
@@ -3349,7 +3450,8 @@
       "change",
       "modify",
       "label",
-      "update"
+      "update",
+      "symbol-icon"
     ]
   },
   {
@@ -3360,7 +3462,8 @@
       "start",
       "move",
       "launch",
-      "begin"
+      "begin",
+      "symbol-icon"
     ]
   },
   {
@@ -3381,7 +3484,8 @@
     "Tags": [
       "cloud",
       "connect",
-      "device"
+      "device",
+      "symbol-icon"
     ]
   },
   {
@@ -3404,7 +3508,8 @@
       "random",
       "mix",
       "rearrange",
-      "order"
+      "order",
+      "symbol-icon"
     ]
   },
   {
@@ -3424,7 +3529,8 @@
       "selection",
       "check",
       "checkmark",
-      "check multiple"
+      "check multiple",
+      "symbol-icon"
     ]
   },
   {
@@ -3433,7 +3539,8 @@
     "Tags": [
       "rotate",
       "horizontal",
-      "vertical"
+      "vertical",
+      "symbol-icon"
     ]
   },
   {
@@ -3444,7 +3551,8 @@
       "upload",
       "file",
       "add",
-      "transfer"
+      "transfer",
+      "symbol-icon"
     ]
   },
   {
@@ -3456,7 +3564,8 @@
       "upload",
       "file",
       "add",
-      "transfer"
+      "transfer",
+      "symbol-icon"
     ]
   },
   {
@@ -3466,7 +3575,8 @@
       "collection",
       "directory",
       "file",
-      "storage"
+      "storage",
+      "symbol-icon"
     ]
   },
   {
@@ -3475,7 +3585,8 @@
     "Tags": [
       "capture",
       "stream",
-      "meeting"
+      "meeting",
+      "symbol-icon"
     ]
   },
   {
@@ -3490,7 +3601,8 @@
       "gallery",
       "canvas",
       "visual",
-      "view"
+      "view",
+      "symbol-icon"
     ]
   },
   {
@@ -3507,7 +3619,8 @@
       "visual",
       "view",
       "label",
-      "text"
+      "text",
+      "symbol-icon"
     ]
   },
   {
@@ -3529,7 +3642,8 @@
       "bullet points",
       "formatting",
       "display",
-      "view"
+      "view",
+      "symbol-icon"
     ]
   },
   {
@@ -3540,7 +3654,8 @@
       "message",
       "text",
       "notification",
-      "bubble"
+      "bubble",
+      "symbol-icon"
     ]
   },
   {
@@ -3560,7 +3675,8 @@
     "Tags": [
       "time",
       "date",
-      "planning"
+      "planning",
+      "symbol-icon"
     ]
   },
   {
@@ -3569,7 +3685,8 @@
     "Tags": [
       "time",
       "date",
-      "planning"
+      "planning",
+      "symbol-icon"
     ]
   },
   {
@@ -3580,7 +3697,8 @@
       "symbols",
       "alphabet",
       "writing",
-      "glyphs"
+      "glyphs",
+      "symbol-icon"
     ]
   },
   {
@@ -3592,7 +3710,8 @@
       "delivery",
       "message",
       "respond",
-      "letter"
+      "letter",
+      "symbol-icon"
     ]
   },
   {
@@ -3604,7 +3723,8 @@
       "email",
       "delivery",
       "message",
-      "letter"
+      "letter",
+      "symbol-icon"
     ]
   },
   {
@@ -3613,7 +3733,8 @@
     "Tags": [
       "email",
       "recipient",
-      "hidden"
+      "hidden",
+      "symbol-icon"
     ]
   },
   {
@@ -3624,7 +3745,8 @@
       "bcc",
       "hide",
       "privacy",
-      "recipient"
+      "recipient",
+      "symbol-icon"
     ]
   },
   {
@@ -3641,7 +3763,8 @@
       "edit",
       "trim",
       "divide",
-      "scissors"
+      "scissors",
+      "symbol-icon"
     ]
   },
   {
@@ -3659,7 +3782,8 @@
     "Tags": [
       "share",
       "paste",
-      "clipboard"
+      "clipboard",
+      "symbol-icon"
     ]
   },
   {
@@ -3671,7 +3795,8 @@
       "highlight",
       "urgent",
       "attention",
-      "critical"
+      "critical",
+      "symbol-icon"
     ]
   },
   {
@@ -3683,7 +3808,8 @@
       "delivery",
       "message",
       "respond",
-      "letter"
+      "letter",
+      "symbol-icon"
     ]
   },
   {
@@ -3695,7 +3821,8 @@
       "order",
       "filter",
       "organize",
-      "sequence"
+      "sequence",
+      "symbol-icon"
     ]
   },
   {
@@ -3717,7 +3844,8 @@
     "Tags": [
       "remove",
       "unmount",
-      "eject"
+      "eject",
+      "symbol-icon"
     ]
   },
   {
@@ -3726,7 +3854,8 @@
     "Tags": [
       "network",
       "connect",
-      "link"
+      "link",
+      "symbol-icon"
     ]
   },
   {
@@ -3735,7 +3864,8 @@
     "Tags": [
       "status",
       "availability",
-      "online"
+      "online",
+      "symbol-icon"
     ]
   },
   {
@@ -3748,7 +3878,8 @@
       "urgent",
       "priority",
       "focus",
-      "high"
+      "high",
+      "symbol-icon"
     ]
   },
   {
@@ -3760,7 +3891,8 @@
       "time",
       "planning",
       "jump",
-      "current"
+      "current",
+      "symbol-icon"
     ]
   },
   {
@@ -3771,7 +3903,8 @@
       "style",
       "size",
       "lettering",
-      "typography"
+      "typography",
+      "symbol-icon"
     ]
   },
   {
@@ -3782,7 +3915,8 @@
       "style",
       "size",
       "lettering",
-      "typography"
+      "typography",
+      "symbol-icon"
     ]
   },
   {
@@ -3790,7 +3924,8 @@
     "Name": "Contact2",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "symbol-icon"
     ]
   },
   {
@@ -3810,7 +3945,8 @@
       "music",
       "sound",
       "note",
-      "play"
+      "play",
+      "symbol-icon"
     ]
   },
   {
@@ -3820,7 +3956,8 @@
       "key",
       "security",
       "password",
-      "access"
+      "access",
+      "symbol-icon"
     ]
   },
   {
@@ -3830,7 +3967,8 @@
       "arrow",
       "settings",
       "off",
-      "pause"
+      "pause",
+      "symbol-icon"
     ]
   },
   {
@@ -3840,7 +3978,8 @@
       "star",
       "remove",
       "unlike",
-      "delete"
+      "delete",
+      "symbol-icon"
     ]
   },
   {
@@ -3849,7 +3988,8 @@
     "Tags": [
       "folder",
       "directory",
-      "file"
+      "file",
+      "symbol-icon"
     ]
   },
   {
@@ -3860,7 +4000,8 @@
       "style",
       "slant",
       "font",
-      "emphasis"
+      "emphasis",
+      "symbol-icon"
     ]
   },
   {
@@ -3870,7 +4011,8 @@
       "text",
       "style",
       "font",
-      "emphasis"
+      "emphasis",
+      "symbol-icon"
     ]
   },
   {
@@ -3881,7 +4023,8 @@
       "style",
       "strong",
       "font",
-      "emphasis"
+      "emphasis",
+      "symbol-icon"
     ]
   },
   {
@@ -3890,7 +4033,8 @@
     "Tags": [
       "file",
       "organize",
-      "transfer"
+      "transfer",
+      "symbol-icon"
     ]
   },
   {
@@ -3899,7 +4043,8 @@
     "Tags": [
       "reaction",
       "feedback",
-      "vote"
+      "vote",
+      "symbol-icon"
     ]
   },
   {
@@ -3910,7 +4055,8 @@
       "positive",
       "approve",
       "favor",
-      "agree"
+      "agree",
+      "symbol-icon"
     ]
   },
   {
@@ -3921,7 +4067,8 @@
       "negative",
       "reject",
       "disapprove",
-      "oppose"
+      "oppose",
+      "symbol-icon"
     ]
   },
   {
@@ -3930,7 +4077,8 @@
     "Tags": [
       "text",
       "justify",
-      "position"
+      "position",
+      "symbol-icon"
     ]
   },
   {
@@ -3940,7 +4088,8 @@
       "text",
       "justify",
       "position",
-      "middle"
+      "middle",
+      "symbol-icon"
     ]
   },
   {
@@ -3949,7 +4098,8 @@
     "Tags": [
       "text",
       "justify",
-      "position"
+      "position",
+      "symbol-icon"
     ]
   },
   {
@@ -3959,7 +4109,8 @@
       "document",
       "page",
       "view",
-      "access"
+      "access",
+      "symbol-icon"
     ]
   },
   {
@@ -3968,7 +4119,8 @@
     "Tags": [
       "check",
       "checkmark",
-      "check multiple"
+      "check multiple",
+      "symbol-icon"
     ]
   },
   {
@@ -3979,7 +4131,8 @@
       "size",
       "smaller",
       "reduce",
-      "adjust"
+      "adjust",
+      "symbol-icon"
     ]
   },
   {
@@ -3990,7 +4143,8 @@
       "size",
       "larger",
       "enlarge",
-      "adjust"
+      "adjust",
+      "symbol-icon"
     ]
   },
   {
@@ -3998,7 +4152,8 @@
     "Name": "FontSize",
     "Tags": [
       "text",
-      "adjust"
+      "adjust",
+      "symbol-icon"
     ]
   },
   {
@@ -4010,7 +4165,8 @@
       "small screen",
       "cellular telephone",
       "apple",
-      "android"
+      "android",
+      "symbol-icon"
     ]
   },
   {
@@ -4021,7 +4177,8 @@
       "repost",
       "forward",
       "distribute",
-      "spread"
+      "spread",
+      "symbol-icon"
     ]
   },
   {
@@ -4034,7 +4191,8 @@
       "detail",
       "metadata",
       "purchase",
-      "sort"
+      "sort",
+      "symbol-icon"
     ]
   },
   {
@@ -4045,7 +4203,8 @@
       "single",
       "loop",
       "song",
-      "track"
+      "track",
+      "symbol-icon"
     ]
   },
   {
@@ -4057,7 +4216,8 @@
       "song",
       "track",
       "playlist",
-      "continuous"
+      "continuous",
+      "symbol-icon"
     ]
   },
   {
@@ -4069,14 +4229,16 @@
       "add",
       "subtract",
       "multiply",
-      "divde"
+      "divde",
+      "symbol-icon"
     ]
   },
   {
     "Code": "E8F0",
     "Name": "Directions",
     "Tags": [
-      "arrow"
+      "arrow",
+      "symbol-icon"
     ]
   },
   {
@@ -4087,7 +4249,8 @@
       "collection",
       "library",
       "archive",
-      "resources"
+      "resources",
+      "symbol-icon"
     ]
   },
   {
@@ -4104,7 +4267,9 @@
   {
     "Code": "E8F3",
     "Name": "PostUpdate",
-    "Tags": []
+    "Tags": [
+      "symbol-icon"
+    ]
   },
   {
     "Code": "E8F4",
@@ -4116,7 +4281,8 @@
       "storage",
       "plus",
       "new",
-      "+"
+      "+",
+      "symbol-icon"
     ]
   },
   {
@@ -4125,7 +4291,8 @@
     "Tags": [
       "time",
       "date",
-      "planning"
+      "planning",
+      "symbol-icon"
     ]
   },
   {
@@ -4138,7 +4305,8 @@
       "storage",
       "disconnect",
       "offline",
-      "remove"
+      "remove",
+      "symbol-icon"
     ]
   },
   {
@@ -4151,7 +4319,8 @@
       "storage",
       "connect",
       "update",
-      "refresh"
+      "refresh",
+      "symbol-icon"
     ]
   },
   {
@@ -4162,7 +4331,8 @@
       "user",
       "restrict",
       "privacy",
-      "remove"
+      "remove",
+      "symbol-icon"
     ]
   },
   {
@@ -4170,7 +4340,8 @@
     "Name": "SwitchApps",
     "Tags": [
       "change",
-      "transition"
+      "transition",
+      "symbol-icon"
     ]
   },
   {
@@ -4181,7 +4352,8 @@
       "user",
       "connect",
       "social",
-      "relationship"
+      "relationship",
+      "symbol-icon"
     ]
   },
   {
@@ -4192,7 +4364,8 @@
       "agree",
       "approve",
       "confirm",
-      "approve"
+      "approve",
+      "symbol-icon"
     ]
   },
   {
@@ -4202,7 +4375,8 @@
       "home",
       "begin",
       "windows",
-      "navigate"
+      "navigate",
+      "symbol-icon"
     ]
   },
   {
@@ -4211,7 +4385,8 @@
     "Tags": [
       "organize",
       "items",
-      "points"
+      "points",
+      "symbol-icon"
     ]
   },
   {
@@ -4222,7 +4397,8 @@
       "aperture",
       "image",
       "picture",
-      "scan"
+      "scan",
+      "symbol-icon"
     ]
   },
   {
@@ -4234,7 +4410,8 @@
       "view",
       "file",
       "read",
-      "page"
+      "page",
+      "symbol-icon"
     ]
   },
   {
@@ -4257,7 +4434,8 @@
       "connection",
       "lost",
       "weak",
-      "empty"
+      "empty",
+      "symbol-icon"
     ]
   },
   {
@@ -4268,7 +4446,8 @@
       "connection",
       "low",
       "signal",
-      "poor"
+      "poor",
+      "symbol-icon"
     ]
   },
   {
@@ -4279,7 +4458,8 @@
       "connection",
       "fair",
       "moderate",
-      "average"
+      "average",
+      "symbol-icon"
     ]
   },
   {
@@ -4290,7 +4470,8 @@
       "connection",
       "strong",
       "stable",
-      "high"
+      "high",
+      "symbol-icon"
     ]
   },
   {
@@ -4301,7 +4482,8 @@
       "excellent",
       "connection",
       "strong",
-      "maximum"
+      "maximum",
+      "symbol-icon"
     ]
   },
   {
@@ -4311,7 +4493,8 @@
       "globe",
       "earth",
       "international",
-      "global"
+      "global",
+      "symbol-icon"
     ]
   },
   {
@@ -4321,7 +4504,8 @@
       "chat",
       "message",
       "mention",
-      "discussion"
+      "discussion",
+      "symbol-icon"
     ]
   },
   {
@@ -4334,7 +4518,8 @@
       "info",
       "song",
       "track",
-      "details"
+      "details",
+      "symbol-icon"
     ]
   },
   {
@@ -4343,7 +4528,8 @@
     "Tags": [
       "position",
       "side",
-      "panel"
+      "panel",
+      "symbol-icon"
     ]
   },
   {
@@ -4352,7 +4538,8 @@
     "Tags": [
       "position",
       "side",
-      "panel"
+      "panel",
+      "symbol-icon"
     ]
   },
   {
@@ -4361,7 +4548,8 @@
     "Tags": [
       "position",
       "side",
-      "panel"
+      "panel",
+      "symbol-icon"
     ]
   },
   {
@@ -4372,7 +4560,8 @@
       "tool",
       "fix",
       "restore",
-      "correct"
+      "correct",
+      "symbol-icon"
     ]
   },
   {
@@ -4384,7 +4573,8 @@
       "email",
       "address",
       "symbol",
-      "communication"
+      "communication",
+      "symbol-icon"
     ]
   },
   {
@@ -4403,7 +4593,8 @@
       "organize",
       "administer",
       "oversee",
-      "handle"
+      "handle",
+      "symbol-icon"
     ]
   },
   {
@@ -4414,7 +4605,8 @@
       "address",
       "location",
       "avenue",
-      "way"
+      "way",
+      "symbol-icon"
     ]
   },
   {
@@ -5274,7 +5466,8 @@
     "Code": "E97B",
     "Name": "SetTile",
     "Tags": [
-      "arrow"
+      "arrow",
+      "symbol-icon"
     ]
   },
   {
@@ -5418,7 +5611,8 @@
     "Tags": [
       "device",
       "videogame",
-      "game"
+      "game",
+      "symbol-icon"
     ]
   },
   {
@@ -5932,7 +6126,8 @@
     "Tags": [
       "text",
       "line",
-      "view"
+      "view",
+      "symbol-icon"
     ]
   },
   {
