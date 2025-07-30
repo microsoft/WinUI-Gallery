@@ -57,10 +57,13 @@ sealed partial class App : Application
 
         EnsureWindow();
 
-        MainWindow.Closed += (s, e) =>
+        if (NativeMethods.IsAppPackaged)
         {
-            BadgeNotificationManager.Current.ClearBadge();
-        };
+            MainWindow.Closed += (s, e) =>
+            {
+                BadgeNotificationManager.Current.ClearBadge();
+            };
+        }
     }
 
     private void DebugSettings_BindingFailed(object sender, BindingFailedEventArgs e)
