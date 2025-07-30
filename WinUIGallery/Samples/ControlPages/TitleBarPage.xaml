@@ -23,7 +23,7 @@
         <RichTextBlock>
             <Paragraph>
                 <Run>To fully customize the title bar area without using the TitleBar control, visit</Run>
-                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/data-binding/data-binding-in-depth#xbind-and-binding-feature-comparison">Microsoft Learn</Hyperlink>
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/title-bar#full-customization">Microsoft Learn</Hyperlink>
                 <Run>.</Run>
             </Paragraph>
         </RichTextBlock>
