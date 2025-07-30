@@ -70,7 +70,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <ContentPresenter
-                        xmlns:local="using:Microsoft.UI.Xaml.Controls"
+                        
                         x:Name="ContentPresenter"
                         Padding="{TemplateBinding Padding}"
                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
