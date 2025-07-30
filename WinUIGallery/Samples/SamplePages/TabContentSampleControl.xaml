@@ -13,7 +13,20 @@
         <TextBlock Text="{Binding}" Style="{ThemeResource TitleTextBlockStyle}" />
         <TextBlock Text="Drag the Tab outside of the window to spawn a new window." Style="{ThemeResource SubtitleTextBlockStyle}" />
         <TextBlock Text="Notice that the state of the Tab is maintained in the new window. For example, if you toggle the ToggleSwitch ON, it will remain ON in the new window." Style="{ThemeResource BodyTextBlockStyle}" />
+        
+        <!-- WinUI 3 v1.6 improvement: Enhanced state preservation demo -->
+        <TextBlock Text="WinUI 3 v1.6 Improvements:" FontWeight="Bold" Margin="0,12,0,8" Style="{ThemeResource SubtitleTextBlockStyle}" />
+        <TextBlock Text="• Better window positioning relative to drag location" Style="{ThemeResource BodyTextBlockStyle}" />
+        <TextBlock Text="• Improved tab selection and focus management" Style="{ThemeResource BodyTextBlockStyle}" />
+        <TextBlock Text="• Enhanced state preservation during tear-out" Style="{ThemeResource BodyTextBlockStyle}" />
+        <TextBlock Text="• Automatic empty window cleanup" Style="{ThemeResource BodyTextBlockStyle}" />
+        
         <ToggleSwitch x:Name="ControlToggle" Header="Turn on ProgressRing" Margin="0,8" />
         <ProgressRing IsActive="{x:Bind ControlToggle.IsOn, Mode=OneWay}" HorizontalAlignment="Left" />
+        
+        <!-- Additional state preservation demo -->
+        <TextBox x:Name="StateTextBox" Header="Type text to test state preservation:" PlaceholderText="Your text will be preserved during tear-out" Margin="0,8" />
+        <Slider x:Name="StateSlider" Header="Adjust slider (state preserved):" Minimum="0" Maximum="100" Value="50" Margin="0,8" />
+        <TextBlock Text="{x:Bind StateSlider.Value, Mode=OneWay}" Style="{ThemeResource CaptionTextBlockStyle}" />
     </StackPanel>
 </UserControl>

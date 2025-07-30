@@ -18,7 +18,9 @@
             ExternalTornOutTabsDropping="Tabs_ExternalTornOutTabsDropping"
             TabCloseRequested="Tabs_TabCloseRequested"
             TabTearOutRequested="Tabs_TabTearOutRequested"
-            TabTearOutWindowRequested="Tabs_TabTearOutWindowRequested">
+            TabTearOutWindowRequested="Tabs_TabTearOutWindowRequested"
+            TabWidthMode="SizeToContent"
+            CloseButtonOverlayMode="OnPointerOver">
             <TabView.TabStripHeader>
                 <Grid x:Name="ShellTitleBarInset" Background="Transparent" />
             </TabView.TabStripHeader>
