@@ -25,7 +25,8 @@
         <TextBlock
             x:Name="TitleTxt"
             Margin="36,24,36,24"
-            Style="{StaticResource TitleTextBlockStyle}" />
+            Style="{StaticResource TitleTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level1" />
         <GridView
             x:Name="itemGridView"
             Grid.Row="1"
