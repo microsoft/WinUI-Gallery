@@ -26,19 +26,39 @@
             XamlSource="SystemBackdrops\SystemBackdropsSampleBackdropTypes_xaml.txt">
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">
-                    There are three backdrop types:<LineBreak />
-                    1. SystemBackdrop (The base class of every backdrop type)<LineBreak />
-                    2. MicaBackdrop (A backdrop that uses the Mica material)<LineBreak />
-                    3. DesktopAcrylicBackdrop (A backdrop that uses the Acrylic material)<LineBreak /> <LineBreak />
+                    A Window can have one of these 5 backgrounds:<LineBreak />
+                    • Solid (Default opaque color)<LineBreak />
+                    • Mica (Base)<LineBreak />
+                    • Mica Alt<LineBreak />
+                    • Acrylic Base<LineBreak />
+                    • Acrylic Thin<LineBreak /> <LineBreak />
+                    <Bold>Mica</Bold> will apply an opaque background which will show the desktop image.
                     Mica is an opaque, dynamic material that incorporates theme and desktop wallpaper to paint the background of windows.
                     Mica is specifically designed for app performance as it only samples the desktop wallpaper once to create its visualization.
                     Mica Alt is a variant of Mica, with stronger tinting of the user's desktop background. Recommended when creating an app with a tabbed title bar.
                     All variants of Mica are available for Windows 11 build 22000 or later.<LineBreak /> <LineBreak />
-                    Acrylic is a semi-transparent material that replicates the effect of frosted glass. It's used only for transient, light-dismiss surfaces such as flyouts and context menus.
-                    There are two acrylic blend types that change what's visible through the material:<LineBreak />
-                    Background acrylic reveals the desktop wallpaper and other windows that are behind the currently active app, adding depth between application windows while celebrating the user's personalization preferences.<LineBreak />
-                    In-app acrylic adds a sense of depth within the app frame, providing both focus and hierarchy. (Inplemented with a AcrylicBrush in XAML)</TextBlock>
+                    <Bold>Acrylic</Bold> will simulate true transparency and apply an opaque background that shows what's behind the window.
+                    Acrylic is a semi-transparent material that replicates the effect of frosted glass. It's used for app backgrounds and transient surfaces.
+                    There are two acrylic types that change what's visible through the material:<LineBreak />
+                    • Acrylic Base (Darker) reveals the desktop wallpaper and other windows that are behind the currently active app<LineBreak />
+                    • Acrylic Thin (Lighter) provides a more subtle effect<LineBreak />
+                    For in-app acrylic (within controls), use AcrylicBrush in XAML.</TextBlock>
                 <Button Margin="0,10,0,0" Click="createBuiltInWindow_Click">Show sample window</Button>
+            </StackPanel>
+        </controls:ControlExample>
+
+        <controls:ControlExample CSharpSource="SystemBackdrops\SystemBackdropsComprehensiveExample.txt" HeaderText="Comprehensive Backdrop Implementation">
+            <StackPanel>
+                <TextBlock TextWrapping="WrapWholeWords">
+                    This example demonstrates how to implement all 5 backdrop types in a single method. 
+                    The TrySetBackdrop method accepts an integer parameter:<LineBreak />
+                    0 = Solid (No backdrop)<LineBreak />
+                    1 = Mica Base<LineBreak />
+                    2 = Mica Alt<LineBreak />
+                    3 = Acrylic Base<LineBreak />
+                    4 = Acrylic Thin<LineBreak />
+                    This implementation properly handles resource cleanup and fallback scenarios when backdrop types are not supported.
+                </TextBlock>
             </StackPanel>
         </controls:ControlExample>
 
@@ -46,10 +66,11 @@
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">
                     Manages rendering and system policy for the mica material. The MicaController class provides a very customizable way to apply the Mica material to an app.
+                    Mica creates an opaque background that shows the desktop wallpaper through a tinted effect.
                     This is a list of properties that can be modified: FallbackColor, Kind, LuminosityOpacity, TintColor and the TintOpacity.<LineBreak />
                     There are 2 types of Mica:<LineBreak />
-                    1. Base (Lighter)<LineBreak />
-                    2. Alt (Darker)<LineBreak />
+                    1. Base (Lighter tinting)<LineBreak />
+                    2. Alt (Darker tinting, recommended for tabbed apps)<LineBreak />
                 </TextBlock>
                 <Button Margin="0,10,0,0" Click="createCustomMicaWindow_Click">Show sample window</Button>
             </StackPanel>
@@ -58,11 +79,12 @@
         <controls:ControlExample CSharpSource="SystemBackdrops\SystemBackdropsSampleDesktopAcrylicController.txt" HeaderText="DesktopAcrylicController">
             <StackPanel>
                 <TextBlock TextWrapping="WrapWholeWords">
-                    Manages rendering and system policy for the background acrylic material. Acrylic has the same level of customization as Mica, but the type can't be changed using the DesktopAcrylicBackdrop class.<LineBreak />
+                    Manages rendering and system policy for the background acrylic material. Acrylic creates a semi-transparent effect that shows what's behind the window.
+                    Acrylic has the same level of customization as Mica, but the type can't be changed using the DesktopAcrylicBackdrop class.<LineBreak />
                     There are 2 types of Acrylic:<LineBreak />
-                    1. Base (Darker)<LineBreak />
-                    2. Thin (Lighter)<LineBreak />
-                    If you wan't to use Acrylic Thin in your app you have to use the DesktopAcrylicController class. The DesktopAcrylicBackdrop class uses the Base type.</TextBlock>
+                    1. Base (Darker, more opaque effect)<LineBreak />
+                    2. Thin (Lighter, more transparent effect)<LineBreak />
+                    If you want to use Acrylic Thin in your app you have to use the DesktopAcrylicController class. The DesktopAcrylicBackdrop class uses the Base type.</TextBlock>
                 <Button Margin="0,10,0,0" Click="createCustomDesktopAcrylicWindow_Click">Show sample window</Button>
             </StackPanel>
         </controls:ControlExample>
