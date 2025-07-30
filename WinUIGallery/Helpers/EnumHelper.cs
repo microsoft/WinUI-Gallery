@@ -5,7 +5,7 @@ using System;
 using System.Reflection;
 
 namespace WinUIGallery.Helpers;
-internal static class EnumHelper
+internal static partial class EnumHelper
 {
     /// <summary>
     /// Converts a string into an enum.

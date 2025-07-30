@@ -29,7 +29,7 @@ public enum InsertPosition
 /// Provides utility methods for managing application settings, including operations for storing, retrieving,  and
 /// manipulating lists of strings in the application's local settings.
 /// </summary>
-public static class SettingsHelper
+public static partial class SettingsHelper
 {
     /// <summary>
     /// The maximum number of items to retain in the recently visited list.
