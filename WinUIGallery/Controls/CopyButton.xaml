@@ -152,7 +152,10 @@
                             <ContentPresenter.RenderTransform>
                                 <ScaleTransform x:Name="CopyToClipboardSuccessTextScaleTransform" />
                             </ContentPresenter.RenderTransform>
-                            <FontIcon FontSize="{TemplateBinding FontSize}" Glyph="&#xE73E;" />
+                            <FontIcon 
+                                FontSize="{TemplateBinding FontSize}" 
+                                Glyph="&#xE73E;" 
+                                AutomationProperties.AccessibilityView="Raw" />
                         </ContentPresenter>
 
                         <VisualStateManager.VisualStateGroups>
