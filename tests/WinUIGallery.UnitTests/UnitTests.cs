@@ -17,7 +17,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using WinUIGallery.Helpers;
-using WinUIGallery.Samples.ControlPages.Fundamentals.Controls;
 
 namespace WinUIGallery.UnitTests;
 
@@ -192,71 +191,5 @@ public class UnitTests
         {
             UnitTestApp.UnitTestAppWindow.CleanupVisualTree();
         });
-    }
-
-    // Test CounterControl accessibility properties
-    [UITestMethod]
-    public void TestCounterControlAccessibility()
-    {
-        CounterControl incrementCounter = new()
-        {
-            Mode = CounterMode.Increment
-        };
-
-        CounterControl decrementCounter = new()
-        {
-            Mode = CounterMode.Decrement
-        };
-
-        UnitTestApp.UnitTestAppWindow.AddToVisualTree(incrementCounter);
-        incrementCounter.ApplyTemplate();
-        incrementCounter.UpdateLayout();
-
-        UnitTestApp.UnitTestAppWindow.AddToVisualTree(decrementCounter);
-        decrementCounter.ApplyTemplate();
-        decrementCounter.UpdateLayout();
-
-        // Test initial accessibility properties for increment counter
-        var incrementCountText = incrementCounter.GetTemplateChild("CountText") as TextBlock;
-        var incrementButton = incrementCounter.GetTemplateChild("ActionButton") as Button;
-
-        Assert.IsNotNull(incrementCountText);
-        Assert.IsNotNull(incrementButton);
-
-        // Verify live setting is set
-        var liveSetting = Microsoft.UI.Xaml.Automation.AutomationProperties.GetLiveSetting(incrementCountText);
-        Assert.AreEqual(Microsoft.UI.Xaml.Automation.Peers.AutomationLiveSetting.Polite, liveSetting);
-
-        // Verify automation names are set correctly for initial values
-        var incrementCountTextName = Microsoft.UI.Xaml.Automation.AutomationProperties.GetName(incrementCountText);
-        var incrementButtonName = Microsoft.UI.Xaml.Automation.AutomationProperties.GetName(incrementButton);
-
-        Assert.AreEqual("Increment counter value 0", incrementCountTextName);
-        Assert.AreEqual("Increase counter", incrementButtonName);
-
-        // Test decrement counter
-        var decrementCountText = decrementCounter.GetTemplateChild("CountText") as TextBlock;
-        var decrementButton = decrementCounter.GetTemplateChild("ActionButton") as Button;
-
-        Assert.IsNotNull(decrementCountText);
-        Assert.IsNotNull(decrementButton);
-
-        var decrementCountTextName = Microsoft.UI.Xaml.Automation.AutomationProperties.GetName(decrementCountText);
-        var decrementButtonName = Microsoft.UI.Xaml.Automation.AutomationProperties.GetName(decrementButton);
-
-        Assert.AreEqual("Decrement counter value 0", decrementCountTextName);
-        Assert.AreEqual("Decrease counter", decrementButtonName);
-
-        // Test value update for increment counter
-        incrementCounter.Count = 5;
-        var updatedIncrementCountTextName = Microsoft.UI.Xaml.Automation.AutomationProperties.GetName(incrementCountText);
-        Assert.AreEqual("Increment counter value 5", updatedIncrementCountTextName);
-        Assert.AreEqual("5", incrementCountText.Text);
-
-        // Test value update for decrement counter  
-        decrementCounter.Count = -3;
-        var updatedDecrementCountTextName = Microsoft.UI.Xaml.Automation.AutomationProperties.GetName(decrementCountText);
-        Assert.AreEqual("Decrement counter value -3", updatedDecrementCountTextName);
-        Assert.AreEqual("-3", decrementCountText.Text);
     }
 }

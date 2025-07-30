@@ -2,6 +2,8 @@
 // Licensed under the MIT License.
 
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 
 namespace WinUIGallery.Samples.ControlPages.Fundamentals.Controls;
@@ -68,7 +70,11 @@ public sealed class CounterControl : Control
             CountText.Text = Count.ToString();
             // Update automation name to provide context about the mode and current value
             var modeName = Mode == CounterMode.Increment ? "Increment" : "Decrement";
-            Microsoft.UI.Xaml.Automation.AutomationProperties.SetName(CountText, $"{modeName} counter value {Count}");
+            AutomationProperties.SetName(CountText, $"{modeName} counter value {Count}");
+            
+            // Raise LiveRegionChanged event to notify screen readers of the content change
+            var peer = FrameworkElementAutomationPeer.FromElement(CountText) ?? FrameworkElementAutomationPeer.CreatePeerForElement(CountText);
+            peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
         }
     }
 
@@ -79,7 +85,7 @@ public sealed class CounterControl : Control
             var buttonText = Mode == CounterMode.Increment ? "Increase" : "Decrease";
             ActionButton.Content = buttonText;
             // Set automation name to provide better context for screen readers
-            Microsoft.UI.Xaml.Automation.AutomationProperties.SetName(ActionButton, $"{buttonText} counter");
+            AutomationProperties.SetName(ActionButton, $"{buttonText} counter");
         }
     }
 }
