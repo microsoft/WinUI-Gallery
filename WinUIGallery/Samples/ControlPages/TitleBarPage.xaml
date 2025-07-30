@@ -89,7 +89,7 @@
                 <x:String xml:space="preserve">
 &lt;TitleBar
     Title="$(Title)"
-    Subtitle=""$(Subtitle)"
+    Subtitle="$(Subtitle)"
     IsBackButtonVisible="$(BackButtonVisibility)"
     IsPaneToggleButtonVisible="$(PaneToggleVisibility)"&gt;
     &lt;TitleBar.IconSource&gt;
