@@ -2,9 +2,9 @@
 // Licensed under the MIT License.
 
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using System;
-using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -33,17 +33,20 @@ public sealed partial class ContentDialogPage : Page
         if (result == ContentDialogResult.Primary)
         {
             DialogResult.Text = "User saved their work";
-            UIHelper.AnnounceActionForAccessibility(DialogResult, "User saved their work", "ContentDialogResultNotificationId");
+            var peer = FrameworkElementAutomationPeer.FromElement(DialogResult) ?? FrameworkElementAutomationPeer.CreatePeerForElement(DialogResult);
+            peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
         }
         else if (result == ContentDialogResult.Secondary)
         {
             DialogResult.Text = "User did not save their work";
-            UIHelper.AnnounceActionForAccessibility(DialogResult, "User did not save their work", "ContentDialogResultNotificationId");
+            var peer = FrameworkElementAutomationPeer.FromElement(DialogResult) ?? FrameworkElementAutomationPeer.CreatePeerForElement(DialogResult);
+            peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
         }
         else
         {
             DialogResult.Text = "User cancelled the dialog";
-            UIHelper.AnnounceActionForAccessibility(DialogResult, "User cancelled the dialog", "ContentDialogResultNotificationId");
+            var peer = FrameworkElementAutomationPeer.FromElement(DialogResult) ?? FrameworkElementAutomationPeer.CreatePeerForElement(DialogResult);
+            peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
         }
     }
 
@@ -65,17 +68,20 @@ public sealed partial class ContentDialogPage : Page
         if (result == ContentDialogResult.Primary)
         {
             DialogResultNoDefault.Text = "User deleted the file";
-            UIHelper.AnnounceActionForAccessibility(DialogResultNoDefault, "User deleted the file", "ContentDialogResultNotificationId");
+            var peer = FrameworkElementAutomationPeer.FromElement(DialogResultNoDefault) ?? FrameworkElementAutomationPeer.CreatePeerForElement(DialogResultNoDefault);
+            peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
         }
         else if (result == ContentDialogResult.Secondary)
         {
             DialogResultNoDefault.Text = "User kept the file";
-            UIHelper.AnnounceActionForAccessibility(DialogResultNoDefault, "User kept the file", "ContentDialogResultNotificationId");
+            var peer = FrameworkElementAutomationPeer.FromElement(DialogResultNoDefault) ?? FrameworkElementAutomationPeer.CreatePeerForElement(DialogResultNoDefault);
+            peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
         }
         else
         {
             DialogResultNoDefault.Text = "User cancelled the dialog";
-            UIHelper.AnnounceActionForAccessibility(DialogResultNoDefault, "User cancelled the dialog", "ContentDialogResultNotificationId");
+            var peer = FrameworkElementAutomationPeer.FromElement(DialogResultNoDefault) ?? FrameworkElementAutomationPeer.CreatePeerForElement(DialogResultNoDefault);
+            peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
         }
     }
 }
