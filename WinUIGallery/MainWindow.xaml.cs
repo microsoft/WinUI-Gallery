@@ -61,7 +61,6 @@ public sealed partial class MainWindow : Window
         this.SetTitleBar(titleBar);
         this.AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
         this.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
-
         Win32WindowHelper win32WindowHelper = new Win32WindowHelper(this);
         win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 640, y = 500 });
     }
@@ -122,46 +121,6 @@ public sealed partial class MainWindow : Window
         {
             // Mark the item sample's page visited
             SettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, targetPageArguments.ToString(), InsertPosition.First, SettingsHelper.MaxRecentlyVisitedSamples);
-        }
-    }
-
-    public void EnsureNavigationSelection(string id)
-    {
-        foreach (object rawGroup in this.NavigationView.MenuItems)
-        {
-            if (rawGroup is NavigationViewItem group)
-            {
-                foreach (object rawItem in group.MenuItems)
-                {
-                    if (rawItem is NavigationViewItem item)
-                    {
-                        if ((string)item.Tag == id)
-                        {
-                            group.IsExpanded = true;
-                            NavigationView.SelectedItem = item;
-                            item.IsSelected = true;
-                            return;
-                        }
-                        else if (item.MenuItems.Count > 0)
-                        {
-                            foreach (var rawInnerItem in item.MenuItems)
-                            {
-                                if (rawInnerItem is NavigationViewItem innerItem)
-                                {
-                                    if ((string)innerItem.Tag == id)
-                                    {
-                                        group.IsExpanded = true;
-                                        item.IsExpanded = true;
-                                        NavigationView.SelectedItem = innerItem;
-                                        innerItem.IsSelected = true;
-                                        return;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 
@@ -341,6 +300,13 @@ public sealed partial class MainWindow : Window
                 }
             }
         }
+
+        if (args.SelectedItemContainer is NavigationViewItem selectedNavigationViewItem)
+        {
+            sender.TryExpandItem(selectedNavigationViewItem);
+            selectedNavigationViewItem.StartBringIntoView();
+        }
+
     }
 
     private void OnRootFrameNavigated(object sender, NavigationEventArgs e)

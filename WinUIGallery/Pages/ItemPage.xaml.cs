@@ -39,13 +39,7 @@ public sealed partial class ItemPage : Page
     public void SetInitialVisuals()
     {
         pageHeader.ToggleThemeAction = OnToggleTheme;
-        App.MainWindow.NavigationViewLoaded = OnNavigationViewLoaded;
         this.Focus(FocusState.Programmatic);
-    }
-
-    private void OnNavigationViewLoaded()
-    {
-        App.MainWindow.EnsureNavigationSelection(this.Item.UniqueId);
     }
 
     protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -70,7 +64,6 @@ public sealed partial class ItemPage : Page
                     System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
                     this.contentFrame.Navigate(pageType);
                 }
-                App.MainWindow.EnsureNavigationSelection(item?.UniqueId);
 
                 if (contentFrame.Content is Page loadedPage && PageScrollBehaviorHelper.GetSuppressHostScrolling(loadedPage))
                 {

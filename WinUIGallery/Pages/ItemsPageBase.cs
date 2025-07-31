@@ -3,12 +3,12 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media.Animation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using WinUIGallery.Helpers;
 using WinUIGallery.Models;
 
 namespace WinUIGallery.Pages;
@@ -54,7 +54,13 @@ public abstract class ItemsPageBase : Page, INotifyPropertyChanged
 
         _itemId = item.UniqueId;
 
-        App.MainWindow.Navigate(typeof(ItemPage), _itemId, new DrillInNavigationTransitionInfo());
+        if (WindowHelper.GetWindowForElement(this) is MainWindow mainWindow &&
+            mainWindow.NavigationView
+                .GetAllNavigationViewItems()
+                .FirstOrDefault(item => item.Tag?.ToString() == _itemId) is { } targetItem)
+        {
+            mainWindow.NavigationView.SelectedItem = targetItem;
+        }
     }
 
     protected void OnItemGridViewLoaded(object sender, RoutedEventArgs e)
