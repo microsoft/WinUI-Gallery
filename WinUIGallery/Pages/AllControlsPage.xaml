@@ -33,7 +33,8 @@
                 Margin="36,24,0,0"
                 VerticalAlignment="Center"
                 Style="{StaticResource TitleTextBlockStyle}"
-                Text="{StaticResource ControlsName}" />
+                Text="{StaticResource ControlsName}"
+                AutomationProperties.HeadingLevel="Level1" />
         </Grid>
         <GridView
             x:Name="itemGridView"
