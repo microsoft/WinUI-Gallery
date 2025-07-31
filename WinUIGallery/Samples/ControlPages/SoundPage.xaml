@@ -60,37 +60,44 @@ ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On
                     Click="Button_Click"
                     Content="&#x25B6; Focus"
                     ElementSoundMode="Off"
-                    Tag="0" />
+                    Tag="0"
+                    AutomationProperties.Name="Focus" />
                 <Button
                     Click="Button_Click"
                     Content="&#x25B6; Invoke"
                     ElementSoundMode="Off"
-                    Tag="1" />
+                    Tag="1"
+                    AutomationProperties.Name="Invoke" />
                 <Button
                     Click="Button_Click"
                     Content="&#x25B6; Show"
                     ElementSoundMode="Off"
-                    Tag="2" />
+                    Tag="2"
+                    AutomationProperties.Name="Show" />
                 <Button
                     Click="Button_Click"
                     Content="&#x25B6; Hide"
                     ElementSoundMode="Off"
-                    Tag="3" />
+                    Tag="3"
+                    AutomationProperties.Name="Hide" />
                 <Button
                     Click="Button_Click"
                     Content="&#x25B6; MovePrevious"
                     ElementSoundMode="Off"
-                    Tag="4" />
+                    Tag="4"
+                    AutomationProperties.Name="MovePrevious" />
                 <Button
                     Click="Button_Click"
                     Content="&#x25B6; MoveNext"
                     ElementSoundMode="Off"
-                    Tag="5" />
+                    Tag="5"
+                    AutomationProperties.Name="MoveNext" />
                 <Button
                     Click="Button_Click"
                     Content="&#x25B6; GoBack"
                     ElementSoundMode="Off"
-                    Tag="6" />
+                    Tag="6"
+                    AutomationProperties.Name="GoBack" />
             </StackPanel>
 
             <controls:ControlExample.CSharp>
