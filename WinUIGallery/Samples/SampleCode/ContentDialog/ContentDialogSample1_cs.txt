@@ -1,4 +1,4 @@
-﻿private async void ShowDialog_Click(object sender, RoutedEventArgs e)
+private async void ShowDialog_Click(object sender, RoutedEventArgs e)
 {
     ContentDialog dialog = new ContentDialog();
 
