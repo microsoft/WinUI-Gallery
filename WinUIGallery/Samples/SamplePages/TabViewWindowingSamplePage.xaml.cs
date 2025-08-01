@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -12,7 +13,6 @@ namespace WinUIGallery.SamplePages;
 public sealed partial class TabViewWindowingSamplePage : Page
 {
     private const string DataIdentifier = "MyTabItem";
-    private Win32WindowHelper win32WindowHelper;
     private Window tabTearOutWindow = null;
 
     public TabViewWindowingSamplePage()
@@ -24,8 +24,8 @@ public sealed partial class TabViewWindowingSamplePage : Page
 
     public void SetupWindowMinSize(Window window)
     {
-        win32WindowHelper = new Win32WindowHelper(window);
-        win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 500, y = 300 });
+        (window.AppWindow.Presenter as OverlappedPresenter).PreferredMinimumWidth = 640;
+        (window.AppWindow.Presenter as OverlappedPresenter).PreferredMinimumHeight = 500;
     }
 
     private void TabViewWindowingSamplePage_Loaded(object sender, RoutedEventArgs e)
