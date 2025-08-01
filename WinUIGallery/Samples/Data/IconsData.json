@@ -1,5 +1,24 @@
 [
   {
+    "Code": "E18A",
+    "Name": "Placeholder",
+    "Tags": [
+      "diamond",
+      "rhombus",
+      "shape"
+    ]
+  },
+  {
+    "Code": "E620",
+    "Name": "StopSlideShow",
+    "Tags": [
+      "images",
+      "presentation",
+      "gallery",
+      "photos"
+    ]
+  },
+  {
     "Code": "E700",
     "Name": "GlobalNavButton",
     "Tags": [
