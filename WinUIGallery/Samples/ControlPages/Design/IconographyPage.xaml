@@ -216,6 +216,7 @@
                                 Visibility="{x:Bind SelectedItem.SymbolName, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}"/>
                             <controls:SampleCodePresenter x:Name="CSharpCodePresenterSymbol" Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
+                                x:Name="TagsLabel"
                                 Margin="0,4,0,0"
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
@@ -224,6 +225,7 @@
                                 x:Name="TagsItemsView"
                                 Margin="0,8,0,4"
                                 x:Load="{x:Bind SelectedItem.Tags, Converter={StaticResource emptyCollectionToFalseConverter}, Mode=OneWay}"
+                                AutomationProperties.LabeledBy="{x:Bind TagsLabel}"
                                 IsItemInvokedEnabled="True"
                                 ItemInvoked="TagsItemsView_ItemInvoked"
                                 ItemsSource="{x:Bind SelectedItem.Tags, Mode=OneWay}"
