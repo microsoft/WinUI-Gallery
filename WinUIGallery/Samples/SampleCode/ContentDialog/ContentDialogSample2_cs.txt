@@ -4,8 +4,8 @@ private async void ShowDialogNoDefault_Click(object sender, RoutedEventArgs e)
 
     // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
     dialog.XamlRoot = this.XamlRoot;
-    dialog.Title = "Delete file?";
-    dialog.PrimaryButtonText = "Delete";
+    dialog.Title = "Replace file?";
+    dialog.PrimaryButtonText = "Replace";
     dialog.SecondaryButtonText = "Keep";
     dialog.CloseButtonText = "Cancel";
     dialog.DefaultButton = ContentDialogButton.None;

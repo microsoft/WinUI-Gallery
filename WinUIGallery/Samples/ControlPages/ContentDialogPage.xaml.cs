@@ -61,8 +61,8 @@ public sealed partial class ContentDialogPage : Page
         // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
         dialog.XamlRoot = this.XamlRoot;
         dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-        dialog.Title = "Delete file?";
-        dialog.PrimaryButtonText = "Delete";
+        dialog.Title = "Replace file?";
+        dialog.PrimaryButtonText = "Replace";
         dialog.SecondaryButtonText = "Keep";
         dialog.CloseButtonText = "Cancel";
         dialog.DefaultButton = ContentDialogButton.None;
@@ -73,7 +73,7 @@ public sealed partial class ContentDialogPage : Page
 
         if (result == ContentDialogResult.Primary)
         {
-            SetDialogResultText(DialogResultNoDefault, "User deleted the file");
+            SetDialogResultText(DialogResultNoDefault, "User replaced the file");
         }
         else if (result == ContentDialogResult.Secondary)
         {

@@ -5,8 +5,8 @@
 
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <!-- Content body -->
-        <TextBlock Text="Are you sure you want to delete this file?" TextWrapping="Wrap" />
-        <TextBlock Text="This action cannot be undone." TextWrapping="Wrap" Margin="0,8,0,0" FontWeight="SemiBold"/>
+        <TextBlock Text="Lorem ipsum dolor sit amet, adipisicing elit." TextWrapping="Wrap" />
+        <CheckBox Content="Upload your content to the cloud."/>
     </StackPanel>
 
 </Page>
