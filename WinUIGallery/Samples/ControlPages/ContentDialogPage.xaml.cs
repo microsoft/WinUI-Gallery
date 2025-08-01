@@ -4,6 +4,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using System;
 
 namespace WinUIGallery.ControlPages;
@@ -35,6 +36,7 @@ public sealed partial class ContentDialogPage : Page
         dialog.CloseButtonText = "Cancel";
         dialog.DefaultButton = ContentDialogButton.Primary;
         dialog.Content = new ContentDialogContent();
+        dialog.RequestedTheme = (VisualTreeHelper.GetParent(sender as Button) as StackPanel).ActualTheme;
 
         var result = await dialog.ShowAsync();
 
@@ -65,6 +67,7 @@ public sealed partial class ContentDialogPage : Page
         dialog.CloseButtonText = "Cancel";
         dialog.DefaultButton = ContentDialogButton.None;
         dialog.Content = new ContentDialogContent();
+        dialog.RequestedTheme = (VisualTreeHelper.GetParent(sender as Button) as StackPanel).ActualTheme;
 
         var result = await dialog.ShowAsync();
 
