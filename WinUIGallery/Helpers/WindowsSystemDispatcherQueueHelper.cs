@@ -2,24 +2,13 @@
 // Licensed under the MIT License.
 
 using System;
-using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 using Windows.System;
 
 namespace WinUIGallery.Helpers;
 
-class WindowsSystemDispatcherQueueHelper
+partial class WindowsSystemDispatcherQueueHelper
 {
-    [StructLayout(LayoutKind.Sequential)]
-    struct DispatcherQueueOptions
-    {
-        internal int dwSize;
-        internal int threadType;
-        internal int apartmentType;
-    }
-
-    [DllImport("CoreMessaging.dll")]
-    private static unsafe extern int CreateDispatcherQueueController(DispatcherQueueOptions options, IntPtr* instance);
-
     IntPtr m_dispatcherQueueController = IntPtr.Zero;
     public void EnsureWindowsSystemDispatcherQueueController()
     {
@@ -31,15 +20,16 @@ class WindowsSystemDispatcherQueueHelper
 
         if (m_dispatcherQueueController == IntPtr.Zero)
         {
-            DispatcherQueueOptions options;
-            options.dwSize = Marshal.SizeOf(typeof(DispatcherQueueOptions));
+            NativeMethods.DispatcherQueueOptions options;
+            options.dwSize = Unsafe.SizeOf<NativeMethods.DispatcherQueueOptions>();
+
             options.threadType = 2;    // DQTYPE_THREAD_CURRENT
             options.apartmentType = 2; // DQTAT_COM_STA
 
             unsafe
             {
                 IntPtr dispatcherQueueController;
-                CreateDispatcherQueueController(options, &dispatcherQueueController);
+                NativeMethods.CreateDispatcherQueueController(options, &dispatcherQueueController);
                 m_dispatcherQueueController = dispatcherQueueController;
             }
         }

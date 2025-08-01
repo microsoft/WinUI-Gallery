@@ -320,6 +320,7 @@ private void InitializeData()
                     <ItemsRepeater
                         x:Name="repeater2"
                         Margin="0,0,12,0"
+                        ItemsSource="{x:Bind Numbers}"
                         HorizontalAlignment="Stretch"
                         ItemTemplate="{StaticResource MyDataTemplateSelector}"
                         Layout="{StaticResource MyFeedLayout}" />
@@ -328,17 +329,10 @@ private void InitializeData()
 
             <controls:ControlExample.Options>
                 <StackPanel Spacing="12">
-                    <RadioButton
-                        Click="LayoutBtn_Click"
-                        Content="Uniform grid"
-                        GroupName="Sample2Layouts"
-                        Tag="UniformGridLayout2" />
-                    <RadioButton
-                        Click="LayoutBtn_Click"
-                        Content="Custom virtualizing layout"
-                        GroupName="Sample2Layouts"
-                        IsChecked="True"
-                        Tag="MyFeedLayout" />
+                    <RadioButtons SelectedIndex="1" SelectionChanged="LayoutBtn_SelectionChanged">
+                        <RadioButton Content="Uniform grid" Tag="UniformGridLayout2" />
+                        <RadioButton Content="Custom virtualizing layout" Tag="MyFeedLayout" />
+                    </RadioButtons>
                 </StackPanel>
             </controls:ControlExample.Options>
 

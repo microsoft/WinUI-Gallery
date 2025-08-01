@@ -37,7 +37,8 @@
                 Style="{StaticResource TitleTextBlockStyle}"
                 Text="{x:Bind Item.Title}"
                 TextTrimming="CharacterEllipsis"
-                TextWrapping="NoWrap" />
+                TextWrapping="NoWrap"
+                AutomationProperties.HeadingLevel="Level1" />
             <Button
                 x:Name="APIDetailsBtn"
                 Margin="0,0,0,3"
@@ -121,8 +122,8 @@
                                         <HyperlinkButton
                                             HorizontalAlignment="Stretch"
                                             HorizontalContentAlignment="Left"
-                                            NavigateUri="{Binding Uri}"
-                                            ToolTipService.ToolTip="{Binding Uri}">
+                                            NavigateUri="{x:Bind Uri}"
+                                            ToolTipService.ToolTip="{x:Bind Uri}">
                                             <TextBlock Text="{x:Bind Title}" />
                                         </HyperlinkButton>
                                     </DataTemplate>

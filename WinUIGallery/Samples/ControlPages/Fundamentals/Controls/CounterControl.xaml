@@ -4,6 +4,7 @@
 
     <!-- Style definition for CounterControl -->
     <Style TargetType="local:CounterControl">
+        <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <!-- ControlTemplate defines the structure of CounterControl -->
@@ -13,11 +14,13 @@
                         <TextBlock x:Name="CountText"
                                    FontSize="20"
                                    Text="0"
-                                   HorizontalAlignment="Center" />
+                                   HorizontalAlignment="Center"
+                                   AutomationProperties.LiveSetting="Polite"
+                                   AutomationProperties.Name="Counter value" />
                         <Button x:Name="ActionButton"
                                 Content="Increase"
                                 HorizontalAlignment="Center"
-                                Width="100" />
+                                MinWidth="100" />
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>

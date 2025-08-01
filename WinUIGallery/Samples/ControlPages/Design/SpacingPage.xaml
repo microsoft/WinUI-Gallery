@@ -92,7 +92,7 @@
                         Style="{StaticResource SubtitleTextBlockStyle}"
                         Text="Page with cards layout" />
                     <controls:SampleThemeListener Grid.Row="1">
-                        <Image Source="{ThemeResource CardsImage}" />
+                        <Image Source="{ThemeResource CardsImage}" AutomationProperties.Name="Example of spacing in a page with cards layout" />
                     </controls:SampleThemeListener>
                 </Grid>
                 <Grid VerticalAlignment="Top" RowSpacing="12">
@@ -105,7 +105,7 @@
                         Style="{StaticResource SubtitleTextBlockStyle}"
                         Text="Form layout" />
                     <controls:SampleThemeListener Grid.Row="1">
-                        <Image Source="{ThemeResource DialogImage}" />
+                        <Image Source="{ThemeResource DialogImage}" AutomationProperties.Name="Example of spacing in a form layout" />
                     </controls:SampleThemeListener>
                 </Grid>
             </StackPanel>

@@ -23,6 +23,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     private Random random = new Random();
     private int MaxLength = 425;
 
+    public ObservableCollection<int> Numbers { get; } = new ObservableCollection<int>(Enumerable.Range(0, 500));
     public ObservableCollection<Bar> BarItems;
     public MyItemsSource filteredRecipeData = new MyItemsSource(null);
     public List<Recipe> staticRecipeData;
@@ -35,7 +36,6 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     {
         this.InitializeComponent();
         InitializeData();
-        repeater2.ItemsSource = Enumerable.Range(0, 500);
     }
 
     public List<String> ColorList = new List<String>()
@@ -230,23 +230,27 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     // ==========================================================================
     // Virtualizing, scrollable list of items laid out by ItemsRepeater
     // ==========================================================================
-    private void LayoutBtn_Click(object sender, RoutedEventArgs e)
+    private void LayoutBtn_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string layoutKey = ((FrameworkElement)sender).Tag as string;
-
-        repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
-
-        layout2.Value = layoutKey;
-
-        if (layoutKey == "UniformGridLayout2")
+        var radioButtons = sender as Microsoft.UI.Xaml.Controls.RadioButtons;
+        if (radioButtons?.SelectedItem is RadioButton selectedRadioButton)
         {
-            SampleCodeLayout2.Value = @"<UniformGridLayout x:Key=""UniformGridLayout2"" MinItemWidth=""108"" MinItemHeight=""108""
-                   MinRowSpacing=""12"" MinColumnSpacing=""12""/>";
-        }
-        else if (layoutKey == "MyFeedLayout")
-        {
-            SampleCodeLayout2.Value = @"<common:ActivityFeedLayout x:Key=""MyFeedLayout"" ColumnSpacing=""12""
-                          RowSpacing=""12"" MinItemSize=""80, 108""/>";
+            string layoutKey = selectedRadioButton.Tag as string;
+
+            repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
+
+            layout2.Value = layoutKey;
+
+            if (layoutKey == "UniformGridLayout2")
+            {
+                SampleCodeLayout2.Value = @"<UniformGridLayout x:Key=""UniformGridLayout2"" MinItemWidth=""108"" MinItemHeight=""108""
+                       MinRowSpacing=""12"" MinColumnSpacing=""12""/>";
+            }
+            else if (layoutKey == "MyFeedLayout")
+            {
+                SampleCodeLayout2.Value = @"<common:ActivityFeedLayout x:Key=""MyFeedLayout"" ColumnSpacing=""12""
+                              RowSpacing=""12"" MinItemSize=""80, 108""/>";
+            }
         }
     }
 
@@ -439,7 +443,7 @@ public class NestedCategory
 }
 
 
-public class MyDataTemplateSelector : DataTemplateSelector
+public partial class MyDataTemplateSelector : DataTemplateSelector
 {
     public DataTemplate Normal { get; set; }
     public DataTemplate Accent { get; set; }
@@ -457,7 +461,7 @@ public class MyDataTemplateSelector : DataTemplateSelector
     }
 }
 
-public class StringOrIntTemplateSelector : DataTemplateSelector
+public partial class StringOrIntTemplateSelector : DataTemplateSelector
 {
     // Define the (currently empty) data templates to return
     // These will be "filled-in" in the XAML code.
@@ -549,7 +553,7 @@ public class Recipe
 }
 
 // Custom data source class that assigns elements unique IDs, making filtering easier
-public class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndexMapping, INotifyCollectionChanged
+public partial class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndexMapping, INotifyCollectionChanged
 {
     private List<Recipe> inner = new List<Recipe>();
 
