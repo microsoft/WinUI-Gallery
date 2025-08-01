@@ -8,6 +8,7 @@ using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
 using Microsoft.Windows.BadgeNotifications;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Windows.ApplicationModel.Activation;
@@ -60,6 +61,23 @@ sealed partial class App : Application
         MainWindow.Closed += (s, e) =>
         {
             BadgeNotificationManager.Current.ClearBadge();
+            
+            // Close all remaining active windows to prevent resource disposal conflicts
+            var activeWindows = new List<Window>(WindowHelper.ActiveWindows);
+            foreach (var window in activeWindows)
+            {
+                if (window != s) // Don't try to close the window that's already closing
+                {
+                    try
+                    {
+                        window.Close();
+                    }
+                    catch
+                    {
+                        // Ignore any exceptions during cleanup
+                    }
+                }
+            }
         };
     }
 
