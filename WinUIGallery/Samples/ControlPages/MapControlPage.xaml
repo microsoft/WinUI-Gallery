@@ -36,7 +36,7 @@
                     <StackPanel Orientation="Horizontal" Spacing="8">
                         <PasswordBox
                             x:Name="MapToken"
-                            Width="200"
+                            MinWidth="200"
                             KeyDown="MapToken_KeyDown"
                             PlaceholderText="Map service token" />
                         <Button Click="Button_Click" Content="Set token" />
