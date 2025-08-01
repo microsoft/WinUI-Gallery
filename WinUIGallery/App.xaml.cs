@@ -31,6 +31,7 @@ sealed partial class App : Application
     public App()
     {
         InitializeComponent();
+        SettingsHelper.Init();
         UnhandledException += HandleExceptions;
     }
 

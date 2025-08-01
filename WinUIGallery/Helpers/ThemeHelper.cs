@@ -11,8 +11,6 @@ namespace WinUIGallery.Helpers;
 /// </summary>
 public static partial class ThemeHelper
 {
-    private static ApplicationData appData = ApplicationData.GetDefault();
-
     /// <summary>
     /// Gets the current actual theme of the app based on the requested theme of the
     /// root element, or if that value is Default, the requested theme of the Application.
@@ -63,24 +61,14 @@ public static partial class ThemeHelper
                 }
             }
 
-            if (NativeMethods.IsAppPackaged)
-            {
-                appData.LocalSettings.Values[SettingsKeys.SelectedAppTheme] = value.ToString();
-            }
+            SettingsHelper.Config.SelectedAppTheme = value;
+            SettingsHelper.Save();
         }
     }
 
     public static void Initialize()
     {
-        if (NativeMethods.IsAppPackaged)
-        {
-            string savedTheme = appData.LocalSettings.Values[SettingsKeys.SelectedAppTheme]?.ToString();
-
-            if (savedTheme != null)
-            {
-                RootTheme = EnumHelper.GetEnum<ElementTheme>(savedTheme);
-            }
-        }
+        RootTheme = SettingsHelper.Config.SelectedAppTheme;
     }
 
     public static bool IsDarkTheme()
