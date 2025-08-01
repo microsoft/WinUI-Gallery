@@ -2,6 +2,8 @@
 // Licensed under the MIT License.
 
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 
 namespace WinUIGallery.Samples.ControlPages.Fundamentals.Controls;
@@ -66,6 +68,10 @@ public sealed partial class CounterControl : Control
         if (CountText is not null)
         {
             CountText.Text = Count.ToString();
+
+            // Raise LiveRegionChanged event to notify screen readers of the content change
+            var peer = FrameworkElementAutomationPeer.FromElement(CountText) ?? FrameworkElementAutomationPeer.CreatePeerForElement(CountText);
+            peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
         }
     }
 
@@ -73,7 +79,10 @@ public sealed partial class CounterControl : Control
     {
         if (ActionButton is not null)
         {
-            ActionButton.Content = Mode == CounterMode.Increment ? "Increase" : "Decrease";
+            var buttonText = Mode == CounterMode.Increment ? "Increase" : "Decrease";
+            ActionButton.Content = buttonText;
+            // Set automation name to provide better context for screen readers
+            AutomationProperties.SetName(ActionButton, $"{buttonText} counter");
         }
     }
 }
