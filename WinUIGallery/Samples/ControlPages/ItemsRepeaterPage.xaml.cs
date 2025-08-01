@@ -230,23 +230,27 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     // ==========================================================================
     // Virtualizing, scrollable list of items laid out by ItemsRepeater
     // ==========================================================================
-    private void LayoutBtn_Click(object sender, RoutedEventArgs e)
+    private void LayoutBtn_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string layoutKey = ((FrameworkElement)sender).Tag as string;
-
-        repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
-
-        layout2.Value = layoutKey;
-
-        if (layoutKey == "UniformGridLayout2")
+        var radioButtons = sender as Microsoft.UI.Xaml.Controls.RadioButtons;
+        if (radioButtons?.SelectedItem is RadioButton selectedRadioButton)
         {
-            SampleCodeLayout2.Value = @"<UniformGridLayout x:Key=""UniformGridLayout2"" MinItemWidth=""108"" MinItemHeight=""108""
-                   MinRowSpacing=""12"" MinColumnSpacing=""12""/>";
-        }
-        else if (layoutKey == "MyFeedLayout")
-        {
-            SampleCodeLayout2.Value = @"<common:ActivityFeedLayout x:Key=""MyFeedLayout"" ColumnSpacing=""12""
-                          RowSpacing=""12"" MinItemSize=""80, 108""/>";
+            string layoutKey = selectedRadioButton.Tag as string;
+
+            repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
+
+            layout2.Value = layoutKey;
+
+            if (layoutKey == "UniformGridLayout2")
+            {
+                SampleCodeLayout2.Value = @"<UniformGridLayout x:Key=""UniformGridLayout2"" MinItemWidth=""108"" MinItemHeight=""108""
+                       MinRowSpacing=""12"" MinColumnSpacing=""12""/>";
+            }
+            else if (layoutKey == "MyFeedLayout")
+            {
+                SampleCodeLayout2.Value = @"<common:ActivityFeedLayout x:Key=""MyFeedLayout"" ColumnSpacing=""12""
+                              RowSpacing=""12"" MinItemSize=""80, 108""/>";
+            }
         }
     }
 
