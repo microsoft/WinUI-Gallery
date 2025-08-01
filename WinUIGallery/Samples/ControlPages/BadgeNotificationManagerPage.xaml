@@ -10,7 +10,7 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <InfoBar Margin="0,10,0,0" IsOpen="True" IsClosable="False" Severity="Warning" Title="BadgeNotificationManager is not available in unpackaged mode." Message="This API requires the app to be running in packaged (MSIX)."/>
+        <InfoBar Margin="0,10,0,0" IsOpen="True" IsClosable="False" Severity="Warning" Title="BadgeNotificationManager is not available in unpackaged mode." Message="This API requires the app to be running in packaged mode (MSIX)."/>
         <controls:ControlExample HeaderText="Setting badge notifications with count">
             <StackPanel Spacing="8">
                 <Button Content="Set badge as count"
