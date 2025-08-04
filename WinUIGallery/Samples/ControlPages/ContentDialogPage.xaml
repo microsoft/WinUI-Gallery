@@ -22,5 +22,21 @@
                 </StackPanel>
             </controls:ControlExample.Example>
         </controls:ControlExample>
+
+        <controls:ControlExample
+            x:Name="Example2"
+            CSharpSource="ContentDialog/ContentDialogSample2_cs.txt"
+            HeaderText="A content dialog without a default button."
+            XamlSource="ContentDialog/ContentDialogSample2_xaml.txt">
+            <controls:ControlExample.Example>
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        x:Name="ShowDialogNoDefault"
+                        Click="ShowDialogNoDefault_Click"
+                        Content="Show dialog without default button" />
+                    <TextBlock x:Name="DialogResultNoDefault" Style="{StaticResource OutputTextBlockStyle}" />
+                </StackPanel>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

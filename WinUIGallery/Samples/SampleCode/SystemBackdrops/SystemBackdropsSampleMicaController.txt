@@ -3,7 +3,6 @@ using WinRT;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Composition.SystemBackdrops;
 
-WindowsSystemDispatcherQueueHelper wsdqHelper; // See the helper class sample for the implementation
 MicaController micaController;
 SystemBackdropConfiguration configurationSource;
 
@@ -11,8 +10,7 @@ bool TrySetMicaBackdrop(bool useMicaAlt)
 {
     if (MicaController.IsSupported())
     {
-        wsdqHelper = new WindowsSystemDispatcherQueueHelper();
-        wsdqHelper.EnsureWindowsSystemDispatcherQueueController();
+        DispatcherQueue.EnsureSystemDispatcherQueue();
 
         // Hooking up the policy object
         configurationSource = new SystemBackdropConfiguration();

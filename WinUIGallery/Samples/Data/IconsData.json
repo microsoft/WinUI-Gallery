@@ -11342,7 +11342,10 @@
     "Code": "F140",
     "Name": "StatusCircleBlock",
     "Tags": [
-      "restrict"
+      "restrict",
+      "stop",
+      "cancel",
+      "end"
     ]
   },
   {
