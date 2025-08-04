@@ -25,17 +25,6 @@ internal partial class NativeMethods
     [DllImport("user32.dll")]
     internal static extern IntPtr CallWindowProc(IntPtr lpPrevWndFunc, IntPtr hWnd, WindowMessage Msg, IntPtr wParam, IntPtr lParam);
     
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct DispatcherQueueOptions
-    {
-        internal int dwSize;
-        internal int threadType;
-        internal int apartmentType;
-    }
-
-    // Avoid using CreateDispatcherQueueController with CsWin32 — it may cause a crash.
-    [DllImport("CoreMessaging.dll")]
-    internal static unsafe extern int CreateDispatcherQueueController(DispatcherQueueOptions options, IntPtr* instance);
     internal unsafe static void SetWindowKeyHook()
     {
         delegate* unmanaged[Stdcall]<int, WPARAM, LPARAM, LRESULT> callback = &HookCallback;

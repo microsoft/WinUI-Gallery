@@ -57,10 +57,13 @@ sealed partial class App : Application
 
         EnsureWindow();
 
-        MainWindow.Closed += (s, e) =>
+        if (NativeMethods.IsAppPackaged)
         {
-            BadgeNotificationManager.Current.ClearBadge();
-        };
+            MainWindow.Closed += (s, e) =>
+            {
+                BadgeNotificationManager.Current.ClearBadge();
+            };
+        }
     }
 
     private void DebugSettings_BindingFailed(object sender, BindingFailedEventArgs e)
@@ -131,17 +134,20 @@ sealed partial class App : Application
     /// <param name="e">Details about the exception.</param>
     private void HandleExceptions(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
     {
-        e.Handled = true; //Don't crash the app.
-
-        //Create the notification.
-        var notification = new AppNotificationBuilder()
-            .AddText("An exception was thrown.")
-            .AddText($"Type: {e.Exception.GetType()}")
-            .AddText($"Message: {e.Message}\r\n" +
-                     $"HResult: {e.Exception.HResult}")
-            .BuildNotification();
-
-        //Show the notification
-        AppNotificationManager.Default.Show(notification);
+        if (NativeMethods.IsAppPackaged)
+        {
+            e.Handled = true; //Don't crash the app.
+        
+            //Create the notification.
+            var notification = new AppNotificationBuilder()
+                .AddText("An exception was thrown.")
+                .AddText($"Type: {e.Exception.GetType()}")
+                .AddText($"Message: {e.Message}\r\n" +
+                         $"HResult: {e.Exception.HResult}")
+                .BuildNotification();
+        
+            //Show the notification
+            AppNotificationManager.Default.Show(notification);
+        }
     }
 }
