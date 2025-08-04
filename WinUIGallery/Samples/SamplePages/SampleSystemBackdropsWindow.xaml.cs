@@ -23,7 +23,6 @@ public sealed partial class SampleSystemBackdropsWindow : Window
         set => backdropComboBox.ItemsSource = value;
     }
 
-    WindowsSystemDispatcherQueueHelper wsdqHelper;
     BackdropType currentBackdrop;
     MicaController micaController;
     DesktopAcrylicController acrylicController;
@@ -35,8 +34,7 @@ public sealed partial class SampleSystemBackdropsWindow : Window
         AppWindow.SetIcon(@"Assets\Tiles\GalleryIcon.ico");
         ExtendsContentIntoTitleBar = true;
         ((FrameworkElement)Content).RequestedTheme = ThemeHelper.RootTheme;
-        wsdqHelper = new WindowsSystemDispatcherQueueHelper();
-        wsdqHelper.EnsureWindowsSystemDispatcherQueueController();
+        DispatcherQueue.EnsureSystemDispatcherQueue();
 
         backdropComboBox.SelectedIndex = 0;
         themeComboBox.SelectedIndex = 0;
