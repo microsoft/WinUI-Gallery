@@ -2642,6 +2642,7 @@
           "Subtitle": "Adds a depth-aware shadow to UI elements using system lighting.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ThemeShadow.png",
           "Description": "Adds a realistic shadow effect to UI elements using the system's lighting and depth to enhance visual hierarchy.",
+          "IsNew": true,
           "BaseClasses": [
             "Object",
             "DependencyObject",
