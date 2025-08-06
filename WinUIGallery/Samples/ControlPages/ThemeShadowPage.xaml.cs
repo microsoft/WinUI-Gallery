@@ -13,12 +13,6 @@ public sealed partial class ThemeShadowPage : Page
     public ThemeShadowPage()
     {
         this.InitializeComponent();
-        Loaded += ThemeShadowPage_Loaded;
-    }
-
-    private void ThemeShadowPage_Loaded(object sender, RoutedEventArgs e)
-    {
-        TranslationSliderInApp.Value = 32;
     }
 
     private void TranslationSliderInApp_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
