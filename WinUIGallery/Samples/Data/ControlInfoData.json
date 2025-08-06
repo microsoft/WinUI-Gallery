@@ -2604,7 +2604,7 @@
           "UniqueId": "SystemBackdrops",
           "Title": "System Backdrops (Mica/Acrylic)",
           "ApiNamespace": "Microsoft.UI.Composition.SystemBackdrops",
-          "Subtitle": "System backdrops, like Mica and Acrylic, for the window.",
+          "Subtitle": "System backdrops, like Mica and Acrylic, for app windows.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
           "Description": "System backdrops provide a transparency effect for the window background. Mica and Acrylic are the current supported backdrops. There are two options for applying a backdrop: first, to use built-in Mica/Acrylic types, which have no customization and are simple to apply. The second is to create a customizable backdrop, which requires more code.",
           "SourcePath": "/Materials",
@@ -2632,6 +2632,30 @@
             {
               "Title": "DesktopAcrylicController - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.systembackdrops.desktopacryliccontroller"
+            }
+          ]
+        },
+        {
+          "UniqueId": "ThemeShadow",
+          "Title": "ThemeShadow",
+          "ApiNamespace": "Microsoft.UI.Xaml.Media",
+          "Subtitle": "Adds a depth-aware shadow to UI elements using system lighting.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ThemeShadow.png",
+          "Description": "Adds a realistic shadow effect to UI elements using the system's lighting and depth to enhance visual hierarchy.",
+          "IsNew": true,
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "Shadow"
+          ],
+          "Docs": [
+            {
+              "Title": "Z-depth and shadow design guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/depth-shadow"
+            },
+            {
+              "Title": "ThemeShadow - API",
+              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.themeshadow"
             }
           ]
         }

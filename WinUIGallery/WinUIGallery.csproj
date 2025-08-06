@@ -156,6 +156,7 @@
         <None Remove="Assets\ControlImages\Accessibility.png" />
         <None Remove="Assets\ControlImages\ContentIsland.png" />
         <None Remove="Assets\ControlImages\Popup.png" />
+        <None Remove="Assets\ControlImages\ThemeShadow.png" />
         <None Remove="Assets\Design\Cards.dark.png" />
         <None Remove="Assets\Design\Cards.light.png" />
         <None Remove="Assets\Design\Dialog.dark.png" />
@@ -344,6 +345,7 @@
         <Content Include="Assets\ControlImages\ContentIsland.png" />
         <Content Include="Assets\ControlImages\CustomControls.png" />
         <Content Include="Assets\ControlImages\Popup.png" />
+        <Content Include="Assets\ControlImages\ThemeShadow.png" />
         <Content Include="Assets\Design\Cards.dark.png" />
         <Content Include="Assets\Design\Cards.light.png" />
         <Content Include="Assets\Design\Dialog.dark.png" />
