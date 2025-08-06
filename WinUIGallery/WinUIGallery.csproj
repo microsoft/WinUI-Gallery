@@ -509,6 +509,8 @@
         <Content Include="Samples\SampleCode\AppWindow\AppWindowSample6_cs.txt" />
         <Content Include="Samples\SampleCode\AppWindow\AppWindowSample6_xaml.txt" />
         <Content Include="Samples\SampleCode\AppWindow\AppWindowSample7_xaml.txt" />
+        <Content Include="Samples\SampleCode\ContentDialog\ContentDialogSample2_cs.txt" />
+        <Content Include="Samples\SampleCode\ContentDialog\ContentDialogSample2_xaml.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample1_cs.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample1_xaml.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample2_cs.txt" />

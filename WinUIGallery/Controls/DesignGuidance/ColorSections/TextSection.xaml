@@ -54,7 +54,7 @@
                     ColorExplanation="Pressed only (not accessible)"
                     ColorName="Text / Tertiary"
                     ColorValue="#000000 (72, 44.58%)"
-                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                    Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                     ShowSeparator="False" />
                 <local:ColorTile
                     Grid.Column="3"
@@ -174,7 +174,7 @@
                     ColorExplanation="Disabled only (not accessible)"
                     ColorName="Text on Accent / Disabled"
                     ColorValue="#FFFFFF (FF, 100%)"
-                    Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                    Foreground="Black" />
                 <local:ColorTile
                     Grid.Column="2"
                     Background="{ThemeResource TextOnAccentFillColorSelectedTextBrush}"
