@@ -42,7 +42,7 @@
             </TitleBar.RightHeader>
             <TitleBar.Content>
                 <AutoSuggestBox
-                    Width="360"
+                    Width="320"
                     VerticalAlignment="Center"
                     PlaceholderText="Search.."
                     QueryIcon="Find" />

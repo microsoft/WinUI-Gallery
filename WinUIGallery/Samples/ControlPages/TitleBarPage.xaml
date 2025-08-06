@@ -41,8 +41,6 @@
                         IsBackButtonVisible="{Binding ElementName=BackButtonToggle, Path=IsOn, Mode=OneWay}"
                         IsPaneToggleButtonVisible="{Binding ElementName=PaneToggle, Path=IsOn, Mode=OneWay}"
                         Subtitle="{Binding ElementName=SubtitleBox, Path=Text, Mode=OneWay}">
-
-                        <!--  Known issue with setting IconSource: https://github.com/microsoft/microsoft-ui-xaml/issues/10374  -->
                         <TitleBar.IconSource>
                             <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
                         </TitleBar.IconSource>
