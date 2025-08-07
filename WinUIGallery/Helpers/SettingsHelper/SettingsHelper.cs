@@ -42,4 +42,10 @@ public partial class SettingsHelper : ObservableSettings
         get => GetOrCreateDefault<List<string>>(new List<string>());
         set => Set(value);
     }
+
+    public string ScratchPadXaml
+    {
+        get => GetOrCreateDefault<string>(string.Empty);
+        set => Set(value);
+    }
 }
