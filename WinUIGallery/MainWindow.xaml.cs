@@ -61,8 +61,9 @@ public sealed partial class MainWindow : Window
         this.SetTitleBar(titleBar);
         this.AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
         this.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
-        (this.AppWindow.Presenter as OverlappedPresenter).PreferredMinimumWidth = 640;
-        (this.AppWindow.Presenter as OverlappedPresenter).PreferredMinimumHeight = 500;
+
+        Win32WindowHelper win32WindowHelper = new Win32WindowHelper(this);
+        win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 640, y = 500 });
     }
 
     private void OnPaneDisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
