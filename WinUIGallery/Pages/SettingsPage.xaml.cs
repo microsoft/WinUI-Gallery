@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Navigation;
 using System;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.System;
+using WinUIGallery.ControlPages;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Pages;
@@ -33,9 +34,6 @@ public sealed partial class SettingsPage : Page
     {
         this.InitializeComponent();
         Loaded += OnSettingsPageLoaded;
-        ClearVisitedSamplesCard.IsEnabled = SettingsHelper.Exists(SettingsKeys.RecentlyVisited);
-        UnfavoriteSamplesCard.IsEnabled = SettingsHelper.Exists(SettingsKeys.Favorites);
-        SamplesSettingsExpander.IsExpanded = ClearVisitedSamplesCard.IsEnabled || UnfavoriteSamplesCard.IsEnabled;
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -43,8 +41,15 @@ public sealed partial class SettingsPage : Page
         base.OnNavigatedTo(e);
     }
 
+    private void CheckRecentAndFavoriteButtonStates()
+    {
+        ClearRecentBtn.IsEnabled = SettingsHelper.Exists(SettingsKeys.RecentlyVisited);
+        UnfavoriteBtn.IsEnabled = SettingsHelper.Exists(SettingsKeys.Favorites);
+    }
+
     private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
     {
+        CheckRecentAndFavoriteButtonStates();
         var currentTheme = ThemeHelper.RootTheme;
         switch (currentTheme)
         {
@@ -161,20 +166,43 @@ public sealed partial class SettingsPage : Page
         await Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
 
     }
-
-    private void ClearRecentlyVisitedSamples_Click(object sender, RoutedEventArgs e)
+    private async void UnfavoriteBtn_Click(object sender, RoutedEventArgs e)
     {
-        ClearRecentlyVisitedSamplesFlyout.Hide();
-        SettingsHelper.Delete(SettingsKeys.RecentlyVisited);
-        ClearVisitedSamplesCard.IsEnabled = false;
-        SamplesSettingsExpander.IsExpanded = ClearVisitedSamplesCard.IsEnabled || UnfavoriteSamplesCard.IsEnabled;
+        ContentDialog dialog = new()
+        {
+            XamlRoot = this.XamlRoot,
+            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+            Title = "Remove all favorites?",
+            PrimaryButtonText = "Remove",
+            CloseButtonText = "Cancel",
+            DefaultButton = ContentDialogButton.Primary,
+            Content = "This will unfavorite all your samples."
+        };
+        dialog.PrimaryButtonClick += (s, args) =>
+        {
+            SettingsHelper.Delete(SettingsKeys.Favorites);
+            CheckRecentAndFavoriteButtonStates();
+        };
+        var result = await dialog.ShowAsync();
     }
 
-    private void UnfavoriteAllSamples_Click(object sender, RoutedEventArgs e)
+    private async void ClearRecentBtn_Click(object sender, RoutedEventArgs e)
     {
-        UnfavoriteAllSamplesFlyout.Hide();
-        SettingsHelper.Delete(SettingsKeys.Favorites);
-        UnfavoriteSamplesCard.IsEnabled = false;
-        SamplesSettingsExpander.IsExpanded = ClearVisitedSamplesCard.IsEnabled || UnfavoriteSamplesCard.IsEnabled;
+        ContentDialog dialog = new()
+        {
+            XamlRoot = this.XamlRoot,
+            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+            Title = "Clear recently visited samples?",
+            PrimaryButtonText = "Clear",
+            CloseButtonText = "Cancel",
+            DefaultButton = ContentDialogButton.Primary,
+            Content = "This will remove all samples from your recent history."
+        };
+        dialog.PrimaryButtonClick += (s, args) =>
+        {
+            SettingsHelper.Delete(SettingsKeys.RecentlyVisited);
+            CheckRecentAndFavoriteButtonStates();
+        };
+        var result = await dialog.ShowAsync();
     }
 }
