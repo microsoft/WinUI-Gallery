@@ -15,9 +15,6 @@ namespace WinUIGallery.Helpers;
 /// </summary>
 public static partial class ProtocolActivationClipboardHelper
 {
-    private static bool _showCopyLinkTeachingTip = true;
-    private static ApplicationData appData = ApplicationData.GetDefault();
-
     public static bool ShowCopyLinkTeachingTip
     {
         get

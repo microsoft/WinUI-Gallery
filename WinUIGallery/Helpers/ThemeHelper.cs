@@ -2,7 +2,6 @@
 // Licensed under the MIT License.
 
 using Microsoft.UI.Xaml;
-using Microsoft.Windows.Storage;
 
 namespace WinUIGallery.Helpers;
 
@@ -11,8 +10,6 @@ namespace WinUIGallery.Helpers;
 /// </summary>
 public static partial class ThemeHelper
 {
-    private static ApplicationData appData = ApplicationData.GetDefault();
-
     /// <summary>
     /// Gets the current actual theme of the app based on the requested theme of the
     /// root element, or if that value is Default, the requested theme of the Application.

@@ -2,14 +2,11 @@
 // Licensed under the MIT License.
 
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.Windows.Storage;
 
 namespace WinUIGallery.Helpers;
 
 public static partial class NavigationOrientationHelper
 {
-    private static bool _isLeftMode = true;
-    private static ApplicationData appData = ApplicationData.GetDefault();
     public static bool IsLeftMode()
     {
         return SettingsHelper.Current.IsLeftMode;
