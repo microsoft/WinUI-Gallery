@@ -13,8 +13,6 @@ public partial class Settings : ObservableSettings
     {
     }
 
-    public const int MaxRecentlyVisitedSamples = 7;
-
     public ElementTheme SelectedAppTheme
     {
         get => GetOrCreateDefault<ElementTheme>(ElementTheme.Default);

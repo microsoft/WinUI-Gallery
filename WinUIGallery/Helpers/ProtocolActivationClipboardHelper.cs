@@ -22,33 +22,12 @@ public static partial class ProtocolActivationClipboardHelper
     {
         get
         {
-            if (NativeMethods.IsAppPackaged)
-            {
-                object valueFromSettings = appData.LocalSettings.Values[SettingsKeys.ShowCopyLinkTeachingTip];
-                if (valueFromSettings == null)
-                {
-                    appData.LocalSettings.Values[SettingsKeys.ShowCopyLinkTeachingTip] = true;
-                    valueFromSettings = true;
-                }
-                return (bool)valueFromSettings;
-            }
-            else
-            {
-                return _showCopyLinkTeachingTip;
-            }
+            return Settings.Current.IsShowCopyLinkTeachingTip;
         }
 
         set
         {
-            if (NativeMethods.IsAppPackaged)
-            {
-                appData.LocalSettings.Values[SettingsKeys.ShowCopyLinkTeachingTip] = value;
-
-            }
-            else
-            {
-                _showCopyLinkTeachingTip = value;
-            }
+            Settings.Current.IsShowCopyLinkTeachingTip = value;
         }
     }
 

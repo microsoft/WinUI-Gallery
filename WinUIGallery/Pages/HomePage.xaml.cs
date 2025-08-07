@@ -31,26 +31,24 @@ public sealed partial class HomePage : ItemsPageBase
             .OrderBy(i => i.Title)
             .ToList();
 
-        RecentlyVisitedSamplesList = GetValidItems(SettingsKeys.RecentlyVisited);
+        RecentlyVisitedSamplesList = GetValidItems(Settings.Current.RecentlyVisited, isFavorite: false);
         RecentlyAddedOrUpdatedSamplesList = Items.Where(i => i.IsNew || i.IsUpdated).ToList();
-        FavoriteSamplesList = GetValidItems(SettingsKeys.Favorites);
+        FavoriteSamplesList = GetValidItems(Settings.Current.Favorites, isFavorite: true);
 
         VisualStateManager.GoToState(this, RecentlyVisitedSamplesList.Count > 0 ? "Recent" : "NoRecent", true);
         VisualStateManager.GoToState(this, FavoriteSamplesList.Count > 0 ? "Favorites" : "NoFavorites", true);
     }
 
-    public List<ControlInfoDataItem> GetValidItems(string settingsKey)
+    public List<ControlInfoDataItem> GetValidItems(List<string> items, bool isFavorite)
     {
-        List<string> keyList = SettingsHelper.GetList(settingsKey);
-
-        if (keyList == null || keyList.Count == 0)
+        if (items == null || items.Count == 0)
             return new List<ControlInfoDataItem>();
 
         Dictionary<string, ControlInfoDataItem> itemMap = Items.ToDictionary(i => i.UniqueId);
 
         List<ControlInfoDataItem> result = new();
 
-        foreach (string id in keyList)
+        foreach (string id in items)
         {
             if (itemMap.TryGetValue(id, out var item))
             {
@@ -58,7 +56,18 @@ public sealed partial class HomePage : ItemsPageBase
             }
             else
             {
-                SettingsHelper.TryRemoveItem(settingsKey, id);
+                if (isFavorite)
+                {
+                    var favs = Settings.Current.Favorites;
+                    favs.Remove(id);
+                    Settings.Current.Favorites = favs;
+                }
+                else
+                {
+                    var recentlyVisited = Settings.Current.RecentlyVisited;
+                    recentlyVisited.Remove(id);
+                    Settings.Current.RecentlyVisited = recentlyVisited;
+                }
             }
         }
 

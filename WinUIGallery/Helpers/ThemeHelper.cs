@@ -63,24 +63,13 @@ public static partial class ThemeHelper
                 }
             }
 
-            if (NativeMethods.IsAppPackaged)
-            {
-                appData.LocalSettings.Values[SettingsKeys.SelectedAppTheme] = value.ToString();
-            }
+            Settings.Current.SelectedAppTheme = value;
         }
     }
 
     public static void Initialize()
     {
-        if (NativeMethods.IsAppPackaged)
-        {
-            string savedTheme = appData.LocalSettings.Values[SettingsKeys.SelectedAppTheme]?.ToString();
-
-            if (savedTheme != null)
-            {
-                RootTheme = EnumHelper.GetEnum<ElementTheme>(savedTheme);
-            }
-        }
+        RootTheme = Settings.Current.SelectedAppTheme;
     }
 
     public static bool IsDarkTheme()
