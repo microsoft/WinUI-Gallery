@@ -7,7 +7,7 @@ namespace WinUIGallery.Helpers;
 [JsonSerializable(typeof(Dictionary<string, System.Text.Json.JsonElement>))]
 [JsonSerializable(typeof(Vector2Data))]
 [JsonSerializable(typeof(Vector3Data))]
-[JsonSerializable(typeof(Settings))]
+[JsonSerializable(typeof(SettingsHelper))]
 internal partial class SettingsJsonContext : JsonSerializerContext
 {
 }

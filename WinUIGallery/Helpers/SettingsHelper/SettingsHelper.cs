@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace WinUIGallery.Helpers;
 
-public partial class Settings : ObservableSettings
+public partial class SettingsHelper : ObservableSettings
 {
-    private static readonly Settings instance = new(SettingsProviderFactory.CreateProvider());
-    public static Settings Current => instance;
+    private static readonly SettingsHelper instance = new(SettingsProviderFactory.CreateProvider());
+    public static SettingsHelper Current => instance;
 
-    private Settings(ISettingsProvider provider)
+    private SettingsHelper(ISettingsProvider provider)
         : base(provider)
     {
     }

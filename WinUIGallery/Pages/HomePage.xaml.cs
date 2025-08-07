@@ -31,9 +31,9 @@ public sealed partial class HomePage : ItemsPageBase
             .OrderBy(i => i.Title)
             .ToList();
 
-        RecentlyVisitedSamplesList = GetValidItems(Settings.Current.RecentlyVisited, isFavorite: false);
+        RecentlyVisitedSamplesList = GetValidItems(SettingsHelper.Current.RecentlyVisited, isFavorite: false);
         RecentlyAddedOrUpdatedSamplesList = Items.Where(i => i.IsNew || i.IsUpdated).ToList();
-        FavoriteSamplesList = GetValidItems(Settings.Current.Favorites, isFavorite: true);
+        FavoriteSamplesList = GetValidItems(SettingsHelper.Current.Favorites, isFavorite: true);
 
         VisualStateManager.GoToState(this, RecentlyVisitedSamplesList.Count > 0 ? "Recent" : "NoRecent", true);
         VisualStateManager.GoToState(this, FavoriteSamplesList.Count > 0 ? "Favorites" : "NoFavorites", true);
@@ -58,15 +58,15 @@ public sealed partial class HomePage : ItemsPageBase
             {
                 if (isFavorite)
                 {
-                    var favs = Settings.Current.Favorites;
+                    var favs = SettingsHelper.Current.Favorites;
                     favs.Remove(id);
-                    Settings.Current.Favorites = favs;
+                    SettingsHelper.Current.Favorites = favs;
                 }
                 else
                 {
-                    var recentlyVisited = Settings.Current.RecentlyVisited;
+                    var recentlyVisited = SettingsHelper.Current.RecentlyVisited;
                     recentlyVisited.Remove(id);
-                    Settings.Current.RecentlyVisited = recentlyVisited;
+                    SettingsHelper.Current.RecentlyVisited = recentlyVisited;
                 }
             }
         }

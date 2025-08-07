@@ -22,12 +22,12 @@ public static partial class ProtocolActivationClipboardHelper
     {
         get
         {
-            return Settings.Current.IsShowCopyLinkTeachingTip;
+            return SettingsHelper.Current.IsShowCopyLinkTeachingTip;
         }
 
         set
         {
-            Settings.Current.IsShowCopyLinkTeachingTip = value;
+            SettingsHelper.Current.IsShowCopyLinkTeachingTip = value;
         }
     }
 

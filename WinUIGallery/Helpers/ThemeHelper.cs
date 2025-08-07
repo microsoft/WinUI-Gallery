@@ -63,13 +63,13 @@ public static partial class ThemeHelper
                 }
             }
 
-            Settings.Current.SelectedAppTheme = value;
+            SettingsHelper.Current.SelectedAppTheme = value;
         }
     }
 
     public static void Initialize()
     {
-        RootTheme = Settings.Current.SelectedAppTheme;
+        RootTheme = SettingsHelper.Current.SelectedAppTheme;
     }
 
     public static bool IsDarkTheme()

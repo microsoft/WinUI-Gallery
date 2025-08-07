@@ -12,13 +12,13 @@ public static partial class NavigationOrientationHelper
     private static ApplicationData appData = ApplicationData.GetDefault();
     public static bool IsLeftMode()
     {
-        return Settings.Current.IsLeftMode;
+        return SettingsHelper.Current.IsLeftMode;
     }
 
     public static void IsLeftModeForElement(bool isLeftMode)
     {
         UpdateNavigationViewForElement(isLeftMode);
-        Settings.Current.IsLeftMode = isLeftMode;
+        SettingsHelper.Current.IsLeftMode = isLeftMode;
     }
 
     public static void UpdateNavigationViewForElement(bool isLeftMode)

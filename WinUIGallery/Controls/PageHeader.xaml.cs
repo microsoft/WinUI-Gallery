@@ -101,7 +101,7 @@ public sealed partial class PageHeader : UserControl
         }
         if (Item != null)
         {
-            FavoriteButton.IsChecked = Settings.Current.Favorites.Contains(Item.UniqueId);
+            FavoriteButton.IsChecked = SettingsHelper.Current.Favorites.Contains(Item.UniqueId);
         }
     }
 
@@ -119,17 +119,17 @@ public sealed partial class PageHeader : UserControl
     {
         if (sender is ToggleButton toggleButton && Item != null)
         {
-            var favs = Settings.Current.Favorites;
+            var favs = SettingsHelper.Current.Favorites;
 
             if (toggleButton.IsChecked == true)
             {
                 favs.AddToLast(Item.UniqueId, isFavorite: true);
-                Settings.Current.Favorites = favs;
+                SettingsHelper.Current.Favorites = favs;
             }
             else
             {
                 favs.Remove(Item.UniqueId);
-                Settings.Current.Favorites = favs;
+                SettingsHelper.Current.Favorites = favs;
             }
         }
     }
