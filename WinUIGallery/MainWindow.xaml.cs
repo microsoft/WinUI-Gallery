@@ -50,7 +50,7 @@ public sealed partial class MainWindow : Window
 
     private void SetWindowProperties()
     {
-#if DEBUG
+#if DEBUG || DEBUG_UNPACKAGED
         this.Title = "WinUI 3 Gallery Dev";
         titleBar.Subtitle = "Dev";
 #else
@@ -120,7 +120,9 @@ public sealed partial class MainWindow : Window
         if (pageType.Equals(typeof(ItemPage)) && targetPageArguments != null)
         {
             // Mark the item sample's page visited
-            SettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, targetPageArguments.ToString(), InsertPosition.First, SettingsHelper.MaxRecentlyVisitedSamples);
+            var recentlyVisited = SettingsHelper.Current.RecentlyVisited;
+            recentlyVisited.AddToFirst(targetPageArguments.ToString(), isFavorite: false);
+            SettingsHelper.Current.RecentlyVisited = recentlyVisited;
         }
     }
 

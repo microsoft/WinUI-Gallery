@@ -43,8 +43,8 @@ public sealed partial class SettingsPage : Page
 
     private void CheckRecentAndFavoriteButtonStates()
     {
-        ClearRecentBtn.IsEnabled = SettingsHelper.Exists(SettingsKeys.RecentlyVisited);
-        UnfavoriteBtn.IsEnabled = SettingsHelper.Exists(SettingsKeys.Favorites);
+        ClearRecentBtn.IsEnabled = SettingsHelper.Current.RecentlyVisited.Count > 0;
+        UnfavoriteBtn.IsEnabled = SettingsHelper.Current.Favorites.Count > 0;
     }
 
     private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
@@ -180,7 +180,10 @@ public sealed partial class SettingsPage : Page
         };
         dialog.PrimaryButtonClick += (s, args) =>
         {
-            SettingsHelper.Delete(SettingsKeys.Favorites);
+            var favs = SettingsHelper.Current.Favorites;
+            favs.Clear();
+            SettingsHelper.Current.Favorites = favs;
+
             CheckRecentAndFavoriteButtonStates();
         };
         var result = await dialog.ShowAsync();
@@ -200,7 +203,9 @@ public sealed partial class SettingsPage : Page
         };
         dialog.PrimaryButtonClick += (s, args) =>
         {
-            SettingsHelper.Delete(SettingsKeys.RecentlyVisited);
+            var recentlyVisited = SettingsHelper.Current.RecentlyVisited;
+            recentlyVisited.Clear();
+            SettingsHelper.Current.RecentlyVisited = recentlyVisited;
             CheckRecentAndFavoriteButtonStates();
         };
         var result = await dialog.ShowAsync();
