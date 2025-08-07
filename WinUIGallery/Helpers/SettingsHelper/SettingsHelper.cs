@@ -12,6 +12,7 @@ public partial class SettingsHelper : ObservableSettings
         : base(provider)
     {
     }
+    public const int MaxRecentlyVisitedSamples = 7;
 
     public ElementTheme SelectedAppTheme
     {

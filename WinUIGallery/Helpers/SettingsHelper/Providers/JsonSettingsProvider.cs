@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
@@ -31,8 +32,17 @@ public partial class JsonSettingsProvider : ISettingsProvider
         if (!values.TryGetValue(key, out var jsonElement))
             return default;
 
-        return (T)jsonElement.Deserialize(SettingsJsonContext.Default.GetTypeInfo(typeof(T)));
+        try
+        {
+            return (T)jsonElement.Deserialize(SettingsJsonContext.Default.GetTypeInfo(typeof(T)));
+        }
+        catch (Exception)
+        {
+            HandleCorruptedKey(key);
+            return default;
+        }
     }
+
 
     public void Set<T>(string key, T value)
     {
@@ -43,7 +53,10 @@ public partial class JsonSettingsProvider : ISettingsProvider
 
     private void Load()
     {
-        if (File.Exists(filePath))
+        if (!File.Exists(filePath))
+            return;
+
+        try
         {
             var json = File.ReadAllText(filePath);
             values = JsonSerializer.Deserialize(
@@ -51,7 +64,28 @@ public partial class JsonSettingsProvider : ISettingsProvider
                 SettingsJsonContext.Default.DictionaryStringJsonElement
             ) ?? new();
         }
+        catch (Exception)
+        {
+            HandleCorruptedFile();
+        }
     }
+    private void HandleCorruptedFile()
+    {
+        try
+        {
+            File.Delete(filePath);
+        }
+        catch { }
+
+        values = new();
+    }
+
+    private void HandleCorruptedKey(string key)
+    {
+        values.Remove(key);
+        Save();
+    }
+
 
     private void Save()
     {

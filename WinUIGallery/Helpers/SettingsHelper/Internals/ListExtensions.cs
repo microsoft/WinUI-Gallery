@@ -4,8 +4,6 @@ namespace WinUIGallery.Helpers;
 
 internal static class ListExtensions
 {
-    public const int MaxRecentlyVisitedSamples = 7;
-
     public static void AddToFirst(this List<string> list, string item, bool isFavorite)
     {
         if (string.IsNullOrWhiteSpace(item))
@@ -14,9 +12,9 @@ internal static class ListExtensions
         list.Remove(item);
         list.Insert(0, item);
 
-        if (!isFavorite && MaxRecentlyVisitedSamples > 0 && list.Count > MaxRecentlyVisitedSamples)
+        if (!isFavorite && SettingsHelper.MaxRecentlyVisitedSamples > 0 && list.Count > SettingsHelper.MaxRecentlyVisitedSamples)
         {
-            list.RemoveRange(MaxRecentlyVisitedSamples, list.Count - MaxRecentlyVisitedSamples);
+            list.RemoveRange(SettingsHelper.MaxRecentlyVisitedSamples, list.Count - SettingsHelper.MaxRecentlyVisitedSamples);
         }
     }
 
@@ -28,9 +26,9 @@ internal static class ListExtensions
         list.Remove(item);
         list.Add(item);
 
-        if (!isFavorite && MaxRecentlyVisitedSamples > 0 && list.Count > MaxRecentlyVisitedSamples)
+        if (!isFavorite && SettingsHelper.MaxRecentlyVisitedSamples > 0 && list.Count > SettingsHelper.MaxRecentlyVisitedSamples)
         {
-            list.RemoveRange(0, list.Count - MaxRecentlyVisitedSamples);
+            list.RemoveRange(0, list.Count - SettingsHelper.MaxRecentlyVisitedSamples);
         }
     }
 }
