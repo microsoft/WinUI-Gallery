@@ -50,7 +50,7 @@ public sealed partial class MainWindow : Window
 
     private void SetWindowProperties()
     {
-#if DEBUG
+#if DEBUG || DEBUG_UNPACKAGED
         this.Title = "WinUI 3 Gallery Dev";
         titleBar.Subtitle = "Dev";
 #else
