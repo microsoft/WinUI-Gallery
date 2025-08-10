@@ -123,7 +123,7 @@ public sealed partial class PageHeader : UserControl
 
             if (toggleButton.IsChecked == true)
             {
-                favs.AddToLast(Item.UniqueId, isFavorite: true);
+                favs.AddToLast(Item.UniqueId);
                 SettingsHelper.Current.Favorites = favs;
             }
             else

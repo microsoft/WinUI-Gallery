@@ -121,7 +121,7 @@ public sealed partial class MainWindow : Window
         {
             // Mark the item sample's page visited
             var recentlyVisited = SettingsHelper.Current.RecentlyVisited;
-            recentlyVisited.AddToFirst(targetPageArguments.ToString(), isFavorite: false);
+            recentlyVisited.AddToFirst(targetPageArguments.ToString(), SettingsHelper.MaxRecentlyVisitedSamples);
             SettingsHelper.Current.RecentlyVisited = recentlyVisited;
         }
     }
