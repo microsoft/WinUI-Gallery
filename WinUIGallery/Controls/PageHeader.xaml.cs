@@ -119,17 +119,13 @@ public sealed partial class PageHeader : UserControl
     {
         if (sender is ToggleButton toggleButton && Item != null)
         {
-            var favs = SettingsHelper.Current.Favorites;
-
             if (toggleButton.IsChecked == true)
             {
-                favs.AddToLast(Item.UniqueId);
-                SettingsHelper.Current.Favorites = favs;
+                SettingsHelper.Current.UpdateFavorites(items => items.AddToLast(Item.UniqueId));
             }
             else
             {
-                favs.Remove(Item.UniqueId);
-                SettingsHelper.Current.Favorites = favs;
+                SettingsHelper.Current.UpdateFavorites(items => items.Remove(Item.UniqueId));
             }
         }
     }

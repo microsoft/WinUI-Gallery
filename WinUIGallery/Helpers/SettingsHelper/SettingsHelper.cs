@@ -1,4 +1,5 @@
 ﻿using Microsoft.UI.Xaml;
+using System;
 using System.Collections.Generic;
 
 namespace WinUIGallery.Helpers;
@@ -35,13 +36,13 @@ public partial class SettingsHelper : ObservableSettings
     public List<string> RecentlyVisited
     {
         get => GetOrCreateDefault<List<string>>(new List<string>());
-        set => Set(value);
+        private set => Set(value);
     }
 
     public List<string> Favorites
     {
         get => GetOrCreateDefault<List<string>>(new List<string>());
-        set => Set(value);
+        private set => Set(value);
     }
 
     public string ScratchPadXaml
@@ -49,4 +50,18 @@ public partial class SettingsHelper : ObservableSettings
         get => GetOrCreateDefault<string>(string.Empty);
         set => Set(value);
     }
+
+    public void UpdateFavorites(Action<List<string>> updater)
+    {
+        var list = Favorites;
+        updater(list);
+        Favorites = list;
+    }
+    public void UpdateRecentlyVisited(Action<List<string>> updater)
+    {
+        var list = RecentlyVisited;
+        updater(list);
+        RecentlyVisited = list;
+    }
+
 }

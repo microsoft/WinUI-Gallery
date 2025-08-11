@@ -120,9 +120,7 @@ public sealed partial class MainWindow : Window
         if (pageType.Equals(typeof(ItemPage)) && targetPageArguments != null)
         {
             // Mark the item sample's page visited
-            var recentlyVisited = SettingsHelper.Current.RecentlyVisited;
-            recentlyVisited.AddToFirst(targetPageArguments.ToString(), SettingsHelper.MaxRecentlyVisitedSamples);
-            SettingsHelper.Current.RecentlyVisited = recentlyVisited;
+            SettingsHelper.Current.UpdateRecentlyVisited(items => items.AddToFirst(targetPageArguments.ToString(), SettingsHelper.MaxRecentlyVisitedSamples));
         }
     }
 

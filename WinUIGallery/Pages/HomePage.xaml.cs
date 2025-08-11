@@ -58,15 +58,11 @@ public sealed partial class HomePage : ItemsPageBase
             {
                 if (isFavorite)
                 {
-                    var favs = SettingsHelper.Current.Favorites;
-                    favs.Remove(id);
-                    SettingsHelper.Current.Favorites = favs;
+                    SettingsHelper.Current.UpdateFavorites(items => items.Remove(id));
                 }
                 else
                 {
-                    var recentlyVisited = SettingsHelper.Current.RecentlyVisited;
-                    recentlyVisited.Remove(id);
-                    SettingsHelper.Current.RecentlyVisited = recentlyVisited;
+                    SettingsHelper.Current.UpdateRecentlyVisited(items => items.Remove(id));
                 }
             }
         }

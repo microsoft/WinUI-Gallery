@@ -8,7 +8,6 @@ using Microsoft.UI.Xaml.Navigation;
 using System;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.System;
-using WinUIGallery.ControlPages;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Pages;
@@ -180,10 +179,7 @@ public sealed partial class SettingsPage : Page
         };
         dialog.PrimaryButtonClick += (s, args) =>
         {
-            var favs = SettingsHelper.Current.Favorites;
-            favs.Clear();
-            SettingsHelper.Current.Favorites = favs;
-
+            SettingsHelper.Current.UpdateFavorites(items => items.Clear());
             CheckRecentAndFavoriteButtonStates();
         };
         var result = await dialog.ShowAsync();
@@ -203,9 +199,7 @@ public sealed partial class SettingsPage : Page
         };
         dialog.PrimaryButtonClick += (s, args) =>
         {
-            var recentlyVisited = SettingsHelper.Current.RecentlyVisited;
-            recentlyVisited.Clear();
-            SettingsHelper.Current.RecentlyVisited = recentlyVisited;
+            SettingsHelper.Current.UpdateRecentlyVisited(items => items.Clear());
             CheckRecentAndFavoriteButtonStates();
         };
         var result = await dialog.ShowAsync();
