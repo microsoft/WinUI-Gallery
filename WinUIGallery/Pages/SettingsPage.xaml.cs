@@ -176,7 +176,8 @@ public sealed partial class SettingsPage : Page
             PrimaryButtonText = "Remove",
             CloseButtonText = "Cancel",
             DefaultButton = ContentDialogButton.Primary,
-            Content = "This will unfavorite all your samples."
+            Content = "This will unfavorite all your samples.",
+            RequestedTheme = this.ActualTheme
         };
         dialog.PrimaryButtonClick += (s, args) =>
         {
@@ -196,7 +197,8 @@ public sealed partial class SettingsPage : Page
             PrimaryButtonText = "Clear",
             CloseButtonText = "Cancel",
             DefaultButton = ContentDialogButton.Primary,
-            Content = "This will remove all samples from your recent history."
+            Content = "This will remove all samples from your recent history.",
+            RequestedTheme = this.ActualTheme
         };
         dialog.PrimaryButtonClick += (s, args) =>
         {
