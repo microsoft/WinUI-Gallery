@@ -10,7 +10,6 @@ using Microsoft.UI.Xaml.Markup;
 using System;
 using System.Linq;
 using Windows.System;
-using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -20,15 +19,7 @@ public sealed partial class ScratchPadPage : Page
     {
         this.InitializeComponent();
 
-        var xamlStr = SettingsHelper.Current.ScratchPadXaml;
-
-        // If there is no stored XAML, load the default.
-        if (xamlStr == null || xamlStr.Trim().Length == 0)
-        {
-            xamlStr = GetDefaultScratchXAML();
-        }
-
-        m_oldText = xamlStr;
+        m_oldText = GetDefaultScratchXAML();
         textbox.TextDocument.SetText(TextSetOptions.None, m_oldText);
         var formatter = new XamlTextFormatter(textbox);
         formatter.ApplyColors();
@@ -103,8 +94,6 @@ public sealed partial class ScratchPadPage : Page
         string newText;
         textbox.TextDocument.GetText(TextGetOptions.None, out newText);
         //System.Diagnostics.Debug.WriteLine("new text: " + newText);
-
-        SettingsHelper.Current.ScratchPadXaml = newText;
 
         // TODO: Strip out x:Bind -- maybe just convert it to spaces?
         try

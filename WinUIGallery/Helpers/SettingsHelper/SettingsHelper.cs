@@ -45,12 +45,6 @@ public partial class SettingsHelper : ObservableSettings
         private set => Set(value);
     }
 
-    public string ScratchPadXaml
-    {
-        get => GetOrCreateDefault<string>(string.Empty);
-        set => Set(value);
-    }
-
     public void UpdateFavorites(Action<List<string>> updater)
     {
         var list = Favorites;
@@ -63,5 +57,4 @@ public partial class SettingsHelper : ObservableSettings
         updater(list);
         RecentlyVisited = list;
     }
-
 }
