@@ -37,10 +37,12 @@
                     BorderThickness="1"
                     CornerRadius="{StaticResource OverlayCornerRadius}">
                     <TitleBar
+                        x:Name="TitleBarControl"
                         Title="{Binding ElementName=TitleBox, Path=Text, Mode=OneWay}"
                         IsBackButtonVisible="{Binding ElementName=BackButtonToggle, Path=IsOn, Mode=OneWay}"
                         IsPaneToggleButtonVisible="{Binding ElementName=PaneToggle, Path=IsOn, Mode=OneWay}"
-                        Subtitle="{Binding ElementName=SubtitleBox, Path=Text, Mode=OneWay}">
+                        Subtitle="{Binding ElementName=SubtitleBox, Path=Text, Mode=OneWay}"
+                        LayoutUpdated="TitleBar_LayoutUpdated">
                         <TitleBar.IconSource>
                             <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
                         </TitleBar.IconSource>

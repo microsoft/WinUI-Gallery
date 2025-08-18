@@ -3,6 +3,7 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using WinUIGallery.Helpers;
 using WinUIGallery.Samples.SamplePages;
 
 namespace WinUIGallery.ControlPages;
@@ -18,5 +19,11 @@ public sealed partial class TitleBarPage : Page
     {
         TitleBarWindow titleBarWindow = new TitleBarWindow();
         titleBarWindow.Activate();
+    }
+
+    private void TitleBar_LayoutUpdated(object sender, object e)
+    {
+        TitleBarHelper.ApplySystemThemeToCaptionButtons(App.MainWindow, this.ActualTheme);
+       //itleBarControl.LayoutUpdated -= TitleBar_LayoutUpdated; // Unsubscribe to avoid multiple calls
     }
 }
