@@ -24,6 +24,5 @@ public sealed partial class TitleBarPage : Page
     private void TitleBar_LayoutUpdated(object sender, object e)
     {
         TitleBarHelper.ApplySystemThemeToCaptionButtons(App.MainWindow, this.ActualTheme);
-       //itleBarControl.LayoutUpdated -= TitleBar_LayoutUpdated; // Unsubscribe to avoid multiple calls
     }
 }
