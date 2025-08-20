@@ -3,7 +3,6 @@
 
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
-using System;
 using Windows.UI;
 
 namespace WinUIGallery.Helpers;
