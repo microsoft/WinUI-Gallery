@@ -64,10 +64,9 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="HeaderGrid.Height" Value="136" />
                         <Setter Target="itemGridView.Padding" Value="16,16,16,36" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
-                        <Setter Target="smallHeaderText.Margin" Value="16,16,0,0" />
+                        <Setter Target="smallHeaderText.Margin" Value="16,24,0,0" />
                         <Setter Target="smallHeaderText.Style" Value="{StaticResource SubtitleTextBlockStyle}" />
                     </VisualState.Setters>
                 </VisualState>

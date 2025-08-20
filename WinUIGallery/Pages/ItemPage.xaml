@@ -45,7 +45,7 @@
             Grid.Row="1"
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
-            <Grid x:Name="contentRoot" Padding="36,0,36,36">
+            <Grid x:Name="contentRoot" Padding="36,0,36,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
