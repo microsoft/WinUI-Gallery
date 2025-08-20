@@ -215,8 +215,7 @@ public sealed partial class SampleSystemBackdropsWindow : Window
     private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         ((FrameworkElement)Content).RequestedTheme = Enum.GetValues<ElementTheme>()[themeComboBox.SelectedIndex];
-
-        TitleBarHelper.SetCaptionButtonColors(this, ((FrameworkElement)Content).ActualTheme == ElementTheme.Dark ? Colors.White : Colors.Black);
+        TitleBarHelper.ApplySystemThemeToCaptionButtons(this, ((FrameworkElement)Content).ActualTheme);
         SetNoneBackdropBackground();
     }
 
