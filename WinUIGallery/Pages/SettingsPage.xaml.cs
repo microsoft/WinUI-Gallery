@@ -85,26 +85,14 @@ public sealed partial class SettingsPage : Page
     {
         var selectedTheme = ((ComboBoxItem)themeMode.SelectedItem)?.Tag?.ToString();
         var window = WindowHelper.GetWindowForElement(this);
-        string color;
         if (selectedTheme != null)
         {
             ThemeHelper.RootTheme = EnumHelper.GetEnum<ElementTheme>(selectedTheme);
-            if (selectedTheme == "Dark")
-            {
-                TitleBarHelper.SetCaptionButtonColors(window, Colors.White);
-                color = selectedTheme;
-            }
-            else if (selectedTheme == "Light")
-            {
-                TitleBarHelper.SetCaptionButtonColors(window, Colors.Black);
-                color = selectedTheme;
-            }
-            else
-            {
-                color = TitleBarHelper.ApplySystemThemeToCaptionButtons(window, this.ActualTheme) == Colors.White ? "Dark" : "Light";
-            }
+            var elementThemeResolved = ThemeHelper.RootTheme == ElementTheme.Default ? ThemeHelper.ActualTheme : ThemeHelper.RootTheme;
+            TitleBarHelper.ApplySystemThemeToCaptionButtons(window, elementThemeResolved);
+
             // announce visual change to automation
-            UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {color}",
+            UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {elementThemeResolved}",
                                                                             "ThemeChangedNotificationActivityId");
         }
     }
