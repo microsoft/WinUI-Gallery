@@ -19,7 +19,10 @@ internal partial class TitleBarHelper
 
     public static void SetCaptionButtonColors(Window window, Windows.UI.Color color)
     {
-        window.AppWindow.TitleBar.ButtonForegroundColor = color;
+        if (window.AppWindow != null)
+        {
+            window.AppWindow.TitleBar.ButtonForegroundColor = color;
+        }
     }
 
     public static void SetCaptionButtonBackgroundColors(Window window, Windows.UI.Color? color)
