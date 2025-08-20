@@ -118,6 +118,7 @@ public sealed partial class ScratchPadPage : Page
         dialog.PrimaryButtonText = "Reset";
         dialog.CloseButtonText = "Cancel";
         dialog.DefaultButton = ContentDialogButton.Primary;
+        dialog.RequestedTheme = this.ActualTheme;
 
         var result = await dialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
