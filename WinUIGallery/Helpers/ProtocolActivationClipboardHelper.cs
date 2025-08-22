@@ -15,40 +15,16 @@ namespace WinUIGallery.Helpers;
 /// </summary>
 public static partial class ProtocolActivationClipboardHelper
 {
-    private static bool _showCopyLinkTeachingTip = true;
-    private static ApplicationData appData = ApplicationData.GetDefault();
-
     public static bool ShowCopyLinkTeachingTip
     {
         get
         {
-            if (NativeMethods.IsAppPackaged)
-            {
-                object valueFromSettings = appData.LocalSettings.Values[SettingsKeys.ShowCopyLinkTeachingTip];
-                if (valueFromSettings == null)
-                {
-                    appData.LocalSettings.Values[SettingsKeys.ShowCopyLinkTeachingTip] = true;
-                    valueFromSettings = true;
-                }
-                return (bool)valueFromSettings;
-            }
-            else
-            {
-                return _showCopyLinkTeachingTip;
-            }
+            return SettingsHelper.Current.IsShowCopyLinkTeachingTip;
         }
 
         set
         {
-            if (NativeMethods.IsAppPackaged)
-            {
-                appData.LocalSettings.Values[SettingsKeys.ShowCopyLinkTeachingTip] = value;
-
-            }
-            else
-            {
-                _showCopyLinkTeachingTip = value;
-            }
+            SettingsHelper.Current.IsShowCopyLinkTeachingTip = value;
         }
     }
 
