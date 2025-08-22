@@ -19,220 +19,163 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wuxdata="using:Microsoft.UI.Xaml.Data"
     mc:Ignorable="d">
+    <StackPanel Margin="0,12,0,0">
+        <RichTextBlock>
+            <Paragraph>
+                <Run>For full title bar customization without using the TitleBar control, see the</Run>
+                <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/title-bar#full-customization">documentation</Hyperlink><Run>.</Run>
+            </Paragraph>
+        </RichTextBlock>
 
-    <Page.Resources>
-        <x:Double x:Key="SwatchSize">32</x:Double>
-    </Page.Resources>
-
-    <StackPanel>
-        <controls:ControlExample CSharpSource="Window\TitleBar\TitleBarSample2.txt" HeaderText="Default titlebar (when no user defined titlebar is set)">
+        <controls:ControlExample HorizontalContentAlignment="Stretch" HeaderText="TitleBar configuration">
             <controls:ControlExample.Example>
-                <StackPanel Orientation="Vertical" Spacing="10">
-                    <TextBlock TextWrapping="WrapWholeWords">
-                        WinUI provides a default titlebar in such cases where the user doesn't explicitly provide a uielement, for setting the titlebar. The system titlebar (Windows-provided titlebar) disappears and client area content is extended to non client area.
-                        In this default case, entire non client region (titlebar region) get system titlebar behaviors like drag regions, system menu on context click etc.<LineBreak />
-                        This is the recommended way of using TitleBar apis and covers most common scenarios.<LineBreak />
-                        It can be applied by just calling ExtendsContentIntoTitleBar api. This internally calls SetTitleBar api with null argument and provides the default case.<LineBreak />
-                        Use the button below to toggle between system titlebar and default custom titlebar.</TextBlock>
-                    <StackPanel
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Top"
-                        Orientation="Horizontal"
-                        Spacing="20">
-                        <Button x:Name="defaultTitleBar" Click="defaultTitleBar_Click" />
-                    </StackPanel>
-                </StackPanel>
+                <Grid
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="{StaticResource OverlayCornerRadius}">
+                    <TitleBar
+                        x:Name="TitleBarControl"
+                        Title="{Binding ElementName=TitleBox, Path=Text, Mode=OneWay}"
+                        IsBackButtonVisible="{Binding ElementName=BackButtonToggle, Path=IsOn, Mode=OneWay}"
+                        IsPaneToggleButtonVisible="{Binding ElementName=PaneToggle, Path=IsOn, Mode=OneWay}"
+                        Subtitle="{Binding ElementName=SubtitleBox, Path=Text, Mode=OneWay}"
+                        LayoutUpdated="TitleBar_LayoutUpdated">
+                        <!--  This is a workaround for https://github.com/microsoft/microsoft-ui-xaml/issues/10374, once fixed we should just be using IconSource  -->
+                        <TitleBar.LeftHeader>
+                            <ImageIcon
+                                Height="16"
+                                Margin="16,0,8,0"
+                                Source="/Assets/Tiles/GalleryIcon.ico" />
+                        </TitleBar.LeftHeader>
+                        <TitleBar.RightHeader>
+                            <PersonPicture
+                                Width="30"
+                                Height="30"
+                                Initials="JD" />
+                        </TitleBar.RightHeader>
+                        <TitleBar.Content>
+                            <AutoSuggestBox
+                                Width="360"
+                                VerticalAlignment="Center"
+                                PlaceholderText="Search.."
+                                QueryIcon="Find" />
+                        </TitleBar.Content>
+                    </TitleBar>
+                </Grid>
+
             </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <StackPanel
+                    Width="240"
+                    Orientation="Vertical"
+                    Spacing="12">
+                    <TextBox
+                        x:Name="TitleBox"
+                        Header="Title"
+                        Text="WinUI Gallery" />
+                    <TextBox
+                        x:Name="SubtitleBox"
+                        Header="Subtitle"
+                        Text="Preview" />
+                    <ToggleSwitch
+                        x:Name="BackButtonToggle"
+                        Header="IsBackButtonVisible"
+                        IsOn="False" />
+                    <ToggleSwitch
+                        x:Name="PaneToggle"
+                        Header="IsPaneToggleButtonVisible"
+                        IsOn="False" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;TitleBar
+    Title="$(Title)"
+    Subtitle="$(Subtitle)"
+    IsBackButtonVisible="$(BackButtonVisibility)"
+    IsPaneToggleButtonVisible="$(PaneToggleVisibility)"&gt;
+    &lt;TitleBar.IconSource&gt;
+        &lt;ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" /&gt;
+    &lt;/TitleBar.IconSource&gt;
+    &lt;TitleBar.Content&gt;
+        &lt;AutoSuggestBox
+            Width="360"
+            VerticalAlignment="Center"
+            PlaceholderText="Search.."
+            QueryIcon="Find" /&gt;
+    &lt;/TitleBar.Content&gt;
+    &lt;TitleBar.RightHeader&gt;
+        &lt;PersonPicture
+            Width="30"
+            Height="30"
+            Initials="JD" /&gt;
+    &lt;/TitleBar.RightHeader&gt;
+&lt;/TitleBar&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Title" Value="{x:Bind TitleBox.Text, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Subtitle" Value="{x:Bind SubtitleBox.Text, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="BackButtonVisibility" Value="{x:Bind BackButtonToggle.IsOn, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="PaneToggleVisibility" Value="{x:Bind PaneToggle.IsOn, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
         </controls:ControlExample>
-        <controls:ControlExample CSharpSource="Window/TitleBar/TitleBarSample1.txt" HeaderText="User defined UIElement as custom titlebar for the window">
+
+        <controls:ControlExample HorizontalContentAlignment="Stretch" HeaderText="End to end TitleBar sample">
             <controls:ControlExample.Example>
-                <StackPanel Orientation="Vertical" Spacing="10">
-                    <TextBlock TextWrapping="WrapWholeWords">
-                        For finer controls, a user can set a top-level UIElement (defined as appTitleBar here) as titlebar for the window. The system titlebar disappears and the chosen uielement starts acting like the titlebar (gets all system titlebar behavior).<LineBreak />
-                        The Background and Foreground Color dropdowns set the foreground and background of titlebar and caption buttons respectively.<LineBreak />
-                        Use the button below to toggle between system titlebar and custom WinUI titlebar.</TextBlock>
-                    <StackPanel
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Top"
-                        Orientation="Horizontal"
-                        Spacing="10">
-                        <Button x:Name="customTitleBar" Click="customTitleBar_Click" />
-                        <TextBlock>Background Color</TextBlock>
-                        <SplitButton
-                            x:Name="myBgColorButton"
-                            MinWidth="0"
-                            MinHeight="0"
-                            Padding="0"
-                            VerticalAlignment="Top"
-                            AutomationProperties.Name="Background color">
-                            <Border
-                                x:Name="BackgroundColorElement"
-                                Width="{StaticResource SwatchSize}"
-                                Height="{StaticResource SwatchSize}"
-                                Margin="0"
-                                Background="Transparent"
-                                CornerRadius="4,0,0,4" />
-                            <SplitButton.Flyout>
-                                <Flyout Placement="Auto">
-                                    <GridView IsItemClickEnabled="True" ItemClick="BgGridView_ItemClick">
-                                        <GridView.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
-                                            </ItemsPanelTemplate>
-                                        </GridView.ItemsPanel>
-                                        <GridView.Resources>
-                                            <Style TargetType="Rectangle">
-                                                <Setter Property="Width" Value="{StaticResource SwatchSize}" />
-                                                <Setter Property="Height" Value="{StaticResource SwatchSize}" />
-                                                <Setter Property="RadiusX" Value="4" />
-                                                <Setter Property="RadiusY" Value="4" />
-                                            </Style>
-                                        </GridView.Resources>
-                                        <GridView.Items>
-                                            <Rectangle AutomationProperties.Name="Transparent" Fill="Transparent" />
-                                            <Rectangle AutomationProperties.Name="Red" Fill="Red" />
-                                            <Rectangle AutomationProperties.Name="Orange" Fill="Orange" />
-                                            <Rectangle AutomationProperties.Name="Yellow" Fill="Yellow" />
-                                            <Rectangle AutomationProperties.Name="Green" Fill="Green" />
-                                            <Rectangle AutomationProperties.Name="Blue" Fill="Blue" />
-                                            <Rectangle AutomationProperties.Name="White" Fill="White" />
-                                            <Rectangle AutomationProperties.Name="Black" Fill="Black" />
-                                        </GridView.Items>
-                                    </GridView>
-
-                                </Flyout>
-                            </SplitButton.Flyout>
-                        </SplitButton>
-
-                        <TextBlock>Foreground Color</TextBlock>
-                        <SplitButton
-                            x:Name="myFgColorButton"
-                            MinWidth="0"
-                            MinHeight="0"
-                            Padding="0"
-                            VerticalAlignment="Top"
-                            AutomationProperties.Name="Foreground color">
-                            <Border
-                                x:Name="ForegroundColorElement"
-                                Width="{StaticResource SwatchSize}"
-                                Height="{StaticResource SwatchSize}"
-                                Margin="0"
-                                Background="Transparent"
-                                CornerRadius="4,0,0,4" />
-                            <SplitButton.Flyout>
-                                <Flyout Placement="Auto">
-                                    <GridView IsItemClickEnabled="True" ItemClick="FgGridView_ItemClick">
-                                        <GridView.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
-                                            </ItemsPanelTemplate>
-                                        </GridView.ItemsPanel>
-                                        <GridView.Resources>
-                                            <Style TargetType="Rectangle">
-                                                <Setter Property="Width" Value="{StaticResource SwatchSize}" />
-                                                <Setter Property="Height" Value="{StaticResource SwatchSize}" />
-                                                <Setter Property="RadiusX" Value="4" />
-                                                <Setter Property="RadiusY" Value="4" />
-                                            </Style>
-                                        </GridView.Resources>
-                                        <GridView.Items>
-                                            <Rectangle AutomationProperties.Name="Transparent" Fill="Transparent" />
-                                            <Rectangle AutomationProperties.Name="Red" Fill="Red" />
-                                            <Rectangle AutomationProperties.Name="Orange" Fill="Orange" />
-                                            <Rectangle AutomationProperties.Name="Yellow" Fill="Yellow" />
-                                            <Rectangle AutomationProperties.Name="Green" Fill="Green" />
-                                            <Rectangle AutomationProperties.Name="Blue" Fill="Blue" />
-                                            <Rectangle AutomationProperties.Name="White" Fill="White" />
-                                            <Rectangle AutomationProperties.Name="Black" Fill="Black" />
-                                        </GridView.Items>
-                                    </GridView>
-
-                                </Flyout>
-                            </SplitButton.Flyout>
-                        </SplitButton>
-
-                    </StackPanel>
+                <StackPanel
+                    MaxWidth="560"
+                    Orientation="Vertical"
+                    Spacing="12">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Click the button below to see an end to end sample of a TitleBar in an new window, binding some of its properties to the NavigationView and navigation frame."
+                        TextAlignment="Center"
+                        TextWrapping="WrapWholeWords" />
+                    <Button
+                        HorizontalAlignment="Center"
+                        Click="CreateTitleBarWindowClick"
+                        Content="Show sample window"
+                        Style="{StaticResource AccentButtonStyle}" />
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;!--UIElement set as titlebar--&gt;
-&lt;Border x:Name="AppTitleBar" Grid.Column="1" VerticalAlignment="Top"&gt;
-    &lt;TextBlock x:Name="AppTitle" Text="{StaticResource AppTitleName}" VerticalAlignment="Top" Margin="0,8,0,0" /&gt;
-&lt;/Border&gt;
-            </x:String>
+&lt;Grid&gt;
+    &lt;Grid.RowDefinitions&gt;
+        &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+        &lt;!--  TitleBar  --&gt;
+        &lt;RowDefinition Height=&quot;*&quot; /&gt;
+        &lt;!--  NavigationView  --&gt;
+    &lt;/Grid.RowDefinitions&gt;
+
+    &lt;TitleBar
+        x:Name=&quot;titleBar&quot;
+        BackRequested=&quot;TitleBar_BackRequested&quot;
+        IsBackButtonVisible=&quot;{x:Bind navFrame.CanGoBack, Mode=OneWay}&quot;
+        IsPaneToggleButtonVisible=&quot;True&quot;
+        PaneToggleRequested=&quot;TitleBar_PaneToggleRequested&quot; /&gt;
+
+    &lt;NavigationView
+        x:Name=&quot;navView&quot;
+        Grid.Row=&quot;1&quot;
+        IsBackButtonVisible=&quot;Collapsed&quot;
+        IsPaneToggleButtonVisible=&quot;False&quot;&gt;
+        &lt;NavigationView.MenuItems... /&gt;
+        &lt;Frame x:Name=&quot;navFrame&quot; /&gt;
+    &lt;/NavigationView&gt;
+&lt;/Grid&gt;
+                    </x:String>
             </controls:ControlExample.Xaml>
-        </controls:ControlExample>
-        <controls:ControlExample HeaderText="Titlebar Customizations : Titlebar height">
-            <controls:ControlExample.Example>
-                <StackPanel Orientation="Vertical" Spacing="10">
-                    <TextBlock TextWrapping="Wrap">
-                        WinUI custom titlebar supports setting a custom height by configuring the PreferredHeightOption property of the titlebar. This feature is useful when you need to adjust the titlebar height to match your app's design or accommodate additional content.
-                    </TextBlock>
-                    <InfoBar
-                        IsClosable="false"
-                        IsOpen="true"
-                        Severity="Warning">
-                        <TextBlock>
-                            This option will be invalid when the style of titlebar is reset to system titlebar!
-                        </TextBlock>
-                    </InfoBar>
-                    <StackPanel>
-                        <ComboBox
-                            x:Name="titlebarHeight"
-                            Header="Set titlebar height"
-                            SelectedIndex="0"
-                            SelectionChanged="TitleBarHeightComboBox_SelectionChanged">
-                            <x:String>Tall</x:String>
-                            <x:String>Standard</x:String>
-                            <x:String>Collapsed</x:String>
-                        </ComboBox>
-                    </StackPanel>
-                </StackPanel>
-            </controls:ControlExample.Example>
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
-// Retrieve the main window and extend its content into the title bar for custom styling.
-Window window = App.MainWindow;
-window.ExtendsContentIntoTitleBar = true;
-
-// Set the preferred height option for the title bar
-window.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.$(TitleBarHeightOption);
+  this.ExtendsContentIntoTitleBar = true; // Extend the content into the title bar and hide the default titlebar
+  this.SetTitleBar(titleBar); // Set the custom title bar
                 </x:String>
             </controls:ControlExample.CSharp>
-            <controls:ControlExample.Substitutions>
-                <controls:ControlExampleSubstitution Key="TitleBarHeightOption" Value="{x:Bind titlebarHeight.SelectedItem, Mode=OneWay}" />
-            </controls:ControlExample.Substitutions>
         </controls:ControlExample>
-        <controls:ControlExample CSharpSource="Window\TitleBar\TitleBarSample3.txt" HeaderText="Titlebar Customizations : Interactive controls in Titlebar (non client) area">
-            <controls:ControlExample.Example>
-                <StackPanel Orientation="Vertical" Spacing="10">
-                    <TextBlock TextWrapping="WrapWholeWords">
-                        WinUI custom titlebar now hosting interactive clickable controls within non client region of the window, when using custom titlebar.<LineBreak />
-                        This is achieved by using lower level <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.appwindowtitlebar">
-                            Microsoft.UI.AppWindowTitlebar
-                        </Hyperlink>
-                        and <Hyperlink NavigateUri="https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputnonclientpointersource">Microsoft.UI.Input.InputNonClientPointerSource</Hyperlink>
-                        <Italic>apis</Italic>
-                        <LineBreak />
-                        <LineBreak />
-                        WinUI allows<Bold>mix and match</Bold>
-                        of higher level WinUI custom titlebar apis with lower level AppWindow and InputNonClientPointerSource apis for most cases.
-                        One exception is one should not use<Italic>Window.SetTitlebar</Italic>
-                        api along with any lower level api which also sets drag regions as it can result in unexpected behavior.
-                        If needed, set<Italic>Window.SetTitlebar</Italic>
-                        to null (default case) and proceed to use lower level apis for drag functionality.<LineBreak />
-                        Use the button below to toggle between system titlebar and default custom titlebar.</TextBlock>
-                    <StackPanel
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Top"
-                        Orientation="Horizontal"
-                        Spacing="20">
-                        <Button x:Name="addInteractiveElements" Click="AddInteractiveElements_Click">Add interactive control to titlebar</Button>
-                    </StackPanel>
-                </StackPanel>
-            </controls:ControlExample.Example>
-        </controls:ControlExample>
-
     </StackPanel>
 </Page>

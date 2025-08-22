@@ -19,7 +19,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:WinUIGallery.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls" 
+    xmlns:models="using:WinUIGallery.Models"
     helpers:PageScrollBehaviorHelper.SuppressHostScrolling="True"
     mc:Ignorable="d">
 
@@ -40,13 +41,13 @@
             <Setter Property="Margin" Value="0,0,0,8" />
         </Style>
 
-        <DataTemplate x:Key="IconTemplate">
+        <DataTemplate x:Key="IconTemplate" x:DataType="models:IconData">
             <ItemContainer
                 Width="96"
                 Height="96"
-                AutomationProperties.Name="{Binding Name}"
+                AutomationProperties.Name="{x:Bind Name}"
                 CornerRadius="{StaticResource ControlCornerRadius}"
-                ToolTipService.ToolTip="{Binding Name}">
+                ToolTipService.ToolTip="{x:Bind Name}">
                 <Grid
                     Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
@@ -61,7 +62,7 @@
                         <FontIcon
                             x:Name="IconGlyph"
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
-                            Glyph="{Binding Character}" />
+                            Glyph="{x:Bind Character}" />
                     </Viewbox>
 
                     <!--  Icon name/descriptor  -->
@@ -72,7 +73,7 @@
                         VerticalAlignment="Bottom"
                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                         Style="{StaticResource CaptionTextBlockStyle}"
-                        Text="{Binding Name}"
+                        Text="{x:Bind Name}"
                         TextTrimming="CharacterEllipsis"
                         TextWrapping="NoWrap" />
                 </Grid>
@@ -154,11 +155,11 @@
                                         CornerRadius="{StaticResource ControlCornerRadius}">
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                               FontSize="48"
-                                              Glyph="{Binding SelectedItem.Character, Mode=OneWay}" />
+                                              Glyph="{x:Bind SelectedItem.Character, Mode=OneWay}" />
                                 </Border>
                                 <Grid Grid.Column="1"
                                       HorizontalAlignment="Stretch"
-                                      Visibility="{Binding SelectedItem.IsSegoeFluentOnly}"
+                                      Visibility="{x:Bind SelectedItem.IsSegoeFluentOnly, Mode=OneWay}"
                                       ToolTipService.ToolTip="This icon is only available in Segoe Fluent Icons (the default icon font on Windows 11). On Windows 10, Segoe MDL2 Assets is used by default, so the icon may not appear unless Segoe Fluent Icons is installed.">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
@@ -181,17 +182,17 @@
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="Icon name" />
-                            <controls:SampleCodePresenter Code="{Binding SelectedItem.Name, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <controls:SampleCodePresenter Code="{x:Bind SelectedItem.Name, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="Text glyph" />
-                            <controls:SampleCodePresenter Code="{Binding SelectedItem.TextGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <controls:SampleCodePresenter Code="{x:Bind SelectedItem.TextGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="Code glyph" />
-                            <controls:SampleCodePresenter Code="{Binding SelectedItem.CodeGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <controls:SampleCodePresenter Code="{x:Bind SelectedItem.CodeGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
@@ -206,15 +207,16 @@
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="SymbolIcon XAML"
-                                Visibility="{Binding SelectedItem.SymbolName, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}"/>
+                                Visibility="{x:Bind SelectedItem.SymbolName, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}"/>
                             <controls:SampleCodePresenter x:Name="XAMLCodePresenterSymbol" Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="SymbolIcon C#"
-                                Visibility="{Binding SelectedItem.SymbolName, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}"/>
+                                Visibility="{x:Bind SelectedItem.SymbolName, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}"/>
                             <controls:SampleCodePresenter x:Name="CSharpCodePresenterSymbol" Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
+                                x:Name="TagsLabel"
                                 Margin="0,4,0,0"
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
@@ -223,6 +225,7 @@
                                 x:Name="TagsItemsView"
                                 Margin="0,8,0,4"
                                 x:Load="{x:Bind SelectedItem.Tags, Converter={StaticResource emptyCollectionToFalseConverter}, Mode=OneWay}"
+                                AutomationProperties.LabeledBy="{x:Bind TagsLabel}"
                                 IsItemInvokedEnabled="True"
                                 ItemInvoked="TagsItemsView_ItemInvoked"
                                 ItemsSource="{x:Bind SelectedItem.Tags, Mode=OneWay}"

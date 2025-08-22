@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="WinUIGallery.Samples.SamplePages.TitleBarWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery.Samples.SamplePages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="TitleBarWindow"
+    mc:Ignorable="d">
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TitleBar
+            x:Name="titleBar"
+            Title="WinUI Gallery"
+            BackRequested="TitleBar_BackRequested"
+            IsBackButtonVisible="{x:Bind navFrame.CanGoBack, Mode=OneWay}"
+            IsPaneToggleButtonVisible="True"
+            PaneToggleRequested="TitleBar_PaneToggleRequested"
+            Subtitle="TitleBar sample">
+            <!--  This is a workaround for https://github.com/microsoft/microsoft-ui-xaml/issues/10374, once fixed we should just be using IconSource  -->
+            <!-- <TitleBar.IconSource>
+                    <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
+                 </TitleBar.IconSource>-->
+            <TitleBar.LeftHeader>
+                <ImageIcon
+                    Height="16"
+                    Margin="0,0,8,0"
+                    Source="/Assets/Tiles/GalleryIcon.ico" />
+            </TitleBar.LeftHeader>
+            <TitleBar.RightHeader>
+                <PersonPicture
+                    Width="30"
+                    Height="30"
+                    Initials="JD" />
+            </TitleBar.RightHeader>
+            <TitleBar.Content>
+                <AutoSuggestBox
+                    Width="320"
+                    VerticalAlignment="Center"
+                    PlaceholderText="Search.."
+                    QueryIcon="Find" />
+            </TitleBar.Content>
+        </TitleBar>
+        <NavigationView
+            x:Name="navView"
+            Grid.Row="1"
+            IsBackButtonVisible="Collapsed"
+            IsPaneToggleButtonVisible="False"
+            IsSettingsVisible="False"
+            SelectionChanged="navView_SelectionChanged">
+            <NavigationView.MenuItems>
+                <NavigationViewItem
+                    Content="Menu Item1"
+                    Icon="Play"
+                    Tag="SamplePage1" />
+                <NavigationViewItem
+                    Content="Menu Item2"
+                    Icon="Save"
+                    Tag="SamplePage2" />
+                <NavigationViewItem
+                    Content="Menu Item3"
+                    Icon="Refresh"
+                    Tag="SamplePage3" />
+                <NavigationViewItem
+                    Content="Menu Item4"
+                    Icon="Download"
+                    Tag="SamplePage4" />
+            </NavigationView.MenuItems>
+            <Frame x:Name="navFrame" />
+        </NavigationView>
+    </Grid>
+</Window>

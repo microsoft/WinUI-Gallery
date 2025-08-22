@@ -250,7 +250,6 @@
     <Content Include="Samples\SampleCode\SystemBackdrops\SystemBackdropsSampleBackdropTypes_xaml.txt" />
     <Content Include="Samples\SampleCode\SystemBackdrops\SystemBackdropsSampleMicaController.txt" />
     <Content Include="Samples\SampleCode\SystemBackdrops\SystemBackdropsSampleDesktopAcrylicController.txt" />
-    <Content Include="Samples\SampleCode\SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt" />
     <Content Include="Samples\SampleCode\TabView\TabViewBasicSample_cs.txt" />
     <Content Include="Samples\SampleCode\TabView\TabViewKeyboardAcceleratorSample_cs.txt" />
     <Content Include="Samples\SampleCode\TeachingTip\TeachingTipSample2_xaml.txt" />

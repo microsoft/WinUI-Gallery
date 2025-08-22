@@ -3,7 +3,6 @@ using WinRT;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Composition.SystemBackdrops;
 
-WindowsSystemDispatcherQueueHelper wsdqHelper; // See the helper class sample for the implementation
 SystemBackdrops.DesktopAcrylicController acrylicController;
 SystemBackdrops.SystemBackdropConfiguration configurationSource;
 
@@ -11,8 +10,7 @@ bool TrySetAcrylicBackdrop(bool useAcrylicThin)
 {
     if (DesktopAcrylicController.IsSupported())
     {
-        wsdqHelper = new WindowsSystemDispatcherQueueHelper();
-        wsdqHelper.EnsureWindowsSystemDispatcherQueueController();
+        DispatcherQueue.EnsureSystemDispatcherQueue();
 
         // Hooking up the policy object
         configurationSource = new SystemBackdropConfiguration();

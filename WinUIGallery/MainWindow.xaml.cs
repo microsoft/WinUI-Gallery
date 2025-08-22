@@ -11,11 +11,9 @@ using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
-using Windows.UI.ViewManagement;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
 using WinUIGallery.Pages;
@@ -26,7 +24,6 @@ public sealed partial class MainWindow : Window
 {
     public Windows.System.VirtualKey ArrowKey;
     public Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
-    private UISettings _settings;
 
     public NavigationView NavigationView
     {
@@ -39,6 +36,7 @@ public sealed partial class MainWindow : Window
     {
         this.InitializeComponent();
         SetWindowProperties();
+        RootGrid.ActualThemeChanged += (_,_) => TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
     }
 
@@ -54,8 +52,7 @@ public sealed partial class MainWindow : Window
         }
 
         NavigationOrientationHelper.UpdateNavigationViewForElement(NavigationOrientationHelper.IsLeftMode());
-        _settings = new UISettings();
-        _settings.ColorValuesChanged += _settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event because the triggerTitleBarRepaint workaround no longer works
+        TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
     }
 
     private void RootGridXamlRoot_Changed(XamlRoot sender, XamlRootChangedEventArgs args)
@@ -110,16 +107,6 @@ public sealed partial class MainWindow : Window
     void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
     {
         throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
-    }
-    // this handles updating the caption button colors correctly when windows system theme is changed
-    // while the app is open
-    private void _settings_ColorValuesChanged(UISettings sender, object args)
-    {
-        // This calls comes off-thread, hence we will need to dispatch it to current app's thread
-        dispatcherQueue.TryEnqueue(() =>
-        {
-            _ = TitleBarHelper.ApplySystemThemeToCaptionButtons(this, rootFrame.ActualTheme);
-        });
     }
 
     // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
@@ -398,7 +385,7 @@ public sealed partial class MainWindow : Window
             }
             if (suggestions.Count > 0)
             {
-                controlsSearchBox.ItemsSource = suggestions.OrderByDescending(i => i.Title.StartsWith(sender.Text, StringComparison.CurrentCultureIgnoreCase)).ThenBy(i => i.Title);
+                controlsSearchBox.ItemsSource = suggestions.OrderByDescending(i => i.Title.StartsWith(sender.Text, StringComparison.CurrentCultureIgnoreCase)).ThenBy(i => i.Title).ToList();
             }
             else
             {
@@ -552,12 +539,12 @@ public sealed partial class MainWindow : Window
 
         var workItem = new Windows.System.Threading.WorkItemHandler((IAsyncAction _) =>
         {
-            while (!IsDebuggerPresent())
+            while (!Windows.Win32.PInvoke.IsDebuggerPresent())
             {
                 Thread.Sleep(1000);
             }
 
-            DebugBreak();
+            Windows.Win32.PInvoke.DebugBreak();
 
             dispatcherQueue.TryEnqueue(
                 Microsoft.UI.Dispatching.DispatcherQueuePriority.Low,
@@ -569,12 +556,6 @@ public sealed partial class MainWindow : Window
 
         var asyncAction = Windows.System.Threading.ThreadPool.RunAsync(workItem);
     }
-
-    [DllImport("kernel32.dll")]
-    private static extern bool IsDebuggerPresent();
-
-    [DllImport("kernel32.dll")]
-    private static extern void DebugBreak();
 
     #endregion
 

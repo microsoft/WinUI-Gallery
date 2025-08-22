@@ -12,7 +12,7 @@
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
         <NoWarn>
-            0108;   <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
+			0108;   <!-- 'x' hides inherited member 'y'. Use the new keyword if hiding was intended. -->
             8305    <!-- 'x' is for evaluation purposes only and is subject to change or removal in future updates. -->
         </NoWarn>
         <MSBuildWarningsAsMessages>
@@ -32,7 +32,9 @@
         <SingleProject Condition="'$(SolutionName)' == 'WinUIGallery.DesktopWap'">false</SingleProject>
         <WindowsAppSdkIncludeVersionInfo>true</WindowsAppSdkIncludeVersionInfo>
         <PublishProfile>win-$(Platform).pubxml</PublishProfile>
-        <PublishAot>false</PublishAot>
+		<DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
+		<IsAotCompatible>true</IsAotCompatible>
+		<CsWinRTAotWarningLevel>2</CsWinRTAotWarningLevel>
         <PublishSingleFile Condition="'$(PublishSingleFile)' == '' and '$(Packaged)' != 'true'">true</PublishSingleFile>
         <WindowsAppSdkSelfContained Condition="'$(WindowsAppSdkSelfContained)' == '' and '$(PublishSingleFile)' == 'true'">true</WindowsAppSdkSelfContained>
         <!-- Enable ExplicitlyIncludeVersionInfo workaround by setting WindowsAppSdkSelfContained earlier than the mock package would -->
@@ -104,6 +106,10 @@
             just add versionless PackageReferences here.  They will be updated to their actual versions by either the Packages.props file
             in the WinUI repo, or the next ItemGroup below when standalone. -->
     <ItemGroup>
+        <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.183">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Microsoft.WindowsAppSDK" />
         <PackageReference Include="ColorCode.Core" />
         <PackageReference Include="Microsoft.Graphics.Win2D" />
@@ -150,6 +156,7 @@
         <None Remove="Assets\ControlImages\Accessibility.png" />
         <None Remove="Assets\ControlImages\ContentIsland.png" />
         <None Remove="Assets\ControlImages\Popup.png" />
+        <None Remove="Assets\ControlImages\ThemeShadow.png" />
         <None Remove="Assets\Design\Cards.dark.png" />
         <None Remove="Assets\Design\Cards.light.png" />
         <None Remove="Assets\Design\Dialog.dark.png" />
@@ -320,6 +327,7 @@
         <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
         <None Remove="Samples\SamplePages\SampleWindow2.xaml" />
+        <None Remove="Samples\SamplePages\TitleBarWindow.xaml" />
         <None Remove="Styles\Button.xaml" />
         <None Remove="Styles\Grid.xaml" />
         <None Remove="Styles\GridViewItem.xaml" />
@@ -337,6 +345,7 @@
         <Content Include="Assets\ControlImages\ContentIsland.png" />
         <Content Include="Assets\ControlImages\CustomControls.png" />
         <Content Include="Assets\ControlImages\Popup.png" />
+        <Content Include="Assets\ControlImages\ThemeShadow.png" />
         <Content Include="Assets\Design\Cards.dark.png" />
         <Content Include="Assets\Design\Cards.light.png" />
         <Content Include="Assets\Design\Dialog.dark.png" />
@@ -504,6 +513,8 @@
         <Content Include="Samples\SampleCode\AppWindow\AppWindowSample6_cs.txt" />
         <Content Include="Samples\SampleCode\AppWindow\AppWindowSample6_xaml.txt" />
         <Content Include="Samples\SampleCode\AppWindow\AppWindowSample7_xaml.txt" />
+        <Content Include="Samples\SampleCode\ContentDialog\ContentDialogSample2_cs.txt" />
+        <Content Include="Samples\SampleCode\ContentDialog\ContentDialogSample2_xaml.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample1_cs.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample1_xaml.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample2_cs.txt" />
@@ -513,6 +524,12 @@
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_cs.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_xaml.txt" />
         <Content Include="Samples\SampleCode\Text\RichEditBox\RichEditBoxSample6_cs.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Samples\SamplePages\TitleBarWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
 
     <ItemGroup>

@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Navigation;
 using System;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.System;
+using WinUIGallery.ControlPages;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Pages;
@@ -21,7 +22,7 @@ public sealed partial class SettingsPage : Page
     {
         get
         {
-            var version = System.Reflection.Assembly.GetEntryAssembly().GetName().Version;
+            var version = ProcessInfoHelper.GetVersion();
             return string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
         }
     }
@@ -33,9 +34,6 @@ public sealed partial class SettingsPage : Page
     {
         this.InitializeComponent();
         Loaded += OnSettingsPageLoaded;
-        ClearVisitedSamplesCard.IsEnabled = SettingsHelper.Exists(SettingsKeys.RecentlyVisited);
-        UnfavoriteSamplesCard.IsEnabled = SettingsHelper.Exists(SettingsKeys.Favorites);
-        SamplesSettingsExpander.IsExpanded = ClearVisitedSamplesCard.IsEnabled || UnfavoriteSamplesCard.IsEnabled;
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -43,8 +41,15 @@ public sealed partial class SettingsPage : Page
         base.OnNavigatedTo(e);
     }
 
+    private void CheckRecentAndFavoriteButtonStates()
+    {
+        ClearRecentBtn.IsEnabled = SettingsHelper.Exists(SettingsKeys.RecentlyVisited);
+        UnfavoriteBtn.IsEnabled = SettingsHelper.Exists(SettingsKeys.Favorites);
+    }
+
     private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
     {
+        CheckRecentAndFavoriteButtonStates();
         var currentTheme = ThemeHelper.RootTheme;
         switch (currentTheme)
         {
@@ -80,26 +85,14 @@ public sealed partial class SettingsPage : Page
     {
         var selectedTheme = ((ComboBoxItem)themeMode.SelectedItem)?.Tag?.ToString();
         var window = WindowHelper.GetWindowForElement(this);
-        string color;
         if (selectedTheme != null)
         {
             ThemeHelper.RootTheme = EnumHelper.GetEnum<ElementTheme>(selectedTheme);
-            if (selectedTheme == "Dark")
-            {
-                TitleBarHelper.SetCaptionButtonColors(window, Colors.White);
-                color = selectedTheme;
-            }
-            else if (selectedTheme == "Light")
-            {
-                TitleBarHelper.SetCaptionButtonColors(window, Colors.Black);
-                color = selectedTheme;
-            }
-            else
-            {
-                color = TitleBarHelper.ApplySystemThemeToCaptionButtons(window, this.ActualTheme) == Colors.White ? "Dark" : "Light";
-            }
+            var elementThemeResolved = ThemeHelper.RootTheme == ElementTheme.Default ? ThemeHelper.ActualTheme : ThemeHelper.RootTheme;
+            TitleBarHelper.ApplySystemThemeToCaptionButtons(window, elementThemeResolved);
+
             // announce visual change to automation
-            UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {color}",
+            UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {elementThemeResolved}",
                                                                             "ThemeChangedNotificationActivityId");
         }
     }
@@ -161,20 +154,45 @@ public sealed partial class SettingsPage : Page
         await Launcher.LaunchUriAsync(new Uri("https://github.com/microsoft/WinUI-Gallery/issues/new/choose"));
 
     }
-
-    private void ClearRecentlyVisitedSamples_Click(object sender, RoutedEventArgs e)
+    private async void UnfavoriteBtn_Click(object sender, RoutedEventArgs e)
     {
-        ClearRecentlyVisitedSamplesFlyout.Hide();
-        SettingsHelper.Delete(SettingsKeys.RecentlyVisited);
-        ClearVisitedSamplesCard.IsEnabled = false;
-        SamplesSettingsExpander.IsExpanded = ClearVisitedSamplesCard.IsEnabled || UnfavoriteSamplesCard.IsEnabled;
+        ContentDialog dialog = new()
+        {
+            XamlRoot = this.XamlRoot,
+            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+            Title = "Remove all favorites?",
+            PrimaryButtonText = "Remove",
+            CloseButtonText = "Cancel",
+            DefaultButton = ContentDialogButton.Primary,
+            Content = "This will unfavorite all your samples.",
+            RequestedTheme = this.ActualTheme
+        };
+        dialog.PrimaryButtonClick += (s, args) =>
+        {
+            SettingsHelper.Delete(SettingsKeys.Favorites);
+            CheckRecentAndFavoriteButtonStates();
+        };
+        var result = await dialog.ShowAsync();
     }
 
-    private void UnfavoriteAllSamples_Click(object sender, RoutedEventArgs e)
+    private async void ClearRecentBtn_Click(object sender, RoutedEventArgs e)
     {
-        UnfavoriteAllSamplesFlyout.Hide();
-        SettingsHelper.Delete(SettingsKeys.Favorites);
-        UnfavoriteSamplesCard.IsEnabled = false;
-        SamplesSettingsExpander.IsExpanded = ClearVisitedSamplesCard.IsEnabled || UnfavoriteSamplesCard.IsEnabled;
+        ContentDialog dialog = new()
+        {
+            XamlRoot = this.XamlRoot,
+            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+            Title = "Clear recently visited samples?",
+            PrimaryButtonText = "Clear",
+            CloseButtonText = "Cancel",
+            DefaultButton = ContentDialogButton.Primary,
+            Content = "This will remove all samples from your recent history.",
+            RequestedTheme = this.ActualTheme
+        };
+        dialog.PrimaryButtonClick += (s, args) =>
+        {
+            SettingsHelper.Delete(SettingsKeys.RecentlyVisited);
+            CheckRecentAndFavoriteButtonStates();
+        };
+        var result = await dialog.ShowAsync();
     }
 }

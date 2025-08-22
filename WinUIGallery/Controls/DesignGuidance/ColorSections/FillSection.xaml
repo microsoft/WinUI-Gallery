@@ -202,7 +202,7 @@
                     ColorExplanation="Disabled only (not accessible)"
                     ColorName="Control Strong / Disabled"
                     ColorValue="#FFFFFF (51, 31.73%)"
-                    Foreground="{ThemeResource TextFillColorInverseBrush}"
+                    Foreground="{ThemeResource TextFillColorPrimary}"
                     ShowSeparator="False" />
             </Grid>
 
