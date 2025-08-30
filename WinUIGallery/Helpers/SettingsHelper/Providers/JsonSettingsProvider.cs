@@ -75,7 +75,10 @@ public partial class JsonSettingsProvider : ISettingsProvider
         {
             File.Delete(filePath);
         }
-        catch { }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Failed to delete corrupted settings file '{filePath}': {ex}");
+        }
 
         values = new();
     }
