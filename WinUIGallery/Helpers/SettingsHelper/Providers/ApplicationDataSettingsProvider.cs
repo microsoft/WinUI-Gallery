@@ -51,7 +51,10 @@ public partial class ApplicationDataSettingsProvider : ISettingsProvider
         {
             container.Values.Remove(key);
         }
-        catch {}
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Failed to remove corrupted key '{key}': {ex}");
+        }
     }
 
     public void Set<T>(string key, T value)
