@@ -39,8 +39,7 @@
         </Grid.RowDefinitions>
         <RichTextBlock>
             <Paragraph>
-                Typography helps provide structure and hierarchy to UI. The default font for Windows is<Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">Segoe UI Variable</Hyperlink>
-                .
+                Typography helps provide structure and hierarchy to UI. The default font for Windows is <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">Segoe UI Variable</Hyperlink>.
                 Best practice is to use Regular weight for most text, use Semibold for titles. The minimum values should be 12px Regular, 14px Semibold.</Paragraph>
         </RichTextBlock>
         <controls:ControlExample
