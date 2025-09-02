@@ -2,6 +2,7 @@ name: Feature request
 description: Suggest a sample or enhancement for the WinUI Gallery
 title: "Sample request title"
 labels: ["needs-triage"]
+type: Feature
 body:
   - type: dropdown
     validations:
