@@ -36,7 +36,7 @@ public sealed partial class MainWindow : Window
     {
         this.InitializeComponent();
         SetWindowProperties();
-        RootGrid.ActualThemeChanged += (_,_) => TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
+        RootGrid.ActualThemeChanged += (_, _) => TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
     }
 
@@ -47,7 +47,6 @@ public sealed partial class MainWindow : Window
 
         if (sender is FrameworkElement rootGrid && rootGrid.XamlRoot is not null)
         {
-            rootGrid.XamlRoot.Changed -= RootGridXamlRoot_Changed;
             rootGrid.XamlRoot.Changed += RootGridXamlRoot_Changed;
         }
 
