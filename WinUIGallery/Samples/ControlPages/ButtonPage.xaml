@@ -98,9 +98,9 @@
 
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
-                <x:String>
-                    &lt;Button Style="{StaticResource AccentButtonStyle}" Content="Accent style button" /&gt;
-                    &lt;Button Style="{StaticResource SubtleButtonStyle}" Content="Subtle style button" /&gt;
+                <x:String xml:space="preserve">
+&lt;Button Style="{StaticResource AccentButtonStyle}" Content="Accent style button"/&gt;
+&lt;Button Style="{StaticResource SubtleButtonStyle}" Content="Subtle style button"/&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>
