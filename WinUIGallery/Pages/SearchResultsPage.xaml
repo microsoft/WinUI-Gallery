@@ -12,7 +12,6 @@
     <Grid Background="{ThemeResource HomePageBackgroundBrush}">
         <NavigationView
             x:Name="resultsNavView"
-            Margin="0,24,0,0"
             IsBackButtonVisible="Collapsed"
             IsSettingsVisible="False"
             Loaded="OnResultsNavViewLoaded"
@@ -22,8 +21,7 @@
             <UserControl>
                 <GridView
                     x:Name="resultsGridView"
-                    Margin="12,24,0,0"
-                    Padding="0,0,0,36"
+                    Padding="36,24,36,36"
                     AutomationProperties.AutomationId="ResultsGridView"
                     AutomationProperties.Name="Search Results"
                     ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -68,8 +66,8 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="resultsNavView.Margin" Value="0" />
-                        <Setter Target="resultsGridView.Margin" Value="0,12,0,36" />
-                        <Setter Target="resultsGridView.Padding" Value="12,0" />
+                        <Setter Target="resultsGridView.Margin" Value="0,24,0,36" />
+                        <Setter Target="resultsGridView.Padding" Value="16,0" />
                         <Setter Target="resultsGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
                         <Setter Target="noResultsTextBlock.Margin" Value="14,14,0,0" />
                     </VisualState.Setters>
