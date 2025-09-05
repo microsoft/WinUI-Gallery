@@ -39,8 +39,7 @@
         </Grid.RowDefinitions>
         <RichTextBlock>
             <Paragraph>
-                Typography helps provide structure and hierarchy to UI. The default font for Windows is <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">Segoe UI Variable</Hyperlink>
-                .
+                Typography helps provide structure and hierarchy to UI. The default font for Windows is <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/downloads/#fonts">Segoe UI Variable</Hyperlink>.
                 Best practice is to use Regular weight for most text, use Semibold for titles. The minimum values should be 12px Regular, 14px Semibold.</Paragraph>
         </RichTextBlock>
         <controls:ControlExample
@@ -158,7 +157,10 @@
                     </Canvas>
                 </ScrollViewer>
 
-                <ScrollViewer HorizontalScrollBarVisibility="Auto" HorizontalScrollMode="Auto" VerticalScrollBarVisibility="Hidden">
+                <ScrollViewer
+                    HorizontalScrollBarVisibility="Auto"
+                    HorizontalScrollMode="Auto"
+                    VerticalScrollBarVisibility="Hidden">
                     <StackPanel>
                         <Grid Margin="0,48,0,24" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
@@ -210,6 +212,21 @@
                             ExampleStyle="{StaticResource BodyStrongTextBlockStyle}"
                             ResourceName="BodyStrongTextBlockStyle"
                             SizeLineHeight="14/20 epx"
+                            VariableFont="Text, SemiBold"
+                            Weight="600" />
+                        <controls:TypographyControl
+                            Example="Body Large"
+                            ExampleStyle="{StaticResource BodyLargeTextBlockStyle}"
+                            ResourceName="BodyLargeTextBlockStyle"
+                            SizeLineHeight="18/24 epx"
+                            VariableFont="Text, Regular"
+                            Weight="400" />
+                        <controls:TypographyControl
+                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                            Example="Body Large Strong"
+                            ExampleStyle="{StaticResource BodyLargeStrongTextBlockStyle}"
+                            ResourceName="BodyLargeStrongTextBlockStyle"
+                            SizeLineHeight="18/24 epx"
                             VariableFont="Text, SemiBold"
                             Weight="600" />
                         <controls:TypographyControl
