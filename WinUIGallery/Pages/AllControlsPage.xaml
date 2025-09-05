@@ -30,7 +30,7 @@
             <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
             <TextBlock
                 x:Name="smallHeaderText"
-                Margin="36,24,0,0"
+                Margin="36,24,16,0"
                 VerticalAlignment="Center"
                 Style="{StaticResource TitleTextBlockStyle}"
                 Text="{StaticResource ControlsName}"
@@ -39,7 +39,7 @@
         <GridView
             x:Name="itemGridView"
             Grid.Row="1"
-            Padding="24,36,24,36"
+            Padding="24,16,24,36"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -66,8 +66,7 @@
                     <VisualState.Setters>
                         <Setter Target="itemGridView.Padding" Value="16,16,16,36" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
-                        <Setter Target="smallHeaderText.Margin" Value="16,24,0,0" />
-                        <Setter Target="smallHeaderText.Style" Value="{StaticResource SubtitleTextBlockStyle}" />
+                        <Setter Target="smallHeaderText.Margin" Value="16,24,16,0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
