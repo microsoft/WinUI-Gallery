@@ -36,14 +36,27 @@ public sealed partial class MainWindow : Window
     {
         this.InitializeComponent();
         SetWindowProperties();
-        RootGrid.ActualThemeChanged += (_,_) => TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
+        RootGrid.ActualThemeChanged += (_, _) => TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
     }
 
     private void RootGrid_Loaded(object sender, RoutedEventArgs e)
     {
+        // We need to set the minimum size here because the XamlRoot is not available in the constructor.
+        WindowHelper.SetWindowMinSize(this, 640, 500);
+
+        if (sender is FrameworkElement rootGrid && rootGrid.XamlRoot is not null)
+        {
+            rootGrid.XamlRoot.Changed += RootGridXamlRoot_Changed;
+        }
+
         NavigationOrientationHelper.UpdateNavigationViewForElement(NavigationOrientationHelper.IsLeftMode());
         TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
+    }
+
+    private void RootGridXamlRoot_Changed(XamlRoot sender, XamlRootChangedEventArgs args)
+    {
+        WindowHelper.SetWindowMinSize(this, 640, 500);
     }
 
     private void SetWindowProperties()
@@ -58,9 +71,6 @@ public sealed partial class MainWindow : Window
         this.SetTitleBar(titleBar);
         this.AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
         this.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
-
-        Win32WindowHelper win32WindowHelper = new Win32WindowHelper(this);
-        win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 640, y = 500 });
     }
 
     private void OnPaneDisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
