@@ -1,5 +1,16 @@
 [
   {
+    "Code": "E620",
+    "Name": "StopSlideShow",
+    "Tags": [
+      "images",
+      "presentation",
+      "gallery",
+      "photos",
+      "symbol-icon"
+    ]
+  },
+  {
     "Code": "E700",
     "Name": "GlobalNavButton",
     "Tags": [
@@ -11321,7 +11332,10 @@
     "Code": "F140",
     "Name": "StatusCircleBlock",
     "Tags": [
-      "restrict"
+      "restrict",
+      "stop",
+      "cancel",
+      "end"
     ]
   },
   {

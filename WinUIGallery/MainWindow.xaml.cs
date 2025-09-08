@@ -14,7 +14,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
-using Windows.UI.ViewManagement;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
 using WinUIGallery.Pages;
@@ -25,7 +24,6 @@ public sealed partial class MainWindow : Window
 {
     public Windows.System.VirtualKey ArrowKey;
     public Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
-    private UISettings _settings;
 
     public NavigationView NavigationView
     {
@@ -38,14 +36,27 @@ public sealed partial class MainWindow : Window
     {
         this.InitializeComponent();
         SetWindowProperties();
+        RootGrid.ActualThemeChanged += (_, _) => TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
     }
 
     private void RootGrid_Loaded(object sender, RoutedEventArgs e)
     {
+        // We need to set the minimum size here because the XamlRoot is not available in the constructor.
+        WindowHelper.SetWindowMinSize(this, 640, 500);
+
+        if (sender is FrameworkElement rootGrid && rootGrid.XamlRoot is not null)
+        {
+            rootGrid.XamlRoot.Changed += RootGridXamlRoot_Changed;
+        }
+
         NavigationOrientationHelper.UpdateNavigationViewForElement(NavigationOrientationHelper.IsLeftMode());
-        _settings = new UISettings();
-        _settings.ColorValuesChanged += _settings_ColorValuesChanged; // cannot use FrameworkElement.ActualThemeChanged event because the triggerTitleBarRepaint workaround no longer works
+        TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
+    }
+
+    private void RootGridXamlRoot_Changed(XamlRoot sender, XamlRootChangedEventArgs args)
+    {
+        WindowHelper.SetWindowMinSize(this, 640, 500);
     }
 
     private void SetWindowProperties()
@@ -60,9 +71,6 @@ public sealed partial class MainWindow : Window
         this.SetTitleBar(titleBar);
         this.AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
         this.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
-
-        Win32WindowHelper win32WindowHelper = new Win32WindowHelper(this);
-        win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 640, y = 500 });
     }
 
     private void OnPaneDisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
@@ -98,16 +106,6 @@ public sealed partial class MainWindow : Window
     void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
     {
         throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
-    }
-    // this handles updating the caption button colors correctly when windows system theme is changed
-    // while the app is open
-    private void _settings_ColorValuesChanged(UISettings sender, object args)
-    {
-        // This calls comes off-thread, hence we will need to dispatch it to current app's thread
-        dispatcherQueue.TryEnqueue(() =>
-        {
-            _ = TitleBarHelper.ApplySystemThemeToCaptionButtons(this, rootFrame.ActualTheme);
-        });
     }
 
     // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.

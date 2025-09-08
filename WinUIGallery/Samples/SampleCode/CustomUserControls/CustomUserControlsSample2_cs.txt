@@ -1,11 +1,15 @@
-﻿using System.Linq;
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Documents;
+using Microsoft.UI.Xaml.Media;
+using System.Linq;
+using Windows.UI;
 
 namespace YourNamespace;
 
 // Custom control for a validated password box
-public sealed class ValidatedPasswordBox : Control
+public sealed partial class ValidatedPasswordBox : Control
 {
     // Register a dependency property for the Password value.
     // Note: The PropertyMetadata includes a callback (OnPasswordChanged) so that the UI updates
@@ -39,31 +43,24 @@ public sealed class ValidatedPasswordBox : Control
 
     // Template parts for password input and validation messages
     private PasswordBox PasswordInput { get; set; }
-    private StackPanel MissingUppercaseText { get; set; }
-    private StackPanel MissingNumberText { get; set; }
-    private StackPanel TooShortText { get; set; }
-    private StackPanel ValidPasswordText { get; set; }
+    private RichTextBlock ValidationRichText { get; set; }
 
     protected override void OnApplyTemplate()
     {
         base.OnApplyTemplate();
 
         PasswordInput = GetTemplateChild(nameof(PasswordInput)) as PasswordBox;
+        ValidationRichText = GetTemplateChild("ValidationRichText") as RichTextBlock;
+
         if (PasswordInput != null)
         {
             PasswordInput.Header = Header;
             PasswordInput.PlaceholderText = PlaceholderText;
-            PasswordInput.PasswordChanged += (sender, e) =>
-            {
-                Password = PasswordInput.Password;
-                UpdateValidationMessages();
-            };
+            PasswordInput.PasswordChanged += (_, _) => Password = PasswordInput.Password;
         }
 
-        MissingUppercaseText = GetTemplateChild(nameof(MissingUppercaseText)) as StackPanel;
-        MissingNumberText = GetTemplateChild(nameof(MissingNumberText)) as StackPanel;
-        TooShortText = GetTemplateChild(nameof(TooShortText)) as StackPanel;
-        ValidPasswordText = GetTemplateChild(nameof(ValidPasswordText)) as StackPanel;
+        if (ValidationRichText != null)
+            ValidationRichText.ActualThemeChanged += (_, _) => UpdateValidationMessages();
 
         UpdateValidationMessages();
     }
@@ -82,13 +79,54 @@ public sealed class ValidatedPasswordBox : Control
 
         IsValid = hasMinLength && hasUppercase && hasNumber;
 
-        if (MissingUppercaseText != null)
-            MissingUppercaseText.Visibility = (hasUppercase || string.IsNullOrEmpty(Password)) ? Visibility.Collapsed : Visibility.Visible;
-        if (MissingNumberText != null)
-            MissingNumberText.Visibility = (hasNumber || string.IsNullOrEmpty(Password)) ? Visibility.Collapsed : Visibility.Visible;
-        if (TooShortText != null)
-            TooShortText.Visibility = (hasMinLength || string.IsNullOrEmpty(Password)) ? Visibility.Collapsed : Visibility.Visible;
-        if (ValidPasswordText != null)
-            ValidPasswordText.Visibility = IsValid ? Visibility.Visible : Visibility.Collapsed;
+        if (ValidationRichText is null)
+            return;
+
+        ValidationRichText.Visibility = string.IsNullOrEmpty(Password) ? Visibility.Collapsed : Visibility.Visible;
+
+        ValidationRichText.Blocks.Clear();
+
+        if (string.IsNullOrEmpty(Password))
+            return;
+
+        var paragraph = new Paragraph();
+
+        if (IsValid)
+        {
+            AddValidationLine(paragraph, "\uE930", "Password is valid", false);
+        }
+        else
+        {
+            if (!hasUppercase) AddValidationLine(paragraph, "\uEA39", "Missing uppercase", true);
+            if (!hasNumber) AddValidationLine(paragraph, "\uEA39", "Missing number", true);
+            if (!hasMinLength) AddValidationLine(paragraph, "\uEA39", "Too short!", true);
+        }
+
+        if (paragraph.Inlines.Count > 0)
+        {
+            ValidationRichText.Blocks.Add(paragraph);
+            (FrameworkElementAutomationPeer.FromElement(ValidationRichText)
+                 ?? FrameworkElementAutomationPeer.CreatePeerForElement(ValidationRichText))
+                .RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+        }
+    }
+
+    private void AddValidationLine(Paragraph paragraph, string iconGlyph, string message, bool isCritical)
+    {
+        if (paragraph.Inlines.Any())
+            paragraph.Inlines.Add(new LineBreak());
+
+        var color = new SolidColorBrush(
+            isCritical
+                ? (ActualTheme == ElementTheme.Light ? Color.FromArgb(255, 196, 43, 28) : Color.FromArgb(255, 255, 153, 164))
+                : (ActualTheme == ElementTheme.Light ? Color.FromArgb(255, 15, 123, 15) : Color.FromArgb(255, 108, 203, 95)));
+
+        paragraph.Inlines.Add(new InlineUIContainer
+        {
+            Child = new FontIcon { Glyph = iconGlyph, FontSize = 14, Foreground = color }
+        });
+
+        paragraph.Inlines.Add(new Run { Text = " ", });
+        paragraph.Inlines.Add(new Run { Text = message, Foreground = color });
     }
 }

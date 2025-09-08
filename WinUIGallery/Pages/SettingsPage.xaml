@@ -29,6 +29,7 @@
             x:Name="PageHeader"
             MaxWidth="1064"
             Margin="36,24,36,0"
+            AutomationProperties.HeadingLevel="Level1"
             Style="{StaticResource TitleTextBlockStyle}"
             Text="Settings" />
         <ScrollView
@@ -84,70 +85,29 @@
                         </toolkit:SettingsExpander.Items>
                     </toolkit:SettingsExpander>
 
-                    <toolkit:SettingsExpander x:Name="SamplesSettingsExpander"
-                                              Description="Manage samples personalization preferences"
-                                              Header="Sample preferences">
-                        <toolkit:SettingsExpander.HeaderIcon>
+                    <toolkit:SettingsCard Description="Clear your recent or favorite samples" Header="Manage samples">
+                        <toolkit:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE8A9;" />
-                        </toolkit:SettingsExpander.HeaderIcon>
-                        <toolkit:SettingsExpander.Items>
-                            <toolkit:SettingsCard x:Name="ClearVisitedSamplesCard"
-                                                  Header="Clear recently visited"
-                                                  Description="Clear the list of recently visited samples.">
-                                <toolkit:SettingsCard.HeaderIcon>
-                                    <FontIcon Glyph="&#xEA99;" />
-                                </toolkit:SettingsCard.HeaderIcon>
-                                <Button Content="Clear list"
-                                        MinWidth="120">
-                                    <Button.Flyout>
-                                        <Flyout x:Name="ClearRecentlyVisitedSamplesFlyout"
-                                                Placement="LeftEdgeAlignedBottom">
-                                            <StackPanel Spacing="8"
-                                                        Width="240">
-                                                <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}"
-                                                           Text="Clear recently visited?" />
-                                                <TextBlock Style="{ThemeResource BodyTextBlockStyle}"
-                                                           Text="This will permanently remove all recently visited samples." />
-                                                <Button Click="ClearRecentlyVisitedSamples_Click"
-                                                        Content="Yes, clear"
-                                                        MinWidth="120"/>
-                                            </StackPanel>
-                                        </Flyout>
-                                    </Button.Flyout>
-                                </Button>
-                            </toolkit:SettingsCard>
-                            <toolkit:SettingsCard x:Name="UnfavoriteSamplesCard"
-                                                  Header="Unfavorite all samples"
-                                                  Description="Remove all samples from your favorites list.">
-                                <toolkit:SettingsCard.HeaderIcon>
-                                    <FontIcon Glyph="&#xE8D9;" />
-                                </toolkit:SettingsCard.HeaderIcon>
-                                <Button Content="Unfavorite all"
-                                        MinWidth="120">
-                                    <Button.Flyout>
-                                        <Flyout x:Name="UnfavoriteAllSamplesFlyout"
-                                                Placement="LeftEdgeAlignedBottom">
-                                            <StackPanel Spacing="8"
-                                                        Width="240">
-                                                <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}"
-                                                           Text="Unfavorite all samples?" />
-                                                <TextBlock Style="{ThemeResource BodyTextBlockStyle}"
-                                                           Text="This will remove all samples from your favorites." />
-                                                <Button Click="UnfavoriteAllSamples_Click"
-                                                        Content="Yes, unfavorite"
-                                                        MinWidth="120" />
-                                            </StackPanel>
-                                        </Flyout>
-                                    </Button.Flyout>
-                                </Button>
-                            </toolkit:SettingsCard>
-                        </toolkit:SettingsExpander.Items>
-                    </toolkit:SettingsExpander>
+                        </toolkit:SettingsCard.HeaderIcon>
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <Button
+                                x:Name="ClearRecentBtn"
+                                MinWidth="120"
+                                Click="ClearRecentBtn_Click"
+                                Content="Clear recents" />
+                            <Button
+                                x:Name="UnfavoriteBtn"
+                                MinWidth="120"
+                                Click="UnfavoriteBtn_Click"
+                                Content="Remove favorites" />
+                        </StackPanel>
+                    </toolkit:SettingsCard>
+
 
                     <!--  About  -->
                     <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="About" />
                     <toolkit:SettingsExpander
-                        Margin="0,0,0,24"
+                        Margin="0,0,0,36"
                         Description="© 2025 Microsoft. All rights reserved."
                         Header="{StaticResource AppTitleName}">
                         <toolkit:SettingsExpander.HeaderIcon>

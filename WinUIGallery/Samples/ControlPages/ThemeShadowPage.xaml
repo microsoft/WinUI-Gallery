@@ -1,0 +1,68 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.ThemeShadowPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media="using:Microsoft.UI.Xaml.Media"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example3" HeaderText="ThemeShadow applied to a Border">
+            <controls:ControlExample.Example>
+                <Grid x:Name="Example3Grid" Padding="36">
+                    <Grid x:Name="ShadowCastGrid" />
+                    <Border
+                        x:Name="ShadowRect"
+                        Width="200"
+                        Height="200"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        CornerRadius="{ThemeResource OverlayCornerRadius}"
+                        Loaded="ShadowRect_Loaded">
+                        <Border.Shadow>
+                            <ThemeShadow x:Name="shadow" />
+                        </Border.Shadow>
+                    </Border>
+                </Grid>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <Slider
+                    x:Name="TranslationSliderInApp"
+                    Width="200"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.Name="shadow intensity"
+                    Header="Z-translation"
+                    IsFocusEngagementEnabled="False"
+                    Maximum="64"
+                    Minimum="0"
+                    SmallChange="1"
+                    StepFrequency="1"
+                    ValueChanged="TranslationSliderInApp_ValueChanged"
+                    Value="32" />
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Grid&gt;
+    &lt;Grid x:Name="ShadowCastGrid"/&gt;
+    &lt;Border x:Name="ShadowRect" Translation="0,0,$(TranslationSlider)" Loaded="ShadowRect_Loaded" Width="200" Height="200" CornerRadius="{ThemeResource OverlayCornerRadius}" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"/&gt;
+        &lt;Border.Shadow&gt;
+            &lt;ThemeShadow x:Name="shadow"/&gt;
+        &lt;/Border.Shadow&gt;
+    &lt;/Border&gt;                
+&lt;/Grid&gt;
+</x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private void ShadowRect_Loaded(object sender, RoutedEventArgs e)
+{
+    shadow.Receivers.Add(ShadowCastGrid);
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="TranslationSlider" Value="{x:Bind TranslationSliderInApp.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

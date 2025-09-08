@@ -24,12 +24,13 @@
         </Grid.RowDefinitions>
         <TextBlock
             x:Name="TitleTxt"
-            Margin="36,24,36,24"
-            Style="{StaticResource TitleTextBlockStyle}" />
+            Margin="36,24,16,24"
+            Style="{StaticResource TitleTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level1" />
         <GridView
             x:Name="itemGridView"
             Grid.Row="1"
-            Padding="36,24,36,0"
+            Padding="36,0,36,0"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -55,7 +56,7 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="TitleTxt.Margin" Value="24,64,16,24" />
+                        <Setter Target="TitleTxt.Margin" Value="24,24,16,24" />
                         <Setter Target="itemGridView.Padding" Value="16,0,16,36" />
                         <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource GridViewItemStyleSmall}" />
                     </VisualState.Setters>
