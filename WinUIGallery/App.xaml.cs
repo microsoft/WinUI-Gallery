@@ -58,18 +58,18 @@ sealed partial class App : Application
 
         EnsureWindow();
 
-        if (NativeMethods.IsAppPackaged)
+        MainWindow.Closed += (s, e) =>
         {
-            MainWindow.Closed += (s, e) =>
+            if (IsAppPackaged)
             {
                 BadgeNotificationManager.Current.ClearBadge();
-            };
+            }
 
             // Close all remaining active windows to prevent resource disposal conflicts
             var activeWindows = new List<Window>(WindowHelper.ActiveWindows);
             foreach (var window in activeWindows)
             {
-                if (window != s) // Don't try to close the window that's already closing
+                if (!window.Equals(s)) // Don't try to close the window that's already closing
                 {
                     try
                     {
@@ -81,7 +81,7 @@ sealed partial class App : Application
                     }
                 }
             }
-        }
+        };
     }
 
     private void DebugSettings_BindingFailed(object sender, BindingFailedEventArgs e)
