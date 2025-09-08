@@ -51,8 +51,8 @@
             <SelectorBarItem Text="Signal" />
             <SelectorBarItem Text="High Contrast" />
         </SelectorBar>
-        <ScrollViewer Grid.Row="3">
-            <Frame x:Name="NavigationFrame" VerticalAlignment="Stretch" />
+        <ScrollViewer Grid.Row="3" Margin="0,0,-12,-36">
+            <Frame x:Name="NavigationFrame" VerticalAlignment="Stretch" Padding="0,0,12,36"/>
         </ScrollViewer>
     </Grid>
 </Page>
