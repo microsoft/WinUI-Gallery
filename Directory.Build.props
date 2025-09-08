@@ -11,7 +11,7 @@
 
   <!-- If we aren't building in the WinUI repo, import the necessary missing props we'd normally pick up from its Directory.Build.props hierarchy -->
   <!-- The UseStandalone property allows this to be overridden, in order to buildSamples to build without changing the entire repo -->
-  <Import Project="Standalone.props" Condition="'$(IsInWinUIRepo)' != 'true' OR '$(UseStandalone)' == 'true'"/>
+  <Import Project="standalone.props" Condition="'$(IsInWinUIRepo)' != 'true' OR '$(UseStandalone)' == 'true'"/>
 
   <!-- Temporary workaround until WinAppSDK 1.5.2 provides fix -->
   <Target Name="RemoveConflictingDepsJsonFiles" AfterTargets="GetPackagingOutputs">
