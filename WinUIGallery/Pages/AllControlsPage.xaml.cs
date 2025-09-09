@@ -20,10 +20,10 @@ public sealed partial class AllControlsPage : ItemsPageBase
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
-        if (e.Parameter is NavigationRootPageArgs args && args.NavigationRootPage.NavigationView.MenuItems.OfType<NavigationViewItem>().FirstOrDefault(item => item.Name == "AllControlsItem") is NavigationViewItem item)
-        {
-            item.IsSelected = true;
-        }
+        //if (e.Parameter is NavigationRootPageArgs args && args.NavigationRootPage.NavigationView.MenuItems.OfType<NavigationViewItem>().FirstOrDefault(item => item.Name == "AllControlsItem") is NavigationViewItem item)
+        //{
+        //    item.IsSelected = true;
+        //}
 
         Items = ControlInfoDataSource.Instance.Groups.Where(g => !g.IsSpecialSection).SelectMany(g => g.Items).OrderBy(i => i.Title).ToList();
     }

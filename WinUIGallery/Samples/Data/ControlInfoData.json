@@ -207,15 +207,20 @@
           "Title": "Iconography",
           "IsUpdated": true,
           "Subtitle": "Icons are a visual design language that can be used to communicate information quickly and effectively.",
+          "Description": "The icons below use Segoe Fluent Icons on Windows 11 and Segoe MDL2 Assets on Windows 10.",
           "ImagePath": "ms-appx:///Assets/ControlImages/IconElement.png",
           "Docs": [
             {
-              "Title": "Iconography in Windows 11",
+              "Title": "Iconography in Windows",
               "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/iconography#system-icons"
             },
             {
               "Title": "Segoe Fluent Icons font",
               "Uri": "https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font"
+            },
+            {
+              "Title": "Segoe MDL2 Assets font",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/style/segoe-ui-symbol-font"
             }
           ]
         },
@@ -2599,7 +2604,7 @@
           "UniqueId": "SystemBackdrops",
           "Title": "System Backdrops (Mica/Acrylic)",
           "ApiNamespace": "Microsoft.UI.Composition.SystemBackdrops",
-          "Subtitle": "System backdrops, like Mica and Acrylic, for the window.",
+          "Subtitle": "System backdrops, like Mica and Acrylic, for app windows.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
           "Description": "System backdrops provide a transparency effect for the window background. Mica and Acrylic are the current supported backdrops. There are two options for applying a backdrop: first, to use built-in Mica/Acrylic types, which have no customization and are simple to apply. The second is to create a customizable backdrop, which requires more code.",
           "SourcePath": "/Materials",
@@ -2627,6 +2632,30 @@
             {
               "Title": "DesktopAcrylicController - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.systembackdrops.desktopacryliccontroller"
+            }
+          ]
+        },
+        {
+          "UniqueId": "ThemeShadow",
+          "Title": "ThemeShadow",
+          "ApiNamespace": "Microsoft.UI.Xaml.Media",
+          "Subtitle": "Adds a depth-aware shadow to UI elements using system lighting.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ThemeShadow.png",
+          "Description": "Adds a realistic shadow effect to UI elements using the system's lighting and depth to enhance visual hierarchy.",
+          "IsNew": true,
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "Shadow"
+          ],
+          "Docs": [
+            {
+              "Title": "Z-depth and shadow design guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/depth-shadow"
+            },
+            {
+              "Title": "ThemeShadow - API",
+              "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.themeshadow"
             }
           ]
         }
@@ -3054,19 +3083,19 @@
         {
           "UniqueId": "TitleBar",
           "Title": "TitleBar",
-          "ApiNamespace": "Microsoft.UI.Xaml",
-          "Subtitle": "An example showing a custom UIElement used as the titlebar for the app's window.",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "An example showing how to use the default TitleBar control.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
-          "Description": "This sample shows how to use a custom titlebar for the app's window. There are 2 ways of doing it: using default titlebar and setting an UIElement as a custom titlebar.",
+          "Description": "The TitleBar control provides a simple way to create a modern titlebar UX with interactive content.",
           "IsUpdated": true,
           "Docs": [
             {
-              "Title": "TitleBar - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window.extendscontentintotitlebar"
+              "Title": "Title bar customization",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/title-bar"
             },
             {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
+              "Title": "Title bar - design guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/basics/titlebar-design"
             }
           ]
         }

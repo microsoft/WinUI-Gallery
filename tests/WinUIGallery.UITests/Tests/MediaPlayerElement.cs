@@ -15,7 +15,7 @@ public class MediaPlayerElement : TestBase
     public static void ClassInitialize(TestContext context)
     {
         // Doing this manually due to keyboard layout issues surrounding y and z
-        var search = Session.FindElementByName("Search");
+        var search = Session.FindElementByName("Search controls and samples...");
         search.Clear();
         Thread.Sleep(1_000);
         search.SendKeys("MediaPla");

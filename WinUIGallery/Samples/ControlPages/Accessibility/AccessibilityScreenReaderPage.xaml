@@ -118,7 +118,7 @@
 
                     <!--  If both are provided, headers are name and placeholders are moved to description  -->
                     <TextBox
-                        Width="200"
+                        MinWidth="200"
                         HorizontalAlignment="Left"
                         Header="Email"
                         PlaceholderText="test@example.com" />
@@ -144,7 +144,7 @@
 &lt;TextBox PlaceholderText="Nickname" /&gt;
 
 &lt;!-- If both are provided, headers are name and placeholders are moved to description --&gt;
-&lt;TextBox Header="Email" PlaceholderText="test@example.com" /&gt;
+&lt;TextBox Header="Email" PlaceholderText="test@example.com" MinWidth="200" /&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>

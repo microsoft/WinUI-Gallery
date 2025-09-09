@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,14 +15,11 @@ namespace WinUIGallery.Helpers;
 // of all active Windows.  The app code must call WindowHelper.CreateWindow
 // rather than "new Window" so we can keep track of all the relevant
 // windows.  In the future, we would like to support this in platform APIs.
-public class WindowHelper
+public partial class WindowHelper
 {
     static public Window CreateWindow()
     {
-        Window newWindow = new Window
-        {
-            SystemBackdrop = new MicaBackdrop()
-        };
+        MainWindow newWindow = new MainWindow();
         TrackWindow(newWindow);
         return newWindow;
     }
@@ -66,6 +63,33 @@ public class WindowHelper
         return 0.0;
     }
 
+    static public void SetWindowMinSize(Window window, double width, double height)
+    {
+        if (window.Content is not FrameworkElement windowContent)
+        {
+            System.Diagnostics.Debug.WriteLine("Window content is not a FrameworkElement.");
+            return;
+        }
+
+        if (windowContent.XamlRoot is null)
+        {
+            System.Diagnostics.Debug.WriteLine("Window content's XamlRoot is null.");
+            return;
+        }
+
+        if (window.AppWindow.Presenter is not OverlappedPresenter presenter)
+        {
+            System.Diagnostics.Debug.WriteLine("Window's AppWindow.Presenter is not an OverlappedPresenter.");
+            return;
+        }
+
+        var scale = windowContent.XamlRoot.RasterizationScale;
+        var minWidth = width * scale;
+        var minHeight = height * scale;
+        presenter.PreferredMinimumWidth = (int)minWidth;
+        presenter.PreferredMinimumHeight = (int)minHeight;
+    }
+
     static public List<Window> ActiveWindows { get { return _activeWindows; } }
 
     static private List<Window> _activeWindows = new List<Window>();
@@ -73,7 +97,7 @@ public class WindowHelper
     static public StorageFolder GetAppLocalFolder()
     {
         StorageFolder localFolder;
-        if (!NativeHelper.IsAppPackaged)
+        if (!NativeMethods.IsAppPackaged)
         {
             localFolder = Task.Run(async () => await StorageFolder.GetFolderFromPathAsync(System.AppContext.BaseDirectory)).Result;
         }

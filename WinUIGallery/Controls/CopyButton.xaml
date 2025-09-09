@@ -6,12 +6,27 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WinUIGallery.Controls">
 
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Dark">
+            <StaticResource x:Key="CopyButtonPointerOverForegroundBrush" ResourceKey="ButtonForegroundPointerOver" />
+            <StaticResource x:Key="CopyButtonPressedForegroundBrush" ResourceKey="ButtonForegroundPressed" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Light">
+            <StaticResource x:Key="CopyButtonPointerOverForegroundBrush" ResourceKey="ButtonForegroundPointerOver" />
+            <StaticResource x:Key="CopyButtonPressedForegroundBrush" ResourceKey="ButtonForegroundPressed" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="HighContrast">
+            <StaticResource x:Key="CopyButtonPointerOverForegroundBrush" ResourceKey="ButtonForegroundPointerOver" />
+            <StaticResource x:Key="CopyButtonPressedForegroundBrush" ResourceKey="ButtonForegroundPressed" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+    
     <Style BasedOn="{StaticResource DefaultCopyButtonStyle}" TargetType="local:CopyButton" />
 
     <Style x:Key="DefaultCopyButtonStyle" TargetType="local:CopyButton">
         <Setter Property="Background" Value="{ThemeResource ButtonBackground}" />
         <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
-        <Setter Property="Foreground" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
         <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}" />
         <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}" />
         <Setter Property="Padding" Value="6" />
@@ -133,12 +148,13 @@
                             x:Name="ContentPresenter"
                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            AutomationProperties.AccessibilityView="Raw"
                             Content="{TemplateBinding Content}"
                             ContentTemplate="{TemplateBinding ContentTemplate}"
                             ContentTransitions="{TemplateBinding ContentTransitions}"
                             FontFamily="{TemplateBinding FontFamily}"
                             FontSize="{TemplateBinding FontSize}"
-                            Foreground="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource ButtonForeground}}"
+                            Foreground="{TemplateBinding Foreground}"
                             RenderTransformOrigin=".5,.5">
                             <ContentPresenter.RenderTransform>
                                 <ScaleTransform x:Name="CopyToClipboardTextScaleTransform" />
@@ -146,13 +162,17 @@
                         </ContentPresenter>
                         <ContentPresenter
                             x:Name="CopySuccessGlyph"
-                            Foreground="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource ButtonForeground}}"
+                            AutomationProperties.AccessibilityView="Raw"
+                            Foreground="{TemplateBinding Foreground}"
                             Opacity="0"
                             RenderTransformOrigin=".5,.5">
                             <ContentPresenter.RenderTransform>
                                 <ScaleTransform x:Name="CopyToClipboardSuccessTextScaleTransform" />
                             </ContentPresenter.RenderTransform>
-                            <FontIcon FontSize="{TemplateBinding FontSize}" Glyph="&#xE73E;" />
+                            <FontIcon
+                                AutomationProperties.AccessibilityView="Raw"
+                                FontSize="{TemplateBinding FontSize}"
+                                Glyph="&#xE73E;" />
                         </ContentPresenter>
 
                         <VisualStateManager.VisualStateGroups>
@@ -167,10 +187,10 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPointerOver}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource ButtonForegroundPointerOver}}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CopyButtonPointerOverForegroundBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CopySuccessGlyph" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource ButtonForegroundPointerOver}}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CopyButtonPointerOverForegroundBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                     <VisualState.Setters>
@@ -187,10 +207,10 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPressed}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource ButtonForegroundPressed}}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CopyButtonPressedForegroundBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CopySuccessGlyph" Storyboard.TargetProperty="Foreground">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource ButtonForegroundPressed}}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource CopyButtonPressedForegroundBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                     <VisualState.Setters>

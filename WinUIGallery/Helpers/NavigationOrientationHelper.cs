@@ -1,27 +1,23 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Windows.Storage;
-using WinUIGallery.Pages;
+using Microsoft.Windows.Storage;
 
 namespace WinUIGallery.Helpers;
 
-public static class NavigationOrientationHelper
+public static partial class NavigationOrientationHelper
 {
-
-    private const string IsLeftModeKey = "NavigationIsOnLeftMode";
     private static bool _isLeftMode = true;
-
+    private static ApplicationData appData = ApplicationData.GetDefault();
     public static bool IsLeftMode()
     {
-        if (NativeHelper.IsAppPackaged)
+        if (NativeMethods.IsAppPackaged)
         {
-            var valueFromSettings = ApplicationData.Current.LocalSettings.Values[IsLeftModeKey];
+            var valueFromSettings = appData.LocalSettings.Values[SettingsKeys.IsLeftMode];
             if (valueFromSettings == null)
             {
-                ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = true;
+                appData.LocalSettings.Values[SettingsKeys.IsLeftMode] = true;
                 valueFromSettings = true;
             }
             return (bool)valueFromSettings;
@@ -32,12 +28,12 @@ public static class NavigationOrientationHelper
         }
     }
 
-    public static void IsLeftModeForElement(bool isLeftMode, UIElement element)
+    public static void IsLeftModeForElement(bool isLeftMode)
     {
-        UpdateNavigationViewForElement(isLeftMode, element);
-        if (NativeHelper.IsAppPackaged)
+        UpdateNavigationViewForElement(isLeftMode);
+        if (NativeMethods.IsAppPackaged)
         {
-            ApplicationData.Current.LocalSettings.Values[IsLeftModeKey] = isLeftMode;
+            appData.LocalSettings.Values[SettingsKeys.IsLeftMode] = isLeftMode;
         }
         else
         {
@@ -45,19 +41,16 @@ public static class NavigationOrientationHelper
         }
     }
 
-    public static void UpdateNavigationViewForElement(bool isLeftMode, UIElement element)
+    public static void UpdateNavigationViewForElement(bool isLeftMode)
     {
-        NavigationView _navView = NavigationRootPage.GetForElement(element).NavigationView;
+        NavigationView _navView = App.MainWindow.NavigationView;
         if (isLeftMode)
         {
             _navView.PaneDisplayMode = NavigationViewPaneDisplayMode.Auto;
-            Grid.SetRow(_navView, 0);
         }
         else
         {
             _navView.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
-            Grid.SetRow(_navView, 1);
         }
     }
-
 }

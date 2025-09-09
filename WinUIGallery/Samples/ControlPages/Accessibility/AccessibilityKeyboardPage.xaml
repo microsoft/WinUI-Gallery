@@ -153,10 +153,8 @@
                     <Button
                         Grid.Row="1"
                         Grid.Column="2"
-                        Width="100"
                         Content="Third stop"
                         TabIndex="3" />
-
                     <TextBlock
                         Grid.Row="2"
                         VerticalAlignment="Center"

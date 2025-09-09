@@ -37,7 +37,8 @@
                 Style="{StaticResource TitleTextBlockStyle}"
                 Text="{x:Bind Item.Title}"
                 TextTrimming="CharacterEllipsis"
-                TextWrapping="NoWrap" />
+                TextWrapping="NoWrap"
+                AutomationProperties.HeadingLevel="Level1" />
             <Button
                 x:Name="APIDetailsBtn"
                 Margin="0,0,0,3"
@@ -121,8 +122,8 @@
                                         <HyperlinkButton
                                             HorizontalAlignment="Stretch"
                                             HorizontalContentAlignment="Left"
-                                            NavigateUri="{Binding Uri}"
-                                            ToolTipService.ToolTip="{Binding Uri}">
+                                            NavigateUri="{x:Bind Uri}"
+                                            ToolTipService.ToolTip="{x:Bind Uri}">
                                             <TextBlock Text="{x:Bind Title}" />
                                         </HyperlinkButton>
                                     </DataTemplate>
@@ -153,7 +154,8 @@
                                         <Button
                                             Padding="6,5,6,6"
                                             Style="{ThemeResource SubtleButtonStyle}"
-                                            ToolTipService.ToolTip="Source code of this control in the WinUI repository. For some controls only the XAML file is available">
+                                            ToolTipService.ToolTip="Source code of this control in the WinUI repository. For some controls only the XAML file is available"
+                                            AutomationProperties.Name="Info">
                                             <FontIcon
                                                 VerticalAlignment="Center"
                                                 FontSize="14"
@@ -185,7 +187,8 @@
                                     <Button
                                         Padding="6,5,6,6"
                                         Style="{ThemeResource SubtleButtonStyle}"
-                                        ToolTipService.ToolTip="Source code of this sample page in the WinUI Gallery repository">
+                                        ToolTipService.ToolTip="Source code of this sample page in the WinUI Gallery repository"
+                                        AutomationProperties.Name="Info">
                                         <FontIcon
                                             VerticalAlignment="Center"
                                             FontSize="14"

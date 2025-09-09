@@ -4,13 +4,16 @@
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Windows.Globalization;
 using WinUIGallery.Helpers;
+using Language = WinUIGallery.Helpers.Language;
 
 namespace WinUIGallery.ControlPages;
 
 public sealed partial class CalendarViewPage : Page
 {
+    public ObservableCollection<Language> Languages { get; set; } = new(new LanguageList().Languages);
     public CalendarViewPage()
     {
         this.InitializeComponent();
@@ -31,9 +34,6 @@ public sealed partial class CalendarViewPage : Page
 
         calendarIdentifier.ItemsSource = calendarIdentifiers;
         calendarIdentifier.SelectedItem = CalendarIdentifiers.Gregorian;
-
-        var langs = new LanguageList();
-        calendarLanguages.ItemsSource = langs.Languages;
     }
 
     private void SelectionMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -46,10 +46,10 @@ public sealed partial class CalendarViewPage : Page
 
     private void calendarLanguages_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string selectedLang = calendarLanguages.SelectedValue.ToString();
-        if (Windows.Globalization.Language.IsWellFormed(selectedLang))
+        var selectedLang = calendarLanguages.SelectedItem as Language;
+        if (Windows.Globalization.Language.IsWellFormed(selectedLang.Code) && selectedLang != null)
         {
-            Control1.Language = selectedLang;
+            Control1.Language = selectedLang.Code;
         }
     }
 }

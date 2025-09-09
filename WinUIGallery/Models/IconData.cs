@@ -8,11 +8,12 @@ using System.Text.Json.Serialization;
 
 namespace WinUIGallery.Models;
 
-public class IconData
+public partial class IconData
 {
     public string Name { get; set; }
     public string Code { get; set; }
     public string[] Tags { get; set; } = [];
+    public bool IsSegoeFluentOnly { get; set; }
 
     public string Character => char.ConvertFromUtf32(Convert.ToInt32(Code, 16));
     public string CodeGlyph => "\\u" + Code;

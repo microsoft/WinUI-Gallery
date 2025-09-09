@@ -29,7 +29,7 @@ public enum InsertPosition
 /// Provides utility methods for managing application settings, including operations for storing, retrieving,  and
 /// manipulating lists of strings in the application's local settings.
 /// </summary>
-public static class SettingsHelper
+public static partial class SettingsHelper
 {
     /// <summary>
     /// The maximum number of items to retain in the recently visited list.
@@ -189,20 +189,4 @@ public static class SettingsHelper
         appData.LocalSettings.Values[key] = joined;
         return true;
     }
-}
-
-/// <summary>
-/// Provides constant keys used for accessing application settings.
-/// </summary>
-public static class SettingsKeys
-{
-    /// <summary>
-    /// Key for the list of favorited Pages.
-    /// </summary>
-    public const string Favorites = "Favorites";
-
-    /// <summary>
-    /// Key for the list of recently visited Pages.
-    /// </summary>
-    public const string RecentlyVisited = "RecentlyVisited";
 }

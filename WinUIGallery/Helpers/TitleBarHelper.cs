@@ -3,52 +3,24 @@
 
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
+using Windows.UI;
 
 namespace WinUIGallery.Helpers;
 
-
-internal class TitleBarHelper
+internal partial class TitleBarHelper
 {
-    // workaround as Appwindow titlebar doesn't update caption button colors correctly when changed while app is running
+    // workaround as AppWindow TitleBar doesn't update caption button colors correctly when changed while app is running
     // https://task.ms/44172495
-    public static Windows.UI.Color ApplySystemThemeToCaptionButtons(Window window)
+    public static void ApplySystemThemeToCaptionButtons(Window window, ElementTheme currentTheme)
     {
-        var frame = (Application.Current as WinUIGallery.App).GetRootFrame() as FrameworkElement;
-        Windows.UI.Color color;
-        if (frame.ActualTheme == ElementTheme.Dark)
+        if (window.AppWindow != null)
         {
-            color = Colors.White;
+            var foregroundColor = currentTheme == ElementTheme.Dark ? Colors.White : Colors.Black;
+            window.AppWindow.TitleBar.ButtonForegroundColor = foregroundColor;
+            window.AppWindow.TitleBar.ButtonHoverForegroundColor = foregroundColor;
+
+            var backgroundHoverColor = currentTheme == ElementTheme.Dark ? Color.FromArgb(24, 255, 255, 255) : Color.FromArgb(24, 0, 0, 0);
+            window.AppWindow.TitleBar.ButtonHoverBackgroundColor = backgroundHoverColor;
         }
-        else
-        {
-            color = Colors.Black;
-        }
-        SetCaptionButtonColors(window, color);
-        return color;
-    }
-
-    public static void SetCaptionButtonColors(Window window, Windows.UI.Color color)
-    {
-        var res = Application.Current.Resources;
-        res["WindowCaptionForeground"] = color;
-        window.AppWindow.TitleBar.ButtonForegroundColor = color;
-    }
-
-    public static void SetCaptionButtonBackgroundColors(Window window, Windows.UI.Color? color)
-    {
-        var titleBar = window.AppWindow.TitleBar;
-        titleBar.ButtonBackgroundColor = color;
-    }
-
-    public static void SetForegroundColor(Window window, Windows.UI.Color? color)
-    {
-        var titleBar = window.AppWindow.TitleBar;
-        titleBar.ForegroundColor = color;
-    }
-
-    public static void SetBackgroundColor(Window window, Windows.UI.Color? color)
-    {
-        var titleBar = window.AppWindow.TitleBar;
-        titleBar.BackgroundColor = color;
     }
 }

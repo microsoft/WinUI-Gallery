@@ -16,6 +16,6 @@ public sealed partial class HyperlinkButtonPage : Page
 
     private void GoToHyperlinkButton_Click(object sender, RoutedEventArgs e)
     {
-        NavigationRootPage.GetForElement(this).Navigate(typeof(ItemPage), "ToggleButton");
+        App.MainWindow.Navigate(typeof(ItemPage), "ToggleButton");
     }
 }

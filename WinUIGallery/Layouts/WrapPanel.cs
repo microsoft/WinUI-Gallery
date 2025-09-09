@@ -17,7 +17,7 @@ namespace WinUIGallery.Layouts;
 /// positioned in the next row or column.
 /// </summary>
 /// <QualityBand>Mature</QualityBand>
-public class WrapPanel : Panel
+public partial class WrapPanel : Panel
 {
     /// <summary>
     /// A value indicating whether a dependency property change handler
@@ -443,7 +443,7 @@ public class WrapPanel : Panel
 /// Numeric utility methods used by controls.  These methods are similar in
 /// scope to the WPF DoubleUtil class.
 /// </summary>
-internal static class NumericExtensions
+internal static partial class NumericExtensions
 {
     /// <summary>
     /// NanUnion is a C++ style type union used for efficiently converting
