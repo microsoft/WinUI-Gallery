@@ -84,26 +84,14 @@ public sealed partial class SettingsPage : Page
     {
         var selectedTheme = ((ComboBoxItem)themeMode.SelectedItem)?.Tag?.ToString();
         var window = WindowHelper.GetWindowForElement(this);
-        string color;
         if (selectedTheme != null)
         {
             ThemeHelper.RootTheme = EnumHelper.GetEnum<ElementTheme>(selectedTheme);
-            if (selectedTheme == "Dark")
-            {
-                TitleBarHelper.SetCaptionButtonColors(window, Colors.White);
-                color = selectedTheme;
-            }
-            else if (selectedTheme == "Light")
-            {
-                TitleBarHelper.SetCaptionButtonColors(window, Colors.Black);
-                color = selectedTheme;
-            }
-            else
-            {
-                color = TitleBarHelper.ApplySystemThemeToCaptionButtons(window, this.ActualTheme) == Colors.White ? "Dark" : "Light";
-            }
+            var elementThemeResolved = ThemeHelper.RootTheme == ElementTheme.Default ? ThemeHelper.ActualTheme : ThemeHelper.RootTheme;
+            TitleBarHelper.ApplySystemThemeToCaptionButtons(window, elementThemeResolved);
+
             // announce visual change to automation
-            UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {color}",
+            UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {elementThemeResolved}",
                                                                             "ThemeChangedNotificationActivityId");
         }
     }
@@ -175,7 +163,8 @@ public sealed partial class SettingsPage : Page
             PrimaryButtonText = "Remove",
             CloseButtonText = "Cancel",
             DefaultButton = ContentDialogButton.Primary,
-            Content = "This will unfavorite all your samples."
+            Content = "This will unfavorite all your samples.",
+            RequestedTheme = this.ActualTheme
         };
         dialog.PrimaryButtonClick += (s, args) =>
         {
@@ -195,7 +184,8 @@ public sealed partial class SettingsPage : Page
             PrimaryButtonText = "Clear",
             CloseButtonText = "Cancel",
             DefaultButton = ContentDialogButton.Primary,
-            Content = "This will remove all samples from your recent history."
+            Content = "This will remove all samples from your recent history.",
+            RequestedTheme = this.ActualTheme
         };
         dialog.PrimaryButtonClick += (s, args) =>
         {
