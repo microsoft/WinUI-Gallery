@@ -8,6 +8,7 @@ using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
 using Microsoft.Windows.BadgeNotifications;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Windows.ApplicationModel.Activation;
@@ -59,7 +60,27 @@ sealed partial class App : Application
 
         MainWindow.Closed += (s, e) =>
         {
-            BadgeNotificationManager.Current.ClearBadge();
+            if (IsAppPackaged)
+            {
+                BadgeNotificationManager.Current.ClearBadge();
+            }
+
+            // Close all remaining active windows to prevent resource disposal conflicts
+            var activeWindows = new List<Window>(WindowHelper.ActiveWindows);
+            foreach (var window in activeWindows)
+            {
+                if (!window.Equals(s)) // Don't try to close the window that's already closing
+                {
+                    try
+                    {
+                        window.Close();
+                    }
+                    catch
+                    {
+                        // Ignore any exceptions during cleanup
+                    }
+                }
+            }
         };
     }
 
@@ -131,17 +152,20 @@ sealed partial class App : Application
     /// <param name="e">Details about the exception.</param>
     private void HandleExceptions(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
     {
-        e.Handled = true; //Don't crash the app.
-
-        //Create the notification.
-        var notification = new AppNotificationBuilder()
-            .AddText("An exception was thrown.")
-            .AddText($"Type: {e.Exception.GetType()}")
-            .AddText($"Message: {e.Message}\r\n" +
-                     $"HResult: {e.Exception.HResult}")
-            .BuildNotification();
-
-        //Show the notification
-        AppNotificationManager.Default.Show(notification);
+        if (NativeMethods.IsAppPackaged)
+        {
+            e.Handled = true; //Don't crash the app.
+        
+            //Create the notification.
+            var notification = new AppNotificationBuilder()
+                .AddText("An exception was thrown.")
+                .AddText($"Type: {e.Exception.GetType()}")
+                .AddText($"Message: {e.Message}\r\n" +
+                         $"HResult: {e.Exception.HResult}")
+                .BuildNotification();
+        
+            //Show the notification
+            AppNotificationManager.Default.Show(notification);
+        }
     }
 }

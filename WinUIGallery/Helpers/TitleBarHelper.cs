@@ -3,6 +3,7 @@
 
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
+using Windows.UI;
 
 namespace WinUIGallery.Helpers;
 
@@ -10,35 +11,16 @@ internal partial class TitleBarHelper
 {
     // workaround as AppWindow TitleBar doesn't update caption button colors correctly when changed while app is running
     // https://task.ms/44172495
-    public static Windows.UI.Color ApplySystemThemeToCaptionButtons(Window window, ElementTheme currentTheme)
+    public static void ApplySystemThemeToCaptionButtons(Window window, ElementTheme currentTheme)
     {
-        var color = currentTheme == ElementTheme.Dark ? Colors.White : Colors.Black;
-        SetCaptionButtonColors(window, color);
-        return color;
-    }
+        if (window.AppWindow != null)
+        {
+            var foregroundColor = currentTheme == ElementTheme.Dark ? Colors.White : Colors.Black;
+            window.AppWindow.TitleBar.ButtonForegroundColor = foregroundColor;
+            window.AppWindow.TitleBar.ButtonHoverForegroundColor = foregroundColor;
 
-    public static void SetCaptionButtonColors(Window window, Windows.UI.Color color)
-    {
-        var res = Application.Current.Resources;
-        res["WindowCaptionForeground"] = color;
-        window.AppWindow.TitleBar.ButtonForegroundColor = color;
-    }
-
-    public static void SetCaptionButtonBackgroundColors(Window window, Windows.UI.Color? color)
-    {
-        var titleBar = window.AppWindow.TitleBar;
-        titleBar.ButtonBackgroundColor = color;
-    }
-
-    public static void SetForegroundColor(Window window, Windows.UI.Color? color)
-    {
-        var titleBar = window.AppWindow.TitleBar;
-        titleBar.ForegroundColor = color;
-    }
-
-    public static void SetBackgroundColor(Window window, Windows.UI.Color? color)
-    {
-        var titleBar = window.AppWindow.TitleBar;
-        titleBar.BackgroundColor = color;
+            var backgroundHoverColor = currentTheme == ElementTheme.Dark ? Color.FromArgb(24, 255, 255, 255) : Color.FromArgb(24, 0, 0, 0);
+            window.AppWindow.TitleBar.ButtonHoverBackgroundColor = backgroundHoverColor;
+        }
     }
 }

@@ -66,9 +66,5 @@
                 <Button Margin="0,10,0,0" Click="createCustomDesktopAcrylicWindow_Click">Show sample window</Button>
             </StackPanel>
         </controls:ControlExample>
-
-        <controls:ControlExample CSharpSource="SystemBackdrops\SystemBackdropsEnsureSystemDQC.txt" HeaderText="WindowsSystemDispatcherQueueHelper">
-            <TextBlock Text="A DispatcherQueue must exist on the thread to use a Mica- or DesktopAcrylicController. This helper class imports and uses the underlying create function." TextWrapping="WrapWholeWords" />
-        </controls:ControlExample>
     </StackPanel>
 </Page>

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
 using Windows.Globalization.NumberFormatting;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -302,9 +303,17 @@ public sealed partial class ScrollViewPage : Page
     {
         if (!_example3CodeCache.TryGetValue(sampleCodeFileName, out var content))
         {
-            var folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-            content = File.ReadAllText($"{folder.Path}\\Samples\\SampleCode\\ScrollView\\{sampleCodeFileName}.txt");
-            _example3CodeCache[sampleCodeFileName] = content; // Cache the content
+            string folderPath = AppContext.BaseDirectory;
+            if (NativeMethods.IsAppPackaged)
+            {
+                folderPath = Windows.ApplicationModel.Package.Current.InstalledLocation.Path;
+            }
+            string filePath = Path.Combine(folderPath, "Samples", "SampleCode", "ScrollView", $"{sampleCodeFileName}.txt");
+            if (File.Exists(filePath))
+            {
+                content = File.ReadAllText(filePath);
+                _example3CodeCache[sampleCodeFileName] = content; // Cache the content
+            }
         }
         return content;
     }
