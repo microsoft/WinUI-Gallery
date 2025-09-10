@@ -1,4 +1,4 @@
-<!--  Copyright (c) Microsoft Corporation. Licensed under the MIT License.  -->
+﻿<!--  Copyright (c) Microsoft Corporation. Licensed under the MIT License.  -->
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
@@ -30,6 +30,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
+        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$(MicrosoftWindowsSDKBuildToolsNugetPackageVersion)" />
         <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
         <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
         <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="17.7.2" ExcludeAssets="build" />
