@@ -9,50 +9,110 @@
     xmlns:core="using:WinUIGallery"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:WinUIGallery.Helpers"
+    xmlns:local="using:WinUIGallery.ControlPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    helpers:PageScrollBehaviorHelper.SuppressHostScrolling="True"
     mc:Ignorable="d">
 
     <Page.Resources>
         <x:Double x:Key="TopNavigationViewPaneCustomContentMinWidth">0</x:Double>
     </Page.Resources>
 
-    <Grid VerticalAlignment="Stretch">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="The brushes below are part of WinUI 3 and you can reference them in your app. For example:" />
-        <controls:SampleCodePresenter
-            x:Name="XamlPresenter"
-            Grid.Row="1"
-            Margin="0,16,0,16"
-            VerticalContentAlignment="Center"
-            SampleType="XAML">
-            <controls:SampleCodePresenter.Code>
-                <x:String xml:space="preserve">
-&lt;TextBlock Text="..." Foreground="{ThemeResource TextFillColorPrimaryBrush}" /&gt;
-                </x:String>
-            </controls:SampleCodePresenter.Code>
-        </controls:SampleCodePresenter>
-        <SelectorBar
-            x:Name="PageSelector"
-            Grid.Row="2"
-            Margin="-12,0,0,0"
-            AutomationProperties.Name="PageSelector"
-            Loaded="PageSelector_Loaded"
-            SelectionChanged="PageSelector_SelectionChanged">
-            <SelectorBarItem Text="Text" />
-            <SelectorBarItem Text="Fill" />
-            <SelectorBarItem Text="Stroke" />
-            <SelectorBarItem Text="Background" />
-            <SelectorBarItem Text="Signal" />
-            <SelectorBarItem Text="High Contrast" />
-        </SelectorBar>
-        <ScrollViewer Grid.Row="3" Margin="0,0,-12,-36">
-            <Frame x:Name="NavigationFrame" VerticalAlignment="Stretch" Padding="0,0,12,36"/>
-        </ScrollViewer>
-    </Grid>
+    <StackPanel
+        Margin="0,20,0,0"
+        Spacing="24">
+
+        <TextBlock
+            AutomationProperties.HeadingLevel="Level2"
+            Style="{ThemeResource SubtitleTextBlockStyle}"
+            Text="Brush Resources" />
+        <Grid VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="The brushes below are part of WinUI 3 and you can reference them in your app. For example:" />
+            <controls:SampleCodePresenter
+                x:Name="XamlPresenter"
+                Grid.Row="1"
+                Margin="0,16,0,16"
+                VerticalContentAlignment="Center"
+                SampleType="XAML">
+                <controls:SampleCodePresenter.Code>
+                    <x:String xml:space="preserve">
+    &lt;TextBlock Text="..." Foreground="{ThemeResource TextFillColorPrimaryBrush}" /&gt;
+                    </x:String>
+                </controls:SampleCodePresenter.Code>
+            </controls:SampleCodePresenter>
+            <SelectorBar
+                x:Name="PageSelector"
+                Grid.Row="2"
+                Margin="-12,0,0,0"
+                AutomationProperties.Name="PageSelector"
+                Loaded="PageSelector_Loaded"
+                SelectionChanged="PageSelector_SelectionChanged">
+                <SelectorBarItem Text="Text" />
+                <SelectorBarItem Text="Fill" />
+                <SelectorBarItem Text="Stroke" />
+                <SelectorBarItem Text="Background" />
+                <SelectorBarItem Text="Signal" />
+                <SelectorBarItem Text="High Contrast" />
+            </SelectorBar>
+            <ScrollViewer Grid.Row="3" Margin="0,0,-12,-36">
+                <Frame x:Name="NavigationFrame" VerticalAlignment="Stretch" Padding="0,0,12,36"/>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                AutomationProperties.HeadingLevel="Level2"
+                Style="{ThemeResource SubtitleTextBlockStyle}"
+                Text="Microsoft.UI.Colors" />
+            <GridView
+                Grid.Row="1"
+                ItemsSource="{x:Bind Colors}"
+                SelectionMode="None">
+                <GridView.ItemContainerStyle>
+                    <Style TargetType="GridViewItem">
+                        <Setter Property="Margin" Value="8" />
+                    </Style>
+                </GridView.ItemContainerStyle>
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="local:ColorItem">
+                        <Grid
+                            BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                            BorderThickness="1"
+                            CornerRadius="4"
+                            Width="150"
+                            Height="150">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Border
+                                Grid.Row="0"
+                                Background="{x:Bind Name}"
+                                CornerRadius="4,4,0,0" />
+                            <TextBlock
+                                Grid.Row="1"
+                                HorizontalAlignment="Center"
+                                Text="{x:Bind Name}"/>
+                            <TextBlock
+                                Grid.Row="2"
+                                HorizontalAlignment="Center"
+                                Text="{x:Bind Color}"/>
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </Grid>
+
+    </StackPanel>
 </Page>

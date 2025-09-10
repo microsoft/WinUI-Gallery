@@ -4,9 +4,18 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using System;
+using System.Linq;
+using Windows.UI;
 using WinUIGallery.Controls;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
+
+public class ColorItem(string name, Color color)
+{
+    public string Name { get; } = name;
+    public Color Color { get; } = color;
+}
 
 public sealed partial class ColorPage : Page
 {
@@ -16,6 +25,8 @@ public sealed partial class ColorPage : Page
     {
         this.InitializeComponent();
     }
+
+    public ColorItem[] Colors { get; } = [.. KnownColors.All.Select(color => new ColorItem(color.Name, color.Color))];
 
     private void PageSelector_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
     {
