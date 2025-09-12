@@ -198,6 +198,7 @@
                                 animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
                                 Code="{x:Bind Xaml}"
                                 CodeSourceFile="{x:Bind XamlSource}"
+                                Padding="16,0,16,16"
                                 SampleType="XAML"
                                 Substitutions="{x:Bind Substitutions}" />
                         </ContentPresenter>
@@ -208,6 +209,7 @@
                                 animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
                                 Code="{x:Bind CSharp}"
                                 CodeSourceFile="{x:Bind CSharpSource}"
+                                Padding="16,0,16,16"
                                 SampleType="CSharp"
                                 Substitutions="{x:Bind Substitutions}" />
                         </ContentPresenter>
