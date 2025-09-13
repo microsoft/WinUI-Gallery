@@ -33,7 +33,6 @@
             <Setter Property="BorderBrush" Value="Transparent" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="MinHeight" Value="32" />
-            <Setter Property="Padding" Value="24" />
             <Setter Property="CornerRadius" Value="0" />
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="SampleType" Value="Inline" />
@@ -95,7 +94,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
+
         <AutoSuggestBox
             x:Name="IconsAutoSuggestBox"
             MinWidth="304"
@@ -192,29 +191,44 @@
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="Code glyph" />
-                            <controls:SampleCodePresenter Code="{x:Bind SelectedItem.CodeGlyph, Mode=OneWay}" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <controls:SampleCodePresenter
+                                Code="{x:Bind SelectedItem.CodeGlyph, Mode=OneWay}"
+                                SampleType="CSharp"
+                                Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="FontIcon XAML" />
-                            <controls:SampleCodePresenter x:Name="XAMLCodePresenterFont" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <controls:SampleCodePresenter
+                                x:Name="XAMLCodePresenterFont"
+                                SampleType="XAML"
+                                Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="FontIcon C#" />
-                            <controls:SampleCodePresenter x:Name="CSharpCodePresenterFont" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <controls:SampleCodePresenter
+                                x:Name="CSharpCodePresenterFont"
+                                SampleType="CSharp"
+                                Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="SymbolIcon XAML"
                                 Visibility="{x:Bind SelectedItem.SymbolName, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}"/>
-                            <controls:SampleCodePresenter x:Name="XAMLCodePresenterSymbol" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <controls:SampleCodePresenter
+                                x:Name="XAMLCodePresenterSymbol"
+                                SampleType="XAML"
+                                Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                 Style="{StaticResource CaptionTextBlockStyle}"
                                 Text="SymbolIcon C#"
                                 Visibility="{x:Bind SelectedItem.SymbolName, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}"/>
-                            <controls:SampleCodePresenter x:Name="CSharpCodePresenterSymbol" Style="{StaticResource CodeValuePresenterStyle}" />
+                            <controls:SampleCodePresenter
+                                x:Name="CSharpCodePresenterSymbol"
+                                SampleType="CSharp"
+                                Style="{StaticResource CodeValuePresenterStyle}" />
                             <TextBlock
                                 x:Name="TagsLabel"
                                 Margin="0,4,0,0"
