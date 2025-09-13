@@ -272,7 +272,7 @@
                             Tag="AccessibilityColorContrast" />
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
-                <NavigationViewItemHeader Content="Controls" />
+                <NavigationViewItemSeparator />
                 <NavigationViewItem x:Name="AllControlsItem" Content="All">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE8A9;" />
