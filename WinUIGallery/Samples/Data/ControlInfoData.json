@@ -3192,17 +3192,28 @@
           ]
         },
         {
-          "UniqueId": "FilePicker",
-          "Title": "FilePicker",
-          "ApiNamespace": "Windows.Storage.Pickers",
-          "Subtitle": "Access files and folders through the file pickers.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/FilePicker.png",
-          "Description": "Shows how to access files and folders by letting the user choose them through the file pickers and how to save a file so that the user can specify the name, file type, and location of a file to save.",
+          "UniqueId": "Pickers",
+          "Title": "Pickers",
+          "ApiNamespace": "Microsoft.Windows.Storage.Pickers",
+          "BaseClasses": [
+            "Object"
+          ],
+          "Subtitle": "Select files and folders with modern system pickers.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Pickers.png",
+          "Description": "Use the FileOpenPicker, FileSavePicker, and FolderPicker APIs to let users select files and folders in a secure way.",
           "IsUpdated": true,
           "Docs": [
             {
-              "Title": "FilePicker - API",
-              "Uri": "https://learn.microsoft.com/uwp/api/Windows.Storage.Pickers"
+              "Title": "FileOpenPicker - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.storage.pickers.fileopenpicker"
+            },
+            {
+              "Title": "FileSavePicker - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.storage.pickers.filesavepicker"
+            },
+            {
+              "Title": "FolderPicker - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.storage.pickers.folderpicker"
             }
           ]
         }

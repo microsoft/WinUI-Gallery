@@ -126,7 +126,7 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-        <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
+        <PackageReference Update="Microsoft.WindowsAppSDK" Version="1.8.250907003" />
         <PackageReference Remove="ColorCode.Core" />
         <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
         <PackageReference Update="CommunityToolkit.WinUI.Controls.SettingsControls" Version="$(CommunityToolkitWinUIVersion)" />
@@ -155,6 +155,7 @@
         <None Remove="Assets\ControlImages\CodeTagIcon.png" />
         <None Remove="Assets\ControlImages\Accessibility.png" />
         <None Remove="Assets\ControlImages\ContentIsland.png" />
+        <None Remove="Assets\ControlImages\Pickers.png" />
         <None Remove="Assets\ControlImages\Popup.png" />
         <None Remove="Assets\ControlImages\ThemeShadow.png" />
         <None Remove="Assets\Design\Cards.dark.png" />
@@ -324,6 +325,7 @@
         <None Remove="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml" />
         <None Remove="Samples\ControlPages\AppWindowPage.xaml" />
+        <None Remove="Samples\ControlPages\PickersPage.xaml" />
         <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
         <None Remove="Samples\SamplePages\SampleWindow2.xaml" />
@@ -344,6 +346,7 @@
         <Content Include="Assets\ControlImages\Accessibility.png" />
         <Content Include="Assets\ControlImages\ContentIsland.png" />
         <Content Include="Assets\ControlImages\CustomControls.png" />
+        <Content Include="Assets\ControlImages\Pickers.png" />
         <Content Include="Assets\ControlImages\Popup.png" />
         <Content Include="Assets\ControlImages\ThemeShadow.png" />
         <Content Include="Assets\Design\Cards.dark.png" />
@@ -524,6 +527,12 @@
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_cs.txt" />
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_xaml.txt" />
         <Content Include="Samples\SampleCode\Text\RichEditBox\RichEditBoxSample6_cs.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Samples\ControlPages\PickersPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
 
     <ItemGroup>
