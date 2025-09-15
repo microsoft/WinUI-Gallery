@@ -6,15 +6,15 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.Windows.Storage.Pickers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.Xml.Linq;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
-using Windows.Storage.Pickers;
 using Windows.Storage.Provider;
+using Windows.Storage.Streams;
 
 namespace WinUIGallery.ControlPages;
 
@@ -58,26 +58,29 @@ public sealed partial class RichEditBoxPage : Page
 
     private async void OpenButton_Click(object sender, RoutedEventArgs e)
     {
-        // Open a text file.
-        FileOpenPicker open = new FileOpenPicker();
-        open.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-        open.FileTypeFilter.Add(".rtf");
-
-        // When running on win32, FileOpenPicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
-        if (Window.Current == null)
+        if (sender is Button button && sender is UIElement element)
         {
-            IntPtr hwnd = Windows.Win32.PInvoke.GetActiveWindow();
-            WinRT.Interop.InitializeWithWindow.Initialize(open, hwnd);
-        }
-
-        StorageFile file = await open.PickSingleFileAsync();
-
-        if (file != null)
-        {
-            using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
-                await file.OpenAsync(Windows.Storage.FileAccessMode.Read))
+            // Create the picker using the AppWindowId from the element
+            var picker = new FileOpenPicker(element.XamlRoot.ContentIslandEnvironment.AppWindowId)
             {
-                // Load the file into the Document property of the RichEditBox.
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+            };
+
+            // Add file type filters
+            picker.FileTypeFilter.Add(".rtf");
+
+            // Show picker
+            PickFileResult result = await picker.PickSingleFileAsync();
+
+            if (result != null)
+            {
+                // Open with StorageFile (needed for RichEditBox)
+                StorageFile file = await StorageFile.GetFileFromPathAsync(result.Path);
+
+                using IRandomAccessStream randAccStream =
+                    await file.OpenAsync(FileAccessMode.Read);
+
+                // Load file into the RichEditBox
                 editor.Document.LoadFromStream(TextSetOptions.FormatRtf, randAccStream);
             }
         }
@@ -85,45 +88,44 @@ public sealed partial class RichEditBoxPage : Page
 
     private async void SaveButton_Click(object sender, RoutedEventArgs e)
     {
-        FileSavePicker savePicker = new FileSavePicker
+        if (sender is Button button && sender is UIElement element)
         {
-            SuggestedStartLocation = PickerLocationId.DocumentsLibrary
-        };
-
-        // Dropdown of file types the user can save the file as
-        savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
-
-        // Default file name if the user does not type one in or select a file to replace
-        savePicker.SuggestedFileName = "New Document";
-
-        // When running on win32, FileSavePicker needs to know the top-level hwnd via IInitializeWithWindow::Initialize.
-        if (Window.Current == null)
-        {
-            IntPtr hwnd = Windows.Win32.PInvoke.GetActiveWindow();
-            WinRT.Interop.InitializeWithWindow.Initialize(savePicker, hwnd);
-        }
-
-        StorageFile file = await savePicker.PickSaveFileAsync();
-        if (file != null)
-        {
-            // Prevent updates to the remote version of the file until we
-            // finish making changes and call CompleteUpdatesAsync.
-            CachedFileManager.DeferUpdates(file);
-            // write to file
-            using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
-                await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
+            // Create the picker with AppWindowId
+            var savePicker = new FileSavePicker(element.XamlRoot.ContentIslandEnvironment.AppWindowId)
             {
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
+                SuggestedFileName = "New Document"
+            };
+
+            // Dropdown of file types the user can save the file as
+            savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
+
+            // Show picker
+            PickFileResult result = await savePicker.PickSaveFileAsync();
+
+            if (result != null)
+            {
+                // Convert PickSaveFileResult to StorageFile
+                StorageFile file = await StorageFile.GetFileFromPathAsync(result.Path);
+
+                // Prevent updates to the remote version of the file until complete
+                CachedFileManager.DeferUpdates(file);
+
+                // Write content into the file
+                using IRandomAccessStream randAccStream =
+                    await file.OpenAsync(FileAccessMode.ReadWrite);
+
                 editor.Document.SaveToStream(TextGetOptions.FormatRtf, randAccStream);
-            }
 
-            // Let Windows know that we're finished changing the file so the
-            // other app can update the remote version of the file.
-            FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
-            if (status != FileUpdateStatus.Complete)
-            {
-                Windows.UI.Popups.MessageDialog errorBox =
-                    new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
-                await errorBox.ShowAsync();
+                // Finalize file updates
+                FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+
+                if (status != FileUpdateStatus.Complete)
+                {
+                    var errorBox = new Windows.UI.Popups.MessageDialog(
+                        $"File {file.Name} couldn't be saved.");
+                    await errorBox.ShowAsync();
+                }
             }
         }
     }
