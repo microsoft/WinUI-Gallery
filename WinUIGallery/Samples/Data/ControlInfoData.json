@@ -3199,7 +3199,7 @@
             "Object"
           ],
           "Subtitle": "Select files and folders with modern system pickers.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Pickers.png",
+          "ImagePath": "ms-appx:///Assets/ControlImages/StoragePickers.png",
           "Description": "Use the FileOpenPicker, FileSavePicker, and FolderPicker APIs to let users select files and folders in a secure way.",
           "IsUpdated": true,
           "Docs": [
