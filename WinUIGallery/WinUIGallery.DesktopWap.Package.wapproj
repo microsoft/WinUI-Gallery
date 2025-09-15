@@ -49,7 +49,7 @@
     <PackageCertificateKeyFile>$(ProjectRoot)build\MSTest.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <PackageCertificateKeyFile Condition="'$(PackageCertificateKeyFile)'==''">$(SolutionDir)..\build\WinUI-Gallery-Test.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile Condition="'$(PackageCertificateKeyFile)'==''">$(SolutionDir)build\WinUI-Gallery-Test.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
