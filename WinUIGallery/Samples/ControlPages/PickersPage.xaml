@@ -9,6 +9,18 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        <InfoBar IsClosable="False" IsOpen="True" Margin="0,8,0,0">
+            <RichTextBlock Margin="0,12,12,12" IsTextSelectionEnabled="False">
+                <Paragraph>
+                    The picker reopens in the
+                    <Run FontWeight="SemiBold">last selected location and view</Run>. The
+                    <Run FontWeight="SemiBold" FontFamily="Consolas">SuggestedStartLocation</Run> and
+                    <Run FontWeight="SemiBold" FontFamily="Consolas">ViewMode</Run> are only applied the
+                    <Run FontWeight="SemiBold">first time</Run> the picker is opened (for example, right after app installation or when no previous selection exists).
+                </Paragraph>
+            </RichTextBlock>
+        </InfoBar>
+
         <controls:ControlExample HeaderText="Pick single file">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
