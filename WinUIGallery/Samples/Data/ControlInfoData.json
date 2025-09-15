@@ -3192,8 +3192,8 @@
           ]
         },
         {
-          "UniqueId": "Pickers",
-          "Title": "Pickers",
+          "UniqueId": "StoragePickers",
+          "Title": "Storage pickers",
           "ApiNamespace": "Microsoft.Windows.Storage.Pickers",
           "BaseClasses": [
             "Object"

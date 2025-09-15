@@ -325,7 +325,6 @@
         <None Remove="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml" />
         <None Remove="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml" />
         <None Remove="Samples\ControlPages\AppWindowPage.xaml" />
-        <None Remove="Samples\ControlPages\PickersPage.xaml" />
         <None Remove="Samples\Data\IconsData.json" />
         <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
         <None Remove="Samples\SamplePages\SampleWindow2.xaml" />
@@ -530,7 +529,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Page Update="Samples\ControlPages\PickersPage.xaml">
+      <Page Update="Samples\ControlPages\StoragePickersPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>

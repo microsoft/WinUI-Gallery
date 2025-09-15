@@ -10,12 +10,12 @@ using System.IO;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
-public sealed partial class PickersPage : Page
+public sealed partial class StoragePickersPage : Page
 {
     private IReadOnlyList<PickerLocationId> pickerLocationIds { get; set; } = new List<PickerLocationId>(Enum.GetValues<PickerLocationId>());
     private IReadOnlyList<PickerViewMode> pickerViewModes { get; set; } = new List<PickerViewMode>(Enum.GetValues<PickerViewMode>());
 
-    public PickersPage()
+    public StoragePickersPage()
     {
         InitializeComponent();
     }
