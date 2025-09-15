@@ -9,6 +9,10 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition/>
+        </StackPanel.ChildrenTransitions>
+        
         <InfoBar IsClosable="False" IsOpen="True" Margin="0,8,0,0">
             <RichTextBlock Margin="0,12,12,12" IsTextSelectionEnabled="False">
                 <Paragraph>
