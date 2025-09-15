@@ -164,6 +164,8 @@ public sealed partial class PickersPage : Page
 
             picker.SuggestedStartLocation = (PickerLocationId)PickerLocationComboBox3.SelectedItem;
 
+            picker.SuggestedFolder = SuggestedFolderTextBox.Text;
+
             var result = await picker.PickSaveFileAsync();
 
             if (result != null)
@@ -229,4 +231,30 @@ public sealed partial class PickersPage : Page
         }
     }
 
+    private async void SelectSuggestedFolderButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button senderButton && sender is UIElement element)
+        {
+            senderButton.IsEnabled = false;
+
+            var picker = new FolderPicker(element.XamlRoot.ContentIslandEnvironment.AppWindowId);
+
+            picker.CommitButtonText = "Select folder";
+
+            var folder = await picker.PickSingleFolderAsync();
+
+            if (folder != null)
+            {
+                SuggestedFolderTextBox.Text = folder.Path;
+            }
+
+            senderButton.IsEnabled = true;
+            UIHelper.AnnounceActionForAccessibility(
+                sender as Button,
+                folder != null && !string.IsNullOrEmpty(folder.Path)
+                    ? "Folder selected: " + SuggestedFolderTextBox.Text
+                    : "No folder selected",
+                "SuggestedFolderNotificationId");
+        }
+    }
 }

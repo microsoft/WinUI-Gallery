@@ -195,6 +195,16 @@ private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs 
                     <TextBox x:Name="SuggestedFileNameTextBox" Header="Suggested file name" Text="NewDocument" />
                     <TextBox x:Name="CommitButtonTextTextBox3" Header="Commit button text" PlaceholderText="Save" Text="Save File" />
                     <ComboBox x:Name="PickerLocationComboBox3" Header="Suggested start location" Width="200" ItemsSource="{x:Bind pickerLocationIds}" SelectedIndex="0" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="SuggestedFolderTextBox" Header="Suggested folder " Width="148" PlaceholderText="Optional" IsReadOnly="True" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                        <Button x:Name="SelectSuggestedFolderButton" Grid.Column="1" Margin="8,0,0,0" VerticalAlignment="Bottom" Click="SelectSuggestedFolderButton_Click" ToolTipService.ToolTip="Select folder">
+                            <FontIcon Glyph="&#xF89A;" />
+                        </Button>
+                    </Grid>
                 </StackPanel>
             </controls:ControlExample.Options>
 
@@ -227,6 +237,8 @@ $(TxtFileType)$(JsonFileType)$(XmlFileType)
         picker.CommitButtonText = "$(CommitButtonText)";
 
         picker.SuggestedStartLocation = PickerLocationId.$(SuggestedStartLocation);
+                    
+        picker.SuggestedFolder = "$(SuggestedFolder)";
 
         // Show the picker dialog
         var result = await picker.PickSaveFileAsync();
@@ -256,6 +268,7 @@ $(TxtFileType)$(JsonFileType)$(XmlFileType)
                 <controls:ControlExampleSubstitution Key="SuggestedFileName" Value="{x:Bind SuggestedFileNameTextBox.Text, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="CommitButtonText" Value="{x:Bind CommitButtonTextTextBox3.Text, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="SuggestedStartLocation" Value="{x:Bind PickerLocationComboBox3.SelectedItem, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="SuggestedFolder" Value="{x:Bind SuggestedFolderTextBox.Text, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
