@@ -19,6 +19,10 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <controls:ControlExample x:Name="Example1" HeaderText="A hyperlink button that navigates to a URI.">
             <controls:ControlExample.Example>
                 <HyperlinkButton

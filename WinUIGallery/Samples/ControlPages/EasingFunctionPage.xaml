@@ -10,6 +10,10 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <RichTextBlock Style="{ThemeResource BodyRichTextBlockStyle}">
             <Paragraph>- Use the Standard easing function for animating general property changes.</Paragraph>
             <Paragraph>- Use the Accelerate easing function to animate objects that are exiting the scene.</Paragraph>

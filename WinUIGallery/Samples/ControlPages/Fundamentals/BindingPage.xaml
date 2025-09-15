@@ -9,6 +9,10 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <StackPanel Margin="0,12,0,0" Spacing="12">
             <RichTextBlock>
                 <Paragraph FontWeight="SemiBold">Key concepts</Paragraph>

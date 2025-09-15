@@ -8,6 +8,10 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <controls:ControlExample
             CSharpSource="Motion/AnimationInterop/AnimationInteropSample1_cs.txt"
             HeaderText="Use a natural motion composition animation on a UIElement"

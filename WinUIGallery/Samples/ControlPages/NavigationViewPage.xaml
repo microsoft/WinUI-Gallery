@@ -24,6 +24,10 @@
     </Page.Resources>
 
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <!--  Example on how to override NavView acrylic  -->
         <StackPanel.Resources>
             <ResourceDictionary>

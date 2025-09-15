@@ -24,6 +24,10 @@
         </Style>
     </Page.Resources>
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <controls:ControlExample x:Name="Example1" HeaderText="A simple TextBlock.">
             <controls:ControlExample.Example>
                 <TextBlock Text="I am a TextBlock." />

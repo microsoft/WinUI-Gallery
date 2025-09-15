@@ -10,6 +10,10 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <TextBlock Text="Custom (templated) control" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,8" />
         <StackPanel Spacing="8">
             <RichTextBlock>

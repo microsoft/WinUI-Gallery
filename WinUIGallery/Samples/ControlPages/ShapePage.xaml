@@ -19,6 +19,10 @@
     xmlns:wuxdata="using:Microsoft.UI.Xaml.Data"
     mc:Ignorable="d">
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <!--  ELLIPSE SAMPLE  -->
         <controls:ControlExample x:Name="Example1" HeaderText="Ellipse">
             <Ellipse

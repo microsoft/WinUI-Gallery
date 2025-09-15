@@ -19,6 +19,10 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <controls:ControlExample HeaderText="A NumberBox that evaluates expressions." XamlSource="NumberBox/NumberBoxSample1_xaml.txt">
             <controls:ControlExample.Example>
                 <NumberBox

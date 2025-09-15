@@ -6,6 +6,10 @@
     xmlns:models="using:WinUIGallery.Models"
     xmlns:pages="using:WinUIGallery.Pages">
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <controls:ControlExample
             x:Name="Example1"
             Height="750"

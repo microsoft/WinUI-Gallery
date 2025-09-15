@@ -20,6 +20,10 @@
     xmlns:wuxdata="using:Microsoft.UI.Xaml.Data"
     mc:Ignorable="d">
     <StackPanel Margin="0,12,0,0">
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <RichTextBlock>
             <Paragraph>
                 <Run>For full title bar customization without using the TitleBar control, see the</Run>

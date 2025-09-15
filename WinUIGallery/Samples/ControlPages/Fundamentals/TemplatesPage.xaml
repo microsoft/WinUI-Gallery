@@ -19,6 +19,10 @@
     </Page.Resources>
 
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <StackPanel Margin="0,12,0,0" Spacing="12">
             <RichTextBlock>
                 <Paragraph FontWeight="SemiBold">Placement of Templates</Paragraph>

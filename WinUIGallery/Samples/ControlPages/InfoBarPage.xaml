@@ -18,6 +18,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <controls:ControlExample x:Name="Example1" HeaderText="A closable InfoBar with options to change its Severity.">
             <controls:ControlExample.Example>
                 <InfoBar

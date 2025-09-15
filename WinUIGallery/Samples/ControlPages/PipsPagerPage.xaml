@@ -8,6 +8,10 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <controls:ControlExample x:Name="Example1" HeaderText="PipsPager integrated with a FlipView">
             <controls:ControlExample.Example>
                 <StackPanel>

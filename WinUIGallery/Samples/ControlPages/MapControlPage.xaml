@@ -18,6 +18,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <TextBlock Margin="0,0,0,12" TextWrapping="Wrap">
             <Span xml:space="preserve"><Run>Follow instructions </Run> <Hyperlink NavigateUri="https://learn.microsoft.com/azure/azure-maps/how-to-manage-account-keys">here</Hyperlink><Run> to obtain your MapServiceToken.</Run></Span>
 

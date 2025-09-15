@@ -19,6 +19,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <controls:ControlExample HeaderText="A ComboBox with items defined inline and its width set.">
             <controls:ControlExample.Example>
                 <StackPanel>

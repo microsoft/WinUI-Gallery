@@ -20,6 +20,10 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <controls:ControlExample
             CSharpSource="SystemBackdrops\SystemBackdropsSampleBackdropTypes_cs.txt"
             HeaderText="Backdrop types"
