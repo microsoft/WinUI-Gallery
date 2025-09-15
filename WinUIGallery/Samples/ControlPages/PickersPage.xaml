@@ -16,6 +16,7 @@
                     <TextBlock x:Name="PickedSingleFileTextBlock" Text="No file picked"/>
                 </StackPanel>
             </controls:ControlExample.Example>
+            
             <controls:ControlExample.Options>
                 <StackPanel Spacing="8">
                     <ComboBox x:Name="FileTypeComboBox1" Header="File type" Width="200">
@@ -28,6 +29,16 @@
                     <ComboBox x:Name="PickerViewModeComboBox1" Header="View mode" Width="200" ItemsSource="{x:Bind pickerViewModes}" SelectedIndex="0"/>
                 </StackPanel>
             </controls:ControlExample.Options>
+            
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Spacing="8"&gt;
+    &lt;Button x:Name="PickSingleFileButton" Content="Pick a single file" Click="PickSingleFileButton_Click"/&gt;
+    &lt;TextBlock x:Name="PickedSingleFileTextBlock" Text="No file picked"/&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private async void PickSingleFileButton_Click(object sender, RoutedEventArgs e)
@@ -89,6 +100,15 @@ private async void PickSingleFileButton_Click(object sender, RoutedEventArgs e)
                 </StackPanel>
             </controls:ControlExample.Options>
 
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Spacing="8"&gt;
+    &lt;Button x:Name="PickMultipleFilesButton" Content="Pick multiple files" Click="PickMultipleFilesButton_Click"/&gt;
+    &lt;TextBlock x:Name="PickedMultipleFilesTextBlock" Text="No files picked"/&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs e)
@@ -166,6 +186,17 @@ private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs 
                 </StackPanel>
             </controls:ControlExample.Options>
 
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Spacing="8"&gt;
+    &lt;TextBox x:Name="FileContentTextBox" Header="File content" TextWrapping="Wrap" AcceptsReturn="True"
+                Width="500" Height="200" Text="Hello, WinUI!" IsSpellCheckEnabled="False" /&gt;
+    &lt;Button x:Name="SaveFileButton" Content="Save a file" Click="SaveFileButton_Click" /&gt;
+    &lt;TextBlock x:Name="SavedFileTextBlock" Grid.Column="1" Text="No file saved" /&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private async void SaveFileButton_Click(object sender, RoutedEventArgs e)
@@ -219,8 +250,8 @@ $(TxtFileType)$(JsonFileType)$(XmlFileType)
         <controls:ControlExample HeaderText="Pick folder">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
-                    <Button x:Name="PickFolderButton" Content="Pick a folder" Click="PickFolderButton_Click"/>
-                    <TextBlock x:Name="PickedFolderTextBlock" Text="No folder picked"/>
+                    <Button x:Name="PickFolderButton" Content="Pick a folder" Click="PickFolderButton_Click" />
+                    <TextBlock x:Name="PickedFolderTextBlock" Text="No folder picked" />
                 </StackPanel>
             </controls:ControlExample.Example>
 
@@ -233,7 +264,16 @@ $(TxtFileType)$(JsonFileType)$(XmlFileType)
                       ItemsSource="{x:Bind pickerViewModes}" SelectedIndex="0"/>
                 </StackPanel>
             </controls:ControlExample.Options>
-
+            
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Spacing="8"&gt;
+    &lt;Button x:Name="PickFolderButton" Content="Pick a folder" Click="PickFolderButton_Click" /&gt;
+    &lt;TextBlock x:Name="PickedFolderTextBlock" Text="No folder picked" /&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
 private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
