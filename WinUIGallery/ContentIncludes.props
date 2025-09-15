@@ -234,16 +234,6 @@
     <Content Include="Samples\SampleCode\NavigationView\NavigationViewSample9_xaml.txt" />
     <Content Include="Samples\SampleCode\NumberBox\NumberBoxSample3_cs.txt" />
     <Content Include="Samples\SampleCode\NumberBox\NumberBoxSample3_xaml.txt" />
-    <Content Include="Samples\SampleCode\System\FilePickerSample1_cs.txt" />
-    <Content Include="Samples\SampleCode\System\FilePickerSample1_xaml.txt" />
-    <Content Include="Samples\SampleCode\System\FilePickerSample2_cs.txt" />
-    <Content Include="Samples\SampleCode\System\FilePickerSample2_xaml.txt" />
-    <Content Include="Samples\SampleCode\System\FilePickerSample3_cs.txt" />
-    <Content Include="Samples\SampleCode\System\FilePickerSample3_xaml.txt" />
-    <Content Include="Samples\SampleCode\System\FilePickerSample4_cs.txt" />
-    <Content Include="Samples\SampleCode\System\FilePickerSample4_xaml.txt" />
-    <Content Include="Samples\SampleCode\System\FilePickerSample5_cs.txt" />
-    <Content Include="Samples\SampleCode\System\FilePickerSample5_xaml.txt" />
     <Content Include="Samples\SampleCode\System\Window.txt" />
     <Content Include="Samples\SampleCode\SystemBackdrops\SystemBackdropsSampleBackdropTypes_cs.txt" />
     <Content Include="Samples\SampleCode\SystemBackdrops\SystemBackdropsSampleBackdropTypes_xaml.txt" />
