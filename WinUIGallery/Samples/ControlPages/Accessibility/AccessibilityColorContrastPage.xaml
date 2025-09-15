@@ -40,8 +40,8 @@
                 all abilities. For more information about designing accessible apps: <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview">Accessibility overview</Hyperlink>
                 .<LineBreak />
                 <LineBreak />
-                To ensure optimal accessibility and usability, apps should strive to use high-contrast and easy-to-
-                read color combinations for text and its background. Not only will this benefit users with lower
+                To ensure optimal accessibility and usability, apps should strive to use high-contrast and easy-to-read
+                color combinations for text and its background. Not only will this benefit users with lower
                 visual acuity, but this will also ensure visibility and legibility under a wide range of lighting
                 conditions, screens, and device settings.<LineBreak />
                 <LineBreak />
