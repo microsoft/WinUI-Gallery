@@ -22,7 +22,7 @@ public sealed partial class StoragePickersPage : Page
 
     private async void PickSingleFileButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is Button senderButton && sender is UIElement element)
+        if (sender is Button senderButton)
         {
             //disable the button to avoid double-clicking
             senderButton.IsEnabled = false;
@@ -30,7 +30,7 @@ public sealed partial class StoragePickersPage : Page
             // Clear previous returned file name, if it exists, between iterations of this scenario
             PickedSingleFileTextBlock.Text = "";
 
-            var picker = new FileOpenPicker(element.XamlRoot.ContentIslandEnvironment.AppWindowId);
+            var picker = new FileOpenPicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
             // Define allowed file types
             if (FileTypeComboBox1.SelectedItem is ComboBoxItem selectedItem)
@@ -70,7 +70,7 @@ public sealed partial class StoragePickersPage : Page
 
     private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is Button senderButton && sender is UIElement element)
+        if (sender is Button senderButton)
         {
             // Disable the button to avoid double-clicking
             senderButton.IsEnabled = false;
@@ -78,7 +78,7 @@ public sealed partial class StoragePickersPage : Page
             // Clear previous returned file names
             PickedMultipleFilesTextBlock.Text = "";
 
-            var picker = new FileOpenPicker(element.XamlRoot.ContentIslandEnvironment.AppWindowId);
+            var picker = new FileOpenPicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
             // Define allowed file types
             if (FileTypeComboBox2.SelectedItem is ComboBoxItem selectedItem)
@@ -140,12 +140,12 @@ public sealed partial class StoragePickersPage : Page
 
     private async void SaveFileButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is Button senderButton && sender is UIElement element)
+        if (sender is Button senderButton)
         {
             senderButton.IsEnabled = false;
             SavedFileTextBlock.Text = "";
 
-            var picker = new FileSavePicker(element.XamlRoot.ContentIslandEnvironment.AppWindowId);
+            var picker = new FileSavePicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
             if (TxtCheckBox.IsChecked == true)
                 picker.FileTypeChoices.Add("Text Files", new List<string>() { ".txt" });
@@ -204,7 +204,7 @@ public sealed partial class StoragePickersPage : Page
 
     private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is Button senderButton && sender is UIElement element)
+        if (sender is Button senderButton)
         {
             // disable the button to avoid double-clicking
             senderButton.IsEnabled = false;
@@ -212,7 +212,7 @@ public sealed partial class StoragePickersPage : Page
             // Clear previous returned folder name
             PickedFolderTextBlock.Text = "";
 
-            var picker = new FolderPicker(element.XamlRoot.ContentIslandEnvironment.AppWindowId);
+            var picker = new FolderPicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
             picker.CommitButtonText = CommitButtonTextTextBox4.Text;
             picker.SuggestedStartLocation = (PickerLocationId)PickerLocationComboBox4.SelectedItem;
@@ -233,11 +233,11 @@ public sealed partial class StoragePickersPage : Page
 
     private async void SelectSuggestedFolderButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is Button senderButton && sender is UIElement element)
+        if (sender is Button senderButton)
         {
             senderButton.IsEnabled = false;
 
-            var picker = new FolderPicker(element.XamlRoot.ContentIslandEnvironment.AppWindowId);
+            var picker = new FolderPicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
             picker.CommitButtonText = "Select folder";
 

@@ -58,10 +58,10 @@ public sealed partial class RichEditBoxPage : Page
 
     private async void OpenButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is Button button && sender is UIElement element)
+        if (sender is Button button)
         {
             // Create the picker using the AppWindowId from the element
-            var picker = new FileOpenPicker(element.XamlRoot.ContentIslandEnvironment.AppWindowId)
+            var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId)
             {
                 SuggestedStartLocation = PickerLocationId.DocumentsLibrary
             };
@@ -88,10 +88,10 @@ public sealed partial class RichEditBoxPage : Page
 
     private async void SaveButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is Button button && sender is UIElement element)
+        if (sender is Button button)
         {
             // Create the picker with AppWindowId
-            var savePicker = new FileSavePicker(element.XamlRoot.ContentIslandEnvironment.AppWindowId)
+            var savePicker = new FileSavePicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId)
             {
                 SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
                 SuggestedFileName = "New Document"
