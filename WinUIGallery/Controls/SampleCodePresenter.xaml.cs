@@ -194,6 +194,9 @@ public sealed partial class SampleCodePresenter : UserControl
 
     private void FormatAndRenderSampleFromString(string sampleString, ContentPresenter presenter, ILanguage highlightLanguage)
     {
+        // Make sure the presenter is visible in case it was collapsed due to no code being present.
+        presenter.Visibility = Visibility.Visible;
+
         // Trim out stray blank lines at start and end.
         sampleString = sampleString.TrimStart('\n').TrimEnd();
 
