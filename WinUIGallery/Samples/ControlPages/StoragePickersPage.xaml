@@ -59,15 +59,15 @@
                 <x:String xml:space="preserve">
 private async void PickSingleFileButton_Click(object sender, RoutedEventArgs e)
 {
-    if (sender is Button senderButton)
+    if (sender is Button button)
     {
         //disable the button to avoid double-clicking
-        senderButton.IsEnabled = false;
+        button.IsEnabled = false;
 
         // Clear previous returned file name, if it exists, between iterations of this scenario
         PickedSingleFileTextBlock.Text = "";
 
-        var picker = new FileOpenPicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);$(FileType)
+        var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);$(FileType)
 
         picker.CommitButtonText = "$(CommitButtonText)";
 
@@ -82,7 +82,7 @@ private async void PickSingleFileButton_Click(object sender, RoutedEventArgs e)
             : "No file selected.";
 
         //re-enable the button
-        senderButton.IsEnabled = true;
+        button.IsEnabled = true;
     }
 }
                 </x:String>
@@ -129,15 +129,15 @@ private async void PickSingleFileButton_Click(object sender, RoutedEventArgs e)
                 <x:String xml:space="preserve">
 private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs e)
 {
-    if (sender is Button senderButton)
+    if (sender is Button button)
     {
         //disable the button to avoid double-clicking
-        senderButton.IsEnabled = false;
+        button.IsEnabled = false;
 
         // Clear previous returned file names
         PickedMultipleFilesTextBlock.Text = "";
 
-        var picker = new FileOpenPicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);$(FileType)
+        var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);$(FileType)
                     
         picker.CommitButtonText = "$(CommitButtonText)";
                     
@@ -161,7 +161,7 @@ private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs 
         }
 
         //re-enable the button
-        senderButton.IsEnabled = true;
+        button.IsEnabled = true;
     }
 }
                 </x:String>
@@ -227,12 +227,12 @@ private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs 
                 <x:String xml:space="preserve">
 private async void SaveFileButton_Click(object sender, RoutedEventArgs e)
 {
-    if (sender is Button senderButton)
+    if (sender is Button button)
     {
-        senderButton.IsEnabled = false;
+        button.IsEnabled = false;
         SavedFileTextBlock.Text = "";
 
-        var picker = new FileSavePicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);
+        var picker = new FileSavePicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
 $(TxtFileType)$(JsonFileType)$(XmlFileType)
         picker.DefaultFileExtension = "$(DefaultFileExtension)";
 
@@ -258,7 +258,7 @@ $(TxtFileType)$(JsonFileType)$(XmlFileType)
             SavedFileTextBlock.Text = "File save canceled.";
         }
 
-        senderButton.IsEnabled = true;
+        button.IsEnabled = true;
     }
 }
                 </x:String>
@@ -307,15 +307,15 @@ $(TxtFileType)$(JsonFileType)$(XmlFileType)
                 <x:String xml:space="preserve">
 private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
 {
-    if (sender is Button senderButton)
+    if (sender is Button button)
     {
         // disable the button to avoid double-clicking
-        senderButton.IsEnabled = false;
+        button.IsEnabled = false;
 
         // Clear previous returned folder name
         PickedFolderTextBlock.Text = "";
 
-        var picker = new FolderPicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);
+        var picker = new FolderPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
         picker.CommitButtonText = "$(CommitButtonText)";
         picker.SuggestedStartLocation = PickerLocationId.$(SuggestedStartLocation);
@@ -328,7 +328,7 @@ private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
             : "No folder selected.";
 
         // re-enable the button
-        senderButton.IsEnabled = true;
+        button.IsEnabled = true;
     }
 }
                 </x:String>

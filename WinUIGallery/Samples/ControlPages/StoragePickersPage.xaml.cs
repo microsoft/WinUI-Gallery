@@ -22,15 +22,15 @@ public sealed partial class StoragePickersPage : Page
 
     private async void PickSingleFileButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is Button senderButton)
+        if (sender is Button button)
         {
             //disable the button to avoid double-clicking
-            senderButton.IsEnabled = false;
+            button.IsEnabled = false;
 
             // Clear previous returned file name, if it exists, between iterations of this scenario
             PickedSingleFileTextBlock.Text = "";
 
-            var picker = new FileOpenPicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);
+            var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
             // Define allowed file types
             if (FileTypeComboBox1.SelectedItem is ComboBoxItem selectedItem)
@@ -63,22 +63,22 @@ public sealed partial class StoragePickersPage : Page
                 : "No file selected.";
 
             //re-enable the button
-            senderButton.IsEnabled = true;
+            button.IsEnabled = true;
             UIHelper.AnnounceActionForAccessibility(sender as Button, PickedSingleFileTextBlock.Text, "FilePickedNotificationId");
         }
     }
 
     private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is Button senderButton)
+        if (sender is Button button)
         {
             // Disable the button to avoid double-clicking
-            senderButton.IsEnabled = false;
+            button.IsEnabled = false;
 
             // Clear previous returned file names
             PickedMultipleFilesTextBlock.Text = "";
 
-            var picker = new FileOpenPicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);
+            var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
             // Define allowed file types
             if (FileTypeComboBox2.SelectedItem is ComboBoxItem selectedItem)
@@ -121,10 +121,10 @@ public sealed partial class StoragePickersPage : Page
             }
 
             // Re-enable the button
-            senderButton.IsEnabled = true;
+            button.IsEnabled = true;
 
             // Announce result for accessibility (if you’re using the helper)
-            UIHelper.AnnounceActionForAccessibility(senderButton, PickedMultipleFilesTextBlock.Text, "FilesPickedNotificationId");
+            UIHelper.AnnounceActionForAccessibility(button, PickedMultipleFilesTextBlock.Text, "FilesPickedNotificationId");
         }
     }
 
@@ -140,12 +140,12 @@ public sealed partial class StoragePickersPage : Page
 
     private async void SaveFileButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is Button senderButton)
+        if (sender is Button button)
         {
-            senderButton.IsEnabled = false;
+            button.IsEnabled = false;
             SavedFileTextBlock.Text = "";
 
-            var picker = new FileSavePicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);
+            var picker = new FileSavePicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
             if (TxtCheckBox.IsChecked == true)
                 picker.FileTypeChoices.Add("Text Files", new List<string>() { ".txt" });
@@ -179,8 +179,8 @@ public sealed partial class StoragePickersPage : Page
                 SavedFileTextBlock.Text = "File save canceled.";
             }
 
-            senderButton.IsEnabled = true;
-            UIHelper.AnnounceActionForAccessibility(senderButton, SavedFileTextBlock.Text, "FileSavedNotificationId");
+            button.IsEnabled = true;
+            UIHelper.AnnounceActionForAccessibility(button, SavedFileTextBlock.Text, "FileSavedNotificationId");
         }
     }
 
@@ -204,15 +204,15 @@ public sealed partial class StoragePickersPage : Page
 
     private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is Button senderButton)
+        if (sender is Button button)
         {
             // disable the button to avoid double-clicking
-            senderButton.IsEnabled = false;
+            button.IsEnabled = false;
 
             // Clear previous returned folder name
             PickedFolderTextBlock.Text = "";
 
-            var picker = new FolderPicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);
+            var picker = new FolderPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
             picker.CommitButtonText = CommitButtonTextTextBox4.Text;
             picker.SuggestedStartLocation = (PickerLocationId)PickerLocationComboBox4.SelectedItem;
@@ -225,7 +225,7 @@ public sealed partial class StoragePickersPage : Page
                 : "No folder selected.";
 
             // re-enable the button
-            senderButton.IsEnabled = true;
+            button.IsEnabled = true;
 
             UIHelper.AnnounceActionForAccessibility(sender as Button, PickedFolderTextBlock.Text, "FolderPickedNotificationId");
         }
@@ -233,11 +233,11 @@ public sealed partial class StoragePickersPage : Page
 
     private async void SelectSuggestedFolderButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is Button senderButton)
+        if (sender is Button button)
         {
-            senderButton.IsEnabled = false;
+            button.IsEnabled = false;
 
-            var picker = new FolderPicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);
+            var picker = new FolderPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
             picker.CommitButtonText = "Select folder";
 
@@ -248,7 +248,7 @@ public sealed partial class StoragePickersPage : Page
                 SuggestedFolderTextBox.Text = folder.Path;
             }
 
-            senderButton.IsEnabled = true;
+            button.IsEnabled = true;
             UIHelper.AnnounceActionForAccessibility(
                 sender as Button,
                 folder != null && !string.IsNullOrEmpty(folder.Path)
