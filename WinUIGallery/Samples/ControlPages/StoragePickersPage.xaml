@@ -59,7 +59,7 @@
                 <x:String xml:space="preserve">
 private async void PickSingleFileButton_Click(object sender, RoutedEventArgs e)
 {
-    if (sender is Button senderButton &amp;&amp; sender is UIElement element)
+    if (sender is Button senderButton)
     {
         //disable the button to avoid double-clicking
         senderButton.IsEnabled = false;
@@ -67,7 +67,7 @@ private async void PickSingleFileButton_Click(object sender, RoutedEventArgs e)
         // Clear previous returned file name, if it exists, between iterations of this scenario
         PickedSingleFileTextBlock.Text = "";
 
-        var picker = new FileOpenPicker(element.XamlRoot.ContentIslandEnvironment.AppWindowId);$(FileType)
+        var picker = new FileOpenPicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);$(FileType)
 
         picker.CommitButtonText = "$(CommitButtonText)";
 
@@ -129,7 +129,7 @@ private async void PickSingleFileButton_Click(object sender, RoutedEventArgs e)
                 <x:String xml:space="preserve">
 private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs e)
 {
-    if (sender is Button senderButton &amp;&amp; sender is UIElement element)
+    if (sender is Button senderButton)
     {
         //disable the button to avoid double-clicking
         senderButton.IsEnabled = false;
@@ -137,7 +137,7 @@ private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs 
         // Clear previous returned file names
         PickedMultipleFilesTextBlock.Text = "";
 
-        var picker = new FileOpenPicker(element.XamlRoot.ContentIslandEnvironment.AppWindowId);$(FileType)
+        var picker = new FileOpenPicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);$(FileType)
                     
         picker.CommitButtonText = "$(CommitButtonText)";
                     
@@ -227,12 +227,12 @@ private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs 
                 <x:String xml:space="preserve">
 private async void SaveFileButton_Click(object sender, RoutedEventArgs e)
 {
-    if (sender is Button senderButton &amp;&amp; sender is UIElement element)
+    if (sender is Button senderButton)
     {
         senderButton.IsEnabled = false;
         SavedFileTextBlock.Text = "";
 
-        var picker = new FileSavePicker(element.XamlRoot.ContentIslandEnvironment.AppWindowId);
+        var picker = new FileSavePicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);
 $(TxtFileType)$(JsonFileType)$(XmlFileType)
         picker.DefaultFileExtension = "$(DefaultFileExtension)";
 
@@ -307,7 +307,7 @@ $(TxtFileType)$(JsonFileType)$(XmlFileType)
                 <x:String xml:space="preserve">
 private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
 {
-    if (sender is Button senderButton &amp;&amp; sender is UIElement element)
+    if (sender is Button senderButton)
     {
         // disable the button to avoid double-clicking
         senderButton.IsEnabled = false;
@@ -315,7 +315,7 @@ private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
         // Clear previous returned folder name
         PickedFolderTextBlock.Text = "";
 
-        var picker = new FolderPicker(element.XamlRoot.ContentIslandEnvironment.AppWindowId);
+        var picker = new FolderPicker(senderButton.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
         picker.CommitButtonText = "$(CommitButtonText)";
         picker.SuggestedStartLocation = PickerLocationId.$(SuggestedStartLocation);
