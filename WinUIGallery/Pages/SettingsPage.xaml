@@ -152,6 +152,7 @@
                                     <HyperlinkButton Content="Windows Community Toolkit" NavigateUri="https://aka.ms/toolkit/windows" />
                                     <HyperlinkButton Content="ColorCode-Universal" NavigateUri="https://github.com/WilliamABradley/ColorCode-Universal" />
                                     <HyperlinkButton Content="Win2D" NavigateUri="https://github.com/Microsoft/Win2D" />
+                                    <HyperlinkButton Content="CsWin32" NavigateUri="https://github.com/Microsoft/CsWin32" />
                                 </StackPanel>
                             </toolkit:SettingsCard>
                             <toolkit:SettingsCard
