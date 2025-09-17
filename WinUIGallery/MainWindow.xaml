@@ -13,6 +13,9 @@
         <MicaBackdrop />
     </Window.SystemBackdrop>
     <Grid x:Name="RootGrid" Loaded="RootGrid_Loaded">
+        <Grid.Resources>
+            <x:Double x:Key="TitleBarExpandedHeight">46</x:Double>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
