@@ -36,6 +36,10 @@
         </ResourceDictionary>
     </Page.Resources>
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <RichTextBlock>
             <Paragraph>
                 Acrylic Brush might fall back to SolidColorbrush in certain scenarios.

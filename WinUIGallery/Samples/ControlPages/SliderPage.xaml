@@ -20,6 +20,10 @@
 
     <!--  SIMPLE SLIDER  -->
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <controls:ControlExample x:Name="Example1" HeaderText="A simple Slider.">
             <StackPanel Orientation="Horizontal">
                 <Slider

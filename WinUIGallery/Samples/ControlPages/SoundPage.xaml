@@ -19,6 +19,10 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition />
+        </StackPanel.ChildrenTransitions>
+        
         <controls:ControlExample x:Name="Example1" HeaderText="Toggling Sound">
             <ToggleSwitch
                 x:Name="soundToggle"
