@@ -82,6 +82,29 @@
                 </x:String>
             </controls:ControlExample.Xaml>
         </-->
+
+        <controls:ControlExample HeaderText="Built-in styles applied to Button.">
+            <controls:ControlExample.Example>
+                <StackPanel Orientation="Horizontal" Spacing="16">
+                    <Button
+                        AutomationProperties.Name="Accent style"
+                        Content="Accent style button"
+                        Style="{StaticResource AccentButtonStyle}" />
+                    <Button
+                        AutomationProperties.Name="Subtle style"
+                        Content="Subtle style button"
+                        Style="{StaticResource SubtleButtonStyle}" />
+                </StackPanel>
+
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Button Style="{StaticResource AccentButtonStyle}" Content="Accent style button"/&gt;
+&lt;Button Style="{StaticResource SubtleButtonStyle}" Content="Subtle style button"/&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
+
         <controls:ControlExample HeaderText="Wrapping Buttons with large content">
             <StackPanel>
                 <TextBlock
@@ -126,20 +149,5 @@
                 </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>
-
-        <controls:ControlExample HeaderText="Accent style applied to Button.">
-            <controls:ControlExample.Example>
-                <Button
-                    AutomationProperties.Name="Accent style"
-                    Content="Accent style button"
-                    Style="{StaticResource AccentButtonStyle}" />
-            </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String>
-                    &lt;Button Style="{StaticResource AccentButtonStyle}" Content="Accent style button" /&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
-        </controls:ControlExample>
-
     </StackPanel>
 </Page>
