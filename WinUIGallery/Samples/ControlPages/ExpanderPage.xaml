@@ -63,35 +63,6 @@
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <controls:ControlExample x:Name="Example2" HeaderText="An Expander with other controls in the header and content">
-            <controls:ControlExample.Example>
-                <Expander x:Name="Expander2">
-                    <Expander.Header>
-                        <ToggleButton Content="This is a ToggleButton in the header" />
-                    </Expander.Header>
-                    <Expander.Content>
-                        <Grid>
-                            <Button Margin="15" Content="This is a Button in the content" />
-                        </Grid>
-                    </Expander.Content>
-                </Expander>
-            </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Expander x:Name="Expander2" &gt;
-    &lt;Expander.Header&gt;
-        &lt;ToggleButton Content ="This is a ToggleButton in the header"/&gt;
-    &lt;/Expander.Header&gt;
-    &lt;Expander.Content&gt;
-        &lt;Grid&gt;
-            &lt;Button Margin="15" Content="This is a Button in the content"/&gt;
-        &lt;/Grid&gt;
-    &lt;/Expander.Content&gt;
-&lt;/Expander&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
-        </controls:ControlExample>
-
         <controls:ControlExample HeaderText="Modifying Expanders content alignment">
             <controls:ControlExample.Example>
                 <Expander
@@ -99,10 +70,10 @@
                     Padding="0"
                     HorizontalContentAlignment="Left">
                     <Expander.Header>
-                        <ToggleButton HorizontalAlignment="Center" Content="This ToggleButton is centered" />
+                        <TextBlock HorizontalAlignment="Center" Text="This text is centered" />
                     </Expander.Header>
                     <Expander.Content>
-                        <Button Margin="4" Content="This Button is left aligned" />
+                        <TextBlock Margin="4" Text="And this text is left aligned" />
                     </Expander.Content>
                 </Expander>
             </controls:ControlExample.Example>
