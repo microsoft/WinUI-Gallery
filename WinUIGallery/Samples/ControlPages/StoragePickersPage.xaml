@@ -64,9 +64,6 @@ private async void PickSingleFileButton_Click(object sender, RoutedEventArgs e)
         //disable the button to avoid double-clicking
         button.IsEnabled = false;
 
-        // Clear previous returned file name, if it exists, between iterations of this scenario
-        PickedSingleFileTextBlock.Text = "";
-
         var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);$(FileType)
 
         picker.CommitButtonText = "$(CommitButtonText)";
@@ -134,9 +131,6 @@ private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs 
         //disable the button to avoid double-clicking
         button.IsEnabled = false;
 
-        // Clear previous returned file names
-        PickedMultipleFilesTextBlock.Text = "";
-
         var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);$(FileType)
                     
         picker.CommitButtonText = "$(CommitButtonText)";
@@ -150,9 +144,10 @@ private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs 
 
         if (files.Count &gt; 0)
         {
+            PickedMultipleFilesTextBlock.Text = "";
             foreach (var file in files)
             {
-                PickedMultipleFilesTextBlock.Text += "Picked: " + file.Path + Environment.NewLine;
+                PickedMultipleFilesTextBlock.Text += "- Picked: " + file.Path + Environment.NewLine;
             }
         }
         else
@@ -230,7 +225,6 @@ private async void SaveFileButton_Click(object sender, RoutedEventArgs e)
     if (sender is Button button)
     {
         button.IsEnabled = false;
-        SavedFileTextBlock.Text = "";
 
         var picker = new FileSavePicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
 $(TxtFileType)$(JsonFileType)$(XmlFileType)

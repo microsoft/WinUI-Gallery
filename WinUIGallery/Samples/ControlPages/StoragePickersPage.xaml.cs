@@ -27,9 +27,6 @@ public sealed partial class StoragePickersPage : Page
             //disable the button to avoid double-clicking
             button.IsEnabled = false;
 
-            // Clear previous returned file name, if it exists, between iterations of this scenario
-            PickedSingleFileTextBlock.Text = "";
-
             var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
             // Define allowed file types
@@ -75,9 +72,6 @@ public sealed partial class StoragePickersPage : Page
             // Disable the button to avoid double-clicking
             button.IsEnabled = false;
 
-            // Clear previous returned file names
-            PickedMultipleFilesTextBlock.Text = "";
-
             var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
             // Define allowed file types
@@ -110,9 +104,10 @@ public sealed partial class StoragePickersPage : Page
 
             if (files.Count > 0)
             {
+                PickedMultipleFilesTextBlock.Text = "";
                 foreach (var file in files)
                 {
-                    PickedMultipleFilesTextBlock.Text += "Picked: " + file.Path + Environment.NewLine;
+                    PickedMultipleFilesTextBlock.Text += "- Picked: " + file.Path + Environment.NewLine;
                 }
             }
             else
@@ -143,7 +138,6 @@ public sealed partial class StoragePickersPage : Page
         if (sender is Button button)
         {
             button.IsEnabled = false;
-            SavedFileTextBlock.Text = "";
 
             var picker = new FileSavePicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
@@ -208,9 +202,6 @@ public sealed partial class StoragePickersPage : Page
         {
             // disable the button to avoid double-clicking
             button.IsEnabled = false;
-
-            // Clear previous returned folder name
-            PickedFolderTextBlock.Text = "";
 
             var picker = new FolderPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
