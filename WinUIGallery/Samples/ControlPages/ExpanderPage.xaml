@@ -66,10 +66,10 @@
                     Padding="0"
                     HorizontalContentAlignment="Left">
                     <Expander.Header>
-                        <ToggleButton HorizontalAlignment="Center" Content="This ToggleButton is centered" />
+                        <TextBlock HorizontalAlignment="Center" Text="This text is centered" />
                     </Expander.Header>
                     <Expander.Content>
-                        <Button Margin="4" Content="This Button is left aligned" />
+                        <TextBlock Margin="4" Text="And this text is left aligned" />
                     </Expander.Content>
                 </Expander>
             </controls:ControlExample.Example>
