@@ -32,12 +32,35 @@ public sealed partial class MainWindow : Window
 
     public Action NavigationViewLoaded { get; set; }
 
+    private OverlappedPresenter WindowPresenter { get; init; }
+
+    private OverlappedPresenterState CurrentWindowState { get; set; }
+
     public MainWindow()
     {
         this.InitializeComponent();
         SetWindowProperties();
         RootGrid.ActualThemeChanged += (_, _) => TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
+
+        WindowPresenter = AppWindow.Presenter as OverlappedPresenter;
+        CurrentWindowState = WindowPresenter.State;
+        AdjustNavigationViewMargin(force: true);
+        AppWindow.Changed += (_, _) => AdjustNavigationViewMargin();
+    }
+
+    // Adjusts the NavigationView margin based on the window state to fix the gap between the caption buttons and the NavigationView.
+    private void AdjustNavigationViewMargin(bool? force = null)
+    {
+        if (WindowPresenter.State == CurrentWindowState && force is not true)
+        {
+            return;
+        }
+
+        NavigationView.Margin = WindowPresenter.State == OverlappedPresenterState.Maximized
+            ? new Thickness(0, -1, 0, 0)
+            : new Thickness(0, -2, 0, 0);
+        CurrentWindowState = WindowPresenter.State;
     }
 
     private void RootGrid_Loaded(object sender, RoutedEventArgs e)
