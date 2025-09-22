@@ -174,7 +174,7 @@ private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs 
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <TextBox x:Name="FileContentTextBox" Header="File content" TextWrapping="Wrap" AcceptsReturn="True"
-                             Width="500" Height="200" Text="Hello, WinUI!" IsSpellCheckEnabled="False" />
+                             Width="500" Height="200" Text="Hello, WinUI!" IsSpellCheckEnabled="False" HorizontalAlignment="Left" />
                     <Button x:Name="SaveFileButton" Content="Save a file" Click="SaveFileButton_Click" />
                     <TextBlock x:Name="SavedFileTextBlock" Grid.Column="1" Text="No file saved" />
                 </StackPanel>
