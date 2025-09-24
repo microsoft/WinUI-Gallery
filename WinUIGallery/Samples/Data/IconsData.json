@@ -1477,17 +1477,17 @@
       "toggle"
     ]
   },
-    {
-      "Code": "E794",
-      "Name": "Effects",
-      "Tags": [
-        "AI",
-        "Filters",
-        "Visuals",
-        "Rendering"
-      ],
-      "IsSegoeFluentOnly": true
-    },
+  {
+    "Code": "E794",
+    "Name": "Effects",
+    "Tags": [
+      "AI",
+      "Filters",
+      "Visuals",
+      "Rendering"
+    ],
+    "IsSegoeFluentOnly": true
+  },
   {
     "Code": "E799",
     "Name": "AspectRatio",
