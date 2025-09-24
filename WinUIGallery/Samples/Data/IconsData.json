@@ -30,7 +30,9 @@
       "internet",
       "web",
       "connection",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -56,7 +58,9 @@
       "network",
       "wifi",
       "connection",
-      "signal"
+      "signal",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -67,7 +71,8 @@
       "privacy",
       "security",
       "lock",
-      "protection"
+      "protection",
+      "secure"
     ]
   },
   {
@@ -162,7 +167,8 @@
       "dropdown",
       "direction",
       "expand",
-      "contract"
+      "contract",
+      "dropup"
     ]
   },
   {
@@ -209,7 +215,8 @@
       "overflow",
       "menu",
       "navigation",
-      "symbol-icon"
+      "symbol-icon",
+      "options"
     ]
   },
   {
@@ -219,7 +226,8 @@
       "gear",
       "options",
       "cog",
-      "symbol-icon"
+      "symbol-icon",
+      "configuration"
     ]
   },
   {
@@ -283,6 +291,7 @@
       "share",
       "post",
       "favorite",
+      "favourite",
       "symbol-icon"
     ]
   },
@@ -308,7 +317,10 @@
       "playback",
       "start",
       "begin",
-      "symbol-icon"
+      "symbol-icon",
+      "media",
+      "video",
+      "audio"
     ]
   },
   {
@@ -438,7 +450,8 @@
       "step",
       "pedestrian",
       "journey",
-      "foot"
+      "foot",
+      "way"
     ]
   },
   {
@@ -456,7 +469,8 @@
     "Name": "FavoriteList",
     "Tags": [
       "star",
-      "like"
+      "like",
+      "favourite"
     ]
   },
   {
@@ -529,8 +543,8 @@
       "protected",
       "safety",
       "permission",
-      "access",
-      "protection"
+      "protection",
+      "secure"
     ]
   },
   {
@@ -584,6 +598,7 @@
     "Tags": [
       "star",
       "favorite",
+      "favourite",
       "highlight",
       "bookmark",
       "like",
@@ -596,6 +611,7 @@
     "Tags": [
       "star",
       "favorite",
+      "favourite",
       "highlight",
       "bookmark",
       "like",
@@ -967,7 +983,9 @@
     "Tags": [
       "undo",
       "remove",
-      "delete"
+      "delete",
+      "eraser",
+      "rubber"
     ]
   },
   {
@@ -1084,7 +1102,10 @@
       "playback",
       "start",
       "begin",
-      "symbol-icon"
+      "symbol-icon",
+      "media",
+      "video",
+      "audio"
     ]
   },
   {
@@ -1094,7 +1115,10 @@
       "control",
       "playback",
       "freeze",
-      "symbol-icon"
+      "symbol-icon",
+      "media",
+      "video",
+      "audio"
     ]
   },
   {
@@ -1161,7 +1185,9 @@
     "Name": "Personalize",
     "Tags": [
       "brush",
-      "customize"
+      "customize",
+      "color",
+      "colour"
     ]
   },
   {
@@ -1336,8 +1362,8 @@
       "protected",
       "safety",
       "permission",
-      "access",
-      "protection"
+      "protection",
+      "secure"
     ]
   },
   {
@@ -1419,7 +1445,8 @@
       "palette",
       "art",
       "edit",
-      "paint"
+      "paint",
+      "colour"
     ]
   },
   {
@@ -1450,12 +1477,17 @@
       "toggle"
     ]
   },
-  {
-    "Code": "E794",
-    "Name": "Effects",
-    "Tags": [],
-    "IsSegoeFluentOnly": true
-  },
+    {
+      "Code": "E794",
+      "Name": "Effects",
+      "Tags": [
+        "AI",
+        "Filters",
+        "Visuals",
+        "Rendering"
+      ],
+      "IsSegoeFluentOnly": true
+    },
   {
     "Code": "E799",
     "Name": "AspectRatio",
@@ -1869,7 +1901,8 @@
       "sound",
       "audio",
       "device",
-      "wave"
+      "wave",
+      "configuration"
     ]
   },
   {
@@ -2014,7 +2047,8 @@
       "step",
       "pedestrian",
       "journey",
-      "foot"
+      "foot",
+      "way"
     ]
   },
   {
@@ -2188,7 +2222,9 @@
       "time",
       "arrow",
       "back",
-      "undo"
+      "undo",
+      "recent",
+      "circle"
     ]
   },
   {
@@ -2292,7 +2328,9 @@
     "Tags": [
       "undo",
       "remove",
-      "delete"
+      "delete",
+      "eraser",
+      "rubber"
     ]
   },
   {
@@ -2301,7 +2339,9 @@
     "Tags": [
       "undo",
       "remove",
-      "delete"
+      "delete",
+      "eraser",
+      "rubber"
     ]
   },
   {
@@ -2350,7 +2390,8 @@
     "Name": "ProvisioningPackage",
     "Tags": [
       "configuration",
-      "settings"
+      "settings",
+      "configuration"
     ]
   },
   {
@@ -2437,7 +2478,8 @@
       "save",
       "share",
       "post",
-      "favorite"
+      "favorite",
+      "favourite"
     ]
   },
   {
@@ -2447,7 +2489,8 @@
       "save",
       "share",
       "post",
-      "favorite"
+      "favorite",
+      "favourite"
     ]
   },
   {
@@ -2457,7 +2500,8 @@
       "save",
       "share",
       "post",
-      "favorite"
+      "favorite",
+      "favourite"
     ]
   },
   {
@@ -2858,7 +2902,9 @@
       "internet",
       "web",
       "connection",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -2870,7 +2916,9 @@
       "internet",
       "web",
       "connection",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -2882,7 +2930,9 @@
       "internet",
       "web",
       "connection",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -3081,7 +3131,9 @@
       "connection",
       "network",
       "share",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -3927,7 +3979,8 @@
       "size",
       "lettering",
       "typography",
-      "symbol-icon"
+      "symbol-icon",
+      "colour"
     ]
   },
   {
@@ -3979,7 +4032,8 @@
       "settings",
       "off",
       "pause",
-      "symbol-icon"
+      "symbol-icon",
+      "configuration"
     ]
   },
   {
@@ -3990,7 +4044,8 @@
       "remove",
       "unlike",
       "delete",
-      "symbol-icon"
+      "symbol-icon",
+      "unfavourite"
     ]
   },
   {
@@ -4408,8 +4463,8 @@
       "aperture",
       "image",
       "picture",
-      "scan",
-      "symbol-icon"
+      "symbol-icon",
+      "scanner"
     ]
   },
   {
@@ -4644,7 +4699,8 @@
     "Name": "Stopwatch",
     "Tags": [
       "time",
-      "clock"
+      "clock",
+      "timer"
     ]
   },
   {
@@ -4671,7 +4727,8 @@
       "settings",
       "control",
       "quick access",
-      "system"
+      "system",
+      "configuration"
     ]
   },
   {
@@ -5187,7 +5244,9 @@
       "cast",
       "connect",
       "wifi",
-      "share"
+      "share",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -5686,7 +5745,9 @@
       "internet",
       "web",
       "connection",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -6046,7 +6107,8 @@
     "Tags": [
       "settings",
       "workflow",
-      "operation"
+      "operation",
+      "configuration"
     ]
   },
   {
@@ -7133,7 +7195,9 @@
       "x",
       "connection",
       "failed",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7143,7 +7207,9 @@
       "x",
       "connection",
       "failed",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7153,7 +7219,9 @@
       "x",
       "connection",
       "failed",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7163,7 +7231,9 @@
       "x",
       "connection",
       "failed",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7173,7 +7243,9 @@
       "x",
       "connection",
       "failed",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7184,7 +7256,9 @@
       "signal",
       "connection",
       "alert",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7195,7 +7269,9 @@
       "signal",
       "connection",
       "alert",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7206,7 +7282,9 @@
       "signal",
       "connection",
       "alert",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7217,7 +7295,9 @@
       "signal",
       "connection",
       "alert",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7228,7 +7308,9 @@
       "signal",
       "connection",
       "alert",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7797,7 +7879,9 @@
     "Name": "MobWifiCallBars",
     "Tags": [
       "signal",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7809,7 +7893,9 @@
       "network",
       "connection",
       "communication",
-      "phone"
+      "phone",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7821,7 +7907,9 @@
       "network",
       "connection",
       "communication",
-      "phone"
+      "phone",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7833,7 +7921,9 @@
       "network",
       "connection",
       "communication",
-      "phone"
+      "phone",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7845,7 +7935,9 @@
       "network",
       "connection",
       "communication",
-      "phone"
+      "phone",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -7857,7 +7949,9 @@
       "network",
       "connection",
       "communication",
-      "phone"
+      "phone",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -8287,7 +8381,9 @@
       "internet",
       "web",
       "connection",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -8299,7 +8395,9 @@
       "internet",
       "web",
       "connection",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -8311,7 +8409,9 @@
       "internet",
       "web",
       "connection",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -8323,7 +8423,9 @@
       "internet",
       "web",
       "connection",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -8368,7 +8470,9 @@
       "connection",
       "network",
       "share",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -8979,7 +9083,10 @@
     "Code": "ECE4",
     "Name": "Blocked2",
     "Tags": [
-      "-"
+      "-",
+      "rejected",
+      "ignored",
+      "aborted"
     ]
   },
   {
@@ -9077,7 +9184,8 @@
       "reboot",
       "restore",
       "restart",
-      "settings"
+      "settings",
+      "configuration"
     ]
   },
   {
@@ -9471,7 +9579,8 @@
       "clock",
       "saved",
       "liked",
-      "common"
+      "common",
+      "favourite"
     ]
   },
   {
@@ -9480,6 +9589,7 @@
     "Tags": [
       "circle",
       "colors",
+      "colours",
       "palette",
       "emoji",
       "design"
@@ -9531,7 +9641,9 @@
       "delete",
       "drawing",
       "line",
-      "correction"
+      "correction",
+      "eraser",
+      "rubber"
     ]
   },
   {
@@ -9541,7 +9653,9 @@
       "remove",
       "spot",
       "dot",
-      "edit"
+      "edit",
+      "eraser",
+      "rubber"
     ]
   },
   {
@@ -9550,7 +9664,9 @@
     "Tags": [
       "reset",
       "erase",
-      "drawing"
+      "drawing",
+      "eraser",
+      "rubber"
     ]
   },
   {
@@ -9570,6 +9686,7 @@
     "Tags": [
       "highlight",
       "color",
+      "colour",
       "draw",
       "ink",
       "tool"
@@ -9591,7 +9708,8 @@
       "circle",
       "border",
       "outline",
-      "draw"
+      "draw",
+      "colour"
     ]
   },
   {
@@ -9601,7 +9719,8 @@
       "circle",
       "ink",
       "paint",
-      "design"
+      "design",
+      "colour"
     ]
   },
   {
@@ -9623,7 +9742,9 @@
       "Wifi",
       "Ethernet",
       "internet",
-      "device"
+      "device",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -9959,7 +10080,8 @@
     "Name": "TaskViewSettings",
     "Tags": [
       "multitasking",
-      "management"
+      "management",
+      "configuration"
     ]
   },
   {
@@ -9997,8 +10119,10 @@
     "Name": "MiniExpand2Mirrored",
     "Tags": [
       "maximize",
+      "maximise",
       "view",
       "minimize",
+      "minimise",
       "document"
     ]
   },
@@ -10009,6 +10133,7 @@
       "collapse",
       "view",
       "minimize",
+      "minimise",
       "document"
     ]
   },
@@ -10027,6 +10152,7 @@
     "Name": "PenPalette",
     "Tags": [
       "color",
+      "colour",
       "drawing",
       "art"
     ]
@@ -10044,7 +10170,8 @@
     "Name": "SettingsBattery",
     "Tags": [
       "power",
-      "charge"
+      "charge",
+      "configuration"
     ]
   },
   {
@@ -10090,7 +10217,9 @@
     "Tags": [
       "network",
       "connection",
-      "internet"
+      "internet",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -10188,6 +10317,7 @@
     "Name": "PenPaletteMirrored",
     "Tags": [
       "color",
+      "colour",
       "drawing",
       "art"
     ]
@@ -10199,7 +10329,9 @@
       "delete",
       "drawing",
       "line",
-      "correction"
+      "correction",
+      "eraser",
+      "rubber"
     ]
   },
   {
@@ -10209,7 +10341,9 @@
       "remove",
       "spot",
       "dot",
-      "edit"
+      "edit",
+      "eraser",
+      "rubber"
     ]
   },
   {
@@ -10218,7 +10352,9 @@
     "Tags": [
       "reset",
       "erase",
-      "drawing"
+      "drawing",
+      "eraser",
+      "rubber"
     ]
   },
   {
@@ -10227,7 +10363,8 @@
     "Tags": [
       "switch",
       "mode",
-      "settings"
+      "settings",
+      "configuration"
     ]
   },
   {
@@ -10261,7 +10398,8 @@
       "shrink",
       "small",
       "collapse",
-      "resize"
+      "resize",
+      "minimise"
     ]
   },
   {
@@ -10276,7 +10414,8 @@
       "height",
       "resize",
       "fill",
-      "fit"
+      "fit",
+      "maximise"
     ]
   },
   {
@@ -10312,6 +10451,7 @@
     "Name": "Eyedropper",
     "Tags": [
       "color",
+      "colour",
       "picker",
       "sample",
       "paint",
@@ -10378,7 +10518,8 @@
     "Name": "PlayerSettings",
     "Tags": [
       "person",
-      "user"
+      "user",
+      "configuration"
     ]
   },
   {
@@ -10822,6 +10963,7 @@
       "arrow",
       "expand",
       "maximize",
+      "maximise",
       "window",
       "view"
     ]
@@ -11180,7 +11322,9 @@
       "delete",
       "drawing",
       "line",
-      "correction"
+      "correction",
+      "eraser",
+      "rubber"
     ]
   },
   {
@@ -11189,7 +11333,9 @@
     "Tags": [
       "delete",
       "drawing",
-      "correction"
+      "correction",
+      "eraser",
+      "rubber"
     ]
   },
   {
@@ -11198,7 +11344,9 @@
     "Tags": [
       "delete",
       "drawing",
-      "correction"
+      "correction",
+      "eraser",
+      "rubber"
     ]
   },
   {
@@ -11824,7 +11972,8 @@
       "adjust",
       "controls",
       "configuration",
-      "customization"
+      "customization",
+      "configuration"
     ]
   },
   {
@@ -12124,7 +12273,8 @@
     "Name": "ColorSolid",
     "Tags": [
       "palette",
-      "theme"
+      "theme",
+      "colour"
     ]
   },
   {
@@ -12355,7 +12505,9 @@
       "erase",
       "remove",
       "delete",
-      "correction"
+      "correction",
+      "eraser",
+      "rubber"
     ]
   },
   {
@@ -12395,7 +12547,9 @@
       "connection",
       "network",
       "share",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -12406,7 +12560,9 @@
       "connection",
       "network",
       "share",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -12417,7 +12573,9 @@
       "connection",
       "network",
       "share",
-      "network"
+      "network",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -12432,7 +12590,9 @@
       "alert",
       "exclamation",
       "triangle",
-      "issue"
+      "issue",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -12463,7 +12623,8 @@
       "glitter",
       "sparkle",
       "glow",
-      "magic"
+      "magic",
+      "AI"
     ]
   },
   {
@@ -12486,7 +12647,11 @@
       "emoji",
       "expression",
       "decoration",
-      "image"
+      "image",
+      "note",
+      "sticky",
+      "smiley",
+      "face"
     ]
   },
   {
@@ -12548,7 +12713,8 @@
       "protection",
       "lock",
       "fireproof",
-      "valuable"
+      "valuable",
+      "bank"
     ]
   },
   {
@@ -12572,7 +12738,8 @@
       "settings",
       "paper",
       "output",
-      "device"
+      "device",
+      "configuration"
     ]
   },
   {
@@ -12602,7 +12769,8 @@
     "Name": "ColorOff",
     "Tags": [
       "palette",
-      "theme"
+      "theme",
+      "colour"
     ]
   },
   {
@@ -12614,7 +12782,8 @@
       "settings",
       "paper",
       "output",
-      "device"
+      "device",
+      "configuration"
     ]
   },
   {
@@ -12626,7 +12795,8 @@
       "settings",
       "paper",
       "output",
-      "device"
+      "device",
+      "configuration"
     ]
   },
   {
@@ -13575,7 +13745,9 @@
       "signal",
       "network",
       "connection",
-      "communication"
+      "communication",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -13586,7 +13758,9 @@
       "signal",
       "network",
       "connection",
-      "communication"
+      "communication",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -13597,7 +13771,9 @@
       "signal",
       "network",
       "connection",
-      "communication"
+      "communication",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -13608,7 +13784,9 @@
       "signal",
       "network",
       "connection",
-      "communication"
+      "communication",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -13619,7 +13797,9 @@
       "signal",
       "network",
       "connection",
-      "communication"
+      "communication",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -13630,7 +13810,9 @@
       "signal",
       "network",
       "connection",
-      "communication"
+      "communication",
+      "wlan",
+      "lan"
     ]
   },
   {
@@ -13671,7 +13853,8 @@
       "keyboard",
       "settings",
       "switch",
-      "selection"
+      "selection",
+      "configuration"
     ]
   },
   {
@@ -14272,7 +14455,8 @@
       "settings",
       "system",
       "computer",
-      "device"
+      "device",
+      "configuration"
     ]
   },
   {
@@ -14286,7 +14470,8 @@
       "reboot",
       "settings",
       "install",
-      "software"
+      "software",
+      "configuration"
     ]
   },
   {
@@ -14468,7 +14653,8 @@
     "Tags": [
       "gear",
       "options",
-      "cog"
+      "cog",
+      "configuration"
     ]
   },
   {
