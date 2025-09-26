@@ -56,7 +56,7 @@
                     CompactPaneLength="{x:Bind compactPaneLengthSlider.Value, Mode=OneWay}"
                     DisplayMode="CompactOverlay"
                     IsPaneOpen="{x:Bind togglePaneButton.IsChecked, Mode=TwoWay, Converter={StaticResource nullableBooleanToBooleanConverter}}"
-                    Width="400"
+                    MaxWidth="400"
                     IsTabStop="False"
                     OpenPaneLength="{x:Bind openPaneLengthSlider.Value, Mode=OneWay}"
                     PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
