@@ -45,6 +45,12 @@ public partial class SettingsHelper : ObservableSettings
         private set => Set(value);
     }
 
+    public bool IsFirstRun
+    {
+        get => GetOrCreateDefault<bool>(true);
+        set => Set(value);
+    }
+
     public void UpdateFavorites(Action<List<string>> updater)
     {
         var list = Favorites;
