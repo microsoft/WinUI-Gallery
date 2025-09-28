@@ -25,24 +25,24 @@ public partial class ApplicationDataSettingsProvider : ISettingsProvider
         if (!container.Values.TryGetValue(key, out var value))
             return default;
 
-        try
-        {
-            if (value is T t)
-                return t;
+        if (value is T t)
+            return t;
 
-            if (value is string str && !IsSimpleType(typeof(T)))
+        if (value is string str && !IsSimpleType(typeof(T)))
+        {
+            try
             {
                 var typeInfo = SettingsJsonContext.Default.GetTypeInfo(typeof(T));
                 return (T)JsonSerializer.Deserialize(str, typeInfo);
             }
+            catch (Exception)
+            {
+                HandleCorruptedKey(key);
+                return default;
+            }
+        }
 
-            return (T)Convert.ChangeType(value, typeof(T));
-        }
-        catch (Exception)
-        {
-            HandleCorruptedKey(key);
-            return default;
-        }
+        return (T)Convert.ChangeType(value, typeof(T));
     }
 
     private void HandleCorruptedKey(string key)
