@@ -4,7 +4,7 @@ namespace WinUIGallery.Helpers;
 
 internal static class ListExtensions
 {
-    public static void AddToFirst<T>(this List<T> list, T item, int? maxSize = null)
+    public static void AddAsFirst<T>(this List<T> list, T item, int? maxSize = null)
     {
         if (item == null || (item is string data && string.IsNullOrWhiteSpace(data)))
             return;
@@ -18,7 +18,7 @@ internal static class ListExtensions
         }
     }
 
-    public static void AddToLast<T>(this List<T> list, T item, int? maxSize = null)
+    public static void AddAsLast<T>(this List<T> list, T item, int? maxSize = null)
     {
         if (item == null || (item is string data && string.IsNullOrWhiteSpace(data)))
             return;

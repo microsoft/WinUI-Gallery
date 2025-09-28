@@ -121,7 +121,7 @@ public sealed partial class PageHeader : UserControl
         {
             if (toggleButton.IsChecked == true)
             {
-                SettingsHelper.Current.UpdateFavorites(items => items.AddToLast(Item.UniqueId));
+                SettingsHelper.Current.UpdateFavorites(items => items.AddAsLast(Item.UniqueId));
             }
             else
             {
