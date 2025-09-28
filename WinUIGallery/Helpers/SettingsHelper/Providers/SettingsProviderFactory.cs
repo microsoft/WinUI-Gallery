@@ -16,7 +16,7 @@ public static partial class SettingsProviderFactory
         {
             var folder = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                ProcessInfoHelper.ProductNameAndVersion
+                ProcessInfoHelper.ProductName
             );
 
             Directory.CreateDirectory(folder);
