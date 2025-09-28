@@ -61,7 +61,7 @@
                 Screen reader users will hear this name every time they navigate to that control.<LineBreak />
             </Paragraph>
             <Paragraph>
-                If the control's content can be converted ToString, an accessible name is automatically determined from the visible
+                If the control's content can be converted to a string, an accessible name is automatically determined from the visible
                 text. However, elements such as images or input fields need to have a custom accessible name.<LineBreak />
             </Paragraph>
             <Paragraph>
@@ -88,7 +88,7 @@
                     <Button Content="Download survey" />
                     <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
                         <Paragraph>
-                            Screen readers will read this this button as <Bold>Download survey</Bold>.
+                            Screen readers will read this button as <Bold>Download survey</Bold>.
                             The name is automatically derived from the Button's Content.</Paragraph>
                     </RichTextBlock>
                 </StackPanel>
@@ -125,7 +125,7 @@
 
                     <RichTextBlock Style="{StaticResource ScreenReaderOutputStyle}">
                         <Paragraph>
-                            Screen readers will read this these TextBoxes as <Bold>Name</Bold>,
+                            Screen readers will read these TextBoxes as <Bold>Name</Bold>,
                             <Bold>Nickname</Bold> and <Bold>Email</Bold>.
                             The names are automatically derived from their headers or placeholders.<LineBreak />
                         </Paragraph>
@@ -280,7 +280,7 @@ AutomationProperties.Name="Contacts"&gt;
             </Paragraph>
             <Paragraph>
                 See <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/accessibility/basic-accessibility-information">Expose basic accessibility information</Hyperlink>
-                and <Hyperlink NavigateUri="https://learn.microsoft.com/accessibility-tools-docs/items/uwpxaml/control_fulldescription_describedby_helptext">UWP XAML: Setting supplemental information on an control</Hyperlink>
+                and <Hyperlink NavigateUri="https://learn.microsoft.com/accessibility-tools-docs/items/uwpxaml/control_fulldescription_describedby_helptext">UWP XAML: Setting supplemental information on a control</Hyperlink>
                 .</Paragraph>
         </RichTextBlock>
 
@@ -455,7 +455,7 @@ AutomationProperties.Name="Contacts"&gt;
         Thus we remove it from the content visual tree with AccessibilityView="Raw" --&gt;
 &lt;Image Source="/Assets/SampleMedia/treetops.jpg" AutomationProperties.AccessibilityView="Raw" Height="40" VerticalAlignment="Top"/&gt;
 &lt;TextBlock TextWrapping="WrapWholeWords" MaxWidth="400" Margin="8,0,0,0"&gt;This is some demo text.
-                The image on the right is just for decoration and serves no informational purpose.
+                The image on the left is just for decoration and serves no informational purpose.
                 To prevent Narrator or other screen readers from reading out the image, we set the accessibility view to "Raw" which removes it from the content visual tree.&lt;/TextBlock&gt;
 &lt;/StackPanel&gt;
                 </x:String>
@@ -529,10 +529,10 @@ AutomationProperties.Name="Contacts"&gt;
                             Padding="6"
                             AutomationProperties.LandmarkType="Main">
                             <TextBlock TextWrapping="WrapWholeWords">
-                                Loren ipsum dolor sit anet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Ut enim ad minim venian, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea cannodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cilium dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborun
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
                             </TextBlock>
                         </StackPanel>
 
@@ -586,10 +586,10 @@ AutomationProperties.Name="Contacts"&gt;
         Padding="6"
         AutomationProperties.LandmarkType="Main"&gt;
         &lt;TextBlock TextWrapping="WrapWholeWords"&gt;
-            Loren ipsum dolor sit anet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim venian, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea cannodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cilium dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborun
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
         &lt;/TextBlock&gt;
     &lt;/StackPanel&gt;
 

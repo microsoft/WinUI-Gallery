@@ -25,7 +25,7 @@
             VerticalScrollMode="Auto">
             <ContentPresenter
                 x:Name="CodePresenter"
-                Padding="16,0,16,16"
+                Padding="{x:Bind Padding, Mode=OneWay}"
                 Loaded="CodePresenter_Loaded" />
         </ScrollViewer>
         <Border
