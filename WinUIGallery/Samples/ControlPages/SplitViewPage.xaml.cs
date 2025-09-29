@@ -57,8 +57,6 @@ public sealed partial class SplitViewPage : Page
 
     private void UpdateNavLinkItemLayout()
     {
-        //var displayMode = (SplitViewDisplayMode)Enum.Parse(typeof(SplitViewDisplayMode), (displayModeCombobox.SelectedItem as ComboBoxItem).Content.ToString());
-
         if (splitView.PanePlacement == SplitViewPanePlacement.Right)
         {
             VisualStateManager.GoToState(this, "RightIconLayout", false);
@@ -84,16 +82,6 @@ public sealed partial class SplitViewPage : Page
         var colorString = (e.AddedItems[0] as ComboBoxItem).Content.ToString();
 
         VisualStateManager.GoToState(this, colorString, false);
-    }
-
-    private void openPaneLengthSlider_ValueChanged(object sender, Microsoft.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
-    {
-        UpdateNavLinkItemLayout();
-    }
-
-    private void compactPaneLengthSlider_ValueChanged(object sender, Microsoft.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
-    {
-        UpdateNavLinkItemLayout();
     }
 }
 

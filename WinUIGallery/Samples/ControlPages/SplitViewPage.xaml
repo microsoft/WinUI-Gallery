@@ -156,8 +156,7 @@
                         Minimum="128"
                         SnapsTo="StepValues"
                         StepFrequency="8"
-                        Value="256"
-                        ValueChanged="openPaneLengthSlider_ValueChanged"/>
+                        Value="256" />
 
                     <Slider
                         x:Name="compactPaneLengthSlider"
@@ -168,8 +167,7 @@
                         Minimum="24"
                         SnapsTo="StepValues"
                         StepFrequency="8"
-                        Value="48"
-                        ValueChanged="compactPaneLengthSlider_ValueChanged"/>
+                        Value="48" />
                 </StackPanel>
             </controls:ControlExample.Options>
 
