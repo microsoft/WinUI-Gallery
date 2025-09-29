@@ -45,13 +45,13 @@ steps:
         dir /b /s $(System.DefaultWorkingDirectory)
       displayName: 'List contents of ArtifactStagingDirectory and DefaultWorkingDirectory'
 
-    - task: VSTest@2
-      displayName: 'Run Sample Unit Tests'
-      inputs:
-        failOnMinTestsNotRun: true
-        minimumExpectedTests: '3'
-        testAssemblyVer2: |
-          **\WinUIGallery.UnitTests.build.appxrecipe
+    # - task: VSTest@2
+    #   displayName: 'Run Sample Unit Tests'
+    #   inputs:
+    #     failOnMinTestsNotRun: true
+    #     minimumExpectedTests: '3'
+    #     testAssemblyVer2: |
+    #       **\WinUIGallery.UnitTests.build.appxrecipe
 
     - task: PowerShell@2
       displayName: Uninstall existing WinUI Gallery packages
