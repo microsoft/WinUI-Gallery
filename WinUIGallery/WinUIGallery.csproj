@@ -352,6 +352,7 @@
         <Content Include="Assets\ControlImages\Accessibility.png" />
         <Content Include="Assets\ControlImages\ContentIsland.png" />
         <Content Include="Assets\ControlImages\CustomControls.png" />
+        <Content Include="Assets\ControlImages\StoragePickers.png" />
         <Content Include="Assets\ControlImages\Popup.png" />
         <Content Include="Assets\ControlImages\ThemeShadow.png" />
         <Content Include="Assets\Design\Cards.dark.png" />
@@ -536,6 +537,12 @@
 
     <ItemGroup>
       <Page Update="Pages\SamplePage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+           
+    <ItemGroup>
+      <Page Update="Samples\ControlPages\StoragePickersPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
