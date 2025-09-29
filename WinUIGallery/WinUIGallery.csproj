@@ -701,15 +701,15 @@
     <AssemblyVersion>$(Version)</AssemblyVersion>
     <AssemblyFileVersion>$(Version)</AssemblyFileVersion>
 
-    <AppManifestNamespace>
+    <AppxManifestNamespace>
       <Namespace Prefix="dn" Uri="http://schemas.microsoft.com/appx/manifest/foundation/windows10" />
-    </AppManifestNamespace>
+    </AppxManifestNamespace>
   </PropertyGroup>
 
   <!--  Updates the version in Package.appxmanifest files.  -->
   <Target Name="UpdateAppxManifest" BeforeTargets="BeforeBuild">
-    <XmlPoke XmlInputPath="Package.appxmanifest" Query="/dn:Package/dn:Identity/@Version" Namespaces="$(AppManifestNamespace)" Value="$(Version)" />
-    <XmlPoke XmlInputPath="Package.Dev.appxmanifest" Query="/dn:Package/dn:Identity/@Version" Namespaces="$(AppManifestNamespace)" Value="$(Version)" />
+    <XmlPoke XmlInputPath="Package.appxmanifest" Query="/dn:Package/dn:Identity/@Version" Namespaces="$(AppxManifestNamespace)" Value="$(Version)" />
+    <XmlPoke XmlInputPath="Package.Dev.appxmanifest" Query="/dn:Package/dn:Identity/@Version" Namespaces="$(AppxManifestNamespace)" Value="$(Version)" />
   </Target>
 
 </Project>
