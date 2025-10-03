@@ -434,7 +434,7 @@
     <Content Include="Assets\Tiles\AppList.targetsize-96_altform-lightunplated.png" />
     <Content Include="Assets\Tiles\AppList.targetsize-96_altform-unplated.png" />
     <Content Include="Assets\Tiles\BadgeLogo.scale-100.png" />
-　  <Content Include="Assets\Tiles\BadgeLogo.scale-125.png" />
+    <Content Include="Assets\Tiles\BadgeLogo.scale-125.png" />
     <Content Include="Assets\Tiles\BadgeLogo.scale-150.png" />
     <Content Include="Assets\Tiles\BadgeLogo.scale-200.png" />
     <Content Include="Assets\Tiles\BadgeLogo.scale-400.png" />
