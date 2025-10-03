@@ -350,6 +350,7 @@
     <Content Include="Assets\ControlImages\Accessibility.png" />
     <Content Include="Assets\ControlImages\ContentIsland.png" />
     <Content Include="Assets\ControlImages\CustomControls.png" />
+    <Content Include="Assets\ControlImages\StoragePickers.png" />
     <Content Include="Assets\ControlImages\Popup.png" />
     <Content Include="Assets\ControlImages\ThemeShadow.png" />
     <Content Include="Assets\Design\Cards.dark.png" />
@@ -433,7 +434,7 @@
     <Content Include="Assets\Tiles\AppList.targetsize-96_altform-lightunplated.png" />
     <Content Include="Assets\Tiles\AppList.targetsize-96_altform-unplated.png" />
     <Content Include="Assets\Tiles\BadgeLogo.scale-100.png" />
-    <Content Include="Assets\Tiles\BadgeLogo.scale-125.png" />
+　  <Content Include="Assets\Tiles\BadgeLogo.scale-125.png" />
     <Content Include="Assets\Tiles\BadgeLogo.scale-150.png" />
     <Content Include="Assets\Tiles\BadgeLogo.scale-200.png" />
     <Content Include="Assets\Tiles\BadgeLogo.scale-400.png" />
@@ -530,6 +531,12 @@
     <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_cs.txt" />
     <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_xaml.txt" />
     <Content Include="Samples\SampleCode\Text\RichEditBox\RichEditBoxSample6_cs.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Samples\ControlPages\StoragePickersPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

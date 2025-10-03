@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="WinUIGallery.ControlPages.StoragePickersPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:WinUIGallery.Controls"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <StackPanel.ChildrenTransitions>
+            <RepositionThemeTransition/>
+        </StackPanel.ChildrenTransitions>
+        
+        <InfoBar IsClosable="False" IsOpen="True" Margin="0,8,0,0">
+            <RichTextBlock Margin="0,12,12,12" IsTextSelectionEnabled="False">
+                <Paragraph>
+                    The picker reopens in the
+                    <Run FontWeight="SemiBold">last selected location and view</Run>. The
+                    <Run FontWeight="SemiBold" FontFamily="Consolas">SuggestedStartLocation</Run> and
+                    <Run FontWeight="SemiBold" FontFamily="Consolas">ViewMode</Run> are only applied the
+                    <Run FontWeight="SemiBold">first time</Run> the picker is opened (for example, right after app installation or when no previous selection exists).
+                </Paragraph>
+            </RichTextBlock>
+        </InfoBar>
+
+        <controls:ControlExample HeaderText="Pick single file">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <Button x:Name="PickSingleFileButton" Content="Pick a single file" Click="PickSingleFileButton_Click"/>
+                    <TextBlock x:Name="PickedSingleFileTextBlock" Text="No file picked"/>
+                </StackPanel>
+            </controls:ControlExample.Example>
+            
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <ComboBox x:Name="FileTypeComboBox1" Header="File type" Width="200">
+                        <ComboBoxItem Content="All Files (*)" Tag="*"  IsSelected="True"/>
+                        <ComboBoxItem Content="Text Files (*.txt)" Tag=".txt"/>
+                        <ComboBoxItem Content="Images (*.jpg, *.png)" Tag="images"/>
+                    </ComboBox>
+                    <TextBox x:Name="CommitButtonTextTextBox" Header="Commit button text" PlaceholderText="Open" Text="Pick File"/>
+                    <ComboBox x:Name="PickerLocationComboBox1" Header="Suggested start location" Width="200" ItemsSource="{x:Bind pickerLocationIds}" SelectedIndex="0"/>
+                    <ComboBox x:Name="PickerViewModeComboBox1" Header="View mode" Width="200" ItemsSource="{x:Bind pickerViewModes}" SelectedIndex="0"/>
+                </StackPanel>
+            </controls:ControlExample.Options>
+            
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Spacing="8"&gt;
+    &lt;Button x:Name="PickSingleFileButton" Content="Pick a single file" Click="PickSingleFileButton_Click"/&gt;
+    &lt;TextBlock x:Name="PickedSingleFileTextBlock" Text="No file picked"/&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private async void PickSingleFileButton_Click(object sender, RoutedEventArgs e)
+{
+    if (sender is Button button)
+    {
+        //disable the button to avoid double-clicking
+        button.IsEnabled = false;
+
+        var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);$(FileType)
+
+        picker.CommitButtonText = "$(CommitButtonText)";
+
+        picker.SuggestedStartLocation = PickerLocationId.$(SuggestedStartLocation);
+
+        picker.ViewMode = PickerViewMode.$(ViewMode);
+
+        // Show the picker dialog window
+        var file = await picker.PickSingleFileAsync();
+        PickedSingleFileTextBlock.Text = file != null
+            ? "Picked: " + file.Path
+            : "No file selected.";
+
+        //re-enable the button
+        button.IsEnabled = true;
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="FileType" Value="{x:Bind ComboBoxItemToFileFilter(FileTypeComboBox1.SelectedItem), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="CommitButtonText" Value="{x:Bind CommitButtonTextTextBox.Text, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="SuggestedStartLocation" Value="{x:Bind PickerLocationComboBox1.SelectedItem, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ViewMode" Value="{x:Bind PickerViewModeComboBox1.SelectedItem, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="Pick multiple files">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <Button x:Name="PickMultipleFilesButton" Content="Pick multiple files" Click="PickMultipleFilesButton_Click"/>
+                    <TextBlock x:Name="PickedMultipleFilesTextBlock" Text="No files picked"/>
+                </StackPanel>
+            </controls:ControlExample.Example>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <ComboBox x:Name="FileTypeComboBox2" Header="File type" Width="200">
+                        <ComboBoxItem Content="All Files (*)" Tag="*" IsSelected="True"/>
+                        <ComboBoxItem Content="Text Files (*.txt)" Tag=".txt"/>
+                        <ComboBoxItem Content="Images (*.jpg, *.png)" Tag="images"/>
+                    </ComboBox>
+                    <TextBox x:Name="CommitButtonTextTextBox2" Header="Commit button text" PlaceholderText="Open" Text="Pick Files"/>
+                    <ComboBox x:Name="PickerLocationComboBox2" Header="Suggested start location" Width="200" ItemsSource="{x:Bind pickerLocationIds}" SelectedIndex="0"/>
+                    <ComboBox x:Name="PickerViewModeComboBox2" Header="View mode" Width="200" ItemsSource="{x:Bind pickerViewModes}" SelectedIndex="0"/>
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Spacing="8"&gt;
+    &lt;Button x:Name="PickMultipleFilesButton" Content="Pick multiple files" Click="PickMultipleFilesButton_Click"/&gt;
+    &lt;TextBlock x:Name="PickedMultipleFilesTextBlock" Text="No files picked"/&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs e)
+{
+    if (sender is Button button)
+    {
+        //disable the button to avoid double-clicking
+        button.IsEnabled = false;
+
+        var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);$(FileType)
+                    
+        picker.CommitButtonText = "$(CommitButtonText)";
+                    
+        picker.SuggestedStartLocation = PickerLocationId.$(SuggestedStartLocation);
+                    
+        picker.ViewMode = PickerViewMode.$(ViewMode);
+
+        // Show the picker dialog window
+        var files = await picker.PickMultipleFilesAsync();
+
+        if (files.Count &gt; 0)
+        {
+            PickedMultipleFilesTextBlock.Text = "";
+            foreach (var file in files)
+            {
+                PickedMultipleFilesTextBlock.Text += "- Picked: " + file.Path + Environment.NewLine;
+            }
+        }
+        else
+        {
+            PickedMultipleFilesTextBlock.Text = "No files selected.";
+        }
+
+        //re-enable the button
+        button.IsEnabled = true;
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="FileType" Value="{x:Bind ComboBoxItemToFileFilter(FileTypeComboBox2.SelectedItem), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="CommitButtonText" Value="{x:Bind CommitButtonTextTextBox2.Text, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="SuggestedStartLocation" Value="{x:Bind PickerLocationComboBox2.SelectedItem, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ViewMode" Value="{x:Bind PickerViewModeComboBox2.SelectedItem, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="Save file">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <TextBox x:Name="FileContentTextBox" Header="File content" TextWrapping="Wrap" AcceptsReturn="True"
+                             Width="500" Height="200" Text="Hello, WinUI!" IsSpellCheckEnabled="False" HorizontalAlignment="Left" />
+                    <Button x:Name="SaveFileButton" Content="Save a file" Click="SaveFileButton_Click" />
+                    <TextBlock x:Name="SavedFileTextBlock" Grid.Column="1" Text="No file saved" />
+                </StackPanel>
+            </controls:ControlExample.Example>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="File types:" />
+                    <CheckBox x:Name="TxtCheckBox" Content="Text Files (*.txt)" />
+                    <CheckBox x:Name="JsonCheckBox" Content="JSON Files (*.json)"  />
+                    <CheckBox x:Name="XmlCheckBox" Content="XML Files (*.xml)" />
+                    <ComboBox x:Name="DefaultExtensionComboBox" Header="Default extension" Width="200" SelectedIndex="0">
+                        <x:String>.txt</x:String>
+                        <x:String>.json</x:String>
+                        <x:String>.xml</x:String>
+                    </ComboBox>
+                    <TextBox x:Name="SuggestedFileNameTextBox" Header="Suggested file name" Text="NewDocument" />
+                    <TextBox x:Name="CommitButtonTextTextBox3" Header="Commit button text" PlaceholderText="Save" Text="Save File" />
+                    <ComboBox x:Name="PickerLocationComboBox3" Header="Suggested start location" Width="200" ItemsSource="{x:Bind pickerLocationIds}" SelectedIndex="0" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="SuggestedFolderTextBox" Header="Suggested folder " Width="148" PlaceholderText="Optional" IsReadOnly="True" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                        <Button x:Name="SelectSuggestedFolderButton" Grid.Column="1" Margin="8,0,0,0" VerticalAlignment="Bottom" Click="SelectSuggestedFolderButton_Click" ToolTipService.ToolTip="Select folder">
+                            <FontIcon Glyph="&#xF89A;" />
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Spacing="8"&gt;
+    &lt;TextBox x:Name="FileContentTextBox" Header="File content" TextWrapping="Wrap" AcceptsReturn="True"
+                Width="500" Height="200" Text="Hello, WinUI!" IsSpellCheckEnabled="False" /&gt;
+    &lt;Button x:Name="SaveFileButton" Content="Save a file" Click="SaveFileButton_Click" /&gt;
+    &lt;TextBlock x:Name="SavedFileTextBlock" Grid.Column="1" Text="No file saved" /&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private async void SaveFileButton_Click(object sender, RoutedEventArgs e)
+{
+    if (sender is Button button)
+    {
+        button.IsEnabled = false;
+
+        var picker = new FileSavePicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
+$(TxtFileType)$(JsonFileType)$(XmlFileType)
+        picker.DefaultFileExtension = "$(DefaultFileExtension)";
+
+        picker.SuggestedFileName = "$(SuggestedFileName)";
+
+        picker.CommitButtonText = "$(CommitButtonText)";
+
+        picker.SuggestedStartLocation = PickerLocationId.$(SuggestedStartLocation);
+                    
+        picker.SuggestedFolder = "$(SuggestedFolder)";
+
+        // Show the picker dialog
+        var result = await picker.PickSaveFileAsync();
+
+        if (result != null)
+        {
+            string savePath = result.Path;
+            await File.WriteAllTextAsync(savePath, FileContentTextBox.Text);
+            SavedFileTextBlock.Text = "File saved to: " + savePath;
+        }
+        else
+        {
+            SavedFileTextBlock.Text = "File save canceled.";
+        }
+
+        button.IsEnabled = true;
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="TxtFileType" Value="{x:Bind TxtCheckBoxIsCheckedToCode(TxtCheckBox.IsChecked), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="JsonFileType" Value="{x:Bind JsonCheckBoxIsCheckedToCode(JsonCheckBox.IsChecked), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="XmlFileType" Value="{x:Bind XmlCheckBoxIsCheckedToCode(XmlCheckBox.IsChecked), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="DefaultFileExtension" Value="{x:Bind DefaultExtensionComboBox.SelectedItem, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="SuggestedFileName" Value="{x:Bind SuggestedFileNameTextBox.Text, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="CommitButtonText" Value="{x:Bind CommitButtonTextTextBox3.Text, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="SuggestedStartLocation" Value="{x:Bind PickerLocationComboBox3.SelectedItem, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="SuggestedFolder" Value="{x:Bind SuggestedFolderTextBox.Text, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="Pick folder">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="8">
+                    <Button x:Name="PickFolderButton" Content="Pick a folder" Click="PickFolderButton_Click" />
+                    <TextBlock x:Name="PickedFolderTextBlock" Text="No folder picked" />
+                </StackPanel>
+            </controls:ControlExample.Example>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <TextBox x:Name="CommitButtonTextTextBox4" Header="Commit button text" PlaceholderText="Select Folder" Text="Pick Folder"/>
+                    <ComboBox x:Name="PickerLocationComboBox4" Header="Suggested start location" Width="200" 
+                      ItemsSource="{x:Bind pickerLocationIds}" SelectedIndex="0"/>
+                    <ComboBox x:Name="PickerViewModeComboBox3" Header="View mode" Width="200" 
+                      ItemsSource="{x:Bind pickerViewModes}" SelectedIndex="0"/>
+                </StackPanel>
+            </controls:ControlExample.Options>
+            
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;StackPanel Spacing="8"&gt;
+    &lt;Button x:Name="PickFolderButton" Content="Pick a folder" Click="PickFolderButton_Click" /&gt;
+    &lt;TextBlock x:Name="PickedFolderTextBlock" Text="No folder picked" /&gt;
+&lt;/StackPanel&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
+{
+    if (sender is Button button)
+    {
+        // disable the button to avoid double-clicking
+        button.IsEnabled = false;
+
+        // Clear previous returned folder name
+        PickedFolderTextBlock.Text = "";
+
+        var picker = new FolderPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
+
+        picker.CommitButtonText = "$(CommitButtonText)";
+        picker.SuggestedStartLocation = PickerLocationId.$(SuggestedStartLocation);
+        picker.ViewMode = PickerViewMode.$(ViewMode);
+
+        // Show the picker dialog window
+        var folder = await picker.PickSingleFolderAsync();
+        PickedFolderTextBlock.Text = folder != null
+            ? "Picked: " + folder.Path
+            : "No folder selected.";
+
+        // re-enable the button
+        button.IsEnabled = true;
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="CommitButtonText" Value="{x:Bind CommitButtonTextTextBox4.Text, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="SuggestedStartLocation" Value="{x:Bind PickerLocationComboBox4.SelectedItem, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ViewMode" Value="{x:Bind PickerViewModeComboBox3.SelectedItem, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>
