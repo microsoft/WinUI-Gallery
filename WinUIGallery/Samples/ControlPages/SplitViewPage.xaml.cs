@@ -27,6 +27,12 @@ public sealed partial class SplitViewPage : Page
     public SplitViewPage()
     {
         this.InitializeComponent();
+        this.Loaded += SplitViewPage_Loaded;
+    }
+
+    private void SplitViewPage_Loaded(object sender, RoutedEventArgs e)
+    {
+        UpdateNavLinkItemLayout();
     }
 
     private void NavLinksList_ItemClick(object sender, ItemClickEventArgs e)
@@ -45,6 +51,25 @@ public sealed partial class SplitViewPage : Page
         {
             splitView.PanePlacement = SplitViewPanePlacement.Left;
         }
+
+        UpdateNavLinkItemLayout();
+    }
+
+    private void UpdateNavLinkItemLayout()
+    {
+        if (splitView.PanePlacement == SplitViewPanePlacement.Right)
+        {
+            VisualStateManager.GoToState(this, "RightIconLayout", false);
+        }
+        else
+        {
+            VisualStateManager.GoToState(this, "LeftIconLayout", false);
+        }
+    }
+
+    private void togglePaneButton_CheckedChanged(object sender, RoutedEventArgs e)
+    {
+        UpdateNavLinkItemLayout();
     }
 
     private void displayModeCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
