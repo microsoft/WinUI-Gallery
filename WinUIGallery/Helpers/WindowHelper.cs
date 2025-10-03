@@ -19,7 +19,7 @@ public partial class WindowHelper
 {
     static public Window CreateWindow()
     {
-        MainWindow newWindow = new MainWindow();
+        var newWindow = new Window();
         TrackWindow(newWindow);
         return newWindow;
     }

@@ -1,11 +1,24 @@
-﻿// C# code to create a new window
-var newWindow = WindowHelper.CreateWindow();
-var rootPage = new NavigationRootPage();
-rootPage.RequestedTheme = ThemeHelper.RootTheme;
-newWindow.Content = rootPage;
-newWindow.Activate();
+﻿var childWindow = new Window
+{
+    ExtendsContentIntoTitleBar = true,
+    SystemBackdrop = new MicaBackdrop(),
+    Content = new Page
+    {
+        // The TreeHelper is a helper class in the WinUIGallery project
+        // that allows us to find the current theme of the app.
+        RequestedTheme = ThemeHelper.RootTheme,
+        Content = new TextBlock
+        {
+            Text = "New Window!",
+            HorizontalAlignment = HorizontalAlignment.Center,
+            VerticalAlignment = VerticalAlignment.Center,
+        },
+    }
+};
 
-// C# code to navigate in the new window
-var targetPageType = typeof(HomePage);
-string targetPageArguments = string.Empty;
-rootPage.Navigate(targetPageType, targetPageArguments);
+childWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
+
+// The WindowHelper is a helper class in the WinUIGallery project
+// that helps us close child windows when the main window closes.
+WindowHelper.TrackWindow(childWindow);
+childWindow.Activate();
