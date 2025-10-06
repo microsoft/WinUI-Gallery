@@ -5,17 +5,45 @@
     xmlns:controlPages="using:WinUIGallery.ControlPages"
     xmlns:controls="using:WinUIGallery.Controls">
     <Page.Resources>
-        <DataTemplate x:Key="NavLinkItemTemplate" x:DataType="controlPages:NavLink">
-            <StackPanel
+        <DataTemplate
+            x:Key="LeftIconNavLinkItemTemplate"
+            x:DataType="controlPages:NavLink">
+            <Grid
                 Margin="2,0,0,0"
-                AutomationProperties.Name="{x:Bind Label}"
-                Orientation="Horizontal">
-                <SymbolIcon Symbol="{x:Bind Symbol}" />
+                AutomationProperties.Name="{x:Bind Label}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <SymbolIcon
+                    Grid.Column="0"
+                    Symbol="{x:Bind Symbol}" />
                 <TextBlock
+                    Grid.Column="1"
                     Margin="24,0,0,0"
                     VerticalAlignment="Center"
                     Text="{x:Bind Label}" />
-            </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate
+            x:Key="RightIconNavLinkItemTemplate"
+            x:DataType="controlPages:NavLink">
+            <Grid
+                Margin="0,0,2,0"
+                AutomationProperties.Name="{x:Bind Label}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    Margin="0,0,24,0"
+                    VerticalAlignment="Center"
+                    Text="{x:Bind Label}" />
+                <SymbolIcon
+                    Grid.Column="1"
+                    Symbol="{x:Bind Symbol}" />
+            </Grid>
         </DataTemplate>
     </Page.Resources>
 
@@ -28,7 +56,7 @@
                     CompactPaneLength="{x:Bind compactPaneLengthSlider.Value, Mode=OneWay}"
                     DisplayMode="CompactOverlay"
                     IsPaneOpen="{x:Bind togglePaneButton.IsChecked, Mode=TwoWay, Converter={StaticResource nullableBooleanToBooleanConverter}}"
-                    Width="400" 
+                    MaxWidth="400"
                     IsTabStop="False"
                     OpenPaneLength="{x:Bind openPaneLengthSlider.Value, Mode=OneWay}"
                     PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
@@ -51,7 +79,6 @@
                                 VerticalAlignment="Stretch"
                                 IsItemClickEnabled="True"
                                 ItemClick="NavLinksList_ItemClick"
-                                ItemTemplate="{StaticResource NavLinkItemTemplate}"
                                 ItemsSource="{x:Bind NavLinks}"
                                 SelectionMode="Single" />
                         </Grid>
@@ -79,6 +106,8 @@
                     <ToggleButton
                         x:Name="togglePaneButton"
                         Content="IsPaneOpen"
+                        Checked="togglePaneButton_CheckedChanged"
+                        Unchecked="togglePaneButton_CheckedChanged"
                         IsChecked="True" />
 
                     <ToggleSwitch
@@ -195,6 +224,18 @@
                 <VisualState x:Name="Green">
                     <VisualState.Setters>
                         <Setter Target="splitView.PaneBackground" Value="Green" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="NavLinkItemLayoutStates">
+                <VisualState x:Name="LeftIconLayout">
+                    <VisualState.Setters>
+                        <Setter Target="NavLinksList.ItemTemplate" Value="{StaticResource LeftIconNavLinkItemTemplate}" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="RightIconLayout">
+                    <VisualState.Setters>
+                        <Setter Target="NavLinksList.ItemTemplate" Value="{StaticResource RightIconNavLinkItemTemplate}" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
