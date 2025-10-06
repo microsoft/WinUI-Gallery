@@ -32,7 +32,9 @@ public sealed partial class MainWindow : Window
 
     public Action NavigationViewLoaded { get; set; }
 
-    private OverlappedPresenter WindowPresenter { get; init; }
+#nullable enable
+    private OverlappedPresenter? WindowPresenter { get; }
+#nullable disable
 
     private OverlappedPresenterState CurrentWindowState { get; set; }
 
@@ -43,16 +45,21 @@ public sealed partial class MainWindow : Window
         RootGrid.ActualThemeChanged += (_, _) => TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
-        WindowPresenter = AppWindow.Presenter as OverlappedPresenter;
-        CurrentWindowState = WindowPresenter.State;
-        AdjustNavigationViewMargin(force: true);
-        AppWindow.Changed += (_, _) => AdjustNavigationViewMargin();
+        if (AppWindow.Presenter is OverlappedPresenter windowPresenter)
+        {
+            WindowPresenter = windowPresenter;
+            CurrentWindowState = WindowPresenter.State;
+            AdjustNavigationViewMargin(force: true);
+            AppWindow.Changed += (_, _) => AdjustNavigationViewMargin();
+        }
     }
 
     // Adjusts the NavigationView margin based on the window state to fix the gap between the caption buttons and the NavigationView.
+    // Set force to true to force the adjustment on the first call.
     private void AdjustNavigationViewMargin(bool? force = null)
     {
-        if (WindowPresenter.State == CurrentWindowState && force is not true)
+        if (WindowPresenter is null ||
+            (WindowPresenter.State == CurrentWindowState && force is not true))
         {
             return;
         }
