@@ -12,14 +12,14 @@ namespace WinUIGallery.Converters;
 [ContentProperty(Name = "ItemTemplate")]
 partial class MenuItemTemplateSelector : DataTemplateSelector
 {
-    public DataTemplate ItemTemplate { get; set; }
+    public DataTemplate? ItemTemplate { get; set; }
 
-    protected override DataTemplate SelectTemplateCore(object item)
+    protected override DataTemplate? SelectTemplateCore(object item)
     {
         return item is Separator ? SeparatorTemplate : item is Header ? HeaderTemplate : ItemTemplate;
     }
 
-    protected override DataTemplate SelectTemplateCore(object item, DependencyObject container)
+    protected override DataTemplate? SelectTemplateCore(object item, DependencyObject container)
     {
         return item is Separator ? SeparatorTemplate : item is Header ? HeaderTemplate : ItemTemplate;
     }
