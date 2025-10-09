@@ -21,13 +21,13 @@ public sealed partial class ItemPage : Page
     private static string WinUIBaseUrl = "https://github.com/microsoft/microsoft-ui-xaml/tree/main/src/controls/dev";
     private static string GalleryBaseUrl = "https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/Samples/ControlPages/";
 
-    public ControlInfoDataItem Item
+    public ControlInfoDataItem? Item
     {
         get { return _item; }
         set { _item = value; }
     }
 
-    private ControlInfoDataItem _item;
+    private ControlInfoDataItem? _item;
     private ElementTheme? _currentElementTheme;
 
     public ItemPage()
@@ -45,7 +45,10 @@ public sealed partial class ItemPage : Page
 
     private void OnNavigationViewLoaded()
     {
-        App.MainWindow.EnsureNavigationSelection(this.Item.UniqueId);
+        if (this.Item is not null)
+        {
+            App.MainWindow.EnsureNavigationSelection(this.Item.UniqueId);
+        }
     }
 
     protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -60,17 +63,17 @@ public sealed partial class ItemPage : Page
                 Item = item;
 
                 // Load control page into frame.
-                Type pageType = Type.GetType("WinUIGallery.ControlPages." + item.UniqueId + "Page");
+                Type? pageType = Type.GetType("WinUIGallery.ControlPages." + item.UniqueId + "Page");
 
                 if (pageType != null)
                 {
-                    var pageName = string.IsNullOrEmpty(group.Folder) ? pageType.Name : $"{group.Folder}/{pageType.Name}";
+                    var pageName = string.IsNullOrEmpty(group?.Folder) ? pageType.Name : $"{group.Folder}/{pageType.Name}";
                     pageHeader.SetControlSourceLink(WinUIBaseUrl, item.SourcePath);
                     pageHeader.SetSamplePageSourceLinks(GalleryBaseUrl, pageName);
                     System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
                     this.contentFrame.Navigate(pageType);
                 }
-                App.MainWindow.EnsureNavigationSelection(item?.UniqueId);
+                App.MainWindow.EnsureNavigationSelection(item.UniqueId);
 
                 if (contentFrame.Content is Page loadedPage && PageScrollBehaviorHelper.GetSuppressHostScrolling(loadedPage))
                 {

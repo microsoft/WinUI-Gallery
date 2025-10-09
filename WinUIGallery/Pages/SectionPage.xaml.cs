@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using System.Linq;
 using WinUIGallery.Helpers;
+using WinUIGallery.Models;
 
 namespace WinUIGallery.Pages;
 
@@ -23,10 +24,9 @@ public sealed partial class SectionPage : ItemsPageBase
     {
         base.OnNavigatedTo(e);
 
-        if (e.Parameter is string groupID)
+        if (e.Parameter is string groupID &&
+            await ControlInfoDataSource.GetGroupAsync(groupID) is ControlInfoDataGroup group)
         {
-            var group = await ControlInfoDataSource.GetGroupAsync(groupID);
-
             ((NavigationViewItemBase)App.MainWindow.NavigationView.MenuItems.Single(i => (string)((NavigationViewItemBase)i).Tag == group.UniqueId)).IsSelected = true;
             TitleTxt.Text = group.Title;
             Items = group.Items.OrderBy(i => i.Title).ToList();

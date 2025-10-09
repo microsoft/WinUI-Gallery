@@ -19,11 +19,11 @@ namespace WinUIGallery.Pages;
 /// </summary>
 public sealed partial class SearchResultsPage : ItemsPageBase
 {
-    private IEnumerable<Filter> _filters;
-    private Filter _selectedFilter;
-    string _queryText;
+    private IEnumerable<Filter>? _filters;
+    private Filter? _selectedFilter;
+    string _queryText = string.Empty;
 
-    public IEnumerable<Filter> Filters
+    public IEnumerable<Filter>? Filters
     {
         get { return _filters; }
         set { this.SetProperty(ref _filters, value); }
@@ -143,10 +143,10 @@ public sealed partial class SearchResultsPage : ItemsPageBase
 /// </summary>
 public sealed partial class Filter : INotifyPropertyChanged
 {
-    private string _name;
+    private string _name = string.Empty;
     private int _count;
     private bool? _active;
-    private List<ControlInfoDataItem> _items;
+    private List<ControlInfoDataItem> _items = [];
 
     public Filter(string name, int count, List<ControlInfoDataItem> controlInfoList, bool active = false)
     {
@@ -193,7 +193,7 @@ public sealed partial class Filter : INotifyPropertyChanged
     /// <summary>
     /// Multicast event for property change notifications.
     /// </summary>
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     /// <summary>
     /// Checks if a property already matches a desired value.  Sets the property and

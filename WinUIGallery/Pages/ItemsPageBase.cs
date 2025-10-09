@@ -15,12 +15,12 @@ namespace WinUIGallery.Pages;
 
 public abstract class ItemsPageBase : Page, INotifyPropertyChanged
 {
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
-    private string _itemId;
-    private IEnumerable<ControlInfoDataItem> _items;
+    private string? _itemId;
+    private IEnumerable<ControlInfoDataItem>? _items;
 
-    public IEnumerable<ControlInfoDataItem> Items
+    public IEnumerable<ControlInfoDataItem>? Items
     {
         get { return _items; }
         set { SetProperty(ref _items, value); }
