@@ -10,8 +10,8 @@ namespace WinUIGallery.Models;
 
 public partial class IconData
 {
-    public string Name { get; set; }
-    public string Code { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Code { get; set; } = string.Empty;
     public string[] Tags { get; set; } = [];
     public bool IsSegoeFluentOnly { get; set; }
 
@@ -19,7 +19,7 @@ public partial class IconData
     public string CodeGlyph => "\\u" + Code;
     public string TextGlyph => "&#x" + Code + ";";
 
-    public string SymbolName => Enum.TryParse<Symbol>(Name, out var symbol) ? symbol.ToString() : null;
+    public string? SymbolName => Enum.TryParse<Symbol>(Name, out var symbol) ? symbol.ToString() : null;
 }
 [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
 [JsonSerializable(typeof(List<IconData>))]

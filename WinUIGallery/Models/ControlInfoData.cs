@@ -16,7 +16,7 @@ namespace WinUIGallery.Models;
 
 public partial class Root
 {
-    public ObservableCollection<ControlInfoDataGroup> Groups { get; set; }
+    public ObservableCollection<ControlInfoDataGroup> Groups { get; set; } = [];
 }
 [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
 [JsonSerializable(typeof(Root))]
@@ -29,22 +29,22 @@ internal partial class RootContext : JsonSerializerContext
 /// </summary>
 public partial class ControlInfoDataItem
 {
-    public string UniqueId { get; set; }
-    public string Title { get; set; }
-    public string[] BaseClasses { get; set; }
-    public string ApiNamespace { get; set; }
-    public string Subtitle { get; set; }
-    public string Description { get; set; }
-    public string ImagePath { get; set; }
-    public string BadgeString { get; set; }
+    public string UniqueId { get; set; } = string.Empty;
+    public string Title { get; set; } = string.Empty;
+    public string[] BaseClasses { get; set; } = [];
+    public string ApiNamespace { get; set; } = string.Empty;
+    public string Subtitle { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public string ImagePath { get; set; } = string.Empty;
+    public string BadgeString { get; set; } = string.Empty;
     public bool IsNew { get; set; }
     public bool IsUpdated { get; set; }
     public bool IsPreview { get; set; }
-    public ObservableCollection<ControlInfoDocLink> Docs { get; set; }
+    public ObservableCollection<ControlInfoDocLink> Docs { get; set; } = [];
 
     public bool IncludedInBuild { get; set; }
 
-    public string SourcePath { get; set; }
+    public string SourcePath { get; set; } = string.Empty;
 
     public override string ToString()
     {
@@ -54,8 +54,8 @@ public partial class ControlInfoDataItem
 
 public partial class ControlInfoDocLink
 {
-    public string Title { get; set; }
-    public string Uri { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public string Uri { get; set; } = string.Empty;
 }
 
 
@@ -65,12 +65,12 @@ public partial class ControlInfoDocLink
 [WinRT.GeneratedBindableCustomPropertyAttribute]
 public partial class ControlInfoDataGroup
 {
-    public string UniqueId { get; set; }
-    public string Title { get; set; }
-    public string IconGlyph { get; set; }
+    public string UniqueId { get; set; } = string.Empty;
+    public string Title { get; set; } = string.Empty;
+    public string IconGlyph { get; set; } = string.Empty;
     public bool IsSpecialSection { get; set; }
-    public string Folder { get; set; }
-    public ObservableCollection<ControlInfoDataItem> Items { get; set; }
+    public string Folder { get; set; } = string.Empty;
+    public ObservableCollection<ControlInfoDataItem> Items { get; set; } = [];
 
     public override string ToString()
     {
