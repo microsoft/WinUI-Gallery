@@ -72,21 +72,21 @@ public partial class NavigationHelper : DependencyObject
 
     #region Process lifetime management
 
-    private string _pageKey;
+    private string _pageKey = string.Empty;
 
     /// <summary>
     /// Handle this event to populate the page using content passed
     /// during navigation as well as any state that was saved by
     /// the SaveState event handler.
     /// </summary>
-    public event LoadStateEventHandler LoadState;
+    public event LoadStateEventHandler? LoadState;
     /// <summary>
     /// Handle this event to save state that can be used by
     /// the LoadState event handler. Save the state in case
     /// the application is suspended or the page is discarded
     /// from the navigation cache.
     /// </summary>
-    public event SaveStateEventHandler SaveState;
+    public event SaveStateEventHandler? SaveState;
 
     /// <summary>
     /// Invoked when this page is about to be displayed in a Frame.

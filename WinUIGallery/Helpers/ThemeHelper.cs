@@ -74,7 +74,7 @@ public static partial class ThemeHelper
     {
         if (NativeMethods.IsAppPackaged)
         {
-            string savedTheme = appData.LocalSettings.Values[SettingsKeys.SelectedAppTheme]?.ToString();
+            string? savedTheme = appData.LocalSettings.Values[SettingsKeys.SelectedAppTheme]?.ToString();
 
             if (savedTheme != null)
             {

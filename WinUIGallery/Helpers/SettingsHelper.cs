@@ -120,7 +120,7 @@ public static partial class SettingsHelper
     /// key does not exist or the stored value is null.</returns>
     public static List<string> GetList(string key)
     {
-        string raw = appData.LocalSettings.Values[key] as string;
+        string? raw = appData.LocalSettings.Values[key] as string;
         return raw != null
             ? raw.Split(delimiter, StringSplitOptions.RemoveEmptyEntries).ToList()
             : new List<string>();
@@ -135,7 +135,7 @@ public static partial class SettingsHelper
     /// langword="false"/>.</returns>
     public static bool Contains(string key, string item)
     {
-        string raw = appData.LocalSettings.Values[key] as string;
+        string? raw = appData.LocalSettings.Values[key] as string;
         if (string.IsNullOrEmpty(raw))
             return false;
 
@@ -163,7 +163,7 @@ public static partial class SettingsHelper
     /// <see langword="false"/>.</returns>
     public static bool Exists(string key)
     {
-        string raw = appData.LocalSettings.Values[key] as string;
+        string? raw = appData.LocalSettings.Values[key] as string;
         return !string.IsNullOrEmpty(raw);
     }
 

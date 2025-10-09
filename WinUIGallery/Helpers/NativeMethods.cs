@@ -24,7 +24,7 @@ internal partial class NativeMethods
 
     [DllImport("user32.dll")]
     internal static extern IntPtr CallWindowProc(IntPtr lpPrevWndFunc, IntPtr hWnd, WindowMessage Msg, IntPtr wParam, IntPtr lParam);
-    
+
     internal unsafe static void SetWindowKeyHook()
     {
         delegate* unmanaged[Stdcall]<int, WPARAM, LPARAM, LRESULT> callback = &HookCallback;
@@ -66,7 +66,7 @@ internal partial class NativeMethods
     }
 
     internal static bool IsAppPackaged { get; } = GetCurrentPackageName() != null;
-    internal static string GetCurrentPackageName()
+    internal static string? GetCurrentPackageName()
     {
         unsafe
         {

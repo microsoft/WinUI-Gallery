@@ -46,11 +46,11 @@ public static partial class UIHelper
         }
     }
 
-    static public UIElement FindElementByName(UIElement element, string name)
+    static public UIElement? FindElementByName(UIElement element, string name)
     {
         if (element.XamlRoot != null && element.XamlRoot.Content != null)
         {
-            var ele = (element.XamlRoot.Content as FrameworkElement).FindName(name);
+            var ele = (element.XamlRoot.Content as FrameworkElement)?.FindName(name);
             if (ele != null)
             {
                 return ele as UIElement;

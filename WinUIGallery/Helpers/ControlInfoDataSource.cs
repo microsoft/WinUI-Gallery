@@ -54,7 +54,7 @@ public sealed partial class ControlInfoDataSource
         return _instance.Groups;
     }
 
-    public static async Task<ControlInfoDataGroup> GetGroupAsync(string uniqueId)
+    public static async Task<ControlInfoDataGroup?> GetGroupAsync(string uniqueId)
     {
         await _instance.GetControlInfoDataAsync();
         // Simple linear search is acceptable for small data sets
@@ -63,7 +63,7 @@ public sealed partial class ControlInfoDataSource
         return null;
     }
 
-    public static async Task<ControlInfoDataItem> GetItemAsync(string uniqueId)
+    public static async Task<ControlInfoDataItem?> GetItemAsync(string uniqueId)
     {
         await _instance.GetControlInfoDataAsync();
         // Simple linear search is acceptable for small data sets
@@ -72,7 +72,7 @@ public sealed partial class ControlInfoDataSource
         return null;
     }
 
-    public static async Task<ControlInfoDataGroup> GetGroupFromItemAsync(string uniqueId)
+    public static async Task<ControlInfoDataGroup?> GetGroupFromItemAsync(string uniqueId)
     {
         await _instance.GetControlInfoDataAsync();
         var matches = _instance.Groups.Where((group) => group.Items.FirstOrDefault(item => item.UniqueId.Equals(uniqueId)) != null);
@@ -93,19 +93,23 @@ public sealed partial class ControlInfoDataSource
         var jsonText = await FileLoader.LoadText("Samples/Data/ControlInfoData.json");
         var controlInfoDataGroup = JsonSerializer.Deserialize(jsonText, typeof(Root), RootContext.Default) as Root;
 
+        if (controlInfoDataGroup is null)
+        {
+            return;
+        }
+
         lock (_lock)
         {
             string pageRoot = "WinUIGallery.ControlPages.";
 
             controlInfoDataGroup.Groups.SelectMany(g => g.Items).ToList().ForEach(item =>
             {
-#nullable enable
-                string? badgeString = item switch
+                string badgeString = item switch
                 {
                     { IsNew: true } => "New",
                     { IsUpdated: true } => "Updated",
                     { IsPreview: true } => "Preview",
-                    _ => null
+                    _ => string.Empty,
                 };
                 string pageString = $"{pageRoot}{item.UniqueId}Page";
                 Type? pageType = Type.GetType(pageString);
@@ -113,7 +117,6 @@ public sealed partial class ControlInfoDataSource
                 item.BadgeString = badgeString;
                 item.IncludedInBuild = pageType is not null;
                 item.ImagePath ??= "ms-appx:///Assets/ControlImages/Placeholder.png";
-#nullable disable
             });
 
             foreach (var group in controlInfoDataGroup.Groups)
