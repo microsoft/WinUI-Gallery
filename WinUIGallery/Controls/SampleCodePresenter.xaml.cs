@@ -60,7 +60,7 @@ public sealed partial class SampleCodePresenter : UserControl
 
     private string actualCode = "";
     private static Regex SubstitutionPattern = new Regex(@"\$\(([^\)]+)\)");
-    private RichTextBlock sampleCodeRTB;
+    private RichTextBlock? sampleCodeRTB;
 
     public SampleCodePresenter()
     {
@@ -126,7 +126,7 @@ public sealed partial class SampleCodePresenter : UserControl
         GenerateSyntaxHighlightedContent();
     }
 
-    private void OnValueChanged(ControlExampleSubstitution sender, object e)
+    private void OnValueChanged(ControlExampleSubstitution sender, object? _)
     {
         GenerateSyntaxHighlightedContent();
     }
@@ -166,8 +166,7 @@ public sealed partial class SampleCodePresenter : UserControl
     {
         if (sourceRelativePath != null && sourceRelativePath.EndsWith("txt"))
         {
-            string sampleString = null;
-            StorageFile file = null;
+            StorageFile? file = null;
             if (!NativeMethods.IsAppPackaged)
             {
                 var relativePath = GetDerivedSourceUnpackaged(sourceRelativePath);
@@ -182,7 +181,7 @@ public sealed partial class SampleCodePresenter : UserControl
                 file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
             }
 
-            sampleString = await FileIO.ReadTextAsync(file);
+            string sampleString = await FileIO.ReadTextAsync(file);
 
             FormatAndRenderSampleFromString(sampleString, presenter, highlightLanguage);
         }
@@ -319,7 +318,7 @@ public sealed partial class SampleCodePresenter : UserControl
 
     private void CodeScrollViewer_Loaded(object sender, RoutedEventArgs e)
     {
-        ScrollBar horizontalScrollBar = FindHorizontalScrollBar(CodeScrollViewer);
+        ScrollBar? horizontalScrollBar = FindHorizontalScrollBar(CodeScrollViewer);
         if (horizontalScrollBar != null)
         {
             // Create a timer and store it in the ScrollBar's Tag property.
@@ -361,7 +360,7 @@ public sealed partial class SampleCodePresenter : UserControl
         }
     }
 
-    private ScrollBar FindHorizontalScrollBar(DependencyObject element)
+    private ScrollBar? FindHorizontalScrollBar(DependencyObject element)
     {
         if (element is ScrollBar sb && sb.Orientation == Orientation.Horizontal)
         {

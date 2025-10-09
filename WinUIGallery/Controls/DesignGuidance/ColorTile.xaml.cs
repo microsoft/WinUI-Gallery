@@ -75,6 +75,9 @@ public sealed partial class ColorTile : UserControl
         package.SetText(ColorBrushName);
         Clipboard.SetContent(package);
 
-        UIHelper.AnnounceActionForAccessibility(sender as Button, "Brush name copied to clipboard", "BrushNameCopiedSuccessNotificationId");
+        if (sender is Button button)
+        {
+            UIHelper.AnnounceActionForAccessibility(button, "Brush name copied to clipboard", "BrushNameCopiedSuccessNotificationId");
+        }
     }
 }
