@@ -24,9 +24,9 @@ public sealed partial class SampleSystemBackdropsWindow : Window
     }
 
     BackdropType currentBackdrop;
-    MicaController micaController;
-    DesktopAcrylicController acrylicController;
-    SystemBackdropConfiguration configurationSource;
+    MicaController? micaController;
+    DesktopAcrylicController? acrylicController;
+    SystemBackdropConfiguration? configurationSource;
 
     public SampleSystemBackdropsWindow()
     {
@@ -203,8 +203,11 @@ public sealed partial class SampleSystemBackdropsWindow : Window
 
     private void SetConfigurationSourceTheme()
     {
-        configurationSource.IsHighContrast = ThemeSettings.CreateForWindowId(this.AppWindow.Id).HighContrast;
-        configurationSource.Theme = (SystemBackdropTheme)((FrameworkElement)Content).ActualTheme;
+        if (configurationSource != null)
+        {
+            configurationSource.IsHighContrast = ThemeSettings.CreateForWindowId(this.AppWindow.Id).HighContrast;
+            configurationSource.Theme = (SystemBackdropTheme)((FrameworkElement)Content).ActualTheme;
+        }
     }
 
     private void BackdropComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

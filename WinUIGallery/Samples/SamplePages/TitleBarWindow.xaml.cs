@@ -39,7 +39,7 @@ public sealed partial class TitleBarWindow : Window
             string selectedItemTag = ((string)selectedItem.Tag);
             sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
             string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
-            Type pageType = Type.GetType(pageName);
+            Type? pageType = Type.GetType(pageName);
             navFrame.Navigate(pageType);
         }
     }
