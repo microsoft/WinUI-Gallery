@@ -5,7 +5,7 @@
 // COLLECTION PAGE
 public sealed partial class CollectionPage : Page
 {
-    CustomDataObject _storeditem;
+    CustomDataObject? _storeditem;
 
     public CollectionPage()
     {
@@ -66,7 +66,8 @@ public sealed partial class CollectionPage : Page
 // DETAILED PAGE
 public sealed partial class DetailedInfoPage : Page
 {
-    public CustomDataObject DetailedObject { get; set; }
+    public CustomDataObject? DetailedObject { get; set; }
+
     public DetailedInfoPage()
     {
         this.InitializeComponent();

@@ -1,6 +1,10 @@
 ﻿private void Menu_Opening(object sender, object e)
 {
-    CommandBarFlyout myFlyout = sender as CommandBarFlyout;
+    if (sender is not CommandBarFlyout myFlyout)
+    {
+        return;
+    }
+
     if (myFlyout.Target == REBCustom)
     {
         AppBarButton myButton = new AppBarButton();

@@ -2,10 +2,10 @@
 
 public class MyDataTemplateSelector : DataTemplateSelector
 {
-    public DataTemplate Normal { get; set; }
-    public DataTemplate Accent { get; set; }
+    public DataTemplate? Normal { get; set; }
+    public DataTemplate? Accent { get; set; }
 
-    protected override DataTemplate SelectTemplateCore(object item)
+    protected override DataTemplate? SelectTemplateCore(object item)
     {
         if ((int)item % 2 == 0)
         {
