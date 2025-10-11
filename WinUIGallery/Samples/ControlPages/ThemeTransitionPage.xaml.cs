@@ -73,7 +73,7 @@ public sealed partial class ThemeTransitionPage : Page
 
     private void EntranceAddButton_Click(object sender, RoutedEventArgs e)
     {
-        var value = Convert.ToInt32((sender as Button).Tag);
+        var value = Convert.ToInt32((sender as Button)?.Tag);
 
         for (int i = 0; i < value; i++)
         {

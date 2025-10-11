@@ -24,7 +24,7 @@ public sealed partial class IconographyPage : Page
             48
         };
 
-    private string currentSearch = null;
+    private string currentSearch = string.Empty;
 
     public IconData SelectedItem
     {
@@ -75,15 +75,20 @@ public sealed partial class IconographyPage : Page
         }
         else
         {
-            XAMLCodePresenterSymbol.Code = null;
+            XAMLCodePresenterSymbol.Code = string.Empty;
 
-            CSharpCodePresenterSymbol.Code = null;
+            CSharpCodePresenterSymbol.Code = string.Empty;
         }
     }
 
     private void SearchTextBox_TextChanged(object sender, AutoSuggestBoxTextChangedEventArgs args)
     {
-        Filter((sender as AutoSuggestBox).Text);
+        if (sender is not AutoSuggestBox autoSuggestBox)
+        {
+            return;
+        }
+
+        Filter(autoSuggestBox.Text);
     }
 
     public void Filter(string search)
@@ -93,7 +98,7 @@ public sealed partial class IconographyPage : Page
         // Setting current search to trigger breaking condition of other threads
         currentSearch = search;
 
-        string[] filter = search?.Split(" ");
+        string[] filter = search.Split(" ");
 
         // Spawning a new thread to not have the UI freeze because of our search
         new Thread(() =>

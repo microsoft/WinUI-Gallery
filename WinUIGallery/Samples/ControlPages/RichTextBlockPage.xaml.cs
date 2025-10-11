@@ -19,9 +19,9 @@ public sealed partial class RichTextBlockPage : Page
     private void HighlightColorCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         // Get color to use
-        var selectedItem = (sender as ComboBox).SelectedItem as ComboBoxItem;
+        var selectedItem = (sender as ComboBox)?.SelectedItem as ComboBoxItem;
         var color = Colors.Yellow;
-        switch (selectedItem.Content as string)
+        switch (selectedItem?.Content as string)
         {
             case "Yellow":
                 color = Colors.Yellow;

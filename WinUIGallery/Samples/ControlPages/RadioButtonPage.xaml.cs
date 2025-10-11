@@ -15,6 +15,6 @@ public sealed partial class RadioButtonPage : Page
 
     private void RadioButton_Checked(object sender, RoutedEventArgs e)
     {
-        Control1Output.Text = string.Format("You selected {0}", (sender as RadioButton).Content.ToString());
+        Control1Output.Text = string.Format("You selected {0}", (sender as RadioButton)?.Content.ToString());
     }
 }

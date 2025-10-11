@@ -18,7 +18,7 @@ public sealed partial class RadioButtonsPage : Page
     {
         if (ControlOutput != null && sender is RadioButtons rb)
         {
-            string colorName = rb.SelectedItem as string;
+            string? colorName = rb.SelectedItem as string;
             switch (colorName)
             {
                 case "Yellow":
@@ -38,7 +38,7 @@ public sealed partial class RadioButtonsPage : Page
     {
         if (ControlOutput != null && sender is RadioButtons rb)
         {
-            string colorName = rb.SelectedItem as string;
+            string? colorName = rb.SelectedItem as string;
             switch (colorName)
             {
                 case "Yellow":

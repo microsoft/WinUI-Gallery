@@ -36,7 +36,12 @@ public sealed partial class ContentDialogPage : Page
         dialog.CloseButtonText = "Cancel";
         dialog.DefaultButton = ContentDialogButton.Primary;
         dialog.Content = new ContentDialogContent();
-        dialog.RequestedTheme = (VisualTreeHelper.GetParent(sender as Button) as StackPanel).ActualTheme;
+
+        if (sender is Button button &&
+            VisualTreeHelper.GetParent(button) is StackPanel stackPanel)
+        {
+            dialog.RequestedTheme = stackPanel.ActualTheme;
+        }
 
         var result = await dialog.ShowAsync();
 
@@ -67,7 +72,12 @@ public sealed partial class ContentDialogPage : Page
         dialog.CloseButtonText = "Cancel";
         dialog.DefaultButton = ContentDialogButton.None;
         dialog.Content = new ContentDialogContent();
-        dialog.RequestedTheme = (VisualTreeHelper.GetParent(sender as Button) as StackPanel).ActualTheme;
+
+        if (sender is Button button &&
+            VisualTreeHelper.GetParent(button) is StackPanel stackPanel)
+        {
+            dialog.RequestedTheme = stackPanel.ActualTheme;
+        }
 
         var result = await dialog.ShowAsync();
 

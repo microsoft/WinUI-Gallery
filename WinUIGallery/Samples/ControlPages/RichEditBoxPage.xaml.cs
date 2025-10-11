@@ -30,9 +30,9 @@ public sealed partial class RichEditBoxPage : Page
         mathEditor2.TextDocument.SetMathMode(RichEditMathMode.MathOnly);
     }
 
-    private void Menu_Opening(object sender, object e)
+    private void Menu_Opening(object? sender, object e)
     {
-        CommandBarFlyout myFlyout = sender as CommandBarFlyout;
+        CommandBarFlyout? myFlyout = sender as CommandBarFlyout;
         if (myFlyout != null && myFlyout.Target == REBCustom)
         {
             AppBarButton myButton = new AppBarButton
@@ -43,7 +43,7 @@ public sealed partial class RichEditBoxPage : Page
         }
         else
         {
-            CommandBarFlyout muxFlyout = sender as CommandBarFlyout;
+            CommandBarFlyout? muxFlyout = sender as CommandBarFlyout;
             if (muxFlyout != null && muxFlyout.Target == REBCustom)
             {
                 AppBarButton myButton = new AppBarButton
@@ -175,10 +175,13 @@ public sealed partial class RichEditBoxPage : Page
 
     private void FindBoxRemoveHighlights()
     {
-        ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
-        SolidColorBrush defaultBackground = editor.Background as SolidColorBrush;
-        SolidColorBrush defaultForeground = editor.Foreground as SolidColorBrush;
+        if (editor.Background is not SolidColorBrush defaultBackground ||
+            editor.Foreground is not SolidColorBrush defaultForeground)
+        {
+            return;
+        }
 
+        ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
         documentRange.CharacterFormat.BackgroundColor = defaultBackground.Color;
         documentRange.CharacterFormat.ForegroundColor = defaultForeground.Color;
     }

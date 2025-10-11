@@ -25,7 +25,7 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
         }
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     public void OnPropertyChanged(string PropertyName)
     {
@@ -52,7 +52,12 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
 
     private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
+        if (sender is not AppBarButton appBarButon)
+        {
+            return;
+        }
+
+        SelectedOptionText.Text = "You clicked: " + appBarButon.Label;
     }
 
     private void AddSecondaryCommands_Click(object sender, RoutedEventArgs e)

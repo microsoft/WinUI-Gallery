@@ -57,11 +57,12 @@ public sealed partial class AnnotatedScrollBarPage : Page
 
     private void AnnotatedScrollBarMaxHeightSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
     {
-        if (annotatedScrollBar != null)
+        if (sender is Slider slider &&
+            annotatedScrollBar != null)
         {
             // Changing the height of the AnnotatedScrollBar to illustrate how labels
             // are hidden to avoid collisions when the available room shrinks too much.
-            annotatedScrollBar.MaxHeight = (sender as Slider).Value;
+            annotatedScrollBar.MaxHeight = slider.Value;
         }
     }
 

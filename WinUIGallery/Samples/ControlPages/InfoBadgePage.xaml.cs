@@ -24,7 +24,7 @@ public sealed partial class InfoBadgePage : Page
 
     public void NavigationViewDisplayMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string paneDisplayMode = e.AddedItems[0].ToString();
+        string? paneDisplayMode = e.AddedItems[0].ToString();
 
         switch (paneDisplayMode)
         {
@@ -52,7 +52,7 @@ public sealed partial class InfoBadgePage : Page
 
     public void InfoBadgeStyleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string infoBadgeStyle = e.AddedItems[0].ToString();
+        string? infoBadgeStyle = e.AddedItems[0].ToString();
 
         switch (infoBadgeStyle)
         {

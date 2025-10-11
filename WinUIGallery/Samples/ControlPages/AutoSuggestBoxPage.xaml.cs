@@ -185,18 +185,18 @@ public sealed partial class AutoSuggestBoxPage : Page
     /// and also ChosenSuggestion, which is only non-null when a user selects an item in the list.</param>
     private void Control2_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
     {
-        if (args.ChosenSuggestion != null && args.ChosenSuggestion is ControlInfoDataItem)
+        if (args.ChosenSuggestion is ControlInfoDataItem chosenSuggestion)
         {
             //User selected an item, take an action
-            SelectControl(args.ChosenSuggestion as ControlInfoDataItem);
+            SelectControl(chosenSuggestion);
         }
         else if (!string.IsNullOrEmpty(args.QueryText))
         {
             //Do a fuzzy search based on the text
             var suggestions = SearchControls(sender.Text);
-            if (suggestions.Count > 0)
+            if (suggestions.FirstOrDefault() is ControlInfoDataItem firstItem)
             {
-                SelectControl(suggestions.FirstOrDefault());
+                SelectControl(firstItem);
             }
         }
     }
@@ -228,7 +228,7 @@ public sealed partial class AutoSuggestBoxPage : Page
             ControlDetails.Visibility = Visibility.Visible;
 
 
-            BitmapImage image = control.ImagePath == null ? null : new BitmapImage(new Uri(control.ImagePath));
+            BitmapImage? image = control.ImagePath == null ? null : new BitmapImage(new Uri(control.ImagePath));
             ControlImage.Source = image;
 
             ControlTitle.Text = control.Title;

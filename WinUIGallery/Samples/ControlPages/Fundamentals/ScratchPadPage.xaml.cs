@@ -69,16 +69,17 @@ public sealed partial class ScratchPadPage : Page
 </StackPanel>";
     }
 
-    public string ReadScratchPadXAMLinLocalSettings()
+    public string? ReadScratchPadXAMLinLocalSettings()
     {
         var appData = Microsoft.Windows.Storage.ApplicationData.GetDefault();
         if (appData.LocalSettings.Containers.ContainsKey(containerKey))
         {
             var scratchPadContainer = appData.LocalSettings.CreateContainer(containerKey, Microsoft.Windows.Storage.ApplicationDataCreateDisposition.Existing);
-            if (scratchPadContainer != null && scratchPadContainer.Values.ContainsKey(xamlCompositeValueKey))
+
+            // String values are limited to 4K characters. Use a composite value to support a longer string.
+            if (scratchPadContainer?.Values.TryGetValue(xamlCompositeValueKey, out var value) is true &&
+                value is ApplicationDataCompositeValue compositeStr)
             {
-                // String values are limited to 4K characters. Use a composite value to support a longer string.
-                var compositeStr = scratchPadContainer.Values[xamlCompositeValueKey] as ApplicationDataCompositeValue;
                 var xamlStr = "";
                 int count = (int)compositeStr[xamlSegmentCountKey];
                 for (int i = 0; i < count; i++)

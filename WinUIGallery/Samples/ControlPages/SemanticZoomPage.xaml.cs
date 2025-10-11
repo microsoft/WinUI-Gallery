@@ -12,13 +12,14 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class SemanticZoomPage : Page
 {
-    private IEnumerable<ControlInfoDataGroup> _groups;
+    private IEnumerable<ControlInfoDataGroup>? _groups;
 
     public SemanticZoomPage()
     {
         this.InitializeComponent();
     }
-    public IEnumerable<ControlInfoDataGroup> Groups
+
+    public IEnumerable<ControlInfoDataGroup>? Groups
     {
         get { return this._groups; }
     }

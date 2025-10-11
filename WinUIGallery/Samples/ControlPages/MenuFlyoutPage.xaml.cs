@@ -17,7 +17,7 @@ public sealed partial class MenuFlyoutPage : Page
     {
         if (sender is MenuFlyoutItem selectedItem)
         {
-            string sortOption = selectedItem.Tag.ToString();
+            string? sortOption = selectedItem.Tag.ToString();
             switch (sortOption)
             {
                 case "rating":

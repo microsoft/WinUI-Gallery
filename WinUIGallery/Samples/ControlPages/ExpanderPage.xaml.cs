@@ -14,7 +14,7 @@ public sealed partial class ExpanderPage : Page
 
     private void ExpandDirectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string expandDirection = e.AddedItems[0].ToString();
+        string? expandDirection = e.AddedItems[0].ToString();
 
         switch (expandDirection)
         {
