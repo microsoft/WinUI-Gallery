@@ -207,7 +207,7 @@ public sealed partial class Filter : INotifyPropertyChanged
     /// support CallerMemberName.</param>
     /// <returns>True if the value was changed, false if the existing value matched the
     /// desired value.</returns>
-    private bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
+    private bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string? propertyName = null)
     {
         if (object.Equals(storage, value)) return false;
 
@@ -222,7 +222,7 @@ public sealed partial class Filter : INotifyPropertyChanged
     /// <param name="propertyName">Name of the property used to notify listeners.  This
     /// value is optional and can be provided automatically when invoked from compilers
     /// that support <see cref="CallerMemberNameAttribute"/>.</param>
-    private void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
+    private void NotifyPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

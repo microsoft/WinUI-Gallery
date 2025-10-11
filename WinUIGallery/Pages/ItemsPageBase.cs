@@ -72,7 +72,7 @@ public abstract class ItemsPageBase : Page, INotifyPropertyChanged
         }
     }
 
-    protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
+    protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string? propertyName = null)
     {
         if (Equals(storage, value)) return false;
 
@@ -81,7 +81,7 @@ public abstract class ItemsPageBase : Page, INotifyPropertyChanged
         return true;
     }
 
-    protected void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
+    protected void NotifyPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

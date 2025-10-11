@@ -22,7 +22,7 @@ public sealed partial class PageHeader : UserControl
         DependencyProperty.Register("ThemeButtonVisibility", typeof(Visibility), typeof(PageHeader), new PropertyMetadata(Visibility.Visible));
 
     public string PageName { get; set; } = string.Empty;
-    public Action CopyLinkAction { get; set; }
+    public Action? CopyLinkAction { get; set; }
     public Action? ToggleThemeAction { get; set; }
 
     public ControlInfoDataItem? Item

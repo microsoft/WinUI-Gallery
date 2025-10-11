@@ -283,7 +283,7 @@ public partial class IdleSynchronizer
         timer.Interval = TimeSpan.FromMilliseconds(0);
         timer.IsRepeating = false;
 
-        TypedEventHandler<DispatcherQueueTimer, object> tickHandler = null;
+        TypedEventHandler<DispatcherQueueTimer, object>? tickHandler = null;
 
         tickHandler = (sender, args) =>
         {

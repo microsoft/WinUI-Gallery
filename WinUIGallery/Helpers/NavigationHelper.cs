@@ -162,8 +162,8 @@ public partial class NavigationHelper : DependencyObject
 [Windows.Foundation.Metadata.WebHostHidden]
 public partial class RootFrameNavigationHelper
 {
-    private Frame Frame { get; set; }
-    private NavigationView CurrentNavView { get; set; }
+    private Frame? Frame { get; set; }
+    private NavigationView? CurrentNavView { get; set; }
 
 #nullable enable
     private static RootFrameNavigationHelper? instance;
@@ -261,12 +261,13 @@ public partial class RootFrameNavigationHelper
     {
         bool navigated = false;
         // Don't go back if the nav pane is overlayed.
-        if (this.CurrentNavView.IsPaneOpen && (this.CurrentNavView.DisplayMode == NavigationViewDisplayMode.Compact || this.CurrentNavView.DisplayMode == NavigationViewDisplayMode.Minimal))
+        if (this.CurrentNavView?.IsPaneOpen is true &&
+            (this.CurrentNavView.DisplayMode == NavigationViewDisplayMode.Compact || this.CurrentNavView.DisplayMode == NavigationViewDisplayMode.Minimal))
         {
             return navigated;
         }
 
-        if (this.Frame.CanGoBack)
+        if (this.Frame?.CanGoBack is true)
         {
             this.Frame.GoBack();
             navigated = true;
@@ -278,7 +279,7 @@ public partial class RootFrameNavigationHelper
     private bool TryGoForward()
     {
         bool navigated = false;
-        if (this.Frame.CanGoForward)
+        if (this.Frame?.CanGoForward is true)
         {
             this.Frame.GoForward();
             navigated = true;
@@ -310,7 +311,7 @@ public partial class LoadStateEventArgs : EventArgs
     /// A dictionary of state preserved by this page during an earlier
     /// session.  This will be null the first time a page is visited.
     /// </summary>
-    public Dictionary<string, object> PageState { get; private set; }
+    public Dictionary<string, object>? PageState { get; private set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LoadStateEventArgs"/> class.
@@ -323,7 +324,7 @@ public partial class LoadStateEventArgs : EventArgs
     /// A dictionary of state preserved by this page during an earlier
     /// session.  This will be null the first time a page is visited.
     /// </param>
-    public LoadStateEventArgs(object navigationParameter, Dictionary<string, object> pageState)
+    public LoadStateEventArgs(object navigationParameter, Dictionary<string, object>? pageState)
         : base()
     {
         this.NavigationParameter = navigationParameter;

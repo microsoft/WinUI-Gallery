@@ -100,21 +100,21 @@ public sealed partial class ItemPage : Page
         // We use reflection to call the OnNavigatedFrom function the user leaves this page
         // See this PR for more information: https://github.com/microsoft/WinUI-Gallery/pull/145
         Frame contentFrameAsFrame = contentFrame as Frame;
-        Page innerPage = contentFrameAsFrame.Content as Page;
+        Page? innerPage = contentFrameAsFrame.Content as Page;
         if (innerPage != null)
         {
-            MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
+            MethodInfo? dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            dynMethod.Invoke(innerPage, new object[] { e });
+            dynMethod?.Invoke(innerPage, new object[] { e });
         }
 
         base.OnNavigatedFrom(e);
     }
 
-    public static ItemPage GetForElement(object obj)
+    public static ItemPage? GetForElement(object obj)
     {
         UIElement element = (UIElement)obj;
-        Window window = WindowHelper.GetWindowForElement(element);
+        Window? window = WindowHelper.GetWindowForElement(element);
         if (window != null)
         {
             return (ItemPage)window.Content;
@@ -124,7 +124,7 @@ public sealed partial class ItemPage : Page
 
     private void OnToggleTheme()
     {
-        var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? ThemeHelper.ActualTheme : _currentElementTheme.Value;
+        var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? ThemeHelper.ActualTheme : _currentElementTheme;
         var newTheme = currentElementTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
         SetControlExamplesTheme(newTheme);
     }

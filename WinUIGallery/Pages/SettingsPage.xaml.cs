@@ -22,8 +22,9 @@ public sealed partial class SettingsPage : Page
     {
         get
         {
-            var version = ProcessInfoHelper.GetVersion();
-            return string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
+            return ProcessInfoHelper.GetVersion() is Version version
+                ? string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision)
+                : string.Empty;
         }
     }
 
@@ -83,18 +84,22 @@ public sealed partial class SettingsPage : Page
 
     private void themeMode_SelectionChanged(object sender, RoutedEventArgs e)
     {
-        var selectedTheme = ((ComboBoxItem)themeMode.SelectedItem)?.Tag?.ToString();
-        var window = WindowHelper.GetWindowForElement(this);
-        if (selectedTheme != null)
+        if (sender is not UIElement senderUiLement ||
+            (themeMode.SelectedItem as ComboBoxItem)?.Tag.ToString() is not string selectedTheme ||
+            WindowHelper.GetWindowForElement(this) is not Window window)
         {
-            ThemeHelper.RootTheme = EnumHelper.GetEnum<ElementTheme>(selectedTheme);
-            var elementThemeResolved = ThemeHelper.RootTheme == ElementTheme.Default ? ThemeHelper.ActualTheme : ThemeHelper.RootTheme;
-            TitleBarHelper.ApplySystemThemeToCaptionButtons(window, elementThemeResolved);
-
-            // announce visual change to automation
-            UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Theme changed to {elementThemeResolved}",
-                                                                            "ThemeChangedNotificationActivityId");
+            return;
         }
+
+        ThemeHelper.RootTheme = EnumHelper.GetEnum<ElementTheme>(selectedTheme);
+        var elementThemeResolved = ThemeHelper.RootTheme == ElementTheme.Default ? ThemeHelper.ActualTheme : ThemeHelper.RootTheme;
+        TitleBarHelper.ApplySystemThemeToCaptionButtons(window, elementThemeResolved);
+
+        // announce visual change to automation
+        UIHelper.AnnounceActionForAccessibility(
+            senderUiLement,
+            $"Theme changed to {elementThemeResolved}",
+            "ThemeChangedNotificationActivityId");
     }
 
     private void soundToggle_Toggled(object sender, RoutedEventArgs e)

@@ -26,12 +26,22 @@ public sealed partial class RadialGradientBrushPage : Page
 
     private void OnSpreadMethodChanged(object sender, SelectionChangedEventArgs e)
     {
-        RadialGradientBrushExample.SpreadMethod = Enum.Parse<GradientSpreadMethod>(SpreadMethodComboBox.SelectedValue.ToString());
+        if (SpreadMethodComboBox.SelectedValue.ToString() is not string methodString)
+        {
+            return;
+        }
+
+        RadialGradientBrushExample.SpreadMethod = Enum.Parse<GradientSpreadMethod>(methodString);
     }
 
     private void OnMappingModeChanged(object sender, SelectionChangedEventArgs e)
     {
-        RadialGradientBrushExample.MappingMode = Enum.Parse<BrushMappingMode>(MappingModeComboBox.SelectedValue.ToString());
+        if (MappingModeComboBox.SelectedValue.ToString() is not string modeString)
+        {
+            return;
+        }
+
+        RadialGradientBrushExample.MappingMode = Enum.Parse<BrushMappingMode>(modeString);
         InitializeSliders();
     }
 

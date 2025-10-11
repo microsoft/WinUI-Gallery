@@ -43,7 +43,7 @@ public sealed partial class HomePage : ItemsPageBase
     {
         List<string> keyList = SettingsHelper.GetList(settingsKey);
 
-        if (keyList == null || keyList.Count == 0)
+        if (keyList.Count == 0 || Items is null)
             return new List<ControlInfoDataItem>();
 
         Dictionary<string, ControlInfoDataItem> itemMap = Items.ToDictionary(i => i.UniqueId);
