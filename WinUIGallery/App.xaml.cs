@@ -109,10 +109,11 @@ sealed partial class App : Application
         var targetPageArguments = string.Empty;
 
         AppActivationArguments eventArgs = AppInstance.GetCurrent().GetActivatedEventArgs();
-        if (eventArgs != null && eventArgs.Kind == ExtendedActivationKind.Protocol && eventArgs.Data is ProtocolActivatedEventArgs)
+        if (eventArgs != null &&
+            eventArgs.Kind == ExtendedActivationKind.Protocol &&
+            eventArgs.Data is ProtocolActivatedEventArgs protocolArgs)
         {
-            var ProtocolArgs = eventArgs.Data as ProtocolActivatedEventArgs;
-            string uri = ProtocolArgs.Uri.LocalPath.Replace("/", "");
+            string uri = protocolArgs.Uri.LocalPath.Replace("/", "");
             targetPageArguments = uri;
 
             if (uri == "AllControls")
@@ -155,7 +156,7 @@ sealed partial class App : Application
         if (NativeMethods.IsAppPackaged)
         {
             e.Handled = true; //Don't crash the app.
-        
+
             //Create the notification.
             var notification = new AppNotificationBuilder()
                 .AddText("An exception was thrown.")
@@ -163,7 +164,7 @@ sealed partial class App : Application
                 .AddText($"Message: {e.Message}\r\n" +
                          $"HResult: {e.Exception.HResult}")
                 .BuildNotification();
-        
+
             //Show the notification
             AppNotificationManager.Default.Show(notification);
         }

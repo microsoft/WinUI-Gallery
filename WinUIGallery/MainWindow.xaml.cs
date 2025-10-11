@@ -30,7 +30,7 @@ public sealed partial class MainWindow : Window
         get { return NavigationViewControl; }
     }
 
-    public Action NavigationViewLoaded { get; set; }
+    public Action? NavigationViewLoaded { get; set; }
 
     public MainWindow()
     {
@@ -110,7 +110,7 @@ public sealed partial class MainWindow : Window
 
     // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
     // Please call this function rather than rootFrame.Navigate to navigate the rootFrame.
-    public void Navigate(Type pageType, object targetPageArguments = null, NavigationTransitionInfo navigationTransitionInfo = null)
+    public void Navigate(Type pageType, object? targetPageArguments = null, NavigationTransitionInfo? navigationTransitionInfo = null)
     {
         rootFrame.Navigate(pageType, targetPageArguments, navigationTransitionInfo);
 
@@ -118,7 +118,7 @@ public sealed partial class MainWindow : Window
         if (pageType.Equals(typeof(ItemPage)) && targetPageArguments != null)
         {
             // Mark the item sample's page visited
-            SettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, targetPageArguments.ToString(), InsertPosition.First, SettingsHelper.MaxRecentlyVisitedSamples);
+            SettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, targetPageArguments.ToString() ?? string.Empty, InsertPosition.First, SettingsHelper.MaxRecentlyVisitedSamples);
         }
     }
 
@@ -196,7 +196,7 @@ public sealed partial class MainWindow : Window
 
     private void OnMenuFlyoutItemClick(object sender, RoutedEventArgs e)
     {
-        switch ((sender as MenuFlyoutItem).Tag)
+        switch ((sender as MenuFlyoutItem)?.Tag)
         {
             case ControlInfoDataItem item:
                 ProtocolActivationClipboardHelper.Copy(item);
@@ -231,12 +231,16 @@ public sealed partial class MainWindow : Window
         Task.Delay(500).ContinueWith(_ => this.NavigationViewLoaded?.Invoke(), TaskScheduler.FromCurrentSynchronizationContext());
 
         var navigationView = sender as NavigationView;
-        navigationView.RegisterPropertyChangedCallback(NavigationView.IsPaneOpenProperty, OnIsPaneOpenChanged);
+        navigationView?.RegisterPropertyChangedCallback(NavigationView.IsPaneOpenProperty, OnIsPaneOpenChanged);
     }
 
     private void OnIsPaneOpenChanged(DependencyObject sender, DependencyProperty dp)
     {
-        var navigationView = sender as NavigationView;
+        if (sender is not NavigationView navigationView)
+        {
+            return;
+        }
+
         var announcementText = navigationView.IsPaneOpen ? "Navigation Pane Opened" : "Navigation Pane Closed";
 
         UIHelper.AnnounceActionForAccessibility(navigationView, announcementText, "NavigationViewPaneIsOpenChangeNotificationId");
@@ -395,9 +399,8 @@ public sealed partial class MainWindow : Window
 
     private void OnControlsSearchBoxQuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
     {
-        if (args.ChosenSuggestion != null && args.ChosenSuggestion is ControlInfoDataItem)
+        if (args.ChosenSuggestion is ControlInfoDataItem infoDataItem)
         {
-            var infoDataItem = args.ChosenSuggestion as ControlInfoDataItem;
             var hasChangedSelection = EnsureItemIsVisibleInNavigation(infoDataItem.Title);
 
             // In case the menu selection has changed, it means that it has triggered
@@ -419,13 +422,11 @@ public sealed partial class MainWindow : Window
         foreach (object rawItem in NavigationView.MenuItems)
         {
             // Check if we encountered the separator
-            if (!(rawItem is NavigationViewItem))
+            if (rawItem is not NavigationViewItem item)
             {
                 // Skipping this item
                 continue;
             }
-
-            var item = rawItem as NavigationViewItem;
 
             // Check if we are this category
             if ((string)item.Content == name)
