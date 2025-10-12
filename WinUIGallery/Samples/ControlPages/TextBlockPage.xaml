@@ -80,19 +80,18 @@
                     <Run FontFamily="Times New Roman" Foreground="DarkGray">Text in a TextBlock doesn't have to be a simple string.</Run>
                     <LineBreak />
                     <Span>
-                        Text can be<Bold>bold</Bold>
-                        ,<Italic>italic</Italic>
-                        , or<Underline>underlined</Underline>
-                        .</Span></TextBlock>
+                        Text can be <Bold>bold</Bold>, <Italic>italic</Italic>, or <Underline>underlined</Underline>.
+                    </Span>
+                </TextBlock>
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
 &lt;TextBlock&gt;
-    &lt;Run FontFamily="Times New Roman" Foreground="DarkGray"&gt;
-        Text in a TextBlock doesn't have to be a simple string.&lt;/Run&gt;
-    &lt;LineBreak/&gt;
-    &lt;Span&gt;Text can be &lt;Bold&gt;bold&lt;/Bold&gt;,
-        &lt;Italic&gt;italic&lt;/Italic&gt;, or &lt;Underline&gt;underlined&lt;/Underline&gt;. &lt;/Span&gt;
+    &lt;Run FontFamily="Times New Roman" Foreground="DarkGray"&gt;Text in a TextBlock doesn't have to be a simple string.&lt;/Run&gt;
+    &lt;LineBreak /&gt;
+    &lt;Span&gt;
+        Text can be &lt;Bold&gt;bold&lt;/Bold&gt;, &lt;Italic&gt;italic&lt;/Italic&gt;, or &lt;Underline&gt;underlined&lt;/Underline&gt;.
+    &lt;/Span&gt;
 &lt;/TextBlock&gt;
                 </x:String>
             </controls:ControlExample.Xaml>
