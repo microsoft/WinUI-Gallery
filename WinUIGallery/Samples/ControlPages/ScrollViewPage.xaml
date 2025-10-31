@@ -15,10 +15,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.Controls">
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample x:Name="Example1" HeaderText="Content inside of a ScrollView.">
             <StackPanel Spacing="16">
                 <TextBlock
