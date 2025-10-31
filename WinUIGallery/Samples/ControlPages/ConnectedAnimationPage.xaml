@@ -8,7 +8,7 @@
     x:Name="pageRoot"
     mc:Ignorable="d">
     <StackPanel>
-        
+
         <controls:ControlExample
             CSharpSource="Motion/ConnectedAnimation/ConnectedAnimationSample1_cs.txt"
             HeaderText="A connected animation between a list page and a detail page"
