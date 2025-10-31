@@ -533,7 +533,7 @@
         <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_xaml.txt" />
         <Content Include="Samples\SampleCode\Text\RichEditBox\RichEditBoxSample6_cs.txt" />
     </ItemGroup>
-           
+
     <ItemGroup>
       <Page Update="Samples\ControlPages\StoragePickersPage.xaml">
         <Generator>MSBuild:Compile</Generator>

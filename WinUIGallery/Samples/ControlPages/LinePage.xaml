@@ -20,6 +20,7 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        
         <!--  LINE SAMPLE  -->
         <controls:ControlExample x:Name="Example4" HeaderText="Line">
             <Canvas Width="100" Height="200">

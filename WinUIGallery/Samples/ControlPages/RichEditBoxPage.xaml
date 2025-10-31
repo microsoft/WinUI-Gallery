@@ -19,6 +19,7 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        
         <controls:ControlExample VerticalAlignment="Top"
                                  HorizontalContentAlignment="Stretch"
                                  HeaderText="A simple text editor using RichEditBox.">
