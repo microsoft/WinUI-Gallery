@@ -18,10 +18,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample x:Name="Example1" HeaderText="An AppBarButton with a MenuFlyout.">
             <StackPanel x:Name="Control1" Orientation="Horizontal">
                 <AppBarButton

@@ -9,10 +9,6 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <StackPanel Margin="0,12,0,0" Spacing="12">
             <RichTextBlock>
                 <Paragraph>The definition of styles is similiar to other resources: app-level, page-level, control-level.</Paragraph>

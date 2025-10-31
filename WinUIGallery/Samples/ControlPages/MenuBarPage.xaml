@@ -7,10 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample HeaderText="A simple MenuBar" XamlSource="MenuBar\MenuBarSample1.txt">
             <StackPanel>
                 <TextBlock x:Name="SelectedOptionText" Text="" />

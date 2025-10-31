@@ -8,10 +8,6 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample HeaderText="Use the EntranceThemeTransition when adding items to your page.">
             <StackPanel x:Name="EntranceStackPanel" Orientation="Horizontal">
                 <StackPanel.ChildrenTransitions>

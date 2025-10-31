@@ -9,10 +9,6 @@
       mc:Ignorable="d">
 
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <StackPanel Spacing="8"
                     Margin="0,16,0,0">
             <InfoBar IsOpen="True"

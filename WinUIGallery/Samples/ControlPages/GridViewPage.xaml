@@ -122,10 +122,6 @@
     </Page.Resources>
 
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample
             CSharpSource="GridView/GridViewSample1_cs.txt"
             HeaderText="Basic GridView with Simple DataTemplate"

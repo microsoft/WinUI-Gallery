@@ -8,10 +8,6 @@
     x:Name="pageRoot"
     mc:Ignorable="d">
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample x:Name="Example1" HeaderText="A basic autosuggest box.">
             <StackPanel Orientation="Horizontal">
                 <AutoSuggestBox

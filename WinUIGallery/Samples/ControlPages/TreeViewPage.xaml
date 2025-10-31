@@ -40,10 +40,6 @@
     </Page.Resources>
 
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample CSharpSource="TreeView\TreeViewSample1_cs.txt" HeaderText="A simple TreeView with drag and drop support">
             <controls:ControlExample.Example>
                 <Grid

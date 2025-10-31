@@ -13,10 +13,6 @@
         </Style>
     </Page.Resources>
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample HeaderText="Automatically animate changes to Opacity">
             <Rectangle
                 x:Name="OpacityRectangle"

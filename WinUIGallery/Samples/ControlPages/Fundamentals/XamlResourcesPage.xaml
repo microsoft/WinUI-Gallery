@@ -15,10 +15,6 @@
     </Page.Resources>
 
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <TextBlock
             Margin="0,12,0,4"
             Style="{ThemeResource SubtitleTextBlockStyle}"

@@ -9,10 +9,6 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <TextBlock
             Margin="0,16,0,-16"
             Style="{ThemeResource SubtitleTextBlockStyle}"

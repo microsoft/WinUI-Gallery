@@ -19,10 +19,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample x:Name="Example1" HeaderText="A BreadcrumbBar control">
             <controls:ControlExample.Example>
                 <BreadcrumbBar x:Name="BreadcrumbBar1" ItemsSource="{x:Bind FoldersString}"/>

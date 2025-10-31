@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<controls:SamplePage
+<Page
     x:Class="WinUIGallery.ControlPages.BindingPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -27,8 +27,7 @@
                     <Run Text="and" />
                     <Run FontFamily="Consolas" Text="Binding" />
                     <Run Text="by visiting" />
-                    <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/data-binding/data-binding-in-depth#xbind-and-binding-feature-comparison">Microsoft Learn</Hyperlink> .
-                </Paragraph>
+                     <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/develop/data-binding/data-binding-in-depth#xbind-and-binding-feature-comparison">Microsoft Learn</Hyperlink>.</Paragraph>
             </RichTextBlock>
         </StackPanel>
 
@@ -209,4 +208,4 @@ public YourPage()
             </controls:ControlExample.CSharp>
         </controls:ControlExample>
     </StackPanel>
-</controls:SamplePage>
+</Page>

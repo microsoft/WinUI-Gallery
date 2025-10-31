@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.UI.Xaml.Controls;
 using System;
 using System.ComponentModel;
-using WinUIGallery.Controls;
 
 namespace WinUIGallery.ControlPages;
 
-public sealed partial class BindingPage : SamplePage
+public sealed partial class BindingPage : Page
 {
     public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
 

@@ -19,10 +19,6 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample x:Name="Example1" HeaderText="A button with a simple ToolTip.">
             <controls:ControlExample.Example>
                 <Button Content="Button with a simple ToolTip." ToolTipService.ToolTip="Simple ToolTip" />

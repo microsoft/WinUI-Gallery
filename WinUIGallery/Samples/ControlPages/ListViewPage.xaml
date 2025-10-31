@@ -107,10 +107,6 @@
 
     </Page.Resources>
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample
             CSharpSource="ListView\ListViewSample1_cs.txt"
             HeaderText="Basic ListView with Simple DataTemplate"

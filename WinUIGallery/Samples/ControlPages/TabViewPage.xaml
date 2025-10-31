@@ -13,10 +13,6 @@
     </Page.Resources>
 
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample CSharpSource="TabView\TabViewBasicSample_cs.txt" HeaderText="A TabView with support for adding, closing, and rearranging tabs">
             <controls:ControlExample.Example>
                 <TabView

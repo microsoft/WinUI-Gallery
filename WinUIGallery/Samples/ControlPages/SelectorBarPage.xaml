@@ -20,10 +20,6 @@
     </Page.Resources>
 
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample x:Name="Example1" HeaderText="A Basic SelectorBar">
             <SelectorBar x:Name="SelectorBar1">
                 <SelectorBarItem

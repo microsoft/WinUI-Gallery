@@ -19,10 +19,6 @@
     xmlns:helper="using:WinUIGallery.Helpers"
     mc:Ignorable="d">
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample x:Name="Example1" HeaderText="A ListBox with items defined inline and its minimum width set.">
             <controls:ControlExample.Example>
                 <StackPanel>

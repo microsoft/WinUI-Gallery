@@ -26,10 +26,6 @@
         </StackPanel.Resources>
 
         <StackPanel>
-            <StackPanel.ChildrenTransitions>
-                <RepositionThemeTransition />
-            </StackPanel.ChildrenTransitions>
-            
             <controls:ControlExample x:Name="Example1" HeaderText="Swipe right to reveal actions">
                 <controls:ControlExample.Example>
                     <Border>

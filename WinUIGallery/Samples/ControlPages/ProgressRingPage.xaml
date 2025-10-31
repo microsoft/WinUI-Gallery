@@ -18,10 +18,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <!--  INDETERMINATE PROGRESS RING  -->
         <controls:ControlExample HeaderText="An indeterminate progress ring.">
             <ProgressRing

@@ -25,10 +25,6 @@
         </Flyout>
     </Page.Resources>
     <StackPanel>
-        <StackPanel.ChildrenTransitions>
-            <RepositionThemeTransition />
-        </StackPanel.ChildrenTransitions>
-        
         <controls:ControlExample HeaderText="A button with a flyout">
             <controls:ControlExample.Example>
                 <Button x:Name="Control1" Content="Empty cart">
