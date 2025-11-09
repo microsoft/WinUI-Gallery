@@ -121,7 +121,11 @@
                                       Loaded="OnItemGridViewLoaded"
                                       SelectionMode="None"
                                       AutomationProperties.AutomationId="RecentlyAddedAndUpdatedGridView"
-                                      AutomationProperties.Name="Recently added and updated Samples" />
+                                      AutomationProperties.Name="Recently added and updated Samples">
+                                <GridView.Resources>
+                                    <CornerRadius x:Key="GridViewItemCornerRadius">8</CornerRadius>
+                                </GridView.Resources>
+                            </GridView>
                         </StackPanel>
                     </toolkit:Case>
                     <toolkit:Case Value="Favorites">
