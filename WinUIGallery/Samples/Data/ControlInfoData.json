@@ -2658,6 +2658,30 @@
               "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.themeshadow"
             }
           ]
+        },
+        {
+          "UniqueId": "SystemBackdropHost",
+          "Title": "SystemBackdropHost",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control",
+            "ContentControl"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A control to host system backdrop materials.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
+          "Description": "SystemBackdropHost allows you to apply system backdrop materials to specific UI elements.",
+          "Description": "SystemBackdropHost is developed to enable seamless Acrylic effects for individual surfaces and controls in WinUI3 apps. This control allows developers to easily apply system backdrops (like Acrylic and Mica) anywhere in their app UI.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "SystemBackdropHost - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.systembackdrophost"
+            }
+          ]
         }
       ]
     },
