@@ -45,6 +45,9 @@ public sealed partial class MainWindow : Window
         RootGrid.ActualThemeChanged += (_, _) => TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
+        // Workaround for WinUI issue #9934:
+        // https://github.com/microsoft/microsoft-ui-xaml/issues/9934.
+        // See `AdjustNavigationViewMargin()` for implementation details.
         if (AppWindow.Presenter is OverlappedPresenter windowPresenter)
         {
             WindowPresenter = windowPresenter;
@@ -54,8 +57,9 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    // Adjusts the NavigationView margin based on the window state to fix the gap between the caption buttons and the NavigationView.
-    // Set force to true to force the adjustment on the first call.
+    // Adjusts the NavigationView margin based on the window state
+    // to fix the gap between the caption buttons and the NavigationView.
+    // Use `force = true` to ensure adjustment on the first call.
     private void AdjustNavigationViewMargin(bool? force = null)
     {
         if (WindowPresenter is null ||
