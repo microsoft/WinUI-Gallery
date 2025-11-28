@@ -6,11 +6,12 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Composition.SystemBackdrops;
+
 namespace WinUIGallery.ControlPages;
 
-public sealed partial class SystemBackdropHostPage : Page
+public sealed partial class SystemBackdropElementPage : Page
 {
-    public SystemBackdropHostPage()
+    public SystemBackdropElementPage()
     {
         this.InitializeComponent();
     }
@@ -30,28 +31,25 @@ public sealed partial class SystemBackdropHostPage : Page
         if (backdropType == "Acrylic")
         {
             DynamicBackdropHost.SystemBackdrop = new DesktopAcrylicBackdrop();
-            // Update the sample code source
             if (Example1 != null)
             {
-                Example1.XamlSource = "SystemBackdropHost/SystemBackdropHostAcrylic_xaml.txt";
+                Example1.XamlSource = "SystemBackdropElement/SystemBackdropElementAcrylic_xaml.txt";
             }
         }
         else if (backdropType == "Mica")
         {
             DynamicBackdropHost.SystemBackdrop = new MicaBackdrop { Kind = MicaKind.Base };
-            // Update the sample code source
             if (Example1 != null)
             {
-                Example1.XamlSource = "SystemBackdropHost/SystemBackdropHostMica_xaml.txt";
+                Example1.XamlSource = "SystemBackdropElement/SystemBackdropElementMica_xaml.txt";
             }
         }
         else if (backdropType == "MicaAlt")
         {
             DynamicBackdropHost.SystemBackdrop = new MicaBackdrop { Kind = MicaKind.BaseAlt };
-            // Update the sample code source
             if (Example1 != null)
             {
-                Example1.XamlSource = "SystemBackdropHost/SystemBackdropHostMicaAlt_xaml.txt";
+                Example1.XamlSource = "SystemBackdropElement/SystemBackdropElementMicaAlt_xaml.txt";
             }
         }
     }

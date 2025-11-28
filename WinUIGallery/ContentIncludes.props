@@ -239,9 +239,9 @@
     <Content Include="Samples\SampleCode\SystemBackdrops\SystemBackdropsSampleBackdropTypes_xaml.txt" />
     <Content Include="Samples\SampleCode\SystemBackdrops\SystemBackdropsSampleMicaController.txt" />
     <Content Include="Samples\SampleCode\SystemBackdrops\SystemBackdropsSampleDesktopAcrylicController.txt" />
-	<Content Include="Samples\SampleCode\SystemBackdropHost\SystemBackdropHostAcrylic_xaml.txt" />
-	<Content Include="Samples\SampleCode\SystemBackdropHost\SystemBackdropHostMica_xaml.txt" />
-	<Content Include="Samples\SampleCode\SystemBackdropHost\SystemBackdropHostMicaAlt_xaml.txt" />
+    <Content Include="Samples\SampleCode\SystemBackdropElement\SystemBackdropElementAcrylic_xaml.txt" />
+    <Content Include="Samples\SampleCode\SystemBackdropElement\SystemBackdropElementMica_xaml.txt" />
+    <Content Include="Samples\SampleCode\SystemBackdropElement\SystemBackdropElementMicaAlt_xaml.txt" />
     <Content Include="Samples\SampleCode\TabView\TabViewBasicSample_cs.txt" />
     <Content Include="Samples\SampleCode\TabView\TabViewKeyboardAcceleratorSample_cs.txt" />
     <Content Include="Samples\SampleCode\TeachingTip\TeachingTipSample2_xaml.txt" />

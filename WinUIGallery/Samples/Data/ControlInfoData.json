@@ -2660,8 +2660,8 @@
           ]
         },
         {
-          "UniqueId": "SystemBackdropHost",
-          "Title": "SystemBackdropHost",
+          "UniqueId": "SystemBackdropElement",
+          "Title": "SystemBackdropElement",
           "BaseClasses": [
             "Object",
             "DependencyObject",
@@ -2671,14 +2671,14 @@
             "ContentControl"
           ],
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
-          "Subtitle": "A control to host system backdrop materials.",
+          "Subtitle": "An element to host system backdrop materials.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
-          "Description": "SystemBackdropHost lets you apply system backdrop materials (Mica and Acrylic) to a specific area inside the UI tree, extending these materials beyond the window background for more flexible and immersive designs.",
+          "Description": "SystemBackdropElement lets you apply system backdrop materials (Mica and Acrylic) to a specific area inside the UI tree, extending these materials beyond the window background for more flexible and immersive designs",
           "IsNew": true,
           "Docs": [
             {
-              "Title": "SystemBackdropHost - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.systembackdrophost"
+              "Title": "SystemBackdropElement - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.systembackdropelement"
             }
           ]
         }
