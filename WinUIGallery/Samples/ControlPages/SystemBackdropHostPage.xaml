@@ -36,10 +36,6 @@
                         <ComboBoxItem Content="Mica Alt" Tag="MicaAlt" />
                     </ComboBox>
                     <Slider x:Name="CornerRadiusSlider" Header="Corner radius" Maximum="50" Minimum="0" StepFrequency="1" Value="8" ValueChanged="CornerRadiusSlider_ValueChanged" />
-                    <TextBlock>
-						<Run Text="Current radius: " />
-						<Run Text="{x:Bind CornerRadiusSlider.Value, Mode=OneWay}" />
-                    </TextBlock>
                 </StackPanel>
             </controls:ControlExample.Options>
             <controls:ControlExample.XamlSource>

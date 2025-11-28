@@ -4,7 +4,8 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Composition.SystemBackdrops;
 namespace WinUIGallery.ControlPages;
 
 public sealed partial class SystemBackdropHostPage : Page
@@ -37,7 +38,7 @@ public sealed partial class SystemBackdropHostPage : Page
         }
         else if (backdropType == "Mica")
         {
-            DynamicBackdropHost.SystemBackdrop = new MicaBackdrop { Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base };
+            DynamicBackdropHost.SystemBackdrop = new MicaBackdrop { Kind = MicaKind.Base };
             // Update the sample code source
             if (Example1 != null)
             {
@@ -46,7 +47,7 @@ public sealed partial class SystemBackdropHostPage : Page
         }
         else if (backdropType == "MicaAlt")
         {
-            DynamicBackdropHost.SystemBackdrop = new MicaBackdrop { Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt };
+            DynamicBackdropHost.SystemBackdrop = new MicaBackdrop { Kind = MicaKind.BaseAlt };
             // Update the sample code source
             if (Example1 != null)
             {
@@ -55,7 +56,7 @@ public sealed partial class SystemBackdropHostPage : Page
         }
     }
 
-    private void CornerRadiusSlider_ValueChanged(object sender, Microsoft.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+    private void CornerRadiusSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
     {
         if (DynamicBackdropHost != null)
         {

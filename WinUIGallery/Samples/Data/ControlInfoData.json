@@ -2673,8 +2673,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control to host system backdrop materials.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
-          "Description": "SystemBackdropHost allows you to apply system backdrop materials to specific UI elements.",
-          "Description": "SystemBackdropHost is developed to enable seamless Acrylic effects for individual surfaces and controls in WinUI3 apps. This control allows developers to easily apply system backdrops (like Acrylic and Mica) anywhere in their app UI.",
+          "Description": "SystemBackdropHost lets you apply system backdrop materials (Mica and Acrylic) to a specific area inside the UI tree, extending these materials beyond the window background for more flexible and immersive designs.",
           "IsNew": true,
           "Docs": [
             {
