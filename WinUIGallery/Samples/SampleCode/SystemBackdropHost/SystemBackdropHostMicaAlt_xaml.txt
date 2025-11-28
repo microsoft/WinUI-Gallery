@@ -4,5 +4,5 @@
             <MicaBackdrop Kind="BaseAlt" />
         </SystemBackdropHost.SystemBackdrop>
     </SystemBackdropHost>
-    <Button Content="Click Me" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Button Content="Button" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 </Grid>
