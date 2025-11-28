@@ -37,7 +37,7 @@
                     </ComboBox>
                     <Slider x:Name="CornerRadiusSlider" Header="Corner Radius" Maximum="50" Minimum="0" StepFrequency="1" Value="8" ValueChanged="CornerRadiusSlider_ValueChanged" />
                     <TextBlock>
-						<Run Text="Current Radius: " />
+						<Run Text="Current radius: " />
 						<Run Text="{x:Bind CornerRadiusSlider.Value, Mode=OneWay}" />
                     </TextBlock>
                 </StackPanel>
