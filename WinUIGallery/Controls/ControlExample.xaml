@@ -149,6 +149,7 @@
                         Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                         BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
                         BorderThickness="1,0,0,0"
+                        CornerRadius="0,8,0,0"
                         Content="{x:Bind Options}"
                         IsTabStop="False"
                         Visibility="{x:Bind Options, Converter={StaticResource nullToVisibilityConverter}}" />
