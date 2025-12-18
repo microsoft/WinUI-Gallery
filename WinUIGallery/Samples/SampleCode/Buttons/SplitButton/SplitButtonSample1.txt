@@ -1,8 +1,11 @@
-﻿<SplitButton x:Name="myColorButton" Click="myColorButton_Click">
-    <Border x:Name="CurrentColor" Width="32" Height="32" Background="Green" CornerRadius="4,0,0,4"/>
-    <SplitButton.Flyout>
-        <Flyout Placement="Bottom">
-            <!-- flyout content -->
-        </Flyout>
-    </SplitButton.Flyout>
-</SplitButton>
+﻿<StackPanel Orientation="Vertical" Spacing="4">
+    <TextBlock Text="Font color:" />
+    <SplitButton x:Name="myColorButton" Click="myColorButton_Click" AutomationProperties.Name="Font color">
+        <Border x:Name="CurrentColor" Width="32" Height="32" Background="Green" CornerRadius="4,0,0,4"/>
+        <SplitButton.Flyout>
+            <Flyout Placement="Bottom">
+                <!-- flyout content -->
+            </Flyout>
+        </SplitButton.Flyout>
+    </SplitButton>
+</StackPanel>

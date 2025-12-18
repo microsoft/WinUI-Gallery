@@ -1,8 +1,11 @@
-﻿<SplitButton x:Name="myColorButton">
-    Choose color
-    <SplitButton.Flyout>
-        <Flyout Placement="Bottom">
-            <!-- flyout content -->
-        </Flyout>
-    </SplitButton.Flyout>
-</SplitButton>
+﻿<StackPanel Orientation="Vertical" Spacing="4">
+    <TextBlock Text="Font color:" />
+    <SplitButton x:Name="myColorButton" AutomationProperties.Name="Font color with text">
+        Choose color
+        <SplitButton.Flyout>
+            <Flyout Placement="Bottom">
+                <!-- flyout content -->
+            </Flyout>
+        </SplitButton.Flyout>
+    </SplitButton>
+</StackPanel>
