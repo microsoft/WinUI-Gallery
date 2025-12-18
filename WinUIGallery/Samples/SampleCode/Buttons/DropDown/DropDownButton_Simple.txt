@@ -1,9 +1,9 @@
-﻿<DropDownButton Content="Email">
+﻿<DropDownButton x:Name="EmailDropDownButton" Content="Email">
     <DropDownButton.Flyout>
         <MenuFlyout Placement="Bottom">
-            <MenuFlyoutItem Text="Send"/>
-            <MenuFlyoutItem Text="Reply"/>
-            <MenuFlyoutItem Text="Reply All"/>
+            <MenuFlyoutItem Text="Send" Click="EmailMenuItem_Click"/>
+            <MenuFlyoutItem Text="Reply" Click="EmailMenuItem_Click"/>
+            <MenuFlyoutItem Text="Reply All" Click="EmailMenuItem_Click"/>
         </MenuFlyout>
     </DropDownButton.Flyout>
 </DropDownButton>

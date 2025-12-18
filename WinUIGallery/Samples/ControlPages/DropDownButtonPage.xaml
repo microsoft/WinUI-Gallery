@@ -10,12 +10,12 @@
     <StackPanel>
         <controls:ControlExample HeaderText="Simple DropDownButton" XamlSource="Buttons/DropDown/DropDownButton_Simple.txt">
             <StackPanel x:Name="Control1" Orientation="Horizontal">
-                <DropDownButton Content="Email">
+                <DropDownButton x:Name="EmailDropDownButton" Content="Email">
                     <DropDownButton.Flyout>
                         <MenuFlyout Placement="BottomEdgeAlignedLeft">
-                            <MenuFlyoutItem Text="Send" />
-                            <MenuFlyoutItem Text="Reply" />
-                            <MenuFlyoutItem Text="Reply All" />
+                            <MenuFlyoutItem Text="Send" Click="EmailMenuItem_Click" />
+                            <MenuFlyoutItem Text="Reply" Click="EmailMenuItem_Click" />
+                            <MenuFlyoutItem Text="Reply All" Click="EmailMenuItem_Click" />
                         </MenuFlyout>
                     </DropDownButton.Flyout>
                 </DropDownButton>
@@ -24,23 +24,26 @@
 
         <controls:ControlExample HeaderText="DropDownButton with Icons" XamlSource="Buttons/DropDown/DropDownButton_Icon.txt">
             <StackPanel x:Name="Control2" Orientation="Horizontal">
-                <DropDownButton AutomationProperties.Name="Email">
+                <DropDownButton x:Name="EmailIconDropDownButton" AutomationProperties.Name="Email">
                     <DropDownButton.Content>
-                        <FontIcon Glyph="&#xE715;" />
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <FontIcon x:Name="EmailIcon" Glyph="&#xE715;" />
+                            <TextBlock x:Name="EmailIconText" Text="Email" />
+                        </StackPanel>
                     </DropDownButton.Content>
                     <DropDownButton.Flyout>
                         <MenuFlyout Placement="BottomEdgeAlignedLeft">
-                            <MenuFlyoutItem Text="Send">
+                            <MenuFlyoutItem Text="Send" Click="EmailIconMenuItem_Click" Tag="&#xE725;">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph="&#xE725;" />
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem Text="Reply">
+                            <MenuFlyoutItem Text="Reply" Click="EmailIconMenuItem_Click" Tag="&#xE8CA;">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph="&#xE8CA;" />
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem Text="Reply All">
+                            <MenuFlyoutItem Text="Reply All" Click="EmailIconMenuItem_Click" Tag="&#xE8C2;">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph="&#xE8C2;" />
                                 </MenuFlyoutItem.Icon>
