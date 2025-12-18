@@ -18,53 +18,55 @@
             WebViewHeight="150"
             XamlSource="Buttons\SplitButton\SplitButtonSample1.txt">
             <Grid x:Name="Control1" ColumnSpacing="24">
+                <StackPanel Orientation="Vertical" Spacing="4">
+                    <TextBlock Text="Font color:" />
+                    <SplitButton
+                        x:Name="myColorButton"
+                        MinWidth="0"
+                        MinHeight="0"
+                        Padding="0"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Font color"
+                        Click="myColorButton_Click">
+                        <Border
+                            x:Name="CurrentColor"
+                            Width="{StaticResource SwatchSize}"
+                            Height="{StaticResource SwatchSize}"
+                            Margin="0"
+                            Background="Green"
+                            CornerRadius="4,0,0,4" />
+                        <SplitButton.Flyout>
+                            <Flyout Placement="Bottom">
+                                <GridView IsItemClickEnabled="True" ItemClick="GridView_ItemClick">
+                                    <GridView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </GridView.ItemsPanel>
+                                    <GridView.Resources>
+                                        <Style TargetType="Rectangle">
+                                            <Setter Property="Width" Value="{StaticResource SwatchSize}" />
+                                            <Setter Property="Height" Value="{StaticResource SwatchSize}" />
+                                            <Setter Property="RadiusX" Value="4" />
+                                            <Setter Property="RadiusY" Value="4" />
+                                        </Style>
+                                    </GridView.Resources>
+                                    <GridView.Items>
+                                        <Rectangle AutomationProperties.Name="Red" Fill="Red" />
+                                        <Rectangle AutomationProperties.Name="Orange" Fill="Orange" />
+                                        <Rectangle AutomationProperties.Name="Yellow" Fill="Yellow" />
+                                        <Rectangle AutomationProperties.Name="Green" Fill="Green" />
+                                        <Rectangle AutomationProperties.Name="Blue" Fill="Blue" />
+                                        <Rectangle AutomationProperties.Name="Indigo" Fill="Indigo" />
+                                        <Rectangle AutomationProperties.Name="Violet" Fill="Violet" />
+                                        <Rectangle AutomationProperties.Name="Gray" Fill="Gray" />
+                                    </GridView.Items>
+                                </GridView>
 
-                <SplitButton
-                    x:Name="myColorButton"
-                    MinWidth="0"
-                    MinHeight="0"
-                    Padding="0"
-                    VerticalAlignment="Top"
-                    AutomationProperties.Name="Font color"
-                    Click="myColorButton_Click">
-                    <Border
-                        x:Name="CurrentColor"
-                        Width="{StaticResource SwatchSize}"
-                        Height="{StaticResource SwatchSize}"
-                        Margin="0"
-                        Background="Green"
-                        CornerRadius="4,0,0,4" />
-                    <SplitButton.Flyout>
-                        <Flyout Placement="Bottom">
-                            <GridView IsItemClickEnabled="True" ItemClick="GridView_ItemClick">
-                                <GridView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
-                                    </ItemsPanelTemplate>
-                                </GridView.ItemsPanel>
-                                <GridView.Resources>
-                                    <Style TargetType="Rectangle">
-                                        <Setter Property="Width" Value="{StaticResource SwatchSize}" />
-                                        <Setter Property="Height" Value="{StaticResource SwatchSize}" />
-                                        <Setter Property="RadiusX" Value="4" />
-                                        <Setter Property="RadiusY" Value="4" />
-                                    </Style>
-                                </GridView.Resources>
-                                <GridView.Items>
-                                    <Rectangle AutomationProperties.Name="Red" Fill="Red" />
-                                    <Rectangle AutomationProperties.Name="Orange" Fill="Orange" />
-                                    <Rectangle AutomationProperties.Name="Yellow" Fill="Yellow" />
-                                    <Rectangle AutomationProperties.Name="Green" Fill="Green" />
-                                    <Rectangle AutomationProperties.Name="Blue" Fill="Blue" />
-                                    <Rectangle AutomationProperties.Name="Indigo" Fill="Indigo" />
-                                    <Rectangle AutomationProperties.Name="Violet" Fill="Violet" />
-                                    <Rectangle AutomationProperties.Name="Gray" Fill="Gray" />
-                                </GridView.Items>
-                            </GridView>
-
-                        </Flyout>
-                    </SplitButton.Flyout>
-                </SplitButton>
+                            </Flyout>
+                        </SplitButton.Flyout>
+                    </SplitButton>
+                </StackPanel>
             </Grid>
             <controls:ControlExample.Options>
                 <RichEditBox
@@ -78,15 +80,17 @@
 
         <controls:ControlExample HeaderText="A SplitButton with text" XamlSource="Buttons\SplitButton\SplitButtonSample2.txt">
             <controls:ControlExample.Example>
-                <SplitButton
-                    x:Name="myColorButtonReveal"
-                    MinWidth="0"
-                    MinHeight="0"
-                    Padding="5"
-                    VerticalAlignment="Top"
-                    AutomationProperties.Name="Font color with text">
-                    Choose color
-                    <SplitButton.Flyout>
+                <StackPanel Orientation="Vertical" Spacing="4">
+                    <TextBlock Text="Font color:" />
+                    <SplitButton
+                        x:Name="myColorButtonReveal"
+                        MinWidth="0"
+                        MinHeight="0"
+                        Padding="5"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Font color with text">
+                        Choose color
+                        <SplitButton.Flyout>
                         <Flyout Placement="Bottom">
                             <VariableSizedWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal">
                                 <VariableSizedWrapGrid.Resources>
@@ -153,6 +157,7 @@
                         </Flyout>
                     </SplitButton.Flyout>
                 </SplitButton>
+                </StackPanel>
             </controls:ControlExample.Example>
         </controls:ControlExample>
     </StackPanel>
