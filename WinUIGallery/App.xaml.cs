@@ -58,6 +58,13 @@ sealed partial class App : Application
 
         EnsureWindow();
 
+        if (SettingsHelper.Current.IsFirstRun)
+        {
+            SettingsMigration.MigrateRecentlyVisited();
+            SettingsMigration.MigrateFavorites();
+            SettingsHelper.Current.IsFirstRun = false;
+        }
+
         MainWindow.Closed += (s, e) =>
         {
             if (IsAppPackaged)

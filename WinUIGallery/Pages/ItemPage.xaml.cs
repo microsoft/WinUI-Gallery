@@ -3,6 +3,7 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Linq;
@@ -67,7 +68,9 @@ public sealed partial class ItemPage : Page
 
                 if (pageType != null)
                 {
-                    var pageName = string.IsNullOrEmpty(group?.Folder) ? pageType.Name : $"{group.Folder}/{pageType.Name}";
+                    // Attach Navigated event to add RepositionThemeTransition after navigation
+                    contentFrame.Navigated += ContentFrame_Navigated;
+                    var pageName = string.IsNullOrEmpty(group.Folder) ? pageType.Name : $"{group.Folder}/{pageType.Name}";
                     pageHeader.SetControlSourceLink(WinUIBaseUrl, item.SourcePath);
                     pageHeader.SetSamplePageSourceLinks(GalleryBaseUrl, pageName);
                     System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
@@ -83,6 +86,38 @@ public sealed partial class ItemPage : Page
             }
         }
         base.OnNavigatedTo(e);
+    }
+
+    private void ContentFrame_Navigated(object sender, NavigationEventArgs e)
+    {
+        if (e.Content is Page loadedPage)
+        {
+            // Add RepositionThemeTransition to the root Panel of the loaded page
+            if (loadedPage.Content is Panel panel)
+            {
+                if (panel.ChildrenTransitions == null)
+                {
+                    panel.ChildrenTransitions = new TransitionCollection();
+                }
+
+                // Insure we don't add duplicate RepositionThemeTransition
+                bool hasReposition = false;
+                foreach (var t in panel.ChildrenTransitions)
+                {
+                    if (t is RepositionThemeTransition)
+                    {
+                        hasReposition = true;
+                        break;
+                    }
+                }
+
+                if (!hasReposition)
+                {
+                    panel.ChildrenTransitions.Add(new RepositionThemeTransition());
+                }
+            }
+        }
+        contentFrame.Navigated -= ContentFrame_Navigated; // Cleanup event handler
     }
 
     protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
