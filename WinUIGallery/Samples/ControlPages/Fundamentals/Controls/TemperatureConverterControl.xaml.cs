@@ -44,7 +44,7 @@ public sealed partial class TemperatureConverterControl : UserControl, INotifyPr
 
     private void UpdateButtonState()
     {
-        IsConvertButtonEnabled = !string.IsNullOrWhiteSpace(InputTextBox.Text);
+        IsConvertButtonEnabled = InputTextBox != null && !string.IsNullOrWhiteSpace(InputTextBox.Text);
     }
 
     private void Button_Click(object sender, RoutedEventArgs e)
