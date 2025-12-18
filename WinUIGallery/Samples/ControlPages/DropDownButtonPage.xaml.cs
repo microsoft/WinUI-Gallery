@@ -27,7 +27,10 @@ public sealed partial class DropDownButtonPage : Page
         var menuItem = sender as MenuFlyoutItem;
         if (menuItem != null)
         {
-            EmailIcon.Glyph = menuItem.Tag as string;
+            if (menuItem.Tag is string glyph)
+            {
+                EmailIcon.Glyph = glyph;
+            }
             EmailIconText.Text = menuItem.Text;
         }
     }
