@@ -16,31 +16,29 @@ public sealed partial class CreateMultipleWindowsPage : Page
         this.InitializeComponent();
     }
 
-    private void createNewWindow_Click(object sender, RoutedEventArgs e)
+    private void CreateNewWindow_Click(object sender, RoutedEventArgs e)
     {
-        var newWindow = new Window
+        var childWindow = new Window()
         {
             ExtendsContentIntoTitleBar = true,
             SystemBackdrop = new MicaBackdrop(),
-            Content = new Page
+            Content = new Page()
             {
-                // The TreeHelper is a helper class in the WinUIGallery project
-                // that allows us to find the current theme of the app.
-                RequestedTheme = ThemeHelper.RootTheme,
-                Content = new TextBlock
+                Content = new TextBlock()
                 {
-                    Text = "New Window!",
+                    Text = "New child window!",
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
                 },
+                // We need to set the RequestedTheme to match the app's theme.
+                RequestedTheme = ThemeHelper.RootTheme,
             }
         };
 
-        newWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
-
-        // The WindowHelper is a helper class in the WinUIGallery project
-        // that helps us close child windows when the main window closes.
-        WindowHelper.TrackWindow(newWindow);
-        newWindow.Activate();
+        // We need to track the new window so it can be closed when the app is closing,
+        // otherwise it will crash the app.
+        WindowHelper.TrackWindow(childWindow);
+        childWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
+        childWindow.Activate();
     }
 }

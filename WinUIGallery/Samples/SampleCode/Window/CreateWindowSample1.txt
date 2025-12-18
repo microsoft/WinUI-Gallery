@@ -1,15 +1,13 @@
-﻿var childWindow = new Window
+﻿// Ensure you close the child window before closing the parent window to avoid application crash.
+var childWindow = new Window()
 {
     ExtendsContentIntoTitleBar = true,
     SystemBackdrop = new MicaBackdrop(),
-    Content = new Page
+    Content = new Page()
     {
-        // The TreeHelper is a helper class in the WinUIGallery project
-        // that allows us to find the current theme of the app.
-        RequestedTheme = ThemeHelper.RootTheme,
-        Content = new TextBlock
+        Content = new TextBlock()
         {
-            Text = "New Window!",
+            Text = "New child window!",
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center,
         },
@@ -17,8 +15,4 @@
 };
 
 childWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
-
-// The WindowHelper is a helper class in the WinUIGallery project
-// that helps us close child windows when the main window closes.
-WindowHelper.TrackWindow(childWindow);
 childWindow.Activate();
