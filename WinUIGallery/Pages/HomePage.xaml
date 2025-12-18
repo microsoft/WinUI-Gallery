@@ -20,6 +20,8 @@
     HighContrastAdjustment="None">
     <Grid>
         <Grid.Resources>
+            <CornerRadius x:Key="GridViewItemCornerRadius">8</CornerRadius>
+
             <animations:ImplicitAnimationSet x:Name="ShowTransitions">
                 <animations:OffsetAnimation
                     EasingMode="EaseOut"
@@ -121,7 +123,7 @@
                                       Loaded="OnItemGridViewLoaded"
                                       SelectionMode="None"
                                       AutomationProperties.AutomationId="RecentlyAddedAndUpdatedGridView"
-                                      AutomationProperties.Name="Recently added and updated Samples" />
+                                      AutomationProperties.Name="Recently added and updated Samples"/>
                         </StackPanel>
                     </toolkit:Case>
                     <toolkit:Case Value="Favorites">

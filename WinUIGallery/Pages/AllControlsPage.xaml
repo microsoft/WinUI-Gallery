@@ -50,7 +50,11 @@
             ItemTemplate="{StaticResource ControlItemTemplate}"
             ItemsSource="{x:Bind Items, Mode=OneWay}"
             Loaded="OnItemGridViewLoaded"
-            SelectionMode="None" />
+            SelectionMode="None">
+            <GridView.Resources>
+                <CornerRadius x:Key="GridViewItemCornerRadius">8</CornerRadius>
+            </GridView.Resources>
+        </GridView>
         <VisualStateManager.VisualStateGroups>
             <!--  Visual states reflect the application's window size  -->
             <VisualStateGroup x:Name="LayoutVisualStates">
