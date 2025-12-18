@@ -10,7 +10,7 @@ namespace WinUIGallery.Samples.ControlPages.Fundamentals.Controls;
 
 public sealed partial class TemperatureConverterControl : UserControl, INotifyPropertyChanged
 {
-    private bool _isConvertButtonEnabled;
+    private bool _isConvertButtonEnabled = false;
 
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,8 +30,11 @@ public sealed partial class TemperatureConverterControl : UserControl, INotifyPr
     public TemperatureConverterControl()
     {
         this.InitializeComponent();
-        InputTextBox.TextChanged += InputTextBox_TextChanged;
-        UpdateButtonState();
+        if (InputTextBox != null)
+        {
+            InputTextBox.TextChanged += InputTextBox_TextChanged;
+            UpdateButtonState();
+        }
     }
 
     private void InputTextBox_TextChanged(object sender, TextChangedEventArgs e)
