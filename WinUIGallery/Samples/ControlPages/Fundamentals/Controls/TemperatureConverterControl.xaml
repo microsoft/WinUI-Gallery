@@ -16,7 +16,7 @@
         <Button Content="Convert to Fahrenheit"
                 Width="200"
                 Click="Button_Click"
-                IsEnabled="{x:Bind IsConvertButtonEnabled, Mode=OneWay}"/>
+                IsEnabled="{x:Bind HasText(InputTextBox.Text), Mode=OneWay}"/>
         <TextBlock x:Name="ResultTextBlock"
                    FontWeight="SemiBold" />
     </StackPanel>

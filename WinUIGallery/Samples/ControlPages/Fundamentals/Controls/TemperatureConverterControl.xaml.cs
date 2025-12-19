@@ -3,48 +3,19 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace WinUIGallery.Samples.ControlPages.Fundamentals.Controls;
 
-public sealed partial class TemperatureConverterControl : UserControl, INotifyPropertyChanged
+public sealed partial class TemperatureConverterControl : UserControl
 {
-    private bool _isConvertButtonEnabled = false;
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    public bool IsConvertButtonEnabled
-    {
-        get => _isConvertButtonEnabled;
-        set
-        {
-            if (_isConvertButtonEnabled != value)
-            {
-                _isConvertButtonEnabled = value;
-                OnPropertyChanged();
-            }
-        }
-    }
-
     public TemperatureConverterControl()
     {
         this.InitializeComponent();
-        if (InputTextBox != null)
-        {
-            InputTextBox.TextChanged += InputTextBox_TextChanged;
-            UpdateButtonState();
-        }
     }
 
-    private void InputTextBox_TextChanged(object sender, TextChangedEventArgs e)
+    private bool HasText(string text)
     {
-        UpdateButtonState();
-    }
-
-    private void UpdateButtonState()
-    {
-        IsConvertButtonEnabled = InputTextBox != null && !string.IsNullOrWhiteSpace(InputTextBox.Text);
+        return !string.IsNullOrWhiteSpace(text);
     }
 
     private void Button_Click(object sender, RoutedEventArgs e)
@@ -63,10 +34,5 @@ public sealed partial class TemperatureConverterControl : UserControl, INotifyPr
         {
             ResultTextBlock.Text = "Invalid input!";
         }
-    }
-
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
