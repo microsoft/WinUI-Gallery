@@ -30,13 +30,14 @@ public sealed partial class CreateMultipleWindowsPage : Page
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
                 },
-                // We need to set the RequestedTheme to match the app's theme.
-                RequestedTheme = ThemeHelper.RootTheme,
+                // Get the theme from the parent.
+                RequestedTheme = this.ActualTheme,
             }
         };
 
         // We need to track the new window so it can be closed when the app is closing,
         // otherwise it will crash the app.
+        // This is also used to change the theme for all windows when the app theme changes.
         WindowHelper.TrackWindow(childWindow);
         childWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
         childWindow.Activate();

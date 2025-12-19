@@ -11,6 +11,8 @@ var childWindow = new Window()
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center,
         },
+        // Get the theme from the parent.
+        RequestedTheme = this.ActualTheme,
     }
 };
 
