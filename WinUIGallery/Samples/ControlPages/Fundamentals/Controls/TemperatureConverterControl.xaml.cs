@@ -13,6 +13,11 @@ public sealed partial class TemperatureConverterControl : UserControl
         this.InitializeComponent();
     }
 
+    private bool HasText(string text)
+    {
+        return !string.IsNullOrWhiteSpace(text);
+    }
+
     private void Button_Click(object sender, RoutedEventArgs e)
     {
         string input = InputTextBox.Text;
