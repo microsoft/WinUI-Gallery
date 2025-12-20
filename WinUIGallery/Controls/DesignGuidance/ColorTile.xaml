@@ -50,6 +50,7 @@
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Click="CopyBrushNameButton_Click"
+                CopiedMessage="Brush name copied to clipboard"
                 Content="&#xE8C8;"
                 Foreground="{x:Bind Foreground, Mode=OneWay}"
                 ToolTipService.ToolTip="Copy brush name">

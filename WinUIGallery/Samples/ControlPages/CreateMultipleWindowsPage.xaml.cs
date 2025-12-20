@@ -3,8 +3,9 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using Windows.Graphics;
 using WinUIGallery.Helpers;
-using WinUIGallery.Pages;
 
 namespace WinUIGallery.ControlPages;
 
@@ -15,14 +16,30 @@ public sealed partial class CreateMultipleWindowsPage : Page
         this.InitializeComponent();
     }
 
-    private void createNewWindow_Click(object sender, RoutedEventArgs e)
+    private void CreateNewWindow_Click(object sender, RoutedEventArgs e)
     {
-        var newWindow = new MainWindow();
-        WindowHelper.TrackWindow(newWindow);
-        newWindow.Activate();
+        var childWindow = new Window()
+        {
+            ExtendsContentIntoTitleBar = true,
+            SystemBackdrop = new MicaBackdrop(),
+            Content = new Page()
+            {
+                Content = new TextBlock()
+                {
+                    Text = "New child window!",
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                },
+                // Get the theme from the parent.
+                RequestedTheme = this.ActualTheme,
+            }
+        };
 
-        var targetPageType = typeof(HomePage);
-        string targetPageArguments = string.Empty;
-        newWindow.Navigate(targetPageType, targetPageArguments);
+        // We need to track the new window so it can be closed when the app is closing,
+        // otherwise it will crash the app.
+        // This is also used to change the theme for all windows when the app theme changes.
+        WindowHelper.TrackWindow(childWindow);
+        childWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
+        childWindow.Activate();
     }
 }
