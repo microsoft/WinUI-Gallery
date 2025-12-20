@@ -13,7 +13,7 @@ namespace WinUIGallery.SamplePages;
 
 public sealed partial class CollectionPage : Page
 {
-    CustomDataObject _storeditem;
+    CustomDataObject? _storeditem;
 
     public CollectionPage()
     {

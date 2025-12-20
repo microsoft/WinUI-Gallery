@@ -27,6 +27,7 @@ public class GroupInfoList : List<object>
     public GroupInfoList(IEnumerable<object> items) : base(items)
     {
     }
+
     public object Key { get; set; }
 
     public override string ToString()
@@ -37,20 +38,20 @@ public class GroupInfoList : List<object>
 
 // Contact class definition:
 public class Contact
+{
+    public string FirstName { get; private set; } = string.Empty;
+    public string LastName { get; private set; } = string.Empty;
+    public string Company { get; private set; } = string.Empty;
+    public string Name => FirstName + " " + LastName;
+
+    public Contact(string firstName, string lastName, string company)
     {
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public string Company { get; private set; }
-        public string Name => FirstName + " " + LastName;
+        FirstName = firstName;
+        LastName = lastName;
+        Company = company;
+    }
 
-        public Contact(string firstName, string lastName, string company)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            Company = company;
-        }
-
-	// ... Methods ...
+    // ... Methods ...
 }
 
 ContactsCVS.Source = await Contact.GetContactsGroupedAsync();

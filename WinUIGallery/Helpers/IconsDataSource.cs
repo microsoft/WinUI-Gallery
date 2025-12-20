@@ -31,10 +31,12 @@ internal partial class IconsDataSource
         var jsonText = await FileLoader.LoadText("Samples/Data/IconsData.json");
         lock (_lock)
         {
-            if (icons.Count == 0)
+            if (icons.Count == 0 &&
+                JsonSerializer.Deserialize(jsonText, typeof(List<IconData>), IconDataListContext.Default) is List<IconData> loadedIcons)
             {
-                icons = JsonSerializer.Deserialize(jsonText, typeof(List<IconData>), IconDataListContext.Default) as List<IconData>;
+                icons = loadedIcons;
             }
+
             return icons;
         }
     }

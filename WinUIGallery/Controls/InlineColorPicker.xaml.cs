@@ -40,7 +40,7 @@ public sealed partial class InlineColorPicker : UserControl
     public static readonly DependencyProperty ColorBrushProperty =
         DependencyProperty.Register("ColorBrush", typeof(SolidColorBrush), typeof(InlineColorPicker), new PropertyMetadata(new SolidColorBrush(Microsoft.UI.Colors.White)));
 
-    public event EventHandler<Color> ColorChanged;
+    public event EventHandler<Color>? ColorChanged;
 
     public InlineColorPicker()
     {

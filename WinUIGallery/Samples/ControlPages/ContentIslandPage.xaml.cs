@@ -21,7 +21,7 @@ public sealed partial class ContentIslandPage : Page
 
     int idx = 0;
 
-    Rectangle GetNextHostElement()
+    Rectangle? GetNextHostElement()
     {
         if (idx < _rectanglePanel.Children.Count)
         {
@@ -35,7 +35,7 @@ public sealed partial class ContentIslandPage : Page
     {
         ContentIsland parentIsland = this.XamlRoot.ContentIsland;
 
-        Rectangle rect = GetNextHostElement();
+        Rectangle? rect = GetNextHostElement();
         if (rect == null)
         {
             return;
@@ -48,7 +48,7 @@ public sealed partial class ContentIslandPage : Page
 
         // We also need to keep the offset of the ChildContentLink within the parent ContentIsland in sync
         // with that of the placementElement for UIA to work correctly.
-        var layoutUpdatedEventHandler = new EventHandler<object>((s, e) =>
+        var layoutUpdatedEventHandler = new EventHandler<object?>((s, e) =>
         {
             // NOTE: Do as little work in here as possible because it gets called for every
             // xaml layout change on this thread!

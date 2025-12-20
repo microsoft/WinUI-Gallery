@@ -62,7 +62,7 @@ namespace YourNamespace
             File,
         }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         public ExplorerItemType Type { get; set; }
         public ObservableCollection<ExplorerItem> Children { get; set; } = new ObservableCollection<ExplorerItem>();
     }
@@ -70,13 +70,13 @@ namespace YourNamespace
     class ExplorerItemTemplateSelector : DataTemplateSelector
     {
         // Template to use for folder items in the TreeView.
-        public DataTemplate FolderTemplate { get; set; }
+        public DataTemplate? FolderTemplate { get; set; }
 
         // Template to use for file items in the TreeView.
-        public DataTemplate FileTemplate { get; set; }
+        public DataTemplate? FileTemplate { get; set; }
 
         // Determines which template to use for each item in the TreeView based on its type.
-        protected override DataTemplate SelectTemplateCore(object item)
+        protected override DataTemplate? SelectTemplateCore(object item)
         {
             // Cast the item to the ExplorerItem type.
             var explorerItem = (ExplorerItem)item;

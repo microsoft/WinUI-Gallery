@@ -17,9 +17,9 @@ public sealed partial class ImagePage : Page
 
     private void ImageStretch_Checked(object sender, RoutedEventArgs e)
     {
-        if (StretchImage != null)
+        if ((sender as RadioButton)?.Content.ToString() is string strStretch &&
+            StretchImage != null)
         {
-            var strStretch = (sender as RadioButton).Content.ToString();
             var stretch = (Stretch)Enum.Parse(typeof(Stretch), strStretch);
             StretchImage.Stretch = stretch;
         }

@@ -12,8 +12,8 @@ namespace WinUIGallery.SamplePages;
 public sealed partial class TabViewWindowingSamplePage : Page
 {
     private const string DataIdentifier = "MyTabItem";
-    private Win32WindowHelper win32WindowHelper;
-    private Window tabTearOutWindow = null;
+    private Win32WindowHelper? win32WindowHelper;
+    private Window? tabTearOutWindow = null;
 
     public TabViewWindowingSamplePage()
     {
@@ -30,7 +30,11 @@ public sealed partial class TabViewWindowingSamplePage : Page
 
     private void TabViewWindowingSamplePage_Loaded(object sender, RoutedEventArgs e)
     {
-        var currentWindow = WindowHelper.GetWindowForElement(this);
+        if (WindowHelper.GetWindowForElement(this) is not Window currentWindow)
+        {
+            return;
+        }
+
         currentWindow.ExtendsContentIntoTitleBar = true;
         currentWindow.SetTitleBar(CustomDragRegion);
         CustomDragRegion.MinWidth = 188;
@@ -98,7 +102,7 @@ public sealed partial class TabViewWindowingSamplePage : Page
         }
     }
 
-    private TabView GetParentTabView(TabViewItem tab)
+    private TabView? GetParentTabView(TabViewItem tab)
     {
         DependencyObject current = tab;
 
@@ -145,7 +149,7 @@ public sealed partial class TabViewWindowingSamplePage : Page
 
         if (sender.TabItems.Count == 0)
         {
-            WindowHelper.GetWindowForElement(this).Close();
+            WindowHelper.GetWindowForElement(this)?.Close();
         }
     }
 }

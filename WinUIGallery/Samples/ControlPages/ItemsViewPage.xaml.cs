@@ -12,13 +12,13 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class ItemsViewPage : ItemsPageBase
 {
-    private LinedFlowLayout linedFlowLayout = null;
-    private StackLayout stackLayout = null;
-    private UniformGridLayout uniformGridLayout = null;
+    private LinedFlowLayout? linedFlowLayout = null;
+    private StackLayout? stackLayout = null;
+    private UniformGridLayout? uniformGridLayout = null;
 
-    private DataTemplate linedFlowLayoutItemTemplate = null;
-    private DataTemplate stackLayoutItemTemplate = null;
-    private DataTemplate uniformGridLayoutItemTemplate = null;
+    private DataTemplate? linedFlowLayoutItemTemplate = null;
+    private DataTemplate? stackLayoutItemTemplate = null;
+    private DataTemplate? uniformGridLayoutItemTemplate = null;
 
     private bool applyLinedFlowLayoutLineHeightAsync = false;
     private bool applyLinedFlowLayoutOptionsAsync = false;
@@ -72,7 +72,12 @@ public sealed partial class ItemsViewPage : ItemsPageBase
     // Example1
     private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e)
     {
-        tblBasicInvokeOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
+        if (e.InvokedItem is not CustomDataObject invokedItem)
+        {
+            return;
+        }
+
+        tblBasicInvokeOutput.Text = "You invoked " + invokedItem.Title + ".";
     }
 
     // Example2
@@ -80,7 +85,7 @@ public sealed partial class ItemsViewPage : ItemsPageBase
     {
         if (linedFlowLayout != null && rbSmallLineHeight != null)
         {
-            linedFlowLayout.LineHeight = (bool)rbSmallLineHeight.IsChecked ? 80 : 160;
+            linedFlowLayout.LineHeight = rbSmallLineHeight.IsChecked is true ? 80 : 160;
         }
     }
 
@@ -225,7 +230,12 @@ public sealed partial class ItemsViewPage : ItemsPageBase
     // Example3
     private void SwappableSelectionModesItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e)
     {
-        tblInvocationOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
+        if (e.InvokedItem is not CustomDataObject invokedItem)
+        {
+            return;
+        }
+
+        tblInvocationOutput.Text = "You invoked " + invokedItem.Title + ".";
     }
 
     private void SwappableSelectionModesItemsView_SelectionChanged(ItemsView sender, ItemsViewSelectionChangedEventArgs e)
@@ -250,7 +260,7 @@ public sealed partial class ItemsViewPage : ItemsPageBase
 
         if (SwappableSelectionModesItemsView != null && chkIsItemInvokedEnabled != null)
         {
-            SwappableSelectionModesItemsView.IsItemInvokedEnabled = (bool)chkIsItemInvokedEnabled.IsChecked;
+            SwappableSelectionModesItemsView.IsItemInvokedEnabled = chkIsItemInvokedEnabled.IsChecked is true;
         }
     }
 }

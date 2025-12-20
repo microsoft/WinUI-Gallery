@@ -13,9 +13,9 @@ namespace WinUIGallery.Pages;
 
 public sealed partial class HomePage : ItemsPageBase
 {
-    IReadOnlyList<ControlInfoDataItem> RecentlyVisitedSamplesList;
-    IReadOnlyList<ControlInfoDataItem> RecentlyAddedOrUpdatedSamplesList;
-    IReadOnlyList<ControlInfoDataItem> FavoriteSamplesList;
+    IReadOnlyList<ControlInfoDataItem>? RecentlyVisitedSamplesList;
+    IReadOnlyList<ControlInfoDataItem>? RecentlyAddedOrUpdatedSamplesList;
+    IReadOnlyList<ControlInfoDataItem>? FavoriteSamplesList;
 
     public HomePage()
     {

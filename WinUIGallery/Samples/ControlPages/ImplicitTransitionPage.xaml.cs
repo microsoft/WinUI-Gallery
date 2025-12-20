@@ -33,23 +33,51 @@ public sealed partial class ImplicitTransitionPage : Page
 
     private void OpacityButton_Click(object sender, RoutedEventArgs e)
     {
+        float opacity = EnsureValueIsNumber(OpacityNumberBox);
+        ApplyOpacity(opacity);
+    }
+
+    private void ApplyOpacity(float opacity)
+    {
         // If the implicit animation API is not present, simply no-op. 
         if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
-        var customValue = EnsureValueIsNumber(OpacityNumberBox);
-        OpacityRectangle.Opacity = customValue;
-        OpacityValue.Value = customValue;
+
+        OpacityRectangle.Opacity = opacity;
+        OpacityValue.Value = opacity;
         // announce visual change to automation
         UIHelper.AnnounceActionForAccessibility(OpacityBtn, $"Rectangle opacity changed by {OpacityValue.Value} points", "RectangleChangedNotificationActivityId");
     }
+
     private void RotationButton_Click(object sender, RoutedEventArgs e)
+    {
+        float rotation = EnsureValueIsNumber(RotationNumberBox);
+        ApplyRotation(rotation);
+    }
+
+    private void ApplyRotation(float rotation)
     {
         RotationRectangle.CenterPoint = new System.Numerics.Vector3((float)RotationRectangle.ActualWidth / 2, (float)RotationRectangle.ActualHeight / 2, 0f);
 
-        RotationRectangle.Rotation = EnsureValueIsNumber(RotationNumberBox);
+        RotationRectangle.Rotation = rotation;
         // announce visual change to automation
         UIHelper.AnnounceActionForAccessibility(RotateBtn, $"Rectangle rotated by {RotationNumberBox.Value} degrees", "RectangleChangedNotificationActivityId");
     }
+
     private void ScaleButton_Click(object sender, RoutedEventArgs e)
+    {
+        float scale;
+        if ((sender as Button)?.Tag is { } tag)
+        {
+            scale = (float)Convert.ToDouble(tag);
+        }
+        else
+        {
+            scale = EnsureValueIsNumber(ScaleNumberBox);
+        }
+        ApplyScale(scale);
+    }
+
+    private void ApplyScale(float scale)
     {
         var _scaleTransition = ScaleRectangle.ScaleTransition;
 
@@ -57,24 +85,27 @@ public sealed partial class ImplicitTransitionPage : Page
                                      ((ScaleY.IsChecked == true) ? Vector3TransitionComponents.Y : 0) |
                                      ((ScaleZ.IsChecked == true) ? Vector3TransitionComponents.Z : 0);
 
-        float customValue;
-
-        if (sender != null && (sender as Button).Tag != null)
-        {
-            customValue = (float)Convert.ToDouble((sender as Button).Tag);
-        }
-        else
-        {
-            customValue = EnsureValueIsNumber(ScaleNumberBox);
-        }
-
-        ScaleRectangle.Scale = new Vector3(customValue);
-        ScaleValue.Value = customValue;
+        ScaleRectangle.Scale = new Vector3(scale);
+        ScaleValue.Value = scale;
         // announce visual change to automation
         UIHelper.AnnounceActionForAccessibility(ScaleBtn, $"Rectangle scaled by {ScaleValue.Value} points", "RectangleChangedNotificationActivityId");
     }
 
     private void TranslateButton_Click(object sender, RoutedEventArgs e)
+    {
+        float translation;
+        if ((sender as Button)?.Tag is { } tag)
+        {
+            translation = (float)Convert.ToDouble(tag);
+        }
+        else
+        {
+            translation = EnsureValueIsNumber(TranslationNumberBox);
+        }
+        ApplyTranslation(translation);
+    }
+
+    private void ApplyTranslation(float translation)
     {
         var _translationTransition = TranslateRectangle.TranslationTransition;
 
@@ -82,41 +113,36 @@ public sealed partial class ImplicitTransitionPage : Page
                                      ((TranslateY.IsChecked == true) ? Vector3TransitionComponents.Y : 0) |
                                      ((TranslateZ.IsChecked == true) ? Vector3TransitionComponents.Z : 0);
 
-        float customValue;
-        if (sender != null && (sender as Button).Tag != null)
-        {
-            customValue = (float)Convert.ToDouble((sender as Button).Tag);
-        }
-        else
-        {
-            customValue = EnsureValueIsNumber(TranslationNumberBox);
-        }
-
-        TranslateRectangle.Translation = new Vector3(customValue);
-        TranslationValue.Value = customValue;
+        TranslateRectangle.Translation = new Vector3(translation);
+        TranslationValue.Value = translation;
         // announce visual change to automation
         UIHelper.AnnounceActionForAccessibility(TranslateBtn, $"Rectangle translated by {TranslationValue.Value} points", "RectangleChangedNotificationActivityId");
     }
 
     private void NumberBox_KeyDown(object sender, KeyRoutedEventArgs e)
     {
+        if ((sender as NumberBox)?.Header is not string header)
+        {
+            return;
+        }
+
         if (e.Key == Windows.System.VirtualKey.Enter)
         {
-            if ((string)(sender as NumberBox).Header == "Opacity (0.0 to 1.0)")
+            if (header == "Opacity (0.0 to 1.0)")
             {
-                OpacityButton_Click(null, null);
+                ApplyOpacity(EnsureValueIsNumber(OpacityNumberBox));
             }
-            if ((string)(sender as NumberBox).Header == "Rotation (0.0 to 360.0)")
+            if (header == "Rotation (0.0 to 360.0)")
             {
-                RotationButton_Click(null, null);
+                ApplyRotation(EnsureValueIsNumber(RotationNumberBox));
             }
-            if ((string)(sender as NumberBox).Header == "Scale (0.0 to 5.0)")
+            if (header == "Scale (0.0 to 5.0)")
             {
-                ScaleButton_Click(null, null);
+                ApplyScale(EnsureValueIsNumber(ScaleNumberBox));
             }
-            if ((string)(sender as NumberBox).Header == "Translation (0.0 to 200.0)")
+            if (header == "Translation (0.0 to 200.0)")
             {
-                TranslateButton_Click(null, null);
+                ApplyTranslation(EnsureValueIsNumber(TranslationNumberBox));
             }
         }
     }
@@ -124,7 +150,7 @@ public sealed partial class ImplicitTransitionPage : Page
     private void BackgroundButton_Click(object sender, RoutedEventArgs e)
     {
 
-        if ((BrushPresenter.Background as SolidColorBrush).Color == Microsoft.UI.Colors.Blue)
+        if ((BrushPresenter.Background as SolidColorBrush)?.Color == Microsoft.UI.Colors.Blue)
         {
             BrushPresenter.Background = new SolidColorBrush(Microsoft.UI.Colors.Yellow);
             // announce visual change to automation

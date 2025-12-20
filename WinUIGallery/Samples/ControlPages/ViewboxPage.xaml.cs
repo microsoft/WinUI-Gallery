@@ -19,7 +19,7 @@ public sealed partial class ViewboxPage : Page
     {
         if (sender is RadioButton rb && Control1 != null)
         {
-            string direction = rb.Tag.ToString();
+            string? direction = rb.Tag.ToString();
             switch (direction)
             {
                 case "UpOnly":
@@ -41,7 +41,7 @@ public sealed partial class ViewboxPage : Page
     {
         if (sender is RadioButton rb && Control1 != null)
         {
-            string stretch = rb.Tag.ToString();
+            string? stretch = rb.Tag.ToString();
             switch (stretch)
             {
                 case "None":

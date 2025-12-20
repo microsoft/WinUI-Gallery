@@ -26,14 +26,14 @@ public sealed partial class ConnectedAnimationPage : Page
         ContentFrame.Navigate(typeof(SamplePage1));
     }
 
-    private ConnectedAnimationConfiguration GetConfiguration()
+    private ConnectedAnimationConfiguration? GetConfiguration()
     {
         if (this.ConfigurationPanel == null)
         {
             return null;
         }
 
-        var selectedName = (ConfigurationPanel.SelectedItem as RadioButton).Content.ToString();
+        string? selectedName = (ConfigurationPanel.SelectedItem as RadioButton)?.Content.ToString();
         switch (selectedName)
         {
             case "Gravity":
@@ -51,14 +51,14 @@ public sealed partial class ConnectedAnimationPage : Page
     {
         var currentContent = ContentFrame.Content;
 
-        if (currentContent as SamplePage1 != null)
+        if (currentContent is SamplePage1 samplePage1)
         {
-            (currentContent as SamplePage1).PrepareConnectedAnimation(GetConfiguration());
+            samplePage1.PrepareConnectedAnimation(GetConfiguration());
             ContentFrame.Navigate(typeof(SamplePage2), null, new SuppressNavigationTransitionInfo());
         }
-        else if (currentContent as SamplePage2 != null)
+        else if (currentContent is SamplePage2 samplePage2)
         {
-            (currentContent as SamplePage2).PrepareConnectedAnimation(GetConfiguration());
+            samplePage2.PrepareConnectedAnimation(GetConfiguration());
             ContentFrame.Navigate(typeof(SamplePage1), null, new SuppressNavigationTransitionInfo());
         }
     }
@@ -67,11 +67,11 @@ public sealed partial class ConnectedAnimationPage : Page
 // Sample data object used to populate the collection page.
 public class CustomDataObject
 {
-    public string Title { get; set; }
-    public string ImageLocation { get; set; }
-    public string Views { get; set; }
-    public string Likes { get; set; }
-    public string Description { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public string ImageLocation { get; set; } = string.Empty;
+    public string Views { get; set; } = string.Empty;
+    public string Likes { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
 
     public CustomDataObject()
     {

@@ -19,12 +19,12 @@ namespace WinUIGallery.Controls;
 /// </summary>
 public sealed class ControlExampleSubstitution : DependencyObject
 {
-    public event TypedEventHandler<ControlExampleSubstitution, object> ValueChanged;
+    public event TypedEventHandler<ControlExampleSubstitution, object?>? ValueChanged;
 
-    public string Key { get; set; }
+    public string Key { get; set; } = string.Empty;
 
-    private object _value = null;
-    public object Value
+    private object? _value = null;
+    public object? Value
     {
         get { return _value; }
         set
@@ -52,7 +52,7 @@ public sealed class ControlExampleSubstitution : DependencyObject
             return string.Empty;
         }
 
-        object value = Value;
+        object? value = Value;
 
         // For solid color brushes, use the underlying color.
         if (value is SolidColorBrush)
@@ -60,12 +60,7 @@ public sealed class ControlExampleSubstitution : DependencyObject
             value = ((SolidColorBrush)value).Color;
         }
 
-        if (value == null)
-        {
-            return string.Empty;
-        }
-
-        return value.ToString();
+        return value?.ToString() ?? string.Empty;
     }
 }
 
@@ -193,15 +188,19 @@ public sealed partial class ControlExample : UserControl
 
     private void SelectorBarItem_Loaded(object sender, RoutedEventArgs e)
     {
-        var item = sender as SelectorBarItem;
-        if (item == null)
+        if (sender is not SelectorBarItem item)
             return;
 
-        if (item.Tag.ToString().Equals("Xaml", StringComparison.OrdinalIgnoreCase))
+        PrepareSelectorBarItem(item);
+    }
+
+    private void PrepareSelectorBarItem(SelectorBarItem item)
+    {
+        if (item.Tag.ToString()?.Equals("Xaml", StringComparison.OrdinalIgnoreCase) is true)
         {
             item.Visibility = string.IsNullOrEmpty(Xaml) && string.IsNullOrEmpty(XamlSource) ? Visibility.Collapsed : Visibility.Visible;
         }
-        else if (item.Tag.ToString().Equals("CSharp", StringComparison.OrdinalIgnoreCase))
+        else if (item.Tag.ToString()?.Equals("CSharp", StringComparison.OrdinalIgnoreCase) is true)
         {
             item.Visibility = string.IsNullOrEmpty(CSharp) && string.IsNullOrEmpty(CSharpSource) ? Visibility.Collapsed : Visibility.Visible;
         }
@@ -217,19 +216,18 @@ public sealed partial class ControlExample : UserControl
 
     private static void OnXamlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        var ctrl = (ControlExample)d;
-        if (ctrl != null)
-        {
-            ctrl.SelectorBarItem_Loaded(ctrl.SelectorBarXamlItem, null);
-        }
+        if (d is not ControlExample ctrl)
+            return;
+
+        ctrl.PrepareSelectorBarItem(ctrl.SelectorBarXamlItem);
     }
+
     private static void OnCSharpChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        var ctrl = (ControlExample)d;
-        if (ctrl != null)
-        {
-            ctrl.SelectorBarItem_Loaded(ctrl.SelectorBarCSharpItem, null);
-        }
+        if (d is not ControlExample ctrl)
+            return;
+
+        ctrl.PrepareSelectorBarItem(ctrl.SelectorBarCSharpItem);
     }
 
     private void SelectorBarControl_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
@@ -242,12 +240,12 @@ public sealed partial class ControlExample : UserControl
         var selectedItem = SelectorBarControl.SelectedItem;
         if (selectedItem != null)
         {
-            if (selectedItem.Tag.ToString().Equals("Xaml", StringComparison.OrdinalIgnoreCase))
+            if (selectedItem.Tag.ToString()?.Equals("Xaml", StringComparison.OrdinalIgnoreCase) is true)
             {
                 XamlContentPresenter.Visibility = Visibility.Visible;
                 CSharpContentPresenter.Visibility = Visibility.Collapsed;
             }
-            else if (selectedItem.Tag.ToString().Equals("CSharp", StringComparison.OrdinalIgnoreCase))
+            else if (selectedItem.Tag.ToString()?.Equals("CSharp", StringComparison.OrdinalIgnoreCase) is true)
             {
                 CSharpContentPresenter.Visibility = Visibility.Visible;
                 XamlContentPresenter.Visibility = Visibility.Collapsed;

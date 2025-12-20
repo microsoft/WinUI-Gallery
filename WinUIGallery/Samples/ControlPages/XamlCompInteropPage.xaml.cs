@@ -21,7 +21,7 @@ public sealed partial class XamlCompInteropPage : Page
     }
 
     Compositor _compositor = Microsoft.UI.Xaml.Media.CompositionTarget.GetCompositorForCurrentThread();
-    private SpringVector3NaturalMotionAnimation _springAnimation;
+    private SpringVector3NaturalMotionAnimation? _springAnimation;
 
     private void NaturalMotionExample_Loaded(object sender, RoutedEventArgs e)
     {
@@ -47,7 +47,7 @@ public sealed partial class XamlCompInteropPage : Page
         {
             // We need to specify the InvariantCulture since the decimal point depends on the
             // system language and might parse "0.8" to 8 since the decimal point is a different character
-            return (float)Convert.ToDouble((DampingStackPanel.SelectedItem as RadioButton).Content, CultureInfo.InvariantCulture);
+            return (float)Convert.ToDouble((DampingStackPanel.SelectedItem as RadioButton)?.Content, CultureInfo.InvariantCulture);
         }
         return 0.6f;
     }
@@ -64,16 +64,26 @@ public sealed partial class XamlCompInteropPage : Page
 
     private void element_PointerEntered(object sender, PointerRoutedEventArgs e)
     {
+        if (sender is not UIElement uiElement || _springAnimation is null)
+        {
+            return;
+        }
+
         UpdateSpringAnimation(1.5f);
 
-        StartAnimationIfAPIPresent((sender as UIElement), _springAnimation);
+        StartAnimationIfAPIPresent(uiElement, _springAnimation);
     }
 
     private void element_PointerExited(object sender, PointerRoutedEventArgs e)
     {
+        if (sender is not UIElement uiElement || _springAnimation is null)
+        {
+            return;
+        }
+
         UpdateSpringAnimation(1f);
 
-        StartAnimationIfAPIPresent((sender as UIElement), _springAnimation);
+        StartAnimationIfAPIPresent(uiElement, _springAnimation);
     }
 
 

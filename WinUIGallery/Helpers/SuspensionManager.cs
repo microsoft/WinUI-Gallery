@@ -66,7 +66,7 @@ internal sealed partial class SuspensionManager
             // Save the navigation state for all registered frames
             foreach (var weakFrameReference in _registeredFrames)
             {
-                if (weakFrameReference.TryGetTarget(out Frame frame))
+                if (weakFrameReference.TryGetTarget(out Frame? frame))
                 {
                     SaveFrameNavigationState(frame);
                 }
@@ -119,13 +119,17 @@ internal sealed partial class SuspensionManager
             {
                 // Deserialize the Session State
                 DataContractSerializer serializer = new DataContractSerializer(typeof(Dictionary<string, object>), _knownTypes);
-                _sessionState = (Dictionary<string, object>)serializer.ReadObject(inStream.AsStreamForRead());
+
+                if (serializer.ReadObject(inStream.AsStreamForRead()) is Dictionary<string, object> readObject)
+                {
+                    _sessionState = readObject;
+                }
             }
 
             // Restore any registered frames to their saved state
             foreach (var weakFrameReference in _registeredFrames)
             {
-                if (weakFrameReference.TryGetTarget(out Frame frame))
+                if (weakFrameReference.TryGetTarget(out Frame? frame))
                 {
                     frame.ClearValue(FrameSessionStateProperty);
                     RestoreFrameNavigationState(frame);
@@ -191,7 +195,7 @@ internal sealed partial class SuspensionManager
         SessionState.Remove((string)frame.GetValue(FrameSessionStateKeyProperty));
         _registeredFrames.RemoveAll((weakFrameReference) =>
         {
-            return !weakFrameReference.TryGetTarget(out Frame testFrame) || testFrame == frame;
+            return !weakFrameReference.TryGetTarget(out Frame? testFrame) || testFrame == frame;
         });
     }
 

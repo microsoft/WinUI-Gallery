@@ -11,7 +11,8 @@ namespace WinUIGallery.SamplePages;
 
 public sealed partial class DetailedInfoPage : Page
 {
-    public CustomDataObject DetailedObject { get; set; }
+    public CustomDataObject? DetailedObject { get; set; }
+
     public DetailedInfoPage()
     {
         this.InitializeComponent();

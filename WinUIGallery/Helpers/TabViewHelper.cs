@@ -19,8 +19,8 @@ public static partial class TabViewHelper
         {
             return;
         }
-        ListView tabViewListView = null;
-        TabView tabView = null;
+        ListView? tabViewListView = null;
+        TabView? tabView = null;
 
         DependencyObject current = item;
 

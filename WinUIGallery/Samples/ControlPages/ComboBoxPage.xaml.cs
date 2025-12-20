@@ -38,7 +38,7 @@ public sealed partial class ComboBoxPage : Page
 
     private void ColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string colorName = e.AddedItems[0].ToString();
+        string? colorName = e.AddedItems[0].ToString();
         Windows.UI.Color color;
         switch (colorName)
         {

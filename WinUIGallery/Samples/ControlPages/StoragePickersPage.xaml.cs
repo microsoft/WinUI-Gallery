@@ -61,7 +61,7 @@ public sealed partial class StoragePickersPage : Page
 
             //re-enable the button
             button.IsEnabled = true;
-            UIHelper.AnnounceActionForAccessibility(sender as Button, PickedSingleFileTextBlock.Text, "FilePickedNotificationId");
+            UIHelper.AnnounceActionForAccessibility(button, PickedSingleFileTextBlock.Text, "FilePickedNotificationId");
         }
     }
 
@@ -218,7 +218,7 @@ public sealed partial class StoragePickersPage : Page
             // re-enable the button
             button.IsEnabled = true;
 
-            UIHelper.AnnounceActionForAccessibility(sender as Button, PickedFolderTextBlock.Text, "FolderPickedNotificationId");
+            UIHelper.AnnounceActionForAccessibility(button, PickedFolderTextBlock.Text, "FolderPickedNotificationId");
         }
     }
 
@@ -241,7 +241,7 @@ public sealed partial class StoragePickersPage : Page
 
             button.IsEnabled = true;
             UIHelper.AnnounceActionForAccessibility(
-                sender as Button,
+                button,
                 folder != null && !string.IsNullOrEmpty(folder.Path)
                     ? "Folder selected: " + SuggestedFolderTextBox.Text
                     : "No folder selected",

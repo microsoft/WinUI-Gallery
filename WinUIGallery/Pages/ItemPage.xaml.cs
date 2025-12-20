@@ -22,13 +22,13 @@ public sealed partial class ItemPage : Page
     private static string WinUIBaseUrl = "https://github.com/microsoft/microsoft-ui-xaml/tree/main/src/controls/dev";
     private static string GalleryBaseUrl = "https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/Samples/ControlPages/";
 
-    public ControlInfoDataItem Item
+    public ControlInfoDataItem? Item
     {
         get { return _item; }
         set { _item = value; }
     }
 
-    private ControlInfoDataItem _item;
+    private ControlInfoDataItem? _item;
     private ElementTheme? _currentElementTheme;
 
     public ItemPage()
@@ -46,7 +46,10 @@ public sealed partial class ItemPage : Page
 
     private void OnNavigationViewLoaded()
     {
-        App.MainWindow.EnsureNavigationSelection(this.Item.UniqueId);
+        if (this.Item is not null)
+        {
+            App.MainWindow.EnsureNavigationSelection(this.Item.UniqueId);
+        }
     }
 
     protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -61,7 +64,7 @@ public sealed partial class ItemPage : Page
                 Item = item;
 
                 // Load control page into frame.
-                Type pageType = Type.GetType("WinUIGallery.ControlPages." + item.UniqueId + "Page");
+                Type? pageType = Type.GetType("WinUIGallery.ControlPages." + item.UniqueId + "Page");
 
                 if (pageType != null)
                 {
@@ -73,7 +76,7 @@ public sealed partial class ItemPage : Page
                     System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
                     this.contentFrame.Navigate(pageType);
                 }
-                App.MainWindow.EnsureNavigationSelection(item?.UniqueId);
+                App.MainWindow.EnsureNavigationSelection(item.UniqueId);
 
                 if (contentFrame.Content is Page loadedPage && PageScrollBehaviorHelper.GetSuppressHostScrolling(loadedPage))
                 {
@@ -132,21 +135,21 @@ public sealed partial class ItemPage : Page
         // We use reflection to call the OnNavigatedFrom function the user leaves this page
         // See this PR for more information: https://github.com/microsoft/WinUI-Gallery/pull/145
         Frame contentFrameAsFrame = contentFrame as Frame;
-        Page innerPage = contentFrameAsFrame.Content as Page;
+        Page? innerPage = contentFrameAsFrame.Content as Page;
         if (innerPage != null)
         {
-            MethodInfo dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
+            MethodInfo? dynMethod = innerPage.GetType().GetMethod("OnNavigatedFrom",
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            dynMethod.Invoke(innerPage, new object[] { e });
+            dynMethod?.Invoke(innerPage, new object[] { e });
         }
 
         base.OnNavigatedFrom(e);
     }
 
-    public static ItemPage GetForElement(object obj)
+    public static ItemPage? GetForElement(object obj)
     {
         UIElement element = (UIElement)obj;
-        Window window = WindowHelper.GetWindowForElement(element);
+        Window? window = WindowHelper.GetWindowForElement(element);
         if (window != null)
         {
             return (ItemPage)window.Content;
@@ -156,7 +159,7 @@ public sealed partial class ItemPage : Page
 
     private void OnToggleTheme()
     {
-        var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? ThemeHelper.ActualTheme : _currentElementTheme.Value;
+        var currentElementTheme = ((_currentElementTheme ?? ElementTheme.Default) == ElementTheme.Default) ? ThemeHelper.ActualTheme : _currentElementTheme;
         var newTheme = currentElementTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
         SetControlExamplesTheme(newTheme);
     }

@@ -33,7 +33,7 @@ public partial class WindowHelper
         _activeWindows.Add(window);
     }
 
-    static public Window GetWindowForElement(UIElement element)
+    static public Window? GetWindowForElement(UIElement element)
     {
         if (element.XamlRoot != null)
         {

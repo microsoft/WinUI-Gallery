@@ -30,10 +30,10 @@ namespace YourNamespace
     public class ExampleViewModel : INotifyPropertyChanged
     {
         // Backing field for Title property.
-        private string _title;
+        private string _title = string.Empty;
 
         // Backing field for Description property.
-        private string _description;
+        private string _description = string.Empty;
 
         // Property for Title with change notification.
         public string Title
@@ -64,7 +64,7 @@ namespace YourNamespace
         }
 
         // Event to notify subscribers (UI elements) of property changes.
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         // Method to raise the PropertyChanged event.
         // This notifies the UI to update the bound control.

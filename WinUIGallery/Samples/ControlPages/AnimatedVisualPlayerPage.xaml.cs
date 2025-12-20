@@ -51,7 +51,7 @@ public sealed partial class AnimatedVisualPlayerPage : Page
 
     private void EnsurePlaying()
     {
-        if (PauseButton.IsChecked.Value)
+        if (PauseButton.IsChecked is true)
         {
             // Resume playing the animation, if paused.
             PauseButton.IsChecked = false;

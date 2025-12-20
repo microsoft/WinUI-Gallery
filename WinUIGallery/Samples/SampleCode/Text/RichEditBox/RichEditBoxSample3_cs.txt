@@ -116,9 +116,13 @@ private void FindBoxHighlightMatches()
 
 private void FindBoxRemoveHighlights()
 {
+    if (editor.Background is not SolidColorBrush defaultBackground ||
+        editor.Foreground is not SolidColorBrush defaultForeground)
+    {
+        return;
+    }
+
     ITextRange documentRange = editor.Document.GetRange(0, TextConstants.MaxUnitCount);
-    SolidColorBrush defaultBackground = editor.Background as SolidColorBrush;
-    SolidColorBrush defaultForeground = editor.Foreground as SolidColorBrush;
 
     documentRange.CharacterFormat.BackgroundColor = defaultBackground.Color;
     documentRange.CharacterFormat.ForegroundColor = defaultForeground.Color;

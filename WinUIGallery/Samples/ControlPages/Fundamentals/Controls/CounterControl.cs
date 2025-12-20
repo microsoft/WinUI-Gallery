@@ -39,8 +39,8 @@ public sealed partial class CounterControl : Control
         set => SetValue(ModeProperty, value);
     }
 
-    private Button ActionButton;
-    private TextBlock CountText;
+    private Button? ActionButton;
+    private TextBlock? CountText;
 
     protected override void OnApplyTemplate()
     {

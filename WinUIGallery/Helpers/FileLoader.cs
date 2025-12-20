@@ -14,7 +14,7 @@ internal partial class FileLoader
 {
     public static async Task<string> LoadText(string relativeFilePath)
     {
-        StorageFile file = null;
+        StorageFile? file = null;
         if (!NativeMethods.IsAppPackaged)
         {
             var sourcePath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, relativeFilePath));

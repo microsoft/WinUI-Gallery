@@ -2,7 +2,7 @@
 {
     for (int i = 0; i < 3; i++)
     {
-        (sender as TabView).TabItems.Add(CreateNewTab(i));
+        (sender as TabView)?.TabItems.Add(CreateNewTab(i));
     }
 }
 

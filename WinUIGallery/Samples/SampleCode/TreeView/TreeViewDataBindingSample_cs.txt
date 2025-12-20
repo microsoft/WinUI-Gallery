@@ -71,7 +71,7 @@ namespace YourNamespace
         }
 
         // Name of the item (displayed in the TreeView).
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         // Type of the item (Folder or File).
         public ExplorerItemType Type { get; set; }

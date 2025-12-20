@@ -22,7 +22,7 @@ public sealed partial class InfoBarPage : Page
 
     private void SeverityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string severityName = e.AddedItems[0].ToString();
+        string? severityName = e.AddedItems[0].ToString();
 
         switch (severityName)
         {

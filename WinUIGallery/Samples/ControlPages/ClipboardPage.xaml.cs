@@ -24,12 +24,17 @@ public sealed partial class ClipboardPage : Page
 
     private void CopyText_Click(object sender, RoutedEventArgs args)
     {
+        if (sender is not Button button)
+        {
+            return;
+        }
+
         richEditBox.Document.GetText(Microsoft.UI.Text.TextGetOptions.None, out textToCopy);
         var package = new DataPackage();
         package.SetText(textToCopy);
         Clipboard.SetContent(package);
 
-        UIHelper.AnnounceActionForAccessibility(sender as Button, "Text copied to clipboard", "TextCopiedSuccessNotificationId");
+        UIHelper.AnnounceActionForAccessibility(button, "Text copied to clipboard", "TextCopiedSuccessNotificationId");
 
         VisualStateManager.GoToState(this, "ConfirmationClipboardVisible", false);
         Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
@@ -48,13 +53,18 @@ public sealed partial class ClipboardPage : Page
 
     private async void PasteText_Click(object sender, RoutedEventArgs args)
     {
+        if (sender is not Button button)
+        {
+            return;
+        }
+
         var package = Clipboard.GetContent();
         if (package.Contains(StandardDataFormats.Text))
         {
             var text = await package.GetTextAsync();
             PasteClipboard2.Text = text;
 
-            UIHelper.AnnounceActionForAccessibility(sender as Button, "Text pasted from clipboard", "TextPastedSuccessNotificationId");
+            UIHelper.AnnounceActionForAccessibility(button, "Text pasted from clipboard", "TextPastedSuccessNotificationId");
         }
 
     }

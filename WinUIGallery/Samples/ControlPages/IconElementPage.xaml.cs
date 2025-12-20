@@ -17,7 +17,7 @@ public sealed partial class IconElementPage : Page
 
     private void MonochromeButton_CheckedChanged(object sender, RoutedEventArgs e)
     {
-        SlicesIcon.ShowAsMonochrome = (bool)MonochromeButton.IsChecked;
+        SlicesIcon.ShowAsMonochrome = MonochromeButton.IsChecked is true;
         SlicesIcon.UriSource = new Uri("ms-appx:///Assets/SampleMedia/Slices.png");
     }
 }

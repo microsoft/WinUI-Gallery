@@ -58,7 +58,7 @@ public sealed partial class CardPage : Page
 
     private void TipsGrid_ItemClick(object sender, ItemClickEventArgs e)
     {
-        ConnectedAnimation animation = null;
+        ConnectedAnimation? animation = null;
 
         // Get the collection item corresponding to the clicked item.
         if (collection.ContainerFromItem(e.ClickedItem) is GridViewItem container)
@@ -75,6 +75,6 @@ public sealed partial class CardPage : Page
 
         SmokeGrid.Visibility = Visibility.Visible;
 
-        animation.TryStart(destinationElement);
+        animation?.TryStart(destinationElement);
     }
 }

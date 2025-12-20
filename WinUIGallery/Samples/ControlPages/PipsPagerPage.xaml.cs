@@ -26,7 +26,7 @@ public sealed partial class PipsPagerPage : Page
 
     private void OrientationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string orientation = e.AddedItems[0].ToString();
+        string? orientation = e.AddedItems[0].ToString();
 
         switch (orientation)
         {
@@ -43,7 +43,7 @@ public sealed partial class PipsPagerPage : Page
 
     private void PrevButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string prevButtonVisibility = e.AddedItems[0].ToString();
+        string? prevButtonVisibility = e.AddedItems[0].ToString();
 
         switch (prevButtonVisibility)
         {
@@ -64,7 +64,7 @@ public sealed partial class PipsPagerPage : Page
 
     private void NextButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string nextButtonVisibility = e.AddedItems[0].ToString();
+        string? nextButtonVisibility = e.AddedItems[0].ToString();
 
         switch (nextButtonVisibility)
         {

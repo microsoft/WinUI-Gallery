@@ -21,7 +21,7 @@ public sealed partial class BindingPage : Page
         {
             Title = "Welcome to WinUI 3",
             Description = "This is an example of binding to a view model.",
-            NullString = null
+            NullString = string.Empty,
         };
         DataContext = ViewModel;
     }
@@ -41,9 +41,9 @@ public sealed partial class BindingPage : Page
 
 public partial class ExampleViewModel : INotifyPropertyChanged
 {
-    private string _title;
-    private string _description;
-    private string _nullString;
+    private string _title = string.Empty;
+    private string _description = string.Empty;
+    private string _nullString = string.Empty;
 
     public string Title
     {
@@ -84,7 +84,7 @@ public partial class ExampleViewModel : INotifyPropertyChanged
         }
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     protected void OnPropertyChanged(string propertyName)
     {

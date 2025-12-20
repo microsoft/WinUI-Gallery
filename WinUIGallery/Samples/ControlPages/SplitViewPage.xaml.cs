@@ -37,13 +37,17 @@ public sealed partial class SplitViewPage : Page
 
     private void NavLinksList_ItemClick(object sender, ItemClickEventArgs e)
     {
-        content.Text = (e.ClickedItem as NavLink).Label + " Page";
+        if (e.ClickedItem is not NavLink navLink)
+        {
+            return;
+        }
+
+        content.Text = navLink.Label + " Page";
     }
 
     private void PanePlacement_Toggled(object sender, RoutedEventArgs e)
     {
-        var ts = sender as ToggleSwitch;
-        if (ts.IsOn)
+        if ((sender as ToggleSwitch)?.IsOn is true)
         {
             splitView.PanePlacement = SplitViewPanePlacement.Right;
         }
@@ -74,12 +78,20 @@ public sealed partial class SplitViewPage : Page
 
     private void displayModeCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        splitView.DisplayMode = (SplitViewDisplayMode)Enum.Parse(typeof(SplitViewDisplayMode), (e.AddedItems[0] as ComboBoxItem).Content.ToString());
+        if ((e.AddedItems[0] as ComboBoxItem)?.Content.ToString() is not string displayMode)
+        {
+            return;
+        }
+
+        splitView.DisplayMode = (SplitViewDisplayMode)Enum.Parse(typeof(SplitViewDisplayMode), displayMode);
     }
 
     private void paneBackgroundCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var colorString = (e.AddedItems[0] as ComboBoxItem).Content.ToString();
+        if ((e.AddedItems[0] as ComboBoxItem)?.Content.ToString() is not string colorString)
+        {
+            return;
+        }
 
         VisualStateManager.GoToState(this, colorString, false);
     }
@@ -87,6 +99,6 @@ public sealed partial class SplitViewPage : Page
 
 public class NavLink
 {
-    public string Label { get; set; }
+    public string Label { get; set; } = string.Empty;
     public Symbol Symbol { get; set; }
 }

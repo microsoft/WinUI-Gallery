@@ -75,7 +75,7 @@ public sealed partial class NavigationViewPage : Page
                 string selectedItemTag = ((string)selectedItem.Tag);
                 sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
                 string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
-                Type pageType = Type.GetType(pageName);
+                Type? pageType = Type.GetType(pageName);
                 contentFrame.Navigate(pageType);
             }
         }
@@ -94,7 +94,7 @@ public sealed partial class NavigationViewPage : Page
                 var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
                 string selectedItemTag = ((string)selectedItem.Tag);
                 string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
-                Type pageType = Type.GetType(pageName);
+                Type? pageType = Type.GetType(pageName);
                 contentFrame2.Navigate(pageType);
             }
         }
@@ -116,7 +116,7 @@ public sealed partial class NavigationViewPage : Page
             string selectedItemTag = selectedItem.Name;
             sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
             string pageName = "WinUIGallery.SamplePages." + "SamplePage1";
-            Type pageType = Type.GetType(pageName);
+            Type? pageType = Type.GetType(pageName);
             contentFrame4.Navigate(pageType);
         }
     }
@@ -134,7 +134,7 @@ public sealed partial class NavigationViewPage : Page
             string selectedItemTag = ((string)selectedItem.Tag);
             sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
             string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
-            Type pageType = Type.GetType(pageName);
+            Type? pageType = Type.GetType(pageName);
             contentFrame5.Navigate(pageType);
         }
     }
@@ -148,7 +148,7 @@ public sealed partial class NavigationViewPage : Page
         {
             var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
             string pageName = "WinUIGallery.SamplePages." + ((string)selectedItem.Tag);
-            Type pageType = Type.GetType(pageName);
+            Type? pageType = Type.GetType(pageName);
             contentFrame6.Navigate(pageType);
         }
     }
@@ -163,7 +163,7 @@ public sealed partial class NavigationViewPage : Page
         {
             var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
             string pageName = "WinUIGallery.SamplePages." + ((string)selectedItem.Tag);
-            Type pageType = Type.GetType(pageName);
+            Type? pageType = Type.GetType(pageName);
 
             contentFrame7.Navigate(pageType, null, args.RecommendedNavigationTransitionInfo);
         }
@@ -188,7 +188,7 @@ public sealed partial class NavigationViewPage : Page
             string selectedItemTag = ((string)selectedItem.Tag);
             sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
             string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
-            Type pageType = Type.GetType(pageName);
+            Type? pageType = Type.GetType(pageName);
             contentFrame8.Navigate(pageType);
         }
     }
@@ -197,24 +197,24 @@ public sealed partial class NavigationViewPage : Page
     {
         var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
         string pageName = "WinUIGallery.SamplePages." + ((string)selectedItem.Tag);
-        Type pageType = Type.GetType(pageName);
+        Type? pageType = Type.GetType(pageName);
 
         contentFrame9.Navigate(pageType, null, args.RecommendedNavigationTransitionInfo);
     }
 
     private void headerCheck_Click(object sender, RoutedEventArgs e)
     {
-        nvSample.AlwaysShowHeader = (sender as CheckBox).IsChecked == true ? true : false;
+        nvSample.AlwaysShowHeader = (sender as CheckBox)?.IsChecked == true ? true : false;
     }
 
     private void settingsCheck_Click(object sender, RoutedEventArgs e)
     {
-        nvSample.IsSettingsVisible = (sender as CheckBox).IsChecked == true ? true : false;
+        nvSample.IsSettingsVisible = (sender as CheckBox)?.IsChecked == true ? true : false;
     }
 
     private void visibleCheck_Click(object sender, RoutedEventArgs e)
     {
-        if ((sender as CheckBox).IsChecked == true)
+        if ((sender as CheckBox)?.IsChecked == true)
         {
             nvSample.IsBackButtonVisible = Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Visible;
         }
@@ -226,12 +226,12 @@ public sealed partial class NavigationViewPage : Page
 
     private void enableCheck_Click(object sender, RoutedEventArgs e)
     {
-        nvSample.IsBackEnabled = (sender as CheckBox).IsChecked == true ? true : false;
+        nvSample.IsBackEnabled = (sender as CheckBox)?.IsChecked == true ? true : false;
     }
 
     private void autoSuggestCheck_Click(object sender, RoutedEventArgs e)
     {
-        if ((sender as CheckBox).IsChecked == true)
+        if ((sender as CheckBox)?.IsChecked == true)
         {
             AutoSuggestBox asb = new AutoSuggestBox() { QueryIcon = new SymbolIcon(Symbol.Find) };
             asb.SetValue(AutomationProperties.NameProperty, "search");
@@ -253,7 +253,7 @@ public sealed partial class NavigationViewPage : Page
 
     private void panemc_Check_Click(object sender, RoutedEventArgs e)
     {
-        if ((sender as CheckBox).IsChecked == true)
+        if ((sender as CheckBox)?.IsChecked == true)
         {
             PaneHyperlink.Visibility = Visibility.Visible;
         }
@@ -265,7 +265,7 @@ public sealed partial class NavigationViewPage : Page
 
     private void paneFooterCheck_Click(object sender, RoutedEventArgs e)
     {
-        if ((sender as CheckBox).IsChecked == true)
+        if ((sender as CheckBox)?.IsChecked == true)
         {
             FooterStackPanel.Visibility = Visibility.Visible;
         }
@@ -277,20 +277,20 @@ public sealed partial class NavigationViewPage : Page
 
     private void panePositionLeft_Checked(object sender, RoutedEventArgs e)
     {
-        if ((sender as RadioButton).IsChecked == true)
+        if ((sender as RadioButton)?.IsChecked == true)
         {
-            if ((sender as RadioButton).Name == "nvSampleLeft" && nvSample != null)
+            if ((sender as RadioButton)?.Name == "nvSampleLeft" && nvSample != null)
             {
                 nvSample.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
                 nvSample.IsPaneOpen = true;
                 FooterStackPanel.Orientation = Orientation.Vertical;
             }
-            else if ((sender as RadioButton).Name == "nvSample8Left" && nvSample8 != null)
+            else if ((sender as RadioButton)?.Name == "nvSample8Left" && nvSample8 != null)
             {
                 nvSample8.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
                 nvSample8.IsPaneOpen = true;
             }
-            else if ((sender as RadioButton).Name == "nvSample9Left" && nvSample9 != null)
+            else if ((sender as RadioButton)?.Name == "nvSample9Left" && nvSample9 != null)
             {
                 nvSample9.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left;
                 nvSample9.IsPaneOpen = true;
@@ -301,20 +301,20 @@ public sealed partial class NavigationViewPage : Page
 
     private void panePositionTop_Checked(object sender, RoutedEventArgs e)
     {
-        if ((sender as RadioButton).IsChecked == true)
+        if ((sender as RadioButton)?.IsChecked == true)
         {
-            if ((sender as RadioButton).Name == "nvSampleTop" && nvSample != null)
+            if ((sender as RadioButton)?.Name == "nvSampleTop" && nvSample != null)
             {
                 nvSample.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
                 nvSample.IsPaneOpen = false;
                 FooterStackPanel.Orientation = Orientation.Horizontal;
             }
-            else if ((sender as RadioButton).Name == "nvSample8Top" && nvSample8 != null)
+            else if ((sender as RadioButton)?.Name == "nvSample8Top" && nvSample8 != null)
             {
                 nvSample8.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
                 nvSample8.IsPaneOpen = false;
             }
-            else if ((sender as RadioButton).Name == "nvSample9Top" && nvSample9 != null)
+            else if ((sender as RadioButton)?.Name == "nvSample9Top" && nvSample9 != null)
             {
                 nvSample9.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top;
                 nvSample9.IsPaneOpen = false;
@@ -324,9 +324,9 @@ public sealed partial class NavigationViewPage : Page
 
     private void panePositionLeftCompact_Checked(object sender, RoutedEventArgs e)
     {
-        if ((sender as RadioButton).IsChecked == true)
+        if ((sender as RadioButton)?.IsChecked == true)
         {
-            if ((sender as RadioButton).Name == "nvSample8LeftCompact" && nvSample8 != null)
+            if ((sender as RadioButton)?.Name == "nvSample8LeftCompact" && nvSample8 != null)
             {
                 nvSample8.PaneDisplayMode = Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.LeftCompact;
                 nvSample8.IsPaneOpen = false;
@@ -336,7 +336,7 @@ public sealed partial class NavigationViewPage : Page
 
     private void sffCheck_Click(object sender, RoutedEventArgs e)
     {
-        if ((sender as CheckBox).IsChecked == true)
+        if ((sender as CheckBox)?.IsChecked == true)
         {
             nvSample.SelectionFollowsFocus = Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus.Enabled;
         }
@@ -348,6 +348,6 @@ public sealed partial class NavigationViewPage : Page
 
     private void suppressselectionCheck_Checked_Click(object sender, RoutedEventArgs e)
     {
-        SamplePage2Item.SelectsOnInvoked = (sender as CheckBox).IsChecked == true ? false : true;
+        SamplePage2Item.SelectsOnInvoked = (sender as CheckBox)?.IsChecked == true ? false : true;
     }
 }

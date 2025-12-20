@@ -8,8 +8,8 @@ public partial class CategoryBase { }
 
 public partial class Category : CategoryBase
 {
-    public string Name { get; set; }
-    public string Tooltip { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Tooltip { get; set; } = string.Empty;
     public Symbol Glyph { get; set; }
 }
 
@@ -17,5 +17,5 @@ public partial class Separator : CategoryBase { }
 
 public partial class Header : CategoryBase
 {
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 }

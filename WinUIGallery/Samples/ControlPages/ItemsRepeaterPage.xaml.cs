@@ -24,12 +24,12 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     private int MaxLength = 425;
 
     public ObservableCollection<int> Numbers { get; } = new ObservableCollection<int>(Enumerable.Range(0, 500));
-    public ObservableCollection<Bar> BarItems;
-    public MyItemsSource filteredRecipeData = new MyItemsSource(null);
-    public List<Recipe> staticRecipeData;
+    public ObservableCollection<Bar>? BarItems;
+    public MyItemsSource filteredRecipeData = new MyItemsSource([]);
+    public List<Recipe> staticRecipeData = [];
     private bool IsSortDescending = false;
 
-    private Button LastSelectedColorButton;
+    private Button? LastSelectedColorButton;
     private int PreviouslyFocusedAnimatedScrollRepeaterIndex = -1;
 
     public ItemsRepeaterPage()
@@ -146,13 +146,13 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     // ==========================================================================
     private void AddBtn_Click(object sender, RoutedEventArgs e)
     {
-        BarItems.Add(new Bar(random.Next(this.MaxLength), this.MaxLength));
+        BarItems?.Add(new Bar(random.Next(this.MaxLength), this.MaxLength));
         DeleteBtn.IsEnabled = true;
     }
 
     private void DeleteBtn_Click(object sender, RoutedEventArgs e)
     {
-        if (BarItems.Count > 0)
+        if (BarItems?.Count > 0)
         {
             BarItems.RemoveAt(0);
             if (BarItems.Count == 0)
@@ -164,14 +164,13 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
 
     private void RadioBtn_Click(object sender, SelectionChangedEventArgs e)
     {
-        string itemTemplateKey = string.Empty;
-        var selected = (sender as Microsoft.UI.Xaml.Controls.RadioButtons).SelectedItem;
-        if (selected == null)
+        if (((sender as RadioButtons)?.SelectedItem as FrameworkElement)?.Tag is not string layoutKey)
         {
             // No point in continuing if selected element is null
             return;
         }
-        var layoutKey = ((FrameworkElement)selected).Tag as string;
+
+        string itemTemplateKey = string.Empty;
 
         if (layoutKey.Equals(nameof(this.VerticalStackLayout))) // we used x:Name in the resources which both acts as the x:Key value and creates a member field by the same name
         {
@@ -232,11 +231,8 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     // ==========================================================================
     private void LayoutBtn_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var radioButtons = sender as Microsoft.UI.Xaml.Controls.RadioButtons;
-        if (radioButtons?.SelectedItem is RadioButton selectedRadioButton)
+        if (((sender as RadioButtons)?.SelectedItem as RadioButton)?.Tag is string layoutKey)
         {
-            string layoutKey = selectedRadioButton.Tag as string;
-
             repeater2.Layout = Resources[layoutKey] as Microsoft.UI.Xaml.Controls.VirtualizingLayout;
 
             layout2.Value = layoutKey;
@@ -260,7 +256,10 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
 
     private void OnAnimatedItemGotFocus(object sender, RoutedEventArgs e)
     {
-        var item = sender as FrameworkElement;
+        if (sender is not FrameworkElement item)
+        {
+            return;
+        }
 
         // Store the last focused Index so we can land back on it when focus leaves
         // and comes back to the repeater.
@@ -287,11 +286,15 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
 
     private void OnAnimatedItemClicked(object sender, RoutedEventArgs e)
     {
+        if (sender is not Button senderBtn)
+        {
+            return;
+        }
+
         // Update corresponding rectangle with selected color
-        Button senderBtn = sender as Button;
         colorRectangle.Fill = senderBtn.Background;
         // announce visual change to automation
-        UIHelper.AnnounceActionForAccessibility(sender as UIElement, $"Rectangle color set to {(sender as ContentControl).Content}", "RectangleChangedNotificationActivityId");
+        UIHelper.AnnounceActionForAccessibility(senderBtn, $"Rectangle color set to {senderBtn.Content}", "RectangleChangedNotificationActivityId");
         SetUIANamesForSelectedEntry(senderBtn);
     }
 
@@ -424,7 +427,7 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
             {
                 var element = animatedScrollRepeater.GetOrCreateElement(targetIndex);
                 element.StartBringIntoView();
-                (element as Control).Focus(FocusState.Programmatic);
+                (element as Control)?.Focus(FocusState.Programmatic);
                 e.Handled = true;
             }
         }
@@ -445,10 +448,10 @@ public class NestedCategory
 
 public partial class MyDataTemplateSelector : DataTemplateSelector
 {
-    public DataTemplate Normal { get; set; }
-    public DataTemplate Accent { get; set; }
+    public DataTemplate? Normal { get; set; }
+    public DataTemplate? Accent { get; set; }
 
-    protected override DataTemplate SelectTemplateCore(object item)
+    protected override DataTemplate? SelectTemplateCore(object item)
     {
         if ((int)item % 2 == 0)
         {
@@ -465,11 +468,11 @@ public partial class StringOrIntTemplateSelector : DataTemplateSelector
 {
     // Define the (currently empty) data templates to return
     // These will be "filled-in" in the XAML code.
-    public DataTemplate StringTemplate { get; set; }
+    public DataTemplate? StringTemplate { get; set; }
 
-    public DataTemplate IntTemplate { get; set; }
+    public DataTemplate? IntTemplate { get; set; }
 
-    protected override DataTemplate SelectTemplateCore(object item)
+    protected override DataTemplate? SelectTemplateCore(object item)
     {
         // Return the correct data template based on the item's type.
         if (item.GetType() == typeof(string))
@@ -513,10 +516,10 @@ public class Bar
 public class Recipe
 {
     public int Num { get; set; }
-    public string Ingredients { get; set; }
-    public List<string> IngList { get; set; }
-    public string Name { get; set; }
-    public string Color { get; set; }
+    public string Ingredients { get; set; } = string.Empty;
+    public List<string> IngList { get; set; } = [];
+    public string Name { get; set; } = string.Empty;
+    public string Color { get; set; } = string.Empty;
     public int NumIngredients
     {
         get
@@ -553,7 +556,7 @@ public class Recipe
 }
 
 // Custom data source class that assigns elements unique IDs, making filtering easier
-public partial class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndexMapping, INotifyCollectionChanged
+public partial class MyItemsSource : IList, IKeyIndexMapping, INotifyCollectionChanged
 {
     private List<Recipe> inner = new List<Recipe>();
 
@@ -576,7 +579,7 @@ public partial class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndex
     #region IReadOnlyList<T>
     public int Count => this.inner != null ? this.inner.Count : 0;
 
-    public object this[int index]
+    public object? this[int index]
     {
         get
         {
@@ -585,7 +588,12 @@ public partial class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndex
 
         set
         {
-            inner[index] = (Recipe)value;
+            if (value is not Recipe recipe)
+            {
+                throw new ArgumentException("Value must be of type Recipe.", nameof(value));
+            }
+
+            inner[index] = recipe;
         }
     }
 
@@ -594,7 +602,7 @@ public partial class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndex
     #endregion
 
     #region INotifyCollectionChanged
-    public event NotifyCollectionChangedEventHandler CollectionChanged;
+    public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
     #endregion
 
@@ -624,7 +632,7 @@ public partial class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndex
         throw new NotImplementedException();
     }
 
-    public int Add(object value)
+    public int Add(object? value)
     {
         throw new NotImplementedException();
     }
@@ -634,22 +642,22 @@ public partial class MyItemsSource : IList, Microsoft.UI.Xaml.Controls.IKeyIndex
         throw new NotImplementedException();
     }
 
-    public bool Contains(object value)
+    public bool Contains(object? value)
     {
         throw new NotImplementedException();
     }
 
-    public int IndexOf(object value)
+    public int IndexOf(object? value)
     {
         throw new NotImplementedException();
     }
 
-    public void Insert(int index, object value)
+    public void Insert(int index, object? value)
     {
         throw new NotImplementedException();
     }
 
-    public void Remove(object value)
+    public void Remove(object? value)
     {
         throw new NotImplementedException();
     }

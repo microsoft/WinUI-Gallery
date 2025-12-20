@@ -42,8 +42,8 @@ public sealed class CounterControl : Control
     }
 
     // Fields for UI elements retrieved from the control template
-    private Button ActionButton;
-    private TextBlock CountText;
+    private Button? ActionButton;
+    private TextBlock? CountText;
 
     // Method executed when the control's template is applied
     protected override void OnApplyTemplate()

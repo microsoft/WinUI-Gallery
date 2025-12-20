@@ -27,9 +27,9 @@ public sealed partial class CompactSizingPage : Page
 
         ContentFrame.Navigate(typeof(SampleStandardSizingPage), null, new SuppressNavigationTransitionInfo());
 
-        if (oldPage != null)
+        if (oldPage != null &&
+            ContentFrame.Content is SampleStandardSizingPage page)
         {
-            var page = ContentFrame.Content as SampleStandardSizingPage;
             page.CopyState(oldPage);
         }
     }
@@ -40,9 +40,9 @@ public sealed partial class CompactSizingPage : Page
 
         ContentFrame.Navigate(typeof(SampleCompactSizingPage), null, new SuppressNavigationTransitionInfo());
 
-        if (oldPage != null)
+        if (oldPage != null &&
+            ContentFrame.Content is SampleCompactSizingPage page)
         {
-            var page = ContentFrame.Content as SampleCompactSizingPage;
             page.CopyState(oldPage);
         }
     }

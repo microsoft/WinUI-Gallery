@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 using WinUIGallery.Helpers;
@@ -24,7 +23,7 @@ public sealed partial class ListViewPage : ItemsPageBase
     ObservableCollection<Contact> contacts3Filtered = new ObservableCollection<Contact>();
     ObservableCollection<Contact> contacts4ContextMenu = new ObservableCollection<Contact>();
 
-    ItemsStackPanel stackPanelObj;
+    ItemsStackPanel? stackPanelObj;
 
     int messageNumber;
 
@@ -78,7 +77,7 @@ public sealed partial class ListViewPage : ItemsPageBase
     {
         if (Control2 != null)
         {
-            string selectionMode = e.AddedItems[0].ToString();
+            string? selectionMode = e.AddedItems[0].ToString();
             switch (selectionMode)
             {
                 case "None":
@@ -209,7 +208,7 @@ public sealed partial class ListViewPage : ItemsPageBase
     //===================================================================================================================
     private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
     {
-        if (StickySwitch != null)
+        if (StickySwitch != null && stackPanelObj is not null)
         {
             if (StickySwitch.IsOn == true)
             {
@@ -313,8 +312,11 @@ public sealed partial class ListViewPage : ItemsPageBase
 
     private void ContactDeleteMenuItem_Click(object sender, RoutedEventArgs e)
     {
-        var item = (sender as FrameworkElement).DataContext;
-        var contact = item as Contact;
+        if ((sender as FrameworkElement)?.DataContext is not Contact contact)
+        {
+            return;
+        }
+
         contacts4ContextMenu.Remove(contact);
     }
 }
@@ -390,10 +392,10 @@ public partial class GroupInfoList : List<object>
     public GroupInfoList(IEnumerable<object> items) : base(items)
     {
     }
-    public object Key { get; set; }
+    public object? Key { get; set; }
 
     public override string ToString()
     {
-        return "Group " + Key.ToString();
+        return "Group " + Key?.ToString();
     }
 }

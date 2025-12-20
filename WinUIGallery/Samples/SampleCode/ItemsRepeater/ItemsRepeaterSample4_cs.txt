@@ -4,12 +4,13 @@
 public class Recipe
 {
     public int Num { get; set; }
-    public string Ingredients { get; set; }
-    public List<string> IngList { get; set; }
-    public string Name { get; set; }
-    public string Color { get; set; }
-    public int numIngredients {
-        get 
+    public string Ingredients { get; set; } = string.Empty;
+    public List<string> IngList { get; set; } = [];
+    public string Name { get; set; } = string.Empty;
+    public string Color { get; set; } = string.Empty;
+    public int numIngredients
+    {
+        get
         {
             return IngList.Count();
         }
@@ -18,7 +19,7 @@ public class Recipe
     public void RandomizeIngredients()
     {
         // To give the items different heights for visual variety, give recipes 
-	// random numbers of random "extra" ingredients
+        // random numbers of random "extra" ingredients
         Random rndNum = new Random();
         Random rndIng = new Random();
 
@@ -33,7 +34,7 @@ public class Recipe
         for (int i =0; i < rndNum.Next(0,4); i++)
         {
             string newIng = extras[rndIng.Next(0, 6)];
-	    // If the ingredient is not already present in the recipe, add it
+            // If the ingredient is not already present in the recipe, add it
             if (!IngList.Contains(newIng))
             {
                 Ingredients += "\n" + newIng;
@@ -52,8 +53,8 @@ public class Recipe
    well for a full tutorial on how to implement this type of class. */
 
 public class MyItemsSource : IList, 
-			     Microsoft.UI.Xaml.Controls.IKeyIndexMapping, 
-			     INotifyCollectionChanged
+                             Microsoft.UI.Xaml.Controls.IKeyIndexMapping, 
+                             INotifyCollectionChanged
 {
     private List<Recipe> inner = new List<Recipe>();
 
@@ -72,14 +73,13 @@ public class MyItemsSource : IList,
 
         if (CollectionChanged != null)
         {
-            CollectionChanged(this, 
-		new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+            CollectionChanged?.Invoke(
+                this, 
+                new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
     }
 
     //...
-
-    #region IKeyIndexMapping
 
     public string KeyFromIndex(int index)
     {
@@ -131,7 +131,7 @@ private void InitializeData()
         string grainOption = grains[rnd.Next(0, 6)];
         string proteinOption = proteins[rnd.Next(0, 6)];
         rec.Ingredients = "\n" + fruitOption + "\n" + vegOption + "\n" + 
-	    grainOption + "\n" + proteinOption;
+        grainOption + "\n" + proteinOption;
         rec.IngList = new List<string>() { fruitOption, vegOption, grainOption, proteinOption };
         rec.RandomizeIngredients();
     }
@@ -174,9 +174,10 @@ private void UpdateSortAndFilter()
 {
     // This is a Linq query that fetches all Recipes containing the ingredient 
     // typed into the filter text box.
-    var filteredTypes = staticRecipeData.Where(i => i.Ingredients.Contains(
-						      FilterRecipes.Text, 
-						      StringComparison.InvariantCultureIgnoreCase));
+    var filteredTypes = staticRecipeData
+        .Where(i => i.Ingredients.Contains(
+            FilterRecipes.Text,
+            StringComparison.InvariantCultureIgnoreCase));
     // After filtering, sort the collection    
     var sortedFilteredTypes = IsSortDescending ?
         filteredTypes.OrderByDescending(i => i.numIngredients) :
