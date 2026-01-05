@@ -24,6 +24,15 @@ public sealed partial class PipsPagerPage : Page
         this.InitializeComponent();
     }
 
+    private void TestPipsPager2_SelectedIndexChanged(PipsPager sender, PipsPagerSelectedIndexChangedEventArgs args)
+    {
+        if (PageAnnouncementText != null)
+        {
+            int pageNumber = sender.SelectedPageIndex + 1; // Convert 0-based index to 1-based page number
+            PageAnnouncementText.Text = $"Page {pageNumber} selected";
+        }
+    }
+
     private void OrientationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         string? orientation = e.AddedItems[0].ToString();
