@@ -9,6 +9,8 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class PipsPagerPage : Page
 {
+    private const string PipsPagerPageChangeNotificationId = "PipsPagerPageChangeNotificationId";
+
     public List<string> Pictures = new List<string>()
     {
         "ms-appx:///Assets/SampleMedia/LandscapeImage1.jpg",
@@ -28,8 +30,9 @@ public sealed partial class PipsPagerPage : Page
     private void TestPipsPager2_SelectedIndexChanged(PipsPager sender, PipsPagerSelectedIndexChangedEventArgs args)
     {
         int pageNumber = sender.SelectedPageIndex + 1; // Convert 0-based index to 1-based page number
-        string announcement = $"Page {pageNumber} selected";
-        UIHelper.AnnounceActionForAccessibility(sender, announcement, "PipsPagerPageChangeNotificationId");
+        int totalPages = sender.NumberOfPages;
+        string announcement = $"Page {pageNumber} of {totalPages} selected";
+        UIHelper.AnnounceActionForAccessibility(sender, announcement, PipsPagerPageChangeNotificationId);
     }
 
     private void OrientationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
