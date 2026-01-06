@@ -3,6 +3,7 @@
 
 using Microsoft.UI.Xaml.Controls;
 using System.Collections.Generic;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -26,11 +27,9 @@ public sealed partial class PipsPagerPage : Page
 
     private void TestPipsPager2_SelectedIndexChanged(PipsPager sender, PipsPagerSelectedIndexChangedEventArgs args)
     {
-        if (PageAnnouncementText != null)
-        {
-            int pageNumber = sender.SelectedPageIndex + 1; // Convert 0-based index to 1-based page number
-            PageAnnouncementText.Text = $"Page {pageNumber} selected";
-        }
+        int pageNumber = sender.SelectedPageIndex + 1; // Convert 0-based index to 1-based page number
+        string announcement = $"Page {pageNumber} selected";
+        UIHelper.AnnounceActionForAccessibility(sender, announcement, "PipsPagerPageChangeNotificationId");
     }
 
     private void OrientationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

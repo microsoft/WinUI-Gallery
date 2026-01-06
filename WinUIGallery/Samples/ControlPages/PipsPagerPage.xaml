@@ -51,19 +51,10 @@
         </controls:ControlExample>
         <controls:ControlExample x:Name="Example2" HeaderText="PipsPager with options to change its orientation and button visibility.">
             <controls:ControlExample.Example>
-                <StackPanel>
-                    <PipsPager
-                        x:Name="TestPipsPager2"
-                        NumberOfPages="10"
-                        SelectedIndexChanged="TestPipsPager2_SelectedIndexChanged" />
-                    <TextBlock
-                        x:Name="PageAnnouncementText"
-                        Margin="0,12,0,0"
-                        HorizontalAlignment="Center"
-                        AutomationProperties.LiveSetting="Polite"
-                        AutomationProperties.Name="Current page"
-                        Text="Page 1 selected" />
-                </StackPanel>
+                <PipsPager
+                    x:Name="TestPipsPager2"
+                    NumberOfPages="10"
+                    SelectedIndexChanged="TestPipsPager2_SelectedIndexChanged" />
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
                 <StackPanel>
