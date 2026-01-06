@@ -51,7 +51,10 @@
         </controls:ControlExample>
         <controls:ControlExample x:Name="Example2" HeaderText="PipsPager with options to change its orientation and button visibility.">
             <controls:ControlExample.Example>
-                <PipsPager x:Name="TestPipsPager2" />
+                <PipsPager
+                    x:Name="TestPipsPager2"
+                    NumberOfPages="10"
+                    SelectedIndexChanged="TestPipsPager2_SelectedIndexChanged" />
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
                 <StackPanel>
