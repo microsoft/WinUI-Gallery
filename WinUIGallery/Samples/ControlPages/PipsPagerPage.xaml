@@ -42,7 +42,7 @@
     &lt;/FlipView&gt;
     &lt;PipsPager x:Name="FlipViewPipsPager"
         HorizontalAlignment="Center"
-        Margin="0,12,0,0"
+        Margin="0, 12, 0, 0"
         NumberOfPages="{x:Bind Pictures.Count}"
         SelectedPageIndex="{x:Bind Path=Gallery.SelectedIndex, Mode=TwoWay}" /&gt;
 &lt;/StackPanel&gt;
