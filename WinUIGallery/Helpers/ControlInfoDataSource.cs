@@ -100,8 +100,6 @@ public sealed partial class ControlInfoDataSource
 
         lock (_lock)
         {
-            string pageRoot = "WinUIGallery.ControlPages.";
-
             controlInfoDataGroup.Groups.SelectMany(g => g.Items).ToList().ForEach(item =>
             {
                 string badgeString = item switch
