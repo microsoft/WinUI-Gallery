@@ -8,7 +8,7 @@
       "Folder": "Fundamentals",
       "Items": [
         {
-          "UniqueId": "XamlResources",
+          "UniqueId": "WinUIGallery.ControlPages.XamlResourcesPage",
           "Title": "Resources",
           "IsNew": true,
           "Subtitle": "Reusable definitions for shared values to ensure consistency and maintainability.",
@@ -30,7 +30,7 @@
           ]
         },
         {
-          "UniqueId": "XamlStyles",
+          "UniqueId": "WinUIGallery.ControlPages.XamlStylesPage",
           "Title": "Style",
           "IsNew": true,
           "Subtitle": "A XAML style is a Reusable property settings to define consistent UI design elements.",
@@ -53,7 +53,7 @@
           ]
         },
         {
-          "UniqueId": "Binding",
+          "UniqueId": "WinUIGallery.ControlPages.BindingPage",
           "Title": "Binding",
           "IsNew": true,
           "Subtitle": "Connecting UI elements to data for automatic synchronization and updates.",
@@ -83,7 +83,7 @@
           ]
         },
         {
-          "UniqueId": "Templates",
+          "UniqueId": "WinUIGallery.ControlPages.TemplatesPage",
           "Title": "Templates",
           "IsNew": true,
           "Subtitle": "Customize controls' visuals, item layouts, and data presentation in XAML.",
@@ -115,7 +115,7 @@
           ]
         },
         {
-          "UniqueId": "CustomUserControls",
+          "UniqueId": "WinUIGallery.ControlPages.CustomUserControlsPage",
           "Title": "Custom & User Controls",
           "IsNew": true,
           "Subtitle": "Create reusable UI components with custom functionality and appearance.",
@@ -144,7 +144,7 @@
           ]
         },
         {
-          "UniqueId": "ScratchPad",
+          "UniqueId": "WinUIGallery.ControlPages.ScratchPadPage",
           "Title": "Scratch Pad",
           "Subtitle": "Scratch pad for testing simple XAML markup",
           "ImagePath": "ms-appx:///Assets/ControlImages/ScratchPad.png",
@@ -167,7 +167,7 @@
       "Folder": "Design",
       "Items": [
         {
-          "UniqueId": "Color",
+          "UniqueId": "WinUIGallery.ControlPages.ColorPage",
           "Title": "Color",
           "Subtitle": "Balanced color design creates clarity and aesthetic harmony.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ColorPaletteResources.png",
@@ -187,7 +187,7 @@
           ]
         },
         {
-          "UniqueId": "Geometry",
+          "UniqueId": "WinUIGallery.ControlPages.GeometryPage",
           "Title": "Geometry",
           "Subtitle": "Clear geometric design ensures visual coherence and structure.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Shape.png",
@@ -203,7 +203,7 @@
           ]
         },
         {
-          "UniqueId": "Iconography",
+          "UniqueId": "WinUIGallery.ControlPages.IconographyPage",
           "Title": "Iconography",
           "IsUpdated": true,
           "Subtitle": "Icons are a visual design language that can be used to communicate information quickly and effectively.",
@@ -225,7 +225,7 @@
           ]
         },
         {
-          "UniqueId": "Spacing",
+          "UniqueId": "WinUIGallery.ControlPages.SpacingPage",
           "Title": "Spacing",
           "Subtitle": "Thoughtful spacing design enhances readability and flow.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CompactSizing.png",
@@ -237,7 +237,7 @@
           ]
         },
         {
-          "UniqueId": "Typography",
+          "UniqueId": "WinUIGallery.ControlPages.TypographyPage",
           "Title": "Typography",
           "Subtitle": "Typography design guides attention with intuitive fonts and hierarchy.",
           "SourcePath": "/CommonStyles/TextBlock_themeresources.xaml",
@@ -266,7 +266,7 @@
       "Folder": "Accessibility",
       "Items": [
         {
-          "UniqueId": "AccessibilityColorContrast",
+          "UniqueId": "WinUIGallery.ControlPages.AccessibilityColorContrastPage",
           "Title": "Color Contrast",
           "Subtitle": "High contrast design ensures accessibility for all users.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
@@ -282,7 +282,7 @@
           ]
         },
         {
-          "UniqueId": "AccessibilityKeyboard",
+          "UniqueId": "WinUIGallery.ControlPages.AccessibilityKeyboardPage",
           "Title": "Keyboard Navigation",
           "Subtitle": "Keyboard-friendly design enables seamless interactions.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
@@ -322,7 +322,7 @@
           ]
         },
         {
-          "UniqueId": "AccessibilityScreenReader",
+          "UniqueId": "WinUIGallery.ControlPages.AccessibilityScreenReaderPage",
           "Title": "Screen Reader",
           "Subtitle": "Inclusive design ensures meaningful content for assistive technologies.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
@@ -362,7 +362,7 @@
       "Items": [
 
         {
-          "UniqueId": "AppBarButton",
+          "UniqueId": "WinUIGallery.ControlPages.AppBarButtonPage",
           "Title": "AppBarButton",
           "BaseClasses": [
             "Object",
@@ -407,7 +407,7 @@
           ]
         },
         {
-          "UniqueId": "AppBarSeparator",
+          "UniqueId": "WinUIGallery.ControlPages.AppBarSeparatorPage",
           "Title": "AppBarSeparator",
           "BaseClasses": [
             "Object",
@@ -433,7 +433,7 @@
           ]
         },
         {
-          "UniqueId": "AppBarToggleButton",
+          "UniqueId": "WinUIGallery.ControlPages.AppBarToggleButtonPage",
           "Title": "AppBarToggleButton",
           "BaseClasses": [
             "Object",
@@ -478,7 +478,7 @@
           ]
         },
         {
-          "UniqueId": "CommandBar",
+          "UniqueId": "WinUIGallery.ControlPages.CommandBarPage",
           "Title": "CommandBar",
           "BaseClasses": [
             "Object",
@@ -506,7 +506,7 @@
           ]
         },
         {
-          "UniqueId": "CommandBarFlyout",
+          "UniqueId": "WinUIGallery.ControlPages.CommandBarFlyoutPage",
           "Title": "CommandBarFlyout",
           "BaseClasses": [
             "Object",
@@ -530,7 +530,7 @@
           ]
         },
         {
-          "UniqueId": "MenuBar",
+          "UniqueId": "WinUIGallery.ControlPages.MenuBarPage",
           "Title": "MenuBar",
           "BaseClasses": [
             "Object",
@@ -556,7 +556,7 @@
           ]
         },
         {
-          "UniqueId": "MenuFlyout",
+          "UniqueId": "WinUIGallery.ControlPages.MenuFlyoutPage",
           "Title": "MenuFlyout",
           "BaseClasses": [
             "Object",
@@ -600,7 +600,7 @@
           ]
         },
         {
-          "UniqueId": "SwipeControl",
+          "UniqueId": "WinUIGallery.ControlPages.SwipeControlPage",
           "Title": "SwipeControl",
           "BaseClasses": [
             "Object",
@@ -634,7 +634,7 @@
           ]
         },
         {
-          "UniqueId": "StandardUICommand",
+          "UniqueId": "WinUIGallery.ControlPages.StandardUICommandPage",
           "Title": "StandardUICommand",
           "BaseClasses": [
             "Object",
@@ -657,7 +657,7 @@
           ]
         },
         {
-          "UniqueId": "XamlUICommand",
+          "UniqueId": "WinUIGallery.ControlPages.XamlUICommandPage",
           "Title": "XamlUICommand",
           "BaseClasses": [
             "Object",
@@ -686,7 +686,7 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "FlipView",
+          "UniqueId": "WinUIGallery.ControlPages.FlipViewPage",
           "Title": "FlipView",
           "BaseClasses": [
             "Object",
@@ -714,7 +714,7 @@
           ]
         },
         {
-          "UniqueId": "GridView",
+          "UniqueId": "WinUIGallery.ControlPages.GridViewPage",
           "Title": "GridView",
           "BaseClasses": [
             "Object",
@@ -743,7 +743,7 @@
           ]
         },
         {
-          "UniqueId": "ItemsRepeater",
+          "UniqueId": "WinUIGallery.ControlPages.ItemsRepeaterPage",
           "Title": "ItemsRepeater",
           "BaseClasses": [
             "Object",
@@ -775,7 +775,7 @@
           ]
         },
         {
-          "UniqueId": "ItemsView",
+          "UniqueId": "WinUIGallery.ControlPages.ItemsViewPage",
           "Title": "ItemsView",
           "BaseClasses": [
             "Object",
@@ -801,7 +801,7 @@
           ]
         },
         {
-          "UniqueId": "ListBox",
+          "UniqueId": "WinUIGallery.ControlPages.ListBoxPage",
           "Title": "ListBox",
           "BaseClasses": [
             "Object",
@@ -829,7 +829,7 @@
           ]
         },
         {
-          "UniqueId": "ListView",
+          "UniqueId": "WinUIGallery.ControlPages.ListViewPage",
           "Title": "ListView",
           "BaseClasses": [
             "Object",
@@ -878,7 +878,7 @@
           ]
         },
         {
-          "UniqueId": "PullToRefresh",
+          "UniqueId": "WinUIGallery.ControlPages.PullToRefreshPage",
           "Title": "PullToRefresh",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Provides the ability to pull on a collection of items in a list/grid to refresh the contents of the collection.",
@@ -901,7 +901,7 @@
           ]
         },
         {
-          "UniqueId": "TreeView",
+          "UniqueId": "WinUIGallery.ControlPages.TreeViewPage",
           "Title": "TreeView",
           "BaseClasses": [
             "Object",
@@ -934,7 +934,7 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "CalendarDatePicker",
+          "UniqueId": "WinUIGallery.ControlPages.CalendarDatePickerPage",
           "Title": "CalendarDatePicker",
           "BaseClasses": [
             "Object",
@@ -960,7 +960,7 @@
           ]
         },
         {
-          "UniqueId": "CalendarView",
+          "UniqueId": "WinUIGallery.ControlPages.CalendarViewPage",
           "Title": "CalendarView",
           "BaseClasses": [
             "Object",
@@ -986,7 +986,7 @@
           ]
         },
         {
-          "UniqueId": "DatePicker",
+          "UniqueId": "WinUIGallery.ControlPages.DatePickerPage",
           "Title": "DatePicker",
           "BaseClasses": [
             "Object",
@@ -1012,7 +1012,7 @@
           ]
         },
         {
-          "UniqueId": "TimePicker",
+          "UniqueId": "WinUIGallery.ControlPages.TimePickerPage",
           "Title": "TimePicker",
           "BaseClasses": [
             "Object",
@@ -1045,7 +1045,7 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "Button",
+          "UniqueId": "WinUIGallery.ControlPages.ButtonPage",
           "Title": "Button",
           "BaseClasses": [
             "Object",
@@ -1073,7 +1073,7 @@
           ]
         },
         {
-          "UniqueId": "DropDownButton",
+          "UniqueId": "WinUIGallery.ControlPages.DropDownButtonPage",
           "Title": "DropDownButton",
           "BaseClasses": [
             "Object",
@@ -1102,7 +1102,7 @@
           ]
         },
         {
-          "UniqueId": "HyperlinkButton",
+          "UniqueId": "WinUIGallery.ControlPages.HyperlinkButtonPage",
           "Title": "HyperlinkButton",
           "BaseClasses": [
             "Object",
@@ -1130,7 +1130,7 @@
           ]
         },
         {
-          "UniqueId": "RepeatButton",
+          "UniqueId": "WinUIGallery.ControlPages.RepeatButtonPage",
           "Title": "RepeatButton",
           "BaseClasses": [
             "Object",
@@ -1158,7 +1158,7 @@
           ]
         },
         {
-          "UniqueId": "ToggleButton",
+          "UniqueId": "WinUIGallery.ControlPages.ToggleButtonPage",
           "Title": "ToggleButton",
           "BaseClasses": [
             "Object",
@@ -1186,7 +1186,7 @@
           ]
         },
         {
-          "UniqueId": "SplitButton",
+          "UniqueId": "WinUIGallery.ControlPages.SplitButtonPage",
           "Title": "SplitButton",
           "BaseClasses": [
             "Object",
@@ -1213,7 +1213,7 @@
           ]
         },
         {
-          "UniqueId": "ToggleSplitButton",
+          "UniqueId": "WinUIGallery.ControlPages.ToggleSplitButtonPage",
           "Title": "ToggleSplitButton",
           "BaseClasses": [
             "Object",
@@ -1241,7 +1241,7 @@
           ]
         },
         {
-          "UniqueId": "CheckBox",
+          "UniqueId": "WinUIGallery.ControlPages.CheckBoxPage",
           "Title": "CheckBox",
           "BaseClasses": [
             "Object",
@@ -1270,7 +1270,7 @@
           ]
         },
         {
-          "UniqueId": "ColorPicker",
+          "UniqueId": "WinUIGallery.ControlPages.ColorPickerPage",
           "Title": "ColorPicker",
           "BaseClasses": [
             "Object",
@@ -1296,7 +1296,7 @@
           ]
         },
         {
-          "UniqueId": "ComboBox",
+          "UniqueId": "WinUIGallery.ControlPages.ComboBoxPage",
           "Title": "ComboBox",
           "BaseClasses": [
             "Object",
@@ -1328,7 +1328,7 @@
           ]
         },
         {
-          "UniqueId": "RadioButton",
+          "UniqueId": "WinUIGallery.ControlPages.RadioButtonPage",
           "Title": "RadioButton",
           "BaseClasses": [
             "Object",
@@ -1357,7 +1357,7 @@
           ]
         },
         {
-          "UniqueId": "RatingControl",
+          "UniqueId": "WinUIGallery.ControlPages.RatingControlPage",
           "Title": "RatingControl",
           "BaseClasses": [
             "Object",
@@ -1383,7 +1383,7 @@
           ]
         },
         {
-          "UniqueId": "Slider",
+          "UniqueId": "WinUIGallery.ControlPages.SliderPage",
           "Title": "Slider",
           "BaseClasses": [
             "Object",
@@ -1410,7 +1410,7 @@
           ]
         },
         {
-          "UniqueId": "ToggleSwitch",
+          "UniqueId": "WinUIGallery.ControlPages.ToggleSwitchPage",
           "Title": "ToggleSwitch",
           "BaseClasses": [
             "Object",
@@ -1443,7 +1443,7 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "InfoBadge",
+          "UniqueId": "WinUIGallery.ControlPages.InfoBadgePage",
           "Title": "InfoBadge",
           "BaseClasses": [
             "Object",
@@ -1469,7 +1469,7 @@
           ]
         },
         {
-          "UniqueId": "InfoBar",
+          "UniqueId": "WinUIGallery.ControlPages.InfoBarPage",
           "Title": "InfoBar",
           "BaseClasses": [
             "Object",
@@ -1495,7 +1495,7 @@
           ]
         },
         {
-          "UniqueId": "ProgressBar",
+          "UniqueId": "WinUIGallery.ControlPages.ProgressBarPage",
           "Title": "ProgressBar",
           "BaseClasses": [
             "Object",
@@ -1522,7 +1522,7 @@
           ]
         },
         {
-          "UniqueId": "ProgressRing",
+          "UniqueId": "WinUIGallery.ControlPages.ProgressRingPage",
           "Title": "ProgressRing",
           "BaseClasses": [
             "Object",
@@ -1548,7 +1548,7 @@
           ]
         },
         {
-          "UniqueId": "ToolTip",
+          "UniqueId": "WinUIGallery.ControlPages.ToolTipPage",
           "Title": "ToolTip",
           "BaseClasses": [
             "Object",
@@ -1582,7 +1582,7 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "ContentDialog",
+          "UniqueId": "WinUIGallery.ControlPages.ContentDialogPage",
           "Title": "ContentDialog",
           "BaseClasses": [
             "Object",
@@ -1609,7 +1609,7 @@
           ]
         },
         {
-          "UniqueId": "Flyout",
+          "UniqueId": "WinUIGallery.ControlPages.FlyoutPage",
           "Title": "Flyout",
           "BaseClasses": [
             "Object",
@@ -1633,7 +1633,7 @@
           ]
         },
         {
-          "UniqueId": "Popup",
+          "UniqueId": "WinUIGallery.ControlPages.PopupPage",
           "Title": "Popup",
           "BaseClasses": [
             "Object",
@@ -1654,7 +1654,7 @@
           ]
         },
         {
-          "UniqueId": "TeachingTip",
+          "UniqueId": "WinUIGallery.ControlPages.TeachingTipPage",
           "Title": "TeachingTip",
           "BaseClasses": [
             "Object",
@@ -1688,7 +1688,7 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "AnnotatedScrollBar",
+          "UniqueId": "WinUIGallery.ControlPages.AnnotatedScrollBarPage",
           "Title": "AnnotatedScrollBar",
           "BaseClasses": [
             "Object",
@@ -1710,7 +1710,7 @@
           ]
         },
         {
-          "UniqueId": "PipsPager",
+          "UniqueId": "WinUIGallery.ControlPages.PipsPagerPage",
           "Title": "PipsPager",
           "BaseClasses": [
             "Object",
@@ -1736,7 +1736,7 @@
           ]
         },
         {
-          "UniqueId": "ScrollView",
+          "UniqueId": "WinUIGallery.ControlPages.ScrollViewPage",
           "Title": "ScrollView",
           "BaseClasses": [
             "Object",
@@ -1762,7 +1762,7 @@
           ]
         },
         {
-          "UniqueId": "ScrollViewer",
+          "UniqueId": "WinUIGallery.ControlPages.ScrollViewerPage",
           "Title": "ScrollViewer",
           "BaseClasses": [
             "Object",
@@ -1789,7 +1789,7 @@
           ]
         },
         {
-          "UniqueId": "SemanticZoom",
+          "UniqueId": "WinUIGallery.ControlPages.SemanticZoomPage",
           "Title": "SemanticZoom",
           "BaseClasses": [
             "Object",
@@ -1821,7 +1821,7 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "Border",
+          "UniqueId": "WinUIGallery.ControlPages.BorderPage",
           "Title": "Border",
           "BaseClasses": [
             "Object",
@@ -1841,7 +1841,7 @@
           ]
         },
         {
-          "UniqueId": "Canvas",
+          "UniqueId": "WinUIGallery.ControlPages.CanvasPage",
           "Title": "Canvas",
           "BaseClasses": [
             "Object",
@@ -1866,7 +1866,7 @@
           ]
         },
         {
-          "UniqueId": "Expander",
+          "UniqueId": "WinUIGallery.ControlPages.ExpanderPage",
           "Title": "Expander",
           "BaseClasses": [
             "Object",
@@ -1893,7 +1893,7 @@
           ]
         },
         {
-          "UniqueId": "Grid",
+          "UniqueId": "WinUIGallery.ControlPages.GridPage",
           "Title": "Grid",
           "BaseClasses": [
             "Object",
@@ -1922,7 +1922,7 @@
           ]
         },
         {
-          "UniqueId": "RadioButtons",
+          "UniqueId": "WinUIGallery.ControlPages.RadioButtonsPage",
           "Title": "RadioButtons",
           "BaseClasses": [
             "Object",
@@ -1948,7 +1948,7 @@
           ]
         },
         {
-          "UniqueId": "RelativePanel",
+          "UniqueId": "WinUIGallery.ControlPages.RelativePanelPage",
           "Title": "RelativePanel",
           "BaseClasses": [
             "Object",
@@ -1973,7 +1973,7 @@
           ]
         },
         {
-          "UniqueId": "SplitView",
+          "UniqueId": "WinUIGallery.ControlPages.SplitViewPage",
           "Title": "SplitView",
           "BaseClasses": [
             "Object",
@@ -1999,7 +1999,7 @@
           ]
         },
         {
-          "UniqueId": "StackPanel",
+          "UniqueId": "WinUIGallery.ControlPages.StackPanelPage",
           "Title": "StackPanel",
           "BaseClasses": [
             "Object",
@@ -2024,7 +2024,7 @@
           ]
         },
         {
-          "UniqueId": "VariableSizedWrapGrid",
+          "UniqueId": "WinUIGallery.ControlPages.VariableSizedWrapGridPage",
           "Title": "VariableSizedWrapGrid",
           "BaseClasses": [
             "Object",
@@ -2049,7 +2049,7 @@
           ]
         },
         {
-          "UniqueId": "Viewbox",
+          "UniqueId": "WinUIGallery.ControlPages.ViewboxPage",
           "Title": "Viewbox",
           "BaseClasses": [
             "Object",
@@ -2076,7 +2076,7 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "BreadcrumbBar",
+          "UniqueId": "WinUIGallery.ControlPages.BreadcrumbBarPage",
           "Title": "BreadcrumbBar",
           "BaseClasses": [
             "Object",
@@ -2102,7 +2102,7 @@
           ]
         },
         {
-          "UniqueId": "NavigationView",
+          "UniqueId": "WinUIGallery.ControlPages.NavigationViewPage",
           "Title": "NavigationView",
           "BaseClasses": [
             "Object",
@@ -2129,7 +2129,7 @@
           ]
         },
         {
-          "UniqueId": "Pivot",
+          "UniqueId": "WinUIGallery.ControlPages.PivotPage",
           "Title": "Pivot",
           "BaseClasses": [
             "Object",
@@ -2156,7 +2156,7 @@
           ]
         },
         {
-          "UniqueId": "SelectorBar",
+          "UniqueId": "WinUIGallery.ControlPages.SelectorBarPage",
           "Title": "SelectorBar",
           "BaseClasses": [
             "Object",
@@ -2183,7 +2183,7 @@
           ]
         },
         {
-          "UniqueId": "TabView",
+          "UniqueId": "WinUIGallery.ControlPages.TabViewPage",
           "Title": "TabView",
           "BaseClasses": [
             "Object",
@@ -2221,7 +2221,7 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "AnimatedVisualPlayer",
+          "UniqueId": "WinUIGallery.ControlPages.AnimatedVisualPlayerPage",
           "Title": "AnimatedVisualPlayer",
           "BaseClasses": [
             "Object",
@@ -2258,7 +2258,7 @@
           ]
         },
         {
-          "UniqueId": "CaptureElementPreview",
+          "UniqueId": "WinUIGallery.ControlPages.CaptureElementPreviewPage",
           "Title": "Capture Element / Camera Preview",
           "Subtitle": "A sample for doing a camera preview.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CaptureElement.png",
@@ -2272,7 +2272,7 @@
           ]
         },
         {
-          "UniqueId": "Image",
+          "UniqueId": "WinUIGallery.ControlPages.ImagePage",
           "Title": "Image",
           "BaseClasses": [
             "Object",
@@ -2296,7 +2296,7 @@
           ]
         },
         {
-          "UniqueId": "MapControl",
+          "UniqueId": "WinUIGallery.ControlPages.MapControlPage",
           "Title": "MapControl",
           "BaseClasses": [
             "Object",
@@ -2317,7 +2317,7 @@
           ]
         },
         {
-          "UniqueId": "MediaPlayerElement",
+          "UniqueId": "WinUIGallery.ControlPages.MediaPlayerElementPage",
           "Title": "MediaPlayerElement",
           "BaseClasses": [
             "Object",
@@ -2343,7 +2343,7 @@
           ]
         },
         {
-          "UniqueId": "PersonPicture",
+          "UniqueId": "WinUIGallery.ControlPages.PersonPicturePage",
           "Title": "PersonPicture",
           "BaseClasses": [
             "Object",
@@ -2369,7 +2369,7 @@
           ]
         },
         {
-          "UniqueId": "Sound",
+          "UniqueId": "WinUIGallery.ControlPages.SoundPage",
           "Title": "Sound",
           "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "A code-behind only API that enables 2D and 3D UI sounds on all XAML controls.",
@@ -2387,7 +2387,7 @@
           ]
         },
         {
-          "UniqueId": "WebView2",
+          "UniqueId": "WinUIGallery.ControlPages.WebView2Page",
           "Title": "WebView2",
           "BaseClasses": [
             "Object",
@@ -2423,7 +2423,7 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "Acrylic",
+          "UniqueId": "WinUIGallery.ControlPages.AcrylicPage",
           "Title": "AcrylicBrush",
           "ApiNamespace": "Microsoft.UI.Xaml.Media",
           "Subtitle": "A translucent material recommended for panel backgrounds.",
@@ -2443,7 +2443,7 @@
           ]
         },
         {
-          "UniqueId": "AnimatedIcon",
+          "UniqueId": "WinUIGallery.ControlPages.AnimatedIconPage",
           "Title": "AnimatedIcon",
           "BaseClasses": [
             "Object",
@@ -2477,7 +2477,7 @@
           ]
         },
         {
-          "UniqueId": "CompactSizing",
+          "UniqueId": "WinUIGallery.ControlPages.CompactSizingPage",
           "Title": "Compact Sizing",
           "Subtitle": "How to use a Resource Dictionary to enable compact sizing.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CompactSizing.png",
@@ -2491,7 +2491,7 @@
           ]
         },
         {
-          "UniqueId": "IconElement",
+          "UniqueId": "WinUIGallery.ControlPages.IconElementPage",
           "Title": "IconElement",
           "BaseClasses": [
             "Object",
@@ -2532,7 +2532,7 @@
           ]
         },
         {
-          "UniqueId": "Line",
+          "UniqueId": "WinUIGallery.ControlPages.LinePage",
           "Title": "Line",
           "BaseClasses": [
             "Object",
@@ -2557,7 +2557,7 @@
           ]
         },
         {
-          "UniqueId": "Shape",
+          "UniqueId": "WinUIGallery.ControlPages.ShapePage",
           "Title": "Shape",
           "BaseClasses": [
             "Object",
@@ -2581,7 +2581,7 @@
           ]
         },
         {
-          "UniqueId": "RadialGradientBrush",
+          "UniqueId": "WinUIGallery.ControlPages.RadialGradientBrushPage",
           "Title": "RadialGradientBrush",
           "BaseClasses": [
             "Object",
@@ -2601,7 +2601,7 @@
           ]
         },
         {
-          "UniqueId": "SystemBackdrops",
+          "UniqueId": "WinUIGallery.ControlPages.SystemBackdropsPage",
           "Title": "System Backdrops (Mica/Acrylic)",
           "ApiNamespace": "Microsoft.UI.Composition.SystemBackdrops",
           "Subtitle": "System backdrops, like Mica and Acrylic, for app windows.",
@@ -2636,7 +2636,7 @@
           ]
         },
         {
-          "UniqueId": "ThemeShadow",
+          "UniqueId": "WinUIGallery.ControlPages.ThemeShadowPage",
           "Title": "ThemeShadow",
           "ApiNamespace": "Microsoft.UI.Xaml.Media",
           "Subtitle": "Adds a depth-aware shadow to UI elements using system lighting.",
@@ -2667,7 +2667,7 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "AutoSuggestBox",
+          "UniqueId": "WinUIGallery.ControlPages.AutoSuggestBoxPage",
           "Title": "AutoSuggestBox",
           "BaseClasses": [
             "Object",
@@ -2694,7 +2694,7 @@
           ]
         },
         {
-          "UniqueId": "NumberBox",
+          "UniqueId": "WinUIGallery.ControlPages.NumberBoxPage",
           "Title": "NumberBox",
           "BaseClasses": [
             "Object",
@@ -2720,7 +2720,7 @@
           ]
         },
         {
-          "UniqueId": "PasswordBox",
+          "UniqueId": "WinUIGallery.ControlPages.PasswordBoxPage",
           "Title": "PasswordBox",
           "BaseClasses": [
             "Object",
@@ -2746,7 +2746,7 @@
           ]
         },
         {
-          "UniqueId": "RichEditBox",
+          "UniqueId": "WinUIGallery.ControlPages.RichEditBoxPage",
           "Title": "RichEditBox",
           "BaseClasses": [
             "Object",
@@ -2773,7 +2773,7 @@
           ]
         },
         {
-          "UniqueId": "RichTextBlock",
+          "UniqueId": "WinUIGallery.ControlPages.RichTextBlockPage",
           "Title": "RichTextBlock",
           "BaseClasses": [
             "Object",
@@ -2797,7 +2797,7 @@
           ]
         },
         {
-          "UniqueId": "TextBlock",
+          "UniqueId": "WinUIGallery.ControlPages.TextBlockPage",
           "Title": "TextBlock",
           "BaseClasses": [
             "Object",
@@ -2822,7 +2822,7 @@
           ]
         },
         {
-          "UniqueId": "TextBox",
+          "UniqueId": "WinUIGallery.ControlPages.TextBoxPage",
           "Title": "TextBox",
           "BaseClasses": [
             "Object",
@@ -2855,7 +2855,7 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "XamlCompInterop",
+          "UniqueId": "WinUIGallery.ControlPages.XamlCompInteropPage",
           "Title": "Animation interop",
           "Subtitle": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more.",
           "ImagePath": "ms-appx:///Assets/ControlImages/AnimationInterop.png",
@@ -2876,7 +2876,7 @@
           ]
         },
         {
-          "UniqueId": "ConnectedAnimation",
+          "UniqueId": "WinUIGallery.ControlPages.ConnectedAnimationPage",
           "Title": "Connected Animation",
           "BaseClasses": [
             "Object"
@@ -2905,7 +2905,7 @@
           ]
         },
         {
-          "UniqueId": "EasingFunction",
+          "UniqueId": "WinUIGallery.ControlPages.EasingFunctionPage",
           "Title": "Easing Functions",
           "ApiNamespace": "Microsoft.UI.Xaml.Media.Animation",
           "Subtitle": "Easing is a way to manipulate the velocity of an object as it animates.",
@@ -2927,7 +2927,7 @@
           ]
         },
         {
-          "UniqueId": "ImplicitTransition",
+          "UniqueId": "WinUIGallery.ControlPages.ImplicitTransitionPage",
           "Title": "Implicit Transitions",
           "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "Use Implicit Transitions to automatically animate changes to properties.",
@@ -2949,7 +2949,7 @@
           ]
         },
         {
-          "UniqueId": "PageTransition",
+          "UniqueId": "WinUIGallery.ControlPages.PageTransitionPage",
           "Title": "Page Transitions",
           "ApiNamespace": "Microsoft.UI.Xaml.Media.Animation",
           "Subtitle": "Page transitions provide visual feedback about the relationship between pages.",
@@ -2971,7 +2971,7 @@
           ]
         },
         {
-          "UniqueId": "ThemeTransition",
+          "UniqueId": "WinUIGallery.ControlPages.ThemeTransitionPage",
           "Title": "Theme Transitions",
           "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "Theme transitions are pre-packaged, easy-to-apply animations.",
@@ -2993,7 +2993,7 @@
           ]
         },
         {
-          "UniqueId": "ParallaxView",
+          "UniqueId": "WinUIGallery.ControlPages.ParallaxViewPage",
           "Title": "ParallaxView",
           "BaseClasses": [
             "Object",
@@ -3025,7 +3025,7 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "AppWindow",
+          "UniqueId": "WinUIGallery.ControlPages.AppWindowPage",
           "Title": "AppWindow",
           "ApiNamespace": "Microsoft.UI.Windowing",
           "Subtitle": "A flexible, customizable window management system for app development.",
@@ -3063,7 +3063,7 @@
           ]
         },
         {
-          "UniqueId": "CreateMultipleWindows",
+          "UniqueId": "WinUIGallery.ControlPages.CreateMultipleWindowsPage",
           "Title": "Multiple windows",
           "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "An example showing the creation of single-threaded top level Xaml windows.",
@@ -3081,7 +3081,7 @@
           ]
         },
         {
-          "UniqueId": "TitleBar",
+          "UniqueId": "WinUIGallery.ControlPages.TitleBarPage",
           "Title": "TitleBar",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "An example showing how to use the default TitleBar control.",
@@ -3107,7 +3107,7 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "AppNotification",
+          "UniqueId": "WinUIGallery.ControlPages.AppNotificationPage",
           "Title": "App notifications",
           "BaseClasses": [
             "Object"
@@ -3137,7 +3137,7 @@
           ]
         },
         {
-          "UniqueId": "BadgeNotificationManager",
+          "UniqueId": "WinUIGallery.ControlPages.BadgeNotificationManagerPage",
           "Title": "Badge notifications",
           "BaseClasses": [
             "Object"
@@ -3163,7 +3163,7 @@
           ]
         },
         {
-          "UniqueId": "Clipboard",
+          "UniqueId": "WinUIGallery.ControlPages.ClipboardPage",
           "Title": "Clipboard",
           "ApiNamespace": "Windows.ApplicationModel.DataTransfer",
           "Subtitle": "Copy and paste to and from the system Clipboard.",
@@ -3177,7 +3177,7 @@
           ]
         },
         {
-          "UniqueId": "ContentIsland",
+          "UniqueId": "WinUIGallery.ControlPages.ContentIslandPage",
           "Title": "ContentIsland",
           "ApiNamespace": "Microsoft.UI.Content",
           "Subtitle": "Create ContentIslands to host other frameworks in your app.",
@@ -3192,7 +3192,7 @@
           ]
         },
         {
-          "UniqueId": "StoragePickers",
+          "UniqueId": "WinUIGallery.ControlPages.StoragePickersPage",
           "Title": "Storage pickers",
           "ApiNamespace": "Microsoft.Windows.Storage.Pickers",
           "BaseClasses": [

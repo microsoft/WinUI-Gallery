@@ -111,8 +111,8 @@ public sealed partial class ControlInfoDataSource
                     { IsPreview: true } => "Preview",
                     _ => string.Empty,
                 };
-                string pageString = $"{pageRoot}{item.UniqueId}Page";
-                Type? pageType = Type.GetType(pageString);
+
+                NavigationPageMappings.PageDictionary.TryGetValue(item.UniqueId, out Type? pageType);
 
                 item.BadgeString = badgeString;
                 item.IncludedInBuild = pageType is not null;
