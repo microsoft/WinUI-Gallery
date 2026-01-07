@@ -74,6 +74,16 @@
     <PackageCertificateKeyFile Condition="Exists('$(PfxFile)')">$(PfxFile)</PackageCertificateKeyFile>
   </PropertyGroup>
 
+	<!-- For Source Generator, if we want to specify specific namespace -->
+  <ItemGroup>
+	<CompilerVisibleProperty Include="NavigationMappingsNamespace" />
+  </ItemGroup>
+
+  <!-- Required for Source Generator -->
+  <ItemGroup>
+	<AdditionalFiles Include="Samples\Data\ControlInfoData.json" />
+  </ItemGroup>
+	
   <ItemGroup Condition="'$(Packaged)' == 'true' and '$(SingleProject)'=='true'">
     <AppxManifest Include="Package.appxmanifest" Condition="'$(Release)' == 'true'">
       <SubType>Designer</SubType>
@@ -131,8 +141,9 @@
           CVE-2019-0657, CVE-2019-0980, and CVE-2019-0981. Since no meta-package depends on version 4.3.2, which
           addresses those vulnerabilites, we need to pull it in ourselves. -->
     <PackageReference Include="System.Private.Uri" />
+	<ProjectReference Include="..\WinUIGallery.SourceGenerator\WinUIGallery.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
-
+	
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
     <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
     <PackageReference Remove="ColorCode.Core" />
