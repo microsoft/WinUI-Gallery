@@ -24,7 +24,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="The brushes below are part of WinUI 3 and you can reference them in your app. For example:" />
+        <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="The brushes below are part of WinUI 3 and you can reference them in your app. For example:" />
         <controls:SampleCodePresenter
             x:Name="XamlPresenter"
             Grid.Row="1"
