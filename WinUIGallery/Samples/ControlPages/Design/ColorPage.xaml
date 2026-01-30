@@ -28,7 +28,7 @@
         <controls:SampleCodePresenter
             x:Name="XamlPresenter"
             Grid.Row="1"
-            Margin="0,16,0,16"
+            Margin="0,16,0,0"
             VerticalContentAlignment="Center"
             SampleType="XAML">
             <controls:SampleCodePresenter.Code>
