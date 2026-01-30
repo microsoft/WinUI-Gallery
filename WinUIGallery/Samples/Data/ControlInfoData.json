@@ -1351,6 +1351,10 @@
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.radiobutton"
             },
             {
+              "Title": "RadioButtons - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.radiobuttons"
+            },
+            {
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/radio-button"
             }
@@ -1921,32 +1925,7 @@
             }
           ]
         },
-        {
-          "UniqueId": "RadioButtons",
-          "Title": "RadioButtons",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject",
-            "UIElement",
-            "FrameworkElement",
-            "Control"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
-          "Subtitle": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/RadioButtons.png",
-          "Description": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
-          "SourcePath": "/RadioButtons",
-          "Docs": [
-            {
-              "Title": "RadioButtons - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.radiobuttons"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/radio-button"
-            }
-          ]
-        },
+
         {
           "UniqueId": "RelativePanel",
           "Title": "RelativePanel",
