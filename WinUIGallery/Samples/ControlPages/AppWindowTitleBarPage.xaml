@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="WinUIGallery.ControlPages.AppWindowTitleBarPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:WinUIGallery.Controls"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <controls:ControlExample HeaderText="AppWindowTitleBar Color Customization">
+            <controls:ControlExample.Example>
+                <Button Content="Show Sample Window" />
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Normal & Hover states -->
+                    <StackPanel Grid.Column="0"
+                                Spacing="8">
+                        <TextBlock Text="BackgroundColor" />
+                        <controls:ColorSelector x:Name="Background"
+                                                Color="#FFFFFFFF" />
+
+                        <TextBlock Text="ForegroundColor" />
+                        <controls:ColorSelector x:Name="Foreground"
+                                                Color="#FF1F1F1F" />
+
+                        <TextBlock Text="ButtonBackgroundColor" />
+                        <controls:ColorSelector x:Name="ButtonBackground"
+                                                Color="#FFF3F3F3" />
+
+                        <TextBlock Text="ButtonForegroundColor" />
+                        <controls:ColorSelector x:Name="ButtonForeground"
+                                                Color="#FF1F1F1F" />
+
+                        <TextBlock Text="ButtonHoverBackgroundColor" />
+                        <controls:ColorSelector x:Name="ButtonHoverBackground"
+                                                Color="#FFE6E6E6" />
+
+                        <TextBlock Text="ButtonHoverForegroundColor" />
+                        <controls:ColorSelector x:Name="ButtonHoverForeground"
+                                                Color="#FF000000" />
+                    </StackPanel>
+
+                    <!-- Separator -->
+                    <AppBarSeparator Grid.Column="1" />
+                    
+                    <!-- Inactive & Pressed states -->
+                    <StackPanel Grid.Column="2"
+                                Spacing="8">
+                        <TextBlock Text="ButtonInactiveBackgroundColor" />
+                        <controls:ColorSelector x:Name="ButtonInactiveBackground"
+                                                Color="#FFF0F0F0" />
+
+                        <TextBlock Text="ButtonInactiveForegroundColor" />
+                        <controls:ColorSelector x:Name="ButtonInactiveForeground"
+                                                Color="#FF9A9A9A" />
+
+                        <TextBlock Text="InactiveBackgroundColor" />
+                        <controls:ColorSelector x:Name="InactiveBackground"
+                                                Color="#FFF7F7F7" />
+
+                        <TextBlock Text="InactiveForegroundColor" />
+                        <controls:ColorSelector x:Name="InactiveForeground"
+                                                Color="#FF8A8A8A" />
+
+                        <TextBlock Text="ButtonPressedBackgroundColor" />
+                        <controls:ColorSelector x:Name="ButtonPressedBackground"
+                                                Color="#FFDADADA" />
+
+                        <TextBlock Text="ButtonPressedForegroundColor" />
+                        <controls:ColorSelector x:Name="ButtonPressedForeground"
+                                                Color="#FF000000" />
+                    </StackPanel>
+                </Grid>
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

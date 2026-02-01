@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl 
+    x:Class="WinUIGallery.Controls.ColorSelector"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Margin="0,4,0,8">
+
+    <SplitButton>
+        <Border x:Name="CurrentColor"
+                Width="64"
+                Height="32"
+                CornerRadius="4,0,0,4"
+                Margin="-11,-6" />
+        <SplitButton.Flyout>
+            <Flyout Placement="Bottom">
+                <ColorPicker x:Name="ColorPicker"
+                             ColorSpectrumShape="Ring"
+                             IsMoreButtonVisible="False"
+                             IsColorSliderVisible="True"
+                             IsColorChannelTextInputVisible="False"
+                             IsHexInputVisible="False"
+                             IsAlphaEnabled="True"
+                             IsAlphaSliderVisible="True"
+                             IsAlphaTextInputVisible="False"
+                             ColorChanged="ColorPicker_ColorChanged" />
+            </Flyout>
+        </SplitButton.Flyout>
+    </SplitButton>
+</UserControl>
