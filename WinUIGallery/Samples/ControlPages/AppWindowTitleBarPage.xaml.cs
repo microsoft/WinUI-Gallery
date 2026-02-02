@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using Microsoft.UI.Xaml.Controls;
+using Windows.UI;
 using WinUIGallery.Samples.SamplePages;
 
 namespace WinUIGallery.ControlPages;
@@ -133,5 +134,10 @@ public sealed partial class AppWindowTitleBarPage : Page
         {
             window.AppWindow.TitleBar.ButtonPressedForegroundColor = ButtonPressedForeground.Color;
         }
+    }
+
+    private string ColorToArgbString(Color color)
+    {
+        return $"{color.A}, {color.R}, {color.G}, {color.B}";
     }
 }
