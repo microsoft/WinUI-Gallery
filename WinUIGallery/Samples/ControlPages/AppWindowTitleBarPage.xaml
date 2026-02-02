@@ -11,7 +11,11 @@
     <StackPanel>
         <controls:ControlExample HeaderText="AppWindowTitleBar Color Customization">
             <controls:ControlExample.Example>
-                <Button Content="Show Sample Window" />
+                <Button Click="ShowWindowButton_Click">
+                    <TextBlock Text="Show Sample Window"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"/>
+                </Button>
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
                 <Grid ColumnSpacing="16">
@@ -26,27 +30,33 @@
                                 Spacing="8">
                         <TextBlock Text="BackgroundColor" />
                         <controls:ColorSelector x:Name="Background"
-                                                Color="#FFFFFFFF" />
+                                                Color="#FFFFFFFF"
+                                                ColorChanged="Background_ColorChanged" />
 
                         <TextBlock Text="ForegroundColor" />
                         <controls:ColorSelector x:Name="Foreground"
-                                                Color="#FF1F1F1F" />
+                                                Color="#FF1F1F1F"
+                                                ColorChanged="Foreground_ColorChanged" />
 
                         <TextBlock Text="ButtonBackgroundColor" />
                         <controls:ColorSelector x:Name="ButtonBackground"
-                                                Color="#FFF3F3F3" />
+                                                Color="#FFF3F3F3"
+                                                ColorChanged="ButtonBackground_ColorChanged" />
 
                         <TextBlock Text="ButtonForegroundColor" />
                         <controls:ColorSelector x:Name="ButtonForeground"
-                                                Color="#FF1F1F1F" />
+                                                Color="#FF1F1F1F"
+                                                ColorChanged="ButtonForeground_ColorChanged" />
 
                         <TextBlock Text="ButtonHoverBackgroundColor" />
                         <controls:ColorSelector x:Name="ButtonHoverBackground"
-                                                Color="#FFE6E6E6" />
+                                                Color="#FFE6E6E6"
+                                                ColorChanged="ButtonHoverBackground_ColorChanged" />
 
                         <TextBlock Text="ButtonHoverForegroundColor" />
                         <controls:ColorSelector x:Name="ButtonHoverForeground"
-                                                Color="#FF000000" />
+                                                Color="#FF000000"
+                                                ColorChanged="ButtonHoverForeground_ColorChanged" />
                     </StackPanel>
 
                     <!-- Separator -->
@@ -57,27 +67,33 @@
                                 Spacing="8">
                         <TextBlock Text="ButtonInactiveBackgroundColor" />
                         <controls:ColorSelector x:Name="ButtonInactiveBackground"
-                                                Color="#FFF0F0F0" />
+                                                Color="#FFF0F0F0"
+                                                ColorChanged="ButtonInactiveBackground_ColorChanged" />
 
                         <TextBlock Text="ButtonInactiveForegroundColor" />
                         <controls:ColorSelector x:Name="ButtonInactiveForeground"
-                                                Color="#FF9A9A9A" />
+                                                Color="#FF9A9A9A"
+                                                ColorChanged="ButtonInactiveForeground_ColorChanged" />
 
                         <TextBlock Text="InactiveBackgroundColor" />
                         <controls:ColorSelector x:Name="InactiveBackground"
-                                                Color="#FFF7F7F7" />
+                                                Color="#FFF7F7F7"
+                                                ColorChanged="InactiveBackground_ColorChanged" />
 
                         <TextBlock Text="InactiveForegroundColor" />
                         <controls:ColorSelector x:Name="InactiveForeground"
-                                                Color="#FF8A8A8A" />
+                                                Color="#FF8A8A8A"
+                                                ColorChanged="InactiveForeground_ColorChanged" />
 
                         <TextBlock Text="ButtonPressedBackgroundColor" />
                         <controls:ColorSelector x:Name="ButtonPressedBackground"
-                                                Color="#FFDADADA" />
+                                                Color="#FFDADADA"
+                                                ColorChanged="ButtonPressedBackground_ColorChanged" />
 
                         <TextBlock Text="ButtonPressedForegroundColor" />
                         <controls:ColorSelector x:Name="ButtonPressedForeground"
-                                                Color="#FF000000" />
+                                                Color="#FF000000"
+                                                ColorChanged="ButtonPressedForeground_ColorChanged" />
                     </StackPanel>
                 </Grid>
             </controls:ControlExample.Options>
