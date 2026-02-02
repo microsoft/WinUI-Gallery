@@ -66,16 +66,6 @@
                     <!-- Inactive & Pressed states -->
                     <StackPanel Grid.Column="2"
                                 Spacing="8">
-                        <TextBlock Text="ButtonInactiveBackgroundColor" />
-                        <controls:ColorSelector x:Name="ButtonInactiveBackground"
-                                                Color="#FFF0F0F0"
-                                                ColorChanged="ButtonInactiveBackground_ColorChanged" />
-
-                        <TextBlock Text="ButtonInactiveForegroundColor" />
-                        <controls:ColorSelector x:Name="ButtonInactiveForeground"
-                                                Color="#FF9A9A9A"
-                                                ColorChanged="ButtonInactiveForeground_ColorChanged" />
-
                         <TextBlock Text="InactiveBackgroundColor" />
                         <controls:ColorSelector x:Name="InactiveBackground"
                                                 Color="#FFF7F7F7"
@@ -85,6 +75,16 @@
                         <controls:ColorSelector x:Name="InactiveForeground"
                                                 Color="#FF8A8A8A"
                                                 ColorChanged="InactiveForeground_ColorChanged" />
+                        
+                        <TextBlock Text="ButtonInactiveBackgroundColor" />
+                        <controls:ColorSelector x:Name="ButtonInactiveBackground"
+                                                Color="#FFF0F0F0"
+                                                ColorChanged="ButtonInactiveBackground_ColorChanged" />
+
+                        <TextBlock Text="ButtonInactiveForegroundColor" />
+                        <controls:ColorSelector x:Name="ButtonInactiveForeground"
+                                                Color="#FF9A9A9A"
+                                                ColorChanged="ButtonInactiveForeground_ColorChanged" />
 
                         <TextBlock Text="ButtonPressedBackgroundColor" />
                         <controls:ColorSelector x:Name="ButtonPressedBackground"
@@ -117,10 +117,10 @@ public sealed partial class AppWindowTitleBarWindow : Window
         AppWindow.TitleBar.ButtonForegroundColor = ColorHelper.FromArgb($(ButtonForegroundColor));
         AppWindow.TitleBar.ButtonHoverBackgroundColor = ColorHelper.FromArgb($(ButtonHoverBackgroundColor));
         AppWindow.TitleBar.ButtonHoverForegroundColor = ColorHelper.FromArgb($(ButtonHoverForegroundColor));
-        AppWindow.TitleBar.ButtonInactiveBackgroundColor = ColorHelper.FromArgb($(ButtonInactiveBackgroundColor));
-        AppWindow.TitleBar.ButtonInactiveForegroundColor = ColorHelper.FromArgb($(ButtonInactiveForegroundColor));
         AppWindow.TitleBar.InactiveBackgroundColor = ColorHelper.FromArgb($(InactiveBackgroundColor));
         AppWindow.TitleBar.InactiveForegroundColor = ColorHelper.FromArgb($(InactiveForegroundColor));
+        AppWindow.TitleBar.ButtonInactiveBackgroundColor = ColorHelper.FromArgb($(ButtonInactiveBackgroundColor));
+        AppWindow.TitleBar.ButtonInactiveForegroundColor = ColorHelper.FromArgb($(ButtonInactiveForegroundColor));
         AppWindow.TitleBar.ButtonPressedBackgroundColor = ColorHelper.FromArgb($(ButtonPressedBackgroundColor));
         AppWindow.TitleBar.ButtonPressedForegroundColor = ColorHelper.FromArgb($(ButtonPressedForegroundColor));
     }
@@ -140,14 +140,14 @@ public sealed partial class AppWindowTitleBarWindow : Window
                                                      Value="{x:Bind ColorToArgbString(ButtonHoverBackground.Color), Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="ButtonHoverForegroundColor"
                                                      Value="{x:Bind ColorToArgbString(ButtonHoverForeground.Color), Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="ButtonInactiveBackgroundColor"
-                                                     Value="{x:Bind ColorToArgbString(ButtonInactiveBackground.Color), Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="ButtonInactiveForegroundColor"
-                                                     Value="{x:Bind ColorToArgbString(ButtonInactiveForeground.Color), Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="InactiveBackgroundColor"
                                                      Value="{x:Bind ColorToArgbString(InactiveBackground.Color), Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="InactiveForegroundColor"
                                                      Value="{x:Bind ColorToArgbString(InactiveForeground.Color), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ButtonInactiveBackgroundColor"
+                                                     Value="{x:Bind ColorToArgbString(ButtonInactiveBackground.Color), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ButtonInactiveForegroundColor"
+                                                     Value="{x:Bind ColorToArgbString(ButtonInactiveForeground.Color), Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="ButtonPressedBackgroundColor"
                                                      Value="{x:Bind ColorToArgbString(ButtonPressedBackground.Color), Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="ButtonPressedForegroundColor"
