@@ -11,7 +11,8 @@
     <StackPanel>
         <controls:ControlExample HeaderText="AppWindowTitleBar Color Customization">
             <controls:ControlExample.Example>
-                <Button Click="ShowWindowButton_Click">
+                <Button x:Name="ShowWindowButton"
+                        Click="ShowWindowButton_Click">
                     <TextBlock Text="Show Sample Window"
                                TextWrapping="Wrap"
                                TextAlignment="Center"/>

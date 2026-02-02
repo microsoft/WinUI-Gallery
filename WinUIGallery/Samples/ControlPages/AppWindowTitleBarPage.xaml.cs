@@ -16,6 +16,7 @@ public sealed partial class AppWindowTitleBarPage : Page
 
     private void ShowWindowButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
+        ShowWindowButton.IsEnabled = false;
         window = new AppWindowTitleBarWindow(
             Background.Color,
             Foreground.Color,
@@ -30,11 +31,17 @@ public sealed partial class AppWindowTitleBarPage : Page
             ButtonPressedBackground.Color,
             ButtonPressedForeground.Color);
         window.Activate();
+        window.Closed += Window_Closed;
+    }
+
+    private void Window_Closed(object sender, Microsoft.UI.Xaml.WindowEventArgs args)
+    {
+        ShowWindowButton.IsEnabled = true;
     }
 
     private void Background_ColorChanged(Controls.ColorSelector obj)
     {
-        if (window is not null)
+        if (window != null && Background.Color != default)
         {
             window.AppWindow.TitleBar.BackgroundColor = Background.Color;
         }
@@ -42,7 +49,7 @@ public sealed partial class AppWindowTitleBarPage : Page
 
     private void Foreground_ColorChanged(Controls.ColorSelector obj)
     {
-        if (window is not null)
+        if (window != null && Foreground.Color != default)
         {
             window.AppWindow.TitleBar.ForegroundColor = Foreground.Color;
         }
@@ -50,7 +57,7 @@ public sealed partial class AppWindowTitleBarPage : Page
 
     private void ButtonBackground_ColorChanged(Controls.ColorSelector obj)
     {
-        if (window is not null)
+        if (window != null && ButtonBackground.Color != default)
         {
             window.AppWindow.TitleBar.ButtonBackgroundColor = ButtonBackground.Color;
         }
@@ -58,7 +65,7 @@ public sealed partial class AppWindowTitleBarPage : Page
 
     private void ButtonForeground_ColorChanged(Controls.ColorSelector obj)
     {
-        if (window is not null)
+        if (window != null && ButtonForeground.Color != default)
         {
             window.AppWindow.TitleBar.ButtonForegroundColor = ButtonForeground.Color;
         }
@@ -66,7 +73,7 @@ public sealed partial class AppWindowTitleBarPage : Page
 
     private void ButtonHoverBackground_ColorChanged(Controls.ColorSelector obj)
     {
-        if (window is not null)
+        if (window != null && ButtonHoverBackground.Color != default)
         {
             window.AppWindow.TitleBar.ButtonHoverBackgroundColor = ButtonHoverBackground.Color;
         }
@@ -74,7 +81,7 @@ public sealed partial class AppWindowTitleBarPage : Page
 
     private void ButtonHoverForeground_ColorChanged(Controls.ColorSelector obj)
     {
-        if (window is not null)
+        if (window != null && ButtonHoverForeground.Color != default)
         {
             window.AppWindow.TitleBar.ButtonHoverForegroundColor = ButtonHoverForeground.Color;
         }
@@ -82,7 +89,7 @@ public sealed partial class AppWindowTitleBarPage : Page
 
     private void ButtonInactiveBackground_ColorChanged(Controls.ColorSelector obj)
     {
-        if (window is not null)
+        if (window != null && ButtonInactiveBackground.Color != default)
         {
             window.AppWindow.TitleBar.ButtonInactiveBackgroundColor = ButtonInactiveBackground.Color;
         }
@@ -90,7 +97,7 @@ public sealed partial class AppWindowTitleBarPage : Page
 
     private void ButtonInactiveForeground_ColorChanged(Controls.ColorSelector obj)
     {
-        if (window is not null)
+        if (window != null && ButtonInactiveForeground.Color != default)
         {
             window.AppWindow.TitleBar.ButtonInactiveForegroundColor = ButtonInactiveForeground.Color;
         }
@@ -98,7 +105,7 @@ public sealed partial class AppWindowTitleBarPage : Page
 
     private void InactiveBackground_ColorChanged(Controls.ColorSelector obj)
     {
-        if (window is not null)
+        if (window != null && InactiveBackground.Color != default)
         {
             window.AppWindow.TitleBar.InactiveBackgroundColor = InactiveBackground.Color;
         }
@@ -106,7 +113,7 @@ public sealed partial class AppWindowTitleBarPage : Page
 
     private void InactiveForeground_ColorChanged(Controls.ColorSelector obj)
     {
-        if (window is not null)
+        if (window != null && InactiveForeground.Color != default)
         {
             window.AppWindow.TitleBar.InactiveForegroundColor = InactiveForeground.Color;
         }
@@ -114,7 +121,7 @@ public sealed partial class AppWindowTitleBarPage : Page
 
     private void ButtonPressedBackground_ColorChanged(Controls.ColorSelector obj)
     {
-        if (window is not null)
+        if (window != null && ButtonPressedBackground.Color != default)
         {
             window.AppWindow.TitleBar.ButtonPressedBackgroundColor = ButtonPressedBackground.Color;
         }
@@ -122,7 +129,7 @@ public sealed partial class AppWindowTitleBarPage : Page
 
     private void ButtonPressedForeground_ColorChanged(Controls.ColorSelector obj)
     {
-        if (window is not null)
+        if (window != null && ButtonPressedForeground.Color != default)
         {
             window.AppWindow.TitleBar.ButtonPressedForegroundColor = ButtonPressedForeground.Color;
         }
