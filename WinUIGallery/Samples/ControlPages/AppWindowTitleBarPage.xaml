@@ -154,5 +154,42 @@ public sealed partial class AppWindowTitleBarWindow : Window
                                                      Value="{x:Bind ColorToArgbString(ButtonPressedForeground.Color), Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
+        <controls:ControlExample HeaderText="AppWindowTitleBar Extend Into Title Bar">
+            <controls:ControlExample.Example>
+                <Button x:Name="ShowExtendButton"
+                        Click="ShowExtendButton_Click">
+                    <TextBlock Text="Show Sample Window"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center" />
+                </Button>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <CheckBox x:Name="ExtendContentCheckBox"
+                          Content="Extend content into title bar"
+                          IsChecked="True"
+                          Margin="0,0,0,12"
+                          Checked="ExtendContentCheckBox_Checked"
+                          Unchecked="ExtendContentCheckBox_Unchecked" />
+            </controls:ControlExample.Options>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+
+public sealed partial class AppWindowTitleBarExtendWindow : Window
+{
+    public AppWindowTitleBarExtendWindow()
+    {
+        InitializeComponent();
+        AppWindow.TitleBar.ExtendsContentIntoTitleBar = $(ExtendsContentIntoTitleBar);
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="ExtendsContentIntoTitleBar"
+                                                     Value="{x:Bind BoolToLowerString(ExtendContentCheckBox.IsChecked), Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

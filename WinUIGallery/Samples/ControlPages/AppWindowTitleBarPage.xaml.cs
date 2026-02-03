@@ -10,6 +10,7 @@ namespace WinUIGallery.ControlPages;
 public sealed partial class AppWindowTitleBarPage : Page
 {
     private AppWindowTitleBarWindow? window;
+    private AppWindowTitleBarExtendWindow? extendWindow;
     public AppWindowTitleBarPage()
     {
         InitializeComponent();
@@ -136,8 +137,36 @@ public sealed partial class AppWindowTitleBarPage : Page
         }
     }
 
-    private string ColorToArgbString(Color color)
+    private string ColorToArgbString(Color color) => $"{color.A}, {color.R}, {color.G}, {color.B}";
+
+    private string BoolToLowerString(bool? value) => value.ToString().ToLower();
+
+    private void ShowExtendButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        return $"{color.A}, {color.R}, {color.G}, {color.B}";
+        ShowExtendButton.IsEnabled = false;
+        extendWindow = new AppWindowTitleBarExtendWindow(ExtendContentCheckBox.IsChecked ?? false);
+        extendWindow.Activate();
+        extendWindow.Closed += ExtendWindow_Closed;
+    }
+
+    private void ExtendWindow_Closed(object sender, Microsoft.UI.Xaml.WindowEventArgs args)
+    {
+        ShowExtendButton.IsEnabled = true;
+    }
+
+    private void ExtendContentCheckBox_Checked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        if(extendWindow != null)
+        {
+            extendWindow.AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
+        }
+    }
+
+    private void ExtendContentCheckBox_Unchecked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        if (extendWindow != null)
+        {
+            extendWindow.AppWindow.TitleBar.ExtendsContentIntoTitleBar = false;
+        }
     }
 }
