@@ -154,7 +154,7 @@ public sealed partial class AppWindowTitleBarWindow : Window
                                                      Value="{x:Bind ColorToArgbString(ButtonPressedForeground.Color), Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
-        <controls:ControlExample HeaderText="AppWindowTitleBar Extend Into Title Bar">
+        <controls:ControlExample HeaderText="Content Extend Into AppWindowTitleBar">
             <controls:ControlExample.Example>
                 <Button x:Name="ShowExtendButton"
                         Click="ShowExtendButton_Click">
@@ -164,12 +164,20 @@ public sealed partial class AppWindowTitleBarWindow : Window
                 </Button>
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
-                <CheckBox x:Name="ExtendContentCheckBox"
-                          Content="Extend content into title bar"
-                          IsChecked="True"
-                          Margin="0,0,0,12"
-                          Checked="ExtendContentCheckBox_Checked"
-                          Unchecked="ExtendContentCheckBox_Unchecked" />
+                <StackPanel Spacing="8">
+                    <CheckBox x:Name="ExtendContentCheckBox"
+                              Content="Extend content into title bar"
+                              IsChecked="True"
+                              Margin="0,0,0,12"
+                              Checked="ExtendContentCheckBox_Checked"
+                              Unchecked="ExtendContentCheckBox_Unchecked" />
+                    <ComboBox x:Name="HeightComboBox"
+                              Header="TitleBarHeightOption"
+                              Width="200"
+                              ItemsSource="{x:Bind titleBarHeightOptions}"
+                              SelectedItem="{x:Bind selectedHeight}"
+                              SelectionChanged="HeightComboBox_SelectionChanged" />
+                </StackPanel>
             </controls:ControlExample.Options>
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
@@ -182,6 +190,10 @@ public sealed partial class AppWindowTitleBarExtendWindow : Window
     {
         InitializeComponent();
         AppWindow.TitleBar.ExtendsContentIntoTitleBar = $(ExtendsContentIntoTitleBar);
+        if (AppWindow.TitleBar.ExtendsContentIntoTitleBar)
+        {
+            AppWindow.TitleBar.HeightOption = TitleBarHeightOption.$(TitleBarHeightOption);
+        }
     }
 }
                 </x:String>
@@ -189,6 +201,47 @@ public sealed partial class AppWindowTitleBarExtendWindow : Window
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="ExtendsContentIntoTitleBar"
                                                      Value="{x:Bind BoolToLowerString(ExtendContentCheckBox.IsChecked), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="TitleBarHeightOption"
+                                                     Value="{x:Bind HeightComboBox.SelectedItem, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="AppWindowTitleBar preffered theme and height options">
+            <controls:ControlExample.Example>
+                <Button x:Name="ShowThemeHeightButton"
+                        Click="ShowThemeButton_Click">
+                    <TextBlock Text="Show Sample Window"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center" />
+                </Button>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <ComboBox x:Name="ThemeComboBox"
+                          Header="TitleBarTheme"
+                          Width="200"
+                          ItemsSource="{x:Bind titleBarThemes}"
+                          SelectedItem="{x:Bind selectedTheme}"
+                          SelectionChanged="ThemeComboBox_SelectionChanged" />
+            </controls:ControlExample.Options>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+                    
+public sealed partial class AppWindowTitleBarThemeHeightWindow : Window
+{
+    public AppWindowTitleBarThemeHeightWindow()
+    {
+        InitializeComponent();
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.$(PreferredTheme);
+    }
+}
+                </x:String>
+            </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="PreferredTheme"
+                                                     Value="{x:Bind ThemeComboBox.SelectedItem, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>

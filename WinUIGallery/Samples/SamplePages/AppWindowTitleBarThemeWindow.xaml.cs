@@ -6,9 +6,9 @@ using Microsoft.UI.Xaml;
 
 namespace WinUIGallery.Samples.SamplePages;
 
-public sealed partial class AppWindowTitleBarExtendWindow : Window
+public sealed partial class AppWindowTitleBarThemeWindow : Window
 {
-    public AppWindowTitleBarExtendWindow(bool ExtendsContentIntoTitleBar, TitleBarHeightOption heightOption)
+    public AppWindowTitleBarThemeWindow(TitleBarTheme titleBarTheme)
     {
         InitializeComponent();
 
@@ -19,11 +19,6 @@ public sealed partial class AppWindowTitleBarExtendWindow : Window
         AppWindow.SetPresenter(presenter);
         AppWindow.Resize(new Windows.Graphics.SizeInt32(600, 400));
 
-        AppWindow.TitleBar.ExtendsContentIntoTitleBar = ExtendsContentIntoTitleBar;
-
-        if (AppWindow.TitleBar.ExtendsContentIntoTitleBar)
-        {
-            AppWindow.TitleBar.PreferredHeightOption = heightOption;
-        }
+        AppWindow.TitleBar.PreferredTheme = titleBarTheme;
     }
 }

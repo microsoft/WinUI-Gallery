@@ -64,35 +64,26 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <NumberBox
-                            x:Name="XPoint"
-                            Grid.Column="0"
-                            Margin="0,0,8,0"
-                            Header="X"
-                            LargeChange="100"
-                            Maximum="800"
-                            Minimum="0"
-                            SmallChange="10"
-                            SpinButtonPlacementMode="Inline"
-                            Value="50" />
-                        <NumberBox
-                            x:Name="YPoint"
-                            Grid.Column="1"
-                            Header="Y"
-                            LargeChange="100"
-                            Maximum="300"
-                            Minimum="0"
-                            SmallChange="10"
-                            SpinButtonPlacementMode="Inline"
-                            Value="50" />
+                        <NumberBox x:Name="XPoint"
+                                   Grid.Column="0"
+                                   Margin="0,0,8,0"
+                                   Header="X"
+                                   LargeChange="100"
+                                   Maximum="800"
+                                   Minimum="0"
+                                   SmallChange="10"
+                                   SpinButtonPlacementMode="Inline"
+                                   Value="50" />
+                        <NumberBox x:Name="YPoint"
+                                   Grid.Column="1"
+                                   Header="Y"
+                                   LargeChange="100"
+                                   Maximum="300"
+                                   Minimum="0"
+                                   SmallChange="10"
+                                   SpinButtonPlacementMode="Inline"
+                                   Value="50" />
                     </Grid>
-
-                    <TextBlock FontWeight="SemiBold"
-                               Text="TitleBar theme" />
-                    <ComboBox x:Name="TitleBarPreferredTheme"
-                              ItemsSource="{x:Bind titleBarThemes}"
-                              SelectedItem="{x:Bind selectedTheme, Mode=TwoWay}"
-                              HorizontalAlignment="Stretch" />
                 </StackPanel>
             </controls:ControlExample.Options>
 
@@ -118,9 +109,6 @@ public sealed partial class SampleWindow1 : Window
         // Set the window position on screen
         AppWindow.Move(new Windows.Graphics.PointInt32($(X), $(Y)));
         
-        // Set the preferred theme for the title bar
-        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.$(TitleBarPreferredTheme);
-        
         // Set the taskbar icon (displayed in the taskbar)
         AppWindow.SetTaskbarIcon("Assets/Tiles/GalleryIcon.ico");
 
@@ -129,6 +117,8 @@ public sealed partial class SampleWindow1 : Window
 
         // Set the window icon (affects both taskbar and title bar, can be omitted if the above two are set)
         // AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico"); 
+                    
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
     }
                     
     private void Show_Click(object sender, RoutedEventArgs e)
@@ -156,7 +146,6 @@ public sealed partial class SampleWindow1 : Window
                 <controls:ControlExampleSubstitution Key="Height" Value="{x:Bind WindowHeight.Value, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="X" Value="{x:Bind XPoint.Value, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="Y" Value="{x:Bind YPoint.Value, Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="TitleBarPreferredTheme" Value="{x:Bind TitleBarPreferredTheme.SelectedItem, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
