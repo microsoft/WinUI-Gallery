@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using Windows.UI;
+using WinUIGallery.Pages;
 using WinUIGallery.Samples.SamplePages;
 
 namespace WinUIGallery.ControlPages;
@@ -23,6 +24,10 @@ public sealed partial class AppWindowTitleBarPage : Page
     public AppWindowTitleBarPage()
     {
         InitializeComponent();
+    }
+    private void Hyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+    {
+        App.MainWindow.Navigate(typeof(ItemPage), "TitleBar");
     }
 
     private void ShowWindowButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)

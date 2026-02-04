@@ -9,6 +9,15 @@
     mc:Ignorable="d">
 
     <StackPanel>
+        <TextBlock TextWrapping="Wrap"
+                   Margin="0,8,0,0">
+            <Run Text="Additional customization options are available through the" />
+            <Hyperlink Click="Hyperlink_Click">
+                <Run Text="TitleBar" />
+            </Hyperlink>
+            <Run Text="control." />
+        </TextBlock>
+
         <controls:ControlExample HeaderText="AppWindowTitleBar Color Customization">
             <controls:ControlExample.Example>
                 <Button x:Name="ShowWindowButton"
