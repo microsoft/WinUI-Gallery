@@ -63,4 +63,46 @@ public partial class SettingsHelper : ObservableSettings
         updater(list);
         RecentlyVisited = list;
     }
+
+    public int MainWindowPositionX 
+    {
+        get => GetOrCreateDefault<int>(0);
+        set => Set(value);
+    }
+
+    public int MainWindowPositionY
+    {
+        get => GetOrCreateDefault<int>(0);
+        set => Set(value);
+    }
+
+    public int MainWindowWidth
+    {
+        get => GetOrCreateDefault<int>(0);
+        set => Set(value);
+    }
+
+    public int MainWindowHeight
+    {
+        get => GetOrCreateDefault<int>(0);
+        set => Set(value);
+    }
+
+    public bool IsMainWindowMaximized
+    {
+        get => GetOrCreateDefault<bool>(false);
+        set => Set(value);
+    }
+
+    public double MainWindowScale
+    {
+        get => GetOrCreateDefault<double>(1.0);
+        set => Set(value);
+    }
+
+    public bool SaveWindowState
+    {
+        get => GetOrCreateDefault<bool>(false);
+        set => Set(value);
+    }
 }

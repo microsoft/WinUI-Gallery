@@ -55,6 +55,24 @@ public sealed partial class MainWindow : Window
             AdjustNavigationViewMargin(force: true);
             AppWindow.Changed += (_, _) => AdjustNavigationViewMargin();
         }
+
+        // Restore window state on load
+        if (SettingsHelper.Current.SaveWindowState)
+        {
+            if (Content is FrameworkElement content)
+            {
+                content.Loaded += (_, _) => WindowStateHelper.ApplySavedState(this);
+            }
+        }
+
+        // Save window state on close
+        Closed += (_, _) =>
+        {
+            if (SettingsHelper.Current.SaveWindowState)
+            {
+                WindowStateHelper.Save(this);
+            }
+        };
     }
 
     // Adjusts the NavigationView margin based on the window state
