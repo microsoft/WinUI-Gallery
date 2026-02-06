@@ -3064,24 +3064,6 @@
           ]
         },
         {
-          "UniqueId": "CreateMultipleWindows",
-          "Title": "Multiple windows",
-          "ApiNamespace": "Microsoft.UI.Xaml",
-          "Subtitle": "An example showing the creation of single-threaded top level Xaml windows.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/CreateMultipleWindows.png",
-          "Description": "With Windows App SDK 1.0 we are allowing creation of single-threaded multiple top level Xaml windows in Desktop apps",
-          "Docs": [
-            {
-              "Title": "MultipleWindow - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
-            }
-          ]
-        },
-        {
           "UniqueId": "AppWindowTitleBar",
           "Title": "AppWindowTitleBar",
           "BaseClasses": [
@@ -3099,6 +3081,24 @@
             {
               "Title": "Customize the title bar",
               "Uri": "https://learn.microsoft.com/windows/apps/develop/title-bar"
+            }
+          ]
+        },
+        {
+          "UniqueId": "CreateMultipleWindows",
+          "Title": "Multiple windows",
+          "ApiNamespace": "Microsoft.UI.Xaml",
+          "Subtitle": "An example showing the creation of single-threaded top level Xaml windows.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CreateMultipleWindows.png",
+          "Description": "With Windows App SDK 1.0 we are allowing creation of single-threaded multiple top level Xaml windows in Desktop apps",
+          "Docs": [
+            {
+              "Title": "MultipleWindow - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
             }
           ]
         }
