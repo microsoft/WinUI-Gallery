@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 
@@ -18,6 +19,8 @@ public sealed partial class AppWindowTitleBarExtendWindow : Window
 
         AppWindow.SetPresenter(presenter);
         AppWindow.Resize(new Windows.Graphics.SizeInt32(600, 400));
+
+        AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
 
         AppWindow.TitleBar.ExtendsContentIntoTitleBar = ExtendsContentIntoTitleBar;
 
