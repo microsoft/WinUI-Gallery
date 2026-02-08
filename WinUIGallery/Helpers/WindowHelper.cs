@@ -19,7 +19,7 @@ public partial class WindowHelper
 {
     static public Window CreateWindow()
     {
-        MainWindow newWindow = new MainWindow();
+        var newWindow = new Window();
         TrackWindow(newWindow);
         return newWindow;
     }
@@ -33,7 +33,7 @@ public partial class WindowHelper
         _activeWindows.Add(window);
     }
 
-    static public Window GetWindowForElement(UIElement element)
+    static public Window? GetWindowForElement(UIElement element)
     {
         if (element.XamlRoot != null)
         {

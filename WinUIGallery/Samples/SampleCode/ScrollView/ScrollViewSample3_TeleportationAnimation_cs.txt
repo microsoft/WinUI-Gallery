@@ -2,7 +2,7 @@
 private void ScrollView_ScrollAnimationStarting(ScrollView sender, ScrollingScrollAnimationStartingEventArgs e)
 {
     // Cast the animation from the event arguments to a Vector3KeyFrameAnimation.
-    Vector3KeyFrameAnimation stockKeyFrameAnimation = e.Animation as Vector3KeyFrameAnimation;
+    Vector3KeyFrameAnimation? stockKeyFrameAnimation = e.Animation as Vector3KeyFrameAnimation;
 
     // Check if the animation is of the correct type.
     if (stockKeyFrameAnimation != null)

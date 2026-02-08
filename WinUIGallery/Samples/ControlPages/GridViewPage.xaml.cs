@@ -12,7 +12,7 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class GridViewPage : ItemsPageBase
 {
-    ItemsWrapGrid StyledGridIWG;
+    ItemsWrapGrid? StyledGridIWG;
 
     public GridViewPage()
     {
@@ -43,10 +43,10 @@ public sealed partial class GridViewPage : ItemsPageBase
 
     private void ItemTemplate_Checked(object sender, RoutedEventArgs e)
     {
-        var tag = (sender as FrameworkElement).Tag;
+        object? tag = (sender as FrameworkElement)?.Tag;
         if (tag != null)
         {
-            string template = tag.ToString();
+            string? template = tag.ToString();
             ContentGridView.ItemTemplate = (DataTemplate)this.Resources[template];
             itemTemplate.Value = template;
 
@@ -127,12 +127,22 @@ public sealed partial class GridViewPage : ItemsPageBase
 
     private void ContentGridView_ItemClick(object sender, ItemClickEventArgs e)
     {
-        ClickOutput.Text = "You clicked " + (e.ClickedItem as CustomDataObject).Title + ".";
+        if (e.ClickedItem is not CustomDataObject clickedItem)
+        {
+            return;
+        }
+
+        ClickOutput.Text = "You clicked " + clickedItem.Title + ".";
     }
 
     private void BasicGridView_ItemClick(object sender, ItemClickEventArgs e)
     {
-        ClickOutput0.Text = "You clicked " + (e.ClickedItem as CustomDataObject).Title + ".";
+        if (e.ClickedItem is not CustomDataObject clickedItem)
+        {
+            return;
+        }
+
+        ClickOutput0.Text = "You clicked " + clickedItem.Title + ".";
     }
 
     private void ItemClickCheckBox_Click(object sender, RoutedEventArgs e)
@@ -156,7 +166,7 @@ public sealed partial class GridViewPage : ItemsPageBase
     {
         if (ContentGridView != null)
         {
-            string colorName = e.AddedItems[0].ToString();
+            string? colorName = e.AddedItems[0].ToString();
             switch (colorName)
             {
                 case "None":
@@ -178,8 +188,13 @@ public sealed partial class GridViewPage : ItemsPageBase
 
     private void StyledGrid_InitWrapGrid(object sender, RoutedEventArgs e)
     {
+        if (sender is not ItemsWrapGrid itemsWrapGrid)
+        {
+            return;
+        }
+
         // Update ItemsWrapGrid object created on page load by assigning it to StyledGrid's ItemWrapGrid
-        StyledGridIWG = sender as ItemsWrapGrid;
+        StyledGridIWG = itemsWrapGrid;
 
         // Now we can change StyledGrid's MaximumRowsorColumns property within its ItemsPanel>ItemsPanelTemplate>ItemsWrapGrid.
         StyledGridIWG.MaximumRowsOrColumns = 3;
@@ -201,7 +216,10 @@ public sealed partial class GridViewPage : ItemsPageBase
         int columnSpace = (int)ColumnSpace.Value;
         for (int i = 0; i < StyledGrid.Items.Count; i++)
         {
-            GridViewItem item = StyledGrid.ContainerFromIndex(i) as GridViewItem;
+            if (StyledGrid.ContainerFromIndex(i) is not GridViewItem item)
+            {
+                continue;
+            }
 
             Thickness NewMargin = item.Margin;
             NewMargin.Left = columnSpace;

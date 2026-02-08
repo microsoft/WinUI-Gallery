@@ -37,7 +37,11 @@ public sealed partial class BreadcrumbBarPage : Page
 
     private void BreadcrumbBar2_ItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
     {
-        var items = BreadcrumbBar2.ItemsSource as ObservableCollection<Folder>;
+        if (BreadcrumbBar2.ItemsSource is not ObservableCollection<Folder> items)
+        {
+            return;
+        }
+
         for (int i = items.Count - 1; i >= args.Index + 1; i--)
         {
             items.RemoveAt(i);
@@ -49,7 +53,11 @@ public sealed partial class BreadcrumbBarPage : Page
         // To restore the BreadcrumbBar to its initial state, we compare Folders (the live collection)
         // with _defaultFolders (the original state), and add back any missing items.
         // This ensures reset works even after user navigation modifies the ItemsSource.
-        var items = BreadcrumbBar2.ItemsSource as ObservableCollection<Folder>;
+        if (BreadcrumbBar2.ItemsSource is not ObservableCollection<Folder> items)
+        {
+            return;
+        }
+
         foreach (var folder in _defaultFolders)
         {
             if (!items.Contains(folder))
@@ -66,5 +74,5 @@ public sealed partial class BreadcrumbBarPage : Page
 
 public class Folder
 {
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 }

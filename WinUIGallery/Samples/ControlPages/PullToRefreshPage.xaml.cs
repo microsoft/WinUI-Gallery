@@ -24,19 +24,19 @@ public sealed partial class PullToRefreshPage : Page
     private ObservableCollection<string> items2 = new ObservableCollection<string>();
     private DispatcherTimer timer1 = new DispatcherTimer();
     private DispatcherTimer timer2 = new DispatcherTimer();
-    private Visual visualizerContentVisual;
-    private static RefreshContainer rc2;
-    private RefreshVisualizer rv2;
+    private Visual? visualizerContentVisual;
+    private static RefreshContainer? rc2;
+    private RefreshVisualizer? rv2;
 
     private int items1AddedCount = 0;
     private int items2AddedCount = 0;
 
-    private Deferral RefreshCompletionDeferral1
+    private Deferral? RefreshCompletionDeferral1
     {
         get;
         set;
     }
-    private Deferral RefreshCompletionDeferral2
+    private Deferral? RefreshCompletionDeferral2
     {
         get;
         set;
@@ -118,11 +118,16 @@ public sealed partial class PullToRefreshPage : Page
 
     private void PullToRefreshPage_Loaded(object sender, RoutedEventArgs e)
     {
+        if (rv2 is null)
+        {
+            return;
+        }
+
         visualizerContentVisual = ElementCompositionPreview.GetElementVisual(rv2.Content);
         this.Loaded -= PullToRefreshPage_Loaded;
     }
 
-    private void Timer1_Tick(object sender, object e)
+    private void Timer1_Tick(object? sender, object e)
     {
         DispatcherQueue disp = rc.DispatcherQueue;
         if (disp.HasThreadAccess)
@@ -138,8 +143,13 @@ public sealed partial class PullToRefreshPage : Page
         }
     }
 
-    private void Timer2_Tick(object sender, object e)
+    private void Timer2_Tick(object? sender, object e)
     {
+        if (rc2 is null)
+        {
+            return;
+        }
+
         DispatcherQueue disp = rc2.DispatcherQueue;
         if (disp.HasThreadAccess)
         {
@@ -200,6 +210,6 @@ public sealed partial class PullToRefreshPage : Page
 
     private void rv2_RefreshStateChanged(RefreshVisualizer sender, RefreshStateChangedEventArgs args)
     {
-        visualizerContentVisual.StopAnimation("RotationAngle");
+        visualizerContentVisual?.StopAnimation("RotationAngle");
     }
 }

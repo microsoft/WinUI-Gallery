@@ -12,8 +12,8 @@ namespace WinUIGallery.ControlPages;
 
 public class ListItemData
 {
-    public string Text { get; set; }
-    public ICommand Command { get; set; }
+    public string Text { get; set; } = string.Empty;
+    public ICommand? Command { get; set; }
 
     public override string ToString()
     {
@@ -96,10 +96,13 @@ public sealed partial class StandardUICommandPage : Page
         MenuFlyout flyout = new MenuFlyout();
         ListItemData data = (ListItemData)args.Item;
         MenuFlyoutItem item = new MenuFlyoutItem() { Command = data.Command };
-        flyout.Opened += delegate (object element, object e)
+        flyout.Opened += delegate (object? element, object e)
         {
-            MenuFlyout flyoutElement = element as MenuFlyout;
-            ListViewItem elementToHighlight = flyoutElement.Target as ListViewItem;
+            if ((element as MenuFlyout)?.Target is not ListViewItem elementToHighlight)
+            {
+                return;
+            }
+
             elementToHighlight.IsSelected = true;
         };
         flyout.Items.Add(item);

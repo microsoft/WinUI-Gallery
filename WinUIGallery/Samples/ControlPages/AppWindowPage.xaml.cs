@@ -88,7 +88,7 @@ public sealed partial class AppWindowPage : Page
             return;
         }
 
-        string size = InitialSize.SelectedItem.ToString();
+        string size = InitialSize.SelectedItem.ToString() ?? "Unknown";
         string percentage = size switch
         {
             "Small" => "5%",

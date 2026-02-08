@@ -10,6 +10,15 @@ namespace WinUIGallery.Controls;
 
 public sealed partial class CopyButton : Button
 {
+    public static readonly DependencyProperty CopiedMessageProperty =
+        DependencyProperty.Register("CopiedMessage", typeof(string), typeof(CopyButton), new PropertyMetadata("Copied to clipboard"));
+
+    public string CopiedMessage
+    {
+        get { return (string)GetValue(CopiedMessageProperty); }
+        set { SetValue(CopiedMessageProperty, value); }
+    }
+
     public CopyButton()
     {
         this.DefaultStyleKey = typeof(CopyButton);
@@ -20,7 +29,7 @@ public sealed partial class CopyButton : Button
         if (GetTemplateChild("CopyToClipboardSuccessAnimation") is Storyboard _storyBoard)
         {
             _storyBoard.Begin();
-            UIHelper.AnnounceActionForAccessibility(this, "Copied to clipboard", "CopiedToClipboardActivityId");
+            UIHelper.AnnounceActionForAccessibility(this, CopiedMessage, "CopiedToClipboardActivityId");
         }
     }
 

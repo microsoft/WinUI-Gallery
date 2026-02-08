@@ -12,14 +12,14 @@ namespace WinUIGallery.ControlPages;
 
 public class MyData
 {
-    public string DataHeader { get; set; }
-    public Microsoft.UI.Xaml.Controls.IconSource DataIconSource { get; set; }
-    public object DataContent { get; set; }
+    public string DataHeader { get; set; } = string.Empty;
+    public required IconSource DataIconSource { get; set; }
+    public required object DataContent { get; set; }
 }
 
 public sealed partial class TabViewPage : Page
 {
-    ObservableCollection<MyData> myDatas;
+    ObservableCollection<MyData>? myDatas;
 
     public TabViewPage()
     {
@@ -37,7 +37,7 @@ public sealed partial class TabViewPage : Page
     {
         for (int i = 0; i < 3; i++)
         {
-            (sender as TabView).TabItems.Add(CreateNewTab(i));
+            (sender as TabView)?.TabItems.Add(CreateNewTab(i));
         }
     }
 
@@ -102,12 +102,6 @@ public sealed partial class TabViewPage : Page
 
     private MyData CreateNewMyData(int index)
     {
-        var newData = new MyData
-        {
-            DataHeader = $"MyData Doc {index}",
-            DataIconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }
-        };
-
         Frame frame = new Frame();
 
         switch (index % 3)
@@ -123,7 +117,12 @@ public sealed partial class TabViewPage : Page
                 break;
         }
 
-        newData.DataContent = frame;
+        var newData = new MyData
+        {
+            DataHeader = $"MyData Doc {index}",
+            DataIconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder },
+            DataContent = frame,
+        };
 
         return newData;
     }
@@ -131,13 +130,18 @@ public sealed partial class TabViewPage : Page
     private void TabViewItemsSourceSample_AddTabButtonClick(TabView sender, object args)
     {
         // Add a new MyData item to the collection. TabView automatically generates a TabViewItem.
-        myDatas.Add(CreateNewMyData(myDatas.Count));
+        myDatas?.Add(CreateNewMyData(myDatas.Count));
     }
 
     private void TabViewItemsSourceSample_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
     {
+        if (args.Item is not MyData myData)
+        {
+            return;
+        }
+
         // Remove the requested MyData object from the collection.
-        myDatas.Remove(args.Item as MyData);
+        myDatas?.Remove(myData);
     }
     #endregion
 
@@ -145,19 +149,22 @@ public sealed partial class TabViewPage : Page
     private void NewTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
     {
         var senderTabView = args.Element as TabView;
-        senderTabView.TabItems.Add(CreateNewTab(senderTabView.TabItems.Count));
+        senderTabView?.TabItems.Add(CreateNewTab(senderTabView.TabItems.Count));
 
         args.Handled = true;
     }
 
     private void CloseSelectedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
     {
-        var InvokedTabView = (args.Element as TabView);
+        if (args.Element is not TabView invokedTabView)
+        {
+            return;
+        }
 
         // Only close the selected tab if it is closeable
-        if (((TabViewItem)InvokedTabView.SelectedItem).IsClosable)
+        if ((invokedTabView.SelectedItem as TabViewItem)?.IsClosable is true)
         {
-            InvokedTabView.TabItems.Remove(InvokedTabView.SelectedItem);
+            invokedTabView.TabItems.Remove(invokedTabView.SelectedItem);
         }
 
         args.Handled = true;
@@ -165,7 +172,10 @@ public sealed partial class TabViewPage : Page
 
     private void NavigateToNumberedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
     {
-        var InvokedTabView = (args.Element as TabView);
+        if (args.Element is not TabView invokedTabView)
+        {
+            return;
+        }
 
         int tabToSelect = 0;
 
@@ -197,14 +207,14 @@ public sealed partial class TabViewPage : Page
                 break;
             case Windows.System.VirtualKey.Number9:
                 // Select the last tab
-                tabToSelect = InvokedTabView.TabItems.Count - 1;
+                tabToSelect = invokedTabView.TabItems.Count - 1;
                 break;
         }
 
         // Only select the tab if it is in the list
-        if (tabToSelect < InvokedTabView.TabItems.Count)
+        if (tabToSelect < invokedTabView.TabItems.Count)
         {
-            InvokedTabView.SelectedIndex = tabToSelect;
+            invokedTabView.SelectedIndex = tabToSelect;
         }
 
         args.Handled = true;
@@ -213,7 +223,7 @@ public sealed partial class TabViewPage : Page
 
     private void TabWidthBehaviorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string widthModeString = (e.AddedItems[0] as ComboBoxItem).Content.ToString();
+        string? widthModeString = (e.AddedItems[0] as ComboBoxItem)?.Content.ToString();
         TabViewWidthMode widthMode = TabViewWidthMode.Equal;
         switch (widthModeString)
         {
@@ -232,7 +242,7 @@ public sealed partial class TabViewPage : Page
 
     private void TabCloseButtonOverlayModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string overlayModeString = (e.AddedItems[0] as ComboBoxItem).Content.ToString();
+        string? overlayModeString = (e.AddedItems[0] as ComboBoxItem)?.Content.ToString();
         TabViewCloseButtonOverlayMode overlayMode = TabViewCloseButtonOverlayMode.Auto;
         switch (overlayModeString)
         {

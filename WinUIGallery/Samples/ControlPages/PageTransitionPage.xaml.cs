@@ -9,7 +9,7 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class PageTransitionPage : Page
 {
-    private NavigationTransitionInfo _transitionInfo = null;
+    private NavigationTransitionInfo? _transitionInfo = null;
 
     public PageTransitionPage()
     {
@@ -47,7 +47,7 @@ public sealed partial class PageTransitionPage : Page
     {
         var pageTransitionString = "";
 
-        var senderTransitionString = (sender as RadioButton).Content.ToString();
+        var senderTransitionString = (sender as RadioButton)?.Content.ToString();
         if (senderTransitionString != "Default")
         {
             pageTransitionString = ", new " + senderTransitionString + "NavigationTransitionInfo()";

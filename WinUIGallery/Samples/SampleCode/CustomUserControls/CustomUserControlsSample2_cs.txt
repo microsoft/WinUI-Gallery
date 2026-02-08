@@ -42,8 +42,8 @@ public sealed partial class ValidatedPasswordBox : Control
     public string PlaceholderText { get => (string)GetValue(PlaceholderTextProperty); set => SetValue(PlaceholderTextProperty, value); }
 
     // Template parts for password input and validation messages
-    private PasswordBox PasswordInput { get; set; }
-    private RichTextBlock ValidationRichText { get; set; }
+    private PasswordBox? PasswordInput { get; set; }
+    private RichTextBlock? ValidationRichText { get; set; }
 
     protected override void OnApplyTemplate()
     {

@@ -31,7 +31,7 @@ public sealed partial class ProgressRingPage : Page
     {
         var progressRing = (ComboBox)sender == BackgroundComboBox1 ? ProgressRing1 : ProgressRing2;
         var revealBackgroundProperty = (ComboBox)sender == BackgroundComboBox1 ? RevealBackgroundProperty1 : RevealBackgroundProperty2;
-        string colorName = e.AddedItems[0].ToString();
+        string? colorName = e.AddedItems[0].ToString();
         bool showBackgroundProperty = false;
         switch (colorName)
         {

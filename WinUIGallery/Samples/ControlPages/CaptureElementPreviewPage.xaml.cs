@@ -83,8 +83,8 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         }
     }
 
-    private MediaFrameSourceGroup mediaFrameSourceGroup;
-    private MediaCapture mediaCapture;
+    private MediaFrameSourceGroup? mediaFrameSourceGroup;
+    private MediaCapture? mediaCapture;
 
     private async Task StartCaptureElement()
     {
@@ -114,7 +114,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
 
     public string MirrorTextReplacement = ""; // starts not mirrored, so no text in that case
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     public void OnPropertyChanged(string PropertyName)
     {
@@ -143,6 +143,11 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
 
     async private void CapturePhoto_Click(object sender, RoutedEventArgs e)
     {
+        if (mediaCapture is null)
+        {
+            return;
+        }
+
         // Capture a photo to a stream
         var imgFormat = ImageEncodingProperties.CreateJpeg();
         var stream = new InMemoryRandomAccessStream();

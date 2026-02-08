@@ -15,7 +15,7 @@ public sealed partial class SamplePage2 : Page
         this.InitializeComponent();
     }
 
-    public void PrepareConnectedAnimation(ConnectedAnimationConfiguration config)
+    public void PrepareConnectedAnimation(ConnectedAnimationConfiguration? config)
     {
         var anim = ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("BackwardConnectedAnimation", DestinationElement);
 

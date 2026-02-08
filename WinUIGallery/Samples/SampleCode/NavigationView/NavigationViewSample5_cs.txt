@@ -9,8 +9,8 @@ public class CategoryBase { }
 
 public class Category : CategoryBase
 {
-    public string Name { get; set; }
-    public string Tooltip { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Tooltip { get; set; } = string.Empty;
     public Symbol Glyph { get; set; }
 }
 
@@ -24,8 +24,9 @@ public class Header : CategoryBase
 [ContentProperty(Name = "ItemTemplate")]
 class MenuItemTemplateSelector : DataTemplateSelector
 {
-    public DataTemplate ItemTemplate { get; set; }
-    protected override DataTemplate SelectTemplateCore(object item)
+    public DataTemplate? ItemTemplate { get; set; }
+
+    protected override DataTemplate? SelectTemplateCore(object item)
     {
         return item is Separator ? SeparatorTemplate : item is Header ? HeaderTemplate : ItemTemplate;
     }

@@ -78,17 +78,17 @@ public class ExplorerItem
         File,
     }
 
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
     public ExplorerItemType Type { get; set; }
     public ObservableCollection<ExplorerItem> Children { get; set; } = new ObservableCollection<ExplorerItem>();
 }
 
 partial class ExplorerItemTemplateSelector : DataTemplateSelector
 {
-    public DataTemplate FolderTemplate { get; set; }
-    public DataTemplate FileTemplate { get; set; }
+    public DataTemplate? FolderTemplate { get; set; }
+    public DataTemplate? FileTemplate { get; set; }
 
-    protected override DataTemplate SelectTemplateCore(object item)
+    protected override DataTemplate? SelectTemplateCore(object item)
     {
         var explorerItem = (ExplorerItem)item;
         return explorerItem.Type == ExplorerItem.ExplorerItemType.Folder ? FolderTemplate : FileTemplate;

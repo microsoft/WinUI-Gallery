@@ -64,10 +64,18 @@ public sealed partial class EasingFunctionPage : Page
 
     private void Button4_Click(object sender, RoutedEventArgs e)
     {
-        var selectedItem = EasingComboBox.SelectedItem as NamedEasingFunction;
+        if (EasingComboBox.SelectedItem is not NamedEasingFunction selectedItem)
+        {
+            return;
+        }
+
         var easingFunction = selectedItem.EasingFunctionBase;
         easingFunction.EasingMode = GetEaseValue();
-        (Storyboard4.Children[0] as DoubleAnimation).EasingFunction = easingFunction;
+
+        if (Storyboard4.Children[0] is DoubleAnimation doubleAnimation)
+        {
+            doubleAnimation.EasingFunction = easingFunction;
+        }
 
         Storyboard4.Children[0].SetValue(DoubleAnimation.FromProperty, Translation4.X);
         Storyboard4.Children[0].SetValue(DoubleAnimation.ToProperty, Translation4.X > 0 ? 0 : 200);

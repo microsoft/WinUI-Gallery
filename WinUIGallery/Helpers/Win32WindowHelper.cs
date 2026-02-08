@@ -9,7 +9,7 @@ namespace WinUIGallery.Helpers;
 
 internal partial class Win32WindowHelper
 {
-    private static WinProc newWndProc = null;
+    private static WinProc? newWndProc = null;
     private static nint oldWndProc = nint.Zero;
 
     private POINT? minWindowSize = null;

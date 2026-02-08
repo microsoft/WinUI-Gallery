@@ -4,18 +4,18 @@ using System.Diagnostics;
 namespace WinUIGallery.Helpers;
 public static partial class ProcessInfoHelper
 {
-    private static readonly FileVersionInfo _fileVersionInfo;
+    private static readonly FileVersionInfo? _fileVersionInfo;
     private static readonly Process _process;
     static ProcessInfoHelper()
     {
         _process = Process.GetCurrentProcess();
-        _fileVersionInfo = _process.MainModule.FileVersionInfo;
+        _fileVersionInfo = _process.MainModule?.FileVersionInfo;
     }
 
     /// <summary>
     /// Returns the version string.
     /// </summary>
-    public static string Version => GetVersion()?.ToString();
+    public static string Version => GetVersion()?.ToString() ?? string.Empty;
 
     /// <summary>
     /// Returns the version string prefixed with 'v'.
@@ -37,16 +37,18 @@ public static partial class ProcessInfoHelper
     /// </summary>
     public static string Publisher => _fileVersionInfo?.CompanyName ?? "Unknown Publisher";
 
-    public static Version GetVersion()
+    public static Version? GetVersion()
     {
-        return new Version(_fileVersionInfo.FileMajorPart, _fileVersionInfo.FileMinorPart, _fileVersionInfo.FileBuildPart, _fileVersionInfo.FilePrivatePart);
+        return _fileVersionInfo is null
+            ? null
+            : new Version(_fileVersionInfo.FileMajorPart, _fileVersionInfo.FileMinorPart, _fileVersionInfo.FileBuildPart, _fileVersionInfo.FilePrivatePart);
     }
 
     /// <summary>
     /// Retrieves the file version information for the current assembly.
     /// </summary>
     /// <returns>Returns a FileVersionInfo object containing version details.</returns>
-    public static FileVersionInfo GetFileVersionInfo()
+    public static FileVersionInfo? GetFileVersionInfo()
     {
         return _fileVersionInfo;
     }

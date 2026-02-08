@@ -23,7 +23,7 @@ public partial class IdleSynchronizer
     const string s_imageDecodingIdleHandleName = "ImageDecodingIdle";
     const string s_fontDownloadsIdleHandleName = "FontDownloadsIdle";
 
-    private DispatcherQueue m_dispatcherQueue = null;
+    private DispatcherQueue m_dispatcherQueue;
 
     private SafeHandle m_hasAnimationsHandle;
     private SafeHandle m_animationsCompleteHandle;
@@ -86,7 +86,7 @@ public partial class IdleSynchronizer
         return threadId;
     }
 
-    private static IdleSynchronizer instance = null;
+    private static IdleSynchronizer? instance = null;
 
     public static IdleSynchronizer Instance
     {
@@ -101,7 +101,7 @@ public partial class IdleSynchronizer
         }
     }
 
-    public string Log { get; set; }
+    public string? Log { get; set; }
     public int TickCountBegin { get; set; }
 
     private IdleSynchronizer(DispatcherQueue dispatcherQueue)
@@ -283,7 +283,7 @@ public partial class IdleSynchronizer
         timer.Interval = TimeSpan.FromMilliseconds(0);
         timer.IsRepeating = false;
 
-        TypedEventHandler<DispatcherQueueTimer,object> tickHandler = null;
+        TypedEventHandler<DispatcherQueueTimer, object>? tickHandler = null;
 
         tickHandler = (sender, args) =>
         {
@@ -315,7 +315,7 @@ public partial class IdleSynchronizer
         {
             return "HasAnimations handle wait returned an invalid value.";
         }
-        
+
         AddLog("WaitForAnimationsComplete: After Wait(m_hasAnimationsHandle)");
 
         bool hasAnimations = (waitResult == WAIT_EVENT.WAIT_OBJECT_0);

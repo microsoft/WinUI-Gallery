@@ -33,7 +33,11 @@
                     ItemsSource="{x:Bind ((local:Filter)resultsNavView.SelectedItem).Items, Mode=OneWay}"
                     Loaded="OnItemGridViewLoaded"
                     SelectionMode="None"
-                    TabIndex="1" />
+                    TabIndex="1">
+                    <GridView.Resources>
+                        <CornerRadius x:Key="GridViewItemCornerRadius">8</CornerRadius>
+                    </GridView.Resources>
+                </GridView>
             </UserControl>
         </NavigationView>
 

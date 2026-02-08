@@ -42,7 +42,11 @@
             ItemsSource="{x:Bind Items, Mode=OneWay}"
             Loaded="OnItemGridViewLoaded"
             SelectionMode="None"
-            TabIndex="1" />
+            TabIndex="1">
+            <GridView.Resources>
+                <CornerRadius x:Key="GridViewItemCornerRadius">8</CornerRadius>
+            </GridView.Resources>
+        </GridView>
         <!--  Visual states reflect the application's window size  -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="LayoutVisualStates">

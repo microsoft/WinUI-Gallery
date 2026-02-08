@@ -25,7 +25,7 @@ public sealed partial class BorderPage : Page
     {
         if (sender is RadioButton rb && Control1 != null)
         {
-            string colorName = rb.Content.ToString();
+            string? colorName = rb.Content.ToString();
             switch (colorName)
             {
                 case "Yellow":
@@ -48,7 +48,7 @@ public sealed partial class BorderPage : Page
     {
         if (sender is RadioButton rb && Control1 != null)
         {
-            string colorName = rb.Content.ToString();
+            string? colorName = rb.Content.ToString();
             switch (colorName)
             {
                 case "Yellow":

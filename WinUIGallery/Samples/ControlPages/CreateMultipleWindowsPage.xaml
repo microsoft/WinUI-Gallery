@@ -20,7 +20,7 @@
 
     <StackPanel>
         <controls:ControlExample CSharpSource="Window/CreateWindowSample1.txt" HeaderText="Create single threaded Multiple Top level Windows(MTW).">
-            <Button x:Name="Control1" Click="createNewWindow_Click">Create new Window</Button>
+            <Button x:Name="Control1" Click="CreateNewWindow_Click">Create new Window</Button>
         </controls:ControlExample>
     </StackPanel>
 </Page>

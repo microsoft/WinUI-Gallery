@@ -21,17 +21,17 @@ public sealed partial class PageHeader : UserControl
     public static readonly DependencyProperty ThemeButtonVisibilityProperty =
         DependencyProperty.Register("ThemeButtonVisibility", typeof(Visibility), typeof(PageHeader), new PropertyMetadata(Visibility.Visible));
 
-    public string PageName { get; set; }
-    public Action CopyLinkAction { get; set; }
-    public Action ToggleThemeAction { get; set; }
+    public string PageName { get; set; } = string.Empty;
+    public Action? CopyLinkAction { get; set; }
+    public Action? ToggleThemeAction { get; set; }
 
-    public ControlInfoDataItem Item
+    public ControlInfoDataItem? Item
     {
         get { return _item; }
         set { _item = value; }
     }
 
-    private ControlInfoDataItem _item;
+    private ControlInfoDataItem? _item;
 
     public PageHeader()
     {
@@ -86,6 +86,11 @@ public sealed partial class PageHeader : UserControl
 
     private void OnCopyLink()
     {
+        if (this.Item is null)
+        {
+            return;
+        }
+
         ProtocolActivationClipboardHelper.Copy(this.Item);
     }
     public async void OnFeedBackButtonClick(object sender, RoutedEventArgs e)
@@ -101,18 +106,18 @@ public sealed partial class PageHeader : UserControl
         }
         if (Item != null)
         {
-            FavoriteButton.IsChecked = SettingsHelper.Contains(SettingsKeys.Favorites, Item.UniqueId);
+            FavoriteButton.IsChecked = SettingsHelper.Current.Favorites.Contains(Item.UniqueId);
         }
     }
 
     private string GetFavoriteGlyph(bool? isFavorite)
     {
-        return (bool)isFavorite ? "\uE735" : "\uE734";
+        return isFavorite is true ? "\uE735" : "\uE734";
     }
 
     private string GetFavoriteToolTip(bool? isFavorite)
     {
-        return (bool)isFavorite ? "Remove from favorites" : "Add to favorites";
+        return isFavorite is true ? "Remove from favorites" : "Add to favorites";
     }
 
     private void FavoriteButton_Click(object sender, RoutedEventArgs e)
@@ -121,11 +126,11 @@ public sealed partial class PageHeader : UserControl
         {
             if (toggleButton.IsChecked == true)
             {
-                SettingsHelper.TryAddItem(SettingsKeys.Favorites, Item.UniqueId, InsertPosition.Last);
+                SettingsHelper.Current.UpdateFavorites(items => items.AddAsLast(Item.UniqueId));
             }
             else
             {
-                SettingsHelper.TryRemoveItem(SettingsKeys.Favorites, Item.UniqueId);
+                SettingsHelper.Current.UpdateFavorites(items => items.Remove(Item.UniqueId));
             }
         }
     }

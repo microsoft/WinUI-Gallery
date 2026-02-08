@@ -30,7 +30,13 @@ public sealed partial class MainWindow : Window
         get { return NavigationViewControl; }
     }
 
-    public Action NavigationViewLoaded { get; set; }
+    public Action? NavigationViewLoaded { get; set; }
+
+#nullable enable
+    private OverlappedPresenter? WindowPresenter { get; }
+#nullable disable
+
+    private OverlappedPresenterState CurrentWindowState { get; set; }
 
     public MainWindow()
     {
@@ -38,6 +44,34 @@ public sealed partial class MainWindow : Window
         SetWindowProperties();
         RootGrid.ActualThemeChanged += (_, _) => TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
         dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
+
+        // Workaround for WinUI issue #9934:
+        // https://github.com/microsoft/microsoft-ui-xaml/issues/9934.
+        // See `AdjustNavigationViewMargin()` for implementation details.
+        if (AppWindow.Presenter is OverlappedPresenter windowPresenter)
+        {
+            WindowPresenter = windowPresenter;
+            CurrentWindowState = WindowPresenter.State;
+            AdjustNavigationViewMargin(force: true);
+            AppWindow.Changed += (_, _) => AdjustNavigationViewMargin();
+        }
+    }
+
+    // Adjusts the NavigationView margin based on the window state
+    // to fix the gap between the caption buttons and the NavigationView.
+    // Use `force = true` to ensure adjustment on the first call.
+    private void AdjustNavigationViewMargin(bool? force = null)
+    {
+        if (WindowPresenter is null ||
+            (WindowPresenter.State == CurrentWindowState && force is not true))
+        {
+            return;
+        }
+
+        NavigationView.Margin = WindowPresenter.State == OverlappedPresenterState.Maximized
+            ? new Thickness(0, -1, 0, 0)
+            : new Thickness(0, -2, 0, 0);
+        CurrentWindowState = WindowPresenter.State;
     }
 
     private void RootGrid_Loaded(object sender, RoutedEventArgs e)
@@ -61,7 +95,7 @@ public sealed partial class MainWindow : Window
 
     private void SetWindowProperties()
     {
-#if DEBUG
+#if DEBUG || DEBUG_UNPACKAGED
         this.Title = "WinUI 3 Gallery Dev";
         titleBar.Subtitle = "Dev";
 #else
@@ -110,7 +144,7 @@ public sealed partial class MainWindow : Window
 
     // Wraps a call to rootFrame.Navigate to give the Page a way to know which NavigationRootPage is navigating.
     // Please call this function rather than rootFrame.Navigate to navigate the rootFrame.
-    public void Navigate(Type pageType, object targetPageArguments = null, NavigationTransitionInfo navigationTransitionInfo = null)
+    public void Navigate(Type pageType, object? targetPageArguments = null, NavigationTransitionInfo? navigationTransitionInfo = null)
     {
         rootFrame.Navigate(pageType, targetPageArguments, navigationTransitionInfo);
 
@@ -118,7 +152,7 @@ public sealed partial class MainWindow : Window
         if (pageType.Equals(typeof(ItemPage)) && targetPageArguments != null)
         {
             // Mark the item sample's page visited
-            SettingsHelper.TryAddItem(SettingsKeys.RecentlyVisited, targetPageArguments.ToString(), InsertPosition.First, SettingsHelper.MaxRecentlyVisitedSamples);
+            SettingsHelper.Current.UpdateRecentlyVisited(items => items.AddAsFirst(targetPageArguments.ToString(), SettingsHelper.MaxRecentlyVisitedSamples));
         }
     }
 
@@ -196,7 +230,7 @@ public sealed partial class MainWindow : Window
 
     private void OnMenuFlyoutItemClick(object sender, RoutedEventArgs e)
     {
-        switch ((sender as MenuFlyoutItem).Tag)
+        switch ((sender as MenuFlyoutItem)?.Tag)
         {
             case ControlInfoDataItem item:
                 ProtocolActivationClipboardHelper.Copy(item);
@@ -231,12 +265,16 @@ public sealed partial class MainWindow : Window
         Task.Delay(500).ContinueWith(_ => this.NavigationViewLoaded?.Invoke(), TaskScheduler.FromCurrentSynchronizationContext());
 
         var navigationView = sender as NavigationView;
-        navigationView.RegisterPropertyChangedCallback(NavigationView.IsPaneOpenProperty, OnIsPaneOpenChanged);
+        navigationView?.RegisterPropertyChangedCallback(NavigationView.IsPaneOpenProperty, OnIsPaneOpenChanged);
     }
 
     private void OnIsPaneOpenChanged(DependencyObject sender, DependencyProperty dp)
     {
-        var navigationView = sender as NavigationView;
+        if (sender is not NavigationView navigationView)
+        {
+            return;
+        }
+
         var announcementText = navigationView.IsPaneOpen ? "Navigation Pane Opened" : "Navigation Pane Closed";
 
         UIHelper.AnnounceActionForAccessibility(navigationView, announcementText, "NavigationViewPaneIsOpenChangeNotificationId");
@@ -395,9 +433,8 @@ public sealed partial class MainWindow : Window
 
     private void OnControlsSearchBoxQuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
     {
-        if (args.ChosenSuggestion != null && args.ChosenSuggestion is ControlInfoDataItem)
+        if (args.ChosenSuggestion is ControlInfoDataItem infoDataItem)
         {
-            var infoDataItem = args.ChosenSuggestion as ControlInfoDataItem;
             var hasChangedSelection = EnsureItemIsVisibleInNavigation(infoDataItem.Title);
 
             // In case the menu selection has changed, it means that it has triggered
@@ -419,13 +456,11 @@ public sealed partial class MainWindow : Window
         foreach (object rawItem in NavigationView.MenuItems)
         {
             // Check if we encountered the separator
-            if (!(rawItem is NavigationViewItem))
+            if (rawItem is not NavigationViewItem item)
             {
                 // Skipping this item
                 continue;
             }
-
-            var item = rawItem as NavigationViewItem;
 
             // Check if we are this category
             if ((string)item.Content == name)

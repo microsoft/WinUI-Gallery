@@ -3,11 +3,14 @@
 
 using Microsoft.UI.Xaml.Controls;
 using System.Collections.Generic;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
 public sealed partial class PipsPagerPage : Page
 {
+    private const string PipsPagerPageChangeNotificationId = "PipsPagerPageChangeNotificationId";
+
     public List<string> Pictures = new List<string>()
     {
         "ms-appx:///Assets/SampleMedia/LandscapeImage1.jpg",
@@ -24,9 +27,17 @@ public sealed partial class PipsPagerPage : Page
         this.InitializeComponent();
     }
 
+    private void TestPipsPager2_SelectedIndexChanged(PipsPager sender, PipsPagerSelectedIndexChangedEventArgs args)
+    {
+        int pageNumber = sender.SelectedPageIndex + 1; // Convert 0-based index to 1-based page number
+        int totalPages = sender.NumberOfPages;
+        string announcement = $"Page {pageNumber} of {totalPages} selected";
+        UIHelper.AnnounceActionForAccessibility(sender, announcement, PipsPagerPageChangeNotificationId);
+    }
+
     private void OrientationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string orientation = e.AddedItems[0].ToString();
+        string? orientation = e.AddedItems[0].ToString();
 
         switch (orientation)
         {
@@ -43,7 +54,7 @@ public sealed partial class PipsPagerPage : Page
 
     private void PrevButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string prevButtonVisibility = e.AddedItems[0].ToString();
+        string? prevButtonVisibility = e.AddedItems[0].ToString();
 
         switch (prevButtonVisibility)
         {
@@ -64,7 +75,7 @@ public sealed partial class PipsPagerPage : Page
 
     private void NextButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string nextButtonVisibility = e.AddedItems[0].ToString();
+        string? nextButtonVisibility = e.AddedItems[0].ToString();
 
         switch (nextButtonVisibility)
         {

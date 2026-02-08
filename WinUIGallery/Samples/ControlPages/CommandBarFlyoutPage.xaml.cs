@@ -17,8 +17,13 @@ public sealed partial class CommandBarFlyoutPage : Page
 
     private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
+        if (sender is not AppBarButton appBarButton)
+        {
+            return;
+        }
+
         // Do custom logic
-        SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
+        SelectedOptionText.Text = "You clicked: " + appBarButton.Label;
     }
 
     private void ShowMenu(bool isTransient)

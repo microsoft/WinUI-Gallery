@@ -38,7 +38,7 @@ public sealed partial class CalendarViewPage : Page
 
     private void SelectionMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (Enum.TryParse<CalendarViewSelectionMode>((sender as ComboBox).SelectedItem.ToString(), out CalendarViewSelectionMode selectionMode))
+        if (Enum.TryParse<CalendarViewSelectionMode>((sender as ComboBox)?.SelectedItem.ToString(), out CalendarViewSelectionMode selectionMode))
         {
             Control1.SelectionMode = selectionMode;
         }
@@ -46,8 +46,8 @@ public sealed partial class CalendarViewPage : Page
 
     private void calendarLanguages_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var selectedLang = calendarLanguages.SelectedItem as Language;
-        if (Windows.Globalization.Language.IsWellFormed(selectedLang.Code) && selectedLang != null)
+        if (calendarLanguages.SelectedItem is Language selectedLang &&
+            Windows.Globalization.Language.IsWellFormed(selectedLang.Code))
         {
             Control1.Language = selectedLang.Code;
         }

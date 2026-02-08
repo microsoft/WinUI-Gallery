@@ -15,7 +15,7 @@ public sealed partial class ListBoxPage : Page
 
     private void ColorListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string colorName = e.AddedItems[0].ToString();
+        string? colorName = e.AddedItems[0].ToString();
         switch (colorName)
         {
             case "Yellow":

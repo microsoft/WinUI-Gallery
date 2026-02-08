@@ -1,11 +1,20 @@
-﻿// C# code to create a new window
-var newWindow = WindowHelper.CreateWindow();
-var rootPage = new NavigationRootPage();
-rootPage.RequestedTheme = ThemeHelper.RootTheme;
-newWindow.Content = rootPage;
-newWindow.Activate();
+﻿// Ensure you close the child window before closing the parent window to avoid application crash.
+var childWindow = new Window()
+{
+    ExtendsContentIntoTitleBar = true,
+    SystemBackdrop = new MicaBackdrop(),
+    Content = new Page()
+    {
+        Content = new TextBlock()
+        {
+            Text = "New child window!",
+            HorizontalAlignment = HorizontalAlignment.Center,
+            VerticalAlignment = VerticalAlignment.Center,
+        },
+        // Get the theme from the parent.
+        RequestedTheme = this.ActualTheme,
+    }
+};
 
-// C# code to navigate in the new window
-var targetPageType = typeof(HomePage);
-string targetPageArguments = string.Empty;
-rootPage.Navigate(targetPageType, targetPageArguments);
+childWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
+childWindow.Activate();

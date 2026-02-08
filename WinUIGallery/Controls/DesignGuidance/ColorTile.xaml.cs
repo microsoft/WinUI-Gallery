@@ -4,7 +4,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Windows.ApplicationModel.DataTransfer;
-using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Controls;
 
@@ -74,7 +73,5 @@ public sealed partial class ColorTile : UserControl
         DataPackage package = new DataPackage();
         package.SetText(ColorBrushName);
         Clipboard.SetContent(package);
-
-        UIHelper.AnnounceActionForAccessibility(sender as Button, "Brush name copied to clipboard", "BrushNameCopiedSuccessNotificationId");
     }
 }

@@ -67,7 +67,11 @@ partial class ActivityFeedLayout : VirtualizingLayout
 
     private static void OnPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
     {
-        var layout = obj as ActivityFeedLayout;
+        if (obj is not ActivityFeedLayout layout)
+        {
+            return;
+        }
+
         if (args.Property == RowSpacingProperty)
         {
             layout._rowSpacing = (double)args.NewValue;
@@ -138,7 +142,11 @@ partial class ActivityFeedLayout : VirtualizingLayout
             context.ItemCount / 3);
 
         // Determine which items will appear on those rows and what the rect will be for each item
-        var state = context.LayoutState as ActivityFeedLayoutState;
+        if (context.LayoutState is not ActivityFeedLayoutState state)
+        {
+            throw new InvalidOperationException("LayoutState is not of type ActivityFeedLayoutState");
+        }
+
         state.LayoutRects.Clear();
 
         // Save the index of the first realized item.  We'll use it as a starting point during arrange.
@@ -188,7 +196,11 @@ partial class ActivityFeedLayout : VirtualizingLayout
     protected override Size ArrangeOverride(VirtualizingLayoutContext context, Size finalSize)
     {
         // walk through the cache of containers and arrange
-        var state = context.LayoutState as ActivityFeedLayoutState;
+        if (context.LayoutState is not ActivityFeedLayoutState state)
+        {
+            throw new InvalidOperationException("LayoutState is not of type ActivityFeedLayoutState");
+        }
+
         var virtualContext = context as VirtualizingLayoutContext;
         int currentIndex = state.FirstRealizedIndex;
 
@@ -265,5 +277,5 @@ internal partial class ActivityFeedLayoutState
         }
     }
 
-    private List<Rect> _layoutRects;
+    private List<Rect>? _layoutRects;
 }

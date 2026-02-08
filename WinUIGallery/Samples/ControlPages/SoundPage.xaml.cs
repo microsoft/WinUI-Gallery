@@ -20,7 +20,12 @@ public sealed partial class SoundPage : Page
 
     private void Button_Click(object sender, RoutedEventArgs e)
     {
-        var tagInt = int.Parse((string)(sender as Button).Tag);
+        if ((sender as Button)?.Tag is not string tag)
+        {
+            return;
+        }
+
+        var tagInt = int.Parse(tag);
         ElementSoundPlayer.Play((ElementSoundKind)tagInt);
     }
 

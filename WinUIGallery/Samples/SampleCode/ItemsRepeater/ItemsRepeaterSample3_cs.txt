@@ -40,16 +40,19 @@ private void InitializeData()
 
 private void Animated_GotItem(object sender, RoutedEventArgs e)
 {
-    var item = sender as FrameworkElement;
+    if (sender is not Button senderBtn)
+    {
+        return;
+    }
+
     // When the clicked item has been recieved, bring it to the middle of the viewport.
-    item.StartBringIntoView(new BringIntoViewOptions()
+    senderBtn.StartBringIntoView(new BringIntoViewOptions()
     {
         VerticalAlignmentRatio = 0.5,
         AnimationDesired = true,
     });
 
     // Update corresponding rectangle with selected color
-    Button senderBtn = sender as Button;
     colorRectangle.Fill = senderBtn.Background;
 }
 
@@ -84,9 +87,13 @@ private void OnElementPrepared(Microsoft.UI.Xaml.Controls.ItemsRepeater sender,
 and sets the rectangle to match its color. */
 private void Animated_ScrollViewer_ViewChanging(object sender, ScrollViewerViewChangingEventArgs e)
 {
-     Button SelectedItem = GetSelectedItemFromViewport() as Button;
+     if (GetSelectedItemFromViewport() is not Button selectedItem)
+     {
+         return;
+     }
+
      // Update corresponding rectangle with selected color
-     colorRectangle.Fill = SelectedItem.Background;
+     colorRectangle.Fill = selectedItem.Background;
 }
 
 // The remainder of these functions are helper functions for the ViewChanging function:
@@ -107,7 +114,7 @@ private int GetSelectedIndexFromViewport()
 }
 
 // Return item that's at the center of the viewport.
-private object GetSelectedItemFromViewport()
+private object? GetSelectedItemFromViewport()
 {
     var selectedIndex = GetSelectedIndexFromViewport();
     var selectedElement = animatedScrollRepeater.TryGetElement(selectedIndex) as Button;

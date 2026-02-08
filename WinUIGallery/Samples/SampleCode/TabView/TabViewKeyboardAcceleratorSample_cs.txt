@@ -1,27 +1,37 @@
 ﻿private void NewTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
 {
-    var senderTabView = args.Element as TabView;
+    if (ars.Element is not TabView senderTabView)
+    {
+        return;
+    }
+
     senderTabView.TabItems.Add(CreateNewTab(senderTabView.TabItems.Count));
 
-	args.Handled = true;
+    args.Handled = true;
 }
 
 private void CloseSelectedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
 {
-    var InvokedTabView = (args.Element as TabView);
-
-    // Only close the selected tab if it is closeable
-    if (((TabViewItem)InvokedTabView.SelectedItem).IsClosable)
+    if (args.Element is not TabView invokedTabView)
     {
-        InvokedTabView.TabItems.Remove(InvokedTabView.SelectedItem);
+        return;
     }
 
-	args.Handled = true;
+    // Only close the selected tab if it is closeable
+    if ((invokedTabView.SelectedItem as TabViewItem)?.IsClosable is true)
+    {
+        invokedTabView.TabItems.Remove(invokedTabView.SelectedItem);
+    }
+
+    args.Handled = true;
 }
 
 private void NavigateToNumberedTabKeyboardAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
 {
-    var InvokedTabView = (args.Element as TabView);
+    if (args.Element is not TabView invokedTabView)
+    {
+        return;
+    }
 
     int tabToSelect = 0;
 
@@ -53,15 +63,15 @@ private void NavigateToNumberedTabKeyboardAccelerator_Invoked(KeyboardAccelerato
             break;
         case Windows.System.VirtualKey.Number9:
             // Select the last tab
-            tabToSelect = InvokedTabView.TabItems.Count - 1;
+            tabToSelect = invokedTabView.TabItems.Count - 1;
             break;
     }
 
     // Only select the tab if it is in the list
-    if (tabToSelect < InvokedTabView.TabItems.Count)
+    if (tabToSelect < invokedTabView.TabItems.Count)
     {
-        InvokedTabView.SelectedIndex = tabToSelect;
+        invokedTabView.SelectedIndex = tabToSelect;
     }
 
-	args.Handled = true;
+    args.Handled = true;
 }

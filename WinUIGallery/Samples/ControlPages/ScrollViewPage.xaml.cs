@@ -181,7 +181,7 @@ public sealed partial class ScrollViewPage : Page
 
     private void ScrollView_ScrollAnimationStarting(ScrollView sender, ScrollingScrollAnimationStartingEventArgs e)
     {
-        Vector3KeyFrameAnimation stockKeyFrameAnimation = e.Animation as Vector3KeyFrameAnimation;
+        Vector3KeyFrameAnimation? stockKeyFrameAnimation = e.Animation as Vector3KeyFrameAnimation;
 
         if (stockKeyFrameAnimation != null)
         {
@@ -269,7 +269,7 @@ public sealed partial class ScrollViewPage : Page
 
     private void UpdateExample3Content()
     {
-        string sampleCodeFileName = null;
+        string? sampleCodeFileName = null;
 
         switch (cmbVerticalAnimation.SelectedIndex)
         {
@@ -315,6 +315,6 @@ public sealed partial class ScrollViewPage : Page
                 _example3CodeCache[sampleCodeFileName] = content; // Cache the content
             }
         }
-        return content;
+        return content ?? string.Empty;
     }
 }
