@@ -1,31 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Page
     x:Class="WinUIGallery.ControlPages.AppWindowTitleBarPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:WinUIGallery.Controls"
     mc:Ignorable="d">
 
     <StackPanel>
-        <TextBlock TextWrapping="Wrap"
-                   Margin="0,8,0,0">
-            <Run Text="Additional customization options are available through the" />
+        <TextBlock Margin="0,8,0,0" TextWrapping="Wrap">
+            <Run Text="For the default title bar and basic scenarios, use the" />
             <Hyperlink Click="Hyperlink_Click">
                 <Run Text="TitleBar" />
             </Hyperlink>
             <Run Text="control." />
         </TextBlock>
 
-        <controls:ControlExample HeaderText="AppWindowTitleBar Color Customization">
+        <controls:ControlExample HeaderText="AppWindowTitleBar color customization">
             <controls:ControlExample.Example>
-                <Button x:Name="ShowWindowButton"
-                        Click="ShowWindowButton_Click">
-                    <TextBlock Text="Show Sample Window"
-                               TextWrapping="Wrap"
-                               TextAlignment="Center"/>
-                </Button>
+                <Button
+                    x:Name="ShowWindowButton"
+                    Click="ShowWindowButton_Click"
+                    Content="Show window" />
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
                 <Grid ColumnSpacing="16">
@@ -35,75 +32,85 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <!-- Normal & Hover states -->
-                    <StackPanel Grid.Column="0"
-                                Spacing="8">
+                    <!--  Normal & Hover states  -->
+                    <StackPanel Grid.Column="0" Spacing="8">
                         <TextBlock Text="BackgroundColor" />
-                        <controls:ColorSelector x:Name="Background"
-                                                Color="#FFF2F6FA"
-                                                ColorChanged="Background_ColorChanged" />
+                        <controls:ColorSelector
+                            x:Name="Background"
+                            ColorChanged="Background_ColorChanged"
+                            Color="#FFF2F6FA" />
 
                         <TextBlock Text="ForegroundColor" />
-                        <controls:ColorSelector x:Name="Foreground"
-                                                Color="#FF1E2933"
-                                                ColorChanged="Foreground_ColorChanged" />
+                        <controls:ColorSelector
+                            x:Name="Foreground"
+                            ColorChanged="Foreground_ColorChanged"
+                            Color="#FF1E2933" />
 
                         <TextBlock Text="ButtonBackgroundColor" />
-                        <controls:ColorSelector x:Name="ButtonBackground"
-                                                Color="#FF3B82F6"
-                                                ColorChanged="ButtonBackground_ColorChanged" />
+                        <controls:ColorSelector
+                            x:Name="ButtonBackground"
+                            ColorChanged="ButtonBackground_ColorChanged"
+                            Color="#FF3B82F6" />
 
                         <TextBlock Text="ButtonForegroundColor" />
-                        <controls:ColorSelector x:Name="ButtonForeground"
-                                                Color="#FFFFFFFF"
-                                                ColorChanged="ButtonForeground_ColorChanged" />
+                        <controls:ColorSelector
+                            x:Name="ButtonForeground"
+                            ColorChanged="ButtonForeground_ColorChanged"
+                            Color="#FFFFFFFF" />
 
                         <TextBlock Text="ButtonHoverBackgroundColor" />
-                        <controls:ColorSelector x:Name="ButtonHoverBackground"
-                                                Color="#FF2563EB"
-                                                ColorChanged="ButtonHoverBackground_ColorChanged" />
+                        <controls:ColorSelector
+                            x:Name="ButtonHoverBackground"
+                            ColorChanged="ButtonHoverBackground_ColorChanged"
+                            Color="#FF2563EB" />
 
                         <TextBlock Text="ButtonHoverForegroundColor" />
-                        <controls:ColorSelector x:Name="ButtonHoverForeground"
-                                                Color="#FFFFFFFF"
-                                                ColorChanged="ButtonHoverForeground_ColorChanged" />
+                        <controls:ColorSelector
+                            x:Name="ButtonHoverForeground"
+                            ColorChanged="ButtonHoverForeground_ColorChanged"
+                            Color="#FFFFFFFF" />
                     </StackPanel>
 
-                    <!-- Separator -->
+                    <!--  Separator  -->
                     <AppBarSeparator Grid.Column="1" />
 
-                    <!-- Inactive & Pressed states -->
-                    <StackPanel Grid.Column="2"
-                                Spacing="8">
+                    <!--  Inactive & Pressed states  -->
+                    <StackPanel Grid.Column="2" Spacing="8">
                         <TextBlock Text="InactiveBackgroundColor" />
-                        <controls:ColorSelector x:Name="InactiveBackground"
-                                                Color="#FFE5EAF0"
-                                                ColorChanged="InactiveBackground_ColorChanged" />
+                        <controls:ColorSelector
+                            x:Name="InactiveBackground"
+                            ColorChanged="InactiveBackground_ColorChanged"
+                            Color="#FFE5EAF0" />
 
                         <TextBlock Text="InactiveForegroundColor" />
-                        <controls:ColorSelector x:Name="InactiveForeground"
-                                                Color="#FF6B7280"
-                                                ColorChanged="InactiveForeground_ColorChanged" />
+                        <controls:ColorSelector
+                            x:Name="InactiveForeground"
+                            ColorChanged="InactiveForeground_ColorChanged"
+                            Color="#FF6B7280" />
 
                         <TextBlock Text="ButtonInactiveBackgroundColor" />
-                        <controls:ColorSelector x:Name="ButtonInactiveBackground"
-                                                Color="#FFCBD5E1"
-                                                ColorChanged="ButtonInactiveBackground_ColorChanged" />
+                        <controls:ColorSelector
+                            x:Name="ButtonInactiveBackground"
+                            ColorChanged="ButtonInactiveBackground_ColorChanged"
+                            Color="#FFCBD5E1" />
 
                         <TextBlock Text="ButtonInactiveForegroundColor" />
-                        <controls:ColorSelector x:Name="ButtonInactiveForeground"
-                                                Color="#FF475569"
-                                                ColorChanged="ButtonInactiveForeground_ColorChanged" />
+                        <controls:ColorSelector
+                            x:Name="ButtonInactiveForeground"
+                            ColorChanged="ButtonInactiveForeground_ColorChanged"
+                            Color="#FF475569" />
 
                         <TextBlock Text="ButtonPressedBackgroundColor" />
-                        <controls:ColorSelector x:Name="ButtonPressedBackground"
-                                                Color="#FF1D4ED8"
-                                                ColorChanged="ButtonPressedBackground_ColorChanged" />
+                        <controls:ColorSelector
+                            x:Name="ButtonPressedBackground"
+                            ColorChanged="ButtonPressedBackground_ColorChanged"
+                            Color="#FF1D4ED8" />
 
                         <TextBlock Text="ButtonPressedForegroundColor" />
-                        <controls:ColorSelector x:Name="ButtonPressedForeground"
-                                                Color="#FFFFFFFF"
-                                                ColorChanged="ButtonPressedForeground_ColorChanged" />
+                        <controls:ColorSelector
+                            x:Name="ButtonPressedForeground"
+                            ColorChanged="ButtonPressedForeground_ColorChanged"
+                            Color="#FFFFFFFF" />
                     </StackPanel>
                 </Grid>
             </controls:ControlExample.Options>
@@ -137,55 +144,43 @@ public sealed partial class AppWindowTitleBarWindow : Window
                 </x:String>
             </controls:ControlExample.CSharp>
             <controls:ControlExample.Substitutions>
-                <controls:ControlExampleSubstitution Key="BackgroundColor"
-                                                     Value="{x:Bind ColorToArgbString(Background.Color), Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="ForegroundColor"
-                                                     Value="{x:Bind ColorToArgbString(Foreground.Color), Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="ButtonBackgroundColor"
-                                                     Value="{x:Bind ColorToArgbString(ButtonBackground.Color), Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="ButtonForegroundColor"
-                                                     Value="{x:Bind ColorToArgbString(ButtonForeground.Color), Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="ButtonHoverBackgroundColor"
-                                                     Value="{x:Bind ColorToArgbString(ButtonHoverBackground.Color), Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="ButtonHoverForegroundColor"
-                                                     Value="{x:Bind ColorToArgbString(ButtonHoverForeground.Color), Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="InactiveBackgroundColor"
-                                                     Value="{x:Bind ColorToArgbString(InactiveBackground.Color), Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="InactiveForegroundColor"
-                                                     Value="{x:Bind ColorToArgbString(InactiveForeground.Color), Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="ButtonInactiveBackgroundColor"
-                                                     Value="{x:Bind ColorToArgbString(ButtonInactiveBackground.Color), Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="ButtonInactiveForegroundColor"
-                                                     Value="{x:Bind ColorToArgbString(ButtonInactiveForeground.Color), Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="ButtonPressedBackgroundColor"
-                                                     Value="{x:Bind ColorToArgbString(ButtonPressedBackground.Color), Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="ButtonPressedForegroundColor"
-                                                     Value="{x:Bind ColorToArgbString(ButtonPressedForeground.Color), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="BackgroundColor" Value="{x:Bind ColorToArgbString(Background.Color), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ForegroundColor" Value="{x:Bind ColorToArgbString(Foreground.Color), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ButtonBackgroundColor" Value="{x:Bind ColorToArgbString(ButtonBackground.Color), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ButtonForegroundColor" Value="{x:Bind ColorToArgbString(ButtonForeground.Color), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ButtonHoverBackgroundColor" Value="{x:Bind ColorToArgbString(ButtonHoverBackground.Color), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ButtonHoverForegroundColor" Value="{x:Bind ColorToArgbString(ButtonHoverForeground.Color), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="InactiveBackgroundColor" Value="{x:Bind ColorToArgbString(InactiveBackground.Color), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="InactiveForegroundColor" Value="{x:Bind ColorToArgbString(InactiveForeground.Color), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ButtonInactiveBackgroundColor" Value="{x:Bind ColorToArgbString(ButtonInactiveBackground.Color), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ButtonInactiveForegroundColor" Value="{x:Bind ColorToArgbString(ButtonInactiveForeground.Color), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ButtonPressedBackgroundColor" Value="{x:Bind ColorToArgbString(ButtonPressedBackground.Color), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ButtonPressedForegroundColor" Value="{x:Bind ColorToArgbString(ButtonPressedForeground.Color), Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
-        <controls:ControlExample HeaderText="Content Extend Into AppWindowTitleBar">
+        <controls:ControlExample HeaderText="Extending content into the AppWindowTitleBar area">
             <controls:ControlExample.Example>
-                <Button x:Name="ShowExtendButton"
-                        Click="ShowExtendButton_Click">
-                    <TextBlock Text="Show Sample Window"
-                               TextWrapping="Wrap"
-                               TextAlignment="Center" />
-                </Button>
+                <Button
+                    x:Name="ShowExtendButton"
+                    Click="ShowExtendButton_Click"
+                    Content="Show window" />
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
                 <StackPanel Spacing="8">
-                    <CheckBox x:Name="ExtendContentCheckBox"
-                              Content="Extend content into title bar"
-                              IsChecked="True"
-                              Margin="0,0,0,12"
-                              Checked="ExtendContentCheckBox_Checked"
-                              Unchecked="ExtendContentCheckBox_Unchecked" />
-                    <ComboBox x:Name="HeightComboBox"
-                              Header="TitleBarHeightOption"
-                              Width="200"
-                              ItemsSource="{x:Bind titleBarHeightOptions}"
-                              SelectedItem="{x:Bind selectedHeight}"
-                              SelectionChanged="HeightComboBox_SelectionChanged" />
+                    <CheckBox
+                        x:Name="ExtendContentCheckBox"
+                        Margin="0,0,0,12"
+                        Checked="ExtendContentCheckBox_Checked"
+                        Content="Extend content into title bar"
+                        IsChecked="True"
+                        Unchecked="ExtendContentCheckBox_Unchecked" />
+                    <ComboBox
+                        x:Name="HeightComboBox"
+                        Width="200"
+                        Header="TitleBarHeightOption"
+                        ItemsSource="{x:Bind titleBarHeightOptions}"
+                        SelectedItem="{x:Bind selectedHeight}"
+                        SelectionChanged="HeightComboBox_SelectionChanged" />
                 </StackPanel>
             </controls:ControlExample.Options>
             <controls:ControlExample.CSharp>
@@ -208,29 +203,26 @@ public sealed partial class AppWindowTitleBarExtendWindow : Window
                 </x:String>
             </controls:ControlExample.CSharp>
             <controls:ControlExample.Substitutions>
-                <controls:ControlExampleSubstitution Key="ExtendsContentIntoTitleBar"
-                                                     Value="{x:Bind BoolToLowerString(ExtendContentCheckBox.IsChecked), Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="TitleBarHeightOption"
-                                                     Value="{x:Bind HeightComboBox.SelectedItem, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ExtendsContentIntoTitleBar" Value="{x:Bind BoolToLowerString(ExtendContentCheckBox.IsChecked), Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="TitleBarHeightOption" Value="{x:Bind HeightComboBox.SelectedItem, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <controls:ControlExample HeaderText="AppWindowTitleBar preffered theme and height options">
+        <controls:ControlExample HeaderText="AppWindowTitleBar preferred theme and height options">
             <controls:ControlExample.Example>
-                <Button x:Name="ShowThemeHeightButton"
-                        Click="ShowThemeButton_Click">
-                    <TextBlock Text="Show Sample Window"
-                               TextWrapping="Wrap"
-                               TextAlignment="Center" />
-                </Button>
+                <Button
+                    x:Name="ShowThemeHeightButton"
+                    Click="ShowThemeButton_Click"
+                    Content="Show window" />
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
-                <ComboBox x:Name="ThemeComboBox"
-                          Header="TitleBarTheme"
-                          Width="200"
-                          ItemsSource="{x:Bind titleBarThemes}"
-                          SelectedItem="{x:Bind selectedTheme}"
-                          SelectionChanged="ThemeComboBox_SelectionChanged" />
+                <ComboBox
+                    x:Name="ThemeComboBox"
+                    Width="200"
+                    Header="TitleBarTheme"
+                    ItemsSource="{x:Bind titleBarThemes}"
+                    SelectedItem="{x:Bind selectedTheme}"
+                    SelectionChanged="ThemeComboBox_SelectionChanged" />
             </controls:ControlExample.Options>
             <controls:ControlExample.CSharp>
                 <x:String xml:space="preserve">
@@ -249,8 +241,7 @@ public sealed partial class AppWindowTitleBarThemeHeightWindow : Window
                 </x:String>
             </controls:ControlExample.CSharp>
             <controls:ControlExample.Substitutions>
-                <controls:ControlExampleSubstitution Key="PreferredTheme"
-                                                     Value="{x:Bind ThemeComboBox.SelectedItem, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="PreferredTheme" Value="{x:Bind ThemeComboBox.SelectedItem, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>
