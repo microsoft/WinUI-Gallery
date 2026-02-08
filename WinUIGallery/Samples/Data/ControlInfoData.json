@@ -2636,6 +2636,29 @@
           ]
         },
         {
+          "UniqueId": "SystemBackdropElement",
+          "Title": "SystemBackdropElement",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control",
+            "ContentControl"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "An element to host system backdrop materials.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
+          "Description": "SystemBackdropElement applies system backdrop materials (Mica and Acrylic) to specific areas inside the UI tree, extending these materials beyond the window background to enable more flexible and immersive designs.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "SystemBackdropElement - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.systembackdropelement"
+            }
+          ]
+        },
+        {
           "UniqueId": "ThemeShadow",
           "Title": "ThemeShadow",
           "ApiNamespace": "Microsoft.UI.Xaml.Media",
@@ -2658,30 +2681,7 @@
               "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.themeshadow"
             }
           ]
-        },
-        {
-          "UniqueId": "SystemBackdropElement",
-          "Title": "SystemBackdropElement",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject",
-            "UIElement",
-            "FrameworkElement",
-            "Control",
-            "ContentControl"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
-          "Subtitle": "An element to host system backdrop materials.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
-          "Description": "SystemBackdropElement applies system backdrop materials (Mica and Acrylic) to specific areas inside the UI tree, extending these materials beyond the window background to enable more flexible and immersive designs.",
-          "IsNew": true,
-          "Docs": [
-            {
-              "Title": "SystemBackdropElement - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.systembackdropelement"
-            }
-          ]
-        }
+        }      
       ]
     },
     {
