@@ -2024,32 +2024,6 @@
           ]
         },
         {
-          "UniqueId": "TitleBar",
-          "Title": "TitleBar",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject",
-            "UIElement",
-            "FrameworkElement",
-            "Control"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
-          "Subtitle": "An example showing how to use the default TitleBar control.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
-          "Description": "The TitleBar control provides a simple way to create a modern titlebar UX with interactive content.",
-          "IsUpdated": true,
-          "Docs": [
-            {
-              "Title": "Title bar customization",
-              "Uri": "https://learn.microsoft.com/windows/apps/develop/title-bar"
-            },
-            {
-              "Title": "Title bar - design guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/basics/titlebar-design"
-            }
-          ]
-        },
-        {
           "UniqueId": "VariableSizedWrapGrid",
           "Title": "VariableSizedWrapGrid",
           "BaseClasses": [
@@ -3099,6 +3073,32 @@
             {
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
+            }
+          ]
+        },
+        {
+          "UniqueId": "TitleBar",
+          "Title": "TitleBar",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "An example showing how to use the default TitleBar control.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
+          "Description": "The TitleBar control provides a simple way to create a modern titlebar UX with interactive content.",
+          "IsUpdated": true,
+          "Docs": [
+            {
+              "Title": "Title bar customization",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/title-bar"
+            },
+            {
+              "Title": "Title bar - design guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/basics/titlebar-design"
             }
           ]
         }
