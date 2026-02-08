@@ -38,7 +38,7 @@
                         Click="LoadModel_Click"
                         Content="Load model"
                         Style="{StaticResource AccentButtonStyle}" />
-                    <layouts:WrapPanel
+                    <WrapPanel
                         x:Name="_rectanglePanel"
                         Grid.Row="2"
                         HorizontalAlignment="Left">
