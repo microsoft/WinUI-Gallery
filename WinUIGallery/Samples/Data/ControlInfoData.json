@@ -2049,6 +2049,31 @@
           ]
         },
         {
+          "UniqueId": "WrapPanel",
+          "Title": "WrapPanel",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Panel"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A layout panel that positions child elements sequentially from left to right or top to bottom, wrapping to the next line when the edge is reached.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/WrapPanel.png",
+          "Description": "A WrapPanel arranges its child elements horizontally or vertically, wrapping content to the next row or column when there is no more space.",
+          "Docs": [
+            {
+              "Title": "WrapPanel - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.wrappanel"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/layout-panels"
+            }
+          ]
+        },
+        {
           "UniqueId": "Viewbox",
           "Title": "Viewbox",
           "BaseClasses": [
