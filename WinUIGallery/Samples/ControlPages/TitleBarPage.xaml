@@ -139,7 +139,7 @@
                     <Button
                         HorizontalAlignment="Center"
                         Click="CreateTitleBarWindowClick"
-                        Content="Show sample window"
+                        Content="Show window"
                         Style="{StaticResource AccentButtonStyle}" />
                 </StackPanel>
             </controls:ControlExample.Example>

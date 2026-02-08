@@ -3072,7 +3072,7 @@
           "ApiNamespace": "Microsoft.UI.Windowing",
           "Subtitle": "Provides control over the app window title bar.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
-          "Description": "Represents the title bar of an AppWindow and provides APIs to customize its appearance, system button colors, as well as handle active and inactive states.",
+          "Description": "Represents the title bar of an AppWindow and exposes APIs for deep, fine-grained customization, including advanced appearance changes, system button styling, and precise control over active and inactive window states.",
           "Docs": [
             {
               "Title": "AppWindowTitleBar - API",
