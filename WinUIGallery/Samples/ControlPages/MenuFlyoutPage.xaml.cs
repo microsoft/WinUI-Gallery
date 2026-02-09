@@ -38,4 +38,12 @@ public sealed partial class MenuFlyoutPage : Page
     {
 
     }
+
+    private void SplitMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is MenuFlyoutItem selectedItem)
+        {
+            Control3bOutput.Text = "Clicked: " + selectedItem.Text;
+        }
+    }
 }

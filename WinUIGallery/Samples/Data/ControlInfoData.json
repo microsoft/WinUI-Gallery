@@ -2049,6 +2049,31 @@
           ]
         },
         {
+          "UniqueId": "WrapPanel",
+          "Title": "WrapPanel",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Panel"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A layout panel that positions child elements sequentially from left to right or top to bottom, wrapping to the next line when the edge is reached.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/WrapPanel.png",
+          "Description": "A WrapPanel arranges its child elements horizontally or vertically, wrapping content to the next row or column when there is no more space.",
+          "Docs": [
+            {
+              "Title": "WrapPanel - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.wrappanel"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/layout-panels"
+            }
+          ]
+        },
+        {
           "UniqueId": "Viewbox",
           "Title": "Viewbox",
           "BaseClasses": [
@@ -2636,6 +2661,29 @@
           ]
         },
         {
+          "UniqueId": "SystemBackdropElement",
+          "Title": "SystemBackdropElement",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control",
+            "ContentControl"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "An element to host system backdrop materials.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Acrylic.png",
+          "Description": "SystemBackdropElement applies system backdrop materials (Mica and Acrylic) to specific areas inside the UI tree, extending these materials beyond the window background to enable more flexible and immersive designs.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "SystemBackdropElement - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.systembackdropelement"
+            }
+          ]
+        },
+        {
           "UniqueId": "ThemeShadow",
           "Title": "ThemeShadow",
           "ApiNamespace": "Microsoft.UI.Xaml.Media",
@@ -2658,7 +2706,7 @@
               "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.themeshadow"
             }
           ]
-        }
+        }      
       ]
     },
     {
