@@ -2991,6 +2991,31 @@
               "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
             }
           ]
+        },
+        {
+          "UniqueId": "ParallaxView",
+          "Title": "ParallaxView",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A container control that provides the parallax effect when scrolling.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ParallaxView.png",
+          "Description": "A container control that provides the parallax effect when scrolling.",
+          "SourcePath": "/ParallaxView",
+          "Docs": [
+            {
+              "Title": "ParallaxView - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Controls.Parallaxview"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/motion/parallax"
+            }
+          ]
         }
       ]
     },
