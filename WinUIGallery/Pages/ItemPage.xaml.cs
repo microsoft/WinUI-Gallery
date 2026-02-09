@@ -64,8 +64,8 @@ public sealed partial class ItemPage : Page
                 Item = item;
 
                 // Load control page into frame.
-                Type? pageType = Type.GetType("WinUIGallery.ControlPages." + item.UniqueId + "Page");
-
+                NavigationPageMappings.PageDictionary.TryGetValue("WinUIGallery.ControlPages." + item.UniqueId + "Page", out Type? pageType);
+                
                 if (pageType != null)
                 {
                     // Attach Navigated event to add RepositionThemeTransition after navigation
