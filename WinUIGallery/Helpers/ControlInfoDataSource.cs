@@ -110,7 +110,7 @@ public sealed partial class ControlInfoDataSource
                     _ => string.Empty,
                 };
 
-                NavigationPageMappings.PageDictionary.TryGetValue(item.UniqueId, out Type? pageType);
+                NavigationPageMappings.PageDictionary.TryGetValue("WinUIGallery.ControlPages." + item.UniqueId + "Page", out Type? pageType);
 
                 item.BadgeString = badgeString;
                 item.IncludedInBuild = pageType is not null;

@@ -63,7 +63,7 @@ internal sealed partial class NavigationPageMapperGenerator : IIncrementalGenera
             foreach (var item in group.Items)
             {
                 if (!string.IsNullOrEmpty(item.UniqueId))
-                    pageNames.Add(item.UniqueId);
+                    pageNames.Add("WinUIGallery.ControlPages." + item.UniqueId + "Page");
             }
         }
 
