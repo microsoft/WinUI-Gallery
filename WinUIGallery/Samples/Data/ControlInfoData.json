@@ -3063,6 +3063,27 @@
           ]
         },
         {
+          "UniqueId": "AppWindowTitleBar",
+          "Title": "AppWindowTitleBar",
+          "BaseClasses": [
+            "Object"
+          ],
+          "ApiNamespace": "Microsoft.UI.Windowing",
+          "Subtitle": "Provides control over the app window title bar.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
+          "Description": "Represents the title bar of an AppWindow and exposes APIs for deep, fine-grained customization, including advanced appearance changes, system button styling, and precise control over active and inactive window states.",
+          "Docs": [
+            {
+              "Title": "AppWindowTitleBar - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.appwindowtitlebar"
+            },
+            {
+              "Title": "Customize the title bar",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/title-bar"
+            }
+          ]
+        },
+        {
           "UniqueId": "CreateMultipleWindows",
           "Title": "Multiple windows",
           "ApiNamespace": "Microsoft.UI.Xaml",
@@ -3083,6 +3104,13 @@
         {
           "UniqueId": "TitleBar",
           "Title": "TitleBar",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control"
+          ],
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "An example showing how to use the default TitleBar control.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
