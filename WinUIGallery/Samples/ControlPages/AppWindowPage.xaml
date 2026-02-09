@@ -17,7 +17,7 @@
         <controls:ControlExample HeaderText="Creating and customizing an AppWindow from a Window instance" XamlSource="AppWindow\AppWindowSample1_xaml.txt">
             <controls:ControlExample.Example>
                 <StackPanel>
-                    <Button Click="ShowSampleWindow1">Show sample window</Button>
+                    <Button Click="ShowSampleWindow1" Content="Show window" />
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
@@ -86,13 +86,6 @@
                             SpinButtonPlacementMode="Inline"
                             Value="50" />
                     </Grid>
-
-                    <TextBlock FontWeight="SemiBold"
-                               Text="TitleBar theme" />
-                    <ComboBox x:Name="TitleBarPreferredTheme"
-                              ItemsSource="{x:Bind titleBarThemes}"
-                              SelectedItem="{x:Bind selectedTheme, Mode=TwoWay}"
-                              HorizontalAlignment="Stretch" />
                 </StackPanel>
             </controls:ControlExample.Options>
 
@@ -118,9 +111,6 @@ public sealed partial class SampleWindow1 : Window
         // Set the window position on screen
         AppWindow.Move(new Windows.Graphics.PointInt32($(X), $(Y)));
         
-        // Set the preferred theme for the title bar
-        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.$(TitleBarPreferredTheme);
-        
         // Set the taskbar icon (displayed in the taskbar)
         AppWindow.SetTaskbarIcon("Assets/Tiles/GalleryIcon.ico");
 
@@ -129,6 +119,8 @@ public sealed partial class SampleWindow1 : Window
 
         // Set the window icon (affects both taskbar and title bar, can be omitted if the above two are set)
         // AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico"); 
+                    
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
     }
                     
     private void Show_Click(object sender, RoutedEventArgs e)
@@ -156,7 +148,6 @@ public sealed partial class SampleWindow1 : Window
                 <controls:ControlExampleSubstitution Key="Height" Value="{x:Bind WindowHeight.Value, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="X" Value="{x:Bind XPoint.Value, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="Y" Value="{x:Bind YPoint.Value, Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="TitleBarPreferredTheme" Value="{x:Bind TitleBarPreferredTheme.SelectedItem, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
@@ -185,18 +176,20 @@ public sealed partial class SampleWindow1 : Window
                         Severity="Warning">
                         <RichTextBlock Margin="0,-16,16,16" IsTextSelectionEnabled="False">
                             <Paragraph>
-                                For an <Run FontWeight="SemiBold">AppWindow</Run>
-                                with <Run FontWeight="SemiBold">OverlappedPresenter</Run>
+                                For an<Run FontWeight="SemiBold">AppWindow</Run>
+                                with<Run FontWeight="SemiBold">OverlappedPresenter</Run>
                                 , if the title bar
-                                (<Run FontWeight="SemiBold">HasTitleBar = true</Run>) is enabled, the window must have a border
-                                (<Run FontWeight="SemiBold">HasBorder = true</Run>). Setting <Run FontWeight="SemiBold">HasBorder</Run>
-                                to <Run FontWeight="SemiBold">false</Run>
-                                while <Run FontWeight="SemiBold">HasTitleBar</Run>
-                                is <Run FontWeight="SemiBold">true</Run>
+                                (<Run FontWeight="SemiBold">HasTitleBar = true</Run>
+                                ) is enabled, the window must have a border
+                                (<Run FontWeight="SemiBold">HasBorder = true</Run>
+                                ). Setting<Run FontWeight="SemiBold">HasBorder</Run>
+                                to<Run FontWeight="SemiBold">false</Run>
+                                while<Run FontWeight="SemiBold">HasTitleBar</Run>
+                                is<Run FontWeight="SemiBold">true</Run>
                                 will result in a fatal error.</Paragraph>
                         </RichTextBlock>
                     </InfoBar>
-                    <Button Click="ShowSampleWindow3">Show sample window</Button>
+                    <Button Click="ShowSampleWindow3" Content="Show window" />
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
@@ -348,7 +341,7 @@ public sealed partial class SampleWindow3 : Window
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <TextBlock Text="The minimum and maximum width and height can be set on an AppWindow. When setting the maximum width or height, it's recommended to disable the window maximization." TextWrapping="Wrap" />
-                    <Button Click="ShowSampleWindow4">Show sample window</Button>
+                    <Button Click="ShowSampleWindow4" Content="Show window" />
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
@@ -446,7 +439,7 @@ public sealed partial class SampleWindow4 : Window
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <TextBlock Text="The FullScreenPresenter makes an AppWindow cover the entire screen, removing the title bar and system UI to create an immersive experience. To ensure usability, an exit mechanism, such as handling the Escape key or close button, should be included, and fullscreen mode should be used in scenarios like media playback or focused tasks." TextWrapping="Wrap" />
-                    <Button Click="ShowSampleWindow6">Show sample window (Fullscreen mode)</Button>
+                    <Button Click="ShowSampleWindow6" Content="Show window (Fullscreen mode)" />
                 </StackPanel>
             </controls:ControlExample.Example>
         </controls:ControlExample>
@@ -455,7 +448,7 @@ public sealed partial class SampleWindow4 : Window
             <controls:ControlExample.Example>
                 <StackPanel Spacing="8">
                     <TextBlock Text="CompactOverlayPresenter (Picture-in-Picture mode) keeps an AppWindow always on top while using minimal screen space. To ensure a good user experience, the window should have a small yet functional size (e.g., for media players or floating tools)." TextWrapping="Wrap" />
-                    <Button Click="ShowSampleWindow7">Show sample window (Picture-in-Picture mode)</Button>
+                    <Button Click="ShowSampleWindow7" Content="Show window (Picture-in-Picture mode)" />
                 </StackPanel>
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
