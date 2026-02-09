@@ -100,8 +100,6 @@ public sealed partial class ControlInfoDataSource
 
         lock (_lock)
         {
-            string pageRoot = "WinUIGallery.ControlPages.";
-
             controlInfoDataGroup.Groups.SelectMany(g => g.Items).ToList().ForEach(item =>
             {
                 string badgeString = item switch
@@ -111,8 +109,8 @@ public sealed partial class ControlInfoDataSource
                     { IsPreview: true } => "Preview",
                     _ => string.Empty,
                 };
-                string pageString = $"{pageRoot}{item.UniqueId}Page";
-                Type? pageType = Type.GetType(pageString);
+
+                NavigationPageMappings.PageDictionary.TryGetValue("WinUIGallery.ControlPages." + item.UniqueId + "Page", out Type? pageType);
 
                 item.BadgeString = badgeString;
                 item.IncludedInBuild = pageType is not null;
