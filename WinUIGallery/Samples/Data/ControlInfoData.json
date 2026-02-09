@@ -3146,9 +3146,9 @@
             "Object"
           ],
           "ApiNamespace": "Microsoft.Windows.BadgeNotifications",
-          "Subtitle": "Display numeric or glyph badges on your app's taskbar icon.",
+          "Subtitle": "Show numeric or icon badges on your app’s taskbar icon.",
           "ImagePath": "ms-appx:///Assets/ControlImages/BadgeNotification.png",
-          "Description": "Badge notifications provide a lightweight way to convey status or alerts through small overlays on your app's icon.",
+          "Description": "Badge notifications are a lightweight way to show status or alerts as small overlays on your app's taskbar icon.",
           "IsNew": true,
           "Docs": [
             {
