@@ -44,6 +44,7 @@
     <WindowsAppSdkSelfContained Condition="'$(IsInWinUIRepo)' == 'true' and '$(WindowsAppSdkSelfContained)'==''">true</WindowsAppSdkSelfContained>
     <ApplicationIcon>Assets\Tiles\GalleryIcon.ico</ApplicationIcon>
     <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
@@ -74,6 +75,16 @@
     <PackageCertificateKeyFile Condition="Exists('$(PfxFile)')">$(PfxFile)</PackageCertificateKeyFile>
   </PropertyGroup>
 
+	<!-- For Source Generator, if we want to specify specific namespace -->
+  <ItemGroup>
+	<CompilerVisibleProperty Include="NavigationMappingsNamespace" />
+  </ItemGroup>
+
+  <!-- Required for Source Generator -->
+  <ItemGroup>
+	<AdditionalFiles Include="Samples\Data\ControlInfoData.json" />
+  </ItemGroup>
+	
   <ItemGroup Condition="'$(Packaged)' == 'true' and '$(SingleProject)'=='true'">
     <AppxManifest Include="Package.appxmanifest" Condition="'$(Release)' == 'true'">
       <SubType>Designer</SubType>
@@ -110,11 +121,11 @@
             just add versionless PackageReferences here.  They will be updated to their actual versions by either the Packages.props file
             in the WinUI repo, or the next ItemGroup below when standalone. -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.183">
+    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.269">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools.MSIX" Version="1.7.20250806.1">
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools.MSIX" Version="1.7.251221100">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -131,8 +142,9 @@
           CVE-2019-0657, CVE-2019-0980, and CVE-2019-0981. Since no meta-package depends on version 4.3.2, which
           addresses those vulnerabilites, we need to pull it in ourselves. -->
     <PackageReference Include="System.Private.Uri" />
+	<ProjectReference Include="..\WinUIGallery.SourceGenerator\WinUIGallery.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
-
+	
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
     <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
     <PackageReference Remove="ColorCode.Core" />
@@ -327,6 +339,7 @@
     <None Remove="Controls\SampleThemeListener.xaml" />
     <None Remove="MainWindow.xaml" />
     <None Remove="Samples\ControlPages\AppNotificationPage.xaml" />
+    <None Remove="Samples\ControlPages\AppWindowTitleBarPage.xaml" />
     <None Remove="Samples\ControlPages\BadgeNotificationManagerPage.xaml" />
     <None Remove="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml" />
     <None Remove="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml" />
@@ -334,6 +347,8 @@
     <None Remove="Samples\ControlPages\AppWindowPage.xaml" />
     <None Remove="Samples\Data\IconsData.json" />
     <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
+    <None Remove="Samples\SamplePages\AppWindowTitleBarExtendWindow.xaml" />
+    <None Remove="Samples\SamplePages\AppWindowTitleBarWindow.xaml" />
     <None Remove="Samples\SamplePages\SampleWindow2.xaml" />
     <None Remove="Samples\SamplePages\TitleBarWindow.xaml" />
     <None Remove="Styles\Grid.xaml" />
@@ -532,6 +547,30 @@
     <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_cs.txt" />
     <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_xaml.txt" />
     <Content Include="Samples\SampleCode\Text\RichEditBox\RichEditBoxSample6_cs.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Samples\SamplePages\AppWindowTitleBarExtendWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Samples\SamplePages\AppWindowTitleBarWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\ColorSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Samples\ControlPages\AppWindowTitleBarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

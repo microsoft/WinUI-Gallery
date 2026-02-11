@@ -35,7 +35,7 @@
                 <x:String xml:space="preserve">
 private void SetBadgeCountButton_Click(object sender, RoutedEventArgs e)
 {
-    BadgeNotificationManager.Current.SetBadgeAsCount((uint)BadgeCountBox.Value);
+    BadgeNotificationManager.Current.SetBadgeAsCount($(BadgeCount));
 }
 
 private void ClearBadgeButton_Click(object sender, RoutedEventArgs e)
@@ -44,6 +44,10 @@ private void ClearBadgeButton_Click(object sender, RoutedEventArgs e)
 }
                 </x:String>
             </controls:ControlExample.CSharp>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="BadgeCount"
+                                                     Value="{x:Bind BadgeCountBox.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
         </controls:ControlExample>
         <controls:ControlExample HeaderText="Setting badge notifications with Glyph">
             <StackPanel Spacing="8">
@@ -66,7 +70,7 @@ private void ClearBadgeButton_Click(object sender, RoutedEventArgs e)
                 <x:String xml:space="preserve">
 private void SetBadgeGlyphButton_Click(object sender, RoutedEventArgs e)
 {
-    BadgeNotificationManager.Current.SetBadgeAsGlyph($(SelectedGlyph));
+    BadgeNotificationManager.Current.SetBadgeAsGlyph(BadgeNotificationGlyph.$(SelectedGlyph));
 }
 
 private void ClearBadgeButton_Click(object sender, RoutedEventArgs e)

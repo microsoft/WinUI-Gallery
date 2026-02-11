@@ -38,7 +38,7 @@
                     There are two acrylic blend types that change what's visible through the material:<LineBreak />
                     Background acrylic reveals the desktop wallpaper and other windows that are behind the currently active app, adding depth between application windows while celebrating the user's personalization preferences.<LineBreak />
                     In-app acrylic adds a sense of depth within the app frame, providing both focus and hierarchy. (Inplemented with a AcrylicBrush in XAML)</TextBlock>
-                <Button Margin="0,10,0,0" Click="createBuiltInWindow_Click">Show sample window</Button>
+                <Button Margin="0,10,0,0" Click="createBuiltInWindow_Click" Content="Show window"/>
             </StackPanel>
         </controls:ControlExample>
 
@@ -51,7 +51,7 @@
                     1. Base (Lighter)<LineBreak />
                     2. Alt (Darker)<LineBreak />
                 </TextBlock>
-                <Button Margin="0,10,0,0" Click="createCustomMicaWindow_Click">Show sample window</Button>
+                <Button Margin="0,10,0,0" Click="createCustomMicaWindow_Click" Content="Show window"/>
             </StackPanel>
         </controls:ControlExample>
 
@@ -63,7 +63,7 @@
                     1. Base (Darker)<LineBreak />
                     2. Thin (Lighter)<LineBreak />
                     If you wan't to use Acrylic Thin in your app you have to use the DesktopAcrylicController class. The DesktopAcrylicBackdrop class uses the Base type.</TextBlock>
-                <Button Margin="0,10,0,0" Click="createCustomDesktopAcrylicWindow_Click">Show sample window</Button>
+                <Button Margin="0,10,0,0" Click="createCustomDesktopAcrylicWindow_Click" Content="Show window"/>
             </StackPanel>
         </controls:ControlExample>
     </StackPanel>

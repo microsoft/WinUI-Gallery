@@ -9,7 +9,7 @@ namespace WinUIGallery.Samples.SamplePages;
 
 public sealed partial class SampleWindow1 : Window
 {
-    public SampleWindow1(string WindowTitle, int Width, int Height, int X, int Y, TitleBarTheme TitleBarPreferredTheme)
+    public SampleWindow1(string WindowTitle, int Width, int Height, int X, int Y)
     {
         this.InitializeComponent();
 
@@ -22,9 +22,6 @@ public sealed partial class SampleWindow1 : Window
         // Set the window position on screen
         AppWindow.Move(new Windows.Graphics.PointInt32(X, Y));
 
-        // Set the preferred theme for the title bar
-        AppWindow.TitleBar.PreferredTheme = TitleBarPreferredTheme;
-
         // Set the taskbar icon (displayed in the taskbar)
         AppWindow.SetTaskbarIcon("Assets/Tiles/GalleryIcon.ico");
 
@@ -32,7 +29,9 @@ public sealed partial class SampleWindow1 : Window
         AppWindow.SetTitleBarIcon("Assets/Tiles/GalleryIcon.ico");
 
         // Set the window icon (affects both taskbar and title bar, can be omitted if the above two are set)
-        // appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico"); 
+        // appWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
     }
 
     private async void Show_Click(object sender, RoutedEventArgs e)
