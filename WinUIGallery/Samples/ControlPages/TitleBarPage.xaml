@@ -42,15 +42,11 @@
                         Title="{Binding ElementName=TitleBox, Path=Text, Mode=OneWay}"
                         IsBackButtonVisible="{Binding ElementName=BackButtonToggle, Path=IsOn, Mode=OneWay}"
                         IsPaneToggleButtonVisible="{Binding ElementName=PaneToggle, Path=IsOn, Mode=OneWay}"
-                        Subtitle="{Binding ElementName=SubtitleBox, Path=Text, Mode=OneWay}"
-                        LayoutUpdated="TitleBar_LayoutUpdated">
-                        <!--  This is a workaround for https://github.com/microsoft/microsoft-ui-xaml/issues/10374, once fixed we should just be using IconSource  -->
-                        <TitleBar.LeftHeader>
-                            <ImageIcon
-                                Height="16"
-                                Margin="16,0,8,0"
-                                Source="/Assets/Tiles/GalleryIcon.ico" />
-                        </TitleBar.LeftHeader>
+                        LayoutUpdated="TitleBar_LayoutUpdated"
+                        Subtitle="{Binding ElementName=SubtitleBox, Path=Text, Mode=OneWay}">
+                        <TitleBar.IconSource>
+                            <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
+                        </TitleBar.IconSource>
                         <TitleBar.RightHeader>
                             <PersonPicture
                                 Width="30"
