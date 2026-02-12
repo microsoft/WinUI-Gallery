@@ -155,7 +155,7 @@
                                             Padding="6,5,6,6"
                                             Style="{ThemeResource SubtleButtonStyle}"
                                             ToolTipService.ToolTip="Source code of this control in the WinUI repository. For some controls only the XAML file is available"
-                                            AutomationProperties.Name="Info">
+                                            AutomationProperties.Name="Info: Source code of this control in the WinUI repository. For some controls only the XAML file is available">
                                             <FontIcon
                                                 VerticalAlignment="Center"
                                                 FontSize="14"
@@ -188,7 +188,7 @@
                                         Padding="6,5,6,6"
                                         Style="{ThemeResource SubtleButtonStyle}"
                                         ToolTipService.ToolTip="Source code of this sample page in the WinUI Gallery repository"
-                                        AutomationProperties.Name="Info">
+                                        AutomationProperties.Name="Info: Source code of this sample page in the WinUI Gallery repository">
                                         <FontIcon
                                             VerticalAlignment="Center"
                                             FontSize="14"
