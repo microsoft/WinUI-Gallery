@@ -308,59 +308,59 @@ public sealed partial class MainWindow : Window
             }
             else if (selectedItem == ColorItem)
             {
-                Navigate(typeof(ItemPage), "WinUIGallery.ControlPages.ColorPage");
+                Navigate(typeof(ItemPage), "Color");
             }
             else if (selectedItem == GeometryItem)
             {
-                Navigate(typeof(ItemPage), "WinUIGallery.ControlPages.GeometryPage");
+                Navigate(typeof(ItemPage), "Geometry");
             }
             else if (selectedItem == IconographyItem)
             {
-                Navigate(typeof(ItemPage), "WinUIGallery.ControlPages.IconographyPage");
+                Navigate(typeof(ItemPage), "Iconography");
             }
             else if (selectedItem == SpacingItem)
             {
-                Navigate(typeof(ItemPage), "WinUIGallery.ControlPages.SpacingPage");
+                Navigate(typeof(ItemPage), "Spacing");
             }
             else if (selectedItem == TypographyItem)
             {
-                Navigate(typeof(ItemPage), "WinUIGallery.ControlPages.TypographyPage");
+                Navigate(typeof(ItemPage), "Typography");
             }
             else if (selectedItem == AccessibilityScreenReaderPage)
             {
-                Navigate(typeof(ItemPage), "WinUIGallery.ControlPages.AccessibilityScreenReaderPage");
+                Navigate(typeof(ItemPage), "AccessibilityScreenReader");
             }
             else if (selectedItem == AccessibilityKeyboardPage)
             {
-                Navigate(typeof(ItemPage), "WinUIGallery.ControlPages.AccessibilityKeyboardPage");
+                Navigate(typeof(ItemPage), "AccessibilityKeyboard");
             }
             else if (selectedItem == AccessibilityContrastPage)
             {
-                Navigate(typeof(ItemPage), "WinUIGallery.ControlPages.AccessibilityColorContrastPage");
+                Navigate(typeof(ItemPage), "AccessibilityColorContrast");
             }
             else if (selectedItem == XamlResourcesPage)
             {
-                Navigate(typeof(ItemPage), "WinUIGallery.ControlPages.XamlResourcesPage");
+                Navigate(typeof(ItemPage), "XamlResources");
             }
             else if (selectedItem == XamlStylesPage)
             {
-                Navigate(typeof(ItemPage), "WinUIGallery.ControlPages.XamlStylesPage");
+                Navigate(typeof(ItemPage), "XamlStyles");
             }
             else if (selectedItem == BindingPage)
             {
-                Navigate(typeof(ItemPage), "WinUIGallery.ControlPages.BindingPage");
+                Navigate(typeof(ItemPage), "Binding");
             }
             else if (selectedItem == TemplatesPage)
             {
-                Navigate(typeof(ItemPage), "WinUIGallery.ControlPages.TemplatesPage");
+                Navigate(typeof(ItemPage), "Templates");
             }
             else if (selectedItem == CustomUserControlsPage)
             {
-                Navigate(typeof(ItemPage), "WinUIGallery.ControlPages.CustomUserControlsPage");
+                Navigate(typeof(ItemPage), "CustomUserControls");
             }
             else if (selectedItem == ScratchPadPage)
             {
-                Navigate(typeof(ItemPage), "WinUIGallery.ControlPages.ScratchPadPage");
+                Navigate(typeof(ItemPage), "ScratchPad");
             }
             else
             {
