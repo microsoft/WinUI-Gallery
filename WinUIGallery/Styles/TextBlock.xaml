@@ -6,4 +6,16 @@
         TargetType="TextBlock">
         <Setter Property="Margin" Value="8,8,0,0" />
     </Style>
+    <Style
+        x:Key="SubtitleHeadingTextBlockStyle"
+        BasedOn="{StaticResource SubtitleTextBlockStyle}"
+        TargetType="TextBlock">
+        <Setter Property="AutomationProperties.HeadingLevel" Value="Level2" />
+    </Style>
+    <Style
+        x:Key="BodyStrongHeadingTextBlockStyle"
+        BasedOn="{StaticResource BodyStrongTextBlockStyle}"
+        TargetType="TextBlock">
+        <Setter Property="AutomationProperties.HeadingLevel" Value="Level3" />
+    </Style>
 </ResourceDictionary>

@@ -10,7 +10,7 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <TextBlock Text="Custom (templated) control" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,8" />
+        <TextBlock Text="Custom (templated) control" Style="{StaticResource SubtitleHeadingTextBlockStyle}" Margin="0,8" />
         <StackPanel Spacing="8">
             <RichTextBlock>
                 <Paragraph>
@@ -86,7 +86,7 @@
         </controls:ControlExample>
         
         <TextBlock Text="UserControl"
-                   Style="{ThemeResource SubtitleTextBlockStyle}"
+                   Style="{StaticResource SubtitleHeadingTextBlockStyle}"
                    Margin="0,24,0,8" />
         <StackPanel Spacing="8">
             <RichTextBlock>
