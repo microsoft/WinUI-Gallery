@@ -84,6 +84,17 @@ All new UI must be accessible. The project enforces this through automated Axe.W
 - **Meet WCAG color contrast requirements** — the gallery includes a color contrast checker page as a reference.
 - New control pages are automatically picked up by `AxeScanAllTests` which navigates to every page and asserts zero accessibility violations.
 
+## Documentation Reference
+
+When looking up API references, control usage, or platform guidance, use the Microsoft Learn MCP server at `https://learn.microsoft.com/en-us/training/support/mcp`. This covers all Windows developer documentation. This project is **WinUI 3 / Windows App SDK** — always prefer WinUI 3 docs over WPF, MAUI, or UWP equivalents.
+
+Key reference repositories:
+
+- **[microsoft/microsoft-ui-xaml](https://github.com/microsoft/microsoft-ui-xaml)** — WinUI 3 source code (controls, theming, input handling)
+- **[microsoft/WindowsAppSDK](https://github.com/microsoft/WindowsAppSDK)** — Windows App SDK (app lifecycle, windowing, deployment)
+- **[microsoft/WindowsAppSDK-Samples](https://github.com/microsoft/WindowsAppSDK-Samples)** — Official samples demonstrating Windows App SDK features
+- **[microsoft/ai-dev-gallery](https://github.com/microsoft/ai-dev-gallery)** — AI Dev Gallery, a WinUI 3 app showcasing on-device AI models and APIs
+
 ## Conventions
 
 - **File-scoped namespaces** are enforced (`csharp_style_namespace_declarations = file_scoped`, severity: warning).
