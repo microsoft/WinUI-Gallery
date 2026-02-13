@@ -44,6 +44,7 @@
         <TextBlock
             x:Name="noResultsTextBlock"
             Margin="24,24,0,0"
+            AutomationProperties.HeadingLevel="Level2"
             Style="{StaticResource TitleTextBlockStyle}"
             Text="No results match your search."
             Visibility="Collapsed" />

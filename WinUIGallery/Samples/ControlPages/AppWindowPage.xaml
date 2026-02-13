@@ -11,7 +11,7 @@
     <StackPanel>
         <TextBlock
             Margin="0,16,0,-16"
-            Style="{ThemeResource SubtitleTextBlockStyle}"
+            Style="{StaticResource SubtitleHeadingTextBlockStyle}"
             Text="General usage of AppWindow" />
 
         <controls:ControlExample HeaderText="Creating and customizing an AppWindow from a Window instance" XamlSource="AppWindow\AppWindowSample1_xaml.txt">
@@ -162,7 +162,7 @@ public sealed partial class SampleWindow1 : Window
 
         <TextBlock
             Margin="0,24,0,-16"
-            Style="{ThemeResource SubtitleTextBlockStyle}"
+            Style="{StaticResource SubtitleHeadingTextBlockStyle}"
             Text="AppWindow Presenters" />
 
         <controls:ControlExample HeaderText="AppWindow with OverlapedPresenter" XamlSource="AppWindow\AppWindowSample3_xaml.txt">
