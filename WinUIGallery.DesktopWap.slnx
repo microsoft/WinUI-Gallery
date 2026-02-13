@@ -1,0 +1,22 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path="../Directory.Build.props" />
+  </Folder>
+  <Project Path="WinUIGallery.SourceGenerator/WinUIGallery.SourceGenerator.csproj" />
+  <Project Path="WinUIGallery/WinUIGallery.csproj">
+    <Platform Solution="*|Any CPU" Project="x64" />
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
+  </Project>
+  <Project Path="WinUIGallery/WinUIGallery.DesktopWap.Package.wapproj" Type="c7167f0d-bc9f-4e6e-afe1-012c56b48db5">
+    <Platform Solution="*|Any CPU" Project="x64" />
+    <Deploy />
+  </Project>
+</Solution>

@@ -60,7 +60,7 @@ extends:
           ob_outputDirectory: $(build.artifactStagingDirectory)
           ob_artifactSuffix: _$(buildPlatform)_$(buildConfiguration)
 
-          solutionGallery: "**/WinUIGallery.sln"
+          solutionGallery: "**/WinUIGallery.slnx"
           buildPlatform: "x64"
           buildConfiguration: "Debug"
           appxPackageDir: '$(Build.ArtifactStagingDirectory)\AppxPackages\\'

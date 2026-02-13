@@ -2,12 +2,12 @@
 
 ## Build and Test
 
-**Solution:** Open `WinUIGallery.sln` in Visual Studio 2022+. Set `WinUIGallery` as the startup project.
+**Solution:** Open `WinUIGallery.slnx` in Visual Studio 2022+. Set `WinUIGallery` as the startup project.
 
 ```powershell
 # Restore and build
-dotnet restore WinUIGallery.sln
-msbuild WinUIGallery.sln /p:Configuration=Debug /p:Platform=x64
+dotnet restore WinUIGallery.slnx
+msbuild WinUIGallery.slnx /p:Configuration=Debug /p:Platform=x64
 
 # Run unit tests
 dotnet test tests\WinUIGallery.UnitTests\WinUIGallery.UnitTests.csproj
