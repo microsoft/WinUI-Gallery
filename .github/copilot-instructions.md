@@ -27,7 +27,7 @@ This is a **WinUI 3 / Windows App SDK** gallery app that demonstrates controls, 
 
 ### Project structure
 
-- **WinUIGallery** — Main app (XAML + C#, .NET 8, `net8.0-windows10.0.22621.0`)
+- **WinUIGallery** — Main app (XAML + C#, .NET 10, `net10.0-windows10.0.22621.0`)
 - **WinUIGallery.SourceGenerator** — Incremental source generator that reads `ControlInfoData.json` at compile time and emits `SamplesNavigationPageMappings.cs` to map control IDs → page types
 - **tests/WinUIGallery.UnitTests** — MSTest v3 unit tests (runs in WinUI context)
 - **tests/WinUIGallery.UITests** — MSTest + Appium UI automation tests with Axe.Windows accessibility checks
