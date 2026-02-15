@@ -160,7 +160,7 @@ public sealed partial class IconographyPage : Page
 
         if (TagsItemsView != null)
         {
-            TagsItemsView.Layout = new FlowLayout {  LineSpacing = 4, MinItemSpacing = 4 };
+            TagsItemsView.Layout = new FlowLayout { LineSpacing = 4, MinItemSpacing = 4 };
         }
     }
 
