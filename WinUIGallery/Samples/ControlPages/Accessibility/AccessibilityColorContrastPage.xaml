@@ -51,7 +51,7 @@
 
         <TextBlock
             Margin="0,20,0,0"
-            Style="{ThemeResource SubtitleTextBlockStyle}"
+            Style="{StaticResource SubtitleHeadingTextBlockStyle}"
             Text="Color Contrast Checker" />
         <TextBlock
             Margin="0,0,0,10"

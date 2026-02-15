@@ -53,6 +53,8 @@
                 <TextBlock
                     x:Name="descriptionText"
                     Grid.ColumnSpan="2"
+                    MaxWidth="1064"
+                    HorizontalAlignment="Left"
                     Margin="0,4,24,0"
                     Style="{ThemeResource BodyTextBlockStyle}"
                     Text="{x:Bind Item.Description}"
