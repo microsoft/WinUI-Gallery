@@ -43,6 +43,11 @@ public sealed partial class SplitButtonPage : Page
         myColorButtonReveal.Flyout.Hide();
     }
 
+    private void myColorButtonReveal_Click(SplitButton sender, SplitButtonClickEventArgs args)
+    {
+        sender.Flyout.ShowAt(sender);
+    }
+
     private void myColorButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
     {
         var border = (Border)sender.Content;
@@ -50,6 +55,8 @@ public sealed partial class SplitButtonPage : Page
 
         myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = color;
         currentColor = color;
+
+        sender.Flyout.ShowAt(sender);
     }
 
     private void MyRichEditBox_TextChanged(object sender, RoutedEventArgs e)

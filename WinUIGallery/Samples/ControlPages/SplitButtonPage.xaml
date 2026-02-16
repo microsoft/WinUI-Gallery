@@ -84,7 +84,8 @@
                     MinHeight="0"
                     Padding="5"
                     VerticalAlignment="Top"
-                    AutomationProperties.Name="Font color with text">
+                    AutomationProperties.Name="Font color with text"
+                    Click="myColorButtonReveal_Click">
                     Choose color
                     <SplitButton.Flyout>
                         <Flyout Placement="Bottom">

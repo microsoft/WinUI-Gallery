@@ -1,4 +1,4 @@
-﻿<SplitButton x:Name="myColorButton">
+﻿<SplitButton x:Name="myColorButton" Click="myColorButton_Click">
     Choose color
     <SplitButton.Flyout>
         <Flyout Placement="Bottom">
