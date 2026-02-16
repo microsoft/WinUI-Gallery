@@ -71,15 +71,7 @@
                     <Visibility>Visible</Visibility>
                 </toolkitConverters:EmptyObjectToObjectConverter.NotEmptyValue>
             </toolkitConverters:EmptyObjectToObjectConverter>
-            <toolkitConverters:StringVisibilityConverter x:Key="emptyStringToVisibilityConverter" />
-            <toolkitConverters:EmptyObjectToObjectConverter x:Key="inverseNullToVisibilityConverter">
-                <toolkitConverters:EmptyObjectToObjectConverter.EmptyValue>
-                    <Visibility>Visible</Visibility>
-                </toolkitConverters:EmptyObjectToObjectConverter.EmptyValue>
-                <toolkitConverters:EmptyObjectToObjectConverter.NotEmptyValue>
-                    <Visibility>Collapsed</Visibility>
-                </toolkitConverters:EmptyObjectToObjectConverter.NotEmptyValue>
-            </toolkitConverters:EmptyObjectToObjectConverter>
+            <toolkitConverters:StringVisibilityConverter x:Key="emptyStringToVisibilityConverter" />           
             <converters:DoubleToThicknessConverter x:Key="doubleToThicknessConverter" />
             <converters:BrushToColorConverter x:Key="brushToColorConverter" />
         </ResourceDictionary>
