@@ -14,7 +14,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="using:WinUIGallery.Converters"
-    xmlns:local="using:WinUIGallery">
+    xmlns:local="using:WinUIGallery"
+    xmlns:toolkitConverters="using:CommunityToolkit.WinUI.Converters">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -62,12 +63,15 @@
 
             <!--  Converters  -->
             <converters:NullableBooleanToBooleanConverter x:Key="nullableBooleanToBooleanConverter" />
-            <converters:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
-            <converters:EmptyStringToVisibilityConverter x:Key="emptyStringToVisibilityConverter" />
-            <converters:NullToVisibilityConverter
-                x:Key="inverseNullToVisibilityConverter"
-                NonNullValue="Collapsed"
-                NullValue="Visible" />
+            <toolkitConverters:EmptyObjectToObjectConverter x:Key="nullToVisibilityConverter">
+                <toolkitConverters:EmptyObjectToObjectConverter.EmptyValue>
+                    <Visibility>Collapsed</Visibility>
+                </toolkitConverters:EmptyObjectToObjectConverter.EmptyValue>
+                <toolkitConverters:EmptyObjectToObjectConverter.NotEmptyValue>
+                    <Visibility>Visible</Visibility>
+                </toolkitConverters:EmptyObjectToObjectConverter.NotEmptyValue>
+            </toolkitConverters:EmptyObjectToObjectConverter>
+            <toolkitConverters:StringVisibilityConverter x:Key="emptyStringToVisibilityConverter" />           
             <converters:DoubleToThicknessConverter x:Key="doubleToThicknessConverter" />
             <converters:BrushToColorConverter x:Key="brushToColorConverter" />
         </ResourceDictionary>

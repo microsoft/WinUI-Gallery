@@ -6,7 +6,7 @@ The test scenarios are written to test the controls in the WinUI 3 Gallery app. 
 
 ## Deploy WinUI 3 Gallery
 
-The easiest way to deploy the WinUI 3 Gallery for unit test execution is to simply build WinUIGallery.sln and F5 deploy it from within Visual Studio.  Alternatively, the following commands can be used for automation.
+The easiest way to deploy the WinUI 3 Gallery for unit test execution is to simply build WinUIGallery.slnx and F5 deploy it from within Visual Studio.  Alternatively, the following commands can be used for automation.
 
 1. Generate the test signing certificate:
 
@@ -17,7 +17,7 @@ The easiest way to deploy the WinUI 3 Gallery for unit test execution is to simp
 1. Build and publish the WinUI 3 Gallery from the command line, e.g.:
 
 ```powershell
-    >dotnet.exe publish WinUIGallery.sln /p:AppxPackageDir=AppxPackages\ /p:platform=x64 /p:PublishProfile=./WinUIGallery/Properties/PublishProfiles/win-x64.pubxml
+    >dotnet.exe publish WinUIGallery.slnx /p:AppxPackageDir=AppxPackages\ /p:platform=x64 /p:PublishProfile=./WinUIGallery/Properties/PublishProfiles/win-x64.pubxml
 ```
 
 1. Locate the WinUI 3 Gallery package output folder from above and deploy for testing:
@@ -42,7 +42,7 @@ The test runner (vstest.console.exe and VS Test Explorer) should automatically l
 
 The easiest way to run/debug the UI tests is with Visual Studio, as follows:
 
-   * Open `WinUIGallery.sln` in Visual Studio
+   * Open `WinUIGallery.slnx` in Visual Studio
    * Select **Test** > **Windows** > **Test Explorer**
    * Select **Run All** on the test pane or through menu **Test** > **Run** > **All Tests**
 
@@ -53,9 +53,9 @@ Alternatively, the following commands can be used for automation:
 1. Build UITests:
 
 ```shell
-    >dotnet build WinUIGallery.sln
+    >dotnet build WinUIGallery.slnx
     --or--
-    >msbuild WinUIGallery.sln
+    >msbuild WinUIGallery.slnx
 ```
 
 1. Run test cases built above on command line:
