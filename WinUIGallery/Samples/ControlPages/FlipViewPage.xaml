@@ -22,7 +22,11 @@
             ExampleHeight="Auto"
             HeaderText="A simple FlipView with items declared inline.">
             <controls:ControlExample.Example>
-                <FlipView Height="270" MaxWidth="400">
+                <FlipView
+                    Height="270"
+                    MaxWidth="400"
+                    AutomationProperties.AutomationControlType="List"
+                    AutomationProperties.LocalizedControlType="list">
                     <Image AutomationProperties.Name="Cliff" Source="ms-appx:///Assets/SampleMedia/cliff.jpg" />
                     <Image AutomationProperties.Name="Grapes" Source="ms-appx:///Assets/SampleMedia/grapes.jpg" />
                     <Image AutomationProperties.Name="Rainier" Source="ms-appx:///Assets/SampleMedia/rainier.jpg" />
@@ -32,7 +36,9 @@
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;FlipView MaxWidth="400" Height="270"&gt;
+&lt;FlipView MaxWidth="400" Height="270"
+          AutomationProperties.AutomationControlType="List"
+          AutomationProperties.LocalizedControlType="list"&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="Cliff"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/grapes.jpg" AutomationProperties.Name="Grapes"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/rainier.jpg" AutomationProperties.Name="Rainier"/&gt;
@@ -47,6 +53,8 @@
                 <FlipView
                     Height="180"
                     MaxWidth="400"
+                    AutomationProperties.AutomationControlType="List"
+                    AutomationProperties.LocalizedControlType="list"
                     BorderBrush="Black"
                     BorderThickness="1"
                     ItemsSource="{x:Bind Items, Mode=OneWay}">
@@ -81,7 +89,10 @@
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;FlipView MaxWidth="400" Height="180" BorderBrush="Black" BorderThickness="1" ItemsSource="{x:Bind Items, Mode=OneWay}"&gt;
+&lt;FlipView MaxWidth="400" Height="180" BorderBrush="Black" BorderThickness="1"
+          AutomationProperties.AutomationControlType="List"
+          AutomationProperties.LocalizedControlType="list"
+          ItemsSource="{x:Bind Items, Mode=OneWay}"&gt;
     &lt;FlipView.ItemTemplate&gt;
         &lt;DataTemplate x:DataType="data:ControlInfoDataItem"&gt;
             &lt;Grid&gt;
@@ -98,7 +109,11 @@
         </controls:ControlExample>
         <controls:ControlExample x:Name="Example3" HeaderText="Vertical FlipView">
             <controls:ControlExample.Example>
-                <FlipView Height="270" MaxWidth="400">
+                <FlipView
+                    Height="270"
+                    MaxWidth="400"
+                    AutomationProperties.AutomationControlType="List"
+                    AutomationProperties.LocalizedControlType="list">
                     <Image AutomationProperties.Name="Cliff" Source="ms-appx:///Assets/SampleMedia/cliff.jpg" />
                     <Image AutomationProperties.Name="Grapes" Source="ms-appx:///Assets/SampleMedia/grapes.jpg" />
                     <Image AutomationProperties.Name="Rainier" Source="ms-appx:///Assets/SampleMedia/rainier.jpg" />
@@ -113,7 +128,9 @@
             </controls:ControlExample.Example>
             <controls:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;FlipView MaxWidth="400" Height="270"&gt;
+&lt;FlipView MaxWidth="400" Height="270"
+          AutomationProperties.AutomationControlType="List"
+          AutomationProperties.LocalizedControlType="list"&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="Cliff"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/grapes.jpg" AutomationProperties.Name="Grapes"/&gt;
     &lt;Image Source="ms-appx:///Assets/SampleMedia/rainier.jpg" AutomationProperties.Name="Rainier"/&gt;
