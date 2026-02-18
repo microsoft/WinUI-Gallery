@@ -2,12 +2,12 @@
 
 ## Build and Test
 
-**Solution:** Open `WinUIGallery.sln` in Visual Studio 2022+. Set `WinUIGallery` as the startup project.
+**Solution:** Open `WinUIGallery.slnx` in Visual Studio 2022+. Set `WinUIGallery` as the startup project.
 
 ```powershell
 # Restore and build
-dotnet restore WinUIGallery.sln
-msbuild WinUIGallery.sln /p:Configuration=Debug /p:Platform=x64
+dotnet restore WinUIGallery.slnx
+msbuild WinUIGallery.slnx /p:Configuration=Debug /p:Platform=x64
 
 # Run unit tests
 dotnet test tests\WinUIGallery.UnitTests\WinUIGallery.UnitTests.csproj
@@ -27,7 +27,7 @@ This is a **WinUI 3 / Windows App SDK** gallery app that demonstrates controls, 
 
 ### Project structure
 
-- **WinUIGallery** — Main app (XAML + C#, .NET 8, `net8.0-windows10.0.22621.0`)
+- **WinUIGallery** — Main app (XAML + C#, .NET 10, `net10.0-windows10.0.22621.0`)
 - **WinUIGallery.SourceGenerator** — Incremental source generator that reads `ControlInfoData.json` at compile time and emits `SamplesNavigationPageMappings.cs` to map control IDs → page types
 - **tests/WinUIGallery.UnitTests** — MSTest v3 unit tests (runs in WinUI context)
 - **tests/WinUIGallery.UITests** — MSTest + Appium UI automation tests with Axe.Windows accessibility checks
@@ -83,6 +83,17 @@ All new UI must be accessible. The project enforces this through automated Axe.W
 - **Support keyboard navigation** — ensure all interactive elements are reachable via Tab and operable via Enter/Space.
 - **Meet WCAG color contrast requirements** — the gallery includes a color contrast checker page as a reference.
 - New control pages are automatically picked up by `AxeScanAllTests` which navigates to every page and asserts zero accessibility violations.
+
+## Documentation Reference
+
+When looking up API references, control usage, or platform guidance, use the Microsoft Learn MCP server at `https://learn.microsoft.com/en-us/training/support/mcp`. This covers all Windows developer documentation. This project is **WinUI 3 / Windows App SDK** — always prefer WinUI 3 docs over WPF, MAUI, or UWP equivalents.
+
+Key reference repositories:
+
+- **[microsoft/microsoft-ui-xaml](https://github.com/microsoft/microsoft-ui-xaml)** — WinUI 3 source code (controls, theming, input handling)
+- **[microsoft/WindowsAppSDK](https://github.com/microsoft/WindowsAppSDK)** — Windows App SDK (app lifecycle, windowing, deployment)
+- **[microsoft/WindowsAppSDK-Samples](https://github.com/microsoft/WindowsAppSDK-Samples)** — Official samples demonstrating Windows App SDK features
+- **[microsoft/ai-dev-gallery](https://github.com/microsoft/ai-dev-gallery)** — AI Dev Gallery, a WinUI 3 app showcasing on-device AI models and APIs
 
 ## Conventions
 
