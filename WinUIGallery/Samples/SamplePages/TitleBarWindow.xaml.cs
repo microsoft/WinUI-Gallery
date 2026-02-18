@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Linq;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Samples.SamplePages;
 
@@ -39,7 +40,7 @@ public sealed partial class TitleBarWindow : Window
             string selectedItemTag = ((string)selectedItem.Tag);
             sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
             string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
-            Type? pageType = Type.GetType(pageName);
+            SamplesNavigationPageMappings.PageDictionary.TryGetValue(pageName, out Type? pageType);
             navFrame.Navigate(pageType);
         }
     }

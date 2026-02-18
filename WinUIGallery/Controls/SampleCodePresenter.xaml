@@ -26,6 +26,7 @@
             <ContentPresenter
                 x:Name="CodePresenter"
                 Padding="{x:Bind Padding, Mode=OneWay}"
+                MinHeight="30"
                 Loaded="CodePresenter_Loaded" />
         </ScrollViewer>
         <Border

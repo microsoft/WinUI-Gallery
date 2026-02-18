@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using Windows.System;
+using WinUIGallery.Helpers;
 using WinUIGallery.Models;
 using WinUIGallery.SamplePages;
 
@@ -75,7 +76,7 @@ public sealed partial class NavigationViewPage : Page
                 string selectedItemTag = ((string)selectedItem.Tag);
                 sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
                 string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
-                Type? pageType = Type.GetType(pageName);
+                SamplesNavigationPageMappings.PageDictionary.TryGetValue(pageName, out Type? pageType);
                 contentFrame.Navigate(pageType);
             }
         }
@@ -94,7 +95,7 @@ public sealed partial class NavigationViewPage : Page
                 var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
                 string selectedItemTag = ((string)selectedItem.Tag);
                 string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
-                Type? pageType = Type.GetType(pageName);
+                SamplesNavigationPageMappings.PageDictionary.TryGetValue(pageName, out Type? pageType);
                 contentFrame2.Navigate(pageType);
             }
         }
@@ -116,7 +117,7 @@ public sealed partial class NavigationViewPage : Page
             string selectedItemTag = selectedItem.Name;
             sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
             string pageName = "WinUIGallery.SamplePages." + "SamplePage1";
-            Type? pageType = Type.GetType(pageName);
+            SamplesNavigationPageMappings.PageDictionary.TryGetValue(pageName, out Type? pageType);
             contentFrame4.Navigate(pageType);
         }
     }
@@ -134,7 +135,7 @@ public sealed partial class NavigationViewPage : Page
             string selectedItemTag = ((string)selectedItem.Tag);
             sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
             string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
-            Type? pageType = Type.GetType(pageName);
+            SamplesNavigationPageMappings.PageDictionary.TryGetValue(pageName, out Type? pageType);
             contentFrame5.Navigate(pageType);
         }
     }
@@ -148,7 +149,7 @@ public sealed partial class NavigationViewPage : Page
         {
             var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
             string pageName = "WinUIGallery.SamplePages." + ((string)selectedItem.Tag);
-            Type? pageType = Type.GetType(pageName);
+            SamplesNavigationPageMappings.PageDictionary.TryGetValue(pageName, out Type? pageType);
             contentFrame6.Navigate(pageType);
         }
     }
@@ -163,7 +164,7 @@ public sealed partial class NavigationViewPage : Page
         {
             var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
             string pageName = "WinUIGallery.SamplePages." + ((string)selectedItem.Tag);
-            Type? pageType = Type.GetType(pageName);
+            SamplesNavigationPageMappings.PageDictionary.TryGetValue(pageName, out Type? pageType);
 
             contentFrame7.Navigate(pageType, null, args.RecommendedNavigationTransitionInfo);
         }
@@ -188,7 +189,7 @@ public sealed partial class NavigationViewPage : Page
             string selectedItemTag = ((string)selectedItem.Tag);
             sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
             string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
-            Type? pageType = Type.GetType(pageName);
+            SamplesNavigationPageMappings.PageDictionary.TryGetValue(pageName, out Type? pageType);
             contentFrame8.Navigate(pageType);
         }
     }
@@ -197,7 +198,7 @@ public sealed partial class NavigationViewPage : Page
     {
         var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
         string pageName = "WinUIGallery.SamplePages." + ((string)selectedItem.Tag);
-        Type? pageType = Type.GetType(pageName);
+        SamplesNavigationPageMappings.PageDictionary.TryGetValue(pageName, out Type? pageType);
 
         contentFrame9.Navigate(pageType, null, args.RecommendedNavigationTransitionInfo);
     }

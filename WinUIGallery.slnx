@@ -1,0 +1,105 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Debug-Unpackaged" />
+    <BuildType Name="Preview" />
+    <BuildType Name="Release" />
+    <BuildType Name="Release-Unpackaged" />
+    <BuildType Name="Sideload" />
+    <BuildType Name="Stable" />
+    <BuildType Name="Store" />
+    <Platform Name="ARM64" />
+    <Platform Name="ARM64EC" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path="../Directory.Build.props" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/WinUIGallery.UITests/WinUIGallery.UITests.csproj">
+      <BuildType Solution="Debug-Unpackaged|ARM64" Project="Debug" />
+      <BuildType Solution="Debug-Unpackaged|ARM64EC" Project="Sideload" />
+      <BuildType Solution="Debug-Unpackaged|x64" Project="Debug" />
+      <BuildType Solution="Debug-Unpackaged|x86" Project="Debug" />
+      <BuildType Solution="Release-Unpackaged|*" Project="Release" />
+      <Platform Solution="*|ARM64" Project="ARM64" />
+      <Platform Solution="*|ARM64EC" Project="x64" />
+      <Platform Solution="*|x64" Project="x64" />
+      <Platform Solution="*|x86" Project="x86" />
+    </Project>
+    <Project Path="tests/WinUIGallery.UnitTests/WinUIGallery.UnitTests.csproj">
+      <BuildType Solution="Debug-Unpackaged|*" Project="Debug" />
+      <BuildType Solution="Preview|*" Project="Release" />
+      <BuildType Solution="Release-Unpackaged|*" Project="Release" />
+      <BuildType Solution="Sideload|ARM64" Project="Release" />
+      <BuildType Solution="Sideload|ARM64EC" Project="Debug" />
+      <BuildType Solution="Sideload|x64" Project="Release" />
+      <BuildType Solution="Sideload|x86" Project="Release" />
+      <BuildType Solution="Stable|*" Project="Release" />
+      <BuildType Solution="Store|*" Project="Release" />
+      <Platform Solution="*|ARM64" Project="ARM64" />
+      <Platform Solution="*|ARM64EC" Project="ARM64EC" />
+      <Platform Solution="*|x64" Project="x64" />
+      <Platform Solution="*|x86" Project="x86" />
+      <Deploy Solution="*|ARM64" />
+      <Deploy Solution="*|x64" />
+      <Deploy Solution="*|x86" />
+      <Deploy Solution="Debug|ARM64EC" />
+      <Deploy Solution="Release|ARM64EC" />
+    </Project>
+  </Folder>
+  <Project Path="WinUIGallery.SourceGenerator/WinUIGallery.SourceGenerator.csproj">
+    <BuildType Solution="Debug-Unpackaged|*" Project="Debug" />
+    <BuildType Solution="Preview|*" Project="Release" />
+    <BuildType Solution="Release-Unpackaged|*" Project="Release" />
+    <BuildType Solution="Sideload|*" Project="Debug" />
+    <BuildType Solution="Stable|*" Project="Release" />
+    <BuildType Solution="Store|*" Project="Debug" />
+  </Project>
+  <Project Path="WinUIGallery/WinUIGallery.csproj">
+    <BuildType Solution="Preview|ARM64" Project="Release-Unpackaged" />
+    <BuildType Solution="Preview|ARM64EC" Project="Release" />
+    <BuildType Solution="Preview|x64" Project="Release-Unpackaged" />
+    <BuildType Solution="Preview|x86" Project="Release-Unpackaged" />
+    <BuildType Solution="Sideload|ARM64" Project="Release-Unpackaged" />
+    <BuildType Solution="Sideload|ARM64EC" Project="Debug" />
+    <BuildType Solution="Sideload|x64" Project="Release-Unpackaged" />
+    <BuildType Solution="Sideload|x86" Project="Release-Unpackaged" />
+    <BuildType Solution="Stable|ARM64" Project="Release-Unpackaged" />
+    <BuildType Solution="Stable|ARM64EC" Project="Release" />
+    <BuildType Solution="Stable|x64" Project="Release-Unpackaged" />
+    <BuildType Solution="Stable|x86" Project="Release-Unpackaged" />
+    <BuildType Solution="Store|ARM64" Project="Release-Unpackaged" />
+    <BuildType Solution="Store|ARM64EC" Project="Release" />
+    <BuildType Solution="Store|x64" Project="Release-Unpackaged" />
+    <BuildType Solution="Store|x86" Project="Release-Unpackaged" />
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
+    <Platform Solution="Debug-Unpackaged|ARM64EC" Project="x64" />
+    <Platform Solution="Debug|ARM64EC" Project="ARM64EC" />
+    <Platform Solution="Preview|ARM64EC" Project="ARM64EC" />
+    <Platform Solution="Release-Unpackaged|ARM64EC" Project="x64" />
+    <Platform Solution="Release|ARM64EC" Project="ARM64EC" />
+    <Platform Solution="Sideload|ARM64EC" Project="ARM64EC" />
+    <Platform Solution="Stable|ARM64EC" Project="ARM64EC" />
+    <Platform Solution="Store|ARM64EC" Project="ARM64EC" />
+    <Deploy Solution="Debug-Unpackaged|ARM64EC" />
+    <Deploy Solution="Debug|*" />
+    <Deploy Solution="Preview|ARM64" />
+    <Deploy Solution="Preview|x64" />
+    <Deploy Solution="Preview|x86" />
+    <Deploy Solution="Release-Unpackaged|ARM64EC" />
+    <Deploy Solution="Release|*" />
+    <Deploy Solution="Sideload|ARM64" />
+    <Deploy Solution="Sideload|x64" />
+    <Deploy Solution="Sideload|x86" />
+    <Deploy Solution="Stable|ARM64" />
+    <Deploy Solution="Stable|x64" />
+    <Deploy Solution="Stable|x86" />
+    <Deploy Solution="Store|ARM64" />
+    <Deploy Solution="Store|x64" />
+    <Deploy Solution="Store|x86" />
+  </Project>
+</Solution>

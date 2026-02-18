@@ -1343,12 +1343,16 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control that allows a user to select a single option from a group of options.",
           "ImagePath": "ms-appx:///Assets/ControlImages/RadioButton.png",
-          "Description": "Use RadioButtons to let a user choose between mutually exclusive, related options. Generally contained within a RadioButtons group control.",
+          "Description": "Use RadioButton controls to let a user choose between mutually exclusive, related options. Generally contained within a RadioButtons group control.",
           "SourcePath": "/CommonStyles/RadioButton_themeresources.xaml",
           "Docs": [
             {
               "Title": "RadioButton - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.radiobutton"
+            },
+            {
+              "Title": "RadioButtons - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.radiobuttons"
             },
             {
               "Title": "Guidelines",
@@ -1921,32 +1925,7 @@
             }
           ]
         },
-        {
-          "UniqueId": "RadioButtons",
-          "Title": "RadioButtons",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject",
-            "UIElement",
-            "FrameworkElement",
-            "Control"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
-          "Subtitle": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/RadioButtons.png",
-          "Description": "A control that displays a group of mutually exclusive options with keyboarding and accessibility support.",
-          "SourcePath": "/RadioButtons",
-          "Docs": [
-            {
-              "Title": "RadioButtons - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.radiobuttons"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/radio-button"
-            }
-          ]
-        },
+
         {
           "UniqueId": "RelativePanel",
           "Title": "RelativePanel",
@@ -3111,6 +3090,27 @@
           ]
         },
         {
+          "UniqueId": "AppWindowTitleBar",
+          "Title": "AppWindowTitleBar",
+          "BaseClasses": [
+            "Object"
+          ],
+          "ApiNamespace": "Microsoft.UI.Windowing",
+          "Subtitle": "Provides control over the app window title bar.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
+          "Description": "Represents the title bar of an AppWindow and exposes APIs for deep, fine-grained customization, including advanced appearance changes, system button styling, and precise control over active and inactive window states.",
+          "Docs": [
+            {
+              "Title": "AppWindowTitleBar - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.appwindowtitlebar"
+            },
+            {
+              "Title": "Customize the title bar",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/title-bar"
+            }
+          ]
+        },
+        {
           "UniqueId": "CreateMultipleWindows",
           "Title": "Multiple windows",
           "ApiNamespace": "Microsoft.UI.Xaml",
@@ -3131,6 +3131,13 @@
         {
           "UniqueId": "TitleBar",
           "Title": "TitleBar",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control"
+          ],
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "An example showing how to use the default TitleBar control.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TitleBar.png",
@@ -3191,9 +3198,9 @@
             "Object"
           ],
           "ApiNamespace": "Microsoft.Windows.BadgeNotifications",
-          "Subtitle": "Display numeric or glyph badges on your app's taskbar icon.",
+          "Subtitle": "Show numeric or icon badges on your app’s taskbar icon.",
           "ImagePath": "ms-appx:///Assets/ControlImages/BadgeNotification.png",
-          "Description": "Badge notifications provide a lightweight way to convey status or alerts through small overlays on your app's icon.",
+          "Description": "Badge notifications are a lightweight way to show status or alerts as small overlays on your app's taskbar icon.",
           "IsNew": true,
           "Docs": [
             {

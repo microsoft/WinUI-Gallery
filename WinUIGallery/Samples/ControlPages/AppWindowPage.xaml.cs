@@ -1,21 +1,14 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using System;
-using System.Collections.Generic;
 using WinUIGallery.Samples.SamplePages;
 
 namespace WinUIGallery.ControlPages;
 
 public sealed partial class AppWindowPage : Page
 {
-    private IReadOnlyList<TitleBarTheme> titleBarThemes { get; set; } = new List<TitleBarTheme>(Enum.GetValues<TitleBarTheme>());
-
-    private TitleBarTheme selectedTheme = TitleBarTheme.UseDefaultAppMode;
-
     public AppWindowPage()
     {
         this.InitializeComponent();
@@ -23,7 +16,7 @@ public sealed partial class AppWindowPage : Page
 
     private void ShowSampleWindow1(object sender, RoutedEventArgs e)
     {
-        SampleWindow1 window = new SampleWindow1(WindowTitle.Text, (int)WindowWidth.Value, (int)WindowHeight.Value, (int)XPoint.Value, (int)YPoint.Value, selectedTheme);
+        SampleWindow1 window = new SampleWindow1(WindowTitle.Text, (int)WindowWidth.Value, (int)WindowHeight.Value, (int)XPoint.Value, (int)YPoint.Value);
         window.Activate();
     }
 

@@ -72,7 +72,6 @@
     <Content Include="Assets\ControlImages\PullToRefresh.png" />
     <Content Include="Assets\ControlImages\RadialGradientBrush.png" />
     <Content Include="Assets\ControlImages\RadioButton.png" />
-    <Content Include="Assets\ControlImages\RadioButtons.png" />
     <Content Include="Assets\ControlImages\RatingControl.png" />
     <Content Include="Assets\ControlImages\RelativePanel.png" />
     <Content Include="Assets\ControlImages\RepeatButton.png" />
