@@ -2020,7 +2020,8 @@
     "Tags": [
       "map",
       "navigation"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "E802",
@@ -4729,7 +4730,8 @@
     "Tags": [
       "clock",
       "time"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "E91B",
@@ -5027,7 +5029,8 @@
       "mini",
       "expand",
       "fullscreen"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "E93C",
@@ -5828,7 +5831,8 @@
       "square",
       "sparkle",
       "ai"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "E9A4",
@@ -6928,7 +6932,8 @@
       "signal",
       "bars",
       "ani1"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EAA2",
@@ -6937,7 +6942,8 @@
       "signal",
       "bars",
       "ani2"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EAA3",
@@ -6946,7 +6952,8 @@
       "signal",
       "bars",
       "ani3"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EAA4",
@@ -6956,7 +6963,8 @@
       "ani1",
       "internet",
       "connectivity"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EAA5",
@@ -6965,7 +6973,8 @@
       "wifi",
       "ani1",
       "connectivity"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EAA8",
@@ -6974,7 +6983,8 @@
       "wifi",
       "ani2",
       "connectivity"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EAAA",
@@ -6983,7 +6993,8 @@
       "emoji",
       "edit",
       "smiley"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EAAE",
@@ -6992,7 +7003,8 @@
       "surface",
       "typecover",
       "keyboard"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EAB7",
@@ -7001,7 +7013,8 @@
       "chat",
       "sparkle",
       "ai"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EABB",
@@ -7011,7 +7024,8 @@
       "flow",
       "vertical",
       "wireframe"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EABC",
@@ -7021,7 +7035,8 @@
       "studio",
       "effects",
       "ai"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EABE",
@@ -7032,7 +7047,8 @@
       "filter",
       "photo",
       "video"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EAC2",
@@ -7104,7 +7120,8 @@
       "captions",
       "sparkle",
       "ai"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EADF",
@@ -7171,7 +7188,8 @@
       "unknown",
       "charging",
       "empty"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EB19",
@@ -7193,7 +7211,8 @@
       "unknown",
       "charging",
       "empty"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EB1D",
@@ -7213,7 +7232,8 @@
     "Tags": [
       "glasses",
       "read"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EB33",
@@ -7223,7 +7243,8 @@
       "square",
       "outer",
       "rectangle"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EB34",
@@ -7232,7 +7253,8 @@
       "status",
       "square",
       "pause"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EB3B",
@@ -7636,7 +7658,8 @@
       "summarize",
       "sparkle",
       "ai"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EB7E",
@@ -8205,7 +8228,8 @@
       "system",
       "in",
       "private"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EBC9",
@@ -8215,7 +8239,8 @@
       "in",
       "private",
       "filled"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EBD2",
@@ -9785,7 +9810,8 @@
       "search",
       "sparkle",
       "looking glass"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "ED39",
@@ -11027,7 +11053,8 @@
       "voice",
       "clock",
       "time"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EFA5",
@@ -11116,7 +11143,8 @@
       "widget",
       "app",
       "card"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F035",
@@ -11125,7 +11153,8 @@
       "widget",
       "gear",
       "settings"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F036",
@@ -11133,7 +11162,8 @@
     "Tags": [
       "widget",
       "add"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F03D",
@@ -11143,7 +11173,8 @@
       "sparkle",
       "ai",
       "clipboard"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F03E",
@@ -11152,7 +11183,8 @@
       "advanced",
       "paste",
       "clipboard"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F06C",
@@ -11163,7 +11195,8 @@
       "filter",
       "photo",
       "video"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F080",
@@ -12452,7 +12485,8 @@
       "status",
       "diamond",
       "outer"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F179",
@@ -12461,7 +12495,8 @@
       "status",
       "diamond",
       "inner"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F17F",
@@ -12579,7 +12614,8 @@
       "sparkle",
       "ai",
       "selection"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F1BA",
@@ -12589,7 +12625,8 @@
       "sparkle",
       "ai",
       "selection"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F1BB",
@@ -12598,7 +12635,8 @@
       "text",
       "cursor",
       "mouse"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F1BE",
@@ -12606,7 +12644,8 @@
     "Tags": [
       "lasso",
       "selection"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F1CB",
@@ -12640,7 +12679,8 @@
       "sparkle",
       "ai",
       "language"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F1D5",
@@ -12650,7 +12690,8 @@
       "sparkle",
       "ai",
       "list"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F1D6",
@@ -12660,7 +12701,8 @@
       "sparkle",
       "ai",
       "grid"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F1D8",
@@ -12704,7 +12746,8 @@
       "group",
       "grid",
       "selection"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F20C",
@@ -12910,7 +12953,8 @@
       "action",
       "framework",
       "ai"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F27C",
@@ -13035,7 +13079,8 @@
       "restart",
       "reboot",
       "refresh"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F32A",
@@ -13056,7 +13101,8 @@
     "Tags": [
       "emoji",
       "add"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F354",
@@ -13103,7 +13149,8 @@
       "nfc",
       "badge",
       "connectivity"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F3B1",
@@ -13124,7 +13171,8 @@
     "Tags": [
       "like",
       "solid"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F3C0",
@@ -13132,7 +13180,8 @@
     "Tags": [
       "dislike",
       "solid"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F3CC",
@@ -13255,7 +13304,8 @@
       "speed",
       "high",
       "speedometer"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F432",
@@ -13378,7 +13428,8 @@
       "phone",
       "resume",
       "alert"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F473",
@@ -14233,7 +14284,8 @@
     "Tags": [
       "shield",
       "lock"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F5B5",
@@ -14241,7 +14293,8 @@
     "Tags": [
       "chess",
       "game"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F5CA",
@@ -14250,7 +14303,8 @@
       "poi",
       "location",
       "found"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F5E7",
@@ -14823,7 +14877,8 @@
       "sparkle",
       "ai",
       "write"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F6FA",
@@ -14941,7 +14996,8 @@
       "warning",
       "solid",
       "error"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F738",
@@ -15082,7 +15138,8 @@
       "shield",
       "task",
       "check"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F763",
@@ -15342,7 +15399,8 @@
       "learning",
       "tools",
       "book"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F7EC",
@@ -15350,7 +15408,8 @@
     "Tags": [
       "task",
       "clipboard"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F7ED",
@@ -15654,7 +15713,8 @@
       "ai",
       "microphone",
       "audio"
-    ]
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F8C0",
