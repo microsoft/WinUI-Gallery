@@ -1,16 +1,5 @@
 [
   {
-    "Code": "E620",
-    "Name": "StopSlideShow",
-    "Tags": [
-      "images",
-      "presentation",
-      "gallery",
-      "photos",
-      "symbol-icon"
-    ]
-  },
-  {
     "Code": "E700",
     "Name": "GlobalNavButton",
     "Tags": [
@@ -546,21 +535,6 @@
       "protection",
       "secure"
     ]
-  },
-  {
-    "Code": "E72F",
-    "Name": "BlockedSite",
-    "Tags": [
-      "private",
-      "security",
-      "access",
-      "protected",
-      "safety",
-      "permission",
-      "access",
-      "protection"
-    ],
-    "IsSegoeFluentOnly": true
   },
   {
     "Code": "E730",
@@ -2008,6 +1982,14 @@
     "Tags": [
       "arrow",
       "keyboard"
+    ]
+  },
+  {
+    "Code": "E800",
+    "Name": "Nav2DMapView",
+    "Tags": [
+      "map",
+      "navigation"
     ]
   },
   {
@@ -4705,6 +4687,14 @@
     ]
   },
   {
+    "Code": "E917",
+    "Name": "Clock",
+    "Tags": [
+      "clock",
+      "time"
+    ]
+  },
+  {
     "Code": "E91B",
     "Name": "Photo",
     "Tags": [
@@ -4991,6 +4981,15 @@
       "review",
       "response",
       "evaluation"
+    ]
+  },
+  {
+    "Code": "E93A",
+    "Name": "MiniExpand",
+    "Tags": [
+      "mini",
+      "expand",
+      "fullscreen"
     ]
   },
   {
@@ -5774,6 +5773,18 @@
       "paper plane",
       "mail",
       "message"
+    ]
+  },
+  {
+    "Code": "E9A3",
+    "Name": "TextBulletListSquareSparkle",
+    "Tags": [
+      "text",
+      "bullet",
+      "list",
+      "square",
+      "sparkle",
+      "ai"
     ]
   },
   {
@@ -6857,6 +6868,119 @@
     ]
   },
   {
+    "Code": "EAA1",
+    "Name": "SignalBarsAni1",
+    "Tags": [
+      "signal",
+      "bars",
+      "ani1"
+    ]
+  },
+  {
+    "Code": "EAA2",
+    "Name": "SignalBarsAni2",
+    "Tags": [
+      "signal",
+      "bars",
+      "ani2"
+    ]
+  },
+  {
+    "Code": "EAA3",
+    "Name": "SignalBarsAni3",
+    "Tags": [
+      "signal",
+      "bars",
+      "ani3"
+    ]
+  },
+  {
+    "Code": "EAA4",
+    "Name": "EthernetAni1",
+    "Tags": [
+      "ethernet",
+      "ani1",
+      "internet",
+      "connectivity"
+    ]
+  },
+  {
+    "Code": "EAA5",
+    "Name": "WifiAni1",
+    "Tags": [
+      "wifi",
+      "ani1",
+      "connectivity"
+    ]
+  },
+  {
+    "Code": "EAA8",
+    "Name": "WifiAni2",
+    "Tags": [
+      "wifi",
+      "ani2",
+      "connectivity"
+    ]
+  },
+  {
+    "Code": "EAAA",
+    "Name": "EmojiEdit",
+    "Tags": [
+      "emoji",
+      "edit",
+      "smiley"
+    ]
+  },
+  {
+    "Code": "EAAE",
+    "Name": "SurfaceTypecover",
+    "Tags": [
+      "surface",
+      "typecover",
+      "keyboard"
+    ]
+  },
+  {
+    "Code": "EAB7",
+    "Name": "ChatSparkle",
+    "Tags": [
+      "chat",
+      "sparkle",
+      "ai"
+    ]
+  },
+  {
+    "Code": "EABB",
+    "Name": "CellFlowVertical",
+    "Tags": [
+      "cell",
+      "flow",
+      "vertical",
+      "wireframe"
+    ]
+  },
+  {
+    "Code": "EABC",
+    "Name": "WindowsStudioEffects",
+    "Tags": [
+      "windows",
+      "studio",
+      "effects",
+      "ai"
+    ]
+  },
+  {
+    "Code": "EABE",
+    "Name": "PortraitBlur",
+    "Tags": [
+      "portrait",
+      "blur",
+      "filter",
+      "photo",
+      "video"
+    ]
+  },
+  {
     "Code": "EAC2",
     "Name": "ForwardCall",
     "Tags": [
@@ -6893,6 +7017,16 @@
     "Name": "EyeTrackingText",
     "Tags": [],
     "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EAD8",
+    "Name": "LiveCaptionsSparkle",
+    "Tags": [
+      "live",
+      "captions",
+      "sparkle",
+      "ai"
+    ]
   },
   {
     "Code": "EADF",
@@ -6951,16 +7085,64 @@
     ]
   },
   {
+    "Code": "EB17",
+    "Name": "MobBatteryUnknownCharging",
+    "Tags": [
+      "mob",
+      "battery",
+      "unknown",
+      "charging",
+      "empty"
+    ]
+  },
+  {
     "Code": "EB19",
     "Name": "ClicktoDoOff",
     "Tags": [],
     "IsSegoeFluentOnly": true
   },
   {
+    "Code": "EB1A",
+    "Name": "BatteryUnknownCharging",
+    "Tags": [
+      "battery",
+      "unknown",
+      "charging",
+      "empty"
+    ]
+  },
+  {
     "Code": "EB1D",
     "Name": "ClicktoDo",
     "Tags": [],
     "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EB25",
+    "Name": "Glasses2",
+    "Tags": [
+      "glasses",
+      "read"
+    ]
+  },
+  {
+    "Code": "EB33",
+    "Name": "StatusSquareOuter",
+    "Tags": [
+      "status",
+      "square",
+      "outer",
+      "rectangle"
+    ]
+  },
+  {
+    "Code": "EB34",
+    "Name": "StatusSquarePause",
+    "Tags": [
+      "status",
+      "square",
+      "pause"
+    ]
   },
   {
     "Code": "EB3B",
@@ -7348,6 +7530,15 @@
       "network",
       "connection",
       "internet"
+    ]
+  },
+  {
+    "Code": "EB78",
+    "Name": "SummarizeSparkle",
+    "Tags": [
+      "summarize",
+      "sparkle",
+      "ai"
     ]
   },
   {
@@ -7849,6 +8040,25 @@
       "view",
       "slide",
       "lecture"
+    ]
+  },
+  {
+    "Code": "EBC8",
+    "Name": "SystemInPrivate",
+    "Tags": [
+      "system",
+      "in",
+      "private"
+    ]
+  },
+  {
+    "Code": "EBC9",
+    "Name": "SystemInPrivateFilled",
+    "Tags": [
+      "system",
+      "in",
+      "private",
+      "filled"
     ]
   },
   {
@@ -9385,6 +9595,15 @@
     ]
   },
   {
+    "Code": "ED37",
+    "Name": "SearchSparkle",
+    "Tags": [
+      "search",
+      "sparkle",
+      "looking glass"
+    ]
+  },
+  {
     "Code": "ED39",
     "Name": "KeyboardBrightness",
     "Tags": [
@@ -10554,6 +10773,17 @@
     ]
   },
   {
+    "Code": "EF91",
+    "Name": "PauseDurationVoice",
+    "Tags": [
+      "pause",
+      "duration",
+      "voice",
+      "clock",
+      "time"
+    ]
+  },
+  {
     "Code": "EFA5",
     "Name": "Touchpad",
     "Tags": [
@@ -10621,6 +10851,62 @@
       "file",
       "storage",
       "extract"
+    ]
+  },
+  {
+    "Code": "F034",
+    "Name": "Widget",
+    "Tags": [
+      "widget",
+      "app",
+      "card"
+    ]
+  },
+  {
+    "Code": "F035",
+    "Name": "WidgetGear",
+    "Tags": [
+      "widget",
+      "gear",
+      "settings"
+    ]
+  },
+  {
+    "Code": "F036",
+    "Name": "WidgetAdd",
+    "Tags": [
+      "widget",
+      "add"
+    ]
+  },
+  {
+    "Code": "F03D",
+    "Name": "PasteSparkle",
+    "Tags": [
+      "paste",
+      "sparkle",
+      "ai",
+      "clipboard"
+    ]
+  },
+  {
+    "Code": "F03E",
+    "Name": "AdvancedPaste",
+    "Tags": [
+      "advanced",
+      "paste",
+      "clipboard"
+    ]
+  },
+  {
+    "Code": "F06C",
+    "Name": "PortraitLight",
+    "Tags": [
+      "portrait",
+      "light",
+      "filter",
+      "photo",
+      "video"
     ]
   },
   {
@@ -11287,6 +11573,18 @@
     ]
   },
   {
+    "Code": "F112",
+    "Name": "ReadOutLoud",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F117",
+    "Name": "ProjectToDevice",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "F119",
     "Name": "HMD",
     "Tags": [
@@ -11301,6 +11599,12 @@
     "Code": "F11B",
     "Name": "CtrlSpatialRight",
     "Tags": []
+  },
+  {
+    "Code": "F120",
+    "Name": "TaskManagerApp",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F126",
@@ -11812,6 +12116,24 @@
     ]
   },
   {
+    "Code": "F178",
+    "Name": "StatusDiamondOuter",
+    "Tags": [
+      "status",
+      "diamond",
+      "outer"
+    ]
+  },
+  {
+    "Code": "F179",
+    "Name": "StatusDiamondInner",
+    "Tags": [
+      "status",
+      "diamond",
+      "inner"
+    ]
+  },
+  {
     "Code": "F17F",
     "Name": "CharacterAppearance",
     "Tags": [
@@ -11862,6 +12184,12 @@
     ]
   },
   {
+    "Code": "F196",
+    "Name": "Beaker",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "F19D",
     "Name": "EyeGaze",
     "Tags": [
@@ -11898,6 +12226,49 @@
     ]
   },
   {
+    "Code": "F1B1",
+    "Name": "PowerButtonUpdate2",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F1B9",
+    "Name": "LassoSparkle",
+    "Tags": [
+      "lasso",
+      "sparkle",
+      "ai",
+      "selection"
+    ]
+  },
+  {
+    "Code": "F1BA",
+    "Name": "SquareSparkle",
+    "Tags": [
+      "square",
+      "sparkle",
+      "ai",
+      "selection"
+    ]
+  },
+  {
+    "Code": "F1BB",
+    "Name": "TextCursor2",
+    "Tags": [
+      "text",
+      "cursor",
+      "mouse"
+    ]
+  },
+  {
+    "Code": "F1BE",
+    "Name": "Lasso",
+    "Tags": [
+      "lasso",
+      "selection"
+    ]
+  },
+  {
     "Code": "F1CB",
     "Name": "ChromeSwitch",
     "Tags": [
@@ -11922,6 +12293,36 @@
     ]
   },
   {
+    "Code": "F1D4",
+    "Name": "TranslateSparkle",
+    "Tags": [
+      "translate",
+      "sparkle",
+      "ai",
+      "language"
+    ]
+  },
+  {
+    "Code": "F1D5",
+    "Name": "RefineSparkle",
+    "Tags": [
+      "refine",
+      "sparkle",
+      "ai",
+      "list"
+    ]
+  },
+  {
+    "Code": "F1D6",
+    "Name": "ReformatSparkle",
+    "Tags": [
+      "reformat",
+      "sparkle",
+      "ai",
+      "grid"
+    ]
+  },
+  {
     "Code": "F1D8",
     "Name": "StatusCheckmark",
     "Tags": [
@@ -11943,6 +12344,22 @@
       "approval",
       "completed",
       "done"
+    ]
+  },
+  {
+    "Code": "F1E8",
+    "Name": "LeafTwo",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F207",
+    "Name": "GridviewGroup",
+    "Tags": [
+      "gridview",
+      "group",
+      "grid",
+      "selection"
     ]
   },
   {
@@ -12011,6 +12428,12 @@
       "question",
       "uncertain"
     ]
+  },
+  {
+    "Code": "F232",
+    "Name": "GridViewSmall",
+    "Tags": [],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F246",
@@ -12132,75 +12555,13 @@
     ]
   },
   {
-    "Code": "F28B",
-    "Name": "DocumentApproval",
+    "Code": "F277",
+    "Name": "ActionFramework",
     "Tags": [
-      "page",
-      "file",
-      "sheet",
-      "paper",
-      "text",
-      "verification",
-      "confirmation",
-      "success",
-      "approval",
-      "completed",
-      "done"
+      "action",
+      "framework",
+      "ai"
     ]
-  },
-  {
-    "Code": "F2B7",
-    "Name": "LocaleLanguage",
-    "Tags": [
-      "region",
-      "localization",
-      "translation",
-      "culture",
-      "setting",
-      "preferences"
-    ]
-  },
-  {
-    "Code": "F112",
-    "Name": "ReadOutLoud",
-    "Tags": [],
-    "IsSegoeFluentOnly": true
-  },
-  {
-    "Code": "F117",
-    "Name": "ProjectToDevice",
-    "Tags": [],
-    "IsSegoeFluentOnly": true
-  },
-  {
-    "Code": "F120",
-    "Name": "TaskManagerApp",
-    "Tags": [],
-    "IsSegoeFluentOnly": true
-  },
-  {
-    "Code": "F196",
-    "Name": "Beaker",
-    "Tags": [],
-    "IsSegoeFluentOnly": true
-  },
-  {
-    "Code": "F1B1",
-    "Name": "PowerButtonUpdate2",
-    "Tags": [],
-    "IsSegoeFluentOnly": true
-  },
-  {
-    "Code": "F1E8",
-    "Name": "LeafTwo",
-    "Tags": [],
-    "IsSegoeFluentOnly": true
-  },
-  {
-    "Code": "F232",
-    "Name": "GridViewSmall",
-    "Tags": [],
-    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F27C",
@@ -12221,6 +12582,23 @@
     "IsSegoeFluentOnly": true
   },
   {
+    "Code": "F28B",
+    "Name": "DocumentApproval",
+    "Tags": [
+      "page",
+      "file",
+      "sheet",
+      "paper",
+      "text",
+      "verification",
+      "confirmation",
+      "success",
+      "approval",
+      "completed",
+      "done"
+    ]
+  },
+  {
     "Code": "F2A3",
     "Name": "MobNotificationBell",
     "Tags": [],
@@ -12237,6 +12615,18 @@
     "Name": "MobSnoozeFilled",
     "Tags": [],
     "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F2B7",
+    "Name": "LocaleLanguage",
+    "Tags": [
+      "region",
+      "localization",
+      "translation",
+      "culture",
+      "setting",
+      "preferences"
+    ]
   },
   {
     "Code": "F2C7",
@@ -12257,6 +12647,15 @@
     "IsSegoeFluentOnly": true
   },
   {
+    "Code": "F305",
+    "Name": "Restart3",
+    "Tags": [
+      "restart",
+      "reboot",
+      "refresh"
+    ]
+  },
+  {
     "Code": "F32A",
     "Name": "PassiveAuthentication",
     "Tags": [
@@ -12267,6 +12666,14 @@
       "access",
       "privacy",
       "checkmark"
+    ]
+  },
+  {
+    "Code": "F353",
+    "Name": "Emoji4",
+    "Tags": [
+      "emoji",
+      "add"
     ]
   },
   {
@@ -12308,6 +12715,15 @@
     ]
   },
   {
+    "Code": "F39B",
+    "Name": "NFCBadge",
+    "Tags": [
+      "nfc",
+      "badge",
+      "connectivity"
+    ]
+  },
+  {
     "Code": "F3B1",
     "Name": "SignOut",
     "Tags": [
@@ -12318,6 +12734,22 @@
       "account",
       "session",
       "user"
+    ]
+  },
+  {
+    "Code": "F3BF",
+    "Name": "LikeSolid",
+    "Tags": [
+      "like",
+      "solid"
+    ]
+  },
+  {
+    "Code": "F3C0",
+    "Name": "DislikeSolid",
+    "Tags": [
+      "dislike",
+      "solid"
     ]
   },
   {
@@ -12430,6 +12862,15 @@
     ]
   },
   {
+    "Code": "F42F",
+    "Name": "SpeedHigh2",
+    "Tags": [
+      "speed",
+      "high",
+      "speedometer"
+    ]
+  },
+  {
     "Code": "F432",
     "Name": "BatterySaver",
     "Tags": [],
@@ -12538,6 +12979,15 @@
       "modify",
       "edit",
       "correction"
+    ]
+  },
+  {
+    "Code": "F470",
+    "Name": "PhoneResumeAlert",
+    "Tags": [
+      "phone",
+      "resume",
+      "alert"
     ]
   },
   {
@@ -13383,6 +13833,31 @@
     ]
   },
   {
+    "Code": "F5B4",
+    "Name": "ShieldLock",
+    "Tags": [
+      "shield",
+      "lock"
+    ]
+  },
+  {
+    "Code": "F5B5",
+    "Name": "Chess",
+    "Tags": [
+      "chess",
+      "game"
+    ]
+  },
+  {
+    "Code": "F5CA",
+    "Name": "POILocationFound",
+    "Tags": [
+      "poi",
+      "location",
+      "found"
+    ]
+  },
+  {
     "Code": "F5E7",
     "Name": "RepeatOff",
     "Tags": [
@@ -13907,6 +14382,16 @@
     "IsSegoeFluentOnly": true
   },
   {
+    "Code": "F6C7",
+    "Name": "PenSparkle",
+    "Tags": [
+      "pen",
+      "sparkle",
+      "ai",
+      "write"
+    ]
+  },
+  {
     "Code": "F6FA",
     "Name": "WebSearch",
     "Tags": [
@@ -14013,6 +14498,15 @@
       "task",
       "performance",
       "organization"
+    ]
+  },
+  {
+    "Code": "F736",
+    "Name": "WarningSolid",
+    "Tags": [
+      "warning",
+      "solid",
+      "error"
     ]
   },
   {
@@ -14145,6 +14639,15 @@
       "arrow",
       "direction",
       "navigation"
+    ]
+  },
+  {
+    "Code": "F760",
+    "Name": "ShieldTask",
+    "Tags": [
+      "shield",
+      "task",
+      "check"
     ]
   },
   {
@@ -14396,6 +14899,23 @@
     "Tags": [
       "pencil",
       "write"
+    ]
+  },
+  {
+    "Code": "F7DB",
+    "Name": "LearningTools",
+    "Tags": [
+      "learning",
+      "tools",
+      "book"
+    ]
+  },
+  {
+    "Code": "F7EC",
+    "Name": "Task",
+    "Tags": [
+      "task",
+      "clipboard"
     ]
   },
   {
@@ -14689,6 +15209,17 @@
       "press",
       "interaction",
       "notification"
+    ]
+  },
+  {
+    "Code": "F8B4",
+    "Name": "CopilotVoice",
+    "Tags": [
+      "copilot",
+      "voice",
+      "ai",
+      "microphone",
+      "audio"
     ]
   },
   {
