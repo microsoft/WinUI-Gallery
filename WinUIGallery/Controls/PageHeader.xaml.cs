@@ -62,6 +62,18 @@ public sealed partial class PageHeader : UserControl
 
     }
 
+    public string GetControlSourceInfoText()
+    {
+        string itemTitle = string.IsNullOrWhiteSpace(Item?.Title) ? "this control" : Item.Title;
+        return $"Source code of {itemTitle} in the WinUI repository. For some controls only the XAML file is available";
+    }
+
+    public string GetSamplePageSourceInfoText()
+    {
+        string itemTitle = string.IsNullOrWhiteSpace(Item?.Title) ? "this sample page" : $"the {Item.Title} sample page";
+        return $"Source code of {itemTitle} in the WinUI Gallery repository";
+    }
+
     private void OnCopyLinkButtonClick(object sender, RoutedEventArgs e)
     {
         this.CopyLinkAction?.Invoke();
