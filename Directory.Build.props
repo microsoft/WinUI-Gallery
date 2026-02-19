@@ -12,6 +12,7 @@
     <WindowsAppSdkTargetPlatformVersion>10.0.17763.0</WindowsAppSdkTargetPlatformVersion>
     <MicrosoftWindowsSDKBuildToolsNugetPackageVersion>10.0.26100.4948</MicrosoftWindowsSDKBuildToolsNugetPackageVersion>
 	  <PublishAot>false</PublishAot>
+    <IsAotCompatible>false</IsAotCompatible>
   </PropertyGroup>
 
   <!-- If we aren't building in the WinUI repo, import the necessary missing props we'd normally pick up from its Directory.Build.props hierarchy -->
