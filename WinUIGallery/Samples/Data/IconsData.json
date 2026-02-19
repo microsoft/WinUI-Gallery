@@ -564,7 +564,11 @@
   {
     "Code": "E733",
     "Name": "Blocked",
-    "Tags": []
+    "Tags": [
+      "blocked",
+      "cancel",
+      "stop"
+    ]
   },
   {
     "Code": "E734",
@@ -939,17 +943,29 @@
   {
     "Code": "E759",
     "Name": "SIPMove",
-    "Tags": []
+    "Tags": [
+      "sip",
+      "move"
+    ]
   },
   {
     "Code": "E75A",
     "Name": "SIPUndock",
-    "Tags": []
+    "Tags": [
+      "sip",
+      "undock",
+      "redock"
+    ]
   },
   {
     "Code": "E75B",
     "Name": "SIPRedock",
-    "Tags": []
+    "Tags": [
+      "sip",
+      "redock",
+      "taskbar",
+      "dock"
+    ]
   },
   {
     "Code": "E75C",
@@ -1465,12 +1481,21 @@
   {
     "Code": "E799",
     "Name": "AspectRatio",
-    "Tags": []
+    "Tags": [
+      "aspect",
+      "ratio",
+      "size"
+    ]
   },
   {
     "Code": "E7A1",
     "Name": "Contrast",
-    "Tags": [],
+    "Tags": [
+      "contrast",
+      "brightness",
+      "black",
+      "white"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -1512,7 +1537,12 @@
   {
     "Code": "E7AA",
     "Name": "PhotoCollection",
-    "Tags": [],
+    "Tags": [
+      "photo",
+      "collection",
+      "photos",
+      "image"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -2416,7 +2446,11 @@
   {
     "Code": "E83B",
     "Name": "DirectAccess",
-    "Tags": []
+    "Tags": [
+      "direct",
+      "access",
+      "database"
+    ]
   },
   {
     "Code": "E83C",
@@ -4629,7 +4663,10 @@
   {
     "Code": "E911",
     "Name": "DullSound",
-    "Tags": []
+    "Tags": [
+      "dull",
+      "sound"
+    ]
   },
   {
     "Code": "E912",
@@ -5543,7 +5580,13 @@
   {
     "Code": "E97C",
     "Name": "Type",
-    "Tags": []
+    "Tags": [
+      "type",
+      "orientation",
+      "rotate",
+      "square",
+      "rectangle"
+    ]
   },
   {
     "Code": "E97D",
@@ -5790,7 +5833,13 @@
   {
     "Code": "E9A4",
     "Name": "TextBulletListSquare",
-    "Tags": [],
+    "Tags": [
+      "text",
+      "bullet",
+      "list",
+      "square",
+      "check"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -6708,7 +6757,12 @@
   {
     "Code": "EA85",
     "Name": "VolumeDisabled",
-    "Tags": []
+    "Tags": [
+      "volume",
+      "disabled",
+      "audio",
+      "speaker"
+    ]
   },
   {
     "Code": "EA86",
@@ -6991,31 +7045,55 @@
   {
     "Code": "EAC7",
     "Name": "DesktopLeafTwo",
-    "Tags": [],
+    "Tags": [
+      "desktop",
+      "leaf",
+      "two",
+      "computer",
+      "pc",
+      "device",
+      "energy"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "EAD4",
     "Name": "Emojiplay",
-    "Tags": [],
+    "Tags": [
+      "emoji",
+      "play"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "EAD5",
     "Name": "EmojiBrush",
-    "Tags": [],
+    "Tags": [
+      "emoji",
+      "brush"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "EAD6",
     "Name": "EyeTracking",
-    "Tags": [],
+    "Tags": [
+      "eye",
+      "tracking",
+      "hello",
+      "identity"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "EAD7",
     "Name": "EyeTrackingText",
-    "Tags": [],
+    "Tags": [
+      "eye",
+      "tracking",
+      "text",
+      "identity"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -7098,7 +7176,13 @@
   {
     "Code": "EB19",
     "Name": "ClicktoDoOff",
-    "Tags": [],
+    "Tags": [
+      "clickto",
+      "do",
+      "off",
+      "ai",
+      "selection"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -7114,7 +7198,13 @@
   {
     "Code": "EB1D",
     "Name": "ClicktoDo",
-    "Tags": [],
+    "Tags": [
+      "clickto",
+      "do",
+      "ai",
+      "rectangle",
+      "selection"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -7147,7 +7237,14 @@
   {
     "Code": "EB3B",
     "Name": "GenericApp",
-    "Tags": [],
+    "Tags": [
+      "generic",
+      "app",
+      "widget",
+      "application",
+      "title bar",
+      "window"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -7554,62 +7651,121 @@
   {
     "Code": "EB82",
     "Name": "NUIFPStartSlideHand",
-    "Tags": []
+    "Tags": [
+      "nuifp",
+      "start",
+      "slide",
+      "hand"
+    ]
   },
   {
     "Code": "EB83",
     "Name": "NUIFPStartSlideAction",
-    "Tags": []
+    "Tags": [
+      "nuifp",
+      "start",
+      "slide",
+      "action"
+    ]
   },
   {
     "Code": "EB84",
     "Name": "NUIFPContinueSlideHand",
-    "Tags": []
+    "Tags": [
+      "nuifp",
+      "continue",
+      "slide",
+      "hand"
+    ]
   },
   {
     "Code": "EB85",
     "Name": "NUIFPContinueSlideAction",
-    "Tags": []
+    "Tags": [
+      "nuifp",
+      "continue",
+      "slide",
+      "action"
+    ]
   },
   {
     "Code": "EB86",
     "Name": "NUIFPRollRightHand",
-    "Tags": []
+    "Tags": [
+      "nuifp",
+      "roll",
+      "right",
+      "hand"
+    ]
   },
   {
     "Code": "EB87",
     "Name": "NUIFPRollRightHandAction",
-    "Tags": []
+    "Tags": [
+      "nuifp",
+      "roll",
+      "right",
+      "hand",
+      "action"
+    ]
   },
   {
     "Code": "EB88",
     "Name": "NUIFPRollLeftHand",
-    "Tags": []
+    "Tags": [
+      "nuifp",
+      "roll",
+      "left",
+      "hand"
+    ]
   },
   {
     "Code": "EB89",
     "Name": "NUIFPRollLeftAction",
-    "Tags": []
+    "Tags": [
+      "nuifp",
+      "roll",
+      "left",
+      "action"
+    ]
   },
   {
     "Code": "EB8A",
     "Name": "NUIFPPressHand",
-    "Tags": []
+    "Tags": [
+      "nuifp",
+      "press",
+      "hand"
+    ]
   },
   {
     "Code": "EB8B",
     "Name": "NUIFPPressAction",
-    "Tags": []
+    "Tags": [
+      "nuifp",
+      "press",
+      "action"
+    ]
   },
   {
     "Code": "EB8C",
     "Name": "NUIFPPressRepeatHand",
-    "Tags": []
+    "Tags": [
+      "nuifp",
+      "press",
+      "repeat",
+      "hand"
+    ]
   },
   {
     "Code": "EB8D",
     "Name": "NUIFPPressRepeatAction",
-    "Tags": []
+    "Tags": [
+      "nuifp",
+      "press",
+      "repeat",
+      "action"
+    ]
   },
   {
     "Code": "EB90",
@@ -8335,7 +8491,10 @@
   {
     "Code": "EC09",
     "Name": "Groceries",
-    "Tags": []
+    "Tags": [
+      "groceries",
+      "bag"
+    ]
   },
   {
     "Code": "EC0A",
@@ -8531,7 +8690,11 @@
   {
     "Code": "EC34",
     "Name": "FormatText",
-    "Tags": []
+    "Tags": [
+      "format",
+      "text",
+      "font"
+    ]
   },
   {
     "Code": "EC37",
@@ -8925,7 +9088,11 @@
   {
     "Code": "EC6D",
     "Name": "SwipeRevealArt",
-    "Tags": []
+    "Tags": [
+      "swipe",
+      "reveal",
+      "art"
+    ]
   },
   {
     "Code": "EC71",
@@ -9040,7 +9207,11 @@
   {
     "Code": "EC83",
     "Name": "UpdateStatusDot2",
-    "Tags": [],
+    "Tags": [
+      "update",
+      "status",
+      "dot2"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -9081,7 +9252,11 @@
   {
     "Code": "EC91",
     "Name": "Uninstall",
-    "Tags": [],
+    "Tags": [
+      "uninstall",
+      "app",
+      "application"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -9105,7 +9280,12 @@
   {
     "Code": "EC9C",
     "Name": "CloudNotSynced",
-    "Tags": [],
+    "Tags": [
+      "cloud",
+      "not",
+      "synced",
+      "cancel"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -9461,7 +9641,11 @@
   {
     "Code": "ED21",
     "Name": "RestartUpdate2",
-    "Tags": [],
+    "Tags": [
+      "restart",
+      "update",
+      "refresh"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -10209,7 +10393,11 @@
   {
     "Code": "EDE0",
     "Name": "Strikethrough",
-    "Tags": []
+    "Tags": [
+      "strikethrough",
+      "text",
+      "font"
+    ]
   },
   {
     "Code": "EDE1",
@@ -10262,7 +10450,11 @@
   {
     "Code": "EDE5",
     "Name": "PinyinIMELogo",
-    "Tags": []
+    "Tags": [
+      "pinyin",
+      "ime",
+      "logo"
+    ]
   },
   {
     "Code": "EDFB",
@@ -10307,31 +10499,61 @@
   {
     "Code": "EE41",
     "Name": "FullHiraganaPrivateMode",
-    "Tags": [],
+    "Tags": [
+      "full",
+      "hiragana",
+      "private",
+      "mode",
+      "shield"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "EE42",
     "Name": "FullKatakanaPrivateMode",
-    "Tags": [],
+    "Tags": [
+      "full",
+      "katakana",
+      "private",
+      "mode",
+      "shield"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "EE43",
     "Name": "HalfAlphaPrivateMode",
-    "Tags": [],
+    "Tags": [
+      "half",
+      "alpha",
+      "private",
+      "mode",
+      "shield"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "EE44",
     "Name": "HalfKatakanaPrivateMode",
-    "Tags": [],
+    "Tags": [
+      "half",
+      "katakana",
+      "private",
+      "mode",
+      "shield"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "EE45",
     "Name": "FullAlphaPrivateMode",
-    "Tags": [],
+    "Tags": [
+      "full",
+      "alpha",
+      "private",
+      "mode",
+      "shield"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -10461,7 +10683,10 @@
   {
     "Code": "EE7E",
     "Name": "FIDOPasskey",
-    "Tags": [],
+    "Tags": [
+      "fido",
+      "passkey"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -10485,24 +10710,41 @@
   {
     "Code": "EE94",
     "Name": "Wheel",
-    "Tags": []
+    "Tags": [
+      "wheel",
+      "database",
+      "circle"
+    ]
   },
   {
     "Code": "EE95",
     "Name": "StopSolid",
-    "Tags": [],
+    "Tags": [
+      "stop",
+      "solid",
+      "square",
+      "rectangle",
+      "filled"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "EEA0",
     "Name": "RAM",
-    "Tags": [],
+    "Tags": [
+      "ram",
+      "memory",
+      "device"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "EEA1",
     "Name": "CPU",
-    "Tags": [],
+    "Tags": [
+      "cpu",
+      "processor"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -10745,7 +10987,11 @@
   {
     "Code": "EF60",
     "Name": "TextEdit",
-    "Tags": [],
+    "Tags": [
+      "text",
+      "edit",
+      "font"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -10809,13 +11055,23 @@
   {
     "Code": "EFDA",
     "Name": "AppIconDefaultAdd",
-    "Tags": [],
+    "Tags": [
+      "app",
+      "icon",
+      "default",
+      "add",
+      "application"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "EFFF",
     "Name": "CRMScheduleReports",
-    "Tags": [],
+    "Tags": [
+      "crm",
+      "schedule",
+      "reports"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -10984,42 +11240,73 @@
   {
     "Code": "F093",
     "Name": "ButtonA",
-    "Tags": []
+    "Tags": [
+      "button",
+      "a",
+      "controller",
+      "xbox"
+    ]
   },
   {
     "Code": "F094",
     "Name": "ButtonB",
-    "Tags": []
+    "Tags": [
+      "button",
+      "b",
+      "controller",
+      "xbox"
+    ]
   },
   {
     "Code": "F095",
     "Name": "ButtonY",
-    "Tags": []
+    "Tags": [
+      "button",
+      "y",
+      "controller",
+      "xbox"
+    ]
   },
   {
     "Code": "F096",
     "Name": "ButtonX",
-    "Tags": []
+    "Tags": [
+      "button x",
+      "controller",
+      "xbox"
+    ]
   },
   {
     "Code": "F0AD",
     "Name": "ArrowUp8",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "up"
+    ]
   },
   {
     "Code": "F0AE",
     "Name": "ArrowDown8",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "down"
+    ]
   },
   {
     "Code": "F0AF",
     "Name": "ArrowRight8",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "right"
+    ]
   },
   {
     "Code": "F0B0",
     "Name": "ArrowLeft8",
-    "Tags": []
+    "Tags": [
+      "arrow",
+      "left"
+    ]
   },
   {
     "Code": "F0B2",
@@ -11575,13 +11862,22 @@
   {
     "Code": "F112",
     "Name": "ReadOutLoud",
-    "Tags": [],
+    "Tags": [
+      "read",
+      "out",
+      "loud"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F117",
     "Name": "ProjectToDevice",
-    "Tags": [],
+    "Tags": [
+      "project",
+      "device",
+      "share",
+      "screen"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -11598,12 +11894,22 @@
   {
     "Code": "F11B",
     "Name": "CtrlSpatialRight",
-    "Tags": []
+    "Tags": [
+      "ctrl",
+      "spatial",
+      "right",
+      "controller"
+    ]
   },
   {
     "Code": "F120",
     "Name": "TaskManagerApp",
-    "Tags": [],
+    "Tags": [
+      "task",
+      "manager",
+      "app",
+      "performance"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -11706,27 +12012,51 @@
   {
     "Code": "F136",
     "Name": "StatusCircleOuter",
-    "Tags": []
+    "Tags": [
+      "status",
+      "circle",
+      "outer",
+      "filled"
+    ]
   },
   {
     "Code": "F137",
     "Name": "StatusCircleInner",
-    "Tags": []
+    "Tags": [
+      "status",
+      "circle",
+      "inner",
+      "filled"
+    ]
   },
   {
     "Code": "F138",
     "Name": "StatusCircleRing",
-    "Tags": []
+    "Tags": [
+      "status",
+      "circle",
+      "ring"
+    ]
   },
   {
     "Code": "F139",
     "Name": "StatusTriangleOuter",
-    "Tags": []
+    "Tags": [
+      "status",
+      "triangle",
+      "outer",
+      "filled"
+    ]
   },
   {
     "Code": "F13A",
     "Name": "StatusTriangleInner",
-    "Tags": []
+    "Tags": [
+      "status",
+      "triangle",
+      "inner",
+      "filled"
+    ]
   },
   {
     "Code": "F13B",
@@ -12186,7 +12516,12 @@
   {
     "Code": "F196",
     "Name": "Beaker",
-    "Tags": [],
+    "Tags": [
+      "beaker",
+      "test",
+      "experiment",
+      "lab"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -12228,7 +12563,12 @@
   {
     "Code": "F1B1",
     "Name": "PowerButtonUpdate2",
-    "Tags": [],
+    "Tags": [
+      "power",
+      "button",
+      "update",
+      "shutdown"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -12349,7 +12689,11 @@
   {
     "Code": "F1E8",
     "Name": "LeafTwo",
-    "Tags": [],
+    "Tags": [
+      "leaf",
+      "energy",
+      "battery"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -12432,7 +12776,12 @@
   {
     "Code": "F232",
     "Name": "GridViewSmall",
-    "Tags": [],
+    "Tags": [
+      "grid",
+      "view",
+      "small",
+      "square"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -12566,19 +12915,28 @@
   {
     "Code": "F27C",
     "Name": "Earbudsingle",
-    "Tags": [],
+    "Tags": [
+      "earbuds",
+      "audio"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F27F",
     "Name": "HearingAid",
-    "Tags": [],
+    "Tags": [
+      "hearing",
+      "aid"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F285",
     "Name": "MobSnooze",
-    "Tags": [],
+    "Tags": [
+      "mob",
+      "snooze"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -12601,19 +12959,32 @@
   {
     "Code": "F2A3",
     "Name": "MobNotificationBell",
-    "Tags": [],
+    "Tags": [
+      "mob",
+      "notification",
+      "bell"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F2A5",
     "Name": "MobNotificationBellFilled",
-    "Tags": [],
+    "Tags": [
+      "mob",
+      "notification",
+      "bell",
+      "filled"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F2A8",
     "Name": "MobSnoozeFilled",
-    "Tags": [],
+    "Tags": [
+      "mob",
+      "snooze",
+      "filled"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -12631,19 +13002,30 @@
   {
     "Code": "F2C7",
     "Name": "BulletedList2",
-    "Tags": [],
+    "Tags": [
+      "bulleted",
+      "list"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F2C8",
     "Name": "BulletedList2Mirrored",
-    "Tags": [],
+    "Tags": [
+      "bulleted",
+      "list",
+      "mirrored"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F2D9",
     "Name": "CirclePause",
-    "Tags": [],
+    "Tags": [
+      "circle",
+      "pause",
+      "stop"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -12784,7 +13166,12 @@
   {
     "Code": "F3E7",
     "Name": "CtrlSpatialLeft",
-    "Tags": []
+    "Tags": [
+      "ctrl",
+      "spatial",
+      "left",
+      "controller"
+    ]
   },
   {
     "Code": "F404",
@@ -12873,7 +13260,10 @@
   {
     "Code": "F432",
     "Name": "BatterySaver",
-    "Tags": [],
+    "Tags": [
+      "battery",
+      "saver"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -13108,7 +13498,12 @@
   {
     "Code": "F4BD",
     "Name": "Snooze",
-    "Tags": [],
+    "Tags": [
+      "snooze",
+      "alarm",
+      "alert",
+      "mute"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -14212,7 +14607,11 @@
   {
     "Code": "F63C",
     "Name": "CircleShapeSolid",
-    "Tags": []
+    "Tags": [
+      "circle",
+      "shape",
+      "solid"
+    ]
   },
   {
     "Code": "F657",
@@ -14294,31 +14693,50 @@
   {
     "Code": "F67B",
     "Name": "Pen",
-    "Tags": [],
+    "Tags": [
+      "pen",
+      "ink",
+      "write"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F683",
     "Name": "TextSelect",
-    "Tags": [],
+    "Tags": [
+      "text",
+      "select"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F684",
     "Name": "TextNavigate",
-    "Tags": [],
+    "Tags": [
+      "text",
+      "navigate",
+      "pan"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F698",
     "Name": "PinyinIMELogo2",
-    "Tags": [],
+    "Tags": [
+      "pinyin",
+      "ime"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F69B",
     "Name": "UserRemove",
-    "Tags": [],
+    "Tags": [
+      "user",
+      "remove",
+      "person",
+      "cancel"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -14366,19 +14784,35 @@
   {
     "Code": "F6C4",
     "Name": "PhoneScreen",
-    "Tags": [],
+    "Tags": [
+      "phone",
+      "screen",
+      "device",
+      "share"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F6C5",
     "Name": "AlertUrgent",
-    "Tags": [],
+    "Tags": [
+      "alert",
+      "urgent",
+      "alarm",
+      "notification"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F6C6",
     "Name": "PhoneDesktop",
-    "Tags": [],
+    "Tags": [
+      "phone",
+      "desktop",
+      "pc",
+      "computer",
+      "device"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
@@ -15225,79 +15659,130 @@
   {
     "Code": "F8C0",
     "Name": "VPNOverlay",
-    "Tags": [],
+    "Tags": [
+      "vpn"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F8C1",
     "Name": "VPNRoamingOverly",
-    "Tags": [],
+    "Tags": [
+      "vpn",
+      "roaming"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F8C2",
     "Name": "WifiVPN3",
-    "Tags": [],
+    "Tags": [
+      "wifi",
+      "vpn"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F8C3",
     "Name": "WifiVPN4",
-    "Tags": [],
+    "Tags": [
+      "wifi",
+      "vpn"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F8C4",
     "Name": "WifiVPN5",
-    "Tags": [],
+    "Tags": [
+      "wifi",
+      "vpn"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F8C5",
     "Name": "SignalBarsVPN2",
-    "Tags": [],
+    "Tags": [
+      "signal",
+      "bars",
+      "vpn"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F8C6",
     "Name": "SignalBarsVPN3",
-    "Tags": [],
+    "Tags": [
+      "signal",
+      "bars",
+      "vpn"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F8C7",
     "Name": "SignalBarsVPN4",
-    "Tags": [],
+    "Tags": [
+      "signal",
+      "bars",
+      "vpn"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F8C8",
     "Name": "SignalBarsVPN5",
-    "Tags": [],
+    "Tags": [
+      "signal",
+      "bars",
+      "vpn"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F8C9",
     "Name": "SignalBarsVPNRoaming3",
-    "Tags": [],
+    "Tags": [
+      "signal",
+      "bars",
+      "vpn",
+      "roaming"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F8CA",
     "Name": "SignalBarsVPNRoaming4",
-    "Tags": [],
+    "Tags": [
+      "signal",
+      "bars",
+      "vpn",
+      "roaming"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F8CB",
     "Name": "SignalBarsVPNRoaming5",
-    "Tags": [],
+    "Tags": [
+      "signal",
+      "bars",
+      "vpn",
+      "roaming"
+    ],
     "IsSegoeFluentOnly": true
   },
   {
     "Code": "F8CC",
     "Name": "EthernetVPN",
-    "Tags": [],
+    "Tags": [
+      "ethernet",
+      "vpn",
+      "internet",
+      "computer",
+      "pc"
+    ],
     "IsSegoeFluentOnly": true
   }
 ]
