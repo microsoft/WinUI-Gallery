@@ -93,7 +93,7 @@ public static class WindowStateHelper
             int y = state.PositionY;
 
             // ensure window fits display area
-            var displayArea = DisplayArea.GetFromWindowId(window.AppWindow.Id, DisplayAreaFallback.Primary).WorkArea;
+            var displayArea = DisplayArea.GetFromPoint(new PointInt32(x,y), DisplayAreaFallback.Primary).WorkArea;
             width = Math.Min(width, displayArea.Width);
             height = Math.Min(height, displayArea.Height);
             x = Math.Clamp(x, displayArea.X, displayArea.X + displayArea.Width - width);
