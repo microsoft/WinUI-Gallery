@@ -100,7 +100,7 @@ public sealed partial class PageHeader : UserControl
 
     private void UserControl_Loaded(object sender, RoutedEventArgs e)
     {
-        if (Item == null || (string.IsNullOrEmpty(Item.ApiNamespace) && Item.BaseClasses == null))
+        if (Item == null || (string.IsNullOrEmpty(Item.ApiNamespace) && (Item.BaseClasses == null || Item.BaseClasses.Length == 0)))
         {
             APIDetailsBtn.Visibility = Visibility.Collapsed;
         }

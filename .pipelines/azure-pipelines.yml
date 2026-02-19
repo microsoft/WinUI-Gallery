@@ -5,7 +5,7 @@ pool:
     vmImage: "windows-2022"
 
 variables:
-    solutionGallery: "**/WinUIGallery.sln"
+    solutionGallery: "**/WinUIGallery.slnx"
     buildPlatform: "x64"
     buildConfiguration: "Debug"
     appxPackageDir: '$(Build.ArtifactStagingDirectory)\AppxPackages\\'
