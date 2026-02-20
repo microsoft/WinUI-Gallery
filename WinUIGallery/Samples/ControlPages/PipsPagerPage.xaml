@@ -15,6 +15,8 @@
                         x:Name="Gallery"
                         Height="270"
                         MaxWidth="400"
+                        AutomationProperties.AutomationControlType="List"
+                        AutomationProperties.LocalizedControlType="list"
                         ItemsSource="{x:Bind Pictures}">
                         <FlipView.ItemTemplate>
                             <DataTemplate x:DataType="x:String">
