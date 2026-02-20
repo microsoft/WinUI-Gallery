@@ -154,8 +154,9 @@
                                         <Button
                                             Padding="6,5,6,6"
                                             Style="{ThemeResource SubtleButtonStyle}"
-                                            ToolTipService.ToolTip="Source code of this control in the WinUI repository. For some controls only the XAML file is available"
-                                            AutomationProperties.Name="Info: Source code of this control in the WinUI repository. For some controls only the XAML file is available">
+                                            ToolTipService.ToolTip="{x:Bind GetControlSourceInfoText(), Mode=OneWay}"
+                                            AutomationProperties.Name="Info"
+                                            AutomationProperties.HelpText="{x:Bind GetControlSourceInfoText(), Mode=OneWay}">
                                             <FontIcon
                                                 VerticalAlignment="Center"
                                                 FontSize="14"
@@ -187,8 +188,9 @@
                                     <Button
                                         Padding="6,5,6,6"
                                         Style="{ThemeResource SubtleButtonStyle}"
-                                        ToolTipService.ToolTip="Source code of this sample page in the WinUI Gallery repository"
-                                        AutomationProperties.Name="Info: Source code of this sample page in the WinUI Gallery repository">
+                                        ToolTipService.ToolTip="{x:Bind GetSamplePageSourceInfoText(), Mode=OneWay}"
+                                        AutomationProperties.Name="Info"
+                                        AutomationProperties.HelpText="{x:Bind GetSamplePageSourceInfoText(), Mode=OneWay}">
                                         <FontIcon
                                             VerticalAlignment="Center"
                                             FontSize="14"
