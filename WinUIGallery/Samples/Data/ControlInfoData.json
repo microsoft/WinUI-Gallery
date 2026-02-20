@@ -3223,6 +3223,28 @@
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.storage.pickers.folderpicker"
             }
           ]
+        },
+        {
+          "UniqueId": "JumpList",
+          "Title": "Jump list",
+          "ApiNamespace": "Windows.UI.StartScreen",
+          "BaseClasses": [
+            "Object"
+          ],
+          "Subtitle": "Add custom tasks and groups to the app's taskbar jump list.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "Jump lists let you add custom tasks and groups to the app's right-click menu on the taskbar. Use them to provide quick access to frequently used actions or recently opened items.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "JumpList - API",
+              "Uri": "https://learn.microsoft.com/uwp/api/windows.ui.startscreen.jumplist"
+            },
+            {
+              "Title": "JumpListItem - API",
+              "Uri": "https://learn.microsoft.com/uwp/api/windows.ui.startscreen.jumplistitem"
+            }
+          ]
         }
       ]
     }
