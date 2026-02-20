@@ -56,6 +56,7 @@ public partial class SettingsHelper : ObservableSettings
         var list = Favorites;
         updater(list);
         Favorites = list;
+        _ = JumpListHelper.UpdateJumpListAsync();
     }
     public void UpdateRecentlyVisited(Action<List<string>> updater)
     {
