@@ -35,6 +35,7 @@ internal static class JumpListHelper
             // Fixed tasks: Iconography and Colors (default Tasks group)
             AddItemTask(jumpList, "Iconography", groupName: "");
             AddItemTask(jumpList, "Color", groupName: "");
+            AddItemTask(jumpList, "Typography", groupName: "");
 
             // Dynamic group: Favorites
             var favorites = SettingsHelper.Current.Favorites;
