@@ -4,7 +4,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
-using System.Linq;
 using Windows.UI.StartScreen;
 using WinUIGallery.Helpers;
 
@@ -15,7 +14,6 @@ public sealed partial class JumpListPage : Page
     public JumpListPage()
     {
         this.InitializeComponent();
-        LoadJumpListItems();
     }
 
     private async void AddTasksButton_Click(object sender, RoutedEventArgs e)
@@ -39,7 +37,6 @@ public sealed partial class JumpListPage : Page
         jumpList.Items.Add(searchTask);
 
         await jumpList.SaveAsync();
-        LoadJumpListItems();
     }
 
     private async void ClearTasksButton_Click(object sender, RoutedEventArgs e)
@@ -52,7 +49,6 @@ public sealed partial class JumpListPage : Page
         JumpList jumpList = await JumpList.LoadCurrentAsync();
         jumpList.Items.Clear();
         await jumpList.SaveAsync();
-        LoadJumpListItems();
     }
 
     private async void AddCustomGroupButton_Click(object sender, RoutedEventArgs e)
@@ -78,27 +74,5 @@ public sealed partial class JumpListPage : Page
         jumpList.Items.Add(item2);
 
         await jumpList.SaveAsync();
-        LoadJumpListItems();
-    }
-
-    private void RefreshButton_Click(object sender, RoutedEventArgs e)
-    {
-        LoadJumpListItems();
-    }
-
-    private async void LoadJumpListItems()
-    {
-        if (!NativeMethods.IsAppPackaged || !JumpList.IsSupported())
-        {
-            return;
-        }
-
-        JumpList jumpList = await JumpList.LoadCurrentAsync();
-        var items = jumpList.Items
-            .Where(i => i.Kind == JumpListItemKind.Arguments)
-            .ToList();
-
-        JumpListItemsView.ItemsSource = items;
-        EmptyListText.Visibility = items.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
     }
 }
