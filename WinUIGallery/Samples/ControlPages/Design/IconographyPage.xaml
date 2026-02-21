@@ -156,26 +156,20 @@
                                               FontSize="48"
                                               Glyph="{x:Bind SelectedItem.Character, Mode=OneWay}" />
                                 </Border>
-                                <Grid Grid.Column="1"
-                                      HorizontalAlignment="Stretch"
+                                <StackPanel Grid.Column="1"
+                                      Orientation="Horizontal" Margin="0,4,0,0" Spacing="8" VerticalAlignment="Top"
                                       Visibility="{x:Bind SelectedItem.IsSegoeFluentOnly, Mode=OneWay}"
                                       ToolTipService.ToolTip="This icon is only available in Segoe Fluent Icons (the default icon font on Windows 11). On Windows 10, Segoe MDL2 Assets is used by default, so the icon may not appear unless Segoe Fluent Icons is installed.">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-                                    <FontIcon FontSize="16"
-                                              Margin="0,6,8,0"
-                                              Foreground="{ThemeResource SystemFillColorCriticalBrush}"
+                                    <FontIcon FontSize="12"
+                                              Foreground="{ThemeResource SystemFillColorCautionBrush}"
                                               Glyph="&#xE7BA;"
-                                              VerticalAlignment="Top" />
-                                    <TextBlock Grid.Column="1"
-                                               Margin="0,0,8,0"
+                                              VerticalAlignment="Center" />
+                                    <TextBlock
                                                Text="Only supported in Segoe Fluent Icons"
-                                               TextWrapping="Wrap"
-                                               Foreground="{ThemeResource SystemFillColorCriticalBrush}"
-                                               VerticalAlignment="Top" />
-                                </Grid>
+                                               TextWrapping="Wrap" FontSize="12"
+                                               Foreground="{ThemeResource SystemFillColorCautionBrush}"
+                                               VerticalAlignment="Center" />
+                                </StackPanel>
                             </Grid>
                             <TextBlock
                                 Foreground="{ThemeResource TextFillColorSecondaryBrush}"
