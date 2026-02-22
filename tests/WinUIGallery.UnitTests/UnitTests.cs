@@ -48,7 +48,8 @@ public class UnitTests
             "Text",
             "Motion",
             "Windowing",
-            "System"
+            "System",
+            "Shell"
         };
 
         Assert.AreEqual(expectedGroups.Count, groupsList.Count);
