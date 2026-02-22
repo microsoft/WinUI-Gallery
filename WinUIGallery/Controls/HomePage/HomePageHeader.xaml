@@ -95,10 +95,10 @@
                     Text="{x:Bind WinAppSdkDetails}" />
                 <TextBlock
                     x:Name="smallHeaderText"
+                    AutomationProperties.HeadingLevel="Level1"
                     Foreground="{ThemeResource ForegroundBrush}"
                     Style="{StaticResource TitleLargeTextBlockStyle}"
-                    Text="{StaticResource AppTitleName}"
-                    AutomationProperties.HeadingLevel="Level1" />
+                    Text="{StaticResource AppTitleName}" />
             </StackPanel>
 
             <local:HorizontalScrollContainer Grid.Row="2" Margin="0,56,0,0">
@@ -107,7 +107,7 @@
                         <local:Tile
                             Title="Getting started"
                             Description="Get started with WinUI and explore detailed documentation."
-                            Link="https://learn.microsoft.com/windows/apps/get-started/">
+                            Link="https://aka.ms/winui-getstarted">
                             <local:Tile.Source>
                                 <Image Source="/Assets/HomeHeaderTiles/Header-WinUI.png" />
                             </local:Tile.Source>

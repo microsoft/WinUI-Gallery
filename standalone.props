@@ -20,5 +20,7 @@
     <DefaultItemExcludes>obj\**;bin\**;$(DefaultItemExcludes)</DefaultItemExcludes>
     <!-- Where to place the files generated from CSWinRT from WinUIGallery.Desktop.-->
     <GeneratedFilesDir>obj\generated</GeneratedFilesDir>
+    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">true</IsAotCompatible>
+    <CsWinRTAotWarningLevel Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">2</CsWinRTAotWarningLevel>
   </PropertyGroup>
 </Project>
