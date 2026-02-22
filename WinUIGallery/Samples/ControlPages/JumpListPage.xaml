@@ -13,9 +13,8 @@
                  Title="JumpList is not available in unpackaged mode."
                  Message="This API requires the app to be running in packaged mode (MSIX)."/>
 
-        <InfoBar Margin="0,10,0,0" IsOpen="True" IsClosable="False" Severity="Informational"
-                 Title="This app uses a jump list."
-                 Message="WinUI Gallery populates its jump list with links to Iconography and Colors, plus your favorited items. Restarting the app will restore these default entries after any changes made on this page."/>
+        <TextBlock Margin="0,12,0,0" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}"
+                   Text="WinUI Gallery populates its jump list with your recently visited and favorited items. Restarting the app will restore these entries after any changes made on this page." />
 
         <controls:ControlExample HeaderText="Adding tasks to the jump list">
             <StackPanel Spacing="8">
