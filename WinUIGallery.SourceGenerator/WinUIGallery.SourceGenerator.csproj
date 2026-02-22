@@ -1,20 +1,33 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk" TreatAsLocalProperty="PublishAot">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
 	  <LangVersion>latest</LangVersion>
 	  <IncludeBuildOutput>false</IncludeBuildOutput>
 	  <PlatformTarget>AnyCPU</PlatformTarget>
 	  <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
 	  <Configurations>Debug;Release</Configurations>
-	  <IsRoslynComponent>true</IsRoslynComponent>
+	  <IsRoslynComponent>true</IsRoslynComponent>	  
+	  <PublishAot>false</PublishAot>
   </PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
-		<PackageReference Include="System.Text.Json" Version="10.0.1" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.1" />
+		<PackageReference Include="System.Text.Json" Version="8.0.5" GeneratePathProperty="true" />
 	</ItemGroup>
+
+	<!-- Expose System.Text.Json and its dependencies as analyzer files so the consuming
+	     project passes them to the compiler alongside the generator DLL. Without this,
+	     Roslyn's .NET Framework analyzer host cannot resolve them at runtime. -->
+	<PropertyGroup>
+		<GetTargetPathDependsOn>$(GetTargetPathDependsOn);_GetDependencyTargetPaths</GetTargetPathDependsOn>
+	</PropertyGroup>
+	<Target Name="_GetDependencyTargetPaths">
+		<ItemGroup>
+			<TargetPathWithTargetPlatformMoniker Include="@(ResolvedCompileFileDefinitions)" IncludeRuntimeDependency="false" />
+		</ItemGroup>
+	</Target>
 </Project>
