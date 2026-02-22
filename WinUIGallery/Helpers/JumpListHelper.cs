@@ -11,12 +11,12 @@ namespace WinUIGallery.Helpers;
 
 /// <summary>
 /// Manages the app's taskbar JumpList, providing quick access to
-/// key pages (Iconography, Colors) and user-favorited items.
+/// recently visited items and user-favorited items.
 /// </summary>
 internal static class JumpListHelper
 {
     /// <summary>
-    /// Rebuilds the JumpList with fixed tasks and the current set of favorite items.
+    /// Rebuilds the JumpList with recently visited items and the current set of favorite items.
     /// Safe to call at any time; silently returns if JumpList is not supported.
     /// </summary>
     public static async Task UpdateJumpListAsync()
@@ -32,10 +32,12 @@ internal static class JumpListHelper
             jumpList.Items.Clear();
             jumpList.SystemGroupKind = JumpListSystemGroupKind.None;
 
-            // Fixed tasks: Iconography and Colors (default Tasks group)
-            AddItemTask(jumpList, "Iconography", groupName: "");
-            AddItemTask(jumpList, "Color", groupName: "");
-            AddItemTask(jumpList, "Typography", groupName: "");
+            // Dynamic group: Recent
+            var recentlyVisited = SettingsHelper.Current.RecentlyVisited;
+            foreach (string uniqueId in recentlyVisited)
+            {
+                AddItemTask(jumpList, uniqueId, groupName: "Recent");
+            }
 
             // Dynamic group: Favorites
             var favorites = SettingsHelper.Current.Favorites;

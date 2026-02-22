@@ -63,5 +63,6 @@ public partial class SettingsHelper : ObservableSettings
         var list = RecentlyVisited;
         updater(list);
         RecentlyVisited = list;
+        _ = JumpListHelper.UpdateJumpListAsync();
     }
 }
