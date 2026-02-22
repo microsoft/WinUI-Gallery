@@ -7,9 +7,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:models="using:WinUIGallery.Models"
     xmlns:local="using:WinUIGallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:WinUIGallery.Models"
     Loaded="UserControl_Loaded"
     mc:Ignorable="d">
 
@@ -34,11 +34,11 @@
         <StackPanel Orientation="Horizontal" Spacing="4">
             <TextBlock
                 AutomationProperties.AutomationId="PageHeader"
+                AutomationProperties.HeadingLevel="Level1"
                 Style="{StaticResource TitleTextBlockStyle}"
                 Text="{x:Bind Item.Title}"
                 TextTrimming="CharacterEllipsis"
-                TextWrapping="NoWrap"
-                AutomationProperties.HeadingLevel="Level1" />
+                TextWrapping="NoWrap" />
             <Button
                 x:Name="APIDetailsBtn"
                 Margin="0,0,0,3"
@@ -153,10 +153,10 @@
                                             Text="Control source code" />
                                         <Button
                                             Padding="6,5,6,6"
-                                            Style="{ThemeResource SubtleButtonStyle}"
-                                            ToolTipService.ToolTip="{x:Bind GetControlSourceInfoText(), Mode=OneWay}"
+                                            AutomationProperties.HelpText="{x:Bind GetControlSourceInfoText(), Mode=OneWay}"
                                             AutomationProperties.Name="Info"
-                                            AutomationProperties.HelpText="{x:Bind GetControlSourceInfoText(), Mode=OneWay}">
+                                            Style="{ThemeResource SubtleButtonStyle}"
+                                            ToolTipService.ToolTip="{x:Bind GetControlSourceInfoText(), Mode=OneWay}">
                                             <FontIcon
                                                 VerticalAlignment="Center"
                                                 FontSize="14"
@@ -174,7 +174,7 @@
                                     </HyperlinkButton>
                                 </StackPanel>
 
-                                <MenuFlyoutSeparator Margin="-12" />
+                                <MenuFlyoutSeparator x:Name="ControlSourceSeparator" Margin="-12" />
 
                                 <StackPanel
                                     Margin="0,8,0,0"
@@ -187,10 +187,10 @@
                                         Text="Sample page source code" />
                                     <Button
                                         Padding="6,5,6,6"
-                                        Style="{ThemeResource SubtleButtonStyle}"
-                                        ToolTipService.ToolTip="{x:Bind GetSamplePageSourceInfoText(), Mode=OneWay}"
+                                        AutomationProperties.HelpText="{x:Bind GetSamplePageSourceInfoText(), Mode=OneWay}"
                                         AutomationProperties.Name="Info"
-                                        AutomationProperties.HelpText="{x:Bind GetSamplePageSourceInfoText(), Mode=OneWay}">
+                                        Style="{ThemeResource SubtleButtonStyle}"
+                                        ToolTipService.ToolTip="{x:Bind GetSamplePageSourceInfoText(), Mode=OneWay}">
                                         <FontIcon
                                             VerticalAlignment="Center"
                                             FontSize="14"
@@ -272,14 +272,14 @@
                     </Button.Content>
                 </Button>
                 <AppBarSeparator />
-                <ToggleButton x:Name="FavoriteButton"
-                              Height="32"
-                              Margin="4,0,0,0"
-                              Click="FavoriteButton_Click"
-                              AutomationProperties.Name="Favorite sample">
+                <ToggleButton
+                    x:Name="FavoriteButton"
+                    Height="32"
+                    Margin="4,0,0,0"
+                    AutomationProperties.Name="Favorite sample"
+                    Click="FavoriteButton_Click">
                     <ToggleButton.Content>
-                        <FontIcon FontSize="16"
-                                  Glyph="{x:Bind GetFavoriteGlyph(FavoriteButton.IsChecked), Mode=OneWay}" />
+                        <FontIcon FontSize="16" Glyph="{x:Bind GetFavoriteGlyph(FavoriteButton.IsChecked), Mode=OneWay}" />
                     </ToggleButton.Content>
                     <ToolTipService.ToolTip>
                         <ToolTip Content="{x:Bind GetFavoriteToolTip(FavoriteButton.IsChecked), Mode=OneWay}" />

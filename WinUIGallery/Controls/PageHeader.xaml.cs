@@ -53,11 +53,13 @@ public sealed partial class PageHeader : UserControl
         if (!string.IsNullOrEmpty(SourceLink))
         {
             ControlSourcePanel.Visibility = Visibility.Visible;
+            ControlSourceSeparator.Visibility = Visibility.Visible;
             ControlSourceLink.NavigateUri = new Uri(BaseUri + SourceLink);
         }
         else
         {
             ControlSourcePanel.Visibility = Visibility.Collapsed;
+            ControlSourceSeparator.Visibility = Visibility.Collapsed;
         }
 
     }
