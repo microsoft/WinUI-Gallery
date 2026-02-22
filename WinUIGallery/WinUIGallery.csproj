@@ -368,7 +368,7 @@
     <Content Include="Assets\ControlImages\Accessibility.png" />
     <Content Include="Assets\ControlImages\ContentIsland.png" />
     <Content Include="Assets\ControlImages\CustomControls.png" />
-	<Content Include="Assets\ControlImages\JumpList.png"/>
+    <Content Include="Assets\ControlImages\JumpList.png" />
     <Content Include="Assets\ControlImages\StoragePickers.png" />
     <Content Include="Assets\ControlImages\Popup.png" />
     <Content Include="Assets\ControlImages\ThemeShadow.png" />
