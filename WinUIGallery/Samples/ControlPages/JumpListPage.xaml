@@ -35,7 +35,7 @@ var jumpList = await JumpList.LoadCurrentAsync();
 
 var task = JumpListItem.CreateWithArguments("/compose", "New Message");
 task.Description = "Compose a new message";
-task.Logo = new Uri("ms-appx:///Assets/Square44x44Logo.scale-200.png");
+task.Logo = new Uri("ms-appx:///Assets/Tiles/AppList.targetsize-48.png");
 
 jumpList.Items.Add(task);
 await jumpList.SaveAsync();
@@ -57,7 +57,7 @@ var jumpList = await JumpList.LoadCurrentAsync();
 var item = JumpListItem.CreateWithArguments("/project-alpha", "Project Alpha");
 item.GroupName = "Projects";
 item.Description = "Open Project Alpha";
-item.Logo = new Uri("ms-appx:///Assets/Square44x44Logo.scale-200.png");
+item.Logo = new Uri("ms-appx:///Assets/Tiles/AppList.targetsize-48.png");
 
 jumpList.Items.Add(item);
 await jumpList.SaveAsync();
