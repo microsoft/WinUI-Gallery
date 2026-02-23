@@ -3233,7 +3233,7 @@
         },
         {
           "UniqueId": "JumpList",
-          "Title": "Jump list",
+          "Title": "JumpList",
           "ApiNamespace": "Windows.UI.StartScreen",
           "BaseClasses": [
             "Object"
