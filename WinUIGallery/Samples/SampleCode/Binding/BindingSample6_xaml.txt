@@ -1,0 +1,23 @@
+&lt;ListView
+    x:Name="MasterListView"
+    ItemsSource="{x:Bind Items}"
+    SelectedIndex="0"
+    SelectionMode="Single"&gt;
+    &lt;ListView.ItemTemplate&gt;
+        &lt;DataTemplate x:DataType="local:MasterDetailItem"&gt;
+            &lt;StackPanel Padding="4" Spacing="2"&gt;
+                &lt;TextBlock Text="{x:Bind Title}" FontWeight="SemiBold" /&gt;
+                &lt;TextBlock Text="{x:Bind DateCreatedFormatted}"
+                    Style="{ThemeResource CaptionTextBlockStyle}" /&gt;
+            &lt;/StackPanel&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/ListView.ItemTemplate&gt;
+&lt;/ListView&gt;
+
+&lt;!-- Detail panel bound to the selected item --&gt;
+&lt;StackPanel DataContext="{x:Bind MasterListView.SelectedItem, Mode=OneWay}"&gt;
+    &lt;TextBlock Text="{Binding Title}" FontSize="20" FontWeight="SemiBold" /&gt;
+    &lt;TextBlock Text="{Binding DateCreatedFormatted}"
+        Style="{ThemeResource CaptionTextBlockStyle}" /&gt;
+    &lt;TextBlock Text="{Binding Text}" TextWrapping="Wrap" /&gt;
+&lt;/StackPanel&gt;
