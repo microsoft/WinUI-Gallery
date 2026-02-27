@@ -8,13 +8,13 @@ public class MasterDetailItem
 }
 
 // In your page class:
-public List&lt;MasterDetailItem&gt; Items { get; set; }
+public List<MasterDetailItem> Items { get; set; }
 
 public MyPage()
 {
     this.InitializeComponent();
 
-    Items = new List&lt;MasterDetailItem&gt;
+    Items = new List<MasterDetailItem>
     {
         new MasterDetailItem
         {
