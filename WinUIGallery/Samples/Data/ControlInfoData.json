@@ -3173,13 +3173,21 @@
           "UniqueId": "Clipboard",
           "Title": "Clipboard",
           "ApiNamespace": "Windows.ApplicationModel.DataTransfer",
-          "Subtitle": "Copy and paste to and from the system Clipboard.",
+          "Subtitle": "Copy and paste text, images, and files to and from the system Clipboard.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Clipboard.png",
-          "Description": "Copy and paste to and from the system Clipboard.",
+          "Description": "Use the Clipboard API to copy and paste text, images, and files. Configure clipboard history and roaming options, monitor content changes, and inspect available formats.",
           "Docs": [
             {
               "Title": "Clipboard - API",
               "Uri": "https://learn.microsoft.com/uwp/api/windows.applicationmodel.datatransfer.clipboard"
+            },
+            {
+              "Title": "ClipboardContentOptions - API",
+              "Uri": "https://learn.microsoft.com/uwp/api/windows.applicationmodel.datatransfer.clipboardcontentoptions"
+            },
+            {
+              "Title": "Copy and paste - Guide",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/communication/copy-and-paste"
             }
           ]
         },
