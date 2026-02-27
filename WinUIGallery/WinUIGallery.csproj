@@ -176,6 +176,7 @@
     <None Remove="Assets\ControlImages\CodeTagIcon.png" />
     <None Remove="Assets\ControlImages\Accessibility.png" />
     <None Remove="Assets\ControlImages\ContentIsland.png" />
+    <None Remove="Assets\ControlImages\JumpList.png" />
     <None Remove="Assets\ControlImages\Popup.png" />
     <None Remove="Assets\ControlImages\ThemeShadow.png" />
     <None Remove="Assets\Design\Cards.dark.png" />
@@ -367,6 +368,7 @@
     <Content Include="Assets\ControlImages\Accessibility.png" />
     <Content Include="Assets\ControlImages\ContentIsland.png" />
     <Content Include="Assets\ControlImages\CustomControls.png" />
+    <Content Include="Assets\ControlImages\JumpList.png" />
     <Content Include="Assets\ControlImages\StoragePickers.png" />
     <Content Include="Assets\ControlImages\Popup.png" />
     <Content Include="Assets\ControlImages\ThemeShadow.png" />
