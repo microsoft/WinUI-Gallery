@@ -539,10 +539,6 @@
     <Content Include="Samples\SampleCode\AppWindow\AppWindowSample6_cs.txt" />
     <Content Include="Samples\SampleCode\AppWindow\AppWindowSample6_xaml.txt" />
     <Content Include="Samples\SampleCode\AppWindow\AppWindowSample7_xaml.txt" />
-    <Content Include="Samples\SampleCode\Clipboard\ClipboardSample1_cs.txt" />
-    <Content Include="Samples\SampleCode\Clipboard\ClipboardSample2_cs.txt" />
-    <Content Include="Samples\SampleCode\Clipboard\ClipboardSample3_cs.txt" />
-    <Content Include="Samples\SampleCode\Clipboard\ClipboardSample4_cs.txt" />
     <Content Include="Samples\SampleCode\Binding\BindingSample1_xaml.txt" />
     <Content Include="Samples\SampleCode\Binding\BindingSample3_csharp.txt" />
     <Content Include="Samples\SampleCode\Binding\BindingSample3_xaml.txt" />
