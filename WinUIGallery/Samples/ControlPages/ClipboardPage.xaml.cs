@@ -5,10 +5,11 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
-using Windows.Storage.Pickers;
+using Microsoft.Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using WinUIGallery.Helpers;
 
@@ -142,26 +143,26 @@ public sealed partial class ClipboardPage : Page
             return;
         }
 
-        var filePicker = new FileOpenPicker
-        {
-            ViewMode = PickerViewMode.List,
-            FileTypeFilter = { "*" }
-        };
+        var filePicker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
+        filePicker.FileTypeFilter.Add("*");
 
-        IntPtr hwnd = WinRT.Interop.WindowNative.GetWindowHandle(App.MainWindow);
-        WinRT.Interop.InitializeWithWindow.Initialize(filePicker, hwnd);
-
-        var storageItems = await filePicker.PickMultipleFilesAsync();
-        if (storageItems.Count > 0)
+        var pickedFiles = await filePicker.PickMultipleFilesAsync();
+        if (pickedFiles.Count > 0)
         {
+            List<Windows.Storage.IStorageItem> storageItems = new();
+            foreach (var file in pickedFiles)
+            {
+                storageItems.Add(await Windows.Storage.StorageFile.GetFileFromPathAsync(file.Path));
+            }
+
             var package = new DataPackage();
             package.SetStorageItems(storageItems);
             package.RequestedOperation = DataPackageOperation.Copy;
 
             if (Clipboard.SetContentWithOptions(package, null))
             {
-                FilesStatusText.Text = $"{storageItems.Count} file(s) copied to clipboard.";
-                UIHelper.AnnounceActionForAccessibility(button, $"{storageItems.Count} files copied to clipboard", "FilesCopiedSuccessNotificationId");
+                FilesStatusText.Text = $"{pickedFiles.Count} file(s) copied to clipboard.";
+                UIHelper.AnnounceActionForAccessibility(button, $"{pickedFiles.Count} files copied to clipboard", "FilesCopiedSuccessNotificationId");
             }
             else
             {
