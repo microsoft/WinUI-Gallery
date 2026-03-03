@@ -104,6 +104,127 @@ private async void PasteText_Click(object sender, RoutedEventArgs args)
             </controls:ControlExample.CSharp>
         </controls:ControlExample>
 
+        <!--  COPY AND PASTE AN IMAGE  -->
+        <controls:ControlExample
+            x:Name="Example3"
+            HeaderText="Copy and paste an image"
+            CSharpSource="Clipboard/ClipboardSample1_cs.txt">
+            <StackPanel VerticalAlignment="Top" Spacing="10">
+                <Image
+                    x:Name="SourceImage"
+                    Width="200"
+                    Height="150"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.Name="Source image to copy"
+                    Source="ms-appx:///Assets/SampleMedia/rainier.jpg"
+                    Stretch="UniformToFill" />
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button
+                        Click="CopyImage_Click"
+                        Content="Copy Image to Clipboard" />
+                    <Button
+                        Click="PasteImage_Click"
+                        Content="Paste Image from Clipboard" />
+                </StackPanel>
+                <TextBlock
+                    x:Name="ImageStatusText"
+                    Foreground="{ThemeResource SystemFillColorSuccessBrush}"
+                    Text=""
+                    Visibility="Collapsed" />
+                <Image
+                    x:Name="PastedImage"
+                    Width="200"
+                    Height="150"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.Name="Pasted image from clipboard"
+                    Stretch="UniformToFill"
+                    Visibility="Collapsed" />
+            </StackPanel>
+        </controls:ControlExample>
+
+        <!--  COPY AND PASTE FILES  -->
+        <controls:ControlExample
+            x:Name="Example4"
+            HeaderText="Copy and paste files"
+            CSharpSource="Clipboard/ClipboardSample2_cs.txt">
+            <StackPanel VerticalAlignment="Top" Spacing="10">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button
+                        Click="CopyFiles_Click"
+                        Content="Copy Files to Clipboard" />
+                    <Button
+                        Click="PasteFiles_Click"
+                        Content="Paste Files from Clipboard" />
+                </StackPanel>
+                <TextBlock
+                    x:Name="FilesStatusText"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </controls:ControlExample>
+
+        <!--  CLIPBOARD HISTORY AND ROAMING  -->
+        <controls:ControlExample
+            x:Name="Example5"
+            HeaderText="Clipboard history and roaming options"
+            CSharpSource="Clipboard/ClipboardSample3_cs.txt">
+            <StackPanel VerticalAlignment="Top" Spacing="10">
+                <TextBox
+                    x:Name="HistoryRoamingTextBox"
+                    Width="400"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.Name="Text to copy with options"
+                    PlaceholderText="Enter text to copy with options"
+                    Text="Text with clipboard options" />
+                <StackPanel Orientation="Horizontal" Spacing="16">
+                    <ToggleSwitch
+                        x:Name="AllowHistoryToggle"
+                        Header="Allow in History"
+                        IsOn="True"
+                        AutomationProperties.Name="Allow clipboard content in history" />
+                    <ToggleSwitch
+                        x:Name="AllowRoamingToggle"
+                        Header="Allow Roaming"
+                        IsOn="True"
+                        AutomationProperties.Name="Allow clipboard content to roam" />
+                </StackPanel>
+                <Button
+                    Click="CopyWithOptions_Click"
+                    Content="Copy with Options" />
+                <TextBlock
+                    x:Name="HistoryRoamingStatusText"
+                    TextWrapping="Wrap" />
+                <StackPanel Orientation="Horizontal" Spacing="16">
+                    <TextBlock x:Name="HistoryEnabledText" />
+                    <TextBlock x:Name="RoamingEnabledText" />
+                </StackPanel>
+            </StackPanel>
+        </controls:ControlExample>
+
+        <!--  OTHER CLIPBOARD OPERATIONS  -->
+        <controls:ControlExample
+            x:Name="Example6"
+            HeaderText="Other clipboard operations"
+            CSharpSource="Clipboard/ClipboardSample4_cs.txt">
+            <StackPanel VerticalAlignment="Top" Spacing="10">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button
+                        Click="ShowFormats_Click"
+                        Content="Show Clipboard Formats" />
+                    <Button
+                        Click="ClearClipboard_Click"
+                        Content="Clear Clipboard" />
+                </StackPanel>
+                <ToggleSwitch
+                    x:Name="ContentChangedToggle"
+                    Header="Monitor ContentChanged"
+                    AutomationProperties.Name="Monitor clipboard content changed event"
+                    Toggled="ContentChangedToggle_Toggled" />
+                <TextBlock
+                    x:Name="OtherOperationsStatusText"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </controls:ControlExample>
+
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ConfirmClipboardGroups">
                 <VisualState x:Name="ConfirmationClipboardCollapsed">
