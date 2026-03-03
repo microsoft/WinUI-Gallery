@@ -221,7 +221,7 @@ public YourPage()
                     </Grid.ColumnDefinitions>
 
                     <ListView
-                        x:Name="MasterListView"
+                        x:Name="ListDetailListView"
                         Grid.Column="0"
                         BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                         BorderThickness="1"
@@ -230,7 +230,7 @@ public YourPage()
                         SelectedIndex="0"
                         SelectionMode="Single">
                         <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="local:MasterDetailItem">
+                            <DataTemplate x:DataType="local:ListDetailItem">
                                 <StackPanel Padding="4" Spacing="2">
                                     <TextBlock FontWeight="SemiBold" Text="{x:Bind Title}" />
                                     <TextBlock
@@ -246,7 +246,7 @@ public YourPage()
                         Grid.Column="1"
                         Padding="16"
                         Spacing="8"
-                        DataContext="{x:Bind MasterListView.SelectedItem, Mode=OneWay}">
+                        DataContext="{x:Bind ListDetailListView.SelectedItem, Mode=OneWay}">
                         <TextBlock
                             FontSize="20"
                             FontWeight="SemiBold"

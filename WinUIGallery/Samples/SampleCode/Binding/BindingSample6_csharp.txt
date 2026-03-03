@@ -1,4 +1,4 @@
-public class MasterDetailItem
+public class ListDetailItem
 {
     public int Id { get; set; }
     public string Title { get; set; }
@@ -8,15 +8,15 @@ public class MasterDetailItem
 }
 
 // In your page class:
-public List<MasterDetailItem> Items { get; set; }
+public List<ListDetailItem> Items { get; set; }
 
 public MyPage()
 {
     this.InitializeComponent();
 
-    Items = new List<MasterDetailItem>
+    Items = new List<ListDetailItem>
     {
-        new MasterDetailItem
+        new ListDetailItem
         {
             Id = 0,
             Title = "Item 1",

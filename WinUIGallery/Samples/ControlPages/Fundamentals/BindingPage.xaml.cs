@@ -14,7 +14,7 @@ public sealed partial class BindingPage : Page
 
     public ExampleViewModel ViewModel { get; set; }
 
-    public List<MasterDetailItem> Items { get; set; }
+    public List<ListDetailItem> Items { get; set; }
 
     public BindingPage()
     {
@@ -28,30 +28,30 @@ public sealed partial class BindingPage : Page
         };
         DataContext = ViewModel;
 
-        Items = new List<MasterDetailItem>
+        Items = new List<ListDetailItem>
         {
-            new MasterDetailItem
+            new ListDetailItem
             {
                 Id = 0,
                 Title = "Item 1",
                 Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id facilisis lectus. Cras nec convallis ante, quis pulvinar tellus.",
                 DateCreated = new DateTime(2025, 6, 15, 9, 30, 0)
             },
-            new MasterDetailItem
+            new ListDetailItem
             {
                 Id = 1,
                 Title = "Item 2",
                 Text = "Quisque accumsan pretium ligula in faucibus. Mauris sollicitudin augue vitae lorem cursus condimentum quis ac mauris.",
                 DateCreated = new DateTime(2025, 7, 22, 14, 15, 0)
             },
-            new MasterDetailItem
+            new ListDetailItem
             {
                 Id = 2,
                 Title = "Item 3",
                 Text = "Ut consequat magna luctus justo egestas vehicula. Integer pharetra risus libero, et posuere justo mattis et.",
                 DateCreated = new DateTime(2025, 8, 3, 11, 0, 0)
             },
-            new MasterDetailItem
+            new ListDetailItem
             {
                 Id = 3,
                 Title = "Item 4",
@@ -127,7 +127,7 @@ public partial class ExampleViewModel : INotifyPropertyChanged
     }
 }
 
-public class MasterDetailItem
+public class ListDetailItem
 {
     public int Id { get; set; }
     public string Title { get; set; } = string.Empty;
