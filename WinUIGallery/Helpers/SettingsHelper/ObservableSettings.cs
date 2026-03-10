@@ -45,8 +45,11 @@ public partial class ObservableSettings : INotifyPropertyChanged
         ArgumentNullException.ThrowIfNull(propertyName, nameof(propertyName));
 
         if (!provider.Contains(propertyName))
+        {
             Set(defaultValue, propertyName);
+            return defaultValue;
+        }
 
-        return Get<T>(propertyName);
+        return Get<T>(propertyName)!;
     }
 }
