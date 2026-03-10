@@ -156,7 +156,7 @@ public sealed partial class AppWindowTitleBarPage : Page
 
     private string ColorToArgbString(Color color) => $"{color.A}, {color.R}, {color.G}, {color.B}";
 
-    private string BoolToLowerString(bool? value) => value.ToString().ToLower();
+    private string BoolToLowerString(bool? value) => (value ?? false).ToString().ToLower();
 
     private void ShowExtendButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {

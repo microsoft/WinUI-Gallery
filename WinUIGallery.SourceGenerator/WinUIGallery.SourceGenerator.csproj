@@ -5,6 +5,7 @@
 	  <LangVersion>latest</LangVersion>
 	  <IncludeBuildOutput>false</IncludeBuildOutput>
 	  <PlatformTarget>AnyCPU</PlatformTarget>
+	  <Nullable>enable</Nullable>
 	  <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
 	  <Configurations>Debug;Release</Configurations>
 	  <IsRoslynComponent>true</IsRoslynComponent>	  
