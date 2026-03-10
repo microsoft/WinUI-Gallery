@@ -132,6 +132,57 @@
                 </x:String>
             </controls:ControlExample.Xaml>
         </controls:ControlExample>
+        <controls:ControlExample x:Name="Example3b" HeaderText="A MenuFlyout with SplitMenuFlyoutItems.">
+            <StackPanel x:Name="Control3b" Orientation="Horizontal">
+                <Button Content="File Options">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <SplitMenuFlyoutItem
+                                x:Name="SaveSplitItem"
+                                Click="SplitMenuFlyoutItem_Click"
+                                Text="Save">
+                                <SplitMenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE74E;" />
+                                </SplitMenuFlyoutItem.Icon>
+                                <MenuFlyoutItem Click="SplitMenuFlyoutItem_Click" Text="Save as .docx" />
+                                <MenuFlyoutItem Click="SplitMenuFlyoutItem_Click" Text="Save as .pdf" />
+                                <MenuFlyoutItem Click="SplitMenuFlyoutItem_Click" Text="Save as .txt" />
+                            </SplitMenuFlyoutItem>
+                            <SplitMenuFlyoutItem
+                                Click="SplitMenuFlyoutItem_Click"
+                                Icon="Share"
+                                Text="Share">
+                                <MenuFlyoutItem Click="SplitMenuFlyoutItem_Click" Text="Share via email" />
+                                <MenuFlyoutItem Click="SplitMenuFlyoutItem_Click" Text="Share via link" />
+                            </SplitMenuFlyoutItem>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
+                <TextBlock x:Name="Control3bOutput" Style="{StaticResource OutputTextBlockStyle}" />
+            </StackPanel>
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;Button Content="File Options"&gt;
+    &lt;Button.Flyout&gt;
+        &lt;MenuFlyout&gt;
+            &lt;SplitMenuFlyoutItem Text="Save" Click="SplitMenuFlyoutItem_Click"&gt;
+                &lt;SplitMenuFlyoutItem.Icon&gt;
+                    &lt;FontIcon Glyph="&amp;#xE74E;"/&gt;
+                &lt;/SplitMenuFlyoutItem.Icon&gt;
+                &lt;MenuFlyoutItem Text="Save as .docx" Click="SplitMenuFlyoutItem_Click"/&gt;
+                &lt;MenuFlyoutItem Text="Save as .pdf" Click="SplitMenuFlyoutItem_Click"/&gt;
+                &lt;MenuFlyoutItem Text="Save as .txt" Click="SplitMenuFlyoutItem_Click"/&gt;
+            &lt;/SplitMenuFlyoutItem&gt;
+            &lt;SplitMenuFlyoutItem Text="Share" Icon="Share" Click="SplitMenuFlyoutItem_Click"&gt;
+                &lt;MenuFlyoutItem Text="Share via email" Click="SplitMenuFlyoutItem_Click"/&gt;
+                &lt;MenuFlyoutItem Text="Share via link" Click="SplitMenuFlyoutItem_Click"/&gt;
+            &lt;/SplitMenuFlyoutItem&gt;
+        &lt;/MenuFlyout&gt;
+    &lt;/Button.Flyout&gt;
+&lt;/Button&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+        </controls:ControlExample>
         <controls:ControlExample x:Name="Example4" HeaderText="A MenuFlyout with icons.">
             <Button x:Name="Control4" Content="Edit Options">
                 <Button.Flyout>

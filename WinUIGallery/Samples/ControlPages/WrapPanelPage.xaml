@@ -1,0 +1,115 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.WrapPanelPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" HeaderText="A WrapPanel control.">
+
+            <WrapPanel
+                x:Name="Control1"
+                MaxHeight="480"
+                ItemSpacing="{x:Bind ItemSpacingSlider.Value, Mode=OneWay}"
+                LineSpacing="{x:Bind LineSpacingSlider.Value, Mode=OneWay}"
+                Orientation="Horizontal">
+                <WrapPanel.Resources>
+                    <Style TargetType="Rectangle">
+                        <Setter Property="Height" Value="40" />
+                        <Setter Property="Width" Value="40" />
+                    </Style>
+                </WrapPanel.Resources>
+                <Rectangle Fill="Red" />
+                <Rectangle Fill="Blue" />
+                <Rectangle Fill="Green" />
+                <Rectangle Fill="Yellow" />
+                <Rectangle Fill="Orange" />
+                <Rectangle Fill="Purple" />
+                <Rectangle Fill="Teal" />
+                <Rectangle Fill="Salmon" />
+                <Rectangle Fill="CornflowerBlue" />
+                <Rectangle Fill="Crimson" />
+                <Rectangle Fill="DodgerBlue" />
+                <Rectangle Fill="ForestGreen" />
+                <Rectangle Fill="Gold" />
+                <Rectangle Fill="HotPink" />
+                <Rectangle Fill="Indigo" />
+                <Rectangle Fill="Khaki" />
+                <Rectangle Fill="LimeGreen" />
+                <Rectangle Fill="Maroon" />
+                <Rectangle Fill="Navy" />
+                <Rectangle Fill="Olive" />
+                <Rectangle Fill="Plum" />
+                <Rectangle Fill="RosyBrown" />
+                <Rectangle Fill="SlateBlue" />
+                <Rectangle Fill="Tomato" />
+                <Rectangle Fill="Violet" />
+            </WrapPanel>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <RadioButtons
+                        x:Name="OrientationGroup"
+                        Header="Orientation"
+                        SelectionChanged="OrientationGroup_SelectionChanged">
+                        <RadioButton
+                            Content="Horizontal"
+                            IsChecked="True"
+                            Tag="Horizontal" />
+                        <RadioButton Content="Vertical" Tag="Vertical" />
+                    </RadioButtons>
+                    <Slider
+                        x:Name="ItemSpacingSlider"
+                        Header="ItemSpacing"
+                        Maximum="20"
+                        Minimum="0"
+                        SnapsTo="Ticks"
+                        StepFrequency="1"
+                        TickFrequency="1"
+                        Value="8" />
+                    <Slider
+                        x:Name="LineSpacingSlider"
+                        Header="LineSpacing"
+                        Maximum="20"
+                        Minimum="0"
+                        SnapsTo="Ticks"
+                        StepFrequency="1"
+                        TickFrequency="1"
+                        Value="8" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;WrapPanel
+    Orientation="$(Orientation)"
+    ItemSpacing="$(ItemSpacing)"
+    LineSpacing="$(LineSpacing)"&gt;
+    &lt;Rectangle Fill="Red"/&gt;
+    &lt;Rectangle Fill="Blue"/&gt;
+    &lt;Rectangle Fill="Green"/&gt;
+    &lt;!-- ... and more --&gt;
+&lt;/WrapPanel&gt;
+                </x:String>
+            </controls:ControlExample.Xaml>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Orientation" Value="{x:Bind Control1.Orientation, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ItemSpacing" Value="{x:Bind Control1.ItemSpacing, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="LineSpacing" Value="{x:Bind Control1.LineSpacing, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

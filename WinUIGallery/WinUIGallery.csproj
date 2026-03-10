@@ -179,6 +179,7 @@
     <None Remove="Assets\ControlImages\JumpList.png" />
     <None Remove="Assets\ControlImages\Popup.png" />
     <None Remove="Assets\ControlImages\ThemeShadow.png" />
+    <None Remove="Assets\ControlImages\WrapPanel.png" />
     <None Remove="Assets\Design\Cards.dark.png" />
     <None Remove="Assets\Design\Cards.light.png" />
     <None Remove="Assets\Design\Dialog.dark.png" />
@@ -372,6 +373,7 @@
     <Content Include="Assets\ControlImages\StoragePickers.png" />
     <Content Include="Assets\ControlImages\Popup.png" />
     <Content Include="Assets\ControlImages\ThemeShadow.png" />
+    <Content Include="Assets\ControlImages\WrapPanel.png" />
     <Content Include="Assets\Design\Cards.dark.png" />
     <Content Include="Assets\Design\Cards.light.png" />
     <Content Include="Assets\Design\Dialog.dark.png" />
