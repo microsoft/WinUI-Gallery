@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -19,28 +20,33 @@ public partial class ObservableSettings : INotifyPropertyChanged
 
     protected bool Set<T>(T value, [CallerMemberName] string? propertyName = null)
     {
-        if (provider.Contains(propertyName!))
+        ArgumentNullException.ThrowIfNull(propertyName, nameof(propertyName));
+
+        if (provider.Contains(propertyName))
         {
-            var currentValue = provider.Get<T>(propertyName!);
+            var currentValue = provider.Get<T>(propertyName);
             if (Equals(currentValue, value))
                 return false;
         }
 
-        provider.Set(propertyName!, value);
+        provider.Set(propertyName, value);
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         return true;
     }
 
     protected T? Get<T>([CallerMemberName] string? propertyName = null)
     {
-        return provider.Get<T>(propertyName!);
+        ArgumentNullException.ThrowIfNull(propertyName, nameof(propertyName));
+        return provider.Get<T>(propertyName);
     }
 
     protected T GetOrCreateDefault<T>(T defaultValue, [CallerMemberName] string? propertyName = null)
     {
-        if (!provider.Contains(propertyName!))
+        ArgumentNullException.ThrowIfNull(propertyName, nameof(propertyName));
+
+        if (!provider.Contains(propertyName))
             Set(defaultValue, propertyName);
 
-        return Get<T>(propertyName)!;
+        return Get<T>(propertyName);
     }
 }
