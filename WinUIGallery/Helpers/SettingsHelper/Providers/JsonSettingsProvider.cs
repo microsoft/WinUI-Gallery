@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -18,23 +21,23 @@ public partial class JsonSettingsProvider : ISettingsProvider
 
     public bool Contains(string key) => values.ContainsKey(key);
 
-    public object Get(string key) => values.TryGetValue(key, out var value) ? value : null;
+    public object? Get(string key) => values.TryGetValue(key, out var value) ? value : null;
 
     public void Set(string key, object value)
     {
-        var json = JsonSerializer.SerializeToElement(value, SettingsJsonContext.Default.GetTypeInfo(value.GetType()));
+        var json = JsonSerializer.SerializeToElement(value, SettingsJsonContext.Default.GetTypeInfo(value.GetType())!);
         values[key] = json;
         Save();
     }
 
-    public T Get<T>(string key)
+    public T? Get<T>(string key)
     {
         if (!values.TryGetValue(key, out var jsonElement))
             return default;
 
         try
         {
-            return (T)jsonElement.Deserialize(SettingsJsonContext.Default.GetTypeInfo(typeof(T)));
+            return (T?)jsonElement.Deserialize(SettingsJsonContext.Default.GetTypeInfo(typeof(T))!);
         }
         catch (Exception)
         {
@@ -43,10 +46,9 @@ public partial class JsonSettingsProvider : ISettingsProvider
         }
     }
 
-
     public void Set<T>(string key, T value)
     {
-        var json = JsonSerializer.SerializeToElement(value, SettingsJsonContext.Default.GetTypeInfo(typeof(T)));
+        var json = JsonSerializer.SerializeToElement(value, SettingsJsonContext.Default.GetTypeInfo(typeof(T))!);
         values[key] = json;
         Save();
     }
