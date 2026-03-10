@@ -23,11 +23,11 @@ public partial class SettingsMigration
     private const string FavoritesKey = "Favorites";
     private const char delimiter = '\u001f';
 
-    public static List<string> GetOldList(string key)
+    public static List<string>? GetOldList(string key)
     {
         if (NativeMethods.IsAppPackaged)
         {
-            string raw = appData.LocalSettings.Values[key] as string;
+            string? raw = appData.LocalSettings.Values[key] as string;
             if (string.IsNullOrEmpty(raw))
                 return null;
 

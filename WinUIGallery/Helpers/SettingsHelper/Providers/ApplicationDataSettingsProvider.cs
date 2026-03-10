@@ -1,4 +1,7 @@
-﻿using Microsoft.Windows.Storage;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.Windows.Storage;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -16,11 +19,11 @@ public partial class ApplicationDataSettingsProvider : ISettingsProvider
 
     public bool Contains(string key) => container.Values.ContainsKey(key);
 
-    public object Get(string key) => container.Values.TryGetValue(key, out var value) ? value : null;
+    public object? Get(string key) => container.Values.TryGetValue(key, out var value) ? value : null;
 
     public void Set(string key, object value) => container.Values[key] = value;
 
-    public T Get<T>(string key)
+    public T? Get<T>(string key)
     {
         if (!container.Values.TryGetValue(key, out var value))
             return default;
@@ -32,8 +35,8 @@ public partial class ApplicationDataSettingsProvider : ISettingsProvider
         {
             try
             {
-                var typeInfo = SettingsJsonContext.Default.GetTypeInfo(typeof(T));
-                return (T)JsonSerializer.Deserialize(str, typeInfo);
+                var typeInfo = SettingsJsonContext.Default.GetTypeInfo(typeof(T))!;
+                return (T?)JsonSerializer.Deserialize(str, typeInfo);
             }
             catch (Exception)
             {
@@ -60,8 +63,8 @@ public partial class ApplicationDataSettingsProvider : ISettingsProvider
     public void Set<T>(string key, T value)
     {
         object storedValue = IsSimpleType(typeof(T))
-            ? value
-            : JsonSerializer.Serialize(value, SettingsJsonContext.Default.GetTypeInfo(typeof(T)));
+            ? value!
+            : JsonSerializer.Serialize(value, SettingsJsonContext.Default.GetTypeInfo(typeof(T))!);
 
         container.Values[key] = storedValue;
     }
