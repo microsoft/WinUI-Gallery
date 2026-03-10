@@ -74,7 +74,7 @@ internal sealed partial class SuspensionManager
 
             // Serialize the session state synchronously to avoid asynchronous access to shared
             // state
-            MemoryStream sessionData = new MemoryStream();
+            using MemoryStream sessionData = new MemoryStream();
             DataContractSerializer serializer = new DataContractSerializer(typeof(Dictionary<string, object>), _knownTypes);
             serializer.WriteObject(sessionData, _sessionState);
 

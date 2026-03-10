@@ -70,7 +70,7 @@ public partial class IdleSynchronizer
         }
         else
         {
-            AutoResetEvent threadIdReceivedEvent = new AutoResetEvent(false);
+            using AutoResetEvent threadIdReceivedEvent = new AutoResetEvent(false);
 
             dispatcherQueue.TryEnqueue(
                 DispatcherQueuePriority.Normal,
@@ -276,7 +276,7 @@ public partial class IdleSynchronizer
 
     void WaitForIdleDispatcher()
     {
-        AutoResetEvent shouldContinueEvent = new AutoResetEvent(false);
+        using AutoResetEvent shouldContinueEvent = new AutoResetEvent(false);
 
         // DispatcherQueueTimer runs at below idle priority, so we can use it to ensure that we only raise the event when we're idle.
         var timer = m_dispatcherQueue.CreateTimer();
