@@ -10,10 +10,10 @@ namespace WinUIGallery.Helpers;
 internal partial class NativeMethods
 {
     [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
-    internal static extern int SetWindowLong32(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc);
+    internal static extern int SetWindowLong32(IntPtr hWnd, WindowLongIndexFlags nIndex, IntPtr newProc);
 
     [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr")]
-    internal static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc);
+    internal static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, WindowLongIndexFlags nIndex, IntPtr newProc);
 
     [DllImport("User32.dll", CharSet = CharSet.Auto, EntryPoint = "SetWindowLongPtr")]
     internal static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
