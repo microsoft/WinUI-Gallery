@@ -1,4 +1,4 @@
-<Page
+﻿<Page
     x:Class="WinUIGallery.ControlPages.PageTransitionPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -47,6 +47,16 @@
                         AutomationProperties.Name="SlideNavigationTransitionInfo From Left"
                         Checked="TransitionRadioButton_Checked"
                         Content="Slide from Left" />
+                    <RadioButton
+                        x:Name="Common"
+                        AutomationProperties.Name="CommonNavigationTransitionInfo"
+                        Checked="TransitionRadioButton_Checked"
+                        Content="Common" />
+                    <RadioButton
+                        x:Name="Continuum"
+                        AutomationProperties.Name="ContinuumNavigationTransitionInfo"
+                        Checked="TransitionRadioButton_Checked"
+                        Content="Continuum" />
                 </RadioButtons>
 
                 <TextBlock Margin="0,12,0,8">Navigate</TextBlock>
