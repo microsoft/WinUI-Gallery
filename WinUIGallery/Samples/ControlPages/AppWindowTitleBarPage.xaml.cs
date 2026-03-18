@@ -17,9 +17,7 @@ public sealed partial class AppWindowTitleBarPage : Page
     private AppWindowTitleBarExtendWindow? extendWindow;
     private AppWindowTitleBarThemeWindow? themeHeightWindow;
     private IReadOnlyList<TitleBarTheme> titleBarThemes { get; set; } = new List<TitleBarTheme>(Enum.GetValues<TitleBarTheme>());
-    private TitleBarTheme selectedTheme = TitleBarTheme.UseDefaultAppMode;
     private IReadOnlyList<TitleBarHeightOption> titleBarHeightOptions { get; set; } = new List<TitleBarHeightOption>(Enum.GetValues<TitleBarHeightOption>());
-    private TitleBarHeightOption selectedHeight = TitleBarHeightOption.Standard;
 
     public AppWindowTitleBarPage()
     {

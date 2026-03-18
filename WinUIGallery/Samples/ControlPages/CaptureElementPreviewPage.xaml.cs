@@ -150,7 +150,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
 
         // Capture a photo to a stream
         var imgFormat = ImageEncodingProperties.CreateJpeg();
-        var stream = new InMemoryRandomAccessStream();
+        using var stream = new InMemoryRandomAccessStream();
         await mediaCapture.CapturePhotoToStreamAsync(imgFormat, stream);
         stream.Seek(0);
 

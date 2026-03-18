@@ -44,7 +44,10 @@ public sealed partial class ContentIslandPage : Page
         ContainerVisual placementVisual = (ContainerVisual)ElementCompositionPreview.GetElementVisual(rect);
         Vector2 size = rect.ActualSize;
 
+        // The ChildSiteLink must live as long as the visual connection between parent and child islands.
+#pragma warning disable CA2000 // Dispose objects before losing scope
         ChildSiteLink childSiteLink = ChildSiteLink.Create(parentIsland, placementVisual);
+#pragma warning restore CA2000
 
         // We also need to keep the offset of the ChildContentLink within the parent ContentIsland in sync
         // with that of the placementElement for UIA to work correctly.
@@ -65,7 +68,10 @@ public sealed partial class ContentIslandPage : Page
         placementVisual.Size = size;
         childSiteLink.ActualSize = size;
 
+        // The ContentIsland is connected to the ChildSiteLink and must outlive this method.
+#pragma warning disable CA2000 // Dispose objects before losing scope
         ContentIsland helmetIsland = await HelmetScenario.CreateIsland(placementVisual.Compositor);
+#pragma warning restore CA2000
 
         childSiteLink.Connect(helmetIsland);
     }

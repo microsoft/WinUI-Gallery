@@ -65,10 +65,11 @@ internal partial class Win32WindowHelper
 
     private nint SetWindowLongPtr(nint hWnd, WindowLongIndexFlags nIndex, WinProc newProc)
     {
+        nint funcPtr = Marshal.GetFunctionPointerForDelegate(newProc);
         if (nint.Size == 8)
-            return SetWindowLongPtr64(hWnd, nIndex, newProc);
+            return SetWindowLongPtr64(hWnd, nIndex, funcPtr);
         else
-            return new nint(SetWindowLong32(hWnd, nIndex, newProc));
+            return new nint(SetWindowLong32(hWnd, nIndex, funcPtr));
     }
 
     internal struct POINT
