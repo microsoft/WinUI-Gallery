@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using Microsoft.UI.Xaml;
@@ -73,6 +73,14 @@ public sealed partial class PageTransitionPage : Page
             {
                 _transitionInfo = new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromLeft };
                 pageTransitionString = ", new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromLeft }";
+            }
+            else if (senderTransitionString == "Common")
+            {
+                _transitionInfo = new CommonNavigationTransitionInfo();
+            }
+            else if(senderTransitionString == "Continuum")
+            {
+                _transitionInfo = new ContinuumNavigationTransitionInfo();
             }
         }
         else
