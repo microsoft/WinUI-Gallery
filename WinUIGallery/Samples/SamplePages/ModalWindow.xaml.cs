@@ -17,9 +17,9 @@ public sealed partial class ModalWindow : Window
         this.InitializeComponent();
 
         var dpi = Windows.Win32.PInvoke.GetDpiForWindow(new Windows.Win32.Foundation.HWND(WinRT.Interop.WindowNative.GetWindowHandle(this)));
-        var scalingFactor = (int)((float)dpi / 96);
+        var scalingFactor = (float)dpi / 96;
 
-        AppWindow.Resize(new Windows.Graphics.SizeInt32(400 * scalingFactor, 300 * scalingFactor));
+        AppWindow.Resize(new Windows.Graphics.SizeInt32((int)(400.0f * scalingFactor), (int)(300.0f * scalingFactor)));
         AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
         AppWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
 
