@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using Microsoft.UI;
@@ -15,7 +15,11 @@ public sealed partial class ModalWindow : Window
     public ModalWindow()
     {
         this.InitializeComponent();
-        AppWindow.Resize(new Windows.Graphics.SizeInt32(400, 300));
+
+        var dpi = Windows.Win32.PInvoke.GetDpiForWindow(new Windows.Win32.Foundation.HWND(WinRT.Interop.WindowNative.GetWindowHandle(this)));
+        var scalingFactor = (float)dpi / 96;
+
+        AppWindow.Resize(new Windows.Graphics.SizeInt32((int)(400.0f * scalingFactor), (int)(300.0f * scalingFactor)));
         AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
         AppWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
 
