@@ -107,21 +107,23 @@ partial class SceneNodeCommon
 
     public static MemoryBuffer CopyToMemoryBuffer(IBuffer buffer)
     {
-        var dataReader = DataReader.FromBuffer(buffer);
+        using var dataReader = DataReader.FromBuffer(buffer);
 
         var memBuffer = new MemoryBuffer(buffer.Length);
-        var memBufferRef = memBuffer.CreateReference();
-        var memBufferByteAccess = memBufferRef.As<IMemoryBufferByteAccess>();
-
-        unsafe
+        using (var memBufferRef = memBuffer.CreateReference())
         {
-            byte* bytes = null;
-            uint capacity;
-            memBufferByteAccess.GetBuffer(&bytes, &capacity);
+            var memBufferByteAccess = memBufferRef.As<IMemoryBufferByteAccess>();
 
-            for (int i = 0; i < capacity; ++i)
+            unsafe
             {
-                bytes[i] = dataReader.ReadByte();
+                byte* bytes = null;
+                uint capacity;
+                memBufferByteAccess.GetBuffer(&bytes, &capacity);
+
+                for (int i = 0; i < capacity; ++i)
+                {
+                    bytes[i] = dataReader.ReadByte();
+                }
             }
         }
 
@@ -131,16 +133,18 @@ partial class SceneNodeCommon
     public static MemoryBuffer CopyToMemoryBuffer(byte[] a)
     {
         MemoryBuffer mb = new MemoryBuffer((uint)a.Length);
-        var mbr = mb.CreateReference();
-        var mba = mbr.As<IMemoryBufferByteAccess>();
-        unsafe
+        using (var mbr = mb.CreateReference())
         {
-            byte* bytes = null;
-            uint capacity;
-            mba.GetBuffer(&bytes, &capacity);
-            for (int i = 0; i < capacity; ++i)
+            var mba = mbr.As<IMemoryBufferByteAccess>();
+            unsafe
             {
-                bytes[i] = a[i];
+                byte* bytes = null;
+                uint capacity;
+                mba.GetBuffer(&bytes, &capacity);
+                for (int i = 0; i < capacity; ++i)
+                {
+                    bytes[i] = a[i];
+                }
             }
         }
 

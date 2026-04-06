@@ -27,14 +27,9 @@ partial class HelmetScenario
     private static async Task<Visual> LoadScene_DamagedHelmet(Compositor compositor)
     {
         // Initialize Win2D, used for loading bitmaps.
-        // The CanvasDevice and CompositionGraphicsDevice lifetimes are tied to the composition
-        // surfaces they create, which outlive this method.
-
-#pragma warning disable CA2000 // Dispose objects before losing scope
-        var canvasDevice = new CanvasDevice();
-        var graphicsDevice = CanvasComposition.CreateCompositionGraphicsDevice(
+        using var canvasDevice = new CanvasDevice();
+        using var graphicsDevice = CanvasComposition.CreateCompositionGraphicsDevice(
             compositor, canvasDevice);
-#pragma warning restore CA2000
 
         // Create the Visuals and SceneNode structure, along with default rotation animations.
 
@@ -111,6 +106,13 @@ partial class HelmetScenario
         var materialInput3 = SceneNodeCommon.LoadMipmapFromBitmap(graphicsDevice, canvasBitmap3.Result);
         var materialInput4 = SceneNodeCommon.LoadMipmapFromBitmap(graphicsDevice, canvasBitmap4.Result);
 
+        // Bitmaps have been copied into composition mipmap surfaces; release them now.
+        canvasBitmap0.Result.Dispose();
+        canvasBitmap1.Result.Dispose();
+        canvasBitmap2.Result.Dispose();
+        canvasBitmap3.Result.Dispose();
+        canvasBitmap4.Result.Dispose();
+
 
         // Copy loaded binary data into mesh: verticies, normals, ...
 
@@ -120,6 +122,12 @@ partial class HelmetScenario
         mesh0.FillMeshAttribute(SceneAttributeSemantic.Normal, DirectXPixelFormat.R32G32B32Float, normalData.Result);
         mesh0.FillMeshAttribute(SceneAttributeSemantic.TexCoord0, DirectXPixelFormat.R32G32Float, texCoordData.Result);
         mesh0.FillMeshAttribute(SceneAttributeSemantic.Index, DirectXPixelFormat.R16UInt, indexData.Result);
+
+        // Binary data has been copied into the mesh; release the buffers now.
+        vertexData.Result.Dispose();
+        normalData.Result.Dispose();
+        texCoordData.Result.Dispose();
+        indexData.Result.Dispose();
 
 
         // Initialize the material with different texture inputs (color, roughness, normals, ...)

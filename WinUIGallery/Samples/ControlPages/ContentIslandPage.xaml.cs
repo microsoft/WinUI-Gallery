@@ -37,10 +37,27 @@ public sealed partial class ContentIslandPage : Page
 
     private int NextHostElementIndex { get; set; } = 0;
 
+    private bool _isLoading;
+
     private async void LoadModel_Click(object sender, RoutedEventArgs e)
     {
-        _rectanglePanel.Visibility = Visibility.Visible;
-        await LoadModel();
+        if (_isLoading)
+        {
+            return;
+        }
+
+        _isLoading = true;
+        ((Button)sender).IsEnabled = false;
+        try
+        {
+            _rectanglePanel.Visibility = Visibility.Visible;
+            await LoadModel();
+        }
+        finally
+        {
+            _isLoading = false;
+            ((Button)sender).IsEnabled = true;
+        }
     }
 
     private Rectangle? GetNextHostElement()
