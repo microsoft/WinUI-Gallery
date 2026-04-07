@@ -1599,7 +1599,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A dialog box that can be customized to contain any XAML content.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ContentDialog.png",
-          "Description": "Use a ContentDialog to show relavant information or to provide a modal dialog experience that can show any XAML content.",
+          "Description": "Use a ContentDialog to show relevant information or to provide a modal dialog experience that can show any XAML content.",
           "SourcePath": "/CommonStyles/ContentDialog_themeresources.xaml",
           "Docs": [
             {
