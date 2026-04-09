@@ -157,7 +157,7 @@
     <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
     <PackageReference Update="System.Private.Uri" Version="4.3.2" />
     <PackageReference Update="Microsoft.Windows.CsWin32" Version="0.3.269" />
-    <PackageReference Update="Microsoft.Windows.SDK.BuildTools.MSIX" Version="1.7.251221100" />
+    <PackageReference Update="Microsoft.Windows.SDK.BuildTools.MSIX" Version="1.7.260316102" />
   </ItemGroup>
 
   <ItemGroup>
