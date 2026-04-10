@@ -1,4 +1,8 @@
-﻿using System.ComponentModel;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace WinUIGallery.Helpers;
@@ -12,10 +16,12 @@ public partial class ObservableSettings : INotifyPropertyChanged
         this.provider = provider;
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
-    protected bool Set<T>(T value, [CallerMemberName] string propertyName = null)
+    protected bool Set<T>(T value, [CallerMemberName] string? propertyName = null)
     {
+        ArgumentNullException.ThrowIfNull(propertyName, nameof(propertyName));
+
         if (provider.Contains(propertyName))
         {
             var currentValue = provider.Get<T>(propertyName);
@@ -28,16 +34,22 @@ public partial class ObservableSettings : INotifyPropertyChanged
         return true;
     }
 
-    protected T Get<T>([CallerMemberName] string propertyName = null)
+    protected T? Get<T>([CallerMemberName] string? propertyName = null)
     {
+        ArgumentNullException.ThrowIfNull(propertyName, nameof(propertyName));
         return provider.Get<T>(propertyName);
     }
 
-    protected T GetOrCreateDefault<T>(T defaultValue, [CallerMemberName] string propertyName = null)
+    protected T GetOrCreateDefault<T>(T defaultValue, [CallerMemberName] string? propertyName = null)
     {
-        if (!provider.Contains(propertyName))
-            Set(defaultValue, propertyName);
+        ArgumentNullException.ThrowIfNull(propertyName, nameof(propertyName));
 
-        return Get<T>(propertyName);
+        if (!provider.Contains(propertyName))
+        {
+            Set(defaultValue, propertyName);
+            return defaultValue;
+        }
+
+        return Get<T>(propertyName)!;
     }
 }

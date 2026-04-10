@@ -41,7 +41,7 @@ public sealed partial class HomePage : ItemsPageBase
 
     public List<ControlInfoDataItem> GetValidItems(List<string> items, bool isFavorite)
     {
-        if (items == null || items.Count == 0)
+        if (Items == null || items == null || items.Count == 0)
             return new List<ControlInfoDataItem>();
 
         Dictionary<string, ControlInfoDataItem> itemMap = Items.ToDictionary(i => i.UniqueId);

@@ -15,19 +15,26 @@ partial class HelmetScenario
 {
     public static async Task<ContentIsland> CreateIsland(Compositor compositor)
     {
+        // The visual's lifetime is managed by the ContentIsland and compositor, not this method.
+#pragma warning disable CA2000 // Dispose objects before losing scope
         var visual = await LoadScene_DamagedHelmet(compositor);
 
         var island = ContentIsland.Create(visual);
+#pragma warning restore CA2000
         return island;
     }
 
     private static async Task<Visual> LoadScene_DamagedHelmet(Compositor compositor)
     {
         // Initialize Win2D, used for loading bitmaps.
+        // The CanvasDevice and CompositionGraphicsDevice lifetimes are tied to the composition
+        // surfaces they create, which outlive this method.
 
+#pragma warning disable CA2000 // Dispose objects before losing scope
         var canvasDevice = new CanvasDevice();
         var graphicsDevice = CanvasComposition.CreateCompositionGraphicsDevice(
             compositor, canvasDevice);
+#pragma warning restore CA2000
 
         // Create the Visuals and SceneNode structure, along with default rotation animations.
 

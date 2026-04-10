@@ -140,6 +140,24 @@ sealed partial class App : Application
                 targetPageType = typeof(ItemPage);
             }
         }
+        // Handle JumpList launch arguments (passed as command-line args)
+        else if (eventArgs != null &&
+            eventArgs.Kind == ExtendedActivationKind.Launch &&
+            eventArgs.Data is ILaunchActivatedEventArgs launchArgs &&
+            !string.IsNullOrEmpty(launchArgs.Arguments))
+        {
+            string arg = launchArgs.Arguments.Trim();
+            targetPageArguments = arg;
+
+            if (ControlInfoDataSource.Instance.Groups.Any(g => g.UniqueId == arg))
+            {
+                targetPageType = typeof(SectionPage);
+            }
+            else if (ControlInfoDataSource.Instance.Groups.Any(g => g.Items.Any(i => i.UniqueId == arg)))
+            {
+                targetPageType = typeof(ItemPage);
+            }
+        }
 
         MainWindow.Navigate(targetPageType, targetPageArguments);
 
@@ -148,6 +166,9 @@ sealed partial class App : Application
             var navItem = (NavigationViewItem)MainWindow.NavigationView.MenuItems[0];
             navItem.IsSelected = true;
         }
+
+        // Initialize the taskbar JumpList with fixed tasks and favorites.
+        await JumpListHelper.UpdateJumpListAsync();
 
         // Activate the startup window.
         MainWindow.Activate();

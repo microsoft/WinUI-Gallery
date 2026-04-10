@@ -32,9 +32,7 @@ public sealed partial class MainWindow : Window
 
     public Action? NavigationViewLoaded { get; set; }
 
-#nullable enable
     private OverlappedPresenter? WindowPresenter { get; }
-#nullable disable
 
     private OverlappedPresenterState CurrentWindowState { get; set; }
 
@@ -170,10 +168,10 @@ public sealed partial class MainWindow : Window
         if (pageType.Equals(typeof(ItemPage)) && targetPageArguments != null)
         {
             // Mark the item sample's page visited
-            SettingsHelper.Current.UpdateRecentlyVisited(items => items.AddAsFirst(targetPageArguments.ToString(), SettingsHelper.MaxRecentlyVisitedSamples));
+            SettingsHelper.Current.UpdateRecentlyVisited(items => items.AddAsFirst(targetPageArguments.ToString() ?? "", SettingsHelper.MaxRecentlyVisitedSamples));
         }
     }
-
+    
     public void EnsureNavigationSelection(string id)
     {
         foreach (object rawGroup in this.NavigationView.MenuItems)

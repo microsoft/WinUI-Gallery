@@ -10,10 +10,10 @@ namespace WinUIGallery.Helpers;
 internal partial class NativeMethods
 {
     [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
-    internal static extern int SetWindowLong32(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc);
+    internal static extern int SetWindowLong32(IntPtr hWnd, WindowLongIndexFlags nIndex, IntPtr newProc);
 
     [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr")]
-    internal static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc);
+    internal static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, WindowLongIndexFlags nIndex, IntPtr newProc);
 
     [DllImport("User32.dll", CharSet = CharSet.Auto, EntryPoint = "SetWindowLongPtr")]
     internal static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
@@ -29,10 +29,14 @@ internal partial class NativeMethods
     {
         delegate* unmanaged[Stdcall]<int, WPARAM, LPARAM, LRESULT> callback = &HookCallback;
 
+        // GetModuleHandle does not increment the ref count, so the handle must not be freed.
+        // The hook handle must live for the entire app lifetime to keep the keyboard hook active.
+#pragma warning disable CA2000 // Dispose objects before losing scope
         var moduleHandle = Windows.Win32.PInvoke.GetModuleHandle(string.Empty);
         var threadId = Windows.Win32.PInvoke.GetCurrentThreadId();
 
         var res = Windows.Win32.PInvoke.SetWindowsHookEx(Windows.Win32.UI.WindowsAndMessaging.WINDOWS_HOOK_ID.WH_KEYBOARD, callback, moduleHandle, threadId);
+#pragma warning restore CA2000
 
         [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
         static LRESULT HookCallback(int msg, WPARAM wPARAM, LPARAM lPARAM)

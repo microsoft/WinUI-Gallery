@@ -17,9 +17,7 @@ public sealed partial class AppWindowTitleBarPage : Page
     private AppWindowTitleBarExtendWindow? extendWindow;
     private AppWindowTitleBarThemeWindow? themeHeightWindow;
     private IReadOnlyList<TitleBarTheme> titleBarThemes { get; set; } = new List<TitleBarTheme>(Enum.GetValues<TitleBarTheme>());
-    private TitleBarTheme selectedTheme = TitleBarTheme.UseDefaultAppMode;
     private IReadOnlyList<TitleBarHeightOption> titleBarHeightOptions { get; set; } = new List<TitleBarHeightOption>(Enum.GetValues<TitleBarHeightOption>());
-    private TitleBarHeightOption selectedHeight = TitleBarHeightOption.Standard;
 
     public AppWindowTitleBarPage()
     {
@@ -156,7 +154,7 @@ public sealed partial class AppWindowTitleBarPage : Page
 
     private string ColorToArgbString(Color color) => $"{color.A}, {color.R}, {color.G}, {color.B}";
 
-    private string BoolToLowerString(bool? value) => value.ToString().ToLower();
+    private string BoolToLowerString(bool? value) => (value ?? false).ToString().ToLower();
 
     private void ShowExtendButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {

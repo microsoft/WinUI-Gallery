@@ -1599,7 +1599,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A dialog box that can be customized to contain any XAML content.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ContentDialog.png",
-          "Description": "Use a ContentDialog to show relavant information or to provide a modal dialog experience that can show any XAML content.",
+          "Description": "Use a ContentDialog to show relevant information or to provide a modal dialog experience that can show any XAML content.",
           "SourcePath": "/CommonStyles/ContentDialog_themeresources.xaml",
           "Docs": [
             {
@@ -3114,6 +3114,76 @@
       "IconGlyph": "",
       "Items": [
         {
+          "UniqueId": "Clipboard",
+          "Title": "Clipboard",
+          "ApiNamespace": "Windows.ApplicationModel.DataTransfer",
+          "Subtitle": "Copy and paste text, images, and files to and from the system Clipboard.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Clipboard.png",
+          "Description": "Use the Clipboard API to copy and paste text, images, and files. Configure clipboard history and roaming options, monitor content changes, and inspect available formats.",
+          "Docs": [
+            {
+              "Title": "Clipboard - API",
+              "Uri": "https://learn.microsoft.com/uwp/api/windows.applicationmodel.datatransfer.clipboard"
+            },
+            {
+              "Title": "ClipboardContentOptions - API",
+              "Uri": "https://learn.microsoft.com/uwp/api/windows.applicationmodel.datatransfer.clipboardcontentoptions"
+            },
+            {
+              "Title": "Copy and paste - Guide",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/communication/copy-and-paste"
+            }
+          ]
+        },
+        {
+          "UniqueId": "ContentIsland",
+          "Title": "ContentIsland",
+          "ApiNamespace": "Microsoft.UI.Content",
+          "Subtitle": "Create ContentIslands to host other frameworks in your app.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ContentIsland.png",
+          "Description": "Create ContentIslands to host other frameworks in your app.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "ContentIsland - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.content.contentisland"
+            }
+          ]
+        },
+        {
+          "UniqueId": "StoragePickers",
+          "Title": "Storage pickers",
+          "ApiNamespace": "Microsoft.Windows.Storage.Pickers",
+          "BaseClasses": [
+            "Object"
+          ],
+          "Subtitle": "Select files and folders with modern system pickers.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/StoragePickers.png",
+          "Description": "Use the FileOpenPicker, FileSavePicker, and FolderPicker APIs to let users select files and folders in a secure way.",
+          "IsUpdated": true,
+          "Docs": [
+            {
+              "Title": "FileOpenPicker - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.storage.pickers.fileopenpicker"
+            },
+            {
+              "Title": "FileSavePicker - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.storage.pickers.filesavepicker"
+            },
+            {
+              "Title": "FolderPicker - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.storage.pickers.folderpicker"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "UniqueId": "Shell",
+      "Title": "Shell",
+      "IconGlyph": "",
+      "Items": [
+        {
           "UniqueId": "AppNotification",
           "Title": "App notifications",
           "BaseClasses": [
@@ -3170,57 +3240,24 @@
           ]
         },
         {
-          "UniqueId": "Clipboard",
-          "Title": "Clipboard",
-          "ApiNamespace": "Windows.ApplicationModel.DataTransfer",
-          "Subtitle": "Copy and paste to and from the system Clipboard.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Clipboard.png",
-          "Description": "Copy and paste to and from the system Clipboard.",
-          "Docs": [
-            {
-              "Title": "Clipboard - API",
-              "Uri": "https://learn.microsoft.com/uwp/api/windows.applicationmodel.datatransfer.clipboard"
-            }
-          ]
-        },
-        {
-          "UniqueId": "ContentIsland",
-          "Title": "ContentIsland",
-          "ApiNamespace": "Microsoft.UI.Content",
-          "Subtitle": "Create ContentIslands to host other frameworks in your app.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/ContentIsland.png",
-          "Description": "Create ContentIslands to host other frameworks in your app.",
-          "IsNew": true,
-          "Docs": [
-            {
-              "Title": "ContentIsland - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.content.contentisland"
-            }
-          ]
-        },
-        {
-          "UniqueId": "StoragePickers",
-          "Title": "Storage pickers",
-          "ApiNamespace": "Microsoft.Windows.Storage.Pickers",
+          "UniqueId": "JumpList",
+          "Title": "JumpList",
+          "ApiNamespace": "Windows.UI.StartScreen",
           "BaseClasses": [
             "Object"
           ],
-          "Subtitle": "Select files and folders with modern system pickers.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/StoragePickers.png",
-          "Description": "Use the FileOpenPicker, FileSavePicker, and FolderPicker APIs to let users select files and folders in a secure way.",
-          "IsUpdated": true,
+          "Subtitle": "Add custom tasks and groups to the app's taskbar jump list.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/JumpList.png",
+          "Description": "Jump lists let you add custom tasks and groups to the app's right-click menu on the taskbar. Use them to provide quick access to frequently used actions or recently opened items.",
+          "IsNew": true,
           "Docs": [
             {
-              "Title": "FileOpenPicker - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.storage.pickers.fileopenpicker"
+              "Title": "JumpList - API",
+              "Uri": "https://learn.microsoft.com/uwp/api/windows.ui.startscreen.jumplist"
             },
             {
-              "Title": "FileSavePicker - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.storage.pickers.filesavepicker"
-            },
-            {
-              "Title": "FolderPicker - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.storage.pickers.folderpicker"
+              "Title": "JumpListItem - API",
+              "Uri": "https://learn.microsoft.com/uwp/api/windows.ui.startscreen.jumplistitem"
             }
           ]
         }

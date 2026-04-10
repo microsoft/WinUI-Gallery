@@ -48,7 +48,8 @@ public class UnitTests
             "Text",
             "Motion",
             "Windowing",
-            "System"
+            "System",
+            "Shell"
         };
 
         Assert.AreEqual(expectedGroups.Count, groupsList.Count);
@@ -147,6 +148,8 @@ public class UnitTests
         {
             Assert.AreEqual(100, border.ActualWidth);
         });
+
+        borderSizeChanged.Dispose();
     }
 
     private void ExecuteOnUIThread(Action action)
@@ -182,6 +185,8 @@ public class UnitTests
                 Assert.Fail(exception.ToString());
             }
         }
+
+        done.Dispose();
     }
 
     [TestCleanup]

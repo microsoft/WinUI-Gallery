@@ -36,7 +36,8 @@ internal sealed partial class NavigationPageMapperGenerator : IIncrementalGenera
         {
             var ((files, compilation), (projectDir, rootNamespace, stringsNamespace)) = data;
 
-            Execute(ctx, files, compilation, stringsNamespace, projectDir, rootNamespace);
+            if (stringsNamespace != null && projectDir != null && rootNamespace != null)
+                Execute(ctx, files, compilation, stringsNamespace, projectDir, rootNamespace);
         });
     }
 
@@ -58,7 +59,7 @@ internal sealed partial class NavigationPageMapperGenerator : IIncrementalGenera
         }
 
         var pageNames = new List<string>();
-        foreach (var group in root.Groups)
+        foreach (var group in root!.Groups)
         {
             foreach (var item in group.Items)
             {

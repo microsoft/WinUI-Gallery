@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="WinUIGallery.ControlPages.JumpListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:WinUIGallery.Controls"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <InfoBar Margin="0,10,0,0" IsOpen="True" IsClosable="False" Severity="Warning"
+                 Title="JumpList is not available in unpackaged mode."
+                 Message="This API requires the app to be running in packaged mode (MSIX)."/>
+
+        <TextBlock Margin="0,12,0,0" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}"
+                   Text="WinUI Gallery populates its jump list with your recently visited and favorited items. Restarting the app will restore these entries after any changes made on this page." />
+
+        <controls:ControlExample HeaderText="Adding tasks to the jump list">
+            <StackPanel Spacing="8">
+                <TextBlock TextWrapping="Wrap"
+                           Text="Tasks are items with an empty GroupName. They appear in the built-in 'Tasks' section at the bottom of the jump list. Use tasks for common app-wide actions that are always relevant, such as composing a new message or opening settings. Each task launches the app with a specific argument string that your app can handle on startup." />
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button Content="Add sample tasks"
+                            Style="{StaticResource AccentButtonStyle}"
+                            Click="AddTasksButton_Click" />
+                    <Button Content="Clear all items"
+                            Click="ClearTasksButton_Click" />
+                </StackPanel>
+            </StackPanel>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+var jumpList = await JumpList.LoadCurrentAsync();
+
+var task = JumpListItem.CreateWithArguments("/compose", "New Message");
+task.Description = "Compose a new message";
+task.Logo = new Uri("ms-appx:///Assets/Tiles/AppList.targetsize-48.png");
+
+jumpList.Items.Add(task);
+await jumpList.SaveAsync();
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="Adding items to a custom group">
+            <StackPanel Spacing="8">
+                <TextBlock TextWrapping="Wrap"
+                           Text="Custom groups let you organize jump list items into named sections. Set the GroupName property to a non-empty string and all items sharing the same GroupName will appear together under that heading. This is useful for grouping related items like recent projects, pinned documents, or user-defined categories." />
+                <Button Content="Add custom group items"
+                        Click="AddCustomGroupButton_Click" />
+            </StackPanel>
+            <controls:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+var jumpList = await JumpList.LoadCurrentAsync();
+
+var item = JumpListItem.CreateWithArguments("/project-alpha", "Project Alpha");
+item.GroupName = "Projects";
+item.Description = "Open Project Alpha";
+item.Logo = new Uri("ms-appx:///Assets/Tiles/AppList.targetsize-48.png");
+
+jumpList.Items.Add(item);
+await jumpList.SaveAsync();
+                </x:String>
+            </controls:ControlExample.CSharp>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>
