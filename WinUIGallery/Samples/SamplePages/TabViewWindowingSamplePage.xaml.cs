@@ -11,7 +11,6 @@ namespace WinUIGallery.SamplePages;
 
 public sealed partial class TabViewWindowingSamplePage : Page
 {
-    private const string DataIdentifier = "MyTabItem";
     private Win32WindowHelper? win32WindowHelper;
     private Window? tabTearOutWindow = null;
 
@@ -83,6 +82,13 @@ public sealed partial class TabViewWindowingSamplePage : Page
             GetParentTabView(tab)?.TabItems.Remove(tab);
             newPage.AddTabToTabs(tab);
         }
+
+        // Clear the reference now that the tear-out is complete to avoid stale references
+        // if multiple tear-outs happen in sequence.
+        tabTearOutWindow = null;
+
+        // Close the source window if all tabs have been torn out.
+        CloseWindowIfEmpty(sender);
     }
 
     private void Tabs_ExternalTornOutTabsDropping(TabView sender, TabViewExternalTornOutTabsDroppingEventArgs args)
@@ -96,9 +102,17 @@ public sealed partial class TabViewWindowingSamplePage : Page
 
         foreach (TabViewItem tab in args.Tabs.Cast<TabViewItem>())
         {
-            GetParentTabView(tab)?.TabItems.Remove(tab);
+            // Find the source TabView before removing the tab, so we can check if it's empty afterwards.
+            TabView? sourceTabView = GetParentTabView(tab);
+            sourceTabView?.TabItems.Remove(tab);
             sender.TabItems.Insert(args.DropIndex + position, tab);
             position++;
+
+            // Close the source window if all its tabs have been moved to this window.
+            if (sourceTabView != null && sourceTabView.TabItems.Count == 0)
+            {
+                CloseWindowIfEmpty(sourceTabView);
+            }
         }
     }
 
@@ -117,6 +131,26 @@ public sealed partial class TabViewWindowingSamplePage : Page
         }
 
         return null;
+    }
+
+    private void CloseWindowIfEmpty(TabView tabView)
+    {
+        if (tabView.TabItems.Count == 0)
+        {
+            // Find the window containing this TabView and close it.
+            // Walk up from the TabView to find a Page, then use it to locate the window.
+            DependencyObject current = tabView;
+            while (current != null)
+            {
+                if (current is Page page)
+                {
+                    WindowHelper.GetWindowForElement(page)?.Close();
+                    return;
+                }
+
+                current = VisualTreeHelper.GetParent(current);
+            }
+        }
     }
 
     private TabViewItem CreateNewTVI(string header, string dataContext)
@@ -146,10 +180,6 @@ public sealed partial class TabViewWindowingSamplePage : Page
     private void Tabs_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
     {
         sender.TabItems.Remove(args.Tab);
-
-        if (sender.TabItems.Count == 0)
-        {
-            WindowHelper.GetWindowForElement(this)?.Close();
-        }
+        CloseWindowIfEmpty(sender);
     }
 }
