@@ -11,8 +11,6 @@ namespace WinUIGallery.SamplePages;
 
 public sealed partial class TabViewWindowingSamplePage : Page
 {
-    private const string DataIdentifier = "MyTabItem";
-    private Win32WindowHelper? win32WindowHelper;
     private Window? tabTearOutWindow = null;
 
     public TabViewWindowingSamplePage()
@@ -20,12 +18,6 @@ public sealed partial class TabViewWindowingSamplePage : Page
         this.InitializeComponent();
 
         Loaded += TabViewWindowingSamplePage_Loaded;
-    }
-
-    public void SetupWindowMinSize(Window window)
-    {
-        win32WindowHelper = new Win32WindowHelper(window);
-        win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 500, y = 300 });
     }
 
     private void TabViewWindowingSamplePage_Loaded(object sender, RoutedEventArgs e)
@@ -38,6 +30,9 @@ public sealed partial class TabViewWindowingSamplePage : Page
         currentWindow.ExtendsContentIntoTitleBar = true;
         currentWindow.SetTitleBar(CustomDragRegion);
         CustomDragRegion.MinWidth = 188;
+
+        // Set minimum window size using OverlappedPresenter (requires XamlRoot, so must be done after Loaded).
+        WindowHelper.SetWindowMinSize(currentWindow, 500, 300);
     }
 
     public void LoadDemoData()
@@ -64,7 +59,6 @@ public sealed partial class TabViewWindowingSamplePage : Page
         tabTearOutWindow.ExtendsContentIntoTitleBar = true;
         tabTearOutWindow.Content = newPage;
         tabTearOutWindow.AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
-        newPage.SetupWindowMinSize(tabTearOutWindow);
 
         args.NewWindowId = tabTearOutWindow.AppWindow.Id;
     }
