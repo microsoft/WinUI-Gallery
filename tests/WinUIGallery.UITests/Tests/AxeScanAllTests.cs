@@ -1,15 +1,14 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using Axe.Windows.Core.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Appium.Windows;
-using System;
-using System.Linq;
-using System.Text.Json;
-using System.Collections.Generic;
-using System.Reflection;
-using Newtonsoft.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
+using Newtonsoft.Json;
+using OpenQA.Selenium.Appium.Windows;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Threading;
 
 namespace WinUIGallery.UITests.Tests;
@@ -20,16 +19,47 @@ public class AxeScanAll : TestBase
     public static readonly string jsonUri = "ControlInfoData.json";
     public static new WindowsDriver<WindowsElement> Session => SessionManager.Session;
 
+    // Pages that are completely excluded from Axe scanning due to AxeWindowsAutomationException
+    // or other issues that prevent scanning entirely.
     public static string[] ExclusionList =
     [
-        "WebView2", // 46668961: Web contents from WebView2 are throwing null BoundingRectangle errors.
-        "Icons", // https://github.com/CommunityToolkit/Windows/issues/240 External toolkit SettingsExpander does not pass Axe testing
         // https://github.com/microsoft/axe-windows/issues/662
-        // AxeWindowsAutomationException: Failed to get the root element(s) of the specified process error for following pages:
+        // AxeWindowsAutomationException: Failed to get the root element(s) of the specified process
         "PersonPicture",
-        "MapControl",
         "TabView"
     ];
+
+    // Per-page rule exclusions for known framework-level issues that cannot be fixed in app code.
+    // Prefer adding targeted exclusions here over globally disabling rules in AxeHelper.
+    private static readonly Dictionary<string, RuleId[]> PageRuleExclusions = new()
+    {
+        // WebView2 hosts Chromium content which triggers BoundingRectangle and Chromium scanner rules
+        ["WebView2"] =
+        [
+            RuleId.BoundingRectangleNotNull,
+            RuleId.BoundingRectangleNotNullListViewXAML,
+            RuleId.BoundingRectangleNotNullTextBlockXAML,
+            RuleId.ChromiumComponentsShouldUseWebScanner,
+            RuleId.NameNotNull,
+            RuleId.NameReasonableLength,
+        ],
+        // External CommunityToolkit SettingsExpander does not pass Axe testing
+        // https://github.com/CommunityToolkit/Windows/issues/240
+        ["Icons"] =
+        [
+            RuleId.NameNotNull,
+            RuleId.NameReasonableLength,
+        ],
+        // MapControl hosts external map content that can trigger BoundingRectangle errors
+        ["MapControl"] =
+        [
+            RuleId.BoundingRectangleNotNull,
+            RuleId.BoundingRectangleNotNullListViewXAML,
+            RuleId.BoundingRectangleNotNullTextBlockXAML,
+            RuleId.NameNotNull,
+            RuleId.NameReasonableLength,
+        ],
+    };
 
     public class ControlInfoData
     {
@@ -91,6 +121,9 @@ public class AxeScanAll : TestBase
     [TestProperty("Description", "Scan pages in the WinUIGallery for accessibility issues.")]
     public void ValidatePageAccessibilityWithAxe(string sectionName, string pageName)
     {
+        // Look up per-page rule exclusions for this page
+        PageRuleExclusions.TryGetValue(pageName, out RuleId[] ruleExclusions);
+
         try
         {
             Logger.LogMessage($"Opening page \"{pageName}\".");
@@ -99,7 +132,7 @@ public class AxeScanAll : TestBase
             var page = Session.FindElementByAccessibilityId(pageName);
             page.Click();
 
-            AxeHelper.AssertNoAccessibilityErrors();
+            AxeHelper.AssertNoAccessibilityErrors(ruleExclusions);
         }
         catch (OpenQA.Selenium.WebDriverException exc)
         {
@@ -120,7 +153,7 @@ public class AxeScanAll : TestBase
                     var page = Session.FindElementByAccessibilityId(pageName);
                     page.Click();
 
-                    AxeHelper.AssertNoAccessibilityErrors();
+                    AxeHelper.AssertNoAccessibilityErrors(ruleExclusions);
                 }
                 catch (OpenQA.Selenium.WebDriverException exc2)
                 {
