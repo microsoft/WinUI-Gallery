@@ -56,5 +56,22 @@
                 MinWidth="500"
                 MinHeight="300" />
         </controls:ControlExample>
+
+        <controls:ControlExample
+            CSharpSource="Motion/ConnectedAnimation/ConnectedAnimationSample4_cs.txt"
+            HeaderText="Connected animation with ItemsRepeater"
+            XamlSource="Motion/ConnectedAnimation/ConnectedAnimationSample4_xaml.txt">
+            <StackPanel>
+                <TextBlock Margin="0,0,0,12" TextWrapping="WrapWholeWords">
+                    Unlike ListView and GridView, ItemsRepeater does not have built-in ConnectedAnimation methods.
+                    Use ConnectedAnimationService.PrepareToAnimate() directly, and manually find the target element in the visual tree.
+                    Click an item to navigate with a connected animation.
+                </TextBlock>
+                <Frame
+                    x:Name="ItemsRepeaterFrame"
+                    Height="400"
+                    MinWidth="500" />
+            </StackPanel>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

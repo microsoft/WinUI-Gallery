@@ -1,0 +1,42 @@
+<Page
+    x:Class="WinUIGallery.SamplePages.ItemsRepeaterCollectionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer x:Name="scrollViewer">
+        <ItemsRepeater
+            x:Name="repeater">
+            <ItemsRepeater.Layout>
+                <UniformGridLayout
+                    MinColumnSpacing="8"
+                    MinItemHeight="120"
+                    MinItemWidth="150"
+                    MinRowSpacing="8" />
+            </ItemsRepeater.Layout>
+            <ItemsRepeater.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        CornerRadius="4"
+                        AutomationProperties.Name="{Binding Title}">
+                        <Image
+                            x:Name="connectedElement"
+                            Source="{Binding ImageLocation}"
+                            Stretch="UniformToFill" />
+                        <Border
+                            VerticalAlignment="Bottom"
+                            Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
+                            Padding="8,4">
+                            <TextBlock
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Text="{Binding Title}"
+                                Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </ItemsRepeater.ItemTemplate>
+        </ItemsRepeater>
+    </ScrollViewer>
+</Page>
