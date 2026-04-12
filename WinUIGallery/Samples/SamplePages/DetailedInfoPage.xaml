@@ -15,13 +15,11 @@
         <Grid
             x:Name="headerBackground"
             HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
-            Background="{ThemeResource SystemControlAcrylicElementBrush}">
+            VerticalAlignment="Stretch">
             <Button
                 x:Name="GoBackButton"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Background="{ThemeResource SystemAccentColor}"
                 Click="BackButton_Click"
                 Content="Go Back" />
         </Grid>
