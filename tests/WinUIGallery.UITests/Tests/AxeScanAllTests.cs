@@ -26,23 +26,19 @@ public class AxeScanAll : TestBase
         // https://github.com/microsoft/axe-windows/issues/662
         // AxeWindowsAutomationException: Failed to get the root element(s) of the specified process
         "PersonPicture",
-        "TabView"
+        "TabView",
+        "MediaPlayerElement",
+        // WebView2 hosts Chromium content. Axe.Windows throws a NullReferenceException
+        // inside DesktopElementExtensionMethods.AddLogicalSizePseudoProperty during the
+        // parallel tree walk, before any rule filtering can take effect, so per-rule
+        // exclusions are insufficient.
+        "WebView2"
     ];
 
     // Per-page rule exclusions for known framework-level issues that cannot be fixed in app code.
     // Prefer adding targeted exclusions here over globally disabling rules in AxeHelper.
     private static readonly Dictionary<string, RuleId[]> PageRuleExclusions = new()
     {
-        // WebView2 hosts Chromium content which triggers BoundingRectangle and Chromium scanner rules
-        ["WebView2"] =
-        [
-            RuleId.BoundingRectangleNotNull,
-            RuleId.BoundingRectangleNotNullListViewXAML,
-            RuleId.BoundingRectangleNotNullTextBlockXAML,
-            RuleId.ChromiumComponentsShouldUseWebScanner,
-            RuleId.NameNotNull,
-            RuleId.NameReasonableLength,
-        ],
         // External CommunityToolkit SettingsExpander does not pass Axe testing
         // https://github.com/CommunityToolkit/Windows/issues/240
         ["Icons"] =
