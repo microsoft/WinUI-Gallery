@@ -15,30 +15,6 @@ public sealed partial class MapControlPage : Page
         this.InitializeComponent();
 
         this.Loaded += MapControlPage_Loaded;
-        this.Unloaded += MapControlPage_Unloaded;
-    }
-
-    private void MapControlPage_Unloaded(object sender, RoutedEventArgs e)
-    {
-        // MapControl is internally backed by a WebView2 hosting Azure Maps.
-        // When the page is navigated away from, the WebView2's UIA tree
-        // (a Pane containing a Chromium RootWebArea with a long
-        // data:text/html;base64 Name) can outlive the page and contaminate
-        // subsequent Axe.Windows accessibility scans across the process.
-        // Explicitly tearing down the MapControl on Unloaded forces the
-        // framework to dispose the embedded WebView2 and remove its UIA
-        // subtree from the process tree.
-        this.Loaded -= MapControlPage_Loaded;
-        this.Unloaded -= MapControlPage_Unloaded;
-
-        if (map1 is not null)
-        {
-            map1.Layers.Clear();
-            if (map1.Parent is Panel parent)
-            {
-                parent.Children.Remove(map1);
-            }
-        }
     }
 
     private void MapControlPage_Loaded(object sender, RoutedEventArgs e)
