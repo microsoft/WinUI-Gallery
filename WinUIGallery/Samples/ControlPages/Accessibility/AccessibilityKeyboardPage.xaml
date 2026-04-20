@@ -220,24 +220,21 @@
                 in addition to tab navigation, depending on the situation.<LineBreak />
             </Paragraph>
             <Paragraph>
-                Groups of controls that support arrow key navigation typically support Home/End and PgUp/PgDn, too.<LineBreak />
+                Groups of controls that support arrow key navigation typically support Home/End and PgUp/PgDn, too.
             </Paragraph>
-            <Paragraph>
-                See <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#navigation">
-                    Keyboard interactions#Navigation
-                </Hyperlink>
-                , <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#home-and-end-keys">
-                    Keyboard interactions#Home and End keys
-                </Hyperlink>
-                , <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#page-up-and-page-down-keys">
-                    Keyboard interactions#Page up and Page down keys
-                </Hyperlink>
-                ,
-                and <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#control-group">
-                    Keyboard interactions#Control group
-                </Hyperlink>
-                .</Paragraph>
         </RichTextBlock>
+
+        <TextBlock Margin="0,8,0,0" Text="See also:" />
+        <ItemsControl AutomationProperties.Name="Arrow keys references">
+            <HyperlinkButton Content="Keyboard interactions: Navigation"
+                             NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#navigation" />
+            <HyperlinkButton Content="Keyboard interactions: Home and End keys"
+                             NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#home-and-end-keys" />
+            <HyperlinkButton Content="Keyboard interactions: Page up and Page down keys"
+                             NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#page-up-and-page-down-keys" />
+            <HyperlinkButton Content="Keyboard interactions: Control group"
+                             NavigateUri="https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions#control-group" />
+        </ItemsControl>
 
         <TextBlock
             Margin="0,20,0,0"

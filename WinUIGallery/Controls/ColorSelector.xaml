@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <UserControl 
     x:Class="WinUIGallery.Controls.ColorSelector"
+    x:Name="Root"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WinUIGallery.Controls"
@@ -9,7 +10,7 @@
     mc:Ignorable="d"
     Margin="0,2,0,8">
 
-    <SplitButton>
+    <SplitButton AutomationProperties.Name="{Binding Path=(AutomationProperties.Name), ElementName=Root, Mode=OneWay}">
         <Border x:Name="CurrentColor"
                 Width="64"
                 Height="32"
