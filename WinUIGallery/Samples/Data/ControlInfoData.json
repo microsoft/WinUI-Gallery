@@ -144,6 +144,25 @@
           ]
         },
         {
+          "UniqueId": "CustomXamlConditionals",
+          "Title": "Custom XAML Conditionals",
+          "IsNew": true,
+          "Subtitle": "Define custom XAML conditions evaluated at parse time using IXamlCondition.",
+          "ApiNamespace": "Microsoft.UI.Xaml.Markup",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
+          "Description": "Custom XAML conditionals let you conditionally include markup based on application-specific state such as feature flags, device capabilities, or configuration. Implement IXamlCondition (Windows App SDK 2.0) and reference your condition from a conditional XAML namespace. Conditions are evaluated by the XAML parser when a page is loaded and the result for each (condition, argument) pair is cached for the lifetime of the process.",
+          "Docs": [
+            {
+              "Title": "IXamlCondition - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.markup.ixamlcondition"
+            },
+            {
+              "Title": "Conditional XAML",
+              "Uri": "https://learn.microsoft.com/windows/uwp/debug-test-perf/conditional-xaml"
+            }
+          ]
+        },
+        {
           "UniqueId": "ScratchPad",
           "Title": "Scratch Pad",
           "Subtitle": "Scratch pad for testing simple XAML markup",

@@ -1,0 +1,88 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.CustomXamlConditionalsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:cond="using:WinUIGallery.ControlPages"
+    xmlns:newExp="http://schemas.microsoft.com/winfx/2006/xaml/presentation?cond:FeatureFlagCondition(NewExperience)"
+    xmlns:legacy="http://schemas.microsoft.com/winfx/2006/xaml/presentation?cond:FeatureFlagCondition(LegacyMode)"
+    xmlns:beta="http://schemas.microsoft.com/winfx/2006/xaml/presentation?cond:FeatureFlagCondition(BetaFeature)"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel Spacing="12">
+
+        <InfoBar
+            Title="Parse-time evaluation"
+            IsClosable="False"
+            IsOpen="True"
+            Message="Custom XAML conditions are evaluated by the XAML parser when the page is loaded, and the result for each (condition, argument) pair is cached for the lifetime of the process. Set your flags BEFORE the page is parsed; toggling them at runtime will not re-evaluate already-parsed markup."
+            Severity="Informational" />
+
+        <controls:ControlExample HeaderText="Conditional elements" XamlSource="CustomXamlConditionals/CustomXamlConditionalsSample1_xaml.txt">
+            <StackPanel Spacing="8">
+                <newExp:InfoBar
+                    Title="New experience"
+                    IsClosable="False"
+                    IsOpen="True"
+                    Message="This InfoBar is included because the 'NewExperience' flag is true."
+                    Severity="Success" />
+                <legacy:InfoBar
+                    Title="Legacy mode"
+                    IsClosable="False"
+                    IsOpen="True"
+                    Message="This InfoBar is included because the 'LegacyMode' flag is true."
+                    Severity="Warning" />
+                <TextBlock
+                    FontStyle="Italic"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                    Text="(Only the InfoBars whose condition evaluates to true are present in the visual tree.)"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="Conditional attributes" XamlSource="CustomXamlConditionals/CustomXamlConditionalsSample2_xaml.txt">
+            <StackPanel Spacing="8">
+                <Button
+                    newExp:Background="{ThemeResource SystemFillColorSuccessBrush}"
+                    legacy:Background="{ThemeResource SystemFillColorCautionBrush}"
+                    Content="Background depends on the active flag"
+                    Foreground="White" />
+                <TextBlock
+                    FontStyle="Italic"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                    Text="At most one condition on a given attribute may evaluate to true. If multiple are true at the same time, the parser throws."
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="Conditional Setters in a Style" XamlSource="CustomXamlConditionals/CustomXamlConditionalsSample3_xaml.txt">
+            <StackPanel Spacing="8">
+                <StackPanel.Resources>
+                    <Style x:Key="ConditionalButtonStyle" TargetType="Button">
+                        <newExp:Setter Property="Background" Value="{ThemeResource AccentFillColorDefaultBrush}" />
+                        <legacy:Setter Property="Background" Value="{ThemeResource ControlFillColorDefaultBrush}" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="Padding" Value="20,10" />
+                        <Setter Property="CornerRadius" Value="6" />
+                    </Style>
+                </StackPanel.Resources>
+                <Button Content="Styled with conditional Setters" Style="{StaticResource ConditionalButtonStyle}" />
+            </StackPanel>
+        </controls:ControlExample>
+
+        <controls:ControlExample HeaderText="The IXamlCondition implementation" CSharpSource="CustomXamlConditionals/CustomXamlConditionalsSample4_cs.txt" />
+
+    </StackPanel>
+</Page>
