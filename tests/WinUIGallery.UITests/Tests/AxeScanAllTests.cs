@@ -26,36 +26,30 @@ public class AxeScanAll : TestBase
         // https://github.com/microsoft/axe-windows/issues/662
         // AxeWindowsAutomationException: Failed to get the root element(s) of the specified process
         "PersonPicture",
-        "TabView"
+        "TabView",
+        "MediaPlayerElement",
+        // WebView2 hosts Chromium content. Axe.Windows throws a NullReferenceException
+        // inside DesktopElementExtensionMethods.AddLogicalSizePseudoProperty during the
+        // parallel tree walk, before any rule filtering can take effect, so per-rule
+        // exclusions are insufficient.
+        "WebView2",
+        // MapControl is internally backed by a WebView2 hosting Azure Maps. The system
+        // control has no public Dispose path, so its embedded WebView2 (and its UIA
+        // Pane + Chromium RootWebArea) leaks into the process tree even after the page
+        // is unloaded, contaminating every subsequent Axe scan with a long
+        // data:text/html;base64 Name. Skipping the page entirely prevents the WebView2
+        // from ever being instantiated during the test run.
+        "MapControl"
     ];
 
     // Per-page rule exclusions for known framework-level issues that cannot be fixed in app code.
     // Prefer adding targeted exclusions here over globally disabling rules in AxeHelper.
     private static readonly Dictionary<string, RuleId[]> PageRuleExclusions = new()
     {
-        // WebView2 hosts Chromium content which triggers BoundingRectangle and Chromium scanner rules
-        ["WebView2"] =
-        [
-            RuleId.BoundingRectangleNotNull,
-            RuleId.BoundingRectangleNotNullListViewXAML,
-            RuleId.BoundingRectangleNotNullTextBlockXAML,
-            RuleId.ChromiumComponentsShouldUseWebScanner,
-            RuleId.NameNotNull,
-            RuleId.NameReasonableLength,
-        ],
         // External CommunityToolkit SettingsExpander does not pass Axe testing
         // https://github.com/CommunityToolkit/Windows/issues/240
         ["Icons"] =
         [
-            RuleId.NameNotNull,
-            RuleId.NameReasonableLength,
-        ],
-        // MapControl hosts external map content that can trigger BoundingRectangle errors
-        ["MapControl"] =
-        [
-            RuleId.BoundingRectangleNotNull,
-            RuleId.BoundingRectangleNotNullListViewXAML,
-            RuleId.BoundingRectangleNotNullTextBlockXAML,
             RuleId.NameNotNull,
             RuleId.NameReasonableLength,
         ],
