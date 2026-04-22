@@ -8,7 +8,7 @@
         <Style x:Key="ConditionalButtonStyle" TargetType="Button">
             <!-- Setters can also be qualified with a conditional namespace. -->
             <newExp:Setter Property="Background" Value="{ThemeResource AccentFillColorDefaultBrush}" />
-            <legacy:Setter Property="Background" Value="{ThemeResource ControlFillColorDefaultBrush}" />
+            <legacy:Setter Property="Background" Value="{ThemeResource ControlFillColorTertiaryBrush}" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Padding" Value="20,10" />
             <Setter Property="CornerRadius" Value="6" />

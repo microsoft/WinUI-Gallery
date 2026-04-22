@@ -1,9 +1,7 @@
 // Conditional attributes use the same setup. Make sure that, for any
 // given attribute, no more than one condition can evaluate to true at
 // the same time - if multiple are true the XAML parser will throw at
-// runtime. Since IXamlCondition is parse-time only, the ComboBox
-// handler updates the dictionary so subsequent page parses pick up
-// the new value.
+// runtime.
 public sealed partial class MyPage : Page
 {
     public MyPage()
@@ -13,12 +11,6 @@ public sealed partial class MyPage : Page
 
         this.InitializeComponent();
     }
-
-    private void OnModeSelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        string selected = (string)((ComboBox)sender).SelectedItem;
-        FeatureFlagCondition.FeatureFlags["NewExperience"] = selected == "NewExperience";
-        FeatureFlagCondition.FeatureFlags["LegacyMode"] = selected == "LegacyMode";
-    }
 }
+
 

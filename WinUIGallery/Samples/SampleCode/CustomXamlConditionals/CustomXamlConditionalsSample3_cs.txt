@@ -11,12 +11,6 @@ public sealed partial class MyPage : Page
 
         this.InitializeComponent();
     }
-
-    private void OnModeSelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        string selected = (string)((ComboBox)sender).SelectedItem;
-        FeatureFlagCondition.FeatureFlags["NewExperience"] = selected == "NewExperience";
-        FeatureFlagCondition.FeatureFlags["LegacyMode"] = selected == "LegacyMode";
-    }
 }
+
 

@@ -26,7 +26,7 @@
             Title="Parse-time evaluation"
             IsClosable="False"
             IsOpen="True"
-            Message="Custom XAML conditions are evaluated by the XAML parser when the page is loaded, and the result for each (condition, argument) pair is cached for the lifetime of the process. The Options below set the flags so the next page that gets parsed sees the new values - re-navigate to this sample to see the effect."
+            Message="IXamlCondition is parse-time only. The samples below were evaluated against the default flag values (NewExperience=true, LegacyMode=false). To see the other variant, change FeatureFlagCondition.FeatureFlags before InitializeComponent (typically in App.xaml.cs) and restart the app."
             Severity="Informational" />
 
         <controls:ControlExample HeaderText="Conditional elements" XamlSource="CustomXamlConditionals/CustomXamlConditionalsSample1_xaml.txt" CSharpSource="CustomXamlConditionals/CustomXamlConditionalsSample1_cs.txt">
@@ -44,38 +44,14 @@
                     Message="This InfoBar is included because the 'LegacyMode' flag was true when the page was parsed."
                     Severity="Warning" />
             </StackPanel>
-            <controls:ControlExample.Options>
-                <StackPanel Spacing="4">
-                    <TextBlock Text="Active flag" />
-                    <ComboBox
-                        x:Name="ElementsModeComboBox"
-                        AutomationProperties.Name="Active flag"
-                        SelectionChanged="OnModeSelectionChanged">
-                        <x:String>NewExperience</x:String>
-                        <x:String>LegacyMode</x:String>
-                    </ComboBox>
-                </StackPanel>
-            </controls:ControlExample.Options>
         </controls:ControlExample>
 
         <controls:ControlExample HeaderText="Conditional attributes" XamlSource="CustomXamlConditionals/CustomXamlConditionalsSample2_xaml.txt" CSharpSource="CustomXamlConditionals/CustomXamlConditionalsSample2_cs.txt">
             <Button
-                newExp:Background="{ThemeResource SystemFillColorSuccessBrush}"
-                legacy:Background="{ThemeResource SystemFillColorCautionBrush}"
+                newExp:Background="#107C10"
+                legacy:Background="#C42B1C"
                 Content="Background depends on the active flag"
                 Foreground="White" />
-            <controls:ControlExample.Options>
-                <StackPanel Spacing="4">
-                    <TextBlock Text="Active flag" />
-                    <ComboBox
-                        x:Name="AttributesModeComboBox"
-                        AutomationProperties.Name="Active flag"
-                        SelectionChanged="OnModeSelectionChanged">
-                        <x:String>NewExperience</x:String>
-                        <x:String>LegacyMode</x:String>
-                    </ComboBox>
-                </StackPanel>
-            </controls:ControlExample.Options>
         </controls:ControlExample>
 
         <controls:ControlExample HeaderText="Conditional Setters in a Style" XamlSource="CustomXamlConditionals/CustomXamlConditionalsSample3_xaml.txt" CSharpSource="CustomXamlConditionals/CustomXamlConditionalsSample3_cs.txt">
@@ -83,7 +59,7 @@
                 <StackPanel.Resources>
                     <Style x:Key="ConditionalButtonStyle" TargetType="Button">
                         <newExp:Setter Property="Background" Value="{ThemeResource AccentFillColorDefaultBrush}" />
-                        <legacy:Setter Property="Background" Value="{ThemeResource ControlFillColorDefaultBrush}" />
+                        <legacy:Setter Property="Background" Value="{ThemeResource ControlFillColorTertiaryBrush}" />
                         <Setter Property="Foreground" Value="White" />
                         <Setter Property="Padding" Value="20,10" />
                         <Setter Property="CornerRadius" Value="6" />
@@ -91,22 +67,11 @@
                 </StackPanel.Resources>
                 <Button Content="Styled with conditional Setters" Style="{StaticResource ConditionalButtonStyle}" />
             </StackPanel>
-            <controls:ControlExample.Options>
-                <StackPanel Spacing="4">
-                    <TextBlock Text="Active flag" />
-                    <ComboBox
-                        x:Name="SettersModeComboBox"
-                        AutomationProperties.Name="Active flag"
-                        SelectionChanged="OnModeSelectionChanged">
-                        <x:String>NewExperience</x:String>
-                        <x:String>LegacyMode</x:String>
-                    </ComboBox>
-                </StackPanel>
-            </controls:ControlExample.Options>
         </controls:ControlExample>
 
         <controls:ControlExample HeaderText="The IXamlCondition implementation" CSharpSource="CustomXamlConditionals/CustomXamlConditionalsSample4_cs.txt" />
 
     </StackPanel>
 </Page>
+
 

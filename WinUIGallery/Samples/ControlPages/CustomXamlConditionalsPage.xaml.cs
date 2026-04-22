@@ -17,30 +17,8 @@ public sealed partial class CustomXamlConditionalsPage : Page
         FeatureFlagCondition.FeatureFlags["LegacyMode"] = false;
 
         this.InitializeComponent();
-
-        // Reflect the current flag values in each per-sample picker.
-        string activeFlag = FeatureFlagCondition.FeatureFlags["NewExperience"]
-            ? "NewExperience"
-            : "LegacyMode";
-        ElementsModeComboBox.SelectedItem = activeFlag;
-        AttributesModeComboBox.SelectedItem = activeFlag;
-        SettersModeComboBox.SelectedItem = activeFlag;
-    }
-
-    private void OnModeSelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        if (((ComboBox)sender).SelectedItem is not string selected)
-        {
-            return;
-        }
-
-        // Update the flags so that the NEXT time this page (or any page that
-        // uses the same conditions with the same arguments) is parsed, it
-        // sees the new values. The conditional markup already on screen was
-        // resolved at parse time and will not change.
-        FeatureFlagCondition.FeatureFlags["NewExperience"] = selected == "NewExperience";
-        FeatureFlagCondition.FeatureFlags["LegacyMode"] = selected == "LegacyMode";
     }
 }
+
 
 
