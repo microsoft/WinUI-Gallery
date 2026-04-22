@@ -570,6 +570,13 @@
     <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample3_xaml.txt" />
     <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample3_cs.txt" />
     <Content Include="Samples\SampleCode\Text\RichEditBox\RichEditBoxSample6_cs.txt" />
+    <Content Include="Samples\SampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample1_cs.txt" />
+    <Content Include="Samples\SampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample1_xaml.txt" />
+    <Content Include="Samples\SampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample2_cs.txt" />
+    <Content Include="Samples\SampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample2_xaml.txt" />
+    <Content Include="Samples\SampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample3_cs.txt" />
+    <Content Include="Samples\SampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample4_cs.txt" />
+    <Content Include="Samples\SampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample4_xaml.txt" />
   </ItemGroup>
 
   <ItemGroup>

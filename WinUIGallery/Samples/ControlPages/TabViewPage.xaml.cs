@@ -268,7 +268,6 @@ public sealed partial class TabViewPage : Page
         newWindow.Content = tabViewSample;
         newWindow.AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
         tabViewSample.LoadDemoData();
-        tabViewSample.SetupWindowMinSize(newWindow);
 
         newWindow.Activate();
     }

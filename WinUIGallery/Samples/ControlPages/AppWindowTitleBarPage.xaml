@@ -37,36 +37,42 @@
                         <TextBlock Text="BackgroundColor" />
                         <controls:ColorSelector
                             x:Name="Background"
+                            AutomationProperties.Name="BackgroundColor"
                             ColorChanged="Background_ColorChanged"
                             Color="#FFF2F6FA" />
 
                         <TextBlock Text="ForegroundColor" />
                         <controls:ColorSelector
                             x:Name="Foreground"
+                            AutomationProperties.Name="ForegroundColor"
                             ColorChanged="Foreground_ColorChanged"
                             Color="#FF1E2933" />
 
                         <TextBlock Text="ButtonBackgroundColor" />
                         <controls:ColorSelector
                             x:Name="ButtonBackground"
+                            AutomationProperties.Name="ButtonBackgroundColor"
                             ColorChanged="ButtonBackground_ColorChanged"
                             Color="#FF3B82F6" />
 
                         <TextBlock Text="ButtonForegroundColor" />
                         <controls:ColorSelector
                             x:Name="ButtonForeground"
+                            AutomationProperties.Name="ButtonForegroundColor"
                             ColorChanged="ButtonForeground_ColorChanged"
                             Color="#FFFFFFFF" />
 
                         <TextBlock Text="ButtonHoverBackgroundColor" />
                         <controls:ColorSelector
                             x:Name="ButtonHoverBackground"
+                            AutomationProperties.Name="ButtonHoverBackgroundColor"
                             ColorChanged="ButtonHoverBackground_ColorChanged"
                             Color="#FF2563EB" />
 
                         <TextBlock Text="ButtonHoverForegroundColor" />
                         <controls:ColorSelector
                             x:Name="ButtonHoverForeground"
+                            AutomationProperties.Name="ButtonHoverForegroundColor"
                             ColorChanged="ButtonHoverForeground_ColorChanged"
                             Color="#FFFFFFFF" />
                     </StackPanel>
@@ -79,36 +85,42 @@
                         <TextBlock Text="InactiveBackgroundColor" />
                         <controls:ColorSelector
                             x:Name="InactiveBackground"
+                            AutomationProperties.Name="InactiveBackgroundColor"
                             ColorChanged="InactiveBackground_ColorChanged"
                             Color="#FFE5EAF0" />
 
                         <TextBlock Text="InactiveForegroundColor" />
                         <controls:ColorSelector
                             x:Name="InactiveForeground"
+                            AutomationProperties.Name="InactiveForegroundColor"
                             ColorChanged="InactiveForeground_ColorChanged"
                             Color="#FF6B7280" />
 
                         <TextBlock Text="ButtonInactiveBackgroundColor" />
                         <controls:ColorSelector
                             x:Name="ButtonInactiveBackground"
+                            AutomationProperties.Name="ButtonInactiveBackgroundColor"
                             ColorChanged="ButtonInactiveBackground_ColorChanged"
                             Color="#FFCBD5E1" />
 
                         <TextBlock Text="ButtonInactiveForegroundColor" />
                         <controls:ColorSelector
                             x:Name="ButtonInactiveForeground"
+                            AutomationProperties.Name="ButtonInactiveForegroundColor"
                             ColorChanged="ButtonInactiveForeground_ColorChanged"
                             Color="#FF475569" />
 
                         <TextBlock Text="ButtonPressedBackgroundColor" />
                         <controls:ColorSelector
                             x:Name="ButtonPressedBackground"
+                            AutomationProperties.Name="ButtonPressedBackgroundColor"
                             ColorChanged="ButtonPressedBackground_ColorChanged"
                             Color="#FF1D4ED8" />
 
                         <TextBlock Text="ButtonPressedForegroundColor" />
                         <controls:ColorSelector
                             x:Name="ButtonPressedForeground"
+                            AutomationProperties.Name="ButtonPressedForegroundColor"
                             ColorChanged="ButtonPressedForeground_ColorChanged"
                             Color="#FFFFFFFF" />
                     </StackPanel>
