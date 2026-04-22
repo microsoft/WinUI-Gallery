@@ -16,7 +16,7 @@ namespace WinUIGallery.ControlPages;
 // (condition, argument) pair is cached for the lifetime of the process, so
 // changing the underlying flag at runtime will NOT re-evaluate already-parsed
 // XAML. Set the flags before the page is loaded.
-public sealed class FeatureFlagCondition : DependencyObject, IXamlCondition
+public sealed partial class FeatureFlagCondition : DependencyObject, IXamlCondition
 {
     public static IDictionary<string, bool> FeatureFlags { get; } = new Dictionary<string, bool>
     {

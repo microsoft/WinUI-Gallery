@@ -1,0 +1,14 @@
+// Set the feature flag(s) BEFORE InitializeComponent so the XAML
+// parser sees the desired values when it evaluates the conditions.
+// Once the page is parsed the result for each (condition, argument)
+// pair is cached for the lifetime of the process.
+public sealed partial class MyPage : Page
+{
+    public MyPage()
+    {
+        FeatureFlagCondition.FeatureFlags["NewExperience"] = true;
+        FeatureFlagCondition.FeatureFlags["LegacyMode"] = false;
+
+        this.InitializeComponent();
+    }
+}

@@ -564,8 +564,11 @@
     <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_cs.txt" />
     <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_xaml.txt" />
     <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample1_xaml.txt" />
+    <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample1_cs.txt" />
     <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample2_xaml.txt" />
+    <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample2_cs.txt" />
     <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample3_xaml.txt" />
+    <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample3_cs.txt" />
     <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample4_cs.txt" />
     <Content Include="Samples\SampleCode\Text\RichEditBox\RichEditBoxSample6_cs.txt" />
   </ItemGroup>

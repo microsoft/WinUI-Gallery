@@ -9,7 +9,7 @@ namespace WinUIGallery.ControlPages;
 // referencing this type (e.g. "?cond:FeatureFlagCondition(NewExperience)")
 // is encountered. The result for each (condition, argument) pair is
 // cached for the lifetime of the process.
-public sealed class FeatureFlagCondition : DependencyObject, IXamlCondition
+public sealed partial class FeatureFlagCondition : DependencyObject, IXamlCondition
 {
     public static IDictionary<string, bool> FeatureFlags { get; } = new Dictionary<string, bool>
     {
