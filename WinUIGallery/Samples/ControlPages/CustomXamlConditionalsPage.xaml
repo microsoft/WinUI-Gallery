@@ -69,8 +69,6 @@
             </StackPanel>
         </controls:ControlExample>
 
-        <controls:ControlExample HeaderText="The IXamlCondition implementation" CSharpSource="CustomXamlConditionals/CustomXamlConditionalsSample4_cs.txt" />
-
     </StackPanel>
 </Page>
 
