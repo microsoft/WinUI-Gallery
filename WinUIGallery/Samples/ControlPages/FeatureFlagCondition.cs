@@ -22,7 +22,6 @@ public sealed partial class FeatureFlagCondition : DependencyObject, IXamlCondit
     {
         ["NewExperience"] = true,
         ["LegacyMode"] = false,
-        ["BetaFeature"] = true,
     };
 
     public bool Evaluate(string argument)

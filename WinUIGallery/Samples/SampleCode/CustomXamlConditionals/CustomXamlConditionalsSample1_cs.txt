@@ -1,7 +1,9 @@
-// Set the feature flag(s) BEFORE InitializeComponent so the XAML
-// parser sees the desired values when it evaluates the conditions.
-// Once the page is parsed the result for each (condition, argument)
-// pair is cached for the lifetime of the process.
+// Set the active feature flag(s) BEFORE InitializeComponent so the
+// XAML parser sees them when it evaluates the conditional elements.
+// The result for each (condition, argument) pair is then cached for
+// the lifetime of the process - changing a flag later does NOT
+// re-render markup that was already parsed. Re-navigate to the page
+// to see the new state.
 public sealed partial class MyPage : Page
 {
     public MyPage()
@@ -11,4 +13,12 @@ public sealed partial class MyPage : Page
 
         this.InitializeComponent();
     }
+
+    private void OnModeSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        string selected = (string)((ComboBox)sender).SelectedItem;
+        FeatureFlagCondition.FeatureFlags["NewExperience"] = selected == "NewExperience";
+        FeatureFlagCondition.FeatureFlags["LegacyMode"] = selected == "LegacyMode";
+    }
 }
+

@@ -17,7 +17,6 @@
     xmlns:cond="using:WinUIGallery.ControlPages"
     xmlns:newExp="http://schemas.microsoft.com/winfx/2006/xaml/presentation?cond:FeatureFlagCondition(NewExperience)"
     xmlns:legacy="http://schemas.microsoft.com/winfx/2006/xaml/presentation?cond:FeatureFlagCondition(LegacyMode)"
-    xmlns:beta="http://schemas.microsoft.com/winfx/2006/xaml/presentation?cond:FeatureFlagCondition(BetaFeature)"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -27,7 +26,7 @@
             Title="Parse-time evaluation"
             IsClosable="False"
             IsOpen="True"
-            Message="Custom XAML conditions are evaluated by the XAML parser when the page is loaded, and the result for each (condition, argument) pair is cached for the lifetime of the process. Set your flags BEFORE the page is parsed; toggling them at runtime will not re-evaluate already-parsed markup."
+            Message="Custom XAML conditions are evaluated by the XAML parser when the page is loaded, and the result for each (condition, argument) pair is cached for the lifetime of the process. The Options below set the flags so the next page that gets parsed sees the new values - re-navigate to this sample to see the effect."
             Severity="Informational" />
 
         <controls:ControlExample HeaderText="Conditional elements" XamlSource="CustomXamlConditionals/CustomXamlConditionalsSample1_xaml.txt" CSharpSource="CustomXamlConditionals/CustomXamlConditionalsSample1_cs.txt">
@@ -36,35 +35,47 @@
                     Title="New experience"
                     IsClosable="False"
                     IsOpen="True"
-                    Message="This InfoBar is included because the 'NewExperience' flag is true."
+                    Message="This InfoBar is included because the 'NewExperience' flag was true when the page was parsed."
                     Severity="Success" />
                 <legacy:InfoBar
                     Title="Legacy mode"
                     IsClosable="False"
                     IsOpen="True"
-                    Message="This InfoBar is included because the 'LegacyMode' flag is true."
+                    Message="This InfoBar is included because the 'LegacyMode' flag was true when the page was parsed."
                     Severity="Warning" />
-                <TextBlock
-                    FontStyle="Italic"
-                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                    Text="(Only the InfoBars whose condition evaluates to true are present in the visual tree.)"
-                    TextWrapping="Wrap" />
             </StackPanel>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Active flag" />
+                    <ComboBox
+                        x:Name="ElementsModeComboBox"
+                        AutomationProperties.Name="Active flag"
+                        SelectionChanged="OnModeSelectionChanged">
+                        <x:String>NewExperience</x:String>
+                        <x:String>LegacyMode</x:String>
+                    </ComboBox>
+                </StackPanel>
+            </controls:ControlExample.Options>
         </controls:ControlExample>
 
         <controls:ControlExample HeaderText="Conditional attributes" XamlSource="CustomXamlConditionals/CustomXamlConditionalsSample2_xaml.txt" CSharpSource="CustomXamlConditionals/CustomXamlConditionalsSample2_cs.txt">
-            <StackPanel Spacing="8">
-                <Button
-                    newExp:Background="{ThemeResource SystemFillColorSuccessBrush}"
-                    legacy:Background="{ThemeResource SystemFillColorCautionBrush}"
-                    Content="Background depends on the active flag"
-                    Foreground="White" />
-                <TextBlock
-                    FontStyle="Italic"
-                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                    Text="At most one condition on a given attribute may evaluate to true. If multiple are true at the same time, the parser throws."
-                    TextWrapping="Wrap" />
-            </StackPanel>
+            <Button
+                newExp:Background="{ThemeResource SystemFillColorSuccessBrush}"
+                legacy:Background="{ThemeResource SystemFillColorCautionBrush}"
+                Content="Background depends on the active flag"
+                Foreground="White" />
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Active flag" />
+                    <ComboBox
+                        x:Name="AttributesModeComboBox"
+                        AutomationProperties.Name="Active flag"
+                        SelectionChanged="OnModeSelectionChanged">
+                        <x:String>NewExperience</x:String>
+                        <x:String>LegacyMode</x:String>
+                    </ComboBox>
+                </StackPanel>
+            </controls:ControlExample.Options>
         </controls:ControlExample>
 
         <controls:ControlExample HeaderText="Conditional Setters in a Style" XamlSource="CustomXamlConditionals/CustomXamlConditionalsSample3_xaml.txt" CSharpSource="CustomXamlConditionals/CustomXamlConditionalsSample3_cs.txt">
@@ -80,76 +91,22 @@
                 </StackPanel.Resources>
                 <Button Content="Styled with conditional Setters" Style="{StaticResource ConditionalButtonStyle}" />
             </StackPanel>
-        </controls:ControlExample>
-
-        <controls:ControlExample HeaderText="Live flag value vs. what the parser cached">
-            <StackPanel Spacing="12">
-                <TextBlock
-                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                    Text="Toggle a flag below and notice that the conditional sections above do NOT change. The XAML parser ran when this page was created, evaluated each (condition, argument) pair once, and cached the result for the lifetime of the process."
-                    TextWrapping="Wrap" />
-
-                <Grid ColumnSpacing="16" RowSpacing="8">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Flag" FontWeight="SemiBold" />
-                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Live value" FontWeight="SemiBold" />
-                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Value the parser saw" FontWeight="SemiBold" />
-
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="NewExperience" VerticalAlignment="Center" />
-                    <ToggleSwitch
-                        x:Name="NewExperienceToggle"
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        OffContent="Off"
-                        OnContent="On"
-                        Toggled="OnFlagToggled"
-                        Tag="NewExperience" />
-                    <TextBlock x:Name="NewExperienceCached" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" />
-
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="LegacyMode" VerticalAlignment="Center" />
-                    <ToggleSwitch
-                        x:Name="LegacyModeToggle"
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        OffContent="Off"
-                        OnContent="On"
-                        Toggled="OnFlagToggled"
-                        Tag="LegacyMode" />
-                    <TextBlock x:Name="LegacyModeCached" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" />
-
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="BetaFeature" VerticalAlignment="Center" />
-                    <ToggleSwitch
-                        x:Name="BetaFeatureToggle"
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        OffContent="Off"
-                        OnContent="On"
-                        Toggled="OnFlagToggled"
-                        Tag="BetaFeature" />
-                    <TextBlock x:Name="BetaFeatureCached" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" />
-                </Grid>
-
-                <InfoBar
-                    Title="Why doesn't toggling change the examples above?"
-                    IsClosable="False"
-                    IsOpen="True"
-                    Message="IXamlCondition is intended for parse-time decisions like feature flags or device capabilities. For values that change while the page is shown, bind a Visibility, Style, or property instead."
-                    Severity="Informational" />
-            </StackPanel>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="4">
+                    <TextBlock Text="Active flag" />
+                    <ComboBox
+                        x:Name="SettersModeComboBox"
+                        AutomationProperties.Name="Active flag"
+                        SelectionChanged="OnModeSelectionChanged">
+                        <x:String>NewExperience</x:String>
+                        <x:String>LegacyMode</x:String>
+                    </ComboBox>
+                </StackPanel>
+            </controls:ControlExample.Options>
         </controls:ControlExample>
 
         <controls:ControlExample HeaderText="The IXamlCondition implementation" CSharpSource="CustomXamlConditionals/CustomXamlConditionalsSample4_cs.txt" />
 
     </StackPanel>
 </Page>
+
