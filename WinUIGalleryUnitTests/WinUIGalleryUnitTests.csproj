@@ -13,6 +13,7 @@
     <EnableMsixTooling>true</EnableMsixTooling>
     <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
     <SelfContained>true</SelfContained>
+    <NoWarn>$(NoWarn);NU1605</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,11 +33,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
+    <PackageReference Include="Microsoft.WindowsAppSDK.WinUI" Version="$(WinUIVersion)" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$(MicrosoftWindowsSDKBuildToolsNugetPackageVersion)" />
-    <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
-    <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="17.7.2">
+    <PackageReference Include="MSTest.TestAdapter" Version="3.10.4" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.10.4" />
+    <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="17.14.1">
       <ExcludeAssets>build</ExcludeAssets>
     </PackageReference>
     <Manifest Include="$(ApplicationManifest)" />

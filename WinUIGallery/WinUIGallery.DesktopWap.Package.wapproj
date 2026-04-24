@@ -45,6 +45,9 @@
     <EntryPointProjectUniqueName>WinUIGallery.csproj</EntryPointProjectUniqueName>
     <AppxBundleNameForOutput>WinUIGallery.DesktopWap</AppxBundleNameForOutput>
   </PropertyGroup>
+  <PropertyGroup>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(IsInWinUIRepo)' == 'true'">
     <PackageCertificateKeyFile>$(ProjectRoot)build\MSTest.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
@@ -93,8 +96,8 @@
       <PublishProfile>Properties\PublishProfiles\win-$(Platform).pubxml</PublishProfile>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup Condition="'$(WindowsAppSdkPackageVersion)' != ''">
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="[$(WindowsAppSdkPackageVersion)]" GeneratePathProperty="true">
+  <ItemGroup Condition="'$(WinUIVersion)' != ''">
+    <PackageReference Include="Microsoft.WindowsAppSDK.WinUI" Version="[$(WinUIVersion)]" GeneratePathProperty="true">
       <IncludeAssets>build</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="[$(MicrosoftWindowsSDKBuildToolsNugetPackageVersion)]">
