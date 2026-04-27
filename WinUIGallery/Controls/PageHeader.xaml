@@ -260,18 +260,6 @@
                         </TeachingTip>
                     </local:CopyButton.Resources>
                 </local:CopyButton>
-                <Button
-                    x:Name="FeedbackBtn"
-                    Height="32"
-                    Margin="0,0,4,0"
-                    AutomationProperties.Name="Send feedback"
-                    Click="OnFeedBackButtonClick"
-                    ToolTipService.ToolTip="Send feedback">
-                    <Button.Content>
-                        <FontIcon FontSize="16" Glyph="&#xED15;" />
-                    </Button.Content>
-                </Button>
-                <AppBarSeparator />
                 <ToggleButton
                     x:Name="FavoriteButton"
                     Height="32"
