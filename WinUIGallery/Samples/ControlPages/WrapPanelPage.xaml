@@ -29,34 +29,34 @@
                 <WrapPanel.Resources>
                     <Style TargetType="Rectangle">
                         <Setter Property="Height" Value="40" />
-                        <Setter Property="Width" Value="40" />
                     </Style>
                 </WrapPanel.Resources>
-                <Rectangle Fill="Red" />
-                <Rectangle Fill="Blue" />
-                <Rectangle Fill="Green" />
-                <Rectangle Fill="Yellow" />
-                <Rectangle Fill="Orange" />
-                <Rectangle Fill="Purple" />
-                <Rectangle Fill="Teal" />
-                <Rectangle Fill="Salmon" />
-                <Rectangle Fill="CornflowerBlue" />
-                <Rectangle Fill="Crimson" />
-                <Rectangle Fill="DodgerBlue" />
-                <Rectangle Fill="ForestGreen" />
-                <Rectangle Fill="Gold" />
-                <Rectangle Fill="HotPink" />
-                <Rectangle Fill="Indigo" />
-                <Rectangle Fill="Khaki" />
-                <Rectangle Fill="LimeGreen" />
-                <Rectangle Fill="Maroon" />
-                <Rectangle Fill="Navy" />
-                <Rectangle Fill="Olive" />
-                <Rectangle Fill="Plum" />
-                <Rectangle Fill="RosyBrown" />
-                <Rectangle Fill="SlateBlue" />
-                <Rectangle Fill="Tomato" />
-                <Rectangle Fill="Violet" />
+                <!--  Items have varying widths to highlight that WrapPanel sizes each child to its desired size, unlike GridView which uses uniform item sizes.  -->
+                <Rectangle Width="60" Fill="Red" />
+                <Rectangle Width="100" Fill="Blue" />
+                <Rectangle Width="40" Fill="Green" />
+                <Rectangle Width="80" Fill="Yellow" />
+                <Rectangle Width="120" Fill="Orange" />
+                <Rectangle Width="50" Fill="Purple" />
+                <Rectangle Width="90" Fill="Teal" />
+                <Rectangle Width="70" Fill="Salmon" />
+                <Rectangle Width="110" Fill="CornflowerBlue" />
+                <Rectangle Width="45" Fill="Crimson" />
+                <Rectangle Width="85" Fill="DodgerBlue" />
+                <Rectangle Width="65" Fill="ForestGreen" />
+                <Rectangle Width="100" Fill="Gold" />
+                <Rectangle Width="55" Fill="HotPink" />
+                <Rectangle Width="95" Fill="Indigo" />
+                <Rectangle Width="75" Fill="Khaki" />
+                <Rectangle Width="115" Fill="LimeGreen" />
+                <Rectangle Width="50" Fill="Maroon" />
+                <Rectangle Width="80" Fill="Navy" />
+                <Rectangle Width="60" Fill="Olive" />
+                <Rectangle Width="105" Fill="Plum" />
+                <Rectangle Width="70" Fill="RosyBrown" />
+                <Rectangle Width="90" Fill="SlateBlue" />
+                <Rectangle Width="55" Fill="Tomato" />
+                <Rectangle Width="85" Fill="Violet" />
             </WrapPanel>
 
             <controls:ControlExample.Options>

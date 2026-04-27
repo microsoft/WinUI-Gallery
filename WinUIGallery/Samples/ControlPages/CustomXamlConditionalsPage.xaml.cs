@@ -12,9 +12,12 @@ public sealed partial class CustomXamlConditionalsPage : Page
         // Feature flags must be set before InitializeComponent so the XAML
         // parser sees the desired values when it evaluates the conditions.
         // The result for each (condition, argument) pair is then cached for
-        // the lifetime of the process.
-        FeatureFlagCondition.FeatureFlags["NewExperience"] = true;
-        FeatureFlagCondition.FeatureFlags["LegacyMode"] = false;
+        // the lifetime of the process. The defaults declared on
+        // FeatureFlagCondition.FeatureFlags are used here, but the same
+        // dictionary can be updated to flip the active variant, e.g.:
+        //
+        //     FeatureFlagCondition.FeatureFlags["NewExperience"] = false;
+        //     FeatureFlagCondition.FeatureFlags["LegacyMode"] = true;
 
         this.InitializeComponent();
     }
