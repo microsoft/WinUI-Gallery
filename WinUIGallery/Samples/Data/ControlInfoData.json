@@ -27,6 +27,11 @@
               "Title": "XAML theme resources",
               "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-theme-resources"
             }
+          ],
+          "RelatedControls": [
+            "XamlStyles",
+            "Templates",
+            "Binding"
           ]
         },
         {
@@ -50,6 +55,11 @@
               "Title": "XAML styles",
               "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-styles"
             }
+          ],
+          "RelatedControls": [
+            "XamlResources",
+            "Templates",
+            "Binding"
           ]
         },
         {
@@ -80,6 +90,11 @@
               "Title": "IValueConverter Interface - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.ivalueconverter"
             }
+          ],
+          "RelatedControls": [
+            "XamlResources",
+            "XamlStyles",
+            "Templates"
           ]
         },
         {
@@ -112,6 +127,11 @@
               "Title": "ItemsPanelTemplate - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemspaneltemplate"
             }
+          ],
+          "RelatedControls": [
+            "Binding",
+            "XamlStyles",
+            "CustomUserControls"
           ]
         },
         {
@@ -141,6 +161,10 @@
               "Title": "UserControl - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.usercontrol"
             }
+          ],
+          "RelatedControls": [
+            "Templates",
+            "XamlStyles"
           ]
         },
         {
@@ -404,6 +428,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/command-bar"
             }
+          ],
+          "RelatedControls": [
+            "AppBarToggleButton",
+            "AppBarSeparator",
+            "CommandBar"
           ]
         },
         {
@@ -430,6 +459,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/command-bar"
             }
+          ],
+          "RelatedControls": [
+            "AppBarButton",
+            "AppBarToggleButton",
+            "CommandBar"
           ]
         },
         {
@@ -475,6 +509,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/command-bar"
             }
+          ],
+          "RelatedControls": [
+            "AppBarButton",
+            "AppBarSeparator",
+            "CommandBar"
           ]
         },
         {
@@ -503,6 +542,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/command-bar"
             }
+          ],
+          "RelatedControls": [
+            "AppBarButton",
+            "AppBarToggleButton",
+            "AppBarSeparator"
           ]
         },
         {
@@ -527,6 +571,14 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/command-bar-flyout"
             }
+          ],
+          "RelatedControls": [
+            "CommandBar",
+            "MenuFlyout",
+            "RichEditBox",
+            "TextBox",
+            "StandardUICommand",
+            "XamlUICommand"
           ]
         },
         {
@@ -553,6 +605,12 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/menus"
             }
+          ],
+          "RelatedControls": [
+            "CommandBar",
+            "MenuFlyout",
+            "StandardUICommand",
+            "XamlUICommand"
           ]
         },
         {
@@ -597,6 +655,12 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/menus"
             }
+          ],
+          "RelatedControls": [
+            "Flyout",
+            "ContentDialog",
+            "Button",
+            "AppBarButton"
           ]
         },
         {
@@ -631,6 +695,10 @@
               "Title": "Gesture Actions",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/collection-commanding"
             }
+          ],
+          "RelatedControls": [
+            "GridView",
+            "ListView"
           ]
         },
         {
@@ -654,6 +722,12 @@
               "Title": "StandardUICommand - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.input.standarduicommand"
             }
+          ],
+          "RelatedControls": [
+            "XamlUICommand",
+            "AppBarButton",
+            "AppBarToggleButton",
+            "CommandBar"
           ]
         },
         {
@@ -676,6 +750,12 @@
               "Title": "XamlUICommand - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.input.xamluicommand"
             }
+          ],
+          "RelatedControls": [
+            "StandardUICommand",
+            "AppBarButton",
+            "AppBarToggleButton",
+            "CommandBar"
           ]
         }
       ]
@@ -711,6 +791,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/flipview"
             }
+          ],
+          "RelatedControls": [
+            "GridView",
+            "ListView",
+            "SemanticZoom"
           ]
         },
         {
@@ -740,6 +825,12 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/lists"
             }
+          ],
+          "RelatedControls": [
+            "ItemsView",
+            "ListView",
+            "FlipView",
+            "SemanticZoom"
           ]
         },
         {
@@ -772,6 +863,13 @@
               "Title": "UniformGridLayout - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.uniformgridlayout"
             }
+          ],
+          "RelatedControls": [
+            "ItemsView",
+            "ScrollView",
+            "ScrollViewer",
+            "ListView",
+            "GridView"
           ]
         },
         {
@@ -798,6 +896,13 @@
               "Title": "CollectionViewSource - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Data.CollectionViewSource"
             }
+          ],
+          "RelatedControls": [
+            "AnnotatedScrollBar",
+            "ItemsRepeater",
+            "ListView",
+            "GridView",
+            "ScrollView"
           ]
         },
         {
@@ -826,6 +931,12 @@
               "Title": "ListBoxItem - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.listboxitem"
             }
+          ],
+          "RelatedControls": [
+            "ComboBox",
+            "RadioButton",
+            "CheckBox",
+            "AutoSuggestBox"
           ]
         },
         {
@@ -875,6 +986,13 @@
               "Title": "Inverted Lists - Full Sample",
               "Uri": "https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/XamlBottomUpList"
             }
+          ],
+          "RelatedControls": [
+            "ItemsView",
+            "GridView",
+            "StandardUICommand",
+            "FlipView",
+            "SemanticZoom"
           ]
         },
         {
@@ -898,6 +1016,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/pull-to-refresh"
             }
+          ],
+          "RelatedControls": [
+            "ScrollView",
+            "ScrollViewer",
+            "ListView"
           ]
         },
         {
@@ -924,6 +1047,10 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/tree-view"
             }
+          ],
+          "RelatedControls": [
+            "ListView",
+            "ItemsRepeater"
           ]
         }
       ]
@@ -957,6 +1084,10 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/calendar-date-picker"
             }
+          ],
+          "RelatedControls": [
+            "DatePicker",
+            "CalendarView"
           ]
         },
         {
@@ -983,6 +1114,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/calendar-view"
             }
+          ],
+          "RelatedControls": [
+            "CalendarDatePicker",
+            "DatePicker",
+            "TimePicker"
           ]
         },
         {
@@ -1009,6 +1145,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/date-picker"
             }
+          ],
+          "RelatedControls": [
+            "CalendarDatePicker",
+            "CalendarView",
+            "TimePicker"
           ]
         },
         {
@@ -1035,6 +1176,10 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/time-picker"
             }
+          ],
+          "RelatedControls": [
+            "DatePicker",
+            "CalendarView"
           ]
         }
       ]
@@ -1070,6 +1215,12 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/buttons"
             }
+          ],
+          "RelatedControls": [
+            "ToggleButton",
+            "RepeatButton",
+            "HyperlinkButton",
+            "AppBarButton"
           ]
         },
         {
@@ -1099,6 +1250,15 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/buttons"
             }
+          ],
+          "RelatedControls": [
+            "SplitButton",
+            "ToggleSplitButton",
+            "ToggleButton",
+            "RepeatButton",
+            "HyperlinkButton",
+            "AppBarButton",
+            "CommandBar"
           ]
         },
         {
@@ -1127,6 +1287,12 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/hyperlinks"
             }
+          ],
+          "RelatedControls": [
+            "Button",
+            "ToggleButton",
+            "RepeatButton",
+            "AppBarButton"
           ]
         },
         {
@@ -1155,6 +1321,12 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/buttons"
             }
+          ],
+          "RelatedControls": [
+            "Button",
+            "ToggleButton",
+            "HyperlinkButton",
+            "AppBarButton"
           ]
         },
         {
@@ -1183,6 +1355,14 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/buttons#create-a-toggle-split-button"
             }
+          ],
+          "RelatedControls": [
+            "Button",
+            "AppBarToggleButton",
+            "ToggleSwitch",
+            "CheckBox",
+            "CommandBarFlyout",
+            "CommandBar"
           ]
         },
         {
@@ -1210,6 +1390,13 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/buttons#create-a-split-button"
             }
+          ],
+          "RelatedControls": [
+            "Button",
+            "DropDownButton",
+            "ToggleSplitButton",
+            "AppBarButton",
+            "CommandBar"
           ]
         },
         {
@@ -1238,6 +1425,14 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/buttons"
             }
+          ],
+          "RelatedControls": [
+            "SplitButton",
+            "DropDownButton",
+            "Button",
+            "ToggleButton",
+            "ToggleSwitch",
+            "CheckBox"
           ]
         },
         {
@@ -1267,6 +1462,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/checkbox"
             }
+          ],
+          "RelatedControls": [
+            "RadioButton",
+            "ToggleSwitch",
+            "ToggleButton"
           ]
         },
         {
@@ -1293,6 +1493,9 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/color-picker"
             }
+          ],
+          "RelatedControls": [
+            "ComboBox"
           ]
         },
         {
@@ -1325,6 +1528,14 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/combo-box"
             }
+          ],
+          "RelatedControls": [
+            "ListBox",
+            "RadioButton",
+            "CheckBox",
+            "ListView",
+            "AutoSuggestBox",
+            "RatingControl"
           ]
         },
         {
@@ -1358,6 +1569,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/radio-button"
             }
+          ],
+          "RelatedControls": [
+            "CheckBox",
+            "ToggleSwitch",
+            "ToggleButton"
           ]
         },
         {
@@ -1384,6 +1600,10 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/rating"
             }
+          ],
+          "RelatedControls": [
+            "Slider",
+            "ComboBox"
           ]
         },
         {
@@ -1411,6 +1631,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/slider"
             }
+          ],
+          "RelatedControls": [
+            "ComboBox",
+            "ListBox",
+            "RatingControl"
           ]
         },
         {
@@ -1437,6 +1662,12 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/toggles"
             }
+          ],
+          "RelatedControls": [
+            "ToggleButton",
+            "RadioButton",
+            "CheckBox",
+            "AppBarToggleButton"
           ]
         }
       ]
@@ -1470,6 +1701,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/info-badge"
             }
+          ],
+          "RelatedControls": [
+            "InfoBar",
+            "TeachingTip",
+            "BadgeNotificationManager"
           ]
         },
         {
@@ -1496,6 +1732,10 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/infobar"
             }
+          ],
+          "RelatedControls": [
+            "TeachingTip",
+            "ContentDialog"
           ]
         },
         {
@@ -1523,6 +1763,9 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/progress-controls"
             }
+          ],
+          "RelatedControls": [
+            "ProgressRing"
           ]
         },
         {
@@ -1549,6 +1792,9 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/progress-controls"
             }
+          ],
+          "RelatedControls": [
+            "ProgressBar"
           ]
         },
         {
@@ -1576,6 +1822,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/tooltips"
             }
+          ],
+          "RelatedControls": [
+            "TeachingTip",
+            "Flyout",
+            "ContentDialog"
           ]
         }
       ]
@@ -1610,6 +1861,12 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/dialogs"
             }
+          ],
+          "RelatedControls": [
+            "Flyout",
+            "MenuFlyout",
+            "TeachingTip",
+            "ToolTip"
           ]
         },
         {
@@ -1634,6 +1891,13 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts"
             }
+          ],
+          "RelatedControls": [
+            "TeachingTip",
+            "ContentDialog",
+            "MenuFlyout",
+            "Button",
+            "AppBarButton"
           ]
         },
         {
@@ -1655,6 +1919,9 @@
               "Title": "Popup - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.primitives.popup"
             }
+          ],
+          "RelatedControls": [
+            "ContentDialog"
           ]
         },
         {
@@ -1682,6 +1949,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/teaching-tip"
             }
+          ],
+          "RelatedControls": [
+            "ContentDialog",
+            "Flyout",
+            "ToolTip"
           ]
         }
       ]
@@ -1711,6 +1983,10 @@
               "Title": "AnnotatedScrollBar - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.annotatedscrollbar"
             }
+          ],
+          "RelatedControls": [
+            "ItemsView",
+            "ScrollView"
           ]
         },
         {
@@ -1737,6 +2013,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/pipspager"
             }
+          ],
+          "RelatedControls": [
+            "ScrollViewer",
+            "FlipView",
+            "ItemsRepeater"
           ]
         },
         {
@@ -1763,6 +2044,16 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/scroll-controls"
             }
+          ],
+          "RelatedControls": [
+            "Viewbox",
+            "Canvas",
+            "Grid",
+            "StackPanel",
+            "RelativePanel",
+            "ParallaxView",
+            "ItemsView",
+            "ScrollViewer"
           ]
         },
         {
@@ -1790,6 +2081,15 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/scroll-controls"
             }
+          ],
+          "RelatedControls": [
+            "Viewbox",
+            "Canvas",
+            "Grid",
+            "StackPanel",
+            "RelativePanel",
+            "ParallaxView",
+            "ScrollView"
           ]
         },
         {
@@ -1815,6 +2115,10 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/semantic-zoom"
             }
+          ],
+          "RelatedControls": [
+            "GridView",
+            "ListView"
           ]
         }
       ]
@@ -1842,6 +2146,13 @@
               "Title": "Border - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.border"
             }
+          ],
+          "RelatedControls": [
+            "Canvas",
+            "Grid",
+            "StackPanel",
+            "VariableSizedWrapGrid",
+            "RelativePanel"
           ]
         },
         {
@@ -1867,6 +2178,13 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/layout/layout-panels"
             }
+          ],
+          "RelatedControls": [
+            "Border",
+            "Grid",
+            "StackPanel",
+            "VariableSizedWrapGrid",
+            "RelativePanel"
           ]
         },
         {
@@ -1894,6 +2212,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/expander"
             }
+          ],
+          "RelatedControls": [
+            "Flyout",
+            "ItemsRepeater",
+            "SplitView"
           ]
         },
         {
@@ -1923,6 +2246,13 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/layout/layout-panels#grid"
             }
+          ],
+          "RelatedControls": [
+            "Border",
+            "Canvas",
+            "StackPanel",
+            "VariableSizedWrapGrid",
+            "RelativePanel"
           ]
         },
 
@@ -1949,6 +2279,13 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/layout/layout-panels"
             }
+          ],
+          "RelatedControls": [
+            "Grid",
+            "StackPanel",
+            "Border",
+            "Canvas",
+            "Viewbox"
           ]
         },
         {
@@ -1975,6 +2312,13 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/split-view"
             }
+          ],
+          "RelatedControls": [
+            "StackPanel",
+            "ListView",
+            "GridView",
+            "Grid",
+            "RelativePanel"
           ]
         },
         {
@@ -2000,6 +2344,13 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/layout/layout-panels"
             }
+          ],
+          "RelatedControls": [
+            "Border",
+            "Canvas",
+            "Grid",
+            "VariableSizedWrapGrid",
+            "RelativePanel"
           ]
         },
         {
@@ -2025,6 +2376,13 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/layout/layout-panels"
             }
+          ],
+          "RelatedControls": [
+            "Border",
+            "Canvas",
+            "Grid",
+            "StackPanel",
+            "RelativePanel"
           ]
         },
         {
@@ -2045,6 +2403,13 @@
               "Title": "Viewbox - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.Viewbox"
             }
+          ],
+          "RelatedControls": [
+            "ScrollViewer",
+            "Canvas",
+            "Grid",
+            "StackPanel",
+            "RelativePanel"
           ]
         }
       ]
@@ -2078,6 +2443,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/breadcrumbbar"
             }
+          ],
+          "RelatedControls": [
+            "NavigationView",
+            "Pivot",
+            "TabView"
           ]
         },
         {
@@ -2105,6 +2475,10 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/navigationview"
             }
+          ],
+          "RelatedControls": [
+            "SplitView",
+            "Pivot"
           ]
         },
         {
@@ -2132,6 +2506,9 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/pivot"
             }
+          ],
+          "RelatedControls": [
+            "SelectorBar"
           ]
         },
         {
@@ -2159,6 +2536,11 @@
               "Title": "SelectorBarItem - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.selectorbaritem"
             }
+          ],
+          "RelatedControls": [
+            "NavigationView",
+            "PipsPager",
+            "Pivot"
           ]
         },
         {
@@ -2190,6 +2572,11 @@
               "Title": "Show multiple views for an app",
               "Uri": "https://learn.microsoft.com/windows/apps/design/layout/show-multiple-views"
             }
+          ],
+          "RelatedControls": [
+            "Pivot",
+            "NavigationView",
+            "ListView"
           ]
         }
       ]
@@ -2234,6 +2621,9 @@
               "Title": "Lottie Windows - GitHub",
               "Uri": "https://github.com/CommunityToolkit/Lottie-Windows"
             }
+          ],
+          "RelatedControls": [
+            "AnimatedIcon"
           ]
         },
         {
@@ -2248,6 +2638,10 @@
               "Title": "MediaCapture - API",
               "Uri": "https://learn.microsoft.com/uwp/api/windows.media.capture.mediacapture"
             }
+          ],
+          "RelatedControls": [
+            "MediaPlayerElement",
+            "Image"
           ]
         },
         {
@@ -2272,6 +2666,10 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/images-imagebrushes"
             }
+          ],
+          "RelatedControls": [
+            "MediaPlayerElement",
+            "PersonPicture"
           ]
         },
         {
@@ -2319,6 +2717,10 @@
               "Title": "Media Playback",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/media-playback"
             }
+          ],
+          "RelatedControls": [
+            "Image",
+            "CaptureElementPreview"
           ]
         },
         {
@@ -2345,6 +2747,9 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/person-picture"
             }
+          ],
+          "RelatedControls": [
+            "Image"
           ]
         },
         {
@@ -2419,6 +2824,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/style/acrylic"
             }
+          ],
+          "RelatedControls": [
+            "SystemBackdrops",
+            "RadialGradientBrush",
+            "ThemeShadow"
           ]
         },
         {
@@ -2453,6 +2863,10 @@
               "Title": "Lottie Windows - GitHub",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.animatedvisualplayer"
             }
+          ],
+          "RelatedControls": [
+            "AnimatedVisualPlayer",
+            "IconElement"
           ]
         },
         {
@@ -2508,6 +2922,10 @@
               "Title": "Icon Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/style/icons"
             }
+          ],
+          "RelatedControls": [
+            "AnimatedIcon",
+            "AppBarButton"
           ]
         },
         {
@@ -2533,6 +2951,9 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/previous-versions/windows/apps/hh465055(v=win.10)"
             }
+          ],
+          "RelatedControls": [
+            "Shape"
           ]
         },
         {
@@ -2557,6 +2978,9 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/previous-versions/windows/apps/hh465055(v=win.10)"
             }
+          ],
+          "RelatedControls": [
+            "Line"
           ]
         },
         {
@@ -2577,6 +3001,9 @@
               "Title": "RadialGradientBrush - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.RadialGradientBrush"
             }
+          ],
+          "RelatedControls": [
+            "Acrylic"
           ]
         },
         {
@@ -2612,6 +3039,9 @@
               "Title": "DesktopAcrylicController - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.systembackdrops.desktopacryliccontroller"
             }
+          ],
+          "RelatedControls": [
+            "Acrylic"
           ]
         },
         {
@@ -2636,6 +3066,9 @@
               "Title": "ThemeShadow - API",
               "Uri": "https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.themeshadow"
             }
+          ],
+          "RelatedControls": [
+            "Acrylic"
           ]
         }
       ]
@@ -2670,6 +3103,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/auto-suggest-box"
             }
+          ],
+          "RelatedControls": [
+            "ListBox",
+            "ComboBox",
+            "TextBox"
           ]
         },
         {
@@ -2696,6 +3134,12 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/number-box"
             }
+          ],
+          "RelatedControls": [
+            "TextBox",
+            "TextBlock",
+            "RichTextBlock",
+            "RichEditBox"
           ]
         },
         {
@@ -2722,6 +3166,12 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/text-controls"
             }
+          ],
+          "RelatedControls": [
+            "TextBox",
+            "TextBlock",
+            "RichTextBlock",
+            "RichEditBox"
           ]
         },
         {
@@ -2749,6 +3199,12 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/text-controls"
             }
+          ],
+          "RelatedControls": [
+            "NumberBox",
+            "TextBox",
+            "RichTextBlock",
+            "TextBlock"
           ]
         },
         {
@@ -2773,6 +3229,13 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/text-controls"
             }
+          ],
+          "RelatedControls": [
+            "NumberBox",
+            "TextBlock",
+            "TextBox",
+            "PasswordBox",
+            "RichEditBox"
           ]
         },
         {
@@ -2798,6 +3261,13 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/text-controls"
             }
+          ],
+          "RelatedControls": [
+            "NumberBox",
+            "TextBox",
+            "RichTextBlock",
+            "PasswordBox",
+            "RichEditBox"
           ]
         },
         {
@@ -2824,6 +3294,14 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/controls/text-controls"
             }
+          ],
+          "RelatedControls": [
+            "NumberBox",
+            "TextBlock",
+            "RichTextBlock",
+            "PasswordBox",
+            "RichEditBox",
+            "AutoSuggestBox"
           ]
         }
       ]
@@ -2852,6 +3330,9 @@
               "Title": "Guidelines - Xaml Property Animations",
               "Uri": "https://learn.microsoft.com/windows/apps/design/motion/xaml-property-animations"
             }
+          ],
+          "RelatedControls": [
+            "EasingFunction"
           ]
         },
         {
@@ -2881,6 +3362,10 @@
               "Title": "Quickstart: Motion",
               "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
             }
+          ],
+          "RelatedControls": [
+            "PageTransition",
+            "ThemeTransition"
           ]
         },
         {
@@ -2903,6 +3388,11 @@
               "Title": "Quickstart: Motion",
               "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
             }
+          ],
+          "RelatedControls": [
+            "ConnectedAnimation",
+            "PageTransition",
+            "ThemeTransition"
           ]
         },
         {
@@ -2925,6 +3415,10 @@
               "Title": "Quickstart: Motion",
               "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
             }
+          ],
+          "RelatedControls": [
+            "PageTransition",
+            "ThemeTransition"
           ]
         },
         {
@@ -2947,6 +3441,10 @@
               "Title": "Quickstart: Motion",
               "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
             }
+          ],
+          "RelatedControls": [
+            "ConnectedAnimation",
+            "ThemeTransition"
           ]
         },
         {
@@ -2969,6 +3467,10 @@
               "Title": "Quickstart: Motion",
               "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
             }
+          ],
+          "RelatedControls": [
+            "ImplicitTransition",
+            "PageTransition"
           ]
         },
         {
@@ -2994,6 +3496,10 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/motion/parallax"
             }
+          ],
+          "RelatedControls": [
+            "ScrollView",
+            "ScrollViewer"
           ]
         }
       ]
@@ -3039,6 +3545,11 @@
               "Title": "CompactOverlayPresenter - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.compactoverlaypresenter"
             }
+          ],
+          "RelatedControls": [
+            "AppWindowTitleBar",
+            "TitleBar",
+            "CreateMultipleWindows"
           ]
         },
         {
@@ -3060,6 +3571,10 @@
               "Title": "Customize the title bar",
               "Uri": "https://learn.microsoft.com/windows/apps/develop/title-bar"
             }
+          ],
+          "RelatedControls": [
+            "AppWindow",
+            "TitleBar"
           ]
         },
         {
@@ -3078,6 +3593,11 @@
               "Title": "Guidelines",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
             }
+          ],
+          "RelatedControls": [
+            "AppWindow",
+            "AppWindowTitleBar",
+            "TitleBar"
           ]
         },
         {
@@ -3104,6 +3624,10 @@
               "Title": "Title bar - design guidelines",
               "Uri": "https://learn.microsoft.com/windows/apps/design/basics/titlebar-design"
             }
+          ],
+          "RelatedControls": [
+            "AppWindow",
+            "AppWindowTitleBar"
           ]
         }
       ]
@@ -3133,6 +3657,9 @@
               "Title": "Copy and paste - Guide",
               "Uri": "https://learn.microsoft.com/windows/apps/develop/communication/copy-and-paste"
             }
+          ],
+          "RelatedControls": [
+            "StoragePickers"
           ]
         },
         {
@@ -3174,6 +3701,9 @@
               "Title": "FolderPicker - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.storage.pickers.folderpicker"
             }
+          ],
+          "RelatedControls": [
+            "Clipboard"
           ]
         }
       ]
@@ -3211,6 +3741,9 @@
               "Title": "Toast notifications",
               "Uri": "https://learn.microsoft.com/windows/apps/design/shell/tiles-and-notifications/toast-notifications-overview"
             }
+          ],
+          "RelatedControls": [
+            "BadgeNotificationManager"
           ]
         },
         {
@@ -3237,6 +3770,10 @@
               "Title": "Badge notifications",
               "Uri": "https://learn.microsoft.com/windows/apps/design/shell/tiles-and-notifications/badges"
             }
+          ],
+          "RelatedControls": [
+            "AppNotification",
+            "InfoBadge"
           ]
         },
         {
