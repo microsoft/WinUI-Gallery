@@ -178,6 +178,11 @@
                             Content="Custom &amp; User Controls"
                             Tag="CustomUserControls" />
                         <NavigationViewItem
+                            x:Name="CustomXamlConditionalsPage"
+                            AutomationProperties.AutomationId="CustomXamlConditionals"
+                            Content="XAML Conditions"
+                            Tag="CustomXamlConditionals" />
+                        <NavigationViewItem
                             x:Name="ScratchPadPage"
                             AutomationProperties.AutomationId="ScratchPad"
                             Content="Scratch Pad"

@@ -66,7 +66,7 @@ public class UnitTests
     [UITestMethod]
     public void TestWrapGrid()
     {
-        Layouts.WrapPanel wrapPanel = new()
+        WrapPanel wrapPanel = new()
         {
             Width = 250,
             Height = 250
