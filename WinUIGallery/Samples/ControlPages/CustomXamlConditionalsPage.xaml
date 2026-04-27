@@ -67,16 +67,14 @@
             XamlSource="CustomXamlConditionals/CustomXamlConditionalsSample3_xaml.txt">
             <StackPanel Spacing="8">
                 <StackPanel.Resources>
-                    <Style x:Key="ConditionalButtonStyle" TargetType="Button">
-                        <newExp:Setter Property="Background" Value="{ThemeResource AccentFillColorDefaultBrush}" />
-                        <newExp:Setter Property="Foreground" Value="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
-                        <legacy:Setter Property="Background" Value="{ThemeResource ControlFillColorTertiaryBrush}" />
-                        <legacy:Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
-                        <Setter Property="Padding" Value="20,10" />
-                        <Setter Property="CornerRadius" Value="6" />
+                    <Style x:Key="ConditionalHeadingStyle" TargetType="TextBlock">
+                        <newExp:Setter Property="FontWeight" Value="SemiBold" />
+                        <newExp:Setter Property="FontSize" Value="28" />
+                        <legacy:Setter Property="FontWeight" Value="Normal" />
+                        <legacy:Setter Property="FontSize" Value="18" />
                     </Style>
                 </StackPanel.Resources>
-                <Button Content="Styled with conditional Setters" Style="{StaticResource ConditionalButtonStyle}" />
+                <TextBlock Style="{StaticResource ConditionalHeadingStyle}" Text="Heading styled with conditional Setters" />
             </StackPanel>
         </controls:ControlExample>
 

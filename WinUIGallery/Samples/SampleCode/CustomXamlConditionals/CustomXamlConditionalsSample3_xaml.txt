@@ -5,17 +5,15 @@
     xmlns:legacy="http://schemas.microsoft.com/winfx/2006/xaml/presentation?cond:FeatureFlagCondition(LegacyMode)">
 
     <Page.Resources>
-        <Style x:Key="ConditionalButtonStyle" TargetType="Button">
+        <Style x:Key="ConditionalHeadingStyle" TargetType="TextBlock">
             <!-- Setters can also be qualified with a conditional namespace. -->
-            <newExp:Setter Property="Background" Value="{ThemeResource AccentFillColorDefaultBrush}" />
-            <newExp:Setter Property="Foreground" Value="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
-            <legacy:Setter Property="Background" Value="{ThemeResource ControlFillColorTertiaryBrush}" />
-            <legacy:Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
-            <Setter Property="Padding" Value="20,10" />
-            <Setter Property="CornerRadius" Value="6" />
+            <newExp:Setter Property="FontWeight" Value="SemiBold" />
+            <newExp:Setter Property="FontSize" Value="28" />
+            <legacy:Setter Property="FontWeight" Value="Normal" />
+            <legacy:Setter Property="FontSize" Value="18" />
         </Style>
     </Page.Resources>
 
-    <Button Content="Styled with conditional Setters"
-            Style="{StaticResource ConditionalButtonStyle}" />
+    <TextBlock Text="Heading styled with conditional Setters"
+               Style="{StaticResource ConditionalHeadingStyle}" />
 </Page>
