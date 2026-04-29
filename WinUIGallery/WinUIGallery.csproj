@@ -128,7 +128,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.WindowsAppSDK" />
+    <PackageReference Include="Microsoft.WindowsAppSDK.WinUI" />
     <PackageReference Include="ColorCode.Core" />
     <PackageReference Include="Microsoft.Graphics.Win2D" />
     <PackageReference Include="Microsoft.Windows.CsWinRT" />
