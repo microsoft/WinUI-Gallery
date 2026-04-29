@@ -41,6 +41,8 @@
 
     <ItemGroup Condition="'$(IsInWinUIRepo)' == 'true'">
         <PackageReference Include="Microsoft.WindowsAppSDK.WinUI" Version="$(WinUIVersion)" />
+        <!-- Exclude transitive Microsoft.WindowsAppSDK assets to prevent conflicts with the split Microsoft.WindowsAppSDK.WinUI package. -->
+        <PackageReference Update="Microsoft.WindowsAppSDK" ExcludeAssets="all" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">

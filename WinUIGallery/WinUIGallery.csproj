@@ -129,6 +129,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.WindowsAppSDK.WinUI" />
+    <!-- CommunityToolkit packages transitively depend on the old monolithic Microsoft.WindowsAppSDK package.
+         Exclude all its assets to prevent MSBuild props/targets conflicts with the new split Microsoft.WindowsAppSDK.WinUI package. -->
+    <PackageReference Update="Microsoft.WindowsAppSDK" ExcludeAssets="all" PrivateAssets="all" />
     <PackageReference Include="ColorCode.Core" />
     <PackageReference Include="Microsoft.Graphics.Win2D" />
     <PackageReference Include="Microsoft.Windows.CsWinRT" />
