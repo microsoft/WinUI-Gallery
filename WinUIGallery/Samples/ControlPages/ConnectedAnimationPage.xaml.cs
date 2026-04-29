@@ -24,6 +24,9 @@ public sealed partial class ConnectedAnimationPage : Page
 
         // For 3rd sample
         ContentFrame.Navigate(typeof(SamplePage1));
+
+        // For 4th sample (ItemsRepeater)
+        ItemsRepeaterFrame.Navigate(typeof(ItemsRepeaterCollectionPage));
     }
 
     private ConnectedAnimationConfiguration? GetConfiguration()

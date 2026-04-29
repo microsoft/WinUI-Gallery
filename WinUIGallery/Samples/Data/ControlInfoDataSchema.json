@@ -88,6 +88,13 @@
                                     },
                                     "description": "Add a link to the doc in the Documentation dropdown on the detail page of this control"
                                 },
+                                "RelatedControls": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "description": "UniqueIds of other controls that are conceptually related to this one. Used to surface 'Related controls' suggestions on the control's detail page."
+                                },
                             },
                             "required": [ "UniqueId", "Title"]
                         }

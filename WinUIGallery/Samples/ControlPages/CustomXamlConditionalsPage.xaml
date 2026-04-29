@@ -1,0 +1,84 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.CustomXamlConditionalsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cond="using:WinUIGallery.ControlPages"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:legacy="http://schemas.microsoft.com/winfx/2006/xaml/presentation?cond:FeatureFlagCondition(LegacyMode)"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:newExp="http://schemas.microsoft.com/winfx/2006/xaml/presentation?cond:FeatureFlagCondition(NewExperience)"
+    mc:Ignorable="d">
+    <StackPanel Spacing="12">
+
+        <InfoBar
+            Title="Parse-time evaluation"
+            Margin="0,24,0,0"
+            IsClosable="False"
+            IsOpen="True"
+            Message="IXamlCondition is parse-time only. The samples below were evaluated against the default flag values (NewExperience=true, LegacyMode=false). To see the other variant, change FeatureFlagCondition.FeatureFlags before InitializeComponent (typically in App.xaml.cs) and restart the app."
+            Severity="Informational" />
+
+        <controls:ControlExample
+            CSharpSource="CustomXamlConditionals/CustomXamlConditionalsSample1_cs.txt"
+            HeaderText="Conditional elements"
+            XamlSource="CustomXamlConditionals/CustomXamlConditionalsSample1_xaml.txt">
+            <StackPanel Spacing="8">
+                <newExp:InfoBar
+                    Title="New experience"
+                    IsClosable="False"
+                    IsOpen="True"
+                    Message="This InfoBar is included because the 'NewExperience' flag was true when the page was parsed."
+                    Severity="Success" />
+                <legacy:InfoBar
+                    Title="Legacy mode"
+                    IsClosable="False"
+                    IsOpen="True"
+                    Message="This InfoBar is included because the 'LegacyMode' flag was true when the page was parsed."
+                    Severity="Warning" />
+            </StackPanel>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            CSharpSource="CustomXamlConditionals/CustomXamlConditionalsSample2_cs.txt"
+            HeaderText="Conditional attributes"
+            XamlSource="CustomXamlConditionals/CustomXamlConditionalsSample2_xaml.txt">
+            <Button
+                legacy:Background="#C42B1C"
+                newExp:Background="#107C10"
+                Content="Background depends on the active flag"
+                Foreground="White" />
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            CSharpSource="CustomXamlConditionals/CustomXamlConditionalsSample3_cs.txt"
+            HeaderText="Conditional Setters in a Style"
+            XamlSource="CustomXamlConditionals/CustomXamlConditionalsSample3_xaml.txt">
+            <StackPanel Spacing="8">
+                <StackPanel.Resources>
+                    <Style x:Key="ConditionalHeadingStyle" TargetType="TextBlock">
+                        <newExp:Setter Property="FontWeight" Value="SemiBold" />
+                        <newExp:Setter Property="FontSize" Value="28" />
+                        <legacy:Setter Property="FontWeight" Value="Normal" />
+                        <legacy:Setter Property="FontSize" Value="18" />
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Style="{StaticResource ConditionalHeadingStyle}" Text="Heading styled with conditional Setters" />
+            </StackPanel>
+        </controls:ControlExample>
+
+    </StackPanel>
+</Page>
+
+

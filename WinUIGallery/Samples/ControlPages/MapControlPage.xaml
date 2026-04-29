@@ -25,6 +25,7 @@
         <Image
             Height="320"
             HorizontalAlignment="Left"
+            AutomationProperties.AccessibilityView="Raw"
             Source="/Assets/SampleMedia/MapExample.png" />
         <controls:ControlExample
             HorizontalAlignment="Stretch"
@@ -37,6 +38,7 @@
                         <PasswordBox
                             x:Name="MapToken"
                             MinWidth="200"
+                            AutomationProperties.Name="Map service token"
                             KeyDown="MapToken_KeyDown"
                             PlaceholderText="Map service token" />
                         <Button Click="Button_Click" Content="Set token" />
@@ -44,7 +46,8 @@
                     <MapControl
                         x:Name="map1"
                         Height="400"
-                        HorizontalAlignment="Stretch" />
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="Map" />
                 </StackPanel>
             </controls:ControlExample.Example>
 

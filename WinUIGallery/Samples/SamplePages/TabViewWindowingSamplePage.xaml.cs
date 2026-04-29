@@ -11,8 +11,6 @@ namespace WinUIGallery.SamplePages;
 
 public sealed partial class TabViewWindowingSamplePage : Page
 {
-    private const string DataIdentifier = "MyTabItem";
-    private Win32WindowHelper? win32WindowHelper;
     private Window? tabTearOutWindow = null;
 
     public TabViewWindowingSamplePage()
@@ -20,12 +18,6 @@ public sealed partial class TabViewWindowingSamplePage : Page
         this.InitializeComponent();
 
         Loaded += TabViewWindowingSamplePage_Loaded;
-    }
-
-    public void SetupWindowMinSize(Window window)
-    {
-        win32WindowHelper = new Win32WindowHelper(window);
-        win32WindowHelper.SetWindowMinMaxSize(new Win32WindowHelper.POINT() { x = 500, y = 300 });
     }
 
     private void TabViewWindowingSamplePage_Loaded(object sender, RoutedEventArgs e)
@@ -38,6 +30,9 @@ public sealed partial class TabViewWindowingSamplePage : Page
         currentWindow.ExtendsContentIntoTitleBar = true;
         currentWindow.SetTitleBar(CustomDragRegion);
         CustomDragRegion.MinWidth = 188;
+
+        // Set minimum window size using OverlappedPresenter (requires XamlRoot, so must be done after Loaded).
+        WindowHelper.SetWindowMinSize(currentWindow, 500, 300);
     }
 
     public void LoadDemoData()
@@ -64,7 +59,6 @@ public sealed partial class TabViewWindowingSamplePage : Page
         tabTearOutWindow.ExtendsContentIntoTitleBar = true;
         tabTearOutWindow.Content = newPage;
         tabTearOutWindow.AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
-        newPage.SetupWindowMinSize(tabTearOutWindow);
 
         args.NewWindowId = tabTearOutWindow.AppWindow.Id;
     }
@@ -83,6 +77,13 @@ public sealed partial class TabViewWindowingSamplePage : Page
             GetParentTabView(tab)?.TabItems.Remove(tab);
             newPage.AddTabToTabs(tab);
         }
+
+        // Clear the reference now that the tear-out is complete to avoid stale references
+        // if multiple tear-outs happen in sequence.
+        tabTearOutWindow = null;
+
+        // Close the source window if all tabs have been torn out.
+        CloseWindowIfEmpty(sender);
     }
 
     private void Tabs_ExternalTornOutTabsDropping(TabView sender, TabViewExternalTornOutTabsDroppingEventArgs args)
@@ -96,9 +97,17 @@ public sealed partial class TabViewWindowingSamplePage : Page
 
         foreach (TabViewItem tab in args.Tabs.Cast<TabViewItem>())
         {
-            GetParentTabView(tab)?.TabItems.Remove(tab);
+            // Find the source TabView before removing the tab, so we can check if it's empty afterwards.
+            TabView? sourceTabView = GetParentTabView(tab);
+            sourceTabView?.TabItems.Remove(tab);
             sender.TabItems.Insert(args.DropIndex + position, tab);
             position++;
+
+            // Close the source window if all its tabs have been moved to this window.
+            if (sourceTabView != null && sourceTabView.TabItems.Count == 0)
+            {
+                CloseWindowIfEmpty(sourceTabView);
+            }
         }
     }
 
@@ -117,6 +126,26 @@ public sealed partial class TabViewWindowingSamplePage : Page
         }
 
         return null;
+    }
+
+    private void CloseWindowIfEmpty(TabView tabView)
+    {
+        if (tabView.TabItems.Count == 0)
+        {
+            // Find the window containing this TabView and close it.
+            // Walk up from the TabView to find a Page, then use it to locate the window.
+            DependencyObject current = tabView;
+            while (current != null)
+            {
+                if (current is Page page)
+                {
+                    WindowHelper.GetWindowForElement(page)?.Close();
+                    return;
+                }
+
+                current = VisualTreeHelper.GetParent(current);
+            }
+        }
     }
 
     private TabViewItem CreateNewTVI(string header, string dataContext)
@@ -146,10 +175,6 @@ public sealed partial class TabViewWindowingSamplePage : Page
     private void Tabs_TabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args)
     {
         sender.TabItems.Remove(args.Tab);
-
-        if (sender.TabItems.Count == 0)
-        {
-            WindowHelper.GetWindowForElement(this)?.Close();
-        }
+        CloseWindowIfEmpty(sender);
     }
 }

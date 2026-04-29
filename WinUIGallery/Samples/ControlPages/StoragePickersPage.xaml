@@ -196,7 +196,7 @@ private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs 
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <TextBox x:Name="SuggestedFolderTextBox" Header="Suggested folder " Width="148" PlaceholderText="Optional" IsReadOnly="True" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" />
-                        <Button x:Name="SelectSuggestedFolderButton" Grid.Column="1" Margin="8,0,0,0" VerticalAlignment="Bottom" Click="SelectSuggestedFolderButton_Click" ToolTipService.ToolTip="Select folder">
+                        <Button x:Name="SelectSuggestedFolderButton" Grid.Column="1" Margin="8,0,0,0" VerticalAlignment="Bottom" AutomationProperties.Name="Select folder" Click="SelectSuggestedFolderButton_Click" ToolTipService.ToolTip="Select folder">
                             <FontIcon Glyph="&#xF89A;" />
                         </Button>
                     </Grid>

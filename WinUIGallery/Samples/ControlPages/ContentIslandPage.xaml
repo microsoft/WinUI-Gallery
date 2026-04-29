@@ -5,9 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:layouts="using:WinUIGallery.Layouts"
     xmlns:local="using:WinUIGallery.ControlPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
     <Grid>
         <Grid.Resources>
@@ -38,7 +38,7 @@
                         Click="LoadModel_Click"
                         Content="Load model"
                         Style="{StaticResource AccentButtonStyle}" />
-                    <layouts:WrapPanel
+                    <toolkit:WrapPanel
                         x:Name="_rectanglePanel"
                         Grid.Row="2"
                         HorizontalAlignment="Left">
@@ -54,7 +54,7 @@
                             Grid.Row="2"
                             Grid.Column="1"
                             Style="{StaticResource CardRectangleStyle}" />
-                    </layouts:WrapPanel>
+                    </toolkit:WrapPanel>
                 </Grid>
             </controls:ControlExample.Example>
         </controls:ControlExample>

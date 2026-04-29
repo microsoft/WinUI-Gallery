@@ -16,7 +16,7 @@
             <GridView.ItemContainerStyle>
                 <Style BasedOn="{StaticResource GridViewItemRevealStyle}" TargetType="GridViewItem">
                     <Style.Setters>
-                        <Setter Property="Margin" Value="12" />
+                        <Setter Property="Margin" Value="4" />
                     </Style.Setters>
                 </Style>
             </GridView.ItemContainerStyle>
@@ -24,35 +24,17 @@
                 <DataTemplate>
                     <Grid
                         x:Name="connectedElement"
-                        Width="190"
-                        Height="250"
-                        AutomationProperties.Name="{Binding}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <Grid
-                            Height="100"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Background="{ThemeResource SystemAccentColor}">
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Style="{ThemeResource TitleTextBlockStyle}"
-                                Text="Item" />
-                        </Grid>
-                        <Grid
-                            Grid.Row="1"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                            <TextBlock
-                                Margin="12"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Text="{Binding}" />
-                        </Grid>
+                        Width="150"
+                        Height="110"
+                        AutomationProperties.Name="{Binding Title}"
+                        CornerRadius="4">
+                        <Image Source="{Binding ImageLocation}" Stretch="UniformToFill" />
+                        <Border
+                            Padding="8,4"
+                            VerticalAlignment="Bottom"
+                            Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}">
+                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Title}" />
+                        </Border>
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
@@ -62,56 +44,53 @@
             x:Name="SmokeGrid"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
+            Background="{ThemeResource SmokeFillColorDefaultBrush}"
             Visibility="Collapsed">
-            <Grid.Background>
-                <SolidColorBrush Opacity="0.8" Color="{ThemeResource SystemChromeAltHighColor}" />
-            </Grid.Background>
+
             <Grid
                 x:Name="destinationElement"
-                Width="320"
-                Height="400"
+                Width="400"
+                Height="320"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                BorderBrush="{ThemeResource SystemAccentColor}"
-                BorderThickness="1">
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="8">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Grid
-                    Height="170"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Background="{ThemeResource SystemAccentColor}">
-                    <TextBlock
-                        Margin="12"
-                        VerticalAlignment="Center"
-                        Style="{ThemeResource HeaderTextBlockStyle}"
-                        Text="Header" />
-                    <Button
-                        Width="40"
-                        Height="40"
-                        Margin="5"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        AutomationProperties.Name="Close"
-                        Click="BackButton_Click"
-                        ToolTipService.ToolTip="Close">
-                        <Button.Content>
-                            <SymbolIcon Symbol="Clear" />
-                        </Button.Content>
-                    </Button>
-                </Grid>
-                <Grid
+                <Image
+                    x:Name="detailImage"
+                    Grid.Row="0"
+                    Source="{Binding ImageLocation}"
+                    Stretch="UniformToFill" />
+                <Button
+                    Width="36"
+                    Height="36"
+                    Margin="8"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    AutomationProperties.Name="Close"
+                    Click="BackButton_Click"
+                    ToolTipService.ToolTip="Close">
+                    <Button.Content>
+                        <FontIcon FontSize="14" Glyph="&#xE711;" />
+                    </Button.Content>
+                </Button>
+                <StackPanel
                     Grid.Row="1"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                    Padding="16,12"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                    <TextBlock x:Name="detailTitle" Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <TextBlock
-                        Margin="12"
-                        Style="{ThemeResource BaseTextBlockStyle}"
-                        Text="Content" />
-                </Grid>
+                        x:Name="detailDescription"
+                        Margin="0,4,0,0"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        MaxLines="3"
+                        Style="{ThemeResource BodyTextBlockStyle}"
+                        TextWrapping="Wrap" />
+                </StackPanel>
             </Grid>
         </Grid>
 
