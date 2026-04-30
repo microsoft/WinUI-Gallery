@@ -20,6 +20,7 @@
     xmlns:helpers="using:WinUIGallery.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:WinUIGallery.Models"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
     helpers:PageScrollBehaviorHelper.SuppressHostScrolling="True"
     mc:Ignorable="d">
 
@@ -238,7 +239,7 @@
                                 ItemsSource="{x:Bind SelectedItem.Tags, Mode=OneWay}"
                                 SelectionMode="None">
                                 <ItemsView.Layout>
-                                    <FlowLayout LineSpacing="4" MinItemSpacing="4" />
+                                    <toolkit:WrapLayout HorizontalSpacing="4" VerticalSpacing="4" />
                                 </ItemsView.Layout>
                                 <ItemsView.ItemTemplate>
                                     <DataTemplate x:DataType="x:String">
