@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using CommunityToolkit.WinUI.Controls;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -159,7 +160,7 @@ public sealed partial class IconographyPage : Page
 
         if (TagsItemsView != null)
         {
-            TagsItemsView.Layout = new FlowLayout { LineSpacing = 4, MinItemSpacing = 4 };
+            TagsItemsView.Layout = new WrapLayout { VerticalSpacing = 4, HorizontalSpacing = 4 };
         }
     }
 
