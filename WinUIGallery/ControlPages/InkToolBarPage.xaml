@@ -1,0 +1,76 @@
+<!--
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+-->
+<Page x:Class="WinUIGallery.ControlPages.InkToolBarPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUIGallery"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <!-- BASIC INKTOOLBAR -->
+        <local:ControlExample x:Name="Example1" HeaderText="An InkToolBar with default tools.">
+            <Grid RowDefinitions="Auto, *">
+                <InkToolBar x:Name="inkToolBar1" TargetInkCanvas="{x:Bind inkCanvas1}" 
+                            HorizontalAlignment="Left" />
+                <Border Grid.Row="1" BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" 
+                        BorderThickness="1" Width="600" Height="400" Background="White">
+                    <InkCanvas x:Name="inkCanvas1" />
+                </Border>
+            </Grid>
+            <local:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="The default InkToolBar includes:" />
+                    <TextBlock Text="  - Ballpoint Pen" Style="{ThemeResource CaptionTextBlockStyle}" />
+                    <TextBlock Text="  - Pencil" Style="{ThemeResource CaptionTextBlockStyle}" />
+                    <TextBlock Text="  - Highlighter" Style="{ThemeResource CaptionTextBlockStyle}" />
+                    <TextBlock Text="  - Eraser" Style="{ThemeResource CaptionTextBlockStyle}" />
+                    <TextBlock Text="  - Stencil (Ruler)" Style="{ThemeResource CaptionTextBlockStyle}" />
+                </StackPanel>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;InkToolBar TargetInkCanvas="{x:Bind inkCanvas}" /&gt;
+&lt;InkCanvas x:Name="inkCanvas" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <!-- INKTOOLBAR WITH MULTI-INPUT -->
+        <local:ControlExample x:Name="Example2" HeaderText="InkCanvas accepting pen, touch, and mouse input.">
+            <Grid RowDefinitions="Auto, *">
+                <InkToolBar x:Name="inkToolBar2" TargetInkCanvas="{x:Bind inkCanvas2}" 
+                            HorizontalAlignment="Left" />
+                <Border Grid.Row="1" BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" 
+                        BorderThickness="1" Width="600" Height="400" Background="White">
+                    <InkCanvas x:Name="inkCanvas2" AllowedInputTypes="Pen,Touch,Mouse" />
+                </Border>
+            </Grid>
+            <local:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <CheckBox x:Name="PenCheck" Content="Pen" IsChecked="True" 
+                              Checked="InputType_Changed" Unchecked="InputType_Changed" />
+                    <CheckBox x:Name="TouchCheck" Content="Touch" IsChecked="True" 
+                              Checked="InputType_Changed" Unchecked="InputType_Changed" />
+                    <CheckBox x:Name="MouseCheck" Content="Mouse" IsChecked="True" 
+                              Checked="InputType_Changed" Unchecked="InputType_Changed" />
+                </StackPanel>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+&lt;InkCanvas AllowedInputTypes="Pen,Touch,Mouse" /&gt;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+    </StackPanel>
+</Page>

@@ -899,6 +899,25 @@
           ]
         },
         {
+          "UniqueId": "InkCanvas",
+          "Title": "InkCanvas",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A control for freeform inking with pen, touch, or mouse input.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/InkCanvas.png",
+          "Description": "InkCanvas provides a surface for freeform digital inking. It supports pen, touch, and mouse input, and offers modes for drawing, erasing, and selecting strokes. Ink can be saved and loaded for persistence.",
+          "Content": "<p>The <b>InkCanvas</b> control captures ink input and renders it as ink strokes. The control supports ballpoint pen, pencil, and highlighter input via <b>InkToolBar</b>, and provides <b>SaveAsync</b> / <b>LoadAsync</b> methods for persisting ink to ISF files.</p><p>Set the <b>Mode</b> property to switch between Draw, Erase, and Select. Use <b>AllowedInputTypes</b> to control which input devices (Pen, Touch, Mouse) can draw ink.</p><p>Look at the <i>InkCanvasPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "InkCanvas - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.inkcanvas"
+            }
+          ],
+          "RelatedControls": [
+            "InkCanvas"
+          ]
+        },
+        {
           "UniqueId": "RepeatButton",
           "Title": "RepeatButton",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls.Primitives",
