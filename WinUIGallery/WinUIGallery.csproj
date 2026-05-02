@@ -144,6 +144,12 @@
 	<ProjectReference Include="..\WinUIGallery.SourceGenerator\WinUIGallery.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 	
+  <!-- When building inside the WinUI repo, override the Win2D version from CPM (1.4.0) to avoid
+       transitive dependency on Microsoft.WindowsAppSDK.WinUI which conflicts with the mock package -->
+  <ItemGroup Condition="'$(IsInWinUIRepo)' == 'true'">
+    <PackageReference Update="Microsoft.Graphics.Win2D" VersionOverride="$(GraphicsWin2DVersion)" />
+  </ItemGroup>
+
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
     <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
     <PackageReference Remove="ColorCode.Core" />
