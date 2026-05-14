@@ -28,7 +28,7 @@ internal partial class IconsDataSource
                 return icons;
             }
         }
-        var jsonText = await FileLoader.LoadText("Samples/Data/IconsData.json");
+        var jsonText = await FileLoader.LoadText("SampleSupport/Data/IconsData.json");
         lock (_lock)
         {
             if (icons.Count == 0 &&

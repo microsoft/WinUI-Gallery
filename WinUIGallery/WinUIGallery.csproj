@@ -81,7 +81,7 @@
 
   <!-- Required for Source Generator -->
   <ItemGroup>
-	<AdditionalFiles Include="Samples\Data\ControlInfoData.json" />
+	<AdditionalFiles Include="SampleSupport\Data\ControlInfoData.json" />
   </ItemGroup>
 	
   <ItemGroup Condition="'$(Packaged)' == 'true' and '$(SingleProject)'=='true'">
@@ -347,12 +347,12 @@
     <None Remove="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml" />
     <None Remove="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml" />
     <None Remove="Samples\ControlPages\AppWindowPage.xaml" />
-    <None Remove="Samples\Data\IconsData.json" />
+    <None Remove="SampleSupport\Data\IconsData.json" />
     <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
-    <None Remove="Samples\SamplePages\AppWindowTitleBarExtendWindow.xaml" />
-    <None Remove="Samples\SamplePages\AppWindowTitleBarWindow.xaml" />
-    <None Remove="Samples\SamplePages\SampleWindow2.xaml" />
-    <None Remove="Samples\SamplePages\TitleBarWindow.xaml" />
+    <None Remove="SampleSupport\SamplePages\AppWindowTitleBarExtendWindow.xaml" />
+    <None Remove="SampleSupport\SamplePages\AppWindowTitleBarWindow.xaml" />
+    <None Remove="SampleSupport\SamplePages\SampleWindow2.xaml" />
+    <None Remove="SampleSupport\SamplePages\TitleBarWindow.xaml" />
     <None Remove="Styles\Grid.xaml" />
     <None Remove="Styles\GridViewItem.xaml" />
     <None Remove="Styles\ItemTemplates.xaml" />
@@ -528,8 +528,8 @@
     <Content Include="Assets\Tiles\WideTile.scale-200_altform-colorful_theme-light.png" />
     <Content Include="Assets\Tiles\WideTile.scale-400.png" />
     <Content Include="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
-    <Content Include="Samples\Data\IconsData.json" />
-    <Content Include="Samples\Data\ControlInfoData.json" />
+    <Content Include="SampleSupport\Data\IconsData.json" />
+    <Content Include="SampleSupport\Data\ControlInfoData.json" />
     <Content Include="Samples\SampleCode\AppWindow\AppWindowSample1_xaml.txt" />
     <Content Include="Samples\SampleCode\AppWindow\AppWindowSample2_cs.txt" />
     <Content Include="Samples\SampleCode\AppWindow\AppWindowSample2_xaml.txt" />
@@ -578,13 +578,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Samples\SamplePages\AppWindowTitleBarExtendWindow.xaml">
+    <Page Update="SampleSupport\SamplePages\AppWindowTitleBarExtendWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Samples\SamplePages\AppWindowTitleBarWindow.xaml">
+    <Page Update="SampleSupport\SamplePages\AppWindowTitleBarWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -608,7 +608,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Samples\SamplePages\TitleBarWindow.xaml">
+    <Page Update="SampleSupport\SamplePages\TitleBarWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -652,7 +652,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Samples\SamplePages\SampleWindow7.xaml">
+    <Page Update="SampleSupport\SamplePages\SampleWindow7.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -662,7 +662,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Samples\SamplePages\SampleWindow6.xaml">
+    <Page Update="SampleSupport\SamplePages\SampleWindow6.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -672,22 +672,22 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Samples\SamplePages\SampleWindow2.xaml">
+    <Page Update="SampleSupport\SamplePages\SampleWindow2.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Samples\SamplePages\ModalWindow.xaml">
+    <Page Update="SampleSupport\SamplePages\ModalWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Samples\SamplePages\SampleWindow3.xaml">
+    <Page Update="SampleSupport\SamplePages\SampleWindow3.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Samples\SamplePages\SampleWindow1.xaml">
+    <Page Update="SampleSupport\SamplePages\SampleWindow1.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

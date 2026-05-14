@@ -90,7 +90,7 @@ public sealed partial class ControlInfoDataSource
             }
         }
 
-        var jsonText = await FileLoader.LoadText("Samples/Data/ControlInfoData.json");
+        var jsonText = await FileLoader.LoadText("SampleSupport/Data/ControlInfoData.json");
         var controlInfoDataGroup = JsonSerializer.Deserialize(jsonText, typeof(Root), RootContext.Default) as Root;
 
         if (controlInfoDataGroup is null)

@@ -18,7 +18,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
-        <controls:ControlExample x:Name="Example1" HeaderText="A simple Button with text content.">
+        <controls:ControlExample x:Name="Example1" HeaderText="A simple Button with text content." SampleCodePath="Button\ButtonSample1.txt">
             <controls:ControlExample.Example>
                 <Button
                     x:Name="Button1"
@@ -35,11 +35,6 @@
                     <CheckBox x:Name="DisableButton1" Content="Disable button" />
                 </StackPanel>
             </controls:ControlExample.Options>
-            <controls:ControlExample.Xaml>
-                <x:String>
-                    &lt;Button Content="Standard XAML button" Click="Button_Click" $(IsEnabled)/&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution
                     Key="IsEnabled"
