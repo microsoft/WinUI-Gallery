@@ -18,7 +18,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
-        <controls:ControlExample x:Name="Example1" SampleDefinition="Button\ButtonSample1.txt">
+        <controls:ControlExample x:Name="Example1" SampleDefinition="Button\ButtonSimple.txt">
             <controls:ControlExample.Example>
                 <Button
                     x:Name="Button1"
@@ -43,7 +43,7 @@
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <controls:ControlExample x:Name="Example2" HeaderText="A Button with graphical content.">
+        <controls:ControlExample x:Name="Example2" SampleDefinition="Button\ButtonWithImage.txt">
             <controls:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
                     <Button
@@ -59,13 +59,6 @@
             <controls:ControlExample.Output>
                 <TextBlock x:Name="Control2Output" />
             </controls:ControlExample.Output>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Button Content="Button" Click="Button_Click" AutomationProperties.Name="Pie"&gt;
-    &lt;Image Source="/Assets/SampleMedia/Slices.png" AutomationProperties.Name="Slice"/&gt;
-&lt;/Button&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
         <!--controls:ControlExample HeaderText="Reveal style applied to Button.">
             <controls:ControlExample.Example>
@@ -78,7 +71,7 @@
             </controls:ControlExample.Xaml>
         </-->
 
-        <controls:ControlExample HeaderText="Built-in styles applied to Button.">
+        <controls:ControlExample SampleDefinition="Button\ButtonBuiltInStyles.txt">
             <controls:ControlExample.Example>
                 <StackPanel Orientation="Horizontal" Spacing="16">
                     <Button
@@ -92,15 +85,9 @@
                 </StackPanel>
 
             </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Button Style="{StaticResource AccentButtonStyle}" Content="Accent style button"/&gt;
-&lt;Button Style="{StaticResource SubtleButtonStyle}" Content="Subtle style button"/&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
 
-        <controls:ControlExample HeaderText="Wrapping Buttons with large content">
+        <controls:ControlExample SampleDefinition="Button\ButtonWrapping.txt">
             <StackPanel>
                 <TextBlock
                     Margin="0,0,0,8"
@@ -123,26 +110,6 @@
                     </Button>
                 </StackPanel>
             </StackPanel>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;StackPanel&gt;
-    &lt;TextBlock Text="The following buttons' content may get clipped if we don't pay careful attention to their layout containers." Margin="0,0,0,8" TextWrapping="Wrap"/&gt;
-    &lt;TextBlock Text="One option to mitigate clipped content is to place Buttons underneath each other, allowing for more space to grow horizontally:" Margin="0,0,0,8" TextWrapping="Wrap"/&gt;
-    &lt;Button HorizontalAlignment="Stretch" Margin="0,0,0,5"&gt;This is some text that is too long and will get cut off&lt;/Button&gt;
-    &lt;Button HorizontalAlignment="Stretch"&gt;This is another text that would result in being cut off&lt;/Button&gt;
-
-    &lt;TextBlock Text="Another option is to explicitly wrap the Button's content" Margin="0,8,0,8"/&gt;
-    &lt;StackPanel Orientation="Horizontal" HorizontalAlignment="Center"&gt;
-        &lt;Button MaxWidth="240" Margin="0,0,8,0"&gt;
-            &lt;TextBlock Text="This is some text that is too long and will get cut off" TextWrapping="WrapWholeWords"/&gt;
-        &lt;/Button&gt;
-        &lt;Button MaxWidth="240"&gt;
-            &lt;TextBlock Text="This is another text that would result in being cut off" TextWrapping="WrapWholeWords"/&gt;
-        &lt;/Button&gt;
-    &lt;/StackPanel&gt;
-&lt;/StackPanel&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
     </StackPanel>
 </Page>

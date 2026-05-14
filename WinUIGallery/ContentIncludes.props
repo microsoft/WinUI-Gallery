@@ -173,7 +173,10 @@
     <Content Include="Samples\SampleCode\Binding\BindingSample4_xaml.txt" />
     <Content Include="Samples\SampleCode\Binding\BindingSample5_csharp.txt" />
     <Content Include="Samples\SampleCode\Brushes\RadialGradientBrushSample_xaml.txt" />
-    <Content Include="Samples\Button\ButtonSample1.txt" />
+    <Content Include="Samples\Button\ButtonBuiltInStyles.txt" />
+    <Content Include="Samples\Button\ButtonSimple.txt" />
+    <Content Include="Samples\Button\ButtonWithImage.txt" />
+    <Content Include="Samples\Button\ButtonWrapping.txt" />
     <Content Include="Samples\SampleCode\Buttons\Button\CustomButtonStyle.txt" />
     <Content Include="Samples\SampleCode\Buttons\DropDown\DropDownButton_Icon.txt" />
     <Content Include="Samples\SampleCode\Buttons\DropDown\DropDownButton_RevealStyle.txt" />
