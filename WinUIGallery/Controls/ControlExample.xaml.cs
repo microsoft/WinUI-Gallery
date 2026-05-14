@@ -284,7 +284,7 @@ public sealed partial class ControlExample : UserControl
         foreach (string rawLine in content.Split('\n'))
         {
             string trimmed = rawLine.TrimEnd('\r');
-            if (trimmed.StartsWith("- ", StringComparison.Ordinal))
+            if (trimmed.StartsWith("--- ", StringComparison.Ordinal))
             {
                 // Save previous section
                 if (currentSection != null)
@@ -300,7 +300,7 @@ public sealed partial class ControlExample : UserControl
                     }
                 }
 
-                currentSection = trimmed[2..].Trim();
+                currentSection = trimmed[4..].Trim();
                 currentLines = new();
             }
             else
