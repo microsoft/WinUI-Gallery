@@ -129,11 +129,11 @@ public sealed partial class ControlExample : UserControl
         set { SetValue(CSharpSourceProperty, value); }
     }
 
-    public static readonly DependencyProperty SampleCodePathProperty = DependencyProperty.Register("SampleCodePath", typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnSampleCodePathChanged));
-    public string SampleCodePath
+    public static readonly DependencyProperty SampleDefinitionProperty = DependencyProperty.Register(nameof(SampleDefinition), typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnSampleDefinitionChanged));
+    public string SampleDefinition
     {
-        get { return (string)GetValue(SampleCodePathProperty); }
-        set { SetValue(SampleCodePathProperty, value); }
+        get { return (string)GetValue(SampleDefinitionProperty); }
+        set { SetValue(SampleDefinitionProperty, value); }
     }
 
     public static readonly DependencyProperty SubstitutionsProperty = DependencyProperty.Register("Substitutions", typeof(IList<ControlExampleSubstitution>), typeof(ControlExample), new PropertyMetadata(null));
@@ -239,18 +239,18 @@ public sealed partial class ControlExample : UserControl
         ctrl.PrepareSelectorBarItem(ctrl.SelectorBarCSharpItem);
     }
 
-    private static void OnSampleCodePathChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    private static void OnSampleDefinitionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         if (d is not ControlExample ctrl)
             return;
 
         if (e.NewValue is string path && !string.IsNullOrEmpty(path))
         {
-            ctrl.LoadAndParseSampleCodeFile(path);
+            ctrl.LoadAndParseSampleDefinitionFile(path);
         }
     }
 
-    private async void LoadAndParseSampleCodeFile(string sourceRelativePath)
+    private async void LoadAndParseSampleDefinitionFile(string sourceRelativePath)
     {
         if (string.IsNullOrEmpty(sourceRelativePath) || !sourceRelativePath.EndsWith("txt"))
         {
@@ -276,6 +276,7 @@ public sealed partial class ControlExample : UserControl
 
     private void ParseSampleCodeSections(string content)
     {
+        string? headerText = null;
         string? xamlCode = null;
         string? csharpCode = null;
         string? currentSection = null;
@@ -287,18 +288,7 @@ public sealed partial class ControlExample : UserControl
             if (trimmed.StartsWith("--- ", StringComparison.Ordinal))
             {
                 // Save previous section
-                if (currentSection != null)
-                {
-                    string sectionContent = string.Join('\n', currentLines).Trim();
-                    if (currentSection.Equals("xaml", StringComparison.OrdinalIgnoreCase))
-                    {
-                        xamlCode = sectionContent;
-                    }
-                    else if (currentSection.Equals("c#", StringComparison.OrdinalIgnoreCase))
-                    {
-                        csharpCode = sectionContent;
-                    }
-                }
+                SaveSection(currentSection, currentLines, ref headerText, ref xamlCode, ref csharpCode);
 
                 currentSection = trimmed[4..].Trim();
                 currentLines = new();
@@ -310,19 +300,12 @@ public sealed partial class ControlExample : UserControl
         }
 
         // Save the last section
-        if (currentSection != null)
-        {
-            string sectionContent = string.Join('\n', currentLines).Trim();
-            if (currentSection.Equals("xaml", StringComparison.OrdinalIgnoreCase))
-            {
-                xamlCode = sectionContent;
-            }
-            else if (currentSection.Equals("c#", StringComparison.OrdinalIgnoreCase))
-            {
-                csharpCode = sectionContent;
-            }
-        }
+        SaveSection(currentSection, currentLines, ref headerText, ref xamlCode, ref csharpCode);
 
+        if (headerText != null)
+        {
+            HeaderText = headerText;
+        }
         if (xamlCode != null)
         {
             Xaml = xamlCode;
@@ -330,6 +313,28 @@ public sealed partial class ControlExample : UserControl
         if (csharpCode != null)
         {
             CSharp = csharpCode;
+        }
+    }
+
+    private static void SaveSection(string? sectionName, List<string> lines, ref string? headerText, ref string? xamlCode, ref string? csharpCode)
+    {
+        if (sectionName == null)
+        {
+            return;
+        }
+
+        string sectionContent = string.Join('\n', lines).Trim();
+        if (sectionName.Equals("header", StringComparison.OrdinalIgnoreCase))
+        {
+            headerText = sectionContent;
+        }
+        else if (sectionName.Equals("xaml", StringComparison.OrdinalIgnoreCase))
+        {
+            xamlCode = sectionContent;
+        }
+        else if (sectionName.Equals("c#", StringComparison.OrdinalIgnoreCase))
+        {
+            csharpCode = sectionContent;
         }
     }
 

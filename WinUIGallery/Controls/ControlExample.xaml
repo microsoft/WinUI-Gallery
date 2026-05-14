@@ -71,7 +71,7 @@
             Margin="0,12"
             AutomationProperties.HeadingLevel="Level3"
             Style="{ThemeResource BodyStrongTextBlockStyle}"
-            Text="{x:Bind HeaderText}" />
+            Text="{x:Bind HeaderText, Mode=OneWay}" />
 
         <RichTextBlock
             x:Name="ErrorTextBlock"

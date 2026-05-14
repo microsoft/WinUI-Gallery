@@ -1,3 +1,5 @@
+--- header
+A simple Button with text content.
 --- xaml
 <Button Content="Standard XAML button" Click="Button_Click" $(IsEnabled)/>
 --- c#
