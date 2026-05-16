@@ -7,8 +7,10 @@ using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Windows.Foundation;
+using Windows.Storage;
 
 namespace WinUIGallery.Controls;
 
@@ -127,6 +129,13 @@ public sealed partial class ControlExample : UserControl
         set { SetValue(CSharpSourceProperty, value); }
     }
 
+    public static readonly DependencyProperty SampleDefinitionProperty = DependencyProperty.Register(nameof(SampleDefinition), typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnSampleDefinitionChanged));
+    public string SampleDefinition
+    {
+        get { return (string)GetValue(SampleDefinitionProperty); }
+        set { SetValue(SampleDefinitionProperty, value); }
+    }
+
     public static readonly DependencyProperty SubstitutionsProperty = DependencyProperty.Register("Substitutions", typeof(IList<ControlExampleSubstitution>), typeof(ControlExample), new PropertyMetadata(null));
     public IList<ControlExampleSubstitution> Substitutions
     {
@@ -228,6 +237,105 @@ public sealed partial class ControlExample : UserControl
             return;
 
         ctrl.PrepareSelectorBarItem(ctrl.SelectorBarCSharpItem);
+    }
+
+    private static void OnSampleDefinitionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        if (d is not ControlExample ctrl)
+            return;
+
+        if (e.NewValue is string path && !string.IsNullOrEmpty(path))
+        {
+            ctrl.LoadAndParseSampleDefinitionFile(path);
+        }
+    }
+
+    private async void LoadAndParseSampleDefinitionFile(string sourceRelativePath)
+    {
+        if (string.IsNullOrEmpty(sourceRelativePath) || !sourceRelativePath.EndsWith("txt"))
+        {
+            return;
+        }
+
+        StorageFile file;
+        if (!Helpers.NativeMethods.IsAppPackaged)
+        {
+            string relativePath = "Samples\\" + sourceRelativePath;
+            string sourcePath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, relativePath));
+            file = await StorageFile.GetFileFromPathAsync(sourcePath);
+        }
+        else
+        {
+            Uri derivedSource = new Uri(new Uri("ms-appx:///Samples/"), sourceRelativePath);
+            file = await StorageFile.GetFileFromApplicationUriAsync(derivedSource);
+        }
+
+        string content = await FileIO.ReadTextAsync(file);
+        ParseSampleCodeSections(content);
+    }
+
+    private void ParseSampleCodeSections(string content)
+    {
+        string? headerText = null;
+        string? xamlCode = null;
+        string? csharpCode = null;
+        string? currentSection = null;
+        List<string> currentLines = new();
+
+        foreach (string rawLine in content.Split('\n'))
+        {
+            string trimmed = rawLine.TrimEnd('\r');
+            if (trimmed.StartsWith("--- ", StringComparison.Ordinal))
+            {
+                // Save previous section
+                SaveSection(currentSection, currentLines, ref headerText, ref xamlCode, ref csharpCode);
+
+                currentSection = trimmed[4..].Trim();
+                currentLines = new();
+            }
+            else
+            {
+                currentLines.Add(trimmed);
+            }
+        }
+
+        // Save the last section
+        SaveSection(currentSection, currentLines, ref headerText, ref xamlCode, ref csharpCode);
+
+        if (headerText != null)
+        {
+            HeaderText = headerText;
+        }
+        if (xamlCode != null)
+        {
+            Xaml = xamlCode;
+        }
+        if (csharpCode != null)
+        {
+            CSharp = csharpCode;
+        }
+    }
+
+    private static void SaveSection(string? sectionName, List<string> lines, ref string? headerText, ref string? xamlCode, ref string? csharpCode)
+    {
+        if (sectionName == null)
+        {
+            return;
+        }
+
+        string sectionContent = string.Join('\n', lines).Trim();
+        if (sectionName.Equals("header", StringComparison.OrdinalIgnoreCase))
+        {
+            headerText = sectionContent;
+        }
+        else if (sectionName.Equals("xaml", StringComparison.OrdinalIgnoreCase))
+        {
+            xamlCode = sectionContent;
+        }
+        else if (sectionName.Equals("c#", StringComparison.OrdinalIgnoreCase))
+        {
+            csharpCode = sectionContent;
+        }
     }
 
     private void SelectorBarControl_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)

@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="$(MSBuildThisFileDirectory)..\..\WinUIGallery\Samples\Data\ControlInfoData.json">
+        <None Include="$(MSBuildThisFileDirectory)..\..\WinUIGallery\SampleSupport\Data\ControlInfoData.json">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>

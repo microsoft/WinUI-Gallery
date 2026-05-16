@@ -173,6 +173,10 @@
     <Content Include="Samples\SampleCode\Binding\BindingSample4_xaml.txt" />
     <Content Include="Samples\SampleCode\Binding\BindingSample5_csharp.txt" />
     <Content Include="Samples\SampleCode\Brushes\RadialGradientBrushSample_xaml.txt" />
+    <Content Include="Samples\Button\ButtonBuiltInStyles.txt" />
+    <Content Include="Samples\Button\ButtonSimple.txt" />
+    <Content Include="Samples\Button\ButtonWithImage.txt" />
+    <Content Include="Samples\Button\ButtonWrapping.txt" />
     <Content Include="Samples\SampleCode\Buttons\Button\CustomButtonStyle.txt" />
     <Content Include="Samples\SampleCode\Buttons\DropDown\DropDownButton_Icon.txt" />
     <Content Include="Samples\SampleCode\Buttons\DropDown\DropDownButton_RevealStyle.txt" />
@@ -299,7 +303,7 @@
     <Content Include="Samples\SampleCode\XamlStyles\XamlStylesSample2_xaml.txt" />
     <Content Include="Samples\SampleCode\XamlStyles\XamlStylesSample3_xaml.txt" />
     <Content Include="Samples\SampleCode\XamlStyles\XamlStylesSample4_csharp.txt" />
-    <Content Include="Samples\Data\ControlInfoData.json" />
-    <Content Include="Samples\Data\IconsData.json" />
+    <Content Include="SampleSupport\Data\ControlInfoData.json" />
+    <Content Include="SampleSupport\Data\IconsData.json" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,9 @@
+--- header
+A simple Button with text content.
+--- xaml
+<Button Content="Standard XAML button" Click="Button_Click" $(IsEnabled)/>
+--- c#
+private void Button_Click(object sender, RoutedEventArgs e)
+{
+    // Handle button click
+}

@@ -1,0 +1,5 @@
+--- header
+Built-in styles applied to Button.
+--- xaml
+<Button Style="{StaticResource AccentButtonStyle}" Content="Accent style button"/>
+<Button Style="{StaticResource SubtleButtonStyle}" Content="Subtle style button"/>
