@@ -54,8 +54,7 @@
                     ColorExplanation="Rest (Pill Button control)"
                     ColorName="Control / Quartenary"
                     ColorValue="#F9F9F9 (C2, 30%)"
-                    ShowSeparator="False"
-                    ShowWarning="True" />
+                    ShowSeparator="False" />
             </Grid>
             <Grid Style="{StaticResource GalleryTileGridStyle}">
                 <Grid.ColumnDefinitions>

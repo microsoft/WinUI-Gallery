@@ -51,18 +51,6 @@ public sealed partial class ColorTile : UserControl
     public static readonly DependencyProperty ShowSeparatorProperty =
         DependencyProperty.Register("ShowSeparator", typeof(bool), typeof(ColorTile), new PropertyMetadata(true));
 
-
-    public bool ShowWarning
-    {
-        get { return (bool)GetValue(ShowWarningProperty); }
-        set { SetValue(ShowWarningProperty, value); }
-    }
-
-    // Using a DependencyProperty as the backing store for ShowSeparator.  This enables animation, styling, binding, etc...
-    public static readonly DependencyProperty ShowWarningProperty =
-        DependencyProperty.Register("ShowWarning", typeof(bool), typeof(ColorTile), new PropertyMetadata(false));
-
-
     public ColorTile()
     {
         this.InitializeComponent();
