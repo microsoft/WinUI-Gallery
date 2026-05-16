@@ -52,8 +52,7 @@
                     ColorExplanation="Default card hover and pressed color"
                     ColorName="Card Background / Tertiary"
                     ColorValue="#FFFFFF (FF, 30%)"
-                    ShowSeparator="False"
-                    ShowWarning="True" />
+                    ShowSeparator="False"/>
             </Grid>
 
 
@@ -298,8 +297,7 @@
                     ColorExplanation="Used for solid default card colors"
                     ColorName="Solid Background / Quinary"
                     ColorValue="#FDFDFD (FF, 100%)"
-                    Foreground="{ThemeResource TextFillColorPrimary}"
-                    ShowWarning="True" />
+                    Foreground="{ThemeResource TextFillColorPrimary}" />
                 <local:ColorTile
                     Grid.Column="2"
                     Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
@@ -307,9 +305,7 @@
                     ColorExplanation="Used for solid default card color"
                     ColorName="Solid Background / Senary"
                     ColorValue="#FFFFFF (FF, 100%)"
-                    Foreground="{ThemeResource TextFillColorPrimary}"
-                    ShowSeparator="False"
-                    ShowWarning="True" />
+                    Foreground="{ThemeResource TextFillColorPrimary}" />
             </Grid>
 
 
@@ -335,16 +331,14 @@
                     Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
                     ColorBrushName="MicaBackgroundFillColorBaseBrush"
                     ColorExplanation="Used for the bottom most layer of an experience."
-                    ColorName="Mica Background / Base"
-                    ShowWarning="True" />
+                    ColorName="Mica Background / Base" />
                 <local:ColorTile
                     Grid.Column="1"
                     Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
                     ColorBrushName="MicaBackgroundFillColorBaseAltBrush"
                     ColorExplanation="Default tab band background color."
                     ColorName="Mica Background / Base Alt"
-                    ShowSeparator="False"
-                    ShowWarning="True" />
+                    ShowSeparator="False" />
             </Grid>
 
             <!--  Acrylic background  -->
