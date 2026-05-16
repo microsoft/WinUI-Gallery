@@ -193,7 +193,7 @@
                     ColorName="Control Strong / Default"
                     ColorValue="#000000 (72, 44.58%)"
                     Foreground="{ThemeResource TextFillColorInverseBrush}"
-                    ShowSeparator="False" />
+                    ShowSeparator="True" />
                 <local:ColorTile
                     Grid.Column="2"
                     Background="{ThemeResource ControlStrongFillColorDisabledBrush}"

@@ -78,7 +78,8 @@
                     ColorBrushName="SmokeFillColorDefaultBrush"
                     ColorExplanation="Dims the background behind dialogs"
                     ColorName="Smoke / Default"
-                    ColorValue="#000000 (4D, 30%) " />
+                    ColorValue="#000000 (4D, 30%)"
+                    ShowSeparator="False" />
             </Grid>
 
 
@@ -191,8 +192,8 @@
                     ColorExplanation="Active Tab Drag"
                     ColorName="Layer On Mica Base Alt / Tertiary"
                     ColorValue="#F9F9F9 (FF, 100%)"
-                    Foreground="{ThemeResource TextFillColorPrimary}" />
-
+                    Foreground="{ThemeResource TextFillColorPrimary}"
+                    ShowSeparator="False" />
             </Grid>
 
             <Grid Style="{StaticResource GalleryTileGridStyle}">
@@ -207,7 +208,7 @@
                     ColorName="Layer On Mica Base Alt / Transparent"
                     ColorValue="Transparent"
                     Foreground="{ThemeResource TextFillColorPrimary}"
-                    ShowSeparator="False" />
+                    ShowSeparator="True" />
 
                 <local:ColorTile
                     Grid.Column="1"
