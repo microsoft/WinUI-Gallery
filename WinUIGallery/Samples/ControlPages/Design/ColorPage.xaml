@@ -30,6 +30,7 @@
             Grid.Row="1"
             Margin="0,16,0,0"
             VerticalContentAlignment="Center"
+            IsCopyButtonVisible="False"
             SampleType="XAML">
             <controls:SampleCodePresenter.Code>
                 <x:String xml:space="preserve">
