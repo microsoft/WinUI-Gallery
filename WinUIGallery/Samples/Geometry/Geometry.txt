@@ -1,0 +1,5 @@
+--- header
+Geometry
+--- xaml
+<Grid CornerRadius="{StaticResource OverlayCornerRadius}"/>
+<Grid CornerRadius="{StaticResource ControlCornerRadius}"/>

@@ -1,0 +1,30 @@
+--- header
+SelectorBar Displaying Different Collections Using ItemsView
+--- xaml
+<SelectorBar x:Name="SelectorBar3" SelectionChanged="SelectorBar3_SelectionChanged" >
+    <SelectorBarItem x:Name="SelectorBarItemPink" Text="Pink" IsSelected="True" />
+    <SelectorBarItem x:Name="SelectorBarItemPlum" Text="Plum" />
+    <SelectorBarItem x:Name="SelectorBarItemPowderBlue" Text="PowderBlue" />
+</SelectorBar>
+
+<ItemsView x:Name="ItemsView3" ItemTemplate="{StaticResource ColorsTemplate}" />
+    <ItemsView.Layout>
+        <UniformGridLayout />
+    </ItemsView.Layout>
+</ItemsView/>
+--- c#
+private void SelectorBar3_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
+{
+    if (sender.SelectedItem == SelectorBarItemPink)
+    {
+        ItemsView3.ItemsSource = PinkColorCollection;
+    }
+    else if (sender.SelectedItem == SelectorBarItemPlum)
+    {
+        ItemsView3.ItemsSource = PlumColorCollection;
+    }
+    else
+    {
+        ItemsView3.ItemsSource = PowderBlueColorCollection;
+    }
+}

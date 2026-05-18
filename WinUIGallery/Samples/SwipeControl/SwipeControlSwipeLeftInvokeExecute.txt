@@ -1,0 +1,18 @@
+--- header
+Swipe left to invoke an execute
+--- xaml
+<Border>
+    <Border.Resources>
+        <FontIconSource x:Key="DeleteIcon" Glyph="&#xE74D;"/>
+        <SwipeItems x:Key="right" Mode="Execute">
+            <SwipeItem Text="Archive" IconSource="{StaticResource ArchiveIcon}"
+                       BehaviorOnInvoked="Close" Invoked="DeleteOne_ItemInvoked"/>
+        </SwipeItems>
+    </Border.Resources>
+    <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}"
+        RightItems="{StaticResource right}"
+        Width="300" Margin="12" Height="68">
+        <TextBlock Text="Swipe Left" Margin="12"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </SwipeControl>
+</Border>

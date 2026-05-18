@@ -1,0 +1,104 @@
+--- header
+AppWindow with OverlapedPresenter
+--- xaml
+<Window ...>
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="10">
+        <Button x:Name="MaximizeBtn"
+                Content="Maximize"
+                Click="MaximizeBtn_Click"
+                Width="200" />
+        <Button x:Name="MinimizeBtn"
+                Content="Minimize"
+                Click="MinimizeBtn_Click"
+                Width="200" />
+        <Button x:Name="RestoreBtn"
+                Click="RestoreBtn_Click"
+                Width="200" >
+            <TextBlock Text="Minimize and restore the window after 3 seconds" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
+        </Button>
+        <Button x:Name="CloseBtn"
+                Click="CloseBtn_Click"
+                Width="200"
+                Margin="0,16,0,0">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <SymbolIcon Symbol="Cancel"
+                            Margin="0,0,4,0"
+                            Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
+                <TextBlock Text="Close"
+                           Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</Window>
+--- c#
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using System.Threading.Tasks;
+
+namespace YourNamespace;
+
+public sealed partial class SampleWindow3 : Window
+{
+    public SampleWindow3()
+    {
+        this.InitializeComponent();
+
+        AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode; 
+        OverlappedPresenter presenter = OverlappedPresenter.Create();
+        
+        presenter.IsAlwaysOnTop = $(IsAlwaysOnTop);
+        presenter.IsMaximizable = $(IsMaximizable);
+        presenter.IsMinimizable = $(IsMinimizable);
+        presenter.IsResizable = $(IsResizable);
+        presenter.SetBorderAndTitleBar($(HasBorder), $(HasTitleBar));
+
+        AppWindow.SetPresenter(presenter);
+
+        SizeChanged += SampleWindow3_SizeChanged;
+    }
+
+    private void MaximizeRestoreBtn_Click(object sender, RoutedEventArgs e)
+    {
+        OverlappedPresenter presenter = (OverlappedPresenter)AppWindow.Presenter;
+        if (presenter.State == OverlappedPresenterState.Maximized)
+        {
+            presenter.Restore();
+        }
+        else
+        {
+            presenter.Maximize();
+        }
+    }
+
+    private void SampleWindow3_SizeChanged(object sender, WindowSizeChangedEventArgs e)
+    {
+        OverlappedPresenter presenter = (OverlappedPresenter)AppWindow.Presenter;
+        MaximizeRestoreBtn.Content = presenter.State == OverlappedPresenterState.Maximized ? "Restore" : "Maximize";
+    }
+
+    private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+    {
+        OverlappedPresenter presenter = (OverlappedPresenter)AppWindow.Presenter;
+        presenter.Minimize();
+    }
+
+    private void RestoreBtn_Click(object sender, RoutedEventArgs e)
+    {
+        OverlappedPresenter presenter = (OverlappedPresenter)AppWindow.Presenter;
+        presenter.Minimize();
+        Task.Delay(3000).ContinueWith(t => presenter.Restore());
+    }
+
+    private void CloseBtn_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
+}

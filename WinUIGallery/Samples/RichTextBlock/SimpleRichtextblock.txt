@@ -1,0 +1,6 @@
+--- header
+A simple RichTextBlock.
+--- xaml
+<RichTextBlock>
+    <Paragraph>I am a RichTextBlock.</Paragraph>
+</RichTextBlock>

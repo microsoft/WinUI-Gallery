@@ -1,0 +1,40 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.MediaPlayerElementPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" SampleDefinition="MediaPlayerElement\MediaplayerelementTransportControls.txt">
+            <controls:ControlExample.Example>
+                <MediaPlayerElement
+                    x:Name="Player1"
+                    MaxWidth="400"
+                    AreTransportControlsEnabled="True"
+                    AutoPlay="False"
+                    Source="ms-appx:///Assets/SampleMedia/ladybug.wmv" />
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <Button
+                    x:Name="OpenFileButton"
+                    AutomationProperties.Name="Open file button"
+                    Click="OpenFileButton_Click">
+                    Open a file
+                </Button>
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
+
+
+        <controls:ControlExample x:Name="Example2" SampleDefinition="MediaPlayerElement\MediaplayerelementAutoplaysVideo.txt">
+            <controls:ControlExample.Example>
+                <MediaPlayerElement
+                    x:Name="Player2"
+                    MaxWidth="400"
+                    AutoPlay="True"
+                    Source="ms-appx:///Assets/SampleMedia/fishes.wmv" />
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

@@ -1,0 +1,4 @@
+--- header
+An indeterminate progress ring.
+--- xaml
+<ProgressRing IsActive="$(IsActive)" $(Background)/>

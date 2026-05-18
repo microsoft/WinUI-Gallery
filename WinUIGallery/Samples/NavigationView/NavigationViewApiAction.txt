@@ -1,0 +1,48 @@
+--- header
+API in action
+--- xaml
+<NavigationView x:Name="nvSample"
+    IsSettingsVisible="$(SettingsVis)"
+    IsBackButtonVisible="$(BackButtonVis)"
+    IsBackEnabled="$(BackButtonEn)"
+    SelectionChanged="NavigationView_SelectionChanged"
+    Header="$(HeaderText)"
+    AlwaysShowHeader="$(ShowHeader)"
+    PaneTitle="$(PaneTitleText)"
+    PaneDisplayMode="$(PaneDisplayMode)" 
+    ExpandedModeThresholdWidth="500"
+    SelectionFollowsFocus="$(SelectionFollowsFocus)"
+    IsTabStop="False">
+                    
+    <NavigationView.MenuItems>
+        <NavigationViewItem Content="Menu Item1" Tag="SamplePage1" x:Name="SamplePage1Item">
+            <NavigationViewItem.Icon>
+                <SymbolIcon Symbol="Play" />
+            </NavigationViewItem.Icon>
+        </NavigationViewItem>
+        <NavigationViewItemHeader Content="Actions"/>
+        <NavigationViewItem Content="Menu Item2" Tag="SamplePage2" x:Name="SamplePage2Item" SelectsOnInvoked="$(SelectsOnInvoked)">
+            <NavigationViewItem.Icon>
+                <SymbolIcon Symbol="Save" />
+            </NavigationViewItem.Icon>
+        </NavigationViewItem>
+        <NavigationViewItem Content="Menu Item3" Tag="SamplePage3" x:Name="SamplePage3Item">
+            <NavigationViewItem.Icon>
+                <SymbolIcon Symbol="Refresh" />
+            </NavigationViewItem.Icon>
+        </NavigationViewItem>
+    </NavigationView.MenuItems>
+                    
+    <NavigationView.PaneCustomContent>
+        <HyperlinkButton x:Name="PaneHyperlink" Content="More info" Margin="12,0" Visibility="$(PaneCustomContentVis)" />
+    </NavigationView.PaneCustomContent>
+    $(NavViewASB)
+    <NavigationView.PaneFooter>
+        <StackPanel x:Name="FooterStackPanel" Orientation="Vertical" Visibility="$(PaneFooterVis)">
+            <NavigationViewItem Icon="Download" AutomationProperties.Name="download" />
+            <NavigationViewItem Icon="Favorite" AutomationProperties.Name="favorite" />
+        </StackPanel>
+    </NavigationView.PaneFooter>
+
+    <Frame x:Name="contentFrame" />
+</NavigationView>

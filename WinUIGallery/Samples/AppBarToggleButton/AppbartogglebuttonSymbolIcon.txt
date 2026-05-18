@@ -1,0 +1,4 @@
+--- header
+An AppBarToggleButton with a symbol icon.
+--- xaml
+<AppBarToggleButton Icon="Shuffle" Label="SymbolIcon" Click="AppBarButton_Click"/>

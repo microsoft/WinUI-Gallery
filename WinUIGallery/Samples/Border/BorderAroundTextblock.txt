@@ -1,0 +1,6 @@
+--- header
+A Border around a TextBlock.
+--- xaml
+<Border BorderThickness="$(BorderThickness)" BorderBrush="$(BorderBrush)" Background="$(Background)">
+    <TextBlock Text="Text inside a border" FontSize="18" Foreground="Black" />
+</Border>

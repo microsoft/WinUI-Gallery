@@ -1,0 +1,118 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+
+<Page
+    x:Class="WinUIGallery.ControlPages.TitleBarPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wuxdata="using:Microsoft.UI.Xaml.Data"
+    mc:Ignorable="d">
+    <StackPanel Margin="0,12,0,0">
+        <RichTextBlock>
+            <Paragraph>
+                <Run>For full title bar customization without using the TitleBar control, see the</Run>
+                <Hyperlink Click="Hyperlink_Click">AppWindowTitleBar</Hyperlink>
+                <Run>sample</Run>
+            </Paragraph>
+        </RichTextBlock>
+
+        <controls:ControlExample HorizontalContentAlignment="Stretch" SampleDefinition="TitleBar\TitlebarConfiguration.txt">
+            <controls:ControlExample.Example>
+                <Grid
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="{StaticResource OverlayCornerRadius}">
+                    <TitleBar
+                        x:Name="TitleBarControl"
+                        Title="{Binding ElementName=TitleBox, Path=Text, Mode=OneWay}"
+                        IsBackButtonVisible="{Binding ElementName=BackButtonToggle, Path=IsOn, Mode=OneWay}"
+                        IsPaneToggleButtonVisible="{Binding ElementName=PaneToggle, Path=IsOn, Mode=OneWay}"
+                        LayoutUpdated="TitleBar_LayoutUpdated"
+                        Subtitle="{Binding ElementName=SubtitleBox, Path=Text, Mode=OneWay}">
+                        <TitleBar.IconSource>
+                            <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
+                        </TitleBar.IconSource>
+                        <TitleBar.RightHeader>
+                            <PersonPicture
+                                Width="30"
+                                Height="30"
+                                Initials="JD" />
+                        </TitleBar.RightHeader>
+                        <TitleBar.Content>
+                            <AutoSuggestBox
+                                Width="360"
+                                VerticalAlignment="Center"
+                                PlaceholderText="Search.."
+                                QueryIcon="Find" />
+                        </TitleBar.Content>
+                    </TitleBar>
+                </Grid>
+
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <StackPanel
+                    Width="240"
+                    Orientation="Vertical"
+                    Spacing="12">
+                    <TextBox
+                        x:Name="TitleBox"
+                        Header="Title"
+                        Text="WinUI Gallery" />
+                    <TextBox
+                        x:Name="SubtitleBox"
+                        Header="Subtitle"
+                        Text="Preview" />
+                    <ToggleSwitch
+                        x:Name="BackButtonToggle"
+                        Header="IsBackButtonVisible"
+                        IsOn="False" />
+                    <ToggleSwitch
+                        x:Name="PaneToggle"
+                        Header="IsPaneToggleButtonVisible"
+                        IsOn="False" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Title" Value="{x:Bind TitleBox.Text, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Subtitle" Value="{x:Bind SubtitleBox.Text, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="BackButtonVisibility" Value="{x:Bind BackButtonToggle.IsOn, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="PaneToggleVisibility" Value="{x:Bind PaneToggle.IsOn, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample HorizontalContentAlignment="Stretch" SampleDefinition="TitleBar\EndEndTitlebarSample.txt">
+            <controls:ControlExample.Example>
+                <StackPanel
+                    MaxWidth="560"
+                    Orientation="Vertical"
+                    Spacing="12">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Click the button below to see an end to end sample of a TitleBar in an new window, binding some of its properties to the NavigationView and navigation frame."
+                        TextAlignment="Center"
+                        TextWrapping="WrapWholeWords" />
+                    <Button
+                        HorizontalAlignment="Center"
+                        Click="CreateTitleBarWindowClick"
+                        Content="Show window"
+                        Style="{StaticResource AccentButtonStyle}" />
+                </StackPanel>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

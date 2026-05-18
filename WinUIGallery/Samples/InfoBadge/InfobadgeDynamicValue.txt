@@ -1,0 +1,14 @@
+--- header
+InfoBadge with Dynamic Value
+--- xaml
+<InfoBadge Value="{Binding ElementName=ValueNumberBox, Path=Value, Mode=TwoWay}" />
+<NumberBox x:Name="ValueNumberBox" Header="InfoBadge Value" Value="1" Minimum="-1"
+    SpinButtonPlacementMode="Inline" ValueChanged="ValueNumberBox_ValueChanged" />
+--- c#
+private void ValueNumberBox_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox sender, Microsoft.UI.Xaml.Controls.NumberBoxValueChangedEventArgs args)
+{
+    if((int)args.NewValue >= -1)
+    {
+        DynamicInfoBadge.Value = (int)args.NewValue;
+    }
+}

@@ -1,0 +1,38 @@
+--- header
+ItemsView item invocation and selection
+--- xaml
+<DataTemplate x:Key="UniformGridLayoutItemTemplate" x:DataType="local:CustomDataObject">
+    <ItemContainer AutomationProperties.Name="{x:Bind Title}">
+        <Grid Width="150">
+            <Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1" Background="{ThemeResource SystemControlBackgroundBaseMediumBrush}" Opacity=".75">
+                <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
+                    <TextBlock Text=" Likes" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundAltHighBrush}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ItemContainer>
+</DataTemplate>
+
+<ItemsView Width="500" Height="400" HorizontalAlignment="Left"
+    SelectionMode="$(SelectionMode)"
+    IsItemInvokedEnabled="$(IsItemInvokedEnabled)"
+    ItemTemplate="{StaticResource UniformGridLayoutItemTemplate}"
+    ItemInvoked="SwappableSelectionModesItemsView_ItemInvoked"
+    SelectionChanged="SwappableSelectionModesItemsView_SelectionChanged">
+    <ItemsView.Layout>
+        <UniformGridLayout MinRowSpacing="5" MinColumnSpacing="5" MaximumRowsOrColumns="3"/>
+    </ItemsView.Layout>
+</ItemsView>
+--- c#
+private void SwappableSelectionModesItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e)
+{
+    tblInvocationOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
+}
+
+private void SwappableSelectionModesItemsView_SelectionChanged(ItemsView sender, ItemsViewSelectionChangedEventArgs e)
+{
+    tblSelectionOutput.Text = string.Format("You have selected {0} item(s).", SwappableSelectionModesItemsView.SelectedItems.Count);
+}

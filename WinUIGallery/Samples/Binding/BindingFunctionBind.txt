@@ -1,0 +1,17 @@
+--- header
+Using a function in x:Bind
+--- xaml
+<DatePicker x:Name="DatePickerControl" Header="Select a date" />
+<TextBlock Text="{x:Bind FormatDate(DatePickerControl.SelectedDate), Mode=OneWay}" />
+--- c#
+public string FormatDate(DateTimeOffset? date)
+{
+    if (date.HasValue)
+    {
+        return "Selected date is: " + date.Value.ToString("dddd, MMMM d, yyyy");
+    }
+    else
+    {
+        return "No date selected";
+    }
+}

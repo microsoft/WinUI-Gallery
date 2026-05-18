@@ -340,13 +340,13 @@
     <None Remove="Controls\PageHeader.xaml" />
     <None Remove="Controls\SampleThemeListener.xaml" />
     <None Remove="MainWindow.xaml" />
-    <None Remove="Samples\ControlPages\AppNotificationPage.xaml" />
-    <None Remove="Samples\ControlPages\AppWindowTitleBarPage.xaml" />
-    <None Remove="Samples\ControlPages\BadgeNotificationManagerPage.xaml" />
-    <None Remove="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml" />
-    <None Remove="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml" />
-    <None Remove="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml" />
-    <None Remove="Samples\ControlPages\AppWindowPage.xaml" />
+    <None Remove="Samples\AppNotification\AppNotificationPage.xaml" />
+    <None Remove="Samples\AppWindowTitleBar\AppWindowTitleBarPage.xaml" />
+    <None Remove="Samples\BadgeNotificationManager\BadgeNotificationManagerPage.xaml" />
+    <None Remove="Samples\CustomUserControls\CounterControl.xaml" />
+    <None Remove="Samples\CustomUserControls\ValidatedPasswordBox.xaml" />
+    <None Remove="Samples\CustomUserControls\CustomUserControlsPage.xaml" />
+    <None Remove="Samples\AppWindow\AppWindowPage.xaml" />
     <None Remove="SampleSupport\Data\IconsData.json" />
     <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
     <None Remove="SampleSupport\SamplePages\AppWindowTitleBarExtendWindow.xaml" />
@@ -596,13 +596,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Samples\ControlPages\AppWindowTitleBarPage.xaml">
+    <Page Update="Samples\AppWindowTitleBar\AppWindowTitleBarPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Samples\ControlPages\StoragePickersPage.xaml">
+    <Page Update="Samples\StoragePickers\StoragePickersPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -635,19 +635,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Samples\ControlPages\BadgeNotificationManagerPage.xaml">
+    <Page Update="Samples\BadgeNotificationManager\BadgeNotificationManagerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Samples\ControlPages\AppNotificationPage.xaml">
+    <Page Update="Samples\AppNotification\AppNotificationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml">
+    <Page Update="Samples\CustomUserControls\ValidatedPasswordBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -657,7 +657,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml">
+    <Page Update="Samples\CustomUserControls\CounterControl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -667,7 +667,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml">
+    <Page Update="Samples\CustomUserControls\CustomUserControlsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -692,7 +692,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Samples\ControlPages\AppWindowPage.xaml">
+    <Page Update="Samples\AppWindow\AppWindowPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

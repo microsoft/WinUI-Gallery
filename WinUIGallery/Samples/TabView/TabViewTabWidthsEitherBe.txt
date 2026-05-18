@@ -1,0 +1,4 @@
+--- header
+Tab widths can either be equally sized, sized to the content of the tab, or sized to only show the icon when unselected
+--- xaml
+<TabView TabWidthMode="$(TabWidthMode)" />

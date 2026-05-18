@@ -1,0 +1,4 @@
+--- header
+A simple TextBox.
+--- xaml
+<TextBox AutomationProperties.Name="simple TextBox"/>

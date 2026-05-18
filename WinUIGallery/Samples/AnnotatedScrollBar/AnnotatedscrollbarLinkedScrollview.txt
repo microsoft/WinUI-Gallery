@@ -1,0 +1,18 @@
+--- header
+AnnotatedScrollBar linked to a ScrollView.
+--- xaml
+<ScrollView x:Name="scrollView"
+    Background="LightGray" MaxWidth="800" MaxHeight="500"
+    VerticalScrollBarVisibility="Hidden">
+    <!-- ... -->
+</ScrollView>
+                
+<AnnotatedScrollBar x:Name="annotatedScrollBar"
+    Margin="4,0,48,0" MaxHeight="500"
+    HorizontalAlignment="Right"
+    DetailLabelRequested="AnnotatedScrollBar_DetailLabelRequested"/>
+--- c#
+private void AnnotatedScrollBarPage_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+{
+    scrollView.ScrollPresenter.VerticalScrollController = annotatedScrollBar.ScrollController;
+}

@@ -1,0 +1,12 @@
+--- header
+Setting badge notifications with Glyph
+--- c#
+private void SetBadgeGlyphButton_Click(object sender, RoutedEventArgs e)
+{
+    BadgeNotificationManager.Current.SetBadgeAsGlyph(BadgeNotificationGlyph.$(SelectedGlyph));
+}
+
+private void ClearBadgeButton_Click(object sender, RoutedEventArgs e)
+{
+    BadgeNotificationManager.Current.ClearBadge();
+}

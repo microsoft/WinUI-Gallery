@@ -1,0 +1,10 @@
+--- header
+Use the RepositionThemeTransition to react to layout changes.
+--- xaml
+<Rectangle x:Name="RightRectangle" Fill="Blue" >
+    <Rectangle.Transitions>
+        <TransitionCollection>
+            <RepositionThemeTransition />
+        </TransitionCollection>
+    </Rectangle.Transitions>
+</Rectangle>

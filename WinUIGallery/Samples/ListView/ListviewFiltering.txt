@@ -1,0 +1,98 @@
+--- header
+ListView with filtering
+--- xaml
+<!-- XAML Code -->
+
+<!-- The ListView's ItemsSource is an ObservableCollection<Contact> that is defined and bound
+in the code-behind, called contactsFiltered. This ListView uses the same DataTemplate as the
+samples above it, called ContactListViewTemplate - you can see its definition above. -->
+
+<ListView 
+    x:Name="FilteredListView"
+    ItemTemplate="{StaticResource ContactListViewTemplate}"
+    SelectionMode="Single"
+    ShowsScrollingPlaceholders="True"
+    Height="400"
+    Width="400"
+    BorderThickness="1"
+    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}"/>
+
+<!-- The textboxes used for filtering are shown below: -->
+<StackPanel Width="200">
+    <TextBlock Margin="8,8,8,4" Style="{ThemeResource BaseTextBlockStyle}">Filter by...</TextBlock>
+    <TextBox x:Name="FilterByFirstName" Width="150" Header="First name" Margin="8"
+	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
+    <TextBox x:Name="FilterByLastName" Width="150" Header="Last name" Margin="8"
+	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
+    <TextBox x:Name="FilterByCompany" Width="150" Header="Company" Margin="8" 
+	     HorizontalAlignment="Left" TextChanged="OnFilterChanged"/>
+</StackPanel>
+--- c#
+// C# Code
+
+// Make sure to add this to your declarations at the top for the filtering method:
+using System.Linq;
+// ...
+
+// Define an ObservableCollection<Contact> object to serve as the ListView's
+// ItemsSource. This collection will get updated after the filters are used:
+ObservableCollection<Contact> contactsFiltered = new ObservableCollection<Contact>();
+
+/* Populate contactsFiltered with all contact objects (in this case, contacts holds
+all of our Contact objects so we copy them into contactsFiltered). Set this newly populated
+collection as the ItemsSource for the ListView. */
+contactsFiltered = new ObservableCollection<Contact>(allContacts);
+FilteredListView.ItemsSource = contactsFiltered;
+
+
+// Whenever text changes in any of the filtering text boxes, the following function is called:
+private void OnFilterChanged(object sender, TextChangedEventArgs args)
+{
+    // This is a Linq query that selects only items that return True after being passed through
+    // the Filter function, and adds all of those selected items to filtered.
+    var filtered = allContacts.Where(contact => Filter(contact));
+    Remove_NonMatching(filtered);
+    AddBack_Contacts(filtered);
+}
+
+// The following functions are called inside OnFilterChanged:
+
+/* When the text in any filter is changed, perform a check on each item in the original 
+contact list to see if the item should be displayed, taking into account all three of the
+filters currently applied. If the item passes all three checks for all three filters, 
+the function returns true and the item is added to the filtered list above. */
+private bool Filter(Contact contact)
+{
+    return contact.FirstName.Contains(FilterByFirstName.Text, StringComparison.InvariantCultureIgnoreCase) &&
+            contact.LastName.Contains(FilterByLastName.Text, StringComparison.InvariantCultureIgnoreCase) &&
+            contact.Company.Contains(FilterByCompany.Text, StringComparison.InvariantCultureIgnoreCase);
+}
+
+/* These functions go through the current list being displayed (contactsFiltered), and remove
+any items not in the filtered collection (any items that don't belong), or add back any items 
+from the original allContacts list that are now supposed to be displayed (i.e. when backspace is hit). */
+
+private void Remove_NonMatching(IEnumerable<Contact> filteredData)
+{
+    for (int i = contactsFiltered.Count - 1; i >= 0; i--)
+    {
+        var item = contactsFiltered[i];
+        // If contact is not in the filtered argument list, remove it from the ListView's source.
+        if (!filteredData.Contains(item))
+        {
+            contactsFiltered.Remove(item);
+        }
+    }
+}
+
+private void AddBack_Contacts(IEnumerable<Contact> filteredData)
+{
+    foreach (var item in filteredData)
+    {
+        // If item in filtered list is not currently in ListView's source collection, add it back in
+        if (!contactsFiltered.Contains(item))
+        {
+            contactsFiltered.Add(item);
+        }
+    }
+}

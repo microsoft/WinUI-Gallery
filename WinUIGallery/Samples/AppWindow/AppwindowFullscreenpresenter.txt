@@ -1,0 +1,52 @@
+--- header
+AppWindow with FullScreenPresenter
+--- xaml
+<Window ...>
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="8">
+        <TextBlock Text="This window is running in Fullscreen mode"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       TextAlignment="Center" />
+        <Button x:Name="Close"
+                Click="Close_Click"
+                Width="200"
+                HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <SymbolIcon Symbol="Cancel"
+                            Foreground="{ThemeResource SystemFillColorCriticalBrush}"
+                            Margin="0,0,4,0" />
+                <TextBlock Text="Close"
+                           Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</Window>
+--- c#
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+
+namespace YourNamespace;
+
+public sealed partial class SampleWindow6 : Window
+{
+    public SampleWindow6()
+    {
+        this.InitializeComponent();
+        AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
+
+        // Set the window to Full-Screen mode
+        AppWindow.SetPresenter(AppWindowPresenterKind.FullScreen);
+    }
+
+    private void Close_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
+}

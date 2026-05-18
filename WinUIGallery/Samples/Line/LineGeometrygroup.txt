@@ -1,0 +1,14 @@
+--- header
+GeometryGroup
+--- xaml
+<Path Stroke="Black" StrokeThickness="4" Fill="#CCCCFF">
+    <Path.Data>
+                    
+        <!-- Creates a composite shape from three geometries. -->
+        <GeometryGroup FillRule="EvenOdd">
+            <LineGeometry StartPoint="10,10" EndPoint="50,30" />
+            <EllipseGeometry Center="40,70" RadiusX="$(Slider1)" RadiusY="$(Slider2)" />
+            <RectangleGeometry Rect="30,55 100 30" />
+        </GeometryGroup>
+    </Path.Data>
+</Path>

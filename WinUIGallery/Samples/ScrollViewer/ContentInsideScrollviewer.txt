@@ -1,0 +1,12 @@
+--- header
+Content inside of a ScrollViewer.
+--- xaml
+<ScrollViewer Height="266" Width="400" ZoomMode="$(ZoomMode)"
+            IsTabStop="True" IsVerticalScrollChainingEnabled="True"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            ViewChanged="ScrollViewerControl_ViewChanged"
+            HorizontalScrollMode="$(HorizontalScrollMode)" HorizontalScrollBarVisibility="$(HorizontalScrollBarVisibility)"
+            VerticalScrollMode="$(VerticalScrollMode)" VerticalScrollBarVisibility="$(VerticalScrollBarVisibility)">
+    <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="cliff" Stretch="None"
+           HorizontalAlignment="Left" VerticalAlignment="Top"/>
+</ScrollViewer>

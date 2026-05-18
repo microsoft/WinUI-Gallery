@@ -1,0 +1,8 @@
+--- header
+A closable InfoBar with options to change its Severity.
+--- xaml
+<InfoBar 
+    IsOpen="$(IsOpen)"
+    Severity="$(Severity)"
+    Title="Title"
+    Message="Essential app message for your users to be informed of, acknowledge, or take action on." />

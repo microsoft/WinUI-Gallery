@@ -1,0 +1,13 @@
+--- header
+A MenuFlyout with ToggleMenuFlyoutItems and MenuFlyoutSeparator.
+--- xaml
+<Button Content="Options">
+    <Button.Flyout>
+        <MenuFlyout>
+            <MenuFlyoutItem Text="Reset"/>
+            <MenuFlyoutSeparator/>
+            <ToggleMenuFlyoutItem Text="Repeat" IsChecked="$(RepeatToggle)"/>
+            <ToggleMenuFlyoutItem Text="Shuffle" IsChecked="$(ShuffleToggle)"/>
+        </MenuFlyout>
+    </Button.Flyout>
+</Button>

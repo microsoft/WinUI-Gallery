@@ -1,0 +1,6 @@
+--- header
+A FontIcon using a glyph from a specific font family in a button
+--- xaml
+<Button Name="ExampleButton1">
+    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE790;"/>
+</Button>

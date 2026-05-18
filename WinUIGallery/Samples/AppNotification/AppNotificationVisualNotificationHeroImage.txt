@@ -1,0 +1,11 @@
+--- header
+Visual notification with hero image and attribution
+--- c#
+AppNotification notification = new AppNotificationBuilder()
+    .AddText("Harbor Scene with Boats")
+    .AddText("A quiet harbor with boats gently anchored in view.")
+    .SetHeroImage(new Uri("ms-appx:///Assets/SampleMedia/LandscapeImage5.jpg"))
+    .SetAttributionText("WinUI gallery assets")
+    .BuildNotification();
+
+AppNotificationManager.Default.Show(notification);

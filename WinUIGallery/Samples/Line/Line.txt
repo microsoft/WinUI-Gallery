@@ -1,0 +1,7 @@
+--- header
+Line
+--- xaml
+<Line Stroke="SteelBlue"
+      X1="$(Slider1)" Y1="$(Slider2)"
+      X2="$(Slider3)" Y2="$(Slider4)"
+      StrokeThickness="$(Slider5)"/>

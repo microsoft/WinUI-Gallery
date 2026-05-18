@@ -1,0 +1,17 @@
+--- header
+Content inside of a Viewbox.
+--- xaml
+<Viewbox Height="$(Size)" Width="$(Size)" Stretch="$(Stretch)" StretchDirection="$(StretchDirection)">
+    <Border BorderBrush="Gray" BorderThickness="15">
+        <StackPanel Background="DarkGray">
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Fill="Blue" Height="10" Width="40"/>
+                <Rectangle Fill="Green" Height="10" Width="40"/>
+                <Rectangle Fill="Red" Height="10" Width="40"/>
+                <Rectangle Fill="Yellow" Height="10" Width="40"/>
+            </StackPanel>
+            <Image Source="ms-appx:///Assets/SampleMedia/Slices.png"/>
+            <TextBlock Text="This is text." HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Border>
+</Viewbox>

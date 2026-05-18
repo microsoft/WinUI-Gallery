@@ -1,0 +1,96 @@
+--- header
+Creating and customizing an AppWindow from a Window instance
+--- xaml
+<Window ...>
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="8">
+        <Button x:Name="Hide"
+                Content="Hide"
+                Click="Hide_Click"
+                Width="200">
+            <ToolTipService.ToolTip>
+                <TextBlock Text="Hides the window from all UX representations in the system but keeps the object alive."
+                           TextWrapping="Wrap" />
+            </ToolTipService.ToolTip>
+        </Button>
+        <Button x:Name="Show"
+                Click="Show_Click"
+                Width="200" >
+            <ToolTipService.ToolTip>
+                <TextBlock Text="Hides and then shows the window and activates it after 3 seconds."
+                           TextWrapping="Wrap" />
+            </ToolTipService.ToolTip>
+            <TextBlock Text="Hide and show the window after 3 seconds" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
+        </Button>
+        <Button x:Name="Close"
+                Click="Close_Click"
+                Width="200"
+                Margin="0,16,0,0">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <SymbolIcon Symbol="Cancel"
+                            Foreground="{ThemeResource SystemFillColorCriticalBrush}"
+                            Margin="0,0,4,0" />
+                <TextBlock Text="Close"
+                           Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
+            </StackPanel>
+            <ToolTipService.ToolTip>
+                <TextBlock Text="Closes the window and releases all resources."
+                           TextWrapping="Wrap" />
+            </ToolTipService.ToolTip>
+        </Button>
+    </StackPanel>
+</Window>
+--- c#
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+
+namespace YourNamespace;
+                    
+public sealed partial class SampleWindow1 : Window
+{                   
+    public SampleWindow1()
+    {
+        this.InitializeComponent();
+
+        // Set the window title
+        AppWindow.Title = "$(WindowTitle)";
+
+        // Set the window size (including borders)
+        AppWindow.Resize(new Windows.Graphics.SizeInt32($(Width), $(Height)));
+
+        // Set the window position on screen
+        AppWindow.Move(new Windows.Graphics.PointInt32($(X), $(Y)));
+        
+        // Set the taskbar icon (displayed in the taskbar)
+        AppWindow.SetTaskbarIcon("Assets/Tiles/GalleryIcon.ico");
+
+        // Set the title bar icon (displayed in the window's title bar)
+        AppWindow.SetTitleBarIcon("Assets/Tiles/GalleryIcon.ico");
+
+        // Set the window icon (affects both taskbar and title bar, can be omitted if the above two are set)
+        // AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico"); 
+                    
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
+    }
+                    
+    private void Show_Click(object sender, RoutedEventArgs e)
+    {
+        AppWindow.Hide();
+        Task.Delay(3000).ContinueWith(t => AppWindow.Show());
+    }
+
+    private void Hide_Click(object sender, RoutedEventArgs e)
+    {
+        AppWindow.Hide();
+    }
+
+    private void Close_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
+}

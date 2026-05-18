@@ -1,0 +1,10 @@
+--- header
+An AppBarButton that opens a Flyout containing an input control.
+--- xaml
+<AppBarButton AllowFocusOnInteraction="True" Icon="Edit" Label="Edit">
+    <AppBarButton.Flyout>
+        <Flyout/>
+            <TextBox MinWidth="240" PlaceholderText="Input text here"/>
+        <Flyout/>
+    <AppBarButton.Flyout>
+</AppBarButton>

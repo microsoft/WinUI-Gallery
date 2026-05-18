@@ -1,0 +1,4 @@
+--- header
+A basic image from a local file.
+--- xaml
+<Image Source="/Assets/SampleMedia/treetops.jpg" Height="100" />

@@ -1,0 +1,10 @@
+--- header
+Use ContentThemeTransition to animate content refreshes.
+--- xaml
+<ListView>
+    <ListView.ItemContainerTransitions>
+        <TransitionCollection>
+            <ContentThemeTransition />
+        </TransitionCollection>
+    </ListView.ItemContainerTransitions>
+</ListView>

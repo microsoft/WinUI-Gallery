@@ -1,0 +1,17 @@
+--- header
+A basic pivot.
+--- xaml
+<Pivot Title="EMAIL">
+    <PivotItem Header="All">
+        <TextBlock Text="all emails go here." />
+    </PivotItem>
+    <PivotItem Header="Unread">
+        <TextBlock Text="unread emails go here." />
+    </PivotItem>
+    <PivotItem Header="Flagged">
+        <TextBlock Text="flagged emails go here." />
+    </PivotItem>
+    <PivotItem Header="Urgent">
+        <TextBlock Text="urgent emails go here." />
+    </PivotItem>
+</Pivot>

@@ -1,0 +1,8 @@
+--- header
+An AppBarButton with a bitmap icon.
+--- xaml
+<AppBarButton Label="BitmapIcon" Click="AppBarButton_Click">
+    <AppBarButton.Icon>
+        <BitmapIcon UriSource="ms-appx:///Assets/SampleMedia/Slices2.png"/>
+    </AppBarButton.Icon>
+</AppBarButton>

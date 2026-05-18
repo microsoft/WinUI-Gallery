@@ -1,0 +1,19 @@
+--- header
+A RichTextBlock with overflow.
+--- xaml
+<Grid>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+    <Grid.ColumnDefinitions>
+    <RichTextBlock Grid.Column="0" OverflowContentTarget="{x:Bind firstOverflowContainer}" TextAlignment="Justify" Margin="12,0">
+        <Paragraph>
+            Linked text containers allow text which does not fit in one element to overflow into a different element on the page.
+            Creative use of linked text containers enables basic multicolumn support and other advanced page layouts.
+        </Paragraph>
+    <!-- Additional content not shown. -->
+    </RichTextBlock>
+    <RichTextBlockOverflow x:Name="firstOverflowContainer" OverflowContentTarget="{x:Bind secondOverflowContainer}" Grid.Column="1" Margin="12,0"/>
+    <RichTextBlockOverflow x:Name="secondOverflowContainer" Grid.Column="2" Margin="12,0"/>
+</Grid>

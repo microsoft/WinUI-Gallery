@@ -1,0 +1,9 @@
+--- header
+A closable InfoBar with options to display the close button and icon
+--- xaml
+<InfoBar 
+    IsOpen="$(IsOpen)"
+    IsIconVisible="$(IsIconVisible)"                    
+    IsClosable="$(IsClosable)"
+    Title="Title"
+    Message="Essential app message for your users to be informed of, acknowledge, or take action on." />

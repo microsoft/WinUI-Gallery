@@ -1,0 +1,18 @@
+--- header
+Extending content into the AppWindowTitleBar area
+--- c#
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+
+public sealed partial class AppWindowTitleBarExtendWindow : Window
+{
+    public AppWindowTitleBarExtendWindow()
+    {
+        InitializeComponent();
+        AppWindow.TitleBar.ExtendsContentIntoTitleBar = $(ExtendsContentIntoTitleBar);
+        if (AppWindow.TitleBar.ExtendsContentIntoTitleBar)
+        {
+            AppWindow.TitleBar.HeightOption = TitleBarHeightOption.$(TitleBarHeightOption);
+        }
+    }
+}

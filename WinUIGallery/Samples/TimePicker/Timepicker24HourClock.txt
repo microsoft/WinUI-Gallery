@@ -1,0 +1,6 @@
+--- header
+A TimePicker using a 24-hour clock, initialized to current time.
+--- xaml
+<xmlns:sys="using:System">
+                    
+                    <TimePicker ClockIdentifier="24HourClock" Header="24 hour clock" SelectedTime="{x:Bind sys:DateTime.Now.TimeOfDay}" />
