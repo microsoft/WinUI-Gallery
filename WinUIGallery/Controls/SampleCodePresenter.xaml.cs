@@ -49,6 +49,21 @@ public sealed partial class SampleCodePresenter : UserControl
         set { SetValue(SampleTypeProperty, value); }
     }
 
+    public static readonly DependencyProperty IsCopyButtonVisibleProperty = DependencyProperty.Register("IsCopyButtonVisible", typeof(bool), typeof(SampleCodePresenter), new PropertyMetadata(true, OnIsCopyButtonVisibleChanged));
+    public bool IsCopyButtonVisible
+    {
+        get { return (bool)GetValue(IsCopyButtonVisibleProperty); }
+        set { SetValue(IsCopyButtonVisibleProperty, value); }
+    }
+
+    private static void OnIsCopyButtonVisibleChanged(DependencyObject target, DependencyPropertyChangedEventArgs args)
+    {
+        if (target is SampleCodePresenter presenter)
+        {
+            presenter.CopyButtonBorder.Visibility = (bool)args.NewValue ? Visibility.Visible : Visibility.Collapsed;
+        }
+    }
+
     public static readonly DependencyProperty SubstitutionsProperty = DependencyProperty.Register("Substitutions", typeof(IList<ControlExampleSubstitution>), typeof(ControlExample), new PropertyMetadata(null));
     public IList<ControlExampleSubstitution> Substitutions
     {
@@ -91,6 +106,7 @@ public sealed partial class SampleCodePresenter : UserControl
     private void SampleCodePresenter_Loaded(object sender, RoutedEventArgs e)
     {
         ReevaluateVisibility();
+        CopyButtonBorder.Visibility = IsCopyButtonVisible ? Visibility.Visible : Visibility.Collapsed;
         VisualStateManager.GoToState(this, GetSampleLanguageVisualState(), false);
         if (Substitutions != null)
         {
@@ -244,7 +260,11 @@ public sealed partial class SampleCodePresenter : UserControl
     {
         if (sender is RichTextBlock sampleCode)
         {
-            if (!string.IsNullOrEmpty(sampleCode.SelectedText))
+            if (!IsCopyButtonVisible)
+            {
+                CopyButtonBorder.Visibility = Visibility.Collapsed;
+            }
+            else if (!string.IsNullOrEmpty(sampleCode.SelectedText))
             {
                 CopyButtonBorder.Visibility = Visibility.Collapsed;
             }
@@ -329,7 +349,7 @@ public sealed partial class SampleCodePresenter : UserControl
             scrollTimer.Tick += (s, args) =>
             {
                 scrollTimer.Stop();
-                if (sampleCodeRTB != null && string.IsNullOrEmpty(sampleCodeRTB.SelectedText))
+                if (IsCopyButtonVisible && sampleCodeRTB != null && string.IsNullOrEmpty(sampleCodeRTB.SelectedText))
                 {
                     CopyButtonBorder.Visibility = Visibility.Visible;
                 }
