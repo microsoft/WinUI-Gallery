@@ -60,6 +60,24 @@ public sealed partial class ColorTile : UserControl
     public static readonly DependencyProperty ShowSeparatorProperty =
         DependencyProperty.Register("ShowSeparator", typeof(bool), typeof(ColorTile), new PropertyMetadata(true));
 
+    public object Comment
+    {
+        get { return GetValue(CommentProperty); }
+        set { SetValue(CommentProperty, value); }
+    }
+    public static readonly DependencyProperty CommentProperty =
+        DependencyProperty.Register(
+            "Comment",
+            typeof(object),
+            typeof(ColorTile),
+            new PropertyMetadata(null, OnCommentChanged));
+
+    private static void OnCommentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var tile = (ColorTile)d;
+        tile.CommentHost.Visibility = e.NewValue != null ? Visibility.Visible : Visibility.Collapsed;
+    }
+
     public ColorTileBackdropKind Backdrop
     {
         get { return (ColorTileBackdropKind)GetValue(BackdropProperty); }

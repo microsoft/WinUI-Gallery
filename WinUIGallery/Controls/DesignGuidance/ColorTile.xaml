@@ -79,6 +79,13 @@
                 Style="{StaticResource CaptionTextBlockStyle}"
                 Text="{x:Bind ColorBrushName, Mode=OneWay}"
                 TextWrapping="Wrap" />
+
+            <ContentPresenter
+                x:Name="CommentHost"
+                Grid.Row="4"
+                Grid.ColumnSpan="2"
+                Content="{x:Bind Comment, Mode=OneWay}"
+                Visibility="Collapsed" />
             <!--  Right now, we don't want to display colors. If we ever want to show them again, we can show them again by using the following code.  -->
             <!--<TextBlock Text="{x:Bind ColorValue, Mode=OneWay}" Grid.Row="4" Grid.ColumnSpan="2" TextWrapping="WrapWholeWords" Style="{StaticResource CaptionTextBlockStyle}"/>-->
         </Grid>

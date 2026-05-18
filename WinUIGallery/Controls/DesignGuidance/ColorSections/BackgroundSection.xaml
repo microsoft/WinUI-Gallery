@@ -355,16 +355,28 @@
                 </Grid.ColumnDefinitions>
                 <local:ColorTile
                     Backdrop="Mica"
-                    ColorBrushName="MicaBackgroundFillColorBaseBrush"
                     ColorExplanation="Used for the bottom most layer of an experience."
-                    ColorName="Mica Background / Base" />
+                    ColorName="Mica Background / Base">
+                    <local:ColorTile.Comment>
+                        <TextBlock Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="Wrap">
+                            See <Hyperlink Click="SystemBackdropLink_Click">SystemBackdrop</Hyperlink>
+                            and <Hyperlink Click="SystemBackdropElementLink_Click">SystemBackdropElement</Hyperlink>
+                        </TextBlock>
+                    </local:ColorTile.Comment>
+                </local:ColorTile>
                 <local:ColorTile
                     Grid.Column="1"
                     Backdrop="MicaAlt"
-                    ColorBrushName="MicaBackgroundFillColorBaseAltBrush"
                     ColorExplanation="Default tab band background color."
                     ColorName="Mica Background / Base Alt"
-                    ShowSeparator="False" />
+                    ShowSeparator="False">
+                    <local:ColorTile.Comment>
+                        <TextBlock Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="Wrap">
+                            See <Hyperlink Click="SystemBackdropLink_Click">SystemBackdrop</Hyperlink>
+                            and <Hyperlink Click="SystemBackdropElementLink_Click">SystemBackdropElement</Hyperlink>
+                        </TextBlock>
+                    </local:ColorTile.Comment>
+                </local:ColorTile>
             </Grid>
 
             <!--  Acrylic background  -->
