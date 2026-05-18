@@ -10,11 +10,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
+    <Grid x:Name="RootGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
+
+        <SystemBackdropElement
+            x:Name="BackdropHost"
+            Grid.ColumnSpan="2"
+            Visibility="Collapsed" />
 
         <Grid
             Padding="12"

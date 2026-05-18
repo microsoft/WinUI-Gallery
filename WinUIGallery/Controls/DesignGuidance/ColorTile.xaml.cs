@@ -3,9 +3,18 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using Windows.ApplicationModel.DataTransfer;
 
 namespace WinUIGallery.Controls;
+
+public enum ColorTileBackdropKind
+{
+    None,
+    Acrylic,
+    Mica,
+    MicaAlt,
+}
 
 public sealed partial class ColorTile : UserControl
 {
@@ -50,6 +59,46 @@ public sealed partial class ColorTile : UserControl
     // Using a DependencyProperty as the backing store for ShowSeparator.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty ShowSeparatorProperty =
         DependencyProperty.Register("ShowSeparator", typeof(bool), typeof(ColorTile), new PropertyMetadata(true));
+
+    public ColorTileBackdropKind Backdrop
+    {
+        get { return (ColorTileBackdropKind)GetValue(BackdropProperty); }
+        set { SetValue(BackdropProperty, value); }
+    }
+    public static readonly DependencyProperty BackdropProperty =
+        DependencyProperty.Register(
+            "Backdrop",
+            typeof(ColorTileBackdropKind),
+            typeof(ColorTile),
+            new PropertyMetadata(ColorTileBackdropKind.None, OnBackdropChanged));
+
+    private static void OnBackdropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        ((ColorTile)d).ApplyBackdrop();
+    }
+
+    private void ApplyBackdrop()
+    {
+        switch (Backdrop)
+        {
+            case ColorTileBackdropKind.Acrylic:
+                BackdropHost.SystemBackdrop = new DesktopAcrylicBackdrop();
+                BackdropHost.Visibility = Visibility.Visible;
+                break;
+            case ColorTileBackdropKind.Mica:
+                BackdropHost.SystemBackdrop = new MicaBackdrop { Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base };
+                BackdropHost.Visibility = Visibility.Visible;
+                break;
+            case ColorTileBackdropKind.MicaAlt:
+                BackdropHost.SystemBackdrop = new MicaBackdrop { Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt };
+                BackdropHost.Visibility = Visibility.Visible;
+                break;
+            default:
+                BackdropHost.SystemBackdrop = null;
+                BackdropHost.Visibility = Visibility.Collapsed;
+                break;
+        }
+    }
 
     public ColorTile()
     {

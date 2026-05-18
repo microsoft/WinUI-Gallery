@@ -49,7 +49,7 @@
                     ColorValue="#F9F9F9 (4D, 30%)" />
                 <local:ColorTile
                     Grid.Column="3"
-                    Background="{ThemeResource ControlFillColorTertiaryBrush}"
+                    Background="{ThemeResource ControlFillColorQuarternaryBrush}"
                     ColorBrushName="ControlFillColorQuarternaryBrush"
                     ColorExplanation="Rest (Pill Button control)"
                     ColorName="Control / Quartenary"
