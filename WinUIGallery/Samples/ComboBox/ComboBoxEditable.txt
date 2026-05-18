@@ -1,0 +1,4 @@
+--- header
+An editable ComboBox.
+--- xaml
+<ComboBox IsEditable="True" ItemsSource="{x:Bind FontSizes}" Width="200" TextSubmitted="Combo3_TextSubmitted"/>

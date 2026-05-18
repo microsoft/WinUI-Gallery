@@ -20,7 +20,7 @@
 
     <!--  SIMPLE SLIDER  -->
     <StackPanel>
-        <controls:ControlExample x:Name="Example1" HeaderText="A simple Slider.">
+        <controls:ControlExample x:Name="Example1" SampleDefinition="Slider\SliderSimple.txt">
             <StackPanel Orientation="Horizontal">
                 <Slider
                     x:Name="Slider1"
@@ -30,15 +30,10 @@
             <controls:ControlExample.Output>
                 <TextBlock Text="{x:Bind Slider1.Value.ToString(), Mode=OneWay}" />
             </controls:ControlExample.Output>
-            <controls:ControlExample.Xaml>
-                <x:String>
-                    &lt;Slider AutomationProperties.Name="simple slider" Width="200"/&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
 
         <!--  SLIDER WITH RANGE AND STEPS  -->
-        <controls:ControlExample x:Name="Example2" HeaderText="A Slider with range and steps specified.">
+        <controls:ControlExample x:Name="Example2" SampleDefinition="Slider\SliderRange.txt">
             <controls:ControlExample.Options>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -139,12 +134,6 @@
             <controls:ControlExample.Output>
                 <TextBlock Text="{x:Bind Slider2.Value.ToString(), Mode=OneWay}" />
             </controls:ControlExample.Output>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Slider Width="200" Minimum="$(MinimumValue)" Maximum="$(MaximumValue)" StepFrequency="$(StepFrequencyValue)"
-        SmallChange="$(SmallChangeValue)" Value="$(Value)" /&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="MinimumValue" Value="{x:Bind MinimumValue.Value, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="MaximumValue" Value="{x:Bind MaximumValue.Value, Mode=OneWay}" />
@@ -155,7 +144,7 @@
         </controls:ControlExample>
 
         <!--  SLIDER WITH TICK MARKS  -->
-        <controls:ControlExample x:Name="Example3" HeaderText="A Slider with tick marks.">
+        <controls:ControlExample x:Name="Example3" SampleDefinition="Slider\SliderTicks.txt">
             <StackPanel Orientation="Horizontal">
                 <Slider
                     x:Name="Slider3"
@@ -179,22 +168,13 @@
                     </RadioButtons>
                 </StackPanel>
             </controls:ControlExample.Options>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Slider
-     AutomationProperties.Name="Slider with ticks"
-     TickFrequency="20"
-     TickPlacement="Outside"
-     SnapsTo="$(SnapsTo)" /&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="SnapsTo" Value="{x:Bind SnapsToRadioButtons.SelectedItem, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
         <!--  VERTICAL SLIDER  -->
-        <controls:ControlExample x:Name="Example4" HeaderText="A vertical slider with range and tick marks specified.">
+        <controls:ControlExample x:Name="Example4" SampleDefinition="Slider\SliderVertical.txt">
             <StackPanel Orientation="Horizontal">
                 <Slider
                     x:Name="Slider4"
@@ -210,12 +190,6 @@
             <controls:ControlExample.Output>
                 <TextBlock Text="{x:Bind Slider4.Value.ToString(), Mode=OneWay}" />
             </controls:ControlExample.Output>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Slider AutomationProperties.Name="vertical slider" Width="100" Orientation="Vertical"
-    TickFrequency="10" TickPlacement="Outside" Maximum="50" Minimum="-50"/&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
     </StackPanel>
 </Page>

@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <controls:ControlExample HeaderText="Simple DropDownButton" XamlSource="Buttons/DropDown/DropDownButton_Simple.txt">
+        <controls:ControlExample SampleDefinition="DropDownButton\DropDownButtonSimple.txt">
             <StackPanel x:Name="Control1" Orientation="Horizontal">
                 <DropDownButton Content="Email">
                     <DropDownButton.Flyout>
@@ -22,7 +22,7 @@
             </StackPanel>
         </controls:ControlExample>
 
-        <controls:ControlExample HeaderText="DropDownButton with Icons" XamlSource="Buttons/DropDown/DropDownButton_Icon.txt">
+        <controls:ControlExample SampleDefinition="DropDownButton\DropDownButtonIcon.txt">
             <StackPanel x:Name="Control2" Orientation="Horizontal">
                 <DropDownButton AutomationProperties.Name="Email">
                     <DropDownButton.Content>

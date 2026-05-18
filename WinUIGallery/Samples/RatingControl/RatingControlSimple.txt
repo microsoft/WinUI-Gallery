@@ -1,0 +1,5 @@
+--- header
+A simple RatingControl
+--- xaml
+<RatingControl AutomationProperties.Name="Simple RatingControl" IsClearEnabled="$(IsClearEnabled)"
+    IsReadOnly="$(IsReadOnly)" Caption="$(Caption)"/>

@@ -18,7 +18,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
-        <controls:ControlExample HeaderText="A simple RepeatButton with text content.">
+        <controls:ControlExample SampleDefinition="RepeatButton\RepeatButtonSimple.txt">
             <StackPanel Orientation="Horizontal">
                 <RepeatButton
                     x:Name="Control1"
@@ -37,11 +37,6 @@
                 <CheckBox x:Name="DisableControl1" Content="Disable RepeatButton" />
             </controls:ControlExample.Options>
 
-            <controls:ControlExample.Xaml>
-                <x:String>
-                    &lt;RepeatButton Content="Click and hold" Click="RepeatButton_Click" $(IsEnabled)/&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution
                     Key="IsEnabled"

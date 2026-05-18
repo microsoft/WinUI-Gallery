@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
-        <controls:ControlExample x:Name="Example1" HeaderText="A simple RatingControl">
+        <controls:ControlExample x:Name="Example1" SampleDefinition="RatingControl\RatingControlSimple.txt">
 
             <StackPanel VerticalAlignment="Top">
                 <RatingControl
@@ -35,12 +35,6 @@
                 </StackPanel>
             </controls:ControlExample.Options>
 
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;RatingControl AutomationProperties.Name="Simple RatingControl" IsClearEnabled="$(IsClearEnabled)"
-    IsReadOnly="$(IsReadOnly)" Caption="$(Caption)"/&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="IsClearEnabled" Value="{x:Bind clearEnabledCheck.IsChecked, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="IsReadOnly" Value="{x:Bind readOnlyCheck.IsChecked, Mode=OneWay}" />
@@ -51,7 +45,7 @@
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <controls:ControlExample x:Name="Example2" HeaderText="PlaceholderValue of RatingControl">
+        <controls:ControlExample x:Name="Example2" SampleDefinition="RatingControl\RatingControlPlaceholder.txt">
 
             <RatingControl
                 x:Name="RatingControl2"
@@ -73,11 +67,6 @@
                 </StackPanel>
             </controls:ControlExample.Options>
 
-            <controls:ControlExample.Xaml>
-                <x:String>
-                    &lt;RatingControl AutomationProperties.Name="RatingControl with placeholder" PlaceholderValue="$(Slider)" /&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="Slider" Value="{x:Bind slider.Value, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>

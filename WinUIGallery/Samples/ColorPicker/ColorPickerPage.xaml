@@ -10,7 +10,7 @@
         <controls:ControlExample
             x:Name="Example1"
             HorizontalContentAlignment="Left"
-            HeaderText="ColorPicker Properties.">
+            SampleDefinition="ColorPicker\ColorPickerProperties.txt">
 
             <ColorPicker
                 x:Name="colorPicker"
@@ -75,19 +75,6 @@
                 </StackPanel>
             </controls:ControlExample.Options>
 
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;ColorPicker
-      ColorSpectrumShape="$(ColorSpectrumShape)"
-      IsMoreButtonVisible="$(IsMoreButtonVisible)"
-      IsColorSliderVisible="$(IsColorSliderVisible)"
-      IsColorChannelTextInputVisible="$(IsColorChannelTextInputVisible)"
-      IsHexInputVisible="$(IsHexInputVisible)"
-      IsAlphaEnabled="$(IsAlphaEnabled)"
-      IsAlphaSliderVisible="$(IsAlphaSliderVisible)"
-      IsAlphaTextInputVisible="$(IsAlphaTextInputVisible)" /&gt;
-</x:String>
-            </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="ColorSpectrumShape" Value="{x:Bind ColorSpectrumShapeRadioButtons.SelectedItem, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="IsMoreButtonVisible" Value="{x:Bind moreBtn.IsChecked, Mode=OneWay}" />

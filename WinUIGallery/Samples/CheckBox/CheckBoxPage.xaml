@@ -18,7 +18,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
-        <controls:ControlExample x:Name="Example1" HeaderText="A 2-state CheckBox.">
+        <controls:ControlExample x:Name="Example1" SampleDefinition="CheckBox\CheckBoxTwoState.txt">
             <controls:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
                     <!--  A two-state CheckBox.  -->
@@ -32,17 +32,10 @@
             <controls:ControlExample.Output>
                 <TextBlock x:Name="TwoStateOutput" AutomationProperties.AutomationId="Control1Output" />
             </controls:ControlExample.Output>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;CheckBox Content="Two-state CheckBox"
-          Checked="TwoState_Checked"
-          Unchecked="TwoState_Unchecked" /&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
         <controls:ControlExample
             x:Name="Example2"
-            HeaderText="A 3-state CheckBox."
+            SampleDefinition="CheckBox\CheckBoxThreeState.txt"
             RelativePanel.Below="Example1">
             <controls:ControlExample.Example>
                 <StackPanel Orientation="Horizontal">
@@ -58,19 +51,10 @@
             <controls:ControlExample.Output>
                 <TextBlock x:Name="ThreeStateOutput" AutomationProperties.AutomationId="Control2Output" />
             </controls:ControlExample.Output>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;CheckBox Content="Three-state CheckBox"
-          IsThreeState="True"
-          Checked="ThreeState_Checked"
-          Unchecked="ThreeState_Unchecked"
-          Indeterminate="ThreeState_Indeterminate" /&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
         <controls:ControlExample
             x:Name="Example3"
-            HeaderText="Using a 3-state CheckBox."
+            SampleDefinition="CheckBox\CheckBoxSelectAll.txt"
             RelativePanel.Below="Example2">
             <controls:ControlExample.Example>
                 <StackPanel>
@@ -102,18 +86,6 @@
                         Unchecked="Option_Unchecked" />
                 </StackPanel>
             </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;StackPanel&gt;
-    &lt;CheckBox x:Name="OptionsAllCheckBox" Content="Select all" IsThreeState="True"
-              Checked="SelectAll_Checked" Unchecked="SelectAll_Unchecked"
-              Indeterminate="SelectAll_Indeterminate" /&gt;
-    &lt;CheckBox x:Name="Option1CheckBox" Content="Option 1" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" /&gt;
-    &lt;CheckBox x:Name="Option2CheckBox" Content="Option 2" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" IsChecked="True" /&gt;
-    &lt;CheckBox x:Name="Option3CheckBox" Content="Option 3" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" /&gt;
-&lt;/StackPanel&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
     </StackPanel>
 </Page>

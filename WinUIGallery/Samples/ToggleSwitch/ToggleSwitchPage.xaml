@@ -19,16 +19,11 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <controls:ControlExample x:Name="Example1" HeaderText="A simple ToggleSwitch.">
+        <controls:ControlExample x:Name="Example1" SampleDefinition="ToggleSwitch\ToggleSwitchSimple.txt">
             <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" />
-            <controls:ControlExample.Xaml>
-                <x:String>
-                    &lt;ToggleSwitch AutomationProperties.Name="simple ToggleSwitch"/&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
 
-        <controls:ControlExample HeaderText="A ToggleSwitch with custom header and content.">
+        <controls:ControlExample SampleDefinition="ToggleSwitch\ToggleSwitchCustom.txt">
             <StackPanel Orientation="Horizontal">
                 <ToggleSwitch
                     x:Name="ToggleSwitch2"
@@ -38,14 +33,6 @@
                     OnContent="Working" />
                 <ProgressRing Width="32" IsActive="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}" />
             </StackPanel>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
-    &lt;ToggleSwitch Header=&quot;Toggle work&quot; OffContent=&quot;Do work&quot; OnContent=&quot;Working&quot; IsOn=&quot;$(isOn)$(isOff)&quot; /&gt;
-    &lt;ProgressRing IsActive=&quot;{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}&quot; Width=&quot;32&quot;/&gt;
-&lt;/StackPanel&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
 
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution

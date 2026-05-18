@@ -18,7 +18,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
-        <controls:ControlExample HeaderText="A simple ToggleButton with text content.">
+        <controls:ControlExample SampleDefinition="ToggleButton\ToggleButtonSimple.txt">
             <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
                 <ToggleButton
                     x:Name="Toggle1"
@@ -35,11 +35,6 @@
                     <CheckBox x:Name="DisableToggle1" Content="Disable ToggleButton" />
                 </StackPanel>
             </controls:ControlExample.Options>
-            <controls:ControlExample.Xaml>
-                <x:String>
-                    &lt;ToggleButton Content="ToggleButton" Click="Button_Click" $(IsEnabled)/&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution
                     Key="IsEnabled"

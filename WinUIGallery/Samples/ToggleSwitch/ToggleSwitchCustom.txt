@@ -1,0 +1,7 @@
+--- header
+A ToggleSwitch with custom header and content.
+--- xaml
+<StackPanel Orientation="Horizontal">
+    <ToggleSwitch Header="Toggle work" OffContent="Do work" OnContent="Working" IsOn="$(isOn)$(isOff)" />
+    <ProgressRing IsActive="{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}" Width="32"/>
+</StackPanel>

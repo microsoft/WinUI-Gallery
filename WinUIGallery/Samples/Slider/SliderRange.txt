@@ -1,0 +1,5 @@
+--- header
+A Slider with range and steps specified.
+--- xaml
+<Slider Width="200" Minimum="$(MinimumValue)" Maximum="$(MaximumValue)" StepFrequency="$(StepFrequencyValue)"
+        SmallChange="$(SmallChangeValue)" Value="$(Value)" />

@@ -19,7 +19,7 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <controls:ControlExample x:Name="Example1" HeaderText="A hyperlink button that navigates to a URI.">
+        <controls:ControlExample x:Name="Example1" SampleDefinition="HyperlinkButton\HyperlinkButtonNavigate.txt">
             <controls:ControlExample.Example>
                 <HyperlinkButton
                     x:Name="Control1"
@@ -32,11 +32,6 @@
                     <CheckBox x:Name="DisableControl1" Content="Disable hyperlink button" />
                 </StackPanel>
             </controls:ControlExample.Options>
-            <controls:ControlExample.Xaml>
-                <x:String>
-                    &lt;HyperlinkButton Content="Microsoft home page" NavigateUri="https://www.microsoft.com" $(IsEnabled)/&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution
                     Key="IsEnabled"
@@ -45,18 +40,13 @@
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <controls:ControlExample HeaderText="A hyperlink button that handles a Click event.">
+        <controls:ControlExample SampleDefinition="HyperlinkButton\HyperlinkButtonClick.txt">
             <controls:ControlExample.Example>
                 <HyperlinkButton
                     x:Name="Control2"
                     Click="GoToHyperlinkButton_Click"
                     Content="Go to ToggleButton" />
             </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String>
-                    &lt;HyperlinkButton Content="ToggleButton" Click="HyperlinkButton_Click"/&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
     </StackPanel>
 </Page>

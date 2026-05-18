@@ -14,9 +14,8 @@
     <StackPanel>
         <controls:ControlExample
             x:Name="Example1"
-            HeaderText="A SplitButton controlling text color in a RichEditBox"
-            WebViewHeight="150"
-            XamlSource="Buttons\SplitButton\SplitButtonSample1.txt">
+            SampleDefinition="SplitButton\SplitButtonColorPicker.txt"
+            WebViewHeight="150">
             <Grid x:Name="Control1" ColumnSpacing="24">
 
                 <SplitButton
@@ -76,7 +75,7 @@
             </controls:ControlExample.Options>
         </controls:ControlExample>
 
-        <controls:ControlExample HeaderText="A SplitButton with text" XamlSource="Buttons\SplitButton\SplitButtonSample2.txt">
+        <controls:ControlExample SampleDefinition="SplitButton\SplitButtonText.txt">
             <controls:ControlExample.Example>
                 <SplitButton
                     x:Name="myColorButtonReveal"

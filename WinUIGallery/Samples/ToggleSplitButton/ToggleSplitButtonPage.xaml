@@ -9,9 +9,8 @@
     <StackPanel>
         <controls:ControlExample
             x:Name="Example1"
-            HeaderText="Using ToggleSplitButton to control bulleted list functionality in RichEditBox"
-            WebViewHeight="150"
-            XamlSource="Buttons\ToggleSplitButton\ToggleSplitButtonSample1.txt">
+            SampleDefinition="ToggleSplitButton\ToggleSplitButtonBulletList.txt"
+            WebViewHeight="150">
             <ToggleSplitButton
                 x:Name="myListButton"
                 VerticalAlignment="Top"

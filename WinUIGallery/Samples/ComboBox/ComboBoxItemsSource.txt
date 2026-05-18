@@ -1,0 +1,5 @@
+--- header
+A ComboBox with its ItemsSource set.
+--- xaml
+<ComboBox ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1" SelectedValuePath="Item2"
+          Header="Font" Width="200" Loaded="Combo2_Loaded"/>
