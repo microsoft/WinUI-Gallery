@@ -69,7 +69,7 @@ Pages use the `ControlExample` custom control to show interactive demos:
 
 ## Adding a New Control Page
 
-1. Add the control entry to `Samples/Data/ControlInfoData.json` with a unique `UniqueId` matching the page class name (without `Page` suffix).
+1. Add the control entry to `SampleSupport/Data/ControlInfoData.json` with a unique `UniqueId` matching the page class name (without `Page` suffix).
 2. Create a folder `Samples/{UniqueId}/` and add `{ControlName}Page.xaml` and `.xaml.cs` using the `ControlExample` pattern above. The folder name **must** match the `UniqueId` exactly.
 3. The source generator auto-maps the `UniqueId` to the page type — no manual registration needed.
 4. Add any code snippets as `.txt` files in the same `Samples/{UniqueId}/` folder. They are automatically included in the build via glob patterns in `ContentIncludes.props`.
