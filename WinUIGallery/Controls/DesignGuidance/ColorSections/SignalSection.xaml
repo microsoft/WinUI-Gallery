@@ -16,7 +16,7 @@
             <local:ColorPageExample
                 Title="System"
                 Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-                Description="Used for accent fills on controls">
+                Description="Used for accent fills on controls.">
                 <InfoBar
                     Title="Title"
                     IsClosable="False"

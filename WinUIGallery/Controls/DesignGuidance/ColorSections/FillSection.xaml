@@ -17,7 +17,7 @@
             <local:ColorPageExample
                 Title="Control Fill"
                 Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-                Description="Fill used for standard controls">
+                Description="Fill used for standard controls.">
                 <Button Content="Text" />
             </local:ColorPageExample>
             <Grid Style="{StaticResource GalleryTileGridStyle}">
@@ -91,7 +91,7 @@
             <local:ColorPageExample
                 Title="Control Alt Fill"
                 Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-                Description="Fill used for the 'off' states of toggle controls">
+                Description="Fill used for the 'off' states of toggle controls.">
                 <ToggleSwitch OffContent="" OnContent="" />
             </local:ColorPageExample>
             <Grid Style="{StaticResource GalleryTileGridStyle}">
@@ -337,7 +337,7 @@
             <local:ColorPageExample
                 Title="Accent Fill"
                 Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-                Description="Used for accent fills on controls">
+                Description="Used for accent fills on controls.">
                 <StackPanel>
                     <Button Content="Text" Style="{StaticResource AccentButtonStyle}" />
                 </StackPanel>
