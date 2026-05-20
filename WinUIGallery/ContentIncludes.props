@@ -3,6 +3,7 @@
     <!-- Remove auto-included Content items so our globs below don't create duplicates -->
     <Content Remove="Assets\**" />
     <Content Remove="Samples\**\*.txt" />
+    <Content Remove="Samples\Iconography\IconsData.json" />
     <Content Remove="SampleSupport\Data\*.json" />
     <!-- Asset files (images, media) — ControlIcons are excluded here because
          the main csproj removes them from all item groups before this import -->
@@ -11,5 +12,6 @@
     <Content Include="Samples\**\*.txt" />
     <!-- Control metadata and icon data JSON files -->
     <Content Include="SampleSupport\Data\*.json" />
+    <Content Include="Samples\Iconography\IconsData.json" />
   </ItemGroup>
 </Project>

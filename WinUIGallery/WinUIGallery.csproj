@@ -347,7 +347,7 @@
     <None Remove="Samples\CustomUserControls\ValidatedPasswordBox.xaml" />
     <None Remove="Samples\CustomUserControls\CustomUserControlsPage.xaml" />
     <None Remove="Samples\AppWindow\AppWindowPage.xaml" />
-    <None Remove="SampleSupport\Data\IconsData.json" />
+    <None Remove="Samples\Iconography\IconsData.json" />
     <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
     <None Remove="SampleSupport\SamplePages\AppWindowTitleBarExtendWindow.xaml" />
     <None Remove="SampleSupport\SamplePages\AppWindowTitleBarWindow.xaml" />
