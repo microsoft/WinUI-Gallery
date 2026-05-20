@@ -25,10 +25,6 @@
                         "description": "Indicates that this section is not a regular control section but is added to the navigation differently",
                         "default": true
                     },
-                    "Folder": {
-                        "type": "string",
-                        "description": "Use to indicate a special child item for this folder. Only used when IsSpecialSection is true"
-                    },
                     "Items": {
                         "type": "array",
                         "description": "Individual control info",

@@ -41,7 +41,12 @@ This is a **WinUI 3 / Windows App SDK** gallery app that demonstrates controls, 
 
 ### Control pages
 
-Each control demo lives in `Samples/ControlPages/` as a `[ControlName]Page.xaml` + `.xaml.cs` pair. Pages use the `ControlExample` custom control to show interactive demos:
+Each control demo lives in its own folder under `Samples/{UniqueId}/` (e.g., `Samples/Button/`, `Samples/CheckBox/`). The folder name **must match** the control's `UniqueId` from `ControlInfoData.json` — this convention is used to generate GitHub source links and resolve sample code files at runtime. Each folder contains:
+
+- `{ControlName}Page.xaml` + `.xaml.cs` — the control demo page
+- `*.txt` — XAML/C# code snippets displayed in the gallery UI
+
+Pages use the `ControlExample` custom control to show interactive demos:
 
 ```xml
 <controls:ControlExample HeaderText="A basic button">
@@ -62,16 +67,12 @@ Each control demo lives in `Samples/ControlPages/` as a `[ControlName]Page.xaml`
 
 `ControlExample` exposes: `Example`, `Output`, `Options`, `Xaml`/`XamlSource`, `CSharp`/`CSharpSource`, and `Substitutions` for dynamic `$(Key)` replacements in displayed code.
 
-### Sample code files
-
-`Samples/SampleCode/` contains `.txt` files with raw XAML/C# snippets displayed via `XamlSource`/`CSharpSource`. Naming: `{ControlName}Sample{N}_{xaml|cs|csharp}.txt`.
-
 ## Adding a New Control Page
 
 1. Add the control entry to `Samples/Data/ControlInfoData.json` with a unique `UniqueId` matching the page class name (without `Page` suffix).
-2. Create `Samples/ControlPages/[ControlName]Page.xaml` and `.xaml.cs` using the `ControlExample` pattern above.
+2. Create a folder `Samples/{UniqueId}/` and add `{ControlName}Page.xaml` and `.xaml.cs` using the `ControlExample` pattern above. The folder name **must** match the `UniqueId` exactly.
 3. The source generator auto-maps the `UniqueId` to the page type — no manual registration needed.
-4. Add any external code snippets to `Samples/SampleCode/` as `.txt` files.
+4. Add any code snippets as `.txt` files in the same `Samples/{UniqueId}/` folder. They are automatically included in the build via glob patterns in `ContentIncludes.props`.
 
 ## Accessibility
 
