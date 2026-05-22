@@ -35,7 +35,7 @@
             </TitleBar.RightHeader>
             <TitleBar.Content>
                 <AutoSuggestBox
-                    MaxWidth="420"
+                    MaxWidth="580"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
                     PlaceholderText="Search.."
