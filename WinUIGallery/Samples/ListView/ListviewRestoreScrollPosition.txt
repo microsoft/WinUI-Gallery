@@ -1,0 +1,56 @@
+--- header
+Save and restore the scroll position using ListViewPersistenceHelper.
+--- xaml
+<StackPanel Spacing="8">
+    <TextBlock TextWrapping="Wrap">
+        Use ListViewPersistenceHelper to capture the relative scroll position of a ListView
+        and later restore it - for example, after navigating away from and back to the page.
+    </TextBlock>
+    <StackPanel Orientation="Horizontal" Spacing="8">
+        <Button x:Name="SavePositionButton" Content="Save position" Click="SavePositionButton_Click"/>
+        <Button x:Name="RestorePositionButton" Content="Restore position" Click="RestorePositionButton_Click" IsEnabled="False"/>
+    </StackPanel>
+    <TextBlock x:Name="SavedPositionTextBlock" Text="No position saved." Style="{ThemeResource CaptionTextBlockStyle}"/>
+    <ListView x:Name="RestoreScrollListView"
+              Height="220" Width="400" HorizontalAlignment="Left"
+              BorderThickness="1" BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
+              ItemsSource="{x:Bind contacts5}">
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="local:Contact">
+                <TextBlock Text="{x:Bind Name}" Margin="0,8,0,8"/>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</StackPanel>
+--- c#
+// Persisted scroll position string. In a real app, store this somewhere that survives
+// the lifetime of the page (e.g. a static field, view-model, or app state) so it is
+// available after navigating away and back.
+private string _persistedPosition = string.Empty;
+
+private void SavePositionButton_Click(object sender, RoutedEventArgs e)
+{
+    // GetRelativeScrollPosition returns an opaque string that identifies the
+    // item currently at the top of the viewport plus its pixel offset.
+    _persistedPosition = ListViewPersistenceHelper.GetRelativeScrollPosition(
+        RestoreScrollListView,
+        item => (item as Contact)?.Name ?? string.Empty);
+
+    SavedPositionTextBlock.Text = $"Saved position: {_persistedPosition}";
+    RestorePositionButton.IsEnabled = true;
+}
+
+private async void RestorePositionButton_Click(object sender, RoutedEventArgs e)
+{
+    if (string.IsNullOrEmpty(_persistedPosition))
+    {
+        return;
+    }
+
+    // SetRelativeScrollPositionAsync scrolls the ListView back to the item identified
+    // by the saved string. The callback resolves a key back to its data item.
+    await ListViewPersistenceHelper.SetRelativeScrollPositionAsync(
+        RestoreScrollListView,
+        _persistedPosition,
+        key => Task.FromResult<object?>(contacts5.FirstOrDefault(c => c.Name == key))!.AsAsyncOperation()!);
+}
