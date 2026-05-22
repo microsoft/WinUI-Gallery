@@ -6,8 +6,8 @@ Save and restore the scroll position using ListViewPersistenceHelper.
           BorderThickness="1" BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
           ItemsSource="{x:Bind contacts5}">
     <ListView.ItemTemplate>
-        <DataTemplate x:DataType="local:Contact">
-            <TextBlock Text="{x:Bind Name}" Margin="0,8,0,8"/>
+        <DataTemplate x:DataType="x:String">
+            <TextBlock Text="{x:Bind}" Margin="0,8,0,8"/>
         </DataTemplate>
     </ListView.ItemTemplate>
 </ListView>
@@ -23,7 +23,7 @@ private void SavePositionButton_Click(object sender, RoutedEventArgs e)
     // item currently at the top of the viewport plus its pixel offset.
     _persistedPosition = ListViewPersistenceHelper.GetRelativeScrollPosition(
         RestoreScrollListView,
-        item => (item as Contact)?.Name ?? string.Empty);
+        item => item as string ?? string.Empty);
 
     SavedPositionTextBlock.Text = $"Saved position: {_persistedPosition}";
     RestorePositionButton.IsEnabled = true;
@@ -41,5 +41,5 @@ private async void RestorePositionButton_Click(object sender, RoutedEventArgs e)
     await ListViewPersistenceHelper.SetRelativeScrollPositionAsync(
         RestoreScrollListView,
         _persistedPosition,
-        key => Task.FromResult<object?>(contacts5.FirstOrDefault(c => c.Name == key))!.AsAsyncOperation()!);
+        key => Task.FromResult<object?>(contacts5.FirstOrDefault(c => c == key))!.AsAsyncOperation()!);
 }

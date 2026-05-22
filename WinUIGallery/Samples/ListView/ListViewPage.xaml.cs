@@ -23,8 +23,8 @@ public sealed partial class ListViewPage : ItemsPageBase
     ObservableCollection<Contact> contacts3 = new ObservableCollection<Contact>();
     ObservableCollection<Contact> contacts3Filtered = new ObservableCollection<Contact>();
     ObservableCollection<Contact> contacts4ContextMenu = new ObservableCollection<Contact>();
-    ObservableCollection<Contact> contacts5 = new ObservableCollection<Contact>();
-    ObservableCollection<Contact> contacts6 = new ObservableCollection<Contact>();
+    ObservableCollection<string> contacts5 = new ObservableCollection<string>();
+    ObservableCollection<string> contacts6 = new ObservableCollection<string>();
 
     private string _persistedPosition = string.Empty;
 
@@ -73,15 +73,22 @@ public sealed partial class ListViewPage : ItemsPageBase
         ContextMenuList.ItemsSource = contacts4ContextMenu;
 
         // Populate ListViews for the RestoreScrollPosition and ScrollIntoView samples.
-        // ScrollIntoView benefits from having many items, so seed the list a few times over.
+        // Pre-format each entry with its index so the position in the list is easy to track.
         var baseContacts = await Contact.GetContactsAsync();
-        contacts5 = new ObservableCollection<Contact>(baseContacts);
-        var manyContacts = new List<Contact>();
+        contacts5 = new ObservableCollection<string>(
+            baseContacts.Select((c, i) => $"{i + 1}. {c.Name}"));
+
+        // ScrollIntoView is more interesting with a long list, so seed multiple copies.
+        var manyContacts = new List<string>();
+        int n = 1;
         for (int i = 0; i < 10; i++)
         {
-            manyContacts.AddRange(baseContacts);
+            foreach (var c in baseContacts)
+            {
+                manyContacts.Add($"{n++}. {c.Name}");
+            }
         }
-        contacts6 = new ObservableCollection<Contact>(manyContacts);
+        contacts6 = new ObservableCollection<string>(manyContacts);
         RestoreScrollListView.ItemsSource = contacts5;
         ScrollIntoViewListView.ItemsSource = contacts6;
 
@@ -348,7 +355,7 @@ public sealed partial class ListViewPage : ItemsPageBase
         // top of the viewport plus its pixel offset. Store it for later restoration.
         _persistedPosition = ListViewPersistenceHelper.GetRelativeScrollPosition(
             RestoreScrollListView,
-            item => (item as Contact)?.Name ?? string.Empty);
+            item => item as string ?? string.Empty);
 
         SavedPositionTextBlock.Text = $"Saved position: {_persistedPosition}";
         RestorePositionButton.IsEnabled = true;
@@ -366,7 +373,7 @@ public sealed partial class ListViewPage : ItemsPageBase
         await ListViewPersistenceHelper.SetRelativeScrollPositionAsync(
             RestoreScrollListView,
             _persistedPosition,
-            key => Task.FromResult<object?>(contacts5.FirstOrDefault(c => c.Name == key))!.AsAsyncOperation()!);
+            key => Task.FromResult<object?>(contacts5.FirstOrDefault(c => c == key))!.AsAsyncOperation()!);
     }
 
     //===================================================================================================================

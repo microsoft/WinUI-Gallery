@@ -6,8 +6,8 @@ Scroll a ListView programmatically with ScrollIntoView.
           BorderThickness="1" BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
           ItemsSource="{x:Bind contacts6}">
     <ListView.ItemTemplate>
-        <DataTemplate x:DataType="local:Contact">
-            <TextBlock Text="{x:Bind Name}" Margin="0,8,0,8"/>
+        <DataTemplate x:DataType="x:String">
+            <TextBlock Text="{x:Bind}" Margin="0,8,0,8"/>
         </DataTemplate>
     </ListView.ItemTemplate>
 </ListView>
