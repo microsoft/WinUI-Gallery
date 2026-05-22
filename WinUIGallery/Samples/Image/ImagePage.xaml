@@ -110,15 +110,17 @@
                             UriSource="/Assets/SampleMedia/animated.gif" />
                     </Image.Source>
                 </Image>
+            </StackPanel>
+
+            <controls:ControlExample.Options>
                 <StackPanel
                     x:Name="PlaybackButtons"
-                    Orientation="Horizontal"
                     Spacing="8"
                     Visibility="Collapsed">
                     <Button Click="{x:Bind ClickToPlaySource.Play}" Content="Play" />
                     <Button Click="{x:Bind ClickToPlaySource.Stop}" Content="Stop" />
                 </StackPanel>
-            </StackPanel>
+            </controls:ControlExample.Options>
 
         </controls:ControlExample>
     </StackPanel>

@@ -20,10 +20,12 @@ Animated GIF playback.
                          ImageOpened="ClickToPlaySource_ImageOpened"/>
         </Image.Source>
     </Image>
-    <StackPanel x:Name="PlaybackButtons" Orientation="Horizontal" Spacing="8" Visibility="Collapsed">
-        <Button Content="Play" Click="{x:Bind ClickToPlaySource.Play}"/>
-        <Button Content="Stop" Click="{x:Bind ClickToPlaySource.Stop}"/>
-    </StackPanel>
+</StackPanel>
+
+<!-- The Play/Stop buttons live in ControlExample.Options so they appear in the side panel. -->
+<StackPanel x:Name="PlaybackButtons" Spacing="8" Visibility="Collapsed">
+    <Button Content="Play" Click="{x:Bind ClickToPlaySource.Play}"/>
+    <Button Content="Stop" Click="{x:Bind ClickToPlaySource.Stop}"/>
 </StackPanel>
 --- c#
 private void ClickToPlaySource_ImageOpened(object sender, RoutedEventArgs e)
