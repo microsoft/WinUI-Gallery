@@ -22,6 +22,19 @@ public sealed partial class TitleBarPage : Page
         titleBarWindow.Activate();
     }
 
+    private void StatusBadge_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+    {
+        // Only fires when TitleBar.IsDragRegion is False; when True the
+        // framework consumes the pointer for window dragging.
+        DragRegionsStatusText.Text = "Status badge clicked";
+    }
+
+    private void RecomputeDragRegions_Click(object sender, RoutedEventArgs e)
+    {
+        DragRegionsTitleBar.RecomputeDragRegions();
+        DragRegionsStatusText.Text = "RecomputeDragRegions() called";
+    }
+
     private void TitleBar_LayoutUpdated(object sender, object e)
     {
         TitleBarHelper.ApplySystemThemeToCaptionButtons(App.MainWindow, this.ActualTheme);

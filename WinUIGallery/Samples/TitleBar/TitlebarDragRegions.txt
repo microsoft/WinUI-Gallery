@@ -1,0 +1,51 @@
+--- header
+Custom drag regions in TitleBar.Content
+--- xaml
+<!-- Starting with WindowsAppSDK 2.1, TitleBar walks TitleBar.Content
+     and automatically excludes interactive controls (Button, AutoSuggestBox,
+     etc.) from the drag region. Non-interactive visuals and empty space
+     remain draggable, so a stretched layout still drags the window.
+
+     Use the TitleBar.IsDragRegion attached property to override that
+     decision per element:
+       True   -> always draggable
+       False  -> always clickable (never drag)
+       unset  -> framework decides -->
+<TitleBar Title="My App">
+    <TitleBar.Content>
+        <Grid ColumnSpacing="8" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Stretches across the available space.
+                 The empty area around the AutoSuggestBox is draggable. -->
+            <AutoSuggestBox
+                MaxWidth="480"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                PlaceholderText="Search..."
+                QueryIcon="Find" />
+
+            <!-- Force this Border to be clickable even though it has no
+                 interactive child. -->
+            <Border
+                Grid.Column="1"
+                Padding="8,4"
+                VerticalAlignment="Center"
+                Background="{ThemeResource AccentFillColorDefaultBrush}"
+                CornerRadius="4"
+                PointerPressed="StatusBadge_PointerPressed"
+                TitleBar.IsDragRegion="$(BadgeIsDragRegion)">
+                <TextBlock
+                    Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                    Text="Status" />
+            </Border>
+        </Grid>
+    </TitleBar.Content>
+</TitleBar>
+--- c#
+// After dynamically changing TitleBar.Content layout, ask the framework to
+// recompute drag regions so the new layout takes effect immediately.
+TitleBarControl.RecomputeDragRegions();

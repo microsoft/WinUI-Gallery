@@ -95,6 +95,83 @@
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
+        <controls:ControlExample HorizontalContentAlignment="Stretch" SampleDefinition="TitleBar\TitlebarDragRegions.txt">
+            <controls:ControlExample.Example>
+                <Grid
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="{StaticResource OverlayCornerRadius}">
+                    <TitleBar x:Name="DragRegionsTitleBar" Title="My App">
+                        <TitleBar.IconSource>
+                            <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
+                        </TitleBar.IconSource>
+                        <TitleBar.Content>
+                            <Grid ColumnSpacing="8" HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <AutoSuggestBox
+                                    MaxWidth="480"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center"
+                                    PlaceholderText="Search..."
+                                    QueryIcon="Find" />
+                                <Border
+                                    x:Name="StatusBadge"
+                                    Grid.Column="1"
+                                    Padding="8,4"
+                                    VerticalAlignment="Center"
+                                    Background="{ThemeResource AccentFillColorDefaultBrush}"
+                                    CornerRadius="4"
+                                    PointerPressed="StatusBadge_PointerPressed"
+                                    TitleBar.IsDragRegion="{x:Bind BadgeIsDragRegionToggle.IsOn, Mode=OneWay}">
+                                    <TextBlock
+                                        Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                                        Text="Status" />
+                                </Border>
+                            </Grid>
+                        </TitleBar.Content>
+                    </TitleBar>
+                </Grid>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <StackPanel
+                    Width="240"
+                    Orientation="Vertical"
+                    Spacing="12">
+                    <TextBlock
+                        Style="{ThemeResource BodyStrongTextBlockStyle}"
+                        Text="Drag regions" />
+                    <TextBlock
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        Text="By default, TitleBar walks Content and auto-excludes interactive controls from the drag region. Empty space stays draggable, so the search box can stretch."
+                        TextWrapping="WrapWholeWords" />
+                    <ToggleSwitch
+                        x:Name="BadgeIsDragRegionToggle"
+                        Header="Badge TitleBar.IsDragRegion"
+                        IsOn="True"
+                        OffContent="False (clickable)"
+                        OnContent="True (draggable)" />
+                    <Button
+                        HorizontalAlignment="Stretch"
+                        Click="RecomputeDragRegions_Click"
+                        Content="RecomputeDragRegions()" />
+                    <TextBlock
+                        x:Name="DragRegionsStatusText"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        Text=""
+                        TextWrapping="WrapWholeWords" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="BadgeIsDragRegion" Value="{x:Bind BadgeIsDragRegionToggle.IsOn, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
         <controls:ControlExample HorizontalContentAlignment="Stretch" SampleDefinition="TitleBar\EndEndTitlebarSample.txt">
             <controls:ControlExample.Example>
                 <StackPanel
