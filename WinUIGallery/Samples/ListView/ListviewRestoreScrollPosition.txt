@@ -1,27 +1,16 @@
 --- header
 Save and restore the scroll position using ListViewPersistenceHelper.
 --- xaml
-<StackPanel Spacing="8">
-    <TextBlock TextWrapping="Wrap">
-        Use ListViewPersistenceHelper to capture the relative scroll position of a ListView
-        and later restore it - for example, after navigating away from and back to the page.
-    </TextBlock>
-    <StackPanel Orientation="Horizontal" Spacing="8">
-        <Button x:Name="SavePositionButton" Content="Save position" Click="SavePositionButton_Click"/>
-        <Button x:Name="RestorePositionButton" Content="Restore position" Click="RestorePositionButton_Click" IsEnabled="False"/>
-    </StackPanel>
-    <TextBlock x:Name="SavedPositionTextBlock" Text="No position saved." Style="{ThemeResource CaptionTextBlockStyle}"/>
-    <ListView x:Name="RestoreScrollListView"
-              Height="220" Width="400" HorizontalAlignment="Left"
-              BorderThickness="1" BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
-              ItemsSource="{x:Bind contacts5}">
-        <ListView.ItemTemplate>
-            <DataTemplate x:DataType="local:Contact">
-                <TextBlock Text="{x:Bind Name}" Margin="0,8,0,8"/>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-</StackPanel>
+<ListView x:Name="RestoreScrollListView"
+          Height="220" Width="400" HorizontalAlignment="Left"
+          BorderThickness="1" BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
+          ItemsSource="{x:Bind contacts5}">
+    <ListView.ItemTemplate>
+        <DataTemplate x:DataType="local:Contact">
+            <TextBlock Text="{x:Bind Name}" Margin="0,8,0,8"/>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
 --- c#
 // Persisted scroll position string. In a real app, store this somewhere that survives
 // the lifetime of the page (e.g. a static field, view-model, or app state) so it is

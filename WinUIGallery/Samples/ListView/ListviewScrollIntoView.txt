@@ -1,30 +1,16 @@
 --- header
 Scroll a ListView programmatically with ScrollIntoView.
 --- xaml
-<StackPanel Spacing="8">
-    <TextBlock TextWrapping="Wrap">
-        ScrollIntoView scrolls the minimum amount needed to bring an item into view.
-        Pass ScrollIntoViewAlignment.Leading to align the item with the top edge instead.
-    </TextBlock>
-    <StackPanel Orientation="Horizontal" Spacing="8">
-        <NumberBox x:Name="ScrollIndexNumberBox" Header="Index" Value="10" Minimum="0" SpinButtonPlacementMode="Inline" Width="120"/>
-        <ComboBox x:Name="ScrollAlignmentComboBox" Header="Alignment" SelectedIndex="0" Width="120">
-            <ComboBoxItem Content="Default"/>
-            <ComboBoxItem Content="Leading"/>
-        </ComboBox>
-        <Button Content="Scroll into view" Click="ScrollIntoViewButton_Click" VerticalAlignment="Bottom"/>
-    </StackPanel>
-    <ListView x:Name="ScrollIntoViewListView"
-              Height="220" Width="400" HorizontalAlignment="Left"
-              BorderThickness="1" BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
-              ItemsSource="{x:Bind contacts6}">
-        <ListView.ItemTemplate>
-            <DataTemplate x:DataType="local:Contact">
-                <TextBlock Text="{x:Bind Name}" Margin="0,8,0,8"/>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-</StackPanel>
+<ListView x:Name="ScrollIntoViewListView"
+          Height="220" Width="400" HorizontalAlignment="Left"
+          BorderThickness="1" BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
+          ItemsSource="{x:Bind contacts6}">
+    <ListView.ItemTemplate>
+        <DataTemplate x:DataType="local:Contact">
+            <TextBlock Text="{x:Bind Name}" Margin="0,8,0,8"/>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
 --- c#
 private void ScrollIntoViewButton_Click(object sender, RoutedEventArgs e)
 {
