@@ -1,0 +1,22 @@
+--- header
+TabView with color tab icons
+--- xaml
+<TabView>
+    <TabView.TabItems>
+        <TabViewItem Header="CMD Prompt">
+            <TabViewItem.IconSource>
+                <BitmapIconSource UriSource="/Assets/SampleMedia/cmd.png" ShowAsMonochrome="False" />
+            </TabViewItem.IconSource>
+        </TabViewItem>
+        <TabViewItem Header="PowerShell">
+            <TabViewItem.IconSource>
+                <BitmapIconSource UriSource="/Assets/SampleMedia/powershell.png" ShowAsMonochrome="False" />
+            </TabViewItem.IconSource>
+        </TabViewItem>
+        <TabViewItem Header="Windows Subsystem for Linux">
+            <TabViewItem.IconSource>
+                <BitmapIconSource UriSource="/Assets/SampleMedia/linux.png" ShowAsMonochrome="False" />
+            </TabViewItem.IconSource>
+        </TabViewItem>
+    </TabView.TabItems>
+</TabView>

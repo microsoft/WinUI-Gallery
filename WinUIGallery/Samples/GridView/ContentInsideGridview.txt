@@ -1,0 +1,24 @@
+--- header
+Content inside of a GridView.
+--- xaml
+<!-- The GridView used for this sample is shown below, with all of the necessary added properties. -->
+<GridView 
+    x:Name="ContentGridView"
+    ItemsSource="{x:Bind Items}"
+    ItemTemplate="{StaticResource $(ItemTemplate)}"
+    IsItemClickEnabled="$(IsItemClickEnabled)"
+    CanDragItems="$(CanDragItems)"
+    AllowDrop="$(CanDropItems)"
+    CanReorderItems="$(CanReorderItems)"
+    SelectionMode="$(SelectionMode)"
+    SelectionChanged="ContentGridView_SelectionChanged"
+    ItemClick="ContentGridView_ItemClick" 
+    FlowDirection="$(FlowDirection)"/>
+
+<!-- ContentGridView_SelectionChanged and ContentGridView_ItemClick are functions defined in the code-behind
+to handle the events of when a selection changes on the GridView and when an item is clicked. -->
+                    
+<!-- The data template bound to this GridView's ItemTemplate property is based on which one you
+select from the options on the right. The currently selected DataTemplate is: -->
+
+$(DisplayDT)

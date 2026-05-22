@@ -20,7 +20,7 @@ namespace WinUIGallery.Pages;
 public sealed partial class ItemPage : Page
 {
     private static string WinUIBaseUrl = "https://github.com/microsoft/microsoft-ui-xaml/tree/main/src/controls/dev";
-    private static string GalleryBaseUrl = "https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/Samples/ControlPages/";
+    private static string GalleryBaseUrl = "https://github.com/microsoft/WinUI-Gallery/tree/main/WinUIGallery/Samples/";
 
     public ControlInfoDataItem? Item
     {
@@ -70,7 +70,7 @@ public sealed partial class ItemPage : Page
                 {
                     // Attach Navigated event to add RepositionThemeTransition after navigation
                     contentFrame.Navigated += ContentFrame_Navigated;
-                    var pageName = string.IsNullOrEmpty(group.Folder) ? pageType.Name : $"{group.Folder}/{pageType.Name}";
+                    var pageName = $"{item.UniqueId}/{pageType.Name}";
                     pageHeader.SetControlSourceLink(WinUIBaseUrl, item.SourcePath);
                     pageHeader.SetSamplePageSourceLinks(GalleryBaseUrl, pageName);
                     System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));

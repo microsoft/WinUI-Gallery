@@ -1,0 +1,29 @@
+--- header
+Popup with Offset Positioning
+--- xaml
+<Grid x:Name="Output" HorizontalAlignment="Left" VerticalAlignment="Top" >
+    <Button Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked" />
+    <Popup x:Name="StandardPopup" VerticalOffset="$(VerticalOffset)" HorizontalOffset="$(HorizontalOffset)" IsLightDismissEnabled="$(IsLightDismissEnabled)">
+        <Border Padding="20" CornerRadius="{StaticResource OverlayCornerRadius}" Width="200" Height="160" BorderThickness="1" BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+                Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                <TextBlock Text="Simple Popup" FontSize="16" HorizontalAlignment="Center" />
+                <Button Content="Close" Click="ClosePopupClicked" />
+            </StackPanel>
+        </Border>
+    </Popup>
+</Grid>
+--- c#
+// Handles the Click event on the Button on the page and opens the Popup. 
+private void ShowPopupOffsetClicked(object sender, RoutedEventArgs e)
+{
+    // open the Popup if it isn't open already 
+    if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
+}
+
+// Handles the Click event on the Button inside the Popup control and closes the Popup. 
+private void ClosePopupClicked(object sender, RoutedEventArgs e)
+{
+    // if the Popup is open, then close it 
+    if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
+}

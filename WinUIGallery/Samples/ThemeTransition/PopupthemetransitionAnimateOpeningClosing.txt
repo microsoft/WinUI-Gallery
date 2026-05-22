@@ -1,0 +1,16 @@
+--- header
+Use PopupThemeTransition to animate opening and closing a popup.
+--- xaml
+<Popup x:Name="ExamplePopup">
+    <Popup.ChildTransitions>
+        <TransitionCollection>
+            <PopupThemeTransition />
+        </TransitionCollection>
+    </Popup.ChildTransitions>
+    <Border Background="{ThemeResource FlyoutBackgroundThemeBrush}" BorderThickness="2" BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}">
+        <StackPanel Margin="10">
+            <TextBlock Text="This is a popup using PopupThemeTransition" />
+            <Button Content="Close Popup" Click="ClosePopupButton_Click" />
+        </StackPanel>
+    </Border>
+</Popup>

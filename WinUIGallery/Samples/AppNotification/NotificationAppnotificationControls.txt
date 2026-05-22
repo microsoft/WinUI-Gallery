@@ -1,0 +1,19 @@
+--- header
+Notification with AppNotification controls
+--- c#
+AppNotification notification = new AppNotificationBuilder()
+    .AddText("Survey")
+    .AddText("Please select your satisfaction level and leave a comment.")
+    .AddComboBox(new AppNotificationComboBox("satisfaction")
+        .AddItem("1", "Very Bad")
+        .AddItem("2", "Bad")
+        .AddItem("3", "Neutral")
+        .AddItem("4", "Good")
+        .AddItem("5", "Excellent")
+        .SetSelectedItem("3"))
+    .AddTextBox("comment", "Leave a comment here...","")
+    .AddButton(new AppNotificationButton("Submit")
+        .AddArgument("action", "submit_survey"))
+    .BuildNotification();
+
+AppNotificationManager.Default.Show(notification);

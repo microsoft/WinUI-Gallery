@@ -1,0 +1,4 @@
+--- header
+The close button can be persistent or only visible on hover
+--- xaml
+<TabView CloseButtonOverlayMode="$(CloseButtonOverlayMode)" />

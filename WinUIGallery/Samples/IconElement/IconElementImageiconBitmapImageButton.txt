@@ -1,0 +1,6 @@
+--- header
+A ImageIcon using a bitmap image in a button
+--- xaml
+<Button Name="ImageExample1" Width="100">
+    <ImageIcon Source="/Assets/SampleMedia/slices.png"/>
+</Button>

@@ -1,0 +1,29 @@
+--- header
+Exposing a command in multiple controls using StandardUICommand
+--- xaml
+<SwipeItem x:Name="DeleteSwipeItem" Background="Red" Command="{x:Bind Command}" CommandParameter="{x:Bind Text}" />
+
+<AppBarButton x:Name="HoverButton" IsTabStop="False" HorizontalAlignment="Right" Visibility="Collapsed" 
+ Command="{x:Bind Command}" CommandParameter="{x:Bind Text}" />
+--- c#
+private void ControlExample_Loaded(object sender, RoutedEventArgs e)
+{
+    var deleteCommand = new StandardUICommand(StandardUICommandKind.Delete);
+    deleteCommand.ExecuteRequested += DeleteCommand_ExecuteRequested;
+
+    DeleteFlyoutItem.Command = deleteCommand;
+
+    for (var i = 0; i < 15; i++)
+    {
+        collection.Add(new ListItemData { Text = "List item " + i.ToString(), Command = deleteCommand });
+    }
+}
+
+private void ListViewRight_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
+{
+    MenuFlyout flyout = new MenuFlyout();
+    ListItemData data = (ListItemData)args.Item;
+    MenuFlyoutItem item = new MenuFlyoutItem() { Command = data.Command};
+    flyout.Items.Add(item);
+    args.ItemContainer.ContextFlyout = flyout;
+}

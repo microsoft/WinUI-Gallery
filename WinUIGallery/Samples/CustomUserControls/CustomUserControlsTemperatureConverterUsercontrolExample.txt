@@ -1,0 +1,50 @@
+--- header
+Temperature Converter UserControl example
+--- xaml
+<!-- TemperatureConverterControl.xaml -->
+<UserControl ...>
+    <StackPanel Spacing="8">
+        <TextBox Header="Enter Temperature in Celsius" x:Name="InputTextBox" Width="200" PlaceholderText="Celsius" />
+        <Button Content="Convert to Fahrenheit" Width="200" Click="Button_Click" />
+        <TextBlock x:Name="ResultTextBlock" FontWeight="SemiBold" />
+    </StackPanel>
+</UserControl>
+
+<!-- Yourpage.xaml -->
+<Page ...
+      xmlns:local="using:YourNamesapce">
+    <Grid>
+        <local:TemperatureConverterControl />
+    </Grid>
+</Page>
+--- c#
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+
+namespace YourNamesapace;
+
+public sealed partial class TemperatureConverterControl : UserControl
+{
+    public TemperatureConverterControl()
+    {
+        this.InitializeComponent();
+    }
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        string input = InputTextBox.Text;
+        double celsius = 0;
+
+        bool isNumber = double.TryParse(input, out celsius);
+
+        if (isNumber)
+        {
+            double fahrenheit = (celsius * 9 / 5) + 32;
+            ResultTextBlock.Text = "Fahrenheit: " + fahrenheit.ToString("F2") + "°F";
+        }
+        else
+        {
+            ResultTextBlock.Text = "Invalid input!";
+        }
+    }
+}

@@ -1,0 +1,5 @@
+--- header
+Polyline
+--- xaml
+<Polyline Stroke="Black" StrokeThickness="$(Slider1)"
+          Points="10,100 60,40 200,40 250,100"/>

@@ -1,0 +1,61 @@
+--- header
+ListView with context menus
+--- xaml
+<ListView
+    ItemsSource="{x:Bind contacts, Mode=OneWay}"
+    SelectionMode="Single"
+    ShowsScrollingPlaceholders="True"
+    Height="400"
+    Width="400"
+    BorderThickness="1"
+    BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
+    HorizontalAlignment="Left">
+    <ListView.ItemTemplate>
+        <DataTemplate x:DataType="local:Contact">
+            <Grid>
+                <Grid.ContextFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Delete" Click="ContactDeleteMenuItem_Click"/>
+                    </MenuFlyout>
+                </Grid.ContextFlyout>
+             
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Ellipse x:Name="Ellipse"
+                    Grid.RowSpan="2"
+                    Width ="32"
+                    Height="32"
+                    Margin="6"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Fill="{ThemeResource ControlStrongFillColorDefaultBrush}"/>
+                <TextBlock Grid.Column="1"
+                    Text="{x:Bind Name}"
+                    x:Phase="1"
+                    Style="{ThemeResource BaseTextBlockStyle}"
+                    Margin="12,6,0,0"/>
+                <TextBlock Grid.Column="1"
+                    Grid.Row="1"
+                    Text="{x:Bind Company}"
+                    x:Phase="2"
+                    Style="{ThemeResource BodyTextBlockStyle}"
+                    Margin="12,0,0,6"/>
+            </Grid>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</DataTemplate>
+--- c#
+ObservableCollection<Contact> contacts = new ObservableCollection<Contact>();
+
+private void ContactDeleteMenuItem_Click(object sender, RoutedEventArgs e)
+{
+    var item = (sender as FrameworkElement).DataContext;
+    var contact = item as Contact;
+    contacts.Remove(contact);
+}

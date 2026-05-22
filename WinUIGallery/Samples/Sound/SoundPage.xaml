@@ -1,0 +1,93 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.SoundPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" SampleDefinition="Sound\TogglingSound.txt">
+            <ToggleSwitch
+                x:Name="soundToggle"
+                OffContent="Sound Off"
+                OnContent="Sound On"
+                Toggled="soundToggle_Toggled" />
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example2" SampleDefinition="Sound\SoundTogglingSpatialAudio.txt">
+            <StackPanel Orientation="Vertical">
+                <CheckBox
+                    x:Name="spatialAudioBox"
+                    Checked="spatialAudioBox_Checked"
+                    Content="Enable Spatial Audio"
+                    IsEnabled="False"
+                    Unchecked="spatialAudioBox_Unchecked" />
+                <TextBlock
+                    Margin="0,5,0,0"
+                    FontStyle="Italic"
+                    Foreground="{ThemeResource SystemColorHotlightColor}"
+                    Style="{ThemeResource CaptionTextBlockStyle}"
+                    Text="Can only enable spatial audio when sound is on!" />
+            </StackPanel>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example3" SampleDefinition="Sound\PlaySpecificSystemSound.txt">
+            <StackPanel Orientation="Vertical" Spacing="5">
+                <Button
+                    Click="Button_Click"
+                    Content="&#x25B6; Focus"
+                    ElementSoundMode="Off"
+                    Tag="0"
+                    AutomationProperties.Name="Focus" />
+                <Button
+                    Click="Button_Click"
+                    Content="&#x25B6; Invoke"
+                    ElementSoundMode="Off"
+                    Tag="1"
+                    AutomationProperties.Name="Invoke" />
+                <Button
+                    Click="Button_Click"
+                    Content="&#x25B6; Show"
+                    ElementSoundMode="Off"
+                    Tag="2"
+                    AutomationProperties.Name="Show" />
+                <Button
+                    Click="Button_Click"
+                    Content="&#x25B6; Hide"
+                    ElementSoundMode="Off"
+                    Tag="3"
+                    AutomationProperties.Name="Hide" />
+                <Button
+                    Click="Button_Click"
+                    Content="&#x25B6; MovePrevious"
+                    ElementSoundMode="Off"
+                    Tag="4"
+                    AutomationProperties.Name="MovePrevious" />
+                <Button
+                    Click="Button_Click"
+                    Content="&#x25B6; MoveNext"
+                    ElementSoundMode="Off"
+                    Tag="5"
+                    AutomationProperties.Name="MoveNext" />
+                <Button
+                    Click="Button_Click"
+                    Content="&#x25B6; GoBack"
+                    ElementSoundMode="Off"
+                    Tag="6"
+                    AutomationProperties.Name="GoBack" />
+            </StackPanel>
+
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

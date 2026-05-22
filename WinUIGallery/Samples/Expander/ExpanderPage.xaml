@@ -1,0 +1,68 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.ExpanderPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" SampleDefinition="Expander\ExpanderTextHeaderContent.txt">
+            <controls:ControlExample.Example>
+                <Expander
+                    x:Name="Expander1"
+                    VerticalAlignment="Top"
+                    Content="This is in the content"
+                    ExpandDirection="Down"
+                    Header="This text is in the header"
+                    IsExpanded="False" />
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <StackPanel>
+                    <ComboBox
+                        x:Name="ExpandDirectionComboBox"
+                        Header="ExpandDirection"
+                        SelectedValue="Down"
+                        SelectionChanged="ExpandDirectionComboBox_SelectionChanged">
+                        <x:String>Down</x:String>
+                        <x:String>Up</x:String>
+                    </ComboBox>
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="IsExpanded" Value="{x:Bind Expander1.IsExpanded, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ExpandDirection" Value="{x:Bind ExpandDirectionComboBox.SelectedValue, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="VerticalAlignment" Value="{x:Bind Expander1.VerticalAlignment, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample SampleDefinition="Expander\ModifyingExpandersContentAlignment.txt">
+            <controls:ControlExample.Example>
+                <Expander
+                    Width="500"
+                    Padding="0"
+                    HorizontalContentAlignment="Left">
+                    <Expander.Header>
+                        <TextBlock HorizontalAlignment="Center" Text="This text is centered" />
+                    </Expander.Header>
+                    <Expander.Content>
+                        <TextBlock Margin="4" Text="And this text is left aligned" />
+                    </Expander.Content>
+                </Expander>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

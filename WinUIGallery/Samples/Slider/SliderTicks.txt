@@ -1,0 +1,8 @@
+--- header
+A Slider with tick marks.
+--- xaml
+<Slider
+     AutomationProperties.Name="Slider with ticks"
+     TickFrequency="20"
+     TickPlacement="Outside"
+     SnapsTo="$(SnapsTo)" />

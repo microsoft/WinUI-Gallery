@@ -1,0 +1,37 @@
+--- header
+AppWindow with CompactOverlayPresenter
+--- xaml
+<Window ...>
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+        <TextBlock Text="This window is set to CompactOverlay (Picture-in-Picture) mode." TextAlignment="Center" TextWrapping="Wrap" />
+    </StackPanel>
+</Window>
+--- c#
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+
+namespace YourNamespace;
+
+public sealed partial class SampleWindow7 : Window
+{
+    public SampleWindow7(string InitialSize)
+    {
+        this.InitializeComponent();
+
+        AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
+
+        // Creates a CompactOverlay (Picture-in-Picture) presenter
+        CompactOverlayPresenter presenter = CompactOverlayPresenter.Create();
+
+        // Sets the initial size of the CompactOverlay window
+        presenter.InitialSize = CompactOverlaySize.$(InitialSize);
+
+        // Applies the CompactOverlay presenter to the window
+        AppWindow.SetPresenter(presenter);
+    }
+}

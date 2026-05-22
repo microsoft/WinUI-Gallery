@@ -1,0 +1,13 @@
+--- header
+Parallax on a ListView
+--- xaml
+<Grid>
+    <ParallaxView Source="{Binding ElementName=listView}" VerticalShift="500">
+        <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" />
+    </ParallaxView>
+    <ListView x:Name="listView" ItemsSource="{x:Bind Items}">
+        <ListView.Header>
+            <TextBlock Text="Scroll the list to see parallaxing of image" />
+        </ListView.Header>
+    </ListView>
+</Grid>

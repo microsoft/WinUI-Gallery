@@ -1,0 +1,27 @@
+--- header
+Basic PullToRefresh
+--- xaml
+<RefreshContainer x:Name="rc" RefreshRequested="rc_RefreshRequested">
+    <ListView x:Name="lv" Width="300" Height="300" BorderThickness="1" BorderBrush="Black"/>
+</RefreshContainer>
+--- c#
+ObservableCollection<string> items = new ObservableCollection<string>();
+listview.ItemsSource = items;
+
+private void rc_RefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
+{
+    //Do some work to show new Content! Once the work is done, call RefreshCompletionDeferral.Complete()
+    this.RefreshCompletionDeferral = args.GetDeferral();
+    this.DoWork();
+}
+
+private void WorkCompleted()
+{
+    items.Insert(0, "NewControl");
+    if (this.RefreshCompletionDeferral != null)
+    {
+        this.RefreshCompletionDeferral.Complete();
+        this.RefreshCompletionDeferral.Dispose();
+        this.RefreshCompletionDeferral = null;
+    }
+}

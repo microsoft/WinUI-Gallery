@@ -1,0 +1,11 @@
+--- header
+Modifying Expanders content alignment
+--- xaml
+<Expander Width="500" HorizontalContentAlignment="Left" Padding="0">
+    <Expander.Header>
+        <ToggleButton Content="This ToggleButton is centered" HorizontalAlignment="Center"/>
+    </Expander.Header>
+    <Expander.Content>
+        <Button Margin="4" Content="This Button is left aligned"/>
+    </Expander.Content>
+</Expander>

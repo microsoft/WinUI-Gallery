@@ -1,0 +1,8 @@
+--- header
+Different InfoBadge Styles
+--- xaml
+<StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center"/>
+    <InfoBadge x:Name="infoBadge2" Style="{StaticResource $(Style)IconInfoBadgeStyle}" HorizontalAlignment="Right"/>
+    <InfoBadge x:Name="infoBadge3" Style="{StaticResource $(Style)ValueInfoBadgeStyle}" HorizontalAlignment="Right" Value="10" />
+    <InfoBadge x:Name="infoBadge4" Style="{StaticResource $(Style)DotInfoBadgeStyle}" VerticalAlignment="Center"/>
+</StackPanel>

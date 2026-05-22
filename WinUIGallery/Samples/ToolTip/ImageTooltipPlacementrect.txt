@@ -1,0 +1,8 @@
+--- header
+An Image with a ToolTip using PlacementRect.
+--- xaml
+<Image Source="/Assets/SampleMedia/cliff.jpg" Width="400" Height="266">
+    <ToolTipService.ToolTip>
+        <ToolTip Content="Non-occluding ToolTip." PlacementRect="0,0,400,266"/>
+    </ToolTipService.ToolTip>
+</Image>

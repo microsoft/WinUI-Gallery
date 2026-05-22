@@ -1,0 +1,23 @@
+--- header
+Gradient Background
+--- xaml
+<Border>
+    <Border.Resources>
+        <FontIconSource x:Key="LockIcon" Glyph="&#xE72E;"/>
+        <LinearGradientBrush x:Key="PurpleGradient" StartPoint="0,0.5" EndPoint="1,0.5">
+            <GradientStop Color="#ff8990f9" Offset="0.0"/>
+            <GradientStop Color="#ff5b66fb" Offset="0.5"/>
+            <GradientStop Color="#ff5c1df4" Offset="1.0"/>
+        <LinearGradientBrush/>
+        <SwipeItems x:Key="right" Mode="Execute">
+            <SwipeItem Text="Lock" Background="{StaticResource PurpleGradient}" 
+                       BehaviorOnInvoked="Close" IconSource="{StaticResource LockIcon}"/>
+        </SwipeItems>
+    </Border.Resources>
+    <SwipeControl BorderThickness="1" BorderBrush="{ThemeResource ButtonBackground}"
+        RightItems="{StaticResource right}"
+        Width="500" Margin="12" Height="68">
+        <TextBlock Text="Swipe Left" Margin="12"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </SwipeControl>
+</Border>

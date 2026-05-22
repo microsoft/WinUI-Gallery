@@ -1,0 +1,6 @@
+--- header
+A TextBlock with various properties set.
+--- xaml
+<TextBlock Text="I am super excited to be here!" FontFamily="Arial"
+    FontSize="24" FontStyle="Italic" TextWrapping="WrapWholeWords"
+    CharacterSpacing="200" Foreground="CornflowerBlue" />

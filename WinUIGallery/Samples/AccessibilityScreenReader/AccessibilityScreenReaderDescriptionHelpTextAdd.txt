@@ -1,0 +1,19 @@
+--- header
+Description and help text: add descriptions and help text to controls
+--- xaml
+<StackPanel Spacing="8">
+    <!-- Use FullDescription to connect visible descriptions to their controls -->
+    <StackPanel Spacing="8">
+        <CheckBox Content="Clear cache on exit"
+                    AutomationProperties.FullDescription="{x:Bind ClearCacheDescription.Text}" />
+        <TextBlock x:Name="ClearCacheDescription"
+                    Text="Deletes all cached items when closing the browser. This includes cookies, images, and browsing history."
+                    AutomationProperties.AccessibilityView="Raw"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+    </StackPanel>
+
+    <!-- Use HelpText and/or tooltips to explain nuances of controls -->
+    <Button Content="Cancel RSS subscriptions"
+            ToolTipService.ToolTip="Launch the cancellation wizard"
+            AutomationProperties.HelpText="Launch the cancellation wizard" />
+</StackPanel>

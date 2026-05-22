@@ -1,0 +1,8 @@
+--- header
+An AppBarToggleButton with a bitmap icon.
+--- xaml
+<AppBarToggleButton Label="BitmapIcon" Click="AppBarButton_Click">
+    <AppBarToggleButton.Icon>
+        <BitmapIcon UriSource="ms-appx:///Assets/SampleMedia/Slices2.png"/>
+    </AppBarToggleButton.Icon>
+</AppBarToggleButton>

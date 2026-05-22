@@ -1,0 +1,31 @@
+--- header
+A content dialog without a default button.
+--- xaml
+<Page
+    x:Class="WinUIGallery.ControlPages.ContentDialogContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <!-- Content body -->
+        <TextBlock Text="Lorem ipsum dolor sit amet, adipisicing elit." TextWrapping="Wrap" />
+        <CheckBox Content="Upload your content to the cloud."/>
+    </StackPanel>
+
+</Page>
+--- c#
+private async void ShowDialogNoDefault_Click(object sender, RoutedEventArgs e)
+{
+    ContentDialog dialog = new ContentDialog();
+
+    // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+    dialog.XamlRoot = this.XamlRoot;
+    dialog.Title = "Replace file?";
+    dialog.PrimaryButtonText = "Replace";
+    dialog.SecondaryButtonText = "Keep";
+    dialog.CloseButtonText = "Cancel";
+    dialog.DefaultButton = ContentDialogButton.None;
+    dialog.Content = new ContentDialogContent();
+
+    var result = await dialog.ShowAsync();
+}

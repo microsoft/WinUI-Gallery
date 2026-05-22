@@ -1,0 +1,203 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+
+<Page
+    x:Class="WinUIGallery.ControlPages.ClipboardPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <!--  COPY TO CLIPBOARD  -->
+        <controls:ControlExample x:Name="Example1" SampleDefinition="Clipboard\CopyTextClipboard.txt">
+
+            <StackPanel VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        Margin="0,0,0,10"
+                        Click="CopyText_Click"
+                        Content="Copy Text to the Clipboard" />
+                    <TextBlock
+                        x:Name="ConfirmationTextBlock"
+                        Padding="20,5,0,0"
+                        Text="Text copied to clipboard!"
+                        Visibility="Collapsed" />
+                </StackPanel>
+
+                <RichEditBox
+                    x:Name="richEditBox"
+                    Width="800"
+                    Height="100"
+                    AutomationProperties.Name="editor with custom menu" />
+            </StackPanel>
+
+        </controls:ControlExample>
+
+        <!--  PASTE FROM CLIPBOARD  -->
+        <controls:ControlExample x:Name="Example2" SampleDefinition="Clipboard\PasteTextClipboard.txt">
+            <StackPanel VerticalAlignment="Top">
+                <Button
+                    Margin="0,0,0,10"
+                    Click="PasteText_Click"
+                    Content="Paste Text from the Clipboard" />
+                <TextBlock
+                    x:Name="PasteClipboard1"
+                    Padding="5,5,0,0"
+                    Visibility="Visible">
+                    <Underline>Clipboard:</Underline>
+                </TextBlock>
+                <TextBlock
+                    x:Name="PasteClipboard2"
+                    Width="Auto"
+                    Padding="5,5,0,0"
+                    Text="Click the button!"
+                    TextWrapping="Wrap"
+                    Visibility="Visible" />
+            </StackPanel>
+
+        </controls:ControlExample>
+
+        <!--  COPY AND PASTE AN IMAGE  -->
+        <controls:ControlExample
+            x:Name="Example3"
+            SampleDefinition="Clipboard\ClipboardCopyPasteImage.txt">
+            <StackPanel VerticalAlignment="Top" Spacing="10">
+                <Image
+                    x:Name="SourceImage"
+                    Width="200"
+                    Height="150"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.Name="Source image to copy"
+                    Source="ms-appx:///Assets/SampleMedia/rainier.jpg"
+                    Stretch="UniformToFill" />
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button
+                        Click="CopyImage_Click"
+                        Content="Copy Image to Clipboard" />
+                    <Button
+                        Click="PasteImage_Click"
+                        Content="Paste Image from Clipboard" />
+                </StackPanel>
+                <TextBlock
+                    x:Name="ImageStatusText"
+                    Foreground="{ThemeResource SystemFillColorSuccessBrush}"
+                    Text=""
+                    Visibility="Collapsed" />
+                <Image
+                    x:Name="PastedImage"
+                    Width="200"
+                    Height="150"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.Name="Pasted image from clipboard"
+                    Stretch="UniformToFill"
+                    Visibility="Collapsed" />
+            </StackPanel>
+        </controls:ControlExample>
+
+        <!--  COPY AND PASTE FILES  -->
+        <controls:ControlExample
+            x:Name="Example4"
+            SampleDefinition="Clipboard\ClipboardCopyPasteFiles.txt">
+            <StackPanel VerticalAlignment="Top" Spacing="10">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button
+                        Click="CopyFiles_Click"
+                        Content="Copy Files to Clipboard" />
+                    <Button
+                        Click="PasteFiles_Click"
+                        Content="Paste Files from Clipboard" />
+                </StackPanel>
+                <TextBlock
+                    x:Name="FilesStatusText"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </controls:ControlExample>
+
+        <!--  CLIPBOARD HISTORY AND ROAMING  -->
+        <controls:ControlExample
+            x:Name="Example5"
+            SampleDefinition="Clipboard\ClipboardHistoryRoamingOptions.txt">
+            <StackPanel VerticalAlignment="Top" Spacing="10">
+                <TextBox
+                    x:Name="HistoryRoamingTextBox"
+                    Width="400"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.Name="Text to copy with options"
+                    PlaceholderText="Enter text to copy with options"
+                    Text="Text with clipboard options" />
+                <StackPanel Orientation="Horizontal" Spacing="16">
+                    <ToggleSwitch
+                        x:Name="AllowHistoryToggle"
+                        Header="Allow in History"
+                        IsOn="True"
+                        AutomationProperties.Name="Allow clipboard content in history" />
+                    <ToggleSwitch
+                        x:Name="AllowRoamingToggle"
+                        Header="Allow Roaming"
+                        IsOn="True"
+                        AutomationProperties.Name="Allow clipboard content to roam" />
+                </StackPanel>
+                <Button
+                    Click="CopyWithOptions_Click"
+                    Content="Copy with Options" />
+                <TextBlock
+                    x:Name="HistoryRoamingStatusText"
+                    TextWrapping="Wrap" />
+                <StackPanel Orientation="Horizontal" Spacing="16">
+                    <TextBlock x:Name="HistoryEnabledText" />
+                    <TextBlock x:Name="RoamingEnabledText" />
+                </StackPanel>
+            </StackPanel>
+        </controls:ControlExample>
+
+        <!--  OTHER CLIPBOARD OPERATIONS  -->
+        <controls:ControlExample
+            x:Name="Example6"
+            SampleDefinition="Clipboard\OtherClipboardOperations.txt">
+            <StackPanel VerticalAlignment="Top" Spacing="10">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button
+                        Click="ShowFormats_Click"
+                        Content="Show Clipboard Formats" />
+                    <Button
+                        Click="ClearClipboard_Click"
+                        Content="Clear Clipboard" />
+                </StackPanel>
+                <ToggleSwitch
+                    x:Name="ContentChangedToggle"
+                    Header="Monitor ContentChanged"
+                    AutomationProperties.Name="Monitor clipboard content changed event"
+                    Toggled="ContentChangedToggle_Toggled" />
+                <TextBlock
+                    x:Name="OtherOperationsStatusText"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </controls:ControlExample>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ConfirmClipboardGroups">
+                <VisualState x:Name="ConfirmationClipboardCollapsed">
+                    <VisualState.Setters>
+                        <Setter Target="ConfirmationTextBlock.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="ConfirmationClipboardVisible">
+                    <VisualState.Setters>
+                        <Setter Target="ConfirmationTextBlock.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </StackPanel>
+</Page>

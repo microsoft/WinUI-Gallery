@@ -1,0 +1,10 @@
+--- header
+Use AddDeleteThemeTransition to animate adding and removing items from a collection.
+--- xaml
+<ListView>
+    <ListView.ItemContainerTransitions>
+        <TransitionCollection>
+            <AddDeleteThemeTransition />
+        </TransitionCollection>
+    </ListView.ItemContainerTransitions>
+</ListView>

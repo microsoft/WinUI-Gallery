@@ -1,0 +1,37 @@
+--- header
+ListView with Images
+--- xaml
+<ListView x:Name="Control4"
+     Height="400"
+     MinWidth="550"
+     BorderThickness="1"
+     BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}">
+                    
+<!-- Data Template Used: -->
+<!-- The data template is bound to a custom-created data type called CustomDataObject. -->
+<!-- The full code for the class can be found in this page's source code, but its attributes are referenced/bound below. -->
+
+<DataTemplate x:DataType="local:CustomDataObject">
+    <Grid Margin="0,12,0,12" AutomationProperties.Name="{x:Bind Title}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="150"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Image Source="{x:Bind ImageLocation}" MaxHeight="100" Stretch="Fill"/>
+
+        <StackPanel Margin="12,0,0,0" Grid.Column="1" >
+            <TextBlock Text="{x:Bind Title}" FontSize="14" FontWeight="SemiBold" Style="{ThemeResource BaseTextBlockStyle}"
+                        HorizontalAlignment="Left" Margin="0,0,0,6" LineHeight="20"/>
+            <TextBlock Text="{x:Bind Description}" FontFamily="Segoe UI" FontWeight="Normal" Style="{ThemeResource BodyTextBlockStyle}"
+                        TextTrimming="CharacterEllipsis" Width="350" MaxLines="1"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{x:Bind Views}" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,0,0,0"/>
+                <TextBlock Text=" Views " HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                <TextBlock Text=" · " Style="{ThemeResource CaptionTextBlockStyle}" 
+                            HorizontalAlignment="Left"/>
+                <TextBlock Text="{x:Bind Likes}" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/>
+                <TextBlock Text=" Likes" HorizontalAlignment="Left" Style="{ThemeResource CaptionTextBlockStyle}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</DataTemplate>

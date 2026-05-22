@@ -1,0 +1,8 @@
+--- header
+A TextBlock with an offset ToolTip.
+--- xaml
+<TextBlock Text="TextBlock with an offset ToolTip.">
+    <ToolTipService.ToolTip>
+        <ToolTip Content="Offset ToolTip." VerticalOffset="-80"/>
+    </ToolTipService.ToolTip>
+</TextBlock>

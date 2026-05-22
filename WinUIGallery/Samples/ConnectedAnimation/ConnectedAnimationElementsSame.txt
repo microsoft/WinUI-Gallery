@@ -1,0 +1,113 @@
+--- header
+A connected animation between elements on the same page
+--- xaml
+<GridView x:Name="collection" IsItemClickEnabled="True" ItemClick="TipsGrid_ItemClick"
+          HorizontalAlignment="Center" MaxWidth="1400">
+    <GridView.ItemContainerStyle>
+        <Style BasedOn="{StaticResource GridViewItemRevealStyle}" TargetType="GridViewItem">
+            <Style.Setters>
+                <Setter Property="Margin" Value="4" />
+            </Style.Setters>
+        </Style>
+    </GridView.ItemContainerStyle>
+    <GridView.ItemTemplate>
+        <DataTemplate>
+            <Grid x:Name="connectedElement" Width="150" Height="110"
+                  AutomationProperties.Name="{Binding Title}" CornerRadius="4">
+                <Image Source="{Binding ImageLocation}" Stretch="UniformToFill" />
+                <Border Padding="8,4" VerticalAlignment="Bottom"
+                        Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}">
+                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Title}" />
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </GridView.ItemTemplate>
+</GridView>
+
+<Grid x:Name="SmokeGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+      Background="{ThemeResource SmokeFillColorDefaultBrush}" Visibility="Collapsed">
+    <Grid x:Name="destinationElement" Width="400" Height="320"
+          HorizontalAlignment="Center" VerticalAlignment="Center"
+          BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1"
+          CornerRadius="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Image x:Name="detailImage" Grid.Row="0" Stretch="UniformToFill" />
+        <Button Width="36" Height="36" Margin="8"
+                HorizontalAlignment="Right" VerticalAlignment="Top"
+                AutomationProperties.Name="Close" Click="BackButton_Click"
+                ToolTipService.ToolTip="Close">
+            <Button.Content>
+                <FontIcon FontSize="14" Glyph="&#xE711;" />
+            </Button.Content>
+        </Button>
+        <StackPanel Grid.Row="1" Padding="16,12"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+            <TextBlock x:Name="detailTitle" Style="{ThemeResource SubtitleTextBlockStyle}" />
+            <TextBlock x:Name="detailDescription" Margin="0,4,0,0"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       MaxLines="3" Style="{ThemeResource BodyTextBlockStyle}"
+                       TextWrapping="Wrap" />
+        </StackPanel>
+    </Grid>
+</Grid>
+--- c#
+public sealed partial class CardPage : Page
+{
+    CustomDataObject? _storedItem;
+
+    public CardPage()
+    {
+        this.InitializeComponent();
+        collection.ItemsSource = CustomDataObject.GetDataObjects(includeAllItems: true);
+    }
+
+    private async void BackButton_Click(object sender, RoutedEventArgs e)
+    {
+        ConnectedAnimation animation = ConnectedAnimationService.GetForCurrentView()
+            .PrepareToAnimate("backwardsAnimation", destinationElement);
+        SmokeGrid.Children.Remove(destinationElement);
+
+        // Collapse the smoke when the animation completes.
+        animation.Completed += Animation_Completed;
+
+        // If the connected item appears outside the viewport, scroll it into view.
+        collection.ScrollIntoView(_storedItem, ScrollIntoViewAlignment.Default);
+        collection.UpdateLayout();
+
+        animation.Configuration = new DirectConnectedAnimationConfiguration();
+
+        // Play the connected animation back to the collection.
+        await collection.TryStartConnectedAnimationAsync(animation, _storedItem, "connectedElement");
+    }
+
+    private void Animation_Completed(ConnectedAnimation sender, object args)
+    {
+        SmokeGrid.Visibility = Visibility.Collapsed;
+        SmokeGrid.Children.Add(destinationElement);
+    }
+
+    private void TipsGrid_ItemClick(object sender, ItemClickEventArgs e)
+    {
+        ConnectedAnimation? animation = null;
+
+        if (collection.ContainerFromItem(e.ClickedItem) is GridViewItem container)
+        {
+            _storedItem = container.Content as CustomDataObject;
+            animation = collection.PrepareConnectedAnimation("forwardAnimation", _storedItem, "connectedElement");
+        }
+
+        // Update the detail view with the clicked item's data.
+        if (_storedItem != null)
+        {
+            detailImage.Source = new BitmapImage(new Uri("ms-appx://" + _storedItem.ImageLocation));
+            detailTitle.Text = _storedItem.Title;
+            detailDescription.Text = _storedItem.Description;
+        }
+
+        SmokeGrid.Visibility = Visibility.Visible;
+        animation?.TryStart(destinationElement);
+    }
+}

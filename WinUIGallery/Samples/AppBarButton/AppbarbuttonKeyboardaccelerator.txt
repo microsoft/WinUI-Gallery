@@ -1,0 +1,8 @@
+--- header
+An AppBarButton with a KeyboardAccelerator
+--- xaml
+<AppBarButton Icon="Save" Label="Save" Click="AppBarButton_Click">
+    <AppBarButton.KeyboardAccelerators>
+        <KeyboardAccelerator Modifiers="Control" Key="S"/>
+    <AppBarButton.KeyboardAccelerators/>
+</AppBarButton>

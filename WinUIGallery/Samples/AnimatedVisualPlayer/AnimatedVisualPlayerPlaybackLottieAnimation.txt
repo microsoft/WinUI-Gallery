@@ -1,0 +1,6 @@
+--- header
+Playback of a Lottie animation.
+--- xaml
+<AnimatedVisualPlayer x:Name="Player" AutoPlay="False">
+    <animatedvisuals:LottieLogo1/>
+</AnimatedVisualPlayer>

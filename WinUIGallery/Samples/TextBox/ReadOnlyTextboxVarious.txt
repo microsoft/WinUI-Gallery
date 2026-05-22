@@ -1,0 +1,7 @@
+--- header
+A read-only TextBox with various properties set.
+--- xaml
+<TextBox Text="I am super excited to be here!"
+    AutomationProperties.Name="customized TextBox" IsReadOnly="True"
+    FontFamily="Arial" FontSize="24" FontStyle="Italic"
+    CharacterSpacing="200" Foreground="#5178BE" />

@@ -1,0 +1,13 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.CalendarDatePickerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" SampleDefinition="CalendarDatePicker\CalendardatepickerHeaderPlaceholderText.txt">
+            <controls:ControlExample.Example>
+                <CalendarDatePicker Header="Calendar" PlaceholderText="Pick a date" />
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

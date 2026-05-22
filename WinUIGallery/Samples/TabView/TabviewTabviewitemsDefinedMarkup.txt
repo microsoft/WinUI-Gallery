@@ -1,0 +1,25 @@
+--- header
+A TabView with TabViewItems defined in markup
+--- xaml
+<TabView AddTabButtonClick="TabView_AddButtonClick" TabCloseRequested="TabView_TabCloseRequested">
+    <TabView.TabItems>
+        <TabViewItem Header="Document 0">
+            <TabViewItem.IconSource>
+                <SymbolIconSource Symbol="Placeholder" />
+            </TabViewItem.IconSource>
+            <samplepages:SamplePage1 />
+        </TabViewItem>
+        <TabViewItem Header="Document 1">
+            <TabViewItem.IconSource>
+                <SymbolIconSource Symbol="Placeholder" />
+            </TabViewItem.IconSource>
+            <samplepages:SamplePage2 />
+        </TabViewItem>
+        <TabViewItem Header="Document 2">
+            <TabViewItem.IconSource>
+                <SymbolIconSource Symbol="Placeholder" />
+            </TabViewItem.IconSource>
+            <samplepages:SamplePage3 />
+        </TabViewItem>
+    </TabView.TabItems>
+</TabView>

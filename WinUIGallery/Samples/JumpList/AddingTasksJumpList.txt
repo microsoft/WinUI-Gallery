@@ -1,0 +1,11 @@
+--- header
+Adding tasks to the jump list
+--- c#
+var jumpList = await JumpList.LoadCurrentAsync();
+
+var task = JumpListItem.CreateWithArguments("/compose", "New Message");
+task.Description = "Compose a new message";
+task.Logo = new Uri("ms-appx:///Assets/Tiles/AppList.targetsize-48.png");
+
+jumpList.Items.Add(task);
+await jumpList.SaveAsync();

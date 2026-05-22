@@ -1,0 +1,17 @@
+--- header
+PipsPager integrated with a FlipView
+--- xaml
+<StackPanel>
+    <FlipView x:Name="Gallery" MaxWidth="400" Height="270" ItemsSource="{x:Bind Pictures}">
+        <FlipView.ItemTemplate>
+            <DataTemplate x:DataType="x:String">
+                <Image Source="{x:Bind Mode=OneTime}" />
+            </DataTemplate>
+        </FlipView.ItemTemplate>
+    </FlipView>
+    <PipsPager x:Name="FlipViewPipsPager"
+        HorizontalAlignment="Center"
+        Margin="0, 12, 0, 0"
+        NumberOfPages="{x:Bind Pictures.Count}"
+        SelectedPageIndex="{x:Bind Path=Gallery.SelectedIndex, Mode=TwoWay}" />
+</StackPanel>

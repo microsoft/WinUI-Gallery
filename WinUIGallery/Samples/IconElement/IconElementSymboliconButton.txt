@@ -1,0 +1,9 @@
+--- header
+A SymbolIcon in a button
+--- xaml
+<Button Name="AcceptButton">
+    <StackPanel>
+        <SymbolIcon Symbol="Accept"/>
+        <TextBlock Text="Accept"/>
+    </StackPanel>
+</Button>

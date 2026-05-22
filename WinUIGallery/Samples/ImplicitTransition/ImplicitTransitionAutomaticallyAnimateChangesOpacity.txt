@@ -1,0 +1,14 @@
+--- header
+Automatically animate changes to Opacity
+--- xaml
+<!-- Automatically animate changes to Opacity -->
+<Rectangle x:Name="rectangle" Width="50" Height="50" Opacity="0.5">
+    <Rectangle.OpacityTransition>
+        <ScalarTransition />
+    </Rectangle.OpacityTransition>
+</Rectangle>
+--- c#
+private void button_Click(object sender, RoutedEventArgs e)
+{
+    rectangle.Opacity = $(Opacity);
+}

@@ -1,0 +1,11 @@
+--- header
+Content inside of a ScrollView.
+--- xaml
+<ScrollView Height="266" Width="400" ContentOrientation="None"
+    ZoomMode="$(ZoomMode)" IsTabStop="True"
+    VerticalAlignment="Top" HorizontalAlignment="Left"
+    HorizontalScrollMode="$(HorizontalScrollMode)" HorizontalScrollBarVisibility="$(HorizontalScrollBarVisibility)"
+    VerticalScrollMode="$(VerticalScrollMode)" VerticalScrollBarVisibility="$(VerticalScrollBarVisibility)">
+    <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg" AutomationProperties.Name="cliff" Stretch="None"
+        HorizontalAlignment="Center" VerticalAlignment="Center"/>
+</ScrollView>

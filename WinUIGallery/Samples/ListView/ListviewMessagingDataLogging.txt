@@ -1,0 +1,35 @@
+--- header
+ListView for Messaging or Data Logging
+--- xaml
+<ListView x:Name="InvertedListView"
+             ItemTemplate="{StaticResource MessageViewTemplate}">
+                    
+     <!-- The ItemsStackPanel must be edited to update the following two properties -->
+     <!-- These properties allow the list to grow from the bottom -->
+     <ListView.ItemsPanel>
+         <ItemsPanelTemplate>
+             <ItemsStackPanel ItemsUpdatingScrollMode="KeepLastItemInView" 
+                              VerticalAlignment="Bottom"/>
+         </ItemsPanelTemplate>
+     </ListView.ItemsPanel>
+
+     <!-- This setter property is created so ListViewItems correctly align to the left or right. -->
+     <ListView.ItemContainerStyle>
+         <Style TargetType="ListViewItem">
+             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+         </Style>
+     </ListView.ItemContainerStyle>
+</ListView>
+
+<!-- Data template used: -->
+<!-- The data template is bound to a custom DataType called Message. -->
+<!-- Each Message object has a color and alignment assigned to it based on whether it was 
+sent or received, and those values are bound in the DataTemplate.-->
+<DataTemplate x:Key="MessageViewTemplate" x:DataType="local:Message">
+    <Grid Height="Auto" Margin="4" HorizontalAlignment="{x:Bind MsgAlignment}">
+        <StackPanel MinHeight="75" Width="350" Padding="10, 0, 0, 10" Background="{ThemeResource SystemColorHighlightColor}" CornerRadius="{StaticResource ControlCornerRadius}">
+            <TextBlock Text="{x:Bind MsgText}" Padding="0, 10, 0, 0" FontSize="20" Foreground="{ThemeResource SystemColorHighlightTextColor}"/>
+            <TextBlock Text="{x:Bind MsgDateTime}" Padding="0, 0, 0, 10" FontSize="15" Foreground="{ThemeResource SystemColorHighlightTextColor}"/>
+        </StackPanel>
+    </Grid>
+</DataTemplate>

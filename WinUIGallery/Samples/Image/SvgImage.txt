@@ -1,0 +1,4 @@
+--- header
+An SVG image.
+--- xaml
+<Image Source="/Assets/SampleMedia/MirrorPCConsent.svg" Height="100" />

@@ -5,7 +5,6 @@
       "UniqueId": "FundamentalsItem",
       "Title": "Fundamentals",
       "IsSpecialSection": true,
-      "Folder": "Fundamentals",
       "Items": [
         {
           "UniqueId": "XamlResources",
@@ -203,7 +202,6 @@
       "Title": "Design",
       "IconGlyph": "",
       "IsSpecialSection": true,
-      "Folder": "Design",
       "Items": [
         {
           "UniqueId": "Color",
@@ -302,7 +300,6 @@
       "UniqueId": "AccessibilityItem",
       "Title": "Accessibility",
       "IsSpecialSection": true,
-      "Folder": "Accessibility",
       "Items": [
         {
           "UniqueId": "AccessibilityColorContrast",

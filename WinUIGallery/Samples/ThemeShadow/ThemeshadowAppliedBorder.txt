@@ -1,0 +1,16 @@
+--- header
+ThemeShadow applied to a Border
+--- xaml
+<Grid>
+    <Grid x:Name="ShadowCastGrid"/>
+    <Border x:Name="ShadowRect" Translation="0,0,$(TranslationSlider)" Loaded="ShadowRect_Loaded" Width="200" Height="200" CornerRadius="{ThemeResource OverlayCornerRadius}" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
+        <Border.Shadow>
+            <ThemeShadow x:Name="shadow"/>
+        </Border.Shadow>
+    </Border>                
+</Grid>
+--- c#
+private void ShadowRect_Loaded(object sender, RoutedEventArgs e)
+{
+    shadow.Receivers.Add(ShadowCastGrid);
+}

@@ -1,0 +1,13 @@
+--- header
+AppBarButtons separated by AppBarSeparators.
+--- xaml
+<CommandBar>
+    <CommandBar.PrimaryCommands>
+        <AppBarButton Icon="AttachCamera" Label="Attach Camera"/>
+        <AppBarSeparator />
+        <AppBarButton Icon="Like" Label="Like"/>
+        <AppBarButton Icon="Dislike" Label="Dislike"/>
+        <AppBarSeparator />
+        <AppBarButton Icon="Orientation" Label="Orientation"/>
+    </CommandBar.PrimaryCommands>
+</CommandBar>

@@ -1,0 +1,13 @@
+--- header
+A button with a flyout
+--- xaml
+<Button Content="Empty cart">
+    <Button.Flyout>
+        <Flyout>
+            <StackPanel>
+                <TextBlock Style="{ThemeResource BaseTextBlockStyle}" Text="All items will be removed. Do you want to continue?" Margin="0,0,0,12" />
+                <Button Click="DeleteConfirmation_Click" Content="Yes, empty my cart" />
+            </StackPanel>
+        </Flyout>
+    </Button.Flyout>
+</Button>

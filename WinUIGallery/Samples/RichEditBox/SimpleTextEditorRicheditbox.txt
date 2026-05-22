@@ -1,0 +1,4 @@
+--- header
+A simple text editor using RichEditBox.
+--- xaml
+<RichEditBox x:Name="editor" AutomationProperties.Name="simple text editor"/>

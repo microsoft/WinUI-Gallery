@@ -1,0 +1,14 @@
+--- header
+Automatically animate changes to Rotation
+--- xaml
+<!-- Automatically animate changes to Rotation -->
+<Rectangle x:Name="rectangle" Width="50" Height="50" Rotation="0" >
+    <Rectangle.RotationTransition>
+        <ScalarTransition />
+    </Rectangle.RotationTransition>
+</Rectangle>
+--- c#
+private void button_Click(object sender, RoutedEventArgs e)
+{
+    rectangle.Rotation = $(Rotation);  // Clockwise, in degrees
+}

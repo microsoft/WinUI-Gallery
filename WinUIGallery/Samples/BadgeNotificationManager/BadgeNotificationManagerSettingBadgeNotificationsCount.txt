@@ -1,0 +1,12 @@
+--- header
+Setting badge notifications with count
+--- c#
+private void SetBadgeCountButton_Click(object sender, RoutedEventArgs e)
+{
+    BadgeNotificationManager.Current.SetBadgeAsCount($(BadgeCount));
+}
+
+private void ClearBadgeButton_Click(object sender, RoutedEventArgs e)
+{
+    BadgeNotificationManager.Current.ClearBadge();
+}

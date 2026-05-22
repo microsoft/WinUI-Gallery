@@ -1,0 +1,32 @@
+--- header
+Custom Swipe in a ListView
+--- xaml
+<ListView x:Name="lv" Width="400" Height="300" Margin="12">
+    <ListView.Resources>
+        <FontIconSource x:Key="ReplyAllIcon" Glyph="&#xE8C2;"/>
+        <FontIconSource x:Key="ReadIcon" Glyph="&#xE8C3;"/>
+        <FontIconSource x:Key="DeleteIcon" Glyph="&#xE74D;"/>
+
+        <SwipeItems x:Key="left" Mode="Reveal">
+            <SwipeItem Text="Reply All" IconSource="{StaticResource ReplyAllIcon}"
+                       Background="#FF3e6fa7" Foreground="White"/>
+            <SwipeItem Text="Open" IconSource="{StaticResource ReadIcon}"
+                       Background="#FFff9501" Foreground="White"/>
+        </SwipeItems>
+        <SwipeItems x:Key="right" Mode="Execute">
+            <SwipeItem Text="Delete" IconSource="{StaticResource DeleteIcon}"
+                       Background="#FFF4B183" Invoked="DeleteItem_ItemInvoked"/>
+        </SwipeItems>
+    </ListView.Resources>
+
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <SwipeControl BorderThickness="0,1,0,0" BorderBrush="{ThemeResource ButtonBackground}" Height="68"
+                       Width="800" MinWidth="200" LeftItems="{StaticResource left}"
+                          RightItems="{StaticResource right}">
+                <TextBlock Text="{Binding}" FontSize="24" Margin="12"
+                           HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            </SwipeControl>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>

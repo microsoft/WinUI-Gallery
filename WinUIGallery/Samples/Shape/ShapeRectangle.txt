@@ -1,0 +1,6 @@
+--- header
+Rectangle
+--- xaml
+<Rectangle Fill="SteelBlue" Height="$(Slider1)" Width="$(Slider2)"
+           Stroke="Black" StrokeThickness="$(Slider3)"
+           RadiusY="$(Slider4)" RadiusX="$(Slider5)"/>

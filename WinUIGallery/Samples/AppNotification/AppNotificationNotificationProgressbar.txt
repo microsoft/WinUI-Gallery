@@ -1,0 +1,16 @@
+--- header
+Notification with ProgressBar
+--- c#
+AppNotification notification = new AppNotificationBuilder()
+    .AddText("Progress Bar Example")
+    .AddText("This is a sample notification showing how to use a progress bar.")
+    .AddProgressBar(new AppNotificationProgressBar()
+        {
+            Title = "Demo Progress",
+            Value = 0.6, // 60%
+            ValueStringOverride = "60%",
+            Status = "In progress..."
+        })
+    .BuildNotification();
+
+AppNotificationManager.Default.Show(notification);

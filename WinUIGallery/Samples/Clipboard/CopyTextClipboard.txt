@@ -1,0 +1,11 @@
+--- header
+Copy text to the Clipboard
+--- xaml
+<Button Content="Copy Text to the Clipboard" Click="CopyText_Click"/>
+--- c#
+private void CopyText_Click(object sender, RoutedEventArgs args)
+{
+	var package = new DataPackage();
+	package.SetText("Copy this text");
+	Clipboard.SetContent(package);
+}

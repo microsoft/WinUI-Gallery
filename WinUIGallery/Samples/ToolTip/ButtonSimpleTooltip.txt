@@ -1,0 +1,4 @@
+--- header
+A button with a simple ToolTip.
+--- xaml
+<Button Content="Button with a simple ToolTip." ToolTipService.ToolTip="Simple ToolTip"/>

@@ -1,0 +1,11 @@
+--- header
+Binding to a property in code-behind
+--- xaml
+<TextBlock
+    Text="{x:Bind GreetingMessage}"
+    FontSize="24"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Center" />
+--- c#
+// Code-behind
+public string GreetingMessage { get; set; } = "Hello, WinUI 3!";

@@ -1,0 +1,4 @@
+--- header
+A determinate progress bar.
+--- xaml
+<ProgressBar Width="130" Value="$(DeterminateProgressValue)" />

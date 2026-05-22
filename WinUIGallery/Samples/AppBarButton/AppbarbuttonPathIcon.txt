@@ -1,0 +1,10 @@
+--- header
+An AppBarButton with a path icon.
+--- xaml
+<AppBarButton Label="PathIcon" Click="AppBarButton_Click">
+    <AppBarButton.Content>
+        <Viewbox Stretch="Uniform">
+            <PathIcon Data="F1 M 20,20L 24,10L 24,24L 5,24"/>
+        </Viewbox>
+    </AppBarButton.Content>
+</AppBarButton>

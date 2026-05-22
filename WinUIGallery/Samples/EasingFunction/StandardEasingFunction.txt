@@ -1,0 +1,10 @@
+--- header
+Standard Easing Function
+--- xaml
+<Storyboard x:Name="Storyboard1">
+    <DoubleAnimation Storyboard.TargetName="Translation" Storyboard.TargetProperty="X" From="0" To="200" >
+        <DoubleAnimation.EasingFunction>
+            <CircleEase EasingMode="EaseInOut" />
+        </DoubleAnimation.EasingFunction>
+    </DoubleAnimation>
+</Storyboard>

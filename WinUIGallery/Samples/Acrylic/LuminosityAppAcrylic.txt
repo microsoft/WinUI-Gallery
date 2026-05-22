@@ -1,0 +1,9 @@
+--- header
+Luminosity with in-app Acrylic.
+--- xaml
+<Rectangle Fill="{ThemeResource CustomAcrylicInAppLuminosity}" />
+
+<ResourceDictionary x:Key="Default">
+    <media:AcrylicBrush x:Key="CustomAcrylicInAppLuminosity" 
+            TintOpacity="$(OpacitySlider)" TintLuminosityOpacity="$(TintLuminositySlider)" TintColor="SkyBlue" FallbackColor="SkyBlue" />
+</ResourceDictionary>

@@ -1,0 +1,12 @@
+--- header
+Informational notification with logo and custom audio
+--- c#
+AppNotification notification = new AppNotificationBuilder()
+    .AddText("Control Highlight: PersonPicture")
+    .AddText("Use the PersonPicture control to display user avatars with initials or images.")
+    .SetAppLogoOverride(new Uri("ms-appx:///Assets/ControlImages/PersonPicture.png"), AppNotificationImageCrop.Circle)
+    .SetAudioEvent(AppNotificationSoundEvent.$(SelectedAppNotificationSoundEvent))
+    .SetTimeStamp(DateTime.Now)                
+    .BuildNotification();
+
+AppNotificationManager.Default.Show(notification);

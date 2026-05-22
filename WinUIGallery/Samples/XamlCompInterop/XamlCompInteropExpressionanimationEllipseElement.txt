@@ -1,0 +1,33 @@
+--- header
+ExpressionAnimation on an Ellipse element
+--- xaml
+<StackPanel Height="200">
+    <Grid VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Rectangle x:Name="rectangle" Width="50" Height="50" Fill="{ThemeResource SystemAccentColor}" PointerEntered="element_PointerEntered" PointerExited="element_PointerExited" />
+        <Ellipse x:Name="ellipse" Grid.Column="1" Width="50" Height="50" Margin="55,0" Fill="{ThemeResource SystemAccentColor}"/>
+    </Grid>
+</StackPanel>
+--- c#
+// NOTE: The rectangle scales up and down using the same element_PointerEntered/Exited events as the prior sample.
+
+Compositor _compositor = Microsoft.UI.Xaml.Media.CompositionTarget.GetCompositorForCurrentThread();
+
+// Set up the relationship between the rectangle and the ellipse.
+private void ExpressionSample_Loaded(object sender, RoutedEventArgs e)
+{
+    var expressionAnim = _compositor.CreateExpressionAnimation();
+
+    // The ellipse's scale is inversely proportional to the rectangle's scale
+    expressionAnim.Expression = "Vector3(1/scaleElement.Scale.X, 1/scaleElement.Scale.Y, 1)";
+    expressionAnim.Target = "Scale";
+
+    // Use SetExpressionReferenceParameter to alias a UIElement into the expression string
+    expressionAnim.SetExpressionReferenceParameter("scaleElement", rectangle);
+
+    // Start the animation on the ellipse
+    ellipse.StartAnimation(expressionAnim);
+}

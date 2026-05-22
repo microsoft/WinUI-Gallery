@@ -1,0 +1,20 @@
+--- header
+Swipe right to reveal actions
+--- xaml
+<Border>
+    <Border.Resources>
+        <FontIconSource x:Key="AcceptIcon" Glyph="&#xE8FB;"/>
+        <FontIconSource x:Key="FlagIcon" Glyph="&#xE7C1;"/>
+
+        <SwipeItems x:Key="left" Mode="Reveal">
+            <SwipeItem Text="Accept" IconSource="{StaticResource AcceptIcon}" Invoked="Accept_ItemInvoked"/>
+            <SwipeItem Text="Flag" IconSource="{StaticResource FlagIcon}" Invoked="Flag_ItemInvoked"/>
+        </SwipeItems>
+    </Border.Resources>
+    <SwipeControl BorderThickness="1"
+        LeftItems="{StaticResource left}" BorderBrush="{ThemeResource ButtonBackground}"
+        Width="300" Margin="12" Height="68">
+            <TextBlock Text="Swipe Right" Margin="12"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </SwipeControl>
+</Border>
