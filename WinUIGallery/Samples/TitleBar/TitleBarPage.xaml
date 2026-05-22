@@ -54,12 +54,14 @@
                                 Initials="JD" />
                         </TitleBar.RightHeader>
                         <TitleBar.Content>
-                            <AutoSuggestBox
-                                MaxWidth="480"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Center"
-                                PlaceholderText="Search.."
-                                QueryIcon="Find" />
+                            <Grid HorizontalAlignment="Stretch">
+                                <AutoSuggestBox
+                                    MaxWidth="420"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center"
+                                    PlaceholderText="Search.."
+                                    QueryIcon="Find" />
+                            </Grid>
                         </TitleBar.Content>
                     </TitleBar>
                 </Grid>
@@ -116,7 +118,7 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <AutoSuggestBox
-                                    MaxWidth="480"
+                                    MaxWidth="420"
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Center"
                                     PlaceholderText="Search..."

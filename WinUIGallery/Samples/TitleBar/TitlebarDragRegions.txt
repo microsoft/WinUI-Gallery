@@ -22,7 +22,7 @@ Custom drag regions in TitleBar.Content
             <!-- Stretches across the available space.
                  The empty area around the AutoSuggestBox is draggable. -->
             <AutoSuggestBox
-                MaxWidth="480"
+                MaxWidth="420"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
                 PlaceholderText="Search..."

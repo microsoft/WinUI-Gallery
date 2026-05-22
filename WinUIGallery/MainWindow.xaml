@@ -28,24 +28,26 @@
                 <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
             </TitleBar.IconSource>
             <TitleBar.Content>
-                <AutoSuggestBox
-                    x:Name="controlsSearchBox"
-                    MaxWidth="480"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
-                    x:FieldModifier="public"
-                    KeyboardAcceleratorPlacementMode="Hidden"
-                    PlaceholderText="Search controls and samples..."
-                    QueryIcon="Find"
-                    QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
-                    TextChanged="OnControlsSearchBoxTextChanged">
-                    <AutoSuggestBox.KeyboardAccelerators>
-                        <KeyboardAccelerator
-                            Key="F"
-                            Invoked="CtrlF_Invoked"
-                            Modifiers="Control" />
-                    </AutoSuggestBox.KeyboardAccelerators>
-                </AutoSuggestBox>
+                <Grid HorizontalAlignment="Stretch">
+                    <AutoSuggestBox
+                        x:Name="controlsSearchBox"
+                        MaxWidth="420"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        x:FieldModifier="public"
+                        KeyboardAcceleratorPlacementMode="Hidden"
+                        PlaceholderText="Search controls and samples..."
+                        QueryIcon="Find"
+                        QuerySubmitted="OnControlsSearchBoxQuerySubmitted"
+                        TextChanged="OnControlsSearchBoxTextChanged">
+                        <AutoSuggestBox.KeyboardAccelerators>
+                            <KeyboardAccelerator
+                                Key="F"
+                                Invoked="CtrlF_Invoked"
+                                Modifiers="Control" />
+                        </AutoSuggestBox.KeyboardAccelerators>
+                    </AutoSuggestBox>
+                </Grid>
             </TitleBar.Content>
         </TitleBar>
         <Grid x:Name="AutomationHelpersPanel" Grid.Row="1">

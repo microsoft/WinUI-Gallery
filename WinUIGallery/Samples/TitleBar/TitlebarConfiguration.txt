@@ -10,12 +10,14 @@ TitleBar configuration
         <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
     </TitleBar.IconSource>
     <TitleBar.Content>
-        <AutoSuggestBox
-            MaxWidth="480"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center"
-            PlaceholderText="Search.."
-            QueryIcon="Find" />
+        <Grid HorizontalAlignment="Stretch">
+            <AutoSuggestBox
+                MaxWidth="420"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                PlaceholderText="Search.."
+                QueryIcon="Find" />
+        </Grid>
     </TitleBar.Content>
     <TitleBar.RightHeader>
         <PersonPicture
