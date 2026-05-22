@@ -34,14 +34,12 @@
                     Initials="JD" />
             </TitleBar.RightHeader>
             <TitleBar.Content>
-                <Grid HorizontalAlignment="Stretch">
-                    <AutoSuggestBox
-                        MaxWidth="420"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Center"
-                        PlaceholderText="Search.."
-                        QueryIcon="Find" />
-                </Grid>
+                <AutoSuggestBox
+                    MaxWidth="420"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    PlaceholderText="Search.."
+                    QueryIcon="Find" />
             </TitleBar.Content>
         </TitleBar>
         <NavigationView
