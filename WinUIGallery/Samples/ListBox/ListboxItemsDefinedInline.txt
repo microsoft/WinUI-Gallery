@@ -1,9 +1,0 @@
---- header
-A ListBox with items defined inline and its minimum width set.
---- xaml
-<ListBox SelectionChanged="ColorListBox_SelectionChanged" MinWidth="200">
-    <x:String>Blue</x:String>
-    <x:String>Green</x:String>
-    <x:String>Red</x:String>
-    <x:String>Yellow</x:String>
-</ListBox>
