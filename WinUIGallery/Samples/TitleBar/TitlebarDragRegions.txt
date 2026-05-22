@@ -1,43 +1,44 @@
 --- header
-Custom drag regions in TitleBar.Content
+TitleBar drag regions
 --- xaml
-<!-- Starting with WindowsAppSDK 2.1, TitleBar walks TitleBar.Content
-     and automatically excludes interactive controls (Button, AutoSuggestBox,
-     etc.) from the drag region. Non-interactive visuals and empty space
-     remain draggable, so a stretched layout still drags the window.
+<!-- Starting with WindowsAppSDK 2.1, TitleBar walks TitleBar.Content,
+     auto-excludes interactive controls from the drag region, and lets
+     non-interactive visuals (and empty space) remain draggable.
 
-     Use the TitleBar.IsDragRegion attached property to override that
-     decision per element:
+     Use TitleBar.IsDragRegion to override the framework decision:
        True   -> always draggable
-       False  -> always clickable (never drag)
-       unset  -> framework decides -->
-<TitleBar Title="My App">
+       False  -> always clickable
+       unset  -> framework decides (default) -->
+<TitleBar x:Name="titleBar" Title="Drag regions">
+    <TitleBar.Resources>
+        <!-- TitleBar.Content uses Center alignment by default, so a child
+             with HorizontalAlignment=Stretch will not actually grow.
+             Override to Stretch to let the search box fill the content area. -->
+        <HorizontalAlignment x:Key="TitleBarContentHorizontalAlignment">Stretch</HorizontalAlignment>
+    </TitleBar.Resources>
     <TitleBar.Content>
         <Grid ColumnSpacing="8" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-
-            <!-- Stretches across the available space.
-                 The empty area around the AutoSuggestBox is draggable. -->
+            <!-- Interactive: auto-excluded from drag. -->
             <AutoSuggestBox
                 MaxWidth="580"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
                 PlaceholderText="Search..."
                 QueryIcon="Find" />
-
-            <!-- Force this Border to be clickable even though it has no
-                 interactive child. -->
+            <!-- Non-interactive visual: its drag behavior is set via
+                 TitleBar.IsDragRegion in code-behind. -->
             <Border
+                x:Name="StatusBadge"
                 Grid.Column="1"
-                Padding="8,4"
+                Padding="10,4"
                 VerticalAlignment="Center"
                 Background="{ThemeResource AccentFillColorDefaultBrush}"
                 CornerRadius="4"
-                PointerPressed="StatusBadge_PointerPressed"
-                TitleBar.IsDragRegion="$(BadgeIsDragRegion)">
+                PointerPressed="StatusBadge_PointerPressed">
                 <TextBlock
                     Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                     Text="Status" />
@@ -46,6 +47,11 @@ Custom drag regions in TitleBar.Content
     </TitleBar.Content>
 </TitleBar>
 --- c#
-// After dynamically changing TitleBar.Content layout, ask the framework to
-// recompute drag regions so the new layout takes effect immediately.
-TitleBarControl.RecomputeDragRegions();
+// Set TitleBar.IsDragRegion at runtime.
+TitleBar.SetIsDragRegion(StatusBadge, true);   // always draggable
+TitleBar.SetIsDragRegion(StatusBadge, false);  // always clickable
+StatusBadge.ClearValue(TitleBar.IsDragRegionProperty); // back to default
+
+// After adding or removing elements in TitleBar.Content dynamically,
+// ask the framework to recompute drag regions.
+titleBar.RecomputeDragRegions();

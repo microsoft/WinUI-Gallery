@@ -24,6 +24,12 @@
             IsBackButtonVisible="{x:Bind rootFrame.CanGoBack, Mode=OneWay}"
             IsPaneToggleButtonVisible="True"
             PaneToggleRequested="TitleBar_PaneToggleRequested">
+            <TitleBar.Resources>
+                <!--  TitleBar.Content uses Center alignment by default, which
+                      sizes content to its DesiredSize. Override to Stretch so
+                      the search box fills the available area up to MaxWidth.  -->
+                <HorizontalAlignment x:Key="TitleBarContentHorizontalAlignment">Stretch</HorizontalAlignment>
+            </TitleBar.Resources>
             <TitleBar.IconSource>
                 <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
             </TitleBar.IconSource>

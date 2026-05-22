@@ -6,6 +6,11 @@ TitleBar configuration
     Subtitle="$(Subtitle)"
     IsBackButtonVisible="$(BackButtonVisibility)"
     IsPaneToggleButtonVisible="$(PaneToggleVisibility)">
+    <TitleBar.Resources>
+        <!-- TitleBar.Content uses Center alignment by default. Override to
+             Stretch so the AutoSuggestBox grows with the title bar. -->
+        <HorizontalAlignment x:Key="TitleBarContentHorizontalAlignment">Stretch</HorizontalAlignment>
+    </TitleBar.Resources>
     <TitleBar.IconSource>
         <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
     </TitleBar.IconSource>

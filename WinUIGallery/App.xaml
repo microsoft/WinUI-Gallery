@@ -61,11 +61,6 @@
             <SolidColorBrush x:Key="GridViewHeaderItemDividerStroke" Color="Transparent" />
             <x:Double x:Key="TeachingTipMinWidth">48</x:Double>
 
-            <!--  Make TitleBar.Content stretch to fill the available area so a
-                  search box (or similar) can grow with the window. The default
-                  is Center, which sizes content to its DesiredSize.  -->
-            <HorizontalAlignment x:Key="TitleBarContentHorizontalAlignment">Stretch</HorizontalAlignment>
-
             <!--  Converters  -->
             <converters:NullableBooleanToBooleanConverter x:Key="nullableBooleanToBooleanConverter" />
             <toolkitConverters:EmptyObjectToObjectConverter x:Key="nullToVisibilityConverter">
