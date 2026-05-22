@@ -34,12 +34,15 @@ public sealed partial class MediaPlayerElementPage : Page
 
     private async void OpenFileButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        var picker = new FileOpenPicker((sender as Button).XamlRoot.ContentIslandEnvironment.AppWindowId);
-        var file = await picker.PickSingleFileAsync();
-        if (file == null)
-            return;
+        if (sender is Button btn)
+        {
+            var picker = new FileOpenPicker((btn).XamlRoot.ContentIslandEnvironment.AppWindowId);
+            var file = await picker.PickSingleFileAsync();
+            if (file == null)
+                return;
 
-        var mediaSource = MediaSource.CreateFromStorageFile(await StorageFile.GetFileFromPathAsync(file.Path));
-        Player1.Source = mediaSource;
+            var mediaSource = MediaSource.CreateFromStorageFile(await StorageFile.GetFileFromPathAsync(file.Path));
+            Player1.Source = mediaSource;
+        }
     }
 }

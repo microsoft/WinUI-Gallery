@@ -3,10 +3,13 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Windows.Storage.Pickers;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Windows.Storage;
+using Windows.Storage.FileProperties;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
@@ -14,6 +17,7 @@ public sealed partial class StoragePickersPage : Page
 {
     private IReadOnlyList<PickerLocationId> pickerLocationIds { get; set; } = new List<PickerLocationId>(Enum.GetValues<PickerLocationId>());
     private IReadOnlyList<PickerViewMode> pickerViewModes { get; set; } = new List<PickerViewMode>(Enum.GetValues<PickerViewMode>());
+    private IReadOnlyList<ThumbnailMode> thumbnailModes { get; set; } = new List<ThumbnailMode>(Enum.GetValues<ThumbnailMode>());
 
     public StoragePickersPage()
     {
@@ -118,7 +122,7 @@ public sealed partial class StoragePickersPage : Page
             // Re-enable the button
             button.IsEnabled = true;
 
-            // Announce result for accessibility (if you’re using the helper)
+            // Announce result for accessibility (if youï¿½re using the helper)
             UIHelper.AnnounceActionForAccessibility(button, PickedMultipleFilesTextBlock.Text, "FilesPickedNotificationId");
         }
     }
@@ -219,6 +223,66 @@ public sealed partial class StoragePickersPage : Page
             button.IsEnabled = true;
 
             UIHelper.AnnounceActionForAccessibility(button, PickedFolderTextBlock.Text, "FolderPickedNotificationId");
+        }
+    }
+
+    private async void PickFileForThumbnailButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button button)
+        {
+            button.IsEnabled = false;
+
+            var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
+            picker.FileTypeFilter.Add("*");
+
+            var pickResult = await picker.PickSingleFileAsync();
+            if (pickResult == null)
+            {
+                ThumbnailDetailsTextBlock.Text = "No file selected.";
+                ThumbnailImage.Source = null;
+                button.IsEnabled = true;
+                return;
+            }
+
+            // The new WinAppSDK picker returns a path string; bridge to StorageFile so we can
+            // use the Windows.Storage.FileProperties thumbnail APIs (no WinAppSDK equivalent exists).
+            var file = await StorageFile.GetFileFromPathAsync(pickResult.Path);
+
+            var thumbnailMode = (ThumbnailMode)ThumbnailModeComboBox.SelectedItem;
+            uint size = (uint)ThumbnailSizeNumberBox.Value;
+
+            try
+            {
+                using var thumbnail = await file.GetThumbnailAsync(thumbnailMode, size, ThumbnailOptions.UseCurrentScale);
+                if (thumbnail != null)
+                {
+                    var bitmap = new BitmapImage();
+                    await bitmap.SetSourceAsync(thumbnail);
+                    ThumbnailImage.Source = bitmap;
+
+                    ThumbnailDetailsTextBlock.Text =
+                        $"File: {file.Name}\n" +
+                        $"Mode: ThumbnailMode.{thumbnailMode}\n" +
+                        $"Requested size: {size}\n" +
+                        $"Returned size: {thumbnail.OriginalWidth} x {thumbnail.OriginalHeight}";
+                }
+                else
+                {
+                    ThumbnailImage.Source = null;
+                    ThumbnailDetailsTextBlock.Text = "No thumbnail available for the selected file.";
+                }
+            }
+            catch (Exception ex)
+            {
+                ThumbnailImage.Source = null;
+                ThumbnailDetailsTextBlock.Text =
+                    $"Could not retrieve a thumbnail for \"{file.Name}\" using ThumbnailMode.{thumbnailMode}.\n" +
+                    $"Try a different mode (for example, SingleItem) or a different file.\n" +
+                    $"({ex.HResult:X8})";
+            }
+
+            button.IsEnabled = true;
+            UIHelper.AnnounceActionForAccessibility(button, ThumbnailDetailsTextBlock.Text, "ThumbnailPickedNotificationId");
         }
     }
 
