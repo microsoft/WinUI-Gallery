@@ -36,7 +36,10 @@ private async void PickFileForThumbnailButton_Click(object sender, RoutedEventAr
         var file = await Windows.Storage.StorageFile.GetFileFromPathAsync(pickResult.Path);
 
         var thumbnailMode = (Windows.Storage.FileProperties.ThumbnailMode)ThumbnailModeComboBox.SelectedItem;
-        uint size = (uint)ThumbnailSizeNumberBox.Value;
+
+        // NumberBox.Value is NaN when the user clears the field; fall back to a sane default.
+        double rawSize = ThumbnailSizeNumberBox.Value;
+        uint size = double.IsNaN(rawSize) || rawSize <= 0 ? 200u : (uint)rawSize;
 
         // 3) Request the thumbnail. ThumbnailMode hints how the system should render it
         //    (e.g. PicturesView for photos, MusicView for album art, DocumentsView for icons).

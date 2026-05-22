@@ -36,7 +36,7 @@ public sealed partial class MediaPlayerElementPage : Page
     {
         if (sender is Button btn)
         {
-            var picker = new FileOpenPicker((btn).XamlRoot.ContentIslandEnvironment.AppWindowId);
+            var picker = new FileOpenPicker(btn.XamlRoot.ContentIslandEnvironment.AppWindowId);
             var file = await picker.PickSingleFileAsync();
             if (file == null)
                 return;

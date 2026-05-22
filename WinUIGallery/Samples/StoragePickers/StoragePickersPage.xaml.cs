@@ -122,7 +122,7 @@ public sealed partial class StoragePickersPage : Page
             // Re-enable the button
             button.IsEnabled = true;
 
-            // Announce result for accessibility (if you�re using the helper)
+            // Announce result for accessibility
             UIHelper.AnnounceActionForAccessibility(button, PickedMultipleFilesTextBlock.Text, "FilesPickedNotificationId");
         }
     }
@@ -249,7 +249,10 @@ public sealed partial class StoragePickersPage : Page
             var file = await StorageFile.GetFileFromPathAsync(pickResult.Path);
 
             var thumbnailMode = (ThumbnailMode)ThumbnailModeComboBox.SelectedItem;
-            uint size = (uint)ThumbnailSizeNumberBox.Value;
+
+            // NumberBox.Value is NaN when the user clears the field; fall back to a sane default.
+            double rawSize = ThumbnailSizeNumberBox.Value;
+            uint size = double.IsNaN(rawSize) || rawSize <= 0 ? 200u : (uint)rawSize;
 
             try
             {
