@@ -1,0 +1,36 @@
+--- header
+Animated GIF playback.
+--- xaml
+<StackPanel Spacing="12">
+    <TextBlock Text="An Image element automatically plays an animated GIF source." TextWrapping="Wrap"/>
+    <Image Height="100" HorizontalAlignment="Left" Source="/Assets/SampleMedia/animated.gif"/>
+
+    <TextBlock Text="Set AutoPlay to False to prevent the GIF from playing automatically." TextWrapping="Wrap"/>
+    <Image Height="100" HorizontalAlignment="Left">
+        <Image.Source>
+            <BitmapImage AutoPlay="False" UriSource="/Assets/SampleMedia/animated.gif"/>
+        </Image.Source>
+    </Image>
+
+    <TextBlock Text="Control playback manually using BitmapImage.Play() and Stop()." TextWrapping="Wrap"/>
+    <Image Height="100" HorizontalAlignment="Left">
+        <Image.Source>
+            <BitmapImage x:Name="ClickToPlaySource" AutoPlay="False"
+                         UriSource="/Assets/SampleMedia/animated.gif"
+                         ImageOpened="ClickToPlaySource_ImageOpened"/>
+        </Image.Source>
+    </Image>
+    <StackPanel x:Name="PlaybackButtons" Orientation="Horizontal" Spacing="8" Visibility="Collapsed">
+        <Button Content="Play" Click="{x:Bind ClickToPlaySource.Play}"/>
+        <Button Content="Stop" Click="{x:Bind ClickToPlaySource.Stop}"/>
+    </StackPanel>
+</StackPanel>
+--- c#
+private void ClickToPlaySource_ImageOpened(object sender, RoutedEventArgs e)
+{
+    // BitmapImage.IsAnimatedBitmap is only valid after ImageOpened has been raised.
+    if (ClickToPlaySource.IsAnimatedBitmap)
+    {
+        PlaybackButtons.Visibility = Visibility.Visible;
+    }
+}

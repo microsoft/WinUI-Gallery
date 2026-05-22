@@ -86,5 +86,40 @@
             <Image Height="100" Source="/Assets/SampleMedia/MirrorPCConsent.svg" />
 
         </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example6" SampleDefinition="Image\AnimatedGif.txt">
+
+            <StackPanel Spacing="12">
+                <TextBlock Text="An Image element automatically plays an animated GIF source." TextWrapping="Wrap" />
+                <Image Height="100" HorizontalAlignment="Left" Source="/Assets/SampleMedia/animated.gif" />
+
+                <TextBlock Text="Set AutoPlay to False to prevent the GIF from playing automatically." TextWrapping="Wrap" />
+                <Image Height="100" HorizontalAlignment="Left">
+                    <Image.Source>
+                        <BitmapImage AutoPlay="False" UriSource="/Assets/SampleMedia/animated.gif" />
+                    </Image.Source>
+                </Image>
+
+                <TextBlock Text="Control playback manually using BitmapImage.Play() and Stop()." TextWrapping="Wrap" />
+                <Image Height="100" HorizontalAlignment="Left">
+                    <Image.Source>
+                        <BitmapImage
+                            x:Name="ClickToPlaySource"
+                            AutoPlay="False"
+                            ImageOpened="ClickToPlaySource_ImageOpened"
+                            UriSource="/Assets/SampleMedia/animated.gif" />
+                    </Image.Source>
+                </Image>
+                <StackPanel
+                    x:Name="PlaybackButtons"
+                    Orientation="Horizontal"
+                    Spacing="8"
+                    Visibility="Collapsed">
+                    <Button Click="{x:Bind ClickToPlaySource.Play}" Content="Play" />
+                    <Button Click="{x:Bind ClickToPlaySource.Stop}" Content="Stop" />
+                </StackPanel>
+            </StackPanel>
+
+        </controls:ControlExample>
     </StackPanel>
 </Page>
