@@ -11,7 +11,8 @@ TitleBar configuration
     </TitleBar.IconSource>
     <TitleBar.Content>
         <AutoSuggestBox
-            Width="360"
+            MaxWidth="480"
+            HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
             PlaceholderText="Search.."
             QueryIcon="Find" />
