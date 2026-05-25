@@ -105,7 +105,6 @@
         <Content Remove="Assets\**\*.cs" />
         <None Update="Samples\**\*.txt" CopyToOutputDirectory="PreserveNewest" />
         <None Update="Samples\Iconography\IconsData.json" CopyToOutputDirectory="PreserveNewest" />
-        <None Update="Samples\SampleCode\**" CopyToOutputDirectory="PreserveNewest" />
         <None Update="SampleSupport\Data\*.json" CopyToOutputDirectory="PreserveNewest" />
         <Compile Remove="CollectionsInterop.cs" />
         <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
