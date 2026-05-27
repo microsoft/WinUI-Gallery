@@ -561,10 +561,6 @@
     <AppxManifestNamespace>
       <Namespace Prefix="dn" Uri="http://schemas.microsoft.com/appx/manifest/foundation/windows10" />
     </AppxManifestNamespace>
-
-    <PackageCertificateKeyFile>D:\WinUI-Gallery\testcert.pfx</PackageCertificateKeyFile>
-
-    <AppxBundlePlatforms>x64|arm64</AppxBundlePlatforms>
   </PropertyGroup>
 
   <!--  Updates the version in Package.appxmanifest files.  -->
