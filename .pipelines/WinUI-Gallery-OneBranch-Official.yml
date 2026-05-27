@@ -131,7 +131,7 @@ extends:
                   $AppBundle = Get-ChildItem -Filter WinUIGallery*Test -Name
                   cd $AppBundle
 
-                  .\Install.ps1 -Certificate WinUIGallery.Desktop.cer -Force
+                  .\Install.ps1 -Certificate WinUIGallery.cer -Force
               errorActionPreference: "continue"
               failOnStderr: true
               workingDirectory: "$(System.DefaultWorkingDirectory)"
