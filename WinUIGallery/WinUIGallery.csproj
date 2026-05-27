@@ -551,7 +551,7 @@
 
   <!--  App Version and Assembly Info  -->
   <PropertyGroup>
-    <Version>2.9.0.0</Version>
+    <Version>2.9.3.0</Version>
     <AssemblyTitle>WinUIGallery</AssemblyTitle>
     <AssemblyProduct>WinUIGallery</AssemblyProduct>
     <AssemblyCopyright>Copyright © Microsoft Corporation. All rights reserved.</AssemblyCopyright>
@@ -561,6 +561,10 @@
     <AppxManifestNamespace>
       <Namespace Prefix="dn" Uri="http://schemas.microsoft.com/appx/manifest/foundation/windows10" />
     </AppxManifestNamespace>
+
+    <PackageCertificateKeyFile>D:\WinUI-Gallery\testcert.pfx</PackageCertificateKeyFile>
+
+    <AppxBundlePlatforms>x64|arm64</AppxBundlePlatforms>
   </PropertyGroup>
 
   <!--  Updates the version in Package.appxmanifest files.  -->
