@@ -24,4 +24,12 @@ public sealed partial class ImagePage : Page
             StretchImage.Stretch = stretch;
         }
     }
+
+    private void ClickToPlaySource_ImageOpened(object sender, RoutedEventArgs e)
+    {
+        if (ClickToPlaySource.IsAnimatedBitmap)
+        {
+            PlaybackButtons.Visibility = Visibility.Visible;
+        }
+    }
 }
