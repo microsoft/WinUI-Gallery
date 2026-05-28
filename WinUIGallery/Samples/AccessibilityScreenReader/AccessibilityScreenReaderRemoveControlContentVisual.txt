@@ -1,0 +1,11 @@
+--- header
+Remove a control from the content visual tree
+--- xaml
+<StackPanel Orientation="Horizontal">
+<!-- The image is not necessary for screen readers as it does not contain any information.
+        Thus we remove it from the content visual tree with AccessibilityView="Raw" -->
+<Image Source="/Assets/SampleMedia/treetops.jpg" AutomationProperties.AccessibilityView="Raw" Height="40" VerticalAlignment="Top"/>
+<TextBlock TextWrapping="WrapWholeWords" MaxWidth="400" Margin="8,0,0,0">This is some demo text.
+                The image on the left is just for decoration and serves no informational purpose.
+                To prevent Narrator or other screen readers from reading out the image, we set the accessibility view to "Raw" which removes it from the content visual tree.</TextBlock>
+</StackPanel>

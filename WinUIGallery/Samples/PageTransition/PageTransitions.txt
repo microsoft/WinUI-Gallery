@@ -1,0 +1,12 @@
+--- header
+Page transitions
+--- xaml
+<Frame x:Name="ContentFrame">
+    <Frame.ContentTransitions>
+        <TransitionCollection>
+            <NavigationThemeTransition  />
+        </TransitionCollection>
+    </Frame.ContentTransitions>
+</Frame>
+--- c#
+ContentFrame.Navigate(typeof(SamplePage), null$(TransitionParameter));

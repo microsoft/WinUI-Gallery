@@ -1,0 +1,60 @@
+--- header
+Basic, non-interactive items laid out by ItemsRepeater
+--- xaml
+<!-- The ItemsRepeater and ScrollViewer used: -->
+<ScrollViewer HorizontalScrollBarVisibility="Auto" 
+              HorizontalScrollMode="Auto" 
+              IsVerticalScrollChainingEnabled="False"
+              MaxHeight="500">
+    <ItemsRepeater
+               ItemsSource="{x:Bind BarItems}"
+               Layout="{StaticResource $(Layout)}"
+               ItemTemplate="{StaticResource $(ElementGenerator)}" />
+</ScrollViewer>
+                    
+<!-- The Layout specifications used: -->
+                    
+$(SampleCodeLayout)     
+                    
+<!-- The DataTemplate used: $(ElementGenerator)-->
+                    
+$(SampleCodeDT)
+--- c#
+// The ItemsSource used is a list of custom-class Bar objects called BarItems
+
+public class Bar
+{
+    public Bar(double length, int max)
+    {
+        Length = length;
+        MaxLength = max;
+
+        Height = length / 4;
+        MaxHeight = max / 4;
+
+        Diameter = length / 6;
+        MaxDiameter = max / 6;
+    }
+    public double Length { get; set; }
+    public int MaxLength { get; set; }
+
+    public double Height { get; set; }
+    public double MaxHeight { get; set; }
+
+    public double Diameter { get; set; }
+    public double MaxDiameter { get; set; }
+}
+
+public ObservableCollection<Bar> BarItems;
+private int MaxLength = 425;
+
+private void InitializeData()
+{
+    if (BarItems == null)
+    {
+        BarItems = new ObservableCollection<Bar>();
+    }
+    BarItems.Add(new Bar(300, this.MaxLength));
+    BarItems.Add(new Bar(25, this.MaxLength));
+    BarItems.Add(new Bar(175, this.MaxLength));
+}

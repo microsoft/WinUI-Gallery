@@ -1,0 +1,28 @@
+--- header
+AppWindowTitleBar color customization
+--- c#
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using Windows.UI;
+
+public sealed partial class AppWindowTitleBarWindow : Window
+{
+    public AppWindowTitleBarWindow()
+    {
+        InitializeComponent();
+
+        AppWindow.TitleBar.BackgroundColor = ColorHelper.FromArgb($(BackgroundColor));
+        AppWindow.TitleBar.ForegroundColor = ColorHelper.FromArgb($(ForegroundColor));
+        AppWindow.TitleBar.ButtonBackgroundColor = ColorHelper.FromArgb($(ButtonBackgroundColor));
+        AppWindow.TitleBar.ButtonForegroundColor = ColorHelper.FromArgb($(ButtonForegroundColor));
+        AppWindow.TitleBar.ButtonHoverBackgroundColor = ColorHelper.FromArgb($(ButtonHoverBackgroundColor));
+        AppWindow.TitleBar.ButtonHoverForegroundColor = ColorHelper.FromArgb($(ButtonHoverForegroundColor));
+        AppWindow.TitleBar.InactiveBackgroundColor = ColorHelper.FromArgb($(InactiveBackgroundColor));
+        AppWindow.TitleBar.InactiveForegroundColor = ColorHelper.FromArgb($(InactiveForegroundColor));
+        AppWindow.TitleBar.ButtonInactiveBackgroundColor = ColorHelper.FromArgb($(ButtonInactiveBackgroundColor));
+        AppWindow.TitleBar.ButtonInactiveForegroundColor = ColorHelper.FromArgb($(ButtonInactiveForegroundColor));
+        AppWindow.TitleBar.ButtonPressedBackgroundColor = ColorHelper.FromArgb($(ButtonPressedBackgroundColor));
+        AppWindow.TitleBar.ButtonPressedForegroundColor = ColorHelper.FromArgb($(ButtonPressedForegroundColor));
+    }
+}

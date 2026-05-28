@@ -1,0 +1,20 @@
+--- header
+Custom icons
+--- xaml
+<Border>
+    <Border.Resources>
+        <SwipeItems x:Key="left" Mode="Reveal">
+            <SwipeItem Text="Coffee">
+                <SwipeItem.IconSource>
+                    <BitmapIconSource UriSource="ms-appx:///Assets/SampleMedia/CoffeeCup.png"/>
+                <SwipeItem.IconSource/>
+            <SwipeItem/>
+        </SwipeItems>
+    </Border.Resources>
+    <SwipeControl BorderThickness="1"
+        LeftItems="{StaticResource left}" BorderBrush="{ThemeResource ButtonBackground}"
+        Width="300" Margin="12" Height="68">
+            <TextBlock Text="Swipe Right" Margin="12"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </SwipeControl>
+</Border>

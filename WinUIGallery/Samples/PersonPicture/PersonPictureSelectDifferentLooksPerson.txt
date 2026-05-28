@@ -1,0 +1,4 @@
+--- header
+Select different looks for the person picture.
+--- xaml
+<PersonPicture $(ProfilePicture)$(DisplayName)$(Initials) />

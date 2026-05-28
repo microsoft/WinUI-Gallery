@@ -1,0 +1,4 @@
+--- header
+A simple TextBlock.
+--- xaml
+<TextBlock Text="I am a TextBlock"/>

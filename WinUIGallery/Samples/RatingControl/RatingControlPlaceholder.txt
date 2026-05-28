@@ -1,0 +1,4 @@
+--- header
+PlaceholderValue of RatingControl
+--- xaml
+<RatingControl AutomationProperties.Name="RatingControl with placeholder" PlaceholderValue="$(Slider)" />

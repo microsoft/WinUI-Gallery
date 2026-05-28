@@ -1,0 +1,6 @@
+--- header
+Compact Sizing for controls
+--- xaml
+<Page.Resources>
+    <ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" />
+</Page.Resources>

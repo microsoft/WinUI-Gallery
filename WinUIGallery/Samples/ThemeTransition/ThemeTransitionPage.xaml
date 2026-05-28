@@ -1,0 +1,203 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.ThemeTransitionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <controls:ControlExample SampleDefinition="ThemeTransition\EntrancethemetransitionAddingItemsYour.txt">
+            <StackPanel x:Name="EntranceStackPanel" Orientation="Horizontal">
+                <StackPanel.ChildrenTransitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition IsStaggeringEnabled="True" />
+                    </TransitionCollection>
+                </StackPanel.ChildrenTransitions>
+                <Rectangle
+                    Width="50"
+                    Height="50"
+                    Margin="5"
+                    Fill="LightBlue" />
+                <Rectangle
+                    Width="50"
+                    Height="50"
+                    Margin="5"
+                    Fill="LightBlue" />
+                <Rectangle
+                    Width="50"
+                    Height="50"
+                    Margin="5"
+                    Fill="LightBlue" />
+                <Rectangle
+                    Width="50"
+                    Height="50"
+                    Margin="5"
+                    Fill="LightBlue" />
+                <Rectangle
+                    Width="50"
+                    Height="50"
+                    Margin="5"
+                    Fill="LightBlue" />
+            </StackPanel>
+
+            <controls:ControlExample.Options>
+                <StackPanel>
+                    <Button
+                        HorizontalAlignment="Stretch"
+                        Click="EntranceAddButton_Click"
+                        Content="Add one"
+                        Tag="1" />
+                    <Button
+                        HorizontalAlignment="Stretch"
+                        Click="EntranceAddButton_Click"
+                        Content="Add five"
+                        Tag="5" />
+                    <Button
+                        HorizontalAlignment="Stretch"
+                        Click="EntranceClearButton_Click"
+                        Content="Clear all" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+        </controls:ControlExample>
+
+        <controls:ControlExample SampleDefinition="ThemeTransition\RepositionthemetransitionReactLayoutChanges.txt">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Rectangle
+                    Width="75"
+                    Height="75"
+                    Margin="5"
+                    Fill="Red" />
+                <Rectangle
+                    x:Name="MiddleElement"
+                    Grid.Column="1"
+                    Width="75"
+                    Height="75"
+                    Margin="5"
+                    Fill="Green" />
+                <Rectangle
+                    Grid.Column="2"
+                    Width="75"
+                    Height="75"
+                    Margin="5"
+                    Fill="Blue">
+                    <Rectangle.Transitions>
+                        <TransitionCollection>
+                            <RepositionThemeTransition />
+                        </TransitionCollection>
+                    </Rectangle.Transitions>
+                </Rectangle>
+            </Grid>
+
+            <controls:ControlExample.Options>
+                <StackPanel>
+                    <Button Click="RepositionButton_Click" Content="Reposition" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+        </controls:ControlExample>
+
+        <controls:ControlExample SampleDefinition="ThemeTransition\ContentthemetransitionAnimateContentRefreshes.txt">
+            <Grid>
+                <ListView x:Name="ContentList">
+                    <ListView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <ContentThemeTransition />
+                        </TransitionCollection>
+                    </ListView.ItemContainerTransitions>
+                </ListView>
+            </Grid>
+
+            <controls:ControlExample.Options>
+                <StackPanel>
+                    <Button Click="ContentRefreshButton_Click" Content="Refresh data" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+        </controls:ControlExample>
+
+        <controls:ControlExample SampleDefinition="ThemeTransition\AdddeletethemetransitionAnimateAddingRemoving.txt">
+            <Grid>
+                <ListView x:Name="AddRemoveListView">
+                    <ListView.ItemContainerTransitions>
+                        <TransitionCollection>
+                            <AddDeleteThemeTransition />
+                        </TransitionCollection>
+                    </ListView.ItemContainerTransitions>
+                </ListView>
+            </Grid>
+
+            <controls:ControlExample.Options>
+                <StackPanel>
+                    <Button
+                        HorizontalAlignment="Stretch"
+                        Click="AddButton_Click"
+                        Content="Add" />
+                    <Button
+                        HorizontalAlignment="Stretch"
+                        Click="DeleteButton_Click"
+                        Content="Delete" />
+                    <Button
+                        HorizontalAlignment="Stretch"
+                        Click="AddDeleteButton_Click"
+                        Content="Add and Del" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+        </controls:ControlExample>
+
+        <controls:ControlExample FontFamily="Consolas" SampleDefinition="ThemeTransition\PopupthemetransitionAnimateOpeningClosing.txt">
+            <Grid>
+                <Button
+                    x:Name="ShowPopupButton"
+                    Click="ShowPopupButton_Click"
+                    Content="Show Popup" />
+
+                <Popup x:Name="ExamplePopup" Margin="-75">
+                    <Popup.ChildTransitions>
+                        <TransitionCollection>
+                            <PopupThemeTransition />
+                        </TransitionCollection>
+                    </Popup.ChildTransitions>
+                    <Grid>
+                        <Ellipse
+                            Width="200"
+                            Height="200"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Fill="{ThemeResource FlyoutBackgroundThemeBrush}"
+                            Stroke="{ThemeResource SystemControlForegroundChromeGrayBrush}"
+                            StrokeThickness="2" />
+                        <StackPanel
+                            Width="200"
+                            Margin="24"
+                            VerticalAlignment="Center">
+                            <TextBlock
+                                Margin="12"
+                                HorizontalAlignment="Center"
+                                FontFamily="Segoe UI"
+                                Text="This is a popup using PopupThemeTransition"
+                                TextAlignment="Center"
+                                TextWrapping="WrapWholeWords" />
+                            <Button
+                                x:Name="ClosePopupButton"
+                                HorizontalAlignment="Center"
+                                Click="ClosePopupButton_Click"
+                                Content="Close Popup" />
+                        </StackPanel>
+                    </Grid>
+                </Popup>
+            </Grid>
+
+        </controls:ControlExample>
+
+    </StackPanel>
+</Page>

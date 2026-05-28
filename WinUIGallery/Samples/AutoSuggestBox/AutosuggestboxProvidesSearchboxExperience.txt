@@ -1,0 +1,8 @@
+--- header
+An AutoSuggestBox that provides a SearchBox experience
+--- xaml
+<AutoSuggestBox PlaceholderText="Type a control name"
+        TextChanged="Control2_TextChanged"
+        QueryIcon="Find"
+        QuerySubmitted="Control2_QuerySubmitted"
+        SuggestionChosen="Control2_SuggestionChosen"/>

@@ -1,0 +1,11 @@
+--- header
+Using a 3-state CheckBox.
+--- xaml
+<StackPanel>
+    <CheckBox x:Name="OptionsAllCheckBox" Content="Select all" IsThreeState="True"
+              Checked="SelectAll_Checked" Unchecked="SelectAll_Unchecked"
+              Indeterminate="SelectAll_Indeterminate" />
+    <CheckBox x:Name="Option1CheckBox" Content="Option 1" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" />
+    <CheckBox x:Name="Option2CheckBox" Content="Option 2" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" IsChecked="True" />
+    <CheckBox x:Name="Option3CheckBox" Content="Option 3" Margin="24,0,0,0" Checked="Option_Checked" Unchecked="Option_Unchecked" />
+</StackPanel>

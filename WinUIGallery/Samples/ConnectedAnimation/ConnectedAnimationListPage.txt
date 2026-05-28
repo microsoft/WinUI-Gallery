@@ -1,0 +1,192 @@
+--- header
+A connected animation between a list page and a detail page
+--- xaml
+<!-- COLLECTION PAGE BELOW-->
+<ListView x:Name="collection"
+            IsItemClickEnabled="True"
+            SelectionMode="None"
+            Loaded="collection_Loaded"
+            ItemClick="collection_ItemClick"
+            Grid.Row="2" >
+    <ListView.ItemTemplate>
+        <DataTemplate x:DataType="local:CustomDataObject">
+            <Grid Margin="0,12,0,12" AutomationProperties.Name="{x:Bind Title}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="150"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- The image to connect between pages. -->
+                <Image x:Name="connectedElement" Source="{x:Bind ImageLocation}" MaxHeight="100" Stretch="Fill"/>
+
+                <StackPanel Margin="12,0,0,0" Grid.Column="1" >
+                    <TextBlock Text="{x:Bind Title}" Style="{ThemeResource SubtitleTextBlockStyle}" HorizontalAlignment="Left" Margin="0,0,0,6"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Views: " Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="Bold"/>
+                        <TextBlock Text="{x:Bind Views}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Likes: " Style="{ThemeResource CaptionTextBlockStyle}" FontWeight="Bold"/>
+                        <TextBlock Text="{x:Bind Likes}" Style="{ThemeResource CaptionTextBlockStyle}" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Bind Description}" Style="{ThemeResource BodyTextBlockStyle}" FontStyle="Italic" Margin="0,12,0,0" TextTrimming="CharacterEllipsis" MaxWidth="500" MaxLines="1"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
+
+<!-- DETAIL PAGE BELOW-->
+<Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <Grid x:Name="headerBackground" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+        <Button x:Name="GoBackButton" Content="Go Back" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{ThemeResource SystemAccentColor}" Click="BackButton_Click" />
+    </Grid>
+
+    <Grid x:Name="headerContent" Margin="20,52,20,20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Connected image -->
+        <Image x:Name="detailedImage" MaxHeight="400" Source="{x:Bind DetailedObject.ImageLocation}" VerticalAlignment="Top" Stretch="Uniform" />
+
+        <!-- Panel to be coordinated with connected animation -->
+        <StackPanel x:Name="coordinatedPanel" Grid.Column="1" VerticalAlignment="Top" Margin="20,0">
+            <TextBlock Text="{x:Bind DetailedObject.Title}" Style="{ThemeResource SubheaderTextBlockStyle}" Margin="0,0,0,10"  />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Views: " Style="{ThemeResource SubtitleTextBlockStyle}" FontWeight="Bold"/>
+                <TextBlock Text="{x:Bind DetailedObject.Views}" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="5,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Likes: " Style="{ThemeResource SubtitleTextBlockStyle}" FontWeight="Bold" />
+                <TextBlock Text="{x:Bind DetailedObject.Likes}" Style="{ThemeResource SubtitleTextBlockStyle}"  Margin="5,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+
+    <!-- Panel containing more info, to be shown after the connected animation. -->
+    <Grid x:Name="moreInfoPanel" Grid.Row="1" Margin="10">
+        <TextBlock Text="{x:Bind DetailedObject.Description}" Style="{ThemeResource SubtitleTextBlockStyle}"  />
+    </Grid>
+</Grid>
+--- c#
+// To see the source code: 
+// https://github.com/microsoft/WinUI-Gallery/blob/main/WinUIGallery/ConnectedAnimationPages/CollectionPage.xaml.cs
+// https://github.com/microsoft/WinUI-Gallery/blob/main/WinUIGallery/ConnectedAnimationPages/DetailedInfoPage.xaml.cs
+
+// COLLECTION PAGE
+public sealed partial class CollectionPage : Page
+{
+    CustomDataObject? _storeditem;
+
+    public CollectionPage()
+    {
+        this.InitializeComponent();
+
+        // Ensure that the MainPage is only created once, and cached during navigation.
+        this.NavigationCacheMode = NavigationCacheMode.Enabled;
+
+        collection.ItemsSource = WinUIGallery.ControlPages.CustomDataObject.GetDataObjects();
+    }
+
+    private async void collection_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (_storeditem != null)
+        {
+            // If the connected item appears outside the viewport, scroll it into view.
+            collection.ScrollIntoView(_storeditem, ScrollIntoViewAlignment.Default);
+            collection.UpdateLayout();
+
+            // Play the second connected animation. 
+            ConnectedAnimation animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("BackConnectedAnimation");
+            if (animation != null)
+            {
+                // Setup the "back" configuration if the API is present. 
+                if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))
+                {
+                    animation.Configuration = new DirectConnectedAnimationConfiguration();
+                }
+
+                await collection.TryStartConnectedAnimationAsync(animation, _storeditem, "connectedElement");
+            }
+
+            // Set focus on the list
+            collection.Focus(FocusState.Programmatic);
+        }
+    }
+
+    private void collection_ItemClick(object sender, ItemClickEventArgs e)
+    {
+        // Get the collection item corresponding to the clicked item.
+        if (collection.ContainerFromItem(e.ClickedItem) is ListViewItem container)
+        {
+            // Stash the clicked item for use later. We'll need it when we connect back from the detailpage.
+            _storeditem = container.Content as CustomDataObject;
+
+            // Prepare the connected animation.
+            // Notice that the stored item is passed in, as well as the name of the connected element. 
+            // The animation will actually start on the Detailed info page.
+            collection.PrepareConnectedAnimation("ForwardConnectedAnimation", _storeditem, "connectedElement");
+        }
+
+        // Navigate to the DetailedInfoPage.
+        // Note that we suppress the default animation. 
+        Frame.Navigate(typeof(DetailedInfoPage), _storeditem, new SuppressNavigationTransitionInfo());
+    }
+}
+
+// DETAILED PAGE
+public sealed partial class DetailedInfoPage : Page
+{
+    public CustomDataObject? DetailedObject { get; set; }
+
+    public DetailedInfoPage()
+    {
+        this.InitializeComponent();
+        GoBackButton.Loaded += GoBackButton_Loaded;
+    }
+
+    private void GoBackButton_Loaded(object sender, RoutedEventArgs e)
+    {
+        // When we land in page, put focus on the back button
+        GoBackButton.Focus(FocusState.Programmatic);
+    }
+
+    protected override void OnNavigatedTo(NavigationEventArgs e)
+    {
+        base.OnNavigatedTo(e);
+
+        // Store the item to be used in binding to UI
+        DetailedObject = e.Parameter as CustomDataObject;
+
+        ConnectedAnimation imageAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("ForwardConnectedAnimation");
+        if (imageAnimation != null)
+        {
+            // Connected animation + coordinated animation
+            imageAnimation.TryStart(detailedImage, new UIElement[] { coordinatedPanel });
+
+        }
+    }
+
+    // Create connected animation back to collection page.
+    protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+    {
+        base.OnNavigatingFrom(e);
+
+        ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("BackConnectedAnimation", detailedImage);
+    }
+
+    private void BackButton_Click(object sender, RoutedEventArgs e)
+    {
+        Frame.GoBack();
+    }
+}

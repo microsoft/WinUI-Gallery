@@ -1,0 +1,18 @@
+--- header
+Parallax with a ScrollView
+--- xaml
+<Grid>
+    <ParallaxView Source="{Binding ElementName=scrollView}" VerticalShift="500">
+        <Image Source="ms-appx:///Assets/SampleMedia/cliff.jpg"/>
+    </ParallaxView>
+    <TextBlock Text="Scroll the rectangles to see parallaxing of image" MaxWidth="280"
+        HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White"
+        FontSize="28" TextWrapping="WrapWholeWords"/>
+    <ScrollView x:Name="scrollView" Width="150" HorizontalAlignment="Left">
+        <StackPanel>
+            <Rectangle Fill="AliceBlue" Height="150"/>
+            <!-- ... -->
+            <Rectangle Fill="Cyan" Height="150"/>
+        </StackPanel>
+    </ScrollView>
+</Grid>

@@ -1,0 +1,4 @@
+--- header
+A BitmapIcon with a multicolor bitmap image
+--- xaml
+<BitmapIcon x:Name="SlicesIcon" UriSource="ms-appx:///Assets/SampleMedia/Slices.png" Width="50" ShowAsMonochrome="$(ShowAsMonochrome)"/>

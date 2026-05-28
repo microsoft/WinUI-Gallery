@@ -1,0 +1,15 @@
+--- header
+AppWindowTitleBar preferred theme and height options
+--- c#
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+                    
+public sealed partial class AppWindowTitleBarThemeHeightWindow : Window
+{
+    public AppWindowTitleBarThemeHeightWindow()
+    {
+        InitializeComponent();
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.$(PreferredTheme);
+    }
+}

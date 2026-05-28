@@ -1,0 +1,19 @@
+--- header
+Implicitly animate when the Grid's theme changes
+--- xaml
+<Grid x:Name="ThemeExampleGrid" Background="{ThemeResource SolidBackgroundFillColorBaseBrush}" >
+    <Grid.BackgroundTransition>
+        <BrushTransition />
+    </Grid.BackgroundTransition>
+    <StackPanel Margin="12" Spacing="6">
+        <TextBlock Text="Lorem Ipsum" Style="{ThemeResource SubtitleTextBlockStyle}" />
+        <TextBlock Text="The background of this grid animates when the theme changes." TextWrapping="WrapWholeWords" />
+        <Button Content="Button" />
+        <CheckBox Content="CheckBox" />
+    </StackPanel>
+</Grid>
+--- c#
+private void ThemeButton_Click(object sender, RoutedEventArgs e)
+{
+    ThemeExampleGrid.RequestedTheme = ThemeExampleGrid.RequestedTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
+}

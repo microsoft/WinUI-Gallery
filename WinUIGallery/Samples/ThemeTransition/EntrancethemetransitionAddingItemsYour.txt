@@ -1,0 +1,15 @@
+--- header
+Use the EntranceThemeTransition when adding items to your page.
+--- xaml
+<StackPanel x:Name="EntranceStackPanel" Orientation="Horizontal">
+    <StackPanel.ChildrenTransitions>
+        <TransitionCollection>
+            <EntranceThemeTransition IsStaggeringEnabled="True" />
+        </TransitionCollection>
+    </StackPanel.ChildrenTransitions>
+    <Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" />
+    <Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" />
+    <Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" />
+    <Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" />
+    <Rectangle Width="50" Height="50" Margin="5" Fill="LightBlue" />
+</StackPanel>

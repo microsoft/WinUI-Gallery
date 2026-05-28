@@ -1,0 +1,6 @@
+--- header
+A determinate progress ring.
+--- xaml
+<ProgressRing Width="60" Height="60" Value="$(DeterminateProgressValue)"
+              IsIndeterminate="False"
+              $(Background)/>

@@ -1,0 +1,21 @@
+--- header
+Implicitly animate when the Background changes
+--- xaml
+<ContentPresenter x:Name="BrushPresenter" Background="Blue" Width="50" Height="50">
+    <ContentPresenter.BackgroundTransition>
+        <BrushTransition />
+    </ContentPresenter.BackgroundTransition>
+</ContentPresenter>
+--- c#
+private void button_Click(object sender, RoutedEventArgs e)
+{
+    // Note that this is a new brush instance, not a new color on the same brush.
+    if (HasBlueBackground(BrushPresenter))
+    {
+        BrushPresenter.Background = new SolidColorBrush(Yellow);
+    }
+    else
+    {
+        BrushPresenter.Background = new SolidColorBrush(Blue);
+    }
+}

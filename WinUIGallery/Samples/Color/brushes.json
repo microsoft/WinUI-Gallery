@@ -1,0 +1,596 @@
+{
+    "sections": [
+        {
+            "name": "Text",
+            "description": "For UI labels and static text",
+            "colors": [
+                {
+                    "name": "TextFillColorPrimaryBrush",
+                    "description": "Rest or Hover"
+                },
+                {
+                    "name": "TextFillColorSecondaryBrush",
+                    "description": "Rest or Hover"
+                },
+                {
+                    "name": "TextFillColorTertiaryBrush",
+                    "description": "Pressed only (not accessible)"
+                },
+                {
+                    "name": "TextFillColorDisabledBrush",
+                    "description": "Disabled only (not accessible)"
+                }
+            ]
+        },
+        {
+            "name": "Accent Text",
+            "description": "Recommended for links",
+            "colors": [
+                {
+                    "name": "AccentTextFillColorPrimaryBrush",
+                    "description": "Rest or Hover"
+                },
+                {
+                    "name": "AccentTextFillColorSecondaryBrush",
+                    "description": "Rest or Hover"
+                },
+                {
+                    "name": "AccentTextFillColorTertiaryBrush",
+                    "description": "Pressed only (not accessible)"
+                },
+                {
+                    "name": "AccentTextFillColorDisabledBrush",
+                    "description": "Disabled only (not accessible)"
+                }
+            ]
+        },
+        {
+            "name": "Text On Accent",
+            "description": "Used for text on accent colored controls or fills",
+            "colors": [
+                {
+                    "name": "TextOnAccentFillColorPrimaryBrush",
+                    "description": "Rest or Hover"
+                },
+                {
+                    "name": "TextOnAccentFillColorSecondaryBrush",
+                    "description": "Pressed only (not accessible)"
+                },
+                {
+                    "name": "TextOnAccentFillColorDisabledBrush",
+                    "description": "Disabled only (not accessible)"
+                },
+                {
+                    "name": "TextOnAccentFillColorSelectedTextBrush",
+                    "description": "For highlighted text in text entry experiences"
+                }
+            ]
+        },
+        {
+            "name": "Control Fill",
+            "description": "Fill used for standard controls",
+            "colors": [
+                {
+                    "name": "ControlFillColorDefaultBrush",
+                    "description": "Rest"
+                },
+                {
+                    "name": "ControlFillColorSecondaryBrush",
+                    "description": "Hover"
+                },
+                {
+                    "name": "ControlFillColorTertiaryBrush",
+                    "description": "Pressed"
+                },
+                {
+                    "name": "ControlFillColorQuarternaryBrush",
+                    "description": "Rest (Pill Button control)"
+                },
+                {
+                    "name": "ControlFillColorDisabledBrush",
+                    "description": "Disabled"
+                },
+                {
+                    "name": "ControlFillColorTransparentBrush",
+                    "description": "Rest"
+                },
+                {
+                    "name": "ControlFillColorInputActiveBrush",
+                    "description": "Active/focused text input fields"
+                }
+            ]
+        },
+        {
+            "name": "Control Alt Fill",
+            "description": "Fill used for the 'off' states of toggle controls",
+            "colors": [
+                {
+                    "name": "ControlAltFillColorTransparentBrush",
+                    "description": "Transparent"
+                },
+                {
+                    "name": "ControlAltFillColorSecondaryBrush",
+                    "description": "Rest"
+                },
+                {
+                    "name": "ControlAltFillColorTertiaryBrush",
+                    "description": "Hover"
+                },
+                {
+                    "name": "ControlAltFillColorQuarternaryBrush",
+                    "description": "Pressed"
+                },
+                {
+                    "name": "ControlAltFillColorDisabledBrush",
+                    "description": "Disabled"
+                }
+            ]
+        },
+        {
+            "name": "Neutral Solid",
+            "description": "Fills used for Slider thumb control to cover the track beneath it",
+            "colors": [
+                {
+                    "name": "ControlSolidFillColorDefaultBrush",
+                    "description": "Rest"
+                }
+            ]
+        },
+        {
+            "name": "Neutral Strong",
+            "description": "Used for controls that must meet contrast ratio requirements of 3:1",
+            "colors": [
+                {
+                    "name": "ControlStrongFillColorDefaultBrush",
+                    "description": "Rest or hover"
+                },
+                {
+                    "name": "ControlStrongFillColorDisabledBrush",
+                    "description": "Disabled only (not accessible)"
+                }
+            ]
+        },
+        {
+            "name": "Subtle Fill",
+            "description": "Used for list items and fills that are transparent at rest and appear upon interaction",
+            "colors": [
+                {
+                    "name": "SubtleFillColorTransparentBrush",
+                    "description": "Rest"
+                },
+                {
+                    "name": "SubtleFillColorSecondaryBrush",
+                    "description": "Hover"
+                },
+                {
+                    "name": "SubtleFillColorTertiaryBrush",
+                    "description": "Pressed"
+                },
+                {
+                    "name": "SubtleFillColorDisabledBrush",
+                    "description": "Disabled only (not accessible)"
+                }
+            ]
+        },
+        {
+            "name": "Control On Image Fill",
+            "description": "Used for controls living on top of imagery",
+            "colors": [
+                {
+                    "name": "ControlOnImageFillColorDefaultBrush",
+                    "description": "Rest"
+                },
+                {
+                    "name": "ControlOnImageFillColorSecondaryBrush",
+                    "description": "Hover"
+                },
+                {
+                    "name": "ControlOnImageFillColorTertiaryBrush",
+                    "description": "Pressed"
+                },
+                {
+                    "name": "ControlOnImageFillColorDisabledBrush",
+                    "description": "Disabled only (not accessible)"
+                }
+            ]
+        },
+        {
+            "name": "Accent Fill",
+            "description": "Used for accent fills on controls",
+            "colors": [
+                {
+                    "name": "AccentFillColorDefaultBrush",
+                    "description": "Rest"
+                },
+                {
+                    "name": "AccentFillColorSecondaryBrush",
+                    "description": "Hover"
+                },
+                {
+                    "name": "AccentFillColorTertiaryBrush",
+                    "description": "Pressed"
+                },
+                {
+                    "name": "AccentFillColorDisabledBrush",
+                    "description": "Disabled"
+                },
+                {
+                    "name": "AccentFillColorSelectedTextBackgroundBrush",
+                    "description": "Highlighted/selected text background"
+                }
+            ]
+        },
+        {
+            "name": "Card Stroke",
+            "description": "Used for card and layer colors",
+            "colors": [
+                {
+                    "name": "CardStrokeColorDefaultBrush",
+                    "description": "Card layer and strokes"
+                },
+                {
+                    "name": "CardStrokeColorDefaultSolidBrush",
+                    "description": "Solid equivalent of Card Stroke Default. Used in command bar for expanded states"
+                }
+            ]
+        },
+        {
+            "name": "Control Elevation",
+            "description": "Used for standard control strokes and stroke states",
+            "colors": [
+                {
+                    "name": "ControlElevationBorderBrush",
+                    "description": "Rest"
+                },
+                {
+                    "name": "CircleElevationBorderBrush",
+                    "description": "Rest"
+                },
+                {
+                    "name": "TextControlElevationBorderBrush",
+                    "description": "Rest"
+                },
+                {
+                    "name": "TextControlElevationBorderFocusedBrush",
+                    "description": "Active text fields"
+                },
+                {
+                    "name": "AccentControlElevationBorderBrush",
+                    "description": "Rest"
+                }
+            ]
+        },
+        {
+            "name": "Control Stroke",
+            "description": "Used for gradient stops in elevation borders and for control states",
+            "colors": [
+                {
+                    "name": "ControlStrokeColorDefaultBrush",
+                    "description": "Used in Control Elevation Brushes. Pressed or Disabled"
+                },
+                {
+                    "name": "ControlStrokeColorSecondaryBrush",
+                    "description": "Used in Control Elevation Brushes"
+                },
+                {
+                    "name": "ControlStrokeColorOnAccentDefaultBrush",
+                    "description": "Used in Control Elevation Brushes. Pressed or Disabled"
+                },
+                {
+                    "name": "ControlStrokeColorOnAccentSecondaryBrush",
+                    "description": "Used in Control Elevation Brushes"
+                },
+                {
+                    "name": "ControlStrokeColorOnAccentTertiaryBrush",
+                    "description": "Linework on Accent controls, ie: dividers"
+                },
+                {
+                    "name": "ControlStrokeColorOnAccentDisabledBrush",
+                    "description": "Disabled"
+                },
+                {
+                    "name": "ControlStrokeColorForStrongFillWhenOnImageBrush",
+                    "description": "When used with a strong fill color, ensures a 3:1 contrast on any background"
+                }
+            ]
+        },
+        {
+            "name": "Control Strong Stroke",
+            "description": "Used for control strokes that must meet contrast ratio requirements of 3:1",
+            "colors": [
+                {
+                    "name": "ControlStrongStrokeColorDefaultBrush",
+                    "description": "3:1 control border"
+                },
+                {
+                    "name": "ControlStrongStrokeColorDisabledBrush",
+                    "description": "Disabled"
+                }
+            ]
+        },
+        {
+            "name": "Surface Stroke",
+            "description": "Used for strokes on background surfaces, ie: flyouts, windows, dialogs",
+            "colors": [
+                {
+                    "name": "SurfaceStrokeColorDefaultBrush",
+                    "description": "Window and dialog borders, theme inverse"
+                },
+                {
+                    "name": "SurfaceStrokeColorFlyoutBrush",
+                    "description": "Control flyouts, always dark"
+                }
+            ]
+        },
+        {
+            "name": "Divider Stroke",
+            "description": "Used for divider and graphic lines",
+            "colors": [
+                {
+                    "name": "DividerStrokeColorDefaultBrush",
+                    "description": "Content dividers"
+                }
+            ]
+        },
+        {
+            "name": "Focus Stroke",
+            "description": "Used for focus indicator lines. Theme inverse; dark in light theme and light in dark theme",
+            "colors": [
+                {
+                    "name": "FocusStrokeColorOuterBrush",
+                    "description": "Outer stroke color"
+                },
+                {
+                    "name": "FocusStrokeColorInnerBrush",
+                    "description": "Inner stroke color"
+                }
+            ]
+        },
+        {
+            "name": "Card Background",
+            "description": "Used to create cards - content blocks that live on page and layer backgrounds",
+            "colors": [
+                {
+                    "name": "CardBackgroundFillColorDefaultBrush",
+                    "description": "Default card color"
+                },
+                {
+                    "name": "CardBackgroundFillColorSecondaryBrush",
+                    "description": "Alternate card color: slightly darker"
+                },
+                {
+                    "name": "CardBackgroundTertiaryBrush",
+                    "description": "Default card hover and pressed color"
+                }
+            ]
+        },
+        {
+            "name": "Smoke Background",
+            "description": "Used over windows and desktop to block them out as inaccessible",
+            "colors": [
+                {
+                    "name": "SmokeFillColorDefaultBrush",
+                    "description": "Dims the background behind dialogs"
+                }
+            ]
+        },
+        {
+            "name": "Layer",
+            "description": "Used on background colors of any material to create layering",
+            "colors": [
+                {
+                    "name": "LayerFillColorDefaultBrush",
+                    "description": "Content layer color"
+                },
+                {
+                    "name": "LayerFillColorAltBrush",
+                    "description": "Alternate content layer color"
+                }
+            ]
+        },
+        {
+            "name": "Layer on Acrylic",
+            "description": "Used on background colors of any material to create layering",
+            "colors": [
+                {
+                    "name": "LayerOnAcrylicFillColorDefaultBrush",
+                    "description": "Content layer color on acrylic surfaces"
+                }
+            ]
+        },
+        {
+            "name": "Layer on Mica Base Alt",
+            "description": "Used for fills on Tab control",
+            "colors": [
+                {
+                    "name": "LayerOnMicaBaseAltFillColorDefaultBrush",
+                    "description": "Active Tab Rest, Content layer"
+                },
+                {
+                    "name": "LayerOnMicaBaseAltFillColorSecondaryBrush",
+                    "description": "Inactive Tab Hover"
+                },
+                {
+                    "name": "LayerOnMicaBaseAltFillColorTertiaryBrush",
+                    "description": "Active Tab Drag"
+                },
+                {
+                    "name": "LayerOnMicaBaseAltFillColorTransparentBrush",
+                    "description": "Inactive Tab Rest"
+                }
+            ]
+        },
+        {
+            "name": "Solid Background",
+            "description": "Solid background colors to place layers, cards or controls on",
+            "colors": [
+                {
+                    "name": "SolidBackgroundFillColorBaseBrush",
+                    "description": "Used for the bottom most layer of an experience"
+                },
+                {
+                    "name": "SolidBackgroundFillColorBaseAltBrush",
+                    "description": "Used for the bottom most layer of an experience"
+                },
+                {
+                    "name": "SolidBackgroundFillColorSecondaryBrush",
+                    "description": "Alternate base color for those who need a darker background color"
+                },
+                {
+                    "name": "SolidBackgroundFillColorTertiaryBrush",
+                    "description": "Content layer color"
+                },
+                {
+                    "name": "SolidBackgroundFillColorQuarternaryBrush",
+                    "description": "Alt content layer color"
+                },
+                {
+                    "name": "SolidBackgroundFillColorQuinaryBrush",
+                    "description": "Used for solid default card colors"
+                },
+                {
+                    "name": "SolidBackgroundFillColorSenaryBrush",
+                    "description": "Used for solid default card color"
+                }
+            ]
+        },
+        {
+            "name": "Mica Background",
+            "description": "Mica background colors to place layers, cards, or controls on",
+            "colors": [
+                {
+                    "name": "MicaBackgroundFillColorBaseBrush",
+                    "description": "Used for the bottom most layer of an experience"
+                },
+                {
+                    "name": "MicaBackgroundFillColorBaseAltBrush",
+                    "description": "Default tab band background color"
+                }
+            ]
+        },
+        {
+            "name": "Acrylic Background",
+            "description": "Acrylic background colors to place layers, cards, or controls on",
+            "colors": [
+                {
+                    "name": "AcrylicBackgroundFillColorBaseBrush",
+                    "description": "Used for the bottom most layer of an acrylic surface only when the surface will use layers"
+                },
+                {
+                    "name": "AcrylicBackgroundFillColorDefaultBrush",
+                    "description": "Default acrylic recipe used for control flyouts and surfaces that live within the context of an app"
+                }
+            ]
+        },
+        {
+            "name": "Accent Acrylic Background",
+            "description": "Acrylic background colors to place layers, cards, or controls on",
+            "colors": [
+                {
+                    "name": "AccentAcrylicBackgroundFillColorBaseBrush",
+                    "description": "Used for the bottom most layer of an acrylic surface only when the surface will use layers"
+                },
+                {
+                    "name": "AccentAcrylicBackgroundFillColorDefaultBrush",
+                    "description": "Default acrylic recipe used for control flyouts and surfaces that live within the context of an app"
+                }
+            ]
+        },
+        {
+            "name": "System",
+            "description": "Used for status indicators and signal colors",
+            "colors": [
+                {
+                    "name": "SystemFillColorSuccessBrush",
+                    "description": "Badge"
+                },
+                {
+                    "name": "SystemFillColorCautionBrush",
+                    "description": "Badge"
+                },
+                {
+                    "name": "SystemFillColorCriticalBrush",
+                    "description": "Badge"
+                },
+                {
+                    "name": "SystemFillColorSuccessBackgroundBrush",
+                    "description": "Infobar Background"
+                },
+                {
+                    "name": "SystemFillColorCautionBackgroundBrush",
+                    "description": "Infobar Background"
+                },
+                {
+                    "name": "SystemFillColorCriticalBackgroundBrush",
+                    "description": "Infobar Background"
+                },
+                {
+                    "name": "SystemFillColorAttentionBrush",
+                    "description": "Badge"
+                },
+                {
+                    "name": "SystemFillColorNeutralBrush",
+                    "description": "Badge"
+                },
+                {
+                    "name": "SystemFillColorSolidNeutralBrush",
+                    "description": "Neutral badges over content"
+                },
+                {
+                    "name": "SystemFillColorAttentionBackgroundBrush",
+                    "description": "Infobar Background"
+                },
+                {
+                    "name": "SystemFillColorNeutralBackgroundBrush",
+                    "description": "Infobar Background"
+                },
+                {
+                    "name": "SystemFillColorSolidNeutralBackgroundBrush",
+                    "description": "Neutral badges over content"
+                },
+                {
+                    "name": "SystemFillColorSolidAttentionBackgroundBrush",
+                    "description": "Solid attention background"
+                }
+            ]
+        },
+        {
+            "name": "High Contrast",
+            "description": "System color brushes used in high contrast themes",
+            "colors": [
+                {
+                    "name": "SystemColorWindowTextColor",
+                    "description": "Foreground / Text color for Headings, body copy, lists, placeholder text, app and window borders, any UI that can't be interacted with"
+                },
+                {
+                    "name": "SystemColorWindowColor",
+                    "description": "Background of pages, panes, popups, and windows"
+                },
+                {
+                    "name": "SystemColorHighlightTextColor",
+                    "description": "Foreground color for text or UI that is selected, interacted with (hover, pressed), or in progress"
+                },
+                {
+                    "name": "SystemColorHighlightColor",
+                    "description": "Background or accent color for UI that is selected, interacted with (hover, pressed), or in progress"
+                },
+                {
+                    "name": "SystemColorButtonTextColor",
+                    "description": "Foreground color for buttons and any UI that can be interacted with"
+                },
+                {
+                    "name": "SystemColorButtonFaceColor",
+                    "description": "Background color for buttons and any UI that can be interacted with"
+                },
+                {
+                    "name": "SystemColorHotlightColor",
+                    "description": "Foreground / Text color for hyperlink text"
+                },
+                {
+                    "name": "SystemColorGrayTextColor",
+                    "description": "Foreground / Text color for Inactive (disabled) UI"
+                }
+            ]
+        }
+    ]
+}

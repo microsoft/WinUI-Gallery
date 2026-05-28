@@ -1,0 +1,84 @@
+--- header
+Setting the minimum and maximum width / height on an AppWindow using OverlappedPresenter
+--- xaml
+<Window ...>
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="10">
+        <Button x:Name="MaximizeBtn"
+                Content="Maximize"
+                Click="MaximizeBtn_Click"
+                Width="200" />
+        <Button x:Name="MinimizeBtn"
+                Content="Minimize"
+                Click="MinimizeBtn_Click"
+                Width="200" />
+        <Button x:Name="RestoreBtn"
+                Click="RestoreBtn_Click"
+                Width="200" >
+            <TextBlock Text="Minimize and restore the window after 3 seconds" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
+        </Button>
+        <Button x:Name="CloseBtn"
+                Click="CloseBtn_Click"
+                Width="200"
+                Margin="0,16,0,0">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <SymbolIcon Symbol="Cancel"
+                            Margin="0,0,4,0"
+                            Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
+                <TextBlock Text="Close"
+                           Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</Window>
+--- c#
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using System.Threading.Tasks;
+
+namespace WinUIGallery.Samples.SamplePages;
+
+public sealed partial class SampleWindow4 : Window
+{
+    public SampleWindow4(int MinWidth, int MinHeight, int MaxWidth, int MaxHeight)
+    {
+        this.InitializeComponent();
+
+        AppWindow.Resize(new Windows.Graphics.SizeInt32(800, 500));
+        AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
+        AppWindow.TitleBar.PreferredTheme = TitleBarTheme.UseDefaultAppMode;
+
+        OverlappedPresenter presenter = OverlappedPresenter.Create();
+        presenter.PreferredMinimumWidth = MinWidth;
+        presenter.PreferredMinimumHeight = MinHeight;
+        presenter.PreferredMaximumWidth = MaxWidth;
+        presenter.PreferredMaximumHeight = MaxHeight;
+        presenter.IsMaximizable = false;
+
+        AppWindow.SetPresenter(presenter);
+    }
+
+    private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+    {
+        OverlappedPresenter presenter = (OverlappedPresenter)AppWindow.Presenter;
+        presenter.Minimize();
+    }
+
+    private void RestoreBtn_Click(object sender, RoutedEventArgs e)
+    {
+        OverlappedPresenter presenter = (OverlappedPresenter)AppWindow.Presenter;
+        presenter.Minimize();
+        Task.Delay(3000).ContinueWith(t => presenter.Restore());
+    }
+
+    private void CloseBtn_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
+}

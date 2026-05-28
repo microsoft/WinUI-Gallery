@@ -1,0 +1,5 @@
+--- header
+Toggling Sound
+--- c#
+ElementSoundPlayer.State = ElementSoundPlayerState.Off;
+ElementSoundPlayer.State = ElementSoundPlayerState.On;

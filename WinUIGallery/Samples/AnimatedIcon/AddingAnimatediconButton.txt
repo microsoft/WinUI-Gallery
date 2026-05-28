@@ -1,0 +1,23 @@
+--- header
+Adding AnimatedIcon to a button
+--- xaml
+<Button PointerEntered="Button_PointerEntered" PointerExited="Button_PointerExited" Width="75">
+    <AnimatedIcon x:Name="SearchAnimatedIcon">
+        <AnimatedIcon.Source>
+            <animatedvisuals:$(AnimatedVisualSourceKind)/>
+        </AnimatedIcon.Source>
+        <AnimatedIcon.FallbackIconSource>
+            <SymbolIconSource Symbol="Find"/>
+        </AnimatedIcon.FallbackIconSource>
+    </AnimatedIcon>
+</Button>
+--- c#
+private void Button_PointerEntered(object sender, PointerRoutedEventArgs e)
+{
+    AnimatedIcon.SetState(this.SearchAnimatedIcon, "PointerOver");
+}
+
+private void Button_PointerExited(object sender, PointerRoutedEventArgs e)
+{
+    AnimatedIcon.SetState(this.SearchAnimatedIcon, "Normal");
+}

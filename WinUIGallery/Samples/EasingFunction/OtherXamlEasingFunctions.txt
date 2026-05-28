@@ -1,0 +1,10 @@
+--- header
+Other XAML Easing Functions
+--- xaml
+<Storyboard x:Name="Storyboard3">
+    <DoubleAnimation Storyboard.TargetName="Translation" Storyboard.TargetProperty="X" From="0" To="200" >
+        <DoubleAnimation.EasingFunction>
+            <$(EasingFunction)/>
+        </DoubleAnimation.EasingFunction>
+    </DoubleAnimation>
+</Storyboard>

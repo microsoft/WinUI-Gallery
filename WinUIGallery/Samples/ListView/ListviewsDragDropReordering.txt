@@ -1,0 +1,11 @@
+--- header
+ListViews with Drag, Drop, and Reordering Support
+--- xaml
+<!-- Full code to implement dragging and dropping between lists can be found in the 
+source code for the WinUI Gallery. -->
+
+<!-- The following properties should be added to the ListView definitions to build this sample. -->
+<ListView CanDragItems="True" CanReorderItems="True" AllowDrop="True"
+    SelectionMode="Single" />
+    
+<!-- DataTemplate used is the same as the above sample. -->

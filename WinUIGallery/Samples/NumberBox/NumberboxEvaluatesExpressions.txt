@@ -1,0 +1,4 @@
+--- header
+A NumberBox that evaluates expressions.
+--- xaml
+<NumberBox Header="Enter an expression:" Value="NaN" PlaceholderText="1 + 2^2" AcceptsExpression="True" />

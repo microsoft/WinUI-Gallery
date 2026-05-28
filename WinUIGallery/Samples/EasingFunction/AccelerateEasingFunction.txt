@@ -1,0 +1,10 @@
+--- header
+Accelerate Easing Function
+--- xaml
+<Storyboard x:Name="Storyboard2">
+    <DoubleAnimation Storyboard.TargetName="Translation" Storyboard.TargetProperty="X" From="0" To="200" >
+        <DoubleAnimation.EasingFunction>
+            <ExponentialEase Exponent="$(AccelerateEasingExponent)" EasingMode="EaseIn" />
+        </DoubleAnimation.EasingFunction>
+    </DoubleAnimation>
+</Storyboard>

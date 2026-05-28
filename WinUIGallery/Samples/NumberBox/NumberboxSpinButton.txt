@@ -1,0 +1,10 @@
+--- header
+A NumberBox with a spin button.
+--- xaml
+<NumberBox
+    x:Name="NumberBoxSpinButtonPlacementExample"
+    Header="Enter an integer:" 
+    Value="1" 
+    SpinButtonPlacementMode="$(SpinButtonPlacementMode)"
+    SmallChange="10"
+    LargeChange="100" />

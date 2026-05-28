@@ -1,0 +1,4 @@
+--- header
+A TabView bound to a collection of MyData objects
+--- xaml
+<TabView TabItemsSource="{x:Bind myDatas, Mode=OneWay}" AddTabButtonClick="TabViewItemsSourceSample_AddTabButtonClick" TabCloseRequested="TabViewItemsSourceSample_TabCloseRequested" />

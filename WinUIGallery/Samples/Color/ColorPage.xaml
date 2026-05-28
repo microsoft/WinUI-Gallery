@@ -1,0 +1,57 @@
+<!--  Copyright (c) Microsoft Corporation and Contributors.  -->
+<!--  Licensed under the MIT License.  -->
+
+<Page
+    x:Class="WinUIGallery.ControlPages.ColorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:core="using:WinUIGallery"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:WinUIGallery.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    helpers:PageScrollBehaviorHelper.SuppressHostScrolling="True"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <x:Double x:Key="TopNavigationViewPaneCustomContentMinWidth">0</x:Double>
+    </Page.Resources>
+
+    <Grid VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" TextWrapping="Wrap" Text="The brushes below are part of WinUI 3 and you can reference them in your app. For example:" />
+        <controls:SampleCodePresenter
+            x:Name="XamlPresenter"
+            Grid.Row="1"
+            Margin="0,16,0,0"
+            VerticalContentAlignment="Center"
+            IsCopyButtonVisible="False"
+            SampleType="XAML">
+            <controls:SampleCodePresenter.Code>
+                <x:String>&lt;TextBlock Text="..." Foreground="{ThemeResource TextFillColorPrimaryBrush}" /&gt;</x:String>
+            </controls:SampleCodePresenter.Code>
+        </controls:SampleCodePresenter>
+        <SelectorBar
+            x:Name="PageSelector"
+            Grid.Row="2"
+            Margin="-12,0,0,0"
+            AutomationProperties.Name="PageSelector"
+            Loaded="PageSelector_Loaded"
+            SelectionChanged="PageSelector_SelectionChanged">
+            <SelectorBarItem Text="Text" />
+            <SelectorBarItem Text="Fill" />
+            <SelectorBarItem Text="Stroke" />
+            <SelectorBarItem Text="Background" />
+            <SelectorBarItem Text="Signal" />
+            <SelectorBarItem Text="High Contrast" />
+        </SelectorBar>
+        <ScrollViewer Grid.Row="3" Margin="-36,0,-36,-36">
+            <Frame x:Name="NavigationFrame" VerticalAlignment="Stretch" Padding="36,0,36,36"/>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,11 @@
+--- header
+A TextBlock with a style applied.
+--- xaml
+<Page.Resources>
+    <Style TargetType="TextBlock" x:Key="CustomTextBlockStyle">
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+    </Style>
+<Page.Resources>
+
+<TextBlock Text="I am a styled TextBlock" Style="{StaticResource CustomTextBlockStyle}"/>

@@ -1,0 +1,55 @@
+--- header
+Binding a collection with data templates
+--- xaml
+<ListView
+    x:Name="ListDetailListView"
+    ItemsSource="{x:Bind Items}"
+    SelectedIndex="0"
+    SelectionMode="Single">
+    <ListView.ItemTemplate>
+        <DataTemplate x:DataType="local:ListDetailItem">
+            <StackPanel Padding="4" Spacing="2">
+                <TextBlock Text="{x:Bind Title}" FontWeight="SemiBold" />
+                <TextBlock Text="{x:Bind DateCreatedFormatted}"
+                    Style="{ThemeResource CaptionTextBlockStyle}" />
+            </StackPanel>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
+
+<!-- Detail panel bound to the selected item -->
+<StackPanel DataContext="{x:Bind ListDetailListView.SelectedItem, Mode=OneWay}">
+    <TextBlock Text="{Binding Title}" FontSize="20" FontWeight="SemiBold" />
+    <TextBlock Text="{Binding DateCreatedFormatted}"
+        Style="{ThemeResource CaptionTextBlockStyle}" />
+    <TextBlock Text="{Binding Text}" TextWrapping="Wrap" />
+</StackPanel>
+--- c#
+public class ListDetailItem
+{
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public string Text { get; set; }
+    public DateTime DateCreated { get; set; }
+    public string DateCreatedFormatted => DateCreated.ToString("MMM d, yyyy h:mm tt");
+}
+
+// In your page class:
+public List<ListDetailItem> Items { get; set; }
+
+public MyPage()
+{
+    this.InitializeComponent();
+
+    Items = new List<ListDetailItem>
+    {
+        new ListDetailItem
+        {
+            Id = 0,
+            Title = "Item 1",
+            Text = "Lorem ipsum dolor sit amet...",
+            DateCreated = new DateTime(2025, 6, 15, 9, 30, 0)
+        },
+        // Add more items...
+    };
+}

@@ -1,0 +1,11 @@
+--- header
+You can put custom content in TabStripHeader and TabStripFooter
+--- xaml
+<TabView>
+    <TabView.TabStripHeader>
+        <TextBlock Text="TabStripHeader Content" VerticalAlignment="Center" Margin="8,6" Style="{ThemeResource BaseTextBlockStyle}" />
+    </TabView.TabStripHeader>
+    <TabView.TabStripFooter>
+        <TextBlock Text="TabStripFooter Content" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="6" Style="{ThemeResource BaseTextBlockStyle}" />
+    </TabView.TabStripFooter>
+</TabView>

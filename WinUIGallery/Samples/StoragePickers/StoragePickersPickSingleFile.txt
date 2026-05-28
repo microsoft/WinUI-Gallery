@@ -1,0 +1,33 @@
+--- header
+Pick single file
+--- xaml
+<StackPanel Spacing="8">
+    <Button x:Name="PickSingleFileButton" Content="Pick a single file" Click="PickSingleFileButton_Click"/>
+    <TextBlock x:Name="PickedSingleFileTextBlock" Text="No file picked"/>
+</StackPanel>
+--- c#
+private async void PickSingleFileButton_Click(object sender, RoutedEventArgs e)
+{
+    if (sender is Button button)
+    {
+        //disable the button to avoid double-clicking
+        button.IsEnabled = false;
+
+        var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);$(FileType)
+
+        picker.CommitButtonText = "$(CommitButtonText)";
+
+        picker.SuggestedStartLocation = PickerLocationId.$(SuggestedStartLocation);
+
+        picker.ViewMode = PickerViewMode.$(ViewMode);
+
+        // Show the picker dialog window
+        var file = await picker.PickSingleFileAsync();
+        PickedSingleFileTextBlock.Text = file != null
+            ? "Picked: " + file.Path
+            : "No file selected.";
+
+        //re-enable the button
+        button.IsEnabled = true;
+    }
+}

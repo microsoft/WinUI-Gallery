@@ -1,0 +1,6 @@
+--- header
+A MediaPlayerElement that autoplays the video.
+--- xaml
+<MediaPlayerElement Source="Assets/SampleMedia/fishes.wmv"
+                    MaxWidth="400"
+                    AutoPlay="True" />

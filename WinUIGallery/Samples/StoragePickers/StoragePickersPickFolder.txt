@@ -1,0 +1,34 @@
+--- header
+Pick folder
+--- xaml
+<StackPanel Spacing="8">
+    <Button x:Name="PickFolderButton" Content="Pick a folder" Click="PickFolderButton_Click" />
+    <TextBlock x:Name="PickedFolderTextBlock" Text="No folder picked" />
+</StackPanel>
+--- c#
+private async void PickFolderButton_Click(object sender, RoutedEventArgs e)
+{
+    if (sender is Button button)
+    {
+        // disable the button to avoid double-clicking
+        button.IsEnabled = false;
+
+        // Clear previous returned folder name
+        PickedFolderTextBlock.Text = "";
+
+        var picker = new FolderPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
+
+        picker.CommitButtonText = "$(CommitButtonText)";
+        picker.SuggestedStartLocation = PickerLocationId.$(SuggestedStartLocation);
+        picker.ViewMode = PickerViewMode.$(ViewMode);
+
+        // Show the picker dialog window
+        var folder = await picker.PickSingleFolderAsync();
+        PickedFolderTextBlock.Text = folder != null
+            ? "Picked: " + folder.Path
+            : "No folder selected.";
+
+        // re-enable the button
+        button.IsEnabled = true;
+    }
+}

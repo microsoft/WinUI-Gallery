@@ -1,0 +1,127 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.ImagePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" SampleDefinition="Image\BasicImageLocalFile.txt">
+
+            <Image Height="100" Source="/Assets/SampleMedia/treetops.jpg" />
+
+        </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example2" SampleDefinition="Image\ImageDecodedRenderingSize.txt">
+
+            <Image Height="100">
+                <Image.Source>
+                    <BitmapImage DecodePixelHeight="100" UriSource="/Assets/SampleMedia/treetops.jpg" />
+                </Image.Source>
+            </Image>
+
+        </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example3" SampleDefinition="Image\ImageStretching.txt">
+
+            <Image
+                x:Name="StretchImage"
+                Width="100"
+                Height="100"
+                Source="/Assets/SampleMedia/valley.jpg"
+                Stretch="None" />
+
+            <controls:ControlExample.Options>
+                <RadioButtons Header="Image stretch mode">
+                    <RadioButton
+                        x:Name="StretchNone"
+                        Checked="ImageStretch_Checked"
+                        Content="None"
+                        GroupName="ImageStretch"
+                        IsChecked="True" />
+                    <RadioButton
+                        x:Name="StretchFill"
+                        Checked="ImageStretch_Checked"
+                        Content="Fill"
+                        GroupName="ImageStretch" />
+                    <RadioButton
+                        x:Name="StretchUniform"
+                        Checked="ImageStretch_Checked"
+                        Content="Uniform"
+                        GroupName="ImageStretch" />
+                    <RadioButton
+                        x:Name="StretchUniformToFill"
+                        Checked="ImageStretch_Checked"
+                        Content="UniformToFill"
+                        GroupName="ImageStretch" />
+                </RadioButtons>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Stretch" Value="{x:Bind StretchImage.Stretch, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example4" SampleDefinition="Image\NineGridImages.txt">
+
+            <StackPanel>
+                <TextBlock Text="The normal image" />
+                <Image Height="82" Source="/Assets/SampleMedia/ninegrid.gif" />
+                <TextBlock Text="Image stretched evenly" />
+                <Image
+                    Height="164"
+                    NineGrid="3,3,3,3"
+                    Source="/Assets/SampleMedia/ninegrid.gif" />
+                <TextBlock Text="Image stretched using nine grid" />
+                <Image
+                    Height="164"
+                    NineGrid="30,20,30,20"
+                    Source="/Assets/SampleMedia/ninegrid.gif" />
+            </StackPanel>
+
+        </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example5" SampleDefinition="Image\SvgImage.txt">
+
+            <Image Height="100" Source="/Assets/SampleMedia/MirrorPCConsent.svg" />
+
+        </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example6" SampleDefinition="Image\AnimatedGif.txt">
+
+            <StackPanel Spacing="12">
+                <TextBlock Text="An Image element automatically plays an animated GIF source." TextWrapping="Wrap" />
+                <Image Height="40" HorizontalAlignment="Left" Source="/Assets/SampleMedia/animated.gif" />
+
+                <TextBlock Text="Set AutoPlay to False to prevent the GIF from playing automatically." TextWrapping="Wrap" />
+                <Image Height="40" HorizontalAlignment="Left">
+                    <Image.Source>
+                        <BitmapImage AutoPlay="False" UriSource="/Assets/SampleMedia/animated.gif" />
+                    </Image.Source>
+                </Image>
+
+                <TextBlock Text="Control playback manually using BitmapImage.Play() and Stop()." TextWrapping="Wrap" />
+                <Image Height="40" HorizontalAlignment="Left">
+                    <Image.Source>
+                        <BitmapImage
+                            x:Name="ClickToPlaySource"
+                            AutoPlay="False"
+                            ImageOpened="ClickToPlaySource_ImageOpened"
+                            UriSource="/Assets/SampleMedia/animated.gif" />
+                    </Image.Source>
+                </Image>
+            </StackPanel>
+
+            <controls:ControlExample.Options>
+                <StackPanel
+                    x:Name="PlaybackButtons"
+                    Spacing="8"
+                    Visibility="Collapsed">
+                    <Button Click="{x:Bind ClickToPlaySource.Play}" Content="Play" />
+                    <Button Click="{x:Bind ClickToPlaySource.Stop}" Content="Stop" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

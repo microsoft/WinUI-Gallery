@@ -1,0 +1,11 @@
+--- header
+A StackPanel control.
+--- xaml
+<StackPanel
+    Orientation="$(Orientation)"
+    Spacing="$(Spacing)">
+    <Rectangle Fill="Red"/>
+    <Rectangle Fill="Blue"/>
+    <Rectangle Fill="Green"/>
+    <Rectangle Fill="Yellow"/>
+</StackPanel>

@@ -1,0 +1,4 @@
+--- header
+A simple DatePicker with a header.
+--- xaml
+<DatePicker Header="Pick a date" />

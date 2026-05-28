@@ -1,0 +1,8 @@
+--- header
+A Basic SelectorBar
+--- xaml
+<SelectorBar x:Name="SelectorBar1">
+    <SelectorBarItem x:Name="SelectorBarItemRecent" Text="Recent" Icon="Clock" />
+    <SelectorBarItem x:Name="SelectorBarItemShared" Text="Shared" Icon="Share" />
+    <SelectorBarItem x:Name="SelectorBarItemFavorites" Text="Favorites" Icon="Favorite" />
+</SelectorBar>

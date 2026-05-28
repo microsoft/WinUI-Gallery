@@ -1,0 +1,9 @@
+--- header
+A Canvas control.
+--- xaml
+<Canvas Width="120" Height="120" Background="Gray">
+    <Rectangle Fill="Red" Canvas.Left="$(Left)" Canvas.Top="$(Top)" Canvas.ZIndex="$(Z)" />
+    <Rectangle Fill="Blue" Canvas.Left="20" Canvas.Top="20" Canvas.ZIndex="1" />
+    <Rectangle Fill="Green" Canvas.Left="40" Canvas.Top="40" Canvas.ZIndex="2" />
+    <Rectangle Fill="Yellow" Canvas.Left="60" Canvas.Top="60" Canvas.ZIndex="3" />
+</Canvas>

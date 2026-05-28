@@ -1,0 +1,6 @@
+--- header
+A BreadcrumbBar control
+--- xaml
+<BreadcrumbBar x:Name="BreadcrumbBar1"/>
+--- c#
+BreadcrumbBar1.ItemsSource = new string[] { "Home", "Documents", "Design", "Northwind", "Images", "Folder1", "Folder2", "Folder3" };

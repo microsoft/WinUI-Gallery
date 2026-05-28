@@ -1,0 +1,8 @@
+--- header
+A three-state AppBarToggleButton with a path icon.
+--- xaml
+<AppBarToggleButton Label="PathIcon" Click="AppBarButton_Click" IsThreeState="True">
+    <AppBarToggleButton.Icon>
+        <PathIcon Data="F1 M 20,20L 24,10L 24,24L 5,24"/>
+    </AppBarToggleButton.Icon>
+</AppBarToggleButton>

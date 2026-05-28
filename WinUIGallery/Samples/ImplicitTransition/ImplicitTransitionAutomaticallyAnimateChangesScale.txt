@@ -1,0 +1,15 @@
+--- header
+Automatically animate changes to Scale
+--- xaml
+<!-- Automatically animate changes to Scale -->
+<Rectangle x:Name="rectangle" Width="50" Height="50" Scale="1,1,1" >
+    <Rectangle.ScaleTransition>
+        <Vector3Transition />
+    </Rectangle.ScaleTransition>
+</Rectangle>
+--- c#
+using System.Numerics;
+private void button_Click(object sender, RoutedEventArgs e)
+{
+    rectangle.Scale = new Vector3($(Scale), $(Scale), $(Scale));
+}

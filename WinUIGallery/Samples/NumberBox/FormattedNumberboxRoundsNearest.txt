@@ -1,0 +1,17 @@
+--- header
+A formatted NumberBox that rounds to the nearest 0.25.
+--- xaml
+<NumberBox x:Name="FormattedNumberBox" Header="Enter an dollar amount:" PlaceholderText="0.00" />
+--- c#
+private void SetNumberBoxNumberFormatter()
+{
+    IncrementNumberRounder rounder = new IncrementNumberRounder();
+    rounder.Increment = 0.25;
+    rounder.RoundingAlgorithm = RoundingAlgorithm.RoundHalfUp;
+
+    DecimalFormatter formatter = new DecimalFormatter();
+    formatter.IntegerDigits = 1;
+    formatter.FractionDigits = 2;
+    formatter.NumberRounder = rounder;
+    FormattedNumberBox.NumberFormatter = formatter;
+}

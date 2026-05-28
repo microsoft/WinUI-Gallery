@@ -1,0 +1,4 @@
+--- header
+An indeterminate progress bar.
+--- xaml
+<ProgressBar Width="130" IsIndeterminate="True" ShowPaused="$(ShowPaused)" ShowError="$(ShowError)" />

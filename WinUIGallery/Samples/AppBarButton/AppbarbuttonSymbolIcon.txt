@@ -1,0 +1,4 @@
+--- header
+An AppBarButton with a symbol icon.
+--- xaml
+<AppBarButton Icon="Like" Label="SymbolIcon" Click="AppBarButton_Click"/>

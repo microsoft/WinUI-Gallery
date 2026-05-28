@@ -1,0 +1,12 @@
+--- header
+Play Specific System Sound
+--- c#
+ElementSoundPlayer.State = ElementSoundPlayerState.On;
+
+ElementSoundPlayer.Play(ElementSoundKind.Focus);
+ElementSoundPlayer.Play(ElementSoundKind.Invoke);
+ElementSoundPlayer.Play(ElementSoundKind.Show);
+ElementSoundPlayer.Play(ElementSoundKind.Hide);
+ElementSoundPlayer.Play(ElementSoundKind.MovePrevious);
+ElementSoundPlayer.Play(ElementSoundKind.MoveNext);
+ElementSoundPlayer.Play(ElementSoundKind.GoBack);

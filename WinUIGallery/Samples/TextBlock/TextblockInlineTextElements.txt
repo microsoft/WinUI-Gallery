@@ -1,0 +1,10 @@
+--- header
+A TextBlock with inline text elements.
+--- xaml
+<TextBlock>
+    <Run FontFamily="Times New Roman" Foreground="DarkGray">Text in a TextBlock doesn't have to be a simple string.</Run>
+    <LineBreak />
+    <Span>
+        Text can be <Bold>bold</Bold>, <Italic>italic</Italic>, or <Underline>underlined</Underline>.
+    </Span>
+</TextBlock>

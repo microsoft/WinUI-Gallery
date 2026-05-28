@@ -1,0 +1,25 @@
+--- header
+TitleBar configuration
+--- xaml
+<TitleBar
+    Title="$(Title)"
+    Subtitle="$(Subtitle)"
+    IsBackButtonVisible="$(BackButtonVisibility)"
+    IsPaneToggleButtonVisible="$(PaneToggleVisibility)">
+    <TitleBar.IconSource>
+        <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
+    </TitleBar.IconSource>
+    <TitleBar.Content>
+        <AutoSuggestBox
+            Width="360"
+            VerticalAlignment="Center"
+            PlaceholderText="Search.."
+            QueryIcon="Find" />
+    </TitleBar.Content>
+    <TitleBar.RightHeader>
+        <PersonPicture
+            Width="30"
+            Height="30"
+            Initials="JD" />
+    </TitleBar.RightHeader>
+</TitleBar>

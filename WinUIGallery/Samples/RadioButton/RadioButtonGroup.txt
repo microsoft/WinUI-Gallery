@@ -1,0 +1,8 @@
+--- header
+A group of RadioButton controls in a RadioButtons group.
+--- xaml
+<RadioButtons Header="Options:">
+    <RadioButton Content="Option 1" Checked="RadioButton_Checked"/>
+    <RadioButton Content="Option 2" Checked="RadioButton_Checked"/>
+    <RadioButton Content="Option 3" Checked="RadioButton_Checked"/>
+</RadioButtons>

@@ -1,0 +1,7 @@
+--- header
+PipsPager with options to change its orientation and button visibility.
+--- xaml
+<PipsPager
+    Orientation="$(Orientation)"
+    PreviousButtonVisibility="$(PrevButton)"
+    NextButtonVisibility="$(NextButton)" />

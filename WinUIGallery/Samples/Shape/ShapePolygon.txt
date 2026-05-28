@@ -1,0 +1,5 @@
+--- header
+Polygon
+--- xaml
+<Polygon Fill="SteelBlue" Points="10,100 60,40 200,40 250,100"
+         StrokeThickness="$(Slider1)" Stroke="Black"/>

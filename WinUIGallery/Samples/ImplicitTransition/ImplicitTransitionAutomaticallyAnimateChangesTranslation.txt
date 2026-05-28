@@ -1,0 +1,15 @@
+--- header
+Automatically animate changes to Translation
+--- xaml
+<!-- Automatically animate changes to Translation -->
+<Rectangle x:Name="rectangle" Width="50" Height="50" Translation="0,0,0" >
+    <Rectangle.TranslationTransition>
+        <Vector3Transition />
+    </Rectangle.TranslationTransition>
+</Rectangle>
+--- c#
+using System.Numerics;
+private void button_Click(object sender, RoutedEventArgs e)
+{
+    rectangle.Translation = new Vector3($(Translation), $(Translation), $(Translation));
+}

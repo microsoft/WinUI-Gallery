@@ -1,0 +1,30 @@
+--- header
+End to end TitleBar sample
+--- xaml
+<Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <!--  TitleBar  -->
+        <RowDefinition Height="*" />
+        <!--  NavigationView  -->
+    </Grid.RowDefinitions>
+
+    <TitleBar
+        x:Name="titleBar"
+        BackRequested="TitleBar_BackRequested"
+        IsBackButtonVisible="{x:Bind navFrame.CanGoBack, Mode=OneWay}"
+        IsPaneToggleButtonVisible="True"
+        PaneToggleRequested="TitleBar_PaneToggleRequested" />
+
+    <NavigationView
+        x:Name="navView"
+        Grid.Row="1"
+        IsBackButtonVisible="Collapsed"
+        IsPaneToggleButtonVisible="False">
+        <NavigationView.MenuItems... />
+        <Frame x:Name="navFrame" />
+    </NavigationView>
+</Grid>
+--- c#
+this.ExtendsContentIntoTitleBar = true; // Extend the content into the title bar and hide the default titlebar
+  this.SetTitleBar(titleBar); // Set the custom title bar

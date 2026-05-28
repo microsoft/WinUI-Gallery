@@ -1,0 +1,35 @@
+--- header
+Position in set: indicate the position of an element within a set
+--- xaml
+<StackPanel>
+    <!-- Many controls automatically indicate position in set -->
+    <TextBlock Text="Students"
+                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                x:Name="StudentsLabel"
+                AutomationProperties.AccessibilityView="Raw" />
+    <ListView AutomationProperties.LabeledBy="{x:Bind StudentsLabel}">
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="x:String">
+                <TextBlock Text="{x:Bind}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        <x:String>Nathan Quinn</x:String>
+        <x:String>Jessica Lamber</x:String>
+        <x:String>Carl Bond</x:String>
+        <x:String>Jessica Russel</x:String>
+    </ListView>
+
+    <!-- Custom layouts may need to specify PositionInSet and SizeOfSet manually. -->
+    <StackPanel Orientation="Horizontal"
+                Spacing="8">
+        <Button AutomationProperties.PositionInSet="1"
+                AutomationProperties.SizeOfSet="3"
+                Content="View" />
+        <Button AutomationProperties.PositionInSet="2"
+                AutomationProperties.SizeOfSet="3"
+                Content="Rename" />
+        <Button AutomationProperties.PositionInSet="3"
+                AutomationProperties.SizeOfSet="3"
+                Content="Delete" />
+    </StackPanel>
+</StackPanel>

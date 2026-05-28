@@ -1,0 +1,17 @@
+--- header
+Binding with TargetNullValue
+--- xaml
+<!--TargetNullValue property help handle scenarios where the binding source is null-->
+<TextBlock Text="{Binding ViewModel.NullString, Mode=OneWay, TargetNullValue='Anonymous User'}" />
+--- c#
+public YourPage()
+{
+    this.InitializeComponent();
+
+    ViewModel = new ExampleViewModel
+    {
+        NullString = null
+    };
+                    
+    DataContext = ViewModel;
+}

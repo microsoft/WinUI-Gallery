@@ -1,0 +1,6 @@
+--- header
+A selectable TextBlock
+--- xaml
+<TextBlock IsTextSelectionEnabled="$(IsTextSelectionEnabled)"
+           Text="I am a selectable TextBlock with custom SelectionHighlightColor."
+           SelectionHighlightColor="DarkOrange">

@@ -1,0 +1,43 @@
+--- header
+Pick multiple files
+--- xaml
+<StackPanel Spacing="8">
+    <Button x:Name="PickMultipleFilesButton" Content="Pick multiple files" Click="PickMultipleFilesButton_Click"/>
+    <TextBlock x:Name="PickedMultipleFilesTextBlock" Text="No files picked"/>
+</StackPanel>
+--- c#
+private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs e)
+{
+    if (sender is Button button)
+    {
+        //disable the button to avoid double-clicking
+        button.IsEnabled = false;
+
+        var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);$(FileType)
+                    
+        picker.CommitButtonText = "$(CommitButtonText)";
+                    
+        picker.SuggestedStartLocation = PickerLocationId.$(SuggestedStartLocation);
+                    
+        picker.ViewMode = PickerViewMode.$(ViewMode);
+
+        // Show the picker dialog window
+        var files = await picker.PickMultipleFilesAsync();
+
+        if (files.Count > 0)
+        {
+            PickedMultipleFilesTextBlock.Text = "";
+            foreach (var file in files)
+            {
+                PickedMultipleFilesTextBlock.Text += "- Picked: " + file.Path + Environment.NewLine;
+            }
+        }
+        else
+        {
+            PickedMultipleFilesTextBlock.Text = "No files selected.";
+        }
+
+        //re-enable the button
+        button.IsEnabled = true;
+    }
+}

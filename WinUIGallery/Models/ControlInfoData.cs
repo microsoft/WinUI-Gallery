@@ -69,7 +69,6 @@ public partial class ControlInfoDataGroup
     public string Title { get; set; } = string.Empty;
     public string IconGlyph { get; set; } = string.Empty;
     public bool IsSpecialSection { get; set; }
-    public string Folder { get; set; } = string.Empty;
     public ObservableCollection<ControlInfoDataItem> Items { get; set; } = [];
 
     public override string ToString()

@@ -1,0 +1,196 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.MenuFlyoutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample x:Name="Example1" SampleDefinition="MenuFlyout\AppbarbuttonMenuflyout.txt">
+            <StackPanel x:Name="Control1" Orientation="Horizontal">
+                <AppBarButton
+                    AutomationProperties.Name="Sort"
+                    Icon="Sort"
+                    IsCompact="True"
+                    ToolTipService.ToolTip="Sort">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem
+                                Click="MenuFlyoutItem_Click"
+                                Tag="rating"
+                                Text="By rating" />
+                            <MenuFlyoutItem
+                                Click="MenuFlyoutItem_Click"
+                                Tag="match"
+                                Text="By match" />
+                            <MenuFlyoutItem
+                                Click="MenuFlyoutItem_Click"
+                                Tag="distance"
+                                Text="By distance" />
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </AppBarButton>
+                <TextBlock x:Name="Control1Output" Style="{StaticResource OutputTextBlockStyle}" />
+            </StackPanel>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example2" SampleDefinition="MenuFlyout\MenuflyoutTogglemenuflyoutitemsMenuflyoutseparator.txt">
+            <Button x:Name="Control2" Content="Options">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Reset" />
+                        <MenuFlyoutSeparator />
+                        <ToggleMenuFlyoutItem
+                            x:Name="RepeatToggleMenuFlyoutItem"
+                            IsChecked="True"
+                            Text="Repeat" />
+                        <ToggleMenuFlyoutItem
+                            x:Name="ShuffleToggleMenuFlyoutItem"
+                            IsChecked="True"
+                            Text="Shuffle" />
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="RepeatToggle" Value="{x:Bind RepeatToggleMenuFlyoutItem.IsChecked, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ShuffleToggle" Value="{x:Bind ShuffleToggleMenuFlyoutItem.IsChecked, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example3" SampleDefinition="MenuFlyout\MenuflyoutCascadingMenus.txt">
+            <Button x:Name="Control3" Content="File Options">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Open" />
+                        <MenuFlyoutSubItem Text="Send to">
+                            <MenuFlyoutItem Text="Bluetooth" />
+                            <MenuFlyoutItem Text="Desktop (shortcut)" />
+                            <MenuFlyoutSubItem Text="Compressed file">
+                                <MenuFlyoutItem Text="Compress and email" />
+                                <MenuFlyoutItem Text="Compress to .7z" />
+                                <MenuFlyoutItem Text="Compress to .zip" />
+                            </MenuFlyoutSubItem>
+                        </MenuFlyoutSubItem>
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example3b" SampleDefinition="MenuFlyout\MenuflyoutSplitmenuflyoutitems.txt">
+            <StackPanel x:Name="Control3b" Orientation="Horizontal">
+                <Button Content="File Options">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <SplitMenuFlyoutItem
+                                x:Name="SaveSplitItem"
+                                Click="SplitMenuFlyoutItem_Click"
+                                Text="Save">
+                                <SplitMenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE74E;" />
+                                </SplitMenuFlyoutItem.Icon>
+                                <MenuFlyoutItem Click="SplitMenuFlyoutItem_Click" Text="Save as .docx" />
+                                <MenuFlyoutItem Click="SplitMenuFlyoutItem_Click" Text="Save as .pdf" />
+                                <MenuFlyoutItem Click="SplitMenuFlyoutItem_Click" Text="Save as .txt" />
+                            </SplitMenuFlyoutItem>
+                            <SplitMenuFlyoutItem
+                                Click="SplitMenuFlyoutItem_Click"
+                                Icon="Share"
+                                Text="Share">
+                                <MenuFlyoutItem Click="SplitMenuFlyoutItem_Click" Text="Share via email" />
+                                <MenuFlyoutItem Click="SplitMenuFlyoutItem_Click" Text="Share via link" />
+                            </SplitMenuFlyoutItem>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
+                <TextBlock x:Name="Control3bOutput" Style="{StaticResource OutputTextBlockStyle}" />
+            </StackPanel>
+        </controls:ControlExample>
+        <controls:ControlExample x:Name="Example4" SampleDefinition="MenuFlyout\MenuflyoutIcons.txt">
+            <Button x:Name="Control4" Content="Edit Options">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Share">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE72D;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Icon="Copy" Text="Copy" />
+                        <MenuFlyoutItem Icon="Delete" Text="Delete" />
+                        <MenuFlyoutSeparator />
+                        <MenuFlyoutItem Text="Rename" />
+                        <MenuFlyoutItem Text="Select" />
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+        </controls:ControlExample>
+        <controls:ControlExample
+            x:Name="Example5"
+            FontFamily="Segoe UI"
+            SampleDefinition="MenuFlyout\MenuflyoutIconsKeyboardAccelerators.txt"
+            Loaded="Example5_Loaded">
+            <Button x:Name="Control5" Content="Edit Options">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Share">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE72D;" />
+                            </MenuFlyoutItem.Icon>
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Key="S" Modifiers="Control" />
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem
+                            FontFamily="Consolas"
+                            Icon="Copy"
+                            Text="Copy">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Key="C" Modifiers="Control" />
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem
+                            FontFamily="Segoe UI"
+                            Icon="Delete"
+                            Text="Delete">
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Key="Delete" />
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutSeparator />
+                        <MenuFlyoutItem Text="Rename" />
+                        <MenuFlyoutItem Text="Select" />
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+        </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example6" SampleDefinition="MenuFlyout\MenuflyoutRadiomenuflyoutitems.txt">
+            <Button x:Name="Control6" Content="Options">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <RadioMenuFlyoutItem GroupName="OrientationGroup" Text="Landscape" />
+                        <RadioMenuFlyoutItem
+                            GroupName="OrientationGroup"
+                            IsChecked="True"
+                            Text="Portrait" />
+                        <MenuFlyoutSeparator />
+                        <RadioMenuFlyoutItem GroupName="SizeGroup" Text="Small icons" />
+                        <RadioMenuFlyoutItem
+                            GroupName="SizeGroup"
+                            IsChecked="True"
+                            Text="Medium icons" />
+                        <RadioMenuFlyoutItem GroupName="SizeGroup" Text="Large icons" />
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

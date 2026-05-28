@@ -1,0 +1,16 @@
+--- header
+Basic ItemsView
+--- xaml
+<DataTemplate x:Key="ImageTemplate" x:DataType="local:CustomDataObject">
+    <ItemContainer HorizontalAlignment="Left" Width="200" Height="140" AutomationProperties.Name="{x:Bind Title}">
+        <Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{x:Bind ImageLocation}" Margin="4" AutomationProperties.AccessibilityView="Raw"/>
+    </ItemContainer>
+</DataTemplate>
+
+<ItemsView Width="220" Height="400" HorizontalAlignment="Left"
+    ItemTemplate="{StaticResource ImageTemplate}" IsItemInvokedEnabled="True" ItemInvoked="BasicItemsView_ItemInvoked"/>
+--- c#
+private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e)
+{
+    tblBasicInvokeOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
+}

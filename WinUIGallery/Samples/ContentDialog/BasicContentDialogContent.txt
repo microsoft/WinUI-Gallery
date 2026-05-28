@@ -1,0 +1,32 @@
+--- header
+A basic content dialog with content.
+--- xaml
+<Page
+    x:Class="WinUIGallery.ControlPages.ContentDialogContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <!-- Content body -->
+        <TextBlock Text="Lorem ipsum dolor sit amet, adipisicing elit." TextWrapping="Wrap" />
+        <CheckBox Content="Upload your content to the cloud."/>
+    </StackPanel>
+
+</Page>
+--- c#
+private async void ShowDialog_Click(object sender, RoutedEventArgs e)
+{
+    ContentDialog dialog = new ContentDialog();
+
+    // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+    dialog.XamlRoot = this.XamlRoot;
+    dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+    dialog.Title = "Save your work?";
+    dialog.PrimaryButtonText = "Save";
+    dialog.SecondaryButtonText = "Don't Save";
+    dialog.CloseButtonText = "Cancel";
+    dialog.DefaultButton = ContentDialogButton.Primary;
+    dialog.Content = new ContentDialogContent();
+
+    var result = await dialog.ShowAsync();
+}

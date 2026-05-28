@@ -1,0 +1,6 @@
+--- header
+A 2-state CheckBox.
+--- xaml
+<CheckBox Content="Two-state CheckBox"
+          Checked="TwoState_Checked"
+          Unchecked="TwoState_Unchecked" />

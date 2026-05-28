@@ -1,0 +1,6 @@
+--- header
+A multi-line TextBox with spell checking and custom selection highlight color.
+--- xaml
+<TextBox AutomationProperties.Name="multi-line TextBox"
+    TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True"
+    SelectionHighlightColor="Green" MinWidth="400" />

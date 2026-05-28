@@ -1,0 +1,8 @@
+--- header
+An AppBarButton with a font icon.
+--- xaml
+<AppBarButton Label="FontIcon" Click="AppBarButton_Click">
+    <AppBarButton.Icon>
+        <FontIcon FontFamily="Candara" Glyph="&#x03A3;"/>
+    </AppBarButton.Icon>
+</AppBarButton>

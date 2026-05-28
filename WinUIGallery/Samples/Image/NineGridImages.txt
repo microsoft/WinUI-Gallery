@@ -1,0 +1,6 @@
+--- header
+Nine grid images.
+--- xaml
+<Image Source="/Assets/SampleMedia/ninegrid.gif" Height="82" />
+<Image Source="/Assets/SampleMedia/ninegrid.gif" NineGrid="3,3,3,3" Height="164" />
+<Image Source="/Assets/SampleMedia/ninegrid.gif" NineGrid="30,20,30,20" Height="164" />

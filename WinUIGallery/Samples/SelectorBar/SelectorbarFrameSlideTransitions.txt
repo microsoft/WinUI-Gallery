@@ -1,0 +1,44 @@
+--- header
+SelectorBar with Frame Slide Transitions
+--- xaml
+<SelectorBar x:Name="SelectorBar2" SelectionChanged="SelectorBar2_SelectionChanged">
+    <SelectorBarItem x:Name="SelectorBarItemPage1" Text="Page1" IsSelected="True" />
+    <SelectorBarItem x:Name="SelectorBarItemPage2" Text="Page2" />
+    <SelectorBarItem x:Name="SelectorBarItemPage3" Text="Page3" />
+    <SelectorBarItem x:Name="SelectorBarItemPage4" Text="Page4" />
+    <SelectorBarItem x:Name="SelectorBarItemPage5" Text="Page5" />
+</SelectorBar>
+
+<Frame x:Name="ContentFrame" IsNavigationStackEnabled="False" />
+--- c#
+private void SelectorBar2_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
+        {
+            SelectorBarItem selectedItem = sender.SelectedItem;
+            int currentSelectedIndex = sender.Items.IndexOf(selectedItem);
+            System.Type pageType;
+
+            switch (currentSelectedIndex)
+            {
+                case 0:
+                    pageType = typeof(SamplePage1);
+                    break;
+                case 1:
+                    pageType = typeof(SamplePage2);
+                    break;
+                case 2:
+                    pageType = typeof(SamplePage3);
+                    break;
+                case 3:
+                    pageType = typeof(SamplePage4);
+                    break;
+                default:
+                    pageType = typeof(SamplePage5);
+                    break;
+            }
+
+            var slideNavigationTransitionEffect = currentSelectedIndex - previousSelectedIndex > 0 ? SlideNavigationTransitionEffect.FromRight : SlideNavigationTransitionEffect.FromLeft;
+
+            ContentFrame.Navigate(pageType, null, new SlideNavigationTransitionInfo() { Effect = slideNavigationTransitionEffect });
+
+            previousSelectedIndex = currentSelectedIndex;
+        }

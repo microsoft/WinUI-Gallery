@@ -1,0 +1,42 @@
+--- header
+Tying selection and focus - Tabs
+--- xaml
+<NavigationView x:Name="nvSample" PaneDisplayMode="Top" 
+    SelectionFollowsFocus="Enabled" IsBackButtonVisible="Collapsed">
+    <NavigationView.MenuItems>
+        <NavigationViewItem Icon="Play" Content="Item1" x:Name="SamplePage1Item" />
+        <NavigationViewItem Icon="Save" Content="Item2" x:Name="SamplePage2Item" />
+        <NavigationViewItem Icon="Refresh" Content="Item3" x:Name="SamplePage3Item" />
+        <NavigationViewItem Icon="Download" Content="Item4" x:Name="SamplePage4Item" />
+    </NavigationView.MenuItems>
+    <Frame x:Name="contentFrame"/>
+</NavigationView>
+--- c#
+//C# code behind
+private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+{
+    FrameNavigationOptions navOptions = new FrameNavigationOptions();
+    navOptions.TransitionInfoOverride = args.RecommendedNavigationTransitionInfo;
+    if (sender.PaneDisplayMode == NavigationViewPaneDisplayMode.Top)
+    {
+        navOptions.IsNavigationStackEnabled = False;
+    }
+    Type pageType;
+    if (args.InvokedItem == SamplePage1Item) 
+    {
+        pageType = typeof(SamplePage1);
+    }
+    else if (args.InvokedItem == SamplePage2Item) 
+    {
+        pageType = typeof(SamplePage2);
+    }
+    else if (args.InvokedItem == SamplePage3Item) 
+    {
+        pageType = typeof(SamplePage3);
+    }
+    else if (args.InvokedItem == SamplePage4Item) 
+    {
+        pageType = typeof(SamplePage4);
+    }
+    ContentFrame.NavigateToType(pageType, null, navOptions);
+}

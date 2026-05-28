@@ -32,7 +32,6 @@
     <!-- In .NET 8, serialization is prohibited by default - we can safely use it since we're not dealing with UDTs. -->
     <JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
     <SingleProject>true</SingleProject>
-    <SingleProject Condition="'$(SolutionName)' == 'WinUIGallery.DesktopWap'">false</SingleProject>
     <WindowsAppSdkIncludeVersionInfo>true</WindowsAppSdkIncludeVersionInfo>
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
@@ -340,14 +339,14 @@
     <None Remove="Controls\PageHeader.xaml" />
     <None Remove="Controls\SampleThemeListener.xaml" />
     <None Remove="MainWindow.xaml" />
-    <None Remove="Samples\ControlPages\AppNotificationPage.xaml" />
-    <None Remove="Samples\ControlPages\AppWindowTitleBarPage.xaml" />
-    <None Remove="Samples\ControlPages\BadgeNotificationManagerPage.xaml" />
-    <None Remove="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml" />
-    <None Remove="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml" />
-    <None Remove="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml" />
-    <None Remove="Samples\ControlPages\AppWindowPage.xaml" />
-    <None Remove="SampleSupport\Data\IconsData.json" />
+    <None Remove="Samples\AppNotification\AppNotificationPage.xaml" />
+    <None Remove="Samples\AppWindowTitleBar\AppWindowTitleBarPage.xaml" />
+    <None Remove="Samples\BadgeNotificationManager\BadgeNotificationManagerPage.xaml" />
+    <None Remove="Samples\CustomUserControls\CounterControl.xaml" />
+    <None Remove="Samples\CustomUserControls\ValidatedPasswordBox.xaml" />
+    <None Remove="Samples\CustomUserControls\CustomUserControlsPage.xaml" />
+    <None Remove="Samples\AppWindow\AppWindowPage.xaml" />
+    <None Remove="Samples\Iconography\IconsData.json" />
     <None Remove="SamplePages\SampleBuiltInSystemBackdropsWindow.xaml" />
     <None Remove="SampleSupport\SamplePages\AppWindowTitleBarExtendWindow.xaml" />
     <None Remove="SampleSupport\SamplePages\AppWindowTitleBarWindow.xaml" />
@@ -358,223 +357,6 @@
     <None Remove="Styles\ItemTemplates.xaml" />
     <None Remove="Styles\SelectorBar.xaml" />
     <None Remove="Styles\TextBlock.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Assets\ControlImages\AppNotification.png" />
-    <Content Include="Assets\ControlImages\AppWindow.png" />
-    <Content Include="Assets\ControlImages\BadgeNotification.png" />
-    <Content Include="Assets\ControlImages\CodeTagIcon.png" />
-    <Content Include="Assets\ControlImages\Accessibility.png" />
-    <Content Include="Assets\ControlImages\ContentIsland.png" />
-    <Content Include="Assets\ControlImages\CustomControls.png" />
-    <Content Include="Assets\ControlImages\JumpList.png" />
-    <Content Include="Assets\ControlImages\StoragePickers.png" />
-    <Content Include="Assets\ControlImages\Popup.png" />
-    <Content Include="Assets\ControlImages\ThemeShadow.png" />
-    <Content Include="Assets\Design\Cards.dark.png" />
-    <Content Include="Assets\Design\Cards.light.png" />
-    <Content Include="Assets\Design\Dialog.dark.png" />
-    <Content Include="Assets\Design\Dialog.light.png" />
-    <Content Include="Assets\SampleMedia\ninegrid.gif" />
-    <Content Include="Assets\SampleMedia\folder.png" />
-    <Content Include="Assets\GalleryHeaderImage.png" />
-    <Content Include="Assets\Design\Geometry.dark.png" />
-    <Content Include="Assets\Design\Geometry.light.png" />
-    <Content Include="Assets\HomeHeaderTiles\Header-Store.dark.png" />
-    <Content Include="Assets\HomeHeaderTiles\Header-Store.light.png" />
-    <Content Include="Assets\HomeHeaderTiles\Header-Toolkit.png" />
-    <Content Include="Assets\HomeHeaderTiles\Header-WindowsDesign.png" />
-    <Content Include="Assets\HomeHeaderTiles\Header-WinUI.png" />
-    <Content Include="Assets\SampleMedia\Dark_Image.png" />
-    <Content Include="Assets\SampleMedia\Light_Image.png" />
-    <Content Include="Assets\SceneNode\DamagedHelmet1.bmp" />
-    <Content Include="Assets\SceneNode\DamagedHelmet2.bmp" />
-    <Content Include="Assets\SceneNode\DamagedHelmet3.bmp" />
-    <Content Include="Assets\SceneNode\DamagedHelmet4.bmp" />
-    <Content Include="Assets\SceneNode\DamagedHelmet5.bmp" />
-    <Content Include="Assets\SceneNode\DamagedHelmet6.bin" />
-    <Content Include="Assets\SceneNode\DamagedHelmet7.bin" />
-    <Content Include="Assets\SceneNode\DamagedHelmet8.bin" />
-    <Content Include="Assets\SceneNode\DamagedHelmet9.bin" />
-    <Content Include="Assets\Tiles\AppList.scale-100.png" />
-    <Content Include="Assets\Tiles\AppList.scale-100_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\AppList.scale-125.png" />
-    <Content Include="Assets\Tiles\AppList.scale-125_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\AppList.scale-150.png" />
-    <Content Include="Assets\Tiles\AppList.scale-150_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\AppList.scale-200.png" />
-    <Content Include="Assets\Tiles\AppList.scale-200_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\AppList.scale-400.png" />
-    <Content Include="Assets\Tiles\AppList.scale-400_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-16.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-16_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-16_altform-unplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-20.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-20_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-20_altform-unplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-24.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-24_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-256.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-256_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-256_altform-unplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-30.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-30_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-30_altform-unplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-32.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-32_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-32_altform-unplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-36.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-36_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-36_altform-unplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-40.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-40_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-40_altform-unplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-48.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-48_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-48_altform-unplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-56.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-56_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-56_altform-unplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-60.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-60_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-60_altform-unplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-64.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-64_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-64_altform-unplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-72.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-72_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-72_altform-unplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-80.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-80_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-80_altform-unplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-96.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-96_altform-lightunplated.png" />
-    <Content Include="Assets\Tiles\AppList.targetsize-96_altform-unplated.png" />
-    <Content Include="Assets\Tiles\BadgeLogo.scale-100.png" />
-    <Content Include="Assets\Tiles\BadgeLogo.scale-125.png" />
-    <Content Include="Assets\Tiles\BadgeLogo.scale-150.png" />
-    <Content Include="Assets\Tiles\BadgeLogo.scale-200.png" />
-    <Content Include="Assets\Tiles\BadgeLogo.scale-400.png" />
-    <Content Include="Assets\Design\Typography.dark.png" />
-    <Content Include="Assets\Design\Typography.light.png" />
-    <Content Include="Assets\Tiles\GalleryIcon.ico" />
-    <Content Include="Assets\Tiles\LargeTile.scale-100.png" />
-    <Content Include="Assets\Tiles\LargeTile.scale-100_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\LargeTile.scale-125.png" />
-    <Content Include="Assets\Tiles\LargeTile.scale-125_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\LargeTile.scale-150.png" />
-    <Content Include="Assets\Tiles\LargeTile.scale-150_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\LargeTile.scale-200.png" />
-    <Content Include="Assets\Tiles\LargeTile.scale-200_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\LargeTile.scale-400.png" />
-    <Content Include="Assets\Tiles\LargeTile.scale-400_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\MedTile.scale-100.png" />
-    <Content Include="Assets\Tiles\MedTile.scale-100_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\MedTile.scale-125.png" />
-    <Content Include="Assets\Tiles\MedTile.scale-125_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\MedTile.scale-150.png" />
-    <Content Include="Assets\Tiles\MedTile.scale-150_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\MedTile.scale-200.png" />
-    <Content Include="Assets\Tiles\MedTile.scale-200_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\MedTile.scale-400.png" />
-    <Content Include="Assets\Tiles\MedTile.scale-400_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\SmallTile.scale-100.png" />
-    <Content Include="Assets\Tiles\SmallTile.scale-100_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\SmallTile.scale-125.png" />
-    <Content Include="Assets\Tiles\SmallTile.scale-125_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\SmallTile.scale-150.png" />
-    <Content Include="Assets\Tiles\SmallTile.scale-150_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\SmallTile.scale-200.png" />
-    <Content Include="Assets\Tiles\SmallTile.scale-200_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\SmallTile.scale-400.png" />
-    <Content Include="Assets\Tiles\SmallTile.scale-400_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-100.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-100_altform-colorful_theme-dark.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-100_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-125.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-125_altform-colorful_theme-dark.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-125_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-150.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-150_altform-colorful_theme-dark.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-150_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-200.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-200_altform-colorful_theme-dark.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-200_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-400.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-400_altform-colorful_theme-dark.png" />
-    <Content Include="Assets\Tiles\SplashScreen.scale-400_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\StoreDisplay-150.png" />
-    <Content Include="Assets\Tiles\StoreDisplay-300.png" />
-    <Content Include="Assets\Tiles\StoreDisplay-71.png" />
-    <Content Include="Assets\Tiles\StoreLogo.scale-100.png" />
-    <Content Include="Assets\Tiles\StoreLogo.scale-100_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\StoreLogo.scale-125.png" />
-    <Content Include="Assets\Tiles\StoreLogo.scale-125_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\StoreLogo.scale-150.png" />
-    <Content Include="Assets\Tiles\StoreLogo.scale-150_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\StoreLogo.scale-200.png" />
-    <Content Include="Assets\Tiles\StoreLogo.scale-200_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\StoreLogo.scale-400.png" />
-    <Content Include="Assets\Tiles\StoreLogo.scale-400_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\WideTile.scale-100.png" />
-    <Content Include="Assets\Tiles\WideTile.scale-100_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\WideTile.scale-125.png" />
-    <Content Include="Assets\Tiles\WideTile.scale-125_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\WideTile.scale-150.png" />
-    <Content Include="Assets\Tiles\WideTile.scale-150_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\WideTile.scale-200.png" />
-    <Content Include="Assets\Tiles\WideTile.scale-200_altform-colorful_theme-light.png" />
-    <Content Include="Assets\Tiles\WideTile.scale-400.png" />
-    <Content Include="Assets\Tiles\WideTile.scale-400_altform-colorful_theme-light.png" />
-    <Content Include="SampleSupport\Data\IconsData.json" />
-    <Content Include="SampleSupport\Data\ControlInfoData.json" />
-    <Content Include="Samples\SampleCode\AppWindow\AppWindowSample1_xaml.txt" />
-    <Content Include="Samples\SampleCode\AppWindow\AppWindowSample2_cs.txt" />
-    <Content Include="Samples\SampleCode\AppWindow\AppWindowSample2_xaml.txt" />
-    <Content Include="Samples\SampleCode\AppWindow\AppWindowSample3_xaml.txt" />
-    <Content Include="Samples\SampleCode\AppWindow\AppWindowSample5_cs.txt" />
-    <Content Include="Samples\SampleCode\AppWindow\AppWindowSample5_xaml.txt" />
-    <Content Include="Samples\SampleCode\AppWindow\AppWindowSample6_cs.txt" />
-    <Content Include="Samples\SampleCode\AppWindow\AppWindowSample6_xaml.txt" />
-    <Content Include="Samples\SampleCode\AppWindow\AppWindowSample7_xaml.txt" />
-    <Content Include="Samples\SampleCode\Binding\BindingSample1_xaml.txt" />
-    <Content Include="Samples\SampleCode\Binding\BindingSample3_csharp.txt" />
-    <Content Include="Samples\SampleCode\Binding\BindingSample3_xaml.txt" />
-    <Content Include="Samples\SampleCode\Binding\BindingSample4_csharp.txt" />
-    <Content Include="Samples\SampleCode\Binding\BindingSample4_xaml.txt" />
-    <Content Include="Samples\SampleCode\Binding\BindingSample5_csharp.txt" />
-    <Content Include="Samples\SampleCode\Binding\BindingSample6_csharp.txt" />
-    <Content Include="Samples\SampleCode\Binding\BindingSample6_xaml.txt" />
-    <Content Include="Samples\SampleCode\Clipboard\ClipboardSample1_cs.txt" />
-    <Content Include="Samples\SampleCode\Clipboard\ClipboardSample2_cs.txt" />
-    <Content Include="Samples\SampleCode\Clipboard\ClipboardSample3_cs.txt" />
-    <Content Include="Samples\SampleCode\Clipboard\ClipboardSample4_cs.txt" />
-    <Content Include="Samples\SampleCode\ContentDialog\ContentDialogSample2_cs.txt" />
-    <Content Include="Samples\SampleCode\ContentDialog\ContentDialogSample2_xaml.txt" />
-    <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample1_cs.txt" />
-    <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample1_xaml.txt" />
-    <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample2_cs.txt" />
-    <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample2_xaml.txt" />
-    <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample3_cs.txt" />
-    <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample3_xaml.txt" />
-    <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_cs.txt" />
-    <Content Include="Samples\SampleCode\CustomUserControls\CustomUserControlsSample4_xaml.txt" />
-    <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample1_xaml.txt" />
-    <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample1_cs.txt" />
-    <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample2_xaml.txt" />
-    <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample2_cs.txt" />
-    <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample3_xaml.txt" />
-    <Content Include="Samples\SampleCode\CustomXamlConditionals\CustomXamlConditionalsSample3_cs.txt" />
-    <Content Include="Samples\SampleCode\Text\RichEditBox\RichEditBoxSample6_cs.txt" />
-    <Content Include="Samples\SampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample1_cs.txt" />
-    <Content Include="Samples\SampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample1_xaml.txt" />
-    <Content Include="Samples\SampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample2_cs.txt" />
-    <Content Include="Samples\SampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample2_xaml.txt" />
-    <Content Include="Samples\SampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample3_cs.txt" />
-    <Content Include="Samples\SampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample4_cs.txt" />
-    <Content Include="Samples\SampleCode\Motion\ConnectedAnimation\ConnectedAnimationSample4_xaml.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -596,13 +378,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Samples\ControlPages\AppWindowTitleBarPage.xaml">
+    <Page Update="Samples\AppWindowTitleBar\AppWindowTitleBarPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Samples\ControlPages\StoragePickersPage.xaml">
+    <Page Update="Samples\StoragePickers\StoragePickersPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -635,19 +417,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Samples\ControlPages\BadgeNotificationManagerPage.xaml">
+    <Page Update="Samples\BadgeNotificationManager\BadgeNotificationManagerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Samples\ControlPages\AppNotificationPage.xaml">
+    <Page Update="Samples\AppNotification\AppNotificationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Samples\ControlPages\Fundamentals\Controls\ValidatedPasswordBox.xaml">
+    <Page Update="Samples\CustomUserControls\ValidatedPasswordBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -657,7 +439,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Samples\ControlPages\Fundamentals\Controls\CounterControl.xaml">
+    <Page Update="Samples\CustomUserControls\CounterControl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -667,7 +449,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Samples\ControlPages\Fundamentals\CustomUserControlsPage.xaml">
+    <Page Update="Samples\CustomUserControls\CustomUserControlsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -692,7 +474,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Samples\ControlPages\AppWindowPage.xaml">
+    <Page Update="Samples\AppWindow\AppWindowPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -702,7 +484,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="ControlPages\InfoBadgePage.xaml">
+    <Page Update="Samples\InfoBadge\InfoBadgePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

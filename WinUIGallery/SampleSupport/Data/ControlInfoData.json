@@ -5,7 +5,6 @@
       "UniqueId": "FundamentalsItem",
       "Title": "Fundamentals",
       "IsSpecialSection": true,
-      "Folder": "Fundamentals",
       "Items": [
         {
           "UniqueId": "XamlResources",
@@ -203,7 +202,6 @@
       "Title": "Design",
       "IconGlyph": "",
       "IsSpecialSection": true,
-      "Folder": "Design",
       "Items": [
         {
           "UniqueId": "Color",
@@ -302,7 +300,6 @@
       "UniqueId": "AccessibilityItem",
       "Title": "Accessibility",
       "IsSpecialSection": true,
-      "Folder": "Accessibility",
       "Items": [
         {
           "UniqueId": "AccessibilityColorContrast",
@@ -921,40 +918,6 @@
           ]
         },
         {
-          "UniqueId": "ListBox",
-          "Title": "ListBox",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject",
-            "UIElement",
-            "FrameworkElement",
-            "Control",
-            "ItemsControl",
-            "Selector"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
-          "Subtitle": "A control that presents an inline list of items that the user can select from.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/ListBox.png",
-          "Description": "Use a ListBox when you want the options to be visible all the time or when users can select more than one option at a time. ListBox controls are always open, which allows several items to be displayed to the user without user interaction.",
-          "SourcePath": "/CommonStyles/ListBox_themeresources.xaml",
-          "Docs": [
-            {
-              "Title": "ListBox - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.listbox"
-            },
-            {
-              "Title": "ListBoxItem - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.listboxitem"
-            }
-          ],
-          "RelatedControls": [
-            "ComboBox",
-            "RadioButton",
-            "CheckBox",
-            "AutoSuggestBox"
-          ]
-        },
-        {
           "UniqueId": "ListView",
           "Title": "ListView",
           "BaseClasses": [
@@ -1545,7 +1508,6 @@
             }
           ],
           "RelatedControls": [
-            "ListBox",
             "RadioButton",
             "CheckBox",
             "ListView",
@@ -1649,7 +1611,6 @@
           ],
           "RelatedControls": [
             "ComboBox",
-            "ListBox",
             "RatingControl"
           ]
         },
@@ -3143,7 +3104,6 @@
             }
           ],
           "RelatedControls": [
-            "ListBox",
             "ComboBox",
             "TextBox"
           ]

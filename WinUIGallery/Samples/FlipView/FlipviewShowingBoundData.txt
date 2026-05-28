@@ -1,0 +1,18 @@
+--- header
+A FlipView showing bound data with a data template.
+--- xaml
+<FlipView MaxWidth="400" Height="180" BorderBrush="Black" BorderThickness="1"
+          AutomationProperties.AutomationControlType="List"
+          AutomationProperties.LocalizedControlType="list"
+          ItemsSource="{x:Bind Items, Mode=OneWay}">
+    <FlipView.ItemTemplate>
+        <DataTemplate x:DataType="data:ControlInfoDataItem">
+            <Grid>
+                <Image Height="120" Source="{x:Bind ImagePath}" Stretch="Uniform" VerticalAlignment="Top"/>
+                <Border Background="#A5FFFFFF" Height="60" VerticalAlignment="Bottom">
+                <TextBlock Text="{x:Bind Title}" Foreground="#CCFFFFFF" Padding="12,12" Style="{StaticResource TitleTextBlockStyle}" HorizontalAlignment="Center"/>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </FlipView.ItemTemplate>
+</FlipView>
