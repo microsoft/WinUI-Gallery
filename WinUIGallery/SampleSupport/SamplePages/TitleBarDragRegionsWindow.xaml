@@ -42,20 +42,31 @@
                         VerticalAlignment="Center"
                         PlaceholderText="Search..."
                         QueryIcon="Find" />
-                    <!--  Non-interactive visual: its drag behavior is controlled
-                          via the TitleBar.IsDragRegion attached property below.  -->
-                    <Border
-                        x:Name="StatusBadge"
+                    <!--  Right-side container. Extra elements added at runtime are
+                          inserted here so they don't collide with the status badge.  -->
+                    <StackPanel
+                        x:Name="RightHeaderPanel"
                         Grid.Column="1"
-                        Padding="10,4"
-                        VerticalAlignment="Center"
-                        Background="{ThemeResource AccentFillColorDefaultBrush}"
-                        CornerRadius="4"
-                        PointerPressed="StatusBadge_PointerPressed">
-                        <TextBlock
-                            Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                            Text="Status" />
-                    </Border>
+                        Orientation="Horizontal"
+                        Spacing="8"
+                        VerticalAlignment="Center">
+                        <!--  Interactive Button. Its drag behavior is controlled via
+                              the TitleBar.IsDragRegion attached property below.  -->
+                        <Button
+                            x:Name="StatusBadge"
+                            Padding="10,4"
+                            MinWidth="0"
+                            MinHeight="0"
+                            VerticalAlignment="Center"
+                            Background="{ThemeResource AccentFillColorDefaultBrush}"
+                            BorderThickness="0"
+                            Click="StatusBadge_Click"
+                            CornerRadius="4">
+                            <TextBlock
+                                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                                Text="Status" />
+                        </Button>
+                    </StackPanel>
                 </Grid>
             </TitleBar.Content>
         </TitleBar>
@@ -83,9 +94,9 @@
                     x:Name="BadgeIsDragRegionRadios"
                     SelectedIndex="0"
                     SelectionChanged="BadgeIsDragRegionRadios_SelectionChanged">
-                    <x:String>Unset (framework decides — draggable here, since it's non-interactive)</x:String>
-                    <x:String>True (always draggable)</x:String>
-                    <x:String>False (always clickable — click handler fires)</x:String>
+                    <x:String>Unset (framework decides — clickable, since Button is interactive)</x:String>
+                    <x:String>True (always draggable — overrides the framework default)</x:String>
+                    <x:String>False (always clickable)</x:String>
                 </RadioButtons>
 
                 <TextBlock

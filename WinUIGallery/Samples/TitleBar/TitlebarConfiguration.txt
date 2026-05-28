@@ -19,7 +19,7 @@ TitleBar configuration
             MaxWidth="580"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
-            PlaceholderText="Search.."
+            PlaceholderText="Search..."
             QueryIcon="Find" />
     </TitleBar.Content>
     <TitleBar.RightHeader>

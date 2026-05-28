@@ -3,7 +3,6 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Input;
 
 namespace WinUIGallery.Samples.SamplePages;
 
@@ -36,35 +35,28 @@ public sealed partial class TitleBarDragRegionsWindow : Window
         }
     }
 
-    private void StatusBadge_PointerPressed(object sender, PointerRoutedEventArgs e)
+    private void StatusBadge_Click(object sender, RoutedEventArgs e)
     {
-        // Only fires when TitleBar.IsDragRegion is False; otherwise the
+        // Only fires when TitleBar.IsDragRegion is not True; otherwise the
         // framework consumes the pointer for window dragging.
         StatusText.Text = "Status badge clicked";
     }
 
     private void ToggleExtraButton_Click(object sender, RoutedEventArgs e)
     {
-        if (titleBar.Content is not Grid contentGrid)
-        {
-            return;
-        }
-
         if (_extraButton is null)
         {
             _extraButton = new Button
             {
                 Content = "Extra",
-                Margin = new Thickness(0, 0, 8, 0),
                 VerticalAlignment = VerticalAlignment.Center,
             };
-            Grid.SetColumn(_extraButton, 1);
-            contentGrid.Children.Insert(0, _extraButton);
+            RightHeaderPanel.Children.Insert(0, _extraButton);
             StatusText.Text = "Added a Button to TitleBar.Content. Call RecomputeDragRegions() to refresh drag regions.";
         }
         else
         {
-            contentGrid.Children.Remove(_extraButton);
+            RightHeaderPanel.Children.Remove(_extraButton);
             _extraButton = null;
             StatusText.Text = "Removed the Button. Call RecomputeDragRegions() to refresh drag regions.";
         }

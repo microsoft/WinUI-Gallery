@@ -29,20 +29,23 @@ TitleBar drag regions
                 VerticalAlignment="Center"
                 PlaceholderText="Search..."
                 QueryIcon="Find" />
-            <!-- Non-interactive visual: its drag behavior is set via
-                 TitleBar.IsDragRegion in code-behind. -->
-            <Border
+            <!-- Interactive Button styled as a badge. Drag behavior is overridden
+                 via TitleBar.IsDragRegion in code-behind. -->
+            <Button
                 x:Name="StatusBadge"
                 Grid.Column="1"
                 Padding="10,4"
+                MinWidth="0"
+                MinHeight="0"
                 VerticalAlignment="Center"
                 Background="{ThemeResource AccentFillColorDefaultBrush}"
-                CornerRadius="4"
-                PointerPressed="StatusBadge_PointerPressed">
+                BorderThickness="0"
+                Click="StatusBadge_Click"
+                CornerRadius="4">
                 <TextBlock
                     Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                     Text="Status" />
-            </Border>
+            </Button>
         </Grid>
     </TitleBar.Content>
 </TitleBar>
