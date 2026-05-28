@@ -47,13 +47,12 @@
                     ColorValue="#F6F6F6 (80, 50%)" />
                 <local:ColorTile
                     Grid.Column="2"
-                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                    ColorBrushName="CardBackgroundTertiaryBrush"
+                    Background="{ThemeResource CardBackgroundFillColorTertiaryBrush}"
+                    ColorBrushName="CardBackgroundFillColorTertiaryBrush"
                     ColorExplanation="Default card hover and pressed color"
                     ColorName="Card Background / Tertiary"
-                    ColorValue="#FFFFFF (FF, 30%)"
-                    ShowSeparator="False"
-                    ShowWarning="True" />
+                    ColorValue="#FFFFFF (FF, 100%)"
+                    ShowSeparator="False" />
             </Grid>
 
 
@@ -79,7 +78,8 @@
                     ColorBrushName="SmokeFillColorDefaultBrush"
                     ColorExplanation="Dims the background behind dialogs"
                     ColorName="Smoke / Default"
-                    ColorValue="#000000 (4D, 30%) " />
+                    ColorValue="#000000 (4D, 30%)"
+                    ShowSeparator="False" />
             </Grid>
 
 
@@ -133,10 +133,14 @@
                 <Grid
                     Width="120"
                     Height="40"
-                    Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                     BorderThickness="1"
                     CornerRadius="{StaticResource OverlayCornerRadius}">
+                    <SystemBackdropElement CornerRadius="8">
+                        <SystemBackdropElement.SystemBackdrop>
+                            <DesktopAcrylicBackdrop />
+                        </SystemBackdropElement.SystemBackdrop>
+                    </SystemBackdropElement>
                     <Grid
                         Width="90"
                         HorizontalAlignment="Right"
@@ -150,6 +154,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <local:ColorTile
+                    Backdrop="Acrylic"
                     Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
                     ColorBrushName="LayerOnAcrylicFillColorDefaultBrush"
                     ColorExplanation="Content layer color on acrylic surfaces"
@@ -163,12 +168,21 @@
                 Title="Layer on Mica Base Alt"
                 Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
                 Description="Used for fills on Tab control.">
-                <TabViewItem
-                    Width="150"
-                    Height="30"
-                    BorderBrush="{ThemeResource ControlStrokeColorSecondaryBrush}"
-                    BorderThickness="1"
-                    Header="Text" />
+                <Grid>
+                    <SystemBackdropElement CornerRadius="8">
+                        <SystemBackdropElement.SystemBackdrop>
+                            <MicaBackdrop Kind="BaseAlt" />
+                        </SystemBackdropElement.SystemBackdrop>
+                    </SystemBackdropElement>
+
+                    <TabViewItem
+                        Width="150"
+                        Height="30"
+                        Margin="8"
+                        BorderBrush="{ThemeResource ControlStrokeColorSecondaryBrush}"
+                        BorderThickness="1"
+                        Header="Text" />
+                </Grid>
             </local:ColorPageExample>
 
             <Grid Style="{StaticResource GalleryTileGridStyle}">
@@ -178,6 +192,7 @@
                 </Grid.ColumnDefinitions>
 
                 <local:ColorTile
+                    Backdrop="MicaAlt"
                     Background="{ThemeResource LayerOnMicaBaseAltFillColorDefaultBrush}"
                     ColorBrushName="LayerOnMicaBaseAltFillColorDefaultBrush"
                     ColorExplanation="Active Tab Rest, Content layer"
@@ -187,13 +202,14 @@
 
                 <local:ColorTile
                     Grid.Column="1"
+                    Backdrop="MicaAlt"
                     Background="{ThemeResource LayerOnMicaBaseAltFillColorTertiaryBrush}"
                     ColorBrushName="LayerOnMicaBaseAltFillColorTertiaryBrush"
                     ColorExplanation="Active Tab Drag"
                     ColorName="Layer On Mica Base Alt / Tertiary"
                     ColorValue="#F9F9F9 (FF, 100%)"
-                    Foreground="{ThemeResource TextFillColorPrimary}" />
-
+                    Foreground="{ThemeResource TextFillColorPrimary}"
+                    ShowSeparator="False" />
             </Grid>
 
             <Grid Style="{StaticResource GalleryTileGridStyle}">
@@ -202,16 +218,18 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <local:ColorTile
+                    Backdrop="MicaAlt"
                     Background="{ThemeResource LayerOnMicaBaseAltFillColorTransparentBrush}"
                     ColorBrushName="LayerOnMicaBaseAltFillColorTransparentBrush"
                     ColorExplanation="Inactive Tab Rest"
                     ColorName="Layer On Mica Base Alt / Transparent"
                     ColorValue="Transparent"
                     Foreground="{ThemeResource TextFillColorPrimary}"
-                    ShowSeparator="False" />
+                    ShowSeparator="True" />
 
                 <local:ColorTile
                     Grid.Column="1"
+                    Backdrop="MicaAlt"
                     Background="{ThemeResource LayerOnMicaBaseAltFillColorSecondaryBrush}"
                     ColorBrushName="LayerOnMicaBaseAltFillColorSecondaryBrush"
                     ColorExplanation="Inactive Tab Hover"
@@ -246,7 +264,7 @@
                 <local:ColorTile
                     Background="{ThemeResource SolidBackgroundFillColorBaseBrush}"
                     ColorBrushName="SolidBackgroundFillColorBaseBrush"
-                    ColorExplanation="Used for the bottom most layer of an experience."
+                    ColorExplanation="Used for the bottom most layer of an experience"
                     ColorName="Solid Background / Base"
                     ColorValue="#F3F3F (FF, 100%)"
                     Foreground="{ThemeResource TextFillColorPrimary}" />
@@ -254,7 +272,7 @@
                     Grid.Column="1"
                     Background="{ThemeResource SolidBackgroundFillColorBaseAltBrush}"
                     ColorBrushName="SolidBackgroundFillColorBaseAltBrush"
-                    ColorExplanation="Used for the bottom most layer of an experience."
+                    ColorExplanation="Used for the bottom most layer of an experience"
                     ColorName="Solid Background / Base Alt"
                     ColorValue="#DADADA (FF, 100%)"
                     Foreground="{ThemeResource TextFillColorPrimary}" />
@@ -262,7 +280,7 @@
                     Grid.Column="2"
                     Background="{ThemeResource SolidBackgroundFillColorSecondaryBrush}"
                     ColorBrushName="SolidBackgroundFillColorSecondaryBrush"
-                    ColorExplanation="Alternate base color for those who need a darker background color."
+                    ColorExplanation="Alternate base color for those who need a darker background color"
                     ColorName="Solid Background / Secondary"
                     ColorValue="#EEEEEE (FF, 100%)"
                     Foreground="{ThemeResource TextFillColorPrimary}" />
@@ -287,29 +305,27 @@
                 <local:ColorTile
                     Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
                     ColorBrushName="SolidBackgroundFillColorQuarternaryBrush"
-                    ColorExplanation="Alt content layer color."
+                    ColorExplanation="Alt content layer color"
                     ColorName="Solid Background / Quarternary"
                     ColorValue="#FFFFFF (FF, 100%)"
                     Foreground="{ThemeResource TextFillColorPrimary}" />
                 <local:ColorTile
                     Grid.Column="1"
-                    Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
+                    Background="{ThemeResource SolidBackgroundFillColorQuinaryBrush}"
                     ColorBrushName="SolidBackgroundFillColorQuinaryBrush"
                     ColorExplanation="Used for solid default card colors"
                     ColorName="Solid Background / Quinary"
                     ColorValue="#FDFDFD (FF, 100%)"
-                    Foreground="{ThemeResource TextFillColorPrimary}"
-                    ShowWarning="True" />
+                    Foreground="{ThemeResource TextFillColorPrimary}" />
                 <local:ColorTile
                     Grid.Column="2"
-                    Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
+                    Background="{ThemeResource SolidBackgroundFillColorSenaryBrush}"
                     ColorBrushName="SolidBackgroundFillColorSenaryBrush"
-                    ColorExplanation="Used for solid default card color"
+                    ColorExplanation="Used for solid default card colors"
                     ColorName="Solid Background / Senary"
                     ColorValue="#FFFFFF (FF, 100%)"
                     Foreground="{ThemeResource TextFillColorPrimary}"
-                    ShowSeparator="False"
-                    ShowWarning="True" />
+                    ShowSeparator="False" />
             </Grid>
 
 
@@ -324,7 +340,13 @@
                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                     BorderThickness="1"
-                    CornerRadius="{StaticResource OverlayCornerRadius}" />
+                    CornerRadius="{StaticResource OverlayCornerRadius}">
+                    <SystemBackdropElement CornerRadius="8">
+                        <SystemBackdropElement.SystemBackdrop>
+                            <MicaBackdrop Kind="Base" />
+                        </SystemBackdropElement.SystemBackdrop>
+                    </SystemBackdropElement>
+                </Grid>
             </local:ColorPageExample>
             <Grid Style="{StaticResource GalleryTileGridStyle}">
                 <Grid.ColumnDefinitions>
@@ -332,19 +354,29 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <local:ColorTile
-                    Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
-                    ColorBrushName="MicaBackgroundFillColorBaseBrush"
-                    ColorExplanation="Used for the bottom most layer of an experience."
-                    ColorName="Mica Background / Base"
-                    ShowWarning="True" />
+                    Backdrop="Mica"
+                    ColorExplanation="Used for the bottom most layer of an experience"
+                    ColorName="Mica Background / Base">
+                    <local:ColorTile.Comment>
+                        <TextBlock Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="Wrap">
+                            See <Hyperlink Click="SystemBackdropLink_Click">SystemBackdrop</Hyperlink>
+                            and <Hyperlink Click="SystemBackdropElementLink_Click">SystemBackdropElement</Hyperlink>
+                        </TextBlock>
+                    </local:ColorTile.Comment>
+                </local:ColorTile>
                 <local:ColorTile
                     Grid.Column="1"
-                    Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
-                    ColorBrushName="MicaBackgroundFillColorBaseAltBrush"
-                    ColorExplanation="Default tab band background color."
+                    Backdrop="MicaAlt"
+                    ColorExplanation="Default tab band background color"
                     ColorName="Mica Background / Base Alt"
-                    ShowSeparator="False"
-                    ShowWarning="True" />
+                    ShowSeparator="False">
+                    <local:ColorTile.Comment>
+                        <TextBlock Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="Wrap">
+                            See <Hyperlink Click="SystemBackdropLink_Click">SystemBackdrop</Hyperlink>
+                            and <Hyperlink Click="SystemBackdropElementLink_Click">SystemBackdropElement</Hyperlink>
+                        </TextBlock>
+                    </local:ColorTile.Comment>
+                </local:ColorTile>
             </Grid>
 
             <!--  Acrylic background  -->
@@ -366,17 +398,19 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <local:ColorTile
+                    Backdrop="Acrylic"
                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                     ColorBrushName="AcrylicBackgroundFillColorBaseBrush"
-                    ColorExplanation="Used for the bottom most layer of an acrylic surface only when the surface will use layers."
+                    ColorExplanation="Used for the bottom most layer of an acrylic surface only when the surface will use layers"
                     ColorName="Acrylic Background / Base"
                     ColorValue="#F3F3F3 (FF, 100%), 0% Tint Opacity, 90% Luminosity Opacity Fallback: #EEEEEE (FF, 100%)"
                     ShowSeparator="True" />
                 <local:ColorTile
                     Grid.Column="1"
+                    Backdrop="Acrylic"
                     Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"
                     ColorBrushName="AcrylicBackgroundFillColorDefaultBrush"
-                    ColorExplanation="Default acrylic recipe used for control flyouts and surfaces that live with in the context of an app."
+                    ColorExplanation="Default acrylic recipe used for control flyouts and surfaces that live with in the context of an app"
                     ColorName="Acrylic Background / Default"
                     ColorValue="#FCFCFC (FF, 100%), 0% Tint Opacity, 85% Luminosity Opacity Fallback: #F9F9F9 (FF, 100%)"
                     ShowSeparator="False" />
@@ -403,7 +437,7 @@
                 <local:ColorTile
                     Background="{ThemeResource AccentAcrylicBackgroundFillColorBaseBrush}"
                     ColorBrushName="AccentAcrylicBackgroundFillColorBaseBrush"
-                    ColorExplanation="Used for the bottom most layer of an acrylic surface only when the surface will use layers."
+                    ColorExplanation="Used for the bottom most layer of an acrylic surface only when the surface will use layers"
                     ColorName="Accent Acrylic Background / Base"
                     ColorValue="Light 3, 80% Tint Opacity, 80% Luminosity Opacity Fallback: Light 3"
                     ShowSeparator="True" />
@@ -411,7 +445,7 @@
                     Grid.Column="1"
                     Background="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}"
                     ColorBrushName="AccentAcrylicBackgroundFillColorDefaultBrush"
-                    ColorExplanation="Default acrylic recipe used for control flyouts and surfaces that live with in the context of an app."
+                    ColorExplanation="Default acrylic recipe used for control flyouts and surfaces that live with in the context of an app"
                     ColorName="Accent Acrylic Background / Default"
                     ColorValue="Light 3, 80% Tint Opacity, 90% Luminosity Opacity Fallback: Light 3"
                     ShowSeparator="False" />

@@ -16,7 +16,7 @@
             <local:ColorPageExample
                 Title="System"
                 Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-                Description="Used for accent fills on controls">
+                Description="Used for accent fills on controls.">
                 <InfoBar
                     Title="Title"
                     IsClosable="False"
@@ -153,7 +153,8 @@
                     ColorBrushName="SystemFillColorSolidNeutralBackgroundBrush"
                     ColorExplanation="Neutral badges over content"
                     ColorName="System / Solid Neutral Background"
-                    ColorValue="#2E2E2E" />
+                    ColorValue="#2E2E2E"
+                    ShowSeparator="False" />
             </Grid>
             <Grid Style="{StaticResource GalleryTileGridStyle}">
                 <Grid.ColumnDefinitions>

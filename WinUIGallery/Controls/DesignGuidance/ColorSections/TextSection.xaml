@@ -17,7 +17,7 @@
             <local:ColorPageExample
                 Title="Text"
                 Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-                Description="For UI labels and static text">
+                Description="For UI labels and static text.">
                 <TextBlock
                     FontSize="42"
                     FontWeight="SemiBold"
@@ -72,7 +72,7 @@
             <local:ColorPageExample
                 Title="Accent Text"
                 Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-                Description="Recommended for links">
+                Description="Recommended for links.">
                 <TextBlock
                     FontSize="42"
                     FontWeight="SemiBold"
@@ -128,7 +128,7 @@
             <local:ColorPageExample
                 Title="Text On Accent"
                 Background="{ThemeResource AccentFillColorDefaultBrush}"
-                Description="Used for text on accent colored controls or fills"
+                Description="Used for text on accent colored controls or fills."
                 Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}">
                 <TextBlock
                     FontSize="42"
