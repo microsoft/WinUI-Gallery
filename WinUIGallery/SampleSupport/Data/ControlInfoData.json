@@ -43,7 +43,6 @@
         {
           "UniqueId": "XamlStyles",
           "Tags": [
-            "Style",
             "Setter",
             "BasedOn",
             "implicit style",
@@ -380,7 +379,6 @@
           "UniqueId": "AccessibilityColorContrast",
           "Tags": [
             "high contrast",
-            "color contrast",
             "WCAG",
             "accessibility"
           ],
@@ -448,7 +446,6 @@
         {
           "UniqueId": "AccessibilityScreenReader",
           "Tags": [
-            "screen reader",
             "Narrator",
             "AutomationProperties",
             "assistive technology",
@@ -549,7 +546,6 @@
         {
           "UniqueId": "AppBarSeparator",
           "Tags": [
-            "separator",
             "divider"
           ],
           "Title": "AppBarSeparator",
@@ -713,7 +709,6 @@
         {
           "UniqueId": "MenuBar",
           "Tags": [
-            "menu",
             "MenuBarItem",
             "application menu"
           ],
@@ -806,7 +801,6 @@
         {
           "UniqueId": "SwipeControl",
           "Tags": [
-            "swipe",
             "SwipeItem",
             "gesture"
           ],
@@ -849,8 +843,6 @@
         {
           "UniqueId": "StandardUICommand",
           "Tags": [
-            "command",
-            "ICommand",
             "standard command"
           ],
           "Title": "StandardUICommand",
@@ -882,10 +874,7 @@
         },
         {
           "UniqueId": "XamlUICommand",
-          "Tags": [
-            "command",
-            "ICommand"
-          ],
+          "Tags": [],
           "Title": "XamlUICommand",
           "BaseClasses": [
             "Object",
@@ -960,7 +949,6 @@
         {
           "UniqueId": "GridView",
           "Tags": [
-            "grid",
             "tiles",
             "collection grid"
           ],
@@ -1000,7 +988,6 @@
         {
           "UniqueId": "ItemsRepeater",
           "Tags": [
-            "repeater",
             "data layout",
             "virtualization"
           ],
@@ -1219,9 +1206,7 @@
         {
           "UniqueId": "CalendarDatePicker",
           "Tags": [
-            "date picker",
-            "calendar",
-            "date"
+            "date picker"
           ],
           "Title": "CalendarDatePicker",
           "BaseClasses": [
@@ -1254,7 +1239,6 @@
         {
           "UniqueId": "CalendarView",
           "Tags": [
-            "calendar",
             "date",
             "month view"
           ],
@@ -1290,7 +1274,6 @@
         {
           "UniqueId": "DatePicker",
           "Tags": [
-            "date",
             "date selection"
           ],
           "Title": "DatePicker",
@@ -1325,7 +1308,6 @@
         {
           "UniqueId": "TimePicker",
           "Tags": [
-            "time",
             "clock",
             "time selection"
           ],
@@ -1406,7 +1388,6 @@
         {
           "UniqueId": "DropDownButton",
           "Tags": [
-            "dropdown",
             "flyout button",
             "menu button"
           ],
@@ -1449,8 +1430,6 @@
         {
           "UniqueId": "HyperlinkButton",
           "Tags": [
-            "link",
-            "hyperlink",
             "URL",
             "navigate"
           ],
@@ -1489,7 +1468,6 @@
         {
           "UniqueId": "RepeatButton",
           "Tags": [
-            "repeat",
             "hold button"
           ],
           "Title": "RepeatButton",
@@ -1527,7 +1505,6 @@
         {
           "UniqueId": "ToggleButton",
           "Tags": [
-            "toggle",
             "on off"
           ],
           "Title": "ToggleButton",
@@ -1645,7 +1622,6 @@
         {
           "UniqueId": "CheckBox",
           "Tags": [
-            "check",
             "tick",
             "three state",
             "checkmark"
@@ -1685,7 +1661,6 @@
         {
           "UniqueId": "ColorPicker",
           "Tags": [
-            "color",
             "color spectrum",
             "color wheel",
             "RGB",
@@ -1722,7 +1697,6 @@
           "UniqueId": "ComboBox",
           "Tags": [
             "dropdown",
-            "combo",
             "select",
             "picker"
           ],
@@ -1766,7 +1740,6 @@
         {
           "UniqueId": "RadioButton",
           "Tags": [
-            "radio",
             "RadioButtons",
             "single selection",
             "option"
@@ -1810,7 +1783,6 @@
         {
           "UniqueId": "RatingControl",
           "Tags": [
-            "rating",
             "stars",
             "review"
           ],
@@ -1845,7 +1817,6 @@
         {
           "UniqueId": "Slider",
           "Tags": [
-            "slider",
             "range",
             "track",
             "Thumb"
@@ -1882,8 +1853,6 @@
         {
           "UniqueId": "ToggleSwitch",
           "Tags": [
-            "switch",
-            "toggle",
             "on off"
           ],
           "Title": "ToggleSwitch",
@@ -1926,7 +1895,6 @@
         {
           "UniqueId": "InfoBadge",
           "Tags": [
-            "badge",
             "notification dot",
             "count badge"
           ],
@@ -1998,7 +1966,6 @@
         {
           "UniqueId": "ProgressBar",
           "Tags": [
-            "progress",
             "loading",
             "determinate",
             "indeterminate"
@@ -2034,7 +2001,6 @@
         {
           "UniqueId": "ProgressRing",
           "Tags": [
-            "progress",
             "loading",
             "spinner",
             "busy"
@@ -2069,7 +2035,6 @@
         {
           "UniqueId": "ToolTip",
           "Tags": [
-            "tooltip",
             "hint",
             "hover text"
           ],
@@ -2113,7 +2078,6 @@
         {
           "UniqueId": "ContentDialog",
           "Tags": [
-            "dialog",
             "modal",
             "popup dialog",
             "message box"
@@ -2152,7 +2116,6 @@
         {
           "UniqueId": "Flyout",
           "Tags": [
-            "flyout",
             "popup",
             "contextual"
           ],
@@ -2188,7 +2151,6 @@
         {
           "UniqueId": "Popup",
           "Tags": [
-            "popup",
             "overlay",
             "temporary content"
           ],
@@ -2217,10 +2179,8 @@
         {
           "UniqueId": "TeachingTip",
           "Tags": [
-            "teaching tip",
             "callout",
-            "coachmark",
-            "tip"
+            "coachmark"
           ],
           "Title": "TeachingTip",
           "BaseClasses": [
@@ -2262,7 +2222,6 @@
         {
           "UniqueId": "AnnotatedScrollBar",
           "Tags": [
-            "scrollbar",
             "annotated scroll",
             "navigation"
           ],
@@ -2293,10 +2252,8 @@
         {
           "UniqueId": "PipsPager",
           "Tags": [
-            "pager",
             "pagination",
-            "dots",
-            "pips"
+            "dots"
           ],
           "Title": "PipsPager",
           "BaseClasses": [
@@ -2330,7 +2287,6 @@
         {
           "UniqueId": "ScrollView",
           "Tags": [
-            "scroll",
             "pan",
             "zoom",
             "scrolling"
@@ -2372,7 +2328,6 @@
         {
           "UniqueId": "ScrollViewer",
           "Tags": [
-            "scroll",
             "pan",
             "zoom",
             "scrolling"
@@ -2414,7 +2369,6 @@
         {
           "UniqueId": "SemanticZoom",
           "Tags": [
-            "zoom",
             "semantic zoom",
             "grouped view"
           ],
@@ -2524,7 +2478,6 @@
           "UniqueId": "Expander",
           "Tags": [
             "collapse",
-            "expand",
             "accordion"
           ],
           "Title": "Expander",
@@ -2561,8 +2514,7 @@
           "UniqueId": "Grid",
           "Tags": [
             "rows",
-            "columns",
-            "layout"
+            "columns"
           ],
           "Title": "Grid",
           "BaseClasses": [
@@ -2789,7 +2741,6 @@
         {
           "UniqueId": "BreadcrumbBar",
           "Tags": [
-            "breadcrumb",
             "navigation trail",
             "path"
           ],
@@ -2825,7 +2776,6 @@
         {
           "UniqueId": "NavigationView",
           "Tags": [
-            "navigation",
             "hamburger menu",
             "side nav",
             "nav pane"
@@ -2863,7 +2813,6 @@
           "UniqueId": "Pivot",
           "Tags": [
             "tabs",
-            "pivot",
             "tabbed view"
           ],
           "Title": "Pivot",
@@ -2897,7 +2846,6 @@
         {
           "UniqueId": "SelectorBar",
           "Tags": [
-            "selector",
             "segmented",
             "tabs"
           ],
@@ -2936,8 +2884,7 @@
           "Tags": [
             "tabs",
             "tabbed",
-            "tab control",
-            "documents"
+            "tab control"
           ],
           "Title": "TabView",
           "BaseClasses": [
@@ -2985,8 +2932,7 @@
           "Tags": [
             "Lottie",
             "animation",
-            "motion graphics",
-            "player"
+            "motion graphics"
           ],
           "Title": "AnimatedVisualPlayer",
           "BaseClasses": [
@@ -3030,9 +2976,7 @@
           "UniqueId": "CaptureElementPreview",
           "Tags": [
             "camera",
-            "webcam",
-            "capture",
-            "preview"
+            "webcam"
           ],
           "Title": "Capture Element / Camera Preview",
           "Subtitle": "A sample for doing a camera preview.",
@@ -3053,7 +2997,6 @@
         {
           "UniqueId": "Image",
           "Tags": [
-            "image",
             "picture",
             "BitmapImage",
             "photo"
@@ -3087,7 +3030,6 @@
         {
           "UniqueId": "MapControl",
           "Tags": [
-            "map",
             "maps",
             "geography",
             "location"
@@ -3151,9 +3093,7 @@
           "UniqueId": "PersonPicture",
           "Tags": [
             "avatar",
-            "profile picture",
-            "contact photo",
-            "initials"
+            "contact photo"
           ],
           "Title": "PersonPicture",
           "BaseClasses": [
@@ -3185,7 +3125,6 @@
         {
           "UniqueId": "Sound",
           "Tags": [
-            "sound",
             "audio",
             "UI sound",
             "ElementSoundPlayer"
@@ -3210,7 +3149,6 @@
           "UniqueId": "WebView2",
           "Tags": [
             "browser",
-            "web",
             "HTML",
             "Edge",
             "web content"
@@ -3327,7 +3265,6 @@
         {
           "UniqueId": "CompactSizing",
           "Tags": [
-            "compact",
             "density",
             "compact sizing"
           ],
@@ -3351,8 +3288,7 @@
             "PathIcon",
             "SymbolIcon",
             "ImageIcon",
-            "AnimatedIcon",
-            "icon"
+            "AnimatedIcon"
           ],
           "Title": "IconElement",
           "BaseClasses": [
@@ -3497,7 +3433,6 @@
           "Tags": [
             "Mica",
             "Acrylic",
-            "backdrop",
             "window material"
           ],
           "Title": "System Backdrops (Mica/Acrylic)",
@@ -3541,7 +3476,6 @@
           "Tags": [
             "Mica",
             "Acrylic",
-            "backdrop",
             "material"
           ],
           "Title": "SystemBackdropElement",
@@ -3568,7 +3502,6 @@
         {
           "UniqueId": "ThemeShadow",
           "Tags": [
-            "shadow",
             "depth",
             "elevation"
           ],
@@ -3644,7 +3577,6 @@
         {
           "UniqueId": "NumberBox",
           "Tags": [
-            "number",
             "numeric input",
             "spinner",
             "calculator"
@@ -3682,7 +3614,6 @@
         {
           "UniqueId": "PasswordBox",
           "Tags": [
-            "password",
             "secure input",
             "reveal"
           ],
@@ -3794,7 +3725,6 @@
         {
           "UniqueId": "TextBlock",
           "Tags": [
-            "text",
             "label",
             "display text"
           ],
@@ -3945,7 +3875,6 @@
         {
           "UniqueId": "EasingFunction",
           "Tags": [
-            "easing",
             "animation curve",
             "velocity"
           ],
@@ -4070,7 +3999,6 @@
         {
           "UniqueId": "ParallaxView",
           "Tags": [
-            "parallax",
             "scrolling effect"
           ],
           "Title": "ParallaxView",
@@ -4110,7 +4038,6 @@
         {
           "UniqueId": "AppWindow",
           "Tags": [
-            "window",
             "window management",
             "windowing"
           ],
@@ -4258,7 +4185,6 @@
         {
           "UniqueId": "Clipboard",
           "Tags": [
-            "clipboard",
             "copy",
             "paste",
             "cut"
