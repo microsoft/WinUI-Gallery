@@ -8,6 +8,13 @@
       "Items": [
         {
           "UniqueId": "XamlResources",
+          "Tags": [
+            "ResourceDictionary",
+            "StaticResource",
+            "ThemeResource",
+            "Resources",
+            "lightweight styling"
+          ],
           "Title": "Resources",
           "IsNew": true,
           "Subtitle": "Reusable definitions for shared values to ensure consistency and maintainability.",
@@ -35,6 +42,13 @@
         },
         {
           "UniqueId": "XamlStyles",
+          "Tags": [
+            "Style",
+            "Setter",
+            "BasedOn",
+            "implicit style",
+            "default style"
+          ],
           "Title": "Style",
           "IsNew": true,
           "Subtitle": "A XAML style is a Reusable property settings to define consistent UI design elements.",
@@ -63,6 +77,15 @@
         },
         {
           "UniqueId": "Binding",
+          "Tags": [
+            "x:Bind",
+            "data binding",
+            "INotifyPropertyChanged",
+            "ObservableCollection",
+            "TwoWay",
+            "OneWay",
+            "DataContext"
+          ],
           "Title": "Binding",
           "IsNew": true,
           "Subtitle": "Connecting UI elements to data for automatic synchronization and updates.",
@@ -98,6 +121,12 @@
         },
         {
           "UniqueId": "Templates",
+          "Tags": [
+            "ControlTemplate",
+            "DataTemplate",
+            "ItemTemplate",
+            "DataTemplateSelector"
+          ],
           "Title": "Templates",
           "IsNew": true,
           "Subtitle": "Customize controls' visuals, item layouts, and data presentation in XAML.",
@@ -135,6 +164,11 @@
         },
         {
           "UniqueId": "CustomUserControls",
+          "Tags": [
+            "UserControl",
+            "custom control",
+            "reusable control"
+          ],
           "Title": "Custom & User Controls",
           "IsNew": true,
           "Subtitle": "Create reusable UI components with custom functionality and appearance.",
@@ -168,6 +202,11 @@
         },
         {
           "UniqueId": "CustomXamlConditionals",
+          "Tags": [
+            "IXamlCondition",
+            "conditional XAML",
+            "markup extension"
+          ],
           "Title": "XAML Conditions",
           "IsNew": true,
           "Subtitle": "Define custom XAML conditions evaluated at parse time using IXamlCondition.",
@@ -183,6 +222,11 @@
         },
         {
           "UniqueId": "ScratchPad",
+          "Tags": [
+            "playground",
+            "sandbox",
+            "test markup"
+          ],
           "Title": "Scratch Pad",
           "Subtitle": "Scratch pad for testing simple XAML markup",
           "ImagePath": "ms-appx:///Assets/ControlImages/ScratchPad.png",
@@ -205,6 +249,12 @@
       "Items": [
         {
           "UniqueId": "Color",
+          "Tags": [
+            "palette",
+            "brush",
+            "accent color",
+            "theme color"
+          ],
           "Title": "Color",
           "Subtitle": "Balanced color design creates clarity and aesthetic harmony.",
           "ImagePath": "ms-appx:///Assets/ControlImages/ColorPaletteResources.png",
@@ -225,6 +275,11 @@
         },
         {
           "UniqueId": "Geometry",
+          "Tags": [
+            "path",
+            "vector",
+            "figures"
+          ],
           "Title": "Geometry",
           "Subtitle": "Clear geometric design ensures visual coherence and structure.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Shape.png",
@@ -241,6 +296,14 @@
         },
         {
           "UniqueId": "Iconography",
+          "Tags": [
+            "icons",
+            "glyph",
+            "Segoe Fluent Icons",
+            "FontIcon",
+            "SymbolIcon",
+            "icon font"
+          ],
           "Title": "Iconography",
           "IsUpdated": true,
           "Subtitle": "Icons are a visual design language that can be used to communicate information quickly and effectively.",
@@ -263,6 +326,11 @@
         },
         {
           "UniqueId": "Spacing",
+          "Tags": [
+            "margin",
+            "padding",
+            "layout spacing"
+          ],
           "Title": "Spacing",
           "Subtitle": "Thoughtful spacing design enhances readability and flow.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CompactSizing.png",
@@ -275,6 +343,13 @@
         },
         {
           "UniqueId": "Typography",
+          "Tags": [
+            "font",
+            "text style",
+            "TitleTextBlockStyle",
+            "BodyTextBlockStyle",
+            "font size"
+          ],
           "Title": "Typography",
           "Subtitle": "Typography design guides attention with intuitive fonts and hierarchy.",
           "SourcePath": "/CommonStyles/TextBlock_themeresources.xaml",
@@ -303,6 +378,12 @@
       "Items": [
         {
           "UniqueId": "AccessibilityColorContrast",
+          "Tags": [
+            "high contrast",
+            "color contrast",
+            "WCAG",
+            "accessibility"
+          ],
           "Title": "Color Contrast",
           "Subtitle": "High contrast design ensures accessibility for all users.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
@@ -319,6 +400,13 @@
         },
         {
           "UniqueId": "AccessibilityKeyboard",
+          "Tags": [
+            "keyboard",
+            "tab navigation",
+            "access keys",
+            "focus",
+            "accessibility"
+          ],
           "Title": "Keyboard Navigation",
           "Subtitle": "Keyboard-friendly design enables seamless interactions.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
@@ -359,6 +447,13 @@
         },
         {
           "UniqueId": "AccessibilityScreenReader",
+          "Tags": [
+            "screen reader",
+            "Narrator",
+            "AutomationProperties",
+            "assistive technology",
+            "accessibility"
+          ],
           "Title": "Screen Reader",
           "Subtitle": "Inclusive design ensures meaningful content for assistive technologies.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
@@ -399,6 +494,10 @@
 
         {
           "UniqueId": "AppBarButton",
+          "Tags": [
+            "toolbar button",
+            "command button"
+          ],
           "Title": "AppBarButton",
           "BaseClasses": [
             "Object",
@@ -449,6 +548,10 @@
         },
         {
           "UniqueId": "AppBarSeparator",
+          "Tags": [
+            "separator",
+            "divider"
+          ],
           "Title": "AppBarSeparator",
           "BaseClasses": [
             "Object",
@@ -480,6 +583,10 @@
         },
         {
           "UniqueId": "AppBarToggleButton",
+          "Tags": [
+            "toolbar toggle",
+            "command toggle"
+          ],
           "Title": "AppBarToggleButton",
           "BaseClasses": [
             "Object",
@@ -530,6 +637,11 @@
         },
         {
           "UniqueId": "CommandBar",
+          "Tags": [
+            "toolbar",
+            "commands",
+            "app bar"
+          ],
           "Title": "CommandBar",
           "BaseClasses": [
             "Object",
@@ -563,6 +675,11 @@
         },
         {
           "UniqueId": "CommandBarFlyout",
+          "Tags": [
+            "context menu",
+            "toolbar flyout",
+            "commands"
+          ],
           "Title": "CommandBarFlyout",
           "BaseClasses": [
             "Object",
@@ -595,6 +712,11 @@
         },
         {
           "UniqueId": "MenuBar",
+          "Tags": [
+            "menu",
+            "MenuBarItem",
+            "application menu"
+          ],
           "Title": "MenuBar",
           "BaseClasses": [
             "Object",
@@ -627,6 +749,12 @@
         },
         {
           "UniqueId": "MenuFlyout",
+          "Tags": [
+            "context menu",
+            "right click menu",
+            "MenuFlyoutItem",
+            "dropdown menu"
+          ],
           "Title": "MenuFlyout",
           "BaseClasses": [
             "Object",
@@ -677,6 +805,11 @@
         },
         {
           "UniqueId": "SwipeControl",
+          "Tags": [
+            "swipe",
+            "SwipeItem",
+            "gesture"
+          ],
           "Title": "SwipeControl",
           "BaseClasses": [
             "Object",
@@ -715,6 +848,11 @@
         },
         {
           "UniqueId": "StandardUICommand",
+          "Tags": [
+            "command",
+            "ICommand",
+            "standard command"
+          ],
           "Title": "StandardUICommand",
           "BaseClasses": [
             "Object",
@@ -744,6 +882,10 @@
         },
         {
           "UniqueId": "XamlUICommand",
+          "Tags": [
+            "command",
+            "ICommand"
+          ],
           "Title": "XamlUICommand",
           "BaseClasses": [
             "Object",
@@ -779,6 +921,11 @@
       "Items": [
         {
           "UniqueId": "FlipView",
+          "Tags": [
+            "carousel",
+            "slideshow",
+            "gallery"
+          ],
           "Title": "FlipView",
           "BaseClasses": [
             "Object",
@@ -812,6 +959,11 @@
         },
         {
           "UniqueId": "GridView",
+          "Tags": [
+            "grid",
+            "tiles",
+            "collection grid"
+          ],
           "Title": "GridView",
           "BaseClasses": [
             "Object",
@@ -847,6 +999,11 @@
         },
         {
           "UniqueId": "ItemsRepeater",
+          "Tags": [
+            "repeater",
+            "data layout",
+            "virtualization"
+          ],
           "Title": "ItemsRepeater",
           "BaseClasses": [
             "Object",
@@ -886,6 +1043,11 @@
         },
         {
           "UniqueId": "ItemsView",
+          "Tags": [
+            "collection",
+            "items source",
+            "layout"
+          ],
           "Title": "ItemsView",
           "BaseClasses": [
             "Object",
@@ -919,6 +1081,11 @@
         },
         {
           "UniqueId": "ListView",
+          "Tags": [
+            "list",
+            "selection",
+            "collection list"
+          ],
           "Title": "ListView",
           "BaseClasses": [
             "Object",
@@ -975,6 +1142,11 @@
         },
         {
           "UniqueId": "PullToRefresh",
+          "Tags": [
+            "pull to refresh",
+            "RefreshContainer",
+            "RefreshVisualizer"
+          ],
           "Title": "PullToRefresh",
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "Provides the ability to pull on a collection of items in a list/grid to refresh the contents of the collection.",
@@ -1003,6 +1175,12 @@
         },
         {
           "UniqueId": "TreeView",
+          "Tags": [
+            "tree",
+            "hierarchy",
+            "nodes",
+            "expandable list"
+          ],
           "Title": "TreeView",
           "BaseClasses": [
             "Object",
@@ -1040,6 +1218,11 @@
       "Items": [
         {
           "UniqueId": "CalendarDatePicker",
+          "Tags": [
+            "date picker",
+            "calendar",
+            "date"
+          ],
           "Title": "CalendarDatePicker",
           "BaseClasses": [
             "Object",
@@ -1070,6 +1253,11 @@
         },
         {
           "UniqueId": "CalendarView",
+          "Tags": [
+            "calendar",
+            "date",
+            "month view"
+          ],
           "Title": "CalendarView",
           "BaseClasses": [
             "Object",
@@ -1101,6 +1289,10 @@
         },
         {
           "UniqueId": "DatePicker",
+          "Tags": [
+            "date",
+            "date selection"
+          ],
           "Title": "DatePicker",
           "BaseClasses": [
             "Object",
@@ -1132,6 +1324,11 @@
         },
         {
           "UniqueId": "TimePicker",
+          "Tags": [
+            "time",
+            "clock",
+            "time selection"
+          ],
           "Title": "TimePicker",
           "BaseClasses": [
             "Object",
@@ -1169,6 +1366,11 @@
       "Items": [
         {
           "UniqueId": "Button",
+          "Tags": [
+            "click",
+            "push button",
+            "command"
+          ],
           "Title": "Button",
           "BaseClasses": [
             "Object",
@@ -1203,6 +1405,11 @@
         },
         {
           "UniqueId": "DropDownButton",
+          "Tags": [
+            "dropdown",
+            "flyout button",
+            "menu button"
+          ],
           "Title": "DropDownButton",
           "BaseClasses": [
             "Object",
@@ -1241,6 +1448,12 @@
         },
         {
           "UniqueId": "HyperlinkButton",
+          "Tags": [
+            "link",
+            "hyperlink",
+            "URL",
+            "navigate"
+          ],
           "Title": "HyperlinkButton",
           "BaseClasses": [
             "Object",
@@ -1275,6 +1488,10 @@
         },
         {
           "UniqueId": "RepeatButton",
+          "Tags": [
+            "repeat",
+            "hold button"
+          ],
           "Title": "RepeatButton",
           "BaseClasses": [
             "Object",
@@ -1309,6 +1526,10 @@
         },
         {
           "UniqueId": "ToggleButton",
+          "Tags": [
+            "toggle",
+            "on off"
+          ],
           "Title": "ToggleButton",
           "BaseClasses": [
             "Object",
@@ -1345,6 +1566,10 @@
         },
         {
           "UniqueId": "SplitButton",
+          "Tags": [
+            "split",
+            "dropdown button"
+          ],
           "Title": "SplitButton",
           "BaseClasses": [
             "Object",
@@ -1379,6 +1604,10 @@
         },
         {
           "UniqueId": "ToggleSplitButton",
+          "Tags": [
+            "toggle split",
+            "dropdown toggle"
+          ],
           "Title": "ToggleSplitButton",
           "BaseClasses": [
             "Object",
@@ -1415,6 +1644,12 @@
         },
         {
           "UniqueId": "CheckBox",
+          "Tags": [
+            "check",
+            "tick",
+            "three state",
+            "checkmark"
+          ],
           "Title": "CheckBox",
           "BaseClasses": [
             "Object",
@@ -1449,6 +1684,13 @@
         },
         {
           "UniqueId": "ColorPicker",
+          "Tags": [
+            "color",
+            "color spectrum",
+            "color wheel",
+            "RGB",
+            "hex"
+          ],
           "Title": "ColorPicker",
           "BaseClasses": [
             "Object",
@@ -1478,6 +1720,12 @@
         },
         {
           "UniqueId": "ComboBox",
+          "Tags": [
+            "dropdown",
+            "combo",
+            "select",
+            "picker"
+          ],
           "Title": "ComboBox",
           "BaseClasses": [
             "Object",
@@ -1517,6 +1765,12 @@
         },
         {
           "UniqueId": "RadioButton",
+          "Tags": [
+            "radio",
+            "RadioButtons",
+            "single selection",
+            "option"
+          ],
           "Title": "RadioButton",
           "BaseClasses": [
             "Object",
@@ -1555,6 +1809,11 @@
         },
         {
           "UniqueId": "RatingControl",
+          "Tags": [
+            "rating",
+            "stars",
+            "review"
+          ],
           "Title": "RatingControl",
           "BaseClasses": [
             "Object",
@@ -1585,6 +1844,12 @@
         },
         {
           "UniqueId": "Slider",
+          "Tags": [
+            "slider",
+            "range",
+            "track",
+            "Thumb"
+          ],
           "Title": "Slider",
           "BaseClasses": [
             "Object",
@@ -1616,6 +1881,11 @@
         },
         {
           "UniqueId": "ToggleSwitch",
+          "Tags": [
+            "switch",
+            "toggle",
+            "on off"
+          ],
           "Title": "ToggleSwitch",
           "BaseClasses": [
             "Object",
@@ -1655,6 +1925,11 @@
       "Items": [
         {
           "UniqueId": "InfoBadge",
+          "Tags": [
+            "badge",
+            "notification dot",
+            "count badge"
+          ],
           "Title": "InfoBadge",
           "BaseClasses": [
             "Object",
@@ -1686,6 +1961,12 @@
         },
         {
           "UniqueId": "InfoBar",
+          "Tags": [
+            "notification",
+            "status message",
+            "alert",
+            "banner"
+          ],
           "Title": "InfoBar",
           "BaseClasses": [
             "Object",
@@ -1716,6 +1997,12 @@
         },
         {
           "UniqueId": "ProgressBar",
+          "Tags": [
+            "progress",
+            "loading",
+            "determinate",
+            "indeterminate"
+          ],
           "Title": "ProgressBar",
           "BaseClasses": [
             "Object",
@@ -1746,6 +2033,12 @@
         },
         {
           "UniqueId": "ProgressRing",
+          "Tags": [
+            "progress",
+            "loading",
+            "spinner",
+            "busy"
+          ],
           "Title": "ProgressRing",
           "BaseClasses": [
             "Object",
@@ -1775,6 +2068,11 @@
         },
         {
           "UniqueId": "ToolTip",
+          "Tags": [
+            "tooltip",
+            "hint",
+            "hover text"
+          ],
           "Title": "ToolTip",
           "BaseClasses": [
             "Object",
@@ -1814,6 +2112,12 @@
       "Items": [
         {
           "UniqueId": "ContentDialog",
+          "Tags": [
+            "dialog",
+            "modal",
+            "popup dialog",
+            "message box"
+          ],
           "Title": "ContentDialog",
           "BaseClasses": [
             "Object",
@@ -1847,6 +2151,11 @@
         },
         {
           "UniqueId": "Flyout",
+          "Tags": [
+            "flyout",
+            "popup",
+            "contextual"
+          ],
           "Title": "Flyout",
           "BaseClasses": [
             "Object",
@@ -1878,6 +2187,11 @@
         },
         {
           "UniqueId": "Popup",
+          "Tags": [
+            "popup",
+            "overlay",
+            "temporary content"
+          ],
           "Title": "Popup",
           "BaseClasses": [
             "Object",
@@ -1902,6 +2216,12 @@
         },
         {
           "UniqueId": "TeachingTip",
+          "Tags": [
+            "teaching tip",
+            "callout",
+            "coachmark",
+            "tip"
+          ],
           "Title": "TeachingTip",
           "BaseClasses": [
             "Object",
@@ -1941,6 +2261,11 @@
       "Items": [
         {
           "UniqueId": "AnnotatedScrollBar",
+          "Tags": [
+            "scrollbar",
+            "annotated scroll",
+            "navigation"
+          ],
           "Title": "AnnotatedScrollBar",
           "BaseClasses": [
             "Object",
@@ -1967,6 +2292,12 @@
         },
         {
           "UniqueId": "PipsPager",
+          "Tags": [
+            "pager",
+            "pagination",
+            "dots",
+            "pips"
+          ],
           "Title": "PipsPager",
           "BaseClasses": [
             "Object",
@@ -1998,6 +2329,12 @@
         },
         {
           "UniqueId": "ScrollView",
+          "Tags": [
+            "scroll",
+            "pan",
+            "zoom",
+            "scrolling"
+          ],
           "Title": "ScrollView",
           "BaseClasses": [
             "Object",
@@ -2034,6 +2371,12 @@
         },
         {
           "UniqueId": "ScrollViewer",
+          "Tags": [
+            "scroll",
+            "pan",
+            "zoom",
+            "scrolling"
+          ],
           "Title": "ScrollViewer",
           "BaseClasses": [
             "Object",
@@ -2070,6 +2413,11 @@
         },
         {
           "UniqueId": "SemanticZoom",
+          "Tags": [
+            "zoom",
+            "semantic zoom",
+            "grouped view"
+          ],
           "Title": "SemanticZoom",
           "BaseClasses": [
             "Object",
@@ -2106,6 +2454,11 @@
       "Items": [
         {
           "UniqueId": "Border",
+          "Tags": [
+            "outline",
+            "frame",
+            "background"
+          ],
           "Title": "Border",
           "BaseClasses": [
             "Object",
@@ -2133,6 +2486,10 @@
         },
         {
           "UniqueId": "Canvas",
+          "Tags": [
+            "absolute position",
+            "coordinates"
+          ],
           "Title": "Canvas",
           "BaseClasses": [
             "Object",
@@ -2165,6 +2522,11 @@
         },
         {
           "UniqueId": "Expander",
+          "Tags": [
+            "collapse",
+            "expand",
+            "accordion"
+          ],
           "Title": "Expander",
           "BaseClasses": [
             "Object",
@@ -2197,6 +2559,11 @@
         },
         {
           "UniqueId": "Grid",
+          "Tags": [
+            "rows",
+            "columns",
+            "layout"
+          ],
           "Title": "Grid",
           "BaseClasses": [
             "Object",
@@ -2234,6 +2601,10 @@
 
         {
           "UniqueId": "RelativePanel",
+          "Tags": [
+            "relative layout",
+            "positioning"
+          ],
           "Title": "RelativePanel",
           "BaseClasses": [
             "Object",
@@ -2266,6 +2637,11 @@
         },
         {
           "UniqueId": "SplitView",
+          "Tags": [
+            "pane",
+            "hamburger",
+            "navigation pane"
+          ],
           "Title": "SplitView",
           "BaseClasses": [
             "Object",
@@ -2299,6 +2675,11 @@
         },
         {
           "UniqueId": "StackPanel",
+          "Tags": [
+            "stack",
+            "vertical layout",
+            "horizontal layout"
+          ],
           "Title": "StackPanel",
           "BaseClasses": [
             "Object",
@@ -2331,6 +2712,11 @@
         },
         {
           "UniqueId": "VariableSizedWrapGrid",
+          "Tags": [
+            "wrap grid",
+            "tiles",
+            "spanning"
+          ],
           "Title": "VariableSizedWrapGrid",
           "BaseClasses": [
             "Object",
@@ -2363,6 +2749,11 @@
         },
         {
           "UniqueId": "Viewbox",
+          "Tags": [
+            "scale",
+            "stretch",
+            "zoom content"
+          ],
           "Title": "Viewbox",
           "BaseClasses": [
             "Object",
@@ -2397,6 +2788,11 @@
       "Items": [
         {
           "UniqueId": "BreadcrumbBar",
+          "Tags": [
+            "breadcrumb",
+            "navigation trail",
+            "path"
+          ],
           "Title": "BreadcrumbBar",
           "BaseClasses": [
             "Object",
@@ -2428,6 +2824,12 @@
         },
         {
           "UniqueId": "NavigationView",
+          "Tags": [
+            "navigation",
+            "hamburger menu",
+            "side nav",
+            "nav pane"
+          ],
           "Title": "NavigationView",
           "BaseClasses": [
             "Object",
@@ -2459,6 +2861,11 @@
         },
         {
           "UniqueId": "Pivot",
+          "Tags": [
+            "tabs",
+            "pivot",
+            "tabbed view"
+          ],
           "Title": "Pivot",
           "BaseClasses": [
             "Object",
@@ -2489,6 +2896,11 @@
         },
         {
           "UniqueId": "SelectorBar",
+          "Tags": [
+            "selector",
+            "segmented",
+            "tabs"
+          ],
           "Title": "SelectorBar",
           "BaseClasses": [
             "Object",
@@ -2521,6 +2933,12 @@
         },
         {
           "UniqueId": "TabView",
+          "Tags": [
+            "tabs",
+            "tabbed",
+            "tab control",
+            "documents"
+          ],
           "Title": "TabView",
           "BaseClasses": [
             "Object",
@@ -2564,6 +2982,12 @@
       "Items": [
         {
           "UniqueId": "AnimatedVisualPlayer",
+          "Tags": [
+            "Lottie",
+            "animation",
+            "motion graphics",
+            "player"
+          ],
           "Title": "AnimatedVisualPlayer",
           "BaseClasses": [
             "Object",
@@ -2604,6 +3028,12 @@
         },
         {
           "UniqueId": "CaptureElementPreview",
+          "Tags": [
+            "camera",
+            "webcam",
+            "capture",
+            "preview"
+          ],
           "Title": "Capture Element / Camera Preview",
           "Subtitle": "A sample for doing a camera preview.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CaptureElement.png",
@@ -2622,6 +3052,12 @@
         },
         {
           "UniqueId": "Image",
+          "Tags": [
+            "image",
+            "picture",
+            "BitmapImage",
+            "photo"
+          ],
           "Title": "Image",
           "BaseClasses": [
             "Object",
@@ -2650,6 +3086,12 @@
         },
         {
           "UniqueId": "MapControl",
+          "Tags": [
+            "map",
+            "maps",
+            "geography",
+            "location"
+          ],
           "Title": "MapControl",
           "BaseClasses": [
             "Object",
@@ -2671,6 +3113,12 @@
         },
         {
           "UniqueId": "MediaPlayerElement",
+          "Tags": [
+            "video",
+            "media player",
+            "audio",
+            "playback"
+          ],
           "Title": "MediaPlayerElement",
           "BaseClasses": [
             "Object",
@@ -2701,6 +3149,12 @@
         },
         {
           "UniqueId": "PersonPicture",
+          "Tags": [
+            "avatar",
+            "profile picture",
+            "contact photo",
+            "initials"
+          ],
           "Title": "PersonPicture",
           "BaseClasses": [
             "Object",
@@ -2730,6 +3184,12 @@
         },
         {
           "UniqueId": "Sound",
+          "Tags": [
+            "sound",
+            "audio",
+            "UI sound",
+            "ElementSoundPlayer"
+          ],
           "Title": "Sound",
           "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "A code-behind only API that enables 2D and 3D UI sounds on all XAML controls.",
@@ -2748,6 +3208,13 @@
         },
         {
           "UniqueId": "WebView2",
+          "Tags": [
+            "browser",
+            "web",
+            "HTML",
+            "Edge",
+            "web content"
+          ],
           "Title": "WebView2",
           "BaseClasses": [
             "Object",
@@ -2784,6 +3251,13 @@
       "Items": [
         {
           "UniqueId": "Acrylic",
+          "Tags": [
+            "acrylic",
+            "material",
+            "translucent",
+            "blur",
+            "AcrylicBrush"
+          ],
           "Title": "AcrylicBrush",
           "ApiNamespace": "Microsoft.UI.Xaml.Media",
           "Subtitle": "A translucent material recommended for panel backgrounds.",
@@ -2809,6 +3283,11 @@
         },
         {
           "UniqueId": "AnimatedIcon",
+          "Tags": [
+            "animated icon",
+            "icon animation",
+            "Lottie icon"
+          ],
           "Title": "AnimatedIcon",
           "BaseClasses": [
             "Object",
@@ -2847,6 +3326,11 @@
         },
         {
           "UniqueId": "CompactSizing",
+          "Tags": [
+            "compact",
+            "density",
+            "compact sizing"
+          ],
           "Title": "Compact Sizing",
           "Subtitle": "How to use a Resource Dictionary to enable compact sizing.",
           "ImagePath": "ms-appx:///Assets/ControlImages/CompactSizing.png",
@@ -2861,6 +3345,15 @@
         },
         {
           "UniqueId": "IconElement",
+          "Tags": [
+            "BitmapIcon",
+            "FontIcon",
+            "PathIcon",
+            "SymbolIcon",
+            "ImageIcon",
+            "AnimatedIcon",
+            "icon"
+          ],
           "Title": "IconElement",
           "BaseClasses": [
             "Object",
@@ -2906,6 +3399,10 @@
         },
         {
           "UniqueId": "Line",
+          "Tags": [
+            "stroke",
+            "draw line"
+          ],
           "Title": "Line",
           "BaseClasses": [
             "Object",
@@ -2934,6 +3431,14 @@
         },
         {
           "UniqueId": "Shape",
+          "Tags": [
+            "shapes",
+            "ellipse",
+            "rectangle",
+            "polygon",
+            "path",
+            "circle"
+          ],
           "Title": "Shape",
           "BaseClasses": [
             "Object",
@@ -2961,6 +3466,11 @@
         },
         {
           "UniqueId": "RadialGradientBrush",
+          "Tags": [
+            "gradient",
+            "radial gradient",
+            "brush"
+          ],
           "Title": "RadialGradientBrush",
           "BaseClasses": [
             "Object",
@@ -2984,6 +3494,12 @@
         },
         {
           "UniqueId": "SystemBackdrops",
+          "Tags": [
+            "Mica",
+            "Acrylic",
+            "backdrop",
+            "window material"
+          ],
           "Title": "System Backdrops (Mica/Acrylic)",
           "ApiNamespace": "Microsoft.UI.Composition.SystemBackdrops",
           "Subtitle": "System backdrops, like Mica and Acrylic, for app windows.",
@@ -3022,6 +3538,12 @@
         },
         {
           "UniqueId": "SystemBackdropElement",
+          "Tags": [
+            "Mica",
+            "Acrylic",
+            "backdrop",
+            "material"
+          ],
           "Title": "SystemBackdropElement",
           "BaseClasses": [
             "Object",
@@ -3045,6 +3567,11 @@
         },
         {
           "UniqueId": "ThemeShadow",
+          "Tags": [
+            "shadow",
+            "depth",
+            "elevation"
+          ],
           "Title": "ThemeShadow",
           "ApiNamespace": "Microsoft.UI.Xaml.Media",
           "Subtitle": "Adds a depth-aware shadow to UI elements using system lighting.",
@@ -3079,6 +3606,12 @@
       "Items": [
         {
           "UniqueId": "AutoSuggestBox",
+          "Tags": [
+            "search box",
+            "autocomplete",
+            "suggestions",
+            "typeahead"
+          ],
           "Title": "AutoSuggestBox",
           "BaseClasses": [
             "Object",
@@ -3110,6 +3643,12 @@
         },
         {
           "UniqueId": "NumberBox",
+          "Tags": [
+            "number",
+            "numeric input",
+            "spinner",
+            "calculator"
+          ],
           "Title": "NumberBox",
           "BaseClasses": [
             "Object",
@@ -3142,6 +3681,11 @@
         },
         {
           "UniqueId": "PasswordBox",
+          "Tags": [
+            "password",
+            "secure input",
+            "reveal"
+          ],
           "Title": "PasswordBox",
           "BaseClasses": [
             "Object",
@@ -3174,6 +3718,12 @@
         },
         {
           "UniqueId": "RichEditBox",
+          "Tags": [
+            "rich text editor",
+            "RTF",
+            "formatted text",
+            "editor"
+          ],
           "Title": "RichEditBox",
           "BaseClasses": [
             "Object",
@@ -3207,6 +3757,11 @@
         },
         {
           "UniqueId": "RichTextBlock",
+          "Tags": [
+            "rich text",
+            "formatted text",
+            "inline content"
+          ],
           "Title": "RichTextBlock",
           "BaseClasses": [
             "Object",
@@ -3238,6 +3793,11 @@
         },
         {
           "UniqueId": "TextBlock",
+          "Tags": [
+            "text",
+            "label",
+            "display text"
+          ],
           "Title": "TextBlock",
           "BaseClasses": [
             "Object",
@@ -3270,6 +3830,11 @@
         },
         {
           "UniqueId": "TextBox",
+          "Tags": [
+            "text input",
+            "input field",
+            "text field"
+          ],
           "Title": "TextBox",
           "BaseClasses": [
             "Object",
@@ -3311,6 +3876,12 @@
       "Items": [
         {
           "UniqueId": "XamlCompInterop",
+          "Tags": [
+            "composition",
+            "Visual layer",
+            "expression animation",
+            "interop"
+          ],
           "Title": "Animation interop",
           "Subtitle": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more.",
           "ImagePath": "ms-appx:///Assets/ControlImages/AnimationInterop.png",
@@ -3335,6 +3906,11 @@
         },
         {
           "UniqueId": "ConnectedAnimation",
+          "Tags": [
+            "connected animation",
+            "continuity",
+            "page transition"
+          ],
           "Title": "Connected Animation",
           "BaseClasses": [
             "Object"
@@ -3368,6 +3944,11 @@
         },
         {
           "UniqueId": "EasingFunction",
+          "Tags": [
+            "easing",
+            "animation curve",
+            "velocity"
+          ],
           "Title": "Easing Functions",
           "ApiNamespace": "Microsoft.UI.Xaml.Media.Animation",
           "Subtitle": "Easing is a way to manipulate the velocity of an object as it animates.",
@@ -3395,6 +3976,11 @@
         },
         {
           "UniqueId": "ImplicitTransition",
+          "Tags": [
+            "implicit animation",
+            "transition",
+            "property animation"
+          ],
           "Title": "Implicit Transitions",
           "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "Use Implicit Transitions to automatically animate changes to properties.",
@@ -3421,6 +4007,11 @@
         },
         {
           "UniqueId": "PageTransition",
+          "Tags": [
+            "page transition",
+            "navigation transition",
+            "NavigationTransitionInfo"
+          ],
           "Title": "Page Transitions",
           "ApiNamespace": "Microsoft.UI.Xaml.Media.Animation",
           "Subtitle": "Page transitions provide visual feedback about the relationship between pages.",
@@ -3447,6 +4038,11 @@
         },
         {
           "UniqueId": "ThemeTransition",
+          "Tags": [
+            "theme transition",
+            "entrance animation",
+            "EntranceThemeTransition"
+          ],
           "Title": "Theme Transitions",
           "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "Theme transitions are pre-packaged, easy-to-apply animations.",
@@ -3473,6 +4069,10 @@
         },
         {
           "UniqueId": "ParallaxView",
+          "Tags": [
+            "parallax",
+            "scrolling effect"
+          ],
           "Title": "ParallaxView",
           "BaseClasses": [
             "Object",
@@ -3509,6 +4109,11 @@
       "Items": [
         {
           "UniqueId": "AppWindow",
+          "Tags": [
+            "window",
+            "window management",
+            "windowing"
+          ],
           "Title": "AppWindow",
           "ApiNamespace": "Microsoft.UI.Windowing",
           "Subtitle": "A flexible, customizable window management system for app development.",
@@ -3552,6 +4157,11 @@
         },
         {
           "UniqueId": "AppWindowTitleBar",
+          "Tags": [
+            "title bar",
+            "caption",
+            "custom title bar"
+          ],
           "Title": "AppWindowTitleBar",
           "BaseClasses": [
             "Object"
@@ -3577,6 +4187,11 @@
         },
         {
           "UniqueId": "CreateMultipleWindows",
+          "Tags": [
+            "multiple windows",
+            "new window",
+            "multi window"
+          ],
           "Title": "Multiple windows",
           "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "An example showing the creation of single-threaded top level Xaml windows.",
@@ -3600,6 +4215,11 @@
         },
         {
           "UniqueId": "TitleBar",
+          "Tags": [
+            "title bar",
+            "caption bar",
+            "custom title bar"
+          ],
           "Title": "TitleBar",
           "BaseClasses": [
             "Object",
@@ -3637,6 +4257,12 @@
       "Items": [
         {
           "UniqueId": "Clipboard",
+          "Tags": [
+            "clipboard",
+            "copy",
+            "paste",
+            "cut"
+          ],
           "Title": "Clipboard",
           "ApiNamespace": "Windows.ApplicationModel.DataTransfer",
           "Subtitle": "Copy and paste text, images, and files to and from the system Clipboard.",
@@ -3662,6 +4288,11 @@
         },
         {
           "UniqueId": "ContentIsland",
+          "Tags": [
+            "content island",
+            "hosting",
+            "interop"
+          ],
           "Title": "ContentIsland",
           "ApiNamespace": "Microsoft.UI.Content",
           "Subtitle": "Create ContentIslands to host other frameworks in your app.",
@@ -3677,6 +4308,13 @@
         },
         {
           "UniqueId": "StoragePickers",
+          "Tags": [
+            "file picker",
+            "FileOpenPicker",
+            "FileSavePicker",
+            "FolderPicker",
+            "file dialog"
+          ],
           "Title": "Storage pickers",
           "ApiNamespace": "Microsoft.Windows.Storage.Pickers",
           "BaseClasses": [
@@ -3713,6 +4351,12 @@
       "Items": [
         {
           "UniqueId": "AppNotification",
+          "Tags": [
+            "toast",
+            "notification",
+            "Action Center",
+            "toast notification"
+          ],
           "Title": "App notifications",
           "BaseClasses": [
             "Object"
@@ -3746,6 +4390,11 @@
         },
         {
           "UniqueId": "BadgeNotificationManager",
+          "Tags": [
+            "taskbar badge",
+            "badge",
+            "notification badge"
+          ],
           "Title": "Badge notifications",
           "BaseClasses": [
             "Object"
@@ -3776,6 +4425,12 @@
         },
         {
           "UniqueId": "JumpList",
+          "Tags": [
+            "jump list",
+            "taskbar",
+            "recent",
+            "tasks"
+          ],
           "Title": "JumpList",
           "ApiNamespace": "Windows.UI.StartScreen",
           "BaseClasses": [
