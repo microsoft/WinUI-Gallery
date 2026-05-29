@@ -21,6 +21,11 @@
         <SelfContained>true</SelfContained>
     </PropertyGroup>
 
+	<!-- WinUI Repo build support -->
+    <PropertyGroup>
+        <WindowSdkMSIXVersion Condition="'$(WindowSdkMSIXVersion)' == ''">1.7.260316102</WindowSdkMSIXVersion>
+    </PropertyGroup>
+
     <ItemGroup>
         <Page Remove="UnitTestApp.xaml" />
         <ApplicationDefinition Include="UnitTestApp.xaml" />
@@ -33,7 +38,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Windows.SDK.BuildTools.MSIX" Version="1.7.260316102">
+        <PackageReference Include="Microsoft.Windows.SDK.BuildTools.MSIX" Version="$(WindowSdkMSIXVersion)">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
