@@ -408,8 +408,10 @@ public sealed partial class MainWindow : Window
                         bool flag = item.IncludedInBuild;
                         foreach (string queryToken in querySplit)
                         {
-                            // Check if token is not in string
-                            if (item.Title.IndexOf(queryToken, StringComparison.CurrentCultureIgnoreCase) < 0)
+                            // Check if token is not in the title or any of the search tags
+                            bool tokenMatches = item.Title.IndexOf(queryToken, StringComparison.CurrentCultureIgnoreCase) >= 0
+                                || item.Tags.Any(tag => tag.IndexOf(queryToken, StringComparison.CurrentCultureIgnoreCase) >= 0);
+                            if (!tokenMatches)
                             {
                                 // Token is not in string, so we ignore this item.
                                 flag = false;
