@@ -44,6 +44,11 @@
                         IsPaneToggleButtonVisible="{Binding ElementName=PaneToggle, Path=IsOn, Mode=OneWay}"
                         LayoutUpdated="TitleBar_LayoutUpdated"
                         Subtitle="{Binding ElementName=SubtitleBox, Path=Text, Mode=OneWay}">
+                        <TitleBar.Resources>
+                            <!--  TitleBar.Content uses Center alignment by default. Override
+                                  to Stretch so the search box can grow with the title bar.  -->
+                            <HorizontalAlignment x:Key="TitleBarContentHorizontalAlignment">Stretch</HorizontalAlignment>
+                        </TitleBar.Resources>
                         <TitleBar.IconSource>
                             <ImageIconSource ImageSource="/Assets/Tiles/GalleryIcon.ico" />
                         </TitleBar.IconSource>
@@ -55,9 +60,10 @@
                         </TitleBar.RightHeader>
                         <TitleBar.Content>
                             <AutoSuggestBox
-                                Width="360"
+                                MaxWidth="580"
+                                HorizontalAlignment="Stretch"
                                 VerticalAlignment="Center"
-                                PlaceholderText="Search.."
+                                PlaceholderText="Search..."
                                 QueryIcon="Find" />
                         </TitleBar.Content>
                     </TitleBar>
@@ -93,6 +99,26 @@
                 <controls:ControlExampleSubstitution Key="BackButtonVisibility" Value="{x:Bind BackButtonToggle.IsOn, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="PaneToggleVisibility" Value="{x:Bind PaneToggle.IsOn, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample HorizontalContentAlignment="Stretch" SampleDefinition="TitleBar\TitlebarDragRegions.txt">
+            <controls:ControlExample.Example>
+                <StackPanel
+                    MaxWidth="560"
+                    Orientation="Vertical"
+                    Spacing="12">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Drag regions can only be observed on a real window. Click the button below to open a sample window where you can toggle TitleBar.IsDragRegion on a status badge and call RecomputeDragRegions() after dynamic content changes."
+                        TextAlignment="Center"
+                        TextWrapping="WrapWholeWords" />
+                    <Button
+                        HorizontalAlignment="Center"
+                        Click="CreateTitleBarDragRegionsWindowClick"
+                        Content="Show window"
+                        Style="{StaticResource AccentButtonStyle}" />
+                </StackPanel>
+            </controls:ControlExample.Example>
         </controls:ControlExample>
 
         <controls:ControlExample HorizontalContentAlignment="Stretch" SampleDefinition="TitleBar\EndEndTitlebarSample.txt">
