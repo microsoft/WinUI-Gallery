@@ -142,6 +142,10 @@
     <PackageReference Include="System.Private.Uri" />
 	<ProjectReference Include="..\WinUIGallery.SourceGenerator\WinUIGallery.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
+
+  <ItemGroup Condition="'$(IsInWinUIRepo)' == 'true'">
+    <PackageReference Update="Microsoft.Graphics.Win2D" VersionOverride="$(GraphicsWin2DVersion)" />
+  </ItemGroup>
 	
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
     <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
