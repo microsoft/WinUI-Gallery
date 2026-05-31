@@ -484,5 +484,79 @@
 
         </controls:ControlExample>
 
+        <controls:ControlExample SampleDefinition="ListView\ListviewRestoreScrollPosition.txt">
+            <ListView
+                x:Name="RestoreScrollListView"
+                Width="400"
+                Height="220"
+                HorizontalAlignment="Left"
+                BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                ItemsSource="{x:Bind contacts5}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <TextBlock Margin="0,8,0,8" Text="{x:Bind}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <Button x:Name="SavePositionButton" Click="SavePositionButton_Click" Content="Save position" />
+                    <Button
+                        x:Name="RestorePositionButton"
+                        Click="RestorePositionButton_Click"
+                        Content="Restore position"
+                        IsEnabled="False" />
+                    <TextBlock
+                        x:Name="SavedPositionTextBlock"
+                        MaxWidth="220"
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="No position saved."
+                        TextWrapping="Wrap" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
+
+        <controls:ControlExample SampleDefinition="ListView\ListviewScrollIntoView.txt">
+            <ListView
+                x:Name="ScrollIntoViewListView"
+                Width="400"
+                Height="220"
+                HorizontalAlignment="Left"
+                BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                ItemsSource="{x:Bind contacts6}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <TextBlock Margin="0,8,0,8" Text="{x:Bind}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <NumberBox
+                        x:Name="ScrollIndexNumberBox"
+                        Header="Index"
+                        LargeChange="10"
+                        Maximum="999"
+                        Minimum="0"
+                        SmallChange="1"
+                        SpinButtonPlacementMode="Inline"
+                        ValidationMode="InvalidInputOverwritten"
+                        Value="10" />
+                    <ComboBox
+                        x:Name="ScrollAlignmentComboBox"
+                        Header="Alignment"
+                        SelectedIndex="0">
+                        <ComboBoxItem Content="Default" />
+                        <ComboBoxItem Content="Leading" />
+                    </ComboBox>
+                    <Button Click="ScrollIntoViewButton_Click" Content="Scroll into view" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
+
     </StackPanel>
 </pages:ItemsPageBase>
