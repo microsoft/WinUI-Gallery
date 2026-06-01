@@ -48,6 +48,11 @@
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
                 <StackPanel>
+                    <ComboBox
+                        x:Name="cameraSourceComboBox"
+                        Header="Camera source"
+                        DisplayMemberPath="DisplayName"
+                        SelectionChanged="CameraSourceComboBox_SelectionChanged" />
                     <ToggleSwitch
                         x:Name="mirrorSwitch"
                         Header="Mirror preview"

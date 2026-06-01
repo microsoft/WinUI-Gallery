@@ -12,8 +12,28 @@ using Windows.Media.Capture;
             frameSourceName.Text = "No camera devices found.";
             return;
         }
-        mediaFrameSourceGroup = groups.First();
+        cameraSourceComboBox.ItemsSource = groups;
+        cameraSourceComboBox.SelectedIndex = 0;
+    }
 
+    async private void CameraSourceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (cameraSourceComboBox.SelectedItem is MediaFrameSourceGroup selectedGroup)
+        {
+            await StartCapture(selectedGroup);
+        }
+    }
+
+    async private Task StartCapture(MediaFrameSourceGroup sourceGroup)
+    {
+        if (mediaCapture != null)
+        {
+            captureElement.Source = null;
+            mediaCapture.Dispose();
+            mediaCapture = null;
+        }
+
+        mediaFrameSourceGroup = sourceGroup;
         frameSourceName.Text = "Viewing: " + mediaFrameSourceGroup.DisplayName;
         mediaCapture = new MediaCapture();
         var mediaCaptureInitializationSettings = new MediaCaptureInitializationSettings()
