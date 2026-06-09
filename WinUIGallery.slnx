@@ -14,7 +14,7 @@
     <Platform Name="x86" />
   </Configurations>
   <Folder Name="/Solution Items/">
-    <File Path="../Directory.Build.props" />
+    <File Path="Directory.Build.props" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/WinUIGallery.UITests/WinUIGallery.UITests.csproj">

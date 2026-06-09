@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" TreatAsLocalProperty="PublishAot">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
 	  <LangVersion>latest</LangVersion>
 	  <IncludeBuildOutput>false</IncludeBuildOutput>
 	  <PlatformTarget>AnyCPU</PlatformTarget>
