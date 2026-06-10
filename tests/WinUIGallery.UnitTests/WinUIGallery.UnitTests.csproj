@@ -38,15 +38,15 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Windows.SDK.BuildTools.MSIX" Version="$(WindowSdkMSIXVersion)">
+        <PackageReference Include="Microsoft.Windows.SDK.BuildTools.MSIX" Version="1.7.260518100">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
-        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$(MicrosoftWindowsSDKBuildToolsNugetPackageVersion)" />
-        <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
-        <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
-        <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="17.7.2" ExcludeAssets="build" />
+        <PackageReference Include="Microsoft.WindowsAppSDK" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.1839" />
+        <PackageReference Include="MSTest.TestAdapter" Version="4.2.3" />
+        <PackageReference Include="MSTest.TestFramework" Version="4.2.3" />
+        <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="18.6.0" ExcludeAssets="build" />
         <Manifest Include="$(ApplicationManifest)" />
     </ItemGroup>
 

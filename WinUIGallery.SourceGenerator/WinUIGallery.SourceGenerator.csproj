@@ -12,12 +12,12 @@
 	  <PublishAot>false</PublishAot>
   </PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0">
+		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="5.3.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.3.1" />
-		<PackageReference Include="System.Text.Json" Version="8.0.5" GeneratePathProperty="true" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.3.0" />
+		<PackageReference Include="System.Text.Json" Version="10.0.9" GeneratePathProperty="true" />
 	</ItemGroup>
 
 	<!-- Expose System.Text.Json and its dependencies as analyzer files so the consuming
