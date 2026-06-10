@@ -16,6 +16,11 @@
   <Folder Name="/Solution Items/">
     <File Path="Directory.Build.props" />
   </Folder>
+  <Folder Name="/Solution Items/.piplines/">
+    <File Path=".pipelines/azure-pipelines.yml" />
+    <File Path=".pipelines/WinUI-Gallery-OneBranch-Official.yml" />
+    <File Path=".pipelines/WinUI-Gallery-SyncMirror.yml" />
+  </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/WinUIGallery.UITests/WinUIGallery.UITests.csproj">
       <BuildType Solution="Debug-Unpackaged|ARM64" Project="Debug" />

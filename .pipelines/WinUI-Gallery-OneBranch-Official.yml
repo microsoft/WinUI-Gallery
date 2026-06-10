@@ -1,4 +1,4 @@
-name: $(BuildDefinitionName)_$(date:yyMM).$(date:dd)$(rev:rrr)
+﻿name: $(BuildDefinitionName)_$(date:yyMM).$(date:dd)$(rev:rrr)
 
 # https://aka.ms/obpipelines/triggers
 trigger: none 
@@ -19,7 +19,7 @@ variables:
   NUGET_XMLDOC_MODE: none
 
   # Docker image which is used to build the project https://aka.ms/obpipelines/containers
-  WindowsContainerImage: 'onebranch.azurecr.io/windows/ltsc2019/vse2022:latest' 
+  WindowsContainerImage: 'onebranch.azurecr.io/windows/ltsc2025/vse2026:latest' 
 
   Codeql.Enabled: true #  CodeQL once every 3 days on the default branch for all languages its applicable to in that pipeline.
   
@@ -76,7 +76,7 @@ extends:
           displayName: Restore NuGet Packages for WinUI Gallery
           inputs:
             command: 'restore'
-            restoreSolution: '**/*.sln'
+            restoreSolution: '**/*.slnx'
             feedsToUse: 'config'
             nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
         

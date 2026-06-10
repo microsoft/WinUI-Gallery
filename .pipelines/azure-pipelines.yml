@@ -1,8 +1,8 @@
-trigger:
+﻿trigger:
     - main
 
 pool:
-    vmImage: "windows-2022"
+    vmImage: "windows-latest"
 
 variables:
     solutionGallery: "**/WinUIGallery.slnx"
@@ -20,7 +20,7 @@ steps:
       displayName: Restore NuGet Packages for WinUI Gallery
       inputs:
         command: 'restore'
-        restoreSolution: '**/*.sln'
+        restoreSolution: '**/*.slnx'
         feedsToUse: 'config'
         nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
 

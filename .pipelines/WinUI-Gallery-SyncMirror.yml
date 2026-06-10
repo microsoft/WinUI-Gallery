@@ -1,4 +1,4 @@
-# Sync branches in a mirror repository to a base repo by running this pipeline
+﻿# Sync branches in a mirror repository to a base repo by running this pipeline
 # from the mirror repo, and supplying the base repo as a parameter
 name: $(BuildDefinitionName)_$(date:yyMMdd)$(rev:.r)
 
@@ -25,7 +25,7 @@ resources:
 jobs:
   - job: SyncMirror
     pool:
-      vmImage: "windows-2022"
+      vmImage: "windows-latest"
     strategy:
       matrix:
         ${{ each branches in parameters.SourceToTargetBranches }}:
