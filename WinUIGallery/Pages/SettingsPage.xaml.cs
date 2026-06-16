@@ -9,6 +9,8 @@ using System;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.System;
 using WinUIGallery.Helpers;
+using WinUIGallery.Telemetry;
+using WinUIGallery.Telemetry.Events;
 
 namespace WinUIGallery.Pages;
 
@@ -39,6 +41,8 @@ public sealed partial class SettingsPage : Page
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
+
+        NavigatedToPageEvent.Log(nameof(SettingsPage));
     }
 
     private void CheckRecentAndFavoriteButtonStates()
@@ -50,6 +54,8 @@ public sealed partial class SettingsPage : Page
     private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
     {
         CheckRecentAndFavoriteButtonStates();
+        DiagnosticDataToggleSwitch.IsOn = SettingsHelper.Current.IsDiagnosticDataEnabled;
+
         var currentTheme = ThemeHelper.RootTheme;
         switch (currentTheme)
         {
@@ -198,5 +204,14 @@ public sealed partial class SettingsPage : Page
             CheckRecentAndFavoriteButtonStates();
         };
         var result = await dialog.ShowAsync();
+    }
+
+    private void DiagnosticDataToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (SettingsHelper.Current.IsDiagnosticDataEnabled != DiagnosticDataToggleSwitch.IsOn)
+        {
+            SettingsHelper.Current.IsDiagnosticDataEnabled = DiagnosticDataToggleSwitch.IsOn;
+            TelemetryFactory.Get<ITelemetry>().IsDiagnosticTelemetryOn = DiagnosticDataToggleSwitch.IsOn;
+        }
     }
 }

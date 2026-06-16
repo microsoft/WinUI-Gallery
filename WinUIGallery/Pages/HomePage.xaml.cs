@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
+using WinUIGallery.Telemetry;
+using WinUIGallery.Telemetry.Events;
 
 namespace WinUIGallery.Pages;
 
@@ -20,10 +22,13 @@ public sealed partial class HomePage : ItemsPageBase
     public HomePage()
     {
         this.InitializeComponent();
+        Loaded += OnHomePageLoaded;
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
+        NavigatedToPageEvent.Log(nameof(HomePage));
+
         ((NavigationViewItem)App.MainWindow.NavigationView.MenuItems.First()).IsSelected = true;
 
         Items = ControlInfoDataSource.Instance.Groups
@@ -68,5 +73,31 @@ public sealed partial class HomePage : ItemsPageBase
         }
 
         return result;
+    }
+
+    private void OnHomePageLoaded(object sender, RoutedEventArgs e)
+    {
+        if (!SettingsHelper.Current.IsDiagnosticsMessageDismissed && PrivacyConsentHelpers.IsPrivacySensitiveRegion())
+        {
+            DiagnosticsInfoBar.IsOpen = true;
+        }
+    }
+
+    private void DiagnosticsYesButton_Click(object sender, RoutedEventArgs e)
+    {
+        HandleDiagnosticsSetting(true);
+    }
+
+    private void DiagnosticsNoButton_Click(object sender, RoutedEventArgs e)
+    {
+        HandleDiagnosticsSetting(false);
+    }
+
+    private void HandleDiagnosticsSetting(bool isEnabled)
+    {
+        DiagnosticsInfoBar.IsOpen = false;
+        SettingsHelper.Current.IsDiagnosticsMessageDismissed = true;
+        SettingsHelper.Current.IsDiagnosticDataEnabled = isEnabled;
+        TelemetryFactory.Get<ITelemetry>().IsDiagnosticTelemetryOn = isEnabled;
     }
 }

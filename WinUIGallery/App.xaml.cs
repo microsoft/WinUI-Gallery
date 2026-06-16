@@ -14,6 +14,8 @@ using System.Linq;
 using Windows.ApplicationModel.Activation;
 using WinUIGallery.Helpers;
 using WinUIGallery.Pages;
+using WinUIGallery.Telemetry;
+using WinUIGallery.Telemetry.Events;
 using static WinUIGallery.Helpers.NativeMethods;
 
 namespace WinUIGallery;
@@ -43,6 +45,8 @@ sealed partial class App : Application
     protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
     {
         IdleSynchronizer.Init();
+
+        TelemetryFactory.Get<ITelemetry>().IsDiagnosticTelemetryOn = SettingsHelper.Current.IsDiagnosticDataEnabled;
 
         MainWindow = new MainWindow();
         WindowHelper.TrackWindow(MainWindow);
@@ -120,6 +124,8 @@ sealed partial class App : Application
             eventArgs.Kind == ExtendedActivationKind.Protocol &&
             eventArgs.Data is ProtocolActivatedEventArgs protocolArgs)
         {
+            ProtocolActivatedEvent.Log(protocolArgs.Uri.ToString());
+
             string uri = protocolArgs.Uri.LocalPath.Replace("/", "");
             targetPageArguments = uri;
 
@@ -181,6 +187,8 @@ sealed partial class App : Application
     /// <param name="e">Details about the exception.</param>
     private void HandleExceptions(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
     {
+        TelemetryFactory.Get<ITelemetry>().LogException("UnhandledException", e.Exception);
+
         if (NativeMethods.IsAppPackaged)
         {
             e.Handled = true; //Don't crash the app.

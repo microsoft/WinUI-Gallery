@@ -17,6 +17,7 @@ using Windows.Foundation;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
 using WinUIGallery.Pages;
+using WinUIGallery.Telemetry.Events;
 
 namespace WinUIGallery;
 
@@ -439,6 +440,8 @@ public sealed partial class MainWindow : Window
     {
         if (args.ChosenSuggestion is ControlInfoDataItem infoDataItem)
         {
+            SearchSampleEvent.Log(sender.Text, hasMatch: true, selectedSampleId: infoDataItem.UniqueId);
+
             var hasChangedSelection = EnsureItemIsVisibleInNavigation(infoDataItem.Title);
 
             // In case the menu selection has changed, it means that it has triggered
@@ -450,6 +453,8 @@ public sealed partial class MainWindow : Window
         }
         else if (!string.IsNullOrEmpty(args.QueryText))
         {
+            SearchSampleEvent.Log(args.QueryText, hasMatch: false);
+
             Navigate(typeof(SearchResultsPage), args.QueryText);
         }
     }

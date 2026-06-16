@@ -11,6 +11,7 @@ using System.Reflection;
 using WinUIGallery.Controls;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
+using WinUIGallery.Telemetry.Events;
 
 namespace WinUIGallery.Pages;
 
@@ -54,6 +55,8 @@ public sealed partial class ItemPage : Page
 
     protected override async void OnNavigatedTo(NavigationEventArgs e)
     {
+        NavigatedToPageEvent.Log(nameof(ItemPage));
+
         if (e.Parameter is string uniqueId)
         {
             var group = await ControlInfoDataSource.GetGroupFromItemAsync(uniqueId);
@@ -75,6 +78,8 @@ public sealed partial class ItemPage : Page
                     pageHeader.SetSamplePageSourceLinks(GalleryBaseUrl, pageName);
                     System.Diagnostics.Debug.WriteLine(string.Format("[ItemPage] Navigate to {0}", pageType.ToString()));
                     this.contentFrame.Navigate(pageType);
+
+                    NavigatedToSampleEvent.Log(item.UniqueId, item.Title);
                 }
                 App.MainWindow.EnsureNavigationSelection(item.UniqueId);
 

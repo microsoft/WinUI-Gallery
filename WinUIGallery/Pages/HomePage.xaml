@@ -166,6 +166,26 @@
                 </toolkit:SwitchPresenter>
             </Grid>
         </ScrollViewer>
+        <InfoBar
+            x:Name="DiagnosticsInfoBar"
+            Title="Send optional diagnostic data"
+            Margin="16"
+            VerticalAlignment="Bottom"
+            Background="{ThemeResource SolidBackgroundFillColorBaseBrush}"
+            IsClosable="False"
+            IsOpen="False"
+            Message="Help us improve this app by sharing diagnostics data to inform bug fixes, performance, and feature enhancements.">
+            <StackPanel
+                Margin="0,0,0,8"
+                Orientation="Horizontal"
+                Spacing="8">
+                <Button
+                    Click="DiagnosticsYesButton_Click"
+                    Content="Allow"
+                    Style="{StaticResource AccentButtonStyle}" />
+                <Button Click="DiagnosticsNoButton_Click" Content="Don't allow" />
+            </StackPanel>
+        </InfoBar>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="FavoritesVisibilityStates">
                 <VisualState x:Name="Favorites" />

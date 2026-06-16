@@ -11,6 +11,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
+using WinUIGallery.Telemetry.Events;
 
 namespace WinUIGallery.Pages;
 
@@ -37,6 +38,8 @@ public sealed partial class SearchResultsPage : ItemsPageBase
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
+
+        NavigatedToPageEvent.Log(nameof(SearchResultsPage));
 
         if (e.Parameter is string queryText)
         {

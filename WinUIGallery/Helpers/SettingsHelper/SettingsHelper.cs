@@ -51,6 +51,18 @@ public partial class SettingsHelper : ObservableSettings
         set => Set(value);
     }
 
+    public bool IsDiagnosticDataEnabled
+    {
+        get => GetOrCreateDefault<bool>(!Telemetry.PrivacyConsentHelpers.IsPrivacySensitiveRegion());
+        set => Set(value);
+    }
+
+    public bool IsDiagnosticsMessageDismissed
+    {
+        get => GetOrCreateDefault<bool>(false);
+        set => Set(value);
+    }
+
     public void UpdateFavorites(Action<List<string>> updater)
     {
         var list = Favorites;

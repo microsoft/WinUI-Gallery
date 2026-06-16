@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Navigation;
 using System.Linq;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
+using WinUIGallery.Telemetry.Events;
 
 namespace WinUIGallery.Pages;
 
@@ -23,6 +24,8 @@ public sealed partial class SectionPage : ItemsPageBase
     protected override async void OnNavigatedTo(NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
+
+        NavigatedToPageEvent.Log(nameof(SectionPage));
 
         if (e.Parameter is string groupID &&
             await ControlInfoDataSource.GetGroupAsync(groupID) is ControlInfoDataGroup group)
