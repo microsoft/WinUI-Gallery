@@ -1,6 +1,4 @@
 ﻿using Microsoft.Windows.Storage;
-using System;
-using System.IO;
 
 namespace WinUIGallery.Helpers;
 
@@ -14,14 +12,7 @@ public static partial class SettingsProviderFactory
         }
         else
         {
-            var folder = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                ProcessInfoHelper.ProductName
-            );
-
-            Directory.CreateDirectory(folder);
-            var filePath = Path.Combine(folder, "AppConfig.json");
-            return new JsonSettingsProvider(filePath);
+            return new ApplicationDataSettingsProvider(ApplicationData.GetForUnpackaged(ProcessInfoHelper.Publisher, ProcessInfoHelper.ProductName).LocalSettings);
         }
     }
 }
