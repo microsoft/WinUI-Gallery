@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 using WinUIGallery.Helpers;
@@ -22,6 +23,10 @@ public sealed partial class ListViewPage : ItemsPageBase
     ObservableCollection<Contact> contacts3 = new ObservableCollection<Contact>();
     ObservableCollection<Contact> contacts3Filtered = new ObservableCollection<Contact>();
     ObservableCollection<Contact> contacts4ContextMenu = new ObservableCollection<Contact>();
+    ObservableCollection<string> contacts5 = new ObservableCollection<string>();
+    ObservableCollection<string> contacts6 = new ObservableCollection<string>();
+
+    private string _persistedPosition = string.Empty;
 
     ItemsStackPanel? stackPanelObj;
 
@@ -66,6 +71,26 @@ public sealed partial class ListViewPage : ItemsPageBase
         // Initializze list of contacts for context menu sample
         contacts4ContextMenu = await Contact.GetContactsAsync();
         ContextMenuList.ItemsSource = contacts4ContextMenu;
+
+        // Populate ListViews for the RestoreScrollPosition and ScrollIntoView samples.
+        // Pre-format each entry with its index so the position in the list is easy to track.
+        var baseContacts = await Contact.GetContactsAsync();
+        contacts5 = new ObservableCollection<string>(
+            baseContacts.Select((c, i) => $"{i + 1}. {c.Name}"));
+
+        // ScrollIntoView is more interesting with a long list, so seed multiple copies.
+        var manyContacts = new List<string>();
+        int n = 1;
+        for (int i = 0; i < 10; i++)
+        {
+            foreach (var c in baseContacts)
+            {
+                manyContacts.Add($"{n++}. {c.Name}");
+            }
+        }
+        contacts6 = new ObservableCollection<string>(manyContacts);
+        RestoreScrollListView.ItemsSource = contacts5;
+        ScrollIntoViewListView.ItemsSource = contacts6;
 
         FilteredListView.ItemsSource = contacts3Filtered;
     }
@@ -318,6 +343,56 @@ public sealed partial class ListViewPage : ItemsPageBase
         }
 
         contacts4ContextMenu.Remove(contact);
+    }
+
+    //===================================================================================================================
+    // Save / restore scroll position sample
+    //===================================================================================================================
+
+    private void SavePositionButton_Click(object sender, RoutedEventArgs e)
+    {
+        // GetRelativeScrollPosition returns an opaque string identifying the item at the
+        // top of the viewport plus its pixel offset. Store it for later restoration.
+        _persistedPosition = ListViewPersistenceHelper.GetRelativeScrollPosition(
+            RestoreScrollListView,
+            item => item as string ?? string.Empty);
+
+        SavedPositionTextBlock.Text = $"Saved position: {_persistedPosition}";
+        RestorePositionButton.IsEnabled = true;
+    }
+
+    private async void RestorePositionButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (string.IsNullOrEmpty(_persistedPosition))
+        {
+            return;
+        }
+
+        // SetRelativeScrollPositionAsync scrolls the ListView back to the item identified
+        // by the saved string. The callback resolves a key back to its data item.
+        await ListViewPersistenceHelper.SetRelativeScrollPositionAsync(
+            RestoreScrollListView,
+            _persistedPosition,
+            key => Task.FromResult<object?>(contacts5.FirstOrDefault(c => c == key))!.AsAsyncOperation()!);
+    }
+
+    //===================================================================================================================
+    // ScrollIntoView sample
+    //===================================================================================================================
+
+    private void ScrollIntoViewButton_Click(object sender, RoutedEventArgs e)
+    {
+        int index = (int)ScrollIndexNumberBox.Value;
+        if (index < 0 || index >= ScrollIntoViewListView.Items.Count)
+        {
+            return;
+        }
+
+        var alignment = ScrollAlignmentComboBox.SelectedIndex == 1
+            ? ScrollIntoViewAlignment.Leading
+            : ScrollIntoViewAlignment.Default;
+
+        ScrollIntoViewListView.ScrollIntoView(ScrollIntoViewListView.Items[index], alignment);
     }
 }
 

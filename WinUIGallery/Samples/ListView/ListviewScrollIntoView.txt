@@ -1,0 +1,28 @@
+--- header
+Scroll a ListView programmatically with ScrollIntoView.
+--- xaml
+<ListView x:Name="ScrollIntoViewListView"
+          Height="220" Width="400" HorizontalAlignment="Left"
+          BorderThickness="1" BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
+          ItemsSource="{x:Bind contacts6}">
+    <ListView.ItemTemplate>
+        <DataTemplate x:DataType="x:String">
+            <TextBlock Text="{x:Bind}" Margin="0,8,0,8"/>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
+--- c#
+private void ScrollIntoViewButton_Click(object sender, RoutedEventArgs e)
+{
+    int index = (int)ScrollIndexNumberBox.Value;
+    if (index < 0 || index >= ScrollIntoViewListView.Items.Count)
+    {
+        return;
+    }
+
+    var alignment = ScrollAlignmentComboBox.SelectedIndex == 1
+        ? ScrollIntoViewAlignment.Leading
+        : ScrollIntoViewAlignment.Default;
+
+    ScrollIntoViewListView.ScrollIntoView(ScrollIntoViewListView.Items[index], alignment);
+}
