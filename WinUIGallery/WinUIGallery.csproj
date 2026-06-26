@@ -43,6 +43,7 @@
     <ApplicationIcon>Assets\Tiles\GalleryIcon.ico</ApplicationIcon>
     <Nullable>enable</Nullable>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+	<WindowsAppSdkAutoInitialize>false</WindowsAppSdkAutoInitialize>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Packaged)' != 'true' and '$(SingleProject)'=='true'">
