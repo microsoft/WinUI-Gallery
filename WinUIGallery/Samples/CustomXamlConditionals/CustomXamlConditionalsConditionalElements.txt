@@ -37,3 +37,19 @@ public sealed partial class MyPage : Page
         this.InitializeComponent();
     }
 }
+--- c++
+// Set the active feature flag(s) BEFORE InitializeComponent so the
+// XAML parser sees them when it evaluates the conditional elements.
+// In a real app these are typically set once at startup (e.g. from
+// App.OnLaunched) based on configuration, A/B test assignment, or
+// device capability detection. Once parsed, the result for each
+// (condition, argument) pair is cached for the lifetime of the
+// process - changing a flag later does NOT re-render markup that
+// was already parsed.
+void MainPage::InitializeComponent()
+{
+    FeatureFlagCondition::FeatureFlags().Insert(L"NewExperience", winrt::box_value(true));
+    FeatureFlagCondition::FeatureFlags().Insert(L"LegacyMode", winrt::box_value(false));
+
+    __super::InitializeComponent();
+}

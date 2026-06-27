@@ -12,3 +12,15 @@ private void CopyWithOptions_Click(object sender, RoutedEventArgs args)
 
     Clipboard.SetContentWithOptions(package, options);
 }
+--- c++
+void MainPage::CopyWithOptions_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    Windows::ApplicationModel::DataTransfer::DataPackage package{};
+    package.SetText(L"Text with clipboard options");
+
+    Windows::ApplicationModel::DataTransfer::ClipboardContentOptions options{};
+    options.IsAllowedInHistory(true);
+    options.IsRoamable(true);
+
+    Windows::ApplicationModel::DataTransfer::Clipboard::SetContentWithOptions(package, options);
+}

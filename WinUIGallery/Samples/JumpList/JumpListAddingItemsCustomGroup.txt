@@ -10,3 +10,13 @@ item.Logo = new Uri("ms-appx:///Assets/Tiles/AppList.targetsize-48.png");
 
 jumpList.Items.Add(item);
 await jumpList.SaveAsync();
+--- c++
+auto jumpList = co_await JumpList::LoadCurrentAsync();
+
+auto item = JumpListItem::CreateWithArguments(L"/project-alpha", L"Project Alpha");
+item.GroupName(L"Projects");
+item.Description(L"Open Project Alpha");
+item.Logo(Uri(L"ms-appx:///Assets/Tiles/AppList.targetsize-48.png"));
+
+jumpList.Items().Append(item);
+co_await jumpList.SaveAsync();

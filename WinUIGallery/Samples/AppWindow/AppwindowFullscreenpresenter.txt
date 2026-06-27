@@ -50,3 +50,30 @@ public sealed partial class SampleWindow6 : Window
         this.Close();
     }
 }
+--- c++
+// C++/WinRT Code
+#include <microsoft.ui.xaml.window.h>
+#include <winrt/Microsoft.UI.Windowing.h>
+#include <winrt/Microsoft.UI.Xaml.h>
+
+using namespace winrt;
+using namespace Microsoft::UI::Windowing;
+using namespace Microsoft::UI::Xaml;
+
+namespace YourNamespace
+{
+    SampleWindow6::SampleWindow6()
+    {
+        InitializeComponent();
+        AppWindow().SetIcon(L"Assets/Tiles/GalleryIcon.ico");
+        AppWindow().TitleBar().PreferredTheme(TitleBarTheme::UseDefaultAppMode);
+
+        // Set the window to Full-Screen mode
+        AppWindow().SetPresenter(AppWindowPresenterKind::FullScreen);
+    }
+
+    void SampleWindow6::Close_Click(IInspectable const& sender, RoutedEventArgs const& e)
+    {
+        Close();
+    }
+}

@@ -28,3 +28,14 @@ End to end TitleBar sample
 --- c#
 this.ExtendsContentIntoTitleBar = true; // Extend the content into the title bar and hide the default titlebar
   this.SetTitleBar(titleBar); // Set the custom title bar
+--- c++
+// C++/WinRT Code
+#include <microsoft.ui.xaml.window.h>
+#include <winrt/Microsoft.UI.Xaml.h>
+
+using namespace winrt;
+using namespace Microsoft::UI::Xaml;
+
+// In the Window constructor:
+ExtendsContentIntoTitleBar(true); // Extend the content into the title bar and hide the default titlebar
+SetTitleBar(titleBar()); // Set the custom title bar

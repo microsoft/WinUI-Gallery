@@ -58,3 +58,46 @@ private void InitializeData()
     BarItems.Add(new Bar(25, this.MaxLength));
     BarItems.Add(new Bar(175, this.MaxLength));
 }
+
+--- c++
+// C++/WinRT Code
+
+// The ItemsSource used is a list of custom-class Bar objects called BarItems
+
+struct Bar
+{
+    Bar(double length, int max)
+    {
+        Length = length;
+        MaxLength = max;
+
+        Height = length / 4.0;
+        MaxHeight = max / 4.0;
+
+        Diameter = length / 6.0;
+        MaxDiameter = max / 6.0;
+    }
+
+    double Length{ 0 };
+    int MaxLength{ 0 };
+
+    double Height{ 0 };
+    double MaxHeight{ 0 };
+
+    double Diameter{ 0 };
+    double MaxDiameter{ 0 };
+};
+
+winrt::Windows::Foundation::Collections::IObservableVector<Bar> BarItems{ nullptr };
+int MaxLength = 425;
+
+void YourPage::InitializeData()
+{
+    if (BarItems == nullptr)
+    {
+        BarItems = winrt::single_threaded_observable_vector<Bar>();
+    }
+    BarItems.Append(Bar(300, MaxLength));
+    BarItems.Append(Bar(25, MaxLength));
+    BarItems.Append(Bar(175, MaxLength));
+}

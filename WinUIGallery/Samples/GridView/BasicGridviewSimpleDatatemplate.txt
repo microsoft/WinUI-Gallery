@@ -45,3 +45,20 @@ public class CustomDataObject
 	
     // ... Methods ...
 }
+
+--- c++
+// C++/WinRT Code
+
+// CustomDataObject class definition:
+struct CustomDataObject
+{
+    winrt::hstring Title;
+    winrt::hstring ImageLocation;
+    winrt::hstring Views;
+    winrt::hstring Likes;
+    winrt::hstring Description;
+
+    CustomDataObject() = default;
+
+    // ... Methods ...
+};

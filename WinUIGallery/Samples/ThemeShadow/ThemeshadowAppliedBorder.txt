@@ -14,3 +14,8 @@ private void ShadowRect_Loaded(object sender, RoutedEventArgs e)
 {
     shadow.Receivers.Add(ShadowCastGrid);
 }
+--- c++
+void MainPage::ShadowRect_Loaded(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    shadow().Receivers().Append(ShadowCastGrid());
+}

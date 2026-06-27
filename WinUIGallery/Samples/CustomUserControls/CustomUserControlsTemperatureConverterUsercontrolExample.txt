@@ -48,3 +48,33 @@ public sealed partial class TemperatureConverterControl : UserControl
         }
     }
 }
+--- c++
+void TemperatureConverterControl::Button_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    winrt::hstring input = InputTextBox().Text();
+    double celsius = 0;
+
+    bool isNumber = /* double.TryParse */ false; // Use std::stod with try/catch or wcstod
+
+    try
+    {
+        celsius = std::stod(std::wstring(input));
+        isNumber = true;
+    }
+    catch (...)
+    {
+        isNumber = false;
+    }
+
+    if (isNumber)
+    {
+        double fahrenheit = (celsius * 9.0 / 5.0) + 32.0;
+        std::wostringstream oss;
+        oss << std::fixed << std::setprecision(2) << fahrenheit;
+        ResultTextBlock().Text(L"Fahrenheit: " + oss.str() + L"°F");
+    }
+    else
+    {
+        ResultTextBlock().Text(L"Invalid input!");
+    }
+}

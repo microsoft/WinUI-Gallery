@@ -38,3 +38,24 @@ private void MyImageButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArg
     // Focus will not move to the menu
     ShowMenu(true);
 }
+--- c++
+void MainPage::ShowMenu(bool isTransient)
+{
+    FlyoutShowOptions myOption;
+    myOption.ShowMode(isTransient ? FlyoutShowMode::Transient : FlyoutShowMode::Standard);
+    CommandBarFlyout1().ShowAt(Image1(), myOption);
+}
+
+void MainPage::MyImageButton_ContextRequested(Microsoft::UI::Xaml::UIElement const& sender, ContextRequestedEventArgs const& args)
+{
+    // Show a context menu in standard mode
+    // Focus will move to the menu
+    ShowMenu(false);
+}
+
+void MainPage::MyImageButton_Click(IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e)
+{
+    // Show a context menu in transient mode
+    // Focus will not move to the menu
+    ShowMenu(true);
+}

@@ -50,3 +50,20 @@ StatusBadge.ClearValue(TitleBar.IsDragRegionProperty); // back to default
 // After adding or removing elements in TitleBar.Content dynamically,
 // ask the framework to recompute drag regions.
 titleBar.RecomputeDragRegions();
+--- c++
+// C++/WinRT Code
+#include <winrt/Microsoft.UI.Xaml.Controls.h>
+#include <winrt/Microsoft.UI.Xaml.h>
+
+using namespace winrt;
+using namespace Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml::Controls;
+
+// Set TitleBar.IsDragRegion at runtime.
+TitleBar::SetIsDragRegion(StatusBadge(), true);   // always draggable
+TitleBar::SetIsDragRegion(StatusBadge(), false);  // always clickable
+StatusBadge().ClearValue(TitleBar::IsDragRegionProperty()); // back to default
+
+// After adding or removing elements in TitleBar.Content dynamically,
+// ask the framework to recompute drag regions.
+titleBar().RecomputeDragRegions();

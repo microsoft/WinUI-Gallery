@@ -48,3 +48,53 @@ private TabViewItem CreateNewTab(int index)
 
     return newItem;
 }
+--- c++
+void MainPage::TabView_Loaded(IInspectable const& sender, RoutedEventArgs const& /*e*/)
+{
+    auto tabView = sender.as<winrt::Microsoft::UI::Xaml::Controls::TabView>();
+    for (int i = 0; i < 3; i++)
+    {
+        tabView.TabItems().Append(CreateNewTab(i));
+    }
+}
+
+void MainPage::TabView_AddButtonClick(winrt::Microsoft::UI::Xaml::Controls::TabView const& sender, IInspectable const& /*args*/)
+{
+    sender.TabItems().Append(CreateNewTab(static_cast<int>(sender.TabItems().Size())));
+}
+
+void MainPage::TabView_TabCloseRequested(winrt::Microsoft::UI::Xaml::Controls::TabView const& sender,
+    winrt::Microsoft::UI::Xaml::Controls::TabViewTabCloseRequestedEventArgs const& args)
+{
+    sender.TabItems().Remove(args.Tab());
+}
+
+winrt::Microsoft::UI::Xaml::Controls::TabViewItem MainPage::CreateNewTab(int index)
+{
+    winrt::Microsoft::UI::Xaml::Controls::TabViewItem newItem;
+
+    newItem.Header(winrt::box_value(winrt::format(L"Document {0}", index)));
+    winrt::Microsoft::UI::Xaml::Controls::SymbolIconSource iconSource;
+    iconSource.Symbol(winrt::Microsoft::UI::Xaml::Controls::Symbol::Document);
+    newItem.IconSource(iconSource);
+
+    // The content of the tab is often a frame that contains a page, though it could be any UIElement.
+    winrt::Microsoft::UI::Xaml::Controls::Frame frame;
+
+    switch (index % 3)
+    {
+        case 0:
+            frame.Navigate(winrt::xaml_typename<winrt::WinUIGallery::SamplePage1>());
+            break;
+        case 1:
+            frame.Navigate(winrt::xaml_typename<winrt::WinUIGallery::SamplePage2>());
+            break;
+        case 2:
+            frame.Navigate(winrt::xaml_typename<winrt::WinUIGallery::SamplePage3>());
+            break;
+    }
+
+    newItem.Content(frame);
+
+    return newItem;
+}

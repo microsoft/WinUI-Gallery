@@ -40,3 +40,35 @@ private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvoke
     }
     ContentFrame.NavigateToType(pageType, null, navOptions);
 }
+--- c++
+// C++/WinRT code behind
+void MainPage::NavView_ItemInvoked(winrt::Microsoft::UI::Xaml::Controls::NavigationView const& sender,
+    winrt::Microsoft::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs const& args)
+{
+    winrt::Microsoft::UI::Xaml::Navigation::FrameNavigationOptions navOptions;
+    navOptions.TransitionInfoOverride(args.RecommendedNavigationTransitionInfo());
+    if (sender.PaneDisplayMode() == winrt::Microsoft::UI::Xaml::Controls::NavigationViewPaneDisplayMode::Top)
+    {
+        navOptions.IsNavigationStackEnabled(false);
+    }
+
+    winrt::Windows::UI::Xaml::Interop::TypeName pageType;
+    if (args.InvokedItem() == SamplePage1Item())
+    {
+        pageType = winrt::xaml_typename<winrt::WinUIGallery::SamplePage1>();
+    }
+    else if (args.InvokedItem() == SamplePage2Item())
+    {
+        pageType = winrt::xaml_typename<winrt::WinUIGallery::SamplePage2>();
+    }
+    else if (args.InvokedItem() == SamplePage3Item())
+    {
+        pageType = winrt::xaml_typename<winrt::WinUIGallery::SamplePage3>();
+    }
+    else if (args.InvokedItem() == SamplePage4Item())
+    {
+        pageType = winrt::xaml_typename<winrt::WinUIGallery::SamplePage4>();
+    }
+
+    ContentFrame().NavigateToType(pageType, nullptr, navOptions);
+}

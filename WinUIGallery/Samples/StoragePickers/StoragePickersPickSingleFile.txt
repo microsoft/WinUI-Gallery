@@ -31,3 +31,29 @@ private async void PickSingleFileButton_Click(object sender, RoutedEventArgs e)
         button.IsEnabled = true;
     }
 }
+--- c++
+winrt::fire_and_forget MainPage::PickSingleFileButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    if (auto button = sender.try_as<winrt::Microsoft::UI::Xaml::Controls::Button>())
+    {
+        //disable the button to avoid double-clicking
+        button.IsEnabled(false);
+
+        winrt::Microsoft::Windows::Storage::Pickers::FileOpenPicker picker(button.XamlRoot().ContentIslandEnvironment().AppWindowId());$(FileType)
+
+        picker.CommitButtonText(L"$(CommitButtonText)");
+
+        picker.SuggestedStartLocation(winrt::Microsoft::Windows::Storage::Pickers::PickerLocationId::$(SuggestedStartLocation));
+
+        picker.ViewMode(winrt::Microsoft::Windows::Storage::Pickers::PickerViewMode::$(ViewMode));
+
+        // Show the picker dialog window
+        auto file = co_await picker.PickSingleFileAsync();
+        PickedSingleFileTextBlock().Text(file != nullptr
+            ? L"Picked: " + file.Path()
+            : L"No file selected.");
+
+        //re-enable the button
+        button.IsEnabled(true);
+    }
+}

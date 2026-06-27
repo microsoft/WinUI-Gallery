@@ -3,3 +3,7 @@ Toggling Sound
 --- c#
 ElementSoundPlayer.State = ElementSoundPlayerState.Off;
 ElementSoundPlayer.State = ElementSoundPlayerState.On;
+--- c++
+// C++/WinRT Code
+winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayer::State(winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayerState::Off);
+winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayer::State(winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayerState::On);

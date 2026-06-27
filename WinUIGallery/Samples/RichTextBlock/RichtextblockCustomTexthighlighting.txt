@@ -41,3 +41,36 @@ private void HighlightColorCombobox_SelectionChanged(object sender, SelectionCha
     TextHighlightingRichTextBlock.TextHighlighters.Clear();
     TextHighlightingRichTextBlock.TextHighlighters.Add(highlighter);
 }
+--- c++
+void MainPage::HighlightColorCombobox_SelectionChanged(IInspectable const& sender, SelectionChangedEventArgs const& e)
+{
+    // Get color to use
+    auto selectedItem = sender.as<ComboBox>().SelectedItem().as<ComboBoxItem>();
+    auto color = Colors::Yellow();
+    auto content = winrt::unbox_value<winrt::hstring>(selectedItem.Content());
+    if (content == L"Yellow")
+    {
+        color = Colors::Yellow();
+    }
+    else if (content == L"Red")
+    {
+        color = Colors::Red();
+    }
+    else if (content == L"Blue")
+    {
+        color = Colors::Blue();
+    }
+
+    // Get text range and highlighter
+    TextRange textRange;
+    textRange.StartIndex(28);
+    textRange.Length(11);
+
+    TextHighlighter highlighter;
+    highlighter.Background(SolidColorBrush(color));
+    highlighter.Ranges().Append(textRange);
+
+    // Switch texthighlighter
+    TextHighlightingRichTextBlock().TextHighlighters().Clear();
+    TextHighlightingRichTextBlock().TextHighlighters().Append(highlighter);
+}

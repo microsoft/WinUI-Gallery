@@ -16,3 +16,25 @@ public sealed partial class AppWindowTitleBarExtendWindow : Window
         }
     }
 }
+--- c++
+// C++/WinRT Code
+#include <microsoft.ui.xaml.window.h>
+#include <winrt/Microsoft.UI.Windowing.h>
+#include <winrt/Microsoft.UI.Xaml.h>
+
+using namespace winrt;
+using namespace Microsoft::UI::Windowing;
+using namespace Microsoft::UI::Xaml;
+
+namespace YourNamespace
+{
+    AppWindowTitleBarExtendWindow::AppWindowTitleBarExtendWindow()
+    {
+        InitializeComponent();
+        AppWindow().TitleBar().ExtendsContentIntoTitleBar($(ExtendsContentIntoTitleBar));
+        if (AppWindow().TitleBar().ExtendsContentIntoTitleBar())
+        {
+            AppWindow().TitleBar().HeightOption(TitleBarHeightOption::$(TitleBarHeightOption));
+        }
+    }
+}

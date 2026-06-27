@@ -94,3 +94,91 @@ private void NavigateToNumberedTabKeyboardAccelerator_Invoked(KeyboardAccelerato
 
     args.Handled = true;
 }
+--- c++
+void MainPage::NewTabKeyboardAccelerator_Invoked(IInspectable const& /*sender*/,
+    winrt::Microsoft::UI::Xaml::Input::KeyboardAcceleratorInvokedEventArgs const& args)
+{
+    auto senderTabView = args.Element().try_as<winrt::Microsoft::UI::Xaml::Controls::TabView>();
+    if (!senderTabView)
+    {
+        return;
+    }
+
+    senderTabView.TabItems().Append(CreateNewTab(static_cast<int>(senderTabView.TabItems().Size())));
+
+    args.Handled(true);
+}
+
+void MainPage::CloseSelectedTabKeyboardAccelerator_Invoked(IInspectable const& /*sender*/,
+    winrt::Microsoft::UI::Xaml::Input::KeyboardAcceleratorInvokedEventArgs const& args)
+{
+    auto invokedTabView = args.Element().try_as<winrt::Microsoft::UI::Xaml::Controls::TabView>();
+    if (!invokedTabView)
+    {
+        return;
+    }
+
+    // Only close the selected tab if it is closeable
+    if (auto tabViewItem = invokedTabView.SelectedItem().try_as<winrt::Microsoft::UI::Xaml::Controls::TabViewItem>())
+    {
+        if (tabViewItem.IsClosable())
+        {
+            invokedTabView.TabItems().Remove(invokedTabView.SelectedItem());
+        }
+    }
+
+    args.Handled(true);
+}
+
+void MainPage::NavigateToNumberedTabKeyboardAccelerator_Invoked(IInspectable const& sender,
+    winrt::Microsoft::UI::Xaml::Input::KeyboardAcceleratorInvokedEventArgs const& args)
+{
+    auto invokedTabView = args.Element().try_as<winrt::Microsoft::UI::Xaml::Controls::TabView>();
+    if (!invokedTabView)
+    {
+        return;
+    }
+
+    int tabToSelect = 0;
+    auto key = sender.as<winrt::Microsoft::UI::Xaml::Input::KeyboardAccelerator>().Key();
+
+    switch (key)
+    {
+        case winrt::Windows::System::VirtualKey::Number1:
+            tabToSelect = 0;
+            break;
+        case winrt::Windows::System::VirtualKey::Number2:
+            tabToSelect = 1;
+            break;
+        case winrt::Windows::System::VirtualKey::Number3:
+            tabToSelect = 2;
+            break;
+        case winrt::Windows::System::VirtualKey::Number4:
+            tabToSelect = 3;
+            break;
+        case winrt::Windows::System::VirtualKey::Number5:
+            tabToSelect = 4;
+            break;
+        case winrt::Windows::System::VirtualKey::Number6:
+            tabToSelect = 5;
+            break;
+        case winrt::Windows::System::VirtualKey::Number7:
+            tabToSelect = 6;
+            break;
+        case winrt::Windows::System::VirtualKey::Number8:
+            tabToSelect = 7;
+            break;
+        case winrt::Windows::System::VirtualKey::Number9:
+            // Select the last tab
+            tabToSelect = static_cast<int>(invokedTabView.TabItems().Size()) - 1;
+            break;
+    }
+
+    // Only select the tab if it is in the list
+    if (tabToSelect < static_cast<int>(invokedTabView.TabItems().Size()))
+    {
+        invokedTabView.SelectedIndex(tabToSelect);
+    }
+
+    args.Handled(true);
+}

@@ -27,3 +27,29 @@ private void ListViewRight_ContainerContentChanging(ListViewBase sender, Contain
     flyout.Items.Add(item);
     args.ItemContainer.ContextFlyout = flyout;
 }
+--- c++
+void MainPage::ControlExample_Loaded(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    auto deleteCommand = StandardUICommand(StandardUICommandKind::Delete);
+    deleteCommand.ExecuteRequested({ this, &MainPage::DeleteCommand_ExecuteRequested });
+
+    DeleteFlyoutItem().Command(deleteCommand);
+
+    for (int i = 0; i < 15; i++)
+    {
+        ListItemData data;
+        data.Text(L"List item " + winrt::to_hstring(i));
+        data.Command(deleteCommand);
+        collection().Append(data);
+    }
+}
+
+void MainPage::ListViewRight_ContainerContentChanging(ListViewBase const& sender, ContainerContentChangingEventArgs const& args)
+{
+    MenuFlyout flyout;
+    auto data = args.Item().as<ListItemData>();
+    MenuFlyoutItem item;
+    item.Command(data.Command());
+    flyout.Items().Append(item);
+    args.ItemContainer().ContextFlyout(flyout);
+}

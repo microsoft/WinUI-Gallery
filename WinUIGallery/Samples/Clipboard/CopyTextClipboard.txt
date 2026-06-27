@@ -9,3 +9,10 @@ private void CopyText_Click(object sender, RoutedEventArgs args)
 	package.SetText("Copy this text");
 	Clipboard.SetContent(package);
 }
+--- c++
+void MainPage::CopyText_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    Windows::ApplicationModel::DataTransfer::DataPackage package{};
+    package.SetText(L"Copy this text");
+    Windows::ApplicationModel::DataTransfer::Clipboard::SetContent(package);
+}

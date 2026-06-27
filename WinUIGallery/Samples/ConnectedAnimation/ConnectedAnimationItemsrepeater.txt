@@ -106,3 +106,82 @@ private static UIElement FindChildByName(DependencyObject parent, string name)
     }
     return null;
 }
+--- c++
+// ItemsRepeater does not have PrepareConnectedAnimation() or
+// TryStartConnectedAnimationAsync() like ListView/GridView.
+// Use ConnectedAnimationService.PrepareToAnimate() directly instead.
+
+CustomDataObject _storedItem{ nullptr };
+double _persistedScrollPosition{ 0.0 };
+
+void MainPage::Repeater_ElementPrepared(ItemsRepeater const& sender, ItemsRepeaterElementPreparedEventArgs const& args)
+{
+    // Attach a Tapped handler to each item container.
+    auto element = args.Element();
+    element.Tapped({ this, &MainPage::Item_Tapped });
+}
+
+void MainPage::Item_Tapped(IInspectable const& sender, TappedRoutedEventArgs const& e)
+{
+    auto element = sender.as<FrameworkElement>();
+    auto index = repeater().GetElementIndex(element);
+    _storedItem = repeater().ItemsSourceView().GetAt(index).as<CustomDataObject>();
+
+    // Find the named element in the DataTemplate and prepare the animation.
+    auto source = FindChildByName(element, L"connectedElement");
+    if (source != nullptr)
+    {
+        ConnectedAnimationService::GetForCurrentView()
+            .PrepareToAnimate(L"ForwardConnectedAnimation", source);
+    }
+
+    // Save scroll position for back navigation.
+    _persistedScrollPosition = scrollViewer().VerticalOffset();
+
+    Frame().Navigate(winrt::xaml_typename<DetailPage>(), _storedItem,
+        winrt::Microsoft::UI::Xaml::Media::Animation::SuppressNavigationTransitionInfo());
+}
+
+void MainPage::OnNavigatedTo(NavigationEventArgs const& e)
+{
+    __super::OnNavigatedTo(e);
+    if (_storedItem == nullptr) return;
+
+    // Restore scroll position so the target element is visible.
+    scrollViewer().ChangeView(nullptr, _persistedScrollPosition, nullptr, true);
+    UpdateLayout();
+
+    auto animation = ConnectedAnimationService::GetForCurrentView()
+        .GetAnimation(L"BackConnectedAnimation");
+    if (animation != nullptr)
+    {
+        animation.Configuration(DirectConnectedAnimationConfiguration());
+
+        int index = repeater().ItemsSourceView().IndexOf(_storedItem);
+        auto container = repeater().TryGetElement(index);
+        if (container != nullptr)
+        {
+            auto target = FindChildByName(container.as<FrameworkElement>(), L"connectedElement");
+            if (target != nullptr)
+            {
+                animation.TryStart(target);
+            }
+        }
+    }
+}
+
+// Helper to find a named element within a DataTemplate.
+UIElement MainPage::FindChildByName(DependencyObject const& parent, hstring const& name)
+{
+    for (int i = 0; i < VisualTreeHelper::GetChildrenCount(parent); i++)
+    {
+        auto child = VisualTreeHelper::GetChild(parent, i);
+        auto fe = child.try_as<FrameworkElement>();
+        if (fe != nullptr && fe.Name() == name)
+            return fe;
+        auto result = FindChildByName(child, name);
+        if (result != nullptr)
+            return result;
+    }
+    return nullptr;
+}

@@ -23,3 +23,8 @@ private void CustomXamlUICommand_ExecuteRequested(XamlUICommand sender, ExecuteR
 {
     XamlUICommandOutput.Text = "You fired the custom command";
 }
+--- c++
+void MainPage::CustomXamlUICommand_ExecuteRequested(XamlUICommand const& sender, ExecuteRequestedEventArgs const& args)
+{
+    XamlUICommandOutput().Text(L"You fired the custom command");
+}

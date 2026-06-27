@@ -21,3 +21,22 @@ var childWindow = new Window()
 
 childWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
 childWindow.Activate();
+--- c++
+// Ensure you close the child window before closing the parent window to avoid application crash.
+Window childWindow;
+childWindow.ExtendsContentIntoTitleBar(true);
+childWindow.SystemBackdrop(MicaBackdrop());
+
+TextBlock textBlock;
+textBlock.Text(L"New child window!");
+textBlock.HorizontalAlignment(HorizontalAlignment::Center);
+textBlock.VerticalAlignment(VerticalAlignment::Center);
+
+Page page;
+page.Content(textBlock);
+// Get the theme from the parent.
+page.RequestedTheme(this->ActualTheme());
+
+childWindow.Content(page);
+childWindow.AppWindow().ResizeClient(SizeInt32{ 500, 500 });
+childWindow.Activate();

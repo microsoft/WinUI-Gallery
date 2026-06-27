@@ -36,3 +36,27 @@ private void BreadcrumbBar2_ItemClicked(BreadcrumbBar sender, BreadcrumbBarItemC
         items.RemoveAt(i);
     }
 }
+--- c++
+// In a C++/WinRT header:
+// struct Folder : FolderT<Folder>
+// {
+//     winrt::hstring Name;
+// };
+
+auto items = winrt::single_threaded_observable_vector<winrt::WinUIGallery::Folder>();
+items.Append(winrt::WinUIGallery::Folder{ L"Home" });
+items.Append(winrt::WinUIGallery::Folder{ L"Folder1" });
+items.Append(winrt::WinUIGallery::Folder{ L"Folder2" });
+items.Append(winrt::WinUIGallery::Folder{ L"Folder3" });
+BreadcrumbBar2().ItemsSource(items);
+BreadcrumbBar2().ItemClicked({ this, &MainPage::BreadcrumbBar2_ItemClicked });
+
+void MainPage::BreadcrumbBar2_ItemClicked(winrt::Microsoft::UI::Xaml::Controls::BreadcrumbBar const& sender,
+    winrt::Microsoft::UI::Xaml::Controls::BreadcrumbBarItemClickedEventArgs const& args)
+{
+    auto items = BreadcrumbBar2().ItemsSource().as<winrt::Windows::Foundation::Collections::IObservableVector<winrt::WinUIGallery::Folder>>();
+    for (int i = static_cast<int>(items.Size()) - 1; i >= static_cast<int>(args.Index()) + 1; i--)
+    {
+        items.RemoveAt(static_cast<uint32_t>(i));
+    }
+}

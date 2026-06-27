@@ -19,3 +19,22 @@ protected override void OnNavigatedTo(NavigationEventArgs e)
         anim.TryStart(DestinationElement);
     }
 }
+--- c++
+// Prepare animation on Source page
+void MainPage::NavigateButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    ConnectedAnimationService::GetForCurrentView().PrepareToAnimate(L"ForwardConnectedAnimation", SourceElement());
+    Frame().Navigate(winrt::xaml_typename<DestinationPage>(), nullptr, winrt::Microsoft::UI::Xaml::Media::Animation::SuppressNavigationTransitionInfo());
+}
+
+// Start animation on Destination page
+void DestinationPage::OnNavigatedTo(NavigationEventArgs const& e)
+{
+    __super::OnNavigatedTo(e);
+
+    auto anim = ConnectedAnimationService::GetForCurrentView().GetAnimation(L"ForwardConnectedAnimation");
+    if (anim != nullptr)
+    {
+        anim.TryStart(DestinationElement());
+    }
+}

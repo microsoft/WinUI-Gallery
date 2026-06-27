@@ -18,3 +18,9 @@ private void TestButton2Click(object sender, RoutedEventArgs e)
 {
     TestButton2TeachingTip.IsOpen = true;
 }
+--- c++
+// C++/WinRT Code
+void MainPage::TestButton2Click(IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e)
+{
+    TestButton2TeachingTip().IsOpen(true);
+}

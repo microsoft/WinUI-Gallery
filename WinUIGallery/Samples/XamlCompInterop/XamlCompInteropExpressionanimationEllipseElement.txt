@@ -31,3 +31,23 @@ private void ExpressionSample_Loaded(object sender, RoutedEventArgs e)
     // Start the animation on the ellipse
     ellipse.StartAnimation(expressionAnim);
 }
+--- c++
+// NOTE: The rectangle scales up and down using the same element_PointerEntered/Exited events as the prior sample.
+
+auto _compositor = Microsoft::UI::Xaml::Media::CompositionTarget::GetCompositorForCurrentThread();
+
+// Set up the relationship between the rectangle and the ellipse.
+void MainPage::ExpressionSample_Loaded(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    auto expressionAnim = _compositor.CreateExpressionAnimation();
+
+    // The ellipse's scale is inversely proportional to the rectangle's scale
+    expressionAnim.Expression(L"Vector3(1/scaleElement.Scale.X, 1/scaleElement.Scale.Y, 1)");
+    expressionAnim.Target(L"Scale");
+
+    // Use SetExpressionReferenceParameter to alias a UIElement into the expression string
+    expressionAnim.SetExpressionReferenceParameter(L"scaleElement", rectangle());
+
+    // Start the animation on the ellipse
+    ellipse().StartAnimation(expressionAnim);
+}

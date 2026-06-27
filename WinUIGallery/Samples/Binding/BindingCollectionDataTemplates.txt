@@ -53,3 +53,76 @@ public MyPage()
         // Add more items...
     };
 }
+--- c++
+// ListDetailItem implementation in C++/WinRT
+
+// In your IDL file:
+// runtimeclass ListDetailItem
+// {
+//     ListDetailItem();
+//     Int32 Id;
+//     String Title;
+//     String Text;
+//     Windows.Foundation.DateTime DateCreated;
+//     String DateCreatedFormatted{ get; };
+// }
+
+namespace winrt::YourNamespace::implementation
+{
+    ListDetailItem::ListDetailItem()
+        : m_id(0), m_title(L""), m_text(L"")
+    {
+    }
+
+    int32_t ListDetailItem::Id() { return m_id; }
+    void ListDetailItem::Id(int32_t value) { m_id = value; }
+
+    hstring ListDetailItem::Title() { return m_title; }
+    void ListDetailItem::Title(hstring const& value) { m_title = value; }
+
+    hstring ListDetailItem::Text() { return m_text; }
+    void ListDetailItem::Text(hstring const& value) { m_text = value; }
+
+    Windows::Foundation::DateTime ListDetailItem::DateCreated() { return m_dateCreated; }
+    void ListDetailItem::DateCreated(Windows::Foundation::DateTime const& value) { m_dateCreated = value; }
+
+    hstring ListDetailItem::DateCreatedFormatted()
+    {
+        // Format the date as "MMM d, yyyy h:mm tt"
+        auto cal = Windows::Globalization::Calendar();
+        cal.SetDateTime(m_dateCreated);
+        winrt::hstring month = cal.MonthAsSoloString();
+        int32_t day = cal.DayAsInt32();
+        int32_t year = cal.YearAsInt32();
+        int32_t hour = cal.HourAsInt32();
+        int32_t minute = cal.MinuteAsInt32();
+        winrt::hstring period = (hour >= 12) ? L"PM" : L"AM";
+        if (hour > 12) hour -= 12;
+        if (hour == 0) hour = 12;
+        return month + L" " + winrt::to_hstring(day) + L", " + winrt::to_hstring(year)
+            + L" " + winrt::to_hstring(hour) + L":" + (minute < 10 ? L"0" : L"") + winrt::to_hstring(minute) + L" " + period;
+    }
+}
+
+// In your page constructor:
+MainPage::MainPage()
+{
+    InitializeComponent();
+
+    auto items = winrt::single_threaded_observable_vector<winrt::YourNamespace::ListDetailItem>();
+
+    auto item1 = winrt::make<YourNamespace::implementation::ListDetailItem>();
+    item1.Id(0);
+    item1.Title(L"Item 1");
+    item1.Text(L"Lorem ipsum dolor sit amet...");
+    // Set DateCreated using Windows::Foundation::DateTime
+    // (calendar date representation as 100-nanosecond intervals since 1601-01-01)
+    auto cal = Windows::Globalization::Calendar();
+    cal.SetDateTime(/* construct DateTime for 2025-06-15 09:30:00 */);
+    item1.DateCreated(cal.GetDateTime());
+    items.Append(item1);
+
+    // Add more items...
+
+    ListDetailListView().ItemsSource(items);
+}

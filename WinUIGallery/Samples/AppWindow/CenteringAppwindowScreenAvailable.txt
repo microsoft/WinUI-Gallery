@@ -37,3 +37,39 @@ public sealed partial class SampleWindow2 : Window
         AppWindow.Move(new PointInt32((area.Value.Width - AppWindow.Size.Width) / 2, (area.Value.Height - AppWindow.Size.Height) / 2));
     }
 }
+--- c++
+// C++/WinRT Code
+#include <microsoft.ui.xaml.window.h>
+#include <winrt/Microsoft.UI.Windowing.h>
+#include <winrt/Microsoft.UI.Xaml.h>
+#include <winrt/Windows.Graphics.h>
+
+using namespace winrt;
+using namespace Microsoft::UI::Windowing;
+using namespace Microsoft::UI::Xaml;
+using namespace Windows::Graphics;
+
+namespace YourNamespace
+{
+    SampleWindow2::SampleWindow2()
+    {
+        InitializeComponent();
+        AppWindow().SetIcon(L"Assets/Tiles/GalleryIcon.ico");
+        AppWindow().TitleBar().PreferredTheme(TitleBarTheme::UseDefaultAppMode);
+
+        // Center the window on the screen.
+        CenterWindow();
+    }
+
+    // Centers the given AppWindow on the screen based on the available display area.
+    void SampleWindow2::CenterWindow()
+    {
+        auto area = DisplayArea::GetFromWindowId(AppWindow().Id(), DisplayAreaFallback::Nearest);
+        if (!area) return;
+        auto workArea = area.WorkArea();
+        AppWindow().Move(PointInt32{
+            (workArea.Width - AppWindow().Size().Width) / 2,
+            (workArea.Height - AppWindow().Size().Height) / 2
+        });
+    }
+}

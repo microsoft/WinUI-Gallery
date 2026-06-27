@@ -111,3 +111,54 @@ public sealed partial class CardPage : Page
         animation?.TryStart(destinationElement);
     }
 }
+--- c++
+void CardPage::BackButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    ConnectedAnimation animation = ConnectedAnimationService::GetForCurrentView()
+        .PrepareToAnimate(L"backwardsAnimation", destinationElement());
+    SmokeGrid().Children().Remove(destinationElement());
+
+    // Collapse the smoke when the animation completes.
+    animation.Completed({ this, &CardPage::Animation_Completed });
+
+    // If the connected item appears outside the viewport, scroll it into view.
+    collection().ScrollIntoView(_storedItem, ScrollIntoViewAlignment::Default);
+    collection().UpdateLayout();
+
+    animation.Configuration(DirectConnectedAnimationConfiguration());
+
+    // Play the connected animation back to the collection.
+    collection().TryStartConnectedAnimationAsync(animation, _storedItem, L"connectedElement");
+}
+
+void CardPage::Animation_Completed(ConnectedAnimation const& sender, IInspectable const& args)
+{
+    SmokeGrid().Visibility(Visibility::Collapsed);
+    SmokeGrid().Children().Append(destinationElement());
+}
+
+void CardPage::TipsGrid_ItemClick(IInspectable const& sender, ItemClickEventArgs const& e)
+{
+    ConnectedAnimation animation{ nullptr };
+
+    auto container = collection().ContainerFromItem(e.ClickedItem()).try_as<GridViewItem>();
+    if (container != nullptr)
+    {
+        _storedItem = container.Content().as<CustomDataObject>();
+        animation = collection().PrepareConnectedAnimation(L"forwardAnimation", _storedItem, L"connectedElement");
+    }
+
+    // Update the detail view with the clicked item's data.
+    if (_storedItem != nullptr)
+    {
+        detailImage().Source(BitmapImage(Uri(L"ms-appx://" + _storedItem.ImageLocation())));
+        detailTitle().Text(_storedItem.Title());
+        detailDescription().Text(_storedItem.Description());
+    }
+
+    SmokeGrid().Visibility(Visibility::Visible);
+    if (animation != nullptr)
+    {
+        animation.TryStart(destinationElement());
+    }
+}

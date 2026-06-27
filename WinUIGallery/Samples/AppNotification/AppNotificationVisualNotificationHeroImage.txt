@@ -9,3 +9,14 @@ AppNotification notification = new AppNotificationBuilder()
     .BuildNotification();
 
 AppNotificationManager.Default.Show(notification);
+--- c++
+// C++/WinRT Code
+winrt::Microsoft::Windows::AppNotifications::AppNotification notification =
+    winrt::Microsoft::Windows::AppNotifications::Builder::AppNotificationBuilder()
+        .AddText(L"Harbor Scene with Boats")
+        .AddText(L"A quiet harbor with boats gently anchored in view.")
+        .SetHeroImage(winrt::Windows::Foundation::Uri(L"ms-appx:///Assets/SampleMedia/LandscapeImage5.jpg"))
+        .SetAttributionText(L"WinUI gallery assets")
+        .BuildNotification();
+
+winrt::Microsoft::Windows::AppNotifications::AppNotificationManager::Default().Show(notification);

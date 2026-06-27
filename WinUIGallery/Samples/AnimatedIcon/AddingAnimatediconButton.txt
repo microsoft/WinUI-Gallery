@@ -21,3 +21,13 @@ private void Button_PointerExited(object sender, PointerRoutedEventArgs e)
 {
     AnimatedIcon.SetState(this.SearchAnimatedIcon, "Normal");
 }
+--- c++
+void MainPage::Button_PointerEntered(IInspectable const& sender, PointerRoutedEventArgs const& e)
+{
+    AnimatedIcon::SetState(SearchAnimatedIcon(), L"PointerOver");
+}
+
+void MainPage::Button_PointerExited(IInspectable const& sender, PointerRoutedEventArgs const& e)
+{
+    AnimatedIcon::SetState(SearchAnimatedIcon(), L"Normal");
+}

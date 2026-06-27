@@ -14,3 +14,12 @@ private void BasicItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEv
 {
     tblBasicInvokeOutput.Text = "You invoked " + (e.InvokedItem as CustomDataObject).Title + ".";
 }
+
+--- c++
+void YourPage::BasicItemsView_ItemInvoked(
+    winrt::Microsoft::UI::Xaml::Controls::ItemsView const& /*sender*/,
+    winrt::Microsoft::UI::Xaml::Controls::ItemsViewItemInvokedEventArgs const& e)
+{
+    auto item = e.InvokedItem().as<CustomDataObject>();
+    tblBasicInvokeOutput().Text(L"You invoked " + item.Title() + L".");
+}

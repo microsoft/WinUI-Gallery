@@ -9,3 +9,10 @@ Binding to a property in code-behind
 --- c#
 // Code-behind
 public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
+--- c++
+// Code-behind (in header file)
+winrt::hstring GreetingMessage() const { return m_greetingMessage; }
+void GreetingMessage(winrt::hstring const& value) { m_greetingMessage = value; }
+
+private:
+    winrt::hstring m_greetingMessage{ L"Hello, WinUI 3!" };

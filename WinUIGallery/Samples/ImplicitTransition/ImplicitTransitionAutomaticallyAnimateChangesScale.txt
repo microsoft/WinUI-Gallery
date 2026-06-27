@@ -13,3 +13,8 @@ private void button_Click(object sender, RoutedEventArgs e)
 {
     rectangle.Scale = new Vector3($(Scale), $(Scale), $(Scale));
 }
+--- c++
+void MainPage::button_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    rectangle().Scale({ $(Scale), $(Scale), $(Scale) });
+}

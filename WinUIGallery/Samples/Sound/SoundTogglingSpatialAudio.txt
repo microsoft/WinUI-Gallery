@@ -3,3 +3,7 @@ Toggling Spatial Audio
 --- c#
 ElementSoundPlayer.State = ElementSoundPlayerState.On;
 ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On
+--- c++
+// C++/WinRT Code
+winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayer::State(winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayerState::On);
+winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayer::SpatialAudioMode(winrt::Microsoft::UI::Xaml::Controls::ElementSpatialAudioMode::On);

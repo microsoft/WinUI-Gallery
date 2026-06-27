@@ -16,3 +16,8 @@ private void AnnotatedScrollBarPage_Loaded(object sender, Microsoft.UI.Xaml.Rout
 {
     scrollView.ScrollPresenter.VerticalScrollController = annotatedScrollBar.ScrollController;
 }
+--- c++
+void MainPage::AnnotatedScrollBarPage_Loaded(IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e)
+{
+    scrollView().ScrollPresenter().VerticalScrollController(annotatedScrollBar().ScrollController());
+}

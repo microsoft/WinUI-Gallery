@@ -35,3 +35,32 @@ public sealed partial class SampleWindow7 : Window
         AppWindow.SetPresenter(presenter);
     }
 }
+--- c++
+// C++/WinRT Code
+#include <microsoft.ui.xaml.window.h>
+#include <winrt/Microsoft.UI.Windowing.h>
+#include <winrt/Microsoft.UI.Xaml.h>
+
+using namespace winrt;
+using namespace Microsoft::UI::Windowing;
+using namespace Microsoft::UI::Xaml;
+
+namespace YourNamespace
+{
+    SampleWindow7::SampleWindow7(hstring const& InitialSize)
+    {
+        InitializeComponent();
+
+        AppWindow().SetIcon(L"Assets/Tiles/GalleryIcon.ico");
+        AppWindow().TitleBar().PreferredTheme(TitleBarTheme::UseDefaultAppMode);
+
+        // Creates a CompactOverlay (Picture-in-Picture) presenter
+        CompactOverlayPresenter presenter = CompactOverlayPresenter::Create();
+
+        // Sets the initial size of the CompactOverlay window
+        presenter.InitialSize(CompactOverlaySize::$(InitialSize));
+
+        // Applies the CompactOverlay presenter to the window
+        AppWindow().SetPresenter(presenter);
+    }
+}

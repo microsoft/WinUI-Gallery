@@ -15,3 +15,16 @@ private void SetNumberBoxNumberFormatter()
     formatter.NumberRounder = rounder;
     FormattedNumberBox.NumberFormatter = formatter;
 }
+--- c++
+void MainPage::SetNumberBoxNumberFormatter()
+{
+    IncrementNumberRounder rounder;
+    rounder.Increment(0.25);
+    rounder.RoundingAlgorithm(RoundingAlgorithm::RoundHalfUp);
+
+    DecimalFormatter formatter;
+    formatter.IntegerDigits(1);
+    formatter.FractionDigits(2);
+    formatter.NumberRounder(rounder);
+    FormattedNumberBox().NumberFormatter(formatter);
+}

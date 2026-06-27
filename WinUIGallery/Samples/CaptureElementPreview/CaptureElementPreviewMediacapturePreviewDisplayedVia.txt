@@ -60,3 +60,48 @@ $(MirrorPreview)    }
 
         capturedText.Visibility = Visibility.Visible;
     }
+--- c++
+Windows::Media::Capture::Frames::MediaFrameSourceGroup mediaFrameSourceGroup{ nullptr };
+Windows::Media::Capture::MediaCapture mediaCapture{ nullptr };
+
+winrt::fire_and_forget MainPage::StartCaptureElement()
+{
+    auto groups = co_await Windows::Media::Capture::Frames::MediaFrameSourceGroup::FindAllAsync();
+    if (groups.Size() == 0)
+    {
+        frameSourceName().Text(L"No camera devices found.");
+        co_return;
+    }
+    mediaFrameSourceGroup = groups.First();
+
+    frameSourceName().Text(L"Viewing: " + mediaFrameSourceGroup.DisplayName());
+    mediaCapture = Windows::Media::Capture::MediaCapture();
+    auto mediaCaptureInitializationSettings = Windows::Media::Capture::MediaCaptureInitializationSettings();
+    mediaCaptureInitializationSettings.SourceGroup(mediaFrameSourceGroup);
+    mediaCaptureInitializationSettings.SharingMode(Windows::Media::Capture::MediaCaptureSharingMode::SharedReadOnly);
+    mediaCaptureInitializationSettings.StreamingCaptureMode(Windows::Media::Capture::StreamingCaptureMode::Video);
+    mediaCaptureInitializationSettings.MemoryPreference(Windows::Media::Capture::MediaCaptureMemoryPreference::Cpu);
+    co_await mediaCapture.InitializeAsync(mediaCaptureInitializationSettings);
+
+    // Set the MediaPlayerElement's Source property to the MediaSource for the mediaCapture.
+    auto frameSource = mediaCapture.FrameSources().Lookup(mediaFrameSourceGroup.SourceInfos().GetAt(0).Id());
+    captureElement().Source(Windows::Media::Core::MediaSource::CreateFromMediaFrameSource(frameSource));
+$(MirrorPreview)}
+
+winrt::fire_and_forget MainPage::CapturePhoto_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    // Capture a photo to a stream
+    auto imgFormat = Windows::Media::MediaProperties::ImageEncodingProperties::CreateJpeg();
+    auto stream = Windows::Storage::Streams::InMemoryRandomAccessStream();
+    co_await mediaCapture.CapturePhotoToStreamAsync(imgFormat, stream);
+    stream.Seek(0);
+
+    // Show the photo in an Image element
+    BitmapImage bmpImage;
+    co_await bmpImage.SetSourceAsync(stream);
+    Image image;
+    image.Source(bmpImage);
+    snapshots().Children().InsertAt(0, image);
+
+    capturedText().Visibility(Visibility::Visible);
+}

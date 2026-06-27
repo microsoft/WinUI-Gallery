@@ -17,3 +17,9 @@ private void ThemeButton_Click(object sender, RoutedEventArgs e)
 {
     ThemeExampleGrid.RequestedTheme = ThemeExampleGrid.RequestedTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
 }
+--- c++
+void MainPage::ThemeButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    ThemeExampleGrid().RequestedTheme(
+        ThemeExampleGrid().RequestedTheme() == ElementTheme::Dark ? ElementTheme::Light : ElementTheme::Dark);
+}

@@ -29,3 +29,19 @@ private async void ShowDialogNoDefault_Click(object sender, RoutedEventArgs e)
 
     var result = await dialog.ShowAsync();
 }
+--- c++
+winrt::fire_and_forget MainPage::ShowDialogNoDefault_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    Microsoft::UI::Xaml::Controls::ContentDialog dialog{};
+
+    // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+    dialog.XamlRoot(XamlRoot());
+    dialog.Title(winrt::box_value(L"Replace file?"));
+    dialog.PrimaryButtonText(L"Replace");
+    dialog.SecondaryButtonText(L"Keep");
+    dialog.CloseButtonText(L"Cancel");
+    dialog.DefaultButton(Microsoft::UI::Xaml::Controls::ContentDialogButton::None);
+    dialog.Content(winrt::make<ContentDialogContent>());
+
+    auto result = co_await dialog.ShowAsync();
+}

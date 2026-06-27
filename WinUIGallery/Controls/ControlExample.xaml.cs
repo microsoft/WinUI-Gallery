@@ -129,6 +129,20 @@ public sealed partial class ControlExample : UserControl
         set { SetValue(CSharpSourceProperty, value); }
     }
 
+    public static readonly DependencyProperty CppWinRTProperty = DependencyProperty.Register("CppWinRT", typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnCppWinRTChanged));
+    public string CppWinRT
+    {
+        get { return (string)GetValue(CppWinRTProperty); }
+        set { SetValue(CppWinRTProperty, value); }
+    }
+
+    public static readonly DependencyProperty CppWinRTSourceProperty = DependencyProperty.Register("CppWinRTSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null, OnCppWinRTChanged));
+    public string CppWinRTSource
+    {
+        get { return (string)GetValue(CppWinRTSourceProperty); }
+        set { SetValue(CppWinRTSourceProperty, value); }
+    }
+
     public static readonly DependencyProperty SampleDefinitionProperty = DependencyProperty.Register(nameof(SampleDefinition), typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnSampleDefinitionChanged));
     public string SampleDefinition
     {
@@ -193,7 +207,7 @@ public sealed partial class ControlExample : UserControl
         HeaderTextPresenter.Visibility = string.IsNullOrEmpty(HeaderText) ? Visibility.Collapsed : Visibility.Visible;
     }
 
-    private enum SyntaxHighlightLanguage { Xml, CSharp };
+    private enum SyntaxHighlightLanguage { Xml, CSharp, CppWinRT };
 
     private void SelectorBarItem_Loaded(object sender, RoutedEventArgs e)
     {
@@ -212,6 +226,10 @@ public sealed partial class ControlExample : UserControl
         else if (item.Tag.ToString()?.Equals("CSharp", StringComparison.OrdinalIgnoreCase) is true)
         {
             item.Visibility = string.IsNullOrEmpty(CSharp) && string.IsNullOrEmpty(CSharpSource) ? Visibility.Collapsed : Visibility.Visible;
+        }
+        else if (item.Tag.ToString()?.Equals("CppWinRT", StringComparison.OrdinalIgnoreCase) is true)
+        {
+            item.Visibility = string.IsNullOrEmpty(CppWinRT) && string.IsNullOrEmpty(CppWinRTSource) ? Visibility.Collapsed : Visibility.Visible;
         }
 
         var firstVisibileItem = SelectorBarControl.Items.Where(x => x.Visibility == Visibility.Visible).FirstOrDefault();
@@ -237,6 +255,14 @@ public sealed partial class ControlExample : UserControl
             return;
 
         ctrl.PrepareSelectorBarItem(ctrl.SelectorBarCSharpItem);
+    }
+
+    private static void OnCppWinRTChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        if (d is not ControlExample ctrl)
+            return;
+
+        ctrl.PrepareSelectorBarItem(ctrl.SelectorBarCppWinRTItem);
     }
 
     private static void OnSampleDefinitionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -279,6 +305,7 @@ public sealed partial class ControlExample : UserControl
         string? headerText = null;
         string? xamlCode = null;
         string? csharpCode = null;
+        string? cppwinrtCode = null;
         string? currentSection = null;
         List<string> currentLines = new();
 
@@ -288,7 +315,7 @@ public sealed partial class ControlExample : UserControl
             if (trimmed.StartsWith("--- ", StringComparison.Ordinal))
             {
                 // Save previous section
-                SaveSection(currentSection, currentLines, ref headerText, ref xamlCode, ref csharpCode);
+                SaveSection(currentSection, currentLines, ref headerText, ref xamlCode, ref csharpCode, ref cppwinrtCode);
 
                 currentSection = trimmed[4..].Trim();
                 currentLines = new();
@@ -300,7 +327,7 @@ public sealed partial class ControlExample : UserControl
         }
 
         // Save the last section
-        SaveSection(currentSection, currentLines, ref headerText, ref xamlCode, ref csharpCode);
+        SaveSection(currentSection, currentLines, ref headerText, ref xamlCode, ref csharpCode, ref cppwinrtCode);
 
         if (headerText != null)
         {
@@ -314,9 +341,13 @@ public sealed partial class ControlExample : UserControl
         {
             CSharp = csharpCode;
         }
+        if (cppwinrtCode != null)
+        {
+            CppWinRT = cppwinrtCode;
+        }
     }
 
-    private static void SaveSection(string? sectionName, List<string> lines, ref string? headerText, ref string? xamlCode, ref string? csharpCode)
+    private static void SaveSection(string? sectionName, List<string> lines, ref string? headerText, ref string? xamlCode, ref string? csharpCode, ref string? cppwinrtCode)
     {
         if (sectionName == null)
         {
@@ -336,6 +367,10 @@ public sealed partial class ControlExample : UserControl
         {
             csharpCode = sectionContent;
         }
+        else if (sectionName.Equals("c++", StringComparison.OrdinalIgnoreCase))
+        {
+            cppwinrtCode = sectionContent;
+        }
     }
 
     private void SelectorBarControl_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
@@ -352,11 +387,19 @@ public sealed partial class ControlExample : UserControl
             {
                 XamlContentPresenter.Visibility = Visibility.Visible;
                 CSharpContentPresenter.Visibility = Visibility.Collapsed;
+                CppWinRTContentPresenter.Visibility = Visibility.Collapsed;
             }
             else if (selectedItem.Tag.ToString()?.Equals("CSharp", StringComparison.OrdinalIgnoreCase) is true)
             {
                 CSharpContentPresenter.Visibility = Visibility.Visible;
                 XamlContentPresenter.Visibility = Visibility.Collapsed;
+                CppWinRTContentPresenter.Visibility = Visibility.Collapsed;
+            }
+            else if (selectedItem.Tag.ToString()?.Equals("CppWinRT", StringComparison.OrdinalIgnoreCase) is true)
+            {
+                CppWinRTContentPresenter.Visibility = Visibility.Visible;
+                XamlContentPresenter.Visibility = Visibility.Collapsed;
+                CSharpContentPresenter.Visibility = Visibility.Collapsed;
             }
         }
     }

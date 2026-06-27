@@ -30,3 +30,20 @@ private async void ShowDialog_Click(object sender, RoutedEventArgs e)
 
     var result = await dialog.ShowAsync();
 }
+--- c++
+winrt::fire_and_forget MainPage::ShowDialog_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    Microsoft::UI::Xaml::Controls::ContentDialog dialog{};
+
+    // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+    dialog.XamlRoot(XamlRoot());
+    dialog.Style(Application::Current().Resources().Lookup(winrt::box_value(L"DefaultContentDialogStyle")).as<Microsoft::UI::Xaml::Style>());
+    dialog.Title(winrt::box_value(L"Save your work?"));
+    dialog.PrimaryButtonText(L"Save");
+    dialog.SecondaryButtonText(L"Don't Save");
+    dialog.CloseButtonText(L"Cancel");
+    dialog.DefaultButton(Microsoft::UI::Xaml::Controls::ContentDialogButton::Primary);
+    dialog.Content(winrt::make<ContentDialogContent>());
+
+    auto result = co_await dialog.ShowAsync();
+}

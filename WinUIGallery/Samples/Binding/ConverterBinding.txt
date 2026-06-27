@@ -47,3 +47,70 @@ namespace YourNamespace
         }
     }
 }
+--- c++
+// EmptyStringToVisibilityConverter implementation in C++/WinRT
+
+// In your IDL file:
+// runtimeclass EmptyStringToVisibilityConverter : Microsoft.UI.Xaml.Data.IValueConverter
+// {
+//     EmptyStringToVisibilityConverter();
+//     Microsoft.UI.Xaml.Visibility EmptyValue;
+//     Microsoft.UI.Xaml.Visibility NonEmptyValue;
+// }
+
+namespace winrt::YourNamespace::implementation
+{
+    EmptyStringToVisibilityConverter::EmptyStringToVisibilityConverter()
+        : m_emptyValue(Microsoft::UI::Xaml::Visibility::Collapsed),
+          m_nonEmptyValue(Microsoft::UI::Xaml::Visibility::Visible)
+    {
+    }
+
+    Microsoft::UI::Xaml::Visibility EmptyStringToVisibilityConverter::EmptyValue()
+    {
+        return m_emptyValue;
+    }
+
+    void EmptyStringToVisibilityConverter::EmptyValue(Microsoft::UI::Xaml::Visibility const& value)
+    {
+        m_emptyValue = value;
+    }
+
+    Microsoft::UI::Xaml::Visibility EmptyStringToVisibilityConverter::NonEmptyValue()
+    {
+        return m_nonEmptyValue;
+    }
+
+    void EmptyStringToVisibilityConverter::NonEmptyValue(Microsoft::UI::Xaml::Visibility const& value)
+    {
+        m_nonEmptyValue = value;
+    }
+
+    Windows::Foundation::IInspectable EmptyStringToVisibilityConverter::Convert(
+        Windows::Foundation::IInspectable const& value,
+        Windows::UI::Xaml::Interop::TypeName const& /*targetType*/,
+        Windows::Foundation::IInspectable const& /*parameter*/,
+        hstring const& /*language*/)
+    {
+        // Return EmptyValue if the input is null or empty, otherwise NonEmptyValue
+        if (value != nullptr)
+        {
+            auto str = value.as<winrt::hstring>();
+            if (!str.empty())
+            {
+                return winrt::box_value(m_nonEmptyValue);
+            }
+        }
+        return winrt::box_value(m_emptyValue);
+    }
+
+    Windows::Foundation::IInspectable EmptyStringToVisibilityConverter::ConvertBack(
+        Windows::Foundation::IInspectable const& /*value*/,
+        Windows::UI::Xaml::Interop::TypeName const& /*targetType*/,
+        Windows::Foundation::IInspectable const& /*parameter*/,
+        hstring const& /*language*/)
+    {
+        // ConvertBack is not needed and not implemented in this case
+        throw hresult_not_implemented();
+    }
+}

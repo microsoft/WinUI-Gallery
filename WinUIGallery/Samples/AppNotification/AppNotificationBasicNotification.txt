@@ -7,3 +7,12 @@ AppNotification notification = new AppNotificationBuilder()
     .BuildNotification();
 
 AppNotificationManager.Default.Show(notification);
+--- c++
+// C++/WinRT Code
+winrt::Microsoft::Windows::AppNotifications::AppNotification notification =
+    winrt::Microsoft::Windows::AppNotifications::Builder::AppNotificationBuilder()
+        .AddText(L"Welcome to WinUI 3 Gallery")
+        .AddText(L"Explore interactive samples and discover the power of modern Windows UI.")
+        .BuildNotification();
+
+winrt::Microsoft::Windows::AppNotifications::AppNotificationManager::Default().Show(notification);

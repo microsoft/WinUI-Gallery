@@ -10,3 +10,14 @@ ElementSoundPlayer.Play(ElementSoundKind.Hide);
 ElementSoundPlayer.Play(ElementSoundKind.MovePrevious);
 ElementSoundPlayer.Play(ElementSoundKind.MoveNext);
 ElementSoundPlayer.Play(ElementSoundKind.GoBack);
+--- c++
+// C++/WinRT Code
+winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayer::State(winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayerState::On);
+
+winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayer::Play(winrt::Microsoft::UI::Xaml::Controls::ElementSoundKind::Focus);
+winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayer::Play(winrt::Microsoft::UI::Xaml::Controls::ElementSoundKind::Invoke);
+winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayer::Play(winrt::Microsoft::UI::Xaml::Controls::ElementSoundKind::Show);
+winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayer::Play(winrt::Microsoft::UI::Xaml::Controls::ElementSoundKind::Hide);
+winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayer::Play(winrt::Microsoft::UI::Xaml::Controls::ElementSoundKind::MovePrevious);
+winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayer::Play(winrt::Microsoft::UI::Xaml::Controls::ElementSoundKind::MoveNext);
+winrt::Microsoft::UI::Xaml::Controls::ElementSoundPlayer::Play(winrt::Microsoft::UI::Xaml::Controls::ElementSoundKind::GoBack);

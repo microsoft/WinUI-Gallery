@@ -80,3 +80,71 @@ private async void PickFileForThumbnailButton_Click(object sender, RoutedEventAr
         UIHelper.AnnounceActionForAccessibility(button, ThumbnailDetailsTextBlock.Text, "ThumbnailPickedNotificationId");
     }
 }
+--- c++
+winrt::fire_and_forget MainPage::PickFileForThumbnailButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    if (auto button = sender.try_as<winrt::Microsoft::UI::Xaml::Controls::Button>())
+    {
+        button.IsEnabled(false);
+
+        // 1) Pick a file using the new WinAppSDK Microsoft.Windows.Storage.Pickers API.
+        winrt::Microsoft::Windows::Storage::Pickers::FileOpenPicker picker(button.XamlRoot().ContentIslandEnvironment().AppWindowId());
+        picker.FileTypeFilter().Append(L"*");
+
+        auto pickResult = co_await picker.PickSingleFileAsync();
+        if (pickResult == nullptr)
+        {
+            ThumbnailDetailsTextBlock().Text(L"No file selected.");
+            ThumbnailImage().Source(nullptr);
+            button.IsEnabled(true);
+            co_return;
+        }
+
+        // 2) The new picker returns a path string; bridge to a StorageFile to access
+        //    thumbnail APIs (Windows.Storage.FileProperties has no WinAppSDK replacement).
+        auto file = co_await winrt::Windows::Storage::StorageFile::GetFileFromPathAsync(pickResult.Path());
+
+        auto thumbnailMode = static_cast<winrt::Windows::Storage::FileProperties::ThumbnailMode>(
+            ThumbnailModeComboBox().SelectedItem().as<winrt::Windows::Foundation::IPropertyValue>().GetInt32());
+
+        // NumberBox.Value is NaN when the user clears the field; fall back to a sane default.
+        double rawSize = ThumbnailSizeNumberBox().Value();
+        uint32_t size = (std::isnan(rawSize) || rawSize <= 0) ? 200u : static_cast<uint32_t>(rawSize);
+
+        // 3) Request the thumbnail. ThumbnailMode hints how the system should render it
+        //    (e.g. PicturesView for photos, MusicView for album art, DocumentsView for icons).
+        //    Some modes throw for incompatible file types (e.g. PicturesView on a .txt file),
+        //    so wrap the call and report the failure to the user.
+        try
+        {
+            auto thumbnail = co_await file.GetThumbnailAsync(
+                thumbnailMode, size, winrt::Windows::Storage::FileProperties::ThumbnailOptions::UseCurrentScale);
+            if (thumbnail != nullptr)
+            {
+                winrt::Microsoft::UI::Xaml::Media::Imaging::BitmapImage bitmap;
+                co_await bitmap.SetSourceAsync(thumbnail);
+                ThumbnailImage().Source(bitmap);
+
+                ThumbnailDetailsTextBlock().Text(
+                    winrt::format(L"File: {0}\nMode: ThumbnailMode.{1}\nRequested size: {2}\nReturned size: {3} x {4}",
+                        file.Name(), winrt::to_hstring(static_cast<int>(thumbnailMode)), size,
+                        thumbnail.OriginalWidth(), thumbnail.OriginalHeight()));
+            }
+            else
+            {
+                ThumbnailImage().Source(nullptr);
+                ThumbnailDetailsTextBlock().Text(L"No thumbnail available for the selected file.");
+            }
+        }
+        catch (winrt::hresult_error const& ex)
+        {
+            ThumbnailImage().Source(nullptr);
+            ThumbnailDetailsTextBlock().Text(
+                winrt::format(L"Could not retrieve a thumbnail for \"{0}\" using ThumbnailMode.{1}.\nTry a different mode (for example, SingleItem) or a different file.\n({2:X8})",
+                    file.Name(), winrt::to_hstring(static_cast<int>(thumbnailMode)), static_cast<uint32_t>(ex.code())));
+        }
+
+        button.IsEnabled(true);
+        UIHelper::AnnounceActionForAccessibility(button, ThumbnailDetailsTextBlock().Text(), L"ThumbnailPickedNotificationId");
+    }
+}

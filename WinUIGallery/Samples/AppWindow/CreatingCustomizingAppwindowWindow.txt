@@ -94,3 +94,61 @@ public sealed partial class SampleWindow1 : Window
         this.Close();
     }
 }
+--- c++
+// C++/WinRT Code
+#include <microsoft.ui.xaml.window.h>
+#include <winrt/Microsoft.UI.Windowing.h>
+#include <winrt/Microsoft.UI.Xaml.h>
+#include <winrt/Windows.Graphics.h>
+#include <winrt/Windows.Foundation.h>
+
+using namespace winrt;
+using namespace Microsoft::UI::Windowing;
+using namespace Microsoft::UI::Xaml;
+using namespace Windows::Graphics;
+
+namespace YourNamespace
+{
+    SampleWindow1::SampleWindow1()
+    {
+        InitializeComponent();
+
+        // Set the window title
+        AppWindow().Title(L"$(WindowTitle)");
+
+        // Set the window size (including borders)
+        AppWindow().Resize(SizeInt32{ $(Width), $(Height) });
+
+        // Set the window position on screen
+        AppWindow().Move(PointInt32{ $(X), $(Y) });
+
+        // Set the taskbar icon (displayed in the taskbar)
+        AppWindow().SetTaskbarIcon(L"Assets/Tiles/GalleryIcon.ico");
+
+        // Set the title bar icon (displayed in the window's title bar)
+        AppWindow().SetTitleBarIcon(L"Assets/Tiles/GalleryIcon.ico");
+
+        // Set the window icon (affects both taskbar and title bar, can be omitted if the above two are set)
+        // AppWindow().SetIcon(L"Assets/Tiles/GalleryIcon.ico");
+
+        AppWindow().TitleBar().PreferredTheme(TitleBarTheme::UseDefaultAppMode);
+    }
+
+    winrt::fire_and_forget SampleWindow1::Show_Click(IInspectable const& sender, RoutedEventArgs const& e)
+    {
+        AppWindow().Hide();
+        // Hide and then show the window after 3 seconds
+        co_await winrt::resume_after(std::chrono::seconds(3));
+        AppWindow().Show();
+    }
+
+    void SampleWindow1::Hide_Click(IInspectable const& sender, RoutedEventArgs const& e)
+    {
+        AppWindow().Hide();
+    }
+
+    void SampleWindow1::Close_Click(IInspectable const& sender, RoutedEventArgs const& e)
+    {
+        Close();
+    }
+}

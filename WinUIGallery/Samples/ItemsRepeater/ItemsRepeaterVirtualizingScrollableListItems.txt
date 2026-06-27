@@ -67,3 +67,34 @@ public class MyDataTemplateSelector : DataTemplateSelector
         }
     }
 }
+
+--- c++
+// C++/WinRT Code-behind
+
+struct MyDataTemplateSelector : winrt::Microsoft::UI::Xaml::Controls::DataTemplateSelectorT<MyDataTemplateSelector>
+{
+    MyDataTemplateSelector() = default;
+
+    winrt::Microsoft::UI::Xaml::DataTemplate Normal() const { return m_normal; }
+    void Normal(winrt::Microsoft::UI::Xaml::DataTemplate const& value) { m_normal = value; }
+
+    winrt::Microsoft::UI::Xaml::DataTemplate Accent() const { return m_accent; }
+    void Accent(winrt::Microsoft::UI::Xaml::DataTemplate const& value) { m_accent = value; }
+
+    winrt::Microsoft::UI::Xaml::DataTemplate SelectTemplateCore(IInspectable const& item)
+    {
+        auto value = winrt::unbox_value<int>(item);
+        if (value % 2 == 0)
+        {
+            return m_normal;
+        }
+        else
+        {
+            return m_accent;
+        }
+    }
+
+private:
+    winrt::Microsoft::UI::Xaml::DataTemplate m_normal{ nullptr };
+    winrt::Microsoft::UI::Xaml::DataTemplate m_accent{ nullptr };
+};

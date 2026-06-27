@@ -36,3 +36,12 @@ private void ClickToPlaySource_ImageOpened(object sender, RoutedEventArgs e)
         PlaybackButtons.Visibility = Visibility.Visible;
     }
 }
+--- c++
+void MainPage::ClickToPlaySource_ImageOpened(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    // BitmapImage.IsAnimatedBitmap is only valid after ImageOpened has been raised.
+    if (ClickToPlaySource().IsAnimatedBitmap())
+    {
+        PlaybackButtons().Visibility(Visibility::Visible);
+    }
+}

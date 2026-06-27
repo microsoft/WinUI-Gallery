@@ -37,3 +37,41 @@ private void ActualSizeExample_Loaded(object sender, RoutedEventArgs e)
         element.StartAnimation(anim);
     }
 }
+--- c++
+void MainPage::ActualSizeExample_Loaded(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    // We will lay out some buttons in a circle.
+    // The formulas we will use are:
+    //   X = radius * cos(theta) + xOffset
+    //   Y = radius * sin(theta) + yOffset
+    //   radius = 1/2 the width and height of the parent container
+    //   theta = the angle for each element. The starting value of theta depends on both the number of elements and the relative index of each element.
+    //   xOffset = The starting horizontal offset for the element.
+    //   yOffset = The starting vertical offset for the element.
+
+    winrt::hstring radius = L"(source.ActualSize.X / 2)"; // Since the layout is a circle, width and height are equivalent meaning we could use X or Y. We'll use X.
+    winrt::hstring theta = L".02 * " + radius + L" + ((2 * Pi)/total)*index"; // The first value is the rate of angular change based on radius. The last value spaces the buttons equally.
+    winrt::hstring xOffset = radius; // We offset x by radius because the buttons naturally layout along the left edge. We need to move them to center of the circle first.
+    winrt::hstring yOffset = L"0"; // We don't need to offset y because the buttons naturally layout vertically centered.
+
+    // We combine X, Y, and Z subchannels into a single animation because we can only start a single animation on Translation.
+    winrt::hstring expression = L"Vector3(" + radius + L"*cos(" + theta + L")+" + xOffset + L", " + radius + L"*sin(" + theta + L")+" + yOffset + L",0)";
+
+    int totalElements = 8;
+    for (int i = 0; i < totalElements; i++)
+    {
+        Button element;
+        element.Content(winrt::box_value(L"Button" + winrt::to_hstring(i)));
+        LayoutPanel().Children().Append(element);
+
+        auto anim = _compositor.CreateExpressionAnimation();
+
+        anim.Expression(expression);
+        anim.SetScalarParameter(L"index", static_cast<float>(i + 1));
+        anim.SetScalarParameter(L"total", static_cast<float>(totalElements));
+        anim.Target(L"Translation");
+        anim.SetExpressionReferenceParameter(L"source", LayoutPanel());
+
+        element.StartAnimation(anim);
+    }
+}

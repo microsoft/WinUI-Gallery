@@ -10,3 +10,15 @@ AppNotification notification = new AppNotificationBuilder()
     .BuildNotification();
 
 AppNotificationManager.Default.Show(notification);
+--- c++
+// C++/WinRT Code
+winrt::Microsoft::Windows::AppNotifications::AppNotification notification =
+    winrt::Microsoft::Windows::AppNotifications::Builder::AppNotificationBuilder()
+        .AddText(L"Control Highlight: PersonPicture")
+        .AddText(L"Use the PersonPicture control to display user avatars with initials or images.")
+        .SetAppLogoOverride(winrt::Windows::Foundation::Uri(L"ms-appx:///Assets/ControlImages/PersonPicture.png"), winrt::Microsoft::Windows::AppNotifications::AppNotificationImageCrop::Circle)
+        .SetAudioEvent(winrt::Microsoft::Windows::AppNotifications::AppNotificationSoundEvent::$(SelectedAppNotificationSoundEvent))
+        .SetTimeStamp(winrt::clock::now())
+        .BuildNotification();
+
+winrt::Microsoft::Windows::AppNotifications::AppNotificationManager::Default().Show(notification);

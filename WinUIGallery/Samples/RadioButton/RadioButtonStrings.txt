@@ -54,3 +54,51 @@ private void BorderBrush_SelectionChanged(object sender, SelectionChangedEventAr
         }
     }
 }
+--- c++
+void MainPage::BackgroundColor_SelectionChanged(IInspectable const& sender, SelectionChangedEventArgs const& e)
+{
+    if (ControlOutput() != nullptr)
+    {
+        auto rb = sender.try_as<RadioButtons>();
+        if (rb != nullptr)
+        {
+            auto colorName = winrt::unbox_value<winrt::hstring>(rb.SelectedItem());
+            if (colorName == L"Yellow")
+            {
+                ControlOutput().Background(SolidColorBrush(Colors::Yellow()));
+            }
+            else if (colorName == L"Green")
+            {
+                ControlOutput().Background(SolidColorBrush(Colors::Green()));
+            }
+            else if (colorName == L"White")
+            {
+                ControlOutput().Background(SolidColorBrush(Colors::White()));
+            }
+        }
+    }
+}
+
+void MainPage::BorderBrush_SelectionChanged(IInspectable const& sender, SelectionChangedEventArgs const& e)
+{
+    if (ControlOutput() != nullptr)
+    {
+        auto rb = sender.try_as<RadioButtons>();
+        if (rb != nullptr)
+        {
+            auto colorName = winrt::unbox_value<winrt::hstring>(rb.SelectedItem());
+            if (colorName == L"Yellow")
+            {
+                ControlOutput().BorderBrush(SolidColorBrush(Colors::Gold()));
+            }
+            else if (colorName == L"Green")
+            {
+                ControlOutput().BorderBrush(SolidColorBrush(Colors::DarkGreen()));
+            }
+            else if (colorName == L"White")
+            {
+                ControlOutput().BorderBrush(SolidColorBrush(Colors::White()));
+            }
+        }
+    }
+}

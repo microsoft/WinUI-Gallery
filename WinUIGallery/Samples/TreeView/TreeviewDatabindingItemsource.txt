@@ -91,3 +91,69 @@ namespace YourNamespace
         public ObservableCollection<ExplorerItem> Children { get; set; } = new ObservableCollection<ExplorerItem>();
     }
 }
+
+--- c++
+#include <winrt/Windows.Foundation.Collections.h>
+#include <winrt/Microsoft.UI.Xaml.Controls.h>
+
+using namespace winrt;
+using namespace Windows::Foundation::Collections;
+using namespace Microsoft::UI::Xaml::Controls;
+
+namespace YourNamespace
+{
+    // Enum to define the type of the item: Folder or File.
+    enum class ExplorerItemType
+    {
+        Folder,
+        File,
+    };
+
+    // Class to represent items in the TreeView.
+    struct ExplorerItem
+    {
+        // Name of the item (displayed in the TreeView).
+        winrt::hstring Name;
+        // Type of the item (Folder or File).
+        ExplorerItemType Type{ ExplorerItemType::Folder };
+        // Collection of child items. Used for nested nodes in the TreeView.
+        IObservableVector<ExplorerItem> Children{ winrt::single_threaded_observable_vector<ExplorerItem>() };
+    };
+
+    // Method to provide sample data for the TreeView.
+    IObservableVector<ExplorerItem> GetData()
+    {
+        auto result = winrt::single_threaded_observable_vector<ExplorerItem>();
+
+        // Root folder with child files.
+        ExplorerItem documents;
+        documents.Name = L"Documents";
+        documents.Type = ExplorerItemType::Folder;
+
+        ExplorerItem proposal;
+        proposal.Name = L"ProjectProposal";
+        proposal.Type = ExplorerItemType::File;
+        documents.Children.Append(proposal);
+
+        ExplorerItem budget;
+        budget.Name = L"BudgetReport";
+        budget.Type = ExplorerItemType::File;
+        documents.Children.Append(budget);
+
+        result.Append(documents);
+
+        // Another root folder with one child file.
+        ExplorerItem projects;
+        projects.Name = L"Projects";
+        projects.Type = ExplorerItemType::Folder;
+
+        ExplorerItem plan;
+        plan.Name = L"Project Plan";
+        plan.Type = ExplorerItemType::File;
+        projects.Children.Append(plan);
+
+        result.Append(projects);
+
+        return result;
+    }
+}

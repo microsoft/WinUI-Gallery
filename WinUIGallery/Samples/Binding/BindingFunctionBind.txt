@@ -15,3 +15,23 @@ public string FormatDate(DateTimeOffset? date)
         return "No date selected";
     }
 }
+--- c++
+winrt::hstring MainPage::FormatDate(Windows::Foundation::IReference<Windows::Foundation::DateTime> const& date)
+{
+    if (date != nullptr)
+    {
+        // Format the date using a calendar and basic string concatenation
+        Windows::Foundation::DateTime dt = date.Value();
+        auto cal = Windows::Globalization::Calendar();
+        cal.SetDateTime(dt);
+        winrt::hstring dayName = cal.DayOfWeekAsAbbreviatedString();
+        winrt::hstring monthName = cal.MonthAsSoloString();
+        int32_t day = cal.DayAsInt32();
+        int32_t year = cal.YearAsInt32();
+        return L"Selected date is: " + dayName + L", " + monthName + L" " + winrt::to_hstring(day) + L", " + winrt::to_hstring(year);
+    }
+    else
+    {
+        return L"No date selected";
+    }
+}

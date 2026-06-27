@@ -4,3 +4,14 @@ A BreadcrumbBar control
 <BreadcrumbBar x:Name="BreadcrumbBar1"/>
 --- c#
 BreadcrumbBar1.ItemsSource = new string[] { "Home", "Documents", "Design", "Northwind", "Images", "Folder1", "Folder2", "Folder3" };
+--- c++
+auto items = winrt::single_threaded_vector<winrt::hstring>();
+items.Append(L"Home");
+items.Append(L"Documents");
+items.Append(L"Design");
+items.Append(L"Northwind");
+items.Append(L"Images");
+items.Append(L"Folder1");
+items.Append(L"Folder2");
+items.Append(L"Folder3");
+BreadcrumbBar1().ItemsSource(items);

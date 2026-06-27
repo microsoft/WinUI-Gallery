@@ -186,7 +186,7 @@ private void InitializeData()
     // ...
 }
 
-// ========================== Filtering, sorting, animating ========================== 
+// ========================== Filtering, sorting, animating ==========================
 public void FilterRecipes_FilterChanged(object sender, RoutedEventArgs e)
 {
     UpdateSortAndFilter();
@@ -212,16 +212,247 @@ private void OnSortDesClick(object sender, RoutedEventArgs e)
 
 private void UpdateSortAndFilter()
 {
-    // This is a Linq query that fetches all Recipes containing the ingredient 
+    // This is a Linq query that fetches all Recipes containing the ingredient
     // typed into the filter text box.
     var filteredTypes = staticRecipeData
         .Where(i => i.Ingredients.Contains(
             FilterRecipes.Text,
             StringComparison.InvariantCultureIgnoreCase));
-    // After filtering, sort the collection    
+    // After filtering, sort the collection
     var sortedFilteredTypes = IsSortDescending ?
         filteredTypes.OrderByDescending(i => i.numIngredients) :
         filteredTypes.OrderBy(i => i.numIngredients);
     // Re-initialize the collection with this newly filtered data
     filteredRecipeData.InitializeCollection(sortedFilteredTypes);
+}
+
+--- c++
+// C++/WinRT Code
+
+// Helper function for case-insensitive contains
+static bool ContainsCaseInsensitive(winrt::hstring const& haystack, winrt::hstring const& needle)
+{
+    std::wstring h(haystack.begin(), haystack.size());
+    std::wstring n(needle.begin(), needle.size());
+    std::transform(h.begin(), h.end(), h.begin(), ::towlower);
+    std::transform(n.begin(), n.end(), n.begin(), ::towlower);
+    return h.find(n) != std::wstring::npos;
+}
+
+// ==========================  Recipe class used for items ==========================
+struct Recipe
+{
+    int Num{ 0 };
+    winrt::hstring Ingredients;
+    std::vector<winrt::hstring> IngList;
+    winrt::hstring Name;
+    winrt::hstring Color;
+
+    int numIngredients() const
+    {
+        return static_cast<int>(IngList.size());
+    }
+
+    void RandomizeIngredients()
+    {
+        // To give the items different heights for visual variety, give recipes
+        // random numbers of random "extra" ingredients
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> distNum(0, 3);
+        std::uniform_int_distribution<> distIng(0, 6);
+
+        std::vector<winrt::hstring> extras
+        {
+            L"Garlic",
+            L"Lemon",
+            L"Butter",
+            L"Lime",
+            L"Feta Cheese",
+            L"Parmesan Cheese",
+            L"Breadcrumbs"
+        };
+
+        for (int i = 0; i < distNum(gen); i++)
+        {
+            winrt::hstring newIng = extras[distIng(gen)];
+            // If the ingredient is not already present in the recipe, add it
+            if (std::find(IngList.begin(), IngList.end(), newIng) == IngList.end())
+            {
+                Ingredients += L"\n" + newIng;
+                IngList.push_back(newIng);
+            }
+        }
+    }
+};
+
+// ==========================  Data source class ==========================
+/* To hold the recipe items, a data source class was created called MyItemsSource. The class
+   inherits from IList and IKeyIndexMapping interfaces, basically creating a collection class
+   that can easily filter and sort its items. Important methods are shown below, but full source
+   code can be found in WinUI Gallery repo. See the linked ItemsRepeater guidance documentation as
+   well for a full tutorial on how to implement this type of class. */
+
+struct MyItemsSource : winrt::implements<MyItemsSource,
+    Windows::Foundation::Collections::IIterable<IInspectable>,
+    Microsoft::UI::Xaml::Controls::IKeyIndexMapping,
+    Windows::Foundation::Collections::IObservableVector<IInspectable>>
+{
+    MyItemsSource() = default;
+
+    void InitializeCollection(std::vector<Recipe> const& collection)
+    {
+        m_inner.clear();
+        m_inner = collection;
+
+        if (m_collectionChanged)
+        {
+            m_collectionChanged(*this,
+                winrt::Microsoft::UI::Xaml::Interop::NotifyCollectionChangedEventArgs(
+                    winrt::Microsoft::UI::Xaml::Interop::NotifyCollectionChangedAction::Reset));
+        }
+    }
+
+    // ...
+
+    winrt::hstring KeyFromIndex(int index)
+    {
+        return winrt::to_hstring(m_inner[index].Num);
+    }
+
+    int IndexFromKey(winrt::hstring const& key)
+    {
+        for (size_t i = 0; i < m_inner.size(); i++)
+        {
+            if (winrt::to_hstring(m_inner[i].Num) == key)
+            {
+                return static_cast<int>(i);
+            }
+        }
+        return -1;
+    }
+
+    // IIterable<IInspectable>
+    Windows::Foundation::Collections::IIterator<IInspectable> First() { return nullptr; /* implement */ }
+
+    // IObservableVector<IInspectable> event
+    winrt::event_token VectorChanged(
+        Windows::Foundation::Collections::VectorChangedEventHandler<IInspectable> const&) { return {}; }
+    void VectorChanged(winrt::event_token const&) noexcept { }
+
+    uint32_t Size() const { return static_cast<uint32_t>(m_inner.size()); }
+
+    // ... other IObservableVector methods ...
+
+private:
+    std::vector<Recipe> m_inner;
+    winrt::event<winrt::Microsoft::UI::Xaml::Interop::NotifyCollectionChangedEventHandler> m_collectionChanged;
+};
+
+// ========================== Initialization code ==========================
+
+MyItemsSource filteredRecipeData;
+std::vector<Recipe> staticRecipeData;
+
+void YourPage::InitializeData()
+{
+    // ...
+    // Create a list of Recipe objects, initializing each of them with a random number,
+    // correlating name, and random color to associate with it.
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distFruit(0, 6);
+    std::uniform_int_distribution<> distVeg(0, 6);
+    std::uniform_int_distribution<> distGrain(0, 6);
+    std::uniform_int_distribution<> distProtein(0, 6);
+
+    std::vector<Recipe> tempList;
+    tempList.reserve(1000);
+
+    for (int k = 0; k < 1000; k++)
+    {
+        Recipe r;
+        r.Num = k;
+        r.Name = L"Recipe " + winrt::to_hstring(k);
+        r.Color = colors[k % 15 + 1];
+        tempList.push_back(r);
+    }
+
+    // The lists fruits, vegetables, grains, and proteins were all populated with strings.
+    // This loop goes through each Recipe item and populates its ingredients list with one
+    // string from each list/category, then randomizes the ingredients list by adding extras.
+    for (auto& rec : tempList)
+    {
+        winrt::hstring fruitOption = fruits[distFruit(gen)];
+        winrt::hstring vegOption = vegetables[distVeg(gen)];
+        winrt::hstring grainOption = grains[distGrain(gen)];
+        winrt::hstring proteinOption = proteins[distProtein(gen)];
+        rec.Ingredients = L"\n" + fruitOption + L"\n" + vegOption + L"\n" +
+            grainOption + L"\n" + proteinOption;
+        rec.IngList = { fruitOption, vegOption, grainOption, proteinOption };
+        rec.RandomizeIngredients();
+    }
+
+    // The custom MyItemsSource object, filteredRecipeData, is initialized.
+    filteredRecipeData.InitializeCollection(tempList);
+    // A static list of the original recipe data is saved to use for filtering.
+    staticRecipeData = tempList;
+    // The ItemsSource is set for the ItemsRepeater created in the XAML file.
+    VariedImageSizeRepeater().ItemsSource(filteredRecipeData);
+
+    // ...
+}
+
+// ========================== Filtering, sorting, animating ==========================
+void YourPage::FilterRecipes_FilterChanged(IInspectable const& /*sender*/, RoutedEventArgs const& /*e*/)
+{
+    UpdateSortAndFilter();
+}
+
+void YourPage::OnSortAscClick(IInspectable const& /*sender*/, RoutedEventArgs const& /*e*/)
+{
+    if (IsSortDescending)
+    {
+        IsSortDescending = false;
+        UpdateSortAndFilter();
+    }
+}
+
+void YourPage::OnSortDesClick(IInspectable const& /*sender*/, RoutedEventArgs const& /*e*/)
+{
+    if (!IsSortDescending)
+    {
+        IsSortDescending = true;
+        UpdateSortAndFilter();
+    }
+}
+
+void YourPage::UpdateSortAndFilter()
+{
+    // Filter recipes containing the ingredient typed into the filter text box.
+    std::vector<Recipe> filtered;
+    for (auto const& recipe : staticRecipeData)
+    {
+        if (ContainsCaseInsensitive(recipe.Ingredients, FilterRecipes().Text()))
+        {
+            filtered.push_back(recipe);
+        }
+    }
+
+    // After filtering, sort the collection
+    if (IsSortDescending)
+    {
+        std::sort(filtered.begin(), filtered.end(),
+            [](Recipe const& a, Recipe const& b)
+            { return a.numIngredients() > b.numIngredients(); });
+    }
+    else
+    {
+        std::sort(filtered.begin(), filtered.end(),
+            [](Recipe const& a, Recipe const& b)
+            { return a.numIngredients() < b.numIngredients(); });
+    }
+
+    // Re-initialize the collection with this newly filtered data
+    filteredRecipeData.InitializeCollection(filtered);
 }

@@ -15,3 +15,14 @@ public YourPage()
                     
     DataContext = ViewModel;
 }
+--- c++
+MainPage::MainPage()
+{
+    InitializeComponent();
+
+    auto viewModel = winrt::make<ExampleViewModel>();
+    viewModel.NullString(L"");
+    // NullString is empty/null, so TargetNullValue will display "Anonymous User"
+
+    DataContext(viewModel);
+}

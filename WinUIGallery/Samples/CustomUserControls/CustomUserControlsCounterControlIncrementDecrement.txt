@@ -119,3 +119,88 @@ public sealed class CounterControl : Control
         }
     }
 }
+--- c++
+// Enum defining the counter mode: Increment or Decrement
+enum class CounterMode
+{
+    Increment,
+    Decrement
+};
+
+// Custom control class that extends Control
+struct CounterControl : CounterControlT<CounterControl>
+{
+    // DependencyProperty for storing the count value
+    static Microsoft::UI::Xaml::DependencyProperty CountProperty();
+    // DependencyProperty for determining the counter mode (Increment or Decrement)
+    static Microsoft::UI::Xaml::DependencyProperty ModeProperty();
+
+    CounterControl()
+    {
+        DefaultStyleKey(winrt::box_value(L"YourNamespace.CounterControl"));
+    }
+
+    // Property to get and set the count value
+    int32_t Count()
+    {
+        return winrt::unbox_value<int32_t>(GetValue(CountProperty()));
+    }
+    void Count(int32_t value)
+    {
+        SetValue(CountProperty(), winrt::box_value(value));
+    }
+
+    // Property to get and set the counter mode
+    CounterMode Mode()
+    {
+        return winrt::unbox_value<CounterMode>(GetValue(ModeProperty()));
+    }
+    void Mode(CounterMode value)
+    {
+        SetValue(ModeProperty(), winrt::box_value(value));
+    }
+
+    // Method executed when the control's template is applied
+    void OnApplyTemplate()
+    {
+        __super::OnApplyTemplate();
+
+        // Retrieve template elements
+        ActionButton = GetTemplateChild(L"ActionButton").try_as<Button>();
+        CountText = GetTemplateChild(L"CountText").try_as<TextBlock>();
+
+        // Attach event handler to button if it exists
+        if (ActionButton != nullptr)
+        {
+            ActionButton.Click([this](IInspectable const&, RoutedEventArgs const&)
+            {
+                Count(Mode() == CounterMode::Increment ? Count() + 1 : Count() - 1);
+                UpdateUI();
+            });
+
+            UpdateButtonText();
+        }
+
+        UpdateUI();
+    }
+
+private:
+    Button ActionButton{ nullptr };
+    TextBlock CountText{ nullptr };
+
+    void UpdateUI()
+    {
+        if (CountText != nullptr)
+        {
+            CountText.Text(winrt::to_hstring(Count()));
+        }
+    }
+
+    void UpdateButtonText()
+    {
+        if (ActionButton != nullptr)
+        {
+            ActionButton.Content(winrt::box_value(Mode() == CounterMode::Increment ? L"Increase" : L"Decrease"));
+        }
+    }
+};

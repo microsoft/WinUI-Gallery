@@ -10,3 +10,5 @@ Page transitions
 </Frame>
 --- c#
 ContentFrame.Navigate(typeof(SamplePage), null$(TransitionParameter));
+--- c++
+ContentFrame().Navigate(winrt::xaml_typename<SamplePage>(), nullptr$(TransitionParameter));

@@ -35,3 +35,15 @@ public sealed partial class MyPage : Page
         this.InitializeComponent();
     }
 }
+--- c++
+// Conditional Setters inside a Style are evaluated when the Style
+// resource is first parsed. Set the flags before InitializeComponent
+// (or before the resource dictionary that contains the Style is
+// loaded) so the parser produces the Style you expect.
+void MainPage::InitializeComponent()
+{
+    FeatureFlagCondition::FeatureFlags().Insert(L"NewExperience", winrt::box_value(true));
+    FeatureFlagCondition::FeatureFlags().Insert(L"LegacyMode", winrt::box_value(false));
+
+    __super::InitializeComponent();
+}

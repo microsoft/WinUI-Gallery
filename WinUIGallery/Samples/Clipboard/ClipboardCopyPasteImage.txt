@@ -23,3 +23,24 @@ private async void PasteImage_Click(object sender, RoutedEventArgs args)
         }
     }
 }
+--- c++
+void MainPage::CopyImage_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    Windows::ApplicationModel::DataTransfer::DataPackage package{};
+    Windows::Foundation::Uri imageUri{ L"ms-appx:///Assets/SampleMedia/rainier.jpg" };
+    package.SetBitmap(Windows::Storage::Streams::RandomAccessStreamReference::CreateFromUri(imageUri));
+    Windows::ApplicationModel::DataTransfer::Clipboard::SetContent(package);
+}
+
+winrt::fire_and_forget MainPage::PasteImage_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    auto package = Windows::ApplicationModel::DataTransfer::Clipboard::GetContent();
+    if (package.Contains(Windows::ApplicationModel::DataTransfer::StandardDataFormats::Bitmap()))
+    {
+        auto imageReference = co_await package.GetBitmapAsync();
+        auto imageStream = co_await imageReference.OpenReadAsync();
+        Microsoft::UI::Xaml::Media::Imaging::BitmapImage bitmapImage{};
+        bitmapImage.SetSource(imageStream);
+        PastedImage().Source(bitmapImage);
+    }
+}

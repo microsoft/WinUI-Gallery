@@ -16,3 +16,20 @@ Clipboard.ContentChanged += (s, e) =>
 {
     // Handle clipboard content change
 };
+--- c++
+// Show available formats on the clipboard
+auto package = Windows::ApplicationModel::DataTransfer::Clipboard::GetContent();
+for (auto const& format : package.AvailableFormats())
+{
+    // Display each format
+}
+
+// Clear the clipboard
+Windows::ApplicationModel::DataTransfer::Clipboard::Clear();
+
+// Register for clipboard content changes
+Windows::ApplicationModel::DataTransfer::Clipboard::ContentChanged(
+    [](IInspectable const& /*s*/, IInspectable const& /*e*/)
+    {
+        // Handle clipboard content change
+    });

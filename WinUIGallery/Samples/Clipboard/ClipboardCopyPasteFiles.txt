@@ -33,3 +33,34 @@ private async void PasteFiles_Click(object sender, RoutedEventArgs args)
         // Display the file names and the requested operation
     }
 }
+--- c++
+winrt::fire_and_forget MainPage::CopyFiles_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    Windows::Storage::Pickers::FileOpenPicker picker;
+    picker.ViewMode(Windows::Storage::Pickers::PickerViewMode::List);
+    picker.FileTypeFilter().Append(L"*");
+
+    // Initialize the picker with the current window handle (required in WinUI 3)
+    auto hwnd = WinRT::Interop::WindowNative::GetWindowHandle(App::MainWindow());
+    WinRT::Interop::InitializeWithWindow::Initialize(picker, hwnd);
+
+    auto storageItems = co_await picker.PickMultipleFilesAsync();
+    if (storageItems.Size() > 0)
+    {
+        Windows::ApplicationModel::DataTransfer::DataPackage package{};
+        package.SetStorageItems(storageItems);
+        package.RequestedOperation(Windows::ApplicationModel::DataTransfer::DataPackageOperation::Copy);
+        Windows::ApplicationModel::DataTransfer::Clipboard::SetContent(package);
+    }
+}
+
+winrt::fire_and_forget MainPage::PasteFiles_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    auto package = Windows::ApplicationModel::DataTransfer::Clipboard::GetContent();
+    if (package.Contains(Windows::ApplicationModel::DataTransfer::StandardDataFormats::StorageItems()))
+    {
+        auto storageItems = co_await package.GetStorageItemsAsync();
+        auto operation = package.RequestedOperation();
+        // Display the file names and the requested operation
+    }
+}

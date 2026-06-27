@@ -161,3 +161,138 @@ private object? GetSelectedItemFromViewport()
     var selectedElement = animatedScrollRepeater.TryGetElement(selectedIndex) as Button;
     return selectedElement;
 }
+
+--- c++
+// C++/WinRT Code
+
+// Initialization code
+
+double AnimatedBtnHeight;
+winrt::Microsoft::UI::Xaml::Thickness AnimatedBtnMargin;
+
+void YourPage::InitializeData()
+{
+    std::vector<winrt::hstring> colors
+    {
+        L"Blue",
+        L"BlueViolet",
+        L"Crimson",
+        L"DarkCyan",
+        L"DarkGoldenrod",
+        L"DarkMagenta",
+        L"DarkOliveGreen",
+        L"DarkRed",
+        L"DarkSlateBlue",
+        L"DeepPink",
+        L"IndianRed",
+        L"MediumSlateBlue",
+        L"Maroon",
+        L"MidnightBlue",
+        L"Peru",
+        L"SaddleBrown",
+        L"SteelBlue",
+        L"OrangeRed",
+        L"Firebrick",
+        L"DarkKhaki"
+    };
+
+    auto colorItems = winrt::single_threaded_observable_vector<winrt::hstring>();
+    for (auto const& c : colors)
+    {
+        colorItems.Append(c);
+    }
+
+    animatedScrollRepeater().ItemsSource(colorItems);
+    animatedScrollRepeater().ElementPrepared({ this, &YourPage::OnElementPrepared });
+}
+
+// Animation code
+
+void YourPage::Animated_GotItem(IInspectable const& sender, RoutedEventArgs const& /*e*/)
+{
+    auto senderBtn = sender.try_as<winrt::Microsoft::UI::Xaml::Controls::Button>();
+    if (!senderBtn)
+    {
+        return;
+    }
+
+    // When the clicked item has been received, bring it to the middle of the viewport.
+    winrt::Microsoft::UI::Xaml::BringIntoViewOptions options;
+    options.VerticalAlignmentRatio(0.5);
+    options.AnimationDesired(true);
+    senderBtn.StartBringIntoView(options);
+
+    // Update corresponding rectangle with selected color
+    colorRectangle().Fill(senderBtn.Background());
+}
+
+/* This function occurs each time an element is made ready for use.
+* This is necessary for virtualization. */
+void YourPage::OnElementPrepared(
+    winrt::Microsoft::UI::Xaml::Controls::ItemsRepeater const& /*sender*/,
+    winrt::Microsoft::UI::Xaml::Controls::ItemsRepeaterElementPreparedEventArgs const& args)
+{
+    auto item = winrt::Microsoft::UI::Xaml::Media::ElementCompositionPreview::GetElementVisual(args.Element());
+    auto svVisual = winrt::Microsoft::UI::Xaml::Media::ElementCompositionPreview::GetElementVisual(Animated_ScrollViewer());
+    auto scrollProperties = winrt::Microsoft::UI::Xaml::Media::ElementCompositionPreview::GetScrollViewerManipulationPropertySet(Animated_ScrollViewer());
+
+    auto scaleExpression = scrollProperties.Compositor().CreateExpressionAnimation();
+    scaleExpression.SetReferenceParameter(L"svVisual", svVisual);
+    scaleExpression.SetReferenceParameter(L"scrollProperties", scrollProperties);
+    scaleExpression.SetReferenceParameter(L"item", item);
+
+    // Scale the item based on the distance of the item relative to the center of the viewport.
+    scaleExpression.Expression(
+        L"1 - abs((svVisual.Size.Y/2 - scrollProperties.Translation.Y) "
+        L"- (item.Offset.Y + item.Size.Y/2))*(.25/(svVisual.Size.Y/2))");
+
+    // Animate the item based on its distance to the center of the viewport.
+    item.StartAnimation(L"Scale.X", scaleExpression);
+    item.StartAnimation(L"Scale.Y", scaleExpression);
+
+    auto centerPointExpression = scrollProperties.Compositor().CreateExpressionAnimation();
+    centerPointExpression.SetReferenceParameter(L"item", item);
+    centerPointExpression.Expression(L"Vector3(item.Size.X/2, item.Size.Y/2, 0)");
+    item.StartAnimation(L"CenterPoint", centerPointExpression);
+}
+
+/* This function identifies the item that's currently in the middle of the viewport,
+and sets the rectangle to match its color. */
+void YourPage::Animated_ScrollViewer_ViewChanging(
+    IInspectable const& /*sender*/,
+    winrt::Microsoft::UI::Xaml::Controls::ScrollViewerViewChangingEventArgs const& /*e*/)
+{
+    auto selectedItem = GetSelectedItemFromViewport();
+    if (!selectedItem)
+    {
+        return;
+    }
+
+    // Update corresponding rectangle with selected color
+    colorRectangle().Fill(selectedItem.Background());
+}
+
+// The remainder of these functions are helper functions for the ViewChanging function:
+
+// Find centerpoint of ScrollViewer
+double YourPage::CenterPointOfViewportInExtent()
+{
+    return Animated_ScrollViewer().VerticalOffset() + Animated_ScrollViewer().ViewportHeight() / 2.0;
+}
+
+// Find index of the item that's at the center of the viewport
+int YourPage::GetSelectedIndexFromViewport()
+{
+    int selectedItemIndex = static_cast<int>(std::floor(
+        CenterPointOfViewportInExtent() / (AnimatedBtnMargin.Top + AnimatedBtnHeight)));
+    selectedItemIndex %= static_cast<int>(animatedScrollRepeater().ItemsSourceView().Count());
+    return selectedItemIndex;
+}
+
+// Return item that's at the center of the viewport.
+winrt::Microsoft::UI::Xaml::Controls::Button YourPage::GetSelectedItemFromViewport()
+{
+    auto selectedIndex = GetSelectedIndexFromViewport();
+    auto selectedElement = animatedScrollRepeater().TryGetElement(selectedIndex);
+    return selectedElement.try_as<winrt::Microsoft::UI::Xaml::Controls::Button>();
+}

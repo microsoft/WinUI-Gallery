@@ -17,3 +17,24 @@ AppNotification notification = new AppNotificationBuilder()
     .BuildNotification();
 
 AppNotificationManager.Default.Show(notification);
+--- c++
+// C++/WinRT Code
+winrt::Microsoft::Windows::AppNotifications::Builder::AppNotificationComboBox comboBox(L"satisfaction");
+comboBox.AddItem(L"1", L"Very Bad");
+comboBox.AddItem(L"2", L"Bad");
+comboBox.AddItem(L"3", L"Neutral");
+comboBox.AddItem(L"4", L"Good");
+comboBox.AddItem(L"5", L"Excellent");
+comboBox.SetSelectedItem(L"3");
+
+winrt::Microsoft::Windows::AppNotifications::AppNotification notification =
+    winrt::Microsoft::Windows::AppNotifications::Builder::AppNotificationBuilder()
+        .AddText(L"Survey")
+        .AddText(L"Please select your satisfaction level and leave a comment.")
+        .AddComboBox(comboBox)
+        .AddTextBox(L"comment", L"Leave a comment here...", L"")
+        .AddButton(winrt::Microsoft::Windows::AppNotifications::Builder::AppNotificationButton(L"Submit")
+            .AddArgument(L"action", L"submit_survey"))
+        .BuildNotification();
+
+winrt::Microsoft::Windows::AppNotifications::AppNotificationManager::Default().Show(notification);

@@ -83,3 +83,76 @@ namespace YourNamespace
         }
     }
 }
+--- c++
+// ExampleViewModel implementation using C++/WinRT
+
+// In your page constructor:
+MainPage::MainPage()
+{
+    InitializeComponent();
+
+    // Initialize the ViewModel with sample data.
+    auto viewModel = winrt::make<ExampleViewModel>();
+    viewModel.Title(L"Welcome to WinUI 3");
+    viewModel.Description(L"This is an example of binding to a view model.");
+
+    // Set the DataContext of the page to the ViewModel.
+    DataContext(viewModel);
+}
+
+// ExampleViewModel.h (IDL or projected type)
+// In your IDL file:
+// [bindable]
+// [default_interface]
+// runtimeclass ExampleViewModel : Microsoft.UI.Xaml.Data.INotifyPropertyChanged
+// {
+//     String Title;
+//     String Description;
+// }
+
+// ExampleViewModel.cpp
+namespace winrt::YourNamespace::implementation
+{
+    ExampleViewModel::ExampleViewModel()
+        : m_title(L""), m_description(L"")
+    {
+    }
+
+    hstring ExampleViewModel::Title()
+    {
+        return m_title;
+    }
+
+    void ExampleViewModel::Title(hstring const& value)
+    {
+        if (m_title != value)
+        {
+            m_title = value;
+            m_propertyChanged(*this, Microsoft::UI::Xaml::Data::PropertyChangedEventArgs{ L"Title" });
+        }
+    }
+
+    hstring ExampleViewModel::Description()
+    {
+        return m_description;
+    }
+
+    void ExampleViewModel::Description(hstring const& value)
+    {
+        if (m_description != value)
+        {
+            m_description = value;
+            m_propertyChanged(*this, Microsoft::UI::Xaml::Data::PropertyChangedEventArgs{ L"Description" });
+        }
+    }
+
+    winrt::event_token ExampleViewModel::PropertyChanged(Microsoft::UI::Xaml::Data::PropertyChangedEventHandler const& handler)
+    {
+        return m_propertyChanged.add(handler);
+    }
+
+    void ExampleViewModel::PropertyChanged(winrt::event_token const& token)
+    {
+        m_propertyChanged.remove(token);
+    }
+}

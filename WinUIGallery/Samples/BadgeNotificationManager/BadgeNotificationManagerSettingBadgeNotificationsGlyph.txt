@@ -10,3 +10,14 @@ private void ClearBadgeButton_Click(object sender, RoutedEventArgs e)
 {
     BadgeNotificationManager.Current.ClearBadge();
 }
+--- c++
+// C++/WinRT Code
+void MainPage::SetBadgeGlyphButton_Click(IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e)
+{
+    winrt::Microsoft::Windows::PushNotifications::BadgeNotificationManager::Current().SetBadgeAsGlyph(winrt::Microsoft::Windows::PushNotifications::BadgeNotificationGlyph::$(SelectedGlyph));
+}
+
+void MainPage::ClearBadgeButton_Click(IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e)
+{
+    winrt::Microsoft::Windows::PushNotifications::BadgeNotificationManager::Current().ClearBadge();
+}

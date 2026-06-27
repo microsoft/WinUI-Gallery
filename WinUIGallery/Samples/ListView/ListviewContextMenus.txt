@@ -59,3 +59,24 @@ private void ContactDeleteMenuItem_Click(object sender, RoutedEventArgs e)
     var contact = item as Contact;
     contacts.Remove(contact);
 }
+
+--- c++
+winrt::Windows::Foundation::Collections::IObservableVector<Contact> contacts =
+    winrt::single_threaded_observable_vector<Contact>();
+
+void YourPage::ContactDeleteMenuItem_Click(IInspectable const& sender, RoutedEventArgs const& /*e*/)
+{
+    auto element = sender.as<winrt::Microsoft::UI::Xaml::FrameworkElement>();
+    auto item = element.DataContext();
+    auto contact = item.as<Contact>();
+
+    // Find and remove the contact from the collection
+    for (uint32_t i = 0; i < contacts.Size(); i++)
+    {
+        if (contacts.GetAt(i) == contact)
+        {
+            contacts.RemoveAt(i);
+            break;
+        }
+    }
+}

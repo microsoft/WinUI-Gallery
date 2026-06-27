@@ -26,3 +26,37 @@ public sealed partial class AppWindowTitleBarWindow : Window
         AppWindow.TitleBar.ButtonPressedForegroundColor = ColorHelper.FromArgb($(ButtonPressedForegroundColor));
     }
 }
+--- c++
+// C++/WinRT Code
+#include <microsoft.ui.xaml.window.h>
+#include <winrt/Microsoft.UI.h>
+#include <winrt/Microsoft.UI.Windowing.h>
+#include <winrt/Microsoft.UI.Xaml.h>
+#include <winrt/Windows.UI.h>
+
+using namespace winrt;
+using namespace Microsoft::UI;
+using namespace Microsoft::UI::Windowing;
+using namespace Microsoft::UI::Xaml;
+using namespace Windows::UI;
+
+namespace YourNamespace
+{
+    AppWindowTitleBarWindow::AppWindowTitleBarWindow()
+    {
+        InitializeComponent();
+
+        AppWindow().TitleBar().BackgroundColor(ColorHelper::FromArgb($(BackgroundColor)));
+        AppWindow().TitleBar().ForegroundColor(ColorHelper::FromArgb($(ForegroundColor)));
+        AppWindow().TitleBar().ButtonBackgroundColor(ColorHelper::FromArgb($(ButtonBackgroundColor)));
+        AppWindow().TitleBar().ButtonForegroundColor(ColorHelper::FromArgb($(ButtonForegroundColor)));
+        AppWindow().TitleBar().ButtonHoverBackgroundColor(ColorHelper::FromArgb($(ButtonHoverBackgroundColor)));
+        AppWindow().TitleBar().ButtonHoverForegroundColor(ColorHelper::FromArgb($(ButtonHoverForegroundColor)));
+        AppWindow().TitleBar().InactiveBackgroundColor(ColorHelper::FromArgb($(InactiveBackgroundColor)));
+        AppWindow().TitleBar().InactiveForegroundColor(ColorHelper::FromArgb($(InactiveForegroundColor)));
+        AppWindow().TitleBar().ButtonInactiveBackgroundColor(ColorHelper::FromArgb($(ButtonInactiveBackgroundColor)));
+        AppWindow().TitleBar().ButtonInactiveForegroundColor(ColorHelper::FromArgb($(ButtonInactiveForegroundColor)));
+        AppWindow().TitleBar().ButtonPressedBackgroundColor(ColorHelper::FromArgb($(ButtonPressedBackgroundColor)));
+        AppWindow().TitleBar().ButtonPressedForegroundColor(ColorHelper::FromArgb($(ButtonPressedForegroundColor)));
+    }
+}

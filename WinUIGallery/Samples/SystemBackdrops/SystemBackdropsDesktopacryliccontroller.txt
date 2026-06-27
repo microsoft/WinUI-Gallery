@@ -71,3 +71,83 @@ private void SetConfigurationSourceTheme()
         case ElementTheme.Default: configurationSource.Theme = SystemBackdropTheme.Default; break;
     }
 }
+--- c++
+// C++/WinRT Code
+#include <winrt/Microsoft.UI.Composition.h>
+#include <winrt/Microsoft.UI.Composition.SystemBackdrops.h>
+#include <winrt/Microsoft.UI.Xaml.h>
+
+using namespace winrt;
+using namespace Microsoft::UI::Composition;
+using namespace Microsoft::UI::Composition::SystemBackdrops;
+using namespace Microsoft::UI::Xaml;
+
+DesktopAcrylicController acrylicController{ nullptr };
+SystemBackdropConfiguration configurationSource{ nullptr };
+
+bool TrySetAcrylicBackdrop(bool useAcrylicThin)
+{
+    if (DesktopAcrylicController::IsSupported())
+    {
+        // Ensure the system dispatcher queue is available
+        auto dispatcherQueue = winrt::Windows::System::DispatcherQueue::GetForCurrentThread();
+        if (!dispatcherQueue) return false;
+
+        // Hooking up the policy object
+        configurationSource = SystemBackdropConfiguration();
+        Activated({ this, &SampleWindow::Window_Activated });
+        Closed({ this, &SampleWindow::Window_Closed });
+        Content().try_as<FrameworkElement>().ActualThemeChanged({ this, &SampleWindow::Window_ThemeChanged });
+
+        // Initial configuration state.
+        configurationSource.IsInputActive(true);
+        SetConfigurationSourceTheme();
+
+        acrylicController = DesktopAcrylicController();
+        acrylicController.Kind(useAcrylicThin ? DesktopAcrylicKind::Thin : DesktopAcrylicKind::Base);
+
+        // Enable the system backdrop.
+        acrylicController.AddSystemBackdropTarget(
+            this->try_as<Microsoft::UI::Composition::ICompositionSupportsSystemBackdrop>());
+        acrylicController.SetSystemBackdropConfiguration(configurationSource);
+        return true; // Succeeded.
+    }
+
+    return false; // Acrylic is not supported on this system.
+}
+
+void SampleWindow::Window_Activated(IInspectable const& sender, WindowActivatedEventArgs const& args)
+{
+    configurationSource.IsInputActive(args.WindowActivationState() != WindowActivationState::Deactivated);
+}
+
+void SampleWindow::Window_Closed(IInspectable const& sender, WindowEventArgs const& args)
+{
+    // Make sure any Mica/Acrylic controller is disposed
+    if (acrylicController)
+    {
+        acrylicController.Close();
+        acrylicController = nullptr;
+    }
+    Activated(/* detach */);
+    configurationSource = nullptr;
+}
+
+void SampleWindow::Window_ThemeChanged(FrameworkElement const& sender, IInspectable const& args)
+{
+    if (configurationSource)
+    {
+        SetConfigurationSourceTheme();
+    }
+}
+
+void SampleWindow::SetConfigurationSourceTheme()
+{
+    auto theme = Content().try_as<FrameworkElement>().ActualTheme();
+    switch (theme)
+    {
+        case ElementTheme::Dark:    configurationSource.Theme(SystemBackdropTheme::Dark); break;
+        case ElementTheme::Light:   configurationSource.Theme(SystemBackdropTheme::Light); break;
+        case ElementTheme::Default: configurationSource.Theme(SystemBackdropTheme::Default); break;
+    }
+}

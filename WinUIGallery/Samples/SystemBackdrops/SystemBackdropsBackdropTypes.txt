@@ -42,3 +42,38 @@ bool TrySetDesktopAcrylicBackdrop()
 
     return false; // DesktopAcrylic is not supported on this system.
 }
+--- c++
+// C++/WinRT Code
+#include <winrt/Microsoft.UI.Composition.SystemBackdrops.h>
+#include <winrt/Microsoft.UI.Xaml.h>
+
+using namespace winrt;
+using namespace Microsoft::UI::Composition::SystemBackdrops;
+using namespace Microsoft::UI::Xaml;
+
+bool TrySetMicaBackdrop(bool useMicaAlt)
+{
+    if (MicaController::IsSupported())
+    {
+        MicaBackdrop micaBackdrop;
+        micaBackdrop.Kind(useMicaAlt ? MicaKind::BaseAlt : MicaKind::Base);
+        SystemBackdrop(micaBackdrop);
+
+        return true; // Succeeded.
+    }
+
+    return false; // Mica is not supported on this system.
+}
+
+bool TrySetDesktopAcrylicBackdrop()
+{
+    if (DesktopAcrylicController::IsSupported())
+    {
+        DesktopAcrylicBackdrop desktopAcrylicBackdrop;
+        SystemBackdrop(desktopAcrylicBackdrop);
+
+        return true; // Succeeded.
+    }
+
+    return false; // DesktopAcrylic is not supported on this system.
+}

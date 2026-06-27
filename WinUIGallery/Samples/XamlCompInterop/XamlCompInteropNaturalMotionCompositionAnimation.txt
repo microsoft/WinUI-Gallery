@@ -30,3 +30,33 @@ private void element_PointerExited(object sender, PointerRoutedEventArgs e)
 
     (sender as UIElement)?.StartAnimation(_springAnimation);
 }
+--- c++
+auto _compositor = Microsoft::UI::Xaml::Media::CompositionTarget::GetCompositorForCurrentThread();
+SpringVector3NaturalMotionAnimation _springAnimation{ nullptr };
+
+void MainPage::CreateOrUpdateSpringAnimation(float finalValue)
+{
+    if (_springAnimation == nullptr)
+    {
+        _springAnimation = _compositor.CreateSpringVector3Animation();
+        _springAnimation.Target(L"Scale");
+    }
+
+    _springAnimation.FinalValue(winrt::Windows::Foundation::Numerics::float3{ finalValue, finalValue, finalValue });
+}
+
+void MainPage::element_PointerEntered(IInspectable const& sender, PointerRoutedEventArgs const& e)
+{
+    // Scale up to 1.5
+    CreateOrUpdateSpringAnimation(1.5f);
+
+    sender.as<UIElement>().StartAnimation(_springAnimation);
+}
+
+void MainPage::element_PointerExited(IInspectable const& sender, PointerRoutedEventArgs const& e)
+{
+    // Scale back down to 1.0
+    CreateOrUpdateSpringAnimation(1.0f);
+
+    sender.as<UIElement>().StartAnimation(_springAnimation);
+}

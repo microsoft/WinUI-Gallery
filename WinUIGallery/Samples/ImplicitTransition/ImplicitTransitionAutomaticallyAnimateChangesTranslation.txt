@@ -13,3 +13,8 @@ private void button_Click(object sender, RoutedEventArgs e)
 {
     rectangle.Translation = new Vector3($(Translation), $(Translation), $(Translation));
 }
+--- c++
+void MainPage::button_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    rectangle().Translation({ $(Translation), $(Translation), $(Translation) });
+}

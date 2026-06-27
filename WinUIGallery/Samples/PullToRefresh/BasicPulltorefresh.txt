@@ -25,3 +25,24 @@ private void WorkCompleted()
         this.RefreshCompletionDeferral = null;
     }
 }
+--- c++
+winrt::Windows::Foundation::Collections::IObservableVector<winrt::hstring> items = winrt::single_threaded_observable_vector<winrt::hstring>();
+listview().ItemsSource(items);
+
+void MainPage::rc_RefreshRequested(RefreshContainer const& sender, RefreshRequestedEventArgs const& args)
+{
+    // Do some work to show new Content! Once the work is done, call RefreshCompletionDeferral.Complete()
+    RefreshCompletionDeferral = args.GetDeferral();
+    DoWork();
+}
+
+void MainPage::WorkCompleted()
+{
+    items.InsertAt(0, L"NewControl");
+    if (RefreshCompletionDeferral != nullptr)
+    {
+        RefreshCompletionDeferral.Complete();
+        RefreshCompletionDeferral.Close();
+        RefreshCompletionDeferral = nullptr;
+    }
+}

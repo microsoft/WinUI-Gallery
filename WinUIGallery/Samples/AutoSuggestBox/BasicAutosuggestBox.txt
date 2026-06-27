@@ -47,3 +47,51 @@ private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestB
 {
     SuggestionOutput.Text = args.SelectedItem.ToString();
 }
+--- c++
+// List of cats
+std::vector<winrt::hstring> Cats
+{
+    L"Abyssinian",
+    L"Aegean",
+    L"American Bobtail",
+    ...
+};
+
+// Handle text change and present suitable items
+void MainPage::AutoSuggestBox_TextChanged(AutoSuggestBox const& sender, AutoSuggestBoxTextChangedEventArgs const& args)
+{
+    // Since selecting an item will also change the text,
+    // only listen to changes caused by user entering text.
+    if (args.Reason() == AutoSuggestionBoxTextChangeReason::UserInput)
+    {
+        std::vector<winrt::hstring> suitableItems;
+        auto splitText = /* split sender.Text() by space and convert to lowercase */;
+        for (auto const& cat : Cats)
+        {
+            bool found = true;
+            for (auto const& key : splitText)
+            {
+                if (/* cat lowercase */.find(key) == winrt::hstring::npos)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            if (found)
+            {
+                suitableItems.push_back(cat);
+            }
+        }
+        if (suitableItems.empty())
+        {
+            suitableItems.push_back(L"No results found");
+        }
+        sender.ItemsSource(winrt::single_threaded_vector<winrt::hstring>(std::move(suitableItems)));
+    }
+}
+
+// Handle user selecting an item, in our case just output the selected item.
+void MainPage::AutoSuggestBox_SuggestionChosen(AutoSuggestBox const& sender, AutoSuggestBoxSuggestionChosenEventArgs const& args)
+{
+    SuggestionOutput().Text(winrt::unbox_value<winrt::hstring>(args.SelectedItem()));
+}

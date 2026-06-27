@@ -41,3 +41,40 @@ private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs 
         button.IsEnabled = true;
     }
 }
+--- c++
+winrt::fire_and_forget MainPage::PickMultipleFilesButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    if (auto button = sender.try_as<winrt::Microsoft::UI::Xaml::Controls::Button>())
+    {
+        //disable the button to avoid double-clicking
+        button.IsEnabled(false);
+
+        winrt::Microsoft::Windows::Storage::Pickers::FileOpenPicker picker(button.XamlRoot().ContentIslandEnvironment().AppWindowId());$(FileType)
+
+        picker.CommitButtonText(L"$(CommitButtonText)");
+
+        picker.SuggestedStartLocation(winrt::Microsoft::Windows::Storage::Pickers::PickerLocationId::$(SuggestedStartLocation));
+
+        picker.ViewMode(winrt::Microsoft::Windows::Storage::Pickers::PickerViewMode::$(ViewMode));
+
+        // Show the picker dialog window
+        auto files = co_await picker.PickMultipleFilesAsync();
+
+        if (files.Size() > 0)
+        {
+            PickedMultipleFilesTextBlock().Text(L"");
+            for (auto const& file : files)
+            {
+                PickedMultipleFilesTextBlock().Text(
+                    PickedMultipleFilesTextBlock().Text() + L"- Picked: " + file.Path() + L"\n");
+            }
+        }
+        else
+        {
+            PickedMultipleFilesTextBlock().Text(L"No files selected.");
+        }
+
+        //re-enable the button
+        button.IsEnabled(true);
+    }
+}

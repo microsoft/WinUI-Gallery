@@ -264,3 +264,141 @@ private void Editor_TextChanged(object sender, RoutedEventArgs e)
 {
     editor.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
 }
+--- c++
+winrt::fire_and_forget MainPage::OpenButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    auto button = sender.as<Button>();
+    // Create the picker using the AppWindowId from the element
+    auto picker = FileOpenPicker(button.XamlRoot().ContentIslandEnvironment().AppWindowId());
+    picker.SuggestedStartLocation(PickerLocationId::DocumentsLibrary);
+
+    // Add file type filters
+    picker.FileTypeFilter().Append(L".rtf");
+
+    // Show picker
+    auto result = co_await picker.PickSingleFileAsync();
+
+    if (result != nullptr)
+    {
+        // Open with StorageFile (needed for RichEditBox)
+        auto file = co_await StorageFile::GetFileFromPathAsync(result.Path());
+        auto randAccStream = co_await file.OpenAsync(FileAccessMode::Read);
+
+        // Load file into the RichEditBox
+        editor().Document().LoadFromStream(TextSetOptions::FormatRtf, randAccStream);
+    }
+}
+
+winrt::fire_and_forget MainPage::SaveButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    auto button = sender.as<Button>();
+    // Create the picker with AppWindowId
+    auto savePicker = FileSavePicker(button.XamlRoot().ContentIslandEnvironment().AppWindowId());
+    savePicker.SuggestedStartLocation(PickerLocationId::DocumentsLibrary);
+    savePicker.SuggestedFileName(L"New Document");
+
+    // Dropdown of file types the user can save the file as
+    savePicker.FileTypeChoices().Insert(L"Rich Text", winrt::single_threaded_vector<winrt::hstring>({ L".rtf" }));
+
+    // Show picker
+    auto result = co_await savePicker.PickSaveFileAsync();
+
+    if (result != nullptr)
+    {
+        // Convert PickSaveFileResult to StorageFile
+        auto file = co_await StorageFile::GetFileFromPathAsync(result.Path());
+
+        // Prevent updates to the remote version of the file until complete
+        CachedFileManager::DeferUpdates(file);
+
+        // Write content into the file
+        auto randAccStream = co_await file.OpenAsync(FileAccessMode::ReadWrite);
+        editor().Document().SaveToStream(TextGetOptions::FormatRtf, randAccStream);
+
+        // Finalize file updates
+        auto status = co_await CachedFileManager::CompleteUpdatesAsync(file);
+
+        if (status != FileUpdateStatus::Complete)
+        {
+            auto errorBox = Windows::UI::Popups::MessageDialog(
+                L"File " + file.Name() + L" couldn't be saved.");
+            co_await errorBox.ShowAsync();
+        }
+    }
+}
+
+void MainPage::BoldButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    editor().Document().Selection().CharacterFormat().Bold(FormatEffect::Toggle);
+}
+
+void MainPage::ItalicButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    editor().Document().Selection().CharacterFormat().Italic(FormatEffect::Toggle);
+}
+
+void MainPage::ColorButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    // Extract the color of the button that was clicked.
+    auto clickedColor = sender.as<Button>();
+    auto rectangle = clickedColor.Content().as<Microsoft::UI::Xaml::Shapes::Rectangle>();
+    auto color = rectangle.Fill().as<Microsoft::UI::Xaml::Media::SolidColorBrush>().Color();
+
+    editor().Document().Selection().CharacterFormat().ForegroundColor(color);
+
+    fontColorButton().Flyout().Hide();
+    editor().Focus(Microsoft::UI::Xaml::FocusState::Keyboard);
+}
+
+void MainPage::FindBoxHighlightMatches()
+{
+    FindBoxRemoveHighlights();
+
+    auto highlightBackgroundColor = winrt::unbox_value<Windows::UI::Color>(Application::Current().Resources().Lookup(L"SystemColorHighlightColor"));
+    auto highlightForegroundColor = winrt::unbox_value<Windows::UI::Color>(Application::Current().Resources().Lookup(L"SystemColorHighlightTextColor"));
+
+    winrt::hstring textToFind = findBox().Text();
+    if (!textToFind.empty())
+    {
+        auto searchRange = editor().Document().GetRange(0, 0);
+        while (searchRange.FindText(textToFind, TextConstants::MaxUnitCount(), FindOptions::None) > 0)
+        {
+            searchRange.CharacterFormat().BackgroundColor(highlightBackgroundColor);
+            searchRange.CharacterFormat().ForegroundColor(highlightForegroundColor);
+        }
+    }
+}
+
+void MainPage::FindBoxRemoveHighlights()
+{
+    auto defaultBackground = editor().Background().try_as<Microsoft::UI::Xaml::Media::SolidColorBrush>();
+    auto defaultForeground = editor().Foreground().try_as<Microsoft::UI::Xaml::Media::SolidColorBrush>();
+    if (defaultBackground == nullptr || defaultForeground == nullptr)
+    {
+        return;
+    }
+
+    auto documentRange = editor().Document().GetRange(0, TextConstants::MaxUnitCount());
+
+    documentRange.CharacterFormat().BackgroundColor(defaultBackground.Color());
+    documentRange.CharacterFormat().ForegroundColor(defaultForeground.Color());
+}
+
+void MainPage::Editor_GotFocus(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    editor().Document().GetText(TextGetOptions::UseCrlf, /* out */);
+
+    // reset colors to correct defaults for Focused state
+    auto documentRange = editor().Document().GetRange(0, TextConstants::MaxUnitCount());
+    auto background = Application::Current().Resources().Lookup(L"TextControlBackgroundFocused").try_as<Microsoft::UI::Xaml::Media::SolidColorBrush>();
+
+    if (background != nullptr)
+    {
+        documentRange.CharacterFormat().BackgroundColor(background.Color());
+    }
+}
+
+void MainPage::Editor_TextChanged(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    editor().Document().Selection().CharacterFormat().ForegroundColor(currentColor);
+}

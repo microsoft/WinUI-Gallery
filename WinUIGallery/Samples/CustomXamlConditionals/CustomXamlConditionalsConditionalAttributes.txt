@@ -31,3 +31,15 @@ public sealed partial class MyPage : Page
         this.InitializeComponent();
     }
 }
+--- c++
+// Conditional attributes use the same setup. Make sure that, for any
+// given attribute, no more than one condition can evaluate to true at
+// the same time - if multiple are true the XAML parser will throw at
+// runtime.
+void MainPage::InitializeComponent()
+{
+    FeatureFlagCondition::FeatureFlags().Insert(L"NewExperience", winrt::box_value(true));
+    FeatureFlagCondition::FeatureFlags().Insert(L"LegacyMode", winrt::box_value(false));
+
+    __super::InitializeComponent();
+}

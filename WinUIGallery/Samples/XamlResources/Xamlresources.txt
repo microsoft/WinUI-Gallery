@@ -49,3 +49,13 @@ var highlightBrush = (SolidColorBrush)this.Resources["HighlightBrush"];
 // Retrieve control-level resources
 var headerFontSize = (double)newGrid.Resources["HeaderFontSize"];
 var welcomeMessage = (string)newGrid.Resources["Description"];
+--- c++
+// Retrieve application-level resource
+auto primaryColor = winrt::unbox_value<Windows::UI::Color>(Application::Current().Resources().Lookup(L"PrimaryColor"));
+
+// Retrieve page-level resource
+auto highlightBrush = Resources().Lookup(L"HighlightBrush").as<Microsoft::UI::Xaml::Media::SolidColorBrush>();
+
+// Retrieve control-level resources
+auto headerFontSize = winrt::unbox_value<double>(newGrid().Resources().Lookup(L"HeaderFontSize"));
+auto welcomeMessage = winrt::unbox_value<winrt::hstring>(newGrid().Resources().Lookup(L"Description"));

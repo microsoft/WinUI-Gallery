@@ -43,3 +43,41 @@ $(TxtFileType)$(JsonFileType)$(XmlFileType)
         button.IsEnabled = true;
     }
 }
+--- c++
+winrt::fire_and_forget MainPage::SaveFileButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    if (auto button = sender.try_as<winrt::Microsoft::UI::Xaml::Controls::Button>())
+    {
+        button.IsEnabled(false);
+
+        winrt::Microsoft::Windows::Storage::Pickers::FileSavePicker picker(button.XamlRoot().ContentIslandEnvironment().AppWindowId());
+$(TxtFileType)$(JsonFileType)$(XmlFileType)
+        picker.DefaultFileExtension(L"$(DefaultFileExtension)");
+
+        picker.SuggestedFileName(L"$(SuggestedFileName)");
+
+        picker.CommitButtonText(L"$(CommitButtonText)");
+
+        picker.SuggestedStartLocation(winrt::Microsoft::Windows::Storage::Pickers::PickerLocationId::$(SuggestedStartLocation));
+
+        picker.SuggestedFolder(L"$(SuggestedFolder)");
+
+        // Show the picker dialog
+        auto result = co_await picker.PickSaveFileAsync();
+
+        if (result != nullptr)
+        {
+            winrt::hstring savePath = result.Path();
+            winrt::hstring content = FileContentTextBox().Text();
+            co_await winrt::Windows::Storage::FileIO::WriteTextAsync(
+                co_await winrt::Windows::Storage::StorageFile::GetFileFromPathAsync(savePath), content);
+            SavedFileTextBlock().Text(L"File saved to: " + savePath);
+        }
+        else
+        {
+            SavedFileTextBlock().Text(L"File save canceled.");
+        }
+
+        button.IsEnabled(true);
+    }
+}

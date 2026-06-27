@@ -45,6 +45,7 @@
             <VisualStateGroup x:Name="SampleProgrammingLanguageState">
                 <VisualState x:Name="XAMLSample" />
                 <VisualState x:Name="CSharpSample" />
+                <VisualState x:Name="CppWinRTSample" />
                 <VisualState x:Name="InlineSample">
                     <VisualState.Setters>
                         <Setter Target="CodeScrollViewer.HorizontalScrollMode" Value="Disabled" />

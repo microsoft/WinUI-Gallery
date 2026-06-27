@@ -73,3 +73,45 @@ public class StringOrIntTemplateSelector : DataTemplateSelector
         }
     }
 }
+
+--- c++
+// C++/WinRT Code-behind
+
+struct StringOrIntTemplateSelector : winrt::Microsoft::UI::Xaml::Controls::DataTemplateSelectorT<StringOrIntTemplateSelector>
+{
+    StringOrIntTemplateSelector() = default;
+
+    // Define the (currently empty) data templates to return
+    // These will be "filled-in" in the XAML code.
+    winrt::Microsoft::UI::Xaml::DataTemplate StringTemplate() const { return m_stringTemplate; }
+    void StringTemplate(winrt::Microsoft::UI::Xaml::DataTemplate const& value) { m_stringTemplate = value; }
+
+    winrt::Microsoft::UI::Xaml::DataTemplate IntTemplate() const { return m_intTemplate; }
+    void IntTemplate(winrt::Microsoft::UI::Xaml::DataTemplate const& value) { m_intTemplate = value; }
+
+    winrt::Microsoft::UI::Xaml::DataTemplate SelectTemplateCore(IInspectable const& item)
+    {
+        // Return the correct data template based on the item's type.
+        // In C++/WinRT, items from XAML come as boxed values.
+        // Try to unbox as hstring first, then as int.
+        try
+        {
+            winrt::unbox_value<winrt::hstring>(item);
+            return m_stringTemplate;
+        }
+        catch (...) {}
+
+        try
+        {
+            winrt::unbox_value<int>(item);
+            return m_intTemplate;
+        }
+        catch (...) {}
+
+        return nullptr;
+    }
+
+private:
+    winrt::Microsoft::UI::Xaml::DataTemplate m_stringTemplate{ nullptr };
+    winrt::Microsoft::UI::Xaml::DataTemplate m_intTemplate{ nullptr };
+};

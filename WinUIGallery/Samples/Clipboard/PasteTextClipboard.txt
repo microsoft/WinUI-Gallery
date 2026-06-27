@@ -11,3 +11,12 @@ private async void PasteText_Click(object sender, RoutedEventArgs args)
 		var text = await package.GetTextAsync();
 	}
 }
+--- c++
+winrt::fire_and_forget MainPage::PasteText_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    auto package = Windows::ApplicationModel::DataTransfer::Clipboard::GetContent();
+    if (package.Contains(Windows::ApplicationModel::DataTransfer::StandardDataFormats::Text()))
+    {
+        auto text = co_await package.GetTextAsync();
+    }
+}

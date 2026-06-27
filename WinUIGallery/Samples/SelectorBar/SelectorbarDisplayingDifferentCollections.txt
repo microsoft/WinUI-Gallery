@@ -28,3 +28,20 @@ private void SelectorBar3_SelectionChanged(SelectorBar sender, SelectorBarSelect
         ItemsView3.ItemsSource = PowderBlueColorCollection;
     }
 }
+--- c++
+void MainPage::SelectorBar3_SelectionChanged(winrt::Microsoft::UI::Xaml::Controls::SelectorBar const& sender,
+    winrt::Microsoft::UI::Xaml::Controls::SelectorBarSelectionChangedEventArgs const& /*args*/)
+{
+    if (sender.SelectedItem() == SelectorBarItemPink())
+    {
+        ItemsView3().ItemsSource(PinkColorCollection());
+    }
+    else if (sender.SelectedItem() == SelectorBarItemPlum())
+    {
+        ItemsView3().ItemsSource(PlumColorCollection());
+    }
+    else
+    {
+        ItemsView3().ItemsSource(PowderBlueColorCollection());
+    }
+}

@@ -23,6 +23,7 @@ public enum SampleCodePresenterType
 {
     XAML,
     CSharp,
+    CppWinRT,
     Inline
 }
 
@@ -125,6 +126,8 @@ public sealed partial class SampleCodePresenter : UserControl
                 return "XAMLSample";
             case SampleCodePresenterType.CSharp:
                 return "CSharpSample";
+            case SampleCodePresenterType.CppWinRT:
+                return "CppWinRTSample";
             default:
                 return "InlineSample";
         }
@@ -166,6 +169,7 @@ public sealed partial class SampleCodePresenter : UserControl
         {
             SampleCodePresenterType.XAML => Languages.Xml,
             SampleCodePresenterType.CSharp => Languages.CSharp,
+            SampleCodePresenterType.CppWinRT => Languages.Cpp,
             _ => Languages.Markdown
         };
         if (!string.IsNullOrEmpty(Code))

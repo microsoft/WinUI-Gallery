@@ -42,3 +42,40 @@ private void SelectorBar2_SelectionChanged(SelectorBar sender, SelectorBarSelect
 
             previousSelectedIndex = currentSelectedIndex;
         }
+--- c++
+void MainPage::SelectorBar2_SelectionChanged(winrt::Microsoft::UI::Xaml::Controls::SelectorBar const& sender,
+    winrt::Microsoft::UI::Xaml::Controls::SelectorBarSelectionChangedEventArgs const& /*args*/)
+{
+    auto selectedItem = sender.SelectedItem();
+    int currentSelectedIndex = static_cast<int>(sender.Items().IndexOf(selectedItem));
+    winrt::Windows::UI::Xaml::Interop::TypeName pageType;
+
+    switch (currentSelectedIndex)
+    {
+        case 0:
+            pageType = winrt::xaml_typename<winrt::WinUIGallery::SamplePage1>();
+            break;
+        case 1:
+            pageType = winrt::xaml_typename<winrt::WinUIGallery::SamplePage2>();
+            break;
+        case 2:
+            pageType = winrt::xaml_typename<winrt::WinUIGallery::SamplePage3>();
+            break;
+        case 3:
+            pageType = winrt::xaml_typename<winrt::WinUIGallery::SamplePage4>();
+            break;
+        default:
+            pageType = winrt::xaml_typename<winrt::WinUIGallery::SamplePage5>();
+            break;
+    }
+
+    auto slideNavigationTransitionEffect = (currentSelectedIndex - m_previousSelectedIndex > 0)
+        ? winrt::Microsoft::UI::Xaml::Media::Animation::SlideNavigationTransitionEffect::FromRight
+        : winrt::Microsoft::UI::Xaml::Media::Animation::SlideNavigationTransitionEffect::FromLeft;
+
+    winrt::Microsoft::UI::Xaml::Media::Animation::SlideNavigationTransitionInfo navInfo;
+    navInfo.Effect(slideNavigationTransitionEffect);
+    ContentFrame().Navigate(pageType, nullptr, navInfo);
+
+    m_previousSelectedIndex = currentSelectedIndex;
+}

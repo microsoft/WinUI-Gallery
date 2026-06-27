@@ -12,3 +12,12 @@ private void ValueNumberBox_ValueChanged(Microsoft.UI.Xaml.Controls.NumberBox se
         DynamicInfoBadge.Value = (int)args.NewValue;
     }
 }
+--- c++
+// C++/WinRT Code
+void MainPage::ValueNumberBox_ValueChanged(Microsoft::UI::Xaml::Controls::NumberBox const& sender, Microsoft::UI::Xaml::Controls::NumberBoxValueChangedEventArgs const& args)
+{
+    if (static_cast<int>(args.NewValue()) >= -1)
+    {
+        DynamicInfoBadge().Value(static_cast<int>(args.NewValue()));
+    }
+}

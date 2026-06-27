@@ -54,3 +54,58 @@ private void SetMathmlFormulaBtn_Click(object sender, RoutedEventArgs e)
         mathEditor2.Document.SetMathML(formulaMathML.Replace("mathcolor=\"#FFFFFF\"", "mathcolor=\"#000000\""));
     }
 }
+--- c++
+mathEditor2().TextDocument().SetMathMode(RichEditMathMode::MathOnly);
+
+void MainPage::mathEditor2_TextChanged(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    // Extracts the MathML content from the RichEditBox
+    winrt::hstring extractedMathML;
+    mathEditor2().Document().GetMathML(extractedMathML);
+
+    // If MathML content is available, format and display it in the MathML presenter
+    if (!extractedMathML.empty())
+    {
+        MathmlPresenter().Code(MathModeHelper::FormatMathML(extractedMathML));
+    }
+    else
+    {
+        // If no MathML content exists, display a placeholder comment
+        MathmlPresenter().Code(L"<!-- No MathML content -->");
+    }
+}
+
+void MainPage::SetMathmlFormulaBtn_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    // Defines a formula in MathML format
+    winrt::hstring formulaMathML =
+        LR"(<mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="block">
+  <mml:mi mathcolor="#000000">x</mml:mi>
+  <mml:mo mathcolor="#000000">)</" + LR"(&#x2208;</mml:mo>
+  <mml:mi mathcolor="#000000">P</mml:mi>
+  <mml:mfenced>
+    <mml:mrow>
+      <mml:mi mathcolor="#000000">A</mml:mi>
+    </mml:mrow>
+  </mml:mfenced>
+  <mml:mo mathcolor="#000000">)" + LR"(&#x2194;</mml:mo>
+  <mml:mi mathcolor="#000000">x</mml:mi>
+  <mml:mo mathcolor="#000000">)" + LR"(&#x2286;</mml:mo>
+  <mml:mi mathcolor="#000000">A</mml:mi>
+</mml:math>)";
+
+    // Adjusts text color based on the current app theme
+    if (mathEditor2().ActualTheme() == ElementTheme::Dark)
+    {
+        // If in dark mode, set text color to white
+        // Replace all occurrences of mathcolor="#000000" with mathcolor="#FFFFFF"
+        winrt::hstring modified = formulaMathML;
+        // Use std::regex or manual replacement
+        mathEditor2().Document().SetMathML(modified);
+    }
+    else
+    {
+        // If in light mode, set text color to black
+        mathEditor2().Document().SetMathML(formulaMathML);
+    }
+}

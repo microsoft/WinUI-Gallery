@@ -188,6 +188,11 @@
                             Loaded="SelectorBarItem_Loaded"
                             Tag="CSharp"
                             Text="C#" />
+                        <SelectorBarItem
+                            x:Name="SelectorBarCppWinRTItem"
+                            Loaded="SelectorBarItem_Loaded"
+                            Tag="CppWinRT"
+                            Text="C++" />
                     </SelectorBar>
 
                     <!--  using animations:Implicit... with Grid.Row causes Grid.Row to have no effect, Therefore, the Grid.Row is applied in the grid  -->
@@ -212,6 +217,17 @@
                                 CodeSourceFile="{x:Bind CSharpSource}"
                                 Padding="16,0,16,16"
                                 SampleType="CSharp"
+                                Substitutions="{x:Bind Substitutions}" />
+                        </ContentPresenter>
+                        <ContentPresenter x:Name="CppWinRTContentPresenter" Visibility="Collapsed" IsTabStop="False">
+                            <local:SampleCodePresenter
+                                x:Name="CppWinRTPresenter"
+                                animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                                animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
+                                Code="{x:Bind CppWinRT}"
+                                CodeSourceFile="{x:Bind CppWinRTSource}"
+                                Padding="16,0,16,16"
+                                SampleType="CppWinRT"
                                 Substitutions="{x:Bind Substitutions}" />
                         </ContentPresenter>
                     </Grid>

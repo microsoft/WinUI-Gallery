@@ -16,3 +16,16 @@ private async void OpenFileButton_Click(object sender, Microsoft.UI.Xaml.RoutedE
     var mediaSource = MediaSource.CreateFromStorageFile(await StorageFile.GetFileFromPathAsync(file.Path));
     Player1.Source = mediaSource;
 }
+--- c++
+winrt::fire_and_forget MainPage::OpenFileButton_Click(IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& e)
+{
+    auto button = sender.as<Button>();
+    auto picker = FileOpenPicker(button.XamlRoot().ContentIslandEnvironment().AppWindowId());
+    auto file = co_await picker.PickSingleFileAsync();
+    if (file == nullptr)
+        co_return;
+
+    auto storageFile = co_await StorageFile::GetFileFromPathAsync(file.Path());
+    auto mediaSource = MediaSource::CreateFromStorageFile(storageFile);
+    Player1().Source(mediaSource);
+}

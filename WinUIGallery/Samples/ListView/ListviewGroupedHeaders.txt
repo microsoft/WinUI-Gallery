@@ -87,3 +87,78 @@ public class Contact
 }
 
 ContactsCVS.Source = await Contact.GetContactsGroupedAsync();
+
+--- c++
+// C++/WinRT Code
+
+// To create a collection of grouped items, create a query that groups
+// an existing list, or returns a grouped collection from a database.
+// The following method is used to create the ItemsSource for our CollectionViewSource:
+
+winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Foundation::Collections::IObservableVector<GroupInfoList>>
+YourPage::GetContactsGroupedAsync()
+{
+    // Grab Contact objects from pre-existing list (list is returned from function GetContactsAsync())
+    auto contacts = co_await GetContactsAsync();
+
+    // Group the items by the first letter of LastName, sort by key, and create GroupInfoList objects.
+    std::map<winrt::hstring, std::vector<Contact>> groups;
+    for (auto const& contact : contacts)
+    {
+        winrt::hstring key = winrt::to_hstring(
+            static_cast<wchar_t>(towupper(contact.LastName()[0])));
+        groups[key].push_back(contact);
+    }
+
+    auto result = winrt::single_threaded_observable_vector<GroupInfoList>();
+    for (auto const& [key, items] : groups)
+    {
+        GroupInfoList groupInfo{ key, items };
+        result.Append(groupInfo);
+    }
+
+    co_return result;
+}
+
+// GroupInfoList class definition:
+struct GroupInfoList
+{
+    GroupInfoList() = default;
+    GroupInfoList(winrt::hstring key, std::vector<Contact> const& items)
+        : m_key(std::move(key)), m_items(items.begin(), items.end()) {}
+
+    winrt::hstring Key() const { return m_key; }
+    void Key(winrt::hstring const& value) { m_key = value; }
+
+    // Provides iteration over the group's items
+    auto begin() const { return m_items.begin(); }
+    auto end() const { return m_items.end(); }
+    uint32_t Size() const { return static_cast<uint32_t>(m_items.size()); }
+
+private:
+    winrt::hstring m_key;
+    std::vector<Contact> m_items;
+};
+
+// Contact class definition:
+struct Contact
+{
+    Contact(winrt::hstring firstName, winrt::hstring lastName, winrt::hstring company)
+        : m_firstName(std::move(firstName))
+        , m_lastName(std::move(lastName))
+        , m_company(std::move(company)) {}
+
+    winrt::hstring FirstName() const { return m_firstName; }
+    winrt::hstring LastName() const { return m_lastName; }
+    winrt::hstring Company() const { return m_company; }
+    winrt::hstring Name() const { return m_firstName + L" " + m_lastName; }
+
+    // ... Methods ...
+
+private:
+    winrt::hstring m_firstName;
+    winrt::hstring m_lastName;
+    winrt::hstring m_company;
+};
+
+ContactsCVS().Source(co_await Contact::GetContactsGroupedAsync());

@@ -30,3 +30,45 @@ private void InitializeSampleTreeView(TreeView sampleTreeView)
     sampleTreeView.RootNodes.Add(workNode);
     sampleTreeView.RootNodes.Add(personalNode);
 }
+
+--- c++
+void YourPage::InitializeSampleTreeView(winrt::Microsoft::UI::Xaml::Controls::TreeView const& sampleTreeView)
+{
+    // Create a root node with initial content and set it to be expanded.
+    winrt::Microsoft::UI::Xaml::Controls::TreeViewNode workNode;
+    workNode.Content(winrt::box_value(L"Work Documents"));
+    workNode.IsExpanded(true);
+
+    // Add child nodes with content related to the root node.
+    auto child1 = winrt::Microsoft::UI::Xaml::Controls::TreeViewNode();
+    child1.Content(winrt::box_value(L"XYZ Functional Spec"));
+    workNode.Children().Append(child1);
+
+    auto child2 = winrt::Microsoft::UI::Xaml::Controls::TreeViewNode();
+    child2.Content(winrt::box_value(L"Feature Schedule"));
+    workNode.Children().Append(child2);
+
+    // Create another node with initial content and set it to be expanded.
+    winrt::Microsoft::UI::Xaml::Controls::TreeViewNode remodelNode;
+    remodelNode.Content(winrt::box_value(L"Home Remodel"));
+    remodelNode.IsExpanded(true);
+
+    // Add child nodes with specific content under this node.
+    auto child3 = winrt::Microsoft::UI::Xaml::Controls::TreeViewNode();
+    child3.Content(winrt::box_value(L"Contractor Contact Info"));
+    remodelNode.Children().Append(child3);
+
+    auto child4 = winrt::Microsoft::UI::Xaml::Controls::TreeViewNode();
+    child4.Content(winrt::box_value(L"Paint Color Scheme"));
+    remodelNode.Children().Append(child4);
+
+    // Create a node with broader content that includes the previous node as a child.
+    winrt::Microsoft::UI::Xaml::Controls::TreeViewNode personalNode;
+    personalNode.Content(winrt::box_value(L"Personal Documents"));
+    personalNode.IsExpanded(true);
+    personalNode.Children().Append(remodelNode);
+
+    // Add the main nodes to the TreeView's root.
+    sampleTreeView.RootNodes().Append(workNode);
+    sampleTreeView.RootNodes().Append(personalNode);
+}

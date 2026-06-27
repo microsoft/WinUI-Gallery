@@ -190,3 +190,84 @@ public sealed partial class DetailedInfoPage : Page
         Frame.GoBack();
     }
 }
+--- c++
+// COLLECTION PAGE
+void CollectionPage::collection_Loaded(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    if (_storeditem != nullptr)
+    {
+        // If the connected item appears outside the viewport, scroll it into view.
+        collection().ScrollIntoView(_storeditem, ScrollIntoViewAlignment::Default);
+        collection().UpdateLayout();
+
+        // Play the second connected animation.
+        ConnectedAnimation animation = ConnectedAnimationService::GetForCurrentView().GetAnimation(L"BackConnectedAnimation");
+        if (animation != nullptr)
+        {
+            // Setup the "back" configuration if the API is present.
+            if (ApiInformation::IsApiContractPresent(L"Windows.Foundation.UniversalApiContract", 7))
+            {
+                animation.Configuration(DirectConnectedAnimationConfiguration());
+            }
+
+            collection().TryStartConnectedAnimationAsync(animation, _storeditem, L"connectedElement");
+        }
+
+        // Set focus on the list
+        collection().Focus(FocusState::Programmatic);
+    }
+}
+
+void CollectionPage::collection_ItemClick(IInspectable const& sender, ItemClickEventArgs const& e)
+{
+    // Get the collection item corresponding to the clicked item.
+    auto container = collection().ContainerFromItem(e.ClickedItem()).try_as<ListViewItem>();
+    if (container != nullptr)
+    {
+        // Stash the clicked item for use later. We'll need it when we connect back from the detailpage.
+        _storeditem = container.Content().as<CustomDataObject>();
+
+        // Prepare the connected animation.
+        // Notice that the stored item is passed in, as well as the name of the connected element.
+        // The animation will actually start on the Detailed info page.
+        collection().PrepareConnectedAnimation(L"ForwardConnectedAnimation", _storeditem, L"connectedElement");
+    }
+
+    // Navigate to the DetailedInfoPage.
+    // Note that we suppress the default animation.
+    Frame().Navigate(winrt::xaml_typename<DetailedInfoPage>(), _storeditem, SuppressNavigationTransitionInfo());
+}
+
+// DETAILED PAGE
+void DetailedInfoPage::GoBackButton_Loaded(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    // When we land in page, put focus on the back button
+    GoBackButton().Focus(FocusState::Programmatic);
+}
+
+void DetailedInfoPage::OnNavigatedTo(NavigationEventArgs const& e)
+{
+    __super::OnNavigatedTo(e);
+
+    // Store the item to be used in binding to UI
+    DetailedObject(e.Parameter().as<CustomDataObject>());
+
+    ConnectedAnimation imageAnimation = ConnectedAnimationService::GetForCurrentView().GetAnimation(L"ForwardConnectedAnimation");
+    if (imageAnimation != nullptr)
+    {
+        // Connected animation + coordinated animation
+        imageAnimation.TryStart(detailedImage(), { coordinatedPanel() });
+    }
+}
+
+void DetailedInfoPage::OnNavigatingFrom(NavigatingCancelEventArgs const& e)
+{
+    __super::OnNavigatingFrom(e);
+
+    ConnectedAnimationService::GetForCurrentView().PrepareToAnimate(L"BackConnectedAnimation", detailedImage());
+}
+
+void DetailedInfoPage::BackButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    Frame().GoBack();
+}

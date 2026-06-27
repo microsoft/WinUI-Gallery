@@ -36,3 +36,21 @@ private void SwappableSelectionModesItemsView_SelectionChanged(ItemsView sender,
 {
     tblSelectionOutput.Text = string.Format("You have selected {0} item(s).", SwappableSelectionModesItemsView.SelectedItems.Count);
 }
+
+--- c++
+void YourPage::SwappableSelectionModesItemsView_ItemInvoked(
+    winrt::Microsoft::UI::Xaml::Controls::ItemsView const& /*sender*/,
+    winrt::Microsoft::UI::Xaml::Controls::ItemsViewItemInvokedEventArgs const& e)
+{
+    auto item = e.InvokedItem().as<CustomDataObject>();
+    tblInvocationOutput().Text(L"You invoked " + item.Title() + L".");
+}
+
+void YourPage::SwappableSelectionModesItemsView_SelectionChanged(
+    winrt::Microsoft::UI::Xaml::Controls::ItemsView const& /*sender*/,
+    winrt::Microsoft::UI::Xaml::Controls::ItemsViewSelectionChangedEventArgs const& /*e*/)
+{
+    auto count = SwappableSelectionModesItemsView().SelectedItems().Size();
+    tblSelectionOutput().Text(
+        winrt::to_hstring(L"You have selected ") + winrt::to_hstring(count) + L" item(s).");
+}

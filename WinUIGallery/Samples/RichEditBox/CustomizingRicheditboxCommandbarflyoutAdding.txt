@@ -33,3 +33,35 @@ private void REBCustom_Unloaded(object sender, RoutedEventArgs e)
     REBCustom.SelectionFlyout.Opening -= Menu_Opening;
     REBCustom.ContextFlyout.Opening -= Menu_Opening;
 }
+--- c++
+void MainPage::Menu_Opening(IInspectable const& sender, IInspectable const& e)
+{
+    auto myFlyout = sender.try_as<CommandBarFlyout>();
+    if (myFlyout == nullptr)
+    {
+        return;
+    }
+
+    if (myFlyout.Target() == REBCustom())
+    {
+        AppBarButton myButton;
+        myButton.Command(StandardUICommand(StandardUICommandKind::Share));
+        myFlyout.PrimaryCommands().Append(myButton);
+    }
+}
+
+void MainPage::REBCustom_Loaded(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    auto selectionFlyout = REBCustom().SelectionFlyout();
+    auto contextFlyout = REBCustom().ContextFlyout();
+    selectionFlyout.Opening({ this, &MainPage::Menu_Opening });
+    contextFlyout.Opening({ this, &MainPage::Menu_Opening });
+}
+
+void MainPage::REBCustom_Unloaded(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    auto selectionFlyout = REBCustom().SelectionFlyout();
+    auto contextFlyout = REBCustom().ContextFlyout();
+    selectionFlyout.Opening(/* remove handler */);
+    contextFlyout.Opening(/* remove handler */);
+}

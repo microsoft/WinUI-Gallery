@@ -14,3 +14,19 @@ AppNotification notification = new AppNotificationBuilder()
     .BuildNotification();
 
 AppNotificationManager.Default.Show(notification);
+--- c++
+// C++/WinRT Code
+winrt::Microsoft::Windows::AppNotifications::Builder::AppNotificationProgressBar progressBar{};
+progressBar.Title(L"Demo Progress");
+progressBar.Value(0.6); // 60%
+progressBar.ValueStringOverride(L"60%");
+progressBar.Status(L"In progress...");
+
+winrt::Microsoft::Windows::AppNotifications::AppNotification notification =
+    winrt::Microsoft::Windows::AppNotifications::Builder::AppNotificationBuilder()
+        .AddText(L"Progress Bar Example")
+        .AddText(L"This is a sample notification showing how to use a progress bar.")
+        .AddProgressBar(progressBar)
+        .BuildNotification();
+
+winrt::Microsoft::Windows::AppNotifications::AppNotificationManager::Default().Show(notification);

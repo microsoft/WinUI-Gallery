@@ -103,3 +103,93 @@ public sealed partial class ModalWindow : Window
         this.Close();
     }
 }
+--- c++
+// C++/WinRT Code
+#include <microsoft.ui.xaml.window.h>
+#include <winrt/Microsoft.UI.h>
+#include <winrt/Microsoft.UI.Windowing.h>
+#include <winrt/Microsoft.UI.Xaml.h>
+#include <winrt/Windows.Graphics.h>
+#include <winrt/Microsoft.UI.Interop.h>
+#include <Windows.h>
+
+using namespace winrt;
+using namespace Microsoft::UI;
+using namespace Microsoft::UI::Windowing;
+using namespace Microsoft::UI::Xaml;
+using namespace Windows::Graphics;
+
+namespace YourNamespace
+{
+    ModalWindow::ModalWindow()
+    {
+        InitializeComponent();
+
+        auto dpi = ::GetDpiForWindow(
+            reinterpret_cast<HWND>(Microsoft::UI::GetWindowIdFromWindow(*this).Value));
+        float scalingFactor = static_cast<float>(dpi) / 96.0f;
+
+        AppWindow().Resize(SizeInt32{
+            static_cast<int32_t>(400.0f * scalingFactor),
+            static_cast<int32_t>(300.0f * scalingFactor)
+        });
+        AppWindow().SetIcon(L"Assets/Tiles/GalleryIcon.ico");
+        AppWindow().TitleBar().PreferredTheme(TitleBarTheme::UseDefaultAppMode);
+
+        OverlappedPresenter presenter = OverlappedPresenter::CreateForDialog();
+
+        // Set this modal window's owner (the main application window).
+        // The main window can be retrieved from App.xaml.cs if it's set as a static property.
+        SetWindowOwner(App::StartupWindow());
+
+        // Make the window modal (blocks interaction with the owner window until closed).
+        presenter.IsModal(true);
+
+        // Apply the presenter settings to the AppWindow.
+        AppWindow().SetPresenter(presenter);
+
+        // Show the modal window.
+        AppWindow().Show();
+
+        Closed({ this, &ModalWindow::ModalWindow_Closed });
+    }
+
+    // Sets the owner window of the modal window.
+    void ModalWindow::SetWindowOwner(Window const& owner)
+    {
+        // Get the HWND (window handle) of the owner window (main window).
+        HWND ownerHwnd = reinterpret_cast<HWND>(
+            Microsoft::UI::GetWindowIdFromWindow(owner).Value);
+
+        // Get the HWND of the AppWindow (modal window).
+        HWND ownedHwnd = ::GetActiveWindow();
+        // Alternative: use Win32Interop::GetWindowFromWindowId if available
+
+        // Set the owner window using SetWindowLongPtr for 64-bit systems
+        // or SetWindowLong for 32-bit systems.
+        if (sizeof(void*) == 8) // Check if the system is 64-bit
+        {
+            ::SetWindowLongPtr(ownedHwnd, GWLP_HWNDPARENT, reinterpret_cast<LONG_PTR>(ownerHwnd));
+        }
+        else // 32-bit system
+        {
+            ::SetWindowLong(ownedHwnd, GWL_HWNDPARENT, reinterpret_cast<LONG_PTR>(ownerHwnd));
+        }
+    }
+
+    void ModalWindow::ModalWindow_Closed(IInspectable const& sender, WindowEventArgs const& args)
+    {
+        // Reactivate the main application window when the modal window closes.
+        App::StartupWindow().Activate();
+    }
+
+    void ModalWindow::OKButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+    {
+        Close();
+    }
+
+    void ModalWindow::CancelButton_Click(IInspectable const& sender, RoutedEventArgs const& e)
+    {
+        Close();
+    }
+}

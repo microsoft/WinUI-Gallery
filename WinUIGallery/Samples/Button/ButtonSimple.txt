@@ -7,3 +7,8 @@ private void Button_Click(object sender, RoutedEventArgs e)
 {
     // Handle button click
 }
+--- c++
+void MainPage::Button_Click(IInspectable const& sender, RoutedEventArgs const& e)
+{
+    // Handle button click
+}

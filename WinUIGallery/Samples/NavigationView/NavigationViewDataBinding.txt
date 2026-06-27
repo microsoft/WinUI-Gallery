@@ -50,3 +50,44 @@ class MenuItemTemplateSelector : DataTemplateSelector
         return item is Separator ? SeparatorTemplate : item is Header ? HeaderTemplate : ItemTemplate;
     }
 }
+--- c++
+// C++/WinRT code behind
+Categories = winrt::single_threaded_observable_vector<winrt::WinUIGallery::CategoryBase>();
+Categories.Append(winrt::WinUIGallery::Category{ L"Category 1", winrt::Microsoft::UI::Xaml::Controls::Symbol::Home, L"This is category 1" });
+Categories.Append(winrt::WinUIGallery::Category{ L"Category 2", winrt::Microsoft::UI::Xaml::Controls::Symbol::Keyboard, L"This is category 2" });
+Categories.Append(winrt::WinUIGallery::Category{ L"Category 3", winrt::Microsoft::UI::Xaml::Controls::Symbol::Library, L"This is category 3" });
+Categories.Append(winrt::WinUIGallery::Category{ L"Category 4", winrt::Microsoft::UI::Xaml::Controls::Symbol::Mail, L"This is category 4" });
+
+// In a C++/WinRT header (e.g. Category.idl or Category.h):
+// struct Category : winrt::WinUIGallery::CategoryBase
+// {
+//     winrt::hstring Name;
+//     winrt::hstring Tooltip;
+//     winrt::Microsoft::UI::Xaml::Controls::Symbol Glyph;
+// };
+
+// struct Separator : winrt::WinUIGallery::CategoryBase {};
+
+// struct Header : winrt::WinUIGallery::CategoryBase
+// {
+//     winrt::hstring Name;
+// };
+
+// MenuItemTemplateSelector in C++/WinRT (derived from DataTemplateSelector):
+// class MenuItemTemplateSelector : public winrt::Microsoft::UI::Xaml::Controls::DataTemplateSelector
+// {
+// public:
+//     winrt::Microsoft::UI::Xaml::DataTemplate ItemTemplate() const { return m_itemTemplate; }
+//     void ItemTemplate(winrt::Microsoft::UI::Xaml::DataTemplate const& value) { m_itemTemplate = value; }
+//
+// protected:
+//     winrt::Microsoft::UI::Xaml::DataTemplate SelectTemplateCore(IInspectable const& item) override
+//     {
+//         if (item.try_as<winrt::WinUIGallery::Separator>()) return SeparatorTemplate();
+//         if (item.try_as<winrt::WinUIGallery::Header>()) return HeaderTemplate();
+//         return ItemTemplate();
+//     }
+//
+// private:
+//     winrt::Microsoft::UI::Xaml::DataTemplate m_itemTemplate{ nullptr };
+// };

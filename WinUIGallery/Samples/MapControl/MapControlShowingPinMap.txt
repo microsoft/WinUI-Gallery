@@ -26,3 +26,23 @@ var LandmarksLayer = new MapElementsLayer
 };
 
 map1.Layers.Add(LandmarksLayer);
+--- c++
+BasicGeoposition centerPosition{ 0, 0, 0 };
+Geopoint centerPoint(centerPosition);
+
+map1().Center(centerPoint);
+map1().ZoomLevel(1);
+
+std::vector<MapElement> myLandmarks;
+BasicGeoposition position{ -30.034647, -51.217659, 0 };
+Geopoint point(position);
+
+MapIcon icon;
+icon.Location(point);
+
+myLandmarks.push_back(icon);
+
+MapElementsLayer landmarksLayer;
+landmarksLayer.MapElements(single_threaded_vector<MapElement>(std::move(myLandmarks)));
+
+map1().Layers().Append(landmarksLayer);
