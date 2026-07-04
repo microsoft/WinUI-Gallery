@@ -22,6 +22,12 @@ public sealed partial class TitleBarPage : Page
         titleBarWindow.Activate();
     }
 
+    private void CreateTitleBarDragRegionsWindowClick(object sender, RoutedEventArgs e)
+    {
+        TitleBarDragRegionsWindow window = new TitleBarDragRegionsWindow();
+        window.Activate();
+    }
+
     private void TitleBar_LayoutUpdated(object sender, object e)
     {
         TitleBarHelper.ApplySystemThemeToCaptionButtons(App.MainWindow, this.ActualTheme);

@@ -17,7 +17,7 @@
             <local:ColorPageExample
                 Title="Control Fill"
                 Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-                Description="Fill used for standard controls">
+                Description="Fill used for standard controls.">
                 <Button Content="Text" />
             </local:ColorPageExample>
             <Grid Style="{StaticResource GalleryTileGridStyle}">
@@ -49,13 +49,12 @@
                     ColorValue="#F9F9F9 (4D, 30%)" />
                 <local:ColorTile
                     Grid.Column="3"
-                    Background="{ThemeResource ControlFillColorTertiaryBrush}"
+                    Background="{ThemeResource ControlFillColorQuarternaryBrush}"
                     ColorBrushName="ControlFillColorQuarternaryBrush"
                     ColorExplanation="Rest (Pill Button control)"
                     ColorName="Control / Quartenary"
                     ColorValue="#F9F9F9 (C2, 30%)"
-                    ShowSeparator="False"
-                    ShowWarning="True" />
+                    ShowSeparator="False" />
             </Grid>
             <Grid Style="{StaticResource GalleryTileGridStyle}">
                 <Grid.ColumnDefinitions>
@@ -92,7 +91,7 @@
             <local:ColorPageExample
                 Title="Control Alt Fill"
                 Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-                Description="Fill used for the 'off' states of toggle controls">
+                Description="Fill used for the 'off' states of toggle controls.">
                 <ToggleSwitch OffContent="" OnContent="" />
             </local:ColorPageExample>
             <Grid Style="{StaticResource GalleryTileGridStyle}">
@@ -194,7 +193,7 @@
                     ColorName="Control Strong / Default"
                     ColorValue="#000000 (72, 44.58%)"
                     Foreground="{ThemeResource TextFillColorInverseBrush}"
-                    ShowSeparator="False" />
+                    ShowSeparator="True" />
                 <local:ColorTile
                     Grid.Column="2"
                     Background="{ThemeResource ControlStrongFillColorDisabledBrush}"
@@ -338,7 +337,7 @@
             <local:ColorPageExample
                 Title="Accent Fill"
                 Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
-                Description="Used for accent fills on controls">
+                Description="Used for accent fills on controls.">
                 <StackPanel>
                     <Button Content="Text" Style="{StaticResource AccentButtonStyle}" />
                 </StackPanel>
