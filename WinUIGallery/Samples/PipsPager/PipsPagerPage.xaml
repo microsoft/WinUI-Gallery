@@ -68,12 +68,21 @@
                         <x:String>VisibleOnPointerOver</x:String>
                         <x:String>Collapsed</x:String>
                     </ComboBox>
+                    <ComboBox
+                        x:Name="WrapModeComboBox"
+                        Header="Wrap Mode"
+                        SelectedValue="None"
+                        SelectionChanged="WrapModeComboBox_SelectionChanged">
+                        <x:String>None</x:String>
+                        <x:String>Wrap</x:String>
+                    </ComboBox>
                 </StackPanel>
             </controls:ControlExample.Options>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="Orientation" Value="{x:Bind OrientationComboBox.SelectedValue, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="PrevButton" Value="{x:Bind PrevButtonComboBox.SelectedValue, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="NextButton" Value="{x:Bind NextButtonComboBox.SelectedValue, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="WrapMode" Value="{x:Bind WrapModeComboBox.SelectedValue, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>
