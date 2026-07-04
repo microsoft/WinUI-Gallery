@@ -41,6 +41,7 @@
         <ApplicationIcon>Assets\Tiles\GalleryIcon.ico</ApplicationIcon>
         <Nullable>enable</Nullable>
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <Company>Microsoft</Company>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true'">
