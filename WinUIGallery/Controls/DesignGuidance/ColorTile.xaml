@@ -10,11 +10,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
+    <Grid x:Name="RootGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
+
+        <SystemBackdropElement
+            x:Name="BackdropHost"
+            Grid.ColumnSpan="2"
+            Visibility="Collapsed" />
 
         <Grid
             Padding="12"
@@ -29,7 +34,6 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="30" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBlock
@@ -43,7 +47,6 @@
                 x:Name="CopyBrushNameButton"
                 Grid.RowSpan="4"
                 Grid.Column="1"
-                Grid.ColumnSpan="2"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 AutomationProperties.Name="Copy brush name"
@@ -76,18 +79,13 @@
                 Style="{StaticResource CaptionTextBlockStyle}"
                 Text="{x:Bind ColorBrushName, Mode=OneWay}"
                 TextWrapping="Wrap" />
-            <Grid
-                Grid.Row="3"
-                Grid.Column="2"
-                Margin="0,0,4,0"
-                Background="Transparent"
-                ToolTipService.ToolTip="This brush might not (yet) be available in WinUI."
-                Visibility="{x:Bind ShowWarning, Mode=OneWay}">
-                <FontIcon
-                    FontSize="16"
-                    Foreground="{ThemeResource SystemFillColorCriticalBrush}"
-                    Glyph="&#xE7BA;" />
-            </Grid>
+
+            <ContentPresenter
+                x:Name="CommentHost"
+                Grid.Row="4"
+                Grid.ColumnSpan="2"
+                Content="{x:Bind Comment, Mode=OneWay}"
+                Visibility="Collapsed" />
             <!--  Right now, we don't want to display colors. If we ever want to show them again, we can show them again by using the following code.  -->
             <!--<TextBlock Text="{x:Bind ColorValue, Mode=OneWay}" Grid.Row="4" Grid.ColumnSpan="2" TextWrapping="WrapWholeWords" Style="{StaticResource CaptionTextBlockStyle}"/>-->
         </Grid>

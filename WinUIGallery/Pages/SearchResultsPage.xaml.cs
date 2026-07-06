@@ -85,10 +85,13 @@ public sealed partial class SearchResultsPage : ItemsPageBase
                         bool flag = true;
                         foreach (string queryToken in querySplit)
                         {
-                            // Check if token is in title or subtitle
-                            if (!item.Title.ToLower().Contains(queryToken) && item.Subtitle != null && !item.Subtitle.ToLower().Contains(queryToken))
+                            // Check if token is in title, subtitle, or any of the search tags
+                            bool tokenMatches = item.Title.ToLower().Contains(queryToken)
+                                || (item.Subtitle != null && item.Subtitle.ToLower().Contains(queryToken))
+                                || item.Tags.Any(tag => tag.ToLower().Contains(queryToken));
+                            if (!tokenMatches)
                             {
-                                // Neither title nor sub title contain one of the tokens so we discard this item!
+                                // Neither title, sub title nor tags contain one of the tokens so we discard this item!
                                 flag = false;
                             }
                         }

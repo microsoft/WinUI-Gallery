@@ -32,6 +32,7 @@ public partial class ControlInfoDataItem
     public string UniqueId { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
     public string[] BaseClasses { get; set; } = [];
+    public string[] Tags { get; set; } = [];
     public string ApiNamespace { get; set; } = string.Empty;
     public string Subtitle { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
