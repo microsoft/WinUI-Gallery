@@ -55,7 +55,7 @@
         </controls:ControlExample>
         <TextBlock
             Margin="0,12,0,0"
-            Text="Theme updates for SystemBackdropElement are triggered by app or OS theme changes, not by setting theme directly on the control."
+            Text="Theme updates for SystemBackdropElement are triggered by app or OS theme changes, not by setting theme directly on the element or a parent control."
             TextWrapping="WrapWholeWords" />
     </StackPanel>
 </Page>
