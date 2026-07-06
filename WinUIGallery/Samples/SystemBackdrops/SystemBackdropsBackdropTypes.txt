@@ -14,7 +14,7 @@ Backdrop types
 <!-- Acrylic -->
 <Window.SystemBackdrop>
     <DesktopAcrylicBackdrop/>
-<Window.SystemBackdrop>
+</Window.SystemBackdrop>
 --- c#
 bool TrySetMicaBackdrop(bool useMicaAlt)
 {

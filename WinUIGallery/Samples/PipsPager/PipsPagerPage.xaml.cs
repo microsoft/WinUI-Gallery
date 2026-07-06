@@ -73,6 +73,23 @@ public sealed partial class PipsPagerPage : Page
         }
     }
 
+    private void WrapModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        string? wrapMode = e.AddedItems[0].ToString();
+
+        switch (wrapMode)
+        {
+            case "Wrap":
+                TestPipsPager2.WrapMode = PipsPagerWrapMode.Wrap;
+                break;
+
+            case "None":
+            default:
+                TestPipsPager2.WrapMode = PipsPagerWrapMode.None;
+                break;
+        }
+    }
+
     private void NextButtonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         string? nextButtonVisibility = e.AddedItems[0].ToString();
