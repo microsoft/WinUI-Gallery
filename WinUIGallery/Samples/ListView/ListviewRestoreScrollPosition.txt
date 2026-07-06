@@ -25,7 +25,6 @@ private void SavePositionButton_Click(object sender, RoutedEventArgs e)
         RestoreScrollListView,
         item => item as string ?? string.Empty);
 
-    SavedPositionTextBlock.Text = $"Saved position: {_persistedPosition}";
     RestorePositionButton.IsEnabled = true;
 }
 

@@ -108,8 +108,7 @@
     </Page.Resources>
     <StackPanel>
 
-        <controls:ControlExample
-            SampleDefinition="ListView\BasicListviewSimpleDatatemplate.txt">
+        <controls:ControlExample SampleDefinition="ListView\BasicListviewSimpleDatatemplate.txt">
             <StackPanel>
                 <TextBlock
                     Margin="0,0,0,16"
@@ -225,8 +224,7 @@
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <controls:ControlExample
-            SampleDefinition="ListView\ListviewGroupedHeaders.txt">
+        <controls:ControlExample SampleDefinition="ListView\ListviewGroupedHeaders.txt">
             <StackPanel>
                 <TextBlock Margin="0,0,0,15" TextWrapping="Wrap">
                     Switch the toggle on the right to enable sticky group headers, which makes the headers stay put at the top of the ListView while scrolling.
@@ -282,8 +280,7 @@
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <controls:ControlExample
-            SampleDefinition="ListView\ListviewFiltering.txt">
+        <controls:ControlExample SampleDefinition="ListView\ListviewFiltering.txt">
             <ListView
                 x:Name="FilteredListView"
                 Width="400"
@@ -502,18 +499,15 @@
 
             <controls:ControlExample.Options>
                 <StackPanel Spacing="8">
-                    <Button x:Name="SavePositionButton" Click="SavePositionButton_Click" Content="Save position" />
+                    <Button
+                        x:Name="SavePositionButton"
+                        Click="SavePositionButton_Click"
+                        Content="Save position" />
                     <Button
                         x:Name="RestorePositionButton"
                         Click="RestorePositionButton_Click"
                         Content="Restore position"
                         IsEnabled="False" />
-                    <TextBlock
-                        x:Name="SavedPositionTextBlock"
-                        MaxWidth="220"
-                        Style="{ThemeResource CaptionTextBlockStyle}"
-                        Text="No position saved."
-                        TextWrapping="Wrap" />
                 </StackPanel>
             </controls:ControlExample.Options>
         </controls:ControlExample>
