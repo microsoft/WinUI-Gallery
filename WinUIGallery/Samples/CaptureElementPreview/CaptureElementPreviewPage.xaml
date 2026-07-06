@@ -7,9 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
-        <controls:ControlExample
-            x:Name="Example1"
-            SampleDefinition="CaptureElementPreview\CaptureElementPreviewMediacapturePreviewDisplayedVia.txt">
+        <controls:ControlExample x:Name="Example1" SampleDefinition="CaptureElementPreview\CaptureElementPreviewMediacapturePreviewDisplayedVia.txt">
             <controls:ControlExample.Example>
                 <Grid
                     MinWidth="400"
@@ -47,11 +45,11 @@
                 </Grid>
             </controls:ControlExample.Example>
             <controls:ControlExample.Options>
-                <StackPanel>
+                <StackPanel Spacing="16">
                     <ComboBox
                         x:Name="cameraSourceComboBox"
-                        Header="Camera source"
                         DisplayMemberPath="DisplayName"
+                        Header="Camera source"
                         SelectionChanged="CameraSourceComboBox_SelectionChanged" />
                     <ToggleSwitch
                         x:Name="mirrorSwitch"
