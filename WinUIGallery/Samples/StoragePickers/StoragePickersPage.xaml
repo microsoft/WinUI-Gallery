@@ -159,5 +159,28 @@
                 <controls:ControlExampleSubstitution Key="ViewMode" Value="{x:Bind PickerViewModeComboBox3.SelectedItem, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
+        <controls:ControlExample SampleDefinition="StoragePickers\StoragePickersFileThumbnail.txt">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="8" Orientation="Horizontal">
+                    <StackPanel Spacing="8">
+                        <Button x:Name="PickFileForThumbnailButton" Content="Pick a file" Click="PickFileForThumbnailButton_Click"/>
+                        <TextBlock x:Name="ThumbnailDetailsTextBlock" Text="No file picked" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <Border Width="160" Height="160" Background="{ThemeResource SubtleFillColorTertiaryBrush}"
+                            CornerRadius="4" HorizontalAlignment="Left">
+                        <Image x:Name="ThumbnailImage" Stretch="Uniform" AutomationProperties.Name="File thumbnail"/>
+                    </Border>
+                </StackPanel>
+            </controls:ControlExample.Example>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <ComboBox x:Name="ThumbnailModeComboBox" Header="Thumbnail mode" Width="200"
+                              ItemsSource="{x:Bind thumbnailModes}" SelectedIndex="0"/>
+                    <NumberBox x:Name="ThumbnailSizeNumberBox" Header="Requested size (px)"
+                               Value="200" Minimum="16" Maximum="1024" SpinButtonPlacementMode="Inline" Width="200"/>
+                </StackPanel>
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
     </StackPanel>
 </Page>

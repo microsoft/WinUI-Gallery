@@ -77,7 +77,8 @@
                     ColorBrushName="TextControlElevationBorderBrush"
                     ColorExplanation="Rest"
                     ColorName="Text Control / Border"
-                    ColorValue="Stop 1: Stroke/Control/Default Stop 2: Stroke/Control Strong/Default" />
+                    ColorValue="Stop 1: Stroke/Control/Default Stop 2: Stroke/Control Strong/Default"
+                    ShowSeparator="False" />
             </Grid>
             <Grid Style="{StaticResource GalleryTileGridStyle}">
                 <Grid.ColumnDefinitions>
@@ -97,7 +98,8 @@
                     ColorBrushName="AccentControlElevationBorderBrush"
                     ColorExplanation="Rest"
                     ColorName="Accent Control / Border"
-                    ColorValue="Stop 1: Stroke/Control/On Accent Default Stop 2: Stroke/Control/On Accent Secondary" />
+                    ColorValue="Stop 1: Stroke/Control/On Accent Default Stop 2: Stroke/Control/On Accent Secondary"
+                    ShowSeparator="False" />
             </Grid>
 
             <!--  Control Stroke  -->
@@ -198,7 +200,7 @@
                     ColorName="Control Strong Stroke / Default"
                     ColorValue="#000000 (72, 44.58%)"
                     Foreground="{ThemeResource TextFillColorInverseBrush}"
-                    ShowSeparator="False" />
+                    ShowSeparator="True" />
                 <local:ColorTile
                     Grid.Column="2"
                     Background="{ThemeResource ControlStrongStrokeColorDisabledBrush}"
@@ -236,7 +238,7 @@
                     ColorExplanation="Window and dialog borders, theme inverse"
                     ColorName="Surface Stroke / Default"
                     ColorValue="#757575 (66, 40%) Snapped Windows: #757575 (FF, 100%)"
-                    ShowSeparator="False" />
+                    ShowSeparator="True" />
                 <local:ColorTile
                     Grid.Column="2"
                     Background="{ThemeResource SurfaceStrokeColorFlyoutBrush}"
@@ -325,7 +327,7 @@
                     ColorName="Focus / Outer"
                     ColorValue="#000000 (E4, 89.56%)"
                     Foreground="{ThemeResource TextFillColorInverseBrush}"
-                    ShowSeparator="False" />
+                    ShowSeparator="True" />
                 <local:ColorTile
                     Grid.Column="1"
                     Background="{ThemeResource FocusStrokeColorInnerBrush}"

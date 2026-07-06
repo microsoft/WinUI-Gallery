@@ -1,0 +1,82 @@
+--- header
+Pick a file and display its thumbnail
+--- xaml
+<StackPanel Spacing="8" Orientation="Horizontal">
+    <StackPanel Spacing="8">
+        <Button x:Name="PickFileForThumbnailButton" Content="Pick a file" Click="PickFileForThumbnailButton_Click"/>
+        <TextBlock x:Name="ThumbnailDetailsTextBlock" Text="No file picked" TextWrapping="Wrap"/>
+    </StackPanel>
+    <Border Width="160" Height="160" Background="{ThemeResource SubtleFillColorTertiaryBrush}"
+            CornerRadius="4" HorizontalAlignment="Left">
+        <Image x:Name="ThumbnailImage" Stretch="Uniform" AutomationProperties.Name="File thumbnail"/>
+    </Border>
+</StackPanel>
+--- c#
+private async void PickFileForThumbnailButton_Click(object sender, RoutedEventArgs e)
+{
+    if (sender is Button button)
+    {
+        button.IsEnabled = false;
+
+        // 1) Pick a file using the new WinAppSDK Microsoft.Windows.Storage.Pickers API.
+        var picker = new FileOpenPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
+        picker.FileTypeFilter.Add("*");
+
+        var pickResult = await picker.PickSingleFileAsync();
+        if (pickResult == null)
+        {
+            ThumbnailDetailsTextBlock.Text = "No file selected.";
+            ThumbnailImage.Source = null;
+            button.IsEnabled = true;
+            return;
+        }
+
+        // 2) The new picker returns a path string; bridge to a StorageFile to access
+        //    thumbnail APIs (Windows.Storage.FileProperties has no WinAppSDK replacement).
+        var file = await Windows.Storage.StorageFile.GetFileFromPathAsync(pickResult.Path);
+
+        var thumbnailMode = (Windows.Storage.FileProperties.ThumbnailMode)ThumbnailModeComboBox.SelectedItem;
+
+        // NumberBox.Value is NaN when the user clears the field; fall back to a sane default.
+        double rawSize = ThumbnailSizeNumberBox.Value;
+        uint size = double.IsNaN(rawSize) || rawSize <= 0 ? 200u : (uint)rawSize;
+
+        // 3) Request the thumbnail. ThumbnailMode hints how the system should render it
+        //    (e.g. PicturesView for photos, MusicView for album art, DocumentsView for icons).
+        //    Some modes throw for incompatible file types (e.g. PicturesView on a .txt file),
+        //    so wrap the call and report the failure to the user.
+        try
+        {
+            using var thumbnail = await file.GetThumbnailAsync(
+                thumbnailMode, size, Windows.Storage.FileProperties.ThumbnailOptions.UseCurrentScale);
+            if (thumbnail != null)
+            {
+                var bitmap = new Microsoft.UI.Xaml.Media.Imaging.BitmapImage();
+                await bitmap.SetSourceAsync(thumbnail);
+                ThumbnailImage.Source = bitmap;
+
+                ThumbnailDetailsTextBlock.Text =
+                    $"File: {file.Name}\n" +
+                    $"Mode: ThumbnailMode.{thumbnailMode}\n" +
+                    $"Requested size: {size}\n" +
+                    $"Returned size: {thumbnail.OriginalWidth} x {thumbnail.OriginalHeight}";
+            }
+            else
+            {
+                ThumbnailImage.Source = null;
+                ThumbnailDetailsTextBlock.Text = "No thumbnail available for the selected file.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ThumbnailImage.Source = null;
+            ThumbnailDetailsTextBlock.Text =
+                $"Could not retrieve a thumbnail for \"{file.Name}\" using ThumbnailMode.{thumbnailMode}.\n" +
+                $"Try a different mode (for example, SingleItem) or a different file.\n" +
+                $"({ex.HResult:X8})";
+        }
+
+        button.IsEnabled = true;
+        UIHelper.AnnounceActionForAccessibility(button, ThumbnailDetailsTextBlock.Text, "ThumbnailPickedNotificationId");
+    }
+}
