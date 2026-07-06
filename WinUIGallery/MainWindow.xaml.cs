@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.UI.Input;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
@@ -86,6 +87,28 @@ public sealed partial class MainWindow : Window
         TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
     }
 
+    private void RootGrid_PointerPressed(object sender, PointerRoutedEventArgs e)
+    {
+        PointerPointProperties props = e.GetCurrentPoint(null).Properties;
+
+        if (props.IsXButton1Pressed)
+        {
+            if (rootFrame.CanGoBack)
+            {
+                rootFrame.GoBack();
+                e.Handled = true;
+            }
+        }
+        else if (props.IsXButton2Pressed)
+        {
+            if (rootFrame.CanGoForward)
+            {
+                rootFrame.GoForward();
+                e.Handled = true;
+            }
+        }
+    }
+
     private void RootGridXamlRoot_Changed(XamlRoot sender, XamlRootChangedEventArgs args)
     {
         WindowHelper.SetWindowMinSize(this, 640, 500);
@@ -153,7 +176,7 @@ public sealed partial class MainWindow : Window
             SettingsHelper.Current.UpdateRecentlyVisited(items => items.AddAsFirst(targetPageArguments.ToString() ?? "", SettingsHelper.MaxRecentlyVisitedSamples));
         }
     }
-    
+
     public void EnsureNavigationSelection(string id)
     {
         foreach (object rawGroup in this.NavigationView.MenuItems)

@@ -12,7 +12,10 @@
     <Window.SystemBackdrop>
         <MicaBackdrop />
     </Window.SystemBackdrop>
-    <Grid x:Name="RootGrid" Loaded="RootGrid_Loaded">
+    <Grid
+        x:Name="RootGrid"
+        Loaded="RootGrid_Loaded"
+        PointerPressed="RootGrid_PointerPressed">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -25,9 +28,11 @@
             IsPaneToggleButtonVisible="True"
             PaneToggleRequested="TitleBar_PaneToggleRequested">
             <TitleBar.Resources>
-                <!--  TitleBar.Content uses Center alignment by default, which
-                      sizes content to its DesiredSize. Override to Stretch so
-                      the search box fills the available area up to MaxWidth.  -->
+                <!--
+                    TitleBar.Content uses Center alignment by default, which
+                    sizes content to its DesiredSize. Override to Stretch so
+                    the search box fills the available area up to MaxWidth.
+                -->
                 <HorizontalAlignment x:Key="TitleBarContentHorizontalAlignment">Stretch</HorizontalAlignment>
             </TitleBar.Resources>
             <TitleBar.IconSource>
