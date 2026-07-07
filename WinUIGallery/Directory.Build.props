@@ -5,7 +5,16 @@
     <GenerateProjectSpecificOutputFolder>true</GenerateProjectSpecificOutputFolder>
     <!-- Work around DefaultElementAnimator.cs compiler error from missing experimental types -->
     <MUXFinalRelease>true</MUXFinalRelease>
+    <!-- WinAppSDK mock pkg + 1.8.260204 both import WinUI props/targets causing duplicate <Page Include> from **/*.xaml. Disable auto and add manually below. -->
+    <EnableDefaultPageItems>false</EnableDefaultPageItems>
+    <EnableDefaultApplicationDefinition>false</EnableDefaultApplicationDefinition>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Page Include="**\*.xaml"
+          Exclude="bin\**\*.xaml;obj\**\*.xaml;App.xaml;Package.appxmanifest;Properties\PublishProfiles\*.xaml" />
+    <ApplicationDefinition Include="App.xaml" />
+  </ItemGroup>
     
   <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')))" />
 

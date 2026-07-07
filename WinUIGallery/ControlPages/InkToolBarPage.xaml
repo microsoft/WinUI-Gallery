@@ -2,10 +2,6 @@
 //*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
 -->
@@ -17,60 +13,320 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel>
-        <!-- BASIC INKTOOLBAR -->
-        <local:ControlExample x:Name="Example1" HeaderText="An InkToolBar with default tools.">
-            <Grid RowDefinitions="Auto, *">
-                <InkToolBar x:Name="inkToolBar1" TargetInkCanvas="{x:Bind inkCanvas1}" 
-                            HorizontalAlignment="Left" />
-                <Border Grid.Row="1" BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" 
-                        BorderThickness="1" Width="600" Height="400" Background="White">
+    <StackPanel Spacing="16">
+
+        <!-- ============================================================= -->
+        <!-- Example 1: ActiveTool + GetToolButton                          -->
+        <!-- ============================================================= -->
+        <local:ControlExample x:Name="Example1" HeaderText="1. ActiveTool + GetToolButton — switch tools and read/set ActiveTool.">
+            <StackPanel Spacing="8">
+                <StackPanel Orientation="Horizontal" Spacing="4"
+                            Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
+                            CornerRadius="4" Padding="4"
+                            BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1">
+                    <RadioButton x:Name="rbPen1"         Content="Pen"         GroupName="InkTools1" IsChecked="True" Click="ToolRadio1_Click" MinWidth="72" Padding="8,6,8,6" />
+                    <RadioButton x:Name="rbPencil1"      Content="Pencil"      GroupName="InkTools1" Click="ToolRadio1_Click" MinWidth="72" Padding="8,6,8,6" />
+                    <RadioButton x:Name="rbHighlighter1" Content="Highlighter" GroupName="InkTools1" Click="ToolRadio1_Click" MinWidth="72" Padding="8,6,8,6" />
+                    <RadioButton x:Name="rbEraser1"      Content="Eraser"      GroupName="InkTools1" Click="ToolRadio1_Click" MinWidth="72" Padding="8,6,8,6" />
+                </StackPanel>
+                <InkToolBar x:Name="inkToolBar1" TargetInkCanvas="{x:Bind inkCanvas1}" Visibility="Collapsed" />
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                        Width="520" Height="240" Background="White">
                     <InkCanvas x:Name="inkCanvas1" />
                 </Border>
-            </Grid>
+            </StackPanel>
             <local:ControlExample.Options>
-                <StackPanel Spacing="8">
-                    <TextBlock Text="The default InkToolBar includes:" />
-                    <TextBlock Text="  - Ballpoint Pen" Style="{ThemeResource CaptionTextBlockStyle}" />
-                    <TextBlock Text="  - Pencil" Style="{ThemeResource CaptionTextBlockStyle}" />
-                    <TextBlock Text="  - Highlighter" Style="{ThemeResource CaptionTextBlockStyle}" />
-                    <TextBlock Text="  - Eraser" Style="{ThemeResource CaptionTextBlockStyle}" />
-                    <TextBlock Text="  - Stencil (Ruler)" Style="{ThemeResource CaptionTextBlockStyle}" />
+                <StackPanel Spacing="8" MinWidth="220">
+                    <TextBlock Text="Drag in white area to ink. Radios switch InkCanvas mode/attributes." Style="{ThemeResource CaptionTextBlockStyle}" TextWrapping="Wrap" />
+                    <Button Content="Clear ink" Click="Clear1_Click" HorizontalAlignment="Stretch" />
+                    <Button Content="Apply selected via InkToolBar.ActiveTool" Click="ApplyViaToolBar1_Click" HorizontalAlignment="Stretch" />
+                    <Button Content="Read InkToolBar.ActiveTool" Click="ReadActiveTool1_Click" HorizontalAlignment="Stretch" />
+                    <TextBlock x:Name="Status1" Text="(no API call yet)" Style="{ThemeResource CaptionTextBlockStyle}" TextWrapping="Wrap" />
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;InkToolBar TargetInkCanvas="{x:Bind inkCanvas}" /&gt;
+&lt;InkToolBar x:Name="inkToolBar" TargetInkCanvas="{x:Bind inkCanvas}" /&gt;
 &lt;InkCanvas x:Name="inkCanvas" /&gt;
+
+// Set ActiveTool programmatically:
+var btn = inkToolBar.GetToolButton(InkToolBarTool.Pencil);
+inkToolBar.ActiveTool = btn;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
-        <!-- INKTOOLBAR WITH MULTI-INPUT -->
-        <local:ControlExample x:Name="Example2" HeaderText="InkCanvas accepting pen, touch, and mouse input.">
-            <Grid RowDefinitions="Auto, *">
-                <InkToolBar x:Name="inkToolBar2" TargetInkCanvas="{x:Bind inkCanvas2}" 
-                            HorizontalAlignment="Left" />
-                <Border Grid.Row="1" BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" 
-                        BorderThickness="1" Width="600" Height="400" Background="White">
-                    <InkCanvas x:Name="inkCanvas2" AllowedInputTypes="Pen,Touch,Mouse" />
-                </Border>
-            </Grid>
+        <!-- ============================================================= -->
+        <!-- Example 2: TargetInkCanvas (switch between two canvases)       -->
+        <!-- ============================================================= -->
+        <local:ControlExample x:Name="Example2" HeaderText="2. TargetInkCanvas — rebind the toolbar to a different InkCanvas at runtime.">
+            <StackPanel Spacing="8">
+                <InkToolBar x:Name="inkToolBar2" TargetInkCanvas="{x:Bind inkCanvas2A}" Visibility="Collapsed" />
+                <StackPanel Orientation="Horizontal" Spacing="12">
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="Canvas A" Style="{ThemeResource CaptionTextBlockStyle}" />
+                        <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                                Width="240" Height="200" Background="White">
+                            <InkCanvas x:Name="inkCanvas2A" />
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="Canvas B" Style="{ThemeResource CaptionTextBlockStyle}" />
+                        <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                                Width="240" Height="200" Background="White">
+                            <InkCanvas x:Name="inkCanvas2B" />
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
             <local:ControlExample.Options>
-                <StackPanel Spacing="8">
-                    <CheckBox x:Name="PenCheck" Content="Pen" IsChecked="True" 
-                              Checked="InputType_Changed" Unchecked="InputType_Changed" />
-                    <CheckBox x:Name="TouchCheck" Content="Touch" IsChecked="True" 
-                              Checked="InputType_Changed" Unchecked="InputType_Changed" />
-                    <CheckBox x:Name="MouseCheck" Content="Mouse" IsChecked="True" 
-                              Checked="InputType_Changed" Unchecked="InputType_Changed" />
+                <StackPanel Spacing="8" MinWidth="220">
+                    <TextBlock Text="Same InkToolBar drives one canvas at a time. The non-bound canvas is no longer controlled by it." Style="{ThemeResource CaptionTextBlockStyle}" TextWrapping="Wrap" />
+                    <Button Content="Wire toolbar to Canvas A" Click="WireToA_Click" HorizontalAlignment="Stretch" />
+                    <Button Content="Wire toolbar to Canvas B" Click="WireToB_Click" HorizontalAlignment="Stretch" />
+                    <Button Content="Read inkToolBar2.TargetInkCanvas" Click="ReadTarget2_Click" HorizontalAlignment="Stretch" />
+                    <TextBlock x:Name="Status2" Text="Initially bound to Canvas A (XAML)." Style="{ThemeResource CaptionTextBlockStyle}" TextWrapping="Wrap" />
                 </StackPanel>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;InkCanvas AllowedInputTypes="Pen,Touch,Mouse" /&gt;
+inkToolBar.TargetInkCanvas = inkCanvasA;   // or inkCanvasB
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
+
+        <!-- ============================================================= -->
+        <!-- Example 3: TargetInkPresenter (alternative wiring)             -->
+        <!-- ============================================================= -->
+        <local:ControlExample x:Name="Example3" HeaderText="3. TargetInkPresenter — wire the toolbar directly to an InkPresenter instead of an InkCanvas.">
+            <StackPanel Spacing="8">
+                <InkToolBar x:Name="inkToolBar3" Visibility="Collapsed" />
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                        Width="520" Height="240" Background="White">
+                    <InkCanvas x:Name="inkCanvas3" />
+                </Border>
+            </StackPanel>
+            <local:ControlExample.Options>
+                <StackPanel Spacing="8" MinWidth="220">
+                    <TextBlock Text="The toolbar is not bound in XAML. Wire it via either property at runtime." Style="{ThemeResource CaptionTextBlockStyle}" TextWrapping="Wrap" />
+                    <Button Content="Wire via TargetInkPresenter" Click="WireViaPresenter_Click" HorizontalAlignment="Stretch" />
+                    <Button Content="Wire via TargetInkCanvas" Click="WireViaCanvas_Click" HorizontalAlignment="Stretch" />
+                    <Button Content="Clear both wirings" Click="ClearWiring_Click" HorizontalAlignment="Stretch" />
+                    <TextBlock x:Name="Status3" Text="(not wired)" Style="{ThemeResource CaptionTextBlockStyle}" TextWrapping="Wrap" />
+                </StackPanel>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+inkToolBar.TargetInkPresenter = inkCanvas.InkPresenter;
+// or
+inkToolBar.TargetInkCanvas = inkCanvas;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <!-- ============================================================= -->
+        <!-- Example 4: InitialControls                                     -->
+        <!-- ============================================================= -->
+        <local:ControlExample x:Name="Example4" HeaderText="4. InitialControls — change which default tool buttons the toolbar creates.">
+            <StackPanel Spacing="8">
+                <InkToolBar x:Name="inkToolBar4" TargetInkCanvas="{x:Bind inkCanvas4}" Visibility="Collapsed" />
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                        Width="520" Height="200" Background="White">
+                    <InkCanvas x:Name="inkCanvas4" />
+                </Border>
+            </StackPanel>
+            <local:ControlExample.Options>
+                <StackPanel Spacing="8" MinWidth="220">
+                    <TextBlock Text="InitialControls" FontWeight="SemiBold" />
+                    <ComboBox x:Name="InitialControlsCombo" SelectedIndex="0" HorizontalAlignment="Stretch">
+                        <ComboBoxItem Content="All" />
+                        <ComboBoxItem Content="None" />
+                        <ComboBoxItem Content="PensOnly" />
+                        <ComboBoxItem Content="AllExceptPens" />
+                    </ComboBox>
+                    <Button Content="Apply &amp; enumerate tool buttons" Click="ApplyInitialControls_Click" HorizontalAlignment="Stretch" />
+                    <TextBlock x:Name="Status4" Text="(not applied yet)" Style="{ThemeResource CaptionTextBlockStyle}" TextWrapping="Wrap" />
+                </StackPanel>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+inkToolBar.InitialControls = InkToolBarInitialControls.PensOnly;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <!-- ============================================================= -->
+        <!-- Example 5: Orientation                                         -->
+        <!-- ============================================================= -->
+        <local:ControlExample x:Name="Example5" HeaderText="5. Orientation — read/write the layout orientation (visual effect lands in Phase 3).">
+            <StackPanel Spacing="8">
+                <InkToolBar x:Name="inkToolBar5" TargetInkCanvas="{x:Bind inkCanvas5}" Visibility="Collapsed" />
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                        Width="520" Height="200" Background="White">
+                    <InkCanvas x:Name="inkCanvas5" />
+                </Border>
+            </StackPanel>
+            <local:ControlExample.Options>
+                <StackPanel Spacing="8" MinWidth="220">
+                    <TextBlock Text="Orientation" FontWeight="SemiBold" />
+                    <ComboBox x:Name="OrientationCombo" SelectedIndex="0" HorizontalAlignment="Stretch">
+                        <ComboBoxItem Content="Horizontal" />
+                        <ComboBoxItem Content="Vertical" />
+                    </ComboBox>
+                    <Button Content="Apply &amp; read back" Click="ApplyOrientation_Click" HorizontalAlignment="Stretch" />
+                    <TextBlock x:Name="Status5" Text="(not applied yet)" Style="{ThemeResource CaptionTextBlockStyle}" TextWrapping="Wrap" />
+                    <TextBlock Text="Note: property is settable today; visual rotation pending Phase 3 visual styling." TextWrapping="Wrap" FontSize="11" Opacity="0.7" />
+                </StackPanel>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+inkToolBar.Orientation = Orientation.Vertical;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <!-- ============================================================= -->
+        <!-- Example 6: ButtonFlyoutPlacement                               -->
+        <!-- ============================================================= -->
+        <local:ControlExample x:Name="Example6" HeaderText="6. ButtonFlyoutPlacement — read/write the flyout placement (flyouts pending Phase 3).">
+            <StackPanel Spacing="8">
+                <InkToolBar x:Name="inkToolBar6" TargetInkCanvas="{x:Bind inkCanvas6}" Visibility="Collapsed" />
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                        Width="520" Height="200" Background="White">
+                    <InkCanvas x:Name="inkCanvas6" />
+                </Border>
+            </StackPanel>
+            <local:ControlExample.Options>
+                <StackPanel Spacing="8" MinWidth="220">
+                    <TextBlock Text="ButtonFlyoutPlacement" FontWeight="SemiBold" />
+                    <ComboBox x:Name="FlyoutPlacementCombo" SelectedIndex="0" HorizontalAlignment="Stretch">
+                        <ComboBoxItem Content="Auto" />
+                        <ComboBoxItem Content="Top" />
+                        <ComboBoxItem Content="Bottom" />
+                        <ComboBoxItem Content="Left" />
+                        <ComboBoxItem Content="Right" />
+                    </ComboBox>
+                    <Button Content="Apply &amp; read back" Click="ApplyFlyoutPlacement_Click" HorizontalAlignment="Stretch" />
+                    <TextBlock x:Name="Status6" Text="(not applied yet)" Style="{ThemeResource CaptionTextBlockStyle}" TextWrapping="Wrap" />
+                    <TextBlock Text="Note: property is settable today; flyout UI pending Phase 3." TextWrapping="Wrap" FontSize="11" Opacity="0.7" />
+                </StackPanel>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+inkToolBar.ButtonFlyoutPlacement = InkToolBarButtonFlyoutPlacement.Right;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <!-- ============================================================= -->
+        <!-- Example 7: GetToolButton / GetToggleButton / GetMenuButton     -->
+        <!-- ============================================================= -->
+        <local:ControlExample x:Name="Example7" HeaderText="7. GetToolButton / GetToggleButton / GetMenuButton — discover the API surface.">
+            <StackPanel Spacing="8">
+                <InkToolBar x:Name="inkToolBar7" TargetInkCanvas="{x:Bind inkCanvas7}" Visibility="Collapsed" />
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                        Width="520" Height="200" Background="White">
+                    <InkCanvas x:Name="inkCanvas7" />
+                </Border>
+            </StackPanel>
+            <local:ControlExample.Options>
+                <StackPanel Spacing="8" MinWidth="220">
+                    <TextBlock Text="Enumerates every InkToolBarTool, InkToolBarToggle, and InkToolBarMenuKind value and reports the lookup result." TextWrapping="Wrap" Style="{ThemeResource CaptionTextBlockStyle}" />
+                    <Button Content="Enumerate API surface" Click="EnumerateApi_Click" HorizontalAlignment="Stretch" />
+                    <TextBlock x:Name="Status7" Text="(not enumerated yet)" Style="{ThemeResource CaptionTextBlockStyle}" TextWrapping="Wrap" FontFamily="Consolas" FontSize="11" />
+                </StackPanel>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+foreach (InkToolBarTool t in Enum.GetValues(typeof(InkToolBarTool)))
+{
+    var btn = inkToolBar.GetToolButton(t);
+    // ...
+}
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <!-- ============================================================= -->
+        <!-- Example 8: IsRulerButtonChecked / IsStencilButtonChecked       -->
+        <!-- ============================================================= -->
+        <local:ControlExample x:Name="Example8" HeaderText="8. IsRulerButtonChecked / IsStencilButtonChecked — toggle stencil-state properties.">
+            <StackPanel Spacing="8">
+                <InkToolBar x:Name="inkToolBar8" TargetInkCanvas="{x:Bind inkCanvas8}" Visibility="Collapsed" />
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                        Width="520" Height="200" Background="White">
+                    <InkCanvas x:Name="inkCanvas8" />
+                </Border>
+            </StackPanel>
+            <local:ControlExample.Options>
+                <StackPanel Spacing="8" MinWidth="220">
+                    <CheckBox x:Name="cbRuler8"   Content="IsRulerButtonChecked" />
+                    <CheckBox x:Name="cbStencil8" Content="IsStencilButtonChecked" />
+                    <Button Content="Apply &amp; read back" Click="ApplyStencilState_Click" HorizontalAlignment="Stretch" />
+                    <TextBlock x:Name="Status8" Text="(not applied yet)" Style="{ThemeResource CaptionTextBlockStyle}" TextWrapping="Wrap" />
+                    <TextBlock Text="Note: properties are settable today; ruler/protractor overlay pending Phase 4." TextWrapping="Wrap" FontSize="11" Opacity="0.7" />
+                </StackPanel>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+inkToolBar.IsRulerButtonChecked   = true;
+inkToolBar.IsStencilButtonChecked = true;
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <!-- ============================================================= -->
+        <!-- Example 9: InkDrawingAttributes (read)                         -->
+        <!-- ============================================================= -->
+        <local:ControlExample x:Name="Example9" HeaderText="9. InkDrawingAttributes — read the attributes the toolbar exposes for its active tool.">
+            <StackPanel Spacing="8">
+                <InkToolBar x:Name="inkToolBar9" TargetInkCanvas="{x:Bind inkCanvas9}" Visibility="Collapsed" />
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                        Width="520" Height="200" Background="White">
+                    <InkCanvas x:Name="inkCanvas9" />
+                </Border>
+            </StackPanel>
+            <local:ControlExample.Options>
+                <StackPanel Spacing="8" MinWidth="220">
+                    <TextBlock Text="The InkToolBar.InkDrawingAttributes property returns the InkDrawingAttributes that the active tool would push to the bound InkPresenter." TextWrapping="Wrap" Style="{ThemeResource CaptionTextBlockStyle}" />
+                    <Button Content="Read InkToolBar.InkDrawingAttributes" Click="ReadDrawingAttrs9_Click" HorizontalAlignment="Stretch" />
+                    <Button Content="Read bound InkCanvas.DefaultDrawingAttributes" Click="ReadInkCanvasAttrs9_Click" HorizontalAlignment="Stretch" />
+                    <TextBlock x:Name="Status9" Text="(not read yet)" Style="{ThemeResource CaptionTextBlockStyle}" TextWrapping="Wrap" FontFamily="Consolas" FontSize="11" />
+                </StackPanel>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+var attrs = inkToolBar.InkDrawingAttributes;
+// attrs.Color, attrs.Size, attrs.PenTip, attrs.DrawAsHighlighter, ...
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
+        <!-- ============================================================= -->
+        <!-- Example 10: Children + DependencyProperties surface            -->
+        <!-- ============================================================= -->
+        <local:ControlExample x:Name="Example10" HeaderText="10. Children + DependencyProperty surface — verify the collection and every static DP exists.">
+            <StackPanel Spacing="8">
+                <InkToolBar x:Name="inkToolBar10" TargetInkCanvas="{x:Bind inkCanvas10}" Visibility="Collapsed" />
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                        Width="520" Height="200" Background="White">
+                    <InkCanvas x:Name="inkCanvas10" />
+                </Border>
+            </StackPanel>
+            <local:ControlExample.Options>
+                <StackPanel Spacing="8" MinWidth="220">
+                    <Button Content="Read Children count" Click="ReadChildren10_Click" HorizontalAlignment="Stretch" />
+                    <Button Content="Verify static DependencyProperties" Click="VerifyDPs10_Click" HorizontalAlignment="Stretch" />
+                    <TextBlock x:Name="Status10" Text="(not run yet)" Style="{ThemeResource CaptionTextBlockStyle}" TextWrapping="Wrap" FontFamily="Consolas" FontSize="11" />
+                </StackPanel>
+            </local:ControlExample.Options>
+            <local:ControlExample.Xaml>
+                <x:String xml:space="preserve">
+var count = inkToolBar.Children.Count;
+var dp    = InkToolBar.InitialControlsProperty;  // and 8 more static DPs
+                </x:String>
+            </local:ControlExample.Xaml>
+        </local:ControlExample>
+
     </StackPanel>
 </Page>

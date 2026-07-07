@@ -19,360 +19,162 @@
 
     <StackPanel Spacing="16">
         <!-- ============================================================= -->
-        <!-- EXAMPLE 1: Basic Inking with Mode switching & Input Types     -->
+        <!-- EXAMPLE 1: Default inking                                      -->
+        <!-- A bare InkCanvas produces wet ink for mouse, pen, and touch    -->
+        <!-- with no app code. All ink configuration flows through its      -->
+        <!-- read-only InkPresenter, mirroring the classic InkCanvas.       -->
         <!-- ============================================================= -->
-        <local:ControlExample x:Name="Example1" HeaderText="InkCanvas with mode switching and input type control.">
-            <Grid>
-                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1" 
-                        Width="600" Height="400" Background="White">
-                    <InkCanvas x:Name="inkCanvas1" />
-                </Border>
-            </Grid>
-            <local:ControlExample.Options>
-                <StackPanel Spacing="8" MinWidth="200">
-                    <!-- Mode -->
-                    <TextBlock Text="Mode" FontWeight="SemiBold" />
-                    <ComboBox x:Name="ModeComboBox" SelectedIndex="0" SelectionChanged="ModeComboBox_SelectionChanged" HorizontalAlignment="Stretch">
-                        <ComboBoxItem Content="Draw" Tag="Draw" />
-                        <ComboBoxItem Content="Erase" Tag="Erase" />
-                    </ComboBox>
-
-                    <!-- Input Types -->
-                    <TextBlock Text="Allowed Inputs" FontWeight="SemiBold" Margin="0,8,0,0" />
-                    <CheckBox x:Name="PenCheck" Content="Pen" IsChecked="True" Checked="InputType_Changed" Unchecked="InputType_Changed" />
-                    <CheckBox x:Name="MouseCheck" Content="Mouse" IsChecked="True" Checked="InputType_Changed" Unchecked="InputType_Changed" />
-                    <CheckBox x:Name="TouchCheck" Content="Touch" IsChecked="False" Checked="InputType_Changed" Unchecked="InputType_Changed" />
-
-                    <!-- Actions -->
-                    <Button Content="Clear Ink" Click="ClearButton_Click" Margin="0,8,0,0" HorizontalAlignment="Stretch" />
-                    <TextBlock x:Name="StrokeCountText" Text="Strokes: 0" />
-                    <TextBlock x:Name="StatusText" TextWrapping="Wrap" Foreground="{ThemeResource SystemFillColorCautionBrush}" FontSize="11" />
-                </StackPanel>
-            </local:ControlExample.Options>
+        <local:ControlExample x:Name="Example1" HeaderText="A default InkCanvas inks out of the box — just draw on it.">
+            <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                    Width="600" Height="400" Background="White">
+                <InkCanvas x:Name="inkCanvas1" />
+            </Border>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;InkCanvas x:Name="inkCanvas" /&gt;
-
-// Set mode in code-behind:
-inkCanvas.Mode = InkCanvasMode.Draw;   // or .Erase
-inkCanvas.AllowedInputTypes = InkInputType.Pen | InkInputType.Mouse;
+&lt;InkCanvas /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <!-- ============================================================= -->
-        <!-- EXAMPLE 2: Pen Color and Size                                  -->
+        <!-- EXAMPLE 2: InkToolBar paired with InkCanvas                    -->
+        <!-- The toolbar drives the canvas's InkPresenter (pen, eraser,     -->
+        <!-- color and width) via TargetInkCanvas.                          -->
         <!-- ============================================================= -->
-        <local:ControlExample x:Name="Example2" HeaderText="InkCanvas with custom pen color and stroke size.">
-            <Grid>
-                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1" 
+        <local:ControlExample x:Name="Example2" HeaderText="Pair an InkToolBar with an InkCanvas to switch pen, eraser, color, and width.">
+            <StackPanel Spacing="8">
+                <InkToolBar x:Name="inkToolBar2" TargetInkCanvas="{x:Bind inkCanvas2}" />
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
                         Width="600" Height="300" Background="White">
                     <InkCanvas x:Name="inkCanvas2" />
                 </Border>
-            </Grid>
-            <local:ControlExample.Options>
-                <StackPanel Spacing="8" MinWidth="200">
-                    <TextBlock Text="Pen Color" FontWeight="SemiBold" />
-                    <ComboBox x:Name="ColorComboBox" SelectedIndex="0" SelectionChanged="ColorComboBox_SelectionChanged" HorizontalAlignment="Stretch">
-                        <ComboBoxItem Content="Black" Tag="Black" />
-                        <ComboBoxItem Content="Red" Tag="Red" />
-                        <ComboBoxItem Content="Blue" Tag="Blue" />
-                        <ComboBoxItem Content="Green" Tag="Green" />
-                    </ComboBox>
-
-                    <TextBlock Text="Stroke Size" FontWeight="SemiBold" Margin="0,8,0,0" />
-                    <Slider x:Name="SizeSlider" Minimum="1" Maximum="20" Value="2" ValueChanged="SizeSlider_ValueChanged" />
-                    <TextBlock x:Name="SizeText" Text="Size: 2" />
-
-                    <Button Content="Clear" Click="ClearButton2_Click" Margin="0,8,0,0" HorizontalAlignment="Stretch" />
-                    <TextBlock x:Name="StatusText2" TextWrapping="Wrap" Foreground="{ThemeResource SystemFillColorCautionBrush}" FontSize="11" />
-                </StackPanel>
-            </local:ControlExample.Options>
+            </StackPanel>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-// Set pen color and size via DefaultDrawingAttributes:
-var attrs = new InkDrawingAttributes();
-attrs.Color = Colors.Red;
-attrs.Size = new Size(4, 4);
-inkCanvas.DefaultDrawingAttributes = attrs;
+&lt;InkToolBar TargetInkCanvas="{x:Bind inkCanvas}" /&gt;
+&lt;InkCanvas x:Name="inkCanvas" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
 
         <!-- ============================================================= -->
-        <!-- EXAMPLE 3: Save and Load                                       -->
+        <!-- EXAMPLE 3: Configure the InkPresenter from code                -->
+        <!-- Sets InputDeviceTypes, the default drawing attributes, and     -->
+        <!-- IsInputEnabled directly on InkCanvas.InkPresenter, exactly     -->
+        <!-- like the classic Windows.UI.Xaml.Controls.InkCanvas.           -->
         <!-- ============================================================= -->
-        <local:ControlExample x:Name="Example3" HeaderText="Save and load ink strokes to/from a file.">
-            <Grid>
-                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1" 
+        <local:ControlExample x:Name="Example3" HeaderText="Configure the InkPresenter from code, exactly like the classic InkCanvas.">
+            <StackPanel Spacing="8">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button x:Name="redPenButton" Content="Red thick pen" Click="OnRedPenClick" />
+                    <Button x:Name="bluePenButton" Content="Blue thin pen" Click="OnBluePenClick" />
+                    <ToggleSwitch x:Name="touchToggle" Header="Touch inking" IsOn="True" Toggled="OnTouchToggled" />
+                    <ToggleSwitch x:Name="enabledToggle" Header="Inking enabled" IsOn="True" Toggled="OnEnabledToggled" />
+                </StackPanel>
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
                         Width="600" Height="300" Background="White">
                     <InkCanvas x:Name="inkCanvas3" />
                 </Border>
-            </Grid>
-            <local:ControlExample.Options>
-                <StackPanel Spacing="8" MinWidth="200">
-                    <Button Content="Save Ink..." Click="SaveButton_Click" HorizontalAlignment="Stretch" />
-                    <Button Content="Load Ink..." Click="LoadButton_Click" HorizontalAlignment="Stretch" />
-                    <Button Content="Clear" Click="ClearButton3_Click" HorizontalAlignment="Stretch" />
-                    <TextBlock x:Name="SaveLoadStatus" TextWrapping="Wrap" FontSize="11" />
-                </StackPanel>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
+            </StackPanel>
+            <local:ControlExample.CSharp>
                 <x:String xml:space="preserve">
-// Save:
-await inkCanvas.SaveAsync(stream.GetOutputStreamAt(0));
+// Configure the presenter directly, just like the classic InkCanvas.
+inkCanvas.InkPresenter.InputDeviceTypes =
+    CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Pen | CoreInputDeviceTypes.Touch;
 
-// Load:
-await inkCanvas.LoadAsync(stream.GetInputStreamAt(0));
+var attributes = inkCanvas.InkPresenter.CopyDefaultDrawingAttributes();
+attributes.Color = Microsoft.UI.Colors.Red;
+attributes.Size = new Windows.Foundation.Size(6, 6);
+inkCanvas.InkPresenter.UpdateDefaultDrawingAttributes(attributes);
                 </x:String>
-            </local:ControlExample.Xaml>
+            </local:ControlExample.CSharp>
         </local:ControlExample>
 
         <!-- ============================================================= -->
-        <!-- EXAMPLE 4: IsEnabled toggle                                    -->
+        <!-- EXAMPLE 4: Stroke container and stroke events                 -->
+        <!-- Uses InkPresenter.StrokeContainer to enumerate, clear, save,  -->
+        <!-- and reload strokes, and listens to StrokesCollected /         -->
+        <!-- StrokesErased, exactly like the classic InkCanvas.            -->
         <!-- ============================================================= -->
-        <local:ControlExample x:Name="Example4" HeaderText="Enable or disable inking at runtime.">
-            <Grid>
-                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1" 
-                        Width="600" Height="250" Background="White">
+        <local:ControlExample x:Name="Example4" HeaderText="Manage strokes and listen to stroke events through InkPresenter.StrokeContainer.">
+            <StackPanel Spacing="8">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button x:Name="countButton" Content="Count strokes" Click="OnCountStrokesClick" />
+                    <Button x:Name="clearButton" Content="Clear" Click="OnClearStrokesClick" />
+                    <Button x:Name="saveReloadButton" Content="Save &amp; reload (in-memory)" Click="OnSaveReloadClick" />
+                </StackPanel>
+                <TextBlock x:Name="statusText4" Text="Draw on the canvas below." TextWrapping="Wrap" />
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                        Width="600" Height="300" Background="White">
                     <InkCanvas x:Name="inkCanvas4" />
                 </Border>
-            </Grid>
-            <local:ControlExample.Options>
-                <StackPanel Spacing="8" MinWidth="200">
-                    <ToggleSwitch x:Name="EnableToggle" Header="IsEnabled" IsOn="True" Toggled="EnableToggle_Toggled" />
-                    <Button Content="Clear" Click="ClearButton4_Click" HorizontalAlignment="Stretch" />
-                    <TextBlock x:Name="StatusText4" TextWrapping="Wrap" FontSize="11" />
-                </StackPanel>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;InkCanvas x:Name="inkCanvas" IsEnabled="True" /&gt;
-
-// Toggle in code-behind:
-inkCanvas.IsEnabled = false; // disables all ink input
-                </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
-
-        <!-- ============================================================= -->
-        <!-- EXAMPLE 5: Stroke Events (StrokeCollected / StrokesErased)     -->
-        <!-- ============================================================= -->
-        <local:ControlExample x:Name="Example5" HeaderText="Stroke events - react to strokes being drawn or erased.">
-            <Grid>
-                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1" 
-                        Width="600" Height="300" Background="White">
-                    <InkCanvas x:Name="inkCanvas5" />
-                </Border>
-            </Grid>
-            <local:ControlExample.Options>
-                <StackPanel Spacing="8" MinWidth="200">
-                    <TextBlock Text="Event Log" FontWeight="SemiBold" />
-                    <ScrollViewer Height="200" VerticalScrollBarVisibility="Auto">
-                        <TextBlock x:Name="EventLogText" TextWrapping="Wrap" FontSize="11" Text="Draw strokes to see events..." />
-                    </ScrollViewer>
-                    <Button Content="Clear Ink" Click="ClearButton5_Click" HorizontalAlignment="Stretch" />
-                    <Button Content="Clear Log" Click="ClearLog_Click" HorizontalAlignment="Stretch" />
-                </StackPanel>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-inkCanvas.StrokeCollected += (s, e) =&gt;
-{
-    var stroke = e.Stroke;
-    // stroke collected
-};
-
-inkCanvas.StrokesErased += (s, e) =&gt;
-{
-    var erased = e.Strokes;
-    // strokes erased
-};
-                </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
-
-        <!-- ============================================================= -->
-        <!-- EXAMPLE 6: Pen Tip Shape and Highlighter                       -->
-        <!-- ============================================================= -->
-        <local:ControlExample x:Name="Example6" HeaderText="Pen tip shape (circle vs rectangle) and highlighter mode.">
-            <Grid>
-                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1" 
-                        Width="600" Height="300" Background="White">
-                    <InkCanvas x:Name="inkCanvas6" />
-                </Border>
-            </Grid>
-            <local:ControlExample.Options>
-                <StackPanel Spacing="8" MinWidth="200">
-                    <TextBlock Text="Pen Tip" FontWeight="SemiBold" />
-                    <ComboBox x:Name="TipComboBox" SelectedIndex="0" SelectionChanged="TipComboBox_SelectionChanged" HorizontalAlignment="Stretch">
-                        <ComboBoxItem Content="Circle (Ballpoint)" Tag="Circle" />
-                        <ComboBoxItem Content="Rectangle (Calligraphy)" Tag="Rectangle" />
-                    </ComboBox>
-
-                    <CheckBox x:Name="HighlighterCheck" Content="Highlighter mode" IsChecked="False" Checked="HighlighterCheck_Changed" Unchecked="HighlighterCheck_Changed" />
-
-                    <TextBlock Text="Tip Width" FontWeight="SemiBold" Margin="0,8,0,0" />
-                    <Slider x:Name="TipWidthSlider" Minimum="1" Maximum="30" Value="4" ValueChanged="TipSize_Changed" />
-                    <TextBlock Text="Tip Height" FontWeight="SemiBold" />
-                    <Slider x:Name="TipHeightSlider" Minimum="1" Maximum="30" Value="4" ValueChanged="TipSize_Changed" />
-
-                    <Button Content="Clear" Click="ClearButton6_Click" Margin="0,8,0,0" HorizontalAlignment="Stretch" />
-                    <TextBlock x:Name="StatusText6" TextWrapping="Wrap" FontSize="11" />
-                </StackPanel>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-var attrs = new InkDrawingAttributes();
-attrs.PenTip = PenTipShape.Circle;     // or .Rectangle
-attrs.DrawAsHighlighter = true;        // semi-transparent highlight
-attrs.Size = new Size(width, height);  // asymmetric for calligraphy
-inkCanvas.DefaultDrawingAttributes = attrs;
-                </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
-
-        <!-- ============================================================= -->
-        <!-- EXAMPLE 7: QueueInkPresenterWorkItem (advanced API)            -->
-        <!-- ============================================================= -->
-        <local:ControlExample x:Name="Example7" HeaderText="QueueInkPresenterWorkItem - direct InkPresenter access on the ink thread.">
-            <Grid>
-                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1" 
-                        Width="600" Height="250" Background="White">
-                    <InkCanvas x:Name="inkCanvas7" />
-                </Border>
-            </Grid>
-            <local:ControlExample.Options>
-                <StackPanel Spacing="8" MinWidth="200">
-                    <Button Content="Get Stroke Count" Click="GetStrokeCount_Click" HorizontalAlignment="Stretch" />
-                    <Button Content="Set Ink to Pencil" Click="SetPencilMode_Click" HorizontalAlignment="Stretch" />
-                    <Button Content="Clear" Click="ClearButton7_Click" HorizontalAlignment="Stretch" />
-                    <TextBlock x:Name="StatusText7" TextWrapping="Wrap" FontSize="11" Text="Draw some strokes, then use the buttons." />
-                </StackPanel>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-// Access InkPresenter directly on the ink thread:
-await inkCanvas.QueueInkPresenterWorkItem((presenter) =&gt;
-{
-    var container = presenter.StrokeContainer;
-    var strokes = container.GetStrokes();
-    // work with strokes on the ink thread
-});
-                </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
-
-        <!-- ============================================================= -->
-        <!-- EXAMPLE 8: Custom Drying (Phase 2)                             -->
-        <!-- ============================================================= -->
-        <local:ControlExample x:Name="Example8" HeaderText="ActivateCustomDrying - activate custom dry mode and capture stroke data.">
-            <Grid>
-                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1" 
-                        Width="600" Height="300" Background="White">
-                    <Grid x:Name="CustomDryingHost" />
-                </Border>
-            </Grid>
-            <local:ControlExample.Options>
-                <StackPanel Spacing="8" MinWidth="200">
-                    <Button Content="Activate Custom Drying" Click="ActivateCustomDrying_Click" HorizontalAlignment="Stretch" />
-                    <Button Content="Show Status" Click="BeginDry_Click" HorizontalAlignment="Stretch" />
-                    <TextBlock x:Name="CustomDryStrokeCount" Text="StrokesCollected: 0 events" FontWeight="SemiBold" />
-                    <ScrollViewer Height="120" VerticalScrollBarVisibility="Auto">
-                        <TextBlock x:Name="CustomDryStatus" TextWrapping="Wrap" FontSize="11" Text="Click 'Activate' to enable custom drying mode.&#x0a;&#x0a;What this demonstrates:&#x0a;1. ActivateCustomDryingAsync returns InkSynchronizer&#x0a;2. IsCustomDryingActive reports true&#x0a;3. StrokesCollected fires on each pen-up&#x0a;4. Stroke data captured via args.Strokes()&#x0a;5. Live counter updates as you draw&#x0a;&#x0a;Note: Strokes remain visible because BeginDry/EndDry requires a D2D rendering pipeline to complete the drying cycle." />
-                    </ScrollViewer>
-                </StackPanel>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-// Must call BEFORE adding InkCanvas to the visual tree:
-var inkCanvas = new InkCanvas();
-var synchronizer = await inkCanvas.ActivateCustomDryingAsync();
-
-// After loading, when strokes are ready:
-var strokes = synchronizer.BeginDry();
-// Render strokes via D2D / your own pipeline...
-synchronizer.EndDry();
-                </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
-
-        <!-- ============================================================= -->
-        <!-- EXAMPLE 9: CoreInkIndependentInputSource (Phase 2)             -->
-        <!-- ============================================================= -->
-        <local:ControlExample x:Name="Example9" HeaderText="CoreInkIndependentInputSource - low-latency pointer events on the ink thread.">
-            <Grid>
-                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1" 
-                        Width="600" Height="300" Background="White">
-                    <InkCanvas x:Name="inkCanvas9" />
-                </Border>
-            </Grid>
-            <local:ControlExample.Options>
-                <StackPanel Spacing="8" MinWidth="200">
-                    <Button Content="Create Input Source" Click="CreateInputSource_Click" HorizontalAlignment="Stretch" />
-                    <Button Content="Clear Log" Click="ClearInputLog_Click" HorizontalAlignment="Stretch" />
-                    <TextBlock x:Name="InputSourceStatus" TextWrapping="Wrap" FontSize="11" Text="Click 'Create Input Source' then draw on the canvas. Pointer events from the ink background thread will appear below." />
-                    <TextBlock x:Name="InputEventStats" Text="Press: 0  Move: 0  Release: 0" FontWeight="SemiBold" FontSize="11" />
-                    <ScrollViewer Height="150" VerticalScrollBarVisibility="Auto">
-                        <TextBlock x:Name="InputEventLog" TextWrapping="Wrap" FontSize="11" Text="" />
-                    </ScrollViewer>
-                </StackPanel>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-// Create independent input source for low-latency events:
-var inputSource = await inkCanvas.CreateCoreIndependentInputSourceAsync();
-
-inputSource.PointerPressing += (s, e) =&gt; { /* pointer down */ };
-inputSource.PointerMoving += (s, e) =&gt; { /* pointer move */ };
-inputSource.PointerReleasing += (s, e) =&gt; { /* pointer up */ };
-                </x:String>
-            </local:ControlExample.Xaml>
-        </local:ControlExample>
-
-        <!-- ============================================================= -->
-        <!-- EXAMPLE 10: InkToolBar (Phase 3)                               -->
-        <!-- ============================================================= -->
-        <local:ControlExample x:Name="Example10" HeaderText="InkToolBar paired with InkCanvas — tool buttons switch inking mode.">
-            <StackPanel Spacing="8">
-                <!-- Manual toolbar buttons (InkToolBar template rendering is WIP) -->
-                <StackPanel x:Name="toolBarPanel10" Orientation="Horizontal" Spacing="4"
-                            Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}"
-                            CornerRadius="4" Padding="4" BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1">
-                    <RadioButton x:Name="rbPen10"        Content="Pen"         GroupName="InkTools10" IsChecked="True" Click="ToolRadioButton_Click" MinWidth="72" Padding="8,6,8,6" />
-                    <RadioButton x:Name="rbPencil10"     Content="Pencil"      GroupName="InkTools10" Click="ToolRadioButton_Click" MinWidth="72" Padding="8,6,8,6" />
-                    <RadioButton x:Name="rbHighlighter10" Content="Highlighter" GroupName="InkTools10" Click="ToolRadioButton_Click" MinWidth="72" Padding="8,6,8,6" />
-                    <RadioButton x:Name="rbEraser10"     Content="Eraser"      GroupName="InkTools10" Click="ToolRadioButton_Click" MinWidth="72" Padding="8,6,8,6" />
-                </StackPanel>
-                <InkToolBar x:Name="inkToolBar10" TargetInkCanvas="{x:Bind inkCanvas10}" Visibility="Collapsed" />
-                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1" 
-                        Width="600" Height="300" Background="White">
-                    <InkCanvas x:Name="inkCanvas10" />
-                </Border>
             </StackPanel>
-            <local:ControlExample.Options>
-                <StackPanel Spacing="8" MinWidth="200">
-                    <TextBlock Text="InkToolBar creates default tool buttons:" FontWeight="SemiBold" />
-                    <TextBlock Text="• Ballpoint Pen" FontSize="12" />
-                    <TextBlock Text="• Pencil" FontSize="12" />
-                    <TextBlock Text="• Highlighter" FontSize="12" />
-                    <TextBlock Text="• Eraser" FontSize="12" />
-                    <TextBlock FontSize="11" TextWrapping="Wrap" 
-                               Text="Click a tool then draw. The toolbar switches InkCanvas mode and drawing attributes automatically." />
-                    <Button Content="Get Active Tool" Click="GetActiveTool_Click" HorizontalAlignment="Stretch" />
-                    <TextBlock x:Name="ToolBarStatus" TextWrapping="Wrap" FontSize="11" Text="" />
-                </StackPanel>
-            </local:ControlExample.Options>
-            <local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
                 <x:String xml:space="preserve">
-&lt;InkToolBar x:Name="inkToolBar" TargetInkCanvas="{x:Bind inkCanvas}" /&gt;
-&lt;InkCanvas x:Name="inkCanvas" /&gt;
+// Listen to stroke events.
+inkCanvas.InkPresenter.StrokesCollected += (s, e) =&gt;
+    statusText.Text = $"Collected {e.Strokes.Count} stroke(s).";
+inkCanvas.InkPresenter.StrokesErased += (s, e) =&gt;
+    statusText.Text = $"Erased {e.Strokes.Count} stroke(s).";
 
-// InkToolBar automatically creates BallpointPen, Pencil,
-// Highlighter, and Eraser buttons. Clicking a tool
-// switches the paired InkCanvas mode and drawing attributes.
+// Enumerate and clear.
+var strokes = inkCanvas.InkPresenter.StrokeContainer.GetStrokes();
+inkCanvas.InkPresenter.StrokeContainer.Clear();
+
+// Save and reload through a stream.
+var stream = new InMemoryRandomAccessStream();
+await inkCanvas.InkPresenter.StrokeContainer.SaveAsync(stream.GetOutputStreamAt(0));
+inkCanvas.InkPresenter.StrokeContainer.Clear();
+await inkCanvas.InkPresenter.StrokeContainer.LoadAsync(stream.GetInputStreamAt(0));
                 </x:String>
-            </local:ControlExample.Xaml>
+            </local:ControlExample.CSharp>
+        </local:ControlExample>
+
+        <!-- ============================================================= -->
+        <!-- EXAMPLE 5: Advanced ink thread features                       -->
+        <!-- Custom drying (ActivateCustomDryingAsync / IsCustomDrying-     -->
+        <!-- Active) and low-latency independent input                     -->
+        <!-- (CreateCoreIndependentInputSourceAsync + InkPointer* events). -->
+        <!-- ============================================================= -->
+        <local:ControlExample x:Name="Example5" HeaderText="Advanced: custom drying and low-latency independent input on the ink thread.">
+            <StackPanel Spacing="16">
+                <!-- Custom drying: activated on a freshly created canvas before it loads. -->
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Custom drying" FontWeight="SemiBold" />
+                    <Button x:Name="activateCustomDryingButton" Content="Activate custom drying" Click="OnActivateCustomDryingClick" />
+                    <TextBlock x:Name="customDryStatus" Text="Custom drying not activated." TextWrapping="Wrap" />
+                    <Border x:Name="customDryingHost" BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                            Width="600" Height="250" Background="White" />
+                </StackPanel>
+
+                <!-- Independent input: raw pointer events forwarded from the ink thread. -->
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Low-latency independent input" FontWeight="SemiBold" />
+                    <Button x:Name="createInputSourceButton" Content="Create independent input source" Click="OnCreateInputSourceClick" />
+                    <TextBlock x:Name="inputSourceStatus" Text="Independent input source not created." TextWrapping="Wrap" />
+                    <TextBlock x:Name="inputEventStats" Text="Press: 0  Move: 0  Release: 0" />
+                    <TextBlock x:Name="inputEventLast" Text="" TextWrapping="Wrap" />
+                    <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                            Width="600" Height="250" Background="White">
+                        <InkCanvas x:Name="inkCanvas5" />
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+// Custom drying must be activated before the InkCanvas loads, so create it in code.
+var inkCanvas = new InkCanvas();
+InkSynchronizer synchronizer = await inkCanvas.ActivateCustomDryingAsync();
+host.Children.Add(inkCanvas);
+bool active = inkCanvas.IsCustomDryingActive;
+
+// Low-latency independent input: raw pointer events marshaled from the ink thread.
+await inkCanvas5.CreateCoreIndependentInputSourceAsync();
+inkCanvas5.InkPointerPressing  += (s, e) =&gt; { /* e.Position, e.Pressure, e.PointerId */ };
+inkCanvas5.InkPointerMoving    += (s, e) =&gt; { /* ... */ };
+inkCanvas5.InkPointerReleasing += (s, e) =&gt; { /* ... */ };
+                </x:String>
+            </local:ControlExample.CSharp>
         </local:ControlExample>
     </StackPanel>
 </Page>

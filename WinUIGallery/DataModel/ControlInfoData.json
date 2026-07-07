@@ -904,13 +904,37 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control for freeform inking with pen, touch, or mouse input.",
           "ImagePath": "ms-appx:///Assets/ControlImages/InkCanvas.png",
-          "Description": "InkCanvas provides a surface for freeform digital inking. It supports pen, touch, and mouse input, and offers modes for drawing, erasing, and selecting strokes. Ink can be saved and loaded for persistence.",
-          "Content": "<p>The <b>InkCanvas</b> control captures ink input and renders it as ink strokes. The control supports ballpoint pen, pencil, and highlighter input via <b>InkToolBar</b>, and provides <b>SaveAsync</b> / <b>LoadAsync</b> methods for persisting ink to ISF files.</p><p>Set the <b>Mode</b> property to switch between Draw, Erase, and Select. Use <b>AllowedInputTypes</b> to control which input devices (Pen, Touch, Mouse) can draw ink.</p><p>Look at the <i>InkCanvasPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "Description": "InkCanvas provides a surface for freeform digital inking. It inks by default and supports pen, touch, and mouse input. All ink configuration flows through its InkPresenter.",
+          "Content": "<p>The <b>InkCanvas</b> control captures ink input and renders it as ink strokes. A default <b>InkCanvas</b> inks out of the box for pen, touch, and mouse with no app code.</p><p>The public surface mirrors the classic InkCanvas exactly: a default constructor and a single read-only <b>InkPresenter</b> property. Pair it with an <b>InkToolBar</b> (via <b>TargetInkCanvas</b>) to switch pen, eraser, color, and width.</p><p>Look at the <i>InkCanvasPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
           "IsNew": true,
           "Docs": [
             {
               "Title": "InkCanvas - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.inkcanvas"
+            }
+          ],
+          "RelatedControls": [
+            "InkCanvas",
+            "InkToolBar"
+          ]
+        },
+        {
+          "UniqueId": "InkToolBar",
+          "Title": "InkToolBar",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A toolbar that pairs with InkCanvas to select inking tools and stencils.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/InkToolbar.png",
+          "Description": "InkToolBar is a UWP-style command bar for the InkCanvas. It hosts built-in pen, pencil, highlighter, eraser, and stencil tools and supports custom pens, custom tools, and custom toggle buttons.",
+          "Content": "<p>The <b>InkToolBar</b> control surfaces the inking tools for an associated <b>InkCanvas</b>. Bind <b>TargetInkCanvas</b> to the canvas you want it to drive, then choose what tools to expose via <b>InitialControls</b> (<i>All</i>, <i>PensOnly</i>, <i>AllExceptPens</i>, <i>None</i>).</p><p>For custom layouts set <b>InitialControls=None</b> and add <b>InkToolBarBallpointPenButton</b>, <b>InkToolBarPencilButton</b>, <b>InkToolBarHighlighterButton</b>, <b>InkToolBarEraserButton</b>, <b>InkToolBarStencilButton</b>, <b>InkToolBarCustomPenButton</b>, <b>InkToolBarCustomToolButton</b>, and <b>InkToolBarCustomToggleButton</b> to the <b>Children</b> collection.</p><p>Look at the <i>InkToolBarPage.xaml</i> file in Visual Studio to see the full code for this page.</p>",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "InkToolBar - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.inktoolbar"
+            },
+            {
+              "Title": "Inking controls overview",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/inking-controls"
             }
           ],
           "RelatedControls": [
