@@ -6,4 +6,5 @@ A ComboBox with items defined inline and its width set.
     <x:String>Green</x:String>
     <x:String>Red</x:String>
     <x:String>Yellow</x:String>
+    <x:String>Orange</x:String>
 </ComboBox>

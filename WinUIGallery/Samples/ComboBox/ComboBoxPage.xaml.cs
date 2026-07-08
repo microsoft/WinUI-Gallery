@@ -54,6 +54,9 @@ public sealed partial class ComboBoxPage : Page
             case "Red":
                 color = Colors.Red;
                 break;
+            case "Orange":
+                color = Colors.Orange;
+                break;
             default:
                 throw new Exception($"Invalid argument: {colorName}");
         }
