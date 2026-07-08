@@ -129,52 +129,5 @@ await inkCanvas.InkPresenter.StrokeContainer.LoadAsync(stream.GetInputStreamAt(0
                 </x:String>
             </local:ControlExample.CSharp>
         </local:ControlExample>
-
-        <!-- ============================================================= -->
-        <!-- EXAMPLE 5: Advanced ink thread features                       -->
-        <!-- Custom drying (ActivateCustomDryingAsync / IsCustomDrying-     -->
-        <!-- Active) and low-latency independent input                     -->
-        <!-- (CreateCoreIndependentInputSourceAsync + InkPointer* events). -->
-        <!-- ============================================================= -->
-        <local:ControlExample x:Name="Example5" HeaderText="Advanced: custom drying and low-latency independent input on the ink thread.">
-            <StackPanel Spacing="16">
-                <!-- Custom drying: activated on a freshly created canvas before it loads. -->
-                <StackPanel Spacing="8">
-                    <TextBlock Text="Custom drying" FontWeight="SemiBold" />
-                    <Button x:Name="activateCustomDryingButton" Content="Activate custom drying" Click="OnActivateCustomDryingClick" />
-                    <TextBlock x:Name="customDryStatus" Text="Custom drying not activated." TextWrapping="Wrap" />
-                    <Border x:Name="customDryingHost" BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
-                            Width="600" Height="250" Background="White" />
-                </StackPanel>
-
-                <!-- Independent input: raw pointer events forwarded from the ink thread. -->
-                <StackPanel Spacing="8">
-                    <TextBlock Text="Low-latency independent input" FontWeight="SemiBold" />
-                    <Button x:Name="createInputSourceButton" Content="Create independent input source" Click="OnCreateInputSourceClick" />
-                    <TextBlock x:Name="inputSourceStatus" Text="Independent input source not created." TextWrapping="Wrap" />
-                    <TextBlock x:Name="inputEventStats" Text="Press: 0  Move: 0  Release: 0" />
-                    <TextBlock x:Name="inputEventLast" Text="" TextWrapping="Wrap" />
-                    <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
-                            Width="600" Height="250" Background="White">
-                        <InkCanvas x:Name="inkCanvas5" />
-                    </Border>
-                </StackPanel>
-            </StackPanel>
-            <local:ControlExample.CSharp>
-                <x:String xml:space="preserve">
-// Custom drying must be activated before the InkCanvas loads, so create it in code.
-var inkCanvas = new InkCanvas();
-InkSynchronizer synchronizer = await inkCanvas.ActivateCustomDryingAsync();
-host.Children.Add(inkCanvas);
-bool active = inkCanvas.IsCustomDryingActive;
-
-// Low-latency independent input: raw pointer events marshaled from the ink thread.
-await inkCanvas5.CreateCoreIndependentInputSourceAsync();
-inkCanvas5.InkPointerPressing  += (s, e) =&gt; { /* e.Position, e.Pressure, e.PointerId */ };
-inkCanvas5.InkPointerMoving    += (s, e) =&gt; { /* ... */ };
-inkCanvas5.InkPointerReleasing += (s, e) =&gt; { /* ... */ };
-                </x:String>
-            </local:ControlExample.CSharp>
-        </local:ControlExample>
     </StackPanel>
 </Page>
