@@ -111,16 +111,12 @@ public class UnitTests
         Slider zSlider = canvasPage.FindName("ZSlider") as Slider;
         Assert.IsNotNull(zSlider);
 
-        string expectedName = "Canvas.ZIndex value 0 of range 0 to 4";
-        string actualName = AutomationProperties.GetName(zSlider);
-        Assert.AreEqual(expectedName, actualName);
+        Assert.AreEqual("Canvas.ZIndex value 0 of range 0 to 4", AutomationProperties.GetName(zSlider));
 
         zSlider.Value = 3;
         canvasPage.UpdateLayout();
 
-        expectedName = "Canvas.ZIndex value 3 of range 0 to 4";
-        actualName = AutomationProperties.GetName(zSlider);
-        Assert.AreEqual(expectedName, actualName);
+        Assert.AreEqual("Canvas.ZIndex value 3 of range 0 to 4", AutomationProperties.GetName(zSlider));
     }
 
     // This test demonstrates executing test code both on and off the UI thread.
