@@ -83,7 +83,8 @@
                             Header="Canvas.ZIndex"
                             Maximum="4"
                             Minimum="0"
-                            StepFrequency="1" />
+                            StepFrequency="1"
+                            ValueChanged="ZSlider_ValueChanged" />
                     </StackPanel>
                 </StackPanel>
             </controls:ControlExample.Options>
