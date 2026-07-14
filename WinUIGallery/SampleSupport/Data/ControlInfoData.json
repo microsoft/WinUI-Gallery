@@ -3800,6 +3800,39 @@
       ]
     },
     {
+      "UniqueId": "Composition",
+      "Title": "Composition",
+      "IconGlyph": "\uE81E",
+      "Items": [
+        {
+          "UniqueId": "CompositionBasics",
+          "Title": "Basics",
+          "ApiNamespace": "Microsoft.UI.Composition",
+          "Subtitle": "Connect XAML elements to the Visual layer and apply fundamental transforms and clips.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AnimationInterop.png",
+          "Description": "Learn the foundations of XAML and Composition interop by retrieving and attaching visuals, working with coordinate systems, applying transform matrices, and clipping content.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "Composition overview",
+              "Uri": "https://learn.microsoft.com/windows/apps/windows-app-sdk/composition"
+            },
+            {
+              "Title": "ElementCompositionPreview - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.hosting.elementcompositionpreview"
+            },
+            {
+              "Title": "Visual - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.visual"
+            }
+          ],
+          "RelatedControls": [
+            "XamlCompInterop"
+          ]
+        }
+      ]
+    },
+    {
       "UniqueId": "Motion",
       "Title": "Motion",
       "IconGlyph": "",

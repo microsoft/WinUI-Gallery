@@ -1,0 +1,33 @@
+--- header
+Attach a Composition child Visual and position it with AnchorPoint
+--- xaml
+<Grid
+    x:Name="ChildVisualHost"
+    Height="220"
+    SizeChanged="ChildVisualHost_SizeChanged" />
+--- c#
+private SpriteVisual? _childVisual;
+
+private void ChildVisualExample_Loaded(object sender, RoutedEventArgs e)
+{
+    Visual hostVisual = ElementCompositionPreview.GetElementVisual(ChildVisualHost);
+    _childVisual = hostVisual.Compositor.CreateSpriteVisual();
+    _childVisual.Size = new Vector2(80);
+    _childVisual.Brush = hostVisual.Compositor.CreateColorBrush(Colors.DodgerBlue);
+
+    ElementCompositionPreview.SetElementChildVisual(ChildVisualHost, _childVisual);
+    UpdateChildVisual();
+}
+
+private void UpdateChildVisual()
+{
+    // AnchorPoint is normalized: (0,0) is the top-left and (1,1) is the bottom-right.
+    _childVisual.AnchorPoint = new Vector2(anchorX, anchorY);
+    _childVisual.Offset = new Vector3(ChildVisualHost.ActualSize / 2, 0);
+}
+
+private void Page_Unloaded(object sender, RoutedEventArgs e)
+{
+    ElementCompositionPreview.SetElementChildVisual(ChildVisualHost, null);
+    _childVisual?.Dispose();
+}

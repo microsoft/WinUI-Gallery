@@ -1,0 +1,32 @@
+--- header
+Get and transform the Visual backing a XAML element
+--- xaml
+<Border
+    x:Name="ElementVisualTarget"
+    Width="160"
+    Height="100"
+    SizeChanged="ElementVisualTarget_SizeChanged">
+    <TextBlock Text="XAML element" />
+</Border>
+--- c#
+private Visual? _elementVisual;
+
+private void ElementVisualExample_Loaded(object sender, RoutedEventArgs e)
+{
+    _elementVisual = ElementCompositionPreview.GetElementVisual(ElementVisualTarget);
+    UpdateVisual();
+}
+
+private void UpdateVisual()
+{
+    if (_elementVisual is null)
+    {
+        return;
+    }
+
+    // CenterPoint uses pixels in the Visual's coordinate space.
+    _elementVisual.CenterPoint = new Vector3(ElementVisualTarget.ActualSize / 2, 0);
+    // Translation is also exposed directly on UIElement as a Composition facade.
+    ElementVisualTarget.Translation = new Vector3(translationX, translationY, 0);
+    _elementVisual.RotationAngleInDegrees = rotation;
+}
