@@ -1,0 +1,26 @@
+--- header
+Clip a XAML element through its Composition Visual
+--- xaml
+<Grid
+    x:Name="ClipTarget"
+    Width="240"
+    Height="140">
+    <!-- Sample content -->
+</Grid>
+--- c#
+private InsetClip? _insetClip;
+
+private void ClipExample_Loaded(object sender, RoutedEventArgs e)
+{
+    Visual visual = ElementCompositionPreview.GetElementVisual(ClipTarget);
+    _insetClip = visual.Compositor.CreateInsetClip();
+    visual.Clip = _insetClip;
+}
+
+private void UpdateClip(float horizontalInset, float verticalInset)
+{
+    _insetClip.LeftInset = horizontalInset;
+    _insetClip.RightInset = horizontalInset;
+    _insetClip.TopInset = verticalInset;
+    _insetClip.BottomInset = verticalInset;
+}

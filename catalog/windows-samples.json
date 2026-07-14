@@ -9,7 +9,7 @@
     "defaultBranch": "main",
     "license": "MIT"
   },
-  "controlCount": 126,
+  "controlCount": 127,
   "controls": [
     {
       "id": "accessibilitycolorcontrast",
@@ -2916,6 +2916,106 @@
             "snippet": "CompactSizingControls.txt",
             "source": "WinUIGallery/Samples/CompactSizing/CompactSizingControls.txt",
             "name": "Controls"
+          }
+        }
+      ]
+    },
+    {
+      "id": "composition",
+      "name": "Composition",
+      "description": "Connect XAML elements to the Visual layer and apply transforms and clips.",
+      "details": "Explore XAML and Composition interop by retrieving and attaching visuals, working with coordinate systems, applying transform matrices, and clipping content.",
+      "apiNamespace": "Microsoft.UI.Composition",
+      "relatedControls": [
+        "Animation interop"
+      ],
+      "usings": [
+        "Microsoft.UI.Composition",
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Hosting",
+        "System",
+        "System.Numerics"
+      ],
+      "curatedKeywords": [
+        "composition",
+        "Visual layer",
+        "ElementCompositionPreview",
+        "transform",
+        "clip"
+      ],
+      "docs": [
+        {
+          "title": "Composition overview",
+          "uri": "https://learn.microsoft.com/windows/apps/windows-app-sdk/composition"
+        },
+        {
+          "title": "ElementCompositionPreview - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.hosting.elementcompositionpreview"
+        },
+        {
+          "title": "Visual - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.visual"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "Composition",
+        "group": {
+          "id": "Motion",
+          "title": "Motion"
+        },
+        "page": "WinUIGallery/Samples/Composition/CompositionPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/Composition/CompositionPage.xaml.cs",
+        "badges": [
+          "New"
+        ],
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#XamlCompInterop"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Get and transform the Visual backing a XAML element",
+          "xaml": "\u003CBorder\n    x:Name=\u0022ElementVisualTarget\u0022\n    Width=\u0022160\u0022\n    Height=\u0022100\u0022\n    SizeChanged=\u0022ElementVisualTarget_SizeChanged\u0022\u003E\n    \u003CTextBlock Text=\u0022XAML element\u0022 /\u003E\n\u003C/Border\u003E",
+          "code": "private Visual? _elementVisual;\n\nprivate void ElementVisualExample_Loaded(object sender, RoutedEventArgs e)\n{\n    _elementVisual = ElementCompositionPreview.GetElementVisual(ElementVisualTarget);\n    UpdateVisual();\n}\n\nprivate void UpdateVisual()\n{\n    if (_elementVisual is null)\n    {\n        return;\n    }\n\n    // CenterPoint uses pixels in the Visual\u0027s coordinate space.\n    _elementVisual.CenterPoint = new Vector3(ElementVisualTarget.ActualSize / 2, 0);\n    // Translation is also exposed directly on UIElement as a Composition facade.\n    ElementVisualTarget.Translation = new Vector3(translationX, translationY, 0);\n    _elementVisual.RotationAngleInDegrees = rotation;\n}",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "CompositionGetElementVisual.txt",
+            "source": "WinUIGallery/Samples/Composition/CompositionGetElementVisual.txt",
+            "name": "Get Element Visual"
+          }
+        },
+        {
+          "header": "Attach a Composition child Visual and position it with AnchorPoint",
+          "xaml": "\u003CGrid\n    x:Name=\u0022ChildVisualHost\u0022\n    Height=\u0022220\u0022\n    SizeChanged=\u0022ChildVisualHost_SizeChanged\u0022 /\u003E",
+          "code": "private SpriteVisual? _childVisual;\n\nprivate void ChildVisualExample_Loaded(object sender, RoutedEventArgs e)\n{\n    Visual hostVisual = ElementCompositionPreview.GetElementVisual(ChildVisualHost);\n    _childVisual = hostVisual.Compositor.CreateSpriteVisual();\n    _childVisual.Size = new Vector2(80);\n    _childVisual.Brush = hostVisual.Compositor.CreateColorBrush(Microsoft.UI.Colors.DodgerBlue);\n\n    ElementCompositionPreview.SetElementChildVisual(ChildVisualHost, _childVisual);\n    UpdateChildVisual();\n}\n\nprivate void UpdateChildVisual()\n{\n    // AnchorPoint is normalized: (0,0) is the top-left and (1,1) is the bottom-right.\n    _childVisual.AnchorPoint = new Vector2(anchorX, anchorY);\n    _childVisual.Offset = new Vector3(ChildVisualHost.ActualSize / 2, 0);\n}\n\nprivate void Page_Unloaded(object sender, RoutedEventArgs e)\n{\n    ElementCompositionPreview.SetElementChildVisual(ChildVisualHost, null);\n    _childVisual?.Dispose();\n}",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "CompositionChildVisual.txt",
+            "source": "WinUIGallery/Samples/Composition/CompositionChildVisual.txt",
+            "name": "Child Visual"
+          }
+        },
+        {
+          "header": "Apply multiple transforms with TransformMatrix",
+          "xaml": "\u003CBorder\n    x:Name=\u0022TransformMatrixTarget\u0022\n    Width=\u0022170\u0022\n    Height=\u0022100\u0022\n    SizeChanged=\u0022TransformMatrixTarget_SizeChanged\u0022\u003E\n    \u003CTextBlock Text=\u0022TransformMatrix\u0022 /\u003E\n\u003C/Border\u003E",
+          "code": "private Visual? _visual;\n\nprivate void UpdateTransform(float horizontalScale, float skewInDegrees)\n{\n    _visual ??= ElementCompositionPreview.GetElementVisual(TransformMatrixTarget);\n    _visual.CenterPoint = new Vector3(TransformMatrixTarget.ActualSize / 2, 0);\n\n    float skewInRadians = skewInDegrees * MathF.PI / 180;\n    Matrix4x4 skewMatrix = Matrix4x4.Identity;\n    skewMatrix.M21 = MathF.Tan(skewInRadians);\n    _visual.TransformMatrix =\n        Matrix4x4.CreateScale(horizontalScale, 1, 1) *\n        skewMatrix;\n}",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "CompositionTransformMatrix.txt",
+            "source": "WinUIGallery/Samples/Composition/CompositionTransformMatrix.txt",
+            "name": "Transform Matrix"
+          }
+        },
+        {
+          "header": "Clip a XAML element through its Composition Visual",
+          "xaml": "\u003CGrid\n    x:Name=\u0022ClipTarget\u0022\n    Width=\u0022240\u0022\n    Height=\u0022140\u0022\u003E\n    \u003C!-- Sample content --\u003E\n\u003C/Grid\u003E",
+          "code": "private InsetClip? _insetClip;\n\nprivate void ClipExample_Loaded(object sender, RoutedEventArgs e)\n{\n    Visual visual = ElementCompositionPreview.GetElementVisual(ClipTarget);\n    _insetClip = visual.Compositor.CreateInsetClip();\n    visual.Clip = _insetClip;\n}\n\nprivate void UpdateClip(float horizontalInset, float verticalInset)\n{\n    _insetClip.LeftInset = horizontalInset;\n    _insetClip.RightInset = horizontalInset;\n    _insetClip.TopInset = verticalInset;\n    _insetClip.BottomInset = verticalInset;\n}",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "CompositionClip.txt",
+            "source": "WinUIGallery/Samples/Composition/CompositionClip.txt",
+            "name": "Clip"
           }
         }
       ]
