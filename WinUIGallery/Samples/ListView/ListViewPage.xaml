@@ -108,8 +108,7 @@
     </Page.Resources>
     <StackPanel>
 
-        <controls:ControlExample
-            SampleDefinition="ListView\BasicListviewSimpleDatatemplate.txt">
+        <controls:ControlExample SampleDefinition="ListView\BasicListviewSimpleDatatemplate.txt">
             <StackPanel>
                 <TextBlock
                     Margin="0,0,0,16"
@@ -225,8 +224,7 @@
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <controls:ControlExample
-            SampleDefinition="ListView\ListviewGroupedHeaders.txt">
+        <controls:ControlExample SampleDefinition="ListView\ListviewGroupedHeaders.txt">
             <StackPanel>
                 <TextBlock Margin="0,0,0,15" TextWrapping="Wrap">
                     Switch the toggle on the right to enable sticky group headers, which makes the headers stay put at the top of the ListView while scrolling.
@@ -282,8 +280,7 @@
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <controls:ControlExample
-            SampleDefinition="ListView\ListviewFiltering.txt">
+        <controls:ControlExample SampleDefinition="ListView\ListviewFiltering.txt">
             <ListView
                 x:Name="FilteredListView"
                 Width="400"
@@ -482,6 +479,77 @@
 
 
 
+        </controls:ControlExample>
+
+        <controls:ControlExample SampleDefinition="ListView\ListviewRestoreScrollPosition.txt">
+            <ListView
+                x:Name="RestoreScrollListView"
+                Width="400"
+                Height="220"
+                HorizontalAlignment="Left"
+                BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                ItemsSource="{x:Bind contacts5}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <TextBlock Margin="0,8,0,8" Text="{x:Bind}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <Button
+                        x:Name="SavePositionButton"
+                        Click="SavePositionButton_Click"
+                        Content="Save position" />
+                    <Button
+                        x:Name="RestorePositionButton"
+                        Click="RestorePositionButton_Click"
+                        Content="Restore position"
+                        IsEnabled="False" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
+
+        <controls:ControlExample SampleDefinition="ListView\ListviewScrollIntoView.txt">
+            <ListView
+                x:Name="ScrollIntoViewListView"
+                Width="400"
+                Height="220"
+                HorizontalAlignment="Left"
+                BorderBrush="{ThemeResource ControlStrongStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                ItemsSource="{x:Bind contacts6}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <TextBlock Margin="0,8,0,8" Text="{x:Bind}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <NumberBox
+                        x:Name="ScrollIndexNumberBox"
+                        Header="Index"
+                        LargeChange="10"
+                        Maximum="999"
+                        Minimum="0"
+                        SmallChange="1"
+                        SpinButtonPlacementMode="Inline"
+                        ValidationMode="InvalidInputOverwritten"
+                        Value="10" />
+                    <ComboBox
+                        x:Name="ScrollAlignmentComboBox"
+                        Header="Alignment"
+                        SelectedIndex="0">
+                        <ComboBoxItem Content="Default" />
+                        <ComboBoxItem Content="Leading" />
+                    </ComboBox>
+                    <Button Click="ScrollIntoViewButton_Click" Content="Scroll into view" />
+                </StackPanel>
+            </controls:ControlExample.Options>
         </controls:ControlExample>
 
     </StackPanel>
