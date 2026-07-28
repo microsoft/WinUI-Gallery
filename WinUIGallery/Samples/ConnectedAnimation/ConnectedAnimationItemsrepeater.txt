@@ -7,7 +7,8 @@ Connected animation with ItemsRepeater
 <ScrollViewer x:Name="scrollViewer">
     <ItemsRepeater
         x:Name="repeater"
-        ItemsSource="{x:Bind Items}">
+        ItemsSource="{x:Bind Items}"
+        XYFocusKeyboardNavigation="Enabled">
         <ItemsRepeater.Layout>
             <UniformGridLayout
                 MinColumnSpacing="8"
@@ -17,18 +18,37 @@ Connected animation with ItemsRepeater
         </ItemsRepeater.Layout>
         <ItemsRepeater.ItemTemplate>
             <DataTemplate x:DataType="local:CustomDataObject">
-                <Grid CornerRadius="4">
-                    <!-- The element named "connectedElement" will be animated -->
-                    <Image x:Name="connectedElement"
-                           Source="{x:Bind ImageLocation}"
-                           Stretch="UniformToFill" />
-                    <Border VerticalAlignment="Bottom"
-                            Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
-                            Padding="8,4">
-                        <TextBlock Text="{x:Bind Title}"
-                                   Style="{ThemeResource CaptionTextBlockStyle}" />
-                    </Border>
-                </Grid>
+                <!-- ItemsRepeater has no built-in focus/selection, so host each item in a
+                     Button to make it keyboard-focusable and invokable with Enter/Space.
+                     The Button chrome is transparent so the visuals are unchanged. -->
+                <Button AutomationProperties.Name="{x:Bind Title}"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        CornerRadius="4"
+                        Padding="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch">
+                    <Button.Resources>
+                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="Transparent" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="Transparent" />
+                    </Button.Resources>
+                    <Grid CornerRadius="4">
+                        <!-- The element named "connectedElement" will be animated -->
+                        <Image x:Name="connectedElement"
+                               Source="{x:Bind ImageLocation}"
+                               Stretch="UniformToFill" />
+                        <Border VerticalAlignment="Bottom"
+                                Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
+                                Padding="8,4">
+                            <TextBlock Text="{x:Bind Title}"
+                                       Style="{ThemeResource CaptionTextBlockStyle}" />
+                        </Border>
+                    </Grid>
+                </Button>
             </DataTemplate>
         </ItemsRepeater.ItemTemplate>
     </ItemsRepeater>
@@ -43,12 +63,15 @@ private double _persistedScrollPosition;
 
 private void Repeater_ElementPrepared(ItemsRepeater sender, ItemsRepeaterElementPreparedEventArgs args)
 {
-    // Attach a Tapped handler to each item container.
-    args.Element.Tapped -= Item_Tapped;
-    args.Element.Tapped += Item_Tapped;
+    // Each item is a Button, so it is keyboard-focusable and invokable with Enter/Space.
+    if (args.Element is Button button)
+    {
+        button.Click -= Item_Click;
+        button.Click += Item_Click;
+    }
 }
 
-private void Item_Tapped(object sender, TappedRoutedEventArgs e)
+private void Item_Click(object sender, RoutedEventArgs e)
 {
     var element = sender as FrameworkElement;
     _storedItem = repeater.ItemsSourceView.GetAt(
@@ -77,19 +100,27 @@ protected override void OnNavigatedTo(NavigationEventArgs e)
     scrollViewer.ChangeView(null, _persistedScrollPosition, null, true);
     UpdateLayout();
 
+    int index = repeater.ItemsSourceView.IndexOf(_storedItem);
+    var container = repeater.TryGetElement(index) as FrameworkElement;
+
     var animation = ConnectedAnimationService.GetForCurrentView()
         .GetAnimation("BackConnectedAnimation");
     if (animation != null)
     {
         animation.Configuration = new DirectConnectedAnimationConfiguration();
 
-        int index = repeater.ItemsSourceView.IndexOf(_storedItem);
-        if (repeater.TryGetElement(index) is FrameworkElement container
+        if (container != null
             && FindChildByName(container, "connectedElement") is UIElement target)
         {
             animation.TryStart(target);
         }
     }
+
+    // Return keyboard focus to the activated item for keyboard/Narrator users.
+    if (container is Control itemContainer)
+        itemContainer.Focus(FocusState.Programmatic);
+    else
+        repeater.Focus(FocusState.Programmatic);
 }
 
 // Helper to find a named element within a DataTemplate.

@@ -8,7 +8,8 @@
 
     <ScrollViewer x:Name="scrollViewer">
         <ItemsRepeater
-            x:Name="repeater">
+            x:Name="repeater"
+            XYFocusKeyboardNavigation="Enabled">
             <ItemsRepeater.Layout>
                 <UniformGridLayout
                     MinColumnSpacing="8"
@@ -18,23 +19,44 @@
             </ItemsRepeater.Layout>
             <ItemsRepeater.ItemTemplate>
                 <DataTemplate>
-                    <Grid
+                    <!--
+                        ItemsRepeater has no built-in focus or selection, so each item is hosted in a Button.
+                        This makes the items keyboard-focusable, invokable with Enter/Space, and exposes an
+                        Invoke automation pattern for Narrator. The Button chrome is made transparent so the
+                        visuals stay identical to the previous Grid-based template.
+                    -->
+                    <Button
+                        AutomationProperties.Name="{Binding Title}"
+                        Background="Transparent"
+                        BorderThickness="0"
                         CornerRadius="4"
-                        AutomationProperties.Name="{Binding Title}">
-                        <Image
-                            x:Name="connectedElement"
-                            Source="{Binding ImageLocation}"
-                            Stretch="UniformToFill" />
-                        <Border
-                            VerticalAlignment="Bottom"
-                            Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
-                            Padding="8,4">
-                            <TextBlock
-                                Style="{ThemeResource CaptionTextBlockStyle}"
-                                Text="{Binding Title}"
-                                Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
-                        </Border>
-                    </Grid>
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        Padding="0"
+                        VerticalAlignment="Stretch"
+                        VerticalContentAlignment="Stretch">
+                        <Button.Resources>
+                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent" />
+                            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="Transparent" />
+                            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="Transparent" />
+                            <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="Transparent" />
+                        </Button.Resources>
+                        <Grid CornerRadius="4">
+                            <Image
+                                x:Name="connectedElement"
+                                Source="{Binding ImageLocation}"
+                                Stretch="UniformToFill" />
+                            <Border
+                                VerticalAlignment="Bottom"
+                                Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
+                                Padding="8,4">
+                                <TextBlock
+                                    Style="{ThemeResource CaptionTextBlockStyle}"
+                                    Text="{Binding Title}"
+                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                            </Border>
+                        </Grid>
+                    </Button>
                 </DataTemplate>
             </ItemsRepeater.ItemTemplate>
         </ItemsRepeater>
