@@ -30,6 +30,7 @@
 
         <Button
             x:Name="CloseBtn"
+            AutomationProperties.Name="Close"
             Width="200"
             Margin="0,16,0,0"
             Click="CloseBtn_Click">

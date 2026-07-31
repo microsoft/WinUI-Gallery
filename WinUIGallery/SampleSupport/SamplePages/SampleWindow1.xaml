@@ -32,6 +32,7 @@
             <TextBlock Text="Hide and show the window after 3 seconds" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
         </Button>
         <Button x:Name="Close"
+                AutomationProperties.Name="Close"
                 Click="Close_Click"
                 Width="200"
                 Margin="0,16,0,0">
