@@ -4,6 +4,7 @@
 using Microsoft.UI;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
@@ -16,6 +17,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
+using WinUIGallery.ControlPages;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.UnitTests;
@@ -96,6 +98,25 @@ public class UnitTests
             var actualLayout = LayoutInformation.GetLayoutSlot(wrapPanel.Children[i] as FrameworkElement);
             Assert.AreEqual(expectedLayouts[i], actualLayout);
         }
+    }
+
+    [UITestMethod]
+    public void TestCanvasZSliderAutomationNameIncludesCurrentValueAndRange()
+    {
+        CanvasPage canvasPage = new();
+
+        UnitTestApp.UnitTestAppWindow.AddToVisualTree(canvasPage);
+        canvasPage.UpdateLayout();
+
+        Slider zSlider = canvasPage.FindName("ZSlider") as Slider;
+        Assert.IsNotNull(zSlider);
+
+        Assert.AreEqual("Canvas.ZIndex value 0 of range 0 to 4", AutomationProperties.GetName(zSlider));
+
+        zSlider.Value = 3;
+        canvasPage.UpdateLayout();
+
+        Assert.AreEqual("Canvas.ZIndex value 3 of range 0 to 4", AutomationProperties.GetName(zSlider));
     }
 
     // This test demonstrates executing test code both on and off the UI thread.
