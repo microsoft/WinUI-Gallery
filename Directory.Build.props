@@ -20,7 +20,7 @@
   <Import Project="standalone.props" Condition="'$(IsInWinUIRepo)' != 'true' OR '$(UseStandalone)' == 'true'"/>
 
   <!-- Temporary workaround until WinAppSDK 1.5.2 provides fix -->
-  <Target Name="RemoveConflictingDepsJsonFiles" AfterTargets="GetPackagingOutputs">
+  <Target Name="RemoveConflictingPackagingOutputs" AfterTargets="GetPackagingOutputs">
     <!-- If conflicting build and publish deps.json files exist in this or referenced projects,
         use only the publish deps.json files, and remove the corresponding build deps.json files. -->
     <ItemGroup>
@@ -29,6 +29,12 @@
         Condition="'@(_PublishPackagingOutputs)' != '' and $([System.String]::Copy(%(FileName)%(Extension)).EndsWith('.deps.json'))" />
       <PackagingOutputs Remove="@(_PublishDepsJsonFiles)" MatchOnMetadata="TargetPath"/>
       <PackagingOutputs Include="@(_PublishDepsJsonFiles)"/>
+
+      <!-- Unit test packages include the referenced Gallery app PDB, while the Gallery
+          app package also contributes that same target path. Keep the app copy only. -->
+      <_ReferencedGalleryPdbFiles Include="@(PackagingOutputs)"
+        Condition="'%(PackagingOutputs.TargetPath)' == 'WinUIGallery.pdb' and $([System.String]::Copy('%(PackagingOutputs.Identity)').Contains('\tests\'))" />
+      <PackagingOutputs Remove="@(_ReferencedGalleryPdbFiles)" />
     </ItemGroup>
   </Target>
 
