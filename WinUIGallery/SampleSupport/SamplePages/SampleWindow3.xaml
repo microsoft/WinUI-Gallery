@@ -29,6 +29,7 @@
             <TextBlock Text="Minimize and restore the window after 3 seconds" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
         </Button>
         <Button x:Name="CloseBtn"
+                AutomationProperties.Name="Close"
                 Click="CloseBtn_Click"
                 Width="200"
                 Margin="0,16,0,0">
