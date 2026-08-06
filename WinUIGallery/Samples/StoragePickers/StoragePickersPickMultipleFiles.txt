@@ -39,5 +39,8 @@ private async void PickMultipleFilesButton_Click(object sender, RoutedEventArgs 
 
         //re-enable the button
         button.IsEnabled = true;
+
+        // Return keyboard focus to the button, which lost focus when it was disabled, to avoid a keyboard trap.
+        button.Focus(FocusState.Programmatic);
     }
 }
