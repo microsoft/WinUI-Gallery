@@ -37,7 +37,7 @@
                 <TextBlock
                     Margin="0,5,0,0"
                     FontStyle="Italic"
-                    Foreground="{ThemeResource SystemColorHotlightColor}"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                     Style="{ThemeResource CaptionTextBlockStyle}"
                     Text="Can only enable spatial audio when sound is on!" />
             </StackPanel>
