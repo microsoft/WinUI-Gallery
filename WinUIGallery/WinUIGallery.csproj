@@ -202,4 +202,70 @@
         <XmlPoke XmlInputPath="Package.Dev.appxmanifest" Query="/dn:Package/dn:Identity/@Version" Namespaces="$(AppxManifestNamespace)" Value="$(Version)" />
     </Target>
 
+  <!-- The mock WinAppSDK aggregator stages the WinUI binaries but omits their
+       unpackaged WinRT class registrations. Add the package-generated XAML and
+       controls registrations to the application manifest for self-contained runs. -->
+  <PropertyGroup Condition="'$(WindowsPackageType)' == 'None' and '$(WindowsAppSDKSelfContained)' == 'true'">
+    <_WinUIBaseAppManifest>$(MSBuildProjectDirectory)\app.manifest</_WinUIBaseAppManifest>
+    <_WinUIRegistrationFile>$(NuGetPackageRoot)microsoft.windowsappsdk.winui\$(WinUIVersion)\buildTransitive\native\LiftedWinRTClassRegistrations.xml</_WinUIRegistrationFile>
+    <_WinUIManifestMergeScript>$(MSBuildProjectDirectory)\..\scripts\MergeWinUIAppManifest.ps1</_WinUIManifestMergeScript>
+    <_WinUIAugmentedManifest>$(IntermediateOutputPath)WinUIAugmentedAppManifest.manifest</_WinUIAugmentedManifest>
+    <_WinAppSDKResourceExtractionScript>$(MSBuildProjectDirectory)\..\scripts\ExtractAppxFile.ps1</_WinAppSDKResourceExtractionScript>
+    <_WinAppSDKInsightsResource>$(IntermediateOutputPath)Microsoft.WindowsAppRuntime.Insights.Resource.dll</_WinAppSDKInsightsResource>
+    <_WinAppSDKRuntimeArchitecture Condition="'$(Platform)' == 'x86' or '$(Platform)' == 'Win32'">x86</_WinAppSDKRuntimeArchitecture>
+    <_WinAppSDKRuntimeArchitecture Condition="'$(Platform)' == 'x64'">x64</_WinAppSDKRuntimeArchitecture>
+    <_WinAppSDKRuntimeArchitecture Condition="'$(Platform)' == 'ARM64'">arm64</_WinAppSDKRuntimeArchitecture>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(WindowsPackageType)' == 'None' and '$(WindowsAppSDKSelfContained)' == 'true'">
+    <None Include="$(_WinAppSDKInsightsResource)"
+          Link="Microsoft.WindowsAppRuntime.Insights.Resource.dll"
+          CopyToOutputDirectory="PreserveNewest"
+          CopyToPublishDirectory="PreserveNewest"
+          TargetPath="Microsoft.WindowsAppRuntime.Insights.Resource.dll" />
+  </ItemGroup>
+
+  <!-- The Foundation component omits this companion resource from its loose
+       self-contained assets. Extract the matching file from the resolved
+       Windows App Runtime framework MSIX instead. -->
+  <Target Name="_ExtractWinAppSDKInsightsResource"
+          BeforeTargets="GetCopyToOutputDirectoryItems;GetCopyToPublishDirectoryItems"
+          Condition="'$(WindowsPackageType)' == 'None' and '$(WindowsAppSDKSelfContained)' == 'true'">
+    <Error Condition="'$(_WinAppSDKRuntimeArchitecture)' == ''"
+           Text="Unsupported Windows App Runtime architecture for Platform '$(Platform)'." />
+    <ItemGroup>
+      <_WinAppSDKRuntimeMsix Include="@(AppxPackageRegistration)"
+                             Condition="'%(AppxPackageRegistration.WindowsAppSDK)' == 'true' and '%(AppxPackageRegistration.Architecture)' == '$(_WinAppSDKRuntimeArchitecture)'" />
+      <_WinAppSDKRuntimeMsix Include="$(MicrosoftWindowsAppSDKPackageDir)tools\MSIX\win10-$(_WinAppSDKRuntimeArchitecture)\$(WinAppSDKPackageName).msix"
+                             Condition="'@(_WinAppSDKRuntimeMsix)' == '' and '$(WinAppSDKPackageName)' != ''" />
+      <_WinAppSDKRuntimeMsix Include="$(MicrosoftWindowsAppSDKPackageDir)tools\MSIX\win10-$(_WinAppSDKRuntimeArchitecture)\Microsoft.WindowsAppRuntime.*.msix"
+                             Exclude="$(MicrosoftWindowsAppSDKPackageDir)tools\MSIX\win10-$(_WinAppSDKRuntimeArchitecture)\Microsoft.WindowsAppRuntime.DDLM.*.msix;$(MicrosoftWindowsAppSDKPackageDir)tools\MSIX\win10-$(_WinAppSDKRuntimeArchitecture)\Microsoft.WindowsAppRuntime.Main.*.msix;$(MicrosoftWindowsAppSDKPackageDir)tools\MSIX\win10-$(_WinAppSDKRuntimeArchitecture)\Microsoft.WindowsAppRuntime.Singleton.*.msix"
+                             Condition="'@(_WinAppSDKRuntimeMsix)' == ''" />
+    </ItemGroup>
+    <Error Condition="'@(_WinAppSDKRuntimeMsix)' == ''"
+           Text="Could not locate the resolved Windows App Runtime framework MSIX." />
+    <Error Condition="!Exists('@(_WinAppSDKRuntimeMsix)')"
+           Text="Windows App Runtime framework MSIX not found at '@(_WinAppSDKRuntimeMsix)'." />
+    <Exec Command="powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(_WinAppSDKResourceExtractionScript)&quot; -Package &quot;@(_WinAppSDKRuntimeMsix)&quot; -Entry &quot;Microsoft.WindowsAppRuntime.Insights.Resource.dll&quot; -Out &quot;$(_WinAppSDKInsightsResource)&quot;" />
+  </Target>
+
+  <Target Name="_GenerateWinUIAugmentedAppManifest"
+          Condition="'$(WindowsPackageType)' == 'None' and '$(WindowsAppSDKSelfContained)' == 'true'"
+          Inputs="$(_WinUIBaseAppManifest);$(_WinUIRegistrationFile);$(_WinUIManifestMergeScript)"
+          Outputs="$(_WinUIAugmentedManifest)">
+    <Error Condition="!Exists('$(_WinUIRegistrationFile)')"
+           Text="WinUI registration file not found at '$(_WinUIRegistrationFile)'." />
+    <MakeDir Directories="$(IntermediateOutputPath)" />
+    <Exec Command="powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(_WinUIManifestMergeScript)&quot; -Base &quot;$(_WinUIBaseAppManifest)&quot; -Registrations &quot;$(_WinUIRegistrationFile)&quot; -Out &quot;$(_WinUIAugmentedManifest)&quot;" />
+  </Target>
+
+  <Target Name="_UseWinUIAugmentedAppManifest"
+          BeforeTargets="GetNewAppManifestValues"
+          DependsOnTargets="_GenerateWinUIAugmentedAppManifest"
+          Condition="'$(WindowsPackageType)' == 'None' and '$(WindowsAppSDKSelfContained)' == 'true'">
+    <PropertyGroup>
+      <ApplicationManifest>$(_WinUIAugmentedManifest)</ApplicationManifest>
+    </PropertyGroup>
+  </Target>
+
 </Project>

@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using Windows.Foundation;
 using Windows.Storage;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Controls;
 
@@ -184,6 +185,8 @@ public sealed partial class ControlExample : UserControl
     public ControlExample()
     {
         this.InitializeComponent();
+        SystemCompositionAnimations.SetImplicitShowHide(XamlPresenter);
+        SystemCompositionAnimations.SetImplicitShowHide(CSharpPresenter);
         Substitutions = new List<ControlExampleSubstitution>();
         this.Loaded += ControlExample_Loaded;
     }

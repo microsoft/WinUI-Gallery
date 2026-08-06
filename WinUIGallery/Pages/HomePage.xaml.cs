@@ -20,6 +20,8 @@ public sealed partial class HomePage : ItemsPageBase
     public HomePage()
     {
         this.InitializeComponent();
+        SystemCompositionAnimations.SetImplicitShowHide(RecentSamplesPanel);
+        SystemCompositionAnimations.SetImplicitShowHide(FavoriteSamplesPanel);
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
