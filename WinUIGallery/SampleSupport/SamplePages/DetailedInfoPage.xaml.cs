@@ -23,6 +23,10 @@ public sealed partial class DetailedInfoPage : Page
     {
         // When we land in page, put focus on the back button
         GoBackButton.Focus(FocusState.Programmatic);
+
+        // Scroll the back button into view so keyboard focus is not left off-screen behind
+        // the surrounding scroll viewer (MAS 2.4.11 - Focus Not Obscured).
+        GoBackButton.StartBringIntoView();
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
