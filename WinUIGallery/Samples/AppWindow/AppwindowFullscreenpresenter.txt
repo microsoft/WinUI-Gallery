@@ -13,6 +13,7 @@ AppWindow with FullScreenPresenter
                        Style="{ThemeResource TitleTextBlockStyle}"
                        TextAlignment="Center" />
         <Button x:Name="Close"
+                AutomationProperties.Name="Close"
                 Click="Close_Click"
                 Width="200"
                 HorizontalAlignment="Center">
