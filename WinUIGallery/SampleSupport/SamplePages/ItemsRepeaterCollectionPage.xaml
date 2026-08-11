@@ -6,7 +6,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <ScrollViewer x:Name="scrollViewer">
+    <!--
+        TabFocusNavigation="Once" makes the whole repeater a single tab stop: Tab moves focus
+        into the group once (and the next Tab moves out), so Tab no longer steps through every
+        item. Navigation between items is done with the arrow keys via the ItemsRepeater's
+        XYFocusKeyboardNavigation="Enabled" below.
+    -->
+    <ScrollViewer
+        x:Name="scrollViewer"
+        TabFocusNavigation="Once">
         <ItemsRepeater
             x:Name="repeater"
             XYFocusKeyboardNavigation="Enabled">

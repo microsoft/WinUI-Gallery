@@ -4,7 +4,12 @@ Connected animation with ItemsRepeater
 <!-- Unlike ListView/GridView, ItemsRepeater does not have built-in
      ConnectedAnimation methods. Use ConnectedAnimationService directly. -->
 
-<ScrollViewer x:Name="scrollViewer">
+<!-- TabFocusNavigation="Once" makes the repeater a single tab stop, so Tab enters the group
+     once instead of stepping through every item. Arrow keys move between items via the
+     ItemsRepeater's XYFocusKeyboardNavigation="Enabled". -->
+<ScrollViewer
+    x:Name="scrollViewer"
+    TabFocusNavigation="Once">
     <ItemsRepeater
         x:Name="repeater"
         ItemsSource="{x:Bind Items}"
