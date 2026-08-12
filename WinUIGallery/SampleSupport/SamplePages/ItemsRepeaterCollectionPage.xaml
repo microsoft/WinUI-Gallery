@@ -28,43 +28,31 @@
             <ItemsRepeater.ItemTemplate>
                 <DataTemplate>
                     <!--
-                        ItemsRepeater has no built-in focus or selection, so each item is hosted in a Button.
-                        This makes the items keyboard-focusable, invokable with Enter/Space, and exposes an
-                        Invoke automation pattern for Narrator. The Button chrome is made transparent so the
-                        visuals stay identical to the previous Grid-based template.
+                        ItemsRepeater has no built-in focus or selection, but IsTabStop and the
+                        keyboard events live on UIElement, so the item's own Grid can be made
+                        keyboard-focusable directly - no Button wrapper needed. Arrow keys move
+                        between items (XYFocusKeyboardNavigation above); Enter/Space and pointer
+                        activate the focused item (handled in code-behind).
                     -->
-                    <Button
+                    <Grid
                         AutomationProperties.Name="{Binding Title}"
-                        Background="Transparent"
-                        BorderThickness="0"
                         CornerRadius="4"
-                        HorizontalAlignment="Stretch"
-                        HorizontalContentAlignment="Stretch"
-                        Padding="0"
-                        VerticalAlignment="Stretch"
-                        VerticalContentAlignment="Stretch">
-                        <Button.Resources>
-                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent" />
-                            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="Transparent" />
-                            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="Transparent" />
-                            <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="Transparent" />
-                        </Button.Resources>
-                        <Grid CornerRadius="4">
-                            <Image
-                                x:Name="connectedElement"
-                                Source="{Binding ImageLocation}"
-                                Stretch="UniformToFill" />
-                            <Border
-                                VerticalAlignment="Bottom"
-                                Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
-                                Padding="8,4">
-                                <TextBlock
-                                    Style="{ThemeResource CaptionTextBlockStyle}"
-                                    Text="{Binding Title}"
-                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
-                            </Border>
-                        </Grid>
-                    </Button>
+                        IsTabStop="True"
+                        UseSystemFocusVisuals="True">
+                        <Image
+                            x:Name="connectedElement"
+                            Source="{Binding ImageLocation}"
+                            Stretch="UniformToFill" />
+                        <Border
+                            VerticalAlignment="Bottom"
+                            Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
+                            Padding="8,4">
+                            <TextBlock
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Text="{Binding Title}"
+                                Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                        </Border>
+                    </Grid>
                 </DataTemplate>
             </ItemsRepeater.ItemTemplate>
         </ItemsRepeater>

@@ -3,9 +3,11 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
+using Windows.System;
 using WinUIGallery.ControlPages;
 
 namespace WinUIGallery.SamplePages;
@@ -26,18 +28,32 @@ public sealed partial class ItemsRepeaterCollectionPage : Page
 
     private void Repeater_ElementPrepared(ItemsRepeater sender, ItemsRepeaterElementPreparedEventArgs args)
     {
-        // Each item is hosted in a Button (see the DataTemplate) so it is keyboard-focusable and can be
-        // invoked with Enter/Space as well as the pointer. Wire the Click handler on the realized container.
-        if (args.Element is Button button)
+        // The item's Grid is itself the focusable element (IsTabStop is set in the template), so no
+        // Button wrapper is needed. Wire pointer (Tapped) and keyboard (Enter/Space) activation on it.
+        args.Element.Tapped -= Item_Tapped;
+        args.Element.Tapped += Item_Tapped;
+        args.Element.KeyDown -= Item_KeyDown;
+        args.Element.KeyDown += Item_KeyDown;
+    }
+
+    private void Item_Tapped(object sender, TappedRoutedEventArgs e)
+    {
+        NavigateToItem(sender as FrameworkElement);
+    }
+
+    private void Item_KeyDown(object sender, KeyRoutedEventArgs e)
+    {
+        // Activate the focused item with Enter or Space, matching list-style keyboard behavior.
+        if (e.Key == VirtualKey.Enter || e.Key == VirtualKey.Space)
         {
-            button.Click -= Item_Click;
-            button.Click += Item_Click;
+            NavigateToItem(sender as FrameworkElement);
+            e.Handled = true;
         }
     }
 
-    private void Item_Click(object sender, RoutedEventArgs e)
+    private void NavigateToItem(FrameworkElement element)
     {
-        if (sender is not FrameworkElement element)
+        if (element == null)
         {
             return;
         }
@@ -89,10 +105,11 @@ public sealed partial class ItemsRepeaterCollectionPage : Page
         }
 
         // Return keyboard focus to the item the user activated so keyboard and Narrator users
-        // resume from where they left off instead of losing their place.
-        if (container is Control itemContainer)
+        // resume from where they left off instead of losing their place. Focus() is available on
+        // the Grid because it is a UIElement with IsTabStop set in the template.
+        if (container != null)
         {
-            itemContainer.Focus(FocusState.Programmatic);
+            container.Focus(FocusState.Programmatic);
         }
         else
         {

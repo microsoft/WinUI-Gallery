@@ -23,37 +23,25 @@ Connected animation with ItemsRepeater
         </ItemsRepeater.Layout>
         <ItemsRepeater.ItemTemplate>
             <DataTemplate x:DataType="local:CustomDataObject">
-                <!-- ItemsRepeater has no built-in focus/selection, so host each item in a
-                     Button to make it keyboard-focusable and invokable with Enter/Space.
-                     The Button chrome is transparent so the visuals are unchanged. -->
-                <Button AutomationProperties.Name="{x:Bind Title}"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        CornerRadius="4"
-                        Padding="0"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        HorizontalContentAlignment="Stretch"
-                        VerticalContentAlignment="Stretch">
-                    <Button.Resources>
-                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent" />
-                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="Transparent" />
-                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="Transparent" />
-                        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="Transparent" />
-                    </Button.Resources>
-                    <Grid CornerRadius="4">
-                        <!-- The element named "connectedElement" will be animated -->
-                        <Image x:Name="connectedElement"
-                               Source="{x:Bind ImageLocation}"
-                               Stretch="UniformToFill" />
-                        <Border VerticalAlignment="Bottom"
-                                Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
-                                Padding="8,4">
-                            <TextBlock Text="{x:Bind Title}"
-                                       Style="{ThemeResource CaptionTextBlockStyle}" />
-                        </Border>
-                    </Grid>
-                </Button>
+                <!-- ItemsRepeater has no built-in focus/selection, but IsTabStop and the keyboard
+                     events live on UIElement, so the item's Grid can be made keyboard-focusable
+                     directly - no Button needed. Arrow keys move between items; Enter/Space and
+                     pointer activate the focused item (see code-behind). -->
+                <Grid AutomationProperties.Name="{x:Bind Title}"
+                      CornerRadius="4"
+                      IsTabStop="True"
+                      UseSystemFocusVisuals="True">
+                    <!-- The element named "connectedElement" will be animated -->
+                    <Image x:Name="connectedElement"
+                           Source="{x:Bind ImageLocation}"
+                           Stretch="UniformToFill" />
+                    <Border VerticalAlignment="Bottom"
+                            Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
+                            Padding="8,4">
+                        <TextBlock Text="{x:Bind Title}"
+                                   Style="{ThemeResource CaptionTextBlockStyle}" />
+                    </Border>
+                </Grid>
             </DataTemplate>
         </ItemsRepeater.ItemTemplate>
     </ItemsRepeater>
@@ -68,17 +56,33 @@ private double _persistedScrollPosition;
 
 private void Repeater_ElementPrepared(ItemsRepeater sender, ItemsRepeaterElementPreparedEventArgs args)
 {
-    // Each item is a Button, so it is keyboard-focusable and invokable with Enter/Space.
-    if (args.Element is Button button)
+    // The item's Grid is itself focusable (IsTabStop in the template), so no Button is needed.
+    // Wire pointer (Tapped) and keyboard (Enter/Space) activation on it.
+    args.Element.Tapped -= Item_Tapped;
+    args.Element.Tapped += Item_Tapped;
+    args.Element.KeyDown -= Item_KeyDown;
+    args.Element.KeyDown += Item_KeyDown;
+}
+
+private void Item_Tapped(object sender, TappedRoutedEventArgs e)
+{
+    NavigateToItem(sender as FrameworkElement);
+}
+
+private void Item_KeyDown(object sender, KeyRoutedEventArgs e)
+{
+    // Activate the focused item with Enter or Space, matching list-style keyboard behavior.
+    if (e.Key == VirtualKey.Enter || e.Key == VirtualKey.Space)
     {
-        button.Click -= Item_Click;
-        button.Click += Item_Click;
+        NavigateToItem(sender as FrameworkElement);
+        e.Handled = true;
     }
 }
 
-private void Item_Click(object sender, RoutedEventArgs e)
+private void NavigateToItem(FrameworkElement element)
 {
-    var element = sender as FrameworkElement;
+    if (element == null) return;
+
     _storedItem = repeater.ItemsSourceView.GetAt(
         repeater.GetElementIndex(element)) as CustomDataObject;
 
@@ -122,8 +126,9 @@ protected override void OnNavigatedTo(NavigationEventArgs e)
     }
 
     // Return keyboard focus to the activated item for keyboard/Narrator users.
-    if (container is Control itemContainer)
-        itemContainer.Focus(FocusState.Programmatic);
+    // Focus() is available because the Grid is a UIElement with IsTabStop set.
+    if (container != null)
+        container.Focus(FocusState.Programmatic);
     else
         repeater.Focus(FocusState.Programmatic);
 }
