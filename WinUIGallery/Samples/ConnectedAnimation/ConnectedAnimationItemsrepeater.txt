@@ -23,10 +23,6 @@ Connected animation with ItemsRepeater
         </ItemsRepeater.Layout>
         <ItemsRepeater.ItemTemplate>
             <DataTemplate x:DataType="local:CustomDataObject">
-                <!-- ItemsRepeater has no built-in focus/selection, but IsTabStop and the keyboard
-                     events live on UIElement, so the item's Grid can be made keyboard-focusable
-                     directly - no Button needed. Arrow keys move between items; Enter/Space and
-                     pointer activate the focused item (see code-behind). -->
                 <Grid AutomationProperties.Name="{x:Bind Title}"
                       CornerRadius="4"
                       IsTabStop="True"
@@ -56,8 +52,6 @@ private double _persistedScrollPosition;
 
 private void Repeater_ElementPrepared(ItemsRepeater sender, ItemsRepeaterElementPreparedEventArgs args)
 {
-    // The item's Grid is itself focusable (IsTabStop in the template), so no Button is needed.
-    // Wire pointer (Tapped) and keyboard (Enter/Space) activation on it.
     args.Element.Tapped -= Item_Tapped;
     args.Element.Tapped += Item_Tapped;
     args.Element.KeyDown -= Item_KeyDown;

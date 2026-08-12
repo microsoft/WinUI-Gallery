@@ -28,8 +28,6 @@ public sealed partial class ItemsRepeaterCollectionPage : Page
 
     private void Repeater_ElementPrepared(ItemsRepeater sender, ItemsRepeaterElementPreparedEventArgs args)
     {
-        // The item's Grid is itself the focusable element (IsTabStop is set in the template), so no
-        // Button wrapper is needed. Wire pointer (Tapped) and keyboard (Enter/Space) activation on it.
         args.Element.Tapped -= Item_Tapped;
         args.Element.Tapped += Item_Tapped;
         args.Element.KeyDown -= Item_KeyDown;
