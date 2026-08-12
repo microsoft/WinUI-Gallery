@@ -6,9 +6,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <ScrollViewer x:Name="scrollViewer">
+    <!--
+        TabFocusNavigation="Once" makes the whole repeater a single tab stop: Tab moves focus
+        into the group once (and the next Tab moves out), so Tab no longer steps through every
+        item. Navigation between items is done with the arrow keys via the ItemsRepeater's
+        XYFocusKeyboardNavigation="Enabled" below.
+    -->
+    <ScrollViewer
+        x:Name="scrollViewer"
+        TabFocusNavigation="Once">
         <ItemsRepeater
-            x:Name="repeater">
+            x:Name="repeater"
+            XYFocusKeyboardNavigation="Enabled">
             <ItemsRepeater.Layout>
                 <UniformGridLayout
                     MinColumnSpacing="8"
@@ -18,9 +27,18 @@
             </ItemsRepeater.Layout>
             <ItemsRepeater.ItemTemplate>
                 <DataTemplate>
+                    <!--
+                        ItemsRepeater has no built-in focus or selection, but IsTabStop and the
+                        keyboard events live on UIElement, so the item's own Grid can be made
+                        keyboard-focusable directly - no Button wrapper needed. Arrow keys move
+                        between items (XYFocusKeyboardNavigation above); Enter/Space and pointer
+                        activate the focused item (handled in code-behind).
+                    -->
                     <Grid
+                        AutomationProperties.Name="{Binding Title}"
                         CornerRadius="4"
-                        AutomationProperties.Name="{Binding Title}">
+                        IsTabStop="True"
+                        UseSystemFocusVisuals="True">
                         <Image
                             x:Name="connectedElement"
                             Source="{Binding ImageLocation}"
