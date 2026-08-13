@@ -39,6 +39,19 @@ public sealed partial class EasingFunctionPage : Page
     public EasingFunctionPage()
     {
         this.InitializeComponent();
+
+        // Bring the keyboard-focused control into view so focus is never left obscured
+        // behind the hosting scroll viewer (MAS 2.4.11 - Focus Not Obscured).
+        GotFocus += OnControlGotFocus;
+    }
+
+    private void OnControlGotFocus(object sender, RoutedEventArgs e)
+    {
+        // Only react to keyboard/programmatic focus; pointer focus does not obscure the target.
+        if (e.OriginalSource is Control focusedControl && focusedControl.FocusState != FocusState.Pointer)
+        {
+            focusedControl.StartBringIntoView();
+        }
     }
 
     private void Button1_Click(object sender, RoutedEventArgs e)
