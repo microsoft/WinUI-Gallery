@@ -44,7 +44,7 @@
                         ValueChanged="ThicknessSlider_ValueChanged"
                         Value="2" />
 
-                    <Grid>
+                    <Grid ColumnSpacing="8">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />
