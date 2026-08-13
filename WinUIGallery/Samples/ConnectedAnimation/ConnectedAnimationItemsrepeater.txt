@@ -4,10 +4,16 @@ Connected animation with ItemsRepeater
 <!-- Unlike ListView/GridView, ItemsRepeater does not have built-in
      ConnectedAnimation methods. Use ConnectedAnimationService directly. -->
 
-<ScrollViewer x:Name="scrollViewer">
+<!-- TabFocusNavigation="Once" makes the repeater a single tab stop, so Tab enters the group
+     once instead of stepping through every item. Arrow keys move between items via the
+     ItemsRepeater's XYFocusKeyboardNavigation="Enabled". -->
+<ScrollViewer
+    x:Name="scrollViewer"
+    TabFocusNavigation="Once">
     <ItemsRepeater
         x:Name="repeater"
-        ItemsSource="{x:Bind Items}">
+        ItemsSource="{x:Bind Items}"
+        XYFocusKeyboardNavigation="Enabled">
         <ItemsRepeater.Layout>
             <UniformGridLayout
                 MinColumnSpacing="8"
@@ -17,7 +23,10 @@ Connected animation with ItemsRepeater
         </ItemsRepeater.Layout>
         <ItemsRepeater.ItemTemplate>
             <DataTemplate x:DataType="local:CustomDataObject">
-                <Grid CornerRadius="4">
+                <Grid AutomationProperties.Name="{x:Bind Title}"
+                      CornerRadius="4"
+                      IsTabStop="True"
+                      UseSystemFocusVisuals="True">
                     <!-- The element named "connectedElement" will be animated -->
                     <Image x:Name="connectedElement"
                            Source="{x:Bind ImageLocation}"
@@ -43,14 +52,31 @@ private double _persistedScrollPosition;
 
 private void Repeater_ElementPrepared(ItemsRepeater sender, ItemsRepeaterElementPreparedEventArgs args)
 {
-    // Attach a Tapped handler to each item container.
     args.Element.Tapped -= Item_Tapped;
     args.Element.Tapped += Item_Tapped;
+    args.Element.KeyDown -= Item_KeyDown;
+    args.Element.KeyDown += Item_KeyDown;
 }
 
 private void Item_Tapped(object sender, TappedRoutedEventArgs e)
 {
-    var element = sender as FrameworkElement;
+    NavigateToItem(sender as FrameworkElement);
+}
+
+private void Item_KeyDown(object sender, KeyRoutedEventArgs e)
+{
+    // Activate the focused item with Enter or Space, matching list-style keyboard behavior.
+    if (e.Key == VirtualKey.Enter || e.Key == VirtualKey.Space)
+    {
+        NavigateToItem(sender as FrameworkElement);
+        e.Handled = true;
+    }
+}
+
+private void NavigateToItem(FrameworkElement element)
+{
+    if (element == null) return;
+
     _storedItem = repeater.ItemsSourceView.GetAt(
         repeater.GetElementIndex(element)) as CustomDataObject;
 
@@ -77,19 +103,28 @@ protected override void OnNavigatedTo(NavigationEventArgs e)
     scrollViewer.ChangeView(null, _persistedScrollPosition, null, true);
     UpdateLayout();
 
+    int index = repeater.ItemsSourceView.IndexOf(_storedItem);
+    var container = repeater.TryGetElement(index) as FrameworkElement;
+
     var animation = ConnectedAnimationService.GetForCurrentView()
         .GetAnimation("BackConnectedAnimation");
     if (animation != null)
     {
         animation.Configuration = new DirectConnectedAnimationConfiguration();
 
-        int index = repeater.ItemsSourceView.IndexOf(_storedItem);
-        if (repeater.TryGetElement(index) is FrameworkElement container
+        if (container != null
             && FindChildByName(container, "connectedElement") is UIElement target)
         {
             animation.TryStart(target);
         }
     }
+
+    // Return keyboard focus to the activated item for keyboard/Narrator users.
+    // Focus() is available because the Grid is a UIElement with IsTabStop set.
+    if (container != null)
+        container.Focus(FocusState.Programmatic);
+    else
+        repeater.Focus(FocusState.Programmatic);
 }
 
 // Helper to find a named element within a DataTemplate.

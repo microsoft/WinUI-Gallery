@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
+using Windows.System;
 using WinUIGallery.ControlPages;
 
 namespace WinUIGallery.SamplePages;
@@ -27,14 +28,30 @@ public sealed partial class ItemsRepeaterCollectionPage : Page
 
     private void Repeater_ElementPrepared(ItemsRepeater sender, ItemsRepeaterElementPreparedEventArgs args)
     {
-        // Attach a Tapped handler to each item container so we can navigate on click.
         args.Element.Tapped -= Item_Tapped;
         args.Element.Tapped += Item_Tapped;
+        args.Element.KeyDown -= Item_KeyDown;
+        args.Element.KeyDown += Item_KeyDown;
     }
 
     private void Item_Tapped(object sender, TappedRoutedEventArgs e)
     {
-        if (sender is not FrameworkElement element)
+        NavigateToItem(sender as FrameworkElement);
+    }
+
+    private void Item_KeyDown(object sender, KeyRoutedEventArgs e)
+    {
+        // Activate the focused item with Enter or Space, matching list-style keyboard behavior.
+        if (e.Key == VirtualKey.Enter || e.Key == VirtualKey.Space)
+        {
+            NavigateToItem(sender as FrameworkElement);
+            e.Handled = true;
+        }
+    }
+
+    private void NavigateToItem(FrameworkElement element)
+    {
+        if (element == null)
         {
             return;
         }
@@ -68,21 +85,34 @@ public sealed partial class ItemsRepeaterCollectionPage : Page
         scrollViewer.ChangeView(null, _persistedScrollPosition, null, disableAnimation: true);
         UpdateLayout();
 
+        // Find the element for the stored item so we can run the back animation and restore focus to it.
+        int index = repeater.ItemsSourceView.IndexOf(_storedItem);
+        var container = repeater.TryGetElement(index) as FrameworkElement;
+
         ConnectedAnimation animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("BackConnectedAnimation");
         if (animation != null)
         {
             animation.Configuration = new DirectConnectedAnimationConfiguration();
 
-            // Find the element for the stored item and start the back animation.
-            int index = repeater.ItemsSourceView.IndexOf(_storedItem);
-            if (repeater.TryGetElement(index) is FrameworkElement container
+            // Start the back animation from the target element inside the item's template.
+            if (container != null
                 && FindChildByName(container, "connectedElement") is UIElement animationTarget)
             {
                 animation.TryStart(animationTarget);
             }
         }
 
-        repeater.Focus(FocusState.Programmatic);
+        // Return keyboard focus to the item the user activated so keyboard and Narrator users
+        // resume from where they left off instead of losing their place. Focus() is available on
+        // the Grid because it is a UIElement with IsTabStop set in the template.
+        if (container != null)
+        {
+            container.Focus(FocusState.Programmatic);
+        }
+        else
+        {
+            repeater.Focus(FocusState.Programmatic);
+        }
     }
 
     /// <summary>
