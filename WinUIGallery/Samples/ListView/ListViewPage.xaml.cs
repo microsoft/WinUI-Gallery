@@ -74,18 +74,18 @@ public sealed partial class ListViewPage : ItemsPageBase
 
         // Populate ListViews for the RestoreScrollPosition and ScrollIntoView samples.
         // Pre-format each entry with its index so the position in the list is easy to track.
-        var baseContacts = await Contact.GetContactsAsync();
+        ObservableCollection<Contact> baseContacts = await Contact.GetContactsAsync();
         contacts5 = new ObservableCollection<string>(
             baseContacts.Select((c, i) => $"{i + 1}. {c.Name}"));
 
         // ScrollIntoView is more interesting with a long list, so seed multiple copies.
-        var manyContacts = new List<string>();
+        List<string> manyContacts = new List<string>();
         int n = 1;
         for (int i = 0; i < 10; i++)
         {
-            foreach (var c in baseContacts)
+            foreach (Contact contact in baseContacts)
             {
-                manyContacts.Add($"{n++}. {c.Name}");
+                manyContacts.Add($"{n++}. {contact.Name}");
             }
         }
         contacts6 = new ObservableCollection<string>(manyContacts);
@@ -357,7 +357,6 @@ public sealed partial class ListViewPage : ItemsPageBase
             RestoreScrollListView,
             item => item as string ?? string.Empty);
 
-        SavedPositionTextBlock.Text = $"Saved position: {_persistedPosition}";
         RestorePositionButton.IsEnabled = true;
     }
 
@@ -388,7 +387,7 @@ public sealed partial class ListViewPage : ItemsPageBase
             return;
         }
 
-        var alignment = ScrollAlignmentComboBox.SelectedIndex == 1
+        ScrollIntoViewAlignment alignment = ScrollAlignmentComboBox.SelectedIndex == 1
             ? ScrollIntoViewAlignment.Leading
             : ScrollIntoViewAlignment.Default;
 
