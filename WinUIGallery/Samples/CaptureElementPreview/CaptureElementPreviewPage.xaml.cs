@@ -7,7 +7,6 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Media.Capture;
@@ -94,8 +93,20 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
             frameSourceName.Text = "No camera devices found.";
             return;
         }
-        mediaFrameSourceGroup = groups.First();
+        cameraSourceComboBox.ItemsSource = groups;
+        cameraSourceComboBox.SelectedIndex = 0;
+    }
 
+    private async Task StartCapture(MediaFrameSourceGroup sourceGroup)
+    {
+        if (mediaCapture != null)
+        {
+            captureElement.Source = null;
+            mediaCapture.Dispose();
+            mediaCapture = null;
+        }
+
+        mediaFrameSourceGroup = sourceGroup;
         frameSourceName.Text = "Viewing: " + mediaFrameSourceGroup.DisplayName;
         mediaCapture = new MediaCapture();
         var mediaCaptureInitializationSettings = new MediaCaptureInitializationSettings()
@@ -110,6 +121,21 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         // Set the MediaPlayerElement's Source property to the MediaSource for the mediaCapture.
         var frameSource = mediaCapture.FrameSources[this.mediaFrameSourceGroup.SourceInfos[0].Id];
         captureElement.Source = Windows.Media.Core.MediaSource.CreateFromMediaFrameSource(frameSource);
+    }
+
+    private async void CameraSourceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (cameraSourceComboBox.SelectedItem is MediaFrameSourceGroup selectedGroup)
+        {
+            try
+            {
+                await StartCapture(selectedGroup);
+            }
+            catch (Exception ex)
+            {
+                frameSourceName.Text = "Error: " + ex.Message;
+            }
+        }
     }
 
     public string MirrorTextReplacement = ""; // starts not mirrored, so no text in that case
