@@ -18,29 +18,99 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <controls:ControlExample
-        HorizontalAlignment="Stretch"
-        HorizontalContentAlignment="Stretch"
-        SampleDefinition="WebView2\SimpleWebview2.txt">
-        <controls:ControlExample.Example>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <TextBlock Margin="0,0,0,12" TextWrapping="Wrap">
-                    WebView2 is powered by the Chromium engine.
-                </TextBlock>
-                <WebView2
-                    x:Name="MyWebView2"
-                    Grid.Row="1"
-                    MinWidth="200"
-                    MinHeight="200"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Source="https://learn.microsoft.com/windows/apps/winui/winui3/" />
-            </Grid>
-        </controls:ControlExample.Example>
+    <StackPanel Spacing="24">
+        <controls:ControlExample
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
+            SampleDefinition="WebView2\SimpleWebview2.txt">
+            <controls:ControlExample.Example>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Margin="0,0,0,12" TextWrapping="Wrap">
+                        WebView2 is powered by the Chromium engine.
+                    </TextBlock>
+                    <WebView2
+                        x:Name="MyWebView2"
+                        Grid.Row="1"
+                        MinWidth="200"
+                        MinHeight="200"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Source="https://learn.microsoft.com/windows/apps/winui/winui3/" />
+                </Grid>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
 
-    </controls:ControlExample>
+        <controls:ControlExample
+            HeaderText="Transparent WebView2 over XAML content"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch"
+            SampleDefinition="WebView2\WebView2Transparency.txt">
+            <controls:ControlExample.Example>
+                <Grid
+                    Height="360"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8">
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFF2D55" Offset="0" />
+                            <GradientStop Color="#FF7B2CFF" Offset="0.5" />
+                            <GradientStop Color="#FF00C7BE" Offset="1" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        AutomationProperties.AccessibilityView="Raw"
+                        FontSize="34"
+                        FontWeight="Bold"
+                        IsHitTestVisible="False"
+                        Text="XAML UNDERLAY"
+                        TextWrapping="Wrap" />
+
+                    <WebView2
+                        x:Name="TransparentWebView2"
+                        AutomationProperties.Name="Transparent WebView2 diagnostic"
+                        DefaultBackgroundColor="Transparent"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch" />
+                </Grid>
+            </controls:ControlExample.Example>
+
+            <controls:ControlExample.Output>
+                <StackPanel Spacing="4">
+                    <TextBlock
+                        x:Name="TransparencyVerdictText"
+                        AutomationProperties.AutomationId="WebView2TransparencyVerdict"
+                        FontWeight="SemiBold"
+                        Text="Initializing transparency diagnostic..."
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="TransparencyDetailsText"
+                        AutomationProperties.AutomationId="WebView2TransparencyDetails"
+                        TextWrapping="Wrap" />
+                </StackPanel>
+            </controls:ControlExample.Output>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="8">
+                    <ToggleSwitch
+                        x:Name="UseTransparentBackgroundToggle"
+                        AutomationProperties.Name="Use transparent WebView2 background"
+                        Header="Transparent WebView2 background"
+                        IsOn="True"
+                        Toggled="UseTransparentBackgroundToggle_Toggled" />
+                    <Button
+                        AutomationProperties.Name="Refresh WebView2 transparency diagnostic"
+                        Click="RefreshTransparencyDiagnostic_Click"
+                        Content="Refresh diagnostic" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
+    </StackPanel>
 </Page>
