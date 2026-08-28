@@ -103,6 +103,15 @@
                         </StackPanel>
                     </toolkit:SettingsCard>
 
+                    <toolkit:SettingsCard Header="Save window state"
+                                          Description="Automatically save and restore window size and position between sessions">
+                        <toolkit:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE7C4;" />
+                        </toolkit:SettingsCard.HeaderIcon>
+                        <ToggleSwitch IsOn="{x:Bind Settings.SaveWindowState, Mode=TwoWay}"
+                                      OffContent="No"
+                                      OnContent="Yes" />
+                    </toolkit:SettingsCard>
 
                     <!--  About  -->
                     <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="About" />
