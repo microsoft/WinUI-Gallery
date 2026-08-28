@@ -32,11 +32,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Here's an ContentIsland in a ScrollViewer. Notice now the content scrolls and clips correctly." />
+                    <TextBlock Text="Here's a ContentIsland in a ScrollViewer. Notice how the content scrolls and clips correctly." />
                     <Button
                         Grid.Row="1"
                         Click="LoadModel_Click"
-                        Content="Load model"
+                        Content="Load content"
                         Style="{StaticResource AccentButtonStyle}" />
                     <toolkit:WrapPanel
                         x:Name="_rectanglePanel"

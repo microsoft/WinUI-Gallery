@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.UI.Composition;
 using Microsoft.UI.Content;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -11,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Threading.Tasks;
+using Windows.UI.Composition;
 
 namespace WinUIGallery.ControlPages;
 
@@ -20,7 +20,7 @@ public sealed partial class ContentIslandPage : Page
     {
         public ChildSiteLink ChildSiteLink { get; } = childSiteLink;
 
-        public ContentIsland? HelmetIsland { get; set; }
+        public ContentIsland? ChildIsland { get; set; }
 
         public Rectangle Rect { get; } = rect;
 
@@ -63,12 +63,14 @@ public sealed partial class ContentIslandPage : Page
             return;
         }
 
-        ContainerVisual placementVisual = (ContainerVisual)ElementCompositionPreview.GetElementVisual(rect);
+        Visual elementVisual = ElementCompositionPreview.GetElementVisual(rect);
+        ContainerVisual placementVisual = elementVisual.Compositor.CreateContainerVisual();
+        ElementCompositionPreview.SetElementChildVisual(rect, placementVisual);
         Vector2 size = rect.ActualSize;
 
         // The ChildSiteLink must live as long as the visual connection between parent and child islands.
 #pragma warning disable CA2000 // Dispose objects before losing scope
-        ChildSiteLink childSiteLink = ChildSiteLink.Create(parentIsland, placementVisual);
+        ChildSiteLink childSiteLink = ChildSiteLink.CreateForSystemVisual(parentIsland, placementVisual);
 #pragma warning restore CA2000
 
         // We also need to keep the offset of the ChildContentLink within the parent ContentIsland in sync
@@ -79,7 +81,7 @@ public sealed partial class ContentIslandPage : Page
             // xaml layout change on this thread!
             var transform = rect.TransformToVisual(null);
             var point = transform.TransformPoint(new Windows.Foundation.Point(0, 0));
-            childSiteLink.LocalToParentTransformMatrix = System.Numerics.Matrix4x4.CreateTranslation(
+            childSiteLink.LocalToParentTransformMatrix = Matrix4x4.CreateTranslation(
                 (float)(point.X),
                 (float)(point.Y),
                 0);
@@ -97,18 +99,22 @@ public sealed partial class ContentIslandPage : Page
 
         // The ContentIsland is connected to the ChildSiteLink and must outlive this method.
 #pragma warning disable CA2000 // Dispose objects before losing scope
-        ContentIsland helmetIsland = await HelmetScenario.CreateIsland(placementVisual.Compositor);
+        ContentIsland contentIsland = await SystemCompositionIslandScenario.CreateIslandAsync(
+            placementVisual.Compositor,
+            size);
 #pragma warning restore CA2000
 
         if (!childSiteLink.IsClosed)
         {
-            entry.HelmetIsland = helmetIsland;
-            childSiteLink.Connect(helmetIsland);
+            entry.ChildIsland = contentIsland;
+            childSiteLink.ProcessesKeyboardInput = contentIsland.ProcessesKeyboardInput;
+            childSiteLink.ProcessesPointerInput = contentIsland.ProcessesPointerInput;
+            childSiteLink.Connect(contentIsland);
         }
         else
         {
             // The page was unloaded while the island was loading; release it immediately.
-            helmetIsland.Dispose();
+            contentIsland.Dispose();
         }
     }
 
@@ -118,7 +124,8 @@ public sealed partial class ContentIslandPage : Page
         {
             entry.Rect.LayoutUpdated -= entry.LayoutUpdatedHandler;
             entry.ChildSiteLink.Dispose();
-            entry.HelmetIsland?.Dispose();
+            entry.ChildIsland?.Dispose();
+            ElementCompositionPreview.SetElementChildVisual(entry.Rect, null);
         }
 
         _islandEntries.Clear();
