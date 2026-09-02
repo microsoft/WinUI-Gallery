@@ -22,7 +22,6 @@ parameters:
 - name: platforms
   type: object
   default:
-  - x86
   - x64
   - ARM64
 
@@ -130,7 +129,7 @@ extends:
               targetType: inline
               script: |
                 $packages = @(Get-ChildItem -Path "$(Pipeline.Workspace)" -Recurse -Filter "WinUIGallery_*.msix")
-                $requiredPlatforms = @("x86", "x64", "arm64")
+                $requiredPlatforms = @("x64", "arm64")
 
                 foreach ($platform in $requiredPlatforms) {
                   $matches = @($packages | Where-Object { $_.BaseName -like "*_$platform" })
