@@ -1,0 +1,160 @@
+name: $(BuildDefinitionName)_$(StorePackageVersion)
+
+trigger: none
+pr: none
+
+resources:
+  repositories:
+  - repository: 1esPipelines
+    type: git
+    name: 1ESPipelineTemplates/1ESPipelineTemplates
+    ref: refs/tags/release
+
+parameters:
+- name: publishToStore
+  displayName: Create a private Store submission
+  type: boolean
+  default: false
+- name: storeServiceEndpoint
+  displayName: StoreBroker service connection
+  type: string
+  default: 'WinUI Gallery - StoreBroker'
+- name: platforms
+  type: object
+  default:
+  - x64
+  - ARM64
+
+variables:
+  # Keep the counter prefix aligned with the app's major/minor version when
+  # starting a new release line.
+  StoreVersionBuild: $[counter('WinUIGalleryStore-2.10', 0)]
+  StorePackageVersion: 2.10.$(StoreVersionBuild).0
+
+extends:
+  template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
+  parameters:
+    sdl:
+      sourceAnalysisPool:
+        name: Azure-Pipelines-1ESPT-ExDShared
+        image: windows-latest
+        os: windows
+      codeql:
+        compiled:
+          enabled: false
+        runSourceLanguagesInSourceAnalysis: true
+    stages:
+    - stage: Build
+      jobs:
+      - ${{ each platform in parameters.platforms }}:
+        - job: Build_${{ platform }}
+          pool:
+            name: Azure-Pipelines-1ESPT-ExDShared
+            image: windows-latest
+            os: windows
+          variables:
+            AppxPackageDir: '$(Build.ArtifactStagingDirectory)\AppxPackages\'
+          steps:
+          - checkout: self
+          - task: UseDotNet@2
+            displayName: Setup .NET
+            inputs:
+              packageType: sdk
+              version: 9.0.x
+          - task: NuGetAuthenticate@1
+          - task: PowerShell@2
+            displayName: Build Store package - ${{ platform }}
+            inputs:
+              targetType: inline
+              script: |
+                dotnet publish WinUIGallery\WinUIGallery.csproj `
+                  --runtime win-${{ lower(platform) }} `
+                  --configuration Release `
+                  /p:Platform=${{ platform }} `
+                  /p:AppxPackageDir="$(AppxPackageDir)" `
+                  /p:UapAppxPackageBuildMode=SideloadOnly `
+                  /p:AppxBundle=Never `
+                  /p:GenerateAppxPackageOnBuild=true `
+                  /p:AppxPackageSigningEnabled=false `
+                  /p:Version="$(StorePackageVersion)"
+
+                if ($LASTEXITCODE -ne 0) {
+                  exit $LASTEXITCODE
+                }
+          - task: PowerShell@2
+            displayName: Stage Store package - ${{ platform }}
+            inputs:
+              targetType: inline
+              script: |
+                $packages = @(
+                  Get-ChildItem -Path "$(AppxPackageDir)" -Recurse -Filter "WinUIGallery*_${{ lower(platform) }}.msix"
+                )
+
+                if ($packages.Count -ne 1) {
+                  Write-Error "Expected one ${{ platform }} MSIX package, found $($packages.Count)."
+                  $packages | ForEach-Object { Write-Host $_.FullName }
+                  exit 1
+                }
+
+                New-Item -ItemType Directory -Path "$(Build.ArtifactStagingDirectory)\MSIX" -Force | Out-Null
+                Copy-Item $packages[0].FullName -Destination "$(Build.ArtifactStagingDirectory)\MSIX" -Force
+          - task: 1ES.PublishPipelineArtifact@1
+            displayName: Upload Store package - ${{ platform }}
+            inputs:
+              path: '$(Build.ArtifactStagingDirectory)\MSIX'
+              artifactName: MSIX-${{ platform }}
+
+    - ${{ if eq(parameters.publishToStore, true) }}:
+      - stage: Publish
+        dependsOn: Build
+        jobs:
+        - job: Publish
+          timeoutInMinutes: 360
+          templateContext:
+            type: releaseJob
+            isProduction: true
+            inputs:
+            - ${{ each platform in parameters.platforms }}:
+              - input: pipelineArtifact
+                artifactName: MSIX-${{ platform }}
+                targetPath: $(Pipeline.Workspace)
+          pool:
+            name: Azure-Pipelines-1ESPT-ExDShared
+            image: windows-latest
+            os: windows
+          steps:
+          - task: PowerShell@2
+            displayName: Validate Store submission packages
+            inputs:
+              targetType: inline
+              script: |
+                $packages = @(Get-ChildItem -Path "$(Pipeline.Workspace)" -Recurse -Filter "WinUIGallery_*.msix")
+                $requiredPlatforms = @("x64", "arm64")
+
+                foreach ($platform in $requiredPlatforms) {
+                  $matches = @($packages | Where-Object { $_.BaseName -like "*_$platform" })
+                  if ($matches.Count -ne 1) {
+                    Write-Error "Expected one $platform Store package, found $($matches.Count)."
+                    exit 1
+                  }
+                }
+
+                if ($packages.Count -ne $requiredPlatforms.Count) {
+                  Write-Error "Expected exactly $($requiredPlatforms.Count) Store packages, found $($packages.Count)."
+                  $packages | ForEach-Object { Write-Host $_.FullName }
+                  exit 1
+                }
+          - task: MS-RDX-MRO.windows-store-publish.publish-task.store-publish@3
+            displayName: Publish WinUI Gallery StoreBroker package
+            inputs:
+              serviceEndpoint: ${{ parameters.storeServiceEndpoint }}
+              appId: 9P3JFPWWDZRC
+              inputMethod: Packages
+              sourceFolder: $(Pipeline.Workspace)
+              contents: '**/WinUIGallery_*.msix'
+              force: true
+              skipPolling: true
+              deletePackages: true
+              numberOfPackagesToKeep: 1
+              targetPublishMode: Manual
+              Visibility: Private
