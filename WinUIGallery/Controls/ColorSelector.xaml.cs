@@ -31,6 +31,19 @@ public sealed partial class ColorSelector : UserControl
         set => SetValue(ColorProperty, value);
     }
 
+    public static readonly DependencyProperty IsAlphaEnabledProperty =
+        DependencyProperty.Register(
+            nameof(IsAlphaEnabled),
+            typeof(bool),
+            typeof(ColorSelector),
+            new PropertyMetadata(false));
+
+    public bool IsAlphaEnabled
+    {
+        get => (bool)GetValue(IsAlphaEnabledProperty);
+        set => SetValue(IsAlphaEnabledProperty, value);
+    }
+
     private static void OnColorPropertyChanged(
         DependencyObject d,
         DependencyPropertyChangedEventArgs e)
