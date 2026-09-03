@@ -11,8 +11,12 @@ resources:
     ref: refs/tags/release
 
 parameters:
+- name: releaseVersion
+  displayName: Release version (X.Y.Z)
+  type: string
+  default: '2.10.0'
 - name: publishToStore
-  displayName: Create a private Store submission
+  displayName: Submit package for Store certification
   type: boolean
   default: false
 - name: storeServiceEndpoint
@@ -26,10 +30,7 @@ parameters:
   - ARM64
 
 variables:
-  # Keep the counter prefix aligned with the app's major/minor version when
-  # starting a new release line.
-  StoreVersionBuild: $[counter('WinUIGalleryStore-2.10', 0)]
-  StorePackageVersion: 2.10.$(StoreVersionBuild).0
+  StorePackageVersion: ${{ parameters.releaseVersion }}.0
 
 extends:
   template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
@@ -67,6 +68,25 @@ extends:
             inputs:
               targetType: inline
               script: |
+                $packageVersion = "$(StorePackageVersion)"
+                if ($packageVersion -notmatch '^\d{1,5}\.\d{1,5}\.\d{1,5}\.0$') {
+                  Write-Error "Release version '${{ parameters.releaseVersion }}' must use X.Y.Z format, with each component between 0 and 65535."
+                  exit 1
+                }
+
+                $versionParts = $packageVersion.Split('.') | ForEach-Object { [int]$_ }
+                if ($versionParts | Where-Object { $_ -gt 65535 }) {
+                  Write-Error "Package version '$packageVersion' contains a component greater than 65535."
+                  exit 1
+                }
+
+                [xml]$project = Get-Content "WinUIGallery\WinUIGallery.csproj"
+                $projectVersion = $project.SelectSingleNode("//Version").InnerText
+                if ($projectVersion -ne $packageVersion) {
+                  Write-Error "Release version '$packageVersion' does not match WinUIGallery.csproj version '$projectVersion'. Merge the version bump before running this pipeline."
+                  exit 1
+                }
+
                 dotnet publish WinUIGallery\WinUIGallery.csproj `
                   --runtime win-${{ lower(platform) }} `
                   --configuration Release `
@@ -166,7 +186,7 @@ extends:
                   exit 1
                 }
 
-                & $makeAppx.FullName bundle /d $bundleInputDirectory /p $bundlePath /o
+                & $makeAppx.FullName bundle /d $bundleInputDirectory /p $bundlePath /bv "$(StorePackageVersion)" /o
                 if ($LASTEXITCODE -ne 0) {
                   exit $LASTEXITCODE
                 }
