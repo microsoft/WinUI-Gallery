@@ -1322,7 +1322,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A configurable control that lets a user pick a time value.",
           "ImagePath": "ms-appx:///Assets/ControlImages/TimePicker.png",
-          "Description": "Use a TimePicker to let users set a time in your app, for example to set a reminder. By default, the TimePicker uses the clock format for the user's region. Set ClockIdentifier to override the default with a 12-hour or 24-hour clock.",
+          "Description": "Use a TimePicker to let users set a time in your app, for example to set a reminder.",
           "SourcePath": "/CommonStyles/TimePicker_themeresources.xaml",
           "Docs": [
             {

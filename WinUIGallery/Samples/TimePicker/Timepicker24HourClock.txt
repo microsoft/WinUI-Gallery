@@ -1,6 +1,0 @@
---- header
-A TimePicker that overrides the regional format with a 24-hour clock and is initialized to the current time.
---- xaml
-<xmlns:sys="using:System">
-                    
-                    <TimePicker ClockIdentifier="24HourClock" Header="24 hour clock" SelectedTime="{x:Bind sys:DateTime.Now.TimeOfDay}" />

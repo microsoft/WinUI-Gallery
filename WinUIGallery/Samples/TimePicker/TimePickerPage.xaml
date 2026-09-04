@@ -28,8 +28,11 @@
             RelativePanel.Below="Example1">
             <TimePicker Header="Arrival time" MinuteIncrement="15"/>
         </controls:ControlExample>
-        <controls:ControlExample x:Name="Example3" SampleDefinition="TimePicker\Timepicker24HourClock.txt">
-            <TimePicker ClockIdentifier="24HourClock" Header="24 hour clock" SelectedTime="{x:Bind sys:DateTime.Now.TimeOfDay}"/>
+        <controls:ControlExample x:Name="Example3" SampleDefinition="TimePicker\TimepickerClockIdentifiers.txt">
+            <StackPanel Spacing="8">
+                <TimePicker ClockIdentifier="12HourClock" Header="12-hour clock" SelectedTime="{x:Bind sys:DateTime.Now.TimeOfDay}"/>
+                <TimePicker ClockIdentifier="24HourClock" Header="24-hour clock" SelectedTime="{x:Bind sys:DateTime.Now.TimeOfDay}"/>
+            </StackPanel>
         </controls:ControlExample>
     </StackPanel>
 </Page>
