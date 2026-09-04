@@ -24,6 +24,12 @@ steps:
         feedsToUse: 'config'
         nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
 
+    - task: DotNetCoreCLI@2
+      displayName: Verify catalog/windows-samples.json is up to date
+      inputs:
+        command: 'test'
+        projects: 'tests/WinUIGallery.CatalogExporter.Tests/WinUIGallery.CatalogExporter.Tests.csproj'
+
     - task: PowerShell@2
       displayName: Generate Test Signing Certificate
       inputs:
