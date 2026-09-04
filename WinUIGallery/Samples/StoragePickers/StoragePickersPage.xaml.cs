@@ -66,9 +66,6 @@ public sealed partial class StoragePickersPage : Page
             //re-enable the button
             button.IsEnabled = true;
 
-            // Return keyboard focus to the button, which lost focus when it was disabled, to avoid a keyboard trap.
-            button.Focus(FocusState.Programmatic);
-
             UIHelper.AnnounceActionForAccessibility(button, PickedSingleFileTextBlock.Text, "FilePickedNotificationId");
         }
     }
@@ -125,9 +122,6 @@ public sealed partial class StoragePickersPage : Page
 
             // Re-enable the button
             button.IsEnabled = true;
-
-            // Return keyboard focus to the button, which lost focus when it was disabled, to avoid a keyboard trap.
-            button.Focus(FocusState.Programmatic);
 
             // Announce result for accessibility
             UIHelper.AnnounceActionForAccessibility(button, PickedMultipleFilesTextBlock.Text, "FilesPickedNotificationId");
@@ -186,9 +180,6 @@ public sealed partial class StoragePickersPage : Page
 
             button.IsEnabled = true;
 
-            // Return keyboard focus to the button, which lost focus when it was disabled, to avoid a keyboard trap.
-            button.Focus(FocusState.Programmatic);
-
             UIHelper.AnnounceActionForAccessibility(button, SavedFileTextBlock.Text, "FileSavedNotificationId");
         }
     }
@@ -233,9 +224,6 @@ public sealed partial class StoragePickersPage : Page
             // re-enable the button
             button.IsEnabled = true;
 
-            // Return keyboard focus to the button, which lost focus when it was disabled, to avoid a keyboard trap.
-            button.Focus(FocusState.Programmatic);
-
             UIHelper.AnnounceActionForAccessibility(button, PickedFolderTextBlock.Text, "FolderPickedNotificationId");
         }
     }
@@ -256,8 +244,6 @@ public sealed partial class StoragePickersPage : Page
                 ThumbnailImage.Source = null;
                 button.IsEnabled = true;
 
-                // Return keyboard focus to the button, which lost focus when it was disabled, to avoid a keyboard trap.
-                button.Focus(FocusState.Programmatic);
                 return;
             }
 
@@ -303,9 +289,6 @@ public sealed partial class StoragePickersPage : Page
 
             button.IsEnabled = true;
 
-            // Return keyboard focus to the button, which lost focus when it was disabled, to avoid a keyboard trap.
-            button.Focus(FocusState.Programmatic);
-
             UIHelper.AnnounceActionForAccessibility(button, ThumbnailDetailsTextBlock.Text, "ThumbnailPickedNotificationId");
         }
     }
@@ -328,9 +311,6 @@ public sealed partial class StoragePickersPage : Page
             }
 
             button.IsEnabled = true;
-
-            // Return keyboard focus to the button, which lost focus when it was disabled, to avoid a keyboard trap.
-            button.Focus(FocusState.Programmatic);
 
             UIHelper.AnnounceActionForAccessibility(
                 button,
