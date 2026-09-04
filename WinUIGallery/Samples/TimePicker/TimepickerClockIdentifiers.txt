@@ -1,0 +1,7 @@
+--- header
+Use ClockIdentifier to override the regional clock format.
+--- xaml
+<StackPanel xmlns:sys="using:System" Spacing="8">
+    <TimePicker ClockIdentifier="12HourClock" Header="12-hour clock" SelectedTime="{x:Bind sys:DateTime.Now.TimeOfDay}" />
+    <TimePicker ClockIdentifier="24HourClock" Header="24-hour clock" SelectedTime="{x:Bind sys:DateTime.Now.TimeOfDay}" />
+</StackPanel>
