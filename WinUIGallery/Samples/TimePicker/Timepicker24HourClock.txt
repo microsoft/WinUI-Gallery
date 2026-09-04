@@ -1,5 +1,5 @@
 --- header
-A TimePicker using a 24-hour clock, initialized to current time.
+A TimePicker that overrides the regional format with a 24-hour clock and is initialized to the current time.
 --- xaml
 <xmlns:sys="using:System">
                     
