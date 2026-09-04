@@ -17,7 +17,7 @@ The releaser needs:
 
 - Write access to this GitHub repository.
 - Permission to run the Azure DevOps pipeline named
-  `WinUI-Gallery-Store-Release` (pipeline ID `200728`).
+  `WinUI-Gallery-Store-Release`.
 - Access to the WinUI 3 Gallery product in Partner Center.
 
 The StoreBroker service connection and Store permissions are already configured.
