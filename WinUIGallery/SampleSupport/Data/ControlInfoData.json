@@ -236,7 +236,13 @@
               "Title": "XamlReader - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.markup.xamlreader"
             }
-          ]
+          ],
+          "Catalog": {
+            "Aliases": [
+              "repl",
+              "live xaml preview"
+            ]
+          }
         }
       ]
     },
@@ -1383,7 +1389,13 @@
             "RepeatButton",
             "HyperlinkButton",
             "AppBarButton"
-          ]
+          ],
+          "Catalog": {
+            "Aliases": [
+              "cta",
+              "call to action"
+            ]
+          }
         },
         {
           "UniqueId": "DropDownButton",

@@ -98,6 +98,31 @@
                                     },
                                     "description": "Additional keywords used purely for search. If a search query matches one of these tags, this sample will be surfaced in the results even when the tag does not appear in the Title."
                                 },
+                                "Catalog": {
+                                    "type": "object",
+                                    "description": "Optional, opt-in overrides consumed only by tools/CatalogExporter when generating catalog/windows-samples.json. Everything here is additive/derivable metadata that the running gallery app itself never reads; omit this block entirely unless a sample genuinely needs to diverge from what the exporter can derive automatically from the fields above and the on-disk sample folder.",
+                                    "properties": {
+                                        "Exclude": {
+                                            "type": "boolean",
+                                            "default": false,
+                                            "description": "When true, this item is left out of the generated catalog manifest entirely (for example, a developer utility page rather than a genuine, documentable sample)."
+                                        },
+                                        "Aliases": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "description": "Additional search aliases that are useful for an external catalog/agent but too broad or noisy for the in-app search experience (which already uses Tags)."
+                                        },
+                                        "RelatedSamples": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "description": "Extra related-sample references that point outside this repository, formatted as '{owner}/{repo}#{uniqueId}'. Used to extend (not replace) RelatedControls, which can only reference other items in this same file."
+                                        }
+                                    }
+                                },
                             },
                             "required": [ "UniqueId", "Title"]
                         }
