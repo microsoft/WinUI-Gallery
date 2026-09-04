@@ -20,10 +20,9 @@ The releaser needs:
   `WinUI-Gallery-Store-Release`.
 - Access to the WinUI 3 Gallery product in Partner Center.
 
-The StoreBroker service connection and Store permissions are already configured.
-The pipeline uses workload identity federation; no client secret or signing
-certificate is needed by the releaser. Microsoft Store signs the package after
-ingestion.
+The release infrastructure and Store permissions are already configured. No
+client secret or signing certificate is needed by the releaser. Microsoft Store
+signs the package after ingestion.
 
 ## 1. Prepare the release commit
 
