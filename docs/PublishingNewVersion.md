@@ -20,10 +20,6 @@ The releaser needs:
   `WinUI-Gallery-Store-Release`.
 - Access to the WinUI 3 Gallery product in Partner Center.
 
-The release infrastructure and Store permissions are already configured. No
-client secret or signing certificate is needed by the releaser. Microsoft Store
-signs the package after ingestion.
-
 ## 1. Prepare the release commit
 
 Choose the release version `X.Y.Z`. Update all three checked-in version values to
@@ -40,7 +36,7 @@ commit is the exact source to release.
 Wait for the required GitHub checks on `main` to pass. Record the merged commit
 SHA; the Store build and GitHub release must both use that commit.
 
-## 2. Run a build-only rehearsal
+## 2. Validate the packages
 
 Manually run `WinUI-Gallery-Store-Release` in Azure DevOps with:
 
@@ -48,12 +44,11 @@ Manually run `WinUI-Gallery-Store-Release` in Azure DevOps with:
 - `releaseVersion`: `X.Y.Z`
 - `publishToStore`: `false`
 
-The pipeline verifies that `releaseVersion` matches the version in
-`WinUIGallery.csproj`, then builds x64 and ARM64 MSIX artifacts. Download and
-smoke-test the packages if the release warrants additional validation.
+This verifies that `releaseVersion` matches the version in
+`WinUIGallery.csproj` and produces x64 and ARM64 packages without creating a
+Store submission. Download and smoke-test the packages before continuing.
 
-A build-only run does not contact Partner Center and can be repeated safely
-without consuming a package version.
+This step can be repeated without consuming a Store package version.
 
 ## 3. Submit the Store package for certification
 
@@ -62,12 +57,8 @@ Run the same pipeline again from the same `main` commit with:
 - `releaseVersion`: `X.Y.Z`
 - `publishToStore`: `true`
 
-This setting is not a dry run. It:
-
-1. Builds x64 and ARM64 packages as `X.Y.Z.0`.
-2. Combines them into one `X.Y.Z.0` MSIX bundle.
-3. Uploads the bundle to the private WinUI 3 Gallery Store product.
-4. Submits the update for Store certification.
+This setting is not a dry run. It builds the `X.Y.Z.0` Store package and submits
+the update for certification.
 
 The pipeline uses manual Store publishing, so passing certification does not
 make the update public. Someone must still select **Publish now** in Partner
@@ -89,7 +80,7 @@ select **Publish now** for a test submission.
 While Store certification is running, create a draft GitHub release:
 
 - Tag: `vX.Y.Z`
-- Target: the exact commit SHA used by the Store pipeline
+- Target: the exact commit SHA used for the Store update
 - Title: `WinUI 3 Gallery vX.Y.Z`
 - Release notes: summarize the release and include the generated comparison
   from the previous release tag
