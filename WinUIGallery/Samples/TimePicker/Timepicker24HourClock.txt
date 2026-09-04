@@ -1,5 +1,5 @@
 --- header
-A TimePicker using a 24-hour clock, initialized to current time.
+A TimePicker explicitly using a 24-hour clock, initialized to current time.
 --- xaml
 <xmlns:sys="using:System">
                     
