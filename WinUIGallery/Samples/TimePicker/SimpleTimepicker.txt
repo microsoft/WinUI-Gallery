@@ -1,4 +1,4 @@
 --- header
-A simple TimePicker.
+A simple TimePicker that uses the clock format for the user's region.
 --- xaml
 <TimePicker/>

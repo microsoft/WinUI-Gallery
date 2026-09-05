@@ -72,6 +72,9 @@ Ensure that the `WinUIGallery` project is set as the startup project in Visual S
 
 To learn more about Windows app development, go to the [Windows Dev Center](https://developer.microsoft.com/windows).
 
+Maintainers can follow the [release runbook](docs/PublishingNewVersion.md) to
+coordinate Microsoft Store publishing with a GitHub release.
+
 
 ### Related topics
 

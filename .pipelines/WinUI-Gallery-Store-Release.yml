@@ -11,8 +11,12 @@ resources:
     ref: refs/tags/release
 
 parameters:
+- name: releaseVersion
+  displayName: Release version (X.Y.Z)
+  type: string
+  default: '2.10.0'
 - name: publishToStore
-  displayName: Create a private Store submission
+  displayName: Submit package for Store certification
   type: boolean
   default: false
 - name: storeServiceEndpoint
@@ -26,10 +30,7 @@ parameters:
   - ARM64
 
 variables:
-  # Keep the counter prefix aligned with the app's major/minor version when
-  # starting a new release line.
-  StoreVersionBuild: $[counter('WinUIGalleryStore-2.10', 0)]
-  StorePackageVersion: 2.10.$(StoreVersionBuild).0
+  StorePackageVersion: ${{ parameters.releaseVersion }}.0
 
 extends:
   template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
@@ -67,6 +68,25 @@ extends:
             inputs:
               targetType: inline
               script: |
+                $packageVersion = "$(StorePackageVersion)"
+                if ($packageVersion -notmatch '^\d{1,5}\.\d{1,5}\.\d{1,5}\.0$') {
+                  Write-Error "Release version '${{ parameters.releaseVersion }}' must use X.Y.Z format, with each component between 0 and 65535."
+                  exit 1
+                }
+
+                $versionParts = $packageVersion.Split('.') | ForEach-Object { [int]$_ }
+                if ($versionParts | Where-Object { $_ -gt 65535 }) {
+                  Write-Error "Package version '$packageVersion' contains a component greater than 65535."
+                  exit 1
+                }
+
+                [xml]$project = Get-Content "WinUIGallery\WinUIGallery.csproj"
+                $projectVersion = $project.SelectSingleNode("//Version").InnerText
+                if ($projectVersion -ne $packageVersion) {
+                  Write-Error "Release version '$packageVersion' does not match WinUIGallery.csproj version '$projectVersion'. Merge the version bump before running this pipeline."
+                  exit 1
+                }
+
                 dotnet publish WinUIGallery\WinUIGallery.csproj `
                   --runtime win-${{ lower(platform) }} `
                   --configuration Release `
@@ -124,7 +144,7 @@ extends:
             os: windows
           steps:
           - task: PowerShell@2
-            displayName: Validate Store submission packages
+            displayName: Create and validate Store submission bundle
             inputs:
               targetType: inline
               script: |
@@ -144,14 +164,53 @@ extends:
                   $packages | ForEach-Object { Write-Host $_.FullName }
                   exit 1
                 }
+
+                $bundleInputDirectory = "$(Pipeline.Workspace)\StoreBundleInput"
+                $bundleOutputDirectory = "$(Pipeline.Workspace)\StoreBundle"
+                $bundleValidationDirectory = "$(Pipeline.Workspace)\StoreBundleValidation"
+                $bundlePath = Join-Path $bundleOutputDirectory "WinUIGallery_$(StorePackageVersion).msixbundle"
+
+                New-Item -ItemType Directory -Path $bundleInputDirectory -Force | Out-Null
+                New-Item -ItemType Directory -Path $bundleOutputDirectory -Force | Out-Null
+                $packages | Copy-Item -Destination $bundleInputDirectory -Force
+
+                $makeAppx = Get-ChildItem -Path "${env:ProgramFiles(x86)}\Windows Kits\10\bin" `
+                  -Recurse `
+                  -Filter makeappx.exe |
+                    Where-Object { $_.DirectoryName -like "*\x64" } |
+                    Sort-Object @{ Expression = { [version]$_.Directory.Parent.Name }; Descending = $true } |
+                    Select-Object -First 1
+
+                if (-not $makeAppx) {
+                  Write-Error "Could not find the Windows SDK makeappx.exe tool."
+                  exit 1
+                }
+
+                & $makeAppx.FullName bundle /d $bundleInputDirectory /p $bundlePath /bv "$(StorePackageVersion)" /o
+                if ($LASTEXITCODE -ne 0) {
+                  exit $LASTEXITCODE
+                }
+
+                & $makeAppx.FullName unbundle /p $bundlePath /d $bundleValidationDirectory /o
+                if ($LASTEXITCODE -ne 0) {
+                  exit $LASTEXITCODE
+                }
+
+                $bundledPackages = @(Get-ChildItem -Path $bundleValidationDirectory -Filter "WinUIGallery_*.msix")
+                if ($bundledPackages.Count -ne $requiredPlatforms.Count) {
+                  Write-Error "Expected the bundle to contain $($requiredPlatforms.Count) packages, found $($bundledPackages.Count)."
+                  exit 1
+                }
+
+                Write-Host "Created Store bundle: $bundlePath"
           - task: MS-RDX-MRO.windows-store-publish.publish-task.store-publish@3
             displayName: Publish WinUI Gallery StoreBroker package
             inputs:
               serviceEndpoint: ${{ parameters.storeServiceEndpoint }}
               appId: 9P3JFPWWDZRC
               inputMethod: Packages
-              sourceFolder: $(Pipeline.Workspace)
-              contents: '**/WinUIGallery_*.msix'
+              sourceFolder: '$(Pipeline.Workspace)\StoreBundle'
+              contents: 'WinUIGallery_*.msixbundle'
               force: true
               skipPolling: true
               deletePackages: true
