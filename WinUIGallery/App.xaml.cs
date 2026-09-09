@@ -7,6 +7,7 @@ using Microsoft.Windows.AppLifecycle;
 using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
 using Microsoft.Windows.BadgeNotifications;
+using Microsoft.Windows.Storage;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -45,6 +46,10 @@ sealed partial class App : Application
         IdleSynchronizer.Init();
 
         MainWindow = new MainWindow();
+
+        //TODO: Only call this if we're building with an exp version of WinAppSDK
+        PersistMainWindowSize();
+
         WindowHelper.TrackWindow(MainWindow);
 
 #if DEBUG
@@ -89,6 +94,36 @@ sealed partial class App : Application
                 }
             }
         };
+    }
+
+// TODO: Only build this function if we're using an experimental WinAppSDK
+    private void PersistMainWindowSize()
+    {
+        ApplicationData appData = ApplicationData.GetDefault();
+
+        string containerName = "MainWindow_Settings";
+        string valueName = "SavedSize";
+
+        var settingsContainer = appData.LocalSettings.Containers[containerName];
+        if (settingsContainer != null)
+        {
+            if (settingsContainer.Values[valueName] is Windows.Foundation.Size savedSize)
+            {
+                MainWindow.Width = savedSize.Width;
+                MainWindow.Height = savedSize.Height;
+            }
+        }
+
+        Windows.Foundation.Size lastSize = new Windows.Foundation.Size(MainWindow.Width, MainWindow.Height);
+
+        MainWindow.SizeChanged += (s, e) => {
+            lastSize = new Windows.Foundation.Size(MainWindow.Width, MainWindow.Height);
+        };
+
+        MainWindow.Closed += (s, e) => {
+            ApplicationDataContainer appDataContainer = appData.LocalSettings.CreateContainer(containerName, ApplicationDataCreateDisposition.Always);
+            appDataContainer.Values[valueName] = lastSize;
+        };   
     }
 
     private void DebugSettings_BindingFailed(object sender, BindingFailedEventArgs e)

@@ -75,8 +75,9 @@ public sealed partial class MainWindow : Window
 
     private void RootGrid_Loaded(object sender, RoutedEventArgs e)
     {
+        // TODO: We only need to do this when MinWidth/Height aren't available.  Today they're only in the experimental WinAppSDK.
         // We need to set the minimum size here because the XamlRoot is not available in the constructor.
-        WindowHelper.SetWindowMinSize(this, 640, 500);
+        //WindowHelper.SetWindowMinSize(this, 640, 500);
 
         if (sender is FrameworkElement rootGrid && rootGrid.XamlRoot is not null)
         {
@@ -111,7 +112,7 @@ public sealed partial class MainWindow : Window
 
     private void RootGridXamlRoot_Changed(XamlRoot sender, XamlRootChangedEventArgs args)
     {
-        WindowHelper.SetWindowMinSize(this, 640, 500);
+        //WindowHelper.SetWindowMinSize(this, 640, 500);
     }
 
     private void SetWindowProperties()
@@ -126,6 +127,10 @@ public sealed partial class MainWindow : Window
         this.SetTitleBar(titleBar);
         this.AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
         this.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
+
+        //TODO: Only use MinWidth/Height when WinAppSDK is experimental
+        this.MinWidth = 640;
+        this.MinHeight = 500;
     }
 
     private void OnPaneDisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
