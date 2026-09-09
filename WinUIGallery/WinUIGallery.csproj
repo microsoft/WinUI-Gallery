@@ -147,7 +147,8 @@
   </ItemGroup>
 	
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
-    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
+    <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" ExcludeAssets="all" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.WindowsAppSDK.WinUI" Version="$(WinUIExperimentPackageVersion)" />
     <PackageReference Remove="ColorCode.Core" />
     <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
     <PackageReference Update="CommunityToolkit.WinUI.Controls.SettingsControls" Version="$(CommunityToolkitWinUIVersion)" />
