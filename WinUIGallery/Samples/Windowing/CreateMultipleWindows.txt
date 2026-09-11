@@ -20,5 +20,6 @@ Window childWindow = new Window
 };
 
 WindowHelper.TrackWindow(childWindow);
+// ResizeClient takes physical pixels, independent of display scaling.
 childWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
 childWindow.Activate();

@@ -68,9 +68,9 @@ Use the normal `Debug` or `Release` configuration; the SDK version is pinned in
 instead of referencing a shared Windows App SDK framework package. Experimental
 APIs can change or be removed before a stable release.
 
-The **Windowing APIs** page demonstrates the experimental window sizing properties
-and uses the shared experimental badges and warning banner. Existing windowing
-samples continue to use stable APIs.
+The **Windowing APIs** page combines stable window creation with experimental
+window sizing examples. Each experimental example has its own label and warning;
+the stable example retains its original APIs.
 
 > [!WARNING]
 > Try deleting [`nuget.config`](nuget.config) and building again if you get the following build error:

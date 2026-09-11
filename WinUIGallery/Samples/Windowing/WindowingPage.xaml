@@ -10,18 +10,23 @@
     <StackPanel Margin="0,16,0,0">
         <TextBlock
             Margin="0,0,0,8"
-            Text="Create top-level XAML windows and configure their client-area size. Sizes are in device-independent pixels (DIPs) and exclude the standard title bar and borders."
+            Text="Create top-level XAML windows and configure their client-area size. Each example opens a separate window."
             TextWrapping="Wrap" />
 
         <controls:ControlExample
             HeaderText="Create a top-level Window"
             SampleDefinition="Windowing\CreateMultipleWindows.txt">
-            <Button
-                x:Name="CreateWindowButton"
-                AutomationProperties.AutomationId="WindowingCreateWindow"
-                AutomationProperties.Name="Create a top-level window"
-                Click="CreateNewWindow_Click"
-                Content="Create new Window" />
+            <StackPanel Spacing="12">
+                <TextBlock
+                    Text="This stable example uses AppWindow.ResizeClient to request a 500 by 500 physical-pixel client area."
+                    TextWrapping="Wrap" />
+                <Button
+                    x:Name="CreateWindowButton"
+                    AutomationProperties.AutomationId="WindowingCreateWindow"
+                    AutomationProperties.Name="Create a top-level window"
+                    Click="CreateNewWindow_Click"
+                    Content="Create new Window" />
+            </StackPanel>
         </controls:ControlExample>
 
         <controls:ControlExample
@@ -29,7 +34,7 @@
             SampleDefinition="Windowing\WindowClientSize.txt">
             <StackPanel Spacing="12">
                 <TextBlock
-                    Text="Choose an initial client size, then open a window. You can still resize it using its borders. Close it with its title bar Close button or Alt+F4."
+                    Text="Choose an initial client size in device-independent pixels (DIPs), which scale with the display setting and exclude the standard title bar and borders. You can still resize the window. Close it with its title bar Close button or Alt+F4."
                     TextWrapping="Wrap" />
                 <Button
                     x:Name="OpenSizedWindowButton"
@@ -74,20 +79,28 @@
 
         <controls:ControlExample
             IsExperimental="True"
-            SampleDefinition="Windowing\WindowMinimumClientSize.txt">
+            SampleDefinition="Windowing\WindowSizeConstraints.txt">
             <StackPanel Spacing="12">
                 <TextBlock
-                    Text="Open a window with an initial 640 by 480 DIP client area, then try to shrink it using its borders. MinWidth and MinHeight prevent the client area from becoming smaller than the selected minimums."
+                    Text="Open a window with an initial 640 by 480 DIP client area, then resize it using its borders. MinWidth, MinHeight, MaxWidth, and MaxHeight constrain the client area to the selected limits. Maximizing is disabled in this example."
                     TextWrapping="Wrap" />
                 <Button
-                    x:Name="OpenMinimumWindowButton"
-                    AutomationProperties.AutomationId="WindowingOpenMinimumWindow"
-                    AutomationProperties.Name="Open a window with the selected minimum client size"
-                    Click="OpenMinimumWindow_Click"
-                    Content="Open minimum-size window" />
+                    x:Name="OpenConstrainedWindowButton"
+                    AutomationProperties.AutomationId="WindowingOpenConstrainedWindow"
+                    AutomationProperties.Name="Open a window with the selected minimum and maximum client sizes"
+                    Click="OpenConstrainedWindow_Click"
+                    Content="Open constrained window" />
             </StackPanel>
             <controls:ControlExample.Options>
-                <StackPanel Spacing="12">
+                <Grid ColumnSpacing="12" RowSpacing="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
                     <ComboBox
                         x:Name="MinimumWidthOption"
                         AutomationProperties.AutomationId="WindowingMinimumWidth"
@@ -102,6 +115,7 @@
                     </ComboBox>
                     <ComboBox
                         x:Name="MinimumHeightOption"
+                        Grid.Row="1"
                         AutomationProperties.AutomationId="WindowingMinimumHeight"
                         AutomationProperties.Name="Minimum client height in DIPs"
                         HorizontalAlignment="Stretch"
@@ -112,11 +126,40 @@
                         <x:Int32>320</x:Int32>
                         <x:Int32>360</x:Int32>
                     </ComboBox>
-                </StackPanel>
+                    <ComboBox
+                        x:Name="MaximumWidthOption"
+                        Grid.Column="1"
+                        AutomationProperties.AutomationId="WindowingMaximumWidth"
+                        AutomationProperties.Name="Maximum client width in DIPs"
+                        HorizontalAlignment="Stretch"
+                        Header="MaxWidth (DIPs)"
+                        SelectedIndex="2">
+                        <x:Int32>640</x:Int32>
+                        <x:Int32>800</x:Int32>
+                        <x:Int32>960</x:Int32>
+                        <x:Int32>1280</x:Int32>
+                    </ComboBox>
+                    <ComboBox
+                        x:Name="MaximumHeightOption"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        AutomationProperties.AutomationId="WindowingMaximumHeight"
+                        AutomationProperties.Name="Maximum client height in DIPs"
+                        HorizontalAlignment="Stretch"
+                        Header="MaxHeight (DIPs)"
+                        SelectedIndex="2">
+                        <x:Int32>480</x:Int32>
+                        <x:Int32>600</x:Int32>
+                        <x:Int32>720</x:Int32>
+                        <x:Int32>900</x:Int32>
+                    </ComboBox>
+                </Grid>
             </controls:ControlExample.Options>
             <controls:ControlExample.Substitutions>
                 <controls:ControlExampleSubstitution Key="MinWidth" Value="{x:Bind MinimumWidthOption.SelectedItem, Mode=OneWay}" />
                 <controls:ControlExampleSubstitution Key="MinHeight" Value="{x:Bind MinimumHeightOption.SelectedItem, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="MaxWidth" Value="{x:Bind MaximumWidthOption.SelectedItem, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="MaxHeight" Value="{x:Bind MaximumHeightOption.SelectedItem, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>

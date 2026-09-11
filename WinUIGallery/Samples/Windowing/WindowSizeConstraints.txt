@@ -2,8 +2,9 @@
 // Licensed under the MIT License.
 
 --- header
-Constrain the client size with Window.MinWidth and Window.MinHeight
+Constrain the client size with minimum and maximum dimensions
 --- c#
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -11,18 +12,27 @@ using WinUIGallery.Helpers;
 
 // Requires an experimental Windows App SDK. These APIs can change or be removed.
 // Place these methods in a Page. The literals below follow the selected options.
-private void OpenMinimumWindow_Click(object sender, RoutedEventArgs e)
+private void OpenConstrainedWindow_Click(object sender, RoutedEventArgs e)
 {
     int minWidth = $(MinWidth);
     int minHeight = $(MinHeight);
+    int maxWidth = $(MaxWidth);
+    int maxHeight = $(MaxHeight);
 
     Window window = CreateSampleWindow(
-        "Window.MinWidth / MinHeight (experimental)",
-        $"Minimum client area: {minWidth} by {minHeight} DIPs. Try shrinking this window. Close it with Alt+F4 or the title bar Close button.");
+        "Window size constraints (experimental)",
+        $"Client width: {minWidth} to {maxWidth} DIPs. Client height: {minHeight} to {maxHeight} DIPs. Try resizing this window. Close it with Alt+F4 or the title bar Close button.");
     window.MinWidth = minWidth;
     window.MinHeight = minHeight;
+    window.MaxWidth = maxWidth;
+    window.MaxHeight = maxHeight;
     window.Width = 640;
     window.Height = 480;
+
+    if (window.AppWindow.Presenter is OverlappedPresenter presenter)
+    {
+        presenter.IsMaximizable = false;
+    }
 
     // Activate applies the pending Window size before the first show.
     window.Activate();

@@ -1,9 +1,11 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using System.Diagnostics;
 using Windows.Graphics;
 using WinUIGallery.Helpers;
 
@@ -35,6 +37,7 @@ public sealed partial class WindowingPage : Page
         };
 
         WindowHelper.TrackWindow(childWindow);
+        // ResizeClient takes physical pixels, independent of display scaling.
         childWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
         childWindow.Activate();
     }
@@ -58,22 +61,32 @@ public sealed partial class WindowingPage : Page
         window.Activate();
     }
 
-    private void OpenMinimumWindow_Click(object sender, RoutedEventArgs e)
+    private void OpenConstrainedWindow_Click(object sender, RoutedEventArgs e)
     {
-        // Every offered minimum fits within the initial 640 by 480 DIP client area.
+        // Every offered range includes the initial 640 by 480 DIP client area.
         if (MinimumWidthOption.SelectedItem is not int minWidth ||
-            MinimumHeightOption.SelectedItem is not int minHeight)
+            MinimumHeightOption.SelectedItem is not int minHeight ||
+            MaximumWidthOption.SelectedItem is not int maxWidth ||
+            MaximumHeightOption.SelectedItem is not int maxHeight)
         {
+            Debug.WriteLine("Select minimum and maximum client sizes before opening the sample window.");
             return;
         }
 
         Window window = CreateSampleWindow(
-            "Window.MinWidth / MinHeight (experimental)",
-            $"Minimum client area: {minWidth} by {minHeight} DIPs. Try shrinking this window. Close it with Alt+F4 or the title bar Close button.");
+            "Window size constraints (experimental)",
+            $"Client width: {minWidth} to {maxWidth} DIPs. Client height: {minHeight} to {maxHeight} DIPs. Try resizing this window. Close it with Alt+F4 or the title bar Close button.");
         window.MinWidth = minWidth;
         window.MinHeight = minHeight;
+        window.MaxWidth = maxWidth;
+        window.MaxHeight = maxHeight;
         window.Width = 640;
         window.Height = 480;
+
+        if (window.AppWindow.Presenter is OverlappedPresenter presenter)
+        {
+            presenter.IsMaximizable = false;
+        }
 
         // Activate applies the pending Window size before the first show.
         window.Activate();
