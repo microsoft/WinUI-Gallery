@@ -1694,6 +1694,42 @@
           ]
         },
         {
+          "UniqueId": "InkToolbar",
+          "Tags": [
+            "ink",
+            "pen",
+            "drawing",
+            "handwriting"
+          ],
+          "Title": "InkToolbar",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A toolbar that provides drawing tools for an associated InkCanvas.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "InkToolbar provides built-in pen, pencil, highlighter, eraser, and ruler tools for drawing on an associated InkCanvas.",
+          "SourcePath": "/InkToolbar",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "InkToolbar - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.inktoolbar"
+            },
+            {
+              "Title": "Inking controls",
+              "Uri": "https://learn.microsoft.com/windows/uwp/ui-input/inking-controls"
+            }
+          ],
+          "RelatedControls": [
+            "Canvas"
+          ]
+        },
+        {
           "UniqueId": "ComboBox",
           "Tags": [
             "dropdown",
@@ -4065,6 +4101,9 @@
         {
           "UniqueId": "Windowing",
           "Tags": [
+            "multiple windows",
+            "new window",
+            "multi window",
             "experimental",
             "window sizing",
             "client area",
@@ -4076,10 +4115,9 @@
           ],
           "Title": "Windowing APIs",
           "ApiNamespace": "Microsoft.UI.Xaml",
-          "Subtitle": "Explore experimental Window client-area sizing and minimum-size APIs.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/AppWindow.png",
-          "Description": "Set a window's initial client size and minimum dimensions with Window.Width, Height, MinWidth, and MinHeight.",
-          "IsExperimental": true,
+          "Subtitle": "Create top-level XAML windows and configure their client-area size.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Windowing.png",
+          "Description": "Create single-threaded top-level XAML windows, then explore experimental client-area sizing and minimum-size APIs.",
           "IsNew": true,
           "Docs": [
             {
@@ -4093,7 +4131,8 @@
           ],
           "RelatedControls": [
             "AppWindow",
-            "CreateMultipleWindows"
+            "AppWindowTitleBar",
+            "TitleBar"
           ]
         },
         {
@@ -4140,7 +4179,7 @@
           "RelatedControls": [
             "AppWindowTitleBar",
             "TitleBar",
-            "CreateMultipleWindows"
+            "Windowing"
           ]
         },
         {
@@ -4170,34 +4209,6 @@
           ],
           "RelatedControls": [
             "AppWindow",
-            "TitleBar"
-          ]
-        },
-        {
-          "UniqueId": "CreateMultipleWindows",
-          "Tags": [
-            "multiple windows",
-            "new window",
-            "multi window"
-          ],
-          "Title": "Multiple windows",
-          "ApiNamespace": "Microsoft.UI.Xaml",
-          "Subtitle": "An example showing the creation of single-threaded top level Xaml windows.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/CreateMultipleWindows.png",
-          "Description": "With Windows App SDK 1.0 we are allowing creation of single-threaded multiple top level Xaml windows in Desktop apps",
-          "Docs": [
-            {
-              "Title": "MultipleWindow - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
-            }
-          ],
-          "RelatedControls": [
-            "AppWindow",
-            "AppWindowTitleBar",
             "TitleBar"
           ]
         },

@@ -1,14 +1,14 @@
 --- header
-Create single threaded Multiple Top level Windows(MTW).
+Create a single-threaded top-level Window.
 --- c#
 // Ensure you close the child window before closing the parent window to avoid application crash.
-var childWindow = new Window()
+Window childWindow = new Window
 {
     ExtendsContentIntoTitleBar = true,
     SystemBackdrop = new MicaBackdrop(),
-    Content = new Page()
+    Content = new Page
     {
-        Content = new TextBlock()
+        Content = new TextBlock
         {
             Text = "New child window!",
             HorizontalAlignment = HorizontalAlignment.Center,
@@ -19,5 +19,6 @@ var childWindow = new Window()
     }
 };
 
+WindowHelper.TrackWindow(childWindow);
 childWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
 childWindow.Activate();

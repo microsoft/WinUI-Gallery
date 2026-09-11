@@ -4,6 +4,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Windows.Graphics;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
@@ -13,6 +14,29 @@ public sealed partial class WindowingPage : Page
     public WindowingPage()
     {
         InitializeComponent();
+    }
+
+    private void CreateNewWindow_Click(object sender, RoutedEventArgs e)
+    {
+        Window childWindow = new Window
+        {
+            ExtendsContentIntoTitleBar = true,
+            SystemBackdrop = new MicaBackdrop(),
+            Content = new Page
+            {
+                RequestedTheme = ActualTheme,
+                Content = new TextBlock
+                {
+                    Text = "New child window!",
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                },
+            },
+        };
+
+        WindowHelper.TrackWindow(childWindow);
+        childWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
+        childWindow.Activate();
     }
 
     private void OpenSizedWindow_Click(object sender, RoutedEventArgs e)
