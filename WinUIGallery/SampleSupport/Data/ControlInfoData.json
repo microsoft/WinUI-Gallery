@@ -4063,6 +4063,40 @@
       "IconGlyph": "",
       "Items": [
         {
+          "UniqueId": "Windowing",
+          "Tags": [
+            "experimental",
+            "window sizing",
+            "client area",
+            "DIPs",
+            "Width",
+            "Height",
+            "MinWidth",
+            "MinHeight"
+          ],
+          "Title": "Windowing APIs",
+          "ApiNamespace": "Microsoft.UI.Xaml",
+          "Subtitle": "Explore experimental Window client-area sizing and minimum-size APIs.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/AppWindow.png",
+          "Description": "Set a window's initial client size and minimum dimensions with Window.Width, Height, MinWidth, and MinHeight.",
+          "IsExperimental": true,
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "Windows App SDK release channels",
+              "Uri": "https://learn.microsoft.com/windows/apps/windows-app-sdk/release-channels"
+            },
+            {
+              "Title": "Window - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window?view=windows-app-sdk-2.0-experimental"
+            }
+          ],
+          "RelatedControls": [
+            "AppWindow",
+            "CreateMultipleWindows"
+          ]
+        },
+        {
           "UniqueId": "AppWindow",
           "Tags": [
             "window management",

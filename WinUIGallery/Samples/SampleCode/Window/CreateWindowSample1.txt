@@ -1,9 +1,6 @@
 ﻿// Ensure you close the child window before closing the parent window to avoid application crash.
 var childWindow = new Window()
 {
-    // Size the client area in device-independent pixels.
-    Width = 500,
-    Height = 500,
     ExtendsContentIntoTitleBar = true,
     SystemBackdrop = new MicaBackdrop(),
     Content = new Page()
@@ -19,4 +16,5 @@ var childWindow = new Window()
     }
 };
 
+childWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
 childWindow.Activate();

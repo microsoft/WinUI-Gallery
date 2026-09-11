@@ -68,6 +68,10 @@ Use the normal `Debug` or `Release` configuration; the SDK version is pinned in
 instead of referencing a shared Windows App SDK framework package. Experimental
 APIs can change or be removed before a stable release.
 
+The **Windowing APIs** page demonstrates the experimental window sizing properties
+and uses the shared experimental badges and warning banner. Existing windowing
+samples continue to use stable APIs.
+
 > [!WARNING]
 > Try deleting [`nuget.config`](nuget.config) and building again if you get the following build error:
 > > Assets file 'C:\Users\\...\source\repos\WinUI-Gallery\WinUIGallery\obj\WinUIGallery\project.assets.json' not found. Run a NuGet package restore to generate this file.

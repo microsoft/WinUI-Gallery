@@ -31,8 +31,8 @@ public sealed partial class TabViewWindowingSamplePage : Page
         currentWindow.SetTitleBar(CustomDragRegion);
         CustomDragRegion.MinWidth = 188;
 
-        currentWindow.MinWidth = 500;
-        currentWindow.MinHeight = 300;
+        // Set minimum window size using OverlappedPresenter (requires XamlRoot, so must be done after Loaded).
+        WindowHelper.SetWindowMinSize(currentWindow, 500, 300);
     }
 
     public void LoadDemoData()

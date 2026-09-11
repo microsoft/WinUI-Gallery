@@ -2,8 +2,8 @@
 // Licensed under the MIT License.
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAppSDK;
 using System;
-using System.Text.RegularExpressions;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.UnitTests;
@@ -18,7 +18,13 @@ public class VersionHelperTests
         string runtimeDetails = VersionHelper.WinAppSdkRuntimeDetails;
         string runtimePrefix = $"{sdkDetails}, Windows App Runtime ";
 
-        StringAssert.Matches(sdkDetails, new Regex(@"^Windows App SDK \d+\.\d+$"));
+        string expectedSdkDetails = $"Windows App SDK {Release.Major}.{Release.Minor}";
+        if (!string.IsNullOrEmpty(Release.Channel))
+        {
+            expectedSdkDetails += $" ({Release.Channel})";
+        }
+
+        Assert.AreEqual(expectedSdkDetails, sdkDetails);
         StringAssert.StartsWith(runtimeDetails, runtimePrefix);
         Assert.IsTrue(Version.TryParse(runtimeDetails[runtimePrefix.Length..], out _));
     }

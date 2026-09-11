@@ -1,0 +1,47 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+--- header
+Set the initial client size with Window.Width and Window.Height
+--- c#
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using WinUIGallery.Helpers;
+
+// Requires an experimental Windows App SDK. These APIs can change or be removed.
+// Place these methods in a Page. The literals below follow the selected options.
+private void OpenSizedWindow_Click(object sender, RoutedEventArgs e)
+{
+    int width = $(Width);
+    int height = $(Height);
+
+    Window window = CreateSampleWindow(
+        "Window.Width / Height (experimental)",
+        $"Initial client area: {width} by {height} DIPs. You can resize this window. Close it with Alt+F4 or the title bar Close button.");
+    window.Width = width;
+    window.Height = height;
+
+    // Activate applies the pending Window size before the first show.
+    window.Activate();
+}
+
+private Window CreateSampleWindow(string title, string message)
+{
+    // The Gallery helper tracks each window and removes it when it closes.
+    // Gallery shutdown also closes any remaining tracked child windows.
+    Window window = WindowHelper.CreateWindow();
+    window.Title = title;
+    window.SystemBackdrop = new MicaBackdrop();
+    window.Content = new Page
+    {
+        RequestedTheme = ThemeHelper.RootTheme,
+        Content = new TextBlock
+        {
+            Margin = new Thickness(24),
+            Text = message,
+            TextWrapping = TextWrapping.Wrap
+        }
+    };
+    return window;
+}
