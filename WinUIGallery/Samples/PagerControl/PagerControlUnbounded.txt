@@ -1,0 +1,17 @@
+--- header
+Unbounded pagers
+--- xaml
+<StackPanel Spacing="20">
+    <PagerControl
+        DisplayMode="NumberBox"
+        NumberOfPages="-1"
+        PrefixText="Page"
+        SelectedPageIndex="99" />
+    <PagerControl
+        DisplayMode="ButtonPanel"
+        FirstButtonVisibility="Visible"
+        NextButtonVisibility="Visible"
+        NumberOfPages="-1"
+        PreviousButtonVisibility="Visible"
+        SelectedPageIndex="99" />
+</StackPanel>
