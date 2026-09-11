@@ -10,10 +10,23 @@
     <StackPanel Margin="0,16,0,0">
         <TextBlock
             Margin="0,0,0,8"
-            Text="Sizes are in device-independent pixels (DIPs) and exclude the standard title bar and borders. Each button opens a separate window with the selected settings."
+            Text="Create top-level XAML windows and configure their client-area size. Sizes are in device-independent pixels (DIPs) and exclude the standard title bar and borders."
             TextWrapping="Wrap" />
 
-        <controls:ControlExample SampleDefinition="Windowing\WindowClientSize.txt">
+        <controls:ControlExample
+            HeaderText="Create a top-level Window"
+            SampleDefinition="Windowing\CreateMultipleWindows.txt">
+            <Button
+                x:Name="CreateWindowButton"
+                AutomationProperties.AutomationId="WindowingCreateWindow"
+                AutomationProperties.Name="Create a top-level window"
+                Click="CreateNewWindow_Click"
+                Content="Create new Window" />
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            IsExperimental="True"
+            SampleDefinition="Windowing\WindowClientSize.txt">
             <StackPanel Spacing="12">
                 <TextBlock
                     Text="Choose an initial client size, then open a window. You can still resize it using its borders. Close it with its title bar Close button or Alt+F4."
@@ -59,7 +72,9 @@
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <controls:ControlExample SampleDefinition="Windowing\WindowMinimumClientSize.txt">
+        <controls:ControlExample
+            IsExperimental="True"
+            SampleDefinition="Windowing\WindowMinimumClientSize.txt">
             <StackPanel Spacing="12">
                 <TextBlock
                     Text="Open a window with an initial 640 by 480 DIP client area, then try to shrink it using its borders. MinWidth and MinHeight prevent the client area from becoming smaller than the selected minimums."
