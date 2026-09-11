@@ -24,15 +24,12 @@ public sealed partial class WindowingPage : Page
         {
             ExtendsContentIntoTitleBar = true,
             SystemBackdrop = new MicaBackdrop(),
-            Content = new Page
+            Content = new TextBlock
             {
-                RequestedTheme = ActualTheme,
-                Content = new TextBlock
-                {
-                    Text = "New child window!",
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Center,
-                },
+                Text = "New child window!",
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                RequestedTheme = ActualTheme
             },
         };
 

@@ -3,45 +3,26 @@
 
 --- header
 Set the initial client size with Window.Width and Window.Height
+--- xaml
+<!-- SampleWindow.xaml; keep the template's InitializeComponent() constructor. -->
+<Window
+    x:Class="MyApp.SampleWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="$(Width)"
+    Height="$(Height)">
+    <TextBlock Margin="24" Text="Resize this window." />
+</Window>
 --- c#
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
-using WinUIGallery.Helpers;
-
-// Requires an experimental Windows App SDK. These APIs can change or be removed.
-// Place these methods in a Page. The literals below follow the selected options.
-private void OpenSizedWindow_Click(object sender, RoutedEventArgs e)
+// The same size properties can be set in C# instead of XAML.
+Window window = new Window
 {
-    int width = $(Width);
-    int height = $(Height);
+    Width = $(Width),
+    Height = $(Height),
+    Content = new TextBlock { Margin = new Thickness(24), Text = "Resize this window." }
+};
 
-    Window window = CreateSampleWindow(
-        "Window.Width / Height (experimental)",
-        $"Initial client area: {width} by {height} DIPs. You can resize this window. Close it with Alt+F4 or the title bar Close button.");
-    window.Width = width;
-    window.Height = height;
-
-    // Activate applies the pending Window size before the first show.
-    window.Activate();
-}
-
-private Window CreateSampleWindow(string title, string message)
-{
-    // The Gallery helper tracks each window and removes it when it closes.
-    // Gallery shutdown also closes any remaining tracked child windows.
-    Window window = WindowHelper.CreateWindow();
-    window.Title = title;
-    window.SystemBackdrop = new MicaBackdrop();
-    window.Content = new Page
-    {
-        RequestedTheme = ThemeHelper.RootTheme,
-        Content = new TextBlock
-        {
-            Margin = new Thickness(24),
-            Text = message,
-            TextWrapping = TextWrapping.Wrap
-        }
-    };
-    return window;
-}
+// Gallery tracks child windows so they close when the app closes.
+WindowHelper.TrackWindow(window);
+// Use Window.Activate() for the first show, including for XAML-defined windows.
+window.Activate();
