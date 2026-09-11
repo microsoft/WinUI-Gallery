@@ -60,6 +60,20 @@
                     </ToolTipService.ToolTip>
                 </TextBlock>
             </Grid>
+            <Border
+                Margin="-8"
+                Padding="8,4"
+                VerticalAlignment="Bottom"
+                AutomationProperties.AccessibilityView="Raw"
+                Background="{ThemeResource SystemFillColorCautionBackgroundBrush}"
+                CornerRadius="0,0,7,7"
+                Visibility="{x:Bind IsExperimental}">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    Foreground="{ThemeResource SystemFillColorCautionBrush}"
+                    Style="{StaticResource CaptionTextBlockStyle}"
+                    Text="Experimental" />
+            </Border>
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="LayoutVisualStates">
                     <VisualState x:Name="WideLayout">
