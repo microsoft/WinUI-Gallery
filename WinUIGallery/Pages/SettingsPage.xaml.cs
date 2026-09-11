@@ -30,6 +30,8 @@ public sealed partial class SettingsPage : Page
     public string WinAppSdkRuntimeDetails => VersionHelper.WinAppSdkRuntimeDetails;
     private int lastNavigationSelectionMode = 0;
 
+    private SettingsHelper Settings => SettingsHelper.Current;
+
     public SettingsPage()
     {
         this.InitializeComponent();
