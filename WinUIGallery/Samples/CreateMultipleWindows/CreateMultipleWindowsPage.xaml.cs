@@ -4,7 +4,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using Windows.Graphics;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
@@ -20,6 +19,9 @@ public sealed partial class CreateMultipleWindowsPage : Page
     {
         var childWindow = new Window()
         {
+            // Size the client area in device-independent pixels.
+            Width = 500,
+            Height = 500,
             ExtendsContentIntoTitleBar = true,
             SystemBackdrop = new MicaBackdrop(),
             Content = new Page()
@@ -39,7 +41,6 @@ public sealed partial class CreateMultipleWindowsPage : Page
         // otherwise it will crash the app.
         // This is also used to change the theme for all windows when the app theme changes.
         WindowHelper.TrackWindow(childWindow);
-        childWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
         childWindow.Activate();
     }
 }

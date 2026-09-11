@@ -62,6 +62,12 @@ git clone https://github.com/microsoft/WinUI-Gallery.git
 
 Ensure that the `WinUIGallery` project is set as the startup project in Visual Studio.
 
+Gallery uses an experimental Windows App SDK to demonstrate upcoming features.
+Use the normal `Debug` or `Release` configuration; the SDK version is pinned in
+`standalone.props`. The runtime is bundled with the app (self-contained deployment)
+instead of referencing a shared Windows App SDK framework package. Experimental
+APIs can change or be removed before a stable release.
+
 > [!WARNING]
 > Try deleting [`nuget.config`](nuget.config) and building again if you get the following build error:
 > > Assets file 'C:\Users\\...\source\repos\WinUI-Gallery\WinUIGallery\obj\WinUIGallery\project.assets.json' not found. Run a NuGet package restore to generate this file.

@@ -1,7 +1,6 @@
 ﻿GetCurrentPackageFullName
 GetModuleHandle
 GetDpiForWindow
-CallWindowProc
 GetCurrentThreadId
 SetWindowsHookEx
 CallNextHookEx

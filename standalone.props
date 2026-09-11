@@ -2,10 +2,7 @@
   <PropertyGroup>
     <!-- The NuGet versions of dependencies to build against. -->
     <WindowsSdkPackageVersion>10.0.22621.42</WindowsSdkPackageVersion>
-    <WindowsAppSdkStablePackageVersion>2.4.0</WindowsAppSdkStablePackageVersion>
-    <WindowsAppSdkExperimentalPackageVersion>2.4.1-experimental</WindowsAppSdkExperimentalPackageVersion>
-    <WindowsAppSdkPackageVersion Condition="'$(UseExperimentalWinAppSDK)' == 'true'">$(WindowsAppSdkExperimentalPackageVersion)</WindowsAppSdkPackageVersion>
-    <WindowsAppSdkPackageVersion Condition="'$(UseExperimentalWinAppSDK)' != 'true'">$(WindowsAppSdkStablePackageVersion)</WindowsAppSdkPackageVersion>
+    <WindowsAppSdkPackageVersion>2.4.1-experimental</WindowsAppSdkPackageVersion>
     <MicrosoftNETCoreUniversalWindowsPlatformVersion>6.2.11</MicrosoftNETCoreUniversalWindowsPlatformVersion>
     <GraphicsWin2DVersion>1.4.0</GraphicsWin2DVersion>
     <ColorCodeVersion>2.0.15</ColorCodeVersion>

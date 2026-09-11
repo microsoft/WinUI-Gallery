@@ -18,33 +18,6 @@
                 <RichTextBlock Margin="0,12,12,12"
                                IsTextSelectionEnabled="False">
                     <Paragraph>
-                        <Run Text="The" />
-                        <Run Text="AppNotificationManager"
-                             FontWeight="SemiBold" />
-                        <Run Text="class has a dependency on the" />
-                        <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/windows-app-sdk/deployment-architecture#singleton-package">
-                            <Run Text="Singleton package" />
-                        </Hyperlink>
-                        <Run Text=". Because of that dependency, there are certain considerations to be aware of if you're calling these APIs from a" />
-                        <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/package-and-deploy/deploy-overview">
-                            <Run Text="self-contained app" />
-                        </Hyperlink>
-                        <Run Text=". For more info, and specifics, see" />
-                        <Hyperlink NavigateUri="https://learn.microsoft.com/windows/apps/package-and-deploy/self-contained-deploy/deploy-self-contained-apps#dependencies-on-additional-msix-packages">
-                            <Run Text="Dependencies on additional MSIX packages" />
-                        </Hyperlink>
-                        <Run Text="." />
-                    </Paragraph>
-                </RichTextBlock>
-            </InfoBar>
-
-            <InfoBar IsOpen="True"
-                     Severity="Informational"
-                     IsIconVisible="True"
-                     IsClosable="False">
-                <RichTextBlock Margin="0,12,12,12"
-                               IsTextSelectionEnabled="False">
-                    <Paragraph>
                         <Run Text="If" />
                         <Run Text="Do Not Disturb"
                              FontWeight="SemiBold" />
