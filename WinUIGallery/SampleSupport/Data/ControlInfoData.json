@@ -2285,6 +2285,33 @@
           ]
         },
         {
+          "UniqueId": "PagerControl",
+          "Tags": [
+            "pagination",
+            "pages",
+            "navigation"
+          ],
+          "Title": "PagerControl",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A control that lets users navigate through a numbered collection of pages.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "PagerControl provides numbered page navigation with multiple display modes and configurable navigation buttons.",
+          "SourcePath": "/PagerControl",
+          "IsExperimental": true,
+          "RelatedControls": [
+            "PipsPager",
+            "ItemsRepeater",
+            "ListView"
+          ]
+        },
+        {
           "UniqueId": "ScrollView",
           "Tags": [
             "pan",
