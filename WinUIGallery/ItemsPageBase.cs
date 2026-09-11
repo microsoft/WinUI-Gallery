@@ -15,10 +15,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Windows.Foundation.Metadata;
 using Windows.System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media.Animation;
 
 namespace AppUIBasics
 {

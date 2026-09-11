@@ -1,7 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 namespace AppUIBasics.ControlPages
 {
@@ -9,10 +9,10 @@ namespace AppUIBasics.ControlPages
     {
         private ObservableCollection<NavLink> _navLinks = new ObservableCollection<NavLink>()
         {
-            new NavLink() { Label = "People", Symbol = Windows.UI.Xaml.Controls.Symbol.People  },
-            new NavLink() { Label = "Globe", Symbol = Windows.UI.Xaml.Controls.Symbol.Globe },
-            new NavLink() { Label = "Message", Symbol = Windows.UI.Xaml.Controls.Symbol.Message },
-            new NavLink() { Label = "Mail", Symbol = Windows.UI.Xaml.Controls.Symbol.Mail },
+            new NavLink() { Label = "People", Symbol = Microsoft.UI.Xaml.Controls.Symbol.People  },
+            new NavLink() { Label = "Globe", Symbol = Microsoft.UI.Xaml.Controls.Symbol.Globe },
+            new NavLink() { Label = "Message", Symbol = Microsoft.UI.Xaml.Controls.Symbol.Message },
+            new NavLink() { Label = "Mail", Symbol = Microsoft.UI.Xaml.Controls.Symbol.Mail },
         };
 
         public ObservableCollection<NavLink> NavLinks
@@ -27,7 +27,7 @@ namespace AppUIBasics.ControlPages
 
         private void togglePaneButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Window.Current.Bounds.Width >= 640)
+            if (XamlRoot.Size.Width >= 640)
             {
                 if (splitView.IsPaneOpen)
                 {

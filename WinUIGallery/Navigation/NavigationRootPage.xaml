@@ -16,7 +16,7 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:local="using:AppUIBasics"
     HighContrastAdjustment="None"
-    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
+    Background="Transparent">
 
     <Page.Resources>
         <ResourceDictionary>

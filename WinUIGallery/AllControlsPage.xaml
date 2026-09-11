@@ -16,7 +16,7 @@
     xmlns:local="using:AppUIBasics"
     xmlns:behavior="using:AppUIBasics.Behaviors"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:controls="using:Windows.UI.Xaml.Controls"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     NavigationCacheMode="Enabled"
     HighContrastAdjustment="None">
 

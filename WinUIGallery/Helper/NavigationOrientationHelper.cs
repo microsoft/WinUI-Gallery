@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Core;
 using Windows.Storage;
 using Windows.UI;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
+using Colors = Microsoft.UI.Colors;
 
 namespace AppUIBasics.Helper
 {
@@ -38,9 +38,9 @@ namespace AppUIBasics.Helper
 
         public static void UpdateTitleBar(bool isLeftMode)
         {
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = isLeftMode;
+            App.MainWindow.ExtendsContentIntoTitleBar = isLeftMode;
 
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            var titleBar = App.MainWindow.AppWindow.TitleBar;
 
             if (isLeftMode)
             {

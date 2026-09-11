@@ -2,10 +2,9 @@ using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Numerics;
 using Windows.Foundation.Metadata;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics.ControlPages
 {
@@ -127,13 +126,13 @@ namespace AppUIBasics.ControlPages
             // If the implicit animation API is not present, simply no-op. 
             if (!(ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 7))) return;
 
-            if ((BrushPresenter.Background as SolidColorBrush).Color == Windows.UI.Colors.Blue)
+            if ((BrushPresenter.Background as SolidColorBrush).Color == Microsoft.UI.Colors.Blue)
             {
-                BrushPresenter.Background = new SolidColorBrush(Windows.UI.Colors.Yellow);
+                BrushPresenter.Background = new SolidColorBrush(Microsoft.UI.Colors.Yellow);
             }
             else
             {
-                BrushPresenter.Background = new SolidColorBrush(Windows.UI.Colors.Blue);
+                BrushPresenter.Background = new SolidColorBrush(Microsoft.UI.Colors.Blue);
             }
         }
 

@@ -4,16 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Windows.ApplicationModel.Core;
 using Windows.Foundation.Metadata;
 using Windows.System;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Input;
 using AppUIBasics.Common;
 
 namespace AppUIBasics.Helper
@@ -169,7 +165,6 @@ namespace AppUIBasics.Helper
     public class RootFrameNavigationHelper
     {
         private Frame Frame { get; set; }
-        SystemNavigationManager systemNavigationManager;
         private Microsoft.UI.Xaml.Controls.NavigationView CurrentNavView { get; set; }
 
         /// <summary>
@@ -187,22 +182,13 @@ namespace AppUIBasics.Helper
             };
             this.CurrentNavView = currentNavView;
 
-            // Handle keyboard and mouse navigation requests
-            this.systemNavigationManager = SystemNavigationManager.GetForCurrentView();
-            systemNavigationManager.BackRequested += SystemNavigationManager_BackRequested;
-
-            // must register back requested on navview
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))
-            {
-                CurrentNavView.BackRequested += NavView_BackRequested;
-            }
-
-            // Listen to the window directly so we will respond to hotkeys regardless
-            // of which element has focus.
-            Window.Current.CoreWindow.Dispatcher.AcceleratorKeyActivated +=
-                CoreDispatcher_AcceleratorKeyActivated;
-            Window.Current.CoreWindow.PointerPressed +=
-                this.CoreWindow_PointerPressed;
+            CurrentNavView.BackRequested += NavView_BackRequested;
+            AddNavigationAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu, true);
+            AddNavigationAccelerator(VirtualKey.Right, VirtualKeyModifiers.Menu, false);
+            AddNavigationAccelerator((VirtualKey)166, VirtualKeyModifiers.None, true);
+            AddNavigationAccelerator((VirtualKey)167, VirtualKeyModifiers.None, false);
+            CurrentNavView.AddHandler(UIElement.PointerPressedEvent,
+                new PointerEventHandler(NavigationPointerPressed), true);
         }
 
         private void NavView_BackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args)
@@ -239,66 +225,16 @@ namespace AppUIBasics.Helper
             return navigated;
         }
 
-        private void SystemNavigationManager_BackRequested(object sender, BackRequestedEventArgs e)
-        {
-            if (!e.Handled)
-            {
-                e.Handled = TryGoBack();
-            }
-        }
-
         private void UpdateBackButton()
         {
-            if (ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 6))
-            {
-                this.CurrentNavView.IsBackEnabled = this.Frame.CanGoBack ? true : false;
-            } else
-            {
-                systemNavigationManager.AppViewBackButtonVisibility = this.Frame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
-            }
-            
+            this.CurrentNavView.IsBackEnabled = this.Frame.CanGoBack;
         }
 
-        /// <summary>
-        /// Invoked on every keystroke, including system keys such as Alt key combinations.
-        /// Used to detect keyboard navigation between pages even when the page itself
-        /// doesn't have focus.
-        /// </summary>
-        /// <param name="sender">Instance that triggered the event.</param>
-        /// <param name="e">Event data describing the conditions that led to the event.</param>
-        private void CoreDispatcher_AcceleratorKeyActivated(CoreDispatcher sender,
-            AcceleratorKeyEventArgs e)
+        private void AddNavigationAccelerator(VirtualKey key, VirtualKeyModifiers modifiers, bool backwards)
         {
-            var virtualKey = e.VirtualKey;
-
-            // Only investigate further when Left, Right, or the dedicated Previous or Next keys
-            // are pressed
-            if ((e.EventType == CoreAcceleratorKeyEventType.SystemKeyDown ||
-                e.EventType == CoreAcceleratorKeyEventType.KeyDown) &&
-                (virtualKey == VirtualKey.Left || virtualKey == VirtualKey.Right ||
-                (int)virtualKey == 166 || (int)virtualKey == 167))
-            {
-                var coreWindow = Window.Current.CoreWindow;
-                var downState = CoreVirtualKeyStates.Down;
-                bool menuKey = (coreWindow.GetKeyState(VirtualKey.Menu) & downState) == downState;
-                bool controlKey = (coreWindow.GetKeyState(VirtualKey.Control) & downState) == downState;
-                bool shiftKey = (coreWindow.GetKeyState(VirtualKey.Shift) & downState) == downState;
-                bool noModifiers = !menuKey && !controlKey && !shiftKey;
-                bool onlyAlt = menuKey && !controlKey && !shiftKey;
-
-                if (((int)virtualKey == 166 && noModifiers) ||
-                    (virtualKey == VirtualKey.Left && onlyAlt))
-                {
-                    // When the previous key or Alt+Left are pressed navigate back
-                    e.Handled = TryGoBack();
-                }
-                else if (((int)virtualKey == 167 && noModifiers) ||
-                    (virtualKey == VirtualKey.Right && onlyAlt))
-                {
-                    // When the next key or Alt+Right are pressed navigate forward
-                    e.Handled = TryGoForward();
-                }
-            }
+            var accelerator = new KeyboardAccelerator { Key = key, Modifiers = modifiers };
+            accelerator.Invoked += (_, args) => args.Handled = backwards ? TryGoBack() : TryGoForward();
+            CurrentNavView.KeyboardAccelerators.Add(accelerator);
         }
 
         /// <summary>
@@ -308,10 +244,9 @@ namespace AppUIBasics.Helper
         /// </summary>
         /// <param name="sender">Instance that triggered the event.</param>
         /// <param name="e">Event data describing the conditions that led to the event.</param>
-        private void CoreWindow_PointerPressed(CoreWindow sender,
-            PointerEventArgs e)
+        private void NavigationPointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            var properties = e.CurrentPoint.Properties;
+            var properties = e.GetCurrentPoint(CurrentNavView).Properties;
 
             // Ignore button chords with the left, right, and middle buttons
             if (properties.IsLeftButtonPressed || properties.IsRightButtonPressed ||

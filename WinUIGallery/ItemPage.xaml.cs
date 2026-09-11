@@ -12,14 +12,14 @@ using System.Numerics;
 using System.Reflection;
 using AppUIBasics.Data;
 using AppUIBasics.Helper;
-using Windows.ApplicationModel.Resources;
-using Windows.UI.Composition;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Hosting;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.Windows.ApplicationModel.Resources;
+using Microsoft.UI.Composition;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics
 {
@@ -157,12 +157,20 @@ namespace AppUIBasics
                 Item = item;
 
                 // Load control page into frame.
-                var loader = ResourceLoader.GetForCurrentView();
+                var loader = new ResourceLoader();
 
                 string pageRoot = loader.GetString("PageStringRoot");
+                if (string.IsNullOrWhiteSpace(pageRoot))
+                {
+                    throw new InvalidOperationException("The PageStringRoot resource is missing from the Gallery resource index.");
+                }
 
                 string pageString = pageRoot + item.UniqueId + "Page";
                 Type pageType = Type.GetType(pageString);
+                if (pageType == null)
+                {
+                    throw new InvalidOperationException("The Gallery sample page could not be resolved: " + pageString);
+                }
 
                 if (pageType != null)
                 {

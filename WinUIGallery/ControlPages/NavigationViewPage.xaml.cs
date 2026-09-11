@@ -6,17 +6,16 @@ using System;
 using System.Diagnostics;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Media.Animation;
 using System.Linq;
-using Windows.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Input;
 using Windows.System;
 using Windows.UI.ViewManagement;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using AppUIBasics.Data;
-using Windows.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation;
 
 namespace AppUIBasics.ControlPages
 {
@@ -232,7 +231,7 @@ namespace AppUIBasics.ControlPages
             };
         }
 
-        private void Grid_ManipulationDelta1(object sender, Windows.UI.Xaml.Input.ManipulationDeltaRoutedEventArgs e)
+        private void Grid_ManipulationDelta1(object sender, Microsoft.UI.Xaml.Input.ManipulationDeltaRoutedEventArgs e)
         {
             var grid = sender as Grid;
             grid.Width = grid.ActualWidth + e.Delta.Translation.X;

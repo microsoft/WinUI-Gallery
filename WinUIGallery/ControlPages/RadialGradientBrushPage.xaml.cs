@@ -8,8 +8,8 @@
 //
 //*********************************************************
 using System;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using Windows.Foundation;
 using System.Numerics;
 
@@ -23,7 +23,7 @@ namespace AppUIBasics.ControlPages
             Loaded += OnPageLoaded;
         }
 
-        private void OnPageLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void OnPageLoaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             MappingModeComboBox.SelectionChanged += OnMappingModeChanged;
             SpreadMethodComboBox.SelectionChanged += OnSpreadMethodChanged;
@@ -64,7 +64,7 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private void OnSliderValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        private void OnSliderValueChanged(object sender, Microsoft.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
         {
             RadialGradientBrushExample.Center = new Point(CenterXSlider.Value, CenterYSlider.Value);
             RadialGradientBrushExample.RadiusX = RadiusXSlider.Value;

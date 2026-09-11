@@ -7,7 +7,7 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 
 namespace AppUIBasics
 {

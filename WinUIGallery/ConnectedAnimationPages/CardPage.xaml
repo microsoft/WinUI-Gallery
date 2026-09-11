@@ -9,7 +9,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <GridView x:Name="collection" IsItemClickEnabled="True" ItemClick="TipsGrid_ItemClick" HorizontalAlignment="Center" MaxWidth="1400">
             <GridView.ItemContainerStyle>
-                <Style BasedOn="{StaticResource GridViewItemRevealStyle}" TargetType="GridViewItem">
+                <Style BasedOn="{StaticResource DefaultGridViewItemStyle}" TargetType="GridViewItem">
                     <Style.Setters>
                         <Setter Property="Margin" Value="12" />
                     </Style.Setters>

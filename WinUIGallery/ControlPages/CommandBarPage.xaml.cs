@@ -8,9 +8,9 @@
 //
 //*********************************************************
 using System.ComponentModel;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics.ControlPages
 {
@@ -56,7 +56,7 @@ namespace AppUIBasics.ControlPages
             PrimaryCommandBar.IsSticky = false;
         }
 
-        private void OnElementClicked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void OnElementClicked(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             var selectedFlyoutItem = sender as AppBarButton;
             SelectedOptionText.Text = "You clicked: " + (sender as AppBarButton).Label;
@@ -74,7 +74,7 @@ namespace AppUIBasics.ControlPages
                     Icon = new SymbolIcon(Symbol.Add),
                     Label = "Button 1"
                 };
-                newButton.KeyboardAccelerators.Add(new Windows.UI.Xaml.Input.KeyboardAccelerator()
+                newButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
                 {
                     Key = Windows.System.VirtualKey.N,
                     Modifiers = Windows.System.VirtualKeyModifiers.Control
@@ -87,7 +87,7 @@ namespace AppUIBasics.ControlPages
                     Label = "Button 2"
                 };
                 PrimaryCommandBar.SecondaryCommands.Add(newButton);
-                newButton.KeyboardAccelerators.Add(new Windows.UI.Xaml.Input.KeyboardAccelerator()
+                newButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
                 {
                     Key = Windows.System.VirtualKey.Delete
                 });
@@ -98,7 +98,7 @@ namespace AppUIBasics.ControlPages
                     Icon = new SymbolIcon(Symbol.FontDecrease),
                     Label = "Button 3"
                 };
-                newButton.KeyboardAccelerators.Add(new Windows.UI.Xaml.Input.KeyboardAccelerator()
+                newButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
                 {
                     Key = Windows.System.VirtualKey.Subtract,
                     Modifiers = Windows.System.VirtualKeyModifiers.Control
@@ -110,7 +110,7 @@ namespace AppUIBasics.ControlPages
                     Icon = new SymbolIcon(Symbol.FontIncrease),
                     Label = "Button 4"
                 };
-                newButton.KeyboardAccelerators.Add(new Windows.UI.Xaml.Input.KeyboardAccelerator()
+                newButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
                 {
                     Key = Windows.System.VirtualKey.Add,
                     Modifiers = Windows.System.VirtualKeyModifiers.Control
@@ -144,18 +144,18 @@ namespace AppUIBasics.ControlPages
 
         private void AddKeyboardAccelerators()
         {
-            editButton.KeyboardAccelerators.Add(new Windows.UI.Xaml.Input.KeyboardAccelerator()
+            editButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
             {
                 Key = Windows.System.VirtualKey.E,
                 Modifiers = Windows.System.VirtualKeyModifiers.Control
             });
 
-            shareButton.KeyboardAccelerators.Add(new Windows.UI.Xaml.Input.KeyboardAccelerator()
+            shareButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
             {
                 Key = Windows.System.VirtualKey.F4
             });
 
-            addButton.KeyboardAccelerators.Add(new Windows.UI.Xaml.Input.KeyboardAccelerator()
+            addButton.KeyboardAccelerators.Add(new Microsoft.UI.Xaml.Input.KeyboardAccelerator()
             {
                 Key = Windows.System.VirtualKey.A,
                 Modifiers = Windows.System.VirtualKeyModifiers.Control

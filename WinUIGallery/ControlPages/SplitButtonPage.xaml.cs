@@ -1,8 +1,9 @@
 using Windows.UI;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Shapes;
+using Colors = Microsoft.UI.Colors;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Shapes;
 
 namespace AppUIBasics.ControlPages
 {
@@ -15,7 +16,7 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
 
             myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = currentColor;
-            myRichEditBox.Document.Selection.SetText(Windows.UI.Text.TextSetOptions.None,
+            myRichEditBox.Document.Selection.SetText(Microsoft.UI.Text.TextSetOptions.None,
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
                 "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor commodo ullamcorper a lacus.");
         }
@@ -28,7 +29,7 @@ namespace AppUIBasics.ControlPages
             CurrentColor.Background = new SolidColorBrush(color);
 
             myColorButton.Flyout.Hide();
-            myRichEditBox.Focus(Windows.UI.Xaml.FocusState.Keyboard);
+            myRichEditBox.Focus(Microsoft.UI.Xaml.FocusState.Keyboard);
             currentColor = color;
         }
 
@@ -39,7 +40,7 @@ namespace AppUIBasics.ControlPages
         private void myColorButton_Click(Microsoft.UI.Xaml.Controls.SplitButton sender, Microsoft.UI.Xaml.Controls.SplitButtonClickEventArgs args)
         {
             var border = (Border)sender.Content;
-            var color = ((Windows.UI.Xaml.Media.SolidColorBrush)border.Background).Color;
+            var color = ((Microsoft.UI.Xaml.Media.SolidColorBrush)border.Background).Color;
 
             myRichEditBox.Document.Selection.CharacterFormat.ForegroundColor = color;
             currentColor = color;

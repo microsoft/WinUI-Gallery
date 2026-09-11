@@ -11,8 +11,9 @@ using System;
 using System.Collections.Generic;
 using Windows.Foundation.Metadata;
 using Windows.UI;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Colors = Microsoft.UI.Colors;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics.ControlPages
 {
@@ -68,16 +69,18 @@ namespace AppUIBasics.ControlPages
                 case "Red":
                     color = Colors.Red;
                     break;
+                default:
+                    throw new InvalidOperationException("Unknown sample color: " + colorName);
             }
             Control1Output.Fill = new SolidColorBrush(color);
         }
 
-        private void Combo2_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Combo2_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             Combo2.SelectedIndex = 2;
         }
 
-        private void Combo3_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Combo3_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             Combo3.SelectedIndex = 2;
 
@@ -87,8 +90,9 @@ namespace AppUIBasics.ControlPages
             }
         }
 
-        private void Combo3_TextSubmitted(ComboBox sender, ComboBoxTextSubmittedEventArgs args)
+        private async void Combo3_TextSubmitted(ComboBox sender, ComboBoxTextSubmittedEventArgs args)
         {
+            args.Handled = true;
             bool isDouble = double.TryParse(sender.Text, out double newValue);
 
             // Set the selected item if:
@@ -106,11 +110,12 @@ namespace AppUIBasics.ControlPages
 
                 var dialog = new ContentDialog
                 {
+                    XamlRoot = sender.XamlRoot,
                     Content = "The font size must be a number between 8 and 100.",
                     CloseButtonText = "Close",
                     DefaultButton = ContentDialogButton.Close
                 };
-                var task = dialog.ShowAsync();
+                await dialog.ShowAsync();
             }
 
             // Mark the event as handled so the framework doesn’t update the selected item automatically. 

@@ -5,11 +5,11 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using AppUIBasics.Common;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Automation;
-using Windows.UI.Xaml.Automation.Peers;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Hosting;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Hosting;
 
 namespace AppUIBasics.ControlPages
 {
@@ -257,7 +257,7 @@ namespace AppUIBasics.ControlPages
             });
         }
 
-        private void OnAnimatedScrollRepeaterGettingFocus(UIElement sender, Windows.UI.Xaml.Input.GettingFocusEventArgs args)
+        private void OnAnimatedScrollRepeaterGettingFocus(UIElement sender, Microsoft.UI.Xaml.Input.GettingFocusEventArgs args)
         {
             // If we have a previously focused index and focus moving from outside the repeater to inside,
             // then we can pick the previously focused index and land on that item again.
@@ -423,7 +423,7 @@ namespace AppUIBasics.ControlPages
             peer.RaiseNotificationEvent(AutomationNotificationKind.Other, AutomationNotificationProcessing.ImportantMostRecent, $"Filtered recipes, {sortedFilteredTypes.Count()} results.", "RecipesFilteredNotificationActivityId");
         }
 
-        private void OnAnimatedScrollRepeaterKeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        private void OnAnimatedScrollRepeaterKeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
             if (e.Handled != true)
             {

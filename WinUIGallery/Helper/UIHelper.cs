@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Windows.Storage;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics.Helper
 {

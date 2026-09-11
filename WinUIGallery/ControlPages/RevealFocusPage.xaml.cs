@@ -11,10 +11,11 @@ using System;
 using Windows.Foundation.Metadata;
 using Windows.UI;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Automation;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using Colors = Microsoft.UI.Colors;
 
 namespace AppUIBasics.ControlPages
 {
@@ -24,20 +25,9 @@ namespace AppUIBasics.ControlPages
         {
             this.InitializeComponent();
 
-            if (Spring2018 && Application.Current.FocusVisualKind == FocusVisualKind.Reveal)
-            {
-                RevealFocus.IsChecked = true;
-                myPrimaryColorPicker.Color = (this.Resources["SystemControlRevealFocusVisualBrush"] as SolidColorBrush).Color;
-                mySecondaryColorPicker.Color = (this.Resources["SystemControlFocusVisualSecondaryBrush"] as SolidColorBrush).Color;
-                primaryColorPickerButton.Background = new SolidColorBrush(myPrimaryColorPicker.Color);
-                secondaryColorPickerButton.Background = new SolidColorBrush(mySecondaryColorPicker.Color);
-            }
-            else
-            {
-                HighVisibility.IsChecked = true;
-                primaryColorPickerButton.Background = new SolidColorBrush(myPrimaryColorPicker.Color);
-                secondaryColorPickerButton.Background = new SolidColorBrush(mySecondaryColorPicker.Color);
-            }
+            HighVisibility.IsChecked = true;
+            primaryColorPickerButton.Background = new SolidColorBrush(myPrimaryColorPicker.Color);
+            secondaryColorPickerButton.Background = new SolidColorBrush(mySecondaryColorPicker.Color);
         }
 
         private void HighVisibility_Checked(object sender, RoutedEventArgs e)
@@ -60,19 +50,6 @@ namespace AppUIBasics.ControlPages
             FocusVisualKindSubstitution.Value = "HighVisibility";
         }
 
-        private void RevealFocus_Checked(object sender, RoutedEventArgs e)
-        {
-            if (Spring2018)
-            {
-                myPrimaryColorPicker.Color = (this.Resources["SystemControlRevealFocusVisualBrush"] as SolidColorBrush).Color;
-                primaryColorPickerButton.Background = new SolidColorBrush(myPrimaryColorPicker.Color);
-                primaryBrushText.Value = "{StaticResource SystemControlRevealFocusVisualBrush}";
-                primaryColorKeyText.Value = "SystemControlRevealFocusVisualBrush";
-                Application.Current.FocusVisualKind = FocusVisualKind.Reveal;
-                FocusVisualKindSubstitution.Value = "Reveal";
-            }
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // Draw the focus visuals at the edge of the control
@@ -83,9 +60,9 @@ namespace AppUIBasics.ControlPages
         private void confirmColor_Click(object sender, RoutedEventArgs e)
         {
             AutomationProperties.SetName(primaryColorPickerButton,
-                "Select primary color, currently selected: " + ColorHelper.ToDisplayName(myPrimaryColorPicker.Color) + " , " + myPrimaryColorPicker.Color.ToString());
+                "Select primary color, currently selected: " + Microsoft.UI.ColorHelper.ToDisplayName(myPrimaryColorPicker.Color) + " , " + myPrimaryColorPicker.Color.ToString());
             AutomationProperties.SetName(secondaryColorPickerButton,
-                "Select secondary color, currently selected: " + ColorHelper.ToDisplayName(mySecondaryColorPicker.Color) + " , " + mySecondaryColorPicker.Color.ToString());
+                "Select secondary color, currently selected: " + Microsoft.UI.ColorHelper.ToDisplayName(mySecondaryColorPicker.Color) + " , " + mySecondaryColorPicker.Color.ToString());
 
             primaryColorPickerButton.Background = new SolidColorBrush(myPrimaryColorPicker.Color);
             secondaryColorPickerButton.Background = new SolidColorBrush(mySecondaryColorPicker.Color);

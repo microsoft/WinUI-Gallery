@@ -13,10 +13,10 @@ using System.Linq;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics
 {
@@ -60,7 +60,9 @@ namespace AppUIBasics
         {
             base.OnNavigatedTo(e);
 
-            NavigationRootPage.Current.NavigationView.Header = "Settings";
+            var navigationView = NavigationRootPage.Current.NavigationView;
+            navigationView.SelectedItem = navigationView.SettingsItem;
+            navigationView.Header = "Settings";
         }
 
         private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
@@ -133,6 +135,8 @@ namespace AppUIBasics
             FolderPicker folderPicker = new FolderPicker();
             folderPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
             folderPicker.FileTypeFilter.Add(".png"); // meaningless, but you have to have something
+            WinRT.Interop.InitializeWithWindow.Initialize(folderPicker,
+                WinRT.Interop.WindowNative.GetWindowHandle(WindowHelper.GetWindowForElement(this)));
             StorageFolder folder = await folderPicker.PickSingleFolderAsync();
 
             if (folder != null)
@@ -152,7 +156,7 @@ namespace AppUIBasics
             ProtocolActivationClipboardHelper.ShowCopyLinkTeachingTip = true;
         }
 
-        private void soundPageHyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        private void soundPageHyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
             this.Frame.Navigate(typeof(ItemPage), "Sound");
         }

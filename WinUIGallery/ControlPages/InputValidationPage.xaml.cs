@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -6,17 +6,17 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.Text;
-using Windows.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Data;
 using System.Runtime.CompilerServices;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -47,13 +47,13 @@ namespace AppUIBasics.ControlPages
         private void WinformsValidate(object sender, TextChangedEventArgs e)
         {
             var foo = sender as TextBox;
-            var ErrorsCollection = Windows.UI.Xaml.Data.Validation.GetErrors(foo);
+            var ErrorsCollection = Microsoft.UI.Xaml.Data.Validation.GetErrors(foo);
             ErrorsCollection.Clear();
-            Windows.UI.Xaml.Data.Validation.AddErrorHandler(foo, OnValidationError);
+            Microsoft.UI.Xaml.Data.Validation.AddErrorHandler(foo, OnValidationError);
 
             if (!new EmailAddressAttribute().IsValid(foo.Text))
             {
-                ErrorsCollection = Windows.UI.Xaml.Data.Validation.GetErrors(foo);
+                ErrorsCollection = Microsoft.UI.Xaml.Data.Validation.GetErrors(foo);
                 ErrorsCollection.Add(new ValidationError("Email is not a valid email address"));
             }
         }
@@ -165,7 +165,7 @@ namespace AppUIBasics.ControlPages
     }
 
     //NotifyDataErrorInfoBase
-    public class NotifyDataErrorInfoBase : Windows.UI.Xaml.Data.INotifyDataErrorInfo
+    public class NotifyDataErrorInfoBase : Microsoft.UI.Xaml.Data.INotifyDataErrorInfo
     {
         protected readonly Dictionary<string, ObservableCollection<ValidationError>> Errors;
 
@@ -176,9 +176,9 @@ namespace AppUIBasics.ControlPages
 
         public bool HasErrors => Errors.Any();
 
-        public event EventHandler<Windows.UI.Xaml.Data.DataErrorsChangedEventArgs> ErrorsChanged;
+        public event EventHandler<Microsoft.UI.Xaml.Data.DataErrorsChangedEventArgs> ErrorsChanged;
 
-        IEnumerable<object> Windows.UI.Xaml.Data.INotifyDataErrorInfo.GetErrors(string propertyName)
+        IEnumerable<object> Microsoft.UI.Xaml.Data.INotifyDataErrorInfo.GetErrors(string propertyName)
         {
             return propertyName != null && Errors.ContainsKey(propertyName)
                 ? Errors[propertyName] as IEnumerable<ValidationError>
@@ -187,7 +187,7 @@ namespace AppUIBasics.ControlPages
 
         protected virtual void OnErrorsChanged(string propertyName)
         {
-            ErrorsChanged?.Invoke(this, new Windows.UI.Xaml.Data.DataErrorsChangedEventArgs(propertyName));
+            ErrorsChanged?.Invoke(this, new Microsoft.UI.Xaml.Data.DataErrorsChangedEventArgs(propertyName));
         }
 
         protected void ClearErrors()

@@ -19,9 +19,9 @@ using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 using Windows.System;
 using Windows.UI.Core;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 
 namespace AppUIBasics.Controls
 {
@@ -237,7 +237,7 @@ namespace AppUIBasics.Controls
             });
         }
 
-        private void CopyCodeButton_Click(object sender, RoutedEventArgs e)
+        private async void CopyCodeButton_Click(object sender, RoutedEventArgs e)
         {
             DataPackage package = new DataPackage();
             package.SetText(actualCode);
@@ -245,15 +245,8 @@ namespace AppUIBasics.Controls
 
             VisualStateManager.GoToState(this, "ConfirmationDialogVisible", false);
 
-            // Automatically close teachingtip after 1 seconds
-            if (DispatcherQueue.GetForCurrentThread() != null)
-            {
-                DispatcherQueue.GetForCurrentThread().TryEnqueue(async () =>
-                {
-                    await Task.Delay(1000);
-                    VisualStateManager.GoToState(this, "ConfirmationDialogHidden", false);
-                });
-            }
+            await Task.Delay(1000);
+            VisualStateManager.GoToState(this, "ConfirmationDialogHidden", false);
         }
     }
 }

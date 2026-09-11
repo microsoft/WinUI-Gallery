@@ -19,8 +19,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <winui:XamlControlsResources />
                 <local:ItemTemplates />
-                <winui:XamlControlsResources ControlsResourcesVersion="Version2"/>
             </ResourceDictionary.MergedDictionaries>
 
             <ResourceDictionary.ThemeDictionaries>
@@ -66,8 +66,8 @@
 
             <SolidColorBrush x:Key="GridViewHeaderItemDividerStroke" Color="Transparent"/>
 
-            <x:String x:Key="AppTitleName">WinUI 2 Gallery</x:String>
-            <x:String x:Key="WinUIVersion">SDK 2.8</x:String>
+            <x:String x:Key="AppTitleName">WinUI 3 Gallery</x:String>
+            <x:String x:Key="WinUIVersion">Windows App SDK 2.4</x:String>
 
             <Style x:Key="OutputTextBlockStyle" BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
                 <Setter Property="Margin" Value="8,8,0,0" />

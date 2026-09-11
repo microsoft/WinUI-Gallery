@@ -14,17 +14,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using AppUIBasics.Data;
 using AppUIBasics.Helper;
-using Windows.ApplicationModel.Core;
 using Windows.Devices.Input;
 using Windows.Foundation.Metadata;
 using Windows.Gaming.Input;
 using Windows.System;
 using Windows.System.Profile;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Automation;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Navigation;
 using muxc = Microsoft.UI.Xaml.Controls;
 
 namespace AppUIBasics
@@ -41,6 +40,8 @@ namespace AppUIBasics
         private bool _isKeyboardConnected;
         private Microsoft.UI.Xaml.Controls.NavigationViewItem _allControlsMenuItem;
         private Microsoft.UI.Xaml.Controls.NavigationViewItem _newControlsMenuItem;
+        private muxc.NavigationViewItem _synchronizedSelection;
+        private string _currentNavigationParameter;
 
         public Microsoft.UI.Xaml.Controls.NavigationView NavigationView
         {
@@ -85,7 +86,7 @@ namespace AppUIBasics
             this.GotFocus += (object sender, RoutedEventArgs e) =>
             {
                 // helpful for debugging focus problems w/ keyboard & gamepad
-                if (FocusManager.GetFocusedElement() is FrameworkElement focus)
+                if (FocusManager.GetFocusedElement(XamlRoot) is FrameworkElement focus)
                 {
                     Debug.WriteLine("got focus: " + focus.Name + " (" + focus.GetType().ToString() + ")");
                 }
@@ -94,9 +95,9 @@ namespace AppUIBasics
             Gamepad.GamepadAdded += OnGamepadAdded;
             Gamepad.GamepadRemoved += OnGamepadRemoved;
 
-            Window.Current.SetTitleBar(AppTitleBar);
-
-            CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, e) => UpdateAppTitle(s);
+            App.MainWindow.SetTitleBar(AppTitleBar);
+            App.MainWindow.SizeChanged += (_, _) => UpdateAppTitle();
+            AppTitleBar.SizeChanged += (_, _) => UpdateAppTitle();
 
             _isKeyboardConnected = Convert.ToBoolean(new KeyboardCapabilities().KeyboardPresent);
 
@@ -116,11 +117,13 @@ namespace AppUIBasics
             NavigationRootPage.Current.AppTitleBar.Visibility = navigationView.PaneDisplayMode == muxc.NavigationViewPaneDisplayMode.Top ? Visibility.Collapsed : Visibility.Visible;
         }
 
-        void UpdateAppTitle(CoreApplicationViewTitleBar coreTitleBar)
+        void UpdateAppTitle()
         {
             //ensure the custom title bar does not overlap window caption controls
             Thickness currMargin = AppTitleBar.Margin;
-            AppTitleBar.Margin = new Thickness(currMargin.Left, currMargin.Top, coreTitleBar.SystemOverlayRightInset, currMargin.Bottom);
+            double scale = XamlRoot?.RasterizationScale ?? 1;
+            AppTitleBar.Margin = new Thickness(currMargin.Left, currMargin.Top,
+                App.MainWindow.AppWindow.TitleBar.RightInset / scale, currMargin.Bottom);
         }
 
         public string GetAppTitleFromSystem()
@@ -146,8 +149,7 @@ namespace AppUIBasics
                             if ((string)item.Tag == id)
                             {
                                 group.IsExpanded = true;
-                                NavigationView.SelectedItem = item;
-                                item.IsSelected = true;
+                                SelectWithoutNavigating(item);
                                 return;
                             }
                         }
@@ -266,6 +268,14 @@ namespace AppUIBasics
 
         private void OnNavigationViewSelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
         {
+            if (_synchronizedSelection != null &&
+                (Equals(args.SelectedItem, _synchronizedSelection) || Equals(args.SelectedItemContainer, _synchronizedSelection)))
+            {
+                _synchronizedSelection = null;
+                return;
+            }
+            _synchronizedSelection = null;
+
             // Close any open teaching tips before navigation
             CloseTeachingTips();
 
@@ -279,6 +289,10 @@ namespace AppUIBasics
             else
             {
                 var selectedItem = args.SelectedItemContainer;
+                if (selectedItem == null)
+                {
+                    return;
+                }
 
                 if (selectedItem == _allControlsMenuItem)
                 {
@@ -299,12 +313,18 @@ namespace AppUIBasics
                     if (selectedItem.DataContext is ControlInfoDataGroup)
                     {
                         var itemId = ((ControlInfoDataGroup)selectedItem.DataContext).UniqueId;
-                        rootFrame.Navigate(typeof(SectionPage), itemId);
+                        if (rootFrame.CurrentSourcePageType != typeof(SectionPage) || _currentNavigationParameter != itemId)
+                        {
+                            rootFrame.Navigate(typeof(SectionPage), itemId);
+                        }
                     }
                     else if (selectedItem.DataContext is ControlInfoDataItem)
                     {
                         var item = (ControlInfoDataItem)selectedItem.DataContext;
-                        rootFrame.Navigate(typeof(ItemPage), item.UniqueId);
+                        if (rootFrame.CurrentSourcePageType != typeof(ItemPage) || _currentNavigationParameter != item.UniqueId)
+                        {
+                            rootFrame.Navigate(typeof(ItemPage), item.UniqueId);
+                        }
                     }
 
                 }
@@ -313,6 +333,7 @@ namespace AppUIBasics
 
         private void OnRootFrameNavigated(object sender, NavigationEventArgs e)
         {
+            _currentNavigationParameter = e.Parameter as string;
             // Close any open teaching tips before navigation
             CloseTeachingTips();
 
@@ -393,6 +414,15 @@ namespace AppUIBasics
             }
         }
 
+        private void SelectWithoutNavigating(muxc.NavigationViewItem item)
+        {
+            if (!Equals(NavigationView.SelectedItem, item))
+            {
+                _synchronizedSelection = item;
+                NavigationView.SelectedItem = item;
+            }
+        }
+
         public void EnsureItemIsVisibleInNavigation(string name)
         {
             bool changedSelection = false;
@@ -410,7 +440,7 @@ namespace AppUIBasics
                 // Check if we are this category
                 if ((string)item.Content == name)
                 {
-                    NavigationView.SelectedItem = item;
+                    SelectWithoutNavigating(item);
                     changedSelection = true;
                 }
                 // We are not :/
@@ -430,7 +460,7 @@ namespace AppUIBasics
                                 {
                                     // In Topmode, the child is not visible, so set parent as selected
                                     // Everything else does not work unfortunately
-                                    NavigationView.SelectedItem = item;
+                                    SelectWithoutNavigating(item);
                                     item.StartBringIntoView();
                                 }
                                 else
@@ -440,7 +470,7 @@ namespace AppUIBasics
                                     // Ensure parent is expanded so we actually show the selection indicator
                                     NavigationView.UpdateLayout();
                                     // Set selected item
-                                    NavigationView.SelectedItem = child;
+                                    SelectWithoutNavigating(child);
                                     child.StartBringIntoView();
                                 }
                                 // Set to true to also skip out of outer for loop

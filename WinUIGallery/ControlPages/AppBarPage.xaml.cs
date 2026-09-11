@@ -7,10 +7,10 @@
 // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 //
 //*********************************************************
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics.ControlPages
 {
@@ -42,7 +42,7 @@ namespace AppUIBasics.ControlPages
         {
             ButtonBase b = (ButtonBase)sender;
 
-            if (Window.Current.Content is Frame rootFrame && b.Tag != null)
+            if (NavigationRootPage.RootFrame is Frame rootFrame && b.Tag != null)
             {
                 if (b.Tag.ToString() == "Home")
                 {

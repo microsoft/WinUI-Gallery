@@ -1,4 +1,4 @@
-﻿//*********************************************************
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -9,7 +9,7 @@
 //*********************************************************
 using AppUIBasics.Data;
 using System.Linq;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics
 {

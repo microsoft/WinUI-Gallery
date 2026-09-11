@@ -2,9 +2,9 @@ using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Windows.Foundation.Metadata;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 
 namespace AppUIBasics.ControlPages
 {
@@ -58,7 +58,7 @@ namespace AppUIBasics.ControlPages
 
         private void ListViewSwipeContainer_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
-            if (e.Pointer.PointerDeviceType == Windows.Devices.Input.PointerDeviceType.Mouse || e.Pointer.PointerDeviceType == Windows.Devices.Input.PointerDeviceType.Pen)
+            if (e.Pointer.PointerDeviceType == Microsoft.UI.Input.PointerDeviceType.Mouse || e.Pointer.PointerDeviceType == Microsoft.UI.Input.PointerDeviceType.Pen)
             {
                 VisualStateManager.GoToState(sender as Control, "HoverButtonsShown", true);
             }

@@ -11,9 +11,8 @@
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Default">
-                    <media:AcrylicBrush x:Key="CustomAcrylicInAppBrush" BackgroundSource="Backdrop" TintOpacity="0.8" TintColor="Black" FallbackColor="Green"/>
-                    <media:AcrylicBrush x:Key="CustomAcrylicBackgroundBrush" BackgroundSource="HostBackdrop" TintOpacity="0.8" TintColor="Black" FallbackColor="Green"/>
-                    <media:AcrylicBrush x:Key="CustomAcrylicInAppLuminosity" BackgroundSource="Backdrop" TintOpacity="0.8" TintColor="SkyBlue" FallbackColor="SkyBlue"/>
+                    <media:AcrylicBrush x:Key="CustomAcrylicInAppBrush" TintOpacity="0.8" TintColor="Black" FallbackColor="Green"/>
+                    <media:AcrylicBrush x:Key="CustomAcrylicInAppLuminosity" TintOpacity="0.8" TintColor="SkyBlue" FallbackColor="SkyBlue"/>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
@@ -36,7 +35,7 @@
                         <Setter Target="Example1Grid.Width" Value="400"/>
                         <Setter Target="Example1Grid.Height" Value="252"/>
                         <Setter Target="Example2Grid.Width" Value="400"/>
-                        <Setter Target="Example2Grid.Height" Value="252"/>
+                        <Setter Target="Example2Grid.MinHeight" Value="252"/>
                         <Setter Target="Example3Grid.Width" Value="500"/>
                         <Setter Target="Example3Grid.MinHeight" Value="252"/>
                         <Setter Target="Example4Grid.Width" Value="500"/>
@@ -51,7 +50,7 @@
                         <Setter Target="Example1Grid.Width" Value="400"/>
                         <Setter Target="Example1Grid.Height" Value="252"/>
                         <Setter Target="Example2Grid.Width" Value="400"/>
-                        <Setter Target="Example2Grid.Height" Value="252"/>
+                        <Setter Target="Example2Grid.MinHeight" Value="252"/>
                         <Setter Target="Example3Grid.Width" Value="652"/>
                         <Setter Target="Example3Grid.MinHeight" Value="252"/>
                         <Setter Target="Example4Grid.Width" Value="652"/>
@@ -62,7 +61,14 @@
         </VisualStateManager.VisualStateGroups>
         <RichTextBlock>
             <Paragraph>
-                Acrylic Brush might fall back to SolidColorbrush in certain scenarios.
+                In WinUI 3, AcrylicBrush paints in-app content. Background acrylic uses a
+                window-level DesktopAcrylicController instead of a brush's BackgroundSource.
+                The background examples open separate windows so they reveal the desktop
+                and windows behind them, not the shapes on this page.
+            </Paragraph>
+            <Paragraph>
+                Acrylic can fall back to a solid color because of system settings, device support,
+                or window activation. Each desktop example reports its current material state.
                 If you can't see the Acrylic effect, please refer to
                 <Hyperlink NavigateUri="https://docs.microsoft.com/windows/uwp/design/style/acrylic#usability-and-adaptability">Acrylic brush adaptability documentation</Hyperlink>.
             </Paragraph>
@@ -84,22 +90,40 @@
                 </x:String>
             </local:ControlExample.Xaml>
         </local:ControlExample>
-        <local:ControlExample x:Name="Example2" HeaderText="Default background acrylic brush.">
+        <local:ControlExample x:Name="Example2" HeaderText="Default desktop (background) acrylic window.">
             <local:ControlExample.Example>
-                <Grid x:Name="Example2Grid" Width="320" Height="200">
-                    <Grid>
-                        <Rectangle Fill="Aqua" Height="200" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Ellipse Fill="Magenta" Height="152" Width="152" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <Rectangle Fill="Yellow" Height="100" Width="80" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
-                    </Grid>
-                    <Rectangle Fill="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" Margin="12" />
+                <Grid x:Name="Example2Grid" Width="320" MinHeight="200">
+                    <StackPanel Spacing="12" Margin="12">
+                        <TextBlock Text="Open a window with the system's default desktop acrylic. Move it over another window to see the background blur."
+                                   TextWrapping="Wrap"/>
+                        <Button Content="Open default acrylic window" Click="OpenDefaultAcrylicWindow_Click"/>
+                        <TextBlock x:Name="DefaultDesktopStatus" TextWrapping="Wrap"
+                                   AutomationProperties.LiveSetting="Polite"/>
+                    </StackPanel>
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
-                <x:String>
-                    &lt;Rectangle Fill="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" /&gt;
-                </x:String>
+                <x:String xml:space="preserve">
+&lt;!-- For a default desktop acrylic window, the built-in backdrop manages its controller. --&gt;
+&lt;Window ...&gt;
+    &lt;Window.SystemBackdrop&gt;
+        &lt;DesktopAcrylicBackdrop /&gt;
+    &lt;/Window.SystemBackdrop&gt;
+    &lt;Grid&gt;
+        &lt;!-- Leave the root background unset so the window backdrop remains visible. --&gt;
+    &lt;/Grid&gt;
+&lt;/Window&gt;
+</x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+// This sample uses DesktopAcrylicController directly to also report StateChanged.
+// AcrylicSampleWindow owns configuration, activation, theme updates and disposal.
+var window = new AcrylicSampleWindow(custom: false, theme: ActualTheme);
+AppUIBasics.Helper.WindowHelper.TrackWindow(window);
+window.Activate();
+</x:String>
+            </local:ControlExample.CSharp>
         </local:ControlExample>
         <local:ControlExample x:Name="Example3" HeaderText="Custom acrylic in-app brush.">
             <local:ControlExample.Example>
@@ -141,7 +165,7 @@
 &lt;Rectangle Fill="{ThemeResource CustomAcrylicInAppBrush}" /&gt;
 
 &lt;ResourceDictionary x:Key="Default"&gt;
-    &lt;media:AcrylicBrush x:Key="CustomAcrylicBrush" BackgroundSource="Backdrop"
+    &lt;media:AcrylicBrush x:Key="CustomAcrylicInAppBrush"
             TintOpacity="$(OpacitySlider)" TintColor="$(TintColor)" FallbackColor="$(FallbackColor)" /&gt;
 &lt;/ResourceDictionary&gt;
 </x:String>
@@ -152,19 +176,18 @@
                 <local:ControlExampleSubstitution Key="FallbackColor" Value="{x:Bind FallbackColorSelectorInApp.SelectedItem, Mode=OneWay}"/>
             </local:ControlExample.Substitutions>
         </local:ControlExample>
-        <local:ControlExample x:Name="Example4" HeaderText="Custom acrylic background brush.">
+        <local:ControlExample x:Name="Example4" HeaderText="Custom desktop (background) acrylic window.">
             <local:ControlExample.Example>
                 <Grid x:Name="Example4Grid" MinWidth="320" MinHeight="200">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="252"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid>
-                        <Rectangle Fill="Aqua" Height="200" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <Ellipse Fill="Magenta" Height="152" Width="152" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <Rectangle Fill="Yellow" Height="100" Width="80" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
-                    </Grid>
-                    <Rectangle x:Name="CustomAcrylicShape" Margin="12" Fill="{ThemeResource CustomAcrylicBackgroundBrush}"/>
+                    <StackPanel Spacing="12" Margin="12">
+                        <TextBlock Text="Tint opacity, tint color and fallback color update the desktop acrylic controller, not an in-app brush. Custom colors stay fixed when the app theme changes."
+                                   TextWrapping="Wrap"/>
+                        <Button Content="Open custom acrylic window" Click="OpenCustomAcrylicWindow_Click"/>
+                        <TextBlock Text="After changing these controls, activate the demonstration window to see acrylic again. An inactive window may show the chosen fallback color."
+                                   TextWrapping="Wrap"/>
+                        <TextBlock x:Name="CustomDesktopStatus" TextWrapping="Wrap"
+                                   AutomationProperties.LiveSetting="Polite"/>
+                    </StackPanel>
                 </Grid>
             </local:ControlExample.Example>
             <local:ControlExample.Options>
@@ -188,16 +211,24 @@
                 </StackPanel>
             </local:ControlExample.Options>
 
-            <local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
                 <x:String xml:space="preserve">
-&lt;Rectangle Fill="{ThemeResource CustomAcrylicBackgroundBrush}" /&gt;
-
-&lt;ResourceDictionary x:Key="Default"&gt;
-    &lt;media:AcrylicBrush x:Key="CustomAcrylicBackgroundBrush" BackgroundSource="HostBackdrop"
-        TintOpacity="$(OpacitySlider)" TintColor="$(TintColor)" FallbackColor="$(FallbackColor)" /&gt;
-&lt;/ResourceDictionary&gt;
+// In AcrylicSampleWindow, after checking DesktopAcrylicController.IsSupported():
+DispatcherQueue.EnsureSystemDispatcherQueue();
+var controller = new DesktopAcrylicController
+{
+    TintOpacity = (float)$(OpacitySlider),
+    TintColor = tintColor, // $(TintColor), from the selected SolidColorBrush.Color
+    FallbackColor = fallbackColor // $(FallbackColor), from the selected SolidColorBrush.Color
+};
+controller.SetSystemBackdropConfiguration(configuration);
+bool attached = controller.AddSystemBackdropTarget(
+    this.As&lt;Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop&gt;());
+// configuration follows this window's activation and theme.
+// If unsupported or attachment fails, show an explicit solid-color fallback.
+// Handle controller.StateChanged; dispose the controller when the window closes.
 </x:String>
-            </local:ControlExample.Xaml>
+            </local:ControlExample.CSharp>
             <local:ControlExample.Substitutions>
                 <local:ControlExampleSubstitution Key="OpacitySlider" Value="{x:Bind OpacitySlider.Value, Mode=OneWay}"/>
                 <local:ControlExampleSubstitution Key="TintColor" Value="{x:Bind ColorSelector.SelectedItem, Mode=OneWay}"/>
@@ -235,7 +266,7 @@
 &lt;Rectangle Fill="{ThemeResource CustomAcrylicInAppLuminosity}" /&gt;
 
 &lt;ResourceDictionary x:Key="Default"&gt;
-    &lt;media:AcrylicBrush x:Key="CustomAcrylicInAppLuminosity" BackgroundSource="Backdrop"
+    &lt;media:AcrylicBrush x:Key="CustomAcrylicInAppLuminosity"
             TintOpacity="$(OpacitySlider)" TintLuminosityOpacity="$(TintLuminositySlider)" TintColor="SkyBlue" FallbackColor="SkyBlue" /&gt;
 &lt;/ResourceDictionary&gt;
 </x:String>

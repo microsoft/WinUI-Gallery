@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Microsoft.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls;
 
 namespace AppUIBasics.ControlPages
 {

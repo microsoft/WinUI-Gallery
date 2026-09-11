@@ -1,21 +1,18 @@
 using System;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
-using Windows.ApplicationModel.Core;
+using AppUIBasics.Helper;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation.Metadata;
-using Windows.UI.ViewManagement;
-using Windows.UI.WindowManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Hosting;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics.TabViewPages
 {
     public sealed partial class TabViewWindowingSamplePage : Page
     {
-        AppWindow RootAppWindow = null;
+        private Window _window;
 
         private const string DataIdentifier = "MyTabItem";
         public TabViewWindowingSamplePage()
@@ -25,19 +22,12 @@ namespace AppUIBasics.TabViewPages
             Tabs.TabItemsChanged += Tabs_TabItemsChanged;
         }
 
-        private async void Tabs_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
+        private void Tabs_TabItemsChanged(TabView sender, Windows.Foundation.Collections.IVectorChangedEventArgs args)
         {
             // If there are no more tabs, close the window.
             if (sender.TabItems.Count == 0)
             {
-                if (RootAppWindow != null)
-                {
-                    await RootAppWindow.CloseAsync();
-                }
-                else
-                {
-                    Window.Current.Close();
-                }
+                _window?.Close();
             }
             // If there is only one tab left, disable dragging and reordering of Tabs.
             else if (sender.TabItems.Count == 1)
@@ -52,16 +42,10 @@ namespace AppUIBasics.TabViewPages
             }
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        public void SetupWindow(Window window, bool addDefaultTabs)
         {
-            base.OnNavigatedTo(e);
-
-            SetupWindow(null);
-        }
-
-        void SetupWindow(AppWindow window)
-        {
-            if (window == null)
+            _window = window;
+            if (addDefaultTabs)
             {
                 // Main Window -- add some default items
                 for (int i = 0; i < 3; i++)
@@ -71,59 +55,32 @@ namespace AppUIBasics.TabViewPages
 
                 Tabs.SelectedIndex = 0;
 
-                // Extend into the titlebar
-                var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-                coreTitleBar.ExtendViewIntoTitleBar = true;
-
-                coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
-
-                var titleBar = ApplicationView.GetForCurrentView().TitleBar;
-                titleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
-                titleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
-
-                Window.Current.SetTitleBar(CustomDragRegion);
             }
-            else
-            {
-                // Secondary AppWindows --- keep track of the window
-                RootAppWindow = window;
 
-                // Extend into the titlebar
-                window.TitleBar.ExtendsContentIntoTitleBar = true;
-                window.TitleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
-                window.TitleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
-
-                // Due to a bug in AppWindow, we cannot follow the same pattern as CoreWindow when setting the min width.
-                // Instead, set a hardcoded number. 
-                CustomDragRegion.MinWidth = 188;
-
-                window.Frame.DragRegionVisuals.Add(CustomDragRegion);
-            }
+            window.ExtendsContentIntoTitleBar = true;
+            window.AppWindow.TitleBar.ButtonBackgroundColor = Microsoft.UI.Colors.Transparent;
+            window.AppWindow.TitleBar.ButtonInactiveBackgroundColor = Microsoft.UI.Colors.Transparent;
+            window.SetTitleBar(CustomDragRegion);
+            window.SizeChanged += (_, _) => UpdateTitleBarMetrics();
+            Loaded += (_, _) => UpdateTitleBarMetrics();
         }
 
-        private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
+        private void UpdateTitleBarMetrics()
         {
-            // To ensure that the tabs in the titlebar are not occluded by shell
-            // content, we must ensure that we account for left and right overlays.
-            // In LTR layouts, the right inset includes the caption buttons and the
-            // drag region, which is flipped in RTL. 
-
-            // The SystemOverlayLeftInset and SystemOverlayRightInset values are
-            // in terms of physical left and right. Therefore, we need to flip
-            // then when our flow direction is RTL.
+            var titleBar = _window.AppWindow.TitleBar;
+            double scale = XamlRoot?.RasterizationScale ?? 1;
             if (FlowDirection == FlowDirection.LeftToRight)
             {
-                CustomDragRegion.MinWidth = sender.SystemOverlayRightInset;
-                ShellTitlebarInset.MinWidth = sender.SystemOverlayLeftInset;
+                CustomDragRegion.MinWidth = titleBar.RightInset / scale;
+                ShellTitlebarInset.MinWidth = titleBar.LeftInset / scale;
             }
             else
             {
-                CustomDragRegion.MinWidth = sender.SystemOverlayLeftInset;
-                ShellTitlebarInset.MinWidth = sender.SystemOverlayRightInset;
+                CustomDragRegion.MinWidth = titleBar.LeftInset / scale;
+                ShellTitlebarInset.MinWidth = titleBar.RightInset / scale;
             }
 
-            // Ensure that the height of the custom regions are the same as the titlebar.
-            CustomDragRegion.Height = ShellTitlebarInset.Height = sender.Height;
+            CustomDragRegion.Height = ShellTitlebarInset.Height = titleBar.Height / scale;
         }
 
         public void AddTabToTabs(TabViewItem tab)
@@ -137,29 +94,16 @@ namespace AppUIBasics.TabViewPages
             MoveTabToNewWindow(args.Tab);
         }
 
-        private async void MoveTabToNewWindow(TabViewItem tab)
+        private void MoveTabToNewWindow(TabViewItem tab)
         {
-
-            // AppWindow was introduced in Windows 10 version 18362 (ApiContract version 8). 
-            // If the app is running on a version earlier than 18362, simply no-op.
-            // If your app needs to support multiple windows on earlier versions of Win10, you can use CoreWindow/ApplicationView.
-            // More information about showing multiple views can be found here: https://docs.microsoft.com/windows/uwp/design/layout/show-multiple-views
-            if (!ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
-            {
-                return;
-            }
-
-            AppWindow newWindow = await AppWindow.TryCreateAsync();
-
             var newPage = new TabViewWindowingSamplePage();
-            newPage.SetupWindow(newWindow);
-
-            ElementCompositionPreview.SetAppWindowContent(newWindow, newPage);
+            var newWindow = WindowHelper.TrackWindow(new Window { Content = newPage, Title = "TabView windowing sample" });
+            newPage.SetupWindow(newWindow, false);
 
             Tabs.TabItems.Remove(tab);
             newPage.AddTabToTabs(tab);
 
-            await newWindow.TryShowAsync();
+            newWindow.Activate();
         }
 
         private void Tabs_TabDragStarting(TabView sender, TabViewTabDragStartingEventArgs args)

@@ -14,12 +14,14 @@ using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Provider;
 using Windows.UI;
-using Windows.UI.Text;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Text;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
 using muxc = Microsoft.UI.Xaml.Controls;
+using AppUIBasics.Helper;
+using Colors = Microsoft.UI.Colors;
 
 namespace AppUIBasics.ControlPages
 {
@@ -66,6 +68,8 @@ namespace AppUIBasics.ControlPages
                 SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary
             };
             open.FileTypeFilter.Add(".rtf");
+            WinRT.Interop.InitializeWithWindow.Initialize(open,
+                WinRT.Interop.WindowNative.GetWindowHandle(WindowHelper.GetWindowForElement(this)));
 
             Windows.Storage.StorageFile file = await open.PickSingleFileAsync();
 
@@ -75,7 +79,7 @@ namespace AppUIBasics.ControlPages
                     await file.OpenAsync(Windows.Storage.FileAccessMode.Read))
                 {
                     // Load the file into the Document property of the RichEditBox.
-                    editor.Document.LoadFromStream(Windows.UI.Text.TextSetOptions.FormatRtf, randAccStream);
+                    editor.Document.LoadFromStream(Microsoft.UI.Text.TextSetOptions.FormatRtf, randAccStream);
                 }
             }
         }
@@ -92,6 +96,8 @@ namespace AppUIBasics.ControlPages
 
             // Default file name if the user does not type one in or select a file to replace
             savePicker.SuggestedFileName = "New Document";
+            WinRT.Interop.InitializeWithWindow.Initialize(savePicker,
+                WinRT.Interop.WindowNative.GetWindowHandle(WindowHelper.GetWindowForElement(this)));
 
             StorageFile file = await savePicker.PickSaveFileAsync();
             if (file != null)
@@ -103,7 +109,7 @@ namespace AppUIBasics.ControlPages
                 using (Windows.Storage.Streams.IRandomAccessStream randAccStream =
                     await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite))
                 {
-                    editor.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, randAccStream);
+                    editor.Document.SaveToStream(Microsoft.UI.Text.TextGetOptions.FormatRtf, randAccStream);
                 }
 
                 // Let Windows know that we're finished changing the file so the 
@@ -111,8 +117,13 @@ namespace AppUIBasics.ControlPages
                 FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
                 if (status != FileUpdateStatus.Complete)
                 {
-                    Windows.UI.Popups.MessageDialog errorBox =
-                        new Windows.UI.Popups.MessageDialog("File " + file.Name + " couldn't be saved.");
+                    var errorBox = new ContentDialog
+                    {
+                        XamlRoot = XamlRoot,
+                        Title = "Save failed",
+                        Content = "File " + file.Name + " couldn't be saved.",
+                        CloseButtonText = "OK"
+                    };
                     await errorBox.ShowAsync();
                 }
             }
@@ -132,13 +143,13 @@ namespace AppUIBasics.ControlPages
         {
             // Extract the color of the button that was clicked.
             Button clickedColor = (Button)sender;
-            var rectangle = (Windows.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
-            var color = ((Windows.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
+            var rectangle = (Microsoft.UI.Xaml.Shapes.Rectangle)clickedColor.Content;
+            var color = ((Microsoft.UI.Xaml.Media.SolidColorBrush)rectangle.Fill).Color;
 
             editor.Document.Selection.CharacterFormat.ForegroundColor = color;
 
             fontColorButton.Flyout.Hide();
-            editor.Focus(Windows.UI.Xaml.FocusState.Keyboard);
+            editor.Focus(Microsoft.UI.Xaml.FocusState.Keyboard);
             currentColor = color;
         }
 

@@ -1,5 +1,5 @@
-﻿using System;
-using Windows.UI.Xaml.Data;
+using System;
+using Microsoft.UI.Xaml.Data;
 
 namespace AppUIBasics.Common
 {

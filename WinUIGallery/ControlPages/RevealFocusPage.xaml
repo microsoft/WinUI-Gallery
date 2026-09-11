@@ -22,7 +22,7 @@
         <StackPanel.Resources>
             <SolidColorBrush x:Key="SystemControlRevealFocusVisualBrush" Color="{ThemeResource SystemAccentColorLight1}"/>
 
-            <Style x:Key="ButtonRevealCustomStyle" TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}">
+            <Style x:Key="ButtonRevealCustomStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
                 <Setter Target="Width" Value="100"/>
                 <Setter Target="Height" Value="100"/>
                 <Setter Target="VerticalAlignment" Value="Center"/>
@@ -84,7 +84,7 @@
             <local:ControlExample.Options>
                 <muxc:RadioButtons Header="FocusVisualKind:">
                     <RadioButton x:Name="HighVisibility" Content="High Visibility" Checked="HighVisibility_Checked"/>
-                    <RadioButton x:Name="RevealFocus" Content="Reveal Focus"  Checked="RevealFocus_Checked"/>
+                    <RadioButton x:Name="RevealFocus" Content="Reveal Focus (not supported in WinUI 3)" IsEnabled="False"/>
                 </muxc:RadioButtons>
             </local:ControlExample.Options>
             <local:ControlExample.Xaml>
@@ -98,8 +98,7 @@
         </local:ControlExample>
 
         <TextBlock Margin="0,16,0,0" TextWrapping="WrapWholeWords">
-            <Bold>NOTE:</Bold> Choosing the <Bold>Reveal Focus</Bold> radio button will change the focus visuals that "UseSystemFocusVisuals" in the entire WinUI Gallery app.
-            Reveal focus should be used on Xbox only. Apps should use high visibility focus rectangles across all other form factors.
+            <Bold>NOTE:</Bold> Reveal Focus is not supported in WinUI 3. These examples demonstrate high-visibility focus rectangles, including their size and color customization.
         </TextBlock>
 
         <local:ControlExample x:Name="Example2" HeaderText="Change the size of the focus rectangle." ActualThemeChanged="Example2_ActualThemeChanged">

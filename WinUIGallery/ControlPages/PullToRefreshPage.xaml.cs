@@ -3,15 +3,15 @@ using System;
 using System.Collections.ObjectModel;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
-using Windows.UI.Composition;
+using Microsoft.UI.Composition;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Hosting;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Hosting;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AppUIBasics.ControlPages
 {
@@ -120,36 +120,14 @@ namespace AppUIBasics.ControlPages
             this.Loaded -= PullToRefreshPage_Loaded;
         }
 
-        async private void Timer1_Tick(object sender, object e)
+        private void Timer1_Tick(object sender, object e)
         {
-            CoreDispatcher disp = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher;
-            if (disp.HasThreadAccess)
-            {
-                Timer1_TickImpl();
-            }
-            else
-            {
-                await disp.RunAsync(CoreDispatcherPriority.Normal, () =>
-                {
-                    Timer1_TickImpl();
-                });
-            }
+            Timer1_TickImpl();
         }
 
-        async private void Timer2_Tick(object sender, object e)
+        private void Timer2_Tick(object sender, object e)
         {
-            CoreDispatcher disp = Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher;
-            if (disp.HasThreadAccess)
-            {
-                Timer2_TickImpl();
-            }
-            else
-            {
-                await disp.RunAsync(CoreDispatcherPriority.Normal, () =>
-                {
-                    Timer2_TickImpl();
-                });
-            }
+            Timer2_TickImpl();
         }
 
         private void Timer1_TickImpl()

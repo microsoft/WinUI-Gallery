@@ -6,29 +6,43 @@
     <StackPanel>
         <local:ControlExample x:Name="Example1" HeaderText="A MediaPlayerElement with transport controls.">
             <local:ControlExample.Example>
-                <MediaPlayerElement Source="ms-appx:///Assets/SampleMedia/ladybug.wmv" MaxWidth="400" AutoPlay="False"
+                <MediaPlayerElement x:Name="MediaPlayerWithControls" MaxWidth="400" AutoPlay="False"
                         AreTransportControlsEnabled="True" />
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;MediaPlayerElement Source="/Assets/SampleMedia/ladybug.wmv"
+&lt;MediaPlayerElement x:Name="MediaPlayerWithControls"
                     MaxWidth="400"
                     AutoPlay="False"
                     AreTransportControlsEnabled="True" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+MediaPlayerWithControls.Source = Windows.Media.Core.MediaSource.CreateFromUri(
+    new Uri(System.IO.Path.Combine(AppContext.BaseDirectory, "Assets", "SampleMedia", "ladybug.wmv")));
+                </x:String>
+            </local:ControlExample.CSharp>
         </local:ControlExample>
         <local:ControlExample x:Name="Example2" HeaderText="A MediaPlayerElement that autoplays the video.">
             <local:ControlExample.Example>
-                <MediaElement Source="ms-appx:///Assets/SampleMedia/fishes.wmv" MaxWidth="400" AutoPlay="True" />
+                <MediaPlayerElement x:Name="AutoplayMediaPlayer" MaxWidth="400" AutoPlay="True"
+                                    AreTransportControlsEnabled="False" />
             </local:ControlExample.Example>
             <local:ControlExample.Xaml>
                 <x:String xml:space="preserve">
-&lt;MediaPlayerElement Source="Assets/SampleMedia/fishes.wmv"
+&lt;MediaPlayerElement x:Name="AutoplayMediaPlayer"
                     MaxWidth="400"
-                    AutoPlay="True" /&gt;
+                    AutoPlay="True"
+                    AreTransportControlsEnabled="False" /&gt;
                 </x:String>
             </local:ControlExample.Xaml>
+            <local:ControlExample.CSharp>
+                <x:String xml:space="preserve">
+AutoplayMediaPlayer.Source = Windows.Media.Core.MediaSource.CreateFromUri(
+    new Uri(System.IO.Path.Combine(AppContext.BaseDirectory, "Assets", "SampleMedia", "fishes.wmv")));
+                </x:String>
+            </local:ControlExample.CSharp>
         </local:ControlExample>
     </StackPanel>
 </Page>
