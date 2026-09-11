@@ -1,0 +1,25 @@
+--- header
+Test a transparent WebView2 over XAML content
+--- xaml
+<Grid>
+    <Grid.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#FFFF2D55" Offset="0" />
+            <GradientStop Color="#FF7B2CFF" Offset="0.5" />
+            <GradientStop Color="#FF00C7BE" Offset="1" />
+        </LinearGradientBrush>
+    </Grid.Background>
+
+    <WebView2
+        x:Name="MyWebView2"
+        DefaultBackgroundColor="Transparent" />
+</Grid>
+--- csharp
+await MyWebView2.EnsureCoreWebView2Async();
+MyWebView2.NavigateToString("""
+    <html style="height:100%;background:transparent">
+      <body style="height:100%;margin:0;background:transparent">
+        Transparent HTML
+      </body>
+    </html>
+    """);

@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
 using System.Numerics;
+using Windows.UI.Composition;
 
 namespace WinUIGallery.Controls;
 
@@ -30,7 +30,7 @@ public partial class OpacityMaskView : ContentControl
     private const string MaskContainerTemplateName = "PART_MaskContainer";
     private const string RootGridTemplateName = "PART_RootGrid";
 
-    private readonly Compositor _compositor = CompositionTarget.GetCompositorForCurrentThread();
+    private readonly Compositor _compositor = Microsoft.UI.Xaml.Media.CompositionTarget.GetCompositorForCurrentThread();
     private CompositionBrush? _mask;
     private CompositionMaskBrush? _maskBrush;
 

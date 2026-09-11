@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.UI.Composition;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -13,6 +12,7 @@ using System;
 using System.Collections.ObjectModel;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
+using Windows.UI.Composition;
 using Windows.UI.ViewManagement;
 using WinUIGallery.Helpers;
 

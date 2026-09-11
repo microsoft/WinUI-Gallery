@@ -9,8 +9,8 @@
 using System;
 using System.Numerics;
 using Microsoft.Graphics.Canvas.Geometry;
-using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml.Controls;
+using Windows.UI.Composition;
 
 namespace AnimatedVisuals;
 

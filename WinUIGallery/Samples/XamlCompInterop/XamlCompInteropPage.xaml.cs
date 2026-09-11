@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
@@ -10,6 +9,7 @@ using Microsoft.UI.Xaml.Input;
 using System;
 using System.Globalization;
 using System.Numerics;
+using Windows.UI.Composition;
 
 namespace WinUIGallery.ControlPages;
 
@@ -57,7 +57,7 @@ public sealed partial class XamlCompInteropPage : Page
         return TimeSpan.FromMilliseconds(PeriodSlider.Value);
     }
 
-    private void StartAnimationIfAPIPresent(UIElement sender, Microsoft.UI.Composition.CompositionAnimation animation)
+    private void StartAnimationIfAPIPresent(UIElement sender, CompositionAnimation animation)
     {
         (sender as UIElement).StartAnimation(animation);
     }
