@@ -7,8 +7,8 @@ Custom icons
             <SwipeItem Text="Coffee">
                 <SwipeItem.IconSource>
                     <BitmapIconSource UriSource="ms-appx:///Assets/SampleMedia/CoffeeCup.png"/>
-                <SwipeItem.IconSource/>
-            <SwipeItem/>
+                </SwipeItem.IconSource>
+            </SwipeItem>
         </SwipeItems>
     </Border.Resources>
     <SwipeControl BorderThickness="1"

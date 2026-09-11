@@ -6,6 +6,6 @@ A TextBlock with a style applied.
         <Setter Property="FontFamily" Value="Comic Sans MS"/>
         <Setter Property="FontStyle" Value="Italic"/>
     </Style>
-<Page.Resources>
+</Page.Resources>
 
 <TextBlock Text="I am a styled TextBlock" Style="{StaticResource CustomTextBlockStyle}"/>
