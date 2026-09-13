@@ -14,4 +14,4 @@ Vertical FlipView
                 <VirtualizingStackPanel Orientation="Vertical"/>
             </ItemsPanelTemplate>
         </FlipView.ItemsPanel>
-<FlipView>
+</FlipView>

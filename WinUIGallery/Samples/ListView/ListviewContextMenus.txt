@@ -49,7 +49,7 @@ ListView with context menus
             </Grid>
         </DataTemplate>
     </ListView.ItemTemplate>
-</DataTemplate>
+</ListView>
 --- c#
 ObservableCollection<Contact> contacts = new ObservableCollection<Contact>();
 

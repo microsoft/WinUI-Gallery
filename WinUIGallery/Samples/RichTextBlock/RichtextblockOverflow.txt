@@ -6,7 +6,7 @@ A RichTextBlock with overflow.
         <ColumnDefinition/>
         <ColumnDefinition/>
         <ColumnDefinition/>
-    <Grid.ColumnDefinitions>
+    </Grid.ColumnDefinitions>
     <RichTextBlock Grid.Column="0" OverflowContentTarget="{x:Bind firstOverflowContainer}" TextAlignment="Justify" Margin="12,0">
         <Paragraph>
             Linked text containers allow text which does not fit in one element to overflow into a different element on the page.
