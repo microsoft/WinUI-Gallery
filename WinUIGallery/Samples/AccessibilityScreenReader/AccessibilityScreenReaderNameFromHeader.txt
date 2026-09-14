@@ -1,0 +1,9 @@
+--- xaml
+<!-- Headers are promoted to name -->
+<TextBox Header="Name" />
+
+<!-- As are placeholders -->
+<TextBox PlaceholderText="Nickname" />
+
+<!-- If both are provided, headers are name and placeholders are moved to description -->
+<TextBox Header="Email" PlaceholderText="test@example.com" MinWidth="200" />

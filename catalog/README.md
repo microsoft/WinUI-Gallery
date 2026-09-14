@@ -119,11 +119,12 @@ Published `xaml` may contain `$(Token)` placeholders that the page binds at runt
 A scenario appears in the manifest but contributes no entry to the code file when either:
 
 - its page sets `SourceCodeVisibility="Collapsed"`, so the gallery deliberately shows no code; or
-- its code still comes from the legacy `ControlExample.XamlSource` / `CSharpSource` properties,
-  which the exporter does not read yet.
+- the page swaps `ControlExample.XamlSource` at runtime, so there is no single snippet that
+  represents the scenario.
 
-`RealRepository_CodelessScenariosAreTheKnownSet` pins the current set (two scenarios) so this gap
-stays visible and shrinking it is a deliberate, reviewed change.
+`RealRepository_CodelessScenariosAreTheKnownSet` pins the current set (two scenarios) so this gap stays visible and shrinking it is a deliberate, reviewed change.
+
+Every other scenario supplies its code through a `SampleDefinition` snippet bundle. That is enforced, not merely conventional: `RealRepository_NoSampleUsesInlineControlExampleCode` fails if any page reintroduces inline `<ControlExample.Xaml>` or `<ControlExample.CSharp>` markup. Inline code renders correctly in the gallery but is invisible to the exporter, so it would otherwise go missing from the catalog without any visible symptom.
 
 ### The optional `Catalog` override block
 

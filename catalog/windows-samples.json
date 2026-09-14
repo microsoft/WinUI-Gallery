@@ -105,8 +105,48 @@
       "source": {
         "root": "WinUIGallery/Samples/AccessibilityKeyboard",
         "page": "WinUIGallery/Samples/AccessibilityKeyboard/AccessibilityKeyboardPage.xaml",
-        "codeBehind": "WinUIGallery/Samples/AccessibilityKeyboard/AccessibilityKeyboardPage.xaml.cs"
-      }
+        "codeBehind": "WinUIGallery/Samples/AccessibilityKeyboard/AccessibilityKeyboardPage.xaml.cs",
+        "snippets": [
+          "WinUIGallery/Samples/AccessibilityKeyboard/AccessibilityKeyboardAccelerators.txt",
+          "WinUIGallery/Samples/AccessibilityKeyboard/AccessibilityKeyboardAccessKeys.txt",
+          "WinUIGallery/Samples/AccessibilityKeyboard/AccessibilityKeyboardAutomaticArrowKeys.txt",
+          "WinUIGallery/Samples/AccessibilityKeyboard/AccessibilityKeyboardAutomaticTabOrder.txt",
+          "WinUIGallery/Samples/AccessibilityKeyboard/AccessibilityKeyboardManualArrowKeys.txt",
+          "WinUIGallery/Samples/AccessibilityKeyboard/AccessibilityKeyboardManualTabOrder.txt"
+        ]
+      },
+      "scenarios": [
+        {
+          "id": "microsoft/WinUI-Gallery#AccessibilityKeyboard/AccessibilityKeyboardAccelerators",
+          "name": "Accelerators",
+          "snippet": "AccessibilityKeyboardAccelerators.txt"
+        },
+        {
+          "id": "microsoft/WinUI-Gallery#AccessibilityKeyboard/AccessibilityKeyboardAccessKeys",
+          "name": "Access Keys",
+          "snippet": "AccessibilityKeyboardAccessKeys.txt"
+        },
+        {
+          "id": "microsoft/WinUI-Gallery#AccessibilityKeyboard/AccessibilityKeyboardAutomaticArrowKeys",
+          "name": "Automatic Arrow Keys",
+          "snippet": "AccessibilityKeyboardAutomaticArrowKeys.txt"
+        },
+        {
+          "id": "microsoft/WinUI-Gallery#AccessibilityKeyboard/AccessibilityKeyboardAutomaticTabOrder",
+          "name": "Automatic Tab Order",
+          "snippet": "AccessibilityKeyboardAutomaticTabOrder.txt"
+        },
+        {
+          "id": "microsoft/WinUI-Gallery#AccessibilityKeyboard/AccessibilityKeyboardManualArrowKeys",
+          "name": "Manual Arrow Keys",
+          "snippet": "AccessibilityKeyboardManualArrowKeys.txt"
+        },
+        {
+          "id": "microsoft/WinUI-Gallery#AccessibilityKeyboard/AccessibilityKeyboardManualTabOrder",
+          "name": "Manual Tab Order",
+          "snippet": "AccessibilityKeyboardManualTabOrder.txt"
+        }
+      ]
     },
     {
       "id": "microsoft/WinUI-Gallery#AccessibilityScreenReader",
@@ -154,17 +194,65 @@
         "page": "WinUIGallery/Samples/AccessibilityScreenReader/AccessibilityScreenReaderPage.xaml",
         "codeBehind": "WinUIGallery/Samples/AccessibilityScreenReader/AccessibilityScreenReaderPage.xaml.cs",
         "snippets": [
+          "WinUIGallery/Samples/AccessibilityScreenReader/AccessibilityScreenReaderControlGroups.txt",
           "WinUIGallery/Samples/AccessibilityScreenReader/AccessibilityScreenReaderDescriptionHelpTextAdd.txt",
+          "WinUIGallery/Samples/AccessibilityScreenReader/AccessibilityScreenReaderHeadings.txt",
+          "WinUIGallery/Samples/AccessibilityScreenReader/AccessibilityScreenReaderLabeledBy.txt",
+          "WinUIGallery/Samples/AccessibilityScreenReader/AccessibilityScreenReaderLandmarks.txt",
+          "WinUIGallery/Samples/AccessibilityScreenReader/AccessibilityScreenReaderNameFromContent.txt",
+          "WinUIGallery/Samples/AccessibilityScreenReader/AccessibilityScreenReaderNameFromHeader.txt",
+          "WinUIGallery/Samples/AccessibilityScreenReader/AccessibilityScreenReaderNameOnImage.txt",
+          "WinUIGallery/Samples/AccessibilityScreenReader/AccessibilityScreenReaderNameOnListView.txt",
           "WinUIGallery/Samples/AccessibilityScreenReader/AccessibilityScreenReaderPositionIndicatePositionElement.txt",
           "WinUIGallery/Samples/AccessibilityScreenReader/AccessibilityScreenReaderRemoveControlContentVisual.txt"
         ]
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#AccessibilityScreenReader/AccessibilityScreenReaderControlGroups",
+          "name": "Control Groups",
+          "snippet": "AccessibilityScreenReaderControlGroups.txt"
+        },
+        {
           "id": "microsoft/WinUI-Gallery#AccessibilityScreenReader/AccessibilityScreenReaderDescriptionHelpTextAdd",
           "name": "Description Help Text Add",
           "description": "Description and help text: add descriptions and help text to controls",
           "snippet": "AccessibilityScreenReaderDescriptionHelpTextAdd.txt"
+        },
+        {
+          "id": "microsoft/WinUI-Gallery#AccessibilityScreenReader/AccessibilityScreenReaderHeadings",
+          "name": "Headings",
+          "snippet": "AccessibilityScreenReaderHeadings.txt"
+        },
+        {
+          "id": "microsoft/WinUI-Gallery#AccessibilityScreenReader/AccessibilityScreenReaderLabeledBy",
+          "name": "Labeled By",
+          "snippet": "AccessibilityScreenReaderLabeledBy.txt"
+        },
+        {
+          "id": "microsoft/WinUI-Gallery#AccessibilityScreenReader/AccessibilityScreenReaderLandmarks",
+          "name": "Landmarks",
+          "snippet": "AccessibilityScreenReaderLandmarks.txt"
+        },
+        {
+          "id": "microsoft/WinUI-Gallery#AccessibilityScreenReader/AccessibilityScreenReaderNameFromContent",
+          "name": "Name From Content",
+          "snippet": "AccessibilityScreenReaderNameFromContent.txt"
+        },
+        {
+          "id": "microsoft/WinUI-Gallery#AccessibilityScreenReader/AccessibilityScreenReaderNameFromHeader",
+          "name": "Name From Header",
+          "snippet": "AccessibilityScreenReaderNameFromHeader.txt"
+        },
+        {
+          "id": "microsoft/WinUI-Gallery#AccessibilityScreenReader/AccessibilityScreenReaderNameOnImage",
+          "name": "Name On Image",
+          "snippet": "AccessibilityScreenReaderNameOnImage.txt"
+        },
+        {
+          "id": "microsoft/WinUI-Gallery#AccessibilityScreenReader/AccessibilityScreenReaderNameOnListView",
+          "name": "Name On List View",
+          "snippet": "AccessibilityScreenReaderNameOnListView.txt"
         },
         {
           "id": "microsoft/WinUI-Gallery#AccessibilityScreenReader/AccessibilityScreenReaderPositionIndicatePositionElement",

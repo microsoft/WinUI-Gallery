@@ -1,0 +1,10 @@
+--- xaml
+<!-- ListViews fully support arrow keys, for example -->
+<ListView
+    Width="300"
+    AutomationProperties.Name="Colors">
+    <ListViewItem>Red</ListViewItem>
+    <ListViewItem>Blue</ListViewItem>
+    <ListViewItem>Green</ListViewItem>
+    <ListViewItem>Yellow</ListViewItem>
+</ListView>

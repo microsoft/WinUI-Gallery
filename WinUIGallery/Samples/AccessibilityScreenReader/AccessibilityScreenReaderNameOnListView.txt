@@ -1,0 +1,9 @@
+--- xaml
+<!-- Add a name to this ListView to be heard when screen reader users enter it -->
+<ListView Width="300"
+AutomationProperties.Name="Contacts">
+<ListViewItem>Nathan Quinn</ListViewItem>
+<ListViewItem>Jessica Lamber</ListViewItem>
+<ListViewItem>Carl Bond</ListViewItem>
+<ListViewItem>Jessica Russel</ListViewItem>
+</ListView>

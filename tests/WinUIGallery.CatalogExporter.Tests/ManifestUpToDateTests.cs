@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WinUIGallery.CatalogExporter;
 
@@ -84,8 +85,11 @@ public sealed class ManifestUpToDateTests
         //   ContentIsland/BasicContentIslandContent - the page sets SourceCodeVisibility="Collapsed",
         //     so the gallery deliberately shows no code. Expected to stay code-less.
         //   SystemBackdropElement/SystembackdropelementSample - the gallery does show code here, but
-        //     via the legacy ControlExample.XamlSource property, which the exporter does not read
-        //     yet. Expected to disappear from this list once legacy sources are supported.
+        //     the page swaps ControlExample.XamlSource at runtime between three backdrop variants
+        //     (Acrylic, Mica, MicaAlt) as the user changes a ComboBox, so no single static snippet
+        //     represents it. Publishing one would also break the page: SampleCodePresenter prefers
+        //     Code over CodeSourceFile, so a snippet bundle would pin the code pane to one variant.
+        //     Expected to stay code-less unless the catalog grows a way to express alternatives.
         string[] expected =
         [
             "microsoft/WinUI-Gallery#ContentIsland/BasicContentIslandContent",
@@ -106,6 +110,58 @@ public sealed class ManifestUpToDateTests
             expected,
             codeless,
             "The set of scenarios without code changed. If you added legacy-source support, remove the entries that now resolve; if a new code-less scenario appeared, confirm it is intentional and add it here.");
+    }
+
+    [TestMethod]
+    public void RealRepository_NoSampleUsesInlineControlExampleCode()
+    {
+        // ControlExample supports two ways of supplying code: a SampleDefinition snippet bundle,
+        // and inline <ControlExample.Xaml> / <ControlExample.CSharp> property elements. Only the
+        // first is discoverable by the exporter, so an inline example renders correctly in the
+        // gallery while silently missing from the catalog. Every sample now uses SampleDefinition,
+        // and this test keeps it that way: it fails on the first page that reintroduces the inline
+        // form, at authoring time, instead of letting the gap reach consumers of the catalog.
+        //
+        // The pages are parsed rather than text-searched so that commented-out markup does not
+        // count as a real usage.
+        string samplesRoot = Path.Combine(RepoRoot, "WinUIGallery", "Samples");
+        Assert.IsTrue(Directory.Exists(samplesRoot), $"{samplesRoot} is missing.");
+
+        List<string> offenders = [];
+        List<string> unparsable = [];
+        int pagesChecked = 0;
+
+        foreach (string page in Directory.EnumerateFiles(samplesRoot, "*.xaml", SearchOption.AllDirectories))
+        {
+            string relative = Path.GetRelativePath(RepoRoot, page).Replace('\\', '/');
+            XDocument document;
+            try
+            {
+                document = XDocument.Load(page);
+            }
+            catch (System.Xml.XmlException ex)
+            {
+                unparsable.Add($"{relative} ({ex.Message})");
+                continue;
+            }
+
+            pagesChecked++;
+            if (document.Descendants().Any(e =>
+                    e.Name.LocalName is "ControlExample.Xaml" or "ControlExample.CSharp"))
+            {
+                offenders.Add(relative);
+            }
+        }
+
+        Assert.AreEqual(0, unparsable.Count, "These sample pages are not well-formed XML: " + string.Join(", ", unparsable));
+        Assert.IsTrue(pagesChecked > 0, $"No sample pages were found under {samplesRoot}.");
+
+        Assert.AreEqual(
+            0,
+            offenders.Count,
+            "These pages supply code inline, which the catalog exporter cannot see. Move the code into a "
+                + "SampleDefinition snippet bundle (a .txt file with '--- xaml' and optional '--- c#' sections) "
+                + "next to the page: " + string.Join(", ", offenders));
     }
 
     [TestMethod]
