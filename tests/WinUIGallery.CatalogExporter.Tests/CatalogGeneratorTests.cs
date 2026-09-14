@@ -63,8 +63,19 @@ public sealed class CatalogGeneratorTests
         File.WriteAllText(Path.Combine(dir, "ControlInfoData.json"), json);
     }
 
-    private void WriteSample(string uniqueId, string pageXamlBody, params (string FileName, string Contents)[] extraFiles)
-    {
+    /// <summary>
+    /// Wraps fixture markup in a page that declares the namespaces every real sample page uses.
+    /// The exporter parses pages as XML, so a fragment using the <c>controls:</c> prefix without
+    /// declaring it would fail to load for a reason unrelated to what the test is checking.
+    /// </summary>
+    private static string Page(string inner) =>
+        $"""
+        <Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:controls="using:WinUIGallery.Controls">{inner}</Page>
+        """;
+
+    private void WriteSample(string uniqueId, string pageXamlBody, params (string FileName, string Contents)[] extraFiles)    {
         string folder = Path.Combine(_fixtureRoot, "WinUIGallery", "Samples", uniqueId);
         Directory.CreateDirectory(folder);
         File.WriteAllText(Path.Combine(folder, uniqueId + "Page.xaml"), pageXamlBody);
@@ -104,7 +115,7 @@ public sealed class CatalogGeneratorTests
     public void Generate_ProducesExpectedFieldsAndOmitsEmptyOptionalFields()
     {
         WriteControlInfoData(TwoItemDocument());
-        WriteSample("SampleOne", """<Page><controls:ControlExample SampleDefinition="SampleOne\SampleOneBasic.txt" /></Page>""", ("SampleOneBasic.txt", Bundle("A basic button.", "<Button/>")));
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\SampleOneBasic.txt" />"""), ("SampleOneBasic.txt", Bundle("A basic button.", "<Button/>")));
         WriteSample("SampleTwo", "<Page></Page>");
 
         CatalogManifest manifest = CatalogGenerator.Generate(Options()).Manifest;
@@ -277,7 +288,7 @@ public sealed class CatalogGeneratorTests
           ]
         }
         """);
-        WriteSample("Snippety", """<Page><controls:ControlExample SampleDefinition="Snippety\Missing.txt" /></Page>""");
+        WriteSample("Snippety", Page("""<controls:ControlExample SampleDefinition="Snippety\Missing.txt" />"""));
 
         CatalogValidationException ex = Assert.ThrowsException<CatalogValidationException>(() => CatalogGenerator.Generate(Options()));
         Assert.IsTrue(ex.Issues.Any(i => i.UniqueId == "Snippety" && i.Message.Contains("SampleDefinition", StringComparison.Ordinal)));

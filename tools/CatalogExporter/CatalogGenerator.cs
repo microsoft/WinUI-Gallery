@@ -3,7 +3,7 @@
 
 using System.Text;
 using System.Text.Json;
-using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace WinUIGallery.CatalogExporter;
 
@@ -47,10 +47,6 @@ internal static class CatalogGenerator
 {
     private const string ControlInfoRelativePath = "WinUIGallery/SampleSupport/Data/ControlInfoData.json";
     private const string SamplesRelativeRoot = "WinUIGallery/Samples";
-
-    private static readonly Regex SampleDefinitionRegex = new(
-        "SampleDefinition\\s*=\\s*\"(?<path>[^\"]+)\"",
-        RegexOptions.Compiled);
 
     private static readonly JsonSerializerOptions ReadOptions = new()
     {
@@ -320,15 +316,39 @@ internal static class CatalogGenerator
         List<CatalogIssue> issues,
         List<CatalogScenarioCode> code)
     {
-        string contents = File.ReadAllText(pageFile);
         List<CatalogScenario> scenarios = [];
         string[] entries = Directory.GetFiles(folder);
 
-        foreach (Match match in SampleDefinitionRegex.Matches(contents))
+        // The page is parsed rather than pattern-matched so that each snippet can be tied to the
+        // ControlExample that owns it, which is what makes its $(Token) substitutions resolvable.
+        // Parsing also ignores commented-out markup, which a text scan would treat as real.
+        XDocument page;
+        try
         {
+            page = XDocument.Load(pageFile);
+        }
+        catch (System.Xml.XmlException ex)
+        {
+            issues.Add(new CatalogIssue(uniqueId, $"{Path.GetFileName(pageFile)} is not well-formed XML: {ex.Message}"));
+            return scenarios;
+        }
+
+        XElement? pageRoot = page.Root;
+        if (pageRoot is null)
+        {
+            return scenarios;
+        }
+
+        foreach (XElement controlExample in pageRoot.DescendantsAndSelf().Where(e => e.Name.LocalName == "ControlExample"))
+        {
+            string? rawPath = (string?)controlExample.Attribute("SampleDefinition");
+            if (string.IsNullOrWhiteSpace(rawPath))
+            {
+                continue;
+            }
+
             // SampleDefinition values are written as "<Folder>\<File>.txt" (folder name matches
             // the sample's UniqueId), so only the file name is meaningful here.
-            string rawPath = match.Groups["path"].Value;
             string fileName = rawPath.Replace('\\', '/').Split('/').Last();
 
             string? bundlePath = FindExactCase(entries, fileName);
@@ -351,21 +371,23 @@ internal static class CatalogGenerator
             });
 
             // A scenario legitimately has no code: either the page hides the viewer entirely
-            // (SourceCodeVisibility="Collapsed"), or the code still comes from the legacy
-            // ControlExample.XamlSource/CSharpSource properties, which this exporter does not
-            // read yet. Such scenarios appear in the manifest but contribute no code entry.
-            // KnownCodelessScenariosTests pins the current set so this gap stays visible.
+            // (SourceCodeVisibility="Collapsed"), or it swaps ControlExample.XamlSource at runtime,
+            // so no single snippet represents it. Such scenarios appear in the manifest but
+            // contribute no code entry. RealRepository_CodelessScenariosAreTheKnownSet pins the
+            // current set so this gap stays visible.
             if (bundle.Xaml is null && bundle.CSharp is null)
             {
                 continue;
             }
 
+            Dictionary<string, string> substitutions = SubstitutionResolver.BuildMap(controlExample, pageRoot);
+
             code.Add(new CatalogScenarioCode
             {
                 Id = scenarioId,
                 Source = ToRepoRelative(bundlePath, options.RepoRoot),
-                Xaml = NullIfEmpty(bundle.Xaml),
-                Code = NullIfEmpty(bundle.CSharp),
+                Xaml = NullIfEmpty(SubstitutionResolver.Apply(bundle.Xaml ?? string.Empty, substitutions)),
+                Code = NullIfEmpty(SubstitutionResolver.Apply(bundle.CSharp ?? string.Empty, substitutions)),
             });
         }
 

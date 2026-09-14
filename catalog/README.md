@@ -111,8 +111,15 @@ never see. `SampleBundleParserTests` pins the rules that are easiest to get subt
 marker is `"--- "` including the trailing space; section content is trimmed; unknown sections are
 ignored). **Keep the two parsers in sync.**
 
-Published `xaml` may contain `$(Token)` placeholders that the page binds at runtime through
-`ControlExample.Substitutions`; they are emitted verbatim rather than guessed at.
+### `$(Token)` placeholders
+
+A page can pair a snippet with `ControlExampleSubstitution` entries that bind a token to one of the interactive option controls, so the code updates as the reader changes a slider or a dropdown. Published verbatim, a token like `$(Spacing)` would leave the snippet invalid and impossible to paste into a project.
+
+The exporter therefore resolves each token to the value its control starts with, which is exactly what the gallery renders when the page first loads. Resolution is deliberately conservative and only reads what the markup actually states: a literal `Value`, an initial attribute on the bound control, or the item a selector explicitly marks as selected. A token is left exactly as written whenever its value depends on running code — a converter function such as `BoolToLowerString(x.IsOn)`, a control that declares no initial value and relies on a framework default, or an `IsEnabled` condition that cannot be settled statically. Publishing a value the gallery does not show would be worse than publishing none, so an unresolved token is the intended fallback rather than a failure.
+
+A substitution whose `IsEnabled` is false resolves to the empty string, matching `ControlExampleSubstitution.ValueAsString`. Literal values keep their surrounding whitespace, because some snippets rely on a value such as `` IsSticky="True" `` to supply its own separating spaces.
+
+`SubstitutionResolverTests` pins these rules, and most of its cases assert that an ambiguous binding is skipped rather than guessed.
 
 ### Scenarios without code
 
