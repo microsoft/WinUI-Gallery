@@ -1,0 +1,21 @@
+--- header
+Create a single-threaded top-level Window.
+--- c#
+Window childWindow = new Window
+{
+    ExtendsContentIntoTitleBar = true,
+    SystemBackdrop = new MicaBackdrop(),
+    Content = new TextBlock
+    {
+        Text = "New child window!",
+        HorizontalAlignment = HorizontalAlignment.Center,
+        VerticalAlignment = VerticalAlignment.Center,
+        RequestedTheme = ActualTheme
+    }
+};
+
+// Gallery tracks child windows so they close when the app closes.
+WindowHelper.TrackWindow(childWindow);
+// ResizeClient takes physical pixels, independent of display scaling.
+childWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));
+childWindow.Activate();

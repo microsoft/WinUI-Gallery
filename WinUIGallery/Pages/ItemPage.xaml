@@ -32,17 +32,26 @@
     <Grid x:Name="rootPanel">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <InfoBar
+            IsClosable="False"
+            IsOpen="{x:Bind Item.IsExperimental}"
+            Message="This sample uses an experimental Windows App SDK API that may change before release."
+            Severity="Warning"
+            Title="Experimental"
+            Visibility="{x:Bind Item.IsExperimental}" />
         <controls:PageHeader
             x:Name="pageHeader"
+            Grid.Row="1"
             Margin="36,24,36,0"
             Item="{x:Bind Item}" />
 
         <!--  Content Region  -->
         <ScrollViewer
             x:Name="svPanel"
-            Grid.Row="1"
+            Grid.Row="2"
             VerticalScrollBarVisibility="Auto"
             VerticalScrollMode="Auto">
             <Grid x:Name="contentRoot" Padding="36,0,36,36">
