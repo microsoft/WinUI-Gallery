@@ -12,7 +12,7 @@ public sealed partial class AppWindowTitleBarExtendWindow : Window
         AppWindow.TitleBar.ExtendsContentIntoTitleBar = $(ExtendsContentIntoTitleBar);
         if (AppWindow.TitleBar.ExtendsContentIntoTitleBar)
         {
-            AppWindow.TitleBar.HeightOption = TitleBarHeightOption.$(TitleBarHeightOption);
+            AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.$(TitleBarHeightOption);
         }
     }
 }

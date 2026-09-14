@@ -7,11 +7,11 @@ SelectorBar Displaying Different Collections Using ItemsView
     <SelectorBarItem x:Name="SelectorBarItemPowderBlue" Text="PowderBlue" />
 </SelectorBar>
 
-<ItemsView x:Name="ItemsView3" ItemTemplate="{StaticResource ColorsTemplate}" />
+<ItemsView x:Name="ItemsView3" ItemTemplate="{StaticResource ColorsTemplate}">
     <ItemsView.Layout>
         <UniformGridLayout />
     </ItemsView.Layout>
-</ItemsView/>
+</ItemsView>
 --- c#
 private void SelectorBar3_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
 {

@@ -12,7 +12,7 @@ Virtualizing, scrollable list of items laid out by ItemsRepeater
             ItemsSource="{x:Bind NumberedItems}"
             Layout="{StaticResource $(Layout)}"
             ItemTemplate="{StaticResource $(ItemTemplate)}" />
-<ScrollViewer/> 
+</ScrollViewer> 
                     
 <!-- The Layout specifications used: -->
                     

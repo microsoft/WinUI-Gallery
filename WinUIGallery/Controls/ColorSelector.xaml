@@ -1,33 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
-<UserControl 
+<?xml version="1.0" encoding="utf-8" ?>
+<UserControl
     x:Class="WinUIGallery.Controls.ColorSelector"
-    x:Name="Root"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Margin="0,2,0,8">
+    x:Name="Root"
+    Margin="0,2,0,8"
+    mc:Ignorable="d">
 
     <SplitButton AutomationProperties.Name="{Binding Path=(AutomationProperties.Name), ElementName=Root, Mode=OneWay}">
-        <Border x:Name="CurrentColor"
-                Width="64"
-                Height="32"
-                CornerRadius="4,0,0,4"
-                Margin="-11,-6" />
+        <Border
+            x:Name="CurrentColor"
+            Width="64"
+            Height="32"
+            Margin="-11,-6"
+            CornerRadius="4,0,0,4" />
         <SplitButton.Flyout>
             <Flyout Placement="Bottom">
-                <ColorPicker x:Name="ColorPicker"
-                             ColorSpectrumShape="Ring"
-                             IsMoreButtonVisible="False"
-                             IsColorSliderVisible="True"
-                             IsColorChannelTextInputVisible="False"
-                             IsHexInputVisible="False"
-                             IsAlphaEnabled="True"
-                             IsAlphaSliderVisible="True"
-                             IsAlphaTextInputVisible="False"
-                             ColorChanged="ColorPicker_ColorChanged" />
+                <ColorPicker
+                    x:Name="ColorPicker"
+                    ColorChanged="ColorPicker_ColorChanged"
+                    ColorSpectrumShape="Ring"
+                    IsAlphaEnabled="{x:Bind IsAlphaEnabled, Mode=OneWay}"
+                    IsAlphaSliderVisible="True"
+                    IsAlphaTextInputVisible="False"
+                    IsColorChannelTextInputVisible="False"
+                    IsColorSliderVisible="True"
+                    IsHexInputVisible="False"
+                    IsMoreButtonVisible="False" />
             </Flyout>
         </SplitButton.Flyout>
     </SplitButton>
