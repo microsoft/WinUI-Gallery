@@ -4,19 +4,20 @@
 namespace WinUIGallery.CatalogExporter;
 
 /// <summary>
-/// Regenerates or verifies catalog/windows-samples.json.
+/// Regenerates or verifies the generated catalog files.
 ///
 /// Usage:
 ///   dotnet run --project tools/CatalogExporter -- generate [--repo-root &lt;path&gt;]
 ///   dotnet run --project tools/CatalogExporter -- check [--repo-root &lt;path&gt;]
 ///
-/// "generate" writes the manifest to catalog/windows-samples.json.
-/// "check" regenerates the manifest in memory and fails (non-zero exit code) if the committed
-/// file is stale or missing, without modifying anything on disk.
+/// "generate" writes catalog/windows-samples.json and catalog/windows-samples.code.json.
+/// "check" regenerates both in memory and fails (non-zero exit code) if either committed file is
+/// stale or missing, without modifying anything on disk.
 /// </summary>
 internal static class Program
 {
     private const string ManifestRelativePath = "catalog/windows-samples.json";
+    private const string CodeRelativePath = "catalog/windows-samples.code.json";
 
     private static int Main(string[] args)
     {
@@ -28,14 +29,13 @@ internal static class Program
 
         string command = args[0];
         string repoRoot = ParseRepoRoot(args) ?? CatalogGenerator.FindRepoRoot(Directory.GetCurrentDirectory());
-        string manifestPath = Path.Combine(repoRoot, ManifestRelativePath.Replace('/', Path.DirectorySeparatorChar));
 
         CatalogGenerationOptions options = new() { RepoRoot = repoRoot };
 
-        CatalogManifest manifest;
+        CatalogGenerationResult result;
         try
         {
-            manifest = CatalogGenerator.Generate(options);
+            result = CatalogGenerator.Generate(options);
         }
         catch (CatalogValidationException ex)
         {
@@ -43,33 +43,55 @@ internal static class Program
             return 1;
         }
 
-        string generated = CatalogGenerator.Serialize(manifest);
+        (string Path, string Content)[] outputs =
+        [
+            (ManifestRelativePath, CatalogGenerator.Serialize(result.Manifest)),
+            (CodeRelativePath, CatalogGenerator.Serialize(result.Code)),
+        ];
 
         if (command == "generate")
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(manifestPath)!);
-            File.WriteAllText(manifestPath, generated);
-            Console.WriteLine($"Wrote {manifest.SampleCount} samples to {ManifestRelativePath}.");
+            foreach ((string relativePath, string content) in outputs)
+            {
+                string absolutePath = Absolute(repoRoot, relativePath);
+                Directory.CreateDirectory(Path.GetDirectoryName(absolutePath)!);
+                File.WriteAllText(absolutePath, content);
+            }
+
+            Console.WriteLine($"Wrote {result.Manifest.SampleCount} samples to {ManifestRelativePath} and {result.Code.ScenarioCount} scenarios to {CodeRelativePath}.");
             return 0;
         }
 
         // command == "check"
-        if (!File.Exists(manifestPath))
+        bool stale = false;
+        foreach ((string relativePath, string content) in outputs)
         {
-            Console.Error.WriteLine($"{ManifestRelativePath} does not exist. Run 'generate' and commit the result.");
+            string absolutePath = Absolute(repoRoot, relativePath);
+            if (!File.Exists(absolutePath))
+            {
+                Console.Error.WriteLine($"{relativePath} does not exist. Run 'generate' and commit the result.");
+                stale = true;
+                continue;
+            }
+
+            if (File.ReadAllText(absolutePath).Replace("\r\n", "\n") != content)
+            {
+                Console.Error.WriteLine($"{relativePath} is stale. Run 'dotnet run --project tools/CatalogExporter -- generate' and commit the result.");
+                stale = true;
+            }
+        }
+
+        if (stale)
+        {
             return 1;
         }
 
-        string committed = File.ReadAllText(manifestPath).Replace("\r\n", "\n");
-        if (committed != generated)
-        {
-            Console.Error.WriteLine($"{ManifestRelativePath} is stale. Run 'dotnet run --project tools/CatalogExporter -- generate' and commit the result.");
-            return 1;
-        }
-
-        Console.WriteLine($"{ManifestRelativePath} is up to date ({manifest.SampleCount} samples).");
+        Console.WriteLine($"Catalog is up to date ({result.Manifest.SampleCount} samples, {result.Code.ScenarioCount} scenarios).");
         return 0;
     }
+
+    private static string Absolute(string repoRoot, string relativePath) =>
+        Path.Combine(repoRoot, relativePath.Replace('/', Path.DirectorySeparatorChar));
 
     private static string? ParseRepoRoot(string[] args)
     {

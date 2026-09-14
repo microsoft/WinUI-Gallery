@@ -1,6 +1,6 @@
 {
   "$schema": "./windows-samples.schema.json",
-  "schemaVersion": "1.0.0",
+  "schemaVersion": 1,
   "generator": {
     "tool": "tools/CatalogExporter",
     "command": "dotnet run --project tools/CatalogExporter -- generate"
@@ -161,15 +161,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#AccessibilityScreenReader/AccessibilityScreenReaderDescriptionHelpTextAdd",
           "name": "Description Help Text Add",
+          "description": "Description and help text: add descriptions and help text to controls",
           "snippet": "AccessibilityScreenReaderDescriptionHelpTextAdd.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AccessibilityScreenReader/AccessibilityScreenReaderPositionIndicatePositionElement",
           "name": "Position Indicate Position Element",
+          "description": "Position in set: indicate the position of an element within a set",
           "snippet": "AccessibilityScreenReaderPositionIndicatePositionElement.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AccessibilityScreenReader/AccessibilityScreenReaderRemoveControlContentVisual",
           "name": "Remove Control Content Visual",
+          "description": "Remove a control from the content visual tree",
           "snippet": "AccessibilityScreenReaderRemoveControlContentVisual.txt"
         }
       ]
@@ -222,15 +228,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Acrylic/CustomAcrylicAppBrush",
           "name": "Custom Acrylic App Brush",
+          "description": "Custom acrylic in-app brush.",
           "snippet": "CustomAcrylicAppBrush.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Acrylic/DefaultAppAcrylicBrush",
           "name": "Default App Acrylic Brush",
+          "description": "Default in-app acrylic brush.",
           "snippet": "DefaultAppAcrylicBrush.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Acrylic/LuminosityAppAcrylic",
           "name": "Luminosity App Acrylic",
+          "description": "Luminosity with in-app Acrylic.",
           "snippet": "LuminosityAppAcrylic.txt"
         }
       ]
@@ -291,11 +303,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#AnimatedIcon/AddingAnimatediconButton",
           "name": "Adding Animatedicon Button",
+          "description": "Adding AnimatedIcon to a button",
           "snippet": "AddingAnimatediconButton.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AnimatedIcon/AddingAnimatediconNavigationview",
           "name": "Adding Animatedicon Navigationview",
+          "description": "Adding AnimatedIcon to a NavigationView",
           "snippet": "AddingAnimatediconNavigationview.txt"
         }
       ]
@@ -357,7 +373,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#AnimatedVisualPlayer/AnimatedVisualPlayerPlaybackLottieAnimation",
           "name": "Playback Lottie Animation",
+          "description": "Playback of a Lottie animation.",
           "snippet": "AnimatedVisualPlayerPlaybackLottieAnimation.txt"
         }
       ]
@@ -404,7 +422,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#AnnotatedScrollBar/AnnotatedscrollbarLinkedScrollview",
           "name": "Linked Scrollview",
+          "description": "AnnotatedScrollBar linked to a ScrollView.",
           "snippet": "AnnotatedscrollbarLinkedScrollview.txt"
         }
       ]
@@ -480,27 +500,39 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#AppBarButton/AppbarbuttonBitmapIcon",
           "name": "Bitmap Icon",
+          "description": "An AppBarButton with a bitmap icon.",
           "snippet": "AppbarbuttonBitmapIcon.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppBarButton/AppbarbuttonFontIcon",
           "name": "Font Icon",
+          "description": "An AppBarButton with a font icon.",
           "snippet": "AppbarbuttonFontIcon.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppBarButton/AppbarbuttonKeyboardaccelerator",
           "name": "Keyboardaccelerator",
+          "description": "An AppBarButton with a KeyboardAccelerator",
           "snippet": "AppbarbuttonKeyboardaccelerator.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppBarButton/AppbarbuttonOpensFlyoutContaining",
           "name": "Opens Flyout Containing",
+          "description": "An AppBarButton that opens a Flyout containing an input control.",
           "snippet": "AppbarbuttonOpensFlyoutContaining.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppBarButton/AppbarbuttonPathIcon",
           "name": "Path Icon",
+          "description": "An AppBarButton with a path icon.",
           "snippet": "AppbarbuttonPathIcon.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppBarButton/AppbarbuttonSymbolIcon",
           "name": "Symbol Icon",
+          "description": "An AppBarButton with a symbol icon.",
           "snippet": "AppbarbuttonSymbolIcon.txt"
         }
       ]
@@ -551,7 +583,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#AppBarSeparator/AppbarbuttonsSeparatedAppbarseparators",
           "name": "Appbarbuttons Separated Appbarseparators",
+          "description": "AppBarButtons separated by AppBarSeparators.",
           "snippet": "AppbarbuttonsSeparatedAppbarseparators.txt"
         }
       ]
@@ -625,19 +659,27 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#AppBarToggleButton/AppbartogglebuttonBitmapIcon",
           "name": "Bitmap Icon",
+          "description": "An AppBarToggleButton with a bitmap icon.",
           "snippet": "AppbartogglebuttonBitmapIcon.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppBarToggleButton/AppbartogglebuttonFontIcon",
           "name": "Font Icon",
+          "description": "An AppBarToggleButton with a font icon.",
           "snippet": "AppbartogglebuttonFontIcon.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppBarToggleButton/AppbartogglebuttonSymbolIcon",
           "name": "Symbol Icon",
+          "description": "An AppBarToggleButton with a symbol icon.",
           "snippet": "AppbartogglebuttonSymbolIcon.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppBarToggleButton/ThreeStateAppbartogglebuttonPath",
           "name": "Three State Appbartogglebutton Path",
+          "description": "A three-state AppBarToggleButton with a path icon.",
           "snippet": "ThreeStateAppbartogglebuttonPath.txt"
         }
       ]
@@ -700,23 +742,33 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#AppNotification/AppNotificationBasicNotification",
           "name": "Basic Notification",
+          "description": "Basic notification",
           "snippet": "AppNotificationBasicNotification.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppNotification/AppNotificationInformationalNotificationLogoCustom",
           "name": "Informational Notification Logo Custom",
+          "description": "Informational notification with logo and custom audio",
           "snippet": "AppNotificationInformationalNotificationLogoCustom.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppNotification/AppNotificationNotificationProgressbar",
           "name": "Notification Progressbar",
+          "description": "Notification with ProgressBar",
           "snippet": "AppNotificationNotificationProgressbar.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppNotification/AppNotificationVisualNotificationHeroImage",
           "name": "Visual Notification Hero Image",
+          "description": "Visual notification with hero image and attribution",
           "snippet": "AppNotificationVisualNotificationHeroImage.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppNotification/NotificationAppnotificationControls",
           "name": "Notification Appnotification Controls",
+          "description": "Notification with AppNotification controls",
           "snippet": "NotificationAppnotificationControls.txt"
         }
       ]
@@ -789,31 +841,45 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#AppWindow/AppWindowSettingMinimumMaximumWidth",
           "name": "Setting Minimum Maximum Width",
+          "description": "Setting the minimum and maximum width / height on an AppWindow using OverlappedPresenter",
           "snippet": "AppWindowSettingMinimumMaximumWidth.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppWindow/AppwindowCompactoverlaypresenter",
           "name": "Compactoverlaypresenter",
+          "description": "AppWindow with CompactOverlayPresenter",
           "snippet": "AppwindowCompactoverlaypresenter.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppWindow/AppwindowFullscreenpresenter",
           "name": "Fullscreenpresenter",
+          "description": "AppWindow with FullScreenPresenter",
           "snippet": "AppwindowFullscreenpresenter.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppWindow/AppwindowOverlapedpresenter",
           "name": "Overlapedpresenter",
+          "description": "AppWindow with OverlapedPresenter",
           "snippet": "AppwindowOverlapedpresenter.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppWindow/CenteringAppwindowScreenAvailable",
           "name": "Centering Appwindow Screen Available",
+          "description": "Centering AppWindow on the screen using the available display area",
           "snippet": "CenteringAppwindowScreenAvailable.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppWindow/CreatingCustomizingAppwindowWindow",
           "name": "Creating Customizing Appwindow Window",
+          "description": "Creating and customizing an AppWindow from a Window instance",
           "snippet": "CreatingCustomizingAppwindowWindow.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppWindow/ModalWindowOverlappedpresenterAppwindow",
           "name": "Modal Window Overlappedpresenter Appwindow",
+          "description": "Modal window with OverlappedPresenter using AppWindow",
           "snippet": "ModalWindowOverlappedpresenterAppwindow.txt"
         }
       ]
@@ -863,15 +929,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#AppWindowTitleBar/AppwindowtitlebarColorCustomization",
           "name": "Color Customization",
+          "description": "AppWindowTitleBar color customization",
           "snippet": "AppwindowtitlebarColorCustomization.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppWindowTitleBar/AppwindowtitlebarPreferredThemeHeight",
           "name": "Preferred Theme Height",
+          "description": "AppWindowTitleBar preferred theme and height options",
           "snippet": "AppwindowtitlebarPreferredThemeHeight.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AppWindowTitleBar/ExtendingContentAppwindowtitlebarArea",
           "name": "Extending Content Appwindowtitlebar Area",
+          "description": "Extending content into the AppWindowTitleBar area",
           "snippet": "ExtendingContentAppwindowtitlebarArea.txt"
         }
       ]
@@ -926,11 +998,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#AutoSuggestBox/AutosuggestboxProvidesSearchboxExperience",
           "name": "Provides Searchbox Experience",
+          "description": "An AutoSuggestBox that provides a SearchBox experience",
           "snippet": "AutosuggestboxProvidesSearchboxExperience.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#AutoSuggestBox/BasicAutosuggestBox",
           "name": "Basic Autosuggest Box",
+          "description": "A basic autosuggest box.",
           "snippet": "BasicAutosuggestBox.txt"
         }
       ]
@@ -986,11 +1062,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#BadgeNotificationManager/BadgeNotificationManagerSettingBadgeNotificationsCount",
           "name": "Setting Badge Notifications Count",
+          "description": "Setting badge notifications with count",
           "snippet": "BadgeNotificationManagerSettingBadgeNotificationsCount.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#BadgeNotificationManager/BadgeNotificationManagerSettingBadgeNotificationsGlyph",
           "name": "Setting Badge Notifications Glyph",
+          "description": "Setting badge notifications with Glyph",
           "snippet": "BadgeNotificationManagerSettingBadgeNotificationsGlyph.txt"
         }
       ]
@@ -1060,31 +1140,45 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Binding/BindingCollectionDataTemplates",
           "name": "Collection Data Templates",
+          "description": "Binding a collection with data templates",
           "snippet": "BindingCollectionDataTemplates.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Binding/BindingControls",
           "name": "Controls",
+          "description": "Binding between controls",
           "snippet": "BindingControls.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Binding/BindingFunctionBind",
           "name": "Function Bind",
+          "description": "Using a function in x:Bind",
           "snippet": "BindingFunctionBind.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Binding/BindingPropertyCodeBehind",
           "name": "Property Code Behind",
+          "description": "Binding to a property in code-behind",
           "snippet": "BindingPropertyCodeBehind.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Binding/BindingTargetnullvalue",
           "name": "Targetnullvalue",
+          "description": "Binding with TargetNullValue",
           "snippet": "BindingTargetnullvalue.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Binding/BindingViewModel",
           "name": "View Model",
+          "description": "Binding to a view model",
           "snippet": "BindingViewModel.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Binding/ConverterBinding",
           "name": "Converter Binding",
+          "description": "Using a converter in Binding",
           "snippet": "ConverterBinding.txt"
         }
       ]
@@ -1134,7 +1228,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Border/BorderAroundTextblock",
           "name": "Around Textblock",
+          "description": "A Border around a TextBlock.",
           "snippet": "BorderAroundTextblock.txt"
         }
       ]
@@ -1187,11 +1283,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#BreadcrumbBar/BreadcrumbbarControl",
           "name": "Control",
+          "description": "A BreadcrumbBar control",
           "snippet": "BreadcrumbbarControl.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#BreadcrumbBar/BreadcrumbbarControlCustomDatatemplate",
           "name": "Control Custom Datatemplate",
+          "description": "BreadCrumbBar Control with Custom DataTemplate",
           "snippet": "BreadcrumbbarControlCustomDatatemplate.txt"
         }
       ]
@@ -1254,19 +1354,27 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Button/ButtonBuiltInStyles",
           "name": "Built In Styles",
+          "description": "Built-in styles applied to Button.",
           "snippet": "ButtonBuiltInStyles.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Button/ButtonSimple",
           "name": "Simple",
+          "description": "A simple Button with text content.",
           "snippet": "ButtonSimple.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Button/ButtonWithImage",
           "name": "With Image",
+          "description": "A Button with graphical content.",
           "snippet": "ButtonWithImage.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Button/ButtonWrapping",
           "name": "Wrapping",
+          "description": "Wrapping Buttons with large content",
           "snippet": "ButtonWrapping.txt"
         }
       ]
@@ -1316,7 +1424,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#CalendarDatePicker/CalendardatepickerHeaderPlaceholderText",
           "name": "Header Placeholder Text",
+          "description": "CalendarDatePicker with a header and placeholder text.",
           "snippet": "CalendardatepickerHeaderPlaceholderText.txt"
         }
       ]
@@ -1368,7 +1478,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#CalendarView/BasicCalendarView",
           "name": "Basic Calendar View",
+          "description": "A basic calendar view.",
           "snippet": "BasicCalendarView.txt"
         }
       ]
@@ -1422,7 +1534,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Canvas/CanvasControl",
           "name": "Control",
+          "description": "A Canvas control.",
           "snippet": "CanvasControl.txt"
         }
       ]
@@ -1464,7 +1578,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#CaptureElementPreview/CaptureElementPreviewMediacapturePreviewDisplayedVia",
           "name": "Mediacapture Preview Displayed Via",
+          "description": "A MediaCapture preview displayed via a MediaPlayerElement.",
           "snippet": "CaptureElementPreviewMediacapturePreviewDisplayedVia.txt"
         }
       ]
@@ -1522,15 +1638,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#CheckBox/CheckBoxSelectAll",
           "name": "Select All",
+          "description": "Using a 3-state CheckBox.",
           "snippet": "CheckBoxSelectAll.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#CheckBox/CheckBoxThreeState",
           "name": "Three State",
+          "description": "A 3-state CheckBox.",
           "snippet": "CheckBoxThreeState.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#CheckBox/CheckBoxTwoState",
           "name": "Two State",
+          "description": "A 2-state CheckBox.",
           "snippet": "CheckBoxTwoState.txt"
         }
       ]
@@ -1583,27 +1705,39 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Clipboard/ClipboardCopyPasteFiles",
           "name": "Copy Paste Files",
+          "description": "Copy and paste files",
           "snippet": "ClipboardCopyPasteFiles.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Clipboard/ClipboardCopyPasteImage",
           "name": "Copy Paste Image",
+          "description": "Copy and paste an image",
           "snippet": "ClipboardCopyPasteImage.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Clipboard/ClipboardHistoryRoamingOptions",
           "name": "History Roaming Options",
+          "description": "Clipboard history and roaming options",
           "snippet": "ClipboardHistoryRoamingOptions.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Clipboard/CopyTextClipboard",
           "name": "Copy Text Clipboard",
+          "description": "Copy text to the Clipboard",
           "snippet": "CopyTextClipboard.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Clipboard/OtherClipboardOperations",
           "name": "Other Clipboard Operations",
+          "description": "Other clipboard operations",
           "snippet": "OtherClipboardOperations.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Clipboard/PasteTextClipboard",
           "name": "Paste Text Clipboard",
+          "description": "Paste text from the Clipboard",
           "snippet": "PasteTextClipboard.txt"
         }
       ]
@@ -1690,7 +1824,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ColorPicker/ColorPickerProperties",
           "name": "Properties",
+          "description": "ColorPicker Properties.",
           "snippet": "ColorPickerProperties.txt"
         }
       ]
@@ -1753,15 +1889,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ComboBox/ComboBoxEditable",
           "name": "Editable",
+          "description": "An editable ComboBox.",
           "snippet": "ComboBoxEditable.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ComboBox/ComboBoxInline",
           "name": "Inline",
+          "description": "A ComboBox with items defined inline and its width set.",
           "snippet": "ComboBoxInline.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ComboBox/ComboBoxItemsSource",
           "name": "Items Source",
+          "description": "A ComboBox with its ItemsSource set.",
           "snippet": "ComboBoxItemsSource.txt"
         }
       ]
@@ -1816,7 +1958,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#CommandBar/CommandBarLabelsSide",
           "name": "Labels Side",
+          "description": "A command bar with labels on the side free floating in a page",
           "snippet": "CommandBarLabelsSide.txt"
         }
       ]
@@ -1870,7 +2014,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#CommandBarFlyout/CommandbarflyoutCommandsAppObject",
           "name": "Commands App Object",
+          "description": "CommandBarFlyout for commands on an in-app object",
           "snippet": "CommandbarflyoutCommandsAppObject.txt"
         }
       ]
@@ -1908,7 +2054,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#CompactSizing/CompactSizingControls",
           "name": "Controls",
+          "description": "Compact Sizing for controls",
           "snippet": "CompactSizingControls.txt"
         }
       ]
@@ -1967,19 +2115,27 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ConnectedAnimation/ConnectedAnimationElementsSame",
           "name": "Elements Same",
+          "description": "A connected animation between elements on the same page",
           "snippet": "ConnectedAnimationElementsSame.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ConnectedAnimation/ConnectedAnimationItemsrepeater",
           "name": "Itemsrepeater",
+          "description": "Connected animation with ItemsRepeater",
           "snippet": "ConnectedAnimationItemsrepeater.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ConnectedAnimation/ConnectedAnimationListPage",
           "name": "List Page",
+          "description": "A connected animation between a list page and a detail page",
           "snippet": "ConnectedAnimationListPage.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ConnectedAnimation/SimpleConnectedAnimation",
           "name": "Simple Connected Animation",
+          "description": "A simple connected animation",
           "snippet": "SimpleConnectedAnimation.txt"
         }
       ]
@@ -2035,11 +2191,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ContentDialog/BasicContentDialogContent",
           "name": "Basic Content Dialog Content",
+          "description": "A basic content dialog with content.",
           "snippet": "BasicContentDialogContent.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ContentDialog/ContentDialogWithoutDefault",
           "name": "Without Default",
+          "description": "A content dialog without a default button.",
           "snippet": "ContentDialogWithoutDefault.txt"
         }
       ]
@@ -2079,7 +2239,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ContentIsland/BasicContentIslandContent",
           "name": "Basic Content Island Content",
+          "description": "A basic content island with content.",
           "snippet": "BasicContentIslandContent.txt"
         }
       ]
@@ -2125,7 +2287,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#CreateMultipleWindows/CreateMultipleWindowsCreateSingleThreadedMultiple",
           "name": "Create Single Threaded Multiple",
+          "description": "Create single threaded Multiple Top level Windows(MTW).",
           "snippet": "CreateMultipleWindowsCreateSingleThreadedMultiple.txt"
         }
       ]
@@ -2185,15 +2349,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#CustomUserControls/CustomUserControlsBasicCustomPasswordBox",
           "name": "Basic Custom Password Box",
+          "description": "Basic Custom Password Box with Validation",
           "snippet": "CustomUserControlsBasicCustomPasswordBox.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#CustomUserControls/CustomUserControlsCounterControlIncrementDecrement",
           "name": "Counter Control Increment Decrement",
+          "description": "Counter Control with Increment/Decrement Mode",
           "snippet": "CustomUserControlsCounterControlIncrementDecrement.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#CustomUserControls/CustomUserControlsTemperatureConverterUsercontrolExample",
           "name": "Temperature Converter Usercontrol Example",
+          "description": "Temperature Converter UserControl example",
           "snippet": "CustomUserControlsTemperatureConverterUsercontrolExample.txt"
         }
       ]
@@ -2235,15 +2405,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#CustomXamlConditionals/CustomXamlConditionalsConditionalAttributes",
           "name": "Conditional Attributes",
+          "description": "Conditional attributes",
           "snippet": "CustomXamlConditionalsConditionalAttributes.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#CustomXamlConditionals/CustomXamlConditionalsConditionalElements",
           "name": "Conditional Elements",
+          "description": "Conditional elements",
           "snippet": "CustomXamlConditionalsConditionalElements.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#CustomXamlConditionals/CustomXamlConditionalsConditionalSettersStyle",
           "name": "Conditional Setters Style",
+          "description": "Conditional Setters in a Style",
           "snippet": "CustomXamlConditionalsConditionalSettersStyle.txt"
         }
       ]
@@ -2295,11 +2471,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#DatePicker/DatepickerDayFormattedYear",
           "name": "Day Formatted Year",
+          "description": "A DatePicker with day formatted and year hidden.",
           "snippet": "DatepickerDayFormattedYear.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#DatePicker/SimpleDatepickerHeader",
           "name": "Simple Datepicker Header",
+          "description": "A simple DatePicker with a header.",
           "snippet": "SimpleDatepickerHeader.txt"
         }
       ]
@@ -2359,11 +2539,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#DropDownButton/DropDownButtonIcon",
           "name": "Icon",
+          "description": "DropDownButton with Icons",
           "snippet": "DropDownButtonIcon.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#DropDownButton/DropDownButtonSimple",
           "name": "Simple",
+          "description": "Simple DropDownButton",
           "snippet": "DropDownButtonSimple.txt"
         }
       ]
@@ -2415,19 +2599,27 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#EasingFunction/AccelerateEasingFunction",
           "name": "Accelerate Easing Function",
+          "description": "Accelerate Easing Function",
           "snippet": "AccelerateEasingFunction.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#EasingFunction/DecelerateEasingFunction",
           "name": "Decelerate Easing Function",
+          "description": "Decelerate Easing Function",
           "snippet": "DecelerateEasingFunction.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#EasingFunction/OtherXamlEasingFunctions",
           "name": "Other Xaml Easing Functions",
+          "description": "Other XAML Easing Functions",
           "snippet": "OtherXamlEasingFunctions.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#EasingFunction/StandardEasingFunction",
           "name": "Standard Easing Function",
+          "description": "Standard Easing Function",
           "snippet": "StandardEasingFunction.txt"
         }
       ]
@@ -2481,11 +2673,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Expander/ExpanderTextHeaderContent",
           "name": "Text Header Content",
+          "description": "An Expander with text in the header and content areas",
           "snippet": "ExpanderTextHeaderContent.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Expander/ModifyingExpandersContentAlignment",
           "name": "Modifying Expanders Content Alignment",
+          "description": "Modifying Expanders content alignment",
           "snippet": "ModifyingExpandersContentAlignment.txt"
         }
       ]
@@ -2542,15 +2738,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#FlipView/FlipviewShowingBoundData",
           "name": "Showing Bound Data",
+          "description": "A FlipView showing bound data with a data template.",
           "snippet": "FlipviewShowingBoundData.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#FlipView/SimpleFlipviewItemsDeclared",
           "name": "Simple Flipview Items Declared",
+          "description": "A simple FlipView with items declared inline.",
           "snippet": "SimpleFlipviewItemsDeclared.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#FlipView/VerticalFlipview",
           "name": "Vertical Flipview",
+          "description": "Vertical FlipView",
           "snippet": "VerticalFlipview.txt"
         }
       ]
@@ -2602,7 +2804,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Flyout/ButtonFlyout",
           "name": "Button Flyout",
+          "description": "A button with a flyout",
           "snippet": "ButtonFlyout.txt"
         }
       ]
@@ -2641,7 +2845,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Geometry/Geometry",
           "name": "Geometry",
+          "description": "Geometry",
           "snippet": "Geometry.txt"
         }
       ]
@@ -2699,7 +2905,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Grid/3x3GridControl",
           "name": "3x3 Grid Control",
+          "description": "A 3x3 Grid control.",
           "snippet": "3x3GridControl.txt"
         }
       ]
@@ -2757,15 +2965,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#GridView/BasicGridviewSimpleDatatemplate",
           "name": "Basic Gridview Simple Datatemplate",
+          "description": "Basic GridView with Simple DataTemplate",
           "snippet": "BasicGridviewSimpleDatatemplate.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#GridView/ContentInsideGridview",
           "name": "Content Inside Gridview",
+          "description": "Content inside of a GridView.",
           "snippet": "ContentInsideGridview.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#GridView/GridviewLayoutCustomization",
           "name": "Layout Customization",
+          "description": "GridView with Layout Customization",
           "snippet": "GridviewLayoutCustomization.txt"
         }
       ]
@@ -2821,11 +3035,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#HyperlinkButton/HyperlinkButtonClick",
           "name": "Click",
+          "description": "A hyperlink button that handles a Click event.",
           "snippet": "HyperlinkButtonClick.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#HyperlinkButton/HyperlinkButtonNavigate",
           "name": "Navigate",
+          "description": "A hyperlink button that navigates to a URI.",
           "snippet": "HyperlinkButtonNavigate.txt"
         }
       ]
@@ -2900,27 +3118,39 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#IconElement/IconElementBitmapiconMulticolorBitmapImage",
           "name": "Bitmapicon Multicolor Bitmap Image",
+          "description": "A BitmapIcon with a multicolor bitmap image",
           "snippet": "IconElementBitmapiconMulticolorBitmapImage.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#IconElement/IconElementFonticonGlyphSpecificFont",
           "name": "Fonticon Glyph Specific Font",
+          "description": "A FontIcon using a glyph from a specific font family in a button",
           "snippet": "IconElementFonticonGlyphSpecificFont.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#IconElement/IconElementImageiconBitmapImageButton",
           "name": "Imageicon Bitmap Image Button",
+          "description": "A ImageIcon using a bitmap image in a button",
           "snippet": "IconElementImageiconBitmapImageButton.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#IconElement/IconElementImageiconSvgImageButton",
           "name": "Imageicon Svg Image Button",
+          "description": "A ImageIcon using a SVG image in a button",
           "snippet": "IconElementImageiconSvgImageButton.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#IconElement/IconElementPathiconButton",
           "name": "Pathicon Button",
+          "description": "A PathIcon in a button",
           "snippet": "IconElementPathiconButton.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#IconElement/IconElementSymboliconButton",
           "name": "Symbolicon Button",
+          "description": "A SymbolIcon in a button",
           "snippet": "IconElementSymboliconButton.txt"
         }
       ]
@@ -3017,27 +3247,39 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Image/AnimatedGif",
           "name": "Animated Gif",
+          "description": "Animated GIF playback.",
           "snippet": "AnimatedGif.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Image/BasicImageLocalFile",
           "name": "Basic Image Local File",
+          "description": "A basic image from a local file.",
           "snippet": "BasicImageLocalFile.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Image/ImageDecodedRenderingSize",
           "name": "Decoded Rendering Size",
+          "description": "An image decoded to the rendering size",
           "snippet": "ImageDecodedRenderingSize.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Image/ImageStretching",
           "name": "Stretching",
+          "description": "Image stretching.",
           "snippet": "ImageStretching.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Image/NineGridImages",
           "name": "Nine Grid Images",
+          "description": "Nine grid images.",
           "snippet": "NineGridImages.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Image/SvgImage",
           "name": "Svg Image",
+          "description": "An SVG image.",
           "snippet": "SvgImage.txt"
         }
       ]
@@ -3091,27 +3333,39 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ImplicitTransition/ImplicitTransitionAutomaticallyAnimateChangesOpacity",
           "name": "Automatically Animate Changes Opacity",
+          "description": "Automatically animate changes to Opacity",
           "snippet": "ImplicitTransitionAutomaticallyAnimateChangesOpacity.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ImplicitTransition/ImplicitTransitionAutomaticallyAnimateChangesRotation",
           "name": "Automatically Animate Changes Rotation",
+          "description": "Automatically animate changes to Rotation",
           "snippet": "ImplicitTransitionAutomaticallyAnimateChangesRotation.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ImplicitTransition/ImplicitTransitionAutomaticallyAnimateChangesScale",
           "name": "Automatically Animate Changes Scale",
+          "description": "Automatically animate changes to Scale",
           "snippet": "ImplicitTransitionAutomaticallyAnimateChangesScale.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ImplicitTransition/ImplicitTransitionAutomaticallyAnimateChangesTranslation",
           "name": "Automatically Animate Changes Translation",
+          "description": "Automatically animate changes to Translation",
           "snippet": "ImplicitTransitionAutomaticallyAnimateChangesTranslation.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ImplicitTransition/ImplicitTransitionImplicitlyAnimateBackgroundChanges",
           "name": "Implicitly Animate Background Changes",
+          "description": "Implicitly animate when the Background changes",
           "snippet": "ImplicitTransitionImplicitlyAnimateBackgroundChanges.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ImplicitTransition/ImplicitTransitionImplicitlyAnimateGridTheme",
           "name": "Implicitly Animate Grid Theme",
+          "description": "Implicitly animate when the Grid\u0027s theme changes",
           "snippet": "ImplicitTransitionImplicitlyAnimateGridTheme.txt"
         }
       ]
@@ -3166,19 +3420,27 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#InfoBadge/DifferentInfobadgeStyles",
           "name": "Different Infobadge Styles",
+          "description": "Different InfoBadge Styles",
           "snippet": "DifferentInfobadgeStyles.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#InfoBadge/InfobadgeDynamicValue",
           "name": "Dynamic Value",
+          "description": "InfoBadge with Dynamic Value",
           "snippet": "InfobadgeDynamicValue.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#InfoBadge/InfobadgeEmbeddedNavigationview",
           "name": "Embedded Navigationview",
+          "description": "InfoBadge embedded in NavigationView",
           "snippet": "InfobadgeEmbeddedNavigationview.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#InfoBadge/PlacingInfobadgeInsideAnother",
           "name": "Placing Infobadge Inside Another",
+          "description": "Placing an InfoBadge Inside Another Control",
           "snippet": "PlacingInfobadgeInsideAnother.txt"
         }
       ]
@@ -3233,15 +3495,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#InfoBar/ClosableInfobarLongShort",
           "name": "Closable Infobar Long Short",
+          "description": "A closable InfoBar with a long or short message and various buttons",
           "snippet": "ClosableInfobarLongShort.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#InfoBar/ClosableInfobarOptionsChange",
           "name": "Closable Infobar Options Change",
+          "description": "A closable InfoBar with options to change its Severity.",
           "snippet": "ClosableInfobarOptionsChange.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#InfoBar/ClosableInfobarOptionsDisplay",
           "name": "Closable Infobar Options Display",
+          "description": "A closable InfoBar with options to display the close button and icon",
           "snippet": "ClosableInfobarOptionsDisplay.txt"
         }
       ]
@@ -3307,27 +3575,39 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ItemsRepeater/ItemsRepeaterAnimatedScrollingContentDisplay",
           "name": "Animated Scrolling Content Display",
+          "description": "Animated Scrolling and Content Display",
           "snippet": "ItemsRepeaterAnimatedScrollingContentDisplay.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ItemsRepeater/ItemsRepeaterBasicNonInteractiveItems",
           "name": "Basic Non Interactive Items",
+          "description": "Basic, non-interactive items laid out by ItemsRepeater",
           "snippet": "ItemsRepeaterBasicNonInteractiveItems.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ItemsRepeater/ItemsRepeaterVirtualizedContentHeavyLayout",
           "name": "Virtualized Content Heavy Layout",
+          "description": "Virtualized, Content-Heavy Layout with Filtering and Sorting",
           "snippet": "ItemsRepeaterVirtualizedContentHeavyLayout.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ItemsRepeater/ItemsRepeaterVirtualizingScrollableListItems",
           "name": "Virtualizing Scrollable List Items",
+          "description": "Virtualizing, scrollable list of items laid out by ItemsRepeater",
           "snippet": "ItemsRepeaterVirtualizingScrollableListItems.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ItemsRepeater/ItemsrepeaterMixedTypeCollection",
           "name": "Mixed Type Collection",
+          "description": "ItemsRepeater with mixed-type collection",
           "snippet": "ItemsrepeaterMixedTypeCollection.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ItemsRepeater/LayingOutNestedItemsrepeaters",
           "name": "Laying Out Nested Itemsrepeaters",
+          "description": "Laying out nested ItemsRepeaters",
           "snippet": "LayingOutNestedItemsrepeaters.txt"
         }
       ]
@@ -3384,15 +3664,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ItemsView/BasicItemsview",
           "name": "Basic Itemsview",
+          "description": "Basic ItemsView",
           "snippet": "BasicItemsview.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ItemsView/ItemsviewItemInvocationSelection",
           "name": "Item Invocation Selection",
+          "description": "ItemsView item invocation and selection",
           "snippet": "ItemsviewItemInvocationSelection.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ItemsView/ItemsviewSwappableLayouts",
           "name": "Swappable Layouts",
+          "description": "ItemsView with swappable layouts",
           "snippet": "ItemsviewSwappableLayouts.txt"
         }
       ]
@@ -3441,11 +3727,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#JumpList/AddingTasksJumpList",
           "name": "Adding Tasks Jump List",
+          "description": "Adding tasks to the jump list",
           "snippet": "AddingTasksJumpList.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#JumpList/JumpListAddingItemsCustomGroup",
           "name": "Adding Items Custom Group",
+          "description": "Adding items to a custom group",
           "snippet": "JumpListAddingItemsCustomGroup.txt"
         }
       ]
@@ -3498,19 +3788,27 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Line/Line",
           "name": "Line",
+          "description": "Line",
           "snippet": "Line.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Line/LineGeometrygroup",
           "name": "Geometrygroup",
+          "description": "GeometryGroup",
           "snippet": "LineGeometrygroup.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Line/LinePath",
           "name": "Path",
+          "description": "Path",
           "snippet": "LinePath.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Line/Polyline",
           "name": "Polyline",
+          "description": "Polyline",
           "snippet": "Polyline.txt"
         }
       ]
@@ -3597,43 +3895,63 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ListView/BasicListviewSimpleDatatemplate",
           "name": "Basic Listview Simple Datatemplate",
+          "description": "Basic ListView with Simple DataTemplate",
           "snippet": "BasicListviewSimpleDatatemplate.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ListView/ListviewContextMenus",
           "name": "Context Menus",
+          "description": "ListView with context menus",
           "snippet": "ListviewContextMenus.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ListView/ListviewFiltering",
           "name": "Filtering",
+          "description": "ListView with filtering",
           "snippet": "ListviewFiltering.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ListView/ListviewGroupedHeaders",
           "name": "Grouped Headers",
+          "description": "ListView with Grouped Headers",
           "snippet": "ListviewGroupedHeaders.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ListView/ListviewImages",
           "name": "Images",
+          "description": "ListView with Images",
           "snippet": "ListviewImages.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ListView/ListviewMessagingDataLogging",
           "name": "Messaging Data Logging",
+          "description": "ListView for Messaging or Data Logging",
           "snippet": "ListviewMessagingDataLogging.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ListView/ListviewRestoreScrollPosition",
           "name": "Restore Scroll Position",
+          "description": "Save and restore the scroll position using ListViewPersistenceHelper.",
           "snippet": "ListviewRestoreScrollPosition.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ListView/ListviewScrollIntoView",
           "name": "Scroll Into View",
+          "description": "Scroll a ListView programmatically with ScrollIntoView.",
           "snippet": "ListviewScrollIntoView.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ListView/ListviewSelectionSupport",
           "name": "Selection Support",
+          "description": "ListView with Selection Support",
           "snippet": "ListviewSelectionSupport.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ListView/ListviewsDragDropReordering",
           "name": "s Drag Drop Reordering",
+          "description": "ListViews with Drag, Drop, and Reordering Support",
           "snippet": "ListviewsDragDropReordering.txt"
         }
       ]
@@ -3677,7 +3995,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#MapControl/MapControlShowingPinMap",
           "name": "Showing Pin Map",
+          "description": "Showing a pin on the map",
           "snippet": "MapControlShowingPinMap.txt"
         }
       ]
@@ -3731,11 +4051,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#MediaPlayerElement/MediaplayerelementAutoplaysVideo",
           "name": "Autoplays Video",
+          "description": "A MediaPlayerElement that autoplays the video.",
           "snippet": "MediaplayerelementAutoplaysVideo.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#MediaPlayerElement/MediaplayerelementTransportControls",
           "name": "Transport Controls",
+          "description": "A MediaPlayerElement with transport controls.",
           "snippet": "MediaplayerelementTransportControls.txt"
         }
       ]
@@ -3790,15 +4114,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#MenuBar/MenubarKeyboardAccelerators",
           "name": "Keyboard Accelerators",
+          "description": "MenuBar with keyboard accelerators",
           "snippet": "MenubarKeyboardAccelerators.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#MenuBar/MenubarSubmenusSeparatorsRadio",
           "name": "Submenus Separators Radio",
+          "description": "MenuBar with submenus, separators, and radio items",
           "snippet": "MenubarSubmenusSeparatorsRadio.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#MenuBar/SimpleMenubar",
           "name": "Simple Menubar",
+          "description": "A simple MenuBar",
           "snippet": "SimpleMenubar.txt"
         }
       ]
@@ -3877,31 +4207,45 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#MenuFlyout/AppbarbuttonMenuflyout",
           "name": "Appbarbutton Menuflyout",
+          "description": "An AppBarButton with a MenuFlyout.",
           "snippet": "AppbarbuttonMenuflyout.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#MenuFlyout/MenuflyoutCascadingMenus",
           "name": "Cascading Menus",
+          "description": "A MenuFlyout with cascading menus.",
           "snippet": "MenuflyoutCascadingMenus.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#MenuFlyout/MenuflyoutIcons",
           "name": "Icons",
+          "description": "A MenuFlyout with icons.",
           "snippet": "MenuflyoutIcons.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#MenuFlyout/MenuflyoutIconsKeyboardAccelerators",
           "name": "Icons Keyboard Accelerators",
+          "description": "A MenuFlyout with icons and Keyboard Accelerators.",
           "snippet": "MenuflyoutIconsKeyboardAccelerators.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#MenuFlyout/MenuflyoutRadiomenuflyoutitems",
           "name": "Radiomenuflyoutitems",
+          "description": "A MenuFlyout with RadioMenuFlyoutItems",
           "snippet": "MenuflyoutRadiomenuflyoutitems.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#MenuFlyout/MenuflyoutSplitmenuflyoutitems",
           "name": "Splitmenuflyoutitems",
+          "description": "A MenuFlyout with SplitMenuFlyoutItems.",
           "snippet": "MenuflyoutSplitmenuflyoutitems.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#MenuFlyout/MenuflyoutTogglemenuflyoutitemsMenuflyoutseparator",
           "name": "Togglemenuflyoutitems Menuflyoutseparator",
+          "description": "A MenuFlyout with ToggleMenuFlyoutItems and MenuFlyoutSeparator.",
           "snippet": "MenuflyoutTogglemenuflyoutitemsMenuflyoutseparator.txt"
         }
       ]
@@ -3961,35 +4305,51 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#NavigationView/HierarchicalNavigationview",
           "name": "Hierarchical Navigationview",
+          "description": "Hierarchical NavigationView",
           "snippet": "HierarchicalNavigationview.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#NavigationView/NavigationViewApiAction",
           "name": "Api Action",
+          "description": "API in action",
           "snippet": "NavigationViewApiAction.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#NavigationView/NavigationViewDataBinding",
           "name": "Data Binding",
+          "description": "Data binding",
           "snippet": "NavigationViewDataBinding.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#NavigationView/NavigationViewTyingSelectionFocusTabs",
           "name": "Tying Selection Focus Tabs",
+          "description": "Tying selection and focus - Tabs",
           "snippet": "NavigationViewTyingSelectionFocusTabs.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#NavigationView/NavigationviewDefaultPanedisplaymode",
           "name": "Default Panedisplaymode",
+          "description": "NavigationView with default PaneDisplayMode",
           "snippet": "NavigationviewDefaultPanedisplaymode.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#NavigationView/NavigationviewFooterMenuItems",
           "name": "Footer Menu Items",
+          "description": "NavigationView with Footer Menu Items",
           "snippet": "NavigationviewFooterMenuItems.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#NavigationView/NavigationviewPanedisplaymodeTop",
           "name": "Panedisplaymode Top",
+          "description": "NavigationView with PaneDisplayMode set to Top",
           "snippet": "NavigationviewPanedisplaymodeTop.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#NavigationView/NavigationviewSwitchesPaneOrientation",
           "name": "Switches Pane Orientation",
+          "description": "NavigationView that switches pane orientation based on window width",
           "snippet": "NavigationviewSwitchesPaneOrientation.txt"
         }
       ]
@@ -4045,15 +4405,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#NumberBox/FormattedNumberboxRoundsNearest",
           "name": "Formatted Numberbox Rounds Nearest",
+          "description": "A formatted NumberBox that rounds to the nearest 0.25.",
           "snippet": "FormattedNumberboxRoundsNearest.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#NumberBox/NumberboxEvaluatesExpressions",
           "name": "Evaluates Expressions",
+          "description": "A NumberBox that evaluates expressions.",
           "snippet": "NumberboxEvaluatesExpressions.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#NumberBox/NumberboxSpinButton",
           "name": "Spin Button",
+          "description": "A NumberBox with a spin button.",
           "snippet": "NumberboxSpinButton.txt"
         }
       ]
@@ -4102,7 +4468,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#PageTransition/PageTransitions",
           "name": "s",
+          "description": "Page transitions",
           "snippet": "PageTransitions.txt"
         }
       ]
@@ -4152,11 +4520,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ParallaxView/ParallaxViewParallaxListview",
           "name": "Parallax Listview",
+          "description": "Parallax on a ListView",
           "snippet": "ParallaxViewParallaxListview.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ParallaxView/ParallaxViewParallaxScrollview",
           "name": "Parallax Scrollview",
+          "description": "Parallax with a ScrollView",
           "snippet": "ParallaxViewParallaxScrollview.txt"
         }
       ]
@@ -4211,15 +4583,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#PasswordBox/PasswordboxHeaderPlaceholderText",
           "name": "Header Placeholder Text",
+          "description": "A PasswordBox with header, placeholder text and custom character.",
           "snippet": "PasswordboxHeaderPlaceholderText.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#PasswordBox/PasswordboxRevealMode",
           "name": "Reveal Mode",
+          "description": "A PasswordBox with reveal mode.",
           "snippet": "PasswordboxRevealMode.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#PasswordBox/SimplePasswordbox",
           "name": "Simple Passwordbox",
+          "description": "A simple PasswordBox.",
           "snippet": "SimplePasswordbox.txt"
         }
       ]
@@ -4269,7 +4647,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#PersonPicture/PersonPictureSelectDifferentLooksPerson",
           "name": "Select Different Looks Person",
+          "description": "Select different looks for the person picture.",
           "snippet": "PersonPictureSelectDifferentLooksPerson.txt"
         }
       ]
@@ -4322,11 +4702,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#PipsPager/PipspagerIntegratedFlipview",
           "name": "Integrated Flipview",
+          "description": "PipsPager integrated with a FlipView",
           "snippet": "PipspagerIntegratedFlipview.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#PipsPager/PipspagerOptionsChangeOrientation",
           "name": "Options Change Orientation",
+          "description": "PipsPager with options to change its orientation, button visibility, and wrap mode.",
           "snippet": "PipspagerOptionsChangeOrientation.txt"
         }
       ]
@@ -4377,7 +4761,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Pivot/BasicPivot",
           "name": "Basic Pivot",
+          "description": "A basic pivot.",
           "snippet": "BasicPivot.txt"
         }
       ]
@@ -4425,7 +4811,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Popup/PopupOffsetPositioning",
           "name": "Offset Positioning",
+          "description": "Popup with Offset Positioning",
           "snippet": "PopupOffsetPositioning.txt"
         }
       ]
@@ -4478,11 +4866,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ProgressBar/DeterminateProgressBar",
           "name": "Determinate Progress Bar",
+          "description": "A determinate progress bar.",
           "snippet": "DeterminateProgressBar.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ProgressBar/IndeterminateProgressBar",
           "name": "Indeterminate Progress Bar",
+          "description": "An indeterminate progress bar.",
           "snippet": "IndeterminateProgressBar.txt"
         }
       ]
@@ -4534,11 +4926,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ProgressRing/DeterminateProgressRing",
           "name": "Determinate Progress Ring",
+          "description": "A determinate progress ring.",
           "snippet": "DeterminateProgressRing.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ProgressRing/IndeterminateProgressRing",
           "name": "Indeterminate Progress Ring",
+          "description": "An indeterminate progress ring.",
           "snippet": "IndeterminateProgressRing.txt"
         }
       ]
@@ -4589,11 +4985,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#PullToRefresh/BasicPulltorefresh",
           "name": "Basic Pulltorefresh",
+          "description": "Basic PullToRefresh",
           "snippet": "BasicPulltorefresh.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#PullToRefresh/CustomIconPulltorefresh",
           "name": "Custom Icon Pulltorefresh",
+          "description": "Custom Icon PullToRefresh",
           "snippet": "CustomIconPulltorefresh.txt"
         }
       ]
@@ -4639,7 +5039,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#RadialGradientBrush/RadialgradientbrushSample",
           "name": "Sample",
+          "description": "RadialGradientBrush Sample",
           "snippet": "RadialgradientbrushSample.txt"
         }
       ]
@@ -4700,11 +5102,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#RadioButton/RadioButtonGroup",
           "name": "Group",
+          "description": "A group of RadioButton controls in a RadioButtons group.",
           "snippet": "RadioButtonGroup.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#RadioButton/RadioButtonStrings",
           "name": "Strings",
+          "description": "Two RadioButtons controls with strings as options.",
           "snippet": "RadioButtonStrings.txt"
         }
       ]
@@ -4756,11 +5162,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#RatingControl/RatingControlPlaceholder",
           "name": "Placeholder",
+          "description": "PlaceholderValue of RatingControl",
           "snippet": "RatingControlPlaceholder.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#RatingControl/RatingControlSimple",
           "name": "Simple",
+          "description": "A simple RatingControl",
           "snippet": "RatingControlSimple.txt"
         }
       ]
@@ -4814,7 +5224,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#RelativePanel/RelativepanelControl",
           "name": "Control",
+          "description": "A RelativePanel control.",
           "snippet": "RelativepanelControl.txt"
         }
       ]
@@ -4868,7 +5280,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#RepeatButton/RepeatButtonSimple",
           "name": "Simple",
+          "description": "A simple RepeatButton with text content.",
           "snippet": "RepeatButtonSimple.txt"
         }
       ]
@@ -4930,23 +5344,33 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#RichEditBox/CustomEditorRicheditbox",
           "name": "Custom Editor Richeditbox",
+          "description": "A custom editor with RichEditBox.",
           "snippet": "CustomEditorRicheditbox.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#RichEditBox/CustomizingRicheditboxCommandbarflyoutAdding",
           "name": "Customizing Richeditbox Commandbarflyout Adding",
+          "description": "Customizing RichEditBox\u0027s CommandBarFlyout - Adding \u0027Share\u0027",
           "snippet": "CustomizingRicheditboxCommandbarflyoutAdding.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#RichEditBox/RichEditBoxMath",
           "name": "Math",
+          "description": "Rich edit box in math mode",
           "snippet": "RichEditBoxMath.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#RichEditBox/SimpleTextEditorRicheditbox",
           "name": "Simple Text Editor Richeditbox",
+          "description": "A simple text editor using RichEditBox.",
           "snippet": "SimpleTextEditorRicheditbox.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#RichEditBox/WorkingMathmlRicheditbox",
           "name": "Working Mathml Richeditbox",
+          "description": "Working with MathML in RichEditBox",
           "snippet": "WorkingMathmlRicheditbox.txt"
         }
       ]
@@ -5003,19 +5427,27 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#RichTextBlock/RichtextblockCustomSelectionHighlight",
           "name": "Custom Selection Highlight",
+          "description": "A RichTextBlock with a custom selection highlight color.",
           "snippet": "RichtextblockCustomSelectionHighlight.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#RichTextBlock/RichtextblockCustomTexthighlighting",
           "name": "Custom Texthighlighting",
+          "description": "RichTextBlock with custom TextHighlighting",
           "snippet": "RichtextblockCustomTexthighlighting.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#RichTextBlock/RichtextblockOverflow",
           "name": "Overflow",
+          "description": "A RichTextBlock with overflow.",
           "snippet": "RichtextblockOverflow.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#RichTextBlock/SimpleRichtextblock",
           "name": "Simple Richtextblock",
+          "description": "A simple RichTextBlock.",
           "snippet": "SimpleRichtextblock.txt"
         }
       ]
@@ -5106,15 +5538,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ScrollView/ContentInsideScrollview",
           "name": "Content Inside Scrollview",
+          "description": "Content inside of a ScrollView.",
           "snippet": "ContentInsideScrollview.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ScrollView/ScrollViewConstantVelocityScrolling",
           "name": "Constant Velocity Scrolling",
+          "description": "Constant velocity scrolling.",
           "snippet": "ScrollViewConstantVelocityScrolling.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ScrollView/ScrollViewProgrammaticScrollCustomAnimation",
           "name": "Programmatic Scroll Custom Animation",
+          "description": "Programmatic scroll with custom animation.",
           "snippet": "ScrollViewProgrammaticScrollCustomAnimation.txt"
         }
       ]
@@ -5172,7 +5610,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ScrollViewer/ContentInsideScrollviewer",
           "name": "Content Inside Scrollviewer",
+          "description": "Content inside of a ScrollViewer.",
           "snippet": "ContentInsideScrollviewer.txt"
         }
       ]
@@ -5229,15 +5669,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#SelectorBar/BasicSelectorbar",
           "name": "Basic Selectorbar",
+          "description": "A Basic SelectorBar",
           "snippet": "BasicSelectorbar.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#SelectorBar/SelectorbarDisplayingDifferentCollections",
           "name": "Displaying Different Collections",
+          "description": "SelectorBar Displaying Different Collections Using ItemsView",
           "snippet": "SelectorbarDisplayingDifferentCollections.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#SelectorBar/SelectorbarFrameSlideTransitions",
           "name": "Frame Slide Transitions",
+          "description": "SelectorBar with Frame Slide Transitions",
           "snippet": "SelectorbarFrameSlideTransitions.txt"
         }
       ]
@@ -5288,7 +5734,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#SemanticZoom/SimpleSemanticzoom",
           "name": "Simple Semanticzoom",
+          "description": "A simple SemanticZoom",
           "snippet": "SimpleSemanticzoom.txt"
         }
       ]
@@ -5343,15 +5791,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Shape/ShapeEllipse",
           "name": "Ellipse",
+          "description": "Ellipse",
           "snippet": "ShapeEllipse.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Shape/ShapePolygon",
           "name": "Polygon",
+          "description": "Polygon",
           "snippet": "ShapePolygon.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Shape/ShapeRectangle",
           "name": "Rectangle",
+          "description": "Rectangle",
           "snippet": "ShapeRectangle.txt"
         }
       ]
@@ -5407,19 +5861,27 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Slider/SliderRange",
           "name": "Range",
+          "description": "A Slider with range and steps specified.",
           "snippet": "SliderRange.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Slider/SliderSimple",
           "name": "Simple",
+          "description": "A simple Slider.",
           "snippet": "SliderSimple.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Slider/SliderTicks",
           "name": "Ticks",
+          "description": "A Slider with tick marks.",
           "snippet": "SliderTicks.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Slider/SliderVertical",
           "name": "Vertical",
+          "description": "A vertical slider with range and tick marks specified.",
           "snippet": "SliderVertical.txt"
         }
       ]
@@ -5462,15 +5924,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Sound/PlaySpecificSystemSound",
           "name": "Play Specific System Sound",
+          "description": "Play Specific System Sound",
           "snippet": "PlaySpecificSystemSound.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Sound/SoundTogglingSpatialAudio",
           "name": "Toggling Spatial Audio",
+          "description": "Toggling Spatial Audio",
           "snippet": "SoundTogglingSpatialAudio.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Sound/TogglingSound",
           "name": "Toggling Sound",
+          "description": "Toggling Sound",
           "snippet": "TogglingSound.txt"
         }
       ]
@@ -5552,11 +6020,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#SplitButton/SplitButtonColorPicker",
           "name": "Color Picker",
+          "description": "A SplitButton controlling text color in a RichEditBox",
           "snippet": "SplitButtonColorPicker.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#SplitButton/SplitButtonText",
           "name": "Text",
+          "description": "A SplitButton with text",
           "snippet": "SplitButtonText.txt"
         }
       ]
@@ -5611,7 +6083,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#SplitView/BasicSplitview",
           "name": "Basic Splitview",
+          "description": "A basic SplitView.",
           "snippet": "BasicSplitview.txt"
         }
       ]
@@ -5666,7 +6140,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#StackPanel/StackpanelControl",
           "name": "Control",
+          "description": "A StackPanel control.",
           "snippet": "StackpanelControl.txt"
         }
       ]
@@ -5716,7 +6192,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#StandardUICommand/StandardUICommandExposingCommandMultipleControls",
           "name": "Exposing Command Multiple Controls",
+          "description": "Exposing a command in multiple controls using StandardUICommand",
           "snippet": "StandardUICommandExposingCommandMultipleControls.txt"
         }
       ]
@@ -5776,23 +6254,33 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#StoragePickers/StoragePickersFileThumbnail",
           "name": "File Thumbnail",
+          "description": "Pick a file and display its thumbnail",
           "snippet": "StoragePickersFileThumbnail.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#StoragePickers/StoragePickersPickFolder",
           "name": "Pick Folder",
+          "description": "Pick folder",
           "snippet": "StoragePickersPickFolder.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#StoragePickers/StoragePickersPickMultipleFiles",
           "name": "Pick Multiple Files",
+          "description": "Pick multiple files",
           "snippet": "StoragePickersPickMultipleFiles.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#StoragePickers/StoragePickersPickSingleFile",
           "name": "Pick Single File",
+          "description": "Pick single file",
           "snippet": "StoragePickersPickSingleFile.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#StoragePickers/StoragePickersSaveFile",
           "name": "Save File",
+          "description": "Save file",
           "snippet": "StoragePickersSaveFile.txt"
         }
       ]
@@ -5856,23 +6344,33 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#SwipeControl/SwipeControlCustomIcons",
           "name": "Custom Icons",
+          "description": "Custom icons",
           "snippet": "SwipeControlCustomIcons.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#SwipeControl/SwipeControlCustomSwipeListview",
           "name": "Custom Swipe Listview",
+          "description": "Custom Swipe in a ListView",
           "snippet": "SwipeControlCustomSwipeListview.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#SwipeControl/SwipeControlGradientBackground",
           "name": "Gradient Background",
+          "description": "Gradient Background",
           "snippet": "SwipeControlGradientBackground.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#SwipeControl/SwipeControlSwipeLeftInvokeExecute",
           "name": "Swipe Left Invoke Execute",
+          "description": "Swipe left to invoke an execute",
           "snippet": "SwipeControlSwipeLeftInvokeExecute.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#SwipeControl/SwipeControlSwipeRightRevealActions",
           "name": "Swipe Right Reveal Actions",
+          "description": "Swipe right to reveal actions",
           "snippet": "SwipeControlSwipeRightRevealActions.txt"
         }
       ]
@@ -5920,7 +6418,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#SystemBackdropElement/SystembackdropelementSample",
           "name": "Sample",
+          "description": "SystemBackdropElement Sample",
           "snippet": "SystembackdropelementSample.txt"
         }
       ]
@@ -5982,15 +6482,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#SystemBackdrops/SystemBackdropsBackdropTypes",
           "name": "Backdrop Types",
+          "description": "Backdrop types",
           "snippet": "SystemBackdropsBackdropTypes.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#SystemBackdrops/SystemBackdropsDesktopacryliccontroller",
           "name": "Desktopacryliccontroller",
+          "description": "DesktopAcrylicController",
           "snippet": "SystemBackdropsDesktopacryliccontroller.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#SystemBackdrops/SystemBackdropsMicacontroller",
           "name": "Micacontroller",
+          "description": "MicaController",
           "snippet": "SystemBackdropsMicacontroller.txt"
         }
       ]
@@ -6059,43 +6565,63 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#TabView/CompleteTabviewWindowingSample",
           "name": "Complete Tabview Windowing Sample",
+          "description": "Complete TabView windowing sample",
           "snippet": "CompleteTabviewWindowingSample.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TabView/TabViewCloseButtonBePersistent",
           "name": "Close Button Be Persistent",
+          "description": "The close button can be persistent or only visible on hover",
           "snippet": "TabViewCloseButtonBePersistent.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TabView/TabViewTabWidthsEitherBe",
           "name": "Tab Widths Either Be",
+          "description": "Tab widths can either be equally sized, sized to the content of the tab, or sized to only show the icon when unselected",
           "snippet": "TabViewTabWidthsEitherBe.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TabView/TabViewYouPutCustomContent",
           "name": "You Put Custom Content",
+          "description": "You can put custom content in TabStripHeader and TabStripFooter",
           "snippet": "TabViewYouPutCustomContent.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TabView/TabviewAccentColoredTabstrip",
           "name": "Accent Colored Tabstrip",
+          "description": "A TabView with accent colored TabStrip background",
           "snippet": "TabviewAccentColoredTabstrip.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TabView/TabviewBoundCollectionMydata",
           "name": "Bound Collection Mydata",
+          "description": "A TabView bound to a collection of MyData objects",
           "snippet": "TabviewBoundCollectionMydata.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TabView/TabviewColorTabIcons",
           "name": "Color Tab Icons",
+          "description": "TabView with color tab icons",
           "snippet": "TabviewColorTabIcons.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TabView/TabviewKeyboardingSupport",
           "name": "Keyboarding Support",
+          "description": "A TabView with keyboarding support",
           "snippet": "TabviewKeyboardingSupport.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TabView/TabviewSupportAddingClosing",
           "name": "Support Adding Closing",
+          "description": "A TabView with support for adding, closing, and rearranging tabs",
           "snippet": "TabviewSupportAddingClosing.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TabView/TabviewTabviewitemsDefinedMarkup",
           "name": "Tabviewitems Defined Markup",
+          "description": "A TabView with TabViewItems defined in markup",
           "snippet": "TabviewTabviewitemsDefinedMarkup.txt"
         }
       ]
@@ -6150,15 +6676,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#TeachingTip/ShowNonTargetedTeachingtip",
           "name": "Show Non Targeted Teachingtip",
+          "description": "Show a non-targeted TeachingTip with buttons.",
           "snippet": "ShowNonTargetedTeachingtip.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TeachingTip/ShowTargetedTeachingtipButton",
           "name": "Show Targeted Teachingtip Button",
+          "description": "Show a targeted TeachingTip on a button.",
           "snippet": "ShowTargetedTeachingtipButton.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TeachingTip/ShowTargetedTeachingtipHero",
           "name": "Show Targeted Teachingtip Hero",
+          "description": "Show a targeted TeachingTip with hero content on a button.",
           "snippet": "ShowTargetedTeachingtipHero.txt"
         }
       ]
@@ -6223,15 +6755,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Templates/TemplatesCustomizeComboboxItemtemplateDatatemplate",
           "name": "Customize Combobox Itemtemplate Datatemplate",
+          "description": "Customize a ComboBox\u0027s ItemTemplate using a DataTemplate",
           "snippet": "TemplatesCustomizeComboboxItemtemplateDatatemplate.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Templates/TemplatesCustomizeItemscontrolItemspaneltemplate",
           "name": "Customize Itemscontrol Itemspaneltemplate",
+          "description": "Customize an ItemsControl with an ItemsPanelTemplate",
           "snippet": "TemplatesCustomizeItemscontrolItemspaneltemplate.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#Templates/TemplatesCustomizeLookTextboxControltemplate",
           "name": "Customize Look Textbox Controltemplate",
+          "description": "Customize the look of a TextBox with a ControlTemplate",
           "snippet": "TemplatesCustomizeLookTextboxControltemplate.txt"
         }
       ]
@@ -6288,23 +6826,33 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#TextBlock/SelectableTextblock",
           "name": "Selectable Textblock",
+          "description": "A selectable TextBlock",
           "snippet": "SelectableTextblock.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TextBlock/SimpleTextblock",
           "name": "Simple Textblock",
+          "description": "A simple TextBlock.",
           "snippet": "SimpleTextblock.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TextBlock/TextblockInlineTextElements",
           "name": "Inline Text Elements",
+          "description": "A TextBlock with inline text elements.",
           "snippet": "TextblockInlineTextElements.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TextBlock/TextblockStyleApplied",
           "name": "Style Applied",
+          "description": "A TextBlock with a style applied.",
           "snippet": "TextblockStyleApplied.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TextBlock/TextblockVariousProperties",
           "name": "Various Properties",
+          "description": "A TextBlock with various properties set.",
           "snippet": "TextblockVariousProperties.txt"
         }
       ]
@@ -6363,19 +6911,27 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#TextBox/MultiLineTextboxSpell",
           "name": "Multi Line Textbox Spell",
+          "description": "A multi-line TextBox with spell checking and custom selection highlight color.",
           "snippet": "MultiLineTextboxSpell.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TextBox/ReadOnlyTextboxVarious",
           "name": "Read Only Textbox Various",
+          "description": "A read-only TextBox with various properties set.",
           "snippet": "ReadOnlyTextboxVarious.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TextBox/SimpleTextbox",
           "name": "Simple Textbox",
+          "description": "A simple TextBox.",
           "snippet": "SimpleTextbox.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TextBox/TextboxHeaderPlaceholderText",
           "name": "Header Placeholder Text",
+          "description": "A TextBox with a header and placeholder text.",
           "snippet": "TextboxHeaderPlaceholderText.txt"
         }
       ]
@@ -6426,7 +6982,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ThemeShadow/ThemeshadowAppliedBorder",
           "name": "Applied Border",
+          "description": "ThemeShadow applied to a Border",
           "snippet": "ThemeshadowAppliedBorder.txt"
         }
       ]
@@ -6479,23 +7037,33 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ThemeTransition/AdddeletethemetransitionAnimateAddingRemoving",
           "name": "Adddeletethemetransition Animate Adding Removing",
+          "description": "Use AddDeleteThemeTransition to animate adding and removing items from a collection.",
           "snippet": "AdddeletethemetransitionAnimateAddingRemoving.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ThemeTransition/ContentthemetransitionAnimateContentRefreshes",
           "name": "Contentthemetransition Animate Content Refreshes",
+          "description": "Use ContentThemeTransition to animate content refreshes.",
           "snippet": "ContentthemetransitionAnimateContentRefreshes.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ThemeTransition/EntrancethemetransitionAddingItemsYour",
           "name": "Entrancethemetransition Adding Items Your",
+          "description": "Use the EntranceThemeTransition when adding items to your page.",
           "snippet": "EntrancethemetransitionAddingItemsYour.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ThemeTransition/PopupthemetransitionAnimateOpeningClosing",
           "name": "Popupthemetransition Animate Opening Closing",
+          "description": "Use PopupThemeTransition to animate opening and closing a popup.",
           "snippet": "PopupthemetransitionAnimateOpeningClosing.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ThemeTransition/RepositionthemetransitionReactLayoutChanges",
           "name": "Repositionthemetransition React Layout Changes",
+          "description": "Use the RepositionThemeTransition to react to layout changes.",
           "snippet": "RepositionthemetransitionReactLayoutChanges.txt"
         }
       ]
@@ -6548,15 +7116,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#TimePicker/SimpleTimepicker",
           "name": "Simple Timepicker",
+          "description": "A simple TimePicker that uses the clock format for the user\u0027s region.",
           "snippet": "SimpleTimepicker.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TimePicker/TimepickerClockIdentifiers",
           "name": "Clock Identifiers",
+          "description": "Use ClockIdentifier to override the regional clock format.",
           "snippet": "TimepickerClockIdentifiers.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TimePicker/TimepickerHeaderMinuteIncrements",
           "name": "Header Minute Increments",
+          "description": "A TimePicker with a header and minute increments specified.",
           "snippet": "TimepickerHeaderMinuteIncrements.txt"
         }
       ]
@@ -6613,15 +7187,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#TitleBar/EndEndTitlebarSample",
           "name": "End End Titlebar Sample",
+          "description": "End to end TitleBar sample",
           "snippet": "EndEndTitlebarSample.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TitleBar/TitlebarConfiguration",
           "name": "Configuration",
+          "description": "TitleBar configuration",
           "snippet": "TitlebarConfiguration.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TitleBar/TitlebarDragRegions",
           "name": "Drag Regions",
+          "description": "TitleBar drag regions",
           "snippet": "TitlebarDragRegions.txt"
         }
       ]
@@ -6677,7 +7257,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ToggleButton/ToggleButtonSimple",
           "name": "Simple",
+          "description": "A simple ToggleButton with text content.",
           "snippet": "ToggleButtonSimple.txt"
         }
       ]
@@ -6734,7 +7316,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ToggleSplitButton/ToggleSplitButtonBulletList",
           "name": "Bullet List",
+          "description": "Using ToggleSplitButton to control bulleted list functionality in RichEditBox",
           "snippet": "ToggleSplitButtonBulletList.txt"
         }
       ]
@@ -6787,11 +7371,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ToggleSwitch/ToggleSwitchCustom",
           "name": "Custom",
+          "description": "A ToggleSwitch with custom header and content.",
           "snippet": "ToggleSwitchCustom.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ToggleSwitch/ToggleSwitchSimple",
           "name": "Simple",
+          "description": "A simple ToggleSwitch.",
           "snippet": "ToggleSwitchSimple.txt"
         }
       ]
@@ -6846,15 +7434,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#ToolTip/ButtonSimpleTooltip",
           "name": "Button Simple Tooltip",
+          "description": "A button with a simple ToolTip.",
           "snippet": "ButtonSimpleTooltip.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ToolTip/ImageTooltipPlacementrect",
           "name": "Image Tooltip Placementrect",
+          "description": "An Image with a ToolTip using PlacementRect.",
           "snippet": "ImageTooltipPlacementrect.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#ToolTip/TextblockOffsetTooltip",
           "name": "Textblock Offset Tooltip",
+          "description": "A TextBlock with an offset ToolTip.",
           "snippet": "TextblockOffsetTooltip.txt"
         }
       ]
@@ -6910,19 +7504,27 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#TreeView/SimpleTreeviewDragDrop",
           "name": "Simple Treeview Drag Drop",
+          "description": "A simple TreeView with drag and drop support",
           "snippet": "SimpleTreeviewDragDrop.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TreeView/TreeviewDatabindingItemsource",
           "name": "Databinding Itemsource",
+          "description": "A TreeView with DataBinding Using ItemSource",
           "snippet": "TreeviewDatabindingItemsource.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TreeView/TreeviewItemtemplateselector",
           "name": "Itemtemplateselector",
+          "description": "A TreeView with ItemTemplateSelector",
           "snippet": "TreeviewItemtemplateselector.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#TreeView/TreeviewMultiSelectionEnabled",
           "name": "Multi Selection Enabled",
+          "description": "A TreeView with Multi-selection enabled",
           "snippet": "TreeviewMultiSelectionEnabled.txt"
         }
       ]
@@ -6967,7 +7569,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Typography/TypographyTypeRamp",
           "name": "Type Ramp",
+          "description": "Type ramp",
           "snippet": "TypographyTypeRamp.txt"
         }
       ]
@@ -7022,7 +7626,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#VariableSizedWrapGrid/VariablesizedwrapgridControl",
           "name": "Control",
+          "description": "A VariableSizedWrapGrid control.",
           "snippet": "VariablesizedwrapgridControl.txt"
         }
       ]
@@ -7072,7 +7678,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#Viewbox/ContentInsideViewbox",
           "name": "Content Inside Viewbox",
+          "description": "Content inside of a Viewbox.",
           "snippet": "ContentInsideViewbox.txt"
         }
       ]
@@ -7124,7 +7732,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#WebView2/SimpleWebview2",
           "name": "Simple Webview2",
+          "description": "A simple WebView2",
           "snippet": "SimpleWebview2.txt"
         }
       ]
@@ -7176,23 +7786,33 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#XamlCompInterop/XamlCompInteropDrivingSeveralRelatedAnimations",
           "name": "Driving Several Related Animations",
+          "description": "Driving several related animations together using ExpressionAnimation",
           "snippet": "XamlCompInteropDrivingSeveralRelatedAnimations.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#XamlCompInterop/XamlCompInteropExpressionanimationEllipseElement",
           "name": "Expressionanimation Ellipse Element",
+          "description": "ExpressionAnimation on an Ellipse element",
           "snippet": "XamlCompInteropExpressionanimationEllipseElement.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#XamlCompInterop/XamlCompInteropNaturalMotionCompositionAnimation",
           "name": "Natural Motion Composition Animation",
+          "description": "Use a natural motion composition animation on a UIElement",
           "snippet": "XamlCompInteropNaturalMotionCompositionAnimation.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#XamlCompInterop/XamlCompInteropReferenceActualoffsetActualsizeExpressionanimations",
           "name": "Reference Actualoffset Actualsize Expressionanimations",
+          "description": "Reference ActualOffset and ActualSize in ExpressionAnimations to position elements relative to each other",
           "snippet": "XamlCompInteropReferenceActualoffsetActualsizeExpressionanimations.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#XamlCompInterop/XamlCompInteropReferenceActualsizeExpressionanimationsMake",
           "name": "Reference Actualsize Expressionanimations Make",
+          "description": "Reference ActualSize in ExpressionAnimations to make novel layouts based on size",
           "snippet": "XamlCompInteropReferenceActualsizeExpressionanimationsMake.txt"
         }
       ]
@@ -7248,15 +7868,21 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#XamlResources/XamlResourcesDefineNewThemeResource",
           "name": "Define New Theme Resource",
+          "description": "Define a new theme resource",
           "snippet": "XamlResourcesDefineNewThemeResource.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#XamlResources/XamlResourcesStaticresourceVersusThemeresource",
           "name": "Staticresource Versus Themeresource",
+          "description": "StaticResource versus ThemeResource",
           "snippet": "XamlResourcesStaticresourceVersusThemeresource.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#XamlResources/Xamlresources",
           "name": "XamlResources",
+          "description": "XamlResources",
           "snippet": "Xamlresources.txt"
         }
       ]
@@ -7311,11 +7937,15 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#XamlStyles/XamlStylesCreatingApplyingStyle",
           "name": "Creating Applying Style",
+          "description": "Creating and applying a style",
           "snippet": "XamlStylesCreatingApplyingStyle.txt"
         },
         {
+          "id": "microsoft/WinUI-Gallery#XamlStyles/XamlStylesStyleWithoutKeyImplicit",
           "name": "Style Without Key Implicit",
+          "description": "Style without a key (implicit style)",
           "snippet": "XamlStylesStyleWithoutKeyImplicit.txt"
         }
       ]
@@ -7361,7 +7991,9 @@
       },
       "scenarios": [
         {
+          "id": "microsoft/WinUI-Gallery#XamlUICommand/CreatingReusableCommandXamluicommand",
           "name": "Creating Reusable Command Xamluicommand",
+          "description": "Creating a reusable command with XamlUICommand",
           "snippet": "CreatingReusableCommandXamluicommand.txt"
         }
       ]

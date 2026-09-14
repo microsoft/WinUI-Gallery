@@ -33,6 +33,13 @@ internal sealed class CatalogGenerationOptions
 }
 
 /// <summary>
+/// Both generated artifacts, produced by a single walk of the source data. They are returned
+/// together on purpose: the code file is keyed by the manifest's scenario ids, so generating them
+/// independently would make it possible to commit a mismatched pair.
+/// </summary>
+internal sealed record CatalogGenerationResult(CatalogManifest Manifest, CatalogCodeManifest Code);
+
+/// <summary>
 /// Builds the catalog/windows-samples.json manifest from ControlInfoData.json plus the on-disk
 /// WinUIGallery/Samples/&lt;UniqueId&gt;/ folders. See catalog/README.md for the design.
 /// </summary>
@@ -57,8 +64,8 @@ internal static class CatalogGenerator
         DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
     };
 
-    /// <summary>Reads ControlInfoData.json and the Samples folders and produces a validated manifest.</summary>
-    public static CatalogManifest Generate(CatalogGenerationOptions options)
+    /// <summary>Reads ControlInfoData.json and the Samples folders and produces validated artifacts.</summary>
+    public static CatalogGenerationResult Generate(CatalogGenerationOptions options)
     {
         string controlInfoPath = Path.Combine(options.RepoRoot, Normalize(ControlInfoRelativePath));
         if (!File.Exists(controlInfoPath))
@@ -98,6 +105,7 @@ internal static class CatalogGenerator
         }
 
         List<CatalogSample> samples = [];
+        List<CatalogScenarioCode> code = [];
         foreach (ControlInfoGroup group in root.Groups)
         {
             foreach (ControlInfoItem item in group.Items)
@@ -112,7 +120,7 @@ internal static class CatalogGenerator
                     continue;
                 }
 
-                CatalogSample? sample = BuildSample(item, group, samplesRoot, options, issues);
+                CatalogSample? sample = BuildSample(item, group, samplesRoot, options, issues, code);
                 if (sample is not null)
                 {
                     samples.Add(sample);
@@ -140,14 +148,30 @@ internal static class CatalogGenerator
             }
         }
 
+        // Scenario ids are the join key into the code file, so a collision would make one
+        // scenario's source unreachable. They are derived from snippet file names, so this
+        // catches two ControlExamples in one page pointing at the same snippet.
+        HashSet<string> scenarioIds = new(StringComparer.Ordinal);
+        foreach (CatalogSample sample in samples)
+        {
+            foreach (CatalogScenario scenario in sample.Scenarios ?? [])
+            {
+                if (!scenarioIds.Add(scenario.Id))
+                {
+                    issues.Add(new CatalogIssue(sample.UniqueId, $"Duplicate scenario id '{scenario.Id}'."));
+                }
+            }
+        }
+
         if (issues.Count > 0)
         {
             throw new CatalogValidationException(issues);
         }
 
         samples.Sort((a, b) => string.CompareOrdinal(a.Id, b.Id));
+        code.Sort((a, b) => string.CompareOrdinal(a.Id, b.Id));
 
-        return new CatalogManifest
+        CatalogManifest manifest = new()
         {
             Generator = new CatalogGeneratorInfo(),
             Repository = new CatalogRepository
@@ -163,6 +187,15 @@ internal static class CatalogGenerator
             SampleCount = samples.Count,
             Samples = samples,
         };
+
+        CatalogCodeManifest codeManifest = new()
+        {
+            Generator = new CatalogGeneratorInfo(),
+            ScenarioCount = code.Count,
+            Scenarios = code,
+        };
+
+        return new CatalogGenerationResult(manifest, codeManifest);
     }
 
     private static CatalogSample? BuildSample(
@@ -170,7 +203,8 @@ internal static class CatalogGenerator
         ControlInfoGroup group,
         string samplesRoot,
         CatalogGenerationOptions options,
-        List<CatalogIssue> issues)
+        List<CatalogIssue> issues,
+        List<CatalogScenarioCode> code)
     {
         string folder = Path.Combine(samplesRoot, item.UniqueId);
         if (!Directory.Exists(folder))
@@ -200,10 +234,10 @@ internal static class CatalogGenerator
             .OrderBy(f => f, StringComparer.Ordinal)
             .ToList();
 
-        List<CatalogScenario> scenarios = ExtractScenarios(pageFile, item.UniqueId, folder, issues);
-
         string relativeRoot = ToRepoRelative(folder, options.RepoRoot);
         string id = $"{RepoId(options)}#{item.UniqueId}";
+
+        List<CatalogScenario> scenarios = ExtractScenarios(pageFile, item.UniqueId, id, folder, options, issues, code);
 
         List<string>? relatedSamples = BuildRelatedSamples(item, options);
 
@@ -277,7 +311,14 @@ internal static class CatalogGenerator
         return badges.Count == 0 ? null : badges;
     }
 
-    private static List<CatalogScenario> ExtractScenarios(string pageFile, string uniqueId, string folder, List<CatalogIssue> issues)
+    private static List<CatalogScenario> ExtractScenarios(
+        string pageFile,
+        string uniqueId,
+        string sampleId,
+        string folder,
+        CatalogGenerationOptions options,
+        List<CatalogIssue> issues,
+        List<CatalogScenarioCode> code)
     {
         string contents = File.ReadAllText(pageFile);
         List<CatalogScenario> scenarios = [];
@@ -290,16 +331,41 @@ internal static class CatalogGenerator
             string rawPath = match.Groups["path"].Value;
             string fileName = rawPath.Replace('\\', '/').Split('/').Last();
 
-            if (FindExactCase(entries, fileName) is null)
+            string? bundlePath = FindExactCase(entries, fileName);
+            if (bundlePath is null)
             {
                 issues.Add(new CatalogIssue(uniqueId, $"SampleDefinition references '{fileName}' which was not found (case-exact) next to the page."));
                 continue;
             }
 
+            SampleBundle bundle = SampleBundleParser.Parse(File.ReadAllText(bundlePath));
+
+            string scenarioId = $"{sampleId}/{Path.GetFileNameWithoutExtension(fileName)}";
+
             scenarios.Add(new CatalogScenario
             {
+                Id = scenarioId,
                 Name = DeriveScenarioName(fileName, uniqueId),
+                Description = NullIfEmpty(bundle.Header),
                 Snippet = fileName,
+            });
+
+            // A scenario legitimately has no code: either the page hides the viewer entirely
+            // (SourceCodeVisibility="Collapsed"), or the code still comes from the legacy
+            // ControlExample.XamlSource/CSharpSource properties, which this exporter does not
+            // read yet. Such scenarios appear in the manifest but contribute no code entry.
+            // KnownCodelessScenariosTests pins the current set so this gap stays visible.
+            if (bundle.Xaml is null && bundle.CSharp is null)
+            {
+                continue;
+            }
+
+            code.Add(new CatalogScenarioCode
+            {
+                Id = scenarioId,
+                Source = ToRepoRelative(bundlePath, options.RepoRoot),
+                Xaml = NullIfEmpty(bundle.Xaml),
+                Code = NullIfEmpty(bundle.CSharp),
             });
         }
 
@@ -370,9 +436,14 @@ internal static class CatalogGenerator
     private static List<string>? NullIfEmpty(string[]? value) => value is null || value.Length == 0 ? null : [.. value];
 
     /// <summary>Serializes the manifest deterministically (stable property/array order, LF line endings).</summary>
-    public static string Serialize(CatalogManifest manifest)
+    public static string Serialize(CatalogManifest manifest) => SerializeDocument(manifest);
+
+    /// <summary>Serializes the code file deterministically, matching <see cref="Serialize(CatalogManifest)"/>.</summary>
+    public static string Serialize(CatalogCodeManifest code) => SerializeDocument(code);
+
+    private static string SerializeDocument<T>(T document)
     {
-        string json = JsonSerializer.Serialize(manifest, WriteOptions);
+        string json = JsonSerializer.Serialize(document, WriteOptions);
         return json.Replace("\r\n", "\n").TrimEnd('\n') + "\n";
     }
 

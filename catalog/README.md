@@ -1,7 +1,8 @@
 # WinUI Gallery catalog manifest
 
 `catalog/windows-samples.json` is a generated, machine-readable inventory of every embedded
-sample in this repository. It exists so a future federated
+sample in this repository, and `catalog/windows-samples.code.json` carries the source shown for
+each of their scenarios. They exist so a future federated
 [microsoft/windows-samples](https://github.com/microsoft/windows-samples) catalog (and other
 agents/tools) can discover WinUI Gallery's samples without scraping the app's XAML.
 
@@ -27,22 +28,39 @@ truth. Instead:
   kind) live once in the manifest's top-level `defaults`, instead of being repeated on every one
   of the ~120 entries.
 
+## Why the code lives in a second file
+
+`catalog/windows-samples.code.json` holds the XAML and C# for each scenario, keyed by the
+manifest's scenario ids. The split is deliberate, because the two files have different audiences:
+
+- The **manifest** is metadata, and it is what gets imported into the federated
+  `windows-samples` catalog - which carries paths, not source. Inlining ~400 KB of code there
+  would be dead weight that the importer has to strip.
+- The **code file** exists for consumers that want the snippets without cloning the repository:
+  one request for all of them, instead of one request per `.txt` file.
+
+Both files are produced by a **single generator pass**, so they cannot drift apart, and a test
+asserts that every code entry resolves to a scenario in the manifest.
+
 ## Regenerating and checking the manifest
 
 ```powershell
-# Regenerate catalog/windows-samples.json from the current source data
+# Regenerate both catalog files from the current source data
 dotnet run --project tools/CatalogExporter -- generate
 
-# Verify the committed file is still up to date (used in CI/tests); does not write anything
+# Verify the committed files are still up to date (used in CI/tests); does not write anything
 dotnet run --project tools/CatalogExporter -- check
 ```
 
 Both commands auto-detect the repository root (by walking up to `WinUIGallery.slnx`); pass
 `--repo-root <path>` to override.
 
-`tests/WinUIGallery.CatalogExporter.Tests` also asserts the committed manifest matches a fresh
-`generate` output, so a stale or hand-edited `catalog/windows-samples.json` fails `dotnet test`
-(and therefore CI) rather than silently drifting from `ControlInfoData.json`.
+`tests/WinUIGallery.CatalogExporter.Tests` also asserts the committed files match a fresh
+`generate` output, so a stale or hand-edited catalog file fails `dotnet test` (and therefore CI)
+rather than silently drifting from `ControlInfoData.json`. The same suite checks that each JSON
+Schema declares exactly the properties the exporter emits - both schemas set
+`"additionalProperties": false`, so an undeclared field would make every generated file invalid
+for consumers.
 
 ## Contract
 
@@ -59,7 +77,53 @@ glance:
 | `samples[].badges` | Derived from `IsNew` / `IsUpdated` / `IsPreview` |
 | `samples[].relatedSamples` | `RelatedControls` (resolved to this repository's ids), plus any `Catalog.RelatedSamples` override |
 | `samples[].source` | The `WinUIGallery/Samples/<UniqueId>/` folder: main `*Page.xaml`, `*Page.xaml.cs`, and every `*.txt` snippet, verified to exist with exact-case file names |
-| `samples[].scenarios` | One entry per `controls:ControlExample` element whose `SampleDefinition="..."` attribute names a snippet file that exists next to the page |
+| `samples[].scenarios[].id` | `"{sample id}/{snippet file name without extension}"` - derived from the file name rather than the scenario's position, so inserting or reordering scenarios never renumbers the others. This is the join key into `windows-samples.code.json` |
+| `samples[].scenarios[].name`, `.snippet` | One entry per `controls:ControlExample` element whose `SampleDefinition="..."` attribute names a snippet file that exists next to the page |
+| `samples[].scenarios[].description` | The snippet's `--- header` section, as shown above the scenario in the app |
+
+`catalog/windows-samples.code.json` is described by
+[`catalog/windows-samples.code.schema.json`](windows-samples.code.schema.json) and is versioned
+independently:
+
+| Code file field | Derived from |
+| --- | --- |
+| `scenarios[].id` | Matches a `samples[].scenarios[].id` in the manifest |
+| `scenarios[].source` | Repository-relative path to the snippet bundle the content was parsed from |
+| `scenarios[].xaml`, `.code` | The snippet's `--- xaml` and `--- c#` sections, verbatim |
+
+### Snippet bundles, and staying faithful to what the app renders
+
+A `SampleDefinition` snippet is a small sectioned text file:
+
+```text
+--- header
+Built-in styles applied to Button.
+--- xaml
+<Button Style="{StaticResource AccentButtonStyle}" Content="Accent style button"/>
+```
+
+The exporter parses these with `SampleBundleParser`, which deliberately mirrors
+`ControlExample.ParseSampleCodeSections` in
+[`WinUIGallery/Controls/ControlExample.xaml.cs`](../WinUIGallery/Controls/ControlExample.xaml.cs) -
+the source of truth for the format. The catalog's promise is "this is the code the gallery shows
+for this scenario", so if the two parsers diverge the catalog silently publishes something users
+never see. `SampleBundleParserTests` pins the rules that are easiest to get subtly wrong (the
+marker is `"--- "` including the trailing space; section content is trimmed; unknown sections are
+ignored). **Keep the two parsers in sync.**
+
+Published `xaml` may contain `$(Token)` placeholders that the page binds at runtime through
+`ControlExample.Substitutions`; they are emitted verbatim rather than guessed at.
+
+### Scenarios without code
+
+A scenario appears in the manifest but contributes no entry to the code file when either:
+
+- its page sets `SourceCodeVisibility="Collapsed"`, so the gallery deliberately shows no code; or
+- its code still comes from the legacy `ControlExample.XamlSource` / `CSharpSource` properties,
+  which the exporter does not read yet.
+
+`RealRepository_CodelessScenariosAreTheKnownSet` pins the current set (two scenarios) so this gap
+stays visible and shrinking it is a deliberate, reviewed change.
 
 ### The optional `Catalog` override block
 
@@ -89,9 +153,10 @@ An item from `ControlInfoData.json` becomes a catalog entry when, and only when:
 3. It does not set `Catalog.Exclude: true`.
 
 Anything else - a missing folder/page, a duplicate id, a `RelatedControls`/`Catalog.RelatedSamples`
-reference that doesn't resolve to an included entry, or a `SampleDefinition` snippet that doesn't
-exist on disk - fails validation (`CatalogValidationException`) rather than being silently
-skipped or guessed at. All 120 current `ControlInfoData.json` items satisfy these rules.
+reference that doesn't resolve to an included entry, a `SampleDefinition` snippet that doesn't
+exist on disk, or two scenarios resolving to the same id - fails validation
+(`CatalogValidationException`) rather than being silently skipped or guessed at. All 120 current
+`ControlInfoData.json` items satisfy these rules.
 
 ### What's intentionally left out
 

@@ -12,8 +12,9 @@
       "description": "Relative path back to this schema file."
     },
     "schemaVersion": {
-      "type": "string",
-      "description": "Semantic version of this manifest's contract, bumped whenever a breaking change is made to the shape below."
+      "type": "integer",
+      "const": 1,
+      "description": "Version of this manifest's contract. An integer, matching the federated windows-samples catalog's versioning, and bumped only for a breaking change to the shape below."
     },
     "generator": {
       "type": "object",
@@ -151,13 +152,22 @@
         },
         "scenarios": {
           "type": "array",
-          "description": "Interactive scenarios within the page, one per controls:ControlExample element that declares a SampleDefinition snippet.",
+          "description": "Interactive scenarios within the page, one per controls:ControlExample element that declares a SampleDefinition snippet. Scenario source is published separately in windows-samples.code.json, keyed by 'id'.",
           "items": {
             "type": "object",
-            "required": [ "name", "snippet" ],
+            "required": [ "id", "name", "snippet" ],
             "additionalProperties": false,
             "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[^#/]+/[^#/]+#[^#/]+/[^#/]+$",
+                "description": "Stable, source-qualified id: '{owner}/{repo}#{uniqueId}/{snippetFileNameWithoutExtension}'. Derived from the snippet file name rather than the scenario's position in the page, so inserting or reordering scenarios never renumbers the others. This is the join key into windows-samples.code.json."
+              },
               "name": { "type": "string" },
+              "description": {
+                "type": "string",
+                "description": "Prose from the snippet's '--- header' section, as shown above the scenario in the gallery."
+              },
               "snippet": { "type": "string", "description": "File name of the snippet, relative to 'source.root'." }
             }
           }

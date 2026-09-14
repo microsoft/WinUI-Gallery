@@ -122,7 +122,7 @@
                                             "description": "Extra related-sample references that point outside this repository, formatted as '{owner}/{repo}#{uniqueId}'. Used to extend (not replace) RelatedControls, which can only reference other items in this same file."
                                         }
                                     }
-                                },
+                                }
                             },
                             "required": [ "UniqueId", "Title"]
                         }

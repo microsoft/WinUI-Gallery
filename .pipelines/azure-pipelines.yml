@@ -25,7 +25,7 @@ steps:
         nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
 
     - task: DotNetCoreCLI@2
-      displayName: Verify catalog/windows-samples.json is up to date
+      displayName: Verify the generated catalog files are up to date
       inputs:
         command: 'test'
         projects: 'tests/WinUIGallery.CatalogExporter.Tests/WinUIGallery.CatalogExporter.Tests.csproj'

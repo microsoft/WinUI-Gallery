@@ -34,6 +34,28 @@ public sealed class CatalogGeneratorTests
 
     private CatalogGenerationOptions Options() => new() { RepoRoot = _fixtureRoot };
 
+    /// <summary>Builds a SampleDefinition bundle in the real "--- section" format.</summary>
+    private static string Bundle(string? header = null, string? xaml = null, string? csharp = null)
+    {
+        List<string> parts = [];
+        if (header is not null)
+        {
+            parts.Add("--- header\n" + header);
+        }
+
+        if (xaml is not null)
+        {
+            parts.Add("--- xaml\n" + xaml);
+        }
+
+        if (csharp is not null)
+        {
+            parts.Add("--- c#\n" + csharp);
+        }
+
+        return string.Join('\n', parts) + "\n";
+    }
+
     private void WriteControlInfoData(string json)
     {
         string dir = Path.Combine(_fixtureRoot, "WinUIGallery", "SampleSupport", "Data");
@@ -82,10 +104,10 @@ public sealed class CatalogGeneratorTests
     public void Generate_ProducesExpectedFieldsAndOmitsEmptyOptionalFields()
     {
         WriteControlInfoData(TwoItemDocument());
-        WriteSample("SampleOne", """<Page><controls:ControlExample SampleDefinition="SampleOne\SampleOneBasic.txt" /></Page>""", ("SampleOneBasic.txt", "<Button/>"));
+        WriteSample("SampleOne", """<Page><controls:ControlExample SampleDefinition="SampleOne\SampleOneBasic.txt" /></Page>""", ("SampleOneBasic.txt", Bundle("A basic button.", "<Button/>")));
         WriteSample("SampleTwo", "<Page></Page>");
 
-        CatalogManifest manifest = CatalogGenerator.Generate(Options());
+        CatalogManifest manifest = CatalogGenerator.Generate(Options()).Manifest;
 
         Assert.AreEqual(2, manifest.SampleCount);
         Assert.AreEqual(2, manifest.Samples.Count);
@@ -100,6 +122,8 @@ public sealed class CatalogGeneratorTests
         Assert.AreEqual(1, one.Scenarios!.Count);
         Assert.AreEqual("SampleOneBasic.txt", one.Scenarios[0].Snippet);
         Assert.AreEqual("Basic", one.Scenarios[0].Name);
+        Assert.AreEqual("microsoft/WinUI-Gallery#SampleOne/SampleOneBasic", one.Scenarios[0].Id);
+        Assert.AreEqual("A basic button.", one.Scenarios[0].Description);
 
         CatalogSample two = manifest.Samples.Single(s => s.UniqueId == "SampleTwo");
         Assert.IsNull(two.Summary, "Optional fields with no source data must be omitted (null), not empty strings.");
@@ -129,7 +153,7 @@ public sealed class CatalogGeneratorTests
         WriteSample("Zebra", "<Page></Page>");
         WriteSample("Apple", "<Page></Page>");
 
-        CatalogManifest manifest = CatalogGenerator.Generate(Options());
+        CatalogManifest manifest = CatalogGenerator.Generate(Options()).Manifest;
 
         CollectionAssert.AreEqual(
             new[] { "microsoft/WinUI-Gallery#Apple", "microsoft/WinUI-Gallery#Zebra" },
@@ -143,8 +167,8 @@ public sealed class CatalogGeneratorTests
         WriteSample("SampleOne", "<Page></Page>");
         WriteSample("SampleTwo", "<Page></Page>");
 
-        string first = CatalogGenerator.Serialize(CatalogGenerator.Generate(Options()));
-        string second = CatalogGenerator.Serialize(CatalogGenerator.Generate(Options()));
+        string first = CatalogGenerator.Serialize(CatalogGenerator.Generate(Options()).Manifest);
+        string second = CatalogGenerator.Serialize(CatalogGenerator.Generate(Options()).Manifest);
 
         Assert.AreEqual(first, second);
         StringAssert.EndsWith(first, "\n");
@@ -279,7 +303,7 @@ public sealed class CatalogGeneratorTests
         // "Hidden" has no on-disk folder at all: Exclude must short-circuit before folder validation.
         WriteSample("Visible", "<Page></Page>");
 
-        CatalogManifest manifest = CatalogGenerator.Generate(Options());
+        CatalogManifest manifest = CatalogGenerator.Generate(Options()).Manifest;
 
         Assert.AreEqual(1, manifest.SampleCount);
         Assert.AreEqual("Visible", manifest.Samples.Single().UniqueId);
@@ -298,7 +322,7 @@ public sealed class CatalogGeneratorTests
         WriteSample("SampleOne", "<Page></Page>");
         WriteSample("SampleTwo", "<Page></Page>");
 
-        CatalogSample one = CatalogGenerator.Generate(Options()).Samples.Single(s => s.UniqueId == "SampleOne");
+        CatalogSample one = CatalogGenerator.Generate(Options()).Manifest.Samples.Single(s => s.UniqueId == "SampleOne");
 
         CollectionAssert.AreEqual(new[] { "shortcut" }, one.Aliases);
         CollectionAssert.AreEqual(

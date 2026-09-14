@@ -13,7 +13,7 @@ internal sealed class CatalogManifest
 {
     [JsonPropertyName("$schema")]
     public string Schema { get; set; } = "./windows-samples.schema.json";
-    public string SchemaVersion { get; set; } = "1.0.0";
+    public int SchemaVersion { get; set; } = 1;
     public CatalogGeneratorInfo Generator { get; set; } = new();
     public CatalogRepository Repository { get; set; } = new();
     public CatalogDefaults Defaults { get; set; } = new();
@@ -104,6 +104,53 @@ internal sealed class CatalogSource
 /// </summary>
 internal sealed class CatalogScenario
 {
+    /// <summary>
+    /// Stable, source-qualified id: "{owner}/{repo}#{uniqueId}/{snippetFileNameWithoutExtension}".
+    /// Derived from the snippet file name rather than the scenario's position in the page, so
+    /// inserting or reordering scenarios never renumbers the others. This is also the join key
+    /// into catalog/windows-samples.code.json.
+    /// </summary>
+    public string Id { get; set; } = string.Empty;
+
     public string Name { get; set; } = string.Empty;
+
+    /// <summary>Prose from the bundle's "--- header" section, as shown above the scenario.</summary>
+    public string? Description { get; set; }
+
     public string Snippet { get; set; } = string.Empty;
+}
+
+/// <summary>
+/// Root document for catalog/windows-samples.code.json - the scenario source that
+/// catalog/windows-samples.json deliberately does not inline.
+///
+/// The split exists because the two files have different audiences: the manifest is metadata that
+/// gets imported into the federated windows-samples catalog (which carries no code), while this
+/// file exists for consumers that want the code without cloning the repository or making one
+/// request per snippet. Both are produced by a single generator pass so they cannot drift.
+/// </summary>
+internal sealed class CatalogCodeManifest
+{
+    [JsonPropertyName("$schema")]
+    public string Schema { get; set; } = "./windows-samples.code.schema.json";
+    public int SchemaVersion { get; set; } = 1;
+    public CatalogGeneratorInfo Generator { get; set; } = new();
+
+    /// <summary>Relative path to the manifest whose scenario ids this file is keyed by.</summary>
+    public string Manifest { get; set; } = "./windows-samples.json";
+
+    public int ScenarioCount { get; set; }
+    public List<CatalogScenarioCode> Scenarios { get; set; } = [];
+}
+
+/// <summary>The XAML and/or C# for one scenario, keyed by the manifest's scenario id.</summary>
+internal sealed class CatalogScenarioCode
+{
+    public string Id { get; set; } = string.Empty;
+
+    /// <summary>Repository-relative path to the bundle this content was parsed from.</summary>
+    public string Source { get; set; } = string.Empty;
+
+    public string? Xaml { get; set; }
+    public string? Code { get; set; }
 }
