@@ -3,6 +3,7 @@
 
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace WinUIGallery.CatalogExporter;
@@ -46,10 +47,20 @@ internal sealed record CatalogGenerationResult(SampleIndex Index, IReadOnlyList<
 /// Builds the catalog/windows-samples.json manifest from ControlInfoData.json plus the on-disk
 /// WinUIGallery/Samples/&lt;UniqueId&gt;/ folders. See catalog/README.md for the design.
 /// </summary>
-internal static class CatalogGenerator
+internal static partial class CatalogGenerator
 {
     private const string ControlInfoRelativePath = "WinUIGallery/SampleSupport/Data/ControlInfoData.json";
     private const string SamplesRelativeRoot = "WinUIGallery/Samples";
+
+    /// <summary>Root namespace of the gallery itself, which no published snippet can rely on.</summary>
+    private const string GalleryRootNamespace = "WinUIGallery";
+
+    /// <summary>
+    /// A plain "using Some.Namespace;" directive. Alias and static forms are skipped: the consumer
+    /// re-emits each entry as "using X;", which would not round-trip either of them.
+    /// </summary>
+    [GeneratedRegex(@"^\s*using\s+(?!static\b)([A-Za-z_][\w.]*)\s*;", RegexOptions.Multiline)]
+    private static partial Regex UsingDirectiveRegex();
 
     private static readonly JsonSerializerOptions ReadOptions = new()
     {
@@ -119,7 +130,7 @@ internal static class CatalogGenerator
                     continue;
                 }
 
-                IndexControl? control = BuildControl(item, group, samplesRoot, options, issues, warnings);
+                IndexControl? control = BuildControl(item, group, samplesRoot, itemsById, options, issues, warnings);
                 if (control is not null)
                 {
                     controls.Add(control);
@@ -193,6 +204,7 @@ internal static class CatalogGenerator
         ControlInfoItem item,
         ControlInfoGroup group,
         string samplesRoot,
+        IReadOnlyDictionary<string, ControlInfoItem> itemsById,
         CatalogGenerationOptions options,
         List<CatalogIssue> issues,
         List<CatalogIssue> warnings)
@@ -232,8 +244,9 @@ internal static class CatalogGenerator
             Description = NullIfEmpty(item.Subtitle),
             Details = NullIfEmpty(item.Description),
             ApiNamespace = NullIfEmpty(item.ApiNamespace),
-            RelatedControls = NullIfEmpty(item.RelatedControls),
+            RelatedControls = NullIfEmpty(ResolveRelatedControlNames(item, itemsById)),
             XmlnsImports = sharedImports,
+            Usings = NullIfEmpty(CollectUsings(codeBehindFile, samples)),
             Keywords = NullIfEmpty(item.BaseClasses),
             CuratedKeywords = BuildCuratedKeywords(item),
             Docs = item.Docs.Count == 0
@@ -301,6 +314,56 @@ internal static class CatalogGenerator
         }
 
         return first;
+    }
+
+    /// <summary>
+    /// The contract's "relatedControls" is display names, but ControlInfoData.json stores
+    /// UniqueIds in that field. Resolving each one keeps consumers from rendering an internal id
+    /// like "XamlStyles" where a reader expects "Style". An id that does not resolve is passed
+    /// through unchanged so a stale reference stays visible rather than silently disappearing.
+    /// </summary>
+    private static List<string> ResolveRelatedControlNames(
+        ControlInfoItem item,
+        IReadOnlyDictionary<string, ControlInfoItem> itemsById)
+    {
+        List<string> names = [];
+        foreach (string relatedControl in item.RelatedControls)
+        {
+            names.Add(itemsById.TryGetValue(relatedControl, out ControlInfoItem? related)
+                && !string.IsNullOrWhiteSpace(related.Title)
+                    ? related.Title
+                    : relatedControl);
+        }
+
+        return names;
+    }
+
+    /// <summary>
+    /// The namespaces a control's published C# assumes, taken from the imports its page's
+    /// code-behind was written against. Over-collecting is deliberate: an unused "using" compiles
+    /// harmlessly, while a missing one does not.
+    ///
+    /// The gallery's own namespaces are excluded, because prepending something like
+    /// "using WinUIGallery.Helpers;" would guarantee the failure this field exists to prevent.
+    /// </summary>
+    private static List<string> CollectUsings(string? codeBehindFile, List<IndexSample> samples)
+    {
+        if (codeBehindFile is null || !samples.Any(s => !string.IsNullOrWhiteSpace(s.Code)))
+        {
+            return [];
+        }
+
+        SortedSet<string> namespaces = new(StringComparer.Ordinal);
+        foreach (Match match in UsingDirectiveRegex().Matches(File.ReadAllText(codeBehindFile)))
+        {
+            string ns = match.Groups[1].Value;
+            if (ns != GalleryRootNamespace && !ns.StartsWith(GalleryRootNamespace + ".", StringComparison.Ordinal))
+            {
+                namespaces.Add(ns);
+            }
+        }
+
+        return [.. namespaces];
     }
 
     private static List<string>? BuildRelatedSamples(ControlInfoItem item, CatalogGenerationOptions options)

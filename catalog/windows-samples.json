@@ -45,6 +45,12 @@
       "id": "accessibilitykeyboard",
       "name": "Keyboard Navigation",
       "description": "Keyboard-friendly design enables seamless interactions.",
+      "usings": [
+        "Microsoft.UI",
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Media"
+      ],
       "curatedKeywords": [
         "keyboard",
         "tab navigation",
@@ -308,7 +314,7 @@
       "details": "A translucent material recommended for panel backgrounds.",
       "apiNamespace": "Microsoft.UI.Xaml.Media",
       "relatedControls": [
-        "SystemBackdrops",
+        "System Backdrops (Mica/Acrylic)",
         "RadialGradientBrush",
         "ThemeShadow"
       ],
@@ -394,6 +400,12 @@
       ],
       "xmlnsImports": [
         "xmlns:animatedvisuals=\u0022using:Microsoft.UI.Xaml.Controls.AnimatedVisuals\u0022"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.AnimatedVisuals",
+        "Microsoft.UI.Xaml.Input",
+        "System"
       ],
       "keywords": [
         "Object",
@@ -552,6 +564,13 @@
       "relatedControls": [
         "ItemsView",
         "ScrollView"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Primitives",
+        "Microsoft.UI.Xaml.Media",
+        "System",
+        "System.Collections.ObjectModel"
       ],
       "keywords": [
         "Object",
@@ -921,7 +940,15 @@
       "details": "Send rich, interactive notifications from your app. Notifications can include text, images, and actions.",
       "apiNamespace": "Microsoft.Windows.Notifications",
       "relatedControls": [
-        "BadgeNotificationManager"
+        "Badge notifications"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.Windows.AppNotifications",
+        "Microsoft.Windows.AppNotifications.Builder",
+        "System",
+        "System.Collections.Generic"
       ],
       "keywords": [
         "Object"
@@ -1030,7 +1057,11 @@
       "relatedControls": [
         "AppWindowTitleBar",
         "TitleBar",
-        "CreateMultipleWindows"
+        "Multiple windows"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls"
       ],
       "keywords": [
         "Object"
@@ -1175,6 +1206,13 @@
         "AppWindow",
         "TitleBar"
       ],
+      "usings": [
+        "Microsoft.UI.Windowing",
+        "Microsoft.UI.Xaml.Controls",
+        "System",
+        "System.Collections.Generic",
+        "Windows.UI"
+      ],
       "keywords": [
         "Object"
       ],
@@ -1252,6 +1290,14 @@
         "ComboBox",
         "TextBox"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Media.Imaging",
+        "System",
+        "System.Collections.Generic",
+        "System.Linq"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -1327,8 +1373,15 @@
       "details": "Badge notifications are a lightweight way to show status or alerts as small overlays on your app\u0027s taskbar icon.",
       "apiNamespace": "Microsoft.Windows.BadgeNotifications",
       "relatedControls": [
-        "AppNotification",
+        "App notifications",
         "InfoBadge"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.Windows.BadgeNotifications",
+        "System",
+        "System.Collections.Generic"
       ],
       "keywords": [
         "Object"
@@ -1400,9 +1453,15 @@
       "description": "Connecting UI elements to data for automatic synchronization and updates.",
       "details": "Binding in WinUI 3 is a way to connect a property of a control to a source, such as another property, a data object, or a view model. It keeps the data synchronized between the source and the target control, enabling dynamic updates.",
       "relatedControls": [
-        "XamlResources",
-        "XamlStyles",
+        "Resources",
+        "Style",
         "Templates"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls",
+        "System",
+        "System.Collections.Generic",
+        "System.ComponentModel"
       ],
       "curatedKeywords": [
         "x:Bind",
@@ -1522,6 +1581,9 @@
           "xaml": "\u003CListView\n    x:Name=\u0022ListDetailListView\u0022\n    ItemsSource=\u0022{x:Bind Items}\u0022\n    SelectedIndex=\u00220\u0022\n    SelectionMode=\u0022Single\u0022\u003E\n    \u003CListView.ItemTemplate\u003E\n        \u003CDataTemplate x:DataType=\u0022local:ListDetailItem\u0022\u003E\n            \u003CStackPanel Padding=\u00224\u0022 Spacing=\u00222\u0022\u003E\n                \u003CTextBlock Text=\u0022{x:Bind Title}\u0022 FontWeight=\u0022SemiBold\u0022 /\u003E\n                \u003CTextBlock Text=\u0022{x:Bind DateCreatedFormatted}\u0022\n                    Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 /\u003E\n            \u003C/StackPanel\u003E\n        \u003C/DataTemplate\u003E\n    \u003C/ListView.ItemTemplate\u003E\n\u003C/ListView\u003E\n\n\u003C!-- Detail panel bound to the selected item --\u003E\n\u003CStackPanel DataContext=\u0022{x:Bind ListDetailListView.SelectedItem, Mode=OneWay}\u0022\u003E\n    \u003CTextBlock Text=\u0022{Binding Title}\u0022 FontSize=\u002220\u0022 FontWeight=\u0022SemiBold\u0022 /\u003E\n    \u003CTextBlock Text=\u0022{Binding DateCreatedFormatted}\u0022\n        Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 /\u003E\n    \u003CTextBlock Text=\u0022{Binding Text}\u0022 TextWrapping=\u0022Wrap\u0022 /\u003E\n\u003C/StackPanel\u003E",
           "code": "public class ListDetailItem\n{\n    public int Id { get; set; }\n    public string Title { get; set; }\n    public string Text { get; set; }\n    public DateTime DateCreated { get; set; }\n    public string DateCreatedFormatted =\u003E DateCreated.ToString(\u0022MMM d, yyyy h:mm tt\u0022);\n}\n\n// In your page class:\npublic List\u003CListDetailItem\u003E Items { get; set; }\n\npublic MyPage()\n{\n    this.InitializeComponent();\n\n    Items = new List\u003CListDetailItem\u003E\n    {\n        new ListDetailItem\n        {\n            Id = 0,\n            Title = \u0022Item 1\u0022,\n            Text = \u0022Lorem ipsum dolor sit amet...\u0022,\n            DateCreated = new DateTime(2025, 6, 15, 9, 30, 0)\n        },\n        // Add more items...\n    };\n}",
           "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
+          ],
           "gallery": {
             "snippet": "BindingCollectionDataTemplates.txt",
             "source": "WinUIGallery/Samples/Binding/BindingCollectionDataTemplates.txt",
@@ -1605,6 +1667,11 @@
         "Pivot",
         "TabView"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls",
+        "System.Collections.Generic",
+        "System.Collections.ObjectModel"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -1664,6 +1731,9 @@
           "xaml": "\u003CBreadcrumbBar x:Name=\u0022BreadcrumbBar2\u0022\u003E\n    \u003CBreadcrumbBar.ItemTemplate\u003E\n        \u003CDataTemplate x:DataType=\u0022l:Folder\u0022\u003E\n            \u003CBreadcrumbBarItem Content=\u0022{Binding}\u0022 AutomationProperties.Name=\u0022{Binding Name}\u0022\u003E\n                \u003CBreadcrumbBarItem.ContentTemplate\u003E\n                    \u003CDataTemplate\u003E\n                        \u003CTextBlock Text=\u0022{Binding Name}\u0022 /\u003E\n                    \u003C/DataTemplate\u003E\n                \u003C/BreadcrumbBarItem.ContentTemplate\u003E\n            \u003C/BreadcrumbBarItem\u003E\n        \u003C/DataTemplate\u003E\n    \u003C/BreadcrumbBar.ItemTemplate\u003E\n\u003C/BreadcrumbBar\u003E",
           "code": "public class Folder\n{\n    public string Name { get; set; }\n}\n\nBreadcrumbBar2.ItemsSource = new ObservableCollection\u003CFolder\u003E{\n        new Folder { Name = \u0022Home\u0022},\n        new Folder { Name = \u0022Folder1\u0022 },\n        new Folder { Name = \u0022Folder2\u0022 },\n        new Folder { Name = \u0022Folder3\u0022 },\n};\nBreadcrumbBar2.ItemClicked \u002B= BreadcrumbBar2_ItemClicked;\n\nprivate void BreadcrumbBar2_ItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)\n{\n    var items = BreadcrumbBar2.ItemsSource as ObservableCollection\u003CFolder\u003E;\n    for (int i = items.Count - 1; i \u003E= args.Index \u002B 1; i--)\n    {\n        items.RemoveAt(i);\n    }\n}",
           "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:l=\u0022using:WinUIGallery.ControlPages\u0022"
+          ],
           "gallery": {
             "snippet": "BreadcrumbbarControlCustomDatatemplate.txt",
             "source": "WinUIGallery/Samples/BreadcrumbBar/BreadcrumbbarControlCustomDatatemplate.txt",
@@ -1683,6 +1753,10 @@
         "RepeatButton",
         "HyperlinkButton",
         "AppBarButton"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls"
       ],
       "keywords": [
         "Object",
@@ -1980,6 +2054,21 @@
         "MediaPlayerElement",
         "Image"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Media",
+        "Microsoft.UI.Xaml.Media.Imaging",
+        "System",
+        "System.ComponentModel",
+        "System.Threading.Tasks",
+        "Windows.Foundation",
+        "Windows.Media.Capture",
+        "Windows.Media.Capture.Frames",
+        "Windows.Media.MediaProperties",
+        "Windows.Storage.Streams",
+        "Windows.System"
+      ],
       "curatedKeywords": [
         "camera",
         "webcam"
@@ -2117,7 +2206,19 @@
       "details": "Use the Clipboard API to copy and paste text, images, and files. Configure clipboard history and roaming options, monitor content changes, and inspect available formats.",
       "apiNamespace": "Windows.ApplicationModel.DataTransfer",
       "relatedControls": [
-        "StoragePickers"
+        "Storage pickers"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Media.Imaging",
+        "Microsoft.Windows.Storage.Pickers",
+        "System",
+        "System.Collections.Generic",
+        "System.Text",
+        "System.Threading.Tasks",
+        "Windows.ApplicationModel.DataTransfer",
+        "Windows.Storage.Streams"
       ],
       "curatedKeywords": [
         "copy",
@@ -2493,6 +2594,12 @@
         "StandardUICommand",
         "XamlUICommand"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Primitives",
+        "Microsoft.UI.Xaml.Input",
+        "Windows.Foundation.Metadata"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -2595,8 +2702,15 @@
       "details": "Connected animations continue elements during page navigation and help the user maintain their context between views.",
       "apiNamespace": "Microsoft.UI.Xaml.Media.Animation",
       "relatedControls": [
-        "PageTransition",
-        "ThemeTransition"
+        "Page Transitions",
+        "Theme Transitions"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Media.Animation",
+        "System",
+        "System.Collections.Generic"
       ],
       "keywords": [
         "Object"
@@ -2697,6 +2811,13 @@
         "MenuFlyout",
         "TeachingTip",
         "ToolTip"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Automation.Peers",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Media",
+        "System"
       ],
       "keywords": [
         "Object",
@@ -2811,6 +2932,12 @@
         "AppWindowTitleBar",
         "TitleBar"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Media",
+        "Windows.Graphics"
+      ],
       "curatedKeywords": [
         "multiple windows",
         "new window",
@@ -2861,7 +2988,10 @@
       "apiNamespace": "Microsoft.UI.Xaml.Controls",
       "relatedControls": [
         "Templates",
-        "XamlStyles"
+        "Style"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls"
       ],
       "keywords": [
         "Object",
@@ -2955,6 +3085,9 @@
       "xmlnsImports": [
         "xmlns:legacy=\u0022http://schemas.microsoft.com/winfx/2006/xaml/presentation?cond:FeatureFlagCondition(LegacyMode)\u0022",
         "xmlns:newExp=\u0022http://schemas.microsoft.com/winfx/2006/xaml/presentation?cond:FeatureFlagCondition(NewExperience)\u0022"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls"
       ],
       "curatedKeywords": [
         "IXamlCondition",
@@ -3183,9 +3316,9 @@
       "details": "Easing is a way to manipulate the velocity of an object as it animates.",
       "apiNamespace": "Microsoft.UI.Xaml.Media.Animation",
       "relatedControls": [
-        "ConnectedAnimation",
-        "PageTransition",
-        "ThemeTransition"
+        "Connected Animation",
+        "Page Transitions",
+        "Theme Transitions"
       ],
       "curatedKeywords": [
         "animation curve",
@@ -3603,6 +3736,13 @@
         "FlipView",
         "SemanticZoom"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Navigation",
+        "System.Collections.Generic",
+        "System.Collections.ObjectModel"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -3658,6 +3798,9 @@
           "xaml": "\u003C!-- XAML Code --\u003E\n\n\u003CGridView\n    x:Name=\u0022BasicGridView\u0022\n    ItemTemplate=\u0022{StaticResource ImageTemplate}\u0022\n    IsItemClickEnabled=\u0022True\u0022\n    ItemClick=\u0022BasicGridView_ItemClick\u0022\n    SelectionMode=\u0022Single\u0022/\u003E\n                    \n\u003CDataTemplate x:Key=\u0022ImageTemplate\u0022 x:DataType=\u0022local:CustomDataObject\u0022\u003E\n     \u003CImage Stretch=\u0022UniformToFill\u0022 Source=\u0022{x:Bind ImageLocation}\u0022 Width=\u0022190\u0022 Height=\u0022130\u0022/\u003E\n\u003C/DataTemplate\u003E\n                    \n\u003C!-- In this example, the GridView\u0027s ItemTemplate property is bound to a data template (shown above)\ncalled ImageTemplate, defined in the Page.Resources section of the XAML file. \n                    \nThe data template is defined to display an object of type CustomDataObject, which is created from a class\nthat\u0027s defined in the code-behind (see code below).\n                    \nThe ItemsSource for the GridView is an ObservableCollection\u003CCustomDataObject\u003E called Items and\nis defined in the C# code-behind. It is bound to the GridView\u0027s ItemsSource property in the code-behind.\n                    \nThe IsItemClickEnabled property allows items to be clicked, and a function called BasicGridView_ItemClick \nis called when an item is clicked. This function is defined in the C# code-behind and simply outputs \nthe title of the selected item into a TextBlock below the GridView. --\u003E",
           "code": "// C# Code\n\n// CustomDataObject class definition: \npublic class CustomDataObject\n{\n    public string Title { get; set; } = string.Empty;\n    public string ImageLocation { get; set; } = string.Empty;\n    public string Views { get; set; } = string.Empty;\n    public string Likes { get; set; } = string.Empty;\n    public string Description { get; set; } = string.Empty;\n\n    public CustomDataObject()\n    {\n    }\n\n\t\n    // ... Methods ...\n}",
           "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
+          ],
           "gallery": {
             "snippet": "BasicGridviewSimpleDatatemplate.txt",
             "source": "WinUIGallery/Samples/GridView/BasicGridviewSimpleDatatemplate.txt",
@@ -3667,6 +3810,9 @@
         {
           "header": "GridView with Layout Customization",
           "xaml": "\u003C!-- The GridView used for this example is shown below. Setter properties are used to customize \nsome parts of the GridViewItems (i.e. the margins). --\u003E\n\u003CGridView\n    x:Name=\u0022StyledGrid\u0022\n    ItemTemplate=\u0022{StaticResource ImageOverlayTemplate}\u0022\u003E\n\n    \u003CGridView.ItemContainerStyle\u003E\n        \u003CStyle TargetType=\u0022GridViewItem\u0022 BasedOn=\u0022{StaticResource DefaultGridViewItemStyle}\u0022\u003E\n            \u003CSetter Property=\u0022Margin\u0022 Value=\u00225, 5, 5, 5\u0022/\u003E\n        \u003C/Style\u003E\n    \u003C/GridView.ItemContainerStyle\u003E\n                    \n    \u003C!-- An extra property also needs to be added to the GridView\u0027s ItemsWrapGrid. \n    The following sets the maximum # of items to show before wrapping.--\u003E\n    \u003CGridView.ItemsPanel\u003E\n        \u003CItemsPanelTemplate\u003E\n            \u003CItemsWrapGrid x:Name=\u0022MaxItemsWrapGrid\u0022 \n                           MaximumRowsOrColumns=\u00223\u0022 \n                           Orientation=\u0022Horizontal\u0022/\u003E\n        \u003C/ItemsPanelTemplate\u003E\n    \u003C/GridView.ItemsPanel\u003E                  \n\u003C/GridView\u003E      \n                    \n\u003C!-- In this example, the GridView\u0027s ItemTemplate property is bound to a data template (shown below)\ncalled ImageOverlayTemplate, defined in the Page.Resources section of the XAML file. \n                    \nThe data template is defined to display a CustomDataObject object (same type as in above sample). --\u003E\n                    \n\u003CDataTemplate x:Name=\u0022ImageOverlayTemplate\u0022 x:DataType=\u0022local:CustomDataObject\u0022\u003E\n    \u003CGrid Width=\u0022100\u0022\u003E\n        \u003CImage Source=\u0022{x:Bind ImageLocation}\u0022 Stretch=\u0022UniformToFill\u0022/\u003E\n        \u003CStackPanel Orientation=\u0022Vertical\u0022 Height=\u002240\u0022 VerticalAlignment=\u0022Bottom\u0022 Padding=\u00225,1,5,1\u0022 \n                    Background=\u0022LightGray\u0022 Opacity=\u0022.75\u0022\u003E\n            \u003CTextBlock Text=\u0022{x:Bind Title}\u0022/\u003E\n            \u003CStackPanel Orientation=\u0022Horizontal\u0022\u003E\n                \u003CTextBlock Text=\u0022{x:Bind Likes}\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 \n                           Foreground=\u0022{ThemeResource SystemControlPageTextBaseMediumBrush}\u0022/\u003E\n                \u003CTextBlock Text=\u0022 Likes\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 \n                           Foreground=\u0022{ThemeResource SystemControlPageTextBaseMediumBrush}\u0022/\u003E\n            \u003C/StackPanel\u003E\n        \u003C/StackPanel\u003E\n    \u003C/Grid\u003E\n\u003C/DataTemplate\u003E",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
+          ],
           "gallery": {
             "snippet": "GridviewLayoutCustomization.txt",
             "source": "WinUIGallery/Samples/GridView/GridviewLayoutCustomization.txt",
@@ -3941,6 +4087,12 @@
         "MediaPlayerElement",
         "PersonPicture"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Media",
+        "System"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -4047,8 +4199,17 @@
       "details": "Use Implicit Transitions to automatically animate changes to properties.",
       "apiNamespace": "Microsoft.UI.Xaml",
       "relatedControls": [
-        "PageTransition",
-        "ThemeTransition"
+        "Page Transitions",
+        "Theme Transitions"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Input",
+        "Microsoft.UI.Xaml.Media",
+        "System",
+        "System.Numerics",
+        "Windows.Foundation.Metadata"
       ],
       "curatedKeywords": [
         "implicit animation",
@@ -4160,7 +4321,11 @@
       "relatedControls": [
         "InfoBar",
         "TeachingTip",
-        "BadgeNotificationManager"
+        "Badge notifications"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls"
       ],
       "keywords": [
         "Object",
@@ -4341,6 +4506,20 @@
         "ListView",
         "GridView"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Automation",
+        "Microsoft.UI.Xaml.Automation.Peers",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Hosting",
+        "Microsoft.UI.Xaml.Input",
+        "System",
+        "System.Collections",
+        "System.Collections.Generic",
+        "System.Collections.ObjectModel",
+        "System.Collections.Specialized",
+        "System.Linq"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -4471,6 +4650,16 @@
         "GridView",
         "ScrollView"
       ],
+      "xmlnsImports": [
+        "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "System.Collections.Generic",
+        "System.Collections.ObjectModel",
+        "System.Threading.Tasks"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -4556,6 +4745,12 @@
       "description": "Add custom tasks and groups to the app\u0027s taskbar jump list.",
       "details": "Jump lists let you add custom tasks and groups to the app\u0027s right-click menu on the taskbar. Use them to provide quick access to frequently used actions or recently opened items.",
       "apiNamespace": "Windows.UI.StartScreen",
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "System",
+        "Windows.UI.StartScreen"
+      ],
       "keywords": [
         "Object"
       ],
@@ -4714,6 +4909,18 @@
         "FlipView",
         "SemanticZoom"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Navigation",
+        "System",
+        "System.Collections.Generic",
+        "System.Collections.ObjectModel",
+        "System.Linq",
+        "System.Runtime.InteropServices.WindowsRuntime",
+        "System.Threading.Tasks",
+        "Windows.ApplicationModel.DataTransfer"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -4791,6 +4998,9 @@
           "xaml": "\u003C!-- XAML Code --\u003E\n\n\u003CListView\n    x:Name=\u0022BaseExample\u0022\n    ItemTemplate=\u0022{StaticResource ContactListViewTemplate}\u0022\n    BorderThickness=\u00221\u0022\n    BorderBrush=\u0022{ThemeResource SystemControlForegroundBaseMediumLowBrush}\u0022\n    Width=\u0022350\u0022 \n    Height=\u0022400\u0022\n    HorizontalAlignment=\u0022Left\u0022/\u003E\n                \n\u003C!-- In this example, the ListView\u0027s ItemTemplate property is bound to a data template (shown below)\ncalled ContactListViewTemplate, defined in a Page.Resources section. --\u003E\n    \n\u003CDataTemplate x:Key=\u0022ContactListViewTemplate\u0022 x:DataType=\u0022local:Contact\u0022\u003E\n     \u003CTextBlock Text=\u0022{x:Bind Name}\u0022 x:Phase=\u00221\u0022 Margin=\u00220,5,0,5\u0022/\u003E\n\u003C/DataTemplate\u003E",
           "code": "// C# code-behind\n                   \n// The data template is defined to display a Contact object (class definition shown below), and the text \n// displayed is bound to the Contact object\u0027s Name attribute.\n\npublic class Contact\n{\n        public string FirstName { get; private set; } = string.Empty;\n        public string LastName { get; private set; } = string.Empty;\n        public string Company { get; private set; } = string.Empty;\n        public string Name =\u003E FirstName \u002B \u0022 \u0022 \u002B LastName;\n\n        public Contact(string firstName, string lastName, string company)\n        {\n            FirstName = firstName;\n            LastName = lastName;\n            Company = company;\n        }                    \n}\n                    \n// The ItemsSource for the ListView is generated by a method of the Contact class called \n// GetContactsAsync().This method pulls data from an internal data source and creates \n// Contact objects from that data. Those Contact objects are placed in a collection \n// which is returned from the GetContactsAsync() function.\n\nBaseExample.ItemsSource = await Contact.GetContactsAsync();",
           "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
+          ],
           "gallery": {
             "snippet": "BasicListviewSimpleDatatemplate.txt",
             "source": "WinUIGallery/Samples/ListView/BasicListviewSimpleDatatemplate.txt",
@@ -4800,6 +5010,9 @@
         {
           "header": "ListView with Selection Support",
           "xaml": "\u003C!-- To create this sample, add/change the following properties onto the code for the base example above: --\u003E\n                        \n\u003CListView \n    SelectionMode=\u0022$(SelectionMode)\u0022 \n    ItemTemplate=\u0022{StaticResource ContactListViewTemplate}\u0022/\u003E\n    \n\u003C!-- DataTemplate used: --\u003E\n\n\u003CDataTemplate x:Key=\u0022ContactListViewTemplate\u0022 x:DataType=\u0022local:Contact\u0022\u003E\n    \u003CGrid\u003E\n        \u003CGrid.RowDefinitions\u003E\n            \u003CRowDefinition Height=\u0022*\u0022/\u003E\n            \u003CRowDefinition Height=\u0022*\u0022/\u003E\n        \u003C/Grid.RowDefinitions\u003E\n        \u003CGrid.ColumnDefinitions\u003E\n            \u003CColumnDefinition Width=\u0022Auto\u0022/\u003E\n            \u003CColumnDefinition Width=\u0022*\u0022/\u003E\n        \u003C/Grid.ColumnDefinitions\u003E\n        \u003CEllipse x:Name=\u0022Ellipse\u0022\n                    Grid.RowSpan=\u00222\u0022\n                    Width =\u002232\u0022\n                    Height=\u002232\u0022\n                    Margin=\u00226\u0022\n                    VerticalAlignment=\u0022Center\u0022\n                    HorizontalAlignment=\u0022Center\u0022\n                    Fill=\u0022{ThemeResource SystemControlBackgroundBaseMediumBrush}\u0022/\u003E\n        \u003CTextBlock Grid.Column=\u00221\u0022\n                    Text=\u0022{x:Bind Name}\u0022\n                    x:Phase=\u00221\u0022\n                    Style=\u0022{ThemeResource BaseTextBlockStyle}\u0022\n                    Margin=\u002212,6,0,0\u0022/\u003E\n        \u003CTextBlock  Grid.Column=\u00221\u0022\n                    Grid.Row=\u00221\u0022\n                    Text=\u0022{x:Bind Company}\u0022\n                    x:Phase=\u00222\u0022\n                    Style=\u0022{ThemeResource BodyTextBlockStyle}\u0022\n                    Margin=\u002212,0,0,6\u0022/\u003E\n    \u003C/Grid\u003E\n\u003C/DataTemplate\u003E",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
+          ],
           "gallery": {
             "snippet": "ListviewSelectionSupport.txt",
             "source": "WinUIGallery/Samples/ListView/ListviewSelectionSupport.txt",
@@ -4820,6 +5033,9 @@
           "xaml": "\u003C!-- XAML Code --\u003E\n\n\u003C!-- ListViews with grouped items must be bound to a CollectionViewSource, as shown below.\nThis CollectionViewSource is defined in the XAML below, but is bound to an ItemsSource in the C#\ncode-behind. See the C# code below for more details on how to create/bind to a grouped list. --\u003E\n\n\u003CCollectionViewSource x:Name=\u0022ContactsCVS\u0022 IsSourceGrouped=\u0022True\u0022/\u003E\n                          \n\u003CListView ItemsSource=\u0022{x:Bind ContactsCVS.View, Mode=OneWay}\u0022\u003E\n    \u003CListView.ItemsPanel\u003E\n        \u003CItemsPanelTemplate\u003E\n            \u003CItemsStackPanel AreStickyGroupHeadersEnabled=\u0022False\u0022/\u003E\n        \u003C/ItemsPanelTemplate\u003E\n    \u003C/ListView.ItemsPanel\u003E\n    \u003CListView.GroupStyle\u003E\n        \u003CGroupStyle \u003E\n            \u003CGroupStyle.HeaderTemplate\u003E\n                \u003CDataTemplate x:DataType=\u0022local:GroupInfoList\u0022\u003E\n                    \u003CBorder AutomationProperties.AccessibilityView=\u0022Raw\u0022\u003E\n                        \u003CTextBlock Text=\u0022{x:Bind Key}\u0022 Style=\u0022{ThemeResource TitleTextBlockStyle}\u0022 AutomationProperties.AccessibilityView=\u0022Raw\u0022/\u003E\n                    \u003C/Border\u003E\n                \u003C/DataTemplate\u003E\n            \u003C/GroupStyle.HeaderTemplate\u003E\n        \u003C/GroupStyle\u003E\n    \u003C/ListView.GroupStyle\u003E\n\u003C/ListView\u003E\n                    \n\u003C!-- Data template used is same as above examples. --\u003E",
           "code": "// C# Code\n\n// To create a collection of grouped items, create a query that groups\n// an existing list, or returns a grouped collection from a database.\n// The following method is used to create the ItemsSource for our CollectionViewSource:\n\npublic static async Task\u003CObservableCollection\u003CGroupInfoList\u003E\u003E GetContactsGroupedAsync()\n{\n    // Grab Contact objects from pre-existing list (list is returned from function GetContactsAsync())\n    var query = from item in await GetContactsAsync()\n\n    // Group the items returned from the query, sort and select the ones you want to keep\n    group item by item.LastName.Substring(0, 1).ToUpper() into g\n    orderby g.Key\n\n    // GroupInfoList is a simple custom class that has an IEnumerable type attribute, and\n    // a key attribute. The IGrouping-typed variable g now holds the Contact objects, \n    // and these objects will be used to create a new GroupInfoList object.\n    select new GroupInfoList(g) { Key = g.Key };\n    \n    return new ObservableCollection\u003CGroupInfoList\u003E(query);\n}\n\n// GroupInfoList class definition:\npublic class GroupInfoList : List\u003Cobject\u003E\n{\n    public GroupInfoList(IEnumerable\u003Cobject\u003E items) : base(items)\n    {\n    }\n\n    public object Key { get; set; }\n\n    public override string ToString()\n    {\n        return \u0022Group \u0022 \u002B Key.ToString();\n    }\n}\n\n// Contact class definition:\npublic class Contact\n{\n    public string FirstName { get; private set; } = string.Empty;\n    public string LastName { get; private set; } = string.Empty;\n    public string Company { get; private set; } = string.Empty;\n    public string Name =\u003E FirstName \u002B \u0022 \u0022 \u002B LastName;\n\n    public Contact(string firstName, string lastName, string company)\n    {\n        FirstName = firstName;\n        LastName = lastName;\n        Company = company;\n    }\n\n    // ... Methods ...\n}\n\nContactsCVS.Source = await Contact.GetContactsGroupedAsync();",
           "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
+          ],
           "gallery": {
             "snippet": "ListviewGroupedHeaders.txt",
             "source": "WinUIGallery/Samples/ListView/ListviewGroupedHeaders.txt",
@@ -4840,6 +5056,9 @@
         {
           "header": "ListView for Messaging or Data Logging",
           "xaml": "\u003CListView x:Name=\u0022InvertedListView\u0022\n             ItemTemplate=\u0022{StaticResource MessageViewTemplate}\u0022\u003E\n                    \n     \u003C!-- The ItemsStackPanel must be edited to update the following two properties --\u003E\n     \u003C!-- These properties allow the list to grow from the bottom --\u003E\n     \u003CListView.ItemsPanel\u003E\n         \u003CItemsPanelTemplate\u003E\n             \u003CItemsStackPanel ItemsUpdatingScrollMode=\u0022KeepLastItemInView\u0022 \n                              VerticalAlignment=\u0022Bottom\u0022/\u003E\n         \u003C/ItemsPanelTemplate\u003E\n     \u003C/ListView.ItemsPanel\u003E\n\n     \u003C!-- This setter property is created so ListViewItems correctly align to the left or right. --\u003E\n     \u003CListView.ItemContainerStyle\u003E\n         \u003CStyle TargetType=\u0022ListViewItem\u0022\u003E\n             \u003CSetter Property=\u0022HorizontalContentAlignment\u0022 Value=\u0022Stretch\u0022/\u003E\n         \u003C/Style\u003E\n     \u003C/ListView.ItemContainerStyle\u003E\n\u003C/ListView\u003E\n\n\u003C!-- Data template used: --\u003E\n\u003C!-- The data template is bound to a custom DataType called Message. --\u003E\n\u003C!-- Each Message object has a color and alignment assigned to it based on whether it was \nsent or received, and those values are bound in the DataTemplate.--\u003E\n\u003CDataTemplate x:Key=\u0022MessageViewTemplate\u0022 x:DataType=\u0022local:Message\u0022\u003E\n    \u003CGrid Height=\u0022Auto\u0022 Margin=\u00224\u0022 HorizontalAlignment=\u0022{x:Bind MsgAlignment}\u0022\u003E\n        \u003CStackPanel MinHeight=\u002275\u0022 Width=\u0022350\u0022 Padding=\u002210, 0, 0, 10\u0022 Background=\u0022{ThemeResource SystemColorHighlightColor}\u0022 CornerRadius=\u0022{StaticResource ControlCornerRadius}\u0022\u003E\n            \u003CTextBlock Text=\u0022{x:Bind MsgText}\u0022 Padding=\u00220, 10, 0, 0\u0022 FontSize=\u002220\u0022 Foreground=\u0022{ThemeResource SystemColorHighlightTextColor}\u0022/\u003E\n            \u003CTextBlock Text=\u0022{x:Bind MsgDateTime}\u0022 Padding=\u00220, 0, 0, 10\u0022 FontSize=\u002215\u0022 Foreground=\u0022{ThemeResource SystemColorHighlightTextColor}\u0022/\u003E\n        \u003C/StackPanel\u003E\n    \u003C/Grid\u003E\n\u003C/DataTemplate\u003E",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
+          ],
           "gallery": {
             "snippet": "ListviewMessagingDataLogging.txt",
             "source": "WinUIGallery/Samples/ListView/ListviewMessagingDataLogging.txt",
@@ -4849,6 +5068,9 @@
         {
           "header": "ListView with Images",
           "xaml": "\u003CListView x:Name=\u0022Control4\u0022\n     Height=\u0022400\u0022\n     MinWidth=\u0022550\u0022\n     BorderThickness=\u00221\u0022\n     BorderBrush=\u0022{ThemeResource ControlStrongStrokeColorDefaultBrush}\u0022\u003E\n                    \n\u003C!-- Data Template Used: --\u003E\n\u003C!-- The data template is bound to a custom-created data type called CustomDataObject. --\u003E\n\u003C!-- The full code for the class can be found in this page\u0027s source code, but its attributes are referenced/bound below. --\u003E\n\n\u003CListView.ItemTemplate\u003E\n\u003CDataTemplate x:DataType=\u0022local:CustomDataObject\u0022\u003E\n    \u003CGrid Margin=\u00220,12,0,12\u0022 AutomationProperties.Name=\u0022{x:Bind Title}\u0022\u003E\n        \u003CGrid.ColumnDefinitions\u003E\n            \u003CColumnDefinition Width=\u0022Auto\u0022 MinWidth=\u0022150\u0022/\u003E\n            \u003CColumnDefinition Width=\u0022*\u0022 /\u003E\n        \u003C/Grid.ColumnDefinitions\u003E\n        \u003CImage Source=\u0022{x:Bind ImageLocation}\u0022 MaxHeight=\u0022100\u0022 Stretch=\u0022Fill\u0022/\u003E\n\n        \u003CStackPanel Margin=\u002212,0,0,0\u0022 Grid.Column=\u00221\u0022 \u003E\n            \u003CTextBlock Text=\u0022{x:Bind Title}\u0022 FontSize=\u002214\u0022 FontWeight=\u0022SemiBold\u0022 Style=\u0022{ThemeResource BaseTextBlockStyle}\u0022\n                        HorizontalAlignment=\u0022Left\u0022 Margin=\u00220,0,0,6\u0022 LineHeight=\u002220\u0022/\u003E\n            \u003CTextBlock Text=\u0022{x:Bind Description}\u0022 FontFamily=\u0022Segoe UI\u0022 FontWeight=\u0022Normal\u0022 Style=\u0022{ThemeResource BodyTextBlockStyle}\u0022\n                        TextTrimming=\u0022CharacterEllipsis\u0022 Width=\u0022350\u0022 MaxLines=\u00221\u0022/\u003E\n            \u003CStackPanel Orientation=\u0022Horizontal\u0022\u003E\n                \u003CTextBlock Text=\u0022{x:Bind Views}\u0022 HorizontalAlignment=\u0022Left\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Margin=\u00220,0,0,0\u0022/\u003E\n                \u003CTextBlock Text=\u0022 Views \u0022 HorizontalAlignment=\u0022Left\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022/\u003E\n                \u003CTextBlock Text=\u0022 \u00B7 \u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 \n                            HorizontalAlignment=\u0022Left\u0022/\u003E\n                \u003CTextBlock Text=\u0022{x:Bind Likes}\u0022 HorizontalAlignment=\u0022Left\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Margin=\u00225,0,0,0\u0022/\u003E\n                \u003CTextBlock Text=\u0022 Likes\u0022 HorizontalAlignment=\u0022Left\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022/\u003E\n            \u003C/StackPanel\u003E\n        \u003C/StackPanel\u003E\n    \u003C/Grid\u003E\n\u003C/DataTemplate\u003E\n\u003C/ListView.ItemTemplate\u003E\n\u003C/ListView\u003E",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
+          ],
           "gallery": {
             "snippet": "ListviewImages.txt",
             "source": "WinUIGallery/Samples/ListView/ListviewImages.txt",
@@ -4860,6 +5082,9 @@
           "xaml": "\u003CListView\n    ItemsSource=\u0022{x:Bind contacts, Mode=OneWay}\u0022\n    SelectionMode=\u0022Single\u0022\n    ShowsScrollingPlaceholders=\u0022True\u0022\n    Height=\u0022400\u0022\n    Width=\u0022400\u0022\n    BorderThickness=\u00221\u0022\n    BorderBrush=\u0022{ThemeResource ControlStrongStrokeColorDefaultBrush}\u0022\n    HorizontalAlignment=\u0022Left\u0022\u003E\n    \u003CListView.ItemTemplate\u003E\n        \u003CDataTemplate x:DataType=\u0022local:Contact\u0022\u003E\n            \u003CGrid\u003E\n                \u003CGrid.ContextFlyout\u003E\n                    \u003CMenuFlyout\u003E\n                        \u003CMenuFlyoutItem Text=\u0022Delete\u0022 Click=\u0022ContactDeleteMenuItem_Click\u0022/\u003E\n                    \u003C/MenuFlyout\u003E\n                \u003C/Grid.ContextFlyout\u003E\n             \n                \u003CGrid.RowDefinitions\u003E\n                    \u003CRowDefinition Height=\u0022*\u0022/\u003E\n                    \u003CRowDefinition Height=\u0022*\u0022/\u003E\n                \u003C/Grid.RowDefinitions\u003E\n                \u003CGrid.ColumnDefinitions\u003E\n                    \u003CColumnDefinition Width=\u0022Auto\u0022/\u003E\n                    \u003CColumnDefinition Width=\u0022*\u0022/\u003E\n                \u003C/Grid.ColumnDefinitions\u003E\n                \u003CEllipse x:Name=\u0022Ellipse\u0022\n                    Grid.RowSpan=\u00222\u0022\n                    Width =\u002232\u0022\n                    Height=\u002232\u0022\n                    Margin=\u00226\u0022\n                    VerticalAlignment=\u0022Center\u0022\n                    HorizontalAlignment=\u0022Center\u0022\n                    Fill=\u0022{ThemeResource ControlStrongFillColorDefaultBrush}\u0022/\u003E\n                \u003CTextBlock Grid.Column=\u00221\u0022\n                    Text=\u0022{x:Bind Name}\u0022\n                    x:Phase=\u00221\u0022\n                    Style=\u0022{ThemeResource BaseTextBlockStyle}\u0022\n                    Margin=\u002212,6,0,0\u0022/\u003E\n                \u003CTextBlock Grid.Column=\u00221\u0022\n                    Grid.Row=\u00221\u0022\n                    Text=\u0022{x:Bind Company}\u0022\n                    x:Phase=\u00222\u0022\n                    Style=\u0022{ThemeResource BodyTextBlockStyle}\u0022\n                    Margin=\u002212,0,0,6\u0022/\u003E\n            \u003C/Grid\u003E\n        \u003C/DataTemplate\u003E\n    \u003C/ListView.ItemTemplate\u003E\n\u003C/ListView\u003E",
           "code": "ObservableCollection\u003CContact\u003E contacts = new ObservableCollection\u003CContact\u003E();\n\nprivate void ContactDeleteMenuItem_Click(object sender, RoutedEventArgs e)\n{\n    var item = (sender as FrameworkElement).DataContext;\n    var contact = item as Contact;\n    contacts.Remove(contact);\n}",
           "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
+          ],
           "gallery": {
             "snippet": "ListviewContextMenus.txt",
             "source": "WinUIGallery/Samples/ListView/ListviewContextMenus.txt",
@@ -4896,6 +5121,12 @@
       "description": "Displays a symbolic map of the Earth.",
       "details": "Displays a symbolic map of the Earth",
       "apiNamespace": "Microsoft.UI.Xaml.Controls",
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "System.Collections.Generic",
+        "Windows.Devices.Geolocation"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -4952,7 +5183,15 @@
       "apiNamespace": "Microsoft.UI.Xaml.Controls",
       "relatedControls": [
         "Image",
-        "CaptureElementPreview"
+        "Capture Element / Camera Preview"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Navigation",
+        "Microsoft.Windows.Storage.Pickers",
+        "System",
+        "Windows.Media.Core",
+        "Windows.Storage"
       ],
       "keywords": [
         "Object",
@@ -5254,6 +5493,16 @@
         "SplitView",
         "Pivot"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Automation",
+        "Microsoft.UI.Xaml.Controls",
+        "System",
+        "System.Collections.ObjectModel",
+        "System.Diagnostics",
+        "System.Linq",
+        "Windows.System"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -5389,6 +5638,10 @@
         "RichTextBlock",
         "RichEditBox"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls",
+        "Windows.Globalization.NumberFormatting"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -5472,8 +5725,13 @@
       "details": "Page transitions provide visual feedback about the relationship between pages.",
       "apiNamespace": "Microsoft.UI.Xaml.Media.Animation",
       "relatedControls": [
-        "ConnectedAnimation",
-        "ThemeTransition"
+        "Connected Animation",
+        "Theme Transitions"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Media.Animation"
       ],
       "curatedKeywords": [
         "page transition",
@@ -5601,6 +5859,10 @@
         "TextBlock",
         "RichTextBlock",
         "RichEditBox"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls"
       ],
       "keywords": [
         "Object",
@@ -5884,6 +6146,10 @@
       "relatedControls": [
         "ContentDialog"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -6090,6 +6356,21 @@
         "ScrollViewer",
         "ListView"
       ],
+      "usings": [
+        "Microsoft.UI.Composition",
+        "Microsoft.UI.Dispatching",
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Hosting",
+        "Microsoft.UI.Xaml.Media",
+        "Microsoft.UI.Xaml.Media.Imaging",
+        "Microsoft.UI.Xaml.Navigation",
+        "System",
+        "System.Collections.ObjectModel",
+        "Windows.Foundation",
+        "Windows.Foundation.Metadata",
+        "Windows.UI.ViewManagement"
+      ],
       "curatedKeywords": [
         "pull to refresh",
         "RefreshContainer",
@@ -6155,7 +6436,7 @@
       "details": "Paints an area with a radial gradient. A center point defines the beginning of the gradient, and a radius defines the end point of the gradient.",
       "apiNamespace": "Microsoft.UI.Xaml.Media",
       "relatedControls": [
-        "Acrylic"
+        "AcrylicBrush"
       ],
       "xmlnsImports": [
         "xmlns:media=\u0022using:Microsoft.UI.Xaml.Media\u0022"
@@ -6217,6 +6498,12 @@
         "CheckBox",
         "ToggleSwitch",
         "ToggleButton"
+      ],
+      "usings": [
+        "Microsoft.UI",
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Media"
       ],
       "keywords": [
         "Object",
@@ -6517,6 +6804,22 @@
         "RichTextBlock",
         "TextBlock"
       ],
+      "usings": [
+        "Microsoft.UI.Text",
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Input",
+        "Microsoft.UI.Xaml.Media",
+        "Microsoft.Windows.Storage.Pickers",
+        "System",
+        "System.Collections.Generic",
+        "System.Diagnostics",
+        "System.Xml.Linq",
+        "Windows.Foundation.Metadata",
+        "Windows.Storage",
+        "Windows.Storage.Provider",
+        "Windows.Storage.Streams"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -6633,6 +6936,12 @@
         "TextBox",
         "PasswordBox",
         "RichEditBox"
+      ],
+      "usings": [
+        "Microsoft.UI",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Documents",
+        "Microsoft.UI.Xaml.Media"
       ],
       "keywords": [
         "Object",
@@ -6927,6 +7236,12 @@
         "NavigationView",
         "PipsPager",
         "Pivot"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Media",
+        "Microsoft.UI.Xaml.Media.Animation",
+        "System.Collections.ObjectModel"
       ],
       "keywords": [
         "Object",
@@ -7250,6 +7565,10 @@
       "description": "A code-behind only API that enables 2D and 3D UI sounds on all XAML controls.",
       "details": "Sound is enabled by default for UWP apps running on Xbox, but can be set to always play on all devices if desired. Sound may also be put into Spatial Audio mode for a more immersive 10ft experience.",
       "apiNamespace": "Microsoft.UI.Xaml",
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls"
+      ],
       "curatedKeywords": [
         "audio",
         "UI sound",
@@ -7565,6 +7884,13 @@
         "AppBarToggleButton",
         "CommandBar"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Input",
+        "System.Collections.ObjectModel",
+        "Windows.Foundation.Metadata"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -7625,6 +7951,17 @@
       "apiNamespace": "Microsoft.Windows.Storage.Pickers",
       "relatedControls": [
         "Clipboard"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Media.Imaging",
+        "Microsoft.Windows.Storage.Pickers",
+        "System",
+        "System.Collections.Generic",
+        "System.IO",
+        "Windows.Storage",
+        "Windows.Storage.FileProperties"
       ],
       "keywords": [
         "Object"
@@ -7889,7 +8226,11 @@
       "details": "System backdrops apply a material effect to the window background. Mica is opaque and samples the desktop wallpaper; Desktop Acrylic is semi-transparent and shows a blurred view of what is behind the window. Available backdrop kinds: Mica, Mica Alt, Desktop Acrylic Base, and Desktop Acrylic Thin. Use the built-in MicaBackdrop or DesktopAcrylicBackdrop types for simplicity, or use MicaController / DesktopAcrylicController for full customization.",
       "apiNamespace": "Microsoft.UI.Composition.SystemBackdrops",
       "relatedControls": [
-        "Acrylic"
+        "AcrylicBrush"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls"
       ],
       "keywords": [
         "Object",
@@ -7982,6 +8323,12 @@
         "Pivot",
         "NavigationView",
         "ListView"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Input",
+        "System.Collections.ObjectModel"
       ],
       "keywords": [
         "Object",
@@ -8144,6 +8491,10 @@
         "Flyout",
         "ToolTip"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -8232,8 +8583,8 @@
       "apiNamespace": "Microsoft.UI.Xaml.Controls",
       "relatedControls": [
         "Binding",
-        "XamlStyles",
-        "CustomUserControls"
+        "Style",
+        "Custom \u0026 User Controls"
       ],
       "keywords": [
         "Object",
@@ -8525,7 +8876,13 @@
       "details": "Adds a realistic shadow effect to UI elements using the system\u0027s lighting and depth to enhance visual hierarchy.",
       "apiNamespace": "Microsoft.UI.Xaml.Media",
       "relatedControls": [
-        "Acrylic"
+        "AcrylicBrush"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Primitives",
+        "System.Numerics"
       ],
       "keywords": [
         "Object",
@@ -8587,8 +8944,8 @@
       "details": "Theme transitions are pre-packaged, easy-to-apply animations.",
       "apiNamespace": "Microsoft.UI.Xaml",
       "relatedControls": [
-        "ImplicitTransition",
-        "PageTransition"
+        "Implicit Transitions",
+        "Page Transitions"
       ],
       "curatedKeywords": [
         "theme transition",
@@ -8760,6 +9117,10 @@
       "relatedControls": [
         "AppWindow",
         "AppWindowTitleBar"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls"
       ],
       "keywords": [
         "Object",
@@ -9159,6 +9520,11 @@
         "ListView",
         "ItemsRepeater"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "System.Collections.ObjectModel"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -9494,7 +9860,18 @@
       "description": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more.",
       "details": "XAML and Composition interop allows you to animate elements using expressions, natural animations, and more",
       "relatedControls": [
-        "EasingFunction"
+        "Easing Functions"
+      ],
+      "usings": [
+        "Microsoft.UI.Composition",
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Automation",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Primitives",
+        "Microsoft.UI.Xaml.Input",
+        "System",
+        "System.Globalization",
+        "System.Numerics"
       ],
       "curatedKeywords": [
         "composition",
@@ -9589,9 +9966,12 @@
       "description": "Reusable definitions for shared values to ensure consistency and maintainability.",
       "details": "In WinUI 3, XAML resources are reusable objects like colors, brushes, or strings, defined once and used throughout your app to maintain consistency and simplify updates. These resources are typically stored in a ResourceDictionary for better organization and scalability. Special theme resources adapt automatically to light or dark modes, ensuring a seamless look across themes.",
       "relatedControls": [
-        "XamlStyles",
+        "Style",
         "Templates",
         "Binding"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls"
       ],
       "curatedKeywords": [
         "ResourceDictionary",
@@ -9670,7 +10050,7 @@
       "details": "XAML Styles in WinUI 3 are reusable sets of property values that you can apply to multiple controls. They help maintain a consistent look and feel across your app. Instead of setting the same properties on every control, you define a style once and then reuse it wherever needed.",
       "apiNamespace": "Microsoft.UI.Xaml",
       "relatedControls": [
-        "XamlResources",
+        "Resources",
         "Templates",
         "Binding"
       ],
@@ -9747,6 +10127,10 @@
         "AppBarButton",
         "AppBarToggleButton",
         "CommandBar"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Input"
       ],
       "keywords": [
         "Object",

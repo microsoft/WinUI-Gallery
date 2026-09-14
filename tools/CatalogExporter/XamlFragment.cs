@@ -156,7 +156,11 @@ internal static partial class XamlFragment
     /// <summary>
     /// Prefix positions XAML actually resolves: element names (&lt;p:Foo, &lt;/p:Foo),
     /// attribute names (p:Foo=), markup extensions ({p:Foo}) and type references ("p:Foo").
+    ///
+    /// The attribute-name branch stops before the "=" rather than consuming it, so an attribute
+    /// that is itself prefixed does not hide a prefixed type in its value: in
+    /// x:DataType="local:Contact" both "x" and "local" have to be found.
     /// </summary>
-    [GeneratedRegex(@"</?([A-Za-z_][\w.\-]*):[A-Za-z_]|\s([A-Za-z_][\w.\-]*):[A-Za-z_][\w.\-]*\s*=|\{\s*([A-Za-z_][\w.\-]*):[A-Za-z_]|=""\s*([A-Za-z_][\w.\-]*):[A-Za-z_]")]
+    [GeneratedRegex(@"</?([A-Za-z_][\w.\-]*):[A-Za-z_]|\s([A-Za-z_][\w.\-]*):[A-Za-z_][\w.\-]*(?=\s*=)|\{\s*([A-Za-z_][\w.\-]*):[A-Za-z_]|=""\s*([A-Za-z_][\w.\-]*):[A-Za-z_]")]
     private static partial Regex BindingPrefixRegex();
 }

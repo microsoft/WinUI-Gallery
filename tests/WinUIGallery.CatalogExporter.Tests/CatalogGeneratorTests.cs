@@ -339,4 +339,100 @@ public sealed class CatalogGeneratorTests
             new[] { "microsoft/WinUI-Gallery#SampleTwo", "other/repo#thing" },
             one.Gallery.RelatedSamples);
     }
+
+    /// <summary>
+    /// ControlInfoData.json stores UniqueIds in RelatedControls, but the contract's field is
+    /// display names and consumers render it verbatim. "SampleTwo" is titled "Sample Two", so a
+    /// straight copy would surface an internal id to a reader.
+    /// </summary>
+    [TestMethod]
+    public void Generate_ResolvesRelatedControlsToDisplayNames()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", "<Page></Page>");
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+
+        CollectionAssert.AreEqual(new[] { "Sample Two" }, one.RelatedControls);
+        // The source-qualified id keeps living in the gallery extension, where ids belong.
+        CollectionAssert.AreEqual(new[] { "microsoft/WinUI-Gallery#SampleTwo" }, one.Gallery.RelatedSamples);
+    }
+
+    /// <summary>
+    /// The contract's "usings" exists so a consumer can make a snippet compile standalone. They
+    /// come from the imports the page's code-behind was written against, minus the gallery's own
+    /// namespaces — prepending "using WinUIGallery.Helpers;" would break the very build this
+    /// field exists to fix.
+    /// </summary>
+    [TestMethod]
+    public void Generate_CollectsUsingsFromCodeBehindAndExcludesGalleryNamespaces()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(header: "One", csharp: "var items = new ObservableCollection<string>();")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        File.WriteAllText(
+            Path.Combine(_fixtureRoot, "WinUIGallery", "Samples", "SampleOne", "SampleOnePage.xaml.cs"),
+            """
+            using System;
+            using System.Collections.ObjectModel;
+            using static System.Math;
+            using Alias = System.Text.StringBuilder;
+            using WinUIGallery.Helpers;
+            """);
+
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+
+        // Static and alias forms are dropped: the consumer re-emits each entry as "using X;".
+        CollectionAssert.AreEqual(new[] { "System", "System.Collections.ObjectModel" }, one.Usings);
+    }
+
+    /// <summary>A control with no C# has nothing for a consumer to prepend.</summary>
+    [TestMethod]
+    public void Generate_OmitsUsingsWhenControlHasNoCode()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(header: "One", xaml: "<Button Content=\"Hi\" />")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        File.WriteAllText(
+            Path.Combine(_fixtureRoot, "WinUIGallery", "Samples", "SampleOne", "SampleOnePage.xaml.cs"),
+            "using System;");
+
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+
+        Assert.IsNull(one.Usings);
+    }
+
+    /// <summary>
+    /// A prefixed attribute must not hide a prefixed type in its own value. In
+    /// x:DataType="local:Contact" the "local" import is the one a reader actually needs, and it
+    /// was being missed because the scan consumed the "=" while matching the attribute name.
+    /// </summary>
+    [TestMethod]
+    public void Generate_DetectsPrefixInValueOfPrefixedAttribute()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample(
+            "SampleOne",
+            """
+            <Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:controls="using:WinUIGallery.Controls"
+                  xmlns:local="using:WinUIGallery.ControlPages">
+              <controls:ControlExample SampleDefinition="Snippet.txt" />
+            </Page>
+            """,
+            ("Snippet.txt", Bundle(header: "One", xaml: """<DataTemplate x:DataType="local:Contact"><TextBlock /></DataTemplate>""")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+
+        CollectionAssert.Contains(
+            one.XmlnsImports ?? one.Samples.Single().XmlnsImports,
+            "xmlns:local=\"using:WinUIGallery.ControlPages\"");
+    }
 }

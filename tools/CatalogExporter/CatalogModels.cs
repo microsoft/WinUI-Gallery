@@ -84,6 +84,13 @@ internal sealed class IndexControl
     /// </summary>
     public List<string>? XmlnsImports { get; set; }
 
+    /// <summary>
+    /// Namespaces the control's C# samples assume are imported. The consumer prepends these as
+    /// "using X;" lines so a snippet compiles on its own, which is why they are not repeated
+    /// inside each sample's code.
+    /// </summary>
+    public List<string>? Usings { get; set; }
+
     /// <summary>Supplementary, derived search terms.</summary>
     public List<string>? Keywords { get; set; }
 
