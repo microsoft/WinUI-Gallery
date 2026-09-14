@@ -104,6 +104,7 @@ public sealed partial class ControlInfoDataSource
             {
                 string badgeString = item switch
                 {
+                    { IsExperimental: true } => "Experimental",
                     { IsNew: true } => "New",
                     { IsUpdated: true } => "Updated",
                     { IsPreview: true } => "Preview",

@@ -4036,6 +4036,45 @@
       "IconGlyph": "",
       "Items": [
         {
+          "UniqueId": "Windowing",
+          "Tags": [
+            "multiple windows",
+            "new window",
+            "multi window",
+            "experimental",
+            "window sizing",
+            "client area",
+            "DIPs",
+            "Width",
+            "Height",
+            "MinWidth",
+            "MinHeight",
+            "MaxWidth",
+            "MaxHeight"
+          ],
+          "Title": "Windowing APIs",
+          "ApiNamespace": "Microsoft.UI.Xaml",
+          "Subtitle": "Create top-level XAML windows and configure their client-area size.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Windowing.png",
+          "Description": "Create single-threaded top-level XAML windows, then explore experimental client-area sizing and minimum/maximum limits.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "Windows App SDK release channels",
+              "Uri": "https://learn.microsoft.com/windows/apps/windows-app-sdk/release-channels"
+            },
+            {
+              "Title": "Window - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window?view=windows-app-sdk-2.0-experimental"
+            }
+          ],
+          "RelatedControls": [
+            "AppWindow",
+            "AppWindowTitleBar",
+            "TitleBar"
+          ]
+        },
+        {
           "UniqueId": "AppWindow",
           "Tags": [
             "window management",
@@ -4079,7 +4118,7 @@
           "RelatedControls": [
             "AppWindowTitleBar",
             "TitleBar",
-            "CreateMultipleWindows"
+            "Windowing"
           ]
         },
         {
@@ -4109,34 +4148,6 @@
           ],
           "RelatedControls": [
             "AppWindow",
-            "TitleBar"
-          ]
-        },
-        {
-          "UniqueId": "CreateMultipleWindows",
-          "Tags": [
-            "multiple windows",
-            "new window",
-            "multi window"
-          ],
-          "Title": "Multiple windows",
-          "ApiNamespace": "Microsoft.UI.Xaml",
-          "Subtitle": "An example showing the creation of single-threaded top level Xaml windows.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/CreateMultipleWindows.png",
-          "Description": "With Windows App SDK 1.0 we are allowing creation of single-threaded multiple top level Xaml windows in Desktop apps",
-          "Docs": [
-            {
-              "Title": "MultipleWindow - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
-            },
-            {
-              "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
-            }
-          ],
-          "RelatedControls": [
-            "AppWindow",
-            "AppWindowTitleBar",
             "TitleBar"
           ]
         },

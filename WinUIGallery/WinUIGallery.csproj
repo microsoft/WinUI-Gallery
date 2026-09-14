@@ -35,9 +35,7 @@
         <DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
 
         <PublishSingleFile Condition="'$(PublishSingleFile)' == '' and '$(Packaged)' != 'true'">true</PublishSingleFile>
-        <WindowsAppSdkSelfContained Condition="'$(WindowsAppSdkSelfContained)' == '' and '$(PublishSingleFile)' == 'true'">true</WindowsAppSdkSelfContained>
-        <!-- Enable ExplicitlyIncludeVersionInfo workaround by setting WindowsAppSdkSelfContained earlier than the mock package would -->
-        <WindowsAppSdkSelfContained Condition="'$(IsInWinUIRepo)' == 'true' and '$(WindowsAppSdkSelfContained)'==''">true</WindowsAppSdkSelfContained>
+        <WindowsAppSdkSelfContained>true</WindowsAppSdkSelfContained>
         <ApplicationIcon>Assets\Tiles\GalleryIcon.ico</ApplicationIcon>
         <Nullable>enable</Nullable>
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
@@ -80,6 +78,10 @@
     <!-- Required for Source Generator -->
     <ItemGroup>
         <AdditionalFiles Include="SampleSupport\Data\ControlInfoData.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="WinUIGallery.UnitTests" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(Packaged)' == 'true'">

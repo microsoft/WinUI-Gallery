@@ -38,7 +38,19 @@
                 Duration="0:0:0.1" />
         </animations:ImplicitAnimationSet>
     </UserControl.Resources>
-    <Grid x:Name="rootGrid" IsTabStop="False">
+    <Grid IsTabStop="False">
+        <Border
+            Background="{ThemeResource SystemFillColorCautionBackgroundBrush}"
+            BorderBrush="{ThemeResource SystemFillColorCautionBrush}"
+            BorderThickness="1"
+            CornerRadius="8"
+            IsHitTestVisible="False"
+            Visibility="{x:Bind IsExperimental}" />
+
+        <Grid
+            x:Name="rootGrid"
+            Margin="{x:Bind local:ControlExample.BoolToExperimentalMargin(IsExperimental), Mode=OneWay}"
+            IsTabStop="False">
         <Grid.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.ThemeDictionaries>
@@ -63,15 +75,38 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBlock
-            x:Name="HeaderTextPresenter"
-            Margin="0,12"
-            AutomationProperties.HeadingLevel="Level3"
-            Style="{ThemeResource BodyStrongTextBlockStyle}"
-            Text="{x:Bind HeaderText, Mode=OneWay}" />
+        <Grid Margin="0,12" ColumnDefinitions="Auto,*">
+            <StackPanel
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Orientation="Horizontal"
+                Spacing="8"
+                Visibility="{x:Bind IsExperimental}">
+                <FontIcon
+                    AutomationProperties.AccessibilityView="Raw"
+                    FontSize="14"
+                    Foreground="{ThemeResource SystemFillColorCautionBrush}"
+                    Glyph="&#xE946;" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Foreground="{ThemeResource SystemFillColorCautionBrush}"
+                    Style="{ThemeResource BodyStrongTextBlockStyle}"
+                    Text="Experimental" />
+            </StackPanel>
+
+            <TextBlock
+                x:Name="HeaderTextPresenter"
+                Grid.Column="1"
+                Margin="{x:Bind local:ControlExample.BoolToHeaderMargin(IsExperimental), Mode=OneWay}"
+                VerticalAlignment="Center"
+                AutomationProperties.HeadingLevel="Level3"
+                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                Text="{x:Bind HeaderText, Mode=OneWay}" />
+        </Grid>
 
         <RichTextBlock
             x:Name="ErrorTextBlock"
@@ -85,7 +120,19 @@
             </Paragraph>
         </RichTextBlock>
 
-        <Grid Grid.Row="2" CornerRadius="8" IsTabStop="False">
+        <Border
+            Grid.Row="2"
+            Margin="0,0,0,12"
+            Padding="12"
+            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+            CornerRadius="4"
+            Visibility="{x:Bind IsExperimental}">
+            <TextBlock
+                Text="This example uses an experimental Windows App SDK API that may change before release."
+                TextWrapping="Wrap" />
+        </Border>
+
+        <Grid Grid.Row="3" CornerRadius="8" IsTabStop="False">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
@@ -240,5 +287,6 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        </Grid>
     </Grid>
 </UserControl>
