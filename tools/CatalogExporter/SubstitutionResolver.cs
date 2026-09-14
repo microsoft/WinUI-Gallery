@@ -104,7 +104,79 @@ internal static class SubstitutionResolver
         }
 
         string? resolved = ResolveValue(raw, pageRoot);
-        return bool.TryParse(resolved?.Trim(), out bool enabled) ? enabled : null;
+        if (bool.TryParse(resolved?.Trim(), out bool enabled))
+        {
+            return enabled;
+        }
+
+        return ResolveUnsetBooleanDefault(raw, pageRoot);
+    }
+
+    /// <summary>
+    /// Boolean properties whose documented default is false, so markup that never sets one is
+    /// showing it as false rather than leaving it unknown.
+    ///
+    /// The list is explicit because the opposite case is common enough to matter: IsEnabled,
+    /// IsTabStop and IsHitTestVisible all default to true, so a blanket "unset means false" rule
+    /// would invert them.
+    /// </summary>
+    private static readonly HashSet<string> DefaultFalseBooleans = new(StringComparer.Ordinal)
+    {
+        "IsChecked", "IsOn", "IsSticky", "IsOpen",
+    };
+
+    /// <summary>
+    /// Resolves a gate like <c>{x:Bind DisableButton.IsChecked.Value}</c> against a CheckBox that
+    /// never sets IsChecked. The control starts unchecked, so the gallery renders that
+    /// substitution as an empty string on load — and because these gates typically supply a whole
+    /// attribute, leaving the token in place produces XAML that is not well-formed and gets
+    /// discarded downstream. Resolving it is therefore both more accurate and what keeps the
+    /// sample publishable.
+    /// </summary>
+    private static bool? ResolveUnsetBooleanDefault(string binding, XElement pageRoot)
+    {
+        string trimmed = binding.Trim();
+        if (!trimmed.StartsWith("{x:Bind", StringComparison.Ordinal) || !trimmed.EndsWith('}'))
+        {
+            return null;
+        }
+
+        string body = trimmed[7..^1].Trim();
+        int comma = body.IndexOf(',');
+        string path = (comma < 0 ? body : body[..comma]).Trim();
+
+        // A converter or cast depends on code this exporter does not run.
+        if (path.Contains('(') || path.Contains(')'))
+        {
+            return null;
+        }
+
+        string[] segments = path.Split('.');
+        if (segments.Length is < 2 or > 3)
+        {
+            return null;
+        }
+
+        // A nullable bool reads as IsChecked.Value in x:Bind but is still the IsChecked attribute.
+        if (segments.Length == 3 && segments[2] != "Value")
+        {
+            return null;
+        }
+
+        if (!DefaultFalseBooleans.Contains(segments[1]))
+        {
+            return null;
+        }
+
+        XElement? target = FindNamedElement(pageRoot, segments[0]);
+        if (target is null)
+        {
+            return null;
+        }
+
+        // Only an absent attribute means "left at its default". An attribute that is present but
+        // did not resolve above is a binding of its own, and stays unknown.
+        return target.Attribute(segments[1]) is null ? false : null;
     }
 
     /// <summary>

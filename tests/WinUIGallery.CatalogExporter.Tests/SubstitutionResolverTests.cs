@@ -71,10 +71,12 @@ public sealed class SubstitutionResolverTests
     }
 
     [TestMethod]
-    public void UnresolvableIsEnabled_LeavesTokenAlone()
+    public void UnsetGateOnADefaultFalseProperty_ResolvesToEmpty()
     {
-        // The condition binds to a property the markup never sets, so whether the gallery shows
-        // this value is unknowable here. Emitting it anyway could invent markup the app omits.
+        // CommandBar.IsSticky defaults to false, and the markup never sets it, so the gallery
+        // renders this substitution as nothing on load. Leaving the token in place would be both
+        // inaccurate and fatal: the value is a whole attribute, so an unresolved token produces
+        // XAML that will not parse, and consumers discard fragments that fail to parse.
         Dictionary<string, string> map = Map(
             """
             <controls:ControlExample>
@@ -85,7 +87,60 @@ public sealed class SubstitutionResolverTests
             <CommandBar x:Name="Bar" />
             """);
 
-        Assert.IsFalse(map.ContainsKey("IsSticky"));
+        Assert.AreEqual(string.Empty, map["IsSticky"]);
+    }
+
+    [TestMethod]
+    public void UnsetGateOnACheckBox_ResolvesToEmpty()
+    {
+        // The same rule via the most common shape in the gallery: a CheckBox that starts
+        // unchecked, gating an attribute the sample only shows once the box is ticked.
+        Dictionary<string, string> map = Map(
+            """
+            <controls:ControlExample>
+              <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="IsEnabled" IsEnabled="{x:Bind Disable.IsChecked.Value, Mode=OneWay}" Value="IsEnabled=&quot;False&quot; " />
+              </controls:ControlExample.Substitutions>
+            </controls:ControlExample>
+            <CheckBox x:Name="Disable" Content="Disable" />
+            """);
+
+        Assert.AreEqual(string.Empty, map["IsEnabled"]);
+    }
+
+    [TestMethod]
+    public void GateOnACheckedBox_ResolvesToTheValue()
+    {
+        Dictionary<string, string> map = Map(
+            """
+            <controls:ControlExample>
+              <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Initials" IsEnabled="{x:Bind Pick.IsChecked.Value, Mode=OneWay}" Value="Initials=&quot;SB&quot;" />
+              </controls:ControlExample.Substitutions>
+            </controls:ControlExample>
+            <RadioButton x:Name="Pick" IsChecked="True" />
+            """);
+
+        Assert.AreEqual("Initials=\"SB\"", map["Initials"]);
+    }
+
+    [TestMethod]
+    public void UnresolvableIsEnabled_LeavesTokenAlone()
+    {
+        // IsExpanded is not one of the properties whose default is known here, so whether the
+        // gallery shows this value is genuinely unknowable without running the app. Guessing would
+        // invent markup the app never renders, so the token is left for a human to notice.
+        Dictionary<string, string> map = Map(
+            """
+            <controls:ControlExample>
+              <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Extra" IsEnabled="{x:Bind Panel.IsExpanded, Mode=OneWay}" Value=" Extra=&quot;True&quot; " />
+              </controls:ControlExample.Substitutions>
+            </controls:ControlExample>
+            <Expander x:Name="Panel" />
+            """);
+
+        Assert.IsFalse(map.ContainsKey("Extra"));
     }
 
     [TestMethod]

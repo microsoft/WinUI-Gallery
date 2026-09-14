@@ -33,11 +33,14 @@ internal sealed class CatalogGenerationOptions
 }
 
 /// <summary>
-/// Both generated artifacts, produced by a single walk of the source data. They are returned
-/// together on purpose: the code file is keyed by the manifest's scenario ids, so generating them
-/// independently would make it possible to commit a mismatched pair.
+/// The generated index plus any non-fatal problems found on the way.
+///
+/// Warnings are returned rather than thrown because they describe snippets that are correct for
+/// the gallery's own code viewer but cannot be published as paste-ready code — for example a
+/// fragment written as "&lt;Window ...&gt;" to stand in for the reader's own window. Failing the
+/// build on those would block the exporter on authored content that is not wrong.
 /// </summary>
-internal sealed record CatalogGenerationResult(CatalogManifest Manifest, CatalogCodeManifest Code);
+internal sealed record CatalogGenerationResult(SampleIndex Index, IReadOnlyList<CatalogIssue> Warnings);
 
 /// <summary>
 /// Builds the catalog/windows-samples.json manifest from ControlInfoData.json plus the on-disk
@@ -100,8 +103,8 @@ internal static class CatalogGenerator
             }
         }
 
-        List<CatalogSample> samples = [];
-        List<CatalogScenarioCode> code = [];
+        List<IndexControl> controls = [];
+        List<CatalogIssue> warnings = [];
         foreach (ControlInfoGroup group in root.Groups)
         {
             foreach (ControlInfoItem item in group.Items)
@@ -116,45 +119,51 @@ internal static class CatalogGenerator
                     continue;
                 }
 
-                CatalogSample? sample = BuildSample(item, group, samplesRoot, options, issues, code);
-                if (sample is not null)
+                IndexControl? control = BuildControl(item, group, samplesRoot, options, issues, warnings);
+                if (control is not null)
                 {
-                    samples.Add(sample);
+                    controls.Add(control);
                 }
             }
         }
 
-        // Now that every included sample id is known, validate cross-references (RelatedControls
-        // and Catalog.RelatedSamples) so a typo/rename never silently produces a broken link.
-        HashSet<string> includedIds = new(samples.Select(s => s.Id), StringComparer.Ordinal);
-        foreach (CatalogSample sample in samples)
+        // Now that every included id is known, validate cross-references (RelatedControls and
+        // Catalog.RelatedSamples) so a typo/rename never silently produces a broken link.
+        HashSet<string> includedIds = new(controls.Select(c => $"{RepoId(options)}#{c.Gallery.UniqueId}"), StringComparer.Ordinal);
+        foreach (IndexControl control in controls)
         {
-            if (sample.RelatedSamples is null)
-            {
-                continue;
-            }
-
-            foreach (string relatedId in sample.RelatedSamples)
+            foreach (string relatedId in control.Gallery.RelatedSamples ?? [])
             {
                 bool isSameRepo = relatedId.StartsWith(RepoId(options) + "#", StringComparison.Ordinal);
                 if (isSameRepo && !includedIds.Contains(relatedId))
                 {
-                    issues.Add(new CatalogIssue(sample.UniqueId, $"Related sample reference '{relatedId}' does not resolve to an included catalog entry."));
+                    issues.Add(new CatalogIssue(control.Gallery.UniqueId, $"Related sample reference '{relatedId}' does not resolve to an included catalog entry."));
                 }
             }
         }
 
-        // Scenario ids are the join key into the code file, so a collision would make one
-        // scenario's source unreachable. They are derived from snippet file names, so this
-        // catches two ControlExamples in one page pointing at the same snippet.
-        HashSet<string> scenarioIds = new(StringComparer.Ordinal);
-        foreach (CatalogSample sample in samples)
+        // Control ids are what a consumer builds its own sample ids from, so a collision would
+        // make two gallery pages indistinguishable. They are lowercased UniqueIds, so this catches
+        // two pages whose ids differ only by case.
+        HashSet<string> controlIds = new(StringComparer.Ordinal);
+        foreach (IndexControl control in controls)
         {
-            foreach (CatalogScenario scenario in sample.Scenarios ?? [])
+            if (!controlIds.Add(control.Id))
             {
-                if (!scenarioIds.Add(scenario.Id))
+                issues.Add(new CatalogIssue(control.Gallery.UniqueId, $"Duplicate control id '{control.Id}'."));
+            }
+        }
+
+        // A snippet is the stable identity of a sample within its control, so a page pointing two
+        // ControlExamples at one snippet would publish the same code twice under two names.
+        foreach (IndexControl control in controls)
+        {
+            HashSet<string> snippets = new(StringComparer.Ordinal);
+            foreach (IndexSample sample in control.Samples)
+            {
+                if (!snippets.Add(sample.Gallery.Snippet))
                 {
-                    issues.Add(new CatalogIssue(sample.UniqueId, $"Duplicate scenario id '{scenario.Id}'."));
+                    issues.Add(new CatalogIssue(control.Gallery.UniqueId, $"Duplicate snippet '{sample.Gallery.Snippet}'."));
                 }
             }
         }
@@ -164,43 +173,29 @@ internal static class CatalogGenerator
             throw new CatalogValidationException(issues);
         }
 
-        samples.Sort((a, b) => string.CompareOrdinal(a.Id, b.Id));
-        code.Sort((a, b) => string.CompareOrdinal(a.Id, b.Id));
+        controls.Sort((a, b) => string.CompareOrdinal(a.Id, b.Id));
 
-        CatalogManifest manifest = new()
+        SampleIndex index = new()
         {
-            Generator = new CatalogGeneratorInfo(),
-            Repository = new CatalogRepository
+            Generator = new IndexGeneratorInfo
             {
-                Id = RepoId(options),
-                Owner = options.RepoOwner,
-                Name = options.RepoName,
-                Url = $"https://github.com/{options.RepoOwner}/{options.RepoName}",
+                Repository = $"https://github.com/{options.RepoOwner}/{options.RepoName}",
                 DefaultBranch = options.DefaultBranch,
-                License = "MIT",
             },
-            Defaults = new CatalogDefaults(),
-            SampleCount = samples.Count,
-            Samples = samples,
+            ControlCount = controls.Count,
+            Controls = controls,
         };
 
-        CatalogCodeManifest codeManifest = new()
-        {
-            Generator = new CatalogGeneratorInfo(),
-            ScenarioCount = code.Count,
-            Scenarios = code,
-        };
-
-        return new CatalogGenerationResult(manifest, codeManifest);
+        return new CatalogGenerationResult(index, warnings);
     }
 
-    private static CatalogSample? BuildSample(
+    private static IndexControl? BuildControl(
         ControlInfoItem item,
         ControlInfoGroup group,
         string samplesRoot,
         CatalogGenerationOptions options,
         List<CatalogIssue> issues,
-        List<CatalogScenarioCode> code)
+        List<CatalogIssue> warnings)
     {
         string folder = Path.Combine(samplesRoot, item.UniqueId);
         if (!Directory.Exists(folder))
@@ -224,45 +219,88 @@ internal static class CatalogGenerator
 
         string? codeBehindFile = FindExactCase(entries, expectedCodeBehindFile);
 
-        List<string> snippets = entries
-            .Where(f => f.EndsWith(".txt", StringComparison.Ordinal))
-            .Select(f => Path.GetFileName(f))
-            .OrderBy(f => f, StringComparer.Ordinal)
-            .ToList();
+        List<IndexSample> samples = ExtractSamples(pageFile, item.UniqueId, folder, options, issues, warnings);
 
-        string relativeRoot = ToRepoRelative(folder, options.RepoRoot);
-        string id = $"{RepoId(options)}#{item.UniqueId}";
+        // Namespace imports every sample shares are hoisted to the control, which is exactly the
+        // default the contract describes; a sample needing a different set keeps its own.
+        List<string>? sharedImports = HoistSharedImports(samples);
 
-        List<CatalogScenario> scenarios = ExtractScenarios(pageFile, item.UniqueId, id, folder, options, issues, code);
-
-        List<string>? relatedSamples = BuildRelatedSamples(item, options);
-
-        return new CatalogSample
+        return new IndexControl
         {
-            Id = id,
-            UniqueId = item.UniqueId,
-            Title = item.Title,
-            Group = new CatalogGroupRef { Id = group.UniqueId, Title = group.Title },
-            Summary = NullIfEmpty(item.Subtitle),
-            Description = NullIfEmpty(item.Description),
+            Id = ToControlId(item.UniqueId),
+            Name = item.Title,
+            Description = NullIfEmpty(item.Subtitle),
+            Details = NullIfEmpty(item.Description),
             ApiNamespace = NullIfEmpty(item.ApiNamespace),
-            BaseClasses = NullIfEmpty(item.BaseClasses),
-            Tags = NullIfEmpty(item.Tags),
-            Aliases = NullIfEmpty(item.Catalog?.Aliases),
-            RelatedSamples = relatedSamples,
+            RelatedControls = NullIfEmpty(item.RelatedControls),
+            XmlnsImports = sharedImports,
+            Keywords = NullIfEmpty(item.BaseClasses),
+            CuratedKeywords = BuildCuratedKeywords(item),
             Docs = item.Docs.Count == 0
                 ? null
-                : item.Docs.Select(d => new CatalogDocLink { Title = d.Title, Uri = d.Uri }).ToList(),
-            Badges = BuildBadges(item),
-            Source = new CatalogSource
+                : item.Docs.Select(d => new IndexDocLink { Title = d.Title, Uri = d.Uri }).ToList(),
+            Gallery = new IndexControlGallery
             {
-                Root = relativeRoot,
+                UniqueId = item.UniqueId,
+                Group = new IndexGroupRef { Id = group.UniqueId, Title = group.Title },
                 Page = ToRepoRelative(pageFile, options.RepoRoot),
                 CodeBehind = codeBehindFile is null ? null : ToRepoRelative(codeBehindFile, options.RepoRoot),
-                Snippets = snippets.Count == 0 ? null : snippets.Select(f => $"{relativeRoot}/{f}").ToList(),
+                BaseClasses = NullIfEmpty(item.BaseClasses),
+                Badges = BuildBadges(item),
+                RelatedSamples = BuildRelatedSamples(item, options),
             },
-            Scenarios = scenarios.Count == 0 ? null : scenarios,
+            Samples = samples,
         };
+    }
+
+    /// <summary>
+    /// Lowercases a UniqueId into the short, URL-safe form the contract asks for. Ids are scoped
+    /// to a source there, so "Button" is unambiguous without repeating the repository in it.
+    /// </summary>
+    private static string ToControlId(string uniqueId) => uniqueId.ToLowerInvariant();
+
+    /// <summary>
+    /// Search terms the gallery's own authors wrote in ControlInfoData.json. Tags and aliases are
+    /// merged because both are hand-written there and the contract has one slot for author terms.
+    /// </summary>
+    private static List<string>? BuildCuratedKeywords(ControlInfoItem item)
+    {
+        List<string> keywords = [];
+        keywords.AddRange(item.Tags ?? []);
+        keywords.AddRange(item.Catalog?.Aliases ?? []);
+
+        return keywords.Count == 0
+            ? null
+            : keywords.Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+    }
+
+    /// <summary>
+    /// Moves namespace imports up to the control when every sample needs the same ones, and clears
+    /// them from the samples. When the samples differ, each keeps its own and the control declares
+    /// none — the contract treats a sample's own list as a full override, not an addition, so a
+    /// partial control-level list would quietly drop imports for the samples that override it.
+    /// </summary>
+    private static List<string>? HoistSharedImports(List<IndexSample> samples)
+    {
+        List<IndexSample> withXaml = samples.Where(s => s.Xaml is not null).ToList();
+        if (withXaml.Count == 0)
+        {
+            return null;
+        }
+
+        List<string> first = withXaml[0].XmlnsImports ?? [];
+        bool allMatch = withXaml.All(s => (s.XmlnsImports ?? []).SequenceEqual(first, StringComparer.Ordinal));
+        if (!allMatch || first.Count == 0)
+        {
+            return null;
+        }
+
+        foreach (IndexSample sample in samples)
+        {
+            sample.XmlnsImports = null;
+        }
+
+        return first;
     }
 
     private static List<string>? BuildRelatedSamples(ControlInfoItem item, CatalogGenerationOptions options)
@@ -307,16 +345,15 @@ internal static class CatalogGenerator
         return badges.Count == 0 ? null : badges;
     }
 
-    private static List<CatalogScenario> ExtractScenarios(
+    private static List<IndexSample> ExtractSamples(
         string pageFile,
         string uniqueId,
-        string sampleId,
         string folder,
         CatalogGenerationOptions options,
         List<CatalogIssue> issues,
-        List<CatalogScenarioCode> code)
+        List<CatalogIssue> warnings)
     {
-        List<CatalogScenario> scenarios = [];
+        List<IndexSample> samples = [];
         string[] entries = Directory.GetFiles(folder);
 
         // The page is parsed rather than pattern-matched so that each snippet can be tied to the
@@ -330,14 +367,16 @@ internal static class CatalogGenerator
         catch (System.Xml.XmlException ex)
         {
             issues.Add(new CatalogIssue(uniqueId, $"{Path.GetFileName(pageFile)} is not well-formed XML: {ex.Message}"));
-            return scenarios;
+            return samples;
         }
 
         XElement? pageRoot = page.Root;
         if (pageRoot is null)
         {
-            return scenarios;
+            return samples;
         }
+
+        Dictionary<string, string> pageDeclarations = XamlFragment.ReadPageDeclarations(pageRoot);
 
         foreach (XElement controlExample in pageRoot.DescendantsAndSelf().Where(e => e.Name.LocalName == "ControlExample"))
         {
@@ -360,21 +399,10 @@ internal static class CatalogGenerator
 
             SampleBundle bundle = SampleBundleParser.Parse(File.ReadAllText(bundlePath));
 
-            string scenarioId = $"{sampleId}/{Path.GetFileNameWithoutExtension(fileName)}";
-
-            scenarios.Add(new CatalogScenario
-            {
-                Id = scenarioId,
-                Name = DeriveScenarioName(fileName, uniqueId),
-                Description = NullIfEmpty(bundle.Header),
-                Snippet = fileName,
-            });
-
             // A scenario legitimately has no code: either the page hides the viewer entirely
             // (SourceCodeVisibility="Collapsed"), or it swaps ControlExample.XamlSource at runtime,
-            // so no single snippet represents it. Such scenarios appear in the manifest but
-            // contribute no code entry. RealRepository_CodelessScenariosAreTheKnownSet pins the
-            // current set so this gap stays visible.
+            // so no single snippet represents it. The contract requires a sample to carry XAML or
+            // code, so there is nothing to publish and it is left out.
             if (bundle.Xaml is null && bundle.CSharp is null)
             {
                 continue;
@@ -382,18 +410,45 @@ internal static class CatalogGenerator
 
             Dictionary<string, string> substitutions = SubstitutionResolver.BuildMap(controlExample, pageRoot);
 
-            code.Add(new CatalogScenarioCode
+            string? xaml = NullIfEmpty(SubstitutionResolver.Apply(bundle.Xaml ?? string.Empty, substitutions));
+            string? code = NullIfEmpty(SubstitutionResolver.Apply(bundle.CSharp ?? string.Empty, substitutions));
+
+            // Consumers parse the XAML and discard whatever fails, so publishing a fragment that
+            // cannot parse would advertise code that never arrives. Dropping it here instead keeps
+            // the index honest and makes the reason visible in the build output.
+            bool malformed = xaml is not null && !XamlFragment.IsWellFormed(xaml);
+            if (malformed)
             {
-                Id = scenarioId,
-                Source = ToRepoRelative(bundlePath, options.RepoRoot),
-                Xaml = NullIfEmpty(SubstitutionResolver.Apply(bundle.Xaml ?? string.Empty, substitutions)),
-                Code = NullIfEmpty(SubstitutionResolver.Apply(bundle.CSharp ?? string.Empty, substitutions)),
+                warnings.Add(new CatalogIssue(uniqueId, $"'{fileName}' XAML is not a well-formed fragment and was omitted."));
+                xaml = null;
+            }
+
+            if (xaml is null && code is null)
+            {
+                continue;
+            }
+
+            samples.Add(new IndexSample
+            {
+                Header = NullIfEmpty(bundle.Header) ?? DeriveScenarioName(fileName, uniqueId),
+                Xaml = xaml,
+                Code = code,
+                Language = code is null ? null : "csharp",
+                XmlnsImports = xaml is null ? null : NullIfEmpty(XamlFragment.DetectImports(xaml, pageDeclarations)),
+                Gallery = new IndexSampleGallery
+                {
+                    Snippet = fileName,
+                    Source = ToRepoRelative(bundlePath, options.RepoRoot),
+                    Name = DeriveScenarioName(fileName, uniqueId),
+                    XamlOmittedAsMalformed = malformed ? true : null,
+                },
             });
         }
 
-        return scenarios
-            .OrderBy(s => s.Snippet, StringComparer.Ordinal)
-            .ToList();
+        // Page order is preserved deliberately: it is the order a visitor sees, and the contract's
+        // consumer numbers samples positionally, so sorting them would renumber ids whenever a
+        // ControlExample is inserted.
+        return samples;
     }
 
     /// <summary>
@@ -457,15 +512,12 @@ internal static class CatalogGenerator
 
     private static List<string>? NullIfEmpty(string[]? value) => value is null || value.Length == 0 ? null : [.. value];
 
-    /// <summary>Serializes the manifest deterministically (stable property/array order, LF line endings).</summary>
-    public static string Serialize(CatalogManifest manifest) => SerializeDocument(manifest);
+    private static List<string>? NullIfEmpty(List<string> value) => value.Count == 0 ? null : value;
 
-    /// <summary>Serializes the code file deterministically, matching <see cref="Serialize(CatalogManifest)"/>.</summary>
-    public static string Serialize(CatalogCodeManifest code) => SerializeDocument(code);
-
-    private static string SerializeDocument<T>(T document)
+    /// <summary>Serializes the index deterministically (stable property/array order, LF line endings).</summary>
+    public static string Serialize(SampleIndex index)
     {
-        string json = JsonSerializer.Serialize(document, WriteOptions);
+        string json = JsonSerializer.Serialize(index, WriteOptions);
         return json.Replace("\r\n", "\n").TrimEnd('\n') + "\n";
     }
 

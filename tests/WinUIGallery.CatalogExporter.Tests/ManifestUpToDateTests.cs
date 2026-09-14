@@ -8,10 +8,10 @@ using WinUIGallery.CatalogExporter;
 namespace WinUIGallery.CatalogExporter.Tests;
 
 /// <summary>
-/// Guards against stale committed catalog files: regenerates both artifacts from the real,
-/// current repository data and fails if either does not byte-for-byte match what is checked in.
-/// Run `dotnet run --project tools/CatalogExporter -- generate` and commit the result if this
-/// test fails.
+/// Guards against a stale committed index: regenerates it from the real, current repository data
+/// and fails if it does not byte-for-byte match what is checked in. Run
+/// `dotnet run --project tools/CatalogExporter -- generate` and commit the result if this test
+/// fails.
 /// </summary>
 [TestClass]
 public sealed class ManifestUpToDateTests
@@ -27,7 +27,7 @@ public sealed class ManifestUpToDateTests
         Assert.IsTrue(File.Exists(manifestPath), $"{manifestPath} is missing. Run 'dotnet run --project tools/CatalogExporter -- generate' and commit the result.");
 
         string committed = File.ReadAllText(manifestPath).Replace("\r\n", "\n");
-        string fresh = CatalogGenerator.Serialize(CatalogGenerator.Generate(new CatalogGenerationOptions { RepoRoot = repoRoot }).Manifest);
+        string fresh = CatalogGenerator.Serialize(CatalogGenerator.Generate(new CatalogGenerationOptions { RepoRoot = repoRoot }).Index);
 
         Assert.AreEqual(
             fresh,
@@ -36,80 +36,73 @@ public sealed class ManifestUpToDateTests
     }
 
     [TestMethod]
-    public void CommittedCodeFile_MatchesFreshGeneration()
+    public void RealRepository_SnippetsWithUnpublishableXamlAreTheKnownSet()
     {
-        string repoRoot = RepoRoot;
-        string codePath = Path.Combine(repoRoot, "catalog", "windows-samples.code.json");
-
-        Assert.IsTrue(File.Exists(codePath), $"{codePath} is missing. Run 'dotnet run --project tools/CatalogExporter -- generate' and commit the result.");
-
-        string committed = File.ReadAllText(codePath).Replace("\r\n", "\n");
-        string fresh = CatalogGenerator.Serialize(CatalogGenerator.Generate(new CatalogGenerationOptions { RepoRoot = repoRoot }).Code);
-
-        Assert.AreEqual(
-            fresh,
-            committed,
-            "catalog/windows-samples.code.json is stale relative to the Samples folders. Run 'dotnet run --project tools/CatalogExporter -- generate' and commit the result.");
-    }
-
-    [TestMethod]
-    public void RealRepository_CodeFileResolvesToManifestScenariosWithoutOrphans()
-    {
-        // The two files are only useful together: every code entry must resolve to a scenario in
-        // the manifest, ids must be unique, and the count must match. This is the invariant that
-        // makes splitting them safe. Note that the reverse is not required - see
-        // RealRepository_CodelessScenariosAreTheKnownSet for scenarios that carry no code.
-        CatalogGenerationResult result = CatalogGenerator.Generate(new CatalogGenerationOptions { RepoRoot = RepoRoot });
-
-        HashSet<string> manifestIds = result.Manifest.Samples
-            .SelectMany(s => s.Scenarios ?? [])
-            .Select(s => s.Id)
-            .ToHashSet(StringComparer.Ordinal);
-
-        string[] orphans = result.Code.Scenarios
-            .Select(s => s.Id)
-            .Where(id => !manifestIds.Contains(id))
-            .ToArray();
-
-        Assert.AreEqual(0, orphans.Length, "Code entries with no matching manifest scenario: " + string.Join(", ", orphans));
-        Assert.AreEqual(result.Code.Scenarios.Count, result.Code.Scenarios.Select(s => s.Id).Distinct(StringComparer.Ordinal).Count());
-        Assert.AreEqual(result.Code.ScenarioCount, result.Code.Scenarios.Count);
-    }
-
-    [TestMethod]
-    public void RealRepository_CodelessScenariosAreTheKnownSet()
-    {
-        // Pins the scenarios that appear in the manifest but contribute no code, so the gap stays
-        // visible and shrinking it is a deliberate, reviewed change rather than a silent drift.
+        // These snippets are written for the gallery's own code viewer, where a human reads
+        // "<Window ...>" as "your existing window". That is not a well-formed XML fragment, so a
+        // consumer of the index parses it, fails, and discards it silently. The exporter omits the
+        // XAML instead and records a warning; every one of these samples still publishes its C#.
         //
-        //   ContentIsland/BasicContentIslandContent - the page sets SourceCodeVisibility="Collapsed",
-        //     so the gallery deliberately shows no code. Expected to stay code-less.
-        //   SystemBackdropElement/SystembackdropelementSample - the gallery does show code here, but
-        //     the page swaps ControlExample.XamlSource at runtime between three backdrop variants
-        //     (Acrylic, Mica, MicaAlt) as the user changes a ComboBox, so no single static snippet
-        //     represents it. Publishing one would also break the page: SampleCodePresenter prefers
-        //     Code over CodeSourceFile, so a snippet bundle would pin the code pane to one variant.
-        //     Expected to stay code-less unless the catalog grows a way to express alternatives.
+        // The set is pinned so that a newly broken snippet shows up as a failure here rather than
+        // quietly disappearing from the index. If you make one of these paste-ready, delete its
+        // line. Growing the list should be a deliberate choice, not a default.
+        //
+        // OtherXamlEasingFunctions.txt is the one entry that is not an elision: it uses a token as
+        // an element name, <$(EasingFunction)/>, whose value comes from a ComboBox populated in
+        // code-behind. Nothing in the markup can resolve it, so it cannot be published as XAML.
         string[] expected =
         [
-            "microsoft/WinUI-Gallery#ContentIsland/BasicContentIslandContent",
-            "microsoft/WinUI-Gallery#SystemBackdropElement/SystembackdropelementSample",
+            "AppWindow: 'AppWindowSettingMinimumMaximumWidth.txt'",
+            "AppWindow: 'AppwindowCompactoverlaypresenter.txt'",
+            "AppWindow: 'AppwindowFullscreenpresenter.txt'",
+            "AppWindow: 'AppwindowOverlapedpresenter.txt'",
+            "AppWindow: 'CenteringAppwindowScreenAvailable.txt'",
+            "AppWindow: 'CreatingCustomizingAppwindowWindow.txt'",
+            "AppWindow: 'ModalWindowOverlappedpresenterAppwindow.txt'",
+            "Binding: 'ConverterBinding.txt'",
+            "CustomUserControls: 'CustomUserControlsBasicCustomPasswordBox.txt'",
+            "CustomUserControls: 'CustomUserControlsCounterControlIncrementDecrement.txt'",
+            "CustomUserControls: 'CustomUserControlsTemperatureConverterUsercontrolExample.txt'",
+            "EasingFunction: 'OtherXamlEasingFunctions.txt'",
+            "TreeView: 'TreeviewItemtemplateselector.txt'",
         ];
 
         CatalogGenerationResult result = CatalogGenerator.Generate(new CatalogGenerationOptions { RepoRoot = RepoRoot });
 
-        HashSet<string> withCode = result.Code.Scenarios.Select(s => s.Id).ToHashSet(StringComparer.Ordinal);
-        string[] codeless = result.Manifest.Samples
-            .SelectMany(s => s.Scenarios ?? [])
-            .Select(s => s.Id)
-            .Where(id => !withCode.Contains(id))
-            .OrderBy(id => id, StringComparer.Ordinal)
+        string[] actual = result.Warnings
+            .Select(w => $"{w.UniqueId}: '{w.Message.Split('\'')[1]}'")
+            .OrderBy(w => w, StringComparer.Ordinal)
             .ToArray();
 
         CollectionAssert.AreEqual(
             expected,
-            codeless,
-            "The set of scenarios without code changed. If you added legacy-source support, remove the entries that now resolve; if a new code-less scenario appeared, confirm it is intentional and add it here.");
+            actual,
+            "The set of snippets whose XAML cannot be published changed. Each omitted snippet is a sample a "
+                + "consumer cannot paste, so confirm the change is intentional before updating this list.");
+    }
+
+    [TestMethod]
+    public void RealRepository_EverySampleCarriesPublishableContent()
+    {
+        // The contract requires a sample to have XAML or code, and its consumer skips any that has
+        // neither. Emitting one anyway would inflate the index with entries that vanish on the
+        // other side, so the exporter leaves them out and this proves it.
+        CatalogGenerationResult result = CatalogGenerator.Generate(new CatalogGenerationOptions { RepoRoot = RepoRoot });
+
+        foreach (IndexControl control in result.Index.Controls)
+        {
+            foreach (IndexSample sample in control.Samples)
+            {
+                Assert.IsTrue(
+                    !string.IsNullOrWhiteSpace(sample.Xaml) || !string.IsNullOrWhiteSpace(sample.Code),
+                    $"{control.Id}/{sample.Gallery.Snippet} has neither XAML nor code and must not be published.");
+
+                Assert.AreEqual(
+                    sample.Code is null ? null : "csharp",
+                    sample.Language,
+                    $"{control.Id}/{sample.Gallery.Snippet} must declare its language exactly when it carries code.");
+            }
+        }
     }
 
     [TestMethod]
@@ -168,10 +161,10 @@ public sealed class ManifestUpToDateTests
     public void RealRepository_HasNoValidationIssues()
     {
         // Re-asserts the same validation Generate() already performs, so a failure here reports
-        // clearly as "the real data is invalid" rather than surfacing only via the manifest diff
+        // clearly as "the real data is invalid" rather than surfacing only via the index diff
         // above.
-        CatalogManifest manifest = CatalogGenerator.Generate(new CatalogGenerationOptions { RepoRoot = RepoRoot }).Manifest;
-        Assert.IsTrue(manifest.SampleCount > 0);
-        Assert.AreEqual(manifest.SampleCount, manifest.Samples.Count);
+        SampleIndex index = CatalogGenerator.Generate(new CatalogGenerationOptions { RepoRoot = RepoRoot }).Index;
+        Assert.IsTrue(index.ControlCount > 0);
+        Assert.AreEqual(index.ControlCount, index.Controls.Count);
     }
 }

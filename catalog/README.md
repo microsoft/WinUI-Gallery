@@ -1,95 +1,61 @@
-# WinUI Gallery catalog manifest
+# WinUI Gallery sample index
 
-`catalog/windows-samples.json` is a generated, machine-readable inventory of every embedded
-sample in this repository, and `catalog/windows-samples.code.json` carries the source shown for
-each of their scenarios. They exist so a future federated
-[microsoft/windows-samples](https://github.com/microsoft/windows-samples) catalog (and other
-agents/tools) can discover WinUI Gallery's samples without scraping the app's XAML.
+`catalog/windows-samples.json` is a generated, machine-readable index of every embedded sample in this repository, including the XAML and C# the gallery shows for each one. It exists so that tools and agents can discover and reuse WinUI Gallery's samples without scraping the app's XAML.
 
-## Why this shape, and not one `sample.yml` per control
+## The shape is a shared contract, not ours
 
-`windows-samples` normally has one `Samples/<Name>/sample.yml` per **standalone** project. WinUI
-Gallery is different: its ~120 samples are **pages embedded in a single app**
-(`WinUIGallery/Samples/<UniqueId>/`), and the authoritative inventory of them already exists as
-[`WinUIGallery/SampleSupport/Data/ControlInfoData.json`](../WinUIGallery/SampleSupport/Data/ControlInfoData.json)
-(consumed by the app itself and by `WinUIGallery.SourceGenerator` at build time).
+The file conforms to the **WinUI sample index** contract published by [microsoft/winappCli](https://github.com/microsoft/winappCli) at [`docs/winui-sample-index.schema.json`](https://raw.githubusercontent.com/microsoft/winappCli/main/docs/winui-sample-index.schema.json), which the generated file names in its own `$schema` property.
 
-Adding ~120 hand-maintained `sample.yml` files would create a second, easily-stale source of
-truth. Instead:
+That contract already has a working consumer and a second publisher ([microsoft-ui-reactor](https://github.com/microsoft/microsoft-ui-reactor) publishes a conforming index today), so emitting it directly means a tool that already reads one source can read this one with no new parser and no gallery-specific special cases. The alternative — inventing a gallery-shaped file and asking every consumer to adapt to it — would have produced the same data behind a second, redundant contract.
 
-- **`ControlInfoData.json` stays the single source of truth.** It already carries most of what a
-  catalog needs: `Title`, `Subtitle`/`Description`, `Docs`, `Tags`, and `RelatedControls`.
-- **`tools/CatalogExporter`** deterministically derives everything else (ids, group, source file
-  paths, snippet files, interactive scenarios) from that JSON file plus the on-disk sample
-  folders, and validates the result.
-- **`catalog/windows-samples.json`** is the generated output: one JSON document, safe to import
-  wholesale into `windows-samples`' own `catalog/samples.json` aggregation step.
-- Repository-wide constants (license, language, framework, platform, "embedded gallery page"
-  kind) live once in the manifest's top-level `defaults`, instead of being repeated on every one
-  of the ~120 entries.
+Two consequences of the contract are worth knowing before reading the file:
 
-## Why the code lives in a second file
+- **Code is inline.** The contract is explicitly designed so a consumer needs *one* HTTP request rather than one per snippet, so each sample carries its `xaml` and `code` directly instead of pointing at a file to fetch separately.
+- **Sample order is meaningful.** Consumers number a control's samples positionally. Samples are therefore emitted in page order — the order a visitor sees them — so appending a `ControlExample` is safe while reordering renumbers the ones after it.
 
-`catalog/windows-samples.code.json` holds the XAML and C# for each scenario, keyed by the
-manifest's scenario ids. The split is deliberate, because the two files have different audiences:
+Fields the contract has no slot for are grouped under a `gallery` object on each control and sample, rather than scattered among the shared ones, so it stays obvious which is which. The contract permits these extras and consumers ignore them.
 
-- The **manifest** is metadata, and it is what gets imported into the federated
-  `windows-samples` catalog - which carries paths, not source. Inlining ~400 KB of code there
-  would be dead weight that the importer has to strip.
-- The **code file** exists for consumers that want the snippets without cloning the repository:
-  one request for all of them, instead of one request per `.txt` file.
+## Why this, and not one `sample.yml` per control
 
-Both files are produced by a **single generator pass**, so they cannot drift apart, and a test
-asserts that every code entry resolves to a scenario in the manifest.
+`windows-samples` normally has one `Samples/<Name>/sample.yml` per **standalone** project. WinUI Gallery is different: its ~120 samples are **pages embedded in a single app** (`WinUIGallery/Samples/<UniqueId>/`), and the authoritative inventory of them already exists as [`WinUIGallery/SampleSupport/Data/ControlInfoData.json`](../WinUIGallery/SampleSupport/Data/ControlInfoData.json), consumed by the app itself and by `WinUIGallery.SourceGenerator` at build time.
 
-## Regenerating and checking the manifest
+Adding ~120 hand-maintained `sample.yml` files would create a second, easily-stale source of truth. Instead:
+
+- **`ControlInfoData.json` stays the single source of truth.** It already carries most of what an index needs: `Title`, `Subtitle`/`Description`, `Docs`, `Tags`, and `RelatedControls`.
+- **`tools/CatalogExporter`** deterministically derives everything else — ids, source paths, scenarios, and the code itself — from that JSON file plus the on-disk sample folders, and validates the result.
+
+## Regenerating and checking the index
 
 ```powershell
-# Regenerate both catalog files from the current source data
+# Regenerate the index from the current source data
 dotnet run --project tools/CatalogExporter -- generate
 
-# Verify the committed files are still up to date (used in CI/tests); does not write anything
+# Verify the committed file is still up to date (used in CI/tests); does not write anything
 dotnet run --project tools/CatalogExporter -- check
 ```
 
-Both commands auto-detect the repository root (by walking up to `WinUIGallery.slnx`); pass
-`--repo-root <path>` to override.
+Both commands auto-detect the repository root by walking up to `WinUIGallery.slnx`; pass `--repo-root <path>` to override.
 
-`tests/WinUIGallery.CatalogExporter.Tests` also asserts the committed files match a fresh
-`generate` output, so a stale or hand-edited catalog file fails `dotnet test` (and therefore CI)
-rather than silently drifting from `ControlInfoData.json`. The same suite checks that each JSON
-Schema declares exactly the properties the exporter emits - both schemas set
-`"additionalProperties": false`, so an undeclared field would make every generated file invalid
-for consumers.
+`tests/WinUIGallery.CatalogExporter.Tests` asserts the committed file matches a fresh `generate`, so a stale or hand-edited index fails `dotnet test` (and therefore CI) rather than silently drifting from `ControlInfoData.json`. `ContractConformanceTests` additionally checks the parts a consumer depends on that valid JSON alone would not catch — that every emitted field name is one the contract defines, that required fields are present, that control ids are unique and URL-safe, and that every published XAML fragment parses.
 
-## Contract
+The index deliberately carries **no generation timestamp**, even though the contract offers `generatedAtUtc`. The file is committed and CI regenerates it to prove it is current; a timestamp would make every run differ and turn that check into constant churn.
 
-The manifest's shape is formally described by
-[`catalog/windows-samples.schema.json`](windows-samples.schema.json) (JSON Schema draft-07). At a
-glance:
+## How source data maps onto the contract
 
-| Manifest field | Derived from |
+| Contract field | Derived from |
 | --- | --- |
-| `repository`, `defaults` | Fixed for this repository (see `CatalogGenerationOptions` / `CatalogDefaults` in `tools/CatalogExporter`) |
-| `samples[].id` | `"{owner}/{repo}#{UniqueId}"` - source-qualified so ids can't collide once aggregated across repositories |
-| `samples[].uniqueId`, `.title`, `.summary`, `.description`, `.apiNamespace`, `.baseClasses`, `.tags`, `.docs` | `UniqueId`, `Title`, `Subtitle`, `Description`, `ApiNamespace`, `BaseClasses`, `Tags`, `Docs` on the matching `ControlInfoData.json` item |
-| `samples[].group` | The enclosing `ControlInfoData.json` group's `UniqueId`/`Title` |
-| `samples[].badges` | Derived from `IsNew` / `IsUpdated` / `IsPreview` |
-| `samples[].relatedSamples` | `RelatedControls` (resolved to this repository's ids), plus any `Catalog.RelatedSamples` override |
-| `samples[].source` | The `WinUIGallery/Samples/<UniqueId>/` folder: main `*Page.xaml`, `*Page.xaml.cs`, and every `*.txt` snippet, verified to exist with exact-case file names |
-| `samples[].scenarios[].id` | `"{sample id}/{snippet file name without extension}"` - derived from the file name rather than the scenario's position, so inserting or reordering scenarios never renumbers the others. This is the join key into `windows-samples.code.json` |
-| `samples[].scenarios[].name`, `.snippet` | One entry per `controls:ControlExample` element whose `SampleDefinition="..."` attribute names a snippet file that exists next to the page |
-| `samples[].scenarios[].description` | The snippet's `--- header` section, as shown above the scenario in the app |
-
-`catalog/windows-samples.code.json` is described by
-[`catalog/windows-samples.code.schema.json`](windows-samples.code.schema.json) and is versioned
-independently:
-
-| Code file field | Derived from |
-| --- | --- |
-| `scenarios[].id` | Matches a `samples[].scenarios[].id` in the manifest |
-| `scenarios[].source` | Repository-relative path to the snippet bundle the content was parsed from |
-| `scenarios[].xaml`, `.code` | The snippet's `--- xaml` and `--- c#` sections, verbatim |
+| `source` | Fixed as `"gallery"` — the identifier the consumer already uses for this repository |
+| `controls[].id` | The lowercased `UniqueId`. The contract scopes ids to a source, so `"button"` is unambiguous without repeating the repository in it |
+| `controls[].name`, `.description`, `.details`, `.apiNamespace`, `.docs` | `Title`, `Subtitle`, `Description`, `ApiNamespace`, `Docs` on the matching `ControlInfoData.json` item |
+| `controls[].relatedControls` | `RelatedControls`, as display names — the contract asks for names here, not ids |
+| `controls[].curatedKeywords` | `Tags` plus any `Catalog.Aliases`. Both are written by the sample's own author, and the contract has one slot for author-written terms, which consumers weigh above derived ones |
+| `controls[].keywords` | `BaseClasses`, as supplementary derived search terms |
+| `controls[].xmlnsImports` | The namespace declarations the control's samples actually use, resolved against its page's own `xmlns` attributes. Hoisted here only when every sample needs the same set; otherwise each sample carries its own. A prefix the page itself does not declare — a snippet using `local:` to mean "your namespace" — is omitted rather than invented, since a guessed URI would look authoritative and not compile |
+| `controls[].samples[]` | One entry per `controls:ControlExample` whose `SampleDefinition="..."` names a snippet file that exists next to the page, in page order |
+| `controls[].samples[].header` | The snippet's `--- header` section, as shown above the scenario in the app; falls back to a name derived from the snippet file name |
+| `controls[].samples[].xaml`, `.code` | The snippet's `--- xaml` and `--- c#` sections, with `$(Token)` placeholders resolved |
+| `controls[].samples[].language` | `"csharp"` whenever `code` is present; the only value contract version 1 accepts |
+| `controls[].gallery`, `samples[].gallery` | Gallery-specific provenance: `uniqueId`, `group`, page and snippet paths, badges, base classes, and source-qualified related-sample ids |
 
 ### Snippet bundles, and staying faithful to what the app renders
 
@@ -102,73 +68,56 @@ Built-in styles applied to Button.
 <Button Style="{StaticResource AccentButtonStyle}" Content="Accent style button"/>
 ```
 
-The exporter parses these with `SampleBundleParser`, which deliberately mirrors
-`ControlExample.ParseSampleCodeSections` in
-[`WinUIGallery/Controls/ControlExample.xaml.cs`](../WinUIGallery/Controls/ControlExample.xaml.cs) -
-the source of truth for the format. The catalog's promise is "this is the code the gallery shows
-for this scenario", so if the two parsers diverge the catalog silently publishes something users
-never see. `SampleBundleParserTests` pins the rules that are easiest to get subtly wrong (the
-marker is `"--- "` including the trailing space; section content is trimmed; unknown sections are
-ignored). **Keep the two parsers in sync.**
+The exporter parses these with `SampleBundleParser`, which deliberately mirrors `ControlExample.ParseSampleCodeSections` in [`WinUIGallery/Controls/ControlExample.xaml.cs`](../WinUIGallery/Controls/ControlExample.xaml.cs) — the source of truth for the format. The index's promise is "this is the code the gallery shows for this scenario", so if the two parsers diverge it silently publishes something users never see. `SampleBundleParserTests` pins the rules that are easiest to get subtly wrong: the marker is `"--- "` including the trailing space, section content is trimmed, and unknown sections are ignored. **Keep the two parsers in sync.**
+
+Every scenario supplies its code this way. That is enforced, not merely conventional: `RealRepository_NoSampleUsesInlineControlExampleCode` fails if any page reintroduces inline `<ControlExample.Xaml>` or `<ControlExample.CSharp>` markup. Inline code renders correctly in the gallery but is invisible to the exporter, so it would otherwise go missing from the index with no visible symptom.
 
 ### `$(Token)` placeholders
 
-A page can pair a snippet with `ControlExampleSubstitution` entries that bind a token to one of the interactive option controls, so the code updates as the reader changes a slider or a dropdown. Published verbatim, a token like `$(Spacing)` would leave the snippet invalid and impossible to paste into a project.
+A page can pair a snippet with `ControlExampleSubstitution` entries that bind a token to one of the interactive option controls, so the code updates as the reader changes a slider or a dropdown. Published verbatim, a token like `$(Spacing)` would leave the snippet impossible to paste into a project — and a token that stands in for a whole attribute, such as `$(IsEnabled)`, would leave the XAML unparseable and therefore discarded entirely.
 
-The exporter therefore resolves each token to the value its control starts with, which is exactly what the gallery renders when the page first loads. Resolution is deliberately conservative and only reads what the markup actually states: a literal `Value`, an initial attribute on the bound control, or the item a selector explicitly marks as selected. A token is left exactly as written whenever its value depends on running code — a converter function such as `BoolToLowerString(x.IsOn)`, a control that declares no initial value and relies on a framework default, or an `IsEnabled` condition that cannot be settled statically. Publishing a value the gallery does not show would be worse than publishing none, so an unresolved token is the intended fallback rather than a failure.
+The exporter resolves each token to the value its control starts with, which is exactly what the gallery renders when the page first loads. Resolution is deliberately conservative and reads only what the markup actually states: a literal `Value`, an initial attribute on the bound control, the item a selector explicitly marks as selected, or a gate on a boolean whose documented default is false (`IsChecked`, `IsOn`, `IsSticky`, `IsOpen`) that the markup never sets. That last rule is an explicit short list rather than a general "unset means false", because `IsEnabled`, `IsTabStop` and `IsHitTestVisible` all default to *true* and a blanket rule would invert them.
 
-A substitution whose `IsEnabled` is false resolves to the empty string, matching `ControlExampleSubstitution.ValueAsString`. Literal values keep their surrounding whitespace, because some snippets rely on a value such as `` IsSticky="True" `` to supply its own separating spaces.
+A token is left exactly as written whenever its value depends on running code — a converter function such as `BoolToLowerString(x.IsOn)`, a selector populated from code-behind, or a control that declares no initial value and relies on a framework default the exporter does not know. Publishing a value the gallery does not show would be worse than publishing none, so an unresolved token is the intended fallback rather than a failure.
 
-`SubstitutionResolverTests` pins these rules, and most of its cases assert that an ambiguous binding is skipped rather than guessed.
+A substitution whose `IsEnabled` resolves to false becomes the empty string, matching `ControlExampleSubstitution.ValueAsString`. Literal values keep their surrounding whitespace, because some snippets rely on a value such as `` IsSticky="True" `` to supply its own separating spaces.
 
-### Scenarios without code
+`SubstitutionResolverTests` pins these rules, and several of its cases assert that an ambiguous binding is skipped rather than guessed.
 
-A scenario appears in the manifest but contributes no entry to the code file when either:
+### Samples that carry no XAML, and scenarios that are left out
 
-- its page sets `SourceCodeVisibility="Collapsed"`, so the gallery deliberately shows no code; or
-- the page swaps `ControlExample.XamlSource` at runtime, so there is no single snippet that
-  represents the scenario.
+The contract requires a sample to carry XAML or code, and its consumer skips any that has neither. Two situations are handled explicitly.
 
-`RealRepository_CodelessScenariosAreTheKnownSet` pins the current set (two scenarios) so this gap stays visible and shrinking it is a deliberate, reviewed change.
+**A scenario with no code at all is omitted from the index.** This happens when a page sets `SourceCodeVisibility="Collapsed"`, so the gallery deliberately shows no code, or when a page swaps `ControlExample.XamlSource` at runtime and no single snippet represents the scenario.
 
-Every other scenario supplies its code through a `SampleDefinition` snippet bundle. That is enforced, not merely conventional: `RealRepository_NoSampleUsesInlineControlExampleCode` fails if any page reintroduces inline `<ControlExample.Xaml>` or `<ControlExample.CSharp>` markup. Inline code renders correctly in the gallery but is invisible to the exporter, so it would otherwise go missing from the catalog without any visible symptom.
+**A snippet whose XAML is not a well-formed fragment keeps its C# and loses its XAML.** Several snippets are written for the gallery's own code viewer, where a human correctly reads `<Window ...>` as "your existing window". That is not parseable XML, and a consumer parses each fragment and discards whatever fails *without reporting it* — so publishing it would advertise code that never arrives. The exporter omits the XAML instead, prints a warning during `generate`, and marks the sample with `gallery.xamlOmittedAsMalformed` so the omission is visible rather than looking like a sample that simply has no XAML.
+
+`RealRepository_SnippetsWithUnpublishableXamlAreTheKnownSet` pins the current set, so a newly broken snippet surfaces as a test failure instead of quietly disappearing. Every snippet in that set still publishes its C#.
 
 ### The optional `Catalog` override block
 
-`ControlInfoData.json` items may include an optional `Catalog` object
-(see `ControlInfoDataSchema.json`) for the rare case where the exporter can't safely derive
-something on its own:
+`ControlInfoData.json` items may include an optional `Catalog` object (see `ControlInfoDataSchema.json`) for the rare case where the exporter can't safely derive something on its own:
 
 ```jsonc
 "Catalog": {
-  "Exclude": false,           // drop this item from the manifest entirely
-  "Aliases": [ "cta" ],       // catalog-only search keywords, additive to Tags
+  "Exclude": false,           // drop this item from the index entirely
+  "Aliases": [ "cta" ],       // extra author-written search keywords, additive to Tags
   "RelatedSamples": [ "owner/other-repo#sample-id" ] // cross-repository related samples
 }
 ```
 
-This block is read only by `tools/CatalogExporter` - the running gallery app never looks at it -
-and is expected to stay rare. `Button` and `ScratchPad` in `ControlInfoData.json` each set
-`Catalog.Aliases` as a small, working example of the mechanism.
+This block is read only by `tools/CatalogExporter` — the running gallery app never looks at it — and is expected to stay rare. `Button` and `ScratchPad` in `ControlInfoData.json` each set `Catalog.Aliases` as a small, working example of the mechanism.
 
-### Inclusion/exclusion rules
+### Inclusion and exclusion rules
 
-An item from `ControlInfoData.json` becomes a catalog entry when, and only when:
+An item from `ControlInfoData.json` becomes a control in the index when, and only when:
 
 1. It has a non-empty `UniqueId` that is unique across the file.
-2. A `WinUIGallery/Samples/<UniqueId>/` folder exists with a case-exact `<UniqueId>Page.xaml` file
-   in it.
+2. A `WinUIGallery/Samples/<UniqueId>/` folder exists with a case-exact `<UniqueId>Page.xaml` file in it.
 3. It does not set `Catalog.Exclude: true`.
 
-Anything else - a missing folder/page, a duplicate id, a `RelatedControls`/`Catalog.RelatedSamples`
-reference that doesn't resolve to an included entry, a `SampleDefinition` snippet that doesn't
-exist on disk, or two scenarios resolving to the same id - fails validation
-(`CatalogValidationException`) rather than being silently skipped or guessed at. All 120 current
-`ControlInfoData.json` items satisfy these rules.
+Anything else — a missing folder or page, a duplicate id, a `RelatedControls`/`Catalog.RelatedSamples` reference that doesn't resolve to an included entry, a `SampleDefinition` snippet that doesn't exist on disk, or two `ControlExample` elements pointing at the same snippet — fails validation (`CatalogValidationException`) rather than being silently skipped or guessed at. All 120 current `ControlInfoData.json` items satisfy these rules.
 
 ### What's intentionally left out
 
-Optional/unknown fields are omitted rather than filled with guesses (for example, `description`,
-`apiNamespace`, `badges`, `relatedSamples`, and `scenarios` are all omitted when the source data
-has nothing to report). The manifest does not pin a commit SHA - it reflects `repository.defaultBranch`
-and is regenerated whenever samples change.
+Optional fields are omitted rather than filled with guesses: `description`, `apiNamespace`, `docs`, `relatedControls` and the rest are absent when the source data has nothing to report. The index does not pin a commit SHA — it reflects the repository's default branch and is regenerated whenever samples change.

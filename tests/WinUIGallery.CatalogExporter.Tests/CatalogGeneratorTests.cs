@@ -118,34 +118,32 @@ public sealed class CatalogGeneratorTests
         WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\SampleOneBasic.txt" />"""), ("SampleOneBasic.txt", Bundle("A basic button.", "<Button/>")));
         WriteSample("SampleTwo", "<Page></Page>");
 
-        CatalogManifest manifest = CatalogGenerator.Generate(Options()).Manifest;
+        SampleIndex index = CatalogGenerator.Generate(Options()).Index;
 
-        Assert.AreEqual(2, manifest.SampleCount);
-        Assert.AreEqual(2, manifest.Samples.Count);
+        Assert.AreEqual(2, index.ControlCount);
+        Assert.AreEqual(2, index.Controls.Count);
 
-        CatalogSample one = manifest.Samples.Single(s => s.UniqueId == "SampleOne");
-        Assert.AreEqual("microsoft/WinUI-Gallery#SampleOne", one.Id);
-        Assert.AreEqual("Sample One", one.Title);
-        Assert.AreEqual("First sample", one.Summary);
-        CollectionAssert.AreEqual(new[] { "alpha" }, one.Tags);
-        CollectionAssert.AreEqual(new[] { "microsoft/WinUI-Gallery#SampleTwo" }, one.RelatedSamples);
-        Assert.IsNotNull(one.Scenarios);
-        Assert.AreEqual(1, one.Scenarios!.Count);
-        Assert.AreEqual("SampleOneBasic.txt", one.Scenarios[0].Snippet);
-        Assert.AreEqual("Basic", one.Scenarios[0].Name);
-        Assert.AreEqual("microsoft/WinUI-Gallery#SampleOne/SampleOneBasic", one.Scenarios[0].Id);
-        Assert.AreEqual("A basic button.", one.Scenarios[0].Description);
+        IndexControl one = index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+        Assert.AreEqual("sampleone", one.Id);
+        Assert.AreEqual("Sample One", one.Name);
+        Assert.AreEqual("First sample", one.Description);
+        CollectionAssert.AreEqual(new[] { "alpha" }, one.CuratedKeywords);
+        CollectionAssert.AreEqual(new[] { "microsoft/WinUI-Gallery#SampleTwo" }, one.Gallery.RelatedSamples);
+        Assert.AreEqual(1, one.Samples.Count);
+        Assert.AreEqual("SampleOneBasic.txt", one.Samples[0].Gallery.Snippet);
+        Assert.AreEqual("Basic", one.Samples[0].Gallery.Name);
+        Assert.AreEqual("A basic button.", one.Samples[0].Header);
+        Assert.AreEqual("<Button/>", one.Samples[0].Xaml);
 
-        CatalogSample two = manifest.Samples.Single(s => s.UniqueId == "SampleTwo");
-        Assert.IsNull(two.Summary, "Optional fields with no source data must be omitted (null), not empty strings.");
-        Assert.IsNull(two.Tags);
-        Assert.IsNull(two.RelatedSamples);
-        Assert.IsNull(two.Scenarios);
-        Assert.IsNull(two.Source.Snippets);
+        IndexControl two = index.Controls.Single(c => c.Gallery.UniqueId == "SampleTwo");
+        Assert.IsNull(two.Description, "Optional fields with no source data must be omitted (null), not empty strings.");
+        Assert.IsNull(two.CuratedKeywords);
+        Assert.IsNull(two.Gallery.RelatedSamples);
+        Assert.AreEqual(0, two.Samples.Count);
     }
 
     [TestMethod]
-    public void Generate_SortsSamplesById()
+    public void Generate_SortsControlsById()
     {
         WriteControlInfoData("""
         {
@@ -164,11 +162,11 @@ public sealed class CatalogGeneratorTests
         WriteSample("Zebra", "<Page></Page>");
         WriteSample("Apple", "<Page></Page>");
 
-        CatalogManifest manifest = CatalogGenerator.Generate(Options()).Manifest;
+        SampleIndex index = CatalogGenerator.Generate(Options()).Index;
 
         CollectionAssert.AreEqual(
-            new[] { "microsoft/WinUI-Gallery#Apple", "microsoft/WinUI-Gallery#Zebra" },
-            manifest.Samples.Select(s => s.Id).ToArray());
+            new[] { "apple", "zebra" },
+            index.Controls.Select(c => c.Id).ToArray());
     }
 
     [TestMethod]
@@ -178,12 +176,12 @@ public sealed class CatalogGeneratorTests
         WriteSample("SampleOne", "<Page></Page>");
         WriteSample("SampleTwo", "<Page></Page>");
 
-        string first = CatalogGenerator.Serialize(CatalogGenerator.Generate(Options()).Manifest);
-        string second = CatalogGenerator.Serialize(CatalogGenerator.Generate(Options()).Manifest);
+        string first = CatalogGenerator.Serialize(CatalogGenerator.Generate(Options()).Index);
+        string second = CatalogGenerator.Serialize(CatalogGenerator.Generate(Options()).Index);
 
         Assert.AreEqual(first, second);
         StringAssert.EndsWith(first, "\n");
-        Assert.IsFalse(first.Contains('\r'), "Serialized manifest must use LF line endings only.");
+        Assert.IsFalse(first.Contains('\r'), "Serialized index must use LF line endings only.");
     }
 
     [TestMethod]
@@ -314,14 +312,14 @@ public sealed class CatalogGeneratorTests
         // "Hidden" has no on-disk folder at all: Exclude must short-circuit before folder validation.
         WriteSample("Visible", "<Page></Page>");
 
-        CatalogManifest manifest = CatalogGenerator.Generate(Options()).Manifest;
+        SampleIndex index = CatalogGenerator.Generate(Options()).Index;
 
-        Assert.AreEqual(1, manifest.SampleCount);
-        Assert.AreEqual("Visible", manifest.Samples.Single().UniqueId);
+        Assert.AreEqual(1, index.ControlCount);
+        Assert.AreEqual("Visible", index.Controls.Single().Gallery.UniqueId);
     }
 
     [TestMethod]
-    public void Generate_MergesCatalogAliasesAndRelatedSamples()
+    public void Generate_MergesCatalogAliasesIntoCuratedKeywordsAndKeepsRelatedSamples()
     {
         WriteControlInfoData(TwoItemDocument("""
             ,
@@ -333,11 +331,12 @@ public sealed class CatalogGeneratorTests
         WriteSample("SampleOne", "<Page></Page>");
         WriteSample("SampleTwo", "<Page></Page>");
 
-        CatalogSample one = CatalogGenerator.Generate(Options()).Manifest.Samples.Single(s => s.UniqueId == "SampleOne");
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
 
-        CollectionAssert.AreEqual(new[] { "shortcut" }, one.Aliases);
+        // Tags and aliases are both author-written, and the contract has a single slot for those.
+        CollectionAssert.AreEqual(new[] { "alpha", "shortcut" }, one.CuratedKeywords);
         CollectionAssert.AreEqual(
             new[] { "microsoft/WinUI-Gallery#SampleTwo", "other/repo#thing" },
-            one.RelatedSamples);
+            one.Gallery.RelatedSamples);
     }
 }

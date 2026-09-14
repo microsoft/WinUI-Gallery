@@ -6,151 +6,184 @@ using System.Text.Json.Serialization;
 namespace WinUIGallery.CatalogExporter;
 
 /// <summary>
-/// Root document for catalog/windows-samples.json. See catalog/windows-samples.schema.json for
-/// the formal JSON Schema contract and catalog/README.md for how source metadata maps here.
+/// Root document for catalog/windows-samples.json.
+///
+/// The shape is not this repository's invention: it is the published "WinUI sample index" contract
+/// defined by microsoft/winappCli (see <see cref="Schema"/>), which already has a working consumer
+/// and a second publisher (microsoft-ui-reactor). Emitting that contract directly is what lets a
+/// tool read this file without writing a WinUI-Gallery-specific parser, and is also why the code
+/// is inline here rather than in a sibling file: the contract is built around a consumer making a
+/// single HTTP request.
+///
+/// The contract allows additional properties, so gallery-specific provenance it has no slot for is
+/// carried under a <c>gallery</c> object on each control and sample. It is grouped rather than
+/// scattered so a reader can tell at a glance which fields are the shared contract and which are
+/// ours.
 /// </summary>
-internal sealed class CatalogManifest
+internal sealed class SampleIndex
 {
     [JsonPropertyName("$schema")]
-    public string Schema { get; set; } = "./windows-samples.schema.json";
+    public string Schema { get; set; } = "https://raw.githubusercontent.com/microsoft/winappCli/main/docs/winui-sample-index.schema.json";
+
+    /// <summary>Contract version. Version 1 is the only value the schema accepts.</summary>
     public int SchemaVersion { get; set; } = 1;
-    public CatalogGeneratorInfo Generator { get; set; } = new();
-    public CatalogRepository Repository { get; set; } = new();
-    public CatalogDefaults Defaults { get; set; } = new();
-    public int SampleCount { get; set; }
-    public List<CatalogSample> Samples { get; set; } = [];
+
+    /// <summary>
+    /// Identifies the publisher to consumers. "gallery" is the value winappCli already uses for
+    /// this repository, so it is fixed rather than derived from the repository name.
+    /// </summary>
+    public string Source { get; set; } = "gallery";
+
+    /// <summary>
+    /// Gallery-specific provenance. Deliberately carries no timestamp: the file is committed and
+    /// CI re-runs the generator to check it is current, so a generation time would make every run
+    /// differ and turn that check into constant churn.
+    /// </summary>
+    public IndexGeneratorInfo Generator { get; set; } = new();
+
+    public int ControlCount { get; set; }
+
+    public List<IndexControl> Controls { get; set; } = [];
 }
 
-internal sealed class CatalogGeneratorInfo
+internal sealed class IndexGeneratorInfo
 {
     public string Tool { get; set; } = "tools/CatalogExporter";
     public string Command { get; set; } = "dotnet run --project tools/CatalogExporter -- generate";
-}
-
-/// <summary>
-/// Repository-level provenance. Intentionally does not pin a commit SHA: the manifest describes
-/// the state of the repository's default branch and is regenerated whenever samples change,
-/// rather than being tied to an ever-changing hash.
-/// </summary>
-internal sealed class CatalogRepository
-{
-    public string Id { get; set; } = string.Empty;
-    public string Owner { get; set; } = string.Empty;
-    public string Name { get; set; } = string.Empty;
-    public string Url { get; set; } = string.Empty;
+    public string Repository { get; set; } = string.Empty;
     public string DefaultBranch { get; set; } = string.Empty;
-    public string License { get; set; } = string.Empty;
-}
-
-/// <summary>
-/// Facts shared by every sample in this repository so they are not repeated on each entry.
-/// </summary>
-internal sealed class CatalogDefaults
-{
-    public string Language { get; set; } = "C#";
-    public string Framework { get; set; } = "WinUI 3";
-    public string Platform { get; set; } = "Windows App SDK";
     public string License { get; set; } = "MIT";
-    public string Kind { get; set; } = "embedded-gallery-page";
 }
 
-internal sealed class CatalogSample
-{
-    /// <summary>Source-qualified, collision-safe id: "{owner}/{repo}#{uniqueId}".</summary>
-    public string Id { get; set; } = string.Empty;
-
-    /// <summary>Original WinUI Gallery UniqueId from ControlInfoData.json.</summary>
-    public string UniqueId { get; set; } = string.Empty;
-
-    public string Title { get; set; } = string.Empty;
-    public CatalogGroupRef Group { get; set; } = new();
-    public string? Summary { get; set; }
-    public string? Description { get; set; }
-    public string? ApiNamespace { get; set; }
-    public List<string>? BaseClasses { get; set; }
-    public List<string>? Tags { get; set; }
-    public List<string>? Aliases { get; set; }
-    public List<string>? RelatedSamples { get; set; }
-    public List<CatalogDocLink>? Docs { get; set; }
-    public List<string>? Badges { get; set; }
-    public CatalogSource Source { get; set; } = new();
-    public List<CatalogScenario>? Scenarios { get; set; }
-}
-
-internal sealed class CatalogGroupRef
-{
-    public string Id { get; set; } = string.Empty;
-    public string Title { get; set; } = string.Empty;
-}
-
-internal sealed class CatalogDocLink
-{
-    public string Title { get; set; } = string.Empty;
-    public string Uri { get; set; } = string.Empty;
-}
-
-/// <summary>Repository-relative source locations for this sample (embedded gallery page).</summary>
-internal sealed class CatalogSource
-{
-    public string Root { get; set; } = string.Empty;
-    public string Page { get; set; } = string.Empty;
-    public string? CodeBehind { get; set; }
-    public List<string>? Snippets { get; set; }
-}
-
-/// <summary>
-/// A single interactive scenario within the sample page, derived from a
-/// controls:ControlExample element's SampleDefinition attribute.
-/// </summary>
-internal sealed class CatalogScenario
+/// <summary>One gallery sample page, expressed as a control in the shared contract.</summary>
+internal sealed class IndexControl
 {
     /// <summary>
-    /// Stable, source-qualified id: "{owner}/{repo}#{uniqueId}/{snippetFileNameWithoutExtension}".
-    /// Derived from the snippet file name rather than the scenario's position in the page, so
-    /// inserting or reordering scenarios never renumbers the others. This is also the join key
-    /// into catalog/windows-samples.code.json.
+    /// Lowercased <see cref="IndexControlGallery.UniqueId"/>. The contract scopes ids to a source
+    /// rather than globally, and the consumer builds per-sample ids as "{id}-{n}", so a short
+    /// URL-safe token is used here instead of an "owner/repo#Name" form.
     /// </summary>
     public string Id { get; set; } = string.Empty;
 
     public string Name { get; set; } = string.Empty;
 
-    /// <summary>Prose from the bundle's "--- header" section, as shown above the scenario.</summary>
+    /// <summary>One-line summary (ControlInfoData Subtitle).</summary>
     public string? Description { get; set; }
 
-    public string Snippet { get; set; } = string.Empty;
+    /// <summary>Long-form prose (ControlInfoData Description).</summary>
+    public string? Details { get; set; }
+
+    public string? ApiNamespace { get; set; }
+
+    /// <summary>Display names of related controls, per the contract — not source-qualified ids.</summary>
+    public List<string>? RelatedControls { get; set; }
+
+    /// <summary>
+    /// Namespace declarations shared by every sample below. A sample needing a different set
+    /// carries its own; the contract treats this as the default for the ones that do not.
+    /// </summary>
+    public List<string>? XmlnsImports { get; set; }
+
+    /// <summary>Supplementary, derived search terms.</summary>
+    public List<string>? Keywords { get; set; }
+
+    /// <summary>
+    /// Search terms written by the sample's own author in ControlInfoData.json. Kept separate from
+    /// <see cref="Keywords"/> because the consumer weighs first-hand terms more heavily.
+    /// </summary>
+    public List<string>? CuratedKeywords { get; set; }
+
+    public List<IndexDocLink>? Docs { get; set; }
+
+    public IndexControlGallery Gallery { get; set; } = new();
+
+    /// <summary>
+    /// The control's samples in page order — the order a visitor sees them in the gallery.
+    /// Ordering is significant: the consumer numbers samples positionally, so appending a
+    /// ControlExample is safe while reordering renumbers the ones after it.
+    /// </summary>
+    public List<IndexSample> Samples { get; set; } = [];
+}
+
+/// <summary>Gallery-specific provenance that the shared contract has no field for.</summary>
+internal sealed class IndexControlGallery
+{
+    /// <summary>Original WinUI Gallery UniqueId from ControlInfoData.json.</summary>
+    public string UniqueId { get; set; } = string.Empty;
+
+    public IndexGroupRef Group { get; set; } = new();
+
+    /// <summary>Repository-relative path to the sample page.</summary>
+    public string Page { get; set; } = string.Empty;
+
+    public string? CodeBehind { get; set; }
+
+    public List<string>? BaseClasses { get; set; }
+
+    /// <summary>"New", "Updated" and/or "Preview", as shown on the gallery's home page.</summary>
+    public List<string>? Badges { get; set; }
+
+    /// <summary>Source-qualified ids of related samples, for callers that need to resolve links.</summary>
+    public List<string>? RelatedSamples { get; set; }
+}
+
+internal sealed class IndexGroupRef
+{
+    public string Id { get; set; } = string.Empty;
+    public string Title { get; set; } = string.Empty;
+}
+
+internal sealed class IndexDocLink
+{
+    public string Title { get; set; } = string.Empty;
+    public string Uri { get; set; } = string.Empty;
 }
 
 /// <summary>
-/// Root document for catalog/windows-samples.code.json - the scenario source that
-/// catalog/windows-samples.json deliberately does not inline.
-///
-/// The split exists because the two files have different audiences: the manifest is metadata that
-/// gets imported into the federated windows-samples catalog (which carries no code), while this
-/// file exists for consumers that want the code without cloning the repository or making one
-/// request per snippet. Both are produced by a single generator pass so they cannot drift.
+/// One scenario from a page, expressed as a sample in the shared contract. The contract requires
+/// at least one of <see cref="Xaml"/> or <see cref="Code"/> to be present and non-empty, so a
+/// scenario with neither is left out of the index entirely.
 /// </summary>
-internal sealed class CatalogCodeManifest
+internal sealed class IndexSample
 {
-    [JsonPropertyName("$schema")]
-    public string Schema { get; set; } = "./windows-samples.code.schema.json";
-    public int SchemaVersion { get; set; } = 1;
-    public CatalogGeneratorInfo Generator { get; set; } = new();
+    public string? Header { get; set; }
 
-    /// <summary>Relative path to the manifest whose scenario ids this file is keyed by.</summary>
-    public string Manifest { get; set; } = "./windows-samples.json";
+    /// <summary>
+    /// XAML as the gallery renders it on load, with $(Token) substitutions already applied.
+    /// Omitted when the snippet is not a well-formed XML fragment, because the consumer validates
+    /// this and silently discards whatever fails — so publishing it would advertise code that
+    /// never actually arrives.
+    /// </summary>
+    public string? Xaml { get; set; }
 
-    public int ScenarioCount { get; set; }
-    public List<CatalogScenarioCode> Scenarios { get; set; } = [];
+    public string? Code { get; set; }
+
+    /// <summary>Set to "csharp" whenever <see cref="Code"/> is present; the only value version 1 accepts.</summary>
+    public string? Language { get; set; }
+
+    public List<string>? XmlnsImports { get; set; }
+
+    public IndexSampleGallery Gallery { get; set; } = new();
 }
 
-/// <summary>The XAML and/or C# for one scenario, keyed by the manifest's scenario id.</summary>
-internal sealed class CatalogScenarioCode
+internal sealed class IndexSampleGallery
 {
-    public string Id { get; set; } = string.Empty;
+    /// <summary>
+    /// Snippet file name. Unlike the sample's position, this survives insertion and reordering, so
+    /// it is the stable way to refer to one scenario across regenerations.
+    /// </summary>
+    public string Snippet { get; set; } = string.Empty;
 
     /// <summary>Repository-relative path to the bundle this content was parsed from.</summary>
     public string Source { get; set; } = string.Empty;
 
-    public string? Xaml { get; set; }
-    public string? Code { get; set; }
+    /// <summary>Name derived from the snippet file name, used when the bundle declares no header.</summary>
+    public string Name { get; set; } = string.Empty;
+
+    /// <summary>
+    /// True when the snippet's XAML was left out because it is not a well-formed fragment. Kept in
+    /// the index so the omission is visible to a reader rather than looking like a sample that
+    /// simply has no XAML.
+    /// </summary>
+    public bool? XamlOmittedAsMalformed { get; set; }
 }

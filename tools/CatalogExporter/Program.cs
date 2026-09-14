@@ -4,20 +4,19 @@
 namespace WinUIGallery.CatalogExporter;
 
 /// <summary>
-/// Regenerates or verifies the generated catalog files.
+/// Regenerates or verifies the generated sample index.
 ///
 /// Usage:
 ///   dotnet run --project tools/CatalogExporter -- generate [--repo-root &lt;path&gt;]
 ///   dotnet run --project tools/CatalogExporter -- check [--repo-root &lt;path&gt;]
 ///
-/// "generate" writes catalog/windows-samples.json and catalog/windows-samples.code.json.
-/// "check" regenerates both in memory and fails (non-zero exit code) if either committed file is
-/// stale or missing, without modifying anything on disk.
+/// "generate" writes catalog/windows-samples.json. "check" regenerates it in memory and fails
+/// (non-zero exit code) if the committed file is stale or missing, without modifying anything on
+/// disk.
 /// </summary>
 internal static class Program
 {
-    private const string ManifestRelativePath = "catalog/windows-samples.json";
-    private const string CodeRelativePath = "catalog/windows-samples.code.json";
+    private const string IndexRelativePath = "catalog/windows-samples.json";
 
     private static int Main(string[] args)
     {
@@ -43,50 +42,38 @@ internal static class Program
             return 1;
         }
 
-        (string Path, string Content)[] outputs =
-        [
-            (ManifestRelativePath, CatalogGenerator.Serialize(result.Manifest)),
-            (CodeRelativePath, CatalogGenerator.Serialize(result.Code)),
-        ];
+        string content = CatalogGenerator.Serialize(result.Index);
+        string absolutePath = Absolute(repoRoot, IndexRelativePath);
+        int sampleCount = result.Index.Controls.Sum(c => c.Samples.Count);
+
+        foreach (CatalogIssue warning in result.Warnings)
+        {
+            Console.WriteLine($"warning: {warning}");
+        }
 
         if (command == "generate")
         {
-            foreach ((string relativePath, string content) in outputs)
-            {
-                string absolutePath = Absolute(repoRoot, relativePath);
-                Directory.CreateDirectory(Path.GetDirectoryName(absolutePath)!);
-                File.WriteAllText(absolutePath, content);
-            }
+            Directory.CreateDirectory(Path.GetDirectoryName(absolutePath)!);
+            File.WriteAllText(absolutePath, content);
 
-            Console.WriteLine($"Wrote {result.Manifest.SampleCount} samples to {ManifestRelativePath} and {result.Code.ScenarioCount} scenarios to {CodeRelativePath}.");
+            Console.WriteLine($"Wrote {result.Index.ControlCount} controls and {sampleCount} samples to {IndexRelativePath}.");
             return 0;
         }
 
         // command == "check"
-        bool stale = false;
-        foreach ((string relativePath, string content) in outputs)
+        if (!File.Exists(absolutePath))
         {
-            string absolutePath = Absolute(repoRoot, relativePath);
-            if (!File.Exists(absolutePath))
-            {
-                Console.Error.WriteLine($"{relativePath} does not exist. Run 'generate' and commit the result.");
-                stale = true;
-                continue;
-            }
-
-            if (File.ReadAllText(absolutePath).Replace("\r\n", "\n") != content)
-            {
-                Console.Error.WriteLine($"{relativePath} is stale. Run 'dotnet run --project tools/CatalogExporter -- generate' and commit the result.");
-                stale = true;
-            }
-        }
-
-        if (stale)
-        {
+            Console.Error.WriteLine($"{IndexRelativePath} does not exist. Run 'generate' and commit the result.");
             return 1;
         }
 
-        Console.WriteLine($"Catalog is up to date ({result.Manifest.SampleCount} samples, {result.Code.ScenarioCount} scenarios).");
+        if (File.ReadAllText(absolutePath).Replace("\r\n", "\n") != content)
+        {
+            Console.Error.WriteLine($"{IndexRelativePath} is stale. Run 'dotnet run --project tools/CatalogExporter -- generate' and commit the result.");
+            return 1;
+        }
+
+        Console.WriteLine($"Index is up to date ({result.Index.ControlCount} controls, {sampleCount} samples).");
         return 0;
     }
 
