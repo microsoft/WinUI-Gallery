@@ -3,7 +3,6 @@
 
 using Microsoft.Windows.Storage;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.Tracing;
 using System.IO;
@@ -360,20 +359,6 @@ internal sealed class TelemetryService
 
 internal sealed class CrashTelemetryRecord
 {
-    private const int MaximumStackFrames = 32;
-    private const int MaximumStackTraceLength = 8192;
-    private static readonly string[] AllowedStackFramePrefixes =
-    [
-        "WinUIGallery.",
-        "Microsoft.UI.",
-        "Microsoft.Windows.",
-        "Windows.",
-        "WinRT.",
-        "ABI.Microsoft.UI.",
-        "ABI.Microsoft.Windows.",
-        "ABI.Windows.",
-    ];
-
     public DateTime CrashTimeUtc { get; set; }
 
     public string SampleId { get; set; } = string.Empty;
@@ -400,46 +385,9 @@ internal sealed class CrashTelemetryRecord
             SampleId = sampleId ?? string.Empty,
             ExceptionType = exception.GetType().FullName ?? exception.GetType().Name,
             HResult = exception.HResult,
-            StackTrace = SanitizeStackTrace(exception.StackTrace),
+            StackTrace = exception.StackTrace ?? string.Empty,
             AppVersion = appVersion
         };
-    }
-
-    internal static string SanitizeStackTrace(string? stackTrace)
-    {
-        if (string.IsNullOrEmpty(stackTrace))
-        {
-            return string.Empty;
-        }
-
-        IEnumerable<string> frames = stackTrace
-            .Split(["\r\n", "\n"], StringSplitOptions.RemoveEmptyEntries)
-            .Where(IsAllowedStackFrame)
-            .Take(MaximumStackFrames)
-            .Select(RemoveSourceLocation);
-
-        string sanitizedStackTrace = string.Join(Environment.NewLine, frames);
-        return sanitizedStackTrace.Length <= MaximumStackTraceLength
-            ? sanitizedStackTrace
-            : sanitizedStackTrace[..MaximumStackTraceLength];
-    }
-
-    private static bool IsAllowedStackFrame(string frame)
-    {
-        string methodName = frame.TrimStart();
-        if (methodName.StartsWith("at ", StringComparison.Ordinal))
-        {
-            methodName = methodName[3..];
-        }
-
-        return AllowedStackFramePrefixes.Any(prefix =>
-            methodName.StartsWith(prefix, StringComparison.Ordinal));
-    }
-
-    private static string RemoveSourceLocation(string frame)
-    {
-        int sourceLocationIndex = frame.IndexOf(" in ", StringComparison.Ordinal);
-        return sourceLocationIndex >= 0 ? frame[..sourceLocationIndex] : frame;
     }
 }
 

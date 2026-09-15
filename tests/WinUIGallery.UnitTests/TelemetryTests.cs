@@ -124,7 +124,7 @@ public class TelemetryTests
     }
 
     [TestMethod]
-    public void CrashRecordSanitizesStackTraceAndOmitsMessage()
+    public void CrashRecordCapturesStackTraceAndOmitsMessage()
     {
         InvalidOperationException exception = CaptureException();
 
@@ -137,37 +137,8 @@ public class TelemetryTests
         Assert.AreEqual("Button", crash.SampleId);
         Assert.AreEqual(typeof(InvalidOperationException).FullName, crash.ExceptionType);
         Assert.AreEqual(exception.HResult, crash.HResult);
-        StringAssert.Contains(crash.StackTrace, nameof(ThrowCrashForTest));
-        Assert.IsFalse(crash.StackTrace.Contains("TelemetryTests.cs", StringComparison.Ordinal));
+        Assert.AreEqual(exception.StackTrace, crash.StackTrace);
         Assert.IsFalse(crash.StackTrace.Contains(exception.Message, StringComparison.Ordinal));
-    }
-
-    [TestMethod]
-    public void CrashRecordKeepsWinUIAndWindowsAppSdkFrames()
-    {
-        string stackTrace = string.Join(
-            Environment.NewLine,
-            @"   at WinUIGallery.Pages.ItemPage.Load() in E:\src\ItemPage.cs:line 10",
-            @"   at Microsoft.UI.Xaml.Controls.Frame.Navigate() in E:\src\Frame.cs:line 20",
-            @"   at Microsoft.Windows.AppLifecycle.AppInstance.GetCurrent()",
-            @"   at Windows.Foundation.Metadata.ApiInformation.IsTypePresent(String typeName)",
-            @"   at WinRT.ExceptionHelpers.ThrowExceptionForHR(Int32 hr)",
-            @"   at ABI.Microsoft.UI.Xaml.IApplicationStaticsMethods.Start()",
-            @"   at ABI.Windows.Foundation.IAsyncActionMethods.GetResults()",
-            @"   at Contoso.Library.Run() in C:\Users\someone\Contoso.cs:line 30");
-
-        string sanitized = CrashTelemetryRecord.SanitizeStackTrace(stackTrace);
-
-        StringAssert.Contains(sanitized, "WinUIGallery.Pages.ItemPage.Load()");
-        StringAssert.Contains(sanitized, "Microsoft.UI.Xaml.Controls.Frame.Navigate()");
-        StringAssert.Contains(sanitized, "Microsoft.Windows.AppLifecycle.AppInstance.GetCurrent()");
-        StringAssert.Contains(sanitized, "Windows.Foundation.Metadata.ApiInformation.IsTypePresent");
-        StringAssert.Contains(sanitized, "WinRT.ExceptionHelpers.ThrowExceptionForHR");
-        StringAssert.Contains(sanitized, "ABI.Microsoft.UI.Xaml.IApplicationStaticsMethods.Start()");
-        StringAssert.Contains(sanitized, "ABI.Windows.Foundation.IAsyncActionMethods.GetResults()");
-        Assert.IsFalse(sanitized.Contains("Contoso.Library", StringComparison.Ordinal));
-        Assert.IsFalse(sanitized.Contains(@"E:\src", StringComparison.Ordinal));
-        Assert.IsFalse(sanitized.Contains(@"C:\Users", StringComparison.Ordinal));
     }
 
     [TestMethod]
