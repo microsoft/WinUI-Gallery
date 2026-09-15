@@ -70,6 +70,7 @@ public sealed class ManifestUpToDateTests
         CatalogGenerationResult result = CatalogGenerator.Generate(new CatalogGenerationOptions { RepoRoot = RepoRoot });
 
         string[] actual = result.Warnings
+            .Where(w => w.Message.Contains("was omitted", StringComparison.Ordinal))
             .Select(w => $"{w.UniqueId}: '{w.Message.Split('\'')[1]}'")
             .OrderBy(w => w, StringComparer.Ordinal)
             .ToArray();
@@ -79,6 +80,62 @@ public sealed class ManifestUpToDateTests
             actual,
             "The set of snippets whose XAML cannot be published changed. Each omitted snippet is a sample a "
                 + "consumer cannot paste, so confirm the change is intentional before updating this list.");
+    }
+
+    /// <summary>
+    /// The index's central promise: every fragment it publishes can be pasted as-is.
+    ///
+    /// This is asserted as a property rather than pinned as a list on purpose. A new sample that
+    /// introduces an unresolvable $(Token) needs no test update — the fallback drops the attribute
+    /// carrying it and this test keeps passing — but any change that let a placeholder reach the
+    /// index fails here, whichever control it came from.
+    /// </summary>
+    [TestMethod]
+    public void RealRepository_NoPublishedXamlContainsAPlaceholder()
+    {
+        CatalogGenerationResult result = CatalogGenerator.Generate(new CatalogGenerationOptions { RepoRoot = RepoRoot });
+
+        List<string> offenders =
+        [
+            .. from control in result.Index.Controls
+               from sample in control.Samples
+               where TokenFallback.ContainsToken(sample.Xaml)
+               select $"{control.Id}/{sample.Gallery.Snippet}: {string.Join(", ", TokenFallback.TokenNames(sample.Xaml!))}"
+        ];
+
+        Assert.AreEqual(
+            0,
+            offenders.Count,
+            "Published XAML must never contain a $(Token). Offending samples:\n" + string.Join('\n', offenders));
+    }
+
+    /// <summary>
+    /// Dropping the attribute that carried a placeholder must degrade a sample, never delete it. A
+    /// removal that emptied a fragment would cost the sample its XAML, which is the outcome the
+    /// fallback exists to avoid.
+    /// </summary>
+    [TestMethod]
+    public void RealRepository_SamplesWithDroppedPlaceholders_StillPublishTheirXaml()
+    {
+        CatalogGenerationResult result = CatalogGenerator.Generate(new CatalogGenerationOptions { RepoRoot = RepoRoot });
+
+        List<IndexSample> withDrops =
+        [
+            .. from control in result.Index.Controls
+               from sample in control.Samples
+               where sample.Gallery.XamlPlaceholdersDropped is { Count: > 0 }
+               select sample
+        ];
+
+        Assert.IsTrue(withDrops.Count > 0, "Expected at least one sample to exercise the placeholder fallback.");
+
+        foreach (IndexSample sample in withDrops)
+        {
+            Assert.IsNotNull(sample.Xaml, $"'{sample.Gallery.Snippet}' lost its XAML entirely to placeholder removal.");
+            Assert.IsTrue(
+                XamlFragment.IsWellFormed(sample.Xaml!),
+                $"'{sample.Gallery.Snippet}' stopped parsing after placeholder removal.");
+        }
     }
 
     [TestMethod]

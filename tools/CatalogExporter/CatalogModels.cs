@@ -157,6 +157,8 @@ internal sealed class IndexSample
 
     /// <summary>
     /// XAML as the gallery renders it on load, with $(Token) substitutions already applied.
+    /// Guaranteed to contain no unresolved placeholder: anything the resolver declined to settle has
+    /// had its attribute removed, so the fragment is always pasteable as published.
     /// Omitted when the snippet is not a well-formed XML fragment, because the consumer validates
     /// this and silently discards whatever fails — so publishing it would advertise code that
     /// never actually arrives.
@@ -193,4 +195,12 @@ internal sealed class IndexSampleGallery
     /// simply has no XAML.
     /// </summary>
     public bool? XamlOmittedAsMalformed { get; set; }
+
+    /// <summary>
+    /// Attributes dropped from the XAML because they carried a $(Token) the resolver could not
+    /// settle. The property falls back to its own default, which is what the gallery shows in this
+    /// situation anyway, but the names are published so the omission is inspectable rather than
+    /// invisible.
+    /// </summary>
+    public List<string>? XamlPlaceholdersDropped { get; set; }
 }

@@ -364,26 +364,35 @@
         },
         {
           "header": "Custom acrylic in-app brush.",
-          "xaml": "\u003CRectangle Fill=\u0022{ThemeResource CustomAcrylicInAppBrush}\u0022 /\u003E\n\n\u003CResourceDictionary x:Key=\u0022Default\u0022\u003E\n    \u003Cmedia:AcrylicBrush x:Key=\u0022CustomAcrylicBrush\u0022 \n            TintOpacity=\u0022$(OpacitySlider)\u0022 TintColor=\u0022$(TintColor)\u0022 FallbackColor=\u0022$(FallbackColor)\u0022 /\u003E\n\u003C/ResourceDictionary\u003E",
+          "xaml": "\u003CRectangle Fill=\u0022{ThemeResource CustomAcrylicInAppBrush}\u0022 /\u003E\n\n\u003CResourceDictionary x:Key=\u0022Default\u0022\u003E\n    \u003Cmedia:AcrylicBrush x:Key=\u0022CustomAcrylicBrush\u0022 /\u003E\n\u003C/ResourceDictionary\u003E",
           "xmlnsImports": [
             "xmlns:media=\u0022using:Microsoft.UI.Xaml.Media\u0022"
           ],
           "gallery": {
             "snippet": "CustomAcrylicAppBrush.txt",
             "source": "WinUIGallery/Samples/Acrylic/CustomAcrylicAppBrush.txt",
-            "name": "Custom Acrylic App Brush"
+            "name": "Custom Acrylic App Brush",
+            "xamlPlaceholdersDropped": [
+              "OpacitySlider",
+              "TintColor",
+              "FallbackColor"
+            ]
           }
         },
         {
           "header": "Luminosity with in-app Acrylic.",
-          "xaml": "\u003CRectangle Fill=\u0022{ThemeResource CustomAcrylicInAppLuminosity}\u0022 /\u003E\n\n\u003CResourceDictionary x:Key=\u0022Default\u0022\u003E\n    \u003Cmedia:AcrylicBrush x:Key=\u0022CustomAcrylicInAppLuminosity\u0022 \n            TintOpacity=\u0022$(OpacitySlider)\u0022 TintLuminosityOpacity=\u0022$(TintLuminositySlider)\u0022 TintColor=\u0022SkyBlue\u0022 FallbackColor=\u0022SkyBlue\u0022 /\u003E\n\u003C/ResourceDictionary\u003E",
+          "xaml": "\u003CRectangle Fill=\u0022{ThemeResource CustomAcrylicInAppLuminosity}\u0022 /\u003E\n\n\u003CResourceDictionary x:Key=\u0022Default\u0022\u003E\n    \u003Cmedia:AcrylicBrush x:Key=\u0022CustomAcrylicInAppLuminosity\u0022 TintColor=\u0022SkyBlue\u0022 FallbackColor=\u0022SkyBlue\u0022 /\u003E\n\u003C/ResourceDictionary\u003E",
           "xmlnsImports": [
             "xmlns:media=\u0022using:Microsoft.UI.Xaml.Media\u0022"
           ],
           "gallery": {
             "snippet": "LuminosityAppAcrylic.txt",
             "source": "WinUIGallery/Samples/Acrylic/LuminosityAppAcrylic.txt",
-            "name": "Luminosity App Acrylic"
+            "name": "Luminosity App Acrylic",
+            "xamlPlaceholdersDropped": [
+              "OpacitySlider",
+              "TintLuminositySlider"
+            ]
           }
         }
       ]
@@ -1647,11 +1656,16 @@
       "samples": [
         {
           "header": "A Border around a TextBlock.",
-          "xaml": "\u003CBorder BorderThickness=\u0022$(BorderThickness)\u0022 BorderBrush=\u0022$(BorderBrush)\u0022 Background=\u0022$(Background)\u0022\u003E\n    \u003CTextBlock Text=\u0022Text inside a border\u0022 FontSize=\u002218\u0022 Foreground=\u0022Black\u0022 /\u003E\n\u003C/Border\u003E",
+          "xaml": "\u003CBorder\u003E\n    \u003CTextBlock Text=\u0022Text inside a border\u0022 FontSize=\u002218\u0022 Foreground=\u0022Black\u0022 /\u003E\n\u003C/Border\u003E",
           "gallery": {
             "snippet": "BorderAroundTextblock.txt",
             "source": "WinUIGallery/Samples/Border/BorderAroundTextblock.txt",
-            "name": "Around Textblock"
+            "name": "Around Textblock",
+            "xamlPlaceholdersDropped": [
+              "BorderThickness",
+              "BorderBrush",
+              "Background"
+            ]
           }
         }
       ]
@@ -1967,11 +1981,15 @@
       "samples": [
         {
           "header": "A basic calendar view.",
-          "xaml": "\u003CCalendarView \n    SelectionMode=\u0022$(SelectionMode)\u0022 \n    IsGroupLabelVisible=\u0022True\u0022\n    IsOutOfScopeEnabled=\u0022True\u0022\n    Language=\u0022$(Language)\u0022\n    CalendarIdentifier=\u0022{x:Bind calendarIdentifier.SelectedValue, Mode=OneWay}\u0022 /\u003E",
+          "xaml": "\u003CCalendarView\n    IsGroupLabelVisible=\u0022True\u0022\n    IsOutOfScopeEnabled=\u0022True\u0022\n    CalendarIdentifier=\u0022{x:Bind calendarIdentifier.SelectedValue, Mode=OneWay}\u0022 /\u003E",
           "gallery": {
             "snippet": "BasicCalendarView.txt",
             "source": "WinUIGallery/Samples/CalendarView/BasicCalendarView.txt",
-            "name": "Basic Calendar View"
+            "name": "Basic Calendar View",
+            "xamlPlaceholdersDropped": [
+              "SelectionMode",
+              "Language"
+            ]
           }
         }
       ]
@@ -2036,11 +2054,16 @@
       "samples": [
         {
           "header": "A Canvas control.",
-          "xaml": "\u003CCanvas Width=\u0022120\u0022 Height=\u0022120\u0022 Background=\u0022Gray\u0022\u003E\n    \u003CRectangle Fill=\u0022Red\u0022 Canvas.Left=\u0022$(Left)\u0022 Canvas.Top=\u0022$(Top)\u0022 Canvas.ZIndex=\u0022$(Z)\u0022 /\u003E\n    \u003CRectangle Fill=\u0022Blue\u0022 Canvas.Left=\u002220\u0022 Canvas.Top=\u002220\u0022 Canvas.ZIndex=\u00221\u0022 /\u003E\n    \u003CRectangle Fill=\u0022Green\u0022 Canvas.Left=\u002240\u0022 Canvas.Top=\u002240\u0022 Canvas.ZIndex=\u00222\u0022 /\u003E\n    \u003CRectangle Fill=\u0022Yellow\u0022 Canvas.Left=\u002260\u0022 Canvas.Top=\u002260\u0022 Canvas.ZIndex=\u00223\u0022 /\u003E\n\u003C/Canvas\u003E",
+          "xaml": "\u003CCanvas Width=\u0022120\u0022 Height=\u0022120\u0022 Background=\u0022Gray\u0022\u003E\n    \u003CRectangle Fill=\u0022Red\u0022 /\u003E\n    \u003CRectangle Fill=\u0022Blue\u0022 Canvas.Left=\u002220\u0022 Canvas.Top=\u002220\u0022 Canvas.ZIndex=\u00221\u0022 /\u003E\n    \u003CRectangle Fill=\u0022Green\u0022 Canvas.Left=\u002240\u0022 Canvas.Top=\u002240\u0022 Canvas.ZIndex=\u00222\u0022 /\u003E\n    \u003CRectangle Fill=\u0022Yellow\u0022 Canvas.Left=\u002260\u0022 Canvas.Top=\u002260\u0022 Canvas.ZIndex=\u00223\u0022 /\u003E\n\u003C/Canvas\u003E",
           "gallery": {
             "snippet": "CanvasControl.txt",
             "source": "WinUIGallery/Samples/Canvas/CanvasControl.txt",
-            "name": "Control"
+            "name": "Control",
+            "xamlPlaceholdersDropped": [
+              "Left",
+              "Top",
+              "Z"
+            ]
           }
         }
       ]
@@ -2405,11 +2428,14 @@
       "samples": [
         {
           "header": "ColorPicker Properties.",
-          "xaml": "\u003CColorPicker\n      ColorSpectrumShape=\u0022Box\u0022\n      IsMoreButtonVisible=\u0022False\u0022\n      IsColorSliderVisible=\u0022True\u0022\n      IsColorChannelTextInputVisible=\u0022True\u0022\n      IsHexInputVisible=\u0022True\u0022\n      IsAlphaEnabled=\u0022$(IsAlphaEnabled)\u0022\n      IsAlphaSliderVisible=\u0022True\u0022\n      IsAlphaTextInputVisible=\u0022True\u0022 /\u003E",
+          "xaml": "\u003CColorPicker\n      ColorSpectrumShape=\u0022Box\u0022\n      IsMoreButtonVisible=\u0022False\u0022\n      IsColorSliderVisible=\u0022True\u0022\n      IsColorChannelTextInputVisible=\u0022True\u0022\n      IsHexInputVisible=\u0022True\u0022\n      IsAlphaSliderVisible=\u0022True\u0022\n      IsAlphaTextInputVisible=\u0022True\u0022 /\u003E",
           "gallery": {
             "snippet": "ColorPickerProperties.txt",
             "source": "WinUIGallery/Samples/ColorPicker/ColorPickerProperties.txt",
-            "name": "Properties"
+            "name": "Properties",
+            "xamlPlaceholdersDropped": [
+              "IsAlphaEnabled"
+            ]
           }
         }
       ]
@@ -2571,11 +2597,14 @@
       "samples": [
         {
           "header": "A command bar with labels on the side free floating in a page",
-          "xaml": "\u003CCommandBar Background=\u0022Transparent\u0022 IsOpen=\u0022False\u0022 DefaultLabelPosition=\u0022Right\u0022\u003E\n    \u003CAppBarButton Icon=\u0022Add\u0022 Label=\u0022Add\u0022/\u003E\n    \u003CAppBarButton Icon=\u0022Edit\u0022 Label=\u0022Edit\u0022/\u003E\n    \u003CAppBarButton Icon=\u0022Share\u0022 Label=\u0022Share\u0022/\u003E\n    \u003CCommandBar.SecondaryCommands\u003E\n        \u003CAppBarButton Icon=\u0022Setting\u0022 Label=\u0022Settings\u0022\u003E\n            \u003CAppBarButton.KeyboardAccelerators\u003E\n                    \u003CKeyboardAccelerator Modifiers=\u0022Control\u0022 Key=\u0022I\u0022 /\u003E\n            \u003C/AppBarButton.KeyboardAccelerators\u003E\n        \u003C/AppBarButton\u003E$(MultipleButtonsSecondaryCommands)\n    \u003C/CommandBar.SecondaryCommands\u003E\n\u003C/CommandBar\u003E",
+          "xaml": "\u003CCommandBar Background=\u0022Transparent\u0022 IsOpen=\u0022False\u0022 DefaultLabelPosition=\u0022Right\u0022\u003E\n    \u003CAppBarButton Icon=\u0022Add\u0022 Label=\u0022Add\u0022/\u003E\n    \u003CAppBarButton Icon=\u0022Edit\u0022 Label=\u0022Edit\u0022/\u003E\n    \u003CAppBarButton Icon=\u0022Share\u0022 Label=\u0022Share\u0022/\u003E\n    \u003CCommandBar.SecondaryCommands\u003E\n        \u003CAppBarButton Icon=\u0022Setting\u0022 Label=\u0022Settings\u0022\u003E\n            \u003CAppBarButton.KeyboardAccelerators\u003E\n                    \u003CKeyboardAccelerator Modifiers=\u0022Control\u0022 Key=\u0022I\u0022 /\u003E\n            \u003C/AppBarButton.KeyboardAccelerators\u003E\n        \u003C/AppBarButton\u003E\n    \u003C/CommandBar.SecondaryCommands\u003E\n\u003C/CommandBar\u003E",
           "gallery": {
             "snippet": "CommandBarLabelsSide.txt",
             "source": "WinUIGallery/Samples/CommandBar/CommandBarLabelsSide.txt",
-            "name": "Labels Side"
+            "name": "Labels Side",
+            "xamlPlaceholdersDropped": [
+              "MultipleButtonsSecondaryCommands"
+            ]
           }
         }
       ]
@@ -3440,11 +3469,14 @@
       "samples": [
         {
           "header": "An Expander with text in the header and content areas",
-          "xaml": "\u003CExpander\n     IsExpanded=\u0022False\u0022\n     ExpandDirection=\u0022$(ExpandDirection)\u0022\n     VerticalAlignment=\u0022Top\u0022\n     Header=\u0022This text is in the header\u0022\n     Content=\u0022This is in the content\u0022/\u003E",
+          "xaml": "\u003CExpander\n     IsExpanded=\u0022False\u0022\n     VerticalAlignment=\u0022Top\u0022\n     Header=\u0022This text is in the header\u0022\n     Content=\u0022This is in the content\u0022/\u003E",
           "gallery": {
             "snippet": "ExpanderTextHeaderContent.txt",
             "source": "WinUIGallery/Samples/Expander/ExpanderTextHeaderContent.txt",
-            "name": "Text Header Content"
+            "name": "Text Header Content",
+            "xamlPlaceholdersDropped": [
+              "ExpandDirection"
+            ]
           }
         },
         {
@@ -3715,11 +3747,15 @@
       "samples": [
         {
           "header": "A 3x3 Grid control.",
-          "xaml": "\u003CGrid\n    Width=\u0022240\u0022\n    Height=\u0022120\u0022\n    Background=\u0022Gray\u0022\n    ColumnDefinitions=\u002250, 50, 50\u0022\n    RowDefinitions =\u002250, 50, 50\u0022\n    ColumnSpacing=\u00228\u0022\n    RowSpacing=\u00228\u0022\u003E\n    \u003CRectangle Fill=\u0022Red\u0022 Grid.Column=\u0022$(Column)\u0022 Grid.Row=\u0022$(Row)\u0022 /\u003E\n    \u003CRectangle Fill=\u0022Blue\u0022 Grid.Row=\u00221\u0022 /\u003E\n    \u003CRectangle Fill=\u0022Green\u0022 Grid.Column=\u00221\u0022 /\u003E\n    \u003CRectangle Fill=\u0022Yellow\u0022 Grid.Column=\u00221\u0022 Grid.Row=\u00221\u0022 /\u003E\n\u003C/Grid\u003E",
+          "xaml": "\u003CGrid\n    Width=\u0022240\u0022\n    Height=\u0022120\u0022\n    Background=\u0022Gray\u0022\n    ColumnDefinitions=\u002250, 50, 50\u0022\n    RowDefinitions =\u002250, 50, 50\u0022\n    ColumnSpacing=\u00228\u0022\n    RowSpacing=\u00228\u0022\u003E\n    \u003CRectangle Fill=\u0022Red\u0022 /\u003E\n    \u003CRectangle Fill=\u0022Blue\u0022 Grid.Row=\u00221\u0022 /\u003E\n    \u003CRectangle Fill=\u0022Green\u0022 Grid.Column=\u00221\u0022 /\u003E\n    \u003CRectangle Fill=\u0022Yellow\u0022 Grid.Column=\u00221\u0022 Grid.Row=\u00221\u0022 /\u003E\n\u003C/Grid\u003E",
           "gallery": {
             "snippet": "3x3GridControl.txt",
             "source": "WinUIGallery/Samples/Grid/3x3GridControl.txt",
-            "name": "3x3 Grid Control"
+            "name": "3x3 Grid Control",
+            "xamlPlaceholdersDropped": [
+              "Column",
+              "Row"
+            ]
           }
         }
       ]
@@ -3821,11 +3857,15 @@
         },
         {
           "header": "Content inside of a GridView.",
-          "xaml": "\u003C!-- The GridView used for this sample is shown below, with all of the necessary added properties. --\u003E\n\u003CGridView \n    x:Name=\u0022ContentGridView\u0022\n    ItemsSource=\u0022{x:Bind Items}\u0022\n    ItemTemplate=\u0022{StaticResource ImageTemplate}\u0022\n    IsItemClickEnabled=\u0022{x:Bind ItemClickCheckBox.IsChecked.Value, Mode=OneWay}\u0022\n    CanDragItems=\u0022{x:Bind DragCheckBox.IsChecked.Value, Mode=OneWay}\u0022\n    AllowDrop=\u0022{x:Bind DropCheckBox.IsChecked.Value, Mode=OneWay}\u0022\n    CanReorderItems=\u0022{x:Bind ReorderCheckBox.IsChecked.Value, Mode=OneWay}\u0022\n    SelectionMode=\u0022$(SelectionMode)\u0022\n    SelectionChanged=\u0022ContentGridView_SelectionChanged\u0022\n    ItemClick=\u0022ContentGridView_ItemClick\u0022 \n    FlowDirection=\u0022LeftToRight\u0022/\u003E\n\n\u003C!-- ContentGridView_SelectionChanged and ContentGridView_ItemClick are functions defined in the code-behind\nto handle the events of when a selection changes on the GridView and when an item is clicked. --\u003E\n                    \n\u003C!-- The data template bound to this GridView\u0027s ItemTemplate property is based on which one you\nselect from the options on the right. The currently selected DataTemplate is: --\u003E\n\n$(DisplayDT)",
+          "xaml": "\u003C!-- The GridView used for this sample is shown below, with all of the necessary added properties. --\u003E\n\u003CGridView \n    x:Name=\u0022ContentGridView\u0022\n    ItemsSource=\u0022{x:Bind Items}\u0022\n    ItemTemplate=\u0022{StaticResource ImageTemplate}\u0022\n    IsItemClickEnabled=\u0022{x:Bind ItemClickCheckBox.IsChecked.Value, Mode=OneWay}\u0022\n    CanDragItems=\u0022{x:Bind DragCheckBox.IsChecked.Value, Mode=OneWay}\u0022\n    AllowDrop=\u0022{x:Bind DropCheckBox.IsChecked.Value, Mode=OneWay}\u0022\n    CanReorderItems=\u0022{x:Bind ReorderCheckBox.IsChecked.Value, Mode=OneWay}\u0022\n    SelectionChanged=\u0022ContentGridView_SelectionChanged\u0022\n    ItemClick=\u0022ContentGridView_ItemClick\u0022 \n    FlowDirection=\u0022LeftToRight\u0022/\u003E\n\n\u003C!-- ContentGridView_SelectionChanged and ContentGridView_ItemClick are functions defined in the code-behind\nto handle the events of when a selection changes on the GridView and when an item is clicked. --\u003E\n                    \n\u003C!-- The data template bound to this GridView\u0027s ItemTemplate property is based on which one you\nselect from the options on the right. The currently selected DataTemplate is: --\u003E\n",
           "gallery": {
             "snippet": "ContentInsideGridview.txt",
             "source": "WinUIGallery/Samples/GridView/ContentInsideGridview.txt",
-            "name": "Content Inside Gridview"
+            "name": "Content Inside Gridview",
+            "xamlPlaceholdersDropped": [
+              "SelectionMode",
+              "DisplayDT"
+            ]
           }
         }
       ]
@@ -3982,11 +4022,14 @@
       "samples": [
         {
           "header": "A BitmapIcon with a multicolor bitmap image",
-          "xaml": "\u003CBitmapIcon x:Name=\u0022SlicesIcon\u0022 UriSource=\u0022ms-appx:///Assets/SampleMedia/Slices.png\u0022 Width=\u002250\u0022 ShowAsMonochrome=\u0022$(ShowAsMonochrome)\u0022/\u003E",
+          "xaml": "\u003CBitmapIcon x:Name=\u0022SlicesIcon\u0022 UriSource=\u0022ms-appx:///Assets/SampleMedia/Slices.png\u0022 Width=\u002250\u0022/\u003E",
           "gallery": {
             "snippet": "IconElementBitmapiconMulticolorBitmapImage.txt",
             "source": "WinUIGallery/Samples/IconElement/IconElementBitmapiconMulticolorBitmapImage.txt",
-            "name": "Bitmapicon Multicolor Bitmap Image"
+            "name": "Bitmapicon Multicolor Bitmap Image",
+            "xamlPlaceholdersDropped": [
+              "ShowAsMonochrome"
+            ]
           }
         },
         {
@@ -4381,11 +4424,14 @@
         },
         {
           "header": "Different InfoBadge Styles",
-          "xaml": "\u003CStackPanel Orientation=\u0022Horizontal\u0022 Spacing=\u002220\u0022 HorizontalAlignment=\u0022Center\u0022\u003E\n    \u003CInfoBadge x:Name=\u0022infoBadge2\u0022 Style=\u0022{StaticResource $(Style)IconInfoBadgeStyle}\u0022 HorizontalAlignment=\u0022Right\u0022/\u003E\n    \u003CInfoBadge x:Name=\u0022infoBadge3\u0022 Style=\u0022{StaticResource $(Style)ValueInfoBadgeStyle}\u0022 HorizontalAlignment=\u0022Right\u0022 Value=\u002210\u0022 /\u003E\n    \u003CInfoBadge x:Name=\u0022infoBadge4\u0022 Style=\u0022{StaticResource $(Style)DotInfoBadgeStyle}\u0022 VerticalAlignment=\u0022Center\u0022/\u003E\n\u003C/StackPanel\u003E",
+          "xaml": "\u003CStackPanel Orientation=\u0022Horizontal\u0022 Spacing=\u002220\u0022 HorizontalAlignment=\u0022Center\u0022\u003E\n    \u003CInfoBadge x:Name=\u0022infoBadge2\u0022 HorizontalAlignment=\u0022Right\u0022/\u003E\n    \u003CInfoBadge x:Name=\u0022infoBadge3\u0022 HorizontalAlignment=\u0022Right\u0022 Value=\u002210\u0022 /\u003E\n    \u003CInfoBadge x:Name=\u0022infoBadge4\u0022 VerticalAlignment=\u0022Center\u0022/\u003E\n\u003C/StackPanel\u003E",
           "gallery": {
             "snippet": "DifferentInfobadgeStyles.txt",
             "source": "WinUIGallery/Samples/InfoBadge/DifferentInfobadgeStyles.txt",
-            "name": "Different Infobadge Styles"
+            "name": "Different Infobadge Styles",
+            "xamlPlaceholdersDropped": [
+              "Style"
+            ]
           }
         },
         {
@@ -4466,11 +4512,14 @@
       "samples": [
         {
           "header": "A closable InfoBar with options to change its Severity.",
-          "xaml": "\u003CInfoBar \n    IsOpen=\u0022{x:Bind TestInfoBar1.IsOpen, Mode=TwoWay}\u0022\n    Severity=\u0022$(Severity)\u0022\n    Title=\u0022Title\u0022\n    Message=\u0022Essential app message for your users to be informed of, acknowledge, or take action on.\u0022 /\u003E",
+          "xaml": "\u003CInfoBar \n    IsOpen=\u0022{x:Bind TestInfoBar1.IsOpen, Mode=TwoWay}\u0022\n    Title=\u0022Title\u0022\n    Message=\u0022Essential app message for your users to be informed of, acknowledge, or take action on.\u0022 /\u003E",
           "gallery": {
             "snippet": "ClosableInfobarOptionsChange.txt",
             "source": "WinUIGallery/Samples/InfoBar/ClosableInfobarOptionsChange.txt",
-            "name": "Closable Infobar Options Change"
+            "name": "Closable Infobar Options Change",
+            "xamlPlaceholdersDropped": [
+              "Severity"
+            ]
           }
         },
         {
@@ -4573,24 +4622,31 @@
       "samples": [
         {
           "header": "Basic, non-interactive items laid out by ItemsRepeater",
-          "xaml": "\u003C!-- The ItemsRepeater and ScrollViewer used: --\u003E\n\u003CScrollViewer HorizontalScrollBarVisibility=\u0022Auto\u0022 \n              HorizontalScrollMode=\u0022Auto\u0022 \n              IsVerticalScrollChainingEnabled=\u0022False\u0022\n              MaxHeight=\u0022500\u0022\u003E\n    \u003CItemsRepeater\n               ItemsSource=\u0022{x:Bind BarItems}\u0022\n               Layout=\u0022{StaticResource VerticalStackLayout}\u0022\n               ItemTemplate=\u0022{StaticResource HorizontalBarTemplate}\u0022 /\u003E\n\u003C/ScrollViewer\u003E\n                    \n\u003C!-- The Layout specifications used: --\u003E\n                    \n$(SampleCodeLayout)     \n                    \n\u003C!-- The DataTemplate used: HorizontalBarTemplate--\u003E\n                    \n$(SampleCodeDT)",
+          "xaml": "\u003C!-- The ItemsRepeater and ScrollViewer used: --\u003E\n\u003CScrollViewer HorizontalScrollBarVisibility=\u0022Auto\u0022 \n              HorizontalScrollMode=\u0022Auto\u0022 \n              IsVerticalScrollChainingEnabled=\u0022False\u0022\n              MaxHeight=\u0022500\u0022\u003E\n    \u003CItemsRepeater\n               ItemsSource=\u0022{x:Bind BarItems}\u0022\n               Layout=\u0022{StaticResource VerticalStackLayout}\u0022\n               ItemTemplate=\u0022{StaticResource HorizontalBarTemplate}\u0022 /\u003E\n\u003C/ScrollViewer\u003E\n                    \n\u003C!-- The Layout specifications used: --\u003E\n                    \n                    \n\u003C!-- The DataTemplate used: HorizontalBarTemplate--\u003E\n                    ",
           "code": "// The ItemsSource used is a list of custom-class Bar objects called BarItems\n\npublic class Bar\n{\n    public Bar(double length, int max)\n    {\n        Length = length;\n        MaxLength = max;\n\n        Height = length / 4;\n        MaxHeight = max / 4;\n\n        Diameter = length / 6;\n        MaxDiameter = max / 6;\n    }\n    public double Length { get; set; }\n    public int MaxLength { get; set; }\n\n    public double Height { get; set; }\n    public double MaxHeight { get; set; }\n\n    public double Diameter { get; set; }\n    public double MaxDiameter { get; set; }\n}\n\npublic ObservableCollection\u003CBar\u003E BarItems;\nprivate int MaxLength = 425;\n\nprivate void InitializeData()\n{\n    if (BarItems == null)\n    {\n        BarItems = new ObservableCollection\u003CBar\u003E();\n    }\n    BarItems.Add(new Bar(300, this.MaxLength));\n    BarItems.Add(new Bar(25, this.MaxLength));\n    BarItems.Add(new Bar(175, this.MaxLength));\n}",
           "language": "csharp",
           "gallery": {
             "snippet": "ItemsRepeaterBasicNonInteractiveItems.txt",
             "source": "WinUIGallery/Samples/ItemsRepeater/ItemsRepeaterBasicNonInteractiveItems.txt",
-            "name": "Basic Non Interactive Items"
+            "name": "Basic Non Interactive Items",
+            "xamlPlaceholdersDropped": [
+              "SampleCodeLayout",
+              "SampleCodeDT"
+            ]
           }
         },
         {
           "header": "Virtualizing, scrollable list of items laid out by ItemsRepeater",
-          "xaml": "\u003C!-- XAML Code --\u003E\n\n\u003C!-- The ItemsRepeater and ScrollViewer used: --\u003E\n\u003CScrollViewer x:Name=\u0022scrollViewer\u0022\n                Height=\u0022400\u0022\n                IsVerticalScrollChainingEnabled=\u0022False\u0022\n                Padding=\u00220,0,16,0\u0022\u003E\n    \u003CItemsRepeater\n            ItemsSource=\u0022{x:Bind NumberedItems}\u0022\n            Layout=\u0022{StaticResource MyFeedLayout}\u0022\n            ItemTemplate=\u0022{StaticResource SimpleItemTemplate}\u0022 /\u003E\n\u003C/ScrollViewer\u003E \n                    \n\u003C!-- The Layout specifications used: --\u003E\n                    \n$(SampleCodeLayout2)     \n                    \n\u003C!-- The ItemTemplate is bound to a DataTemplateSelector called MyDataTemplateSelector. \nMyDataTemplateSelector is defined in the code-behind to return the Accent DataTemplate \nfor odd-numbered-items, and returns the Normal DataTemplate for even-numbered-items \n(shown in C# code-behind section below). The two data templates and the XAML declaration\nof MyDataTemplateSelector are below: --\u003E\n\n\u003CMyDataTemplateSelector x:Key=\u0022MyDataTemplateSelector\u0022\n                            Normal=\u0022{StaticResource NormalItemTemplate}\u0022\n                            Accent=\u0022{StaticResource AccentItemTemplate}\u0022/\u003E    \n                    \n\u003CDataTemplate x:Key=\u0022NormalItemTemplate\u0022 x:DataType=\u0022x:Int32\u0022\u003E\n    \u003CButton HorizontalAlignment=\u0022Stretch\u0022 VerticalAlignment=\u0022Stretch\u0022 \n\t    Background=\u0022{ThemeResource SystemChromeLowColor}\u0022\u003E\n        \u003CTextBlock Text=\u0022{x:Bind}\u0022 /\u003E\n    \u003C/Button\u003E\n\u003C/DataTemplate\u003E\n\n\u003CDataTemplate x:Key=\u0022AccentItemTemplate\u0022 x:DataType=\u0022x:Int32\u0022\u003E\n    \u003CButton HorizontalAlignment=\u0022Stretch\u0022 VerticalAlignment=\u0022Stretch\u0022 \n\t    Background=\u0022{ThemeResource SystemAccentColor}\u0022\u003E\n        \u003CTextBlock Text=\u0022{x:Bind}\u0022 /\u003E\n    \u003C/Button\u003E\n\u003C/DataTemplate\u003E\n                    \n\u003C!-- The ItemsSource for this ItemsRepeater is a list of integers called NumberedItems.--\u003E\n                    \n\u003C!-- ActivityFeedLayout is a custom designed virtualizing layout that loads images only as you come \naccross them, defined in the code-behind. View the WinUI Gallery source code to see more\ndetails about this custom layout. --\u003E",
+          "xaml": "\u003C!-- XAML Code --\u003E\n\n\u003C!-- The ItemsRepeater and ScrollViewer used: --\u003E\n\u003CScrollViewer x:Name=\u0022scrollViewer\u0022\n                Height=\u0022400\u0022\n                IsVerticalScrollChainingEnabled=\u0022False\u0022\n                Padding=\u00220,0,16,0\u0022\u003E\n    \u003CItemsRepeater\n            ItemsSource=\u0022{x:Bind NumberedItems}\u0022\n            Layout=\u0022{StaticResource MyFeedLayout}\u0022\n            ItemTemplate=\u0022{StaticResource SimpleItemTemplate}\u0022 /\u003E\n\u003C/ScrollViewer\u003E \n                    \n\u003C!-- The Layout specifications used: --\u003E\n                    \n                    \n\u003C!-- The ItemTemplate is bound to a DataTemplateSelector called MyDataTemplateSelector. \nMyDataTemplateSelector is defined in the code-behind to return the Accent DataTemplate \nfor odd-numbered-items, and returns the Normal DataTemplate for even-numbered-items \n(shown in C# code-behind section below). The two data templates and the XAML declaration\nof MyDataTemplateSelector are below: --\u003E\n\n\u003CMyDataTemplateSelector x:Key=\u0022MyDataTemplateSelector\u0022\n                            Normal=\u0022{StaticResource NormalItemTemplate}\u0022\n                            Accent=\u0022{StaticResource AccentItemTemplate}\u0022/\u003E    \n                    \n\u003CDataTemplate x:Key=\u0022NormalItemTemplate\u0022 x:DataType=\u0022x:Int32\u0022\u003E\n    \u003CButton HorizontalAlignment=\u0022Stretch\u0022 VerticalAlignment=\u0022Stretch\u0022 \n\t    Background=\u0022{ThemeResource SystemChromeLowColor}\u0022\u003E\n        \u003CTextBlock Text=\u0022{x:Bind}\u0022 /\u003E\n    \u003C/Button\u003E\n\u003C/DataTemplate\u003E\n\n\u003CDataTemplate x:Key=\u0022AccentItemTemplate\u0022 x:DataType=\u0022x:Int32\u0022\u003E\n    \u003CButton HorizontalAlignment=\u0022Stretch\u0022 VerticalAlignment=\u0022Stretch\u0022 \n\t    Background=\u0022{ThemeResource SystemAccentColor}\u0022\u003E\n        \u003CTextBlock Text=\u0022{x:Bind}\u0022 /\u003E\n    \u003C/Button\u003E\n\u003C/DataTemplate\u003E\n                    \n\u003C!-- The ItemsSource for this ItemsRepeater is a list of integers called NumberedItems.--\u003E\n                    \n\u003C!-- ActivityFeedLayout is a custom designed virtualizing layout that loads images only as you come \naccross them, defined in the code-behind. View the WinUI Gallery source code to see more\ndetails about this custom layout. --\u003E",
           "code": "// C# Code-behind\n\npublic class MyDataTemplateSelector : DataTemplateSelector\n{\n    public DataTemplate? Normal { get; set; }\n    public DataTemplate? Accent { get; set; }\n\n    protected override DataTemplate? SelectTemplateCore(object item)\n    {\n        if ((int)item % 2 == 0)\n        {\n            return Normal;\n        }\n        else\n        {\n            return Accent;\n        }\n    }\n}",
           "language": "csharp",
           "gallery": {
             "snippet": "ItemsRepeaterVirtualizingScrollableListItems.txt",
             "source": "WinUIGallery/Samples/ItemsRepeater/ItemsRepeaterVirtualizingScrollableListItems.txt",
-            "name": "Virtualizing Scrollable List Items"
+            "name": "Virtualizing Scrollable List Items",
+            "xamlPlaceholdersDropped": [
+              "SampleCodeLayout2"
+            ]
           }
         },
         {
@@ -4728,13 +4784,16 @@
         },
         {
           "header": "ItemsView item invocation and selection",
-          "xaml": "\u003CDataTemplate x:Key=\u0022UniformGridLayoutItemTemplate\u0022 x:DataType=\u0022local:CustomDataObject\u0022\u003E\n    \u003CItemContainer AutomationProperties.Name=\u0022{x:Bind Title}\u0022\u003E\n        \u003CGrid Width=\u0022150\u0022\u003E\n            \u003CImage Source=\u0022{x:Bind ImageLocation}\u0022 Stretch=\u0022UniformToFill\u0022 HorizontalAlignment=\u0022Center\u0022 VerticalAlignment=\u0022Center\u0022/\u003E\n            \u003CStackPanel Orientation=\u0022Vertical\u0022 Height=\u002240\u0022 VerticalAlignment=\u0022Bottom\u0022 Padding=\u00225,1,5,1\u0022 Background=\u0022{ThemeResource SystemControlBackgroundBaseMediumBrush}\u0022 Opacity=\u0022.75\u0022\u003E\n                \u003CTextBlock Text=\u0022{x:Bind Title}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                \u003CStackPanel Orientation=\u0022Horizontal\u0022\u003E\n                    \u003CTextBlock Text=\u0022{x:Bind Likes}\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                    \u003CTextBlock Text=\u0022 Likes\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                \u003C/StackPanel\u003E\n            \u003C/StackPanel\u003E\n        \u003C/Grid\u003E\n    \u003C/ItemContainer\u003E\n\u003C/DataTemplate\u003E\n\n\u003CItemsView Width=\u0022500\u0022 Height=\u0022400\u0022 HorizontalAlignment=\u0022Left\u0022\n    SelectionMode=\u0022Multiple\u0022\n    IsItemInvokedEnabled=\u0022$(IsItemInvokedEnabled)\u0022\n    ItemTemplate=\u0022{StaticResource UniformGridLayoutItemTemplate}\u0022\n    ItemInvoked=\u0022SwappableSelectionModesItemsView_ItemInvoked\u0022\n    SelectionChanged=\u0022SwappableSelectionModesItemsView_SelectionChanged\u0022\u003E\n    \u003CItemsView.Layout\u003E\n        \u003CUniformGridLayout MinRowSpacing=\u00225\u0022 MinColumnSpacing=\u00225\u0022 MaximumRowsOrColumns=\u00223\u0022/\u003E\n    \u003C/ItemsView.Layout\u003E\n\u003C/ItemsView\u003E",
+          "xaml": "\u003CDataTemplate x:Key=\u0022UniformGridLayoutItemTemplate\u0022 x:DataType=\u0022local:CustomDataObject\u0022\u003E\n    \u003CItemContainer AutomationProperties.Name=\u0022{x:Bind Title}\u0022\u003E\n        \u003CGrid Width=\u0022150\u0022\u003E\n            \u003CImage Source=\u0022{x:Bind ImageLocation}\u0022 Stretch=\u0022UniformToFill\u0022 HorizontalAlignment=\u0022Center\u0022 VerticalAlignment=\u0022Center\u0022/\u003E\n            \u003CStackPanel Orientation=\u0022Vertical\u0022 Height=\u002240\u0022 VerticalAlignment=\u0022Bottom\u0022 Padding=\u00225,1,5,1\u0022 Background=\u0022{ThemeResource SystemControlBackgroundBaseMediumBrush}\u0022 Opacity=\u0022.75\u0022\u003E\n                \u003CTextBlock Text=\u0022{x:Bind Title}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                \u003CStackPanel Orientation=\u0022Horizontal\u0022\u003E\n                    \u003CTextBlock Text=\u0022{x:Bind Likes}\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                    \u003CTextBlock Text=\u0022 Likes\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                \u003C/StackPanel\u003E\n            \u003C/StackPanel\u003E\n        \u003C/Grid\u003E\n    \u003C/ItemContainer\u003E\n\u003C/DataTemplate\u003E\n\n\u003CItemsView Width=\u0022500\u0022 Height=\u0022400\u0022 HorizontalAlignment=\u0022Left\u0022\n    SelectionMode=\u0022Multiple\u0022\n    ItemTemplate=\u0022{StaticResource UniformGridLayoutItemTemplate}\u0022\n    ItemInvoked=\u0022SwappableSelectionModesItemsView_ItemInvoked\u0022\n    SelectionChanged=\u0022SwappableSelectionModesItemsView_SelectionChanged\u0022\u003E\n    \u003CItemsView.Layout\u003E\n        \u003CUniformGridLayout MinRowSpacing=\u00225\u0022 MinColumnSpacing=\u00225\u0022 MaximumRowsOrColumns=\u00223\u0022/\u003E\n    \u003C/ItemsView.Layout\u003E\n\u003C/ItemsView\u003E",
           "code": "private void SwappableSelectionModesItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e)\n{\n    tblInvocationOutput.Text = \u0022You invoked \u0022 \u002B (e.InvokedItem as CustomDataObject).Title \u002B \u0022.\u0022;\n}\n\nprivate void SwappableSelectionModesItemsView_SelectionChanged(ItemsView sender, ItemsViewSelectionChangedEventArgs e)\n{\n    tblSelectionOutput.Text = string.Format(\u0022You have selected {0} item(s).\u0022, SwappableSelectionModesItemsView.SelectedItems.Count);\n}",
           "language": "csharp",
           "gallery": {
             "snippet": "ItemsviewItemInvocationSelection.txt",
             "source": "WinUIGallery/Samples/ItemsView/ItemsviewItemInvocationSelection.txt",
-            "name": "Item Invocation Selection"
+            "name": "Item Invocation Selection",
+            "xamlPlaceholdersDropped": [
+              "IsItemInvokedEnabled"
+            ]
           }
         }
       ]
@@ -4860,38 +4919,55 @@
       "samples": [
         {
           "header": "Line",
-          "xaml": "\u003CLine Stroke=\u0022SteelBlue\u0022\n      X1=\u0022$(Slider1)\u0022 Y1=\u0022$(Slider2)\u0022\n      X2=\u0022$(Slider3)\u0022 Y2=\u0022$(Slider4)\u0022\n      StrokeThickness=\u0022$(Slider5)\u0022/\u003E",
+          "xaml": "\u003CLine Stroke=\u0022SteelBlue\u0022/\u003E",
           "gallery": {
             "snippet": "Line.txt",
             "source": "WinUIGallery/Samples/Line/Line.txt",
-            "name": "Line"
+            "name": "Line",
+            "xamlPlaceholdersDropped": [
+              "Slider1",
+              "Slider2",
+              "Slider3",
+              "Slider4",
+              "Slider5"
+            ]
           }
         },
         {
           "header": "Polyline",
-          "xaml": "\u003CPolyline Stroke=\u0022Black\u0022 StrokeThickness=\u0022$(Slider1)\u0022\n          Points=\u002210,100 60,40 200,40 250,100\u0022/\u003E",
+          "xaml": "\u003CPolyline Stroke=\u0022Black\u0022\n          Points=\u002210,100 60,40 200,40 250,100\u0022/\u003E",
           "gallery": {
             "snippet": "Polyline.txt",
             "source": "WinUIGallery/Samples/Line/Polyline.txt",
-            "name": "Polyline"
+            "name": "Polyline",
+            "xamlPlaceholdersDropped": [
+              "Slider1"
+            ]
           }
         },
         {
           "header": "Path",
-          "xaml": "\u003C!-- The first segment is a cubic Bezier curve that begins at Point #1 and ends at Point #4, which is drawn by using Point #2 and 3 as the two control points. This segment is indicated by the \u0022C\u0022 command in the Data attribute string. --\u003E\n\u003C!-- The second segment begins with an absolute horizontal line command \u0022H\u0022, which specifies a line drawn from the preceding subpath endpoint (Point #4) to a new endpoint (Point #5). Because it\u0027s a horizontal line command, the value specified is an x-coordinate. --\u003E\n                    \n\u003CPath Stroke=\u0022DarkGoldenRod\u0022 StrokeThickness=\u0022$(Slider1)\u0022\n      Data=\u0022M 10,100 C 100,25 300,250 400,75 H 200\u0022/\u003E",
+          "xaml": "\u003C!-- The first segment is a cubic Bezier curve that begins at Point #1 and ends at Point #4, which is drawn by using Point #2 and 3 as the two control points. This segment is indicated by the \u0022C\u0022 command in the Data attribute string. --\u003E\n\u003C!-- The second segment begins with an absolute horizontal line command \u0022H\u0022, which specifies a line drawn from the preceding subpath endpoint (Point #4) to a new endpoint (Point #5). Because it\u0027s a horizontal line command, the value specified is an x-coordinate. --\u003E\n                    \n\u003CPath Stroke=\u0022DarkGoldenRod\u0022\n      Data=\u0022M 10,100 C 100,25 300,250 400,75 H 200\u0022/\u003E",
           "gallery": {
             "snippet": "LinePath.txt",
             "source": "WinUIGallery/Samples/Line/LinePath.txt",
-            "name": "Path"
+            "name": "Path",
+            "xamlPlaceholdersDropped": [
+              "Slider1"
+            ]
           }
         },
         {
           "header": "GeometryGroup",
-          "xaml": "\u003CPath Stroke=\u0022Black\u0022 StrokeThickness=\u00224\u0022 Fill=\u0022#CCCCFF\u0022\u003E\n    \u003CPath.Data\u003E\n                    \n        \u003C!-- Creates a composite shape from three geometries. --\u003E\n        \u003CGeometryGroup FillRule=\u0022EvenOdd\u0022\u003E\n            \u003CLineGeometry StartPoint=\u002210,10\u0022 EndPoint=\u002250,30\u0022 /\u003E\n            \u003CEllipseGeometry Center=\u002240,70\u0022 RadiusX=\u0022$(Slider1)\u0022 RadiusY=\u0022$(Slider2)\u0022 /\u003E\n            \u003CRectangleGeometry Rect=\u002230,55 100 30\u0022 /\u003E\n        \u003C/GeometryGroup\u003E\n    \u003C/Path.Data\u003E\n\u003C/Path\u003E",
+          "xaml": "\u003CPath Stroke=\u0022Black\u0022 StrokeThickness=\u00224\u0022 Fill=\u0022#CCCCFF\u0022\u003E\n    \u003CPath.Data\u003E\n                    \n        \u003C!-- Creates a composite shape from three geometries. --\u003E\n        \u003CGeometryGroup FillRule=\u0022EvenOdd\u0022\u003E\n            \u003CLineGeometry StartPoint=\u002210,10\u0022 EndPoint=\u002250,30\u0022 /\u003E\n            \u003CEllipseGeometry Center=\u002240,70\u0022 /\u003E\n            \u003CRectangleGeometry Rect=\u002230,55 100 30\u0022 /\u003E\n        \u003C/GeometryGroup\u003E\n    \u003C/Path.Data\u003E\n\u003C/Path\u003E",
           "gallery": {
             "snippet": "LineGeometrygroup.txt",
             "source": "WinUIGallery/Samples/Line/LineGeometrygroup.txt",
-            "name": "Geometrygroup"
+            "name": "Geometrygroup",
+            "xamlPlaceholdersDropped": [
+              "Slider1",
+              "Slider2"
+            ]
           }
         }
       ]
@@ -5009,14 +5085,17 @@
         },
         {
           "header": "ListView with Selection Support",
-          "xaml": "\u003C!-- To create this sample, add/change the following properties onto the code for the base example above: --\u003E\n                        \n\u003CListView \n    SelectionMode=\u0022$(SelectionMode)\u0022 \n    ItemTemplate=\u0022{StaticResource ContactListViewTemplate}\u0022/\u003E\n    \n\u003C!-- DataTemplate used: --\u003E\n\n\u003CDataTemplate x:Key=\u0022ContactListViewTemplate\u0022 x:DataType=\u0022local:Contact\u0022\u003E\n    \u003CGrid\u003E\n        \u003CGrid.RowDefinitions\u003E\n            \u003CRowDefinition Height=\u0022*\u0022/\u003E\n            \u003CRowDefinition Height=\u0022*\u0022/\u003E\n        \u003C/Grid.RowDefinitions\u003E\n        \u003CGrid.ColumnDefinitions\u003E\n            \u003CColumnDefinition Width=\u0022Auto\u0022/\u003E\n            \u003CColumnDefinition Width=\u0022*\u0022/\u003E\n        \u003C/Grid.ColumnDefinitions\u003E\n        \u003CEllipse x:Name=\u0022Ellipse\u0022\n                    Grid.RowSpan=\u00222\u0022\n                    Width =\u002232\u0022\n                    Height=\u002232\u0022\n                    Margin=\u00226\u0022\n                    VerticalAlignment=\u0022Center\u0022\n                    HorizontalAlignment=\u0022Center\u0022\n                    Fill=\u0022{ThemeResource SystemControlBackgroundBaseMediumBrush}\u0022/\u003E\n        \u003CTextBlock Grid.Column=\u00221\u0022\n                    Text=\u0022{x:Bind Name}\u0022\n                    x:Phase=\u00221\u0022\n                    Style=\u0022{ThemeResource BaseTextBlockStyle}\u0022\n                    Margin=\u002212,6,0,0\u0022/\u003E\n        \u003CTextBlock  Grid.Column=\u00221\u0022\n                    Grid.Row=\u00221\u0022\n                    Text=\u0022{x:Bind Company}\u0022\n                    x:Phase=\u00222\u0022\n                    Style=\u0022{ThemeResource BodyTextBlockStyle}\u0022\n                    Margin=\u002212,0,0,6\u0022/\u003E\n    \u003C/Grid\u003E\n\u003C/DataTemplate\u003E",
+          "xaml": "\u003C!-- To create this sample, add/change the following properties onto the code for the base example above: --\u003E\n                        \n\u003CListView\n    ItemTemplate=\u0022{StaticResource ContactListViewTemplate}\u0022/\u003E\n    \n\u003C!-- DataTemplate used: --\u003E\n\n\u003CDataTemplate x:Key=\u0022ContactListViewTemplate\u0022 x:DataType=\u0022local:Contact\u0022\u003E\n    \u003CGrid\u003E\n        \u003CGrid.RowDefinitions\u003E\n            \u003CRowDefinition Height=\u0022*\u0022/\u003E\n            \u003CRowDefinition Height=\u0022*\u0022/\u003E\n        \u003C/Grid.RowDefinitions\u003E\n        \u003CGrid.ColumnDefinitions\u003E\n            \u003CColumnDefinition Width=\u0022Auto\u0022/\u003E\n            \u003CColumnDefinition Width=\u0022*\u0022/\u003E\n        \u003C/Grid.ColumnDefinitions\u003E\n        \u003CEllipse x:Name=\u0022Ellipse\u0022\n                    Grid.RowSpan=\u00222\u0022\n                    Width =\u002232\u0022\n                    Height=\u002232\u0022\n                    Margin=\u00226\u0022\n                    VerticalAlignment=\u0022Center\u0022\n                    HorizontalAlignment=\u0022Center\u0022\n                    Fill=\u0022{ThemeResource SystemControlBackgroundBaseMediumBrush}\u0022/\u003E\n        \u003CTextBlock Grid.Column=\u00221\u0022\n                    Text=\u0022{x:Bind Name}\u0022\n                    x:Phase=\u00221\u0022\n                    Style=\u0022{ThemeResource BaseTextBlockStyle}\u0022\n                    Margin=\u002212,6,0,0\u0022/\u003E\n        \u003CTextBlock  Grid.Column=\u00221\u0022\n                    Grid.Row=\u00221\u0022\n                    Text=\u0022{x:Bind Company}\u0022\n                    x:Phase=\u00222\u0022\n                    Style=\u0022{ThemeResource BodyTextBlockStyle}\u0022\n                    Margin=\u002212,0,0,6\u0022/\u003E\n    \u003C/Grid\u003E\n\u003C/DataTemplate\u003E",
           "xmlnsImports": [
             "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
           ],
           "gallery": {
             "snippet": "ListviewSelectionSupport.txt",
             "source": "WinUIGallery/Samples/ListView/ListviewSelectionSupport.txt",
-            "name": "Selection Support"
+            "name": "Selection Support",
+            "xamlPlaceholdersDropped": [
+              "SelectionMode"
+            ]
           }
         },
         {
@@ -5617,11 +5696,16 @@
         },
         {
           "header": "API in action",
-          "xaml": "\u003CNavigationView x:Name=\u0022nvSample\u0022\n    IsSettingsVisible=\u0022True\u0022\n    IsBackButtonVisible=\u0022$(BackButtonVis)\u0022\n    IsBackEnabled=\u0022False\u0022\n    SelectionChanged=\u0022NavigationView_SelectionChanged\u0022\n    Header=\u0022Header\u0022\n    AlwaysShowHeader=\u0022True\u0022\n    PaneTitle=\u0022Pane Title\u0022\n    PaneDisplayMode=\u0022Left\u0022 \n    ExpandedModeThresholdWidth=\u0022500\u0022\n    SelectionFollowsFocus=\u0022$(SelectionFollowsFocus)\u0022\n    IsTabStop=\u0022False\u0022\u003E\n                    \n    \u003CNavigationView.MenuItems\u003E\n        \u003CNavigationViewItem Content=\u0022Menu Item1\u0022 Tag=\u0022SamplePage1\u0022 x:Name=\u0022SamplePage1Item\u0022\u003E\n            \u003CNavigationViewItem.Icon\u003E\n                \u003CSymbolIcon Symbol=\u0022Play\u0022 /\u003E\n            \u003C/NavigationViewItem.Icon\u003E\n        \u003C/NavigationViewItem\u003E\n        \u003CNavigationViewItemHeader Content=\u0022Actions\u0022/\u003E\n        \u003CNavigationViewItem Content=\u0022Menu Item2\u0022 Tag=\u0022SamplePage2\u0022 x:Name=\u0022SamplePage2Item\u0022 SelectsOnInvoked=\u0022True\u0022\u003E\n            \u003CNavigationViewItem.Icon\u003E\n                \u003CSymbolIcon Symbol=\u0022Save\u0022 /\u003E\n            \u003C/NavigationViewItem.Icon\u003E\n        \u003C/NavigationViewItem\u003E\n        \u003CNavigationViewItem Content=\u0022Menu Item3\u0022 Tag=\u0022SamplePage3\u0022 x:Name=\u0022SamplePage3Item\u0022\u003E\n            \u003CNavigationViewItem.Icon\u003E\n                \u003CSymbolIcon Symbol=\u0022Refresh\u0022 /\u003E\n            \u003C/NavigationViewItem.Icon\u003E\n        \u003C/NavigationViewItem\u003E\n    \u003C/NavigationView.MenuItems\u003E\n                    \n    \u003CNavigationView.PaneCustomContent\u003E\n        \u003CHyperlinkButton x:Name=\u0022PaneHyperlink\u0022 Content=\u0022More info\u0022 Margin=\u002212,0\u0022 Visibility=\u0022Collapsed\u0022 /\u003E\n    \u003C/NavigationView.PaneCustomContent\u003E\n    $(NavViewASB)\n    \u003CNavigationView.PaneFooter\u003E\n        \u003CStackPanel x:Name=\u0022FooterStackPanel\u0022 Orientation=\u0022Vertical\u0022 Visibility=\u0022Collapsed\u0022\u003E\n            \u003CNavigationViewItem Icon=\u0022Download\u0022 AutomationProperties.Name=\u0022download\u0022 /\u003E\n            \u003CNavigationViewItem Icon=\u0022Favorite\u0022 AutomationProperties.Name=\u0022favorite\u0022 /\u003E\n        \u003C/StackPanel\u003E\n    \u003C/NavigationView.PaneFooter\u003E\n\n    \u003CFrame x:Name=\u0022contentFrame\u0022 /\u003E\n\u003C/NavigationView\u003E",
+          "xaml": "\u003CNavigationView x:Name=\u0022nvSample\u0022\n    IsSettingsVisible=\u0022True\u0022\n    IsBackEnabled=\u0022False\u0022\n    SelectionChanged=\u0022NavigationView_SelectionChanged\u0022\n    Header=\u0022Header\u0022\n    AlwaysShowHeader=\u0022True\u0022\n    PaneTitle=\u0022Pane Title\u0022\n    PaneDisplayMode=\u0022Left\u0022 \n    ExpandedModeThresholdWidth=\u0022500\u0022\n    IsTabStop=\u0022False\u0022\u003E\n                    \n    \u003CNavigationView.MenuItems\u003E\n        \u003CNavigationViewItem Content=\u0022Menu Item1\u0022 Tag=\u0022SamplePage1\u0022 x:Name=\u0022SamplePage1Item\u0022\u003E\n            \u003CNavigationViewItem.Icon\u003E\n                \u003CSymbolIcon Symbol=\u0022Play\u0022 /\u003E\n            \u003C/NavigationViewItem.Icon\u003E\n        \u003C/NavigationViewItem\u003E\n        \u003CNavigationViewItemHeader Content=\u0022Actions\u0022/\u003E\n        \u003CNavigationViewItem Content=\u0022Menu Item2\u0022 Tag=\u0022SamplePage2\u0022 x:Name=\u0022SamplePage2Item\u0022 SelectsOnInvoked=\u0022True\u0022\u003E\n            \u003CNavigationViewItem.Icon\u003E\n                \u003CSymbolIcon Symbol=\u0022Save\u0022 /\u003E\n            \u003C/NavigationViewItem.Icon\u003E\n        \u003C/NavigationViewItem\u003E\n        \u003CNavigationViewItem Content=\u0022Menu Item3\u0022 Tag=\u0022SamplePage3\u0022 x:Name=\u0022SamplePage3Item\u0022\u003E\n            \u003CNavigationViewItem.Icon\u003E\n                \u003CSymbolIcon Symbol=\u0022Refresh\u0022 /\u003E\n            \u003C/NavigationViewItem.Icon\u003E\n        \u003C/NavigationViewItem\u003E\n    \u003C/NavigationView.MenuItems\u003E\n                    \n    \u003CNavigationView.PaneCustomContent\u003E\n        \u003CHyperlinkButton x:Name=\u0022PaneHyperlink\u0022 Content=\u0022More info\u0022 Margin=\u002212,0\u0022 Visibility=\u0022Collapsed\u0022 /\u003E\n    \u003C/NavigationView.PaneCustomContent\u003E\n    \u003CNavigationView.PaneFooter\u003E\n        \u003CStackPanel x:Name=\u0022FooterStackPanel\u0022 Orientation=\u0022Vertical\u0022 Visibility=\u0022Collapsed\u0022\u003E\n            \u003CNavigationViewItem Icon=\u0022Download\u0022 AutomationProperties.Name=\u0022download\u0022 /\u003E\n            \u003CNavigationViewItem Icon=\u0022Favorite\u0022 AutomationProperties.Name=\u0022favorite\u0022 /\u003E\n        \u003C/StackPanel\u003E\n    \u003C/NavigationView.PaneFooter\u003E\n\n    \u003CFrame x:Name=\u0022contentFrame\u0022 /\u003E\n\u003C/NavigationView\u003E",
           "gallery": {
             "snippet": "NavigationViewApiAction.txt",
             "source": "WinUIGallery/Samples/NavigationView/NavigationViewApiAction.txt",
-            "name": "Api Action"
+            "name": "Api Action",
+            "xamlPlaceholdersDropped": [
+              "BackButtonVis",
+              "SelectionFollowsFocus",
+              "NavViewASB"
+            ]
           }
         }
       ]
@@ -6065,11 +6149,17 @@
         },
         {
           "header": "PipsPager with options to change its orientation, button visibility, and wrap mode.",
-          "xaml": "\u003CPipsPager\n    Orientation=\u0022$(Orientation)\u0022\n    PreviousButtonVisibility=\u0022$(PrevButton)\u0022\n    NextButtonVisibility=\u0022$(NextButton)\u0022\n    WrapMode=\u0022$(WrapMode)\u0022 /\u003E",
+          "xaml": "\u003CPipsPager /\u003E",
           "gallery": {
             "snippet": "PipspagerOptionsChangeOrientation.txt",
             "source": "WinUIGallery/Samples/PipsPager/PipspagerOptionsChangeOrientation.txt",
-            "name": "Options Change Orientation"
+            "name": "Options Change Orientation",
+            "xamlPlaceholdersDropped": [
+              "Orientation",
+              "PrevButton",
+              "NextButton",
+              "WrapMode"
+            ]
           }
         }
       ]
@@ -6256,20 +6346,27 @@
       "samples": [
         {
           "header": "An indeterminate progress bar.",
-          "xaml": "\u003CProgressBar Width=\u0022130\u0022 IsIndeterminate=\u0022True\u0022 ShowPaused=\u0022$(ShowPaused)\u0022 ShowError=\u0022$(ShowError)\u0022 /\u003E",
+          "xaml": "\u003CProgressBar Width=\u0022130\u0022 IsIndeterminate=\u0022True\u0022 /\u003E",
           "gallery": {
             "snippet": "IndeterminateProgressBar.txt",
             "source": "WinUIGallery/Samples/ProgressBar/IndeterminateProgressBar.txt",
-            "name": "Indeterminate Progress Bar"
+            "name": "Indeterminate Progress Bar",
+            "xamlPlaceholdersDropped": [
+              "ShowPaused",
+              "ShowError"
+            ]
           }
         },
         {
           "header": "A determinate progress bar.",
-          "xaml": "\u003CProgressBar Width=\u0022130\u0022 Value=\u0022$(DeterminateProgressValue)\u0022 /\u003E",
+          "xaml": "\u003CProgressBar Width=\u0022130\u0022 /\u003E",
           "gallery": {
             "snippet": "DeterminateProgressBar.txt",
             "source": "WinUIGallery/Samples/ProgressBar/DeterminateProgressBar.txt",
-            "name": "Determinate Progress Bar"
+            "name": "Determinate Progress Bar",
+            "xamlPlaceholdersDropped": [
+              "DeterminateProgressValue"
+            ]
           }
         }
       ]
@@ -6336,11 +6433,14 @@
         },
         {
           "header": "A determinate progress ring.",
-          "xaml": "\u003CProgressRing Width=\u002260\u0022 Height=\u002260\u0022 Value=\u0022$(DeterminateProgressValue)\u0022\n              IsIndeterminate=\u0022False\u0022\n              Background=\u0022LightGray\u0022/\u003E",
+          "xaml": "\u003CProgressRing Width=\u002260\u0022 Height=\u002260\u0022\n              IsIndeterminate=\u0022False\u0022\n              Background=\u0022LightGray\u0022/\u003E",
           "gallery": {
             "snippet": "DeterminateProgressRing.txt",
             "source": "WinUIGallery/Samples/ProgressRing/DeterminateProgressRing.txt",
-            "name": "Determinate Progress Ring"
+            "name": "Determinate Progress Ring",
+            "xamlPlaceholdersDropped": [
+              "DeterminateProgressValue"
+            ]
           }
         }
       ]
@@ -6479,11 +6579,21 @@
       "samples": [
         {
           "header": "RadialGradientBrush Sample",
-          "xaml": "\u003CRectangle Width=\u0022200\u0022 Height=\u0022200\u0022\u003E\n    \u003CRectangle.Fill\u003E\n        \u003Cmedia:RadialGradientBrush\n                MappingMode=\u0022$(MappingMode)\u0022\n                Center=\u0022$(CenterX),$(CenterY)\u0022\n                RadiusX=\u0022$(RadiusX)\u0022\n                RadiusY=\u0022$(RadiusY)\u0022\n                GradientOrigin=\u0022$(OriginX),$(OriginY)\u0022\n                SpreadMethod=\u0022$(SpreadMethod)\u0022\u003E\n            \u003CGradientStop Color=\u0022Yellow\u0022 Offset=\u00220.0\u0022 /\u003E\n            \u003CGradientStop Color=\u0022Blue\u0022 Offset=\u00221\u0022 /\u003E\n        \u003C/media:RadialGradientBrush\u003E\n    \u003C/Rectangle.Fill\u003E\n\u003C/Rectangle\u003E",
+          "xaml": "\u003CRectangle Width=\u0022200\u0022 Height=\u0022200\u0022\u003E\n    \u003CRectangle.Fill\u003E\n        \u003Cmedia:RadialGradientBrush\u003E\n            \u003CGradientStop Color=\u0022Yellow\u0022 Offset=\u00220.0\u0022 /\u003E\n            \u003CGradientStop Color=\u0022Blue\u0022 Offset=\u00221\u0022 /\u003E\n        \u003C/media:RadialGradientBrush\u003E\n    \u003C/Rectangle.Fill\u003E\n\u003C/Rectangle\u003E",
           "gallery": {
             "snippet": "RadialgradientbrushSample.txt",
             "source": "WinUIGallery/Samples/RadialGradientBrush/RadialgradientbrushSample.txt",
-            "name": "Sample"
+            "name": "Sample",
+            "xamlPlaceholdersDropped": [
+              "MappingMode",
+              "CenterX",
+              "CenterY",
+              "RadiusX",
+              "RadiusY",
+              "OriginX",
+              "OriginY",
+              "SpreadMethod"
+            ]
           }
         }
       ]
@@ -6635,20 +6745,27 @@
       "samples": [
         {
           "header": "A simple RatingControl",
-          "xaml": "\u003CRatingControl AutomationProperties.Name=\u0022Simple RatingControl\u0022 IsClearEnabled=\u0022$(IsClearEnabled)\u0022\n    IsReadOnly=\u0022$(IsReadOnly)\u0022 Caption=\u0022312 ratings\u0022/\u003E",
+          "xaml": "\u003CRatingControl AutomationProperties.Name=\u0022Simple RatingControl\u0022 Caption=\u0022312 ratings\u0022/\u003E",
           "gallery": {
             "snippet": "RatingControlSimple.txt",
             "source": "WinUIGallery/Samples/RatingControl/RatingControlSimple.txt",
-            "name": "Simple"
+            "name": "Simple",
+            "xamlPlaceholdersDropped": [
+              "IsClearEnabled",
+              "IsReadOnly"
+            ]
           }
         },
         {
           "header": "PlaceholderValue of RatingControl",
-          "xaml": "\u003CRatingControl AutomationProperties.Name=\u0022RatingControl with placeholder\u0022 PlaceholderValue=\u0022$(Slider)\u0022 /\u003E",
+          "xaml": "\u003CRatingControl AutomationProperties.Name=\u0022RatingControl with placeholder\u0022 /\u003E",
           "gallery": {
             "snippet": "RatingControlPlaceholder.txt",
             "source": "WinUIGallery/Samples/RatingControl/RatingControlPlaceholder.txt",
-            "name": "Placeholder"
+            "name": "Placeholder",
+            "xamlPlaceholdersDropped": [
+              "Slider"
+            ]
           }
         }
       ]
@@ -7439,29 +7556,44 @@
       "samples": [
         {
           "header": "Ellipse",
-          "xaml": "\u003CEllipse Fill=\u0022SteelBlue\u0022 Height=\u0022$(Slider1)\u0022 Width=\u0022$(Slider2)\u0022 StrokeThickness=\u0022$(Slider3)\u0022 Stroke=\u0022Black\u0022/\u003E",
+          "xaml": "\u003CEllipse Fill=\u0022SteelBlue\u0022 Stroke=\u0022Black\u0022/\u003E",
           "gallery": {
             "snippet": "ShapeEllipse.txt",
             "source": "WinUIGallery/Samples/Shape/ShapeEllipse.txt",
-            "name": "Ellipse"
+            "name": "Ellipse",
+            "xamlPlaceholdersDropped": [
+              "Slider1",
+              "Slider2",
+              "Slider3"
+            ]
           }
         },
         {
           "header": "Rectangle",
-          "xaml": "\u003CRectangle Fill=\u0022SteelBlue\u0022 Height=\u0022$(Slider1)\u0022 Width=\u0022$(Slider2)\u0022\n           Stroke=\u0022Black\u0022 StrokeThickness=\u0022$(Slider3)\u0022\n           RadiusY=\u0022$(Slider4)\u0022 RadiusX=\u0022$(Slider5)\u0022/\u003E",
+          "xaml": "\u003CRectangle Fill=\u0022SteelBlue\u0022\n           Stroke=\u0022Black\u0022/\u003E",
           "gallery": {
             "snippet": "ShapeRectangle.txt",
             "source": "WinUIGallery/Samples/Shape/ShapeRectangle.txt",
-            "name": "Rectangle"
+            "name": "Rectangle",
+            "xamlPlaceholdersDropped": [
+              "Slider1",
+              "Slider2",
+              "Slider3",
+              "Slider4",
+              "Slider5"
+            ]
           }
         },
         {
           "header": "Polygon",
-          "xaml": "\u003CPolygon Fill=\u0022SteelBlue\u0022 Points=\u002210,100 60,40 200,40 250,100\u0022\n         StrokeThickness=\u0022$(Slider1)\u0022 Stroke=\u0022Black\u0022/\u003E",
+          "xaml": "\u003CPolygon Fill=\u0022SteelBlue\u0022 Points=\u002210,100 60,40 200,40 250,100\u0022 Stroke=\u0022Black\u0022/\u003E",
           "gallery": {
             "snippet": "ShapePolygon.txt",
             "source": "WinUIGallery/Samples/Shape/ShapePolygon.txt",
-            "name": "Polygon"
+            "name": "Polygon",
+            "xamlPlaceholdersDropped": [
+              "Slider1"
+            ]
           }
         }
       ]
@@ -7863,11 +7995,14 @@
       "samples": [
         {
           "header": "A StackPanel control.",
-          "xaml": "\u003CStackPanel\n    Orientation=\u0022$(Orientation)\u0022\n    Spacing=\u0022{x:Bind SpacingSlider.Value, Mode=OneWay}\u0022\u003E\n    \u003CRectangle Fill=\u0022Red\u0022/\u003E\n    \u003CRectangle Fill=\u0022Blue\u0022/\u003E\n    \u003CRectangle Fill=\u0022Green\u0022/\u003E\n    \u003CRectangle Fill=\u0022Yellow\u0022/\u003E\n\u003C/StackPanel\u003E",
+          "xaml": "\u003CStackPanel\n    Spacing=\u0022{x:Bind SpacingSlider.Value, Mode=OneWay}\u0022\u003E\n    \u003CRectangle Fill=\u0022Red\u0022/\u003E\n    \u003CRectangle Fill=\u0022Blue\u0022/\u003E\n    \u003CRectangle Fill=\u0022Green\u0022/\u003E\n    \u003CRectangle Fill=\u0022Yellow\u0022/\u003E\n\u003C/StackPanel\u003E",
           "gallery": {
             "snippet": "StackpanelControl.txt",
             "source": "WinUIGallery/Samples/StackPanel/StackpanelControl.txt",
-            "name": "Control"
+            "name": "Control",
+            "xamlPlaceholdersDropped": [
+              "Orientation"
+            ]
           }
         }
       ]
@@ -8444,11 +8579,14 @@
         },
         {
           "header": "The close button can be persistent or only visible on hover",
-          "xaml": "\u003CTabView CloseButtonOverlayMode=\u0022$(CloseButtonOverlayMode)\u0022 /\u003E",
+          "xaml": "\u003CTabView /\u003E",
           "gallery": {
             "snippet": "TabViewCloseButtonBePersistent.txt",
             "source": "WinUIGallery/Samples/TabView/TabViewCloseButtonBePersistent.txt",
-            "name": "Close Button Be Persistent"
+            "name": "Close Button Be Persistent",
+            "xamlPlaceholdersDropped": [
+              "CloseButtonOverlayMode"
+            ]
           }
         },
         {
@@ -8761,11 +8899,14 @@
         },
         {
           "header": "A selectable TextBlock",
-          "xaml": "\u003CTextBlock IsTextSelectionEnabled=\u0022$(IsTextSelectionEnabled)\u0022\n           Text=\u0022I am a selectable TextBlock with custom SelectionHighlightColor.\u0022\n           SelectionHighlightColor=\u0022DarkOrange\u0022 /\u003E",
+          "xaml": "\u003CTextBlock\n           Text=\u0022I am a selectable TextBlock with custom SelectionHighlightColor.\u0022\n           SelectionHighlightColor=\u0022DarkOrange\u0022 /\u003E",
           "gallery": {
             "snippet": "SelectableTextblock.txt",
             "source": "WinUIGallery/Samples/TextBlock/SelectableTextblock.txt",
-            "name": "Selectable Textblock"
+            "name": "Selectable Textblock",
+            "xamlPlaceholdersDropped": [
+              "IsTextSelectionEnabled"
+            ]
           }
         }
       ]
@@ -9416,11 +9557,14 @@
         },
         {
           "header": "A ToggleSwitch with custom header and content.",
-          "xaml": "\u003CStackPanel Orientation=\u0022Horizontal\u0022\u003E\n    \u003CToggleSwitch Header=\u0022Toggle work\u0022 OffContent=\u0022Do work\u0022 OnContent=\u0022Working\u0022 IsOn=\u0022True$(isOff)\u0022 /\u003E\n    \u003CProgressRing IsActive=\u0022{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}\u0022 Width=\u002232\u0022/\u003E\n\u003C/StackPanel\u003E",
+          "xaml": "\u003CStackPanel Orientation=\u0022Horizontal\u0022\u003E\n    \u003CToggleSwitch Header=\u0022Toggle work\u0022 OffContent=\u0022Do work\u0022 OnContent=\u0022Working\u0022 /\u003E\n    \u003CProgressRing IsActive=\u0022{x:Bind ToggleSwitch2.IsOn, Mode=OneWay}\u0022 Width=\u002232\u0022/\u003E\n\u003C/StackPanel\u003E",
           "gallery": {
             "snippet": "ToggleSwitchCustom.txt",
             "source": "WinUIGallery/Samples/ToggleSwitch/ToggleSwitchCustom.txt",
-            "name": "Custom"
+            "name": "Custom",
+            "xamlPlaceholdersDropped": [
+              "isOff"
+            ]
           }
         }
       ]
@@ -9722,11 +9866,14 @@
       "samples": [
         {
           "header": "A VariableSizedWrapGrid control.",
-          "xaml": "\u003CVariableSizedWrapGrid Orientation=\u0022$(Orientation)\u0022 MaximumRowsOrColumns=\u00223\u0022 ItemHeight=\u002244\u0022 ItemWidth=\u002244\u0022\u003E\n    \u003CRectangle Fill=\u0022Red\u0022/\u003E\n    \u003CRectangle Fill=\u0022Blue\u0022 Height=\u002280\u0022 VariableSizedWrapGrid.RowSpan=\u00222\u0022/\u003E\n    \u003CRectangle Fill=\u0022Green\u0022 Width=\u002280\u0022 VariableSizedWrapGrid.ColumnSpan=\u00222\u0022/\u003E\n    \u003CRectangle Fill=\u0022Yellow\u0022 Height=\u002280\u0022 Width=\u002280\u0022 VariableSizedWrapGrid.RowSpan=\u00222\u0022 VariableSizedWrapGrid.ColumnSpan=\u00222\u0022/\u003E\n\u003C/VariableSizedWrapGrid\u003E",
+          "xaml": "\u003CVariableSizedWrapGrid MaximumRowsOrColumns=\u00223\u0022 ItemHeight=\u002244\u0022 ItemWidth=\u002244\u0022\u003E\n    \u003CRectangle Fill=\u0022Red\u0022/\u003E\n    \u003CRectangle Fill=\u0022Blue\u0022 Height=\u002280\u0022 VariableSizedWrapGrid.RowSpan=\u00222\u0022/\u003E\n    \u003CRectangle Fill=\u0022Green\u0022 Width=\u002280\u0022 VariableSizedWrapGrid.ColumnSpan=\u00222\u0022/\u003E\n    \u003CRectangle Fill=\u0022Yellow\u0022 Height=\u002280\u0022 Width=\u002280\u0022 VariableSizedWrapGrid.RowSpan=\u00222\u0022 VariableSizedWrapGrid.ColumnSpan=\u00222\u0022/\u003E\n\u003C/VariableSizedWrapGrid\u003E",
           "gallery": {
             "snippet": "VariablesizedwrapgridControl.txt",
             "source": "WinUIGallery/Samples/VariableSizedWrapGrid/VariablesizedwrapgridControl.txt",
-            "name": "Control"
+            "name": "Control",
+            "xamlPlaceholdersDropped": [
+              "Orientation"
+            ]
           }
         }
       ]
@@ -9786,11 +9933,14 @@
       "samples": [
         {
           "header": "Content inside of a Viewbox.",
-          "xaml": "\u003CViewbox Height=\u0022200\u0022 Width=\u0022200\u0022 Stretch=\u0022$(Stretch)\u0022 StretchDirection=\u0022Both\u0022\u003E\n    \u003CBorder BorderBrush=\u0022Gray\u0022 BorderThickness=\u002215\u0022\u003E\n        \u003CStackPanel Background=\u0022DarkGray\u0022\u003E\n            \u003CStackPanel Orientation=\u0022Horizontal\u0022\u003E\n                \u003CRectangle Fill=\u0022Blue\u0022 Height=\u002210\u0022 Width=\u002240\u0022/\u003E\n                \u003CRectangle Fill=\u0022Green\u0022 Height=\u002210\u0022 Width=\u002240\u0022/\u003E\n                \u003CRectangle Fill=\u0022Red\u0022 Height=\u002210\u0022 Width=\u002240\u0022/\u003E\n                \u003CRectangle Fill=\u0022Yellow\u0022 Height=\u002210\u0022 Width=\u002240\u0022/\u003E\n            \u003C/StackPanel\u003E\n            \u003CImage Source=\u0022ms-appx:///Assets/SampleMedia/Slices.png\u0022/\u003E\n            \u003CTextBlock Text=\u0022This is text.\u0022 HorizontalAlignment=\u0022Center\u0022/\u003E\n        \u003C/StackPanel\u003E\n    \u003C/Border\u003E\n\u003C/Viewbox\u003E",
+          "xaml": "\u003CViewbox Height=\u0022200\u0022 Width=\u0022200\u0022 StretchDirection=\u0022Both\u0022\u003E\n    \u003CBorder BorderBrush=\u0022Gray\u0022 BorderThickness=\u002215\u0022\u003E\n        \u003CStackPanel Background=\u0022DarkGray\u0022\u003E\n            \u003CStackPanel Orientation=\u0022Horizontal\u0022\u003E\n                \u003CRectangle Fill=\u0022Blue\u0022 Height=\u002210\u0022 Width=\u002240\u0022/\u003E\n                \u003CRectangle Fill=\u0022Green\u0022 Height=\u002210\u0022 Width=\u002240\u0022/\u003E\n                \u003CRectangle Fill=\u0022Red\u0022 Height=\u002210\u0022 Width=\u002240\u0022/\u003E\n                \u003CRectangle Fill=\u0022Yellow\u0022 Height=\u002210\u0022 Width=\u002240\u0022/\u003E\n            \u003C/StackPanel\u003E\n            \u003CImage Source=\u0022ms-appx:///Assets/SampleMedia/Slices.png\u0022/\u003E\n            \u003CTextBlock Text=\u0022This is text.\u0022 HorizontalAlignment=\u0022Center\u0022/\u003E\n        \u003C/StackPanel\u003E\n    \u003C/Border\u003E\n\u003C/Viewbox\u003E",
           "gallery": {
             "snippet": "ContentInsideViewbox.txt",
             "source": "WinUIGallery/Samples/Viewbox/ContentInsideViewbox.txt",
-            "name": "Content Inside Viewbox"
+            "name": "Content Inside Viewbox",
+            "xamlPlaceholdersDropped": [
+              "Stretch"
+            ]
           }
         }
       ]

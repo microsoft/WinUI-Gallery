@@ -476,6 +476,28 @@ internal static partial class CatalogGenerator
             string? xaml = NullIfEmpty(SubstitutionResolver.Apply(bundle.Xaml ?? string.Empty, substitutions));
             string? code = NullIfEmpty(SubstitutionResolver.Apply(bundle.CSharp ?? string.Empty, substitutions));
 
+            // The resolver leaves a token alone rather than guess at it, which is right for accuracy
+            // but leaves markup a consumer cannot paste. Whatever it declined to settle is dropped
+            // here, along with the attribute carrying it, so published XAML never contains a
+            // placeholder.
+            List<string>? droppedPlaceholders = null;
+            if (TokenFallback.ContainsToken(xaml))
+            {
+                List<string> names = TokenFallback.TokenNames(xaml!);
+                string? stripped = NullIfEmpty(TokenFallback.StripFromXaml(xaml!));
+
+                // A token standing in for an element name, as in "<$(EasingFunction)/>", has no
+                // attribute to drop and no default to fall back to. Nothing is claimed in that case:
+                // the fragment simply does not parse and the check below omits it, exactly as it did
+                // before this fallback existed.
+                if (!TokenFallback.ContainsToken(stripped))
+                {
+                    droppedPlaceholders = names;
+                    xaml = stripped;
+                    warnings.Add(new CatalogIssue(uniqueId, $"'{fileName}' had unresolved placeholders ({string.Join(", ", names)}); the attributes carrying them were dropped."));
+                }
+            }
+
             // Consumers parse the XAML and discard whatever fails, so publishing a fragment that
             // cannot parse would advertise code that never arrives. Dropping it here instead keeps
             // the index honest and makes the reason visible in the build output.
@@ -484,6 +506,15 @@ internal static partial class CatalogGenerator
             {
                 warnings.Add(new CatalogIssue(uniqueId, $"'{fileName}' XAML is not a well-formed fragment and was omitted."));
                 xaml = null;
+            }
+
+            // Nothing below may publish a placeholder. The fallback and the parse check together are
+            // meant to make this unreachable, so failing here is deliberate: the index's promise is
+            // that its XAML pastes as published, and shipping a token would quietly break it.
+            if (TokenFallback.ContainsToken(xaml))
+            {
+                issues.Add(new CatalogIssue(uniqueId, $"'{fileName}' still contains unresolved placeholders ({string.Join(", ", TokenFallback.TokenNames(xaml!))}) after fallback removal."));
+                continue;
             }
 
             if (xaml is null && code is null)
@@ -504,6 +535,7 @@ internal static partial class CatalogGenerator
                     Source = ToRepoRelative(bundlePath, options.RepoRoot),
                     Name = DeriveScenarioName(fileName, uniqueId),
                     XamlOmittedAsMalformed = malformed ? true : null,
+                    XamlPlaceholdersDropped = xaml is null ? null : droppedPlaceholders,
                 },
             });
         }

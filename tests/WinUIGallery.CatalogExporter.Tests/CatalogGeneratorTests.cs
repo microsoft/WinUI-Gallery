@@ -75,7 +75,8 @@ public sealed class CatalogGeneratorTests
               xmlns:controls="using:WinUIGallery.Controls">{inner}</Page>
         """;
 
-    private void WriteSample(string uniqueId, string pageXamlBody, params (string FileName, string Contents)[] extraFiles)    {
+    private void WriteSample(string uniqueId, string pageXamlBody, params (string FileName, string Contents)[] extraFiles)
+    {
         string folder = Path.Combine(_fixtureRoot, "WinUIGallery", "Samples", uniqueId);
         Directory.CreateDirectory(folder);
         File.WriteAllText(Path.Combine(folder, uniqueId + "Page.xaml"), pageXamlBody);
