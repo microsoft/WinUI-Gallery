@@ -65,6 +65,7 @@ internal static partial class CatalogGenerator
     private static readonly JsonSerializerOptions ReadOptions = new()
     {
         PropertyNameCaseInsensitive = true,
+        TypeInfoResolver = CatalogReadContext.Default,
     };
 
     public static readonly JsonSerializerOptions WriteOptions = new()
@@ -72,6 +73,7 @@ internal static partial class CatalogGenerator
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         WriteIndented = true,
         DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+        TypeInfoResolver = CatalogWriteContext.Default,
     };
 
     /// <summary>Reads ControlInfoData.json and the Samples folders and produces validated artifacts.</summary>

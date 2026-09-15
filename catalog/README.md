@@ -40,6 +40,14 @@ Both commands auto-detect the repository root by walking up to `WinUIGallery.sln
 
 The index deliberately carries **no generation timestamp**, even though the contract offers `generatedAtUtc`. The file is committed and CI regenerates it to prove it is current; a timestamp would make every run differ and turn that check into constant churn.
 
+### Adding a type the serializer touches
+
+JSON goes through source-generated metadata, matching the gallery app and the navigation source generator, which both define a `JsonSerializerContext` for this same `ControlInfoData.json`. `CatalogReadContext` covers the input and `CatalogWriteContext` the output, both in `CatalogJsonContext.cs`.
+
+Reflection-based serialization is switched off in both projects, so this is enforced rather than conventional: **a type the serializer reaches that no context covers throws at runtime instead of quietly falling back.** If you add a new serialized type and see `Reflection-based serialization has been disabled for this application`, the fix is a `[JsonSerializable(typeof(YourType))]` on the relevant context, not a change to the options.
+
+Serializer behaviour — the camelCase naming policy, indentation, and null omission — stays on `CatalogGenerator.ReadOptions` and `WriteOptions` rather than on `JsonSourceGenerationOptions` attributes, so there is a single definition of it. `WriteOptions` decides the published field names and `ContractConformanceTests` derives the names it expects from that same object, which is what lets the test verify the writer instead of a second copy of the writer's configuration.
+
 ## How source data maps onto the contract
 
 | Contract field | Derived from |

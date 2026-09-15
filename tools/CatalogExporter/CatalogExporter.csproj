@@ -11,6 +11,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <InvariantGlobalization>true</InvariantGlobalization>
         <IsPackable>false</IsPackable>
+        <!-- Turns the source-generated contexts in CatalogJsonContext.cs into a guarantee rather
+             than a convention: with reflection disabled, any type reached by the serializer that a
+             context does not cover throws at runtime instead of quietly falling back. -->
+        <JsonSerializerIsReflectionEnabledByDefault>false</JsonSerializerIsReflectionEnabledByDefault>
         <!-- This is a plain, platform-agnostic console/library project (no WinUI/Windows App SDK
              dependency) so it can build and run in any CI environment, independent of the
              Windows-only WinUIGallery app project. -->

@@ -9,6 +9,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <IsPackable>false</IsPackable>
         <IsTestProject>true</IsTestProject>
+        <!-- Matches CatalogExporter.csproj. The feature switch is baked into the runtimeconfig of
+             whichever assembly is executing, so it has to be set here too for the tests to
+             actually exercise the reflection-free path. -->
+        <JsonSerializerIsReflectionEnabledByDefault>false</JsonSerializerIsReflectionEnabledByDefault>
     </PropertyGroup>
 
     <ItemGroup>
