@@ -362,6 +362,17 @@ internal sealed class CrashTelemetryRecord
 {
     private const int MaximumStackFrames = 32;
     private const int MaximumStackTraceLength = 8192;
+    private static readonly string[] AllowedStackFramePrefixes =
+    [
+        "WinUIGallery.",
+        "Microsoft.UI.",
+        "Microsoft.Windows.",
+        "Windows.",
+        "WinRT.",
+        "ABI.Microsoft.UI.",
+        "ABI.Microsoft.Windows.",
+        "ABI.Windows.",
+    ];
 
     public DateTime CrashTimeUtc { get; set; }
 
@@ -394,7 +405,7 @@ internal sealed class CrashTelemetryRecord
         };
     }
 
-    private static string SanitizeStackTrace(string? stackTrace)
+    internal static string SanitizeStackTrace(string? stackTrace)
     {
         if (string.IsNullOrEmpty(stackTrace))
         {
@@ -403,7 +414,7 @@ internal sealed class CrashTelemetryRecord
 
         IEnumerable<string> frames = stackTrace
             .Split(["\r\n", "\n"], StringSplitOptions.RemoveEmptyEntries)
-            .Where(frame => frame.Contains("WinUIGallery.", StringComparison.Ordinal))
+            .Where(IsAllowedStackFrame)
             .Take(MaximumStackFrames)
             .Select(RemoveSourceLocation);
 
@@ -411,6 +422,18 @@ internal sealed class CrashTelemetryRecord
         return sanitizedStackTrace.Length <= MaximumStackTraceLength
             ? sanitizedStackTrace
             : sanitizedStackTrace[..MaximumStackTraceLength];
+    }
+
+    private static bool IsAllowedStackFrame(string frame)
+    {
+        string methodName = frame.TrimStart();
+        if (methodName.StartsWith("at ", StringComparison.Ordinal))
+        {
+            methodName = methodName[3..];
+        }
+
+        return AllowedStackFramePrefixes.Any(prefix =>
+            methodName.StartsWith(prefix, StringComparison.Ordinal));
     }
 
     private static string RemoveSourceLocation(string frame)

@@ -13,7 +13,7 @@ If WinUI Gallery encounters an unhandled exception, it may also record:
 
 - The active sample identifier, when the exception occurred on a sample page.
 - The exception type and error code.
-- A sanitized stack trace limited to WinUI Gallery code, without source-file paths.
+- A sanitized stack trace limited to WinUI Gallery, WinUI, Windows App SDK, Windows projection, and WinRT interop code, without source-file paths.
 - The app version and time of the exception.
 
 The app does not include exception messages, search text, sample titles or descriptions, file paths, navigation history, account information, or app-generated user, device, installation, or session identifiers in these events. Navigation values are recorded only when they exactly match a sample identifier in the bundled catalog.
