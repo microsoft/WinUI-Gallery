@@ -107,6 +107,21 @@
             </StackPanel>
         </DataTemplate>
 
+        <DataTemplate x:Key="FlowItemTemplate" x:DataType="local:FlowLayoutItem">
+            <Border
+                Width="96"
+                Height="64"
+                Background="{ThemeResource ControlFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource ControlCornerRadius}">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="{x:Bind Label}" />
+            </Border>
+        </DataTemplate>
+
         <StackLayout
             x:Name="VerticalStackLayout"
             Orientation="Vertical"
@@ -275,6 +290,109 @@
                     Value="MyFeedLayout" />
                 <controls:ControlExampleSubstitution Key="ItemTemplate" Value="SimpleItemTemplate" />
                 <controls:ControlExampleSubstitution Key="SampleCodeLayout2" x:Name="SampleCodeLayout2" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            HeaderText="Virtualize a wrapping collection with FlowLayout"
+            IsExperimental="True"
+            SampleDefinition="ItemsRepeater\FlowLayoutVirtualization.txt">
+            <StackPanel Spacing="8">
+                <TextBlock
+                    Text="Scroll through 500 items. ItemsRepeater creates and recycles only the elements needed near the viewport."
+                    TextWrapping="Wrap" />
+                <ScrollViewer
+                    x:Name="FlowScrollViewer"
+                    Width="520"
+                    Height="320"
+                    HorizontalAlignment="Left"
+                    HorizontalScrollBarVisibility="Disabled"
+                    HorizontalScrollMode="Disabled"
+                    IsHorizontalScrollChainingEnabled="False"
+                    IsVerticalScrollChainingEnabled="False"
+                    VerticalScrollBarVisibility="Auto"
+                    VerticalScrollMode="Enabled">
+                    <ItemsRepeater
+                        x:Name="FlowRepeater"
+                        ElementClearing="FlowRepeater_ElementClearing"
+                        ElementPrepared="FlowRepeater_ElementPrepared"
+                        HorizontalCacheLength="0"
+                        ItemTemplate="{StaticResource FlowItemTemplate}"
+                        ItemsSource="{x:Bind FlowLayoutItems}"
+                        VerticalCacheLength="0">
+                        <ItemsRepeater.Layout>
+                            <FlowLayout
+                                x:Name="FlowLayout1"
+                                LineAlignment="Start"
+                                LineSpacing="8"
+                                MinItemSpacing="8" />
+                        </ItemsRepeater.Layout>
+                    </ItemsRepeater>
+                </ScrollViewer>
+                <TextBlock
+                    x:Name="RealizedCountText"
+                    AutomationProperties.LiveSetting="Polite"
+                    Text="Realized elements: 0 of 500" />
+            </StackPanel>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <RadioButtons
+                        AutomationProperties.AutomationId="FlowLayoutOrientation"
+                        AutomationProperties.Name="FlowLayout orientation"
+                        Header="Orientation"
+                        SelectionChanged="OrientationButtons_SelectionChanged">
+                        <RadioButton
+                            AutomationProperties.AutomationId="FlowLayoutHorizontal"
+                            AutomationProperties.Name="Horizontal flow"
+                            Content="Horizontal"
+                            IsChecked="True"
+                            Tag="Horizontal" />
+                        <RadioButton
+                            AutomationProperties.AutomationId="FlowLayoutVertical"
+                            AutomationProperties.Name="Vertical flow"
+                            Content="Vertical"
+                            Tag="Vertical" />
+                    </RadioButtons>
+                    <ComboBox
+                        AutomationProperties.AutomationId="FlowLayoutLineAlignment"
+                        AutomationProperties.Name="Line alignment"
+                        Header="LineAlignment"
+                        SelectedIndex="0"
+                        SelectionChanged="LineAlignmentComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Start" Tag="Start" />
+                        <ComboBoxItem Content="Center" Tag="Center" />
+                        <ComboBoxItem Content="Space between" Tag="SpaceBetween" />
+                        <ComboBoxItem Content="Space evenly" Tag="SpaceEvenly" />
+                    </ComboBox>
+                    <Slider
+                        AutomationProperties.AutomationId="FlowLayoutItemSpacing"
+                        AutomationProperties.Name="Minimum item spacing"
+                        Header="MinItemSpacing"
+                        Maximum="32"
+                        SnapsTo="Ticks"
+                        StepFrequency="2"
+                        TickFrequency="2"
+                        Value="8"
+                        ValueChanged="ItemSpacingSlider_ValueChanged" />
+                    <Slider
+                        AutomationProperties.AutomationId="FlowLayoutLineSpacing"
+                        AutomationProperties.Name="Line spacing"
+                        Header="LineSpacing"
+                        Maximum="32"
+                        SnapsTo="Ticks"
+                        StepFrequency="2"
+                        TickFrequency="2"
+                        Value="8"
+                        ValueChanged="LineSpacingSlider_ValueChanged" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Orientation" Value="{x:Bind FlowLayout1.Orientation, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="LineAlignment" Value="{x:Bind FlowLayout1.LineAlignment, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="MinItemSpacing" Value="{x:Bind FlowLayout1.MinItemSpacing, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="LineSpacing" Value="{x:Bind FlowLayout1.LineSpacing, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
