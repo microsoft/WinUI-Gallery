@@ -203,4 +203,12 @@ internal sealed class IndexSampleGallery
     /// invisible.
     /// </summary>
     public List<string>? XamlPlaceholdersDropped { get; set; }
+
+    /// <summary>
+    /// Names of $(Token) placeholders still present in this sample's C#. Unlike
+    /// <see cref="XamlPlaceholdersDropped"/>, which lists tokens already removed and guarantees
+    /// clean output, this warns that the published code is NOT pasteable as-is: C# has no
+    /// construct whose absence yields a default, so the tokens cannot be deleted safely.
+    /// </summary>
+    public List<string>? CodePlaceholdersPresent { get; set; }
 }

@@ -522,6 +522,16 @@ internal static partial class CatalogGenerator
                 continue;
             }
 
+            // C# gets no such gate, and the asymmetry is deliberate. The XAML fallback works only
+            // because deleting an attribute leaves the property at its own default; C# has no
+            // construct whose absence means "default", and the tokens that occur here sit in
+            // identifier fragments, fixed-arity argument lists, and whole statements, none of which
+            // survive having the token cut out. So they ship as written, and the names are declared
+            // instead, so a consumer can tell templated code from code it can paste.
+            List<string>? codePlaceholders = TokenFallback.ContainsToken(code)
+                ? TokenFallback.TokenNames(code!)
+                : null;
+
             samples.Add(new IndexSample
             {
                 Header = NullIfEmpty(bundle.Header) ?? DeriveScenarioName(fileName, uniqueId),
@@ -536,6 +546,7 @@ internal static partial class CatalogGenerator
                     Name = DeriveScenarioName(fileName, uniqueId),
                     XamlOmittedAsMalformed = malformed ? true : null,
                     XamlPlaceholdersDropped = xaml is null ? null : droppedPlaceholders,
+                    CodePlaceholdersPresent = codePlaceholders,
                 },
             });
         }

@@ -1022,7 +1022,10 @@
           "gallery": {
             "snippet": "AppNotificationInformationalNotificationLogoCustom.txt",
             "source": "WinUIGallery/Samples/AppNotification/AppNotificationInformationalNotificationLogoCustom.txt",
-            "name": "Informational Notification Logo Custom"
+            "name": "Informational Notification Logo Custom",
+            "codePlaceholdersPresent": [
+              "SelectedAppNotificationSoundEvent"
+            ]
           }
         },
         {
@@ -1156,7 +1159,15 @@
             "snippet": "AppwindowOverlapedpresenter.txt",
             "source": "WinUIGallery/Samples/AppWindow/AppwindowOverlapedpresenter.txt",
             "name": "Overlapedpresenter",
-            "xamlOmittedAsMalformed": true
+            "xamlOmittedAsMalformed": true,
+            "codePlaceholdersPresent": [
+              "IsAlwaysOnTop",
+              "IsMaximizable",
+              "IsMinimizable",
+              "IsResizable",
+              "HasBorder",
+              "HasTitleBar"
+            ]
           }
         },
         {
@@ -1264,7 +1275,21 @@
           "gallery": {
             "snippet": "AppwindowtitlebarColorCustomization.txt",
             "source": "WinUIGallery/Samples/AppWindowTitleBar/AppwindowtitlebarColorCustomization.txt",
-            "name": "Color Customization"
+            "name": "Color Customization",
+            "codePlaceholdersPresent": [
+              "BackgroundColor",
+              "ForegroundColor",
+              "ButtonBackgroundColor",
+              "ButtonForegroundColor",
+              "ButtonHoverBackgroundColor",
+              "ButtonHoverForegroundColor",
+              "InactiveBackgroundColor",
+              "InactiveForegroundColor",
+              "ButtonInactiveBackgroundColor",
+              "ButtonInactiveForegroundColor",
+              "ButtonPressedBackgroundColor",
+              "ButtonPressedForegroundColor"
+            ]
           }
         },
         {
@@ -1274,7 +1299,11 @@
           "gallery": {
             "snippet": "ExtendingContentAppwindowtitlebarArea.txt",
             "source": "WinUIGallery/Samples/AppWindowTitleBar/ExtendingContentAppwindowtitlebarArea.txt",
-            "name": "Extending Content Appwindowtitlebar Area"
+            "name": "Extending Content Appwindowtitlebar Area",
+            "codePlaceholdersPresent": [
+              "ExtendsContentIntoTitleBar",
+              "TitleBarHeightOption"
+            ]
           }
         },
         {
@@ -1284,7 +1313,10 @@
           "gallery": {
             "snippet": "AppwindowtitlebarPreferredThemeHeight.txt",
             "source": "WinUIGallery/Samples/AppWindowTitleBar/AppwindowtitlebarPreferredThemeHeight.txt",
-            "name": "Preferred Theme Height"
+            "name": "Preferred Theme Height",
+            "codePlaceholdersPresent": [
+              "PreferredTheme"
+            ]
           }
         }
       ]
@@ -1451,7 +1483,10 @@
           "gallery": {
             "snippet": "BadgeNotificationManagerSettingBadgeNotificationsGlyph.txt",
             "source": "WinUIGallery/Samples/BadgeNotificationManager/BadgeNotificationManagerSettingBadgeNotificationsGlyph.txt",
-            "name": "Setting Badge Notifications Glyph"
+            "name": "Setting Badge Notifications Glyph",
+            "codePlaceholdersPresent": [
+              "SelectedGlyph"
+            ]
           }
         }
       ]
@@ -2127,7 +2162,10 @@
           "gallery": {
             "snippet": "CaptureElementPreviewMediacapturePreviewDisplayedVia.txt",
             "source": "WinUIGallery/Samples/CaptureElementPreview/CaptureElementPreviewMediacapturePreviewDisplayedVia.txt",
-            "name": "Mediacapture Preview Displayed Via"
+            "name": "Mediacapture Preview Displayed Via",
+            "codePlaceholdersPresent": [
+              "MirrorPreview"
+            ]
           }
         }
       ]
@@ -8090,7 +8128,12 @@
           "gallery": {
             "snippet": "StoragePickersPickSingleFile.txt",
             "source": "WinUIGallery/Samples/StoragePickers/StoragePickersPickSingleFile.txt",
-            "name": "Pick Single File"
+            "name": "Pick Single File",
+            "codePlaceholdersPresent": [
+              "FileType",
+              "SuggestedStartLocation",
+              "ViewMode"
+            ]
           }
         },
         {
@@ -8101,7 +8144,12 @@
           "gallery": {
             "snippet": "StoragePickersPickMultipleFiles.txt",
             "source": "WinUIGallery/Samples/StoragePickers/StoragePickersPickMultipleFiles.txt",
-            "name": "Pick Multiple Files"
+            "name": "Pick Multiple Files",
+            "codePlaceholdersPresent": [
+              "FileType",
+              "SuggestedStartLocation",
+              "ViewMode"
+            ]
           }
         },
         {
@@ -8112,7 +8160,14 @@
           "gallery": {
             "snippet": "StoragePickersSaveFile.txt",
             "source": "WinUIGallery/Samples/StoragePickers/StoragePickersSaveFile.txt",
-            "name": "Save File"
+            "name": "Save File",
+            "codePlaceholdersPresent": [
+              "TxtFileType",
+              "JsonFileType",
+              "XmlFileType",
+              "SuggestedStartLocation",
+              "SuggestedFolder"
+            ]
           }
         },
         {
@@ -8123,7 +8178,11 @@
           "gallery": {
             "snippet": "StoragePickersPickFolder.txt",
             "source": "WinUIGallery/Samples/StoragePickers/StoragePickersPickFolder.txt",
-            "name": "Pick Folder"
+            "name": "Pick Folder",
+            "codePlaceholdersPresent": [
+              "SuggestedStartLocation",
+              "ViewMode"
+            ]
           }
         },
         {
