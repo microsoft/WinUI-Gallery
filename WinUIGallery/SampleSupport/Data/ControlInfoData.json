@@ -4052,7 +4052,7 @@
             "MaxWidth",
             "MaxHeight"
           ],
-          "Title": "Windowing APIs",
+          "Title": "Window",
           "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "Create top-level XAML windows and configure their client-area size.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Windowing.png",

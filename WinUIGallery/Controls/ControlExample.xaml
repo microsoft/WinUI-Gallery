@@ -39,254 +39,258 @@
         </animations:ImplicitAnimationSet>
     </UserControl.Resources>
     <Grid IsTabStop="False">
-        <Border
-            Background="{ThemeResource SystemFillColorCautionBackgroundBrush}"
-            BorderBrush="{ThemeResource SystemFillColorCautionBrush}"
-            BorderThickness="1"
-            CornerRadius="8"
-            IsHitTestVisible="False"
-            Visibility="{x:Bind IsExperimental}" />
+        <Grid x:Name="rootGrid" IsTabStop="False">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.ThemeDictionaries>
+                        <ResourceDictionary x:Key="Light">
+                            <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
+                            <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
+                        </ResourceDictionary>
+                        <ResourceDictionary x:Key="Dark">
+                            <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
+                            <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
+                        </ResourceDictionary>
+                        <ResourceDictionary x:Key="HighContrast">
+                            <SolidColorBrush x:Key="ControlExampleDisplayBrush" Color="{ThemeResource SystemColorWindowColor}" />
+                            <Thickness x:Key="ControlExampleDisplayBorderThickness">1</Thickness>
+                        </ResourceDictionary>
+                    </ResourceDictionary.ThemeDictionaries>
+                </ResourceDictionary>
+            </Grid.Resources>
 
-        <Grid
-            x:Name="rootGrid"
-            Margin="{x:Bind local:ControlExample.BoolToExperimentalMargin(IsExperimental), Mode=OneWay}"
-            IsTabStop="False">
-        <Grid.Resources>
-            <ResourceDictionary>
-                <ResourceDictionary.ThemeDictionaries>
-                    <ResourceDictionary x:Key="Light">
-                        <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
-                        <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
-                    </ResourceDictionary>
-                    <ResourceDictionary x:Key="Dark">
-                        <StaticResource x:Key="ControlExampleDisplayBrush" ResourceKey="SolidBackgroundFillColorBaseBrush" />
-                        <Thickness x:Key="ControlExampleDisplayBorderThickness">0</Thickness>
-                    </ResourceDictionary>
-                    <ResourceDictionary x:Key="HighContrast">
-                        <SolidColorBrush x:Key="ControlExampleDisplayBrush" Color="{ThemeResource SystemColorWindowColor}" />
-                        <Thickness x:Key="ControlExampleDisplayBorderThickness">1</Thickness>
-                    </ResourceDictionary>
-                </ResourceDictionary.ThemeDictionaries>
-
-                <Thickness x:Key="ControlElementScreenshotModePadding">67</Thickness>
-            </ResourceDictionary>
-        </Grid.Resources>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-
-        <Grid Margin="0,12" ColumnDefinitions="Auto,*">
-            <StackPanel
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Orientation="Horizontal"
-                Spacing="8"
-                Visibility="{x:Bind IsExperimental}">
-                <FontIcon
-                    AutomationProperties.AccessibilityView="Raw"
-                    FontSize="14"
-                    Foreground="{ThemeResource SystemFillColorCautionBrush}"
-                    Glyph="&#xE946;" />
-                <TextBlock
-                    VerticalAlignment="Center"
-                    Foreground="{ThemeResource SystemFillColorCautionBrush}"
-                    Style="{ThemeResource BodyStrongTextBlockStyle}"
-                    Text="Experimental" />
-            </StackPanel>
-
-            <TextBlock
-                x:Name="HeaderTextPresenter"
-                Grid.Column="1"
-                Margin="{x:Bind local:ControlExample.BoolToHeaderMargin(IsExperimental), Mode=OneWay}"
-                VerticalAlignment="Center"
-                AutomationProperties.HeadingLevel="Level3"
-                Style="{ThemeResource BodyStrongTextBlockStyle}"
-                Text="{x:Bind HeaderText, Mode=OneWay}" />
-        </Grid>
-
-        <RichTextBlock
-            x:Name="ErrorTextBlock"
-            Grid.Row="1"
-            Margin="0,0,0,12"
-            Foreground="{ThemeResource SystemFillColorCriticalBrush}"
-            IsTextSelectionEnabled="True"
-            Visibility="Collapsed">
-            <Paragraph>
-                This sample requires a later version of Windows to be fully functional.
-            </Paragraph>
-        </RichTextBlock>
-
-        <Border
-            Grid.Row="2"
-            Margin="0,0,0,12"
-            Padding="12"
-            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-            CornerRadius="4"
-            Visibility="{x:Bind IsExperimental}">
-            <TextBlock
-                Text="This example uses an experimental Windows App SDK API that may change before release."
-                TextWrapping="Wrap" />
-        </Border>
-
-        <Grid Grid.Row="3" CornerRadius="8" IsTabStop="False">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <local:SampleThemeListener IsTabStop="False">
-                <Grid
-                    x:Name="ExampleContainer"
-                    x:FieldModifier="Public"
-                    CornerRadius="8,8,0,0"
-                    IsTabStop="False"
-                    Style="{ThemeResource GalleryTileGridStyle}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="Auto" MaxWidth="320" />
-                        <ColumnDefinition Width="Auto" MaxWidth="320" />
-                    </Grid.ColumnDefinitions>
-
-                    <!--  Example Display  -->
-                    <ContentPresenter
-                        x:Name="ControlPresenter"
-                        Padding="12"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        HorizontalContentAlignment="{x:Bind HorizontalContentAlignment}"
-                        Background="{ThemeResource ControlExampleDisplayBrush}"
-                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                        BorderThickness="{ThemeResource ControlExampleDisplayBorderThickness}"
-                        Content="{x:Bind Example}"
-                        CornerRadius="8,8,0,0"
-                        IsTabStop="False" />
-
-                    <!--  Output Display  -->
-                    <StackPanel
-                        Grid.Column="1"
-                        Margin="0,12,12,12"
-                        Padding="16"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Stretch"
-                        Background="{ThemeResource ControlExampleDisplayBrush}"
-                        CornerRadius="8"
-                        Orientation="Vertical"
-                        IsTabStop="False"
-                        Visibility="{x:Bind Output, Converter={StaticResource nullToVisibilityConverter}}">
-                        <TextBlock Text="Output:" />
-                        <ContentPresenter x:Name="OutputPresenter" Content="{x:Bind Output}" IsTabStop="False" />
+            <StackPanel
+                Margin="0,12"
+                Orientation="Horizontal"
+                Spacing="8">
+                <TextBlock
+                    x:Name="HeaderTextPresenter"
+                    VerticalAlignment="Center"
+                    AutomationProperties.HeadingLevel="Level3"
+                    Style="{ThemeResource BodyStrongTextBlockStyle}"
+                    Text="{x:Bind HeaderText, Mode=OneWay}" />
+                <Border
+                    Padding="8,2"
+                    VerticalAlignment="Center"
+                    AutomationProperties.Name="Experimental sample"
+                    Background="{ThemeResource InfoBarWarningSeverityBackgroundBrush}"
+                    BorderBrush="{ThemeResource InfoBarWarningSeverityIconBackground}"
+                    BorderThickness="1"
+                    CornerRadius="12"
+                    Visibility="{x:Bind IsExperimental}">
+                    <ToolTipService.ToolTip>
+                        <ToolTip Content="This example uses an experimental Windows App SDK API that may change before release." />
+                    </ToolTipService.ToolTip>
+                    <StackPanel Orientation="Horizontal" Spacing="4">
+                        <FontIcon
+                            FontSize="10"
+                            Foreground="{ThemeResource InfoBarWarningSeverityIconBackground}"
+                            Glyph="&#xE7BA;" />
+                        <TextBlock
+                            FontSize="10"
+                            Foreground="{ThemeResource InfoBarWarningSeverityIconBackground}"
+                            Text="EXPERIMENTAL" />
                     </StackPanel>
+                </Border>
+            </StackPanel>
 
-                    <!--  Options Display  -->
-                    <ContentPresenter
-                        x:Name="OptionsPresenter"
-                        Grid.Column="2"
-                        Padding="16"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                        BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
-                        BorderThickness="1,0,0,0"
-                        CornerRadius="0,8,0,0"
-                        Content="{x:Bind Options}"
-                        IsTabStop="False"
-                        Visibility="{x:Bind Options, Converter={StaticResource nullToVisibilityConverter}}" />
-                </Grid>
-            </local:SampleThemeListener>
-
-            <!--  Sample code display  -->
-            <Expander
+            <RichTextBlock
+                x:Name="ErrorTextBlock"
                 Grid.Row="1"
-                Padding="0"
-                HorizontalAlignment="Stretch"
-                HorizontalContentAlignment="Stretch"
-                Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
-                CornerRadius="0,0,8,8"
-                Visibility="{x:Bind SourceCodeVisibility, Mode=OneWay}">
+                Margin="0,0,0,12"
+                Foreground="{ThemeResource SystemFillColorCriticalBrush}"
+                IsTextSelectionEnabled="True"
+                Visibility="Collapsed">
+                <Paragraph>
+                    This sample requires a later version of Windows to be fully functional.
+                </Paragraph>
+            </RichTextBlock>
 
-                <Expander.Header>
-                    <TextBlock Text="Source code" />
-                </Expander.Header>
-                <Grid RowSpacing="16" IsTabStop="False">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <SelectorBar
-                        x:Name="SelectorBarControl"
-                        Margin="4,0,0,0"
-                        SelectionChanged="SelectorBarControl_SelectionChanged">
-                        <SelectorBarItem
-                            x:Name="SelectorBarXamlItem"
-                            Loaded="SelectorBarItem_Loaded"
-                            Tag="Xaml"
-                            Text="XAML" />
-                        <SelectorBarItem
-                            x:Name="SelectorBarCSharpItem"
-                            Loaded="SelectorBarItem_Loaded"
-                            Tag="CSharp"
-                            Text="C#" />
-                    </SelectorBar>
+            <Grid
+                Grid.Row="2"
+                CornerRadius="8"
+                IsTabStop="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-                    <!--  using animations:Implicit... with Grid.Row causes Grid.Row to have no effect, Therefore, the Grid.Row is applied in the grid  -->
-                    <Grid Grid.Row="1" x:DefaultBindMode="OneWay" IsTabStop="False">
-                        <ContentPresenter x:Name="XamlContentPresenter" Visibility="Collapsed" IsTabStop="False">
-                            <local:SampleCodePresenter
-                                x:Name="XamlPresenter"
-                                animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
-                                animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
-                                Code="{x:Bind Xaml}"
-                                CodeSourceFile="{x:Bind XamlSource}"
-                                Padding="16,0,16,16"
-                                SampleType="XAML"
-                                Substitutions="{x:Bind Substitutions}" />
-                        </ContentPresenter>
-                        <ContentPresenter x:Name="CSharpContentPresenter" Visibility="Collapsed" IsTabStop="False">
-                            <local:SampleCodePresenter
-                                x:Name="CSharpPresenter"
-                                animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
-                                animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
-                                Code="{x:Bind CSharp}"
-                                CodeSourceFile="{x:Bind CSharpSource}"
-                                Padding="16,0,16,16"
-                                SampleType="CSharp"
-                                Substitutions="{x:Bind Substitutions}" />
-                        </ContentPresenter>
+                <local:SampleThemeListener IsTabStop="False">
+                    <Grid
+                        x:Name="ExampleContainer"
+                        x:FieldModifier="Public"
+                        CornerRadius="8,8,0,0"
+                        IsTabStop="False"
+                        Style="{ThemeResource GalleryTileGridStyle}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" MaxWidth="320" />
+                            <ColumnDefinition Width="Auto" MaxWidth="320" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--  Example Display  -->
+                        <ContentPresenter
+                            x:Name="ControlPresenter"
+                            Padding="12"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="{x:Bind HorizontalContentAlignment}"
+                            Background="{ThemeResource ControlExampleDisplayBrush}"
+                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                            BorderThickness="{ThemeResource ControlExampleDisplayBorderThickness}"
+                            Content="{x:Bind Example}"
+                            CornerRadius="8,8,0,0"
+                            IsTabStop="False" />
+
+                        <!--  Output Display  -->
+                        <StackPanel
+                            Grid.Column="1"
+                            Margin="0,12,12,12"
+                            Padding="16"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Stretch"
+                            Background="{ThemeResource ControlExampleDisplayBrush}"
+                            CornerRadius="8"
+                            IsTabStop="False"
+                            Orientation="Vertical"
+                            Visibility="{x:Bind Output, Converter={StaticResource nullToVisibilityConverter}}">
+                            <TextBlock Text="Output:" />
+                            <ContentPresenter
+                                x:Name="OutputPresenter"
+                                Content="{x:Bind Output}"
+                                IsTabStop="False" />
+                        </StackPanel>
+
+                        <!--  Options Display  -->
+                        <ContentPresenter
+                            x:Name="OptionsPresenter"
+                            Grid.Column="2"
+                            Padding="16"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                            BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                            BorderThickness="1,0,0,0"
+                            Content="{x:Bind Options}"
+                            CornerRadius="0,8,0,0"
+                            IsTabStop="False"
+                            Visibility="{x:Bind Options, Converter={StaticResource nullToVisibilityConverter}}" />
                     </Grid>
-                </Grid>
-            </Expander>
-        </Grid>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState x:Name="IntermediateLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="740" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="PhoneLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="OptionsPresenter.HorizontalContentAlignment" Value="Left" />
-                        <Setter Target="OptionsPresenter.Margin" Value="0,24,0,0" />
-                        <Setter Target="OptionsPresenter.BorderThickness" Value="0,1,0,0" />
-                        <Setter Target="OptionsPresenter.(Grid.Row)" Value="1" />
-                        <Setter Target="OptionsPresenter.(Grid.Column)" Value="0" />
-                        <Setter Target="OptionsPresenter.(Grid.ColumnSpan)" Value="2" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+                </local:SampleThemeListener>
+
+                <!--  Sample code display  -->
+                <Expander
+                    Grid.Row="1"
+                    Padding="0"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+                    CornerRadius="0,0,8,8"
+                    Visibility="{x:Bind SourceCodeVisibility, Mode=OneWay}">
+
+                    <Expander.Header>
+                        <TextBlock Text="Source code" />
+                    </Expander.Header>
+                    <Grid IsTabStop="False" RowSpacing="16">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <StackPanel Spacing="8">
+                            <InfoBar
+                                Title="Experimental API"
+                                IsClosable="False"
+                                IsOpen="{x:Bind IsExperimental}"
+                                Message="This example uses an experimental Windows App SDK API that may change before release."
+                                Severity="Warning"
+                                Visibility="{x:Bind IsExperimental}" />
+                            <SelectorBar
+                                x:Name="SelectorBarControl"
+                                Margin="4,0,0,0"
+                                SelectionChanged="SelectorBarControl_SelectionChanged">
+                                <SelectorBarItem
+                                    x:Name="SelectorBarXamlItem"
+                                    Loaded="SelectorBarItem_Loaded"
+                                    Tag="Xaml"
+                                    Text="XAML" />
+                                <SelectorBarItem
+                                    x:Name="SelectorBarCSharpItem"
+                                    Loaded="SelectorBarItem_Loaded"
+                                    Tag="CSharp"
+                                    Text="C#" />
+                            </SelectorBar>
+                        </StackPanel>
+
+                        <!--  using animations:Implicit... with Grid.Row causes Grid.Row to have no effect, Therefore, the Grid.Row is applied in the grid  -->
+                        <Grid
+                            Grid.Row="1"
+                            x:DefaultBindMode="OneWay"
+                            IsTabStop="False">
+                            <ContentPresenter
+                                x:Name="XamlContentPresenter"
+                                IsTabStop="False"
+                                Visibility="Collapsed">
+                                <local:SampleCodePresenter
+                                    x:Name="XamlPresenter"
+                                    Padding="16,0,16,16"
+                                    animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                                    animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
+                                    Code="{x:Bind Xaml}"
+                                    CodeSourceFile="{x:Bind XamlSource}"
+                                    SampleType="XAML"
+                                    Substitutions="{x:Bind Substitutions}" />
+                            </ContentPresenter>
+                            <ContentPresenter
+                                x:Name="CSharpContentPresenter"
+                                IsTabStop="False"
+                                Visibility="Collapsed">
+                                <local:SampleCodePresenter
+                                    x:Name="CSharpPresenter"
+                                    Padding="16,0,16,16"
+                                    animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                                    animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
+                                    Code="{x:Bind CSharp}"
+                                    CodeSourceFile="{x:Bind CSharpSource}"
+                                    SampleType="CSharp"
+                                    Substitutions="{x:Bind Substitutions}" />
+                            </ContentPresenter>
+                        </Grid>
+                    </Grid>
+                </Expander>
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup>
+                    <VisualState x:Name="IntermediateLayout">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="740" />
+                        </VisualState.StateTriggers>
+                    </VisualState>
+                    <VisualState x:Name="PhoneLayout">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="0" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="OptionsPresenter.HorizontalContentAlignment" Value="Left" />
+                            <Setter Target="OptionsPresenter.Margin" Value="0,24,0,0" />
+                            <Setter Target="OptionsPresenter.BorderThickness" Value="0,1,0,0" />
+                            <Setter Target="OptionsPresenter.(Grid.Row)" Value="1" />
+                            <Setter Target="OptionsPresenter.(Grid.Column)" Value="0" />
+                            <Setter Target="OptionsPresenter.(Grid.ColumnSpan)" Value="2" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
         </Grid>
     </Grid>
 </UserControl>

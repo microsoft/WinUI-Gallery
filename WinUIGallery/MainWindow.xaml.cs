@@ -256,7 +256,13 @@ public sealed partial class MainWindow : Window
             AutomationProperties.SetName(itemGroup, group.Title);
             AutomationProperties.SetAutomationId(itemGroup, group.UniqueId);
 
-            foreach (var item in group.Items)
+            IEnumerable<ControlInfoDataItem> items = group.Items;
+            if (group.UniqueId.Equals("MultipleWindows", StringComparison.Ordinal))
+            {
+                items = items.OrderBy(i => i.Title, StringComparer.CurrentCultureIgnoreCase);
+            }
+
+            foreach (var item in items)
             {
                 var itemInGroup = new NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item };
 
