@@ -19,6 +19,7 @@ using Windows.Foundation;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
 using WinUIGallery.Pages;
+using WinUIGallery.Telemetry;
 
 namespace WinUIGallery;
 
@@ -33,6 +34,8 @@ public sealed partial class MainWindow : Window
     }
 
     public Action? NavigationViewLoaded { get; set; }
+
+    internal string? ActiveSampleId { get; private set; }
 
     private OverlappedPresenter? WindowPresenter { get; }
 
@@ -448,6 +451,18 @@ public sealed partial class MainWindow : Window
     private void OnRootFrameNavigated(object sender, NavigationEventArgs e)
     {
         TestContentLoadedCheckBox.IsChecked = true;
+
+        string? sampleId = PageViewResolver.ResolveSampleId(
+            e.SourcePageType,
+            e.Parameter,
+            ControlInfoDataSource.Instance.Groups);
+
+        ActiveSampleId = sampleId;
+
+        if (sampleId is not null)
+        {
+            TelemetryService.Current.LogPageView(sampleId);
+        }
     }
 
     private void OnRootFrameNavigating(object sender, NavigatingCancelEventArgs e)
