@@ -9,7 +9,7 @@
     "defaultBranch": "main",
     "license": "MIT"
   },
-  "controlCount": 120,
+  "controlCount": 123,
   "controls": [
     {
       "id": "accessibilitycolorcontrast",
@@ -1069,7 +1069,7 @@
       "relatedControls": [
         "AppWindowTitleBar",
         "TitleBar",
-        "Windowing APIs"
+        "Window"
       ],
       "usings": [
         "Microsoft.UI.Xaml",
@@ -4534,6 +4534,7 @@
         "Microsoft.UI.Xaml.Automation",
         "Microsoft.UI.Xaml.Automation.Peers",
         "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Primitives",
         "Microsoft.UI.Xaml.Hosting",
         "Microsoft.UI.Xaml.Input",
         "System",
@@ -4620,6 +4621,23 @@
             "name": "Virtualizing Scrollable List Items",
             "xamlPlaceholdersDropped": [
               "SampleCodeLayout2"
+            ]
+          }
+        },
+        {
+          "header": "Use FlowLayout with ItemsRepeater to wrap and virtualize a large collection.",
+          "xaml": "\u003CScrollViewer Width=\u0022520\u0022 Height=\u0022320\u0022\n              HorizontalScrollMode=\u0022Disabled\u0022\n              VerticalScrollMode=\u0022Enabled\u0022\u003E\n    \u003CItemsRepeater ItemsSource=\u0022{x:Bind FlowLayoutItems}\u0022\n                   ItemTemplate=\u0022{StaticResource FlowItemTemplate}\u0022\u003E\n        \u003CItemsRepeater.Layout\u003E\n            \u003CFlowLayout\n                LineAlignment=\u0022Start\u0022\n                MinItemSpacing=\u00228\u0022\n                LineSpacing=\u00228\u0022/\u003E\n        \u003C/ItemsRepeater.Layout\u003E\n    \u003C/ItemsRepeater\u003E\n\u003C/ScrollViewer\u003E\n\n\u003CDataTemplate x:Key=\u0022FlowItemTemplate\u0022 x:DataType=\u0022local:FlowLayoutItem\u0022\u003E\n    \u003CBorder Width=\u002296\u0022 Height=\u002264\u0022\u003E\n        \u003CTextBlock Text=\u0022{x:Bind Label}\u0022/\u003E\n    \u003C/Border\u003E\n\u003C/DataTemplate\u003E",
+          "code": "public IReadOnlyList\u003CFlowLayoutItem\u003E FlowLayoutItems { get; } = Enumerable.Range(1, 500)\n    .Select(index =\u003E new FlowLayoutItem($\u0022Item {index}\u0022))\n    .ToList();\n\npublic sealed record FlowLayoutItem(string Label);",
+          "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
+          ],
+          "gallery": {
+            "snippet": "FlowLayoutVirtualization.txt",
+            "source": "WinUIGallery/Samples/ItemsRepeater/FlowLayoutVirtualization.txt",
+            "name": "Flow Layout Virtualization",
+            "xamlPlaceholdersDropped": [
+              "Orientation"
             ]
           }
         },
@@ -4831,6 +4849,74 @@
             "snippet": "JumpListAddingItemsCustomGroup.txt",
             "source": "WinUIGallery/Samples/JumpList/JumpListAddingItemsCustomGroup.txt",
             "name": "Adding Items Custom Group"
+          }
+        }
+      ]
+    },
+    {
+      "id": "layoutpanel",
+      "name": "LayoutPanel",
+      "description": "A panel that uses a Layout object to measure and arrange its children.",
+      "details": "Use LayoutPanel to apply a reusable Layout, including a custom NonVirtualizingLayout, to ordinary panel children. LayoutPanel also provides border, corner radius, and padding properties.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls",
+      "relatedControls": [
+        "ItemsRepeater"
+      ],
+      "xmlnsImports": [
+        "xmlns:layouts=\u0022using:WinUIGallery.Layouts\u0022"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Primitives"
+      ],
+      "keywords": [
+        "Object",
+        "DependencyObject",
+        "UIElement",
+        "FrameworkElement",
+        "Panel"
+      ],
+      "curatedKeywords": [
+        "layout panel",
+        "custom layout",
+        "non virtualizing layout",
+        "panel"
+      ],
+      "docs": [
+        {
+          "title": "LayoutPanel - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.layoutpanel"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "LayoutPanel",
+        "group": {
+          "id": "Layout",
+          "title": "Layout"
+        },
+        "page": "WinUIGallery/Samples/LayoutPanel/LayoutPanelPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/LayoutPanel/LayoutPanelPage.xaml.cs",
+        "baseClasses": [
+          "Object",
+          "DependencyObject",
+          "UIElement",
+          "FrameworkElement",
+          "Panel"
+        ],
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#ItemsRepeater"
+        ]
+      },
+      "samples": [
+        {
+          "header": "LayoutPanel lets a custom Layout arrange ordinary panel children.",
+          "xaml": "\u003CLayoutPanel\n    BorderBrush=\u0022{ThemeResource CardStrokeColorDefaultBrush}\u0022\n    BorderThickness=\u00221\u0022\n    CornerRadius=\u00228\u0022\n    Padding=\u002212\u0022\u003E\n    \u003CLayoutPanel.Layout\u003E\n        \u003Clayouts:FeaturedTileLayout Spacing=\u00228\u0022/\u003E\n    \u003C/LayoutPanel.Layout\u003E\n\n    \u003CBorder Height=\u002296\u0022\u003E\n        \u003CTextBlock Text=\u0022Featured item\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder Height=\u002272\u0022\u003E\n        \u003CTextBlock Text=\u0022Second\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder Height=\u002292\u0022\u003E\n        \u003CTextBlock Text=\u0022Third\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder Height=\u002280\u0022\u003E\n        \u003CTextBlock Text=\u0022Fourth\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder Height=\u002264\u0022\u003E\n        \u003CTextBlock Text=\u0022Fifth\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder Height=\u002288\u0022\u003E\n        \u003CTextBlock Text=\u0022Sixth\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder Height=\u002268\u0022\u003E\n        \u003CTextBlock Text=\u0022Seventh\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder Height=\u002276\u0022\u003E\n        \u003CTextBlock Text=\u0022Eighth\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder Height=\u002296\u0022\u003E\n        \u003CTextBlock Text=\u0022Ninth\u0022/\u003E\n    \u003C/Border\u003E\n\u003C/LayoutPanel\u003E",
+          "code": "public partial class FeaturedTileLayout : NonVirtualizingLayout\n{\n    protected override Size MeasureOverride(\n        NonVirtualizingLayoutContext context,\n        Size availableSize)\n    {\n        // Measure the first child at full width and the remaining\n        // children in two columns, then return the combined extent.\n        // See FeaturedTileLayout.cs in the WinUI Gallery for the\n        // complete measure and arrange implementation.\n    }\n\n    protected override Size ArrangeOverride(\n        NonVirtualizingLayoutContext context,\n        Size finalSize)\n    {\n        // Arrange the first child across the panel. Arrange each\n        // subsequent pair in equal-width columns.\n    }\n}",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "LayoutPanelCustomLayout.txt",
+            "source": "WinUIGallery/Samples/LayoutPanel/LayoutPanelCustomLayout.txt",
+            "name": "Custom Layout"
           }
         }
       ]
@@ -5768,6 +5854,80 @@
             "snippet": "FormattedNumberboxRoundsNearest.txt",
             "source": "WinUIGallery/Samples/NumberBox/FormattedNumberboxRoundsNearest.txt",
             "name": "Formatted Numberbox Rounds Nearest"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pagercontrol",
+      "name": "PagerControl",
+      "description": "A control that lets users navigate through a numbered collection of pages.",
+      "details": "PagerControl provides numbered page navigation with multiple display modes and configurable navigation buttons.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls",
+      "relatedControls": [
+        "PipsPager",
+        "ItemsRepeater",
+        "ListView"
+      ],
+      "keywords": [
+        "Object",
+        "DependencyObject",
+        "UIElement",
+        "FrameworkElement",
+        "Control"
+      ],
+      "curatedKeywords": [
+        "pagination",
+        "pages",
+        "navigation"
+      ],
+      "gallery": {
+        "uniqueId": "PagerControl",
+        "group": {
+          "id": "Scrolling",
+          "title": "Scrolling"
+        },
+        "page": "WinUIGallery/Samples/PagerControl/PagerControlPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/PagerControl/PagerControlPage.xaml.cs",
+        "baseClasses": [
+          "Object",
+          "DependencyObject",
+          "UIElement",
+          "FrameworkElement",
+          "Control"
+        ],
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#ItemsRepeater",
+          "microsoft/WinUI-Gallery#ListView",
+          "microsoft/WinUI-Gallery#PipsPager"
+        ]
+      },
+      "samples": [
+        {
+          "header": "A basic pager",
+          "xaml": "\u003CPagerControl\n    NumberOfPages=\u002212\u0022\n    PrefixText=\u0022Page\u0022\n    SelectedPageIndex=\u00222\u0022\n    SuffixText=\u0022of\u0022 /\u003E",
+          "gallery": {
+            "snippet": "PagerControlBasic.txt",
+            "source": "WinUIGallery/Samples/PagerControl/PagerControlBasic.txt",
+            "name": "Basic"
+          }
+        },
+        {
+          "header": "Pager display modes",
+          "xaml": "\u003CStackPanel Spacing=\u002220\u0022\u003E\n    \u003CPagerControl\n        DisplayMode=\u0022NumberBox\u0022\n        NumberOfPages=\u002250\u0022\n        PrefixText=\u0022Page\u0022\n        SelectedPageIndex=\u00229\u0022\n        SuffixText=\u0022of\u0022 /\u003E\n    \u003CPagerControl\n        DisplayMode=\u0022ButtonPanel\u0022\n        FirstButtonVisibility=\u0022Visible\u0022\n        LastButtonVisibility=\u0022Visible\u0022\n        NextButtonVisibility=\u0022Visible\u0022\n        NumberOfPages=\u002220\u0022\n        PreviousButtonVisibility=\u0022Visible\u0022\n        SelectedPageIndex=\u00224\u0022 /\u003E\n\u003C/StackPanel\u003E",
+          "gallery": {
+            "snippet": "PagerControlDisplayModes.txt",
+            "source": "WinUIGallery/Samples/PagerControl/PagerControlDisplayModes.txt",
+            "name": "Display Modes"
+          }
+        },
+        {
+          "header": "Unbounded pagers",
+          "xaml": "\u003CStackPanel Spacing=\u002220\u0022\u003E\n    \u003CPagerControl\n        DisplayMode=\u0022NumberBox\u0022\n        NumberOfPages=\u0022-1\u0022\n        PrefixText=\u0022Page\u0022\n        SelectedPageIndex=\u002299\u0022 /\u003E\n    \u003CPagerControl\n        DisplayMode=\u0022ButtonPanel\u0022\n        FirstButtonVisibility=\u0022Visible\u0022\n        NextButtonVisibility=\u0022Visible\u0022\n        NumberOfPages=\u0022-1\u0022\n        PreviousButtonVisibility=\u0022Visible\u0022\n        SelectedPageIndex=\u002299\u0022 /\u003E\n\u003C/StackPanel\u003E",
+          "gallery": {
+            "snippet": "PagerControlUnbounded.txt",
+            "source": "WinUIGallery/Samples/PagerControl/PagerControlUnbounded.txt",
+            "name": "Unbounded"
           }
         }
       ]
@@ -9999,7 +10159,7 @@
     },
     {
       "id": "windowing",
-      "name": "Windowing APIs",
+      "name": "Window",
       "description": "Create top-level XAML windows and configure their client-area size.",
       "details": "Create single-threaded top-level XAML windows, then explore experimental client-area sizing and minimum/maximum limits.",
       "apiNamespace": "Microsoft.UI.Xaml",
@@ -10013,7 +10173,6 @@
         "Microsoft.UI.Xaml",
         "Microsoft.UI.Xaml.Controls",
         "Microsoft.UI.Xaml.Media",
-        "System.Diagnostics",
         "Windows.Graphics"
       ],
       "curatedKeywords": [
@@ -10070,25 +10229,85 @@
           }
         },
         {
-          "header": "Set the initial client size with Window.Width and Window.Height",
-          "xaml": "\u003C!-- SampleWindow.xaml; keep the template\u0027s InitializeComponent() constructor. --\u003E\n\u003CWindow\n    x:Class=\u0022MyApp.SampleWindow\u0022\n    xmlns=\u0022http://schemas.microsoft.com/winfx/2006/xaml/presentation\u0022\n    xmlns:x=\u0022http://schemas.microsoft.com/winfx/2006/xaml\u0022\n    Width=\u0022640\u0022\n    Height=\u0022480\u0022\u003E\n    \u003CTextBlock Margin=\u002224\u0022 Text=\u0022Resize this window.\u0022 /\u003E\n\u003C/Window\u003E",
-          "code": "// The same size properties can be set in C# instead of XAML.\nWindow window = new Window\n{\n    Width = 640,\n    Height = 480,\n    Content = new TextBlock { Margin = new Thickness(24), Text = \u0022Resize this window.\u0022 }\n};\n\n// Gallery tracks child windows so they close when the app closes.\nWindowHelper.TrackWindow(window);\n// Use Window.Activate() for the first show, including for XAML-defined windows.\nwindow.Activate();",
+          "header": "Configure the client size and constraints",
+          "xaml": "\u003C!-- SampleWindow.xaml; keep the template\u0027s InitializeComponent() constructor. --\u003E\n\u003CWindow\n    x:Class=\u0022MyApp.SampleWindow\u0022\n    xmlns=\u0022http://schemas.microsoft.com/winfx/2006/xaml/presentation\u0022\n    xmlns:x=\u0022http://schemas.microsoft.com/winfx/2006/xaml\u0022\n    Width=\u0022640\u0022\n    Height=\u0022480\u0022\n    MinWidth=\u0022320\u0022\n    MinHeight=\u0022240\u0022\n    MaxWidth=\u0022960\u0022\n    MaxHeight=\u0022720\u0022\u003E\n    \u003CTextBlock Margin=\u002224\u0022 Text=\u0022Resize this window.\u0022 /\u003E\n\u003C/Window\u003E",
+          "code": "// The same size properties can be set in C# instead of XAML.\nWindow window = new Window\n{\n    Width = 640,\n    Height = 480,\n    MinWidth = 320,\n    MinHeight = 240,\n    MaxWidth = 960,\n    MaxHeight = 720,\n    Content = new TextBlock { Margin = new Thickness(24), Text = \u0022Resize this window.\u0022 }\n};\n\nif (window.AppWindow.Presenter is OverlappedPresenter presenter)\n{\n    presenter.IsMaximizable = false;\n}\n\n// Gallery tracks child windows so they close when the app closes.\nWindowHelper.TrackWindow(window);\n// Use Window.Activate() for the first show, including for XAML-defined windows.\nwindow.Activate();",
           "language": "csharp",
           "gallery": {
-            "snippet": "WindowClientSize.txt",
-            "source": "WinUIGallery/Samples/Windowing/WindowClientSize.txt",
-            "name": "Window Client Size"
+            "snippet": "WindowSizing.txt",
+            "source": "WinUIGallery/Samples/Windowing/WindowSizing.txt",
+            "name": "Window Sizing"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wrappanel",
+      "name": "WrapPanel",
+      "description": "A layout panel that arranges child elements in rows or columns and automatically wraps them onto new lines.",
+      "details": "Use a WrapPanel to arrange child elements sequentially and move overflowing items to a new row or column. You can configure its orientation, spacing, padding, and whether the final item stretches to fill the remaining space.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls",
+      "relatedControls": [
+        "StackPanel",
+        "VariableSizedWrapGrid",
+        "ItemsRepeater",
+        "GridView"
+      ],
+      "keywords": [
+        "Object",
+        "DependencyObject",
+        "UIElement",
+        "FrameworkElement",
+        "Panel"
+      ],
+      "curatedKeywords": [
+        "wrap",
+        "responsive layout",
+        "flow layout",
+        "spacing"
+      ],
+      "gallery": {
+        "uniqueId": "WrapPanel",
+        "group": {
+          "id": "Layout",
+          "title": "Layout"
+        },
+        "page": "WinUIGallery/Samples/WrapPanel/WrapPanelPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/WrapPanel/WrapPanelPage.xaml.cs",
+        "baseClasses": [
+          "Object",
+          "DependencyObject",
+          "UIElement",
+          "FrameworkElement",
+          "Panel"
+        ],
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#GridView",
+          "microsoft/WinUI-Gallery#ItemsRepeater",
+          "microsoft/WinUI-Gallery#StackPanel",
+          "microsoft/WinUI-Gallery#VariableSizedWrapGrid"
+        ]
+      },
+      "samples": [
+        {
+          "header": "A WrapPanel that automatically wraps items when they reach the panel boundary.",
+          "xaml": "\u003CWrapPanel\n    Width=\u0022360\u0022\n    Height=\u0022200\u0022\n    ItemSpacing=\u00228\u0022\n    LineSpacing=\u00228\u0022\n    Padding=\u002212\u0022\u003E\n    \u003CBorder MinWidth=\u002272\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Alpha\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder MinWidth=\u0022112\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Beta item\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder MinWidth=\u002288\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Gamma\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder MinWidth=\u0022128\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Delta item\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder MinWidth=\u002280\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Epsilon\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder MinWidth=\u0022104\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Zeta item\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder MinWidth=\u002276\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Eta\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder MinWidth=\u0022120\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Theta item\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder MinWidth=\u002292\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Iota\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder MinWidth=\u0022132\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Kappa item\u0022/\u003E\n    \u003C/Border\u003E\n\u003C/WrapPanel\u003E",
+          "gallery": {
+            "snippet": "WrapPanelBasic.txt",
+            "source": "WinUIGallery/Samples/WrapPanel/WrapPanelBasic.txt",
+            "name": "Basic",
+            "xamlPlaceholdersDropped": [
+              "Orientation"
+            ]
           }
         },
         {
-          "header": "Constrain the client size with minimum and maximum dimensions",
-          "xaml": "\u003C!-- SampleWindow.xaml; keep the template\u0027s InitializeComponent() constructor. --\u003E\n\u003CWindow\n    x:Class=\u0022MyApp.SampleWindow\u0022\n    xmlns=\u0022http://schemas.microsoft.com/winfx/2006/xaml/presentation\u0022\n    xmlns:x=\u0022http://schemas.microsoft.com/winfx/2006/xaml\u0022\n    Width=\u0022640\u0022\n    Height=\u0022480\u0022\n    MinWidth=\u0022320\u0022\n    MinHeight=\u0022240\u0022\n    MaxWidth=\u0022960\u0022\n    MaxHeight=\u0022720\u0022\u003E\n    \u003CTextBlock Margin=\u002224\u0022 Text=\u0022Resize this window.\u0022 /\u003E\n\u003C/Window\u003E\n\u003C!-- Disable maximizing in code-behind, as shown in C#. --\u003E",
-          "code": "// The same size constraints can be set in C# instead of XAML.\nWindow window = new Window\n{\n    Width = 640,\n    Height = 480,\n    MinWidth = 320,\n    MinHeight = 240,\n    MaxWidth = 960,\n    MaxHeight = 720,\n    Content = new TextBlock { Margin = new Thickness(24), Text = \u0022Resize this window.\u0022 }\n};\n\nif (window.AppWindow.Presenter is OverlappedPresenter presenter)\n{\n    presenter.IsMaximizable = false;\n}\n\n// Gallery tracks child windows so they close when the app closes.\nWindowHelper.TrackWindow(window);\n// Use Window.Activate() for the first show, including for XAML-defined windows.\nwindow.Activate();",
-          "language": "csharp",
+          "header": "A WrapPanel that can stretch its final item to fill the remaining space.",
+          "xaml": "\u003CWrapPanel\n    Width=\u0022360\u0022\n    ItemSpacing=\u00228\u0022\n    ItemsStretch=\u0022Last\u0022\n    Padding=\u002212\u0022\u003E\n    \u003CBorder Width=\u002272\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022One\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder Width=\u002272\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Two\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder Width=\u002272\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Three\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder Width=\u002272\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Four\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder Width=\u002272\u0022 Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Five\u0022/\u003E\n    \u003C/Border\u003E\n    \u003CBorder Padding=\u002212,8\u0022\u003E\n        \u003CTextBlock Text=\u0022Final item\u0022/\u003E\n    \u003C/Border\u003E\n\u003C/WrapPanel\u003E",
           "gallery": {
-            "snippet": "WindowSizeConstraints.txt",
-            "source": "WinUIGallery/Samples/Windowing/WindowSizeConstraints.txt",
-            "name": "Window Size Constraints"
+            "snippet": "WrapPanelItemsStretch.txt",
+            "source": "WinUIGallery/Samples/WrapPanel/WrapPanelItemsStretch.txt",
+            "name": "Items Stretch"
           }
         }
       ]
