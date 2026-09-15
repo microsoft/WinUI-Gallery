@@ -1,0 +1,23 @@
+--- xaml
+<StackPanel AutomationProperties.Name="Album browser">
+    <StackPanel AutomationProperties.Name="My albums">
+        <!-- These TextBlocks could reasonably be headings, too. -->
+        <TextBlock
+            Text="My albums"
+            Style="{ThemeResource BodyStrongTextBlockStyle}" />
+        <ListView>
+            <x:String>Trip to Redmond</x:String>
+            <x:String>Visiting Ben</x:String>
+        </ListView>
+    </StackPanel>
+    <StackPanel AutomationProperties.Name="Shared with me">
+        <TextBlock
+            Text="Shared with me"
+            Style="{ThemeResource BodyStrongTextBlockStyle}" />
+        <ListView>
+            <x:String>Paul's winter vacation</x:String>
+            <x:String>Cool street photography</x:String>
+            <x:String>Valeria's cat</x:String>
+        </ListView>
+    </StackPanel>
+</StackPanel>

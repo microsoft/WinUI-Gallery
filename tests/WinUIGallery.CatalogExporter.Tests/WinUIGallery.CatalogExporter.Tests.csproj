@@ -1,0 +1,28 @@
+<!--  Copyright (c) Microsoft Corporation. Licensed under the MIT License.  -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <RootNamespace>WinUIGallery.CatalogExporter.Tests</RootNamespace>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+        <!-- Matches CatalogExporter.csproj. The feature switch is baked into the runtimeconfig of
+             whichever assembly is executing, so it has to be set here too for the tests to
+             actually exercise the reflection-free path. -->
+        <JsonSerializerIsReflectionEnabledByDefault>false</JsonSerializerIsReflectionEnabledByDefault>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
+        <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\tools\CatalogExporter\CatalogExporter.csproj" />
+    </ItemGroup>
+
+</Project>

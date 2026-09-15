@@ -73,6 +73,13 @@ Pages use the `ControlExample` custom control to show interactive demos:
 2. Create a folder `Samples/{UniqueId}/` and add `{ControlName}Page.xaml` and `.xaml.cs` using the `ControlExample` pattern above. The folder name **must** match the `UniqueId` exactly.
 3. The source generator auto-maps the `UniqueId` to the page type — no manual registration needed.
 4. Add any code snippets as `.txt` files in the same `Samples/{UniqueId}/` folder. They are automatically included in the build as content.
+5. Regenerate the sample index and commit the result:
+
+```powershell
+dotnet run --project tools/CatalogExporter -- generate
+```
+
+`catalog/windows-samples.json` is a checked-in file that other tools consume, and CI fails if it does not match the current samples. Run this whenever you add, rename, remove, or edit a control page or a snippet `.txt`.
 
 ## Accessibility
 

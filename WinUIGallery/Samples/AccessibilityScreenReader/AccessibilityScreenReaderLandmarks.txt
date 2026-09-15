@@ -1,0 +1,54 @@
+--- xaml
+<Grid>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="200" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="200" />
+    </Grid.ColumnDefinitions>
+
+    <!--  The navigation pane for our app  -->
+    <StackPanel
+        Grid.Column="0"
+        Spacing="8"
+        Padding="6"
+        Background="{ThemeResource CardStrokeColorDefaultBrush}"
+        CornerRadius="{StaticResource ControlCornerRadius}"
+        AutomationProperties.LandmarkType="Navigation">
+        <AutoSuggestBox
+            PlaceholderText="Search"
+            AutomationProperties.LandmarkType="Search"/>
+        <Button Content="Open settings" />
+    </StackPanel>
+
+    <!--  The main content of our app  -->
+    <StackPanel
+        Grid.Column="1"
+        Padding="6"
+        AutomationProperties.LandmarkType="Main">
+        <TextBlock TextWrapping="WrapWholeWords">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        </TextBlock>
+    </StackPanel>
+
+    <!-- A custom sidebar with a custom landmark name -->
+    <StackPanel
+        Grid.Column="2"
+        Padding="6"
+        Background="{ThemeResource CardStrokeColorDefaultBrush}"
+        CornerRadius="{StaticResource ControlCornerRadius}"
+        Spacing="8"
+        AutomationProperties.LandmarkType="Custom"
+        AutomationProperties.LocalizedLandmarkType="Current viewers">
+        <TextBlock
+            Text="Current viewers"
+            Style="{ThemeResource BodyStrongTextBlockStyle}"
+            AutomationProperties.HeadingLevel="Level1" />
+        <TextBlock
+            Text="(No other users viewing)"
+            Style="{ThemeResource BodyTextBlockStyle}"
+            FontStyle="Italic" />
+    </StackPanel>
+</Grid>
