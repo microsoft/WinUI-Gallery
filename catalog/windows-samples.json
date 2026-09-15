@@ -1066,7 +1066,7 @@
       "relatedControls": [
         "AppWindowTitleBar",
         "TitleBar",
-        "Multiple windows"
+        "Windowing APIs"
       ],
       "usings": [
         "Microsoft.UI.Xaml",
@@ -1121,8 +1121,8 @@
         ],
         "relatedSamples": [
           "microsoft/WinUI-Gallery#AppWindowTitleBar",
-          "microsoft/WinUI-Gallery#CreateMultipleWindows",
-          "microsoft/WinUI-Gallery#TitleBar"
+          "microsoft/WinUI-Gallery#TitleBar",
+          "microsoft/WinUI-Gallery#Windowing"
         ]
       },
       "samples": [
@@ -2949,65 +2949,6 @@
         ]
       },
       "samples": []
-    },
-    {
-      "id": "createmultiplewindows",
-      "name": "Multiple windows",
-      "description": "An example showing the creation of single-threaded top level Xaml windows.",
-      "details": "With Windows App SDK 1.0 we are allowing creation of single-threaded multiple top level Xaml windows in Desktop apps",
-      "apiNamespace": "Microsoft.UI.Xaml",
-      "relatedControls": [
-        "AppWindow",
-        "AppWindowTitleBar",
-        "TitleBar"
-      ],
-      "usings": [
-        "Microsoft.UI.Xaml",
-        "Microsoft.UI.Xaml.Controls",
-        "Microsoft.UI.Xaml.Media",
-        "Windows.Graphics"
-      ],
-      "curatedKeywords": [
-        "multiple windows",
-        "new window",
-        "multi window"
-      ],
-      "docs": [
-        {
-          "title": "MultipleWindow - API",
-          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
-        },
-        {
-          "title": "Guidelines",
-          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window"
-        }
-      ],
-      "gallery": {
-        "uniqueId": "CreateMultipleWindows",
-        "group": {
-          "id": "MultipleWindows",
-          "title": "Windowing"
-        },
-        "page": "WinUIGallery/Samples/CreateMultipleWindows/CreateMultipleWindowsPage.xaml",
-        "codeBehind": "WinUIGallery/Samples/CreateMultipleWindows/CreateMultipleWindowsPage.xaml.cs",
-        "relatedSamples": [
-          "microsoft/WinUI-Gallery#AppWindow",
-          "microsoft/WinUI-Gallery#AppWindowTitleBar",
-          "microsoft/WinUI-Gallery#TitleBar"
-        ]
-      },
-      "samples": [
-        {
-          "header": "Create single threaded Multiple Top level Windows(MTW).",
-          "code": "// Ensure you close the child window before closing the parent window to avoid application crash.\nvar childWindow = new Window()\n{\n    ExtendsContentIntoTitleBar = true,\n    SystemBackdrop = new MicaBackdrop(),\n    Content = new Page()\n    {\n        Content = new TextBlock()\n        {\n            Text = \u0022New child window!\u0022,\n            HorizontalAlignment = HorizontalAlignment.Center,\n            VerticalAlignment = VerticalAlignment.Center,\n        },\n        // Get the theme from the parent.\n        RequestedTheme = this.ActualTheme,\n    }\n};\n\nchildWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));\nchildWindow.Activate();",
-          "language": "csharp",
-          "gallery": {
-            "snippet": "CreateMultipleWindowsCreateSingleThreadedMultiple.txt",
-            "source": "WinUIGallery/Samples/CreateMultipleWindows/CreateMultipleWindowsCreateSingleThreadedMultiple.txt",
-            "name": "Create Single Threaded Multiple"
-          }
-        }
-      ]
     },
     {
       "id": "customusercontrols",
@@ -10000,6 +9941,102 @@
             "snippet": "SimpleWebview2.txt",
             "source": "WinUIGallery/Samples/WebView2/SimpleWebview2.txt",
             "name": "Simple Webview2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "windowing",
+      "name": "Windowing APIs",
+      "description": "Create top-level XAML windows and configure their client-area size.",
+      "details": "Create single-threaded top-level XAML windows, then explore experimental client-area sizing and minimum/maximum limits.",
+      "apiNamespace": "Microsoft.UI.Xaml",
+      "relatedControls": [
+        "AppWindow",
+        "AppWindowTitleBar",
+        "TitleBar"
+      ],
+      "usings": [
+        "Microsoft.UI.Windowing",
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Media",
+        "System.Diagnostics",
+        "Windows.Graphics"
+      ],
+      "curatedKeywords": [
+        "multiple windows",
+        "new window",
+        "multi window",
+        "experimental",
+        "window sizing",
+        "client area",
+        "DIPs",
+        "Width",
+        "Height",
+        "MinWidth",
+        "MinHeight",
+        "MaxWidth",
+        "MaxHeight"
+      ],
+      "docs": [
+        {
+          "title": "Windows App SDK release channels",
+          "uri": "https://learn.microsoft.com/windows/apps/windows-app-sdk/release-channels"
+        },
+        {
+          "title": "Window - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window?view=windows-app-sdk-2.0-experimental"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "Windowing",
+        "group": {
+          "id": "MultipleWindows",
+          "title": "Windowing"
+        },
+        "page": "WinUIGallery/Samples/Windowing/WindowingPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/Windowing/WindowingPage.xaml.cs",
+        "badges": [
+          "New"
+        ],
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#AppWindow",
+          "microsoft/WinUI-Gallery#AppWindowTitleBar",
+          "microsoft/WinUI-Gallery#TitleBar"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Create a single-threaded top-level Window.",
+          "code": "Window childWindow = new Window\n{\n    ExtendsContentIntoTitleBar = true,\n    SystemBackdrop = new MicaBackdrop(),\n    Content = new TextBlock\n    {\n        Text = \u0022New child window!\u0022,\n        HorizontalAlignment = HorizontalAlignment.Center,\n        VerticalAlignment = VerticalAlignment.Center,\n        RequestedTheme = ActualTheme\n    }\n};\n\n// Gallery tracks child windows so they close when the app closes.\nWindowHelper.TrackWindow(childWindow);\n// ResizeClient takes physical pixels, independent of display scaling.\nchildWindow.AppWindow.ResizeClient(new SizeInt32(500, 500));\nchildWindow.Activate();",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "CreateMultipleWindows.txt",
+            "source": "WinUIGallery/Samples/Windowing/CreateMultipleWindows.txt",
+            "name": "Create Multiple Windows"
+          }
+        },
+        {
+          "header": "Set the initial client size with Window.Width and Window.Height",
+          "xaml": "\u003C!-- SampleWindow.xaml; keep the template\u0027s InitializeComponent() constructor. --\u003E\n\u003CWindow\n    x:Class=\u0022MyApp.SampleWindow\u0022\n    xmlns=\u0022http://schemas.microsoft.com/winfx/2006/xaml/presentation\u0022\n    xmlns:x=\u0022http://schemas.microsoft.com/winfx/2006/xaml\u0022\n    Width=\u0022640\u0022\n    Height=\u0022480\u0022\u003E\n    \u003CTextBlock Margin=\u002224\u0022 Text=\u0022Resize this window.\u0022 /\u003E\n\u003C/Window\u003E",
+          "code": "// The same size properties can be set in C# instead of XAML.\nWindow window = new Window\n{\n    Width = 640,\n    Height = 480,\n    Content = new TextBlock { Margin = new Thickness(24), Text = \u0022Resize this window.\u0022 }\n};\n\n// Gallery tracks child windows so they close when the app closes.\nWindowHelper.TrackWindow(window);\n// Use Window.Activate() for the first show, including for XAML-defined windows.\nwindow.Activate();",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "WindowClientSize.txt",
+            "source": "WinUIGallery/Samples/Windowing/WindowClientSize.txt",
+            "name": "Window Client Size"
+          }
+        },
+        {
+          "header": "Constrain the client size with minimum and maximum dimensions",
+          "xaml": "\u003C!-- SampleWindow.xaml; keep the template\u0027s InitializeComponent() constructor. --\u003E\n\u003CWindow\n    x:Class=\u0022MyApp.SampleWindow\u0022\n    xmlns=\u0022http://schemas.microsoft.com/winfx/2006/xaml/presentation\u0022\n    xmlns:x=\u0022http://schemas.microsoft.com/winfx/2006/xaml\u0022\n    Width=\u0022640\u0022\n    Height=\u0022480\u0022\n    MinWidth=\u0022320\u0022\n    MinHeight=\u0022240\u0022\n    MaxWidth=\u0022960\u0022\n    MaxHeight=\u0022720\u0022\u003E\n    \u003CTextBlock Margin=\u002224\u0022 Text=\u0022Resize this window.\u0022 /\u003E\n\u003C/Window\u003E\n\u003C!-- Disable maximizing in code-behind, as shown in C#. --\u003E",
+          "code": "// The same size constraints can be set in C# instead of XAML.\nWindow window = new Window\n{\n    Width = 640,\n    Height = 480,\n    MinWidth = 320,\n    MinHeight = 240,\n    MaxWidth = 960,\n    MaxHeight = 720,\n    Content = new TextBlock { Margin = new Thickness(24), Text = \u0022Resize this window.\u0022 }\n};\n\nif (window.AppWindow.Presenter is OverlappedPresenter presenter)\n{\n    presenter.IsMaximizable = false;\n}\n\n// Gallery tracks child windows so they close when the app closes.\nWindowHelper.TrackWindow(window);\n// Use Window.Activate() for the first show, including for XAML-defined windows.\nwindow.Activate();",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "WindowSizeConstraints.txt",
+            "source": "WinUIGallery/Samples/Windowing/WindowSizeConstraints.txt",
+            "name": "Window Size Constraints"
           }
         }
       ]
