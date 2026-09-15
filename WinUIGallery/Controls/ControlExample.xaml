@@ -82,7 +82,7 @@
                     Background="{ThemeResource InfoBarWarningSeverityBackgroundBrush}"
                     BorderBrush="{ThemeResource InfoBarWarningSeverityIconBackground}"
                     BorderThickness="1"
-                    CornerRadius="12"
+                    CornerRadius="8"
                     Visibility="{x:Bind IsExperimental}">
                     <ToolTipService.ToolTip>
                         <ToolTip Content="This example uses an experimental Windows App SDK API that may change before release." />
@@ -100,17 +100,14 @@
                 </Border>
             </StackPanel>
 
-            <RichTextBlock
+            <TextBlock
                 x:Name="ErrorTextBlock"
                 Grid.Row="1"
                 Margin="0,0,0,12"
                 Foreground="{ThemeResource SystemFillColorCriticalBrush}"
                 IsTextSelectionEnabled="True"
-                Visibility="Collapsed">
-                <Paragraph>
-                    This sample requires a later version of Windows to be fully functional.
-                </Paragraph>
-            </RichTextBlock>
+                Text="This sample requires a later version of Windows to be fully functional."
+                Visibility="Collapsed" />
 
             <Grid
                 Grid.Row="2"
@@ -210,6 +207,7 @@
                         <StackPanel Spacing="8">
                             <InfoBar
                                 Title="Experimental API"
+                                BorderThickness="0,0,0,1"
                                 IsClosable="False"
                                 IsOpen="{x:Bind IsExperimental}"
                                 Message="This example uses an experimental Windows App SDK API that may change before release."
@@ -268,6 +266,14 @@
                         </Grid>
                     </Grid>
                 </Expander>
+
+                <Border
+                    Grid.RowSpan="3"
+                    BorderBrush="{ThemeResource InfoBarWarningSeverityIconBackground}"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    IsHitTestVisible="False"
+                    Visibility="{x:Bind IsExperimental}" />
             </Grid>
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup>
