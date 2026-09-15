@@ -36,7 +36,7 @@ steps:
         command: 'publish'
         publishWebProjects: false
         projects: '$(solutionGallery)'
-        arguments: '/p:AppxPackageDir="$(appxPackageDir)" /p:platform="$(buildPlatform)" /p:configuration="$(buildConfiguration)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win-$(buildPlatform).pubxml" /p:RestoreAdditionalProjectSources=https://api.nuget.org/v3/index.json'
+        arguments: '/p:AppxPackageDir="$(appxPackageDir)" /p:platform="$(buildPlatform)" /p:configuration="$(buildConfiguration)" /p:PublishProfile="./WinUIGallery/Properties/PublishProfiles/win-$(buildPlatform).pubxml"'
         zipAfterPublish: false
         modifyOutputPath: false
 
