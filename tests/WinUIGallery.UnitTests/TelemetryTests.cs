@@ -50,18 +50,57 @@ public class TelemetryTests
     }
 
     [TestMethod]
-    public void TelemetrySettingDefaultsToEnabledAndPersistsChanges()
+    public void TelemetrySettingDefaultsToEnabledOutsideSensitiveRegionsAndPersistsChanges()
     {
         MemorySettingsProvider provider = new();
-        SettingsHelper settings = new(provider);
+        SettingsHelper settings = new(provider, "USA");
 
         Assert.IsTrue(settings.IsTelemetryEnabled);
+        Assert.IsTrue(settings.IsTelemetryAllowed);
 
         settings.IsTelemetryEnabled = false;
-        Assert.IsFalse(new SettingsHelper(provider).IsTelemetryEnabled);
+        Assert.IsFalse(new SettingsHelper(provider, "USA").IsTelemetryEnabled);
 
         settings.IsTelemetryEnabled = true;
-        Assert.IsTrue(new SettingsHelper(provider).IsTelemetryEnabled);
+        Assert.IsTrue(new SettingsHelper(provider, "USA").IsTelemetryEnabled);
+    }
+
+    [TestMethod]
+    public void TelemetryRequiresConsentInSensitiveRegions()
+    {
+        string[] sensitiveRegions =
+        [
+            "AUT", "BEL", "BGR", "BRA", "CAN", "HRV", "CYP", "CZE", "DNK", "EST",
+            "FIN", "FRA", "DEU", "GRC", "HUN", "ISL", "IRL", "ITA", "KOR", "LVA",
+            "LIE", "LTU", "LUX", "MLT", "NLD", "NOR", "POL", "PRT", "ROU", "SVK",
+            "SVN", "ESP", "SWE", "CHE", "GBR"
+        ];
+
+        foreach (string region in sensitiveRegions)
+        {
+            SettingsHelper settings = new(new MemorySettingsProvider(), region);
+
+            Assert.IsTrue(settings.IsPrivacySensitiveRegion, region);
+            Assert.IsFalse(settings.IsTelemetryEnabled, region);
+            Assert.IsTrue(settings.IsTelemetryConsentRequired, region);
+            Assert.IsFalse(settings.IsTelemetryAllowed, region);
+        }
+    }
+
+    [TestMethod]
+    public void TelemetryConsentTakesEffectImmediately()
+    {
+        MemorySettingsProvider provider = new();
+        SettingsHelper settings = new(provider, "DEU");
+
+        settings.IsTelemetryEnabled = true;
+        Assert.IsFalse(settings.IsTelemetryAllowed);
+
+        settings.IsTelemetryConsentDismissed = true;
+        Assert.IsTrue(settings.IsTelemetryAllowed);
+
+        settings.IsTelemetryEnabled = false;
+        Assert.IsFalse(settings.IsTelemetryAllowed);
     }
 
     [TestMethod]

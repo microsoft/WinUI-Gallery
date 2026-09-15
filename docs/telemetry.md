@@ -22,7 +22,9 @@ Home, category, All Controls, and Settings page visits are not recorded.
 
 ## Turn telemetry off
 
-Telemetry is enabled by default in official releases. To turn it off:
+Telemetry is enabled by default in official releases, except in regions where WinUI Gallery asks for permission before enabling it. In those regions, the app displays an **Allow** or **Don't allow** choice on the Home page and does not send app telemetry unless **Allow** is selected.
+
+To turn telemetry off:
 
 1. Open **Settings** in WinUI Gallery.
 2. Turn off **Optional diagnostic data**.

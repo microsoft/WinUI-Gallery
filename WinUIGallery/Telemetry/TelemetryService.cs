@@ -155,7 +155,7 @@ internal sealed class TelemetryService
 
         return new TelemetryService(
             journalPath,
-            () => SettingsHelper.Current.IsTelemetryEnabled,
+            () => SettingsHelper.Current.IsTelemetryAllowed,
             () => DateTimeOffset.UtcNow,
             () => ProcessInfoHelper.Version);
     }

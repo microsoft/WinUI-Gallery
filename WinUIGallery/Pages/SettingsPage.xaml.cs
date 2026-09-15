@@ -53,7 +53,7 @@ public sealed partial class SettingsPage : Page
     {
         CheckRecentAndFavoriteButtonStates();
         isTelemetryToggleInitialized = false;
-        telemetryToggle.IsOn = SettingsHelper.Current.IsTelemetryEnabled;
+        telemetryToggle.IsOn = SettingsHelper.Current.IsTelemetryAllowed;
         isTelemetryToggleInitialized = true;
         var currentTheme = ThemeHelper.RootTheme;
         switch (currentTheme)
@@ -151,6 +151,7 @@ public sealed partial class SettingsPage : Page
         if (isTelemetryToggleInitialized)
         {
             SettingsHelper.Current.IsTelemetryEnabled = telemetryToggle.IsOn;
+            SettingsHelper.Current.IsTelemetryConsentDismissed = true;
             if (!telemetryToggle.IsOn)
             {
                 TelemetryService.Current.ClearPendingCrash();
