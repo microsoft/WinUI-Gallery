@@ -1,0 +1,8 @@
+--- header
+A basic pager
+--- xaml
+<PagerControl
+    NumberOfPages="12"
+    PrefixText="Page"
+    SelectedPageIndex="2"
+    SuffixText="of" />

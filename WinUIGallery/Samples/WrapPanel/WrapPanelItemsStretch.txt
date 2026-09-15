@@ -1,0 +1,27 @@
+--- header
+A WrapPanel that can stretch its final item to fill the remaining space.
+--- xaml
+<WrapPanel
+    Width="360"
+    ItemSpacing="8"
+    ItemsStretch="$(ItemsStretch)"
+    Padding="12">
+    <Border Width="72" Padding="12,8">
+        <TextBlock Text="One"/>
+    </Border>
+    <Border Width="72" Padding="12,8">
+        <TextBlock Text="Two"/>
+    </Border>
+    <Border Width="72" Padding="12,8">
+        <TextBlock Text="Three"/>
+    </Border>
+    <Border Width="72" Padding="12,8">
+        <TextBlock Text="Four"/>
+    </Border>
+    <Border Width="72" Padding="12,8">
+        <TextBlock Text="Five"/>
+    </Border>
+    <Border Padding="12,8">
+        <TextBlock Text="Final item"/>
+    </Border>
+</WrapPanel>

@@ -1,0 +1,41 @@
+--- header
+A WrapPanel that automatically wraps items when they reach the panel boundary.
+--- xaml
+<WrapPanel
+    Width="360"
+    Height="$(PanelHeight)"
+    Orientation="$(Orientation)"
+    ItemSpacing="$(ItemSpacing)"
+    LineSpacing="$(LineSpacing)"
+    Padding="$(Padding)">
+    <Border MinWidth="72" Padding="12,8">
+        <TextBlock Text="Alpha"/>
+    </Border>
+    <Border MinWidth="112" Padding="12,8">
+        <TextBlock Text="Beta item"/>
+    </Border>
+    <Border MinWidth="88" Padding="12,8">
+        <TextBlock Text="Gamma"/>
+    </Border>
+    <Border MinWidth="128" Padding="12,8">
+        <TextBlock Text="Delta item"/>
+    </Border>
+    <Border MinWidth="80" Padding="12,8">
+        <TextBlock Text="Epsilon"/>
+    </Border>
+    <Border MinWidth="104" Padding="12,8">
+        <TextBlock Text="Zeta item"/>
+    </Border>
+    <Border MinWidth="76" Padding="12,8">
+        <TextBlock Text="Eta"/>
+    </Border>
+    <Border MinWidth="120" Padding="12,8">
+        <TextBlock Text="Theta item"/>
+    </Border>
+    <Border MinWidth="92" Padding="12,8">
+        <TextBlock Text="Iota"/>
+    </Border>
+    <Border MinWidth="132" Padding="12,8">
+        <TextBlock Text="Kappa item"/>
+    </Border>
+</WrapPanel>

@@ -1,0 +1,100 @@
+<!--  Copyright (c) Microsoft Corporation and Contributors.  -->
+<!--  Licensed under the MIT License.  -->
+
+<Page
+    x:Class="WinUIGallery.ControlPages.PagerControlPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls">
+
+    <StackPanel>
+        <controls:ControlExample
+            HeaderText="A basic pager"
+            SampleDefinition="PagerControl\PagerControlBasic.txt">
+            <controls:ControlExample.Example>
+                <PagerControl
+                    AutomationProperties.AutomationId="PagerControlBasic"
+                    AutomationProperties.Name="Page selector"
+                    NumberOfPages="12"
+                    PrefixText="Page"
+                    SelectedPageIndex="2"
+                    SuffixText="of" />
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            HeaderText="Pager display modes"
+            SampleDefinition="PagerControl\PagerControlDisplayModes.txt">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="20">
+                    <StackPanel Spacing="8">
+                        <TextBlock
+                            Style="{StaticResource BodyStrongTextBlockStyle}"
+                            Text="Number box" />
+                        <PagerControl
+                            AutomationProperties.AutomationId="PagerControlNumberBox"
+                            AutomationProperties.Name="Number box page selector"
+                            DisplayMode="NumberBox"
+                            NumberOfPages="50"
+                            PrefixText="Page"
+                            SelectedPageIndex="9"
+                            SuffixText="of" />
+                    </StackPanel>
+                    <StackPanel Spacing="8">
+                        <TextBlock
+                            Style="{StaticResource BodyStrongTextBlockStyle}"
+                            Text="Button panel" />
+                        <PagerControl
+                            AutomationProperties.AutomationId="PagerControlButtonPanel"
+                            AutomationProperties.Name="Button panel page selector"
+                            DisplayMode="ButtonPanel"
+                            FirstButtonVisibility="Visible"
+                            LastButtonVisibility="Visible"
+                            NextButtonVisibility="Visible"
+                            NumberOfPages="20"
+                            PreviousButtonVisibility="Visible"
+                            SelectedPageIndex="4" />
+                    </StackPanel>
+                </StackPanel>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            HeaderText="Unbounded pagers"
+            SampleDefinition="PagerControl\PagerControlUnbounded.txt">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="20">
+                    <TextBlock
+                        Text="Set NumberOfPages to -1 when the final page is not known. Unbounded pagers omit the total-page count and last-page navigation."
+                        TextWrapping="Wrap" />
+                    <StackPanel Spacing="8">
+                        <TextBlock
+                            Style="{StaticResource BodyStrongTextBlockStyle}"
+                            Text="Number box" />
+                        <PagerControl
+                            AutomationProperties.AutomationId="PagerControlUnboundedNumberBox"
+                            AutomationProperties.Name="Unbounded number box page selector"
+                            DisplayMode="NumberBox"
+                            NumberOfPages="-1"
+                            PrefixText="Page"
+                            SelectedPageIndex="99" />
+                    </StackPanel>
+                    <StackPanel Spacing="8">
+                        <TextBlock
+                            Style="{StaticResource BodyStrongTextBlockStyle}"
+                            Text="Button panel" />
+                        <PagerControl
+                            AutomationProperties.AutomationId="PagerControlUnboundedButtonPanel"
+                            AutomationProperties.Name="Unbounded button panel page selector"
+                            DisplayMode="ButtonPanel"
+                            FirstButtonVisibility="Visible"
+                            NextButtonVisibility="Visible"
+                            NumberOfPages="-1"
+                            PreviousButtonVisibility="Visible"
+                            SelectedPageIndex="99" />
+                    </StackPanel>
+                </StackPanel>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

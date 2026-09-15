@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:WinUIGallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:WinUIGallery.Models"
     xmlns:pages="using:WinUIGallery.Pages"
     Title="MainWindow"
     mc:Ignorable="d">
@@ -144,6 +145,35 @@
             IsTabStop="False"
             Loaded="OnNavigationViewControlLoaded"
             SelectionChanged="OnNavigationViewSelectionChanged">
+            <NavigationView.Resources>
+                <DataTemplate x:Key="NavigationItemContentTemplate" x:DataType="models:ControlInfoDataItem">
+                    <Grid
+                        HorizontalAlignment="Stretch"
+                        ColumnSpacing="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Text="{x:Bind Title}"
+                            TextTrimming="CharacterEllipsis" />
+                        <Border
+                            Grid.Column="1"
+                            Padding="6,2"
+                            VerticalAlignment="Center"
+                            AutomationProperties.AccessibilityView="Raw"
+                            Background="{ThemeResource SystemFillColorCautionBackgroundBrush}"
+                            CornerRadius="4"
+                            Visibility="{x:Bind IsExperimental}">
+                            <TextBlock
+                                Foreground="{ThemeResource SystemFillColorCautionBrush}"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="Experimental" />
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </NavigationView.Resources>
             <Frame
                 x:Name="rootFrame"
                 Navigated="OnRootFrameNavigated"

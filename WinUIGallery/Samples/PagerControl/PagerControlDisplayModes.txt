@@ -1,0 +1,19 @@
+--- header
+Pager display modes
+--- xaml
+<StackPanel Spacing="20">
+    <PagerControl
+        DisplayMode="NumberBox"
+        NumberOfPages="50"
+        PrefixText="Page"
+        SelectedPageIndex="9"
+        SuffixText="of" />
+    <PagerControl
+        DisplayMode="ButtonPanel"
+        FirstButtonVisibility="Visible"
+        LastButtonVisibility="Visible"
+        NextButtonVisibility="Visible"
+        NumberOfPages="20"
+        PreviousButtonVisibility="Visible"
+        SelectedPageIndex="4" />
+</StackPanel>
