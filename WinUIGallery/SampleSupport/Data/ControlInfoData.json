@@ -2297,6 +2297,33 @@
           ]
         },
         {
+          "UniqueId": "PagerControl",
+          "Tags": [
+            "pagination",
+            "pages",
+            "navigation"
+          ],
+          "Title": "PagerControl",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A control that lets users navigate through a numbered collection of pages.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/PagerControl.png",
+          "Description": "PagerControl provides numbered page navigation with multiple display modes and configurable navigation buttons.",
+          "SourcePath": "/PagerControl",
+          "IsExperimental": true,
+          "RelatedControls": [
+            "PipsPager",
+            "ItemsRepeater",
+            "ListView"
+          ]
+        },
+        {
           "UniqueId": "ScrollView",
           "Tags": [
             "pan",
@@ -2562,7 +2589,40 @@
             "RelativePanel"
           ]
         },
-
+        {
+          "UniqueId": "LayoutPanel",
+          "Tags": [
+            "layout panel",
+            "custom layout",
+            "non virtualizing layout",
+            "panel"
+          ],
+          "Title": "LayoutPanel",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Panel"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A panel that uses a Layout object to measure and arrange its children.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/LayoutPanel.png",
+          "Description": "Use LayoutPanel to apply a reusable Layout, including a custom NonVirtualizingLayout, to ordinary panel children. LayoutPanel also provides border, corner radius, and padding properties.",
+          "SourcePath": "/LayoutPanel",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "LayoutPanel - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.layoutpanel"
+            }
+          ],
+          "RelatedControls": [
+            "Panel",
+            "StackLayout",
+            "ItemsRepeater"
+          ]
+        },
         {
           "UniqueId": "RelativePanel",
           "Tags": [
@@ -2709,6 +2769,35 @@
             "Grid",
             "StackPanel",
             "RelativePanel"
+          ]
+        },
+        {
+          "UniqueId": "WrapPanel",
+          "Tags": [
+            "wrap",
+            "responsive layout",
+            "flow layout",
+            "spacing"
+          ],
+          "Title": "WrapPanel",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Panel"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A layout panel that arranges child elements in rows or columns and automatically wraps them onto new lines.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/WrapPanel.png",
+          "Description": "Use a WrapPanel to arrange child elements sequentially and move overflowing items to a new row or column. You can configure its orientation, spacing, padding, and whether the final item stretches to fill the remaining space.",
+          "SourcePath": "/WrapPanel",
+          "IsExperimental": true,
+          "RelatedControls": [
+            "StackPanel",
+            "VariableSizedWrapGrid",
+            "ItemsRepeater",
+            "GridView"
           ]
         },
         {
@@ -4064,7 +4153,7 @@
             "MaxWidth",
             "MaxHeight"
           ],
-          "Title": "Windowing APIs",
+          "Title": "Window",
           "ApiNamespace": "Microsoft.UI.Xaml",
           "Subtitle": "Create top-level XAML windows and configure their client-area size.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Windowing.png",

@@ -1,0 +1,61 @@
+--- header
+LayoutPanel lets a custom Layout arrange ordinary panel children.
+--- xaml
+<LayoutPanel
+    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+    BorderThickness="1"
+    CornerRadius="8"
+    Padding="12">
+    <LayoutPanel.Layout>
+        <layouts:FeaturedTileLayout Spacing="8"/>
+    </LayoutPanel.Layout>
+
+    <Border Height="96">
+        <TextBlock Text="Featured item"/>
+    </Border>
+    <Border Height="72">
+        <TextBlock Text="Second"/>
+    </Border>
+    <Border Height="92">
+        <TextBlock Text="Third"/>
+    </Border>
+    <Border Height="80">
+        <TextBlock Text="Fourth"/>
+    </Border>
+    <Border Height="64">
+        <TextBlock Text="Fifth"/>
+    </Border>
+    <Border Height="88">
+        <TextBlock Text="Sixth"/>
+    </Border>
+    <Border Height="68">
+        <TextBlock Text="Seventh"/>
+    </Border>
+    <Border Height="76">
+        <TextBlock Text="Eighth"/>
+    </Border>
+    <Border Height="96">
+        <TextBlock Text="Ninth"/>
+    </Border>
+</LayoutPanel>
+--- c#
+public partial class FeaturedTileLayout : NonVirtualizingLayout
+{
+    protected override Size MeasureOverride(
+        NonVirtualizingLayoutContext context,
+        Size availableSize)
+    {
+        // Measure the first child at full width and the remaining
+        // children in two columns, then return the combined extent.
+        // See FeaturedTileLayout.cs in the WinUI Gallery for the
+        // complete measure and arrange implementation.
+    }
+
+    protected override Size ArrangeOverride(
+        NonVirtualizingLayoutContext context,
+        Size finalSize)
+    {
+        // Arrange the first child across the panel. Arrange each
+        // subsequent pair in equal-width columns.
+    }
+}

@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Input;
 using System;
@@ -31,6 +32,12 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
 
     private Button? LastSelectedColorButton;
     private int PreviouslyFocusedAnimatedScrollRepeaterIndex = -1;
+    private readonly HashSet<UIElement> _realizedFlowLayoutElements = [];
+    private bool _realizedFlowLayoutCountUpdateQueued;
+
+    public IReadOnlyList<FlowLayoutItem> FlowLayoutItems { get; } = Enumerable.Range(1, 500)
+        .Select(index => new FlowLayoutItem($"Item {index}"))
+        .ToList();
 
     public ItemsRepeaterPage()
     {
@@ -251,6 +258,84 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
     }
 
     // ==========================================================================
+    // Virtualized wrapping collection with FlowLayout
+    // ==========================================================================
+    private void OrientationButtons_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if ((sender as RadioButtons)?.SelectedItem is RadioButton selectedItem &&
+            Enum.TryParse(selectedItem.Tag?.ToString(), out Orientation orientation) &&
+            FlowLayout1 is not null)
+        {
+            FlowLayout1.Orientation = orientation;
+
+            if (FlowScrollViewer is not null)
+            {
+                bool isHorizontal = orientation == Orientation.Horizontal;
+                FlowScrollViewer.HorizontalScrollMode = isHorizontal ? ScrollMode.Disabled : ScrollMode.Enabled;
+                FlowScrollViewer.HorizontalScrollBarVisibility = isHorizontal
+                    ? ScrollBarVisibility.Disabled
+                    : ScrollBarVisibility.Auto;
+                FlowScrollViewer.VerticalScrollMode = isHorizontal ? ScrollMode.Enabled : ScrollMode.Disabled;
+                FlowScrollViewer.VerticalScrollBarVisibility = isHorizontal
+                    ? ScrollBarVisibility.Auto
+                    : ScrollBarVisibility.Disabled;
+            }
+        }
+    }
+
+    private void LineAlignmentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if ((sender as ComboBox)?.SelectedItem is ComboBoxItem selectedItem &&
+            Enum.TryParse(selectedItem.Tag?.ToString(), out FlowLayoutLineAlignment alignment) &&
+            FlowLayout1 is not null)
+        {
+            FlowLayout1.LineAlignment = alignment;
+        }
+    }
+
+    private void ItemSpacingSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+    {
+        if (FlowLayout1 is not null)
+        {
+            FlowLayout1.MinItemSpacing = e.NewValue;
+        }
+    }
+
+    private void LineSpacingSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+    {
+        if (FlowLayout1 is not null)
+        {
+            FlowLayout1.LineSpacing = e.NewValue;
+        }
+    }
+
+    private void FlowRepeater_ElementPrepared(ItemsRepeater sender, ItemsRepeaterElementPreparedEventArgs args)
+    {
+        _realizedFlowLayoutElements.Add(args.Element);
+        QueueRealizedFlowLayoutCountUpdate();
+    }
+
+    private void FlowRepeater_ElementClearing(ItemsRepeater sender, ItemsRepeaterElementClearingEventArgs args)
+    {
+        _realizedFlowLayoutElements.Remove(args.Element);
+        QueueRealizedFlowLayoutCountUpdate();
+    }
+
+    private void QueueRealizedFlowLayoutCountUpdate()
+    {
+        if (_realizedFlowLayoutCountUpdateQueued)
+        {
+            return;
+        }
+
+        _realizedFlowLayoutCountUpdateQueued = DispatcherQueue.TryEnqueue(() =>
+        {
+            _realizedFlowLayoutCountUpdateQueued = false;
+            RealizedCountText.Text = $"Realized elements: {_realizedFlowLayoutElements.Count} of {FlowLayoutItems.Count}";
+        });
+    }
+
+    // ==========================================================================
     // Animated Scrolling ItemsRepeater with Content Sample
     // ==========================================================================
 
@@ -444,6 +529,8 @@ public class NestedCategory
         CategoryItems = catItems;
     }
 }
+
+public sealed record FlowLayoutItem(string Label);
 
 
 public partial class MyDataTemplateSelector : DataTemplateSelector

@@ -1,0 +1,29 @@
+--- header
+Use FlowLayout with ItemsRepeater to wrap and virtualize a large collection.
+--- xaml
+<ScrollViewer Width="520" Height="320"
+              HorizontalScrollMode="Disabled"
+              VerticalScrollMode="Enabled">
+    <ItemsRepeater ItemsSource="{x:Bind FlowLayoutItems}"
+                   ItemTemplate="{StaticResource FlowItemTemplate}">
+        <ItemsRepeater.Layout>
+            <FlowLayout
+                Orientation="$(Orientation)"
+                LineAlignment="$(LineAlignment)"
+                MinItemSpacing="$(MinItemSpacing)"
+                LineSpacing="$(LineSpacing)"/>
+        </ItemsRepeater.Layout>
+    </ItemsRepeater>
+</ScrollViewer>
+
+<DataTemplate x:Key="FlowItemTemplate" x:DataType="local:FlowLayoutItem">
+    <Border Width="96" Height="64">
+        <TextBlock Text="{x:Bind Label}"/>
+    </Border>
+</DataTemplate>
+--- c#
+public IReadOnlyList<FlowLayoutItem> FlowLayoutItems { get; } = Enumerable.Range(1, 500)
+    .Select(index => new FlowLayoutItem($"Item {index}"))
+    .ToList();
+
+public sealed record FlowLayoutItem(string Label);

@@ -188,16 +188,6 @@ public sealed partial class ControlExample : UserControl
         set { SetValue(IsExperimentalProperty, value); }
     }
 
-    public static Thickness BoolToExperimentalMargin(bool value)
-    {
-        return value ? new Thickness(8) : new Thickness(0);
-    }
-
-    public static Thickness BoolToHeaderMargin(bool value)
-    {
-        return value ? new Thickness(12, 0, 0, 0) : new Thickness(0);
-    }
-
     public ControlExample()
     {
         this.InitializeComponent();

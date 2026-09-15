@@ -5,7 +5,6 @@ using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using System.Diagnostics;
 using Windows.Graphics;
 using WinUIGallery.Helpers;
 
@@ -39,53 +38,52 @@ public sealed partial class WindowingPage : Page
         childWindow.Activate();
     }
 
-    private void OpenSizedWindow_Click(object sender, RoutedEventArgs e)
+    private void OpenConfiguredWindow_Click(object sender, RoutedEventArgs e)
     {
-        // Non-editable options contain only finite, positive integer sizes.
-        if (ClientWidthOption.SelectedItem is not int width ||
-            ClientHeightOption.SelectedItem is not int height)
+        double width = ClientWidthInput.Value;
+        double height = ClientHeightInput.Value;
+        double minWidth = MinimumWidthInput.Value;
+        double minHeight = MinimumHeightInput.Value;
+        double maxWidth = MaximumWidthInput.Value;
+        double maxHeight = MaximumHeightInput.Value;
+
+        if (!double.IsFinite(width) ||
+            !double.IsFinite(height) ||
+            !double.IsFinite(minWidth) ||
+            !double.IsFinite(minHeight) ||
+            !double.IsFinite(maxWidth) ||
+            !double.IsFinite(maxHeight))
         {
+            SizeValidationInfoBar.Message = "Enter a value for every dimension.";
+            SizeValidationInfoBar.IsOpen = true;
             return;
         }
 
-        Window window = CreateSampleWindow(
-            "Window.Width / Height (experimental)",
-            $"Initial client area: {width} by {height} DIPs. You can resize this window. Close it with Alt+F4 or the title bar Close button.");
-        window.Width = width;
-        window.Height = height;
-
-        // Activate applies the pending Window size before the first show.
-        window.Activate();
-    }
-
-    private void OpenConstrainedWindow_Click(object sender, RoutedEventArgs e)
-    {
-        // Every offered range includes the initial 640 by 480 DIP client area.
-        if (MinimumWidthOption.SelectedItem is not int minWidth ||
-            MinimumHeightOption.SelectedItem is not int minHeight ||
-            MaximumWidthOption.SelectedItem is not int maxWidth ||
-            MaximumHeightOption.SelectedItem is not int maxHeight)
+        if (minWidth > width || width > maxWidth || minHeight > height || height > maxHeight)
         {
-            Debug.WriteLine("Select minimum and maximum client sizes before opening the sample window.");
+            SizeValidationInfoBar.Message = "Width and Height must be within their minimum and maximum limits.";
+            SizeValidationInfoBar.IsOpen = true;
             return;
         }
 
+        SizeValidationInfoBar.IsOpen = false;
+
         Window window = CreateSampleWindow(
-            "Window size constraints (experimental)",
-            $"Client width: {minWidth} to {maxWidth} DIPs. Client height: {minHeight} to {maxHeight} DIPs. Try resizing this window. Close it with Alt+F4 or the title bar Close button.");
+            "Window client size and constraints (experimental)",
+            $"Initial client area: {width} by {height} DIPs. Width is constrained to {minWidth} to {maxWidth} DIPs and height to {minHeight} to {maxHeight} DIPs. Try resizing this window.");
         window.MinWidth = minWidth;
         window.MinHeight = minHeight;
         window.MaxWidth = maxWidth;
         window.MaxHeight = maxHeight;
-        window.Width = 640;
-        window.Height = 480;
+        window.Width = width;
+        window.Height = height;
 
         if (window.AppWindow.Presenter is OverlappedPresenter presenter)
         {
             presenter.IsMaximizable = false;
         }
 
-        // Activate applies the pending Window size before the first show.
+        // Activate applies the pending Window size and constraints before the first show.
         window.Activate();
     }
 
