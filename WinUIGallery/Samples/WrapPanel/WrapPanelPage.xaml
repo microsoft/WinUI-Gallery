@@ -1,0 +1,289 @@
+<!--
+    //*********************************************************
+    //
+    // Copyright (c) Microsoft. All rights reserved.
+    // THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+    // ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+    // IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+    // PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+    //
+    //*********************************************************
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.WrapPanelPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel>
+        <controls:ControlExample
+            HeaderText="Wrap items and adjust the layout"
+            SampleDefinition="WrapPanel\WrapPanelBasic.txt">
+            <Border
+                x:Name="LayoutHost"
+                Width="360"
+                Height="200"
+                HorizontalAlignment="Left"
+                Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource ControlCornerRadius}">
+                <WrapPanel
+                    x:Name="Control1"
+                    ItemSpacing="8"
+                    LineSpacing="8"
+                    Padding="12">
+                    <Border
+                        MinWidth="72"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="Alpha" />
+                    </Border>
+                    <Border
+                        MinWidth="112"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="Beta item" />
+                    </Border>
+                    <Border
+                        MinWidth="88"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="Gamma" />
+                    </Border>
+                    <Border
+                        MinWidth="128"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="Delta item" />
+                    </Border>
+                    <Border
+                        MinWidth="80"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="Epsilon" />
+                    </Border>
+                    <Border
+                        MinWidth="104"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="Zeta item" />
+                    </Border>
+                    <Border
+                        MinWidth="76"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="Eta" />
+                    </Border>
+                    <Border
+                        MinWidth="120"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="Theta item" />
+                    </Border>
+                    <Border
+                        MinWidth="92"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="Iota" />
+                    </Border>
+                    <Border
+                        MinWidth="132"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="Kappa item" />
+                    </Border>
+                </WrapPanel>
+            </Border>
+
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <RadioButtons
+                        x:Name="OrientationGroup"
+                        AutomationProperties.AutomationId="WrapPanelOrientation"
+                        AutomationProperties.Name="WrapPanel orientation"
+                        Header="Orientation"
+                        SelectionChanged="OrientationGroup_SelectionChanged">
+                        <RadioButton
+                            AutomationProperties.AutomationId="WrapPanelHorizontalOrientation"
+                            AutomationProperties.Name="Horizontal orientation"
+                            Content="Horizontal"
+                            IsChecked="True"
+                            Tag="Horizontal" />
+                        <RadioButton
+                            AutomationProperties.AutomationId="WrapPanelVerticalOrientation"
+                            AutomationProperties.Name="Vertical orientation"
+                            Content="Vertical"
+                            Tag="Vertical" />
+                    </RadioButtons>
+                    <Slider
+                        x:Name="ItemSpacingSlider"
+                        AutomationProperties.AutomationId="WrapPanelItemSpacing"
+                        AutomationProperties.Name="Item spacing"
+                        Header="Item spacing"
+                        Maximum="24"
+                        Minimum="0"
+                        SnapsTo="Ticks"
+                        StepFrequency="2"
+                        TickFrequency="2"
+                        Value="8"
+                        ValueChanged="ItemSpacingSlider_ValueChanged" />
+                    <Slider
+                        x:Name="LineSpacingSlider"
+                        AutomationProperties.AutomationId="WrapPanelLineSpacing"
+                        AutomationProperties.Name="Line spacing"
+                        Header="Line spacing"
+                        Maximum="24"
+                        Minimum="0"
+                        SnapsTo="Ticks"
+                        StepFrequency="2"
+                        TickFrequency="2"
+                        Value="8"
+                        ValueChanged="LineSpacingSlider_ValueChanged" />
+                    <Slider
+                        x:Name="PaddingSlider"
+                        AutomationProperties.AutomationId="WrapPanelPadding"
+                        AutomationProperties.Name="Uniform padding"
+                        Header="Padding"
+                        Maximum="24"
+                        Minimum="0"
+                        SnapsTo="Ticks"
+                        StepFrequency="2"
+                        TickFrequency="2"
+                        Value="12"
+                        ValueChanged="PaddingSlider_ValueChanged" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="Orientation" Value="{x:Bind Control1.Orientation, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="PanelHeight" Value="{x:Bind LayoutHost.Height, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ItemSpacing" Value="{x:Bind Control1.ItemSpacing, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="LineSpacing" Value="{x:Bind Control1.LineSpacing, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Padding" Value="{x:Bind PaddingSlider.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            HeaderText="Stretch the final item to fill the line"
+            SampleDefinition="WrapPanel\WrapPanelItemsStretch.txt">
+            <Border
+                Width="360"
+                HorizontalAlignment="Left"
+                Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource ControlCornerRadius}">
+                <WrapPanel
+                    x:Name="Control2"
+                    ItemSpacing="8"
+                    ItemsStretch="Last"
+                    Padding="12">
+                    <Border
+                        Width="72"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="One" />
+                    </Border>
+                    <Border
+                        Width="72"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="Two" />
+                    </Border>
+                    <Border
+                        Width="72"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="Three" />
+                    </Border>
+                    <Border
+                        Width="72"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="Four" />
+                    </Border>
+                    <Border
+                        Width="72"
+                        Padding="12,8"
+                        Background="{ThemeResource ControlFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock Text="Five" />
+                    </Border>
+                    <Border
+                        Padding="12,8"
+                        Background="{ThemeResource AccentFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock
+                            Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                            Text="Final item" />
+                    </Border>
+                </WrapPanel>
+            </Border>
+
+            <controls:ControlExample.Options>
+                <ToggleSwitch
+                    x:Name="StretchLastItemToggle"
+                    AutomationProperties.AutomationId="WrapPanelStretchLastItem"
+                    AutomationProperties.Name="Stretch final item"
+                    Header="ItemsStretch"
+                    IsOn="True"
+                    OffContent="None"
+                    OnContent="Last"
+                    Toggled="StretchLastItemToggle_Toggled" />
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="ItemsStretch" Value="{x:Bind Control2.ItemsStretch, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

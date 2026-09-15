@@ -245,6 +245,8 @@ public sealed partial class MainWindow : Window
 
     public void AddNavigationMenuItems()
     {
+        DataTemplate navigationItemContentTemplate = (DataTemplate)NavigationViewControl.Resources["NavigationItemContentTemplate"];
+
         foreach (var group in ControlInfoDataSource.Instance.Groups.OrderBy(i => i.Title).Where(i => !i.IsSpecialSection))
         {
             var itemGroup = new NavigationViewItem() { Content = group.Title, Tag = group.UniqueId, DataContext = group, Icon = GetIcon(group.IconGlyph) };
@@ -258,14 +260,22 @@ public sealed partial class MainWindow : Window
 
             foreach (var item in group.Items)
             {
-                var itemInGroup = new NavigationViewItem() { IsEnabled = item.IncludedInBuild, Content = item.Title, Tag = item.UniqueId, DataContext = item };
+                var itemInGroup = new NavigationViewItem()
+                {
+                    IsEnabled = item.IncludedInBuild,
+                    Content = item,
+                    ContentTemplate = navigationItemContentTemplate,
+                    DataContext = item,
+                    HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                    Tag = item.UniqueId,
+                };
 
                 var itemInGroupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {item.Title} sample", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = item };
                 itemInGroupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
                 itemInGroup.ContextFlyout = new MenuFlyout() { Items = { itemInGroupMenuFlyoutItem } };
 
                 itemGroup.MenuItems.Add(itemInGroup);
-                AutomationProperties.SetName(itemInGroup, item.Title);
+                AutomationProperties.SetName(itemInGroup, item.IsExperimental ? $"{item.Title}, Experimental" : item.Title);
                 AutomationProperties.SetAutomationId(itemInGroup, item.UniqueId);
             }
 
@@ -529,7 +539,7 @@ public sealed partial class MainWindow : Window
                 {
                     foreach (NavigationViewItem child in item.MenuItems)
                     {
-                        if ((string)child.Content == name)
+                        if (child.DataContext is ControlInfoDataItem childData && childData.Title == name)
                         {
                             // We are the item corresponding to the selected one, update selection!
 

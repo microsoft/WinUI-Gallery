@@ -33,6 +33,8 @@ public class AxeScanAll : TestBase
         // parallel tree walk, before any rule filtering can take effect, so per-rule
         // exclusions are insufficient.
         "WebView2",
+        // The experimental PagerControl crashes the app when Axe.Windows walks its UIA tree.
+        "PagerControl",
         // MapControl is internally backed by a WebView2 hosting Azure Maps. The system
         // control has no public Dispose path, so its embedded WebView2 (and its UIA
         // Pane + Chromium RootWebArea) leaks into the process tree even after the page
