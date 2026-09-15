@@ -4,7 +4,7 @@ Use FlowLayout with ItemsRepeater to wrap and virtualize a large collection.
 <ScrollViewer Width="520" Height="320"
               HorizontalScrollMode="Disabled"
               VerticalScrollMode="Enabled">
-    <ItemsRepeater ItemsSource="{x:Bind Items}"
+    <ItemsRepeater ItemsSource="{x:Bind FlowLayoutItems}"
                    ItemTemplate="{StaticResource FlowItemTemplate}">
         <ItemsRepeater.Layout>
             <FlowLayout
@@ -22,7 +22,7 @@ Use FlowLayout with ItemsRepeater to wrap and virtualize a large collection.
     </Border>
 </DataTemplate>
 --- c#
-public IReadOnlyList<FlowLayoutItem> Items { get; } = Enumerable.Range(1, 500)
+public IReadOnlyList<FlowLayoutItem> FlowLayoutItems { get; } = Enumerable.Range(1, 500)
     .Select(index => new FlowLayoutItem($"Item {index}"))
     .ToList();
 

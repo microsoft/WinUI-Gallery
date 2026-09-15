@@ -108,7 +108,7 @@
             </LayoutPanel>
 
             <controls:ControlExample.Options>
-                <StackPanel Spacing="12">
+                <StackPanel Width="220" Spacing="12">
                     <RadioButtons
                         AutomationProperties.AutomationId="LayoutPanelLayoutSelector"
                         AutomationProperties.Name="LayoutPanel layout"
