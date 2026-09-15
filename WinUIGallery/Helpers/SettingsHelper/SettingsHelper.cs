@@ -9,7 +9,7 @@ public partial class SettingsHelper : ObservableSettings
     private static readonly SettingsHelper instance = new(SettingsProviderFactory.CreateProvider());
     public static SettingsHelper Current => instance;
 
-    private SettingsHelper(ISettingsProvider provider)
+    internal SettingsHelper(ISettingsProvider provider)
         : base(provider)
     {
     }
@@ -46,6 +46,12 @@ public partial class SettingsHelper : ObservableSettings
     }
 
     public bool IsFirstRun
+    {
+        get => GetOrCreateDefault<bool>(true);
+        set => Set(value);
+    }
+
+    public bool IsTelemetryEnabled
     {
         get => GetOrCreateDefault<bool>(true);
         set => Set(value);

@@ -9,6 +9,7 @@ using System;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.System;
 using WinUIGallery.Helpers;
+using WinUIGallery.Telemetry;
 
 namespace WinUIGallery.Pages;
 
@@ -29,6 +30,7 @@ public sealed partial class SettingsPage : Page
 
     public string WinAppSdkRuntimeDetails => VersionHelper.WinAppSdkRuntimeDetails;
     private int lastNavigationSelectionMode = 0;
+    private bool isTelemetryToggleInitialized;
 
     public SettingsPage()
     {
@@ -50,6 +52,9 @@ public sealed partial class SettingsPage : Page
     private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
     {
         CheckRecentAndFavoriteButtonStates();
+        isTelemetryToggleInitialized = false;
+        telemetryToggle.IsOn = SettingsHelper.Current.IsTelemetryEnabled;
+        isTelemetryToggleInitialized = true;
         var currentTheme = ThemeHelper.RootTheme;
         switch (currentTheme)
         {
@@ -138,6 +143,18 @@ public sealed partial class SettingsPage : Page
         else
         {
             ElementSoundPlayer.SpatialAudioMode = ElementSpatialAudioMode.On;
+        }
+    }
+
+    private void telemetryToggle_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (isTelemetryToggleInitialized)
+        {
+            SettingsHelper.Current.IsTelemetryEnabled = telemetryToggle.IsOn;
+            if (!telemetryToggle.IsOn)
+            {
+                TelemetryService.Current.ClearPendingCrash();
+            }
         }
     }
 
