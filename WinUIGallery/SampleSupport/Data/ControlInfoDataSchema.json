@@ -66,6 +66,11 @@
                                     "default": true,
                                     "description": "Whether the example page of this control has been updated lately. If true, it will be displayed in the Recently Updated Sample section on the main page and will have a dot on the overview card of this control"
                                 },
+                                "IsExperimental": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "Whether this sample requires the experimental Windows App SDK. Experimental samples are only included in experimental builds and display experimental banners."
+                                },
                                 "Docs": {
                                     "type": "array",
                                     "items": {

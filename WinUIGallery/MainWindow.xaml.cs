@@ -9,6 +9,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.Windows.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,41 @@ public sealed partial class MainWindow : Window
             AdjustNavigationViewMargin(force: true);
             AppWindow.Changed += (_, _) => AdjustNavigationViewMargin();
         }
+
+        InitializeSizePersistence();
+    }
+
+    // Use a rudimenentary persistence mechanism to save the window size between app launches.
+    // In the future we hope to have persistence APIs directly in WinUI/WinAppSDK.
+    private void InitializeSizePersistence()
+    {
+        ApplicationData appData = NativeMethods.IsAppPackaged
+            ? ApplicationData.GetDefault()
+            : ApplicationData.GetForUnpackaged(ProcessInfoHelper.Publisher, ProcessInfoHelper.ProductName);
+
+        const string containerName = "MainWindow_Settings";
+        const string valueName = "SavedSize";
+
+        if (appData.LocalSettings.Containers.TryGetValue(containerName, out var settingsContainer) &&
+            settingsContainer.Values.TryGetValue(valueName, out object? value) &&
+            value is Size savedSize)
+        {
+            Width = savedSize.Width;
+            Height = savedSize.Height;
+        }
+
+        Size lastSize = new Size(Width, Height);
+
+        SizeChanged += (s, e) =>
+        {
+            lastSize = new Size(Width, Height);
+        };
+
+        Closed += (s, e) =>
+        {
+            ApplicationDataContainer appDataContainer = appData.LocalSettings.CreateContainer(containerName, ApplicationDataCreateDisposition.Always);
+            appDataContainer.Values[valueName] = lastSize;
+        };
     }
 
     // Adjusts the NavigationView margin based on the window state
@@ -75,14 +111,6 @@ public sealed partial class MainWindow : Window
 
     private void RootGrid_Loaded(object sender, RoutedEventArgs e)
     {
-        // We need to set the minimum size here because the XamlRoot is not available in the constructor.
-        WindowHelper.SetWindowMinSize(this, 640, 500);
-
-        if (sender is FrameworkElement rootGrid && rootGrid.XamlRoot is not null)
-        {
-            rootGrid.XamlRoot.Changed += RootGridXamlRoot_Changed;
-        }
-
         NavigationOrientationHelper.UpdateNavigationViewForElement(NavigationOrientationHelper.IsLeftMode());
         TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
     }
@@ -109,11 +137,6 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    private void RootGridXamlRoot_Changed(XamlRoot sender, XamlRootChangedEventArgs args)
-    {
-        WindowHelper.SetWindowMinSize(this, 640, 500);
-    }
-
     private void SetWindowProperties()
     {
 #if DEBUG || DEBUG_UNPACKAGED
@@ -126,6 +149,9 @@ public sealed partial class MainWindow : Window
         this.SetTitleBar(titleBar);
         this.AppWindow.SetIcon("Assets/Tiles/GalleryIcon.ico");
         this.AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
+
+        MinWidth = 640;
+        MinHeight = 500;
     }
 
     private void OnPaneDisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)

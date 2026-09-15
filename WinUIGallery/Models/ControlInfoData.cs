@@ -41,6 +41,7 @@ public partial class ControlInfoDataItem
     public bool IsNew { get; set; }
     public bool IsUpdated { get; set; }
     public bool IsPreview { get; set; }
+    public bool IsExperimental { get; set; }
     public ObservableCollection<ControlInfoDocLink> Docs { get; set; } = [];
 
     public bool IncludedInBuild { get; set; }

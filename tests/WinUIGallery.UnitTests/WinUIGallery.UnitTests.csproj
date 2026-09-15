@@ -19,6 +19,7 @@
         <EnableMsixTooling>true</EnableMsixTooling>
         <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
         <SelfContained>true</SelfContained>
+        <WindowsAppSdkSelfContained>true</WindowsAppSdkSelfContained>
     </PropertyGroup>
 
 	<!-- WinUI Repo build support -->
