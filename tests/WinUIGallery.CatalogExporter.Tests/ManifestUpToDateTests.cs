@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WinUIGallery.CatalogExporter;
@@ -50,6 +51,18 @@ public sealed class ManifestUpToDateTests
         // OtherXamlEasingFunctions.txt is the one entry that is not an elision: it uses a token as
         // an element name, <$(EasingFunction)/>, whose value comes from a ComboBox populated in
         // code-behind. Nothing in the markup can resolve it, so it cannot be published as XAML.
+        //
+        // The ItemsRepeater, NavigationView, TreeView, FlipView and ConnectedAnimation entries fail
+        // for a different reason: they bind a prefix ("local:", "common:", "l:", "data:") that
+        // their page never declares, so no import can be published for it. Well-formedness cannot
+        // catch that - this exporter and the consumer both synthesize a declaration for every
+        // prefix they see - so the fragment would parse on both sides and break only once a reader
+        // pasted it with the imports we published. These prefixes name gallery-internal types, so
+        // there is no import that would make them portable; omitting is the only honest option.
+        //
+        // FlipviewShowingBoundData.txt and LayingOutNestedItemsrepeaters.txt carry no C#, so they
+        // leave the index entirely rather than merely losing their XAML. That is a real cost, and
+        // accepted: both were only ever publishable as markup a consumer could not compile.
         string[] expected =
         [
             "AppWindow: 'AppWindowSettingMinimumMaximumWidth.txt'",
@@ -60,10 +73,17 @@ public sealed class ManifestUpToDateTests
             "AppWindow: 'CreatingCustomizingAppwindowWindow.txt'",
             "AppWindow: 'ModalWindowOverlappedpresenterAppwindow.txt'",
             "Binding: 'ConverterBinding.txt'",
+            "ConnectedAnimation: 'ConnectedAnimationItemsrepeater.txt'",
+            "ConnectedAnimation: 'ConnectedAnimationListPage.txt'",
             "CustomUserControls: 'CustomUserControlsBasicCustomPasswordBox.txt'",
             "CustomUserControls: 'CustomUserControlsCounterControlIncrementDecrement.txt'",
             "CustomUserControls: 'CustomUserControlsTemperatureConverterUsercontrolExample.txt'",
             "EasingFunction: 'OtherXamlEasingFunctions.txt'",
+            "FlipView: 'FlipviewShowingBoundData.txt'",
+            "ItemsRepeater: 'ItemsRepeaterVirtualizedContentHeavyLayout.txt'",
+            "ItemsRepeater: 'LayingOutNestedItemsrepeaters.txt'",
+            "NavigationView: 'NavigationViewDataBinding.txt'",
+            "TreeView: 'TreeviewDatabindingItemsource.txt'",
             "TreeView: 'TreeviewItemtemplateselector.txt'",
         ];
 
@@ -136,6 +156,64 @@ public sealed class ManifestUpToDateTests
                 XamlFragment.IsWellFormed(sample.Xaml!),
                 $"'{sample.Gallery.Snippet}' stopped parsing after placeholder removal.");
         }
+    }
+
+    /// <summary>
+    /// The published import list has to be complete, not merely correct. A consumer pastes exactly
+    /// the imports this index gives it, so a fragment binding a prefix that is missing from them
+    /// does not compile on arrival — and neither parser catches it, because both synthesize a
+    /// declaration for every prefix they encounter.
+    ///
+    /// Asserted as a property rather than pinned as a list, so a new snippet that reaches for an
+    /// undeclared prefix fails here whichever control it came from.
+    /// </summary>
+    [TestMethod]
+    public void RealRepository_EveryPublishedFragmentDeclaresThePrefixesItUses()
+    {
+        static Dictionary<string, string> DeclaredPrefixes(IEnumerable<string>? imports)
+        {
+            Dictionary<string, string> declarations = new(StringComparer.Ordinal);
+            foreach (string import in imports ?? [])
+            {
+                Match match = Regex.Match(import, @"^xmlns:([A-Za-z_][\w.\-]*)\s*=\s*""([^""]*)""$");
+                if (match.Success)
+                {
+                    declarations[match.Groups[1].Value] = match.Groups[2].Value;
+                }
+            }
+
+            return declarations;
+        }
+
+        CatalogGenerationResult result = CatalogGenerator.Generate(new CatalogGenerationOptions { RepoRoot = RepoRoot });
+
+        List<string> offenders = [];
+
+        foreach (IndexControl control in result.Index.Controls)
+        {
+            foreach (IndexSample sample in control.Samples)
+            {
+                if (sample.Xaml is null)
+                {
+                    continue;
+                }
+
+                // The contract lets a sample override the control's imports wholesale, so the
+                // fallback is either/or rather than a union.
+                Dictionary<string, string> declared = DeclaredPrefixes(sample.XmlnsImports ?? control.XmlnsImports);
+                List<string> unbound = XamlFragment.UnresolvedPrefixes(sample.Xaml, declared);
+
+                if (unbound.Count > 0)
+                {
+                    offenders.Add($"{control.Id}/{sample.Gallery.Snippet}: {string.Join(", ", unbound)}");
+                }
+            }
+        }
+
+        Assert.AreEqual(
+            0,
+            offenders.Count,
+            "Published XAML must declare every namespace prefix it binds. Offending samples:\n" + string.Join('\n', offenders));
     }
 
     [TestMethod]

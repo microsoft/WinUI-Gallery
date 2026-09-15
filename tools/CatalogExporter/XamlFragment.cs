@@ -22,6 +22,12 @@ internal static partial class XamlFragment
     private static readonly HashSet<string> IgnoredPrefixes = new(StringComparer.Ordinal)
     {
         "x", "d", "mc", "xml", "xmlns",
+
+        // Not a prefix at all: "using" is the scheme half of a XAML namespace URI, as in
+        // xmlns:sys="using:System". The type-reference branch of BindingPrefixRegex cannot tell
+        // that apart from a real "prefix:Type" reference, and no consumer ever needs an import
+        // for it.
+        "using",
     };
 
     /// <summary>
@@ -123,6 +129,38 @@ internal static partial class XamlFragment
     }
 
     /// <summary>
+    /// Prefixes <paramref name="xaml"/> binds to that its own page never declares, so no import
+    /// can be published for them.
+    ///
+    /// <see cref="IsWellFormed"/> cannot surface these, by design: it synthesizes a declaration for
+    /// every prefix it sees so that it agrees with the consumer's parser. The fragment therefore
+    /// parses on both sides and fails only when someone pastes it alongside the imports this index
+    /// published — which are necessarily missing the one it actually needed.
+    /// </summary>
+    public static List<string> UnresolvedPrefixes(string xaml, IReadOnlyDictionary<string, string> pageDeclarations)
+    {
+        // A snippet that declares a prefix on its own root carries the binding with it, so it needs
+        // nothing from the page and nothing published alongside it.
+        HashSet<string> selfDeclared = new(StringComparer.Ordinal);
+        foreach (Match match in SelfDeclaredPrefixRegex().Matches(xaml))
+        {
+            selfDeclared.Add(match.Groups[1].Value);
+        }
+
+        SortedSet<string> unresolved = new(StringComparer.Ordinal);
+
+        foreach (string prefix in UsedPrefixes(xaml))
+        {
+            if (!pageDeclarations.ContainsKey(prefix) && !selfDeclared.Contains(prefix))
+            {
+                unresolved.Add(prefix);
+            }
+        }
+
+        return [.. unresolved];
+    }
+
+    /// <summary>
     /// Prefixes used in a way that actually binds to a namespace: an element name, an attribute
     /// name, a markup extension, or a type reference in an attribute value.
     ///
@@ -152,6 +190,10 @@ internal static partial class XamlFragment
     /// <summary>Any "prefix:" occurrence — matches winappCli's namespace-synthesis regex.</summary>
     [GeneratedRegex(@"([A-Za-z_][\w.\-]*):")]
     private static partial Regex AnyPrefixRegex();
+
+    /// <summary>A prefix the fragment declares itself, as in &lt;StackPanel xmlns:sys="using:System"&gt;.</summary>
+    [GeneratedRegex(@"xmlns:([A-Za-z_][\w.\-]*)\s*=")]
+    private static partial Regex SelfDeclaredPrefixRegex();
 
     /// <summary>
     /// Prefix positions XAML actually resolves: element names (&lt;p:Foo, &lt;/p:Foo),

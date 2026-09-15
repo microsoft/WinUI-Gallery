@@ -370,7 +370,7 @@ public sealed class CatalogGeneratorTests
     public void Generate_CollectsUsingsFromCodeBehindAndExcludesGalleryNamespaces()
     {
         WriteControlInfoData(TwoItemDocument());
-        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="Snippet.txt" />"""),
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
             ("Snippet.txt", Bundle(header: "One", csharp: "var items = new ObservableCollection<string>();")));
         WriteSample("SampleTwo", "<Page></Page>");
 
@@ -395,7 +395,7 @@ public sealed class CatalogGeneratorTests
     public void Generate_OmitsUsingsWhenControlHasNoCode()
     {
         WriteControlInfoData(TwoItemDocument());
-        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="Snippet.txt" />"""),
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
             ("Snippet.txt", Bundle(header: "One", xaml: "<Button Content=\"Hi\" />")));
         WriteSample("SampleTwo", "<Page></Page>");
 
@@ -424,7 +424,7 @@ public sealed class CatalogGeneratorTests
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                   xmlns:controls="using:WinUIGallery.Controls"
                   xmlns:local="using:WinUIGallery.ControlPages">
-              <controls:ControlExample SampleDefinition="Snippet.txt" />
+              <controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />
             </Page>
             """,
             ("Snippet.txt", Bundle(header: "One", xaml: """<DataTemplate x:DataType="local:Contact"><TextBlock /></DataTemplate>""")));
@@ -435,5 +435,76 @@ public sealed class CatalogGeneratorTests
         CollectionAssert.Contains(
             one.XmlnsImports ?? one.Samples.Single().XmlnsImports,
             "xmlns:local=\"using:WinUIGallery.ControlPages\"");
+    }
+
+    /// <summary>
+    /// ControlExample loads a bundle as "Samples/&lt;SampleDefinition&gt;", so the directory half of
+    /// the value has to name the sample's own folder. Validating only the file name would let a
+    /// wrong-folder typo through here and leave it to appear as an empty code viewer at runtime.
+    /// </summary>
+    [TestMethod]
+    public void Generate_RejectsSampleDefinitionNamingTheWrongFolder()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="WrongFolder\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(header: "One", xaml: "<Button />")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        CatalogValidationException error = Assert.ThrowsException<CatalogValidationException>(() => CatalogGenerator.Generate(Options()));
+
+        StringAssert.Contains(error.Message, "WrongFolder\\Snippet.txt");
+    }
+
+    /// <summary>
+    /// A bare file name is rejected for the same reason: the gallery would resolve it as
+    /// "Samples/Snippet.txt" and find nothing there.
+    /// </summary>
+    [TestMethod]
+    public void Generate_RejectsSampleDefinitionWithNoFolder()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(header: "One", xaml: "<Button />")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        Assert.ThrowsException<CatalogValidationException>(() => CatalogGenerator.Generate(Options()));
+    }
+
+    /// <summary>
+    /// A snippet that declares a prefix on its own root needs nothing from the page, so it is
+    /// published rather than treated as unresolvable.
+    /// </summary>
+    [TestMethod]
+    public void Generate_KeepsXamlWhoseFragmentDeclaresItsOwnPrefix()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(header: "One", xaml: """<StackPanel xmlns:sys="using:System"><sys:String>Hi</sys:String></StackPanel>""")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+
+        Assert.IsNotNull(one.Samples.Single().Xaml);
+        Assert.IsNull(one.Samples.Single().Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// A prefix neither the page nor the fragment declares cannot be published as an import, so the
+    /// XAML is omitted rather than shipped in a state that will not compile on arrival.
+    /// </summary>
+    [TestMethod]
+    public void Generate_OmitsXamlBindingAPrefixNothingDeclares()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(header: "One", xaml: "<mystery:Thing />", csharp: "int x = 1;")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "mystery" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+        Assert.IsNotNull(sample.Code);
     }
 }

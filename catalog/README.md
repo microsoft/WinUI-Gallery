@@ -50,12 +50,13 @@ The index deliberately carries **no generation timestamp**, even though the cont
 | `controls[].relatedControls` | `RelatedControls`, as display names — the contract asks for names here, not ids |
 | `controls[].curatedKeywords` | `Tags` plus any `Catalog.Aliases`. Both are written by the sample's own author, and the contract has one slot for author-written terms, which consumers weigh above derived ones |
 | `controls[].keywords` | `BaseClasses`, as supplementary derived search terms |
-| `controls[].xmlnsImports` | The namespace declarations the control's samples actually use, resolved against its page's own `xmlns` attributes. Hoisted here only when every sample needs the same set; otherwise each sample carries its own. A prefix the page itself does not declare — a snippet using `local:` to mean "your namespace" — is omitted rather than invented, since a guessed URI would look authoritative and not compile |
+| `controls[].xmlnsImports` | The namespace declarations the control's samples actually use, resolved against its page's own `xmlns` attributes, plus any the fragment declares on itself. Hoisted here only when every sample needs the same set; otherwise each sample carries its own. A prefix nothing declares — a snippet using `local:` to mean "your namespace" — is never invented, since a guessed URI would look authoritative and not compile; the fragment is omitted instead, because an incomplete import list produces XAML that does not bind on arrival |
 | `controls[].samples[]` | One entry per `controls:ControlExample` whose `SampleDefinition="..."` names a snippet file that exists next to the page, in page order |
 | `controls[].samples[].header` | The snippet's `--- header` section, as shown above the scenario in the app; falls back to a name derived from the snippet file name |
 | `controls[].samples[].xaml`, `.code` | The snippet's `--- xaml` and `--- c#` sections, with `$(Token)` placeholders resolved. `xaml` is guaranteed to contain no leftover token; `code` may still carry one that was not safe to remove |
 | `controls[].samples[].language` | `"csharp"` whenever `code` is present; the only value contract version 1 accepts |
 | `controls[].samples[].gallery.codePlaceholdersPresent` | The `$(Token)` names still present in `code`, in order of first appearance; omitted entirely when there are none. The mirror image of `gallery.xamlPlaceholdersDropped`, not a companion to it: that field names tokens that were *removed*, this one names tokens that are *still there*, so a sample carrying it is not pasteable as published |
+| `controls[].samples[].gallery.xamlOmittedUnboundPrefixes` | The namespace prefixes that cost a sample its XAML: the snippet binds them, but neither its page nor the fragment itself declares them, so no import could be published and the markup would not bind wherever it was pasted |
 | `controls[].gallery`, `samples[].gallery` | Gallery-specific provenance: `uniqueId`, `group`, page and snippet paths, badges, base classes, and source-qualified related-sample ids |
 
 ### Snippet bundles, and staying faithful to what the app renders
@@ -99,7 +100,13 @@ The contract requires a sample to carry XAML or code, and its consumer skips any
 
 **A snippet whose XAML is not a well-formed fragment keeps its C# and loses its XAML.** Several snippets are written for the gallery's own code viewer, where a human correctly reads `<Window ...>` as "your existing window". That is not parseable XML, and a consumer parses each fragment and discards whatever fails *without reporting it* — so publishing it would advertise code that never arrives. The exporter omits the XAML instead, prints a warning during `generate`, and marks the sample with `gallery.xamlOmittedAsMalformed` so the omission is visible rather than looking like a sample that simply has no XAML.
 
-`RealRepository_SnippetsWithUnpublishableXamlAreTheKnownSet` pins the current set, so a newly broken snippet surfaces as a test failure instead of quietly disappearing. Every snippet in that set still publishes its C#.
+**A snippet that binds a namespace prefix nothing declares also loses its XAML.** A fragment using `local:`, `common:`, `l:` or `data:` to name a type that lives in the gallery's own app is not portable: the prefix resolves against neither its page's `xmlns` attributes nor its own, so there is no import to publish, and a guessed URI would be worse than none. Well-formedness cannot catch this — the exporter and the consumer both synthesize a declaration for every prefix they encounter, deliberately, so that the two agree — which means such a fragment parses cleanly on both sides and fails only at the moment a reader pastes it alongside the imports this index handed them. The XAML is therefore omitted and the offending prefixes are listed in `gallery.xamlOmittedUnboundPrefixes`. `RealRepository_EveryPublishedFragmentDeclaresThePrefixesItUses` asserts the resulting guarantee as a property: every published fragment declares, or is published with an import for, every prefix it binds.
+
+A snippet that declares its own prefix, such as `<StackPanel xmlns:sys="using:System">`, is self-contained and is published unchanged — it needs nothing from its page and nothing from the import list.
+
+Two samples carry no C# and so leave the index entirely rather than merely losing their XAML: `FlipView/FlipviewShowingBoundData.txt` and `ItemsRepeater/LayingOutNestedItemsrepeaters.txt`. That cost is accepted deliberately, because both were only ever publishable as markup a consumer could not compile.
+
+`RealRepository_SnippetsWithUnpublishableXamlAreTheKnownSet` pins the current set, so a newly broken snippet surfaces as a test failure instead of quietly disappearing. All but two still publish their C#; the exceptions are named above.
 
 ### The optional `Catalog` override block
 
@@ -123,7 +130,9 @@ An item from `ControlInfoData.json` becomes a control in the index when, and onl
 2. A `WinUIGallery/Samples/<UniqueId>/` folder exists with a case-exact `<UniqueId>Page.xaml` file in it.
 3. It does not set `Catalog.Exclude: true`.
 
-Anything else — a missing folder or page, a duplicate id, a `RelatedControls`/`Catalog.RelatedSamples` reference that doesn't resolve to an included entry, a `SampleDefinition` snippet that doesn't exist on disk, or two `ControlExample` elements pointing at the same snippet — fails validation (`CatalogValidationException`) rather than being silently skipped or guessed at. All 120 current `ControlInfoData.json` items satisfy these rules.
+Anything else — a missing folder or page, a duplicate id, a `RelatedControls`/`Catalog.RelatedSamples` reference that doesn't resolve to an included entry, a `SampleDefinition` that is not written as `<UniqueId>\<File>.txt` or names a snippet that doesn't exist on disk, or two `ControlExample` elements pointing at the same snippet — fails validation (`CatalogValidationException`) rather than being silently skipped or guessed at. All 120 current `ControlInfoData.json` items satisfy these rules.
+
+`SampleDefinition` is checked as a whole path, not just a file name, because `ControlExample` resolves it as `Samples/<SampleDefinition>` at runtime. A value naming the wrong folder would otherwise pass here whenever a file of that name happened to sit next to the page, and fail only in the running app, as a scenario with an empty code viewer.
 
 ### What's intentionally left out
 

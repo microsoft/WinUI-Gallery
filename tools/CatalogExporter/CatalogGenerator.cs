@@ -418,6 +418,7 @@ internal static partial class CatalogGenerator
     {
         List<IndexSample> samples = [];
         string[] entries = Directory.GetFiles(folder);
+        string folderName = Path.GetFileName(folder);
 
         // The page is parsed rather than pattern-matched so that each snippet can be tied to the
         // ControlExample that owns it, which is what makes its $(Token) substitutions resolvable.
@@ -449,9 +450,18 @@ internal static partial class CatalogGenerator
                 continue;
             }
 
-            // SampleDefinition values are written as "<Folder>\<File>.txt" (folder name matches
-            // the sample's UniqueId), so only the file name is meaningful here.
-            string fileName = rawPath.Replace('\\', '/').Split('/').Last();
+            // The directory portion is not decoration: ControlExample loads the bundle as
+            // "Samples/<SampleDefinition>", so a value naming the wrong folder fails at runtime even
+            // when a file of that name happens to sit next to the page. Checking only the file name
+            // would let that typo through here and leave it to surface as an empty code viewer.
+            string[] segments = rawPath!.Replace('\\', '/').Split('/', StringSplitOptions.RemoveEmptyEntries);
+            if (segments.Length != 2 || !string.Equals(segments[0], folderName, StringComparison.Ordinal))
+            {
+                issues.Add(new CatalogIssue(uniqueId, $"SampleDefinition '{rawPath}' must be '{folderName}\\<File>.txt'; the gallery resolves it under Samples\\ and would fail to load it as written."));
+                continue;
+            }
+
+            string fileName = segments[1];
 
             string? bundlePath = FindExactCase(entries, fileName);
             if (bundlePath is null)
@@ -508,6 +518,19 @@ internal static partial class CatalogGenerator
                 xaml = null;
             }
 
+            // A prefix the page never declares cannot be turned into an import, and DetectImports
+            // drops it rather than inventing a URI. That leaves a fragment referencing a namespace
+            // nothing binds: it parses here and on the consumer's side, because both synthesize
+            // declarations, and then fails the moment a reader pastes it with the imports this index
+            // published. Omitting the XAML is the same degradation a malformed fragment gets, for
+            // the same reason - publishing it would advertise code that does not work on arrival.
+            List<string> unboundPrefixes = xaml is null ? [] : XamlFragment.UnresolvedPrefixes(xaml, pageDeclarations);
+            if (unboundPrefixes.Count > 0)
+            {
+                warnings.Add(new CatalogIssue(uniqueId, $"'{fileName}' XAML uses namespace prefixes its page does not declare ({string.Join(", ", unboundPrefixes)}) and was omitted."));
+                xaml = null;
+            }
+
             // Nothing below may publish a placeholder. The fallback and the parse check together are
             // meant to make this unreachable, so failing here is deliberate: the index's promise is
             // that its XAML pastes as published, and shipping a token would quietly break it.
@@ -545,6 +568,7 @@ internal static partial class CatalogGenerator
                     Source = ToRepoRelative(bundlePath, options.RepoRoot),
                     Name = DeriveScenarioName(fileName, uniqueId),
                     XamlOmittedAsMalformed = malformed ? true : null,
+                    XamlOmittedUnboundPrefixes = unboundPrefixes.Count == 0 ? null : unboundPrefixes,
                     XamlPlaceholdersDropped = xaml is null ? null : droppedPlaceholders,
                     CodePlaceholdersPresent = codePlaceholders,
                 },

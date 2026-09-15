@@ -197,6 +197,14 @@ internal sealed class IndexSampleGallery
     public bool? XamlOmittedAsMalformed { get; set; }
 
     /// <summary>
+    /// Namespace prefixes the snippet's XAML binds to that its page never declares. No import can
+    /// be published for them, so the fragment would arrive referencing a namespace nothing binds;
+    /// the XAML is omitted for that reason and the prefixes are named here so the omission reads as
+    /// a known gap in the snippet rather than a sample that simply has no XAML.
+    /// </summary>
+    public List<string>? XamlOmittedUnboundPrefixes { get; set; }
+
+    /// <summary>
     /// Attributes dropped from the XAML because they carried a $(Token) the resolver could not
     /// settle. The property falls back to its own default, which is what the gallery shows in this
     /// situation anyway, but the names are published so the omission is inspectable rather than
