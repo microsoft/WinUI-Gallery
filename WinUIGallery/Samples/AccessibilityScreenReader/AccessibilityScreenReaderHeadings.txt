@@ -1,0 +1,23 @@
+--- xaml
+<StackPanel MaxWidth="500">
+<!-- Here is the main header for the whole text. It gets HeadingLevel 1 -->
+<TextBlock AutomationProperties.HeadingLevel="Level1" FontSize="26">Lorem ipsums</TextBlock>
+<!-- The following TextBlock is the header for the standard lorem ipsum text, thus it is only HeadingLevel 2-->
+<TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22">Lorem ipsum</TextBlock>
+<TextBlock TextWrapping="WrapWholeWords">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Pellentesque feugiat velit pulvinar, vehicula nisi at, molestie risus. 
+                Duis consequat auctor libero vitae consectetur. Nullam efficitur euismod lacinia.</TextBlock>
+    
+<TextBlock AutomationProperties.HeadingLevel="Level2" FontSize="22">Cat ipsum</TextBlock>
+<!-- This is the header for the standard cat ipsum section, which is hierarchically below the cat ipsum header, resulting in HeadingLevel 3 -->
+<TextBlock AutomationProperties.HeadingLevel="3" FontSize="18">Standard</TextBlock>
+<TextBlock TextWrapping="WrapWholeWords">Mice litter kitter kitty litty little kitten big roar roar feed me 
+                but i will ruin the couch with my claws and hunt by meowing loudly at 5am next to human.</TextBlock>
+<TextBlock AutomationProperties.HeadingLevel="3" FontSize="18">Cat breeds</TextBlock>
+<TextBlock TextWrapping="WrapWholeWords">Tabby abyssinian for jaguar. Thai russian blue and ragdoll, ocicat. 
+                Mouser puma so american bobtail for donskoy balinese . Scottish fold manx so siamese.</TextBlock>
+    
+<TextBlock AutomationProperties.HeadingLevel="2" FontSize="22">Bacon ipsum</TextBlock>
+<TextBlock TextWrapping="WrapWholeWords">Bacon ipsum dolor amet meatball nulla labore, 
+                tempor sirloin chicken frankfurter tail drumstick ex cupim ground round.</TextBlock>
+</StackPanel>

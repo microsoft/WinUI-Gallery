@@ -1,0 +1,3 @@
+--- xaml
+<!-- Most controls automatically get names from their content -->
+<Button Content="Download survey" />
