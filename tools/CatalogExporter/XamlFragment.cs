@@ -130,7 +130,7 @@ internal static partial class XamlFragment
 
     /// <summary>
     /// Prefixes <paramref name="xaml"/> binds to that its own page never declares, so no import
-    /// can be published for them.
+    /// can be published for them unless <see cref="ResolvePrefixesFromCode"/> accounts for one.
     ///
     /// <see cref="IsWellFormed"/> cannot surface these, by design: it synthesizes a declaration for
     /// every prefix it sees so that it agrees with the consumer's parser. The fragment therefore
@@ -161,6 +161,71 @@ internal static partial class XamlFragment
     }
 
     /// <summary>
+    /// Imports for prefixes that resolve against the sample's own C# rather than its page.
+    ///
+    /// A snippet that hands the reader both halves of a scenario — "local:ExplorerItem" in the XAML
+    /// and the ExplorerItem class in the code beside it — is complete on its own; the only thing
+    /// missing is the line that binds the prefix, which the page cannot supply because the type
+    /// does not live there. Synthesizing that line from the code's own namespace is not a guess:
+    /// the namespace and the types are both taken from the snippet being published.
+    ///
+    /// A prefix is only resolved when every type it qualifies is declared in that code. One
+    /// unaccounted-for type means the reader is still missing a piece, and the caller withholds the
+    /// fragment exactly as before.
+    /// </summary>
+    public static Dictionary<string, string> ResolvePrefixesFromCode(
+        string xaml,
+        IEnumerable<string> prefixes,
+        string? code)
+    {
+        Dictionary<string, string> resolved = new(StringComparer.Ordinal);
+
+        HashSet<string> declaredTypes = CodeDeclarations.DeclaredTypes(code);
+        if (declaredTypes.Count == 0)
+        {
+            return resolved;
+        }
+
+        Dictionary<string, HashSet<string>> referenced = ReferencedTypes(xaml);
+        string ns = CodeDeclarations.NamespaceOrPlaceholder(code);
+
+        foreach (string prefix in prefixes)
+        {
+            if (referenced.TryGetValue(prefix, out HashSet<string>? types)
+                && types.Count > 0
+                && types.All(declaredTypes.Contains))
+            {
+                resolved[prefix] = $"using:{ns}";
+            }
+        }
+
+        return resolved;
+    }
+
+    /// <summary>
+    /// The type names each prefix qualifies, keyed by prefix. A property-element or attached
+    /// property such as "local:MenuItemTemplateSelector.ItemTemplate" contributes the type half
+    /// only, since that is what has to exist for the reference to resolve.
+    /// </summary>
+    private static Dictionary<string, HashSet<string>> ReferencedTypes(string xaml)
+    {
+        Dictionary<string, HashSet<string>> references = new(StringComparer.Ordinal);
+
+        foreach ((string prefix, string type) in PrefixReferences(xaml))
+        {
+            if (!references.TryGetValue(prefix, out HashSet<string>? types))
+            {
+                types = new HashSet<string>(StringComparer.Ordinal);
+                references[prefix] = types;
+            }
+
+            types.Add(type);
+        }
+
+        return references;
+    }
+
+    /// <summary>
     /// Prefixes used in a way that actually binds to a namespace: an element name, an attribute
     /// name, a markup extension, or a type reference in an attribute value.
     ///
@@ -172,19 +237,33 @@ internal static partial class XamlFragment
     {
         HashSet<string> prefixes = new(StringComparer.Ordinal);
 
+        foreach ((string prefix, _) in PrefixReferences(xaml))
+        {
+            prefixes.Add(prefix);
+        }
+
+        return prefixes;
+    }
+
+    /// <summary>
+    /// Every "prefix:Type" the fragment resolves, paired so a caller can ask not just which
+    /// namespaces are needed but what is expected to be in them.
+    /// </summary>
+    private static IEnumerable<(string Prefix, string Type)> PrefixReferences(string xaml)
+    {
         foreach (Match match in BindingPrefixRegex().Matches(xaml))
         {
-            for (int group = 1; group < match.Groups.Count; group++)
+            // The pattern's alternatives each capture a prefix followed by its type, so the groups
+            // are read in pairs and the one pair that participated in the match is the one filled.
+            for (int group = 1; group + 1 < match.Groups.Count; group += 2)
             {
                 string prefix = match.Groups[group].Value;
                 if (prefix.Length > 0 && !IgnoredPrefixes.Contains(prefix))
                 {
-                    prefixes.Add(prefix);
+                    yield return (prefix, match.Groups[group + 1].Value);
                 }
             }
         }
-
-        return prefixes;
     }
 
     /// <summary>Any "prefix:" occurrence — matches winappCli's namespace-synthesis regex.</summary>
@@ -199,10 +278,13 @@ internal static partial class XamlFragment
     /// Prefix positions XAML actually resolves: element names (&lt;p:Foo, &lt;/p:Foo),
     /// attribute names (p:Foo=), markup extensions ({p:Foo}) and type references ("p:Foo").
     ///
+    /// Each alternative captures the prefix and the type name after it, in that order, so the
+    /// groups can be read in pairs.
+    ///
     /// The attribute-name branch stops before the "=" rather than consuming it, so an attribute
     /// that is itself prefixed does not hide a prefixed type in its value: in
     /// x:DataType="local:Contact" both "x" and "local" have to be found.
     /// </summary>
-    [GeneratedRegex(@"</?([A-Za-z_][\w.\-]*):[A-Za-z_]|\s([A-Za-z_][\w.\-]*):[A-Za-z_][\w.\-]*(?=\s*=)|\{\s*([A-Za-z_][\w.\-]*):[A-Za-z_]|=""\s*([A-Za-z_][\w.\-]*):[A-Za-z_]")]
+    [GeneratedRegex(@"</?([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)|\s([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)[\w.\-]*(?=\s*=)|\{\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)|=""\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
     private static partial Regex BindingPrefixRegex();
 }

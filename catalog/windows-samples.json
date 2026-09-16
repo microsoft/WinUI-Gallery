@@ -4672,8 +4672,7 @@
             "source": "WinUIGallery/Samples/ItemsRepeater/ItemsRepeaterVirtualizedContentHeavyLayout.txt",
             "name": "Virtualized Content Heavy Layout",
             "xamlOmittedUnboundPrefixes": [
-              "common",
-              "l"
+              "common"
             ]
           }
         }
@@ -5721,15 +5720,16 @@
         },
         {
           "header": "Data binding",
+          "xaml": "\u003CNavigationView x:Name=\u0022nvSample\u0022 \n                MenuItemTemplateSelector=\u0022{StaticResource selector}\u0022 \n                MenuItemsSource=\u0022{x:Bind Categories, Mode=OneWay}\u0022 /\u003E\n \n\u003Clocal:MenuItemTemplateSelector x:Key=\u0022selector\u0022\u003E \n    \u003Clocal:MenuItemTemplateSelector.ItemTemplate\u003E \n        \u003CDataTemplate x:DataType=\u0022local:Category\u0022 \u003E \n            \u003CNavigationViewItem Content=\u0022{x:Bind Name}\u0022 ToolTipService.ToolTip=\u0022{x:Bind Tooltip}\u0022\u003E \n                \u003CNavigationViewItem.Icon\u003E \n                    \u003CSymbolIcon Symbol=\u0022{x:Bind Glyph}\u0022 /\u003E \n                \u003C/NavigationViewItem.Icon\u003E \n            \u003C/NavigationViewItem\u003E\n        \u003C/DataTemplate\u003E \n    \u003C/local:MenuItemTemplateSelector.ItemTemplate \u003E \n\u003C/local:MenuItemTemplateSelector\u003E",
           "code": "//C# code behind\nCategories = new ObservableCollection\u003CCategoryBase\u003E(); \nCategories.Add(new Category { Name = \u0022Category 1\u0022, Glyph = Symbol.Home, Tooltip = \u0022This is category 1\u0022 }); \nCategories.Add(new Category { Name = \u0022Category 2\u0022, Glyph = Symbol.Keyboard, Tooltip = \u0022This is category 2\u0022 }); \nCategories.Add(new Category { Name = \u0022Category 3\u0022, Glyph = Symbol.Library, Tooltip = \u0022This is category 3\u0022 }); \nCategories.Add(new Category { Name = \u0022Category 4\u0022, Glyph = Symbol.Mail, Tooltip = \u0022This is category 4\u0022 }); \n\npublic class CategoryBase { } \n\npublic class Category : CategoryBase\n{\n    public string Name { get; set; } = string.Empty;\n    public string Tooltip { get; set; } = string.Empty;\n    public Symbol Glyph { get; set; }\n}\n\npublic class Separator : CategoryBase { }\n\npublic class Header : CategoryBase\n{\n    public string Name { get; set; }\n}\n\n[ContentProperty(Name = \u0022ItemTemplate\u0022)]\nclass MenuItemTemplateSelector : DataTemplateSelector\n{\n    public DataTemplate? ItemTemplate { get; set; }\n\n    protected override DataTemplate? SelectTemplateCore(object item)\n    {\n        return item is Separator ? SeparatorTemplate : item is Header ? HeaderTemplate : ItemTemplate;\n    }\n}",
           "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:YourNamespace\u0022"
+          ],
           "gallery": {
             "snippet": "NavigationViewDataBinding.txt",
             "source": "WinUIGallery/Samples/NavigationView/NavigationViewDataBinding.txt",
-            "name": "Data Binding",
-            "xamlOmittedUnboundPrefixes": [
-              "local"
-            ]
+            "name": "Data Binding"
           }
         },
         {
@@ -9888,15 +9888,16 @@
         },
         {
           "header": "A TreeView with DataBinding Using ItemSource",
+          "xaml": "\u003CTreeView ItemsSource=\u0022{x:Bind DataSource}\u0022\u003E\n   \u003CTreeView.ItemTemplate\u003E\n      \u003CDataTemplate x:DataType=\u0022local:ExplorerItem\u0022\u003E\n         \u003CTreeViewItem ItemsSource=\u0022{x:Bind Children}\u0022 Content=\u0022{x:Bind Name}\u0022/\u003E\n      \u003C/DataTemplate\u003E\n   \u003C/TreeView.ItemTemplate\u003E\n\u003C/TreeView\u003E",
           "code": "using System.Collections.ObjectModel;\nusing Microsoft.UI.Xaml;\nusing Microsoft.UI.Xaml.Controls;\n\nnamespace YourNamespace\n{\n    public sealed partial class YourPage : Page\n    {\n        // DataSource is the data collection that will be bound to the TreeView\u0027s ItemsSource.\n        public ObservableCollection\u003CExplorerItem\u003E DataSource { get; set; }\n\n        public YourPage()\n        {\n            this.InitializeComponent();\n\n            // Initialize the data source with sample data and set it as the context for data binding.\n            DataSource = GetData();\n            this.DataContext = this; // Bind the DataContext of the page to itself for XAML bindings.\n        }\n\n        // Method to provide sample data for the TreeView.\n        private ObservableCollection\u003CExplorerItem\u003E GetData()\n        {\n            return new ObservableCollection\u003CExplorerItem\u003E\n            {\n                // Root folder with child files.\n                new ExplorerItem\n                {\n                    Name = \u0022Documents\u0022,\n                    Type = ExplorerItem.ExplorerItemType.Folder,\n                    Children =\n                    {\n                        new ExplorerItem\n                        {\n                            Name = \u0022ProjectProposal\u0022,\n                            Type = ExplorerItem.ExplorerItemType.File,\n                        },\n                        new ExplorerItem\n                        {\n                            Name = \u0022BudgetReport\u0022,\n                            Type = ExplorerItem.ExplorerItemType.File,\n                        },\n                    },\n                },\n                // Another root folder with one child file.\n                new ExplorerItem\n                {\n                    Name = \u0022Projects\u0022,\n                    Type = ExplorerItem.ExplorerItemType.Folder,\n                    Children =\n                    {\n                        new ExplorerItem\n                        {\n                            Name = \u0022Project Plan\u0022,\n                            Type = ExplorerItem.ExplorerItemType.File,\n                        },\n                    },\n                },\n            };\n        }\n    }\n\n    // Class to represent items in the TreeView.\n    public class ExplorerItem\n    {\n        // Enum to define the type of the item: Folder or File.\n        public enum ExplorerItemType\n        {\n            Folder,\n            File,\n        }\n\n        // Name of the item (displayed in the TreeView).\n        public string Name { get; set; } = string.Empty;\n\n        // Type of the item (Folder or File).\n        public ExplorerItemType Type { get; set; }\n\n        // Collection of child items. Used for nested nodes in the TreeView.\n        public ObservableCollection\u003CExplorerItem\u003E Children { get; set; } = new ObservableCollection\u003CExplorerItem\u003E();\n    }\n}",
           "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:YourNamespace\u0022"
+          ],
           "gallery": {
             "snippet": "TreeviewDatabindingItemsource.txt",
             "source": "WinUIGallery/Samples/TreeView/TreeviewDatabindingItemsource.txt",
-            "name": "Databinding Itemsource",
-            "xamlOmittedUnboundPrefixes": [
-              "local"
-            ]
+            "name": "Databinding Itemsource"
           }
         },
         {

@@ -507,4 +507,131 @@ public sealed class CatalogGeneratorTests
         CollectionAssert.AreEqual(new[] { "mystery" }, sample.Gallery.XamlOmittedUnboundPrefixes);
         Assert.IsNotNull(sample.Code);
     }
+
+    /// <summary>
+    /// When the type behind an undeclared prefix is defined in the snippet's own C#, the reader is
+    /// holding both halves of the scenario and only the namespace line is missing. It is
+    /// synthesized from that code's namespace rather than the XAML being withheld.
+    /// </summary>
+    [TestMethod]
+    public void Generate_KeepsXamlWhosePrefixIsSatisfiedByItsOwnCode()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<DataTemplate x:DataType="local:ExplorerItem"><TextBlock Text="{x:Bind Name}" /></DataTemplate>""",
+                csharp: "namespace Contoso.Sample;\n\npublic class ExplorerItem\n{\n    public string Name { get; set; }\n}")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+        IndexSample sample = one.Samples.Single();
+
+        Assert.IsNotNull(sample.Xaml);
+        Assert.IsNull(sample.Gallery.XamlOmittedUnboundPrefixes);
+        CollectionAssert.AreEqual(
+            new[] { "xmlns:local=\"using:Contoso.Sample\"" },
+            sample.XmlnsImports ?? one.XmlnsImports);
+    }
+
+    /// <summary>
+    /// Snippets that declare their types outside any namespace are the common case in this
+    /// repository, and they already write "YourNamespace" as the stand-in a reader is expected to
+    /// replace. The synthesized import uses the same placeholder so both halves agree.
+    /// </summary>
+    [TestMethod]
+    public void Generate_UsesPlaceholderNamespaceWhenTheCodeDeclaresNone()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<local:MenuItemTemplateSelector x:Key="selector"><local:MenuItemTemplateSelector.ItemTemplate><DataTemplate x:DataType="local:Category" /></local:MenuItemTemplateSelector.ItemTemplate></local:MenuItemTemplateSelector>""",
+                csharp: "public class Category { }\n\nclass MenuItemTemplateSelector : DataTemplateSelector { }")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+        IndexSample sample = one.Samples.Single();
+
+        Assert.IsNotNull(sample.Xaml);
+        Assert.IsNull(sample.Gallery.XamlOmittedUnboundPrefixes);
+        CollectionAssert.AreEqual(
+            new[] { "xmlns:local=\"using:YourNamespace\"" },
+            sample.XmlnsImports ?? one.XmlnsImports);
+    }
+
+    /// <summary>
+    /// The code has to declare the type, not merely mention it. ItemsRepeater's layout sample
+    /// describes its custom layout class in a comment while defining a different one, and reading
+    /// that as a declaration would publish a fragment referencing a type the reader never receives.
+    /// </summary>
+    [TestMethod]
+    public void Generate_OmitsXamlWhoseTypeOnlyAppearsInACodeComment()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: "<common:VariedImageSizeLayout Width=\"200\" />",
+                csharp: "// See the class VariedImageSizeLayout in the repo.\npublic class Recipe { }")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "common" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// A fragment whose prefixes are only partly accounted for is still incomplete, so it is
+    /// withheld — and only the prefixes that actually caused the omission are reported.
+    /// </summary>
+    [TestMethod]
+    public void Generate_OmitsXamlWhenOnlySomePrefixesAreSatisfiedByCode()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<common:VariedImageSizeLayout><DataTemplate x:DataType="l:Recipe" /></common:VariedImageSizeLayout>""",
+                csharp: "public class Recipe { }")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "common" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// The page's own declaration wins when it has one: it names the namespace the gallery actually
+    /// compiles against, which is more specific than anything derived from a snippet.
+    /// </summary>
+    [TestMethod]
+    public void Generate_PrefersThePageDeclarationOverTheSnippetsCode()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        string page =
+            """
+            <Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:local="using:WinUIGallery.Samples.SampleOne"
+                  xmlns:controls="using:WinUIGallery.Controls"><controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" /></Page>
+            """;
+        WriteSample("SampleOne", page,
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<DataTemplate x:DataType="local:ExplorerItem" />""",
+                csharp: "namespace Contoso.Sample;\n\npublic class ExplorerItem { }")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+        IndexSample sample = one.Samples.Single();
+
+        CollectionAssert.AreEqual(
+            new[] { "xmlns:local=\"using:WinUIGallery.Samples.SampleOne\"" },
+            sample.XmlnsImports ?? one.XmlnsImports);
+    }
 }

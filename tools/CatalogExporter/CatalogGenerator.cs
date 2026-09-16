@@ -526,10 +526,31 @@ internal static partial class CatalogGenerator
             // declarations, and then fails the moment a reader pastes it with the imports this index
             // published. Omitting the XAML is the same degradation a malformed fragment gets, for
             // the same reason - publishing it would advertise code that does not work on arrival.
+            //
+            // Unless the snippet's own C# accounts for the prefix. A sample that shows "local:Foo"
+            // in its XAML and declares Foo in the code beside it is self-contained, and withholding
+            // its XAML hides markup the reader could paste for the sake of a namespace line that
+            // can be derived from the snippet itself.
+            Dictionary<string, string> sampleDeclarations = pageDeclarations;
             List<string> unboundPrefixes = xaml is null ? [] : XamlFragment.UnresolvedPrefixes(xaml, pageDeclarations);
             if (unboundPrefixes.Count > 0)
             {
-                warnings.Add(new CatalogIssue(uniqueId, $"'{fileName}' XAML uses namespace prefixes its page does not declare ({string.Join(", ", unboundPrefixes)}) and was omitted."));
+                Dictionary<string, string> fromCode = XamlFragment.ResolvePrefixesFromCode(xaml!, unboundPrefixes, code);
+                if (fromCode.Count > 0)
+                {
+                    sampleDeclarations = new Dictionary<string, string>(pageDeclarations, StringComparer.Ordinal);
+                    foreach ((string prefix, string uri) in fromCode)
+                    {
+                        sampleDeclarations[prefix] = uri;
+                    }
+
+                    unboundPrefixes = [.. unboundPrefixes.Where(p => !fromCode.ContainsKey(p))];
+                }
+            }
+
+            if (unboundPrefixes.Count > 0)
+            {
+                warnings.Add(new CatalogIssue(uniqueId, $"'{fileName}' XAML uses namespace prefixes neither its page nor its code declares ({string.Join(", ", unboundPrefixes)}) and was omitted."));
                 xaml = null;
             }
 
@@ -563,7 +584,7 @@ internal static partial class CatalogGenerator
                 Xaml = xaml,
                 Code = code,
                 Language = code is null ? null : "csharp",
-                XmlnsImports = xaml is null ? null : NullIfEmpty(XamlFragment.DetectImports(xaml, pageDeclarations)),
+                XmlnsImports = xaml is null ? null : NullIfEmpty(XamlFragment.DetectImports(xaml, sampleDeclarations)),
                 Gallery = new IndexSampleGallery
                 {
                     Snippet = fileName,
