@@ -633,6 +633,102 @@ public sealed class CatalogGeneratorTests
     }
 
     /// <summary>
+    /// A snippet may declare types in more than one namespace, and only one of them can hold the
+    /// type the XAML names. Publishing an import for the other would bind the prefix to a namespace
+    /// that does not contain it — markup that looks complete and does not compile — so the fragment
+    /// is withheld instead.
+    /// </summary>
+    [TestMethod]
+    public void Generate_OmitsXamlWhoseTypesSpanTwoNamespaces()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<local:Chooser><DataTemplate x:DataType="local:Item" /></local:Chooser>""",
+                csharp: "namespace A\n{\n    public class Chooser { }\n}\n\nnamespace B\n{\n    public class Item { }\n}")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml, "No single import covers types split across two namespaces.");
+        CollectionAssert.AreEqual(new[] { "local" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// The import names the namespace the referenced type is actually in, not whichever one the
+    /// snippet happens to open with.
+    /// </summary>
+    [TestMethod]
+    public void Generate_ImportsTheNamespaceHoldingTheReferencedType()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<DataTemplate x:DataType="local:Foo" />""",
+                csharp: "namespace A\n{\n    public class Other { }\n}\n\nnamespace B\n{\n    public class Foo { }\n}")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+        IndexSample sample = one.Samples.Single();
+
+        Assert.IsNotNull(sample.Xaml);
+        CollectionAssert.AreEqual(
+            new[] { "xmlns:local=\"using:B\"" },
+            sample.XmlnsImports ?? one.XmlnsImports);
+    }
+
+    /// <summary>
+    /// XML permits either quote style, so a prefix named in a single-quoted attribute value binds
+    /// exactly as one in a double-quoted value does. Failing to see it would publish the fragment
+    /// with no import for it — and the omission would be invisible to the unresolved-prefix check,
+    /// which reads the same references.
+    /// </summary>
+    [TestMethod]
+    public void Generate_DetectsAPrefixInASingleQuotedAttributeValue()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: "<DataTemplate x:DataType = 'local:Widget' />",
+                csharp: "namespace Contoso.Sample;\n\npublic class Widget { }")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+        IndexSample sample = one.Samples.Single();
+
+        Assert.IsNotNull(sample.Xaml);
+        CollectionAssert.AreEqual(
+            new[] { "xmlns:local=\"using:Contoso.Sample\"" },
+            sample.XmlnsImports ?? one.XmlnsImports);
+    }
+
+    /// <summary>
+    /// The same reference, single-quoted and with nothing declaring it, must still cost the sample
+    /// its XAML — proving the quote style is what changed and not the rule.
+    /// </summary>
+    [TestMethod]
+    public void Generate_OmitsXamlBindingAnUndeclaredPrefixInASingleQuotedValue()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: "<DataTemplate x:DataType='mystery:Thing' />",
+                csharp: "int x = 1;")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "mystery" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
     /// The page's own declaration wins when it has one: it names the namespace the gallery actually
     /// compiles against, which is more specific than anything derived from a snippet.
     /// </summary>

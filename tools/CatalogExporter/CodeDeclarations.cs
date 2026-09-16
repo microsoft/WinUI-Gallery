@@ -7,16 +7,24 @@ using System.Text.RegularExpressions;
 namespace WinUIGallery.CatalogExporter;
 
 /// <summary>
-/// What a snippet's C# declares: the types it defines and the namespace it puts them in.
+/// What a snippet's C# declares: the types it defines, each paired with the namespace it defines
+/// them in.
 ///
 /// This exists to answer one question — whether a XAML fragment's "local:Thing" refers to a type
-/// the reader is being handed in the same sample — so it deliberately reads only declarations, not
-/// usage. A type the code merely mentions is not a type the reader receives.
+/// the reader is being handed in the same sample, and if so what to call the namespace holding it
+/// — so it deliberately reads only declarations, not usage. A type the code merely mentions is not
+/// a type the reader receives.
+///
+/// The two ways to be wrong here are not equally bad. Missing a real declaration costs a sample its
+/// XAML, which is the behaviour that existed before this resolution path and is safe. Reporting one
+/// that is not there publishes markup with an import for a type the reader never gets, which is the
+/// exact failure the exporter exists to prevent. The scanner is built to fail in the first
+/// direction.
 /// </summary>
 internal static partial class CodeDeclarations
 {
     /// <summary>
-    /// Namespace published for types a snippet declares outside any namespace. The gallery's own
+    /// Namespace reported for types a snippet declares outside any namespace. The gallery's own
     /// snippets already use this name as their stand-in (see Samples\Binding\ConverterBinding.txt
     /// and Samples\TreeView\TreeviewItemtemplateselector.txt), so a reader meets the same
     /// placeholder in the import that they meet in the code.
@@ -24,47 +32,128 @@ internal static partial class CodeDeclarations
     public const string PlaceholderNamespace = "YourNamespace";
 
     /// <summary>
-    /// Names of the types <paramref name="code"/> declares.
+    /// The types <paramref name="code"/> declares, each mapped to the namespace that encloses it,
+    /// or to <see cref="PlaceholderNamespace"/> when nothing does.
     ///
-    /// Comments and string literals are removed first: a snippet that talks about a class in prose
-    /// — as ItemsRepeater's does about its custom layout — must not be read as declaring it, or a
-    /// fragment referencing that type would be published as though the reader had the source.
+    /// The pairing is the point. A snippet is free to declare types in more than one namespace, and
+    /// reporting a single namespace for the file would name one that does not contain the type the
+    /// caller asked about.
+    ///
+    /// Comments and literals are neutralised first: a snippet that talks about a class in prose —
+    /// as ItemsRepeater's does about its custom layout — or that quotes markup containing the word
+    /// "class" must not be read as declaring anything.
     /// </summary>
-    public static HashSet<string> DeclaredTypes(string? code)
+    public static Dictionary<string, string> DeclaredTypes(string? code)
     {
-        HashSet<string> types = new(StringComparer.Ordinal);
+        Dictionary<string, string> types = new(StringComparer.Ordinal);
         if (string.IsNullOrEmpty(code))
         {
             return types;
         }
 
         string stripped = StripCommentsAndStrings(code);
+        List<NamespaceScope> scopes = ResolveNamespaceScopes(stripped);
+
         foreach (Match match in TypeDeclarationRegex().Matches(stripped))
         {
-            types.Add(match.Groups[1].Value);
+            types[match.Groups[1].Value] = NamespaceAt(scopes, match.Index);
         }
 
         return types;
     }
 
+    /// <summary>The span of source a namespace declaration governs.</summary>
+    private readonly record struct NamespaceScope(string Name, int Start, int End);
+
     /// <summary>
-    /// The first namespace <paramref name="code"/> declares, block-scoped or file-scoped, or
-    /// <see cref="PlaceholderNamespace"/> when it declares none.
+    /// Locates each namespace declaration and the region it covers: up to the closing brace for a
+    /// block-scoped one, to the end of the file for a file-scoped one.
+    ///
+    /// Tracking the extent rather than just the position matters for a snippet that closes a
+    /// namespace and then declares something after it; taking "the nearest declaration above" would
+    /// put that type in a namespace it has already left.
     /// </summary>
-    public static string NamespaceOrPlaceholder(string? code)
+    private static List<NamespaceScope> ResolveNamespaceScopes(string code)
     {
-        if (string.IsNullOrEmpty(code))
+        List<NamespaceScope> scopes = [];
+
+        foreach (Match match in NamespaceDeclarationRegex().Matches(code))
         {
-            return PlaceholderNamespace;
+            int cursor = match.Index + match.Length;
+            while (cursor < code.Length && char.IsWhiteSpace(code[cursor]))
+            {
+                cursor++;
+            }
+
+            if (cursor >= code.Length)
+            {
+                continue;
+            }
+
+            if (code[cursor] == ';')
+            {
+                scopes.Add(new NamespaceScope(match.Groups[1].Value, cursor, code.Length));
+            }
+            else if (code[cursor] == '{')
+            {
+                scopes.Add(new NamespaceScope(match.Groups[1].Value, cursor, EndOfBlock(code, cursor)));
+            }
         }
 
-        Match match = NamespaceDeclarationRegex().Match(StripCommentsAndStrings(code));
-        return match.Success ? match.Groups[1].Value : PlaceholderNamespace;
+        return scopes;
     }
 
     /// <summary>
-    /// Blanks out comments, string literals and char literals, preserving line structure so that
-    /// what remains is still scannable by line-anchored patterns.
+    /// Index of the brace closing the one at <paramref name="open"/>, or the end of the string when
+    /// the source is truncated mid-block.
+    /// </summary>
+    private static int EndOfBlock(string code, int open)
+    {
+        int depth = 0;
+
+        for (int index = open; index < code.Length; index++)
+        {
+            if (code[index] == '{')
+            {
+                depth++;
+            }
+            else if (code[index] == '}')
+            {
+                depth--;
+                if (depth == 0)
+                {
+                    return index;
+                }
+            }
+        }
+
+        return code.Length;
+    }
+
+    /// <summary>
+    /// The namespace in effect at <paramref name="index"/>. Nested declarations are joined outward
+    /// in, so a type inside "namespace A { namespace B { ... } }" reports "A.B" rather than just the
+    /// innermost half.
+    /// </summary>
+    private static string NamespaceAt(List<NamespaceScope> scopes, int index)
+    {
+        List<string> enclosing =
+        [
+            .. scopes
+                .Where(scope => index > scope.Start && index < scope.End)
+                .OrderBy(scope => scope.Start)
+                .Select(scope => scope.Name)
+        ];
+
+        return enclosing.Count == 0 ? PlaceholderNamespace : string.Join('.', enclosing);
+    }
+
+    /// <summary>
+    /// Replaces every comment and literal with a single space, preserving the newlines inside it.
+    ///
+    /// A space rather than nothing, because the compiler treats a comment as whitespace and so it
+    /// separates tokens: deleting one outright welds "class/* which */Widget" into "classWidget"
+    /// and loses a declaration that is really there.
     /// </summary>
     private static string StripCommentsAndStrings(string code)
     {
@@ -77,19 +166,23 @@ internal static partial class CodeDeclarations
 
             if (current == '/' && index + 1 < code.Length && code[index + 1] == '/')
             {
-                index = SkipUntil(code, index, "\n", consumeTerminator: false, result);
+                index = Blank(code, index, LineCommentEnd(code, index), result);
             }
             else if (current == '/' && index + 1 < code.Length && code[index + 1] == '*')
             {
-                index = SkipUntil(code, index + 2, "*/", consumeTerminator: true, result);
+                index = Blank(code, index, BlockCommentEnd(code, index + 2), result);
+            }
+            else if (current == '"' && QuoteRunLength(code, index) >= 3)
+            {
+                index = Blank(code, index, RawStringEnd(code, index), result);
             }
             else if (current == '@' && index + 1 < code.Length && code[index + 1] == '"')
             {
-                index = SkipVerbatimString(code, index + 2, result);
+                index = Blank(code, index, VerbatimStringEnd(code, index + 2), result);
             }
             else if (current is '"' or '\'')
             {
-                index = SkipQuoted(code, index + 1, current, result);
+                index = Blank(code, index, QuotedEnd(code, index + 1, current), result);
             }
             else
             {
@@ -101,49 +194,114 @@ internal static partial class CodeDeclarations
         return result.ToString();
     }
 
-    /// <summary>Blanks the run up to <paramref name="terminator"/>, keeping any newlines in it.</summary>
-    private static int SkipUntil(string code, int start, string terminator, bool consumeTerminator, StringBuilder result)
+    /// <summary>
+    /// Emits a space for the run [<paramref name="start"/>, <paramref name="end"/>) plus any
+    /// newlines it contained, and returns <paramref name="end"/> so the caller advances past it.
+    ///
+    /// Every caller passes an end strictly greater than its start, which is what guarantees the
+    /// scan in <see cref="StripCommentsAndStrings"/> always moves forward.
+    /// </summary>
+    private static int Blank(string code, int start, int end, StringBuilder result)
     {
-        int end = code.IndexOf(terminator, start, StringComparison.Ordinal);
-        int stop = end < 0 ? code.Length : consumeTerminator ? end + terminator.Length : end;
+        result.Append(' ');
 
-        AppendNewlines(code, start, stop, result);
-        return stop;
-    }
-
-    /// <summary>Blanks a verbatim string, whose only escape is a doubled quote.</summary>
-    private static int SkipVerbatimString(string code, int start, StringBuilder result)
-    {
-        int index = start;
-        while (index < code.Length)
+        for (int index = start; index < end; index++)
         {
-            if (code[index] == '"')
-            {
-                if (index + 1 < code.Length && code[index + 1] == '"')
-                {
-                    index += 2;
-                    continue;
-                }
-
-                index++;
-                break;
-            }
-
             if (code[index] == '\n')
             {
                 result.Append('\n');
             }
-
-            index++;
         }
 
-        return index;
+        return end;
     }
 
-    /// <summary>Blanks a regular string or char literal, honouring backslash escapes.</summary>
-    private static int SkipQuoted(string code, int start, char quote, StringBuilder result)
+    private static int LineCommentEnd(string code, int start)
+    {
+        int end = code.IndexOf('\n', start);
+        return end < 0 ? code.Length : end;
+    }
+
+    private static int BlockCommentEnd(string code, int start)
+    {
+        int end = code.IndexOf("*/", start, StringComparison.Ordinal);
+        return end < 0 ? code.Length : end + 2;
+    }
+
+    /// <summary>Length of the run of double quotes starting at <paramref name="start"/>.</summary>
+    private static int QuoteRunLength(string code, int start)
+    {
+        int length = 0;
+        while (start + length < code.Length && code[start + length] == '"')
+        {
+            length++;
+        }
+
+        return length;
+    }
+
+    /// <summary>
+    /// End of a raw string literal. Its closing delimiter is a run of at least as many quotes as
+    /// the opening one, which is precisely how a raw literal is able to contain quotes of its own —
+    /// so a shorter run inside it is content and must not end the scan.
+    ///
+    /// Getting this wrong is the worst case in the file: raw literals in these snippets hold markup
+    /// or code, so a scan that walks off the delimiter lands in text that reads exactly like a
+    /// declaration and invents one.
+    /// </summary>
+    private static int RawStringEnd(string code, int start)
+    {
+        int opening = QuoteRunLength(code, start);
+
+        for (int index = start + opening; index < code.Length; index++)
+        {
+            if (code[index] != '"')
+            {
+                continue;
+            }
+
+            int run = QuoteRunLength(code, index);
+            if (run >= opening)
+            {
+                return index + run;
+            }
+
+            index += run - 1;
+        }
+
+        return code.Length;
+    }
+
+    /// <summary>End of a verbatim string, whose only escape is a doubled quote.</summary>
+    private static int VerbatimStringEnd(string code, int start)
     {
         int index = start;
+
+        while (index < code.Length)
+        {
+            if (code[index] != '"')
+            {
+                index++;
+                continue;
+            }
+
+            if (index + 1 < code.Length && code[index + 1] == '"')
+            {
+                index += 2;
+                continue;
+            }
+
+            return index + 1;
+        }
+
+        return code.Length;
+    }
+
+    /// <summary>End of a regular string or char literal, honouring backslash escapes.</summary>
+    private static int QuotedEnd(string code, int start, char quote)
+    {
+        int index = start;
+
         while (index < code.Length)
         {
             char current = code[index];
@@ -156,34 +314,20 @@ internal static partial class CodeDeclarations
 
             if (current == quote)
             {
-                index++;
-                break;
+                return index + 1;
             }
 
             // An unterminated literal would otherwise swallow the rest of the file; a newline ends
             // it, which is also what the compiler does.
             if (current == '\n')
             {
-                result.Append('\n');
-                index++;
-                break;
+                return index;
             }
 
             index++;
         }
 
-        return index;
-    }
-
-    private static void AppendNewlines(string code, int start, int end, StringBuilder result)
-    {
-        for (int index = start; index < end; index++)
-        {
-            if (code[index] == '\n')
-            {
-                result.Append('\n');
-            }
-        }
+        return code.Length;
     }
 
     /// <summary>

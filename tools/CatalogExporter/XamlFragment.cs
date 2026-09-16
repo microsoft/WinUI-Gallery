@@ -169,9 +169,11 @@ internal static partial class XamlFragment
     /// does not live there. Synthesizing that line from the code's own namespace is not a guess:
     /// the namespace and the types are both taken from the snippet being published.
     ///
-    /// A prefix is only resolved when every type it qualifies is declared in that code. One
-    /// unaccounted-for type means the reader is still missing a piece, and the caller withholds the
-    /// fragment exactly as before.
+    /// A prefix is only resolved when every type it qualifies is declared in that code AND those
+    /// types all sit in one namespace. One unaccounted-for type means the reader is still missing a
+    /// piece; types spread across two namespaces mean no single import covers them, and naming
+    /// either one would publish a binding that does not contain what the XAML asks for. Both cases
+    /// leave the caller to withhold the fragment exactly as before.
     /// </summary>
     public static Dictionary<string, string> ResolvePrefixesFromCode(
         string xaml,
@@ -180,26 +182,59 @@ internal static partial class XamlFragment
     {
         Dictionary<string, string> resolved = new(StringComparer.Ordinal);
 
-        HashSet<string> declaredTypes = CodeDeclarations.DeclaredTypes(code);
+        Dictionary<string, string> declaredTypes = CodeDeclarations.DeclaredTypes(code);
         if (declaredTypes.Count == 0)
         {
             return resolved;
         }
 
         Dictionary<string, HashSet<string>> referenced = ReferencedTypes(xaml);
-        string ns = CodeDeclarations.NamespaceOrPlaceholder(code);
 
         foreach (string prefix in prefixes)
         {
-            if (referenced.TryGetValue(prefix, out HashSet<string>? types)
-                && types.Count > 0
-                && types.All(declaredTypes.Contains))
+            if (!referenced.TryGetValue(prefix, out HashSet<string>? types))
+            {
+                continue;
+            }
+
+            string? ns = SharedNamespace(types, declaredTypes);
+            if (ns is not null)
             {
                 resolved[prefix] = $"using:{ns}";
             }
         }
 
         return resolved;
+    }
+
+    /// <summary>
+    /// The one namespace holding every type in <paramref name="types"/>, or null when some type is
+    /// not declared at all or they do not agree on a single namespace.
+    /// </summary>
+    private static string? SharedNamespace(
+        HashSet<string> types,
+        IReadOnlyDictionary<string, string> declaredTypes)
+    {
+        string? shared = null;
+
+        foreach (string type in types)
+        {
+            if (!declaredTypes.TryGetValue(type, out string? candidate))
+            {
+                return null;
+            }
+
+            if (shared is null)
+            {
+                shared = candidate;
+            }
+            else if (!string.Equals(shared, candidate, StringComparison.Ordinal))
+            {
+                return null;
+            }
+        }
+
+        return shared;
     }
 
     /// <summary>
@@ -276,15 +311,22 @@ internal static partial class XamlFragment
 
     /// <summary>
     /// Prefix positions XAML actually resolves: element names (&lt;p:Foo, &lt;/p:Foo),
-    /// attribute names (p:Foo=), markup extensions ({p:Foo}) and type references ("p:Foo").
+    /// attribute names (p:Foo=), markup extensions ({p:Foo}) and type references in an attribute
+    /// value ("p:Foo" or 'p:Foo').
     ///
     /// Each alternative captures the prefix and the type name after it, in that order, so the
     /// groups can be read in pairs.
+    ///
+    /// The value branch accepts either XML quote style, and whitespace around the "=". Missing a
+    /// reference here is not a harmless gap: an undetected prefix is left out of the published
+    /// imports and, because it is equally invisible to the unresolved-prefix check, the fragment is
+    /// published as though it bound nothing — the one way this exporter can ship XAML that does not
+    /// bind on arrival.
     ///
     /// The attribute-name branch stops before the "=" rather than consuming it, so an attribute
     /// that is itself prefixed does not hide a prefixed type in its value: in
     /// x:DataType="local:Contact" both "x" and "local" have to be found.
     /// </summary>
-    [GeneratedRegex(@"</?([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)|\s([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)[\w.\-]*(?=\s*=)|\{\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)|=""\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
+    [GeneratedRegex(@"</?([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)|\s([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)[\w.\-]*(?=\s*=)|\{\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)|=\s*[""']\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
     private static partial Regex BindingPrefixRegex();
 }
