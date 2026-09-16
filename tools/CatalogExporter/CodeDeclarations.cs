@@ -41,7 +41,8 @@ internal static partial class CodeDeclarations
     ///
     /// Comments and literals are neutralised first: a snippet that talks about a class in prose —
     /// as ItemsRepeater's does about its custom layout — or that quotes markup containing the word
-    /// "class" must not be read as declaring anything.
+    /// "class" must not be read as declaring anything. Conditionally compiled regions go with them,
+    /// for the same reason.
     /// </summary>
     public static Dictionary<string, string> DeclaredTypes(string? code)
     {
@@ -51,7 +52,7 @@ internal static partial class CodeDeclarations
             return types;
         }
 
-        string stripped = StripCommentsAndStrings(code);
+        string stripped = BlankConditionalRegions(StripCommentsAndStrings(code));
         List<NamespaceScope> scopes = ResolveNamespaceScopes(stripped);
 
         foreach (Match match in TypeDeclarationRegex().Matches(stripped))
@@ -146,6 +147,72 @@ internal static partial class CodeDeclarations
         ];
 
         return enclosing.Count == 0 ? PlaceholderNamespace : string.Join('.', enclosing);
+    }
+
+    /// <summary>
+    /// Replaces every conditional-compilation region, and the directives bounding it, with blanks.
+    ///
+    /// Whether such a region reaches the compiler depends on symbols the exporter cannot see, so a
+    /// type declared inside one is not a type the reader is guaranteed to receive. Counting it
+    /// would let the exporter publish an import for something the compiler drops — the
+    /// false-positive direction this scanner is built to avoid — while ignoring a region that would
+    /// in fact have compiled costs the sample nothing worse than its XAML.
+    ///
+    /// Only #if, #elif, #else and #endif are treated this way. #region, #pragma and the rest do not
+    /// decide whether code exists, so the code around them is read normally.
+    /// </summary>
+    private static string BlankConditionalRegions(string code)
+    {
+        StringBuilder result = new(code.Length);
+        int depth = 0;
+        int index = 0;
+
+        while (index < code.Length)
+        {
+            int newline = code.IndexOf('\n', index);
+            int end = newline < 0 ? code.Length : newline + 1;
+            string line = code[index..end];
+            Match directive = ConditionalDirectiveRegex().Match(line);
+
+            if (directive.Success)
+            {
+                if (directive.Groups[1].Value == "if")
+                {
+                    depth++;
+                }
+
+                result.Append(BlankLine(line));
+
+                if (directive.Groups[1].Value == "endif" && depth > 0)
+                {
+                    depth--;
+                }
+            }
+            else
+            {
+                result.Append(depth > 0 ? BlankLine(line) : line);
+            }
+
+            index = end;
+        }
+
+        return result.ToString();
+    }
+
+    /// <summary>
+    /// The line with everything but its ending replaced by spaces, so that the text drops out
+    /// without the offsets of anything after it moving.
+    /// </summary>
+    private static string BlankLine(string line)
+    {
+        StringBuilder blanked = new(line.Length);
+
+        foreach (char character in line)
+        {
+            blanked.Append(character is '\r' or '\n' ? character : ' ');
+        }
+
+        return blanked.ToString();
     }
 
     /// <summary>
@@ -346,4 +413,12 @@ internal static partial class CodeDeclarations
     /// <summary>A namespace declaration in either form: "namespace X { }" or "namespace X;".</summary>
     [GeneratedRegex(@"\bnamespace\s+([A-Za-z_][\w.]*)")]
     private static partial Regex NamespaceDeclarationRegex();
+
+    /// <summary>
+    /// A directive that decides whether the code around it exists. C# allows whitespace both before
+    /// the "#" and between it and the keyword, so both are permitted here; the word boundary keeps
+    /// "#region" from being read as an "#if" family member on the strength of its first letters.
+    /// </summary>
+    [GeneratedRegex(@"^[^\S\r\n]*#[^\S\r\n]*(if|elif|else|endif)\b")]
+    private static partial Regex ConditionalDirectiveRegex();
 }

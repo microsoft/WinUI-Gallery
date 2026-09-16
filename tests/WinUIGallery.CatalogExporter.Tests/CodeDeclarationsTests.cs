@@ -170,4 +170,69 @@ public sealed class CodeDeclarationsTests
         Assert.AreEqual(CodeDeclarations.PlaceholderNamespace, types["Early"]);
         Assert.AreEqual("Later", types["Late"]);
     }
+
+    /// <summary>
+    /// A conditional region may or may not survive compilation, and the exporter has no way to
+    /// know which. Counting what it declares would hand a reader an import for a type the compiler
+    /// removes, so nothing inside one counts.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_IgnoresATypeDeclaredInsideAConditionalRegion()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "public class Real { }\n\n#if false\npublic class Excluded { }\n#endif");
+
+        Assert.IsTrue(types.ContainsKey("Real"));
+        Assert.IsFalse(types.ContainsKey("Excluded"), "A type the compiler may drop was reported as declared.");
+    }
+
+    /// <summary>The branch a symbol would have selected is unknowable too, so neither arm counts.</summary>
+    [TestMethod]
+    public void DeclaredTypes_IgnoresBothArmsOfAConditional()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "#if DEBUG\npublic class Instrumented { }\n#else\npublic class Plain { }\n#endif\n\npublic class Always { }");
+
+        Assert.IsFalse(types.ContainsKey("Instrumented"));
+        Assert.IsFalse(types.ContainsKey("Plain"));
+        Assert.IsTrue(types.ContainsKey("Always"), "Code after the region stopped being read.");
+    }
+
+    /// <summary>
+    /// A nested conditional must not close the outer one early and let the rest of it be read as
+    /// unconditional code.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_IgnoresTypesAfterANestedConditionalCloses()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "#if OUTER\n#if INNER\npublic class Inner { }\n#endif\npublic class StillInside { }\n#endif\n\npublic class Outside { }");
+
+        Assert.IsFalse(types.ContainsKey("Inner"));
+        Assert.IsFalse(types.ContainsKey("StillInside"));
+        Assert.IsTrue(types.ContainsKey("Outside"));
+    }
+
+    /// <summary>#region groups code, it does not gate it, so what it holds is still delivered.</summary>
+    [TestMethod]
+    public void DeclaredTypes_ReadsATypeInsideARegionDirective()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "#region Models\npublic class Recipe { }\n#endregion");
+
+        Assert.IsTrue(types.ContainsKey("Recipe"), "A #region was mistaken for a conditional.");
+    }
+
+    /// <summary>
+    /// The text of a conditional region drops out, but its line breaks do not, so a namespace that
+    /// opens before one still covers what comes after it.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_KeepsTheEnclosingNamespaceAcrossAConditionalRegion()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "namespace Contoso\n{\n#if DEBUG\n    public class Probe { }\n#endif\n    public class Shipping { }\n}");
+
+        Assert.AreEqual("Contoso", types["Shipping"]);
+    }
 }

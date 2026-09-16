@@ -288,15 +288,41 @@ internal static partial class XamlFragment
     {
         foreach (Match match in BindingPrefixRegex().Matches(xaml))
         {
-            // The pattern's alternatives each capture a prefix followed by its type, so the groups
-            // are read in pairs and the one pair that participated in the match is the one filled.
-            for (int group = 1; group + 1 < match.Groups.Count; group += 2)
+            foreach ((string Prefix, string Type) reference in PairedCaptures(match))
             {
-                string prefix = match.Groups[group].Value;
-                if (prefix.Length > 0 && !IgnoredPrefixes.Contains(prefix))
+                yield return reference;
+            }
+        }
+
+        // A markup extension resolves prefixes anywhere in its body, not just on the extension
+        // itself, so "{x:Bind sys:DateTime.Now}" needs "sys" as much as it needs "x". The pattern
+        // above anchors to the opening brace and cannot see past it, so each body is swept
+        // separately. Matching from a brace up to the next one rather than to a closing brace is
+        // what lets a nested extension and its parent both be swept.
+        foreach (Match body in MarkupExtensionBodyRegex().Matches(xaml))
+        {
+            foreach (Match match in QualifiedNameRegex().Matches(body.Value))
+            {
+                foreach ((string Prefix, string Type) reference in PairedCaptures(match))
                 {
-                    yield return (prefix, match.Groups[group + 1].Value);
+                    yield return reference;
                 }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Reads a match whose groups are prefix/type pairs, skipping the alternatives that did not
+    /// participate and the prefixes XAML resolves without an import.
+    /// </summary>
+    private static IEnumerable<(string Prefix, string Type)> PairedCaptures(Match match)
+    {
+        for (int group = 1; group + 1 < match.Groups.Count; group += 2)
+        {
+            string prefix = match.Groups[group].Value;
+            if (prefix.Length > 0 && !IgnoredPrefixes.Contains(prefix))
+            {
+                yield return (prefix, match.Groups[group + 1].Value);
             }
         }
     }
@@ -329,4 +355,25 @@ internal static partial class XamlFragment
     /// </summary>
     [GeneratedRegex(@"</?([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)|\s([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)[\w.\-]*(?=\s*=)|\{\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)|=\s*[""']\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
     private static partial Regex BindingPrefixRegex();
+
+    /// <summary>
+    /// A markup extension's body, taken from its opening brace up to the next brace in either
+    /// direction rather than to its own closing one. That stops at the start of a nested extension,
+    /// which gets a match of its own, so "{Binding Source={StaticResource p:Thing}}" is swept as two
+    /// regions and the inner reference is not lost inside the outer match.
+    /// </summary>
+    [GeneratedRegex(@"\{[^{}]*")]
+    private static partial Regex MarkupExtensionBodyRegex();
+
+    /// <summary>
+    /// A "prefix:Type" reference standing where a markup extension takes a value: after the opening
+    /// brace, after whitespace, after a comma separating arguments, or inside the parentheses of a
+    /// binding path.
+    ///
+    /// Requiring one of those means a colon that merely sits inside a value is not read as a
+    /// prefix. A format string such as StringFormat=hh:mm follows an "=" and is skipped, and the
+    /// "mm" in "{0:hh:mm}" follows a colon and is skipped, so neither costs a fragment its XAML.
+    /// </summary>
+    [GeneratedRegex(@"(?<=[\s,({])([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
+    private static partial Regex QualifiedNameRegex();
 }

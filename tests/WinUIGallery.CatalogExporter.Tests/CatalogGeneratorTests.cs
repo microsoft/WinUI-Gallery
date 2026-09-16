@@ -757,4 +757,118 @@ public sealed class CatalogGeneratorTests
             new[] { "xmlns:local=\"using:WinUIGallery.Samples.SampleOne\"" },
             sample.XmlnsImports ?? one.XmlnsImports);
     }
+
+    /// <summary>
+    /// A markup extension resolves prefixes throughout its body, so a type named as an argument
+    /// needs an import just as the extension itself does. Reading only the extension's own name
+    /// would publish "{x:Bind local:Thing.Value}" with nothing declaring "local" — and because the
+    /// unresolved-prefix check reads the same references, the gap would not be reported either.
+    /// </summary>
+    [TestMethod]
+    public void Generate_DetectsAPrefixUsedInsideAMarkupExtension()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<TimePicker SelectedTime="{x:Bind clock:SampleTime.Default}" />""",
+                csharp: "namespace Contoso.Sample;\n\npublic class SampleTime { }")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+        IndexSample sample = one.Samples.Single();
+
+        Assert.IsNotNull(sample.Xaml);
+        CollectionAssert.AreEqual(
+            new[] { "xmlns:clock=\"using:Contoso.Sample\"" },
+            sample.XmlnsImports ?? one.XmlnsImports);
+    }
+
+    /// <summary>
+    /// The same reference with nothing declaring it has to cost the sample its XAML. Before the
+    /// body was swept, such a fragment was published as though it bound nothing.
+    /// </summary>
+    [TestMethod]
+    public void Generate_OmitsXamlBindingAnUndeclaredPrefixInsideAMarkupExtension()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<TimePicker SelectedTime="{x:Bind sys:DateTime.Now.TimeOfDay}" />""",
+                csharp: "int x = 1;")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "sys" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// A nested extension's arguments are inside the outer extension's braces, so sweeping only as
+    /// far as the first closing brace would step over them.
+    /// </summary>
+    [TestMethod]
+    public void Generate_DetectsAPrefixInsideANestedMarkupExtension()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<TextBlock Text="{Binding Source={StaticResource conv:Upper}, Path=Name}" />""",
+                csharp: "int x = 1;")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "conv" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// A colon inside a format string is punctuation, not a prefix. Reading one would withhold
+    /// perfectly good markup over a namespace nobody asked for.
+    /// </summary>
+    [TestMethod]
+    public void Generate_KeepsXamlWhoseOnlyColonsAreInAFormatString()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<TextBlock Text="{Binding Elapsed, StringFormat='{}{0:hh:mm}'}" />""")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNotNull(sample.Xaml);
+        Assert.IsNull(sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// A type declared behind a conditional is not a type the reader is handed, so the fragment
+    /// naming it keeps being withheld rather than gaining an import for something that may never
+    /// compile.
+    /// </summary>
+    [TestMethod]
+    public void Generate_OmitsXamlWhosePrefixIsOnlySatisfiedInsideAConditionalRegion()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<DataTemplate x:DataType="local:Widget" />""",
+                csharp: "namespace Contoso.Sample;\n\n#if EXPERIMENTAL\npublic class Widget { }\n#endif")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "local" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
 }
