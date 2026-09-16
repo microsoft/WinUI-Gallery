@@ -606,6 +606,33 @@ public sealed class CatalogGeneratorTests
     }
 
     /// <summary>
+    /// The type behind the prefix can be declared in any of C#'s type forms, including the record
+    /// ones. "record struct" is the form worth pinning: the keyword alternation has to prefer it
+    /// over the bare "record", or the modifier is read as the type name and the real one is never
+    /// seen — which would withhold the fragment for a type the snippet plainly hands over.
+    /// </summary>
+    [TestMethod]
+    public void Generate_KeepsXamlWhosePrefixIsSatisfiedByARecordStruct()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<DataTemplate x:DataType="local:Point"><TextBlock Text="{x:Bind X}" /></DataTemplate>""",
+                csharp: "namespace Contoso.Sample;\n\npublic readonly record struct Point(int X, int Y);")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+        IndexSample sample = one.Samples.Single();
+
+        Assert.IsNotNull(sample.Xaml);
+        Assert.IsNull(sample.Gallery.XamlOmittedUnboundPrefixes);
+        CollectionAssert.AreEqual(
+            new[] { "xmlns:local=\"using:Contoso.Sample\"" },
+            sample.XmlnsImports ?? one.XmlnsImports);
+    }
+
+    /// <summary>
     /// The page's own declaration wins when it has one: it names the namespace the gallery actually
     /// compiles against, which is more specific than anything derived from a snippet.
     /// </summary>

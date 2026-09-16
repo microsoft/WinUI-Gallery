@@ -190,8 +190,13 @@ internal static partial class CodeDeclarations
     /// A type declaration, as in "public sealed class Foo" or "record struct Bar". The keyword is
     /// required to start a token so that an identifier ending in one — "MyClass" — is not read as
     /// a declaration.
+    ///
+    /// "record" is matched with an optional "class" or "struct" after it, and that longer form is
+    /// tried first: without it the alternation settles for the bare "record" and captures the
+    /// modifier as the type name, so "record struct Bar" would declare a type called "struct" and
+    /// never mention Bar.
     /// </summary>
-    [GeneratedRegex(@"\b(?:class|struct|interface|enum|record)\s+([A-Za-z_]\w*)")]
+    [GeneratedRegex(@"\b(?:record\s+(?:class|struct)|class|struct|interface|enum|record)\s+([A-Za-z_]\w*)")]
     private static partial Regex TypeDeclarationRegex();
 
     /// <summary>A namespace declaration in either form: "namespace X { }" or "namespace X;".</summary>
