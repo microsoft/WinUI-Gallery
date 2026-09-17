@@ -896,6 +896,28 @@ public sealed class CatalogGeneratorTests
     }
 
     /// <summary>
+    /// Two namespaces declaring the same simple name leave "local:Item" pointing at neither in
+    /// particular, so the fragment is withheld rather than published with a guessed import.
+    /// </summary>
+    [TestMethod]
+    public void Generate_OmitsXamlWhoseTypeNameIsDeclaredInTwoNamespaces()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<DataTemplate x:DataType="local:Item" />""",
+                csharp: "namespace Contoso.Models\n{\n    public class Item { }\n}\n\nnamespace Contoso.View\n{\n    public class Item { }\n}")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "local" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
     /// A quoted extension argument is literal text, so the colon in a date format inside one is
     /// punctuation. Reading "HH" as a prefix would withhold markup that binds perfectly well.
     /// </summary>

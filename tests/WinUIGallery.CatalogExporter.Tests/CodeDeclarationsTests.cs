@@ -298,4 +298,57 @@ public sealed class CodeDeclarationsTests
 
         Assert.AreEqual("A.B", types["Foo"]);
     }
+
+    /// <summary>
+    /// "local:Foo" names one type, and a snippet declaring Foo in two namespaces does not say which.
+    /// Keeping whichever came last would print a coin toss as an import.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_DropsANameDeclaredInTwoNamespaces()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "namespace A\n{\n    public class Foo { }\n}\n\nnamespace B\n{\n    public class Foo { }\n    public class Bar { }\n}");
+
+        Assert.IsFalse(types.ContainsKey("Foo"), "An ambiguous name resolved to one of its namespaces.");
+        Assert.AreEqual("B", types["Bar"], "An unrelated type was lost with the ambiguous one.");
+    }
+
+    /// <summary>
+    /// The drop has to survive a third declaration, which would otherwise look like a fresh,
+    /// unambiguous one and put the name back.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_KeepsANameDroppedAfterAThirdDeclaration()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "namespace A\n{\n    public class Foo { }\n}\n\nnamespace B\n{\n    public class Foo { }\n}\n\nnamespace A\n{\n    public class Foo { }\n}");
+
+        Assert.IsFalse(types.ContainsKey("Foo"));
+    }
+
+    /// <summary>
+    /// A partial type split across a snippet declares the same name twice in one namespace. That
+    /// says nothing contradictory, so the name is still delivered.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_KeepsANameDeclaredTwiceInOneNamespace()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "namespace Contoso;\n\npublic partial class Widget { }\n\npublic partial class Widget { }");
+
+        Assert.AreEqual("Contoso", types["Widget"]);
+    }
+
+    /// <summary>
+    /// A name declared both inside a namespace and outside every namespace is ambiguous too: the
+    /// placeholder is a namespace like any other as far as the published import is concerned.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_DropsANameSharedWithTheGlobalScope()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "public class Foo { }\n\nnamespace Contoso\n{\n    public class Foo { }\n}");
+
+        Assert.IsFalse(types.ContainsKey("Foo"));
+    }
 }

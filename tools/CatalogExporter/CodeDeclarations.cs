@@ -48,6 +48,11 @@ internal static partial class CodeDeclarations
     /// as ItemsRepeater's does about its custom layout — or that quotes markup containing the word
     /// "class" must not be read as declaring anything. Conditionally compiled regions go with them,
     /// for the same reason.
+    ///
+    /// A simple name declared in two namespaces is dropped rather than resolved to either. XAML
+    /// asks for "local:Foo" and the snippet gives no way to say which Foo that is, so publishing
+    /// one of them would be a coin toss printed as an import. Repeating a name within one namespace
+    /// — a partial class split across the snippet — says nothing contradictory and is kept.
     /// </summary>
     public static Dictionary<string, string> DeclaredTypes(string? code)
     {
@@ -60,6 +65,7 @@ internal static partial class CodeDeclarations
         string stripped = BlankConditionalRegions(StripCommentsAndStrings(code));
         List<NamespaceScope> scopes = ResolveNamespaceScopes(stripped);
         int[] depths = BraceDepths(stripped);
+        HashSet<string> ambiguous = new(StringComparer.Ordinal);
 
         foreach (Match match in TypeDeclarationRegex().Matches(stripped))
         {
@@ -68,7 +74,22 @@ internal static partial class CodeDeclarations
                 continue;
             }
 
-            types[match.Groups[1].Value] = NamespaceAt(scopes, match.Index);
+            string name = match.Groups[1].Value;
+            if (ambiguous.Contains(name))
+            {
+                continue;
+            }
+
+            string ns = NamespaceAt(scopes, match.Index);
+            if (types.TryGetValue(name, out string? existing)
+                && !string.Equals(existing, ns, StringComparison.Ordinal))
+            {
+                ambiguous.Add(name);
+                types.Remove(name);
+                continue;
+            }
+
+            types[name] = ns;
         }
 
         return types;
