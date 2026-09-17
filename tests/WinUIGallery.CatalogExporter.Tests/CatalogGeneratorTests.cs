@@ -681,6 +681,56 @@ public sealed class CatalogGeneratorTests
     }
 
     /// <summary>
+    /// A quote in text content is content, not the start of an attribute value. Pairing quotes
+    /// across the whole fragment let a stray one — the "x = " below — pair with the opening quote of
+    /// the next real attribute and swallow "local:Card" with it. Nothing else reads that value:
+    /// it is not a name, and it holds no brace, so the reference vanished and the fragment was
+    /// published with no import for local.
+    /// </summary>
+    [TestMethod]
+    public void Generate_DetectsATypeReferenceFollowingAQuoteInTextContent()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<StackPanel><TextBlock>x = " y</TextBlock><Style TargetType="local:Card" /></StackPanel>""",
+                csharp: "namespace A\n{\n    public class Card { }\n}")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+        IndexSample sample = one.Samples.Single();
+
+        Assert.IsNotNull(sample.Xaml);
+        CollectionAssert.AreEqual(
+            new[] { "xmlns:local=\"using:A\"" },
+            sample.XmlnsImports ?? one.XmlnsImports);
+    }
+
+    /// <summary>
+    /// One value may name several types, and an import has to cover all of them. Reading only the
+    /// name the value opens with resolved local against the namespace holding Key alone, publishing
+    /// an import that does not contain Value — markup that looks complete and does not compile.
+    /// </summary>
+    [TestMethod]
+    public void Generate_OmitsXamlWhoseValueNamesTypesInTwoNamespaces()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<local:Map x:TypeArguments="local:Key, local:Value" />""",
+                csharp: "namespace A\n{\n    public class Map { }\n\n    public class Key { }\n}\n\nnamespace B\n{\n    public class Value { }\n}")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml, "No single import covers Key and Value.");
+        CollectionAssert.AreEqual(new[] { "local" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
     /// XML permits either quote style, so a prefix named in a single-quoted attribute value binds
     /// exactly as one in a double-quoted value does. Failing to see it would publish the fragment
     /// with no import for it — and the omission would be invisible to the unresolved-prefix check,
@@ -939,17 +989,42 @@ public sealed class CatalogGeneratorTests
     }
 
     /// <summary>
-    /// The same holds for a bare quoted argument, where the colon follows the opening quote rather
-    /// than a brace.
+    /// A quoted argument is not literal, though. Quoting ends the argument; the text inside still
+    /// reaches the target property's converter, and which converters resolve names is not knowable
+    /// from the markup. "HH:mm" is shaped exactly like a type reference, so it is read as one and the
+    /// fragment is withheld — the safe half of an unavoidable trade, since the other half publishes
+    /// "Path='(attached:Badge.Count)'" with no import for attached. Authors who mean text literally
+    /// have "{}" to say so.
     /// </summary>
     [TestMethod]
-    public void Generate_KeepsXamlWhoseQuotedExtensionArgumentContainsAColon()
+    public void Generate_WithholdsXamlWhoseQuotedExtensionArgumentIsShapedLikeAQualifiedName()
     {
         WriteControlInfoData(TwoItemDocument());
         WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
             ("Snippet.txt", Bundle(
                 header: "One",
-                xaml: """<TextBlock Text="{Binding Elapsed, StringFormat='HH:mm'}" />""")));
+                xaml: """<TextBlock Text="{Binding Elapsed, StringFormat='HH:mm'}" />""",
+                csharp: "int x = 1;")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "HH" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// The escape still works, and it is what keeps a quoted format string publishable.
+    /// </summary>
+    [TestMethod]
+    public void Generate_KeepsXamlWhoseQuotedExtensionArgumentIsAnEscapedLiteral()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<TextBlock Text="{Binding Elapsed, StringFormat='{}{0:HH:mm}'}" />""")));
         WriteSample("SampleTwo", "<Page></Page>");
 
         IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
@@ -960,7 +1035,29 @@ public sealed class CatalogGeneratorTests
     }
 
     /// <summary>
-    /// Blanking quoted arguments must not reach past them: a real reference after one is still the
+    /// A quoted binding path is the case that makes the trade worth taking: the reference is real,
+    /// and stepping over the quotes published the markup without the import it needs.
+    /// </summary>
+    [TestMethod]
+    public void Generate_DetectsAPrefixInsideAQuotedExtensionArgument()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<TextBlock Text="{Binding Path='(attached:Badge.Count)'}" />""",
+                csharp: "int x = 1;")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "attached" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// Reading quoted arguments must not reach past them: a real reference after one is still the
     /// difference between publishing an import and publishing markup that cannot bind.
     /// </summary>
     [TestMethod]
