@@ -871,4 +871,91 @@ public sealed class CatalogGeneratorTests
         Assert.IsNull(sample.Xaml);
         CollectionAssert.AreEqual(new[] { "local" }, sample.Gallery.XamlOmittedUnboundPrefixes);
     }
+
+    /// <summary>
+    /// "using:Contoso.Sample" does not bring a nested type into scope — the XAML would have to name
+    /// "local:Container.Item" — so a snippet that only nests the type has not handed the reader
+    /// what its markup asks for.
+    /// </summary>
+    [TestMethod]
+    public void Generate_OmitsXamlWhoseTypeIsOnlyDeclaredNestedInsideAnotherType()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<DataTemplate x:DataType="local:Item" />""",
+                csharp: "namespace Contoso.Sample;\n\npublic class Container\n{\n    public class Item { }\n}")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "local" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// A quoted extension argument is literal text, so the colon in a date format inside one is
+    /// punctuation. Reading "HH" as a prefix would withhold markup that binds perfectly well.
+    /// </summary>
+    [TestMethod]
+    public void Generate_KeepsXamlWhoseFormatStringHasASpaceBeforeItsColons()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<TextBlock Text="{Binding Stamp, StringFormat='{}{0:yyyy-MM-dd HH:mm}'}" />""")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNotNull(sample.Xaml);
+        Assert.IsNull(sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// The same holds for a bare quoted argument, where the colon follows the opening quote rather
+    /// than a brace.
+    /// </summary>
+    [TestMethod]
+    public void Generate_KeepsXamlWhoseQuotedExtensionArgumentContainsAColon()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<TextBlock Text="{Binding Elapsed, StringFormat='HH:mm'}" />""")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNotNull(sample.Xaml);
+        Assert.IsNull(sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// Blanking quoted arguments must not reach past them: a real reference after one is still the
+    /// difference between publishing an import and publishing markup that cannot bind.
+    /// </summary>
+    [TestMethod]
+    public void Generate_StillDetectsAPrefixFollowingAQuotedExtensionArgument()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<TextBlock Text="{Binding Stamp, StringFormat='{}{0:HH:mm}', Converter={StaticResource conv:Upper}}" />""",
+                csharp: "int x = 1;")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "conv" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
 }

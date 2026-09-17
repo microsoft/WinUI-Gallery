@@ -286,7 +286,12 @@ internal static partial class XamlFragment
     /// </summary>
     private static IEnumerable<(string Prefix, string Type)> PrefixReferences(string xaml)
     {
-        foreach (Match match in BindingPrefixRegex().Matches(xaml))
+        // A quoted markup-extension argument is literal text, so nothing inside one resolves a
+        // prefix. Blanking those spans before either pass keeps punctuation such as the "HH:mm" in
+        // StringFormat='{}{0:yyyy-MM-dd HH:mm}' from being read as a namespace the fragment needs.
+        string scanned = BlankQuotedExtensionArguments(xaml);
+
+        foreach (Match match in BindingPrefixRegex().Matches(scanned))
         {
             foreach ((string Prefix, string Type) reference in PairedCaptures(match))
             {
@@ -299,7 +304,7 @@ internal static partial class XamlFragment
         // above anchors to the opening brace and cannot see past it, so each body is swept
         // separately. Matching from a brace up to the next one rather than to a closing brace is
         // what lets a nested extension and its parent both be swept.
-        foreach (Match body in MarkupExtensionBodyRegex().Matches(xaml))
+        foreach (Match body in MarkupExtensionBodyRegex().Matches(scanned))
         {
             foreach (Match match in QualifiedNameRegex().Matches(body.Value))
             {
@@ -309,6 +314,77 @@ internal static partial class XamlFragment
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// The fragment with the contents of quoted markup-extension arguments replaced by spaces, the
+    /// quotes themselves left in place so every other offset is unchanged.
+    ///
+    /// XAML treats a quoted argument as a literal string: it is not parsed for extensions or type
+    /// references, so a colon inside one is punctuation. Reading it as a prefix costs an otherwise
+    /// valid fragment its XAML, which is the failure this exists to prevent; nothing resolvable is
+    /// lost by blanking it, because a quoted argument could not have resolved anyway.
+    ///
+    /// Only quotes met while inside braces are treated this way. The quotes delimiting an XML
+    /// attribute sit outside them, so "x:DataType=&quot;local:Contact&quot;" is untouched.
+    /// </summary>
+    private static string BlankQuotedExtensionArguments(string xaml)
+    {
+        char[] scanned = xaml.ToCharArray();
+        int depth = 0;
+        int index = 0;
+
+        while (index < scanned.Length)
+        {
+            char current = scanned[index];
+
+            if (current == '<')
+            {
+                // An extension lives inside one attribute value, so a brace left unclosed by a
+                // truncated snippet stops at the next tag instead of blanking the rest of the
+                // fragment and hiding the references in it.
+                depth = 0;
+            }
+            else if (current == '{')
+            {
+                depth++;
+            }
+            else if (current == '}' && depth > 0)
+            {
+                depth--;
+            }
+            else if (depth > 0 && current is '"' or '\'')
+            {
+                index = BlankUntilClosingQuote(scanned, index, current);
+                continue;
+            }
+
+            index++;
+        }
+
+        return new string(scanned);
+    }
+
+    /// <summary>
+    /// Blanks the run between the quote at <paramref name="open"/> and its partner, returning the
+    /// index just past the closing quote, or the end of the fragment when there is none.
+    /// </summary>
+    private static int BlankUntilClosingQuote(char[] scanned, int open, char quote)
+    {
+        for (int index = open + 1; index < scanned.Length; index++)
+        {
+            if (scanned[index] == quote)
+            {
+                return index + 1;
+            }
+
+            if (scanned[index] is not ('\r' or '\n'))
+            {
+                scanned[index] = ' ';
+            }
+        }
+
+        return scanned.Length;
     }
 
     /// <summary>
@@ -372,7 +448,10 @@ internal static partial class XamlFragment
     ///
     /// Requiring one of those means a colon that merely sits inside a value is not read as a
     /// prefix. A format string such as StringFormat=hh:mm follows an "=" and is skipped, and the
-    /// "mm" in "{0:hh:mm}" follows a colon and is skipped, so neither costs a fragment its XAML.
+    /// "mm" in "{0:hh:mm}" follows a colon and is skipped. A quoted format string is handled
+    /// earlier, by <see cref="BlankQuotedExtensionArguments"/>, since the space in
+    /// StringFormat='{}{0:yyyy-MM-dd HH:mm}' would otherwise put "HH:mm" in exactly the position
+    /// this pattern looks for.
     /// </summary>
     [GeneratedRegex(@"(?<=[\s,({])([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
     private static partial Regex QualifiedNameRegex();

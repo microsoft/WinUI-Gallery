@@ -32,12 +32,17 @@ internal static partial class CodeDeclarations
     public const string PlaceholderNamespace = "YourNamespace";
 
     /// <summary>
-    /// The types <paramref name="code"/> declares, each mapped to the namespace that encloses it,
-    /// or to <see cref="PlaceholderNamespace"/> when nothing does.
+    /// The types <paramref name="code"/> declares at namespace or global scope, each mapped to the
+    /// namespace that encloses it, or to <see cref="PlaceholderNamespace"/> when nothing does.
     ///
     /// The pairing is the point. A snippet is free to declare types in more than one namespace, and
     /// reporting a single namespace for the file would name one that does not contain the type the
     /// caller asked about.
+    ///
+    /// Nesting is excluded for the same reason. A type declared inside another type is reached as
+    /// "Container.Item", not as "Item", so an import naming the namespace alone does not bring it
+    /// into scope; reporting it would publish XAML that still cannot resolve the name it asks for.
+    /// A type declared inside a method body is not reachable from XAML at all.
     ///
     /// Comments and literals are neutralised first: a snippet that talks about a class in prose —
     /// as ItemsRepeater's does about its custom layout — or that quotes markup containing the word
@@ -54,17 +59,27 @@ internal static partial class CodeDeclarations
 
         string stripped = BlankConditionalRegions(StripCommentsAndStrings(code));
         List<NamespaceScope> scopes = ResolveNamespaceScopes(stripped);
+        int[] depths = BraceDepths(stripped);
 
         foreach (Match match in TypeDeclarationRegex().Matches(stripped))
         {
+            if (!IsTopLevel(scopes, depths, match.Index))
+            {
+                continue;
+            }
+
             types[match.Groups[1].Value] = NamespaceAt(scopes, match.Index);
         }
 
         return types;
     }
 
-    /// <summary>The span of source a namespace declaration governs.</summary>
-    private readonly record struct NamespaceScope(string Name, int Start, int End);
+    /// <summary>
+    /// The span of source a namespace declaration governs, and whether it opened a brace to do so.
+    /// A file-scoped namespace contributes no nesting, so the two forms cannot be told apart by
+    /// brace depth alone.
+    /// </summary>
+    private readonly record struct NamespaceScope(string Name, int Start, int End, bool IsBlockScoped);
 
     /// <summary>
     /// Locates each namespace declaration and the region it covers: up to the closing brace for a
@@ -93,15 +108,63 @@ internal static partial class CodeDeclarations
 
             if (code[cursor] == ';')
             {
-                scopes.Add(new NamespaceScope(match.Groups[1].Value, cursor, code.Length));
+                scopes.Add(new NamespaceScope(match.Groups[1].Value, cursor, code.Length, IsBlockScoped: false));
             }
             else if (code[cursor] == '{')
             {
-                scopes.Add(new NamespaceScope(match.Groups[1].Value, cursor, EndOfBlock(code, cursor)));
+                scopes.Add(new NamespaceScope(match.Groups[1].Value, cursor, EndOfBlock(code, cursor), IsBlockScoped: true));
             }
         }
 
         return scopes;
+    }
+
+    /// <summary>
+    /// The brace nesting in effect at each index, where a closing brace takes effect at its own
+    /// position and an opening one only after it.
+    ///
+    /// Comments and literals are already blanked by the time this runs, so every brace it counts is
+    /// a real one.
+    /// </summary>
+    private static int[] BraceDepths(string code)
+    {
+        int[] depths = new int[code.Length];
+        int depth = 0;
+
+        for (int index = 0; index < code.Length; index++)
+        {
+            if (code[index] == '}' && depth > 0)
+            {
+                depth--;
+            }
+
+            depths[index] = depth;
+
+            if (code[index] == '{')
+            {
+                depth++;
+            }
+        }
+
+        return depths;
+    }
+
+    /// <summary>
+    /// True when the declaration at <paramref name="index"/> sits directly in a namespace or at
+    /// global scope rather than inside another type or a member body.
+    ///
+    /// The test is that its brace depth accounts for nothing but the block-scoped namespaces
+    /// around it. Anything deeper is enclosed by something the import cannot name: "N.Container.Item"
+    /// is not reachable as "Item" under "using:N", and a type declared in a method body is not
+    /// reachable at all, so in both cases the snippet does not hand the reader the type its XAML
+    /// asks for.
+    /// </summary>
+    private static bool IsTopLevel(List<NamespaceScope> scopes, int[] depths, int index)
+    {
+        int enclosingNamespaces = scopes.Count(
+            scope => scope.IsBlockScoped && index > scope.Start && index < scope.End);
+
+        return depths[index] == enclosingNamespaces;
     }
 
     /// <summary>
@@ -406,6 +469,9 @@ internal static partial class CodeDeclarations
     /// tried first: without it the alternation settles for the bare "record" and captures the
     /// modifier as the type name, so "record struct Bar" would declare a type called "struct" and
     /// never mention Bar.
+    ///
+    /// The pattern is position-blind: it matches a nested declaration as readily as a namespace-level
+    /// one, so <see cref="IsTopLevel"/> decides which of its matches count.
     /// </summary>
     [GeneratedRegex(@"\b(?:record\s+(?:class|struct)|class|struct|interface|enum|record)\s+([A-Za-z_]\w*)")]
     private static partial Regex TypeDeclarationRegex();

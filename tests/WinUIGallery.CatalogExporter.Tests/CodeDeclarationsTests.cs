@@ -235,4 +235,67 @@ public sealed class CodeDeclarationsTests
 
         Assert.AreEqual("Contoso", types["Shipping"]);
     }
+
+    /// <summary>
+    /// A nested type is reached as "Container.Item", so an import naming the namespace alone does
+    /// not bring "Item" into scope. Reporting it would publish a fragment whose "local:Item" still
+    /// cannot resolve.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_IgnoresATypeNestedInsideAnotherType()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "namespace N;\n\npublic class Container\n{\n    public class Item { }\n}");
+
+        Assert.AreEqual("N", types["Container"]);
+        Assert.IsFalse(types.ContainsKey("Item"), "A nested type was reported as if it sat in the namespace.");
+    }
+
+    /// <summary>Nesting under a block-scoped namespace is no different.</summary>
+    [TestMethod]
+    public void DeclaredTypes_IgnoresANestedTypeUnderABlockScopedNamespace()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "namespace N\n{\n    public class Container\n    {\n        public enum Kind { A }\n    }\n}");
+
+        CollectionAssert.AreEquivalent(new[] { "Container" }, types.Keys.ToArray());
+        Assert.AreEqual("N", types["Container"]);
+    }
+
+    /// <summary>A type declared in a member body is not reachable from XAML at all.</summary>
+    [TestMethod]
+    public void DeclaredTypes_IgnoresATypeDeclaredInsideAMethodBody()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "namespace N;\n\npublic class Page\n{\n    private void Load()\n    {\n        class Local { }\n    }\n}");
+
+        Assert.IsFalse(types.ContainsKey("Local"));
+    }
+
+    /// <summary>
+    /// A container closing before the next declaration must not leave it looking nested: sibling
+    /// types after a type body are still namespace-level.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_ReadsSiblingTypesAfterANestedOne()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "namespace N;\n\npublic class First\n{\n    private class Hidden { }\n}\n\npublic class Second { }");
+
+        CollectionAssert.AreEquivalent(new[] { "First", "Second" }, types.Keys.ToArray());
+        Assert.AreEqual("N", types["Second"]);
+    }
+
+    /// <summary>
+    /// Nested namespaces do nest, and a type directly inside the inner one is still delivered under
+    /// the joined name.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_ReadsATypeDirectlyInsideANestedNamespace()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "namespace A\n{\n    namespace B\n    {\n        public class Foo { }\n    }\n}");
+
+        Assert.AreEqual("A.B", types["Foo"]);
+    }
 }
