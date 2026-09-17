@@ -283,15 +283,17 @@ internal static partial class XamlFragment
     /// <summary>
     /// Every "prefix:Type" the fragment resolves, paired so a caller can ask not just which
     /// namespaces are needed but what is expected to be in them.
+    ///
+    /// Two things are read. The XML shape — element and attribute names — is a pattern match,
+    /// because a prefix there is delimited by the markup itself. Attribute values are parsed,
+    /// because a value holding a markup extension is written in a grammar of its own: arguments
+    /// separated by commas, named or positional, quoted or bare, nesting freely. Matching that
+    /// grammar approximately is what made the difference between "Type=models:Customer" and
+    /// "Type= models:Customer", and only one of those is a reference the old pattern could see.
     /// </summary>
     private static IEnumerable<(string Prefix, string Type)> PrefixReferences(string xaml)
     {
-        // A quoted markup-extension argument is literal text, so nothing inside one resolves a
-        // prefix. Blanking those spans before either pass keeps punctuation such as the "HH:mm" in
-        // StringFormat='{}{0:yyyy-MM-dd HH:mm}' from being read as a namespace the fragment needs.
-        string scanned = BlankQuotedExtensionArguments(xaml);
-
-        foreach (Match match in BindingPrefixRegex().Matches(scanned))
+        foreach (Match match in NameReferenceRegex().Matches(xaml))
         {
             foreach ((string Prefix, string Type) reference in PairedCaptures(match))
             {
@@ -299,93 +301,196 @@ internal static partial class XamlFragment
             }
         }
 
-        // A markup extension resolves prefixes anywhere in its body, not just on the extension
-        // itself, so "{x:Bind sys:DateTime.Now}" needs "sys" as much as it needs "x". The pattern
-        // above anchors to the opening brace and cannot see past it, so each body is swept
-        // separately. Matching from a brace up to the next one rather than to a closing brace is
-        // what lets a nested extension and its parent both be swept.
-        foreach (Match body in MarkupExtensionBodyRegex().Matches(scanned))
+        List<(int Start, int End)> values = [];
+
+        foreach (Match attribute in AttributeValueRegex().Matches(xaml))
         {
-            foreach (Match match in QualifiedNameRegex().Matches(body.Value))
+            Group content = attribute.Groups[1].Success ? attribute.Groups[1] : attribute.Groups[2];
+            values.Add((content.Index, content.Index + content.Length));
+
+            foreach ((string Prefix, string Type) reference in ValueReferences(content.Value))
             {
-                foreach ((string Prefix, string Type) reference in PairedCaptures(match))
-                {
-                    yield return reference;
-                }
+                yield return reference;
             }
         }
-    }
 
-    /// <summary>
-    /// The fragment with the contents of quoted markup-extension arguments replaced by spaces, the
-    /// quotes themselves left in place so every other offset is unchanged.
-    ///
-    /// XAML treats a quoted argument as a literal string: it is not parsed for extensions or type
-    /// references, so a colon inside one is punctuation. Reading it as a prefix costs an otherwise
-    /// valid fragment its XAML, which is the failure this exists to prevent; nothing resolvable is
-    /// lost by blanking it, because a quoted argument could not have resolved anyway.
-    ///
-    /// Only quotes met while inside braces are treated this way. The quotes delimiting an XML
-    /// attribute sit outside them, so "x:DataType=&quot;local:Contact&quot;" is untouched.
-    /// </summary>
-    private static string BlankQuotedExtensionArguments(string xaml)
-    {
-        char[] scanned = xaml.ToCharArray();
-        int depth = 0;
+        // An extension written outside an attribute value — in a snippet missing a quote, or one
+        // that opens mid-element — would otherwise take every reference inside it out of sight.
+        // Missing a reference is the one failure that ships XAML which does not bind, so a brace no
+        // attribute accounts for is still read as an extension.
         int index = 0;
 
-        while (index < scanned.Length)
+        while (index < xaml.Length)
         {
-            char current = scanned[index];
+            int brace = xaml.IndexOf('{', index);
+            if (brace < 0)
+            {
+                break;
+            }
 
-            if (current == '<')
+            if (values.Any(value => brace >= value.Start && brace < value.End))
             {
-                // An extension lives inside one attribute value, so a brace left unclosed by a
-                // truncated snippet stops at the next tag instead of blanking the rest of the
-                // fragment and hiding the references in it.
-                depth = 0;
-            }
-            else if (current == '{')
-            {
-                depth++;
-            }
-            else if (current == '}' && depth > 0)
-            {
-                depth--;
-            }
-            else if (depth > 0 && current is '"' or '\'')
-            {
-                index = BlankUntilClosingQuote(scanned, index, current);
+                index = brace + 1;
                 continue;
             }
 
-            index++;
-        }
+            List<(string Prefix, string Type)> found = [];
+            index = ReadExtension(xaml, brace, found);
 
-        return new string(scanned);
+            foreach ((string Prefix, string Type) reference in Resolvable(found))
+            {
+                yield return reference;
+            }
+        }
     }
 
     /// <summary>
-    /// Blanks the run between the quote at <paramref name="open"/> and its partner, returning the
-    /// index just past the closing quote, or the end of the fragment when there is none.
+    /// The references an attribute value contributes: those of the markup extension it holds, or
+    /// the type it names outright, as in x:DataType="local:Contact".
+    ///
+    /// A value opening with "{}" is XAML's escape for text that merely starts with a brace, so
+    /// nothing in it is an extension and nothing in it resolves.
     /// </summary>
-    private static int BlankUntilClosingQuote(char[] scanned, int open, char quote)
+    private static IEnumerable<(string Prefix, string Type)> ValueReferences(string value)
     {
-        for (int index = open + 1; index < scanned.Length; index++)
+        int start = 0;
+        while (start < value.Length && char.IsWhiteSpace(value[start]))
         {
-            if (scanned[index] == quote)
+            start++;
+        }
+
+        if (start < value.Length && value[start] == '{')
+        {
+            if (start + 1 < value.Length && value[start + 1] == '}')
             {
-                return index + 1;
+                yield break;
             }
 
-            if (scanned[index] is not ('\r' or '\n'))
+            List<(string Prefix, string Type)> found = [];
+            ReadExtension(value, start, found);
+
+            foreach ((string Prefix, string Type) reference in Resolvable(found))
             {
-                scanned[index] = ' ';
+                yield return reference;
+            }
+
+            yield break;
+        }
+
+        // A plain value is a type reference only when the whole of it names a type. Reading a QName
+        // anywhere inside one would find prefixes in prose and withhold the fragment over them.
+        Match match = LeadingQualifiedNameRegex().Match(value);
+        if (match.Success)
+        {
+            foreach ((string Prefix, string Type) reference in PairedCaptures(match))
+            {
+                yield return reference;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Reads the markup extension opening at <paramref name="index"/>, collecting the qualified
+    /// names it resolves, and returns the index just past its closing brace.
+    ///
+    /// The grammar is small: a type name, then arguments separated by commas, each either bare, or
+    /// quoted, or an extension of its own, and a named argument writes "Name=" before its value.
+    /// Following it rather than approximating it is what lets the three cases be told apart —
+    /// a bare argument resolves prefixes, a quoted one is literal text, and a nested extension has
+    /// to be entered — where a pattern over the raw body can only guess from the punctuation
+    /// nearby.
+    ///
+    /// Argument names are read as tokens like any other. They hold no colon, so they contribute
+    /// nothing, and treating them separately would buy nothing but a state to get wrong.
+    /// </summary>
+    private static int ReadExtension(string text, int index, List<(string Prefix, string Type)> found)
+    {
+        index++;
+
+        while (index < text.Length && text[index] != '}')
+        {
+            char current = text[index];
+
+            if (current == '{')
+            {
+                index = ReadExtension(text, index, found);
+            }
+            else if (current is '"' or '\'')
+            {
+                index = SkipQuoted(text, index);
+            }
+            else if (current is ',' or '=' || char.IsWhiteSpace(current))
+            {
+                index++;
+            }
+            else
+            {
+                index = ReadToken(text, index, found);
             }
         }
 
-        return scanned.Length;
+        return index < text.Length ? index + 1 : index;
     }
+
+    /// <summary>
+    /// Reads one bare token — an extension's type name, an argument name, or an unquoted value —
+    /// and records the qualified names in it.
+    ///
+    /// The whole token is searched rather than just its start, because a binding path carries its
+    /// references inside punctuation: "(local:Grid.Row)" names a type that has to resolve.
+    ///
+    /// Its one caller only enters here on a character that is none of the delimiters below, so the
+    /// token is never empty and the scan always advances.
+    /// </summary>
+    private static int ReadToken(string text, int index, List<(string Prefix, string Type)> found)
+    {
+        int start = index;
+
+        while (index < text.Length
+            && text[index] is not (',' or '=' or '{' or '}' or '"' or '\'')
+            && !char.IsWhiteSpace(text[index]))
+        {
+            index++;
+        }
+
+        foreach (Match match in QualifiedNameRegex().Matches(text[start..index]))
+        {
+            found.Add((match.Groups[1].Value, match.Groups[2].Value));
+        }
+
+        return index;
+    }
+
+    /// <summary>
+    /// Steps over a quoted argument, whose contents XAML takes literally, and returns the index
+    /// just past the closing quote. A backslash escapes the delimiter inside one, so it is stepped
+    /// over in pairs.
+    /// </summary>
+    private static int SkipQuoted(string text, int open)
+    {
+        char quote = text[open];
+
+        for (int index = open + 1; index < text.Length; index++)
+        {
+            if (text[index] == '\\')
+            {
+                index++;
+                continue;
+            }
+
+            if (text[index] == quote)
+            {
+                return index + 1;
+            }
+        }
+
+        return text.Length;
+    }
+
+    /// <summary>Drops the prefixes XAML resolves without any import of its own.</summary>
+    private static IEnumerable<(string Prefix, string Type)> Resolvable(
+        IEnumerable<(string Prefix, string Type)> found) =>
+        found.Where(reference => !IgnoredPrefixes.Contains(reference.Prefix));
 
     /// <summary>
     /// Reads a match whose groups are prefix/type pairs, skipping the alternatives that did not
@@ -412,47 +517,45 @@ internal static partial class XamlFragment
     private static partial Regex SelfDeclaredPrefixRegex();
 
     /// <summary>
-    /// Prefix positions XAML actually resolves: element names (&lt;p:Foo, &lt;/p:Foo),
-    /// attribute names (p:Foo=), markup extensions ({p:Foo}) and type references in an attribute
-    /// value ("p:Foo" or 'p:Foo').
+    /// Prefix positions in the markup itself: element names (&lt;p:Foo, &lt;/p:Foo) and attribute
+    /// names (p:Foo=). A prefix here is delimited by the XML around it, so a pattern reads it
+    /// exactly; attribute values are a grammar of their own and are parsed instead.
     ///
     /// Each alternative captures the prefix and the type name after it, in that order, so the
     /// groups can be read in pairs.
-    ///
-    /// The value branch accepts either XML quote style, and whitespace around the "=". Missing a
-    /// reference here is not a harmless gap: an undetected prefix is left out of the published
-    /// imports and, because it is equally invisible to the unresolved-prefix check, the fragment is
-    /// published as though it bound nothing — the one way this exporter can ship XAML that does not
-    /// bind on arrival.
     ///
     /// The attribute-name branch stops before the "=" rather than consuming it, so an attribute
     /// that is itself prefixed does not hide a prefixed type in its value: in
     /// x:DataType="local:Contact" both "x" and "local" have to be found.
     /// </summary>
-    [GeneratedRegex(@"</?([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)|\s([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)[\w.\-]*(?=\s*=)|\{\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)|=\s*[""']\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
-    private static partial Regex BindingPrefixRegex();
+    [GeneratedRegex(@"</?([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)|\s([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)[\w.\-]*(?=\s*=)")]
+    private static partial Regex NameReferenceRegex();
 
     /// <summary>
-    /// A markup extension's body, taken from its opening brace up to the next brace in either
-    /// direction rather than to its own closing one. That stops at the start of a nested extension,
-    /// which gets a match of its own, so "{Binding Source={StaticResource p:Thing}}" is swept as two
-    /// regions and the inner reference is not lost inside the outer match.
+    /// An attribute's value, in either XML quote style, with whitespace allowed around the "=".
+    /// A value cannot contain its own delimiter, so the negated class ends it exactly; the other
+    /// quote style inside is content, which is what lets StringFormat='...' sit inside a
+    /// double-quoted attribute.
     /// </summary>
-    [GeneratedRegex(@"\{[^{}]*")]
-    private static partial Regex MarkupExtensionBodyRegex();
+    [GeneratedRegex(@"=\s*(?:""([^""]*)""|'([^']*)')")]
+    private static partial Regex AttributeValueRegex();
 
     /// <summary>
-    /// A "prefix:Type" reference standing where a markup extension takes a value: after the opening
-    /// brace, after whitespace, after a comma separating arguments, or inside the parentheses of a
-    /// binding path.
+    /// A "prefix:Type" naming the whole of an attribute value, as in TargetType="local:Card".
+    /// Anchoring to the start is what separates a type reference from a colon that happens to
+    /// appear in prose or in a path.
+    /// </summary>
+    [GeneratedRegex(@"^\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
+    private static partial Regex LeadingQualifiedNameRegex();
+
+    /// <summary>
+    /// A "prefix:Type" reference inside a single bare token of a markup extension.
     ///
-    /// Requiring one of those means a colon that merely sits inside a value is not read as a
-    /// prefix. A format string such as StringFormat=hh:mm follows an "=" and is skipped, and the
-    /// "mm" in "{0:hh:mm}" follows a colon and is skipped. A quoted format string is handled
-    /// earlier, by <see cref="BlankQuotedExtensionArguments"/>, since the space in
-    /// StringFormat='{}{0:yyyy-MM-dd HH:mm}' would otherwise put "HH:mm" in exactly the position
-    /// this pattern looks for.
+    /// No lookbehind is needed, and none is wanted. The token has already been cut out by the
+    /// parser, so everything reaching this pattern stands where XAML resolves a namespace; the
+    /// colons that are punctuation — those in a quoted format string — were stepped over as a
+    /// quoted argument and never arrive.
     /// </summary>
-    [GeneratedRegex(@"(?<=[\s,({])([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
+    [GeneratedRegex(@"([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
     private static partial Regex QualifiedNameRegex();
 }

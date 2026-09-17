@@ -980,4 +980,116 @@ public sealed class CatalogGeneratorTests
         Assert.IsNull(sample.Xaml);
         CollectionAssert.AreEqual(new[] { "conv" }, sample.Gallery.XamlOmittedUnboundPrefixes);
     }
+
+    /// <summary>
+    /// A named argument's value resolves prefixes just as a positional one does, and "Type=" is the
+    /// common way to write a QName-valued argument. Reading only what follows whitespace found the
+    /// extension's own prefix and nothing else.
+    /// </summary>
+    [TestMethod]
+    public void Generate_DetectsAPrefixInANamedMarkupExtensionArgument()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<TextBlock Tag="{local:Lookup Type=models:Customer}" />""",
+                csharp: "int x = 1;")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "local", "models" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// Whitespace after the "=" is the same argument written differently, so it has to read the
+    /// same way. The two forms disagreeing was how the gap showed itself.
+    /// </summary>
+    [TestMethod]
+    public void Generate_ReadsANamedArgumentTheSameWithOrWithoutSpaceAfterTheEquals()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<TextBlock Tag="{local:Lookup Type= models:Customer}" />""",
+                csharp: "int x = 1;")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "local", "models" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// A named argument whose prefix the sample's own code satisfies gains its import like any
+    /// other reference, rather than being dropped on the way in.
+    /// </summary>
+    [TestMethod]
+    public void Generate_ImportsANamespaceForANamedArgumentSatisfiedByItsOwnCode()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<TextBlock Tag="{StaticResource Key=models:Customer}" />""",
+                csharp: "namespace Contoso.Models;\n\npublic class Customer { }")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexControl one = CatalogGenerator.Generate(Options()).Index.Controls.Single(c => c.Gallery.UniqueId == "SampleOne");
+        IndexSample sample = one.Samples.Single();
+
+        Assert.IsNotNull(sample.Xaml);
+        CollectionAssert.AreEqual(
+            new[] { "xmlns:models=\"using:Contoso.Models\"" },
+            sample.XmlnsImports ?? one.XmlnsImports);
+    }
+
+    /// <summary>
+    /// A binding path carries its references inside punctuation, so an attached property named in
+    /// one still needs the namespace holding it.
+    /// </summary>
+    [TestMethod]
+    public void Generate_DetectsAPrefixInsideAParenthesizedBindingPath()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<TextBlock Text="{Binding Path=(attached:Badge.Count)}" />""",
+                csharp: "int x = 1;")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(sample.Xaml);
+        CollectionAssert.AreEqual(new[] { "attached" }, sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
+    /// "{}" is XAML's escape for a value that merely begins with a brace. What follows is text, so
+    /// a colon in it is punctuation and costs the fragment nothing.
+    /// </summary>
+    [TestMethod]
+    public void Generate_KeepsXamlWhoseValueIsAnEscapedLiteralBrace()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<TextBlock Text="{}{StaticResource not:AnExtension}" />""")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNotNull(sample.Xaml);
+        Assert.IsNull(sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
 }

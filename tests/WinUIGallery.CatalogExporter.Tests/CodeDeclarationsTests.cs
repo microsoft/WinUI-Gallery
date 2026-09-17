@@ -340,6 +340,42 @@ public sealed class CodeDeclarationsTests
     }
 
     /// <summary>
+    /// An interpolated string is two lexical contexts at once: the literal around the holes, and
+    /// real expressions inside them that may carry literals of their own. A scanner that ends the
+    /// literal at the first inner quote reads the rest as source and declares whatever it finds.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_IgnoresATypeInsideAnInterpolatedStringHole()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "string s = $\"{Lookup(\"public class Ghost { }\")}\";\npublic class Real { }");
+
+        CollectionAssert.AreEquivalent(new[] { "Real" }, types.Keys.ToArray());
+    }
+
+    [TestMethod]
+    public void DeclaredTypes_IgnoresATypeInsideAnInterpolatedVerbatimString()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "string s = $@\"class Fake { }\";\npublic class Real { }");
+
+        CollectionAssert.AreEquivalent(new[] { "Real" }, types.Keys.ToArray());
+    }
+
+    /// <summary>
+    /// An interpolated raw literal writes its holes with doubled braces, so the braces inside it
+    /// are neither nesting nor interpolation.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_IgnoresATypeInsideAnInterpolatedRawString()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "string s = $$\"\"\"\n    public class Fake { }\n    {{Name}}\n    \"\"\";\n\npublic class Real { }");
+
+        CollectionAssert.AreEquivalent(new[] { "Real" }, types.Keys.ToArray());
+    }
+
+    /// <summary>
     /// A name declared both inside a namespace and outside every namespace is ambiguous too: the
     /// placeholder is a namespace like any other as far as the published import is concerned.
     /// </summary>
