@@ -53,7 +53,7 @@ public sealed partial class ItemsViewPage : ItemsPageBase
 
         Task.Run(delegate ()
         {
-            _ = DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, () =>
+            _ = DispatcherQueue.TryEnqueue(Windows.System.DispatcherQueuePriority.Low, () =>
             {
                 if (SwappableLayoutsItemsView != null)
                 {

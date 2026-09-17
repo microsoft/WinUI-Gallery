@@ -24,7 +24,7 @@ namespace WinUIGallery;
 public sealed partial class MainWindow : Window
 {
     public Windows.System.VirtualKey ArrowKey;
-    public Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue;
+    public Windows.System.DispatcherQueue dispatcherQueue;
 
     public NavigationView NavigationView
     {
@@ -42,7 +42,7 @@ public sealed partial class MainWindow : Window
         this.InitializeComponent();
         SetWindowProperties();
         RootGrid.ActualThemeChanged += (_, _) => TitleBarHelper.ApplySystemThemeToCaptionButtons(this, RootGrid.ActualTheme);
-        dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
+        dispatcherQueue = Windows.System.DispatcherQueue.GetForCurrentThread();
 
         // Workaround for WinUI issue #9934:
         // https://github.com/microsoft/microsoft-ui-xaml/issues/9934.
@@ -130,14 +130,7 @@ public sealed partial class MainWindow : Window
 
     private void OnPaneDisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
     {
-        if (sender.PaneDisplayMode == NavigationViewPaneDisplayMode.Top)
-        {
-            titleBar.IsPaneToggleButtonVisible = false;
-        }
-        else
-        {
-            titleBar.IsPaneToggleButtonVisible = true;
-        }
+        titleBar.IsPaneToggleButtonVisible = sender.PaneDisplayMode != NavigationViewPaneDisplayMode.Top;
     }
 
     /// <summary>
@@ -596,7 +589,7 @@ public sealed partial class MainWindow : Window
     {
         DebuggerAttachedCheckBox.IsChecked = false;
 
-        var dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
+        var dispatcherQueue = Windows.System.DispatcherQueue.GetForCurrentThread();
 
         var workItem = new Windows.System.Threading.WorkItemHandler((IAsyncAction _) =>
         {
@@ -608,8 +601,8 @@ public sealed partial class MainWindow : Window
             Windows.Win32.PInvoke.DebugBreak();
 
             dispatcherQueue.TryEnqueue(
-                Microsoft.UI.Dispatching.DispatcherQueuePriority.Low,
-                new Microsoft.UI.Dispatching.DispatcherQueueHandler(() =>
+                Windows.System.DispatcherQueuePriority.Low,
+                new Windows.System.DispatcherQueueHandler(() =>
                 {
                     DebuggerAttachedCheckBox.IsChecked = true;
                 }));

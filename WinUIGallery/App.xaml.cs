@@ -31,8 +31,8 @@ sealed partial class App : Application
     /// </summary>
     public App()
     {
-        InitializeComponent();
         UnhandledException += HandleExceptions;
+        InitializeComponent();
     }
 
     /// <summary>

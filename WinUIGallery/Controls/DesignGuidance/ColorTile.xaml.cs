@@ -3,7 +3,6 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
 using Windows.ApplicationModel.DataTransfer;
 
 namespace WinUIGallery.Controls;
@@ -97,25 +96,7 @@ public sealed partial class ColorTile : UserControl
 
     private void ApplyBackdrop()
     {
-        switch (Backdrop)
-        {
-            case ColorTileBackdropKind.Acrylic:
-                BackdropHost.SystemBackdrop = new DesktopAcrylicBackdrop();
-                BackdropHost.Visibility = Visibility.Visible;
-                break;
-            case ColorTileBackdropKind.Mica:
-                BackdropHost.SystemBackdrop = new MicaBackdrop { Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base };
-                BackdropHost.Visibility = Visibility.Visible;
-                break;
-            case ColorTileBackdropKind.MicaAlt:
-                BackdropHost.SystemBackdrop = new MicaBackdrop { Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt };
-                BackdropHost.Visibility = Visibility.Visible;
-                break;
-            default:
-                BackdropHost.SystemBackdrop = null;
-                BackdropHost.Visibility = Visibility.Collapsed;
-                break;
-        }
+        BackdropHost.Visibility = Visibility.Collapsed;
     }
 
     public ColorTile()

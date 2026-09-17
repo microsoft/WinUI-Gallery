@@ -4,7 +4,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Microsoft.UI.Dispatching;
+using Windows.System;
 using Windows.Foundation;
 using Windows.Win32.Foundation;
 
@@ -433,4 +433,3 @@ internal class Handle
         NativeHandle = IntPtr.Zero;
     }
 }
-

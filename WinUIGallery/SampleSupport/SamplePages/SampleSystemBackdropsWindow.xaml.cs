@@ -34,8 +34,6 @@ public sealed partial class SampleSystemBackdropsWindow : Window
         AppWindow.SetIcon(@"Assets\Tiles\GalleryIcon.ico");
         ExtendsContentIntoTitleBar = true;
         ((FrameworkElement)Content).RequestedTheme = ThemeHelper.RootTheme;
-        DispatcherQueue.EnsureSystemDispatcherQueue();
-
         backdropComboBox.SelectedIndex = 0;
         themeComboBox.SelectedIndex = 0;
     }

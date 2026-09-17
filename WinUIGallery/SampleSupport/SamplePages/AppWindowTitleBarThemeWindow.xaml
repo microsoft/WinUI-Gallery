@@ -9,10 +9,6 @@
     mc:Ignorable="d"
     Title="AppWindowTitleBarThemeHeightWindow">
 
-    <Window.SystemBackdrop>
-        <MicaBackdrop />
-    </Window.SystemBackdrop>
-
     <Grid>
         <TextBlock Text="This is a sample window to demonstrate AppWindowTitleBar theme customization."
                    HorizontalAlignment="Center"

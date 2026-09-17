@@ -136,11 +136,6 @@
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                     BorderThickness="1"
                     CornerRadius="{StaticResource OverlayCornerRadius}">
-                    <SystemBackdropElement CornerRadius="8">
-                        <SystemBackdropElement.SystemBackdrop>
-                            <DesktopAcrylicBackdrop />
-                        </SystemBackdropElement.SystemBackdrop>
-                    </SystemBackdropElement>
                     <Grid
                         Width="90"
                         HorizontalAlignment="Right"
@@ -169,12 +164,6 @@
                 Background="{ThemeResource SolidBackgroundFillColorQuarternaryBrush}"
                 Description="Used for fills on Tab control.">
                 <Grid>
-                    <SystemBackdropElement CornerRadius="8">
-                        <SystemBackdropElement.SystemBackdrop>
-                            <MicaBackdrop Kind="BaseAlt" />
-                        </SystemBackdropElement.SystemBackdrop>
-                    </SystemBackdropElement>
-
                     <TabViewItem
                         Width="150"
                         Height="30"
@@ -341,11 +330,6 @@
                     BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                     BorderThickness="1"
                     CornerRadius="{StaticResource OverlayCornerRadius}">
-                    <SystemBackdropElement CornerRadius="8">
-                        <SystemBackdropElement.SystemBackdrop>
-                            <MicaBackdrop Kind="Base" />
-                        </SystemBackdropElement.SystemBackdrop>
-                    </SystemBackdropElement>
                 </Grid>
             </local:ColorPageExample>
             <Grid Style="{StaticResource GalleryTileGridStyle}">

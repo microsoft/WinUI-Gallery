@@ -86,8 +86,15 @@ public partial class WindowHelper
         var scale = windowContent.XamlRoot.RasterizationScale;
         var minWidth = width * scale;
         var minHeight = height * scale;
-        presenter.PreferredMinimumWidth = (int)minWidth;
-        presenter.PreferredMinimumHeight = (int)minHeight;
+        try
+        {
+            presenter.PreferredMinimumWidth = (int)minWidth;
+            presenter.PreferredMinimumHeight = (int)minHeight;
+        }
+        catch (InvalidCastException)
+        {
+            System.Diagnostics.Debug.WriteLine("Preferred window minimum size is not supported by this Windowing implementation.");
+        }
     }
 
     static public List<Window> ActiveWindows { get { return _activeWindows; } }

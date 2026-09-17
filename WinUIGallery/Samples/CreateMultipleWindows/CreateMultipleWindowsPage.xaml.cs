@@ -3,7 +3,6 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
 using Windows.Graphics;
 using WinUIGallery.Helpers;
 
@@ -21,7 +20,6 @@ public sealed partial class CreateMultipleWindowsPage : Page
         var childWindow = new Window()
         {
             ExtendsContentIntoTitleBar = true,
-            SystemBackdrop = new MicaBackdrop(),
             Content = new Page()
             {
                 Content = new TextBlock()

@@ -8,50 +8,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <StackPanel>
-        <controls:ControlExample x:Name="Example1" SampleDefinition="SystemBackdropElement\SystembackdropelementSample.txt">
+        <controls:ControlExample SampleDefinition="SystemBackdropElement\SystembackdropelementSample.txt">
             <controls:ControlExample.Example>
-                <Grid
-                    Width="300"
-                    Height="200"
-                    HorizontalAlignment="Center">
-                    <SystemBackdropElement x:Name="DynamicBackdropHost" CornerRadius="8">
-                        <SystemBackdropElement.SystemBackdrop>
-                            <DesktopAcrylicBackdrop />
-                        </SystemBackdropElement.SystemBackdrop>
-                    </SystemBackdropElement>
-                    <Button
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Content="Click Me" />
-                </Grid>
+                <TextBlock Text="SystemBackdropElement is unavailable in Subtrial A because the lifted backdrop controllers are intentionally excluded." TextWrapping="WrapWholeWords" />
             </controls:ControlExample.Example>
-            <controls:ControlExample.Options>
-                <StackPanel Spacing="12">
-                    <ComboBox
-                        x:Name="BackdropTypeComboBox"
-                        Header="Backdrop Type"
-                        SelectedIndex="0"
-                        SelectionChanged="BackdropTypeComboBox_SelectionChanged">
-                        <ComboBoxItem Content="Acrylic" Tag="Acrylic" />
-                        <ComboBoxItem Content="Mica" Tag="Mica" />
-                        <ComboBoxItem Content="Mica Alt" Tag="MicaAlt" />
-                    </ComboBox>
-                    <Slider
-                        x:Name="CornerRadiusSlider"
-                        Header="Corner radius"
-                        Maximum="50"
-                        Minimum="0"
-                        StepFrequency="1"
-                        ValueChanged="CornerRadiusSlider_ValueChanged"
-                        Value="8" />
-                </StackPanel>
-            </controls:ControlExample.Options>
-            <controls:ControlExample.XamlSource>
-                SystemBackdropElement/SystemBackdropElementAcrylic_xaml.txt
-            </controls:ControlExample.XamlSource>
-            <controls:ControlExample.Substitutions>
-                <controls:ControlExampleSubstitution Key="CornerRadius" Value="{x:Bind CornerRadiusSlider.Value, Mode=OneWay}" />
-            </controls:ControlExample.Substitutions>
         </controls:ControlExample>
         <TextBlock
             Margin="0,12,0,0"

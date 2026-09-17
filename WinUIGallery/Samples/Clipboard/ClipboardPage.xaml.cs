@@ -42,7 +42,7 @@ public sealed partial class ClipboardPage : Page
         UIHelper.AnnounceActionForAccessibility(button, "Text copied to clipboard", "TextCopiedSuccessNotificationId");
 
         VisualStateManager.GoToState(this, "ConfirmationClipboardVisible", false);
-        Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
+        Windows.System.DispatcherQueue dispatcherQueue = Windows.System.DispatcherQueue.GetForCurrentThread();
 
         // Automatically hide the confirmation text after 2 seconds
         if (dispatcherQueue != null)

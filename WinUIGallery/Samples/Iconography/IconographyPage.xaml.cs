@@ -51,7 +51,7 @@ public sealed partial class IconographyPage : Page
         // and not unnecessarily block UI Thread
         Task.Run(delegate ()
         {
-            _ = DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.High, () =>
+            _ = DispatcherQueue.TryEnqueue(Windows.System.DispatcherQueuePriority.High, () =>
             {
                 IconsItemsView.ItemsSource = new List<IconData>(IconsDataSource.Icons);
                 SelectedItem = IconsDataSource.Icons[0];

@@ -37,7 +37,7 @@
                     • <Run FontWeight="Bold">MicaBackdrop</Run> — Applies the Mica material. Set the Kind property to switch between Base and Alt.<LineBreak />
                     • <Run FontWeight="Bold">DesktopAcrylicBackdrop</Run> — Applies the Desktop Acrylic material (Base type only).<LineBreak /><LineBreak />
                     All Mica variants require Windows 11 build 22000 or later. In-app acrylic (AcrylicBrush) is a separate XAML brush used within UI elements, not a window backdrop.</TextBlock>
-                <Button Margin="0,10,0,0" Click="createBuiltInWindow_Click" Content="Show window"/>
+                <Button Margin="0,10,0,0" Content="Unavailable in Subtrial A" IsEnabled="False"/>
             </StackPanel>
         </controls:ControlExample>
 
@@ -49,7 +49,7 @@
                     1. <Run FontWeight="Bold">Base</Run> — The default, lighter appearance.<LineBreak />
                     2. <Run FontWeight="Bold">Alt</Run> — A darker appearance with stronger tinting of the desktop wallpaper.<LineBreak />
                 </TextBlock>
-                <Button Margin="0,10,0,0" Click="createCustomMicaWindow_Click" Content="Show window"/>
+                <Button Margin="0,10,0,0" Content="Unavailable in Subtrial A" IsEnabled="False"/>
             </StackPanel>
         </controls:ControlExample>
 
@@ -61,7 +61,7 @@
                     1. <Run FontWeight="Bold">Base</Run> — The default, darker appearance with less transparency.<LineBreak />
                     2. <Run FontWeight="Bold">Thin</Run> — A lighter appearance with more transparency.<LineBreak /><LineBreak />
                     Note: DesktopAcrylicBackdrop always uses the Base kind. To use the Thin kind, you must use DesktopAcrylicController directly.</TextBlock>
-                <Button Margin="0,10,0,0" Click="createCustomDesktopAcrylicWindow_Click" Content="Show window"/>
+                <Button Margin="0,10,0,0" Content="Unavailable in Subtrial A" IsEnabled="False"/>
             </StackPanel>
         </controls:ControlExample>
     </StackPanel>
