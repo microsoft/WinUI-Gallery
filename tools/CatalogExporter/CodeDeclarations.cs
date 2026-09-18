@@ -68,6 +68,10 @@ internal static class CodeDeclarations
     /// asks for "local:Foo" and the snippet gives no way to say which Foo that is, so publishing
     /// one of them would be a coin toss printed as an import. Repeating a name within one namespace
     /// — a partial class split across the snippet — says nothing contradictory and is kept.
+    ///
+    /// A "file" type is excluded for the same reason nesting is. It exists only for the source file
+    /// that declares it, and the code XAML compiles into is a different file, so no import can bring
+    /// it within reach of "local:Foo".
     /// </summary>
     public static Dictionary<string, string> DeclaredTypes(string? code)
     {
@@ -83,7 +87,7 @@ internal static class CodeDeclarations
 
         foreach (BaseTypeDeclarationSyntax declaration in root.DescendantNodes().OfType<BaseTypeDeclarationSyntax>())
         {
-            if (!IsTopLevel(declaration) || IsConditional(conditional, declaration))
+            if (!IsTopLevel(declaration) || IsFileLocal(declaration) || IsConditional(conditional, declaration))
             {
                 continue;
             }
@@ -116,6 +120,15 @@ internal static class CodeDeclarations
     /// </summary>
     private static bool IsTopLevel(BaseTypeDeclarationSyntax declaration) =>
         declaration.Parent is BaseNamespaceDeclarationSyntax or CompilationUnitSyntax;
+
+    /// <summary>
+    /// True when the declaration carries the "file" modifier, which confines the type to the one
+    /// source file holding it. A reader pasting the snippet gets a type their XAML cannot name: the
+    /// markup compiles into generated code of its own, and "using:" imports a namespace rather than
+    /// lifting file scope. Reporting it would publish exactly the import that cannot work.
+    /// </summary>
+    private static bool IsFileLocal(BaseTypeDeclarationSyntax declaration) =>
+        declaration.Modifiers.Any(SyntaxKind.FileKeyword);
 
     /// <summary>
     /// The namespace enclosing <paramref name="declaration"/>, joined outward in, or

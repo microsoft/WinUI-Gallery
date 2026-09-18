@@ -489,6 +489,28 @@ public sealed class CatalogGeneratorTests
     }
 
     /// <summary>
+    /// The value of such a declaration is a namespace URI, not markup. Reading "clr-namespace:X" as
+    /// a type reference finds a prefix nothing declares and withholds the fragment over the very
+    /// line that binds it.
+    /// </summary>
+    [TestMethod]
+    public void Generate_KeepsXamlWhoseOwnDeclarationNamesANonUsingScheme()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<StackPanel xmlns:sys="clr-namespace:System;assembly=mscorlib"><sys:String>Hi</sys:String></StackPanel>""")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample sample = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNotNull(sample.Xaml);
+        Assert.IsNull(sample.Gallery.XamlOmittedUnboundPrefixes);
+    }
+
+    /// <summary>
     /// A prefix neither the page nor the fragment declares cannot be published as an import, so the
     /// XAML is omitted rather than shipped in a state that will not compile on arrival.
     /// </summary>
@@ -532,6 +554,29 @@ public sealed class CatalogGeneratorTests
         CollectionAssert.AreEqual(
             new[] { "xmlns:local=\"using:Contoso.Sample\"" },
             sample.XmlnsImports ?? one.XmlnsImports);
+    }
+
+    /// <summary>
+    /// A "file" type reaches no further than the source file declaring it, and the markup compiles
+    /// into generated code of its own. No import can put it within reach of "local:", so the XAML
+    /// is withheld rather than published with a line that cannot work.
+    /// </summary>
+    [TestMethod]
+    public void Generate_OmitsXamlWhosePrefixIsOnlySatisfiedByAFileLocalType()
+    {
+        WriteControlInfoData(TwoItemDocument());
+        WriteSample("SampleOne", Page("""<controls:ControlExample SampleDefinition="SampleOne\Snippet.txt" />"""),
+            ("Snippet.txt", Bundle(
+                header: "One",
+                xaml: """<DataTemplate x:DataType="local:ExplorerItem"><TextBlock Text="{x:Bind Name}" /></DataTemplate>""",
+                csharp: "namespace Contoso.Sample;\n\nfile class ExplorerItem\n{\n    public string Name { get; set; }\n}")));
+        WriteSample("SampleTwo", "<Page></Page>");
+
+        IndexSample withheld = CatalogGenerator.Generate(Options()).Index.Controls
+            .Single(c => c.Gallery.UniqueId == "SampleOne").Samples.Single();
+
+        Assert.IsNull(withheld.Xaml);
+        CollectionAssert.AreEqual(new[] { "local" }, withheld.Gallery.XamlOmittedUnboundPrefixes);
     }
 
     /// <summary>

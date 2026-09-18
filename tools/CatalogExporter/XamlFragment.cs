@@ -303,9 +303,17 @@ internal static partial class XamlFragment
 
         List<(int Start, int End)> values = [];
 
-        foreach ((int Start, int End) span in AttributeValueSpans(xaml))
+        foreach ((int Start, int End, bool IsNamespaceDeclaration) span in AttributeValueSpans(xaml))
         {
-            values.Add(span);
+            values.Add((span.Start, span.End));
+
+            // An xmlns value is a namespace URI, not a type reference. "clr-namespace:Contoso"
+            // reads as a "prefix:Type" whose prefix nothing declares, and withholding a fragment
+            // over it would be withholding it over the very declaration that binds its markup.
+            if (span.IsNamespaceDeclaration)
+            {
+                continue;
+            }
 
             foreach ((string Prefix, string Type) reference in ValueReferences(xaml[span.Start..span.End]))
             {
@@ -356,8 +364,12 @@ internal static partial class XamlFragment
     /// Walking the tag structure instead removes the ambiguity rather than narrowing it. A quote is
     /// only a delimiter inside a start tag, so text, comments, CDATA and processing instructions are
     /// stepped over as the units they are and never offer a quote to pair with.
+    ///
+    /// Each span says whether its attribute is an xmlns declaration, because such a value holds a
+    /// namespace URI rather than markup: it is still a span the extension sweep must not re-read,
+    /// but nothing in it names a type.
     /// </summary>
-    private static IEnumerable<(int Start, int End)> AttributeValueSpans(string xaml)
+    private static IEnumerable<(int Start, int End, bool IsNamespaceDeclaration)> AttributeValueSpans(string xaml)
     {
         int index = 0;
 
@@ -401,11 +413,15 @@ internal static partial class XamlFragment
                         // A quote that never closes leaves no way to tell where the value ends, so
                         // the rest is treated as one. Reading too much withholds a fragment; reading
                         // nothing would publish one whose references were never looked at.
-                        yield return (index + 1, xaml.Length);
+                        //
+                        // What it reaches is no longer one attribute's value, so the xmlns exemption
+                        // does not apply to it: that exemption says a namespace URI names no type,
+                        // and everything after the quote is markup that may well name several.
+                        yield return (index + 1, xaml.Length, false);
                         yield break;
                     }
 
-                    yield return (index + 1, close);
+                    yield return (index + 1, close, NamesNamespaceDeclaration(xaml, index));
                     index = close + 1;
                     continue;
                 }
@@ -415,6 +431,47 @@ internal static partial class XamlFragment
 
             index++;
         }
+    }
+
+    /// <summary>
+    /// True when the quote at <paramref name="quote"/> opens the value of an xmlns declaration.
+    ///
+    /// The name is read backwards from the delimiter because that is where the scan already stands
+    /// and the shape is fixed: a value is preceded by "=", and before that the attribute name. An
+    /// attribute written without one is malformed, and reporting it as an ordinary value only means
+    /// its contents are read — the direction that withholds a fragment rather than publishing one.
+    /// </summary>
+    private static bool NamesNamespaceDeclaration(string xaml, int quote)
+    {
+        int index = quote - 1;
+
+        while (index >= 0 && char.IsWhiteSpace(xaml[index]))
+        {
+            index--;
+        }
+
+        if (index < 0 || xaml[index] != '=')
+        {
+            return false;
+        }
+
+        index--;
+
+        while (index >= 0 && char.IsWhiteSpace(xaml[index]))
+        {
+            index--;
+        }
+
+        int end = index + 1;
+
+        while (index >= 0 && (char.IsLetterOrDigit(xaml[index]) || xaml[index] is '_' or '.' or '-' or ':'))
+        {
+            index--;
+        }
+
+        ReadOnlySpan<char> name = xaml.AsSpan(index + 1, end - index - 1);
+
+        return name.Equals("xmlns", StringComparison.Ordinal) || name.StartsWith("xmlns:", StringComparison.Ordinal);
     }
 
     private static bool Matches(string text, int index, string token) =>

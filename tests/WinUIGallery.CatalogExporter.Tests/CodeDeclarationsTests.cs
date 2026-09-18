@@ -387,4 +387,33 @@ public sealed class CodeDeclarationsTests
 
         Assert.IsFalse(types.ContainsKey("Foo"));
     }
+
+    /// <summary>
+    /// A "file" type belongs to the one source file that declares it. The XAML a reader pastes
+    /// compiles into generated code of its own, which cannot see it however the namespace is
+    /// imported, so reporting it would publish an import that does not compile on arrival.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_IgnoresAFileLocalType()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "namespace Contoso;\n\nfile class Hidden { }\n\nfile record struct Point(int X, int Y);\n\npublic class Shared { }");
+
+        Assert.IsFalse(types.ContainsKey("Hidden"), "A file-local type was reported as reachable from XAML.");
+        Assert.IsFalse(types.ContainsKey("Point"));
+        Assert.AreEqual("Contoso", types["Shared"], "A sibling declaration was lost with the file-local one.");
+    }
+
+    /// <summary>
+    /// "file" is contextual: an identifier of that name is not a modifier, and the declaration
+    /// after it is an ordinary one.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_KeepsATypeWhoseCodeUsesFileAsAnIdentifier()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "var file = OpenRead(path);\n\npublic class Reader { }");
+
+        Assert.AreEqual(CodeDeclarations.PlaceholderNamespace, types["Reader"]);
+    }
 }
