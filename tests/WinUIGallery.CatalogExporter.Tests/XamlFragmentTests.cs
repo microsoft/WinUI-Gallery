@@ -69,4 +69,124 @@ public sealed class XamlFragmentTests
 
         CollectionAssert.Contains(unresolved, "local");
     }
+
+    /// <summary>
+    /// XML resolves a character reference before XAML reads the value, so a prefix spelled with one
+    /// binds exactly as the literal spelling does. Scanning the raw text sees no colon and would
+    /// publish the fragment with no import for it.
+    /// </summary>
+    [TestMethod]
+    public void UnresolvedPrefixes_ReadsAPrefixWrittenWithACharacterReference()
+    {
+        string xaml = """<DataTemplate x:DataType="local&#58;Contact" />""";
+
+        List<string> unresolved = XamlFragment.UnresolvedPrefixes(xaml, new Dictionary<string, string>());
+
+        CollectionAssert.Contains(
+            unresolved,
+            "local",
+            "A prefix written as a character reference was never seen.");
+    }
+
+    /// <summary>The hexadecimal spelling of the same reference, and a named one alongside it.</summary>
+    [TestMethod]
+    public void UnresolvedPrefixes_ReadsAPrefixWrittenWithAHexCharacterReference()
+    {
+        string xaml = """<DataTemplate x:DataType="local&#x3A;Contact" Tag="a &amp; b" />""";
+
+        CollectionAssert.Contains(
+            XamlFragment.UnresolvedPrefixes(xaml, new Dictionary<string, string>()),
+            "local");
+    }
+
+    /// <summary>
+    /// An unknown or unterminated reference is left standing rather than guessed at. That can only
+    /// produce a reference too many, which withholds a fragment instead of publishing a broken one.
+    /// </summary>
+    [TestMethod]
+    public void UnresolvedPrefixes_LeavesAnUnknownReferenceAlone()
+    {
+        string xaml = """<Control Tag="local&nosuch;Thing &# a" />""";
+
+        List<string> unresolved = XamlFragment.UnresolvedPrefixes(xaml, new Dictionary<string, string>());
+
+        Assert.AreEqual(0, unresolved.Count, string.Join(", ", unresolved));
+    }
+
+    /// <summary>
+    /// A bare prefixed attribute binds its namespace without naming a type — conditional XAML
+    /// writes exactly that. The prefix still needs an import, but nothing in the markup says which
+    /// type would satisfy it, so a class in the snippet's C# that happens to share the attribute's
+    /// name must not be taken as the answer.
+    /// </summary>
+    [TestMethod]
+    public void ResolvePrefixesFromCode_DoesNotResolveABarePrefixedAttribute()
+    {
+        string xaml = """<Button newExp:Background="Green" Content="Hi" />""";
+
+        List<string> unresolved = XamlFragment.UnresolvedPrefixes(xaml, new Dictionary<string, string>());
+        CollectionAssert.Contains(unresolved, "newExp", "The prefix still has to be reported as needing an import.");
+
+        Dictionary<string, string> resolved = XamlFragment.ResolvePrefixesFromCode(
+            xaml,
+            unresolved,
+            "namespace Contoso;\n\npublic class Background { }");
+
+        Assert.AreEqual(0, resolved.Count, "An attribute name was mistaken for the type that satisfies its prefix.");
+    }
+
+    /// <summary>An attached property does name a type: the owner half has to exist.</summary>
+    [TestMethod]
+    public void ResolvePrefixesFromCode_ResolvesAnAttachedPropertyOwner()
+    {
+        string xaml = """<Button local:Badge.Count="3" />""";
+
+        Dictionary<string, string> resolved = XamlFragment.ResolvePrefixesFromCode(
+            xaml,
+            XamlFragment.UnresolvedPrefixes(xaml, new Dictionary<string, string>()),
+            "namespace Contoso;\n\npublic class Badge { }");
+
+        Assert.AreEqual("using:Contoso", resolved["local"]);
+    }
+
+    /// <summary>
+    /// A QName-valued attribute asks for the whole dotted name. Reading only the first segment
+    /// finds the outer type declared, synthesizes an import for its namespace, and publishes markup
+    /// whose actual request — the nested type — still cannot resolve.
+    /// </summary>
+    [TestMethod]
+    public void ResolvePrefixesFromCode_DoesNotResolveAnUndeclaredNestedType()
+    {
+        string xaml = """<DataTemplate x:DataType="local:Container.Item" />""";
+
+        List<string> unresolved = XamlFragment.UnresolvedPrefixes(xaml, new Dictionary<string, string>());
+        CollectionAssert.Contains(unresolved, "local", "The prefix still has to be reported as needing an import.");
+
+        Dictionary<string, string> resolved = XamlFragment.ResolvePrefixesFromCode(
+            xaml,
+            unresolved,
+            "namespace Contoso;\n\npublic class Container { }");
+
+        Assert.AreEqual(
+            0,
+            resolved.Count,
+            "An import was synthesized from the outer type for a nested type nothing declares.");
+    }
+
+    /// <summary>
+    /// Attached-property syntax inside a binding path is the other reading of a dotted name, and
+    /// there the owner is what has to exist. That behaviour is unchanged.
+    /// </summary>
+    [TestMethod]
+    public void ResolvePrefixesFromCode_StillResolvesAnAttachedPropertyInABindingPath()
+    {
+        string xaml = """<TextBlock Text="{Binding Path=(local:Badge.Count)}" />""";
+
+        Dictionary<string, string> resolved = XamlFragment.ResolvePrefixesFromCode(
+            xaml,
+            XamlFragment.UnresolvedPrefixes(xaml, new Dictionary<string, string>()),
+            "namespace Contoso;\n\npublic class Badge { }");
+
+        Assert.AreEqual("using:Contoso", resolved["local"]);
+    }
 }

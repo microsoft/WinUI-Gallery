@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -241,6 +242,11 @@ internal static partial class XamlFragment
     /// The type names each prefix qualifies, keyed by prefix. A property-element or attached
     /// property such as "local:MenuItemTemplateSelector.ItemTemplate" contributes the type half
     /// only, since that is what has to exist for the reference to resolve.
+    ///
+    /// A prefix can arrive naming nothing. A bare prefixed attribute binds its namespace without
+    /// identifying a type, so it is recorded as a prefix with no type: enough to require an import,
+    /// never enough to synthesize one. The empty set that leaves behind is what stops
+    /// <see cref="SharedNamespace"/> from resolving such a prefix out of the snippet's own code.
     /// </summary>
     private static Dictionary<string, HashSet<string>> ReferencedTypes(string xaml)
     {
@@ -254,7 +260,10 @@ internal static partial class XamlFragment
                 references[prefix] = types;
             }
 
-            types.Add(type);
+            if (type.Length > 0)
+            {
+                types.Add(type);
+            }
         }
 
         return references;
@@ -315,7 +324,7 @@ internal static partial class XamlFragment
                 continue;
             }
 
-            foreach ((string Prefix, string Type) reference in ValueReferences(xaml[span.Start..span.End]))
+            foreach ((string Prefix, string Type) reference in ValueReferences(DecodeReferences(xaml[span.Start..span.End])))
             {
                 yield return reference;
             }
@@ -527,12 +536,109 @@ internal static partial class XamlFragment
             yield break;
         }
 
-        foreach (Match match in QualifiedNameRegex().Matches(value))
+        foreach (Match match in QNameValueRegex().Matches(value))
         {
             foreach ((string Prefix, string Type) reference in PairedCaptures(match))
             {
                 yield return reference;
             }
+        }
+    }
+
+    /// <summary>
+    /// The attribute value with its XML character references resolved, as the XAML parser sees it.
+    ///
+    /// XML decodes a value before XAML reads it, so "local&amp;#58;Contact" reaches the parser as
+    /// "local:Contact" and binds the prefix exactly as the literal spelling does. Scanning the raw
+    /// text finds no colon there, and a fragment whose only reference is written that way would be
+    /// published with no import for it.
+    ///
+    /// Only the references XML defines are resolved. An unknown or malformed one is left standing:
+    /// it is not something this scanner should be inventing a meaning for, and leaving it alone can
+    /// only produce a reference too many, which withholds.
+    ///
+    /// Decoding happens on a value already cut from the fragment, so the offsets the caller keeps
+    /// for span bookkeeping are untouched by it.
+    /// </summary>
+    private static string DecodeReferences(string value)
+    {
+        if (!value.Contains('&'))
+        {
+            return value;
+        }
+
+        StringBuilder decoded = new(value.Length);
+        int index = 0;
+
+        while (index < value.Length)
+        {
+            if (value[index] != '&')
+            {
+                decoded.Append(value[index++]);
+                continue;
+            }
+
+            int end = value.IndexOf(';', index + 1);
+            if (end < 0)
+            {
+                decoded.Append(value[index++]);
+                continue;
+            }
+
+            string reference = value[(index + 1)..end];
+            string? replacement = ResolveReference(reference);
+            if (replacement is null)
+            {
+                decoded.Append(value[index++]);
+                continue;
+            }
+
+            decoded.Append(replacement);
+            index = end + 1;
+        }
+
+        return decoded.ToString();
+    }
+
+    /// <summary>
+    /// The text a character reference stands for, or null when it is not one XML defines.
+    /// </summary>
+    private static string? ResolveReference(string reference)
+    {
+        switch (reference)
+        {
+            case "amp": return "&";
+            case "lt": return "<";
+            case "gt": return ">";
+            case "quot": return "\"";
+            case "apos": return "'";
+        }
+
+        if (reference.Length < 2 || reference[0] != '#')
+        {
+            return null;
+        }
+
+        bool hex = reference[1] is 'x' or 'X';
+        string digits = hex ? reference[2..] : reference[1..];
+
+        if (digits.Length == 0
+            || !int.TryParse(
+                digits,
+                hex ? NumberStyles.HexNumber : NumberStyles.None,
+                CultureInfo.InvariantCulture,
+                out int code))
+        {
+            return null;
+        }
+
+        try
+        {
+            return char.ConvertFromUtf32(code);
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            return null;
         }
     }
 
@@ -710,8 +816,13 @@ internal static partial class XamlFragment
     /// The attribute-name branch stops before the "=" rather than consuming it, so an attribute
     /// that is itself prefixed does not hide a prefixed type in its value: in
     /// x:DataType="local:Contact" both "x" and "local" have to be found.
+    ///
+    /// That branch names a type only when the attribute is dotted. An attached property is written
+    /// "local:Owner.Property", and Owner is a type that has to exist; a bare "local:Something" is
+    /// not a type reference at all — conditional XAML writes exactly that — so it captures no name
+    /// and the prefix arrives needing an import that nothing in the snippet can be made to satisfy.
     /// </summary>
-    [GeneratedRegex(@"</?([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)|\s([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)[\w.\-]*(?=\s*=)")]
+    [GeneratedRegex(@"</?([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)|\s([A-Za-z_][\w.\-]*):(?:([A-Za-z_]\w*)\.[\w.\-]*|[A-Za-z_][\w.\-]*)(?=\s*=)")]
     private static partial Regex NameReferenceRegex();
 
     /// <summary>
@@ -733,4 +844,17 @@ internal static partial class XamlFragment
     /// </summary>
     [GeneratedRegex(@"([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
     private static partial Regex QualifiedNameRegex();
+
+    /// <summary>
+    /// A "prefix:Type" reference in a QName-valued attribute, keeping the whole dotted name.
+    ///
+    /// This is where it differs from <see cref="QualifiedNameRegex"/>, and the difference is the
+    /// point. An extension token holds attached-property syntax — "(local:Grid.Row)" asks for the
+    /// Grid type — so reading the owner alone is right there. A value like x:DataType="local:A.B"
+    /// asks for the nested type B, and reading "A" would find A declared, synthesize an import for
+    /// its namespace, and publish markup whose actual request is still unresolved. Keeping the full
+    /// name means a nested type is looked up as written, finds nothing, and withholds.
+    /// </summary>
+    [GeneratedRegex(@"([A-Za-z_][\w.\-]*):([A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*)")]
+    private static partial Regex QNameValueRegex();
 }
