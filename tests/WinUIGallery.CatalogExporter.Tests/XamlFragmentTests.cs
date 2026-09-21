@@ -189,4 +189,76 @@ public sealed class XamlFragmentTests
 
         Assert.AreEqual("using:Contoso", resolved["local"]);
     }
+
+    /// <summary>
+    /// A property path may open with a parenthesis rather than a name. Gating on the name alone
+    /// skipped the value outright, so the prefix went unrecorded and the fragment was published
+    /// with no import for it.
+    /// </summary>
+    [TestMethod]
+    public void UnresolvedPrefixes_ReadsAParenthesizedPropertyPath()
+    {
+        string xaml = """<DoubleAnimation Storyboard.TargetProperty="(local:Badge.Count)" />""";
+
+        CollectionAssert.Contains(
+            XamlFragment.UnresolvedPrefixes(xaml, new Dictionary<string, string>()),
+            "local",
+            "A prefix used in a parenthesized property path was never read.");
+    }
+
+    /// <summary>
+    /// The parenthesis also settles which reading of the dotted name applies: a property path names
+    /// an attached property, so the owner is the type that has to exist.
+    /// </summary>
+    [TestMethod]
+    public void ResolvePrefixesFromCode_ResolvesAParenthesizedPathToItsOwner()
+    {
+        string xaml = """<DoubleAnimation Storyboard.TargetProperty="(local:Badge.Count)" />""";
+
+        Dictionary<string, string> resolved = XamlFragment.ResolvePrefixesFromCode(
+            xaml,
+            XamlFragment.UnresolvedPrefixes(xaml, new Dictionary<string, string>()),
+            "namespace Contoso;\n\npublic class Badge { }");
+
+        Assert.AreEqual("using:Contoso", resolved["local"]);
+    }
+
+    /// <summary>
+    /// A property path need not put its prefixed segment first, and the older gate only looked at
+    /// the start of the value. These are ordinary spellings whose import was never demanded.
+    /// </summary>
+    [TestMethod]
+    public void UnresolvedPrefixes_ReadsAPrefixInALaterPathSegment()
+    {
+        foreach (string path in new[]
+        {
+            "(UIElement.RenderTransform).(local:MyTransform.X)",
+            "RenderTransform.(local:MyTransform.X)",
+            "Children[0].(local:MyTransform.X)",
+            "((local:MyTransform.X))",
+        })
+        {
+            string xaml = $"""<DoubleAnimation Storyboard.TargetProperty="{path}" />""";
+
+            CollectionAssert.Contains(
+                XamlFragment.UnresolvedPrefixes(xaml, new Dictionary<string, string>()),
+                "local",
+                $"No import was demanded for the prefix in {path}.");
+        }
+    }
+
+    /// <summary>
+    /// The gate still has to hold: a value that neither opens with a name nor parenthesizes one is
+    /// prose, and reading a QName out of it would withhold the fragment over a prefix that is not
+    /// one. Without the gate the name in this value would be found.
+    /// </summary>
+    [TestMethod]
+    public void UnresolvedPrefixes_IgnoresANameMentionedInProse()
+    {
+        string xaml = """<TextBlock Text="see local:Thing for details" />""";
+
+        List<string> unresolved = XamlFragment.UnresolvedPrefixes(xaml, new Dictionary<string, string>());
+
+        Assert.AreEqual(0, unresolved.Count, string.Join(", ", unresolved));
+    }
 }

@@ -416,4 +416,40 @@ public sealed class CodeDeclarationsTests
 
         Assert.AreEqual(CodeDeclarations.PlaceholderNamespace, types["Reader"]);
     }
+
+    /// <summary>
+    /// A namespace name is reported as the compiler spells it, not as the source does. Trivia
+    /// between the tokens is valid C# and would otherwise be copied into the published import.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_ReportsANamespaceWithoutItsTrivia()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "namespace Contoso /* why */ . Models;\n\npublic class Widget { }");
+
+        Assert.AreEqual("Contoso.Models", types["Widget"]);
+    }
+
+    /// <summary>
+    /// An "@" escapes a keyword so it can be used as an identifier; it is not part of the name.
+    /// "using:@class" would not resolve, where "using:class" is what the compiler sees.
+    /// </summary>
+    [TestMethod]
+    public void DeclaredTypes_ReportsAnEscapedNamespaceIdentifierUnescaped()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "namespace @event.@class;\n\npublic class Widget { }");
+
+        Assert.AreEqual("event.class", types["Widget"]);
+    }
+
+    /// <summary>Nested block-scoped namespaces join the same way, each already unescaped.</summary>
+    [TestMethod]
+    public void DeclaredTypes_JoinsNestedNamespacesWithoutTrivia()
+    {
+        Dictionary<string, string> types = CodeDeclarations.DeclaredTypes(
+            "namespace A . B\n{\n    namespace @int\n    {\n        public class Foo { }\n    }\n}");
+
+        Assert.AreEqual("A.B.int", types["Foo"]);
+    }
 }

@@ -146,12 +146,29 @@ internal static class CodeDeclarations
         {
             if (node is BaseNamespaceDeclarationSyntax ns)
             {
-                enclosing.Insert(0, ns.Name.ToString());
+                enclosing.Insert(0, ClrNameOf(ns.Name));
             }
         }
 
         return enclosing.Count == 0 ? PlaceholderNamespace : string.Join('.', enclosing);
     }
+
+    /// <summary>
+    /// The CLR spelling of a namespace name, built from its identifiers rather than its source
+    /// text.
+    ///
+    /// The two differ, and the difference is published. Source text carries whatever sits between
+    /// the tokens — "namespace Contoso /* why */ . Models" is valid C# — and it keeps the "@" that
+    /// escapes a keyword, though "@class" names the namespace "class". Emitting either spelling in
+    /// a "using:" import produces a line that cannot resolve. Taking each identifier's ValueText
+    /// drops the trivia and the escape together, which is the name the compiler works with.
+    /// </summary>
+    private static string ClrNameOf(NameSyntax name) =>
+        string.Join(
+            '.',
+            name.DescendantTokens()
+                .Where(token => token.IsKind(SyntaxKind.IdentifierToken))
+                .Select(token => token.ValueText));
 
     /// <summary>
     /// The spans covered by #if/#endif pairs, outermost only, taking in the directives themselves.

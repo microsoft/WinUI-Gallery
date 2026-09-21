@@ -531,12 +531,33 @@ internal static partial class XamlFragment
         // Once it does begin with one, every name in it counts, because a value may name several —
         // x:TypeArguments="local:Key, local:Value" needs both, and resolving the prefix against only
         // the first would publish an import that does not contain the rest.
-        if (!LeadingQualifiedNameRegex().IsMatch(value))
+        //
+        // A property path is the other shape XAML resolves names in, and it does not open with one:
+        // Storyboard.TargetProperty="(UIElement.RenderTransform).(local:MyTransform.X)" puts the
+        // prefixed segment last. A parenthesis is what marks a name there, so a value holding one is
+        // admitted wherever it sits. That lets prose containing something like "(tel:555)" withhold
+        // a fragment, which is the safe half of a trade with no third option.
+        //
+        // Which reading of a dotted name applies follows from the same two shapes. A property path
+        // names an attached property, so "(local:Badge.Count)" asks for the Badge type; a value that
+        // opens with a QName asks for the whole name, so x:DataType="local:Container.Item" asks for
+        // the nested Item and must not be satisfied by Container alone.
+        Regex names;
+
+        if (LeadingQualifiedNameRegex().IsMatch(value))
+        {
+            names = QNameValueRegex();
+        }
+        else if (PathQualifiedNameRegex().IsMatch(value))
+        {
+            names = QualifiedNameRegex();
+        }
+        else
         {
             yield break;
         }
 
-        foreach (Match match in QNameValueRegex().Matches(value))
+        foreach (Match match in names.Matches(value))
         {
             foreach ((string Prefix, string Type) reference in PairedCaptures(match))
             {
@@ -833,6 +854,17 @@ internal static partial class XamlFragment
     /// </summary>
     [GeneratedRegex(@"^\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
     private static partial Regex LeadingQualifiedNameRegex();
+
+    /// <summary>
+    /// A "prefix:Type" written inside parentheses, which is how a property path spells a name.
+    ///
+    /// This is not anchored, because the segment that carries the prefix need not come first:
+    /// "(UIElement.RenderTransform).(local:MyTransform.X)" and "RenderTransform.(local:MyT.X)" are
+    /// both ordinary spellings. The parenthesis is the whole of what distinguishes such a name from
+    /// the text around it, so it is what the pattern looks for.
+    /// </summary>
+    [GeneratedRegex(@"\(\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
+    private static partial Regex PathQualifiedNameRegex();
 
     /// <summary>
     /// A "prefix:Type" reference inside a single bare token of a markup extension.
