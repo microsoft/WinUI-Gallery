@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -130,7 +131,7 @@ internal static partial class XamlFragment
 
     /// <summary>
     /// Prefixes <paramref name="xaml"/> binds to that its own page never declares, so no import
-    /// can be published for them.
+    /// can be published for them unless <see cref="ResolvePrefixesFromCode"/> accounts for one.
     ///
     /// <see cref="IsWellFormed"/> cannot surface these, by design: it synthesizes a declaration for
     /// every prefix it sees so that it agrees with the consumer's parser. The fragment therefore
@@ -161,6 +162,114 @@ internal static partial class XamlFragment
     }
 
     /// <summary>
+    /// Imports for prefixes that resolve against the sample's own C# rather than its page.
+    ///
+    /// A snippet that hands the reader both halves of a scenario — "local:ExplorerItem" in the XAML
+    /// and the ExplorerItem class in the code beside it — is complete on its own; the only thing
+    /// missing is the line that binds the prefix, which the page cannot supply because the type
+    /// does not live there. Synthesizing that line from the code's own namespace is not a guess:
+    /// the namespace and the types are both taken from the snippet being published.
+    ///
+    /// A prefix is only resolved when every type it qualifies is declared in that code AND those
+    /// types all sit in one namespace. One unaccounted-for type means the reader is still missing a
+    /// piece; types spread across two namespaces mean no single import covers them, and naming
+    /// either one would publish a binding that does not contain what the XAML asks for. Both cases
+    /// leave the caller to withhold the fragment exactly as before.
+    /// </summary>
+    public static Dictionary<string, string> ResolvePrefixesFromCode(
+        string xaml,
+        IEnumerable<string> prefixes,
+        string? code)
+    {
+        Dictionary<string, string> resolved = new(StringComparer.Ordinal);
+
+        Dictionary<string, string> declaredTypes = CodeDeclarations.DeclaredTypes(code);
+        if (declaredTypes.Count == 0)
+        {
+            return resolved;
+        }
+
+        Dictionary<string, HashSet<string>> referenced = ReferencedTypes(xaml);
+
+        foreach (string prefix in prefixes)
+        {
+            if (!referenced.TryGetValue(prefix, out HashSet<string>? types))
+            {
+                continue;
+            }
+
+            string? ns = SharedNamespace(types, declaredTypes);
+            if (ns is not null)
+            {
+                resolved[prefix] = $"using:{ns}";
+            }
+        }
+
+        return resolved;
+    }
+
+    /// <summary>
+    /// The one namespace holding every type in <paramref name="types"/>, or null when some type is
+    /// not declared at all or they do not agree on a single namespace.
+    /// </summary>
+    private static string? SharedNamespace(
+        HashSet<string> types,
+        IReadOnlyDictionary<string, string> declaredTypes)
+    {
+        string? shared = null;
+
+        foreach (string type in types)
+        {
+            if (!declaredTypes.TryGetValue(type, out string? candidate))
+            {
+                return null;
+            }
+
+            if (shared is null)
+            {
+                shared = candidate;
+            }
+            else if (!string.Equals(shared, candidate, StringComparison.Ordinal))
+            {
+                return null;
+            }
+        }
+
+        return shared;
+    }
+
+    /// <summary>
+    /// The type names each prefix qualifies, keyed by prefix. A property-element or attached
+    /// property such as "local:MenuItemTemplateSelector.ItemTemplate" contributes the type half
+    /// only, since that is what has to exist for the reference to resolve.
+    ///
+    /// A prefix can arrive naming nothing. A bare prefixed attribute binds its namespace without
+    /// identifying a type, so it is recorded as a prefix with no type: enough to require an import,
+    /// never enough to synthesize one. The empty set that leaves behind is what stops
+    /// <see cref="SharedNamespace"/> from resolving such a prefix out of the snippet's own code.
+    /// </summary>
+    private static Dictionary<string, HashSet<string>> ReferencedTypes(string xaml)
+    {
+        Dictionary<string, HashSet<string>> references = new(StringComparer.Ordinal);
+
+        foreach ((string prefix, string type) in PrefixReferences(xaml))
+        {
+            if (!references.TryGetValue(prefix, out HashSet<string>? types))
+            {
+                types = new HashSet<string>(StringComparer.Ordinal);
+                references[prefix] = types;
+            }
+
+            if (type.Length > 0)
+            {
+                types.Add(type);
+            }
+        }
+
+        return references;
+    }
+
+    /// <summary>
     /// Prefixes used in a way that actually binds to a namespace: an element name, an attribute
     /// name, a markup extension, or a type reference in an attribute value.
     ///
@@ -172,19 +281,541 @@ internal static partial class XamlFragment
     {
         HashSet<string> prefixes = new(StringComparer.Ordinal);
 
-        foreach (Match match in BindingPrefixRegex().Matches(xaml))
+        foreach ((string prefix, _) in PrefixReferences(xaml))
         {
-            for (int group = 1; group < match.Groups.Count; group++)
-            {
-                string prefix = match.Groups[group].Value;
-                if (prefix.Length > 0 && !IgnoredPrefixes.Contains(prefix))
-                {
-                    prefixes.Add(prefix);
-                }
-            }
+            prefixes.Add(prefix);
         }
 
         return prefixes;
+    }
+
+    /// <summary>
+    /// Every "prefix:Type" the fragment resolves, paired so a caller can ask not just which
+    /// namespaces are needed but what is expected to be in them.
+    ///
+    /// Three things are read. Element and attribute names are a pattern match, because a prefix
+    /// there is delimited by the markup itself. Attribute values are located by scanning the tag
+    /// structure, so that a quote in text content cannot be mistaken for one that opens a value.
+    /// The values themselves are parsed, because a value holding a markup extension is written in a
+    /// grammar of its own: arguments separated by commas, named or positional, quoted or bare,
+    /// nesting freely.
+    /// </summary>
+    private static IEnumerable<(string Prefix, string Type)> PrefixReferences(string xaml)
+    {
+        foreach (Match match in NameReferenceRegex().Matches(xaml))
+        {
+            foreach ((string Prefix, string Type) reference in PairedCaptures(match))
+            {
+                yield return reference;
+            }
+        }
+
+        List<(int Start, int End)> values = [];
+
+        foreach ((int Start, int End, bool IsNamespaceDeclaration) span in AttributeValueSpans(xaml))
+        {
+            values.Add((span.Start, span.End));
+
+            // An xmlns value is a namespace URI, not a type reference. "clr-namespace:Contoso"
+            // reads as a "prefix:Type" whose prefix nothing declares, and withholding a fragment
+            // over it would be withholding it over the very declaration that binds its markup.
+            if (span.IsNamespaceDeclaration)
+            {
+                continue;
+            }
+
+            foreach ((string Prefix, string Type) reference in ValueReferences(DecodeReferences(xaml[span.Start..span.End])))
+            {
+                yield return reference;
+            }
+        }
+
+        // An extension written outside an attribute value — in a snippet missing a quote, or one
+        // that opens mid-element — would otherwise take every reference inside it out of sight.
+        // Missing a reference is the one failure that ships XAML which does not bind, so a brace no
+        // attribute accounts for is still read as an extension.
+        int index = 0;
+
+        while (index < xaml.Length)
+        {
+            int brace = xaml.IndexOf('{', index);
+            if (brace < 0)
+            {
+                break;
+            }
+
+            if (values.Any(value => brace >= value.Start && brace < value.End))
+            {
+                index = brace + 1;
+                continue;
+            }
+
+            List<(string Prefix, string Type)> found = [];
+            index = ReadExtension(xaml, brace, found);
+
+            foreach ((string Prefix, string Type) reference in Resolvable(found))
+            {
+                yield return reference;
+            }
+        }
+    }
+
+    /// <summary>
+    /// The span of every attribute value in the fragment, as offsets into it.
+    ///
+    /// Finding these with a pattern over the whole fragment was wrong in a way that mattered.
+    /// Matching "=" followed by a quoted run pairs quotes wherever it meets them, so a stray quote
+    /// in text content — "&lt;TextBlock&gt;x = " y&lt;/TextBlock&gt;" — pairs with the opening quote
+    /// of the next real attribute and swallows its value. The value was then read by nothing: it is
+    /// not a name, and it holds no brace for the extension sweep to find. A reference lost that way
+    /// is published without its import, which is the one failure this file exists to prevent.
+    ///
+    /// Walking the tag structure instead removes the ambiguity rather than narrowing it. A quote is
+    /// only a delimiter inside a start tag, so text, comments, CDATA and processing instructions are
+    /// stepped over as the units they are and never offer a quote to pair with.
+    ///
+    /// Each span says whether its attribute is an xmlns declaration, because such a value holds a
+    /// namespace URI rather than markup: it is still a span the extension sweep must not re-read,
+    /// but nothing in it names a type.
+    /// </summary>
+    private static IEnumerable<(int Start, int End, bool IsNamespaceDeclaration)> AttributeValueSpans(string xaml)
+    {
+        int index = 0;
+
+        while (index < xaml.Length)
+        {
+            if (xaml[index] != '<')
+            {
+                index++;
+                continue;
+            }
+
+            if (Matches(xaml, index, "<!--"))
+            {
+                index = EndOf(xaml, index + 4, "-->");
+                continue;
+            }
+
+            if (Matches(xaml, index, "<![CDATA["))
+            {
+                index = EndOf(xaml, index + 9, "]]>");
+                continue;
+            }
+
+            if (Matches(xaml, index, "<?"))
+            {
+                index = EndOf(xaml, index + 2, "?>");
+                continue;
+            }
+
+            index++;
+
+            while (index < xaml.Length && xaml[index] != '>')
+            {
+                char current = xaml[index];
+
+                if (current is '"' or '\'')
+                {
+                    int close = xaml.IndexOf(current, index + 1);
+                    if (close < 0)
+                    {
+                        // A quote that never closes leaves no way to tell where the value ends, so
+                        // the rest is treated as one. Reading too much withholds a fragment; reading
+                        // nothing would publish one whose references were never looked at.
+                        //
+                        // What it reaches is no longer one attribute's value, so the xmlns exemption
+                        // does not apply to it: that exemption says a namespace URI names no type,
+                        // and everything after the quote is markup that may well name several.
+                        yield return (index + 1, xaml.Length, false);
+                        yield break;
+                    }
+
+                    yield return (index + 1, close, NamesNamespaceDeclaration(xaml, index));
+                    index = close + 1;
+                    continue;
+                }
+
+                index++;
+            }
+
+            index++;
+        }
+    }
+
+    /// <summary>
+    /// True when the quote at <paramref name="quote"/> opens the value of an xmlns declaration.
+    ///
+    /// The name is read backwards from the delimiter because that is where the scan already stands
+    /// and the shape is fixed: a value is preceded by "=", and before that the attribute name. An
+    /// attribute written without one is malformed, and reporting it as an ordinary value only means
+    /// its contents are read — the direction that withholds a fragment rather than publishing one.
+    /// </summary>
+    private static bool NamesNamespaceDeclaration(string xaml, int quote)
+    {
+        int index = quote - 1;
+
+        while (index >= 0 && char.IsWhiteSpace(xaml[index]))
+        {
+            index--;
+        }
+
+        if (index < 0 || xaml[index] != '=')
+        {
+            return false;
+        }
+
+        index--;
+
+        while (index >= 0 && char.IsWhiteSpace(xaml[index]))
+        {
+            index--;
+        }
+
+        int end = index + 1;
+
+        while (index >= 0 && (char.IsLetterOrDigit(xaml[index]) || xaml[index] is '_' or '.' or '-' or ':'))
+        {
+            index--;
+        }
+
+        ReadOnlySpan<char> name = xaml.AsSpan(index + 1, end - index - 1);
+
+        return name.Equals("xmlns", StringComparison.Ordinal) || name.StartsWith("xmlns:", StringComparison.Ordinal);
+    }
+
+    private static bool Matches(string text, int index, string token) =>
+        index + token.Length <= text.Length && string.CompareOrdinal(text, index, token, 0, token.Length) == 0;
+
+    /// <summary>Index just past <paramref name="token"/>, or the end of the text when it is absent.</summary>
+    private static int EndOf(string text, int start, string token)
+    {
+        int found = text.IndexOf(token, start, StringComparison.Ordinal);
+        return found < 0 ? text.Length : found + token.Length;
+    }
+
+    /// <summary>
+    /// The references an attribute value contributes: those of the markup extension it holds, or
+    /// the types it names outright, as in x:DataType="local:Contact".
+    ///
+    /// A value opening with "{}" is XAML's escape for text that merely starts with a brace, so
+    /// nothing in it is an extension and nothing in it resolves.
+    /// </summary>
+    private static IEnumerable<(string Prefix, string Type)> ValueReferences(string value)
+    {
+        int start = 0;
+        while (start < value.Length && char.IsWhiteSpace(value[start]))
+        {
+            start++;
+        }
+
+        if (start < value.Length && value[start] == '{')
+        {
+            if (IsEscapedLiteral(value, start))
+            {
+                yield break;
+            }
+
+            List<(string Prefix, string Type)> found = [];
+            ReadExtension(value, start, found);
+
+            foreach ((string Prefix, string Type) reference in Resolvable(found))
+            {
+                yield return reference;
+            }
+
+            yield break;
+        }
+
+        // A plain value is a type reference only when it begins by naming a type; reading a QName
+        // from anywhere inside one would find prefixes in prose and withhold the fragment over them.
+        // Once it does begin with one, every name in it counts, because a value may name several —
+        // x:TypeArguments="local:Key, local:Value" needs both, and resolving the prefix against only
+        // the first would publish an import that does not contain the rest.
+        //
+        // A property path is the other shape XAML resolves names in, and it does not open with one:
+        // Storyboard.TargetProperty="(UIElement.RenderTransform).(local:MyTransform.X)" puts the
+        // prefixed segment last. A parenthesis is what marks a name there, so a value holding one is
+        // admitted wherever it sits. That lets prose containing something like "(tel:555)" withhold
+        // a fragment, which is the safe half of a trade with no third option.
+        //
+        // Which reading of a dotted name applies follows from the same two shapes. A property path
+        // names an attached property, so "(local:Badge.Count)" asks for the Badge type; a value that
+        // opens with a QName asks for the whole name, so x:DataType="local:Container.Item" asks for
+        // the nested Item and must not be satisfied by Container alone.
+        Regex names;
+
+        if (LeadingQualifiedNameRegex().IsMatch(value))
+        {
+            names = QNameValueRegex();
+        }
+        else if (PathQualifiedNameRegex().IsMatch(value))
+        {
+            names = QualifiedNameRegex();
+        }
+        else
+        {
+            yield break;
+        }
+
+        foreach (Match match in names.Matches(value))
+        {
+            foreach ((string Prefix, string Type) reference in PairedCaptures(match))
+            {
+                yield return reference;
+            }
+        }
+    }
+
+    /// <summary>
+    /// The attribute value with its XML character references resolved, as the XAML parser sees it.
+    ///
+    /// XML decodes a value before XAML reads it, so "local&amp;#58;Contact" reaches the parser as
+    /// "local:Contact" and binds the prefix exactly as the literal spelling does. Scanning the raw
+    /// text finds no colon there, and a fragment whose only reference is written that way would be
+    /// published with no import for it.
+    ///
+    /// Only the references XML defines are resolved. An unknown or malformed one is left standing:
+    /// it is not something this scanner should be inventing a meaning for, and leaving it alone can
+    /// only produce a reference too many, which withholds.
+    ///
+    /// Decoding happens on a value already cut from the fragment, so the offsets the caller keeps
+    /// for span bookkeeping are untouched by it.
+    /// </summary>
+    private static string DecodeReferences(string value)
+    {
+        if (!value.Contains('&'))
+        {
+            return value;
+        }
+
+        StringBuilder decoded = new(value.Length);
+        int index = 0;
+
+        while (index < value.Length)
+        {
+            if (value[index] != '&')
+            {
+                decoded.Append(value[index++]);
+                continue;
+            }
+
+            int end = value.IndexOf(';', index + 1);
+            if (end < 0)
+            {
+                decoded.Append(value[index++]);
+                continue;
+            }
+
+            string reference = value[(index + 1)..end];
+            string? replacement = ResolveReference(reference);
+            if (replacement is null)
+            {
+                decoded.Append(value[index++]);
+                continue;
+            }
+
+            decoded.Append(replacement);
+            index = end + 1;
+        }
+
+        return decoded.ToString();
+    }
+
+    /// <summary>
+    /// The text a character reference stands for, or null when it is not one XML defines.
+    /// </summary>
+    private static string? ResolveReference(string reference)
+    {
+        switch (reference)
+        {
+            case "amp": return "&";
+            case "lt": return "<";
+            case "gt": return ">";
+            case "quot": return "\"";
+            case "apos": return "'";
+        }
+
+        if (reference.Length < 2 || reference[0] != '#')
+        {
+            return null;
+        }
+
+        bool hex = reference[1] is 'x' or 'X';
+        string digits = hex ? reference[2..] : reference[1..];
+
+        if (digits.Length == 0
+            || !int.TryParse(
+                digits,
+                hex ? NumberStyles.HexNumber : NumberStyles.None,
+                CultureInfo.InvariantCulture,
+                out int code))
+        {
+            return null;
+        }
+
+        try
+        {
+            return char.ConvertFromUtf32(code);
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// True when the text at <paramref name="start"/> opens with XAML's "{}" escape, which marks
+    /// everything after it as literal rather than as markup to resolve.
+    /// </summary>
+    private static bool IsEscapedLiteral(string text, int start) =>
+        start + 1 < text.Length && text[start] == '{' && text[start + 1] == '}';
+
+    /// <summary>
+    /// Reads the markup extension opening at <paramref name="index"/>, collecting the qualified
+    /// names it resolves, and returns the index just past its closing brace.
+    ///
+    /// The grammar is small: a type name, then arguments separated by commas, each either bare, or
+    /// quoted, or an extension of its own, and a named argument writes "Name=" before its value.
+    /// Following it rather than approximating it is what lets the cases be told apart — a nested
+    /// extension has to be entered, and a quoted argument ends at its own delimiter rather than at
+    /// the next comma — where a pattern over the raw body can only guess from the punctuation
+    /// nearby.
+    ///
+    /// Argument names are read as tokens like any other. They hold no colon, so they contribute
+    /// nothing, and treating them separately would buy nothing but a state to get wrong.
+    /// </summary>
+    private static int ReadExtension(string text, int index, List<(string Prefix, string Type)> found)
+    {
+        index++;
+
+        while (index < text.Length && text[index] != '}')
+        {
+            char current = text[index];
+
+            if (current == '{')
+            {
+                index = ReadExtension(text, index, found);
+            }
+            else if (current is '"' or '\'')
+            {
+                index = ReadQuoted(text, index, found);
+            }
+            else if (current is ',' or '=' || char.IsWhiteSpace(current))
+            {
+                index++;
+            }
+            else
+            {
+                index = ReadToken(text, index, found);
+            }
+        }
+
+        return index < text.Length ? index + 1 : index;
+    }
+
+    /// <summary>
+    /// Reads one bare token — an extension's type name, an argument name, or an unquoted value —
+    /// and records the qualified names in it.
+    ///
+    /// The whole token is searched rather than just its start, because a binding path carries its
+    /// references inside punctuation: "(local:Grid.Row)" names a type that has to resolve.
+    ///
+    /// Its one caller only enters here on a character that is none of the delimiters below, so the
+    /// token is never empty and the scan always advances.
+    /// </summary>
+    private static int ReadToken(string text, int index, List<(string Prefix, string Type)> found)
+    {
+        int start = index;
+
+        while (index < text.Length
+            && text[index] is not (',' or '=' or '{' or '}' or '"' or '\'')
+            && !char.IsWhiteSpace(text[index]))
+        {
+            index++;
+        }
+
+        foreach (Match match in QualifiedNameRegex().Matches(text[start..index]))
+        {
+            found.Add((match.Groups[1].Value, match.Groups[2].Value));
+        }
+
+        return index;
+    }
+
+    /// <summary>
+    /// Reads a quoted argument, recording the qualified names in it, and returns the index just
+    /// past the closing quote. A backslash escapes the delimiter inside one, so it is stepped over
+    /// in pairs.
+    ///
+    /// Quoting delimits an argument; it does not make the argument literal. The value still reaches
+    /// the target property's type converter, and some of those resolve names —
+    /// "{Binding Path='(attached:Badge.Count)'}" needs attached imported exactly as the unquoted
+    /// form does. Stepping over the contents lost those references and published the fragment
+    /// without the import they needed.
+    ///
+    /// Which properties resolve names is not knowable here, so the contents are read the same way
+    /// everywhere. That reads a name out of "StringFormat='HH:mm'" too, and the fragment is withheld
+    /// over a prefix that was never one. Nothing in the text tells "HH:mm" apart from
+    /// "attached:Badge", and of the two ways to be wrong only this one is safe: a withheld fragment
+    /// is a sample the catalog does not carry, where a missing import is a sample that does not run.
+    /// The "{}" escape remains the author's way to say a value is literal, and is honoured.
+    /// </summary>
+    private static int ReadQuoted(string text, int open, List<(string Prefix, string Type)> found)
+    {
+        char quote = text[open];
+        int close = text.Length;
+
+        for (int index = open + 1; index < text.Length; index++)
+        {
+            if (text[index] == '\\')
+            {
+                index++;
+                continue;
+            }
+
+            if (text[index] == quote)
+            {
+                close = index;
+                break;
+            }
+        }
+
+        int start = open + 1;
+        while (start < close && char.IsWhiteSpace(text[start]))
+        {
+            start++;
+        }
+
+        if (!IsEscapedLiteral(text, start))
+        {
+            foreach (Match match in QualifiedNameRegex().Matches(text[start..close]))
+            {
+                found.Add((match.Groups[1].Value, match.Groups[2].Value));
+            }
+        }
+
+        return close < text.Length ? close + 1 : text.Length;
+    }
+
+    /// <summary>Drops the prefixes XAML resolves without any import of its own.</summary>
+    private static IEnumerable<(string Prefix, string Type)> Resolvable(
+        IEnumerable<(string Prefix, string Type)> found) =>
+        found.Where(reference => !IgnoredPrefixes.Contains(reference.Prefix));
+
+    /// <summary>
+    /// Reads a match whose groups are prefix/type pairs, skipping the alternatives that did not
+    /// participate and the prefixes XAML resolves without an import.
+    /// </summary>
+    private static IEnumerable<(string Prefix, string Type)> PairedCaptures(Match match)
+    {
+        for (int group = 1; group + 1 < match.Groups.Count; group += 2)
+        {
+            string prefix = match.Groups[group].Value;
+            if (prefix.Length > 0 && !IgnoredPrefixes.Contains(prefix))
+            {
+                yield return (prefix, match.Groups[group + 1].Value);
+            }
+        }
     }
 
     /// <summary>Any "prefix:" occurrence — matches winappCli's namespace-synthesis regex.</summary>
@@ -196,13 +827,66 @@ internal static partial class XamlFragment
     private static partial Regex SelfDeclaredPrefixRegex();
 
     /// <summary>
-    /// Prefix positions XAML actually resolves: element names (&lt;p:Foo, &lt;/p:Foo),
-    /// attribute names (p:Foo=), markup extensions ({p:Foo}) and type references ("p:Foo").
+    /// Prefix positions in the markup itself: element names (&lt;p:Foo, &lt;/p:Foo) and attribute
+    /// names (p:Foo=). A prefix here is delimited by the XML around it, so a pattern reads it
+    /// exactly; attribute values are a grammar of their own and are parsed instead.
+    ///
+    /// Each alternative captures the prefix and the type name after it, in that order, so the
+    /// groups can be read in pairs.
     ///
     /// The attribute-name branch stops before the "=" rather than consuming it, so an attribute
     /// that is itself prefixed does not hide a prefixed type in its value: in
     /// x:DataType="local:Contact" both "x" and "local" have to be found.
+    ///
+    /// That branch names a type only when the attribute is dotted. An attached property is written
+    /// "local:Owner.Property", and Owner is a type that has to exist; a bare "local:Something" is
+    /// not a type reference at all — conditional XAML writes exactly that — so it captures no name
+    /// and the prefix arrives needing an import that nothing in the snippet can be made to satisfy.
     /// </summary>
-    [GeneratedRegex(@"</?([A-Za-z_][\w.\-]*):[A-Za-z_]|\s([A-Za-z_][\w.\-]*):[A-Za-z_][\w.\-]*(?=\s*=)|\{\s*([A-Za-z_][\w.\-]*):[A-Za-z_]|=""\s*([A-Za-z_][\w.\-]*):[A-Za-z_]")]
-    private static partial Regex BindingPrefixRegex();
+    [GeneratedRegex(@"</?([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)|\s([A-Za-z_][\w.\-]*):(?:([A-Za-z_]\w*)\.[\w.\-]*|[A-Za-z_][\w.\-]*)(?=\s*=)")]
+    private static partial Regex NameReferenceRegex();
+
+    /// <summary>
+    /// A "prefix:Type" opening an attribute value, as in TargetType="local:Card". Anchoring to the
+    /// start is what separates a value that names types from a colon that happens to appear in prose
+    /// or in a path; it gates the value rather than being the whole of the value, since a value that
+    /// names one type may go on to name others.
+    /// </summary>
+    [GeneratedRegex(@"^\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
+    private static partial Regex LeadingQualifiedNameRegex();
+
+    /// <summary>
+    /// A "prefix:Type" written inside parentheses, which is how a property path spells a name.
+    ///
+    /// This is not anchored, because the segment that carries the prefix need not come first:
+    /// "(UIElement.RenderTransform).(local:MyTransform.X)" and "RenderTransform.(local:MyT.X)" are
+    /// both ordinary spellings. The parenthesis is the whole of what distinguishes such a name from
+    /// the text around it, so it is what the pattern looks for.
+    /// </summary>
+    [GeneratedRegex(@"\(\s*([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
+    private static partial Regex PathQualifiedNameRegex();
+
+    /// <summary>
+    /// A "prefix:Type" reference inside a single bare token of a markup extension.
+    ///
+    /// No lookbehind is needed, and none is wanted. The token has already been cut out by the
+    /// parser, so everything reaching this pattern stands where XAML resolves a namespace; the
+    /// colons that are punctuation — those in a quoted format string — were stepped over as a
+    /// quoted argument and never arrive.
+    /// </summary>
+    [GeneratedRegex(@"([A-Za-z_][\w.\-]*):([A-Za-z_]\w*)")]
+    private static partial Regex QualifiedNameRegex();
+
+    /// <summary>
+    /// A "prefix:Type" reference in a QName-valued attribute, keeping the whole dotted name.
+    ///
+    /// This is where it differs from <see cref="QualifiedNameRegex"/>, and the difference is the
+    /// point. An extension token holds attached-property syntax — "(local:Grid.Row)" asks for the
+    /// Grid type — so reading the owner alone is right there. A value like x:DataType="local:A.B"
+    /// asks for the nested type B, and reading "A" would find A declared, synthesize an import for
+    /// its namespace, and publish markup whose actual request is still unresolved. Keeping the full
+    /// name means a nested type is looked up as written, finds nothing, and withholds.
+    /// </summary>
+    [GeneratedRegex(@"([A-Za-z_][\w.\-]*):([A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*)")]
+    private static partial Regex QNameValueRegex();
 }
