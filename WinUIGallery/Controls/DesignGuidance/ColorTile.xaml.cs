@@ -42,14 +42,6 @@ public sealed partial class ColorTile : UserControl
     public static readonly DependencyProperty ColorBrushNameProperty =
         DependencyProperty.Register("ColorBrushName", typeof(string), typeof(ColorTile), new PropertyMetadata(""));
 
-    public string ColorValue
-    {
-        get { return (string)GetValue(ColorValueProperty); }
-        set { SetValue(ColorValueProperty, value); }
-    }
-    public static readonly DependencyProperty ColorValueProperty =
-        DependencyProperty.Register("ColorValue", typeof(string), typeof(ColorTile), new PropertyMetadata(""));
-
     public bool ShowSeparator
     {
         get { return (bool)GetValue(ShowSeparatorProperty); }
