@@ -8,8 +8,8 @@ Creating and applying a style
             <Setter Property="MinWidth" Value="200" />
         </Style>
     </StackPanel.Resources>
-    <Button Content="Default button" />
-    <Button Content="Styled button" Style="{StaticResource CustomButtonStyle}" />
-    <Button Content="Styled button (overridden)" Style="{StaticResource CustomButtonStyle}"
+    <Button Content="Default style" />
+    <Button Content="Custom style" Style="{StaticResource CustomButtonStyle}" />
+    <Button Content="Custom style with overridden background" Style="{StaticResource CustomButtonStyle}"
             Background="{ThemeResource SystemFillColorCriticalBackgroundBrush}" />
 </StackPanel>
