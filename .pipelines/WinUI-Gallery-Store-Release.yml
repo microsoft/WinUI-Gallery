@@ -80,6 +80,29 @@ extends:
                   exit 1
                 }
 
+                $telemetryProviderGroupGuid = "$(TelemetryProviderGroupGuid)"
+                $telemetryPrivacyProductId = "$(TelemetryPrivacyProductId)"
+                $telemetryCrashPrivacyTags = "$(TelemetryCrashPrivacyTags)"
+                $parsedTelemetryProviderGroupGuid = [guid]::Empty
+                $parsedTelemetryPrivacyProductId = [ushort]0
+                $parsedTelemetryCrashPrivacyTags = [ulong]0
+                if ($telemetryProviderGroupGuid -like '$(*' -or
+                    -not [guid]::TryParse($telemetryProviderGroupGuid, [ref]$parsedTelemetryProviderGroupGuid)) {
+                  Write-Error "The secured TelemetryProviderGroupGuid pipeline variable must contain a valid GUID."
+                  exit 1
+                }
+                if ($telemetryPrivacyProductId -like '$(*' -or
+                    -not [ushort]::TryParse($telemetryPrivacyProductId, [ref]$parsedTelemetryPrivacyProductId) -or
+                    $parsedTelemetryPrivacyProductId -eq 0) {
+                  Write-Error "The secured TelemetryPrivacyProductId pipeline variable must contain a non-zero UInt16."
+                  exit 1
+                }
+                if ($telemetryCrashPrivacyTags -like '$(*' -or
+                    -not [ulong]::TryParse($telemetryCrashPrivacyTags, [ref]$parsedTelemetryCrashPrivacyTags)) {
+                  Write-Error "The secured TelemetryCrashPrivacyTags pipeline variable must contain a UInt64."
+                  exit 1
+                }
+
                 [xml]$project = Get-Content "WinUIGallery\WinUIGallery.csproj"
                 $projectVersion = $project.SelectSingleNode("//Version").InnerText
                 if ($projectVersion -ne $packageVersion) {
@@ -96,7 +119,11 @@ extends:
                   /p:AppxBundle=Never `
                   /p:GenerateAppxPackageOnBuild=true `
                   /p:AppxPackageSigningEnabled=false `
-                  /p:Version="$(StorePackageVersion)"
+                  /p:Version="$(StorePackageVersion)" `
+                  /p:EnableTelemetry=true `
+                  /p:TelemetryProviderGroupGuid="$telemetryProviderGroupGuid" `
+                  /p:TelemetryPrivacyProductId="$telemetryPrivacyProductId" `
+                  /p:TelemetryCrashPrivacyTags="$telemetryCrashPrivacyTags"
 
                 if ($LASTEXITCODE -ne 0) {
                   exit $LASTEXITCODE
