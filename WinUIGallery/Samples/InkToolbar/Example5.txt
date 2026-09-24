@@ -1,0 +1,4 @@
+--- header
+5. Orientation — read/write the layout orientation (visual effect lands in Phase 3).
+--- c#
+inkToolBar.Orientation = Orientation.Vertical;

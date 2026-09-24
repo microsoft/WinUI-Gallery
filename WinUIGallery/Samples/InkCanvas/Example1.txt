@@ -1,0 +1,4 @@
+--- header
+A default InkCanvas inks out of the box — just draw on it.
+--- xaml
+<InkCanvas />

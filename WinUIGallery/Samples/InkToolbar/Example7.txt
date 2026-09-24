@@ -1,0 +1,8 @@
+--- header
+7. GetToolButton / GetToggleButton / GetMenuButton — discover the API surface.
+--- c#
+foreach (InkToolBarTool t in Enum.GetValues(typeof(InkToolBarTool)))
+{
+    var btn = inkToolBar.GetToolButton(t);
+    // ...
+}

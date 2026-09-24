@@ -1,0 +1,4 @@
+--- header
+2. TargetInkCanvas — rebind the toolbar to a different InkCanvas at runtime.
+--- c#
+inkToolBar.TargetInkCanvas = inkCanvasA;   // or inkCanvasB

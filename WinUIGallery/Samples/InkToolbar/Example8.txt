@@ -1,0 +1,5 @@
+--- header
+8. IsRulerButtonChecked / IsStencilButtonChecked — toggle stencil-state properties.
+--- c#
+inkToolBar.IsRulerButtonChecked   = true;
+inkToolBar.IsStencilButtonChecked = true;

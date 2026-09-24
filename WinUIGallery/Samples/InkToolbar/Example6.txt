@@ -1,0 +1,4 @@
+--- header
+6. ButtonFlyoutPlacement — read/write the flyout placement (flyouts pending Phase 3).
+--- c#
+inkToolBar.ButtonFlyoutPlacement = InkToolBarButtonFlyoutPlacement.Right;
