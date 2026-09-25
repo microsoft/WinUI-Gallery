@@ -1,0 +1,109 @@
+--- header
+Editable staffing allocations with synchronous validation
+--- xaml
+<tabular:TableView
+    x:Name="StaffingTable"
+    Height="300"
+    AutomationProperties.AutomationId="TableViewStaffingTable"
+    AutomationProperties.Name="Editable staffing and budget allocations"
+    BeginningEdit="StaffingTable_BeginningEdit"
+    CanUserResizeColumns="False"
+    CanUserSortColumns="False"
+    CellEditEnding="StaffingTable_CellEditEnding"
+    Density="Compact"
+    IsReadOnly="False"
+    ItemsSource="{x:Bind StaffingRows}">
+    <tabular:TableView.Columns>
+        <tabular:TableViewTextColumn
+            Binding="{Binding EmployeeId}"
+            Header="Employee ID"
+            IsReadOnly="True"
+            Width="116" />
+        <tabular:TableViewTextColumn Binding="{Binding EmployeeName}" Header="Employee" Width="180" />
+        <tabular:TableViewTextColumn Binding="{Binding Role}" Header="Role" Width="180" />
+        <tabular:TableViewTextColumn
+            x:Name="AllocationColumn"
+            Binding="{Binding AllocationPercent}"
+            Header="Allocation %"
+            Width="120" />
+    </tabular:TableView.Columns>
+</tabular:TableView>
+--- c#
+private StaffingAllocation? _editingAllocation;
+
+private void StaffingTable_BeginningEdit(TableView sender, TableViewBeginningEditEventArgs args)
+{
+    if (args.Item is StaffingAllocation allocation)
+    {
+        if (_editingAllocation is not null)
+        {
+            _editingAllocation.ErrorsChanged -= StaffingAllocation_ErrorsChanged;
+        }
+
+        _editingAllocation = allocation;
+        _editingAllocation.ErrorsChanged += StaffingAllocation_ErrorsChanged;
+    }
+}
+
+private void StaffingTable_CellEditEnding(TableView sender, TableViewCellEditEndingEventArgs args)
+{
+    if (args.EditAction == TableViewEditAction.Commit &&
+        args.Column == AllocationColumn &&
+        args.Item is StaffingAllocation allocation &&
+        allocation.EmployeeId == "E-0319")
+    {
+        args.Cancel = true;
+        ValidationMessage = "Finance has approved this allocation, so it cannot be changed here.";
+        IsValidationMessageOpen = true;
+    }
+
+    sender.DispatcherQueue.TryEnqueue(() =>
+    {
+        if (!sender.IsEditing && _editingAllocation is not null)
+        {
+            _editingAllocation.ErrorsChanged -= StaffingAllocation_ErrorsChanged;
+            _editingAllocation = null;
+        }
+    });
+}
+
+public sealed class StaffingAllocation : INotifyPropertyChanged, INotifyDataErrorInfo
+{
+    private string _allocationPercent;
+    private readonly List<string> _allocationErrors = [];
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+    public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
+
+    public bool HasErrors => _allocationErrors.Count > 0;
+
+    public string EmployeeId { get; }
+
+    public string AllocationPercent
+    {
+        get => _allocationPercent;
+        set
+        {
+            if (_allocationPercent != value)
+            {
+                _allocationPercent = value;
+                _allocationErrors.Clear();
+                if (!int.TryParse(value, out int allocation))
+                {
+                    _allocationErrors.Add("Allocation must be a whole number.");
+                }
+                else if (allocation < 0 || allocation > 100)
+                {
+                    _allocationErrors.Add("Allocation must be from 0 through 100 percent.");
+                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AllocationPercent)));
+                ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(AllocationPercent)));
+            }
+        }
+    }
+
+    public IEnumerable GetErrors(string? propertyName)
+    {
+        return propertyName == nameof(AllocationPercent) ? _allocationErrors : Array.Empty<string>();
+    }
+}

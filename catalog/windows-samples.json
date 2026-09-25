@@ -9,7 +9,7 @@
     "defaultBranch": "main",
     "license": "MIT"
   },
-  "controlCount": 123,
+  "controlCount": 124,
   "controls": [
     {
       "id": "accessibilitycolorcontrast",
@@ -8595,6 +8595,121 @@
             "snippet": "SystemBackdropsDesktopacryliccontroller.txt",
             "source": "WinUIGallery/Samples/SystemBackdrops/SystemBackdropsDesktopacryliccontroller.txt",
             "name": "Desktopacryliccontroller"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tableview",
+      "name": "TableView",
+      "description": "A preview control for presenting and editing virtualized tabular data.",
+      "details": "TableView presents an item collection as virtualized rows and developer-defined columns. It supports sorting, templates, frozen leading columns, single row selection, opt-in cell editing, display density, grid lines, and empty-state content.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+      "relatedControls": [
+        "ItemsView",
+        "ItemsRepeater",
+        "ListView"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Tabular",
+        "System",
+        "System.Collections",
+        "System.Collections.Generic",
+        "System.Collections.ObjectModel",
+        "System.ComponentModel",
+        "System.Runtime.CompilerServices"
+      ],
+      "keywords": [
+        "Object",
+        "DependencyObject",
+        "UIElement",
+        "FrameworkElement",
+        "Control"
+      ],
+      "curatedKeywords": [
+        "table",
+        "tabular data",
+        "data grid",
+        "enterprise",
+        "editing",
+        "sorting",
+        "virtualization"
+      ],
+      "docs": [
+        {
+          "title": "TableView - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+        },
+        {
+          "title": "TableView specification",
+          "uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "TableView",
+        "group": {
+          "id": "Collections",
+          "title": "Collections"
+        },
+        "page": "WinUIGallery/Samples/TableView/TableViewPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/TableView/TableViewPage.xaml.cs",
+        "baseClasses": [
+          "Object",
+          "DependencyObject",
+          "UIElement",
+          "FrameworkElement",
+          "Control"
+        ],
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#ItemsRepeater",
+          "microsoft/WinUI-Gallery#ItemsView",
+          "microsoft/WinUI-Gallery#ListView"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Sortable inventory with selection, frozen ID, and a status template",
+          "xaml": "\u003Ctabular:TableView\n    x:Name=\u0022InventoryTable\u0022\n    Height=\u0022320\u0022\n    AutomationProperties.AutomationId=\u0022TableViewInventoryTable\u0022\n    AutomationProperties.Name=\u0022Warehouse inventory\u0022\n    AlternatingRowBackground=\u0022{ThemeResource SubtleFillColorSecondaryBrush}\u0022\n    CanUserResizeColumns=\u0022False\u0022\n    CanUserSortColumns=\u0022True\u0022\n    GridLinesVisibility=\u0022All\u0022\n    IsReadOnly=\u0022True\u0022\n    ItemsSource=\u0022{x:Bind Inventory}\u0022\n    RowBackground=\u0022{ThemeResource CardBackgroundFillColorDefaultBrush}\u0022\n    SelectionChanged=\u0022InventoryTable_SelectionChanged\u0022\n    SelectionMode=\u0022Single\u0022\n    Sorted=\u0022InventoryTable_Sorted\u0022\n    Sorting=\u0022InventoryTable_Sorting\u0022\u003E\n    \u003Ctabular:TableView.Columns\u003E\n        \u003Ctabular:TableViewTextColumn\n            Binding=\u0022{Binding AssetId}\u0022\n            FrozenEdge=\u0022Leading\u0022\n            Header=\u0022Asset ID\u0022\n            Width=\u0022112\u0022 /\u003E\n        \u003Ctabular:TableViewTextColumn Binding=\u0022{Binding ItemName}\u0022 Header=\u0022Item\u0022 Width=\u0022210\u0022 /\u003E\n        \u003Ctabular:TableViewTemplateColumn\n            Header=\u0022Status\u0022\n            SortMemberPath=\u0022Status\u0022\n            Width=\u0022140\u0022\u003E\n            \u003Ctabular:TableViewTemplateColumn.CellTemplate\u003E\n                \u003CDataTemplate x:DataType=\u0022local:InventoryRecord\u0022\u003E\n                    \u003CStackPanel Orientation=\u0022Horizontal\u0022 Spacing=\u00228\u0022\u003E\n                        \u003CFontIcon Glyph=\u0022{x:Bind StatusGlyph}\u0022 /\u003E\n                        \u003CTextBlock Text=\u0022{x:Bind Status}\u0022 /\u003E\n                    \u003C/StackPanel\u003E\n                \u003C/DataTemplate\u003E\n            \u003C/tabular:TableViewTemplateColumn.CellTemplate\u003E\n        \u003C/tabular:TableViewTemplateColumn\u003E\n        \u003Ctabular:TableViewTextColumn Binding=\u0022{Binding Warehouse}\u0022 Header=\u0022Warehouse\u0022 Width=\u0022150\u0022 /\u003E\n        \u003Ctabular:TableViewTextColumn\n            Binding=\u0022{Binding Quantity}\u0022\n            Header=\u0022On hand\u0022\n            SortCycle=\u0022DescendingAscendingNone\u0022\n            Width=\u002296\u0022 /\u003E\n    \u003C/tabular:TableView.Columns\u003E\n\u003C/tabular:TableView\u003E",
+          "code": "private void InventoryTable_SelectionChanged(TableView sender, SelectionChangedEventArgs args)\n{\n    if (sender.SelectedItem is InventoryRecord selectedItem)\n    {\n        SelectedInventoryItem = selectedItem;\n    }\n}\n\nprivate void InventoryTable_Sorting(TableView sender, TableViewSortingEventArgs args)\n{\n    string columnName = args.Column?.Header?.ToString() ?? \u0022all columns\u0022;\n    InventorySortStatus = args.Direction == SortDirection.None\n        ? $\u0022Clearing the sort for {columnName}.\u0022\n        : $\u0022Sorting {columnName} {args.Direction.ToString().ToLowerInvariant()}.\u0022;\n}\n\nprivate void InventoryTable_Sorted(TableView sender, TableViewSortedEventArgs args)\n{\n    InventorySortStatus = args.Direction == SortDirection.None\n        ? \u0022Rows are in source order.\u0022\n        : $\u0022Sorted by {args.Column.Header}, {args.Direction.ToString().ToLowerInvariant()}.\u0022;\n}",
+          "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022",
+            "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+          ],
+          "gallery": {
+            "snippet": "InventoryTable.txt",
+            "source": "WinUIGallery/Samples/TableView/InventoryTable.txt",
+            "name": "Inventory Table"
+          }
+        },
+        {
+          "header": "Editable staffing allocations with synchronous validation",
+          "xaml": "\u003Ctabular:TableView\n    x:Name=\u0022StaffingTable\u0022\n    Height=\u0022300\u0022\n    AutomationProperties.AutomationId=\u0022TableViewStaffingTable\u0022\n    AutomationProperties.Name=\u0022Editable staffing and budget allocations\u0022\n    BeginningEdit=\u0022StaffingTable_BeginningEdit\u0022\n    CanUserResizeColumns=\u0022False\u0022\n    CanUserSortColumns=\u0022False\u0022\n    CellEditEnding=\u0022StaffingTable_CellEditEnding\u0022\n    Density=\u0022Compact\u0022\n    IsReadOnly=\u0022False\u0022\n    ItemsSource=\u0022{x:Bind StaffingRows}\u0022\u003E\n    \u003Ctabular:TableView.Columns\u003E\n        \u003Ctabular:TableViewTextColumn\n            Binding=\u0022{Binding EmployeeId}\u0022\n            Header=\u0022Employee ID\u0022\n            IsReadOnly=\u0022True\u0022\n            Width=\u0022116\u0022 /\u003E\n        \u003Ctabular:TableViewTextColumn Binding=\u0022{Binding EmployeeName}\u0022 Header=\u0022Employee\u0022 Width=\u0022180\u0022 /\u003E\n        \u003Ctabular:TableViewTextColumn Binding=\u0022{Binding Role}\u0022 Header=\u0022Role\u0022 Width=\u0022180\u0022 /\u003E\n        \u003Ctabular:TableViewTextColumn\n            x:Name=\u0022AllocationColumn\u0022\n            Binding=\u0022{Binding AllocationPercent}\u0022\n            Header=\u0022Allocation %\u0022\n            Width=\u0022120\u0022 /\u003E\n    \u003C/tabular:TableView.Columns\u003E\n\u003C/tabular:TableView\u003E",
+          "code": "private StaffingAllocation? _editingAllocation;\n\nprivate void StaffingTable_BeginningEdit(TableView sender, TableViewBeginningEditEventArgs args)\n{\n    if (args.Item is StaffingAllocation allocation)\n    {\n        if (_editingAllocation is not null)\n        {\n            _editingAllocation.ErrorsChanged -= StaffingAllocation_ErrorsChanged;\n        }\n\n        _editingAllocation = allocation;\n        _editingAllocation.ErrorsChanged \u002B= StaffingAllocation_ErrorsChanged;\n    }\n}\n\nprivate void StaffingTable_CellEditEnding(TableView sender, TableViewCellEditEndingEventArgs args)\n{\n    if (args.EditAction == TableViewEditAction.Commit \u0026\u0026\n        args.Column == AllocationColumn \u0026\u0026\n        args.Item is StaffingAllocation allocation \u0026\u0026\n        allocation.EmployeeId == \u0022E-0319\u0022)\n    {\n        args.Cancel = true;\n        ValidationMessage = \u0022Finance has approved this allocation, so it cannot be changed here.\u0022;\n        IsValidationMessageOpen = true;\n    }\n\n    sender.DispatcherQueue.TryEnqueue(() =\u003E\n    {\n        if (!sender.IsEditing \u0026\u0026 _editingAllocation is not null)\n        {\n            _editingAllocation.ErrorsChanged -= StaffingAllocation_ErrorsChanged;\n            _editingAllocation = null;\n        }\n    });\n}\n\npublic sealed class StaffingAllocation : INotifyPropertyChanged, INotifyDataErrorInfo\n{\n    private string _allocationPercent;\n    private readonly List\u003Cstring\u003E _allocationErrors = [];\n\n    public event PropertyChangedEventHandler? PropertyChanged;\n    public event EventHandler\u003CDataErrorsChangedEventArgs\u003E? ErrorsChanged;\n\n    public bool HasErrors =\u003E _allocationErrors.Count \u003E 0;\n\n    public string EmployeeId { get; }\n\n    public string AllocationPercent\n    {\n        get =\u003E _allocationPercent;\n        set\n        {\n            if (_allocationPercent != value)\n            {\n                _allocationPercent = value;\n                _allocationErrors.Clear();\n                if (!int.TryParse(value, out int allocation))\n                {\n                    _allocationErrors.Add(\u0022Allocation must be a whole number.\u0022);\n                }\n                else if (allocation \u003C 0 || allocation \u003E 100)\n                {\n                    _allocationErrors.Add(\u0022Allocation must be from 0 through 100 percent.\u0022);\n                }\n                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AllocationPercent)));\n                ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(AllocationPercent)));\n            }\n        }\n    }\n\n    public IEnumerable GetErrors(string? propertyName)\n    {\n        return propertyName == nameof(AllocationPercent) ? _allocationErrors : Array.Empty\u003Cstring\u003E();\n    }\n}",
+          "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+          ],
+          "gallery": {
+            "snippet": "EditableStaffingTable.txt",
+            "source": "WinUIGallery/Samples/TableView/EditableStaffingTable.txt",
+            "name": "Editable Staffing Table"
+          }
+        },
+        {
+          "header": "Virtualized rows, display configuration, and an empty state",
+          "xaml": "\u003Ctabular:TableView\n    x:Name=\u0022VirtualizedTable\u0022\n    Height=\u0022360\u0022\n    AutomationProperties.AutomationId=\u0022TableViewVirtualizedMetricsTable\u0022\n    AutomationProperties.Name=\u0022Virtualized service performance metrics\u0022\n    AlternatingRowBackground=\u0022{ThemeResource SubtleFillColorSecondaryBrush}\u0022\n    CanUserResizeColumns=\u0022False\u0022\n    CanUserSortColumns=\u0022False\u0022\n    Density=\u0022Standard\u0022\n    GridLinesVisibility=\u0022All\u0022\n    ItemsSource=\u0022{x:Bind PerformanceRows}\u0022\n    RowBackground=\u0022{ThemeResource CardBackgroundFillColorDefaultBrush}\u0022\n    SelectionMode=\u0022None\u0022\u003E\n    \u003Ctabular:TableView.EmptyTemplate\u003E\n        \u003CDataTemplate\u003E\n            \u003CStackPanel Padding=\u002232\u0022 HorizontalAlignment=\u0022Center\u0022 Spacing=\u00228\u0022\u003E\n                \u003CTextBlock\n                    HorizontalAlignment=\u0022Center\u0022\n                    Style=\u0022{ThemeResource SubtitleTextBlockStyle}\u0022\n                    Text=\u0022No service metrics\u0022 /\u003E\n                \u003CTextBlock Text=\u0022Rows will appear when metrics are available.\u0022 /\u003E\n            \u003C/StackPanel\u003E\n        \u003C/DataTemplate\u003E\n    \u003C/tabular:TableView.EmptyTemplate\u003E\n    \u003Ctabular:TableView.Columns\u003E\n        \u003Ctabular:TableViewTextColumn\n            Binding=\u0022{Binding ServiceId}\u0022\n            FrozenEdge=\u0022Leading\u0022\n            Header=\u0022Service ID\u0022\n            Width=\u0022120\u0022 /\u003E\n        \u003Ctabular:TableViewTextColumn Binding=\u0022{Binding ServiceName}\u0022 Header=\u0022Service\u0022 Width=\u0022220\u0022 /\u003E\n        \u003Ctabular:TableViewTextColumn Binding=\u0022{Binding Region}\u0022 Header=\u0022Region\u0022 Width=\u0022130\u0022 /\u003E\n        \u003Ctabular:TableViewTextColumn Binding=\u0022{Binding RequestsPerMinute}\u0022 Header=\u0022Requests/min\u0022 Width=\u0022130\u0022 /\u003E\n        \u003Ctabular:TableViewTextColumn Binding=\u0022{Binding P95Latency}\u0022 Header=\u0022P95 latency\u0022 Width=\u0022130\u0022 /\u003E\n    \u003C/tabular:TableView.Columns\u003E\n\u003C/tabular:TableView\u003E",
+          "code": "public ObservableCollection\u003CPerformanceMetric\u003E PerformanceRows { get; } = [];\n\nprivate void ShowEmptyState(bool showEmptyState)\n{\n    PerformanceRows.Clear();\n\n    if (!showEmptyState)\n    {\n        for (int index = 1; index \u003C= 1000; index\u002B\u002B)\n        {\n            PerformanceRows.Add(CreatePerformanceMetric(index));\n        }\n    }\n}",
+          "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+          ],
+          "gallery": {
+            "snippet": "VirtualizedMetricsTable.txt",
+            "source": "WinUIGallery/Samples/TableView/VirtualizedMetricsTable.txt",
+            "name": "Virtualized Metrics Table"
           }
         }
       ]

@@ -1,0 +1,70 @@
+--- header
+Sortable inventory with selection, frozen ID, and a status template
+--- xaml
+<tabular:TableView
+    x:Name="InventoryTable"
+    Height="320"
+    AutomationProperties.AutomationId="TableViewInventoryTable"
+    AutomationProperties.Name="Warehouse inventory"
+    AlternatingRowBackground="{ThemeResource SubtleFillColorSecondaryBrush}"
+    CanUserResizeColumns="False"
+    CanUserSortColumns="True"
+    GridLinesVisibility="All"
+    IsReadOnly="True"
+    ItemsSource="{x:Bind Inventory}"
+    RowBackground="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+    SelectionChanged="InventoryTable_SelectionChanged"
+    SelectionMode="Single"
+    Sorted="InventoryTable_Sorted"
+    Sorting="InventoryTable_Sorting">
+    <tabular:TableView.Columns>
+        <tabular:TableViewTextColumn
+            Binding="{Binding AssetId}"
+            FrozenEdge="Leading"
+            Header="Asset ID"
+            Width="112" />
+        <tabular:TableViewTextColumn Binding="{Binding ItemName}" Header="Item" Width="210" />
+        <tabular:TableViewTemplateColumn
+            Header="Status"
+            SortMemberPath="Status"
+            Width="140">
+            <tabular:TableViewTemplateColumn.CellTemplate>
+                <DataTemplate x:DataType="local:InventoryRecord">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <FontIcon Glyph="{x:Bind StatusGlyph}" />
+                        <TextBlock Text="{x:Bind Status}" />
+                    </StackPanel>
+                </DataTemplate>
+            </tabular:TableViewTemplateColumn.CellTemplate>
+        </tabular:TableViewTemplateColumn>
+        <tabular:TableViewTextColumn Binding="{Binding Warehouse}" Header="Warehouse" Width="150" />
+        <tabular:TableViewTextColumn
+            Binding="{Binding Quantity}"
+            Header="On hand"
+            SortCycle="DescendingAscendingNone"
+            Width="96" />
+    </tabular:TableView.Columns>
+</tabular:TableView>
+--- c#
+private void InventoryTable_SelectionChanged(TableView sender, SelectionChangedEventArgs args)
+{
+    if (sender.SelectedItem is InventoryRecord selectedItem)
+    {
+        SelectedInventoryItem = selectedItem;
+    }
+}
+
+private void InventoryTable_Sorting(TableView sender, TableViewSortingEventArgs args)
+{
+    string columnName = args.Column?.Header?.ToString() ?? "all columns";
+    InventorySortStatus = args.Direction == SortDirection.None
+        ? $"Clearing the sort for {columnName}."
+        : $"Sorting {columnName} {args.Direction.ToString().ToLowerInvariant()}.";
+}
+
+private void InventoryTable_Sorted(TableView sender, TableViewSortedEventArgs args)
+{
+    InventorySortStatus = args.Direction == SortDirection.None
+        ? "Rows are in source order."
+        : $"Sorted by {args.Column.Header}, {args.Direction.ToString().ToLowerInvariant()}.";
+}
