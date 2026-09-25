@@ -1,0 +1,18 @@
+--- header
+Save, clear, and restore ink strokes.
+--- xaml
+<InkCanvas x:Name="inkCanvas" />
+--- c#
+Microsoft.UI.Xaml.Controls.InkStrokeContainer strokes = inkCanvas.InkPresenter.StrokeContainer;
+using InMemoryRandomAccessStream savedInk = new();
+using (IOutputStream output = savedInk.GetOutputStreamAt(0))
+{
+    await strokes.SaveAsync(output);
+}
+
+strokes.Clear();
+
+using (IInputStream input = savedInk.GetInputStreamAt(0))
+{
+    await strokes.LoadAsync(input);
+}
