@@ -1,0 +1,5 @@
+--- header
+10. Children + DependencyProperty surface — verify the collection and every static DP exists.
+--- c#
+int count = inkToolBar.Children.Count;
+DependencyProperty property = InkToolBar.InitialControlsProperty;

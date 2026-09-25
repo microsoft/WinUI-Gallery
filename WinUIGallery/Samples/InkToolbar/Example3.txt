@@ -1,0 +1,6 @@
+--- header
+3. TargetInkPresenter — wire the toolbar directly to an InkPresenter instead of an InkCanvas.
+--- c#
+inkToolBar.TargetInkPresenter = inkCanvas.InkPresenter;
+// or
+inkToolBar.TargetInkCanvas = inkCanvas;

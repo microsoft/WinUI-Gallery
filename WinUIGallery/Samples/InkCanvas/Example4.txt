@@ -1,0 +1,38 @@
+--- header
+Manage strokes and listen to stroke events through InkPresenter.StrokeContainer.
+--- xaml
+<StackPanel Spacing="8">
+    <StackPanel Orientation="Horizontal" Spacing="8">
+        <Button Content="Count strokes" Click="OnCountStrokesClick" />
+        <Button Content="Clear" Click="OnClearStrokesClick" />
+        <Button Content="Save &amp; reload (in-memory)" Click="OnSaveReloadClick" />
+    </StackPanel>
+    <TextBlock
+        x:Name="statusText"
+        Text="Draw on the canvas below."
+        TextWrapping="Wrap" />
+    <Border
+        Width="600"
+        Height="300"
+        Background="White"
+        BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}"
+        BorderThickness="1">
+        <InkCanvas x:Name="inkCanvas" />
+    </Border>
+</StackPanel>
+--- c#
+// Listen to stroke events.
+inkCanvas.InkPresenter.StrokesCollected += (s, e) =>
+    statusText.Text = $"Collected {e.Strokes.Count} stroke(s).";
+inkCanvas.InkPresenter.StrokesErased += (s, e) =>
+    statusText.Text = $"Erased {e.Strokes.Count} stroke(s).";
+
+// Enumerate and clear.
+var strokes = inkCanvas.InkPresenter.StrokeContainer.GetStrokes();
+inkCanvas.InkPresenter.StrokeContainer.Clear();
+
+// Save and reload through a stream.
+var stream = new InMemoryRandomAccessStream();
+await inkCanvas.InkPresenter.StrokeContainer.SaveAsync(stream.GetOutputStreamAt(0));
+inkCanvas.InkPresenter.StrokeContainer.Clear();
+await inkCanvas.InkPresenter.StrokeContainer.LoadAsync(stream.GetInputStreamAt(0));

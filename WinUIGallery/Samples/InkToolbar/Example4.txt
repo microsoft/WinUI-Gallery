@@ -1,0 +1,4 @@
+--- header
+4. InitialControls — change which default tool buttons the toolbar creates.
+--- c#
+inkToolBar.InitialControls = InkToolBarInitialControls.PensOnly;

@@ -1,0 +1,91 @@
+<!--
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+-->
+<Page x:Class="WinUIGallery.ControlPages.InkCanvasPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Spacing="16">
+        <!-- ============================================================= -->
+        <!-- EXAMPLE 1: Default inking                                      -->
+        <!-- A bare InkCanvas produces wet ink for mouse, pen, and touch    -->
+        <!-- with no app code. All ink configuration flows through its      -->
+        <!-- read-only InkPresenter, mirroring the classic InkCanvas.       -->
+        <!-- ============================================================= -->
+        <controls:ControlExample x:Name="Example1" SampleDefinition="InkCanvas\Example1.txt" HeaderText="A default InkCanvas inks out of the box — just draw on it.">
+            <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                    Width="600" Height="400" Background="White">
+                <InkCanvas x:Name="inkCanvas1" />
+            </Border>
+        </controls:ControlExample>
+
+        <!-- ============================================================= -->
+        <!-- EXAMPLE 2: InkToolbar paired with InkCanvas                    -->
+        <!-- The toolbar drives the canvas's InkPresenter (pen, eraser,     -->
+        <!-- color and width) via TargetInkCanvas.                          -->
+        <!-- ============================================================= -->
+        <controls:ControlExample x:Name="Example2" SampleDefinition="InkCanvas\Example2.txt" HeaderText="Pair an InkToolbar with an InkCanvas to switch pen, eraser, color, and width.">
+            <StackPanel Spacing="8">
+                <InkToolbar x:Name="InkToolbar2" TargetInkCanvas="{x:Bind inkCanvas2}" />
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                        Width="600" Height="300" Background="White">
+                    <InkCanvas x:Name="inkCanvas2" />
+                </Border>
+            </StackPanel>
+        </controls:ControlExample>
+
+        <!-- ============================================================= -->
+        <!-- EXAMPLE 3: Configure the InkPresenter from code                -->
+        <!-- Sets InputDeviceTypes, the default drawing attributes, and     -->
+        <!-- IsInputEnabled directly on InkCanvas.InkPresenter, exactly     -->
+        <!-- like the classic Windows.UI.Xaml.Controls.InkCanvas.           -->
+        <!-- ============================================================= -->
+        <controls:ControlExample x:Name="Example3" SampleDefinition="InkCanvas\Example3.txt" HeaderText="Configure the InkPresenter from code, exactly like the classic InkCanvas.">
+            <StackPanel Spacing="8">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button x:Name="redPenButton" Content="Red thick pen" Click="OnRedPenClick" />
+                    <Button x:Name="bluePenButton" Content="Blue thin pen" Click="OnBluePenClick" />
+                    <ToggleSwitch x:Name="touchToggle" Header="Touch inking" IsOn="True" Toggled="OnTouchToggled" />
+                    <ToggleSwitch x:Name="enabledToggle" Header="Inking enabled" IsOn="True" Toggled="OnEnabledToggled" />
+                </StackPanel>
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                        Width="600" Height="300" Background="White">
+                    <InkCanvas x:Name="inkCanvas3" />
+                </Border>
+            </StackPanel>
+        </controls:ControlExample>
+
+        <!-- ============================================================= -->
+        <!-- EXAMPLE 4: Stroke container and stroke events                 -->
+        <!-- Uses InkPresenter.StrokeContainer to enumerate, clear, save,  -->
+        <!-- and reload strokes, and listens to StrokesCollected /         -->
+        <!-- StrokesErased, exactly like the classic InkCanvas.            -->
+        <!-- ============================================================= -->
+        <controls:ControlExample x:Name="Example4" SampleDefinition="InkCanvas\Example4.txt" HeaderText="Manage strokes and listen to stroke events through InkPresenter.StrokeContainer.">
+            <StackPanel Spacing="8">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button x:Name="countButton" Content="Count strokes" Click="OnCountStrokesClick" />
+                    <Button x:Name="clearButton" Content="Clear" Click="OnClearStrokesClick" />
+                    <Button x:Name="saveReloadButton" Content="Save &amp; reload (in-memory)" Click="OnSaveReloadClick" />
+                </StackPanel>
+                <TextBlock x:Name="statusText4" Text="Draw on the canvas below." TextWrapping="Wrap" />
+                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
+                        Width="600" Height="300" Background="White">
+                    <InkCanvas x:Name="inkCanvas4" />
+                </Border>
+            </StackPanel>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>
