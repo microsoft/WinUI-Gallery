@@ -18,74 +18,148 @@
     mc:Ignorable="d">
 
     <StackPanel Spacing="16">
-        <!-- ============================================================= -->
-        <!-- EXAMPLE 1: Default inking                                      -->
-        <!-- A bare InkCanvas produces wet ink for mouse, pen, and touch    -->
-        <!-- with no app code. All ink configuration flows through its      -->
-        <!-- read-only InkPresenter, mirroring the classic InkCanvas.       -->
-        <!-- ============================================================= -->
-        <controls:ControlExample x:Name="Example1" SampleDefinition="InkCanvas\Example1.txt" HeaderText="A default InkCanvas inks out of the box — just draw on it.">
-            <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
-                    Width="600" Height="400" Background="White">
-                <InkCanvas x:Name="inkCanvas1" />
+        <controls:ControlExample
+            x:Name="Example1"
+            HeaderText="Draw with an InkCanvas"
+            HorizontalContentAlignment="Stretch"
+            SampleDefinition="InkCanvas\InkCanvasDrawing.txt">
+            <Border
+                Height="280"
+                MaxWidth="600"
+                HorizontalAlignment="Stretch"
+                Background="White"
+                BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}"
+                BorderThickness="1">
+                <InkCanvas x:Name="drawingCanvas" AutomationProperties.Name="Drawing canvas" />
             </Border>
-        </controls:ControlExample>
-
-        <!-- ============================================================= -->
-        <!-- EXAMPLE 2: InkToolbar paired with InkCanvas                    -->
-        <!-- The toolbar drives the canvas's InkPresenter (pen, eraser,     -->
-        <!-- color and width) via TargetInkCanvas.                          -->
-        <!-- ============================================================= -->
-        <controls:ControlExample x:Name="Example2" SampleDefinition="InkCanvas\Example2.txt" HeaderText="Pair an InkToolbar with an InkCanvas to switch pen, eraser, color, and width.">
-            <StackPanel Spacing="8">
-                <InkToolbar x:Name="InkToolbar2" TargetInkCanvas="{x:Bind inkCanvas2}" />
-                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
-                        Width="600" Height="300" Background="White">
-                    <InkCanvas x:Name="inkCanvas2" />
-                </Border>
-            </StackPanel>
-        </controls:ControlExample>
-
-        <!-- ============================================================= -->
-        <!-- EXAMPLE 3: Configure the InkPresenter from code                -->
-        <!-- Sets InputDeviceTypes, the default drawing attributes, and     -->
-        <!-- IsInputEnabled directly on InkCanvas.InkPresenter, exactly     -->
-        <!-- like the classic Windows.UI.Xaml.Controls.InkCanvas.           -->
-        <!-- ============================================================= -->
-        <controls:ControlExample x:Name="Example3" SampleDefinition="InkCanvas\Example3.txt" HeaderText="Configure the InkPresenter from code, exactly like the classic InkCanvas.">
-            <StackPanel Spacing="8">
-                <StackPanel Orientation="Horizontal" Spacing="8">
-                    <Button x:Name="redPenButton" Content="Red thick pen" Click="OnRedPenClick" />
-                    <Button x:Name="bluePenButton" Content="Blue thin pen" Click="OnBluePenClick" />
-                    <ToggleSwitch x:Name="touchToggle" Header="Touch inking" IsOn="True" Toggled="OnTouchToggled" />
-                    <ToggleSwitch x:Name="enabledToggle" Header="Inking enabled" IsOn="True" Toggled="OnEnabledToggled" />
+            <controls:ControlExample.Options>
+                <StackPanel Width="240" Spacing="8">
+                    <TextBlock FontWeight="SemiBold" Text="Input devices" />
+                    <StackPanel Spacing="4">
+                        <CheckBox x:Name="penInput" AutomationProperties.Name="Pen input" Content="Pen" IsChecked="True" />
+                        <CheckBox x:Name="mouseInput" AutomationProperties.Name="Mouse input" Content="Mouse" IsChecked="True" />
+                        <CheckBox x:Name="touchInput" AutomationProperties.Name="Touch input" Content="Touch" IsChecked="True" />
+                    </StackPanel>
+                    <ComboBox
+                        x:Name="inkColor"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="Ink color"
+                        Header="Ink color"
+                        SelectedIndex="0">
+                        <ComboBoxItem Content="Black" />
+                        <ComboBoxItem Content="Red" />
+                        <ComboBoxItem Content="Blue" />
+                    </ComboBox>
+                    <Slider
+                        x:Name="strokeWidth"
+                        AutomationProperties.Name="Stroke width"
+                        Header="Stroke width"
+                        Maximum="12"
+                        Minimum="1"
+                        StepFrequency="1"
+                        Value="4" />
+                    <ToggleSwitch x:Name="inkingEnabled" AutomationProperties.Name="Inking enabled" Header="Inking enabled" IsOn="True" />
+                    <Button AutomationProperties.Name="Clear drawing" Click="OnClearDrawingClick" Content="Clear drawing" />
                 </StackPanel>
-                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
-                        Width="600" Height="300" Background="White">
-                    <InkCanvas x:Name="inkCanvas3" />
-                </Border>
-            </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="PenDevice" Value=" | CoreInputDeviceTypes.Pen" IsEnabled="{x:Bind penInput.IsChecked.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="MouseDevice" Value=" | CoreInputDeviceTypes.Mouse" IsEnabled="{x:Bind mouseInput.IsChecked.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="TouchDevice" Value=" | CoreInputDeviceTypes.Touch" IsEnabled="{x:Bind touchInput.IsChecked.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="InkColor" Value="{x:Bind ((ComboBoxItem)inkColor.SelectedItem).Content, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="StrokeWidth" Value="{x:Bind strokeWidth.Value, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
-        <!-- ============================================================= -->
-        <!-- EXAMPLE 4: Stroke container and stroke events                 -->
-        <!-- Uses InkPresenter.StrokeContainer to enumerate, clear, save,  -->
-        <!-- and reload strokes, and listens to StrokesCollected /         -->
-        <!-- StrokesErased, exactly like the classic InkCanvas.            -->
-        <!-- ============================================================= -->
-        <controls:ControlExample x:Name="Example4" SampleDefinition="InkCanvas\Example4.txt" HeaderText="Manage strokes and listen to stroke events through InkPresenter.StrokeContainer.">
+        <controls:ControlExample
+            x:Name="Example2"
+            HeaderText="Customize an InkToolbar"
+            HorizontalContentAlignment="Stretch"
+            SampleDefinition="InkCanvas\InkCanvasToolbar.txt">
             <StackPanel Spacing="8">
-                <StackPanel Orientation="Horizontal" Spacing="8">
-                    <Button x:Name="countButton" Content="Count strokes" Click="OnCountStrokesClick" />
-                    <Button x:Name="clearButton" Content="Clear" Click="OnClearStrokesClick" />
-                    <Button x:Name="saveReloadButton" Content="Save &amp; reload (in-memory)" Click="OnSaveReloadClick" />
-                </StackPanel>
-                <TextBlock x:Name="statusText4" Text="Draw on the canvas below." TextWrapping="Wrap" />
-                <Border BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}" BorderThickness="1"
-                        Width="600" Height="300" Background="White">
-                    <InkCanvas x:Name="inkCanvas4" />
+                <InkToolbar x:Name="sampleToolbar" AutomationProperties.Name="Drawing tools" ButtonFlyoutPlacement="Auto" InitialControls="None" TargetInkCanvas="{x:Bind toolbarCanvas}">
+                    <InkToolbar.Children>
+                        <InkToolbarBallpointPenButton x:Name="ballpointButton" AutomationProperties.Name="Ballpoint pen" />
+                        <InkToolbarPencilButton x:Name="pencilButton" AutomationProperties.Name="Pencil" />
+                        <InkToolbarHighlighterButton x:Name="highlighterButton" AutomationProperties.Name="Highlighter" />
+                        <InkToolbarEraserButton x:Name="eraserButton" AutomationProperties.Name="Eraser" />
+                    </InkToolbar.Children>
+                </InkToolbar>
+                <Border
+                    Height="280"
+                    MaxWidth="600"
+                    HorizontalAlignment="Stretch"
+                    Background="White"
+                    BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}"
+                    BorderThickness="1">
+                    <InkCanvas x:Name="toolbarCanvas" AutomationProperties.Name="Toolbar drawing canvas" />
                 </Border>
             </StackPanel>
+            <controls:ControlExample.Options>
+                <StackPanel Width="240" Spacing="8">
+                    <TextBlock FontWeight="SemiBold" Text="Available tools" />
+                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="Ballpoint pen is always available." TextWrapping="Wrap" />
+                    <CheckBox x:Name="showPencil" AutomationProperties.Name="Show pencil" Content="Pencil" IsChecked="True" />
+                    <CheckBox x:Name="showHighlighter" AutomationProperties.Name="Show highlighter" Content="Highlighter" IsChecked="True" />
+                    <CheckBox x:Name="showEraser" AutomationProperties.Name="Show eraser" Content="Eraser" IsChecked="True" />
+                    <ComboBox
+                        x:Name="activeTool"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="Active tool"
+                        Header="Active tool"
+                        SelectedIndex="0">
+                        <ComboBoxItem Content="Ballpoint pen" Tag="BallpointPen" />
+                        <ComboBoxItem Content="Pencil" Tag="Pencil" />
+                        <ComboBoxItem Content="Highlighter" Tag="Highlighter" />
+                        <ComboBoxItem Content="Eraser" Tag="Eraser" />
+                    </ComboBox>
+                    <ComboBox
+                        x:Name="buttonFlyoutPlacement"
+                        HorizontalAlignment="Stretch"
+                        AutomationProperties.Name="Button flyout placement"
+                        Header="Button flyout placement"
+                        SelectedIndex="0">
+                        <ComboBoxItem Content="Auto" />
+                        <ComboBoxItem Content="Top" />
+                        <ComboBoxItem Content="Bottom" />
+                        <ComboBoxItem Content="Left" />
+                        <ComboBoxItem Content="Right" />
+                    </ComboBox>
+                    <Button AutomationProperties.Name="Clear toolbar drawing" Click="OnClearToolbarClick" Content="Clear drawing" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution Key="PencilButton" Value="&lt;InkToolbarPencilButton /&gt;" IsEnabled="{x:Bind showPencil.IsChecked.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="HighlighterButton" Value="&lt;InkToolbarHighlighterButton /&gt;" IsEnabled="{x:Bind showHighlighter.IsChecked.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="EraserButton" Value="&lt;InkToolbarEraserButton /&gt;" IsEnabled="{x:Bind showEraser.IsChecked.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="ActiveTool" Value="{x:Bind ((ComboBoxItem)activeTool.SelectedItem).Tag, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="FlyoutPlacement" Value="{x:Bind ((ComboBoxItem)buttonFlyoutPlacement.SelectedItem).Content, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            x:Name="Example3"
+            HeaderText="Save and restore ink strokes"
+            HorizontalContentAlignment="Stretch"
+            SampleDefinition="InkCanvas\InkCanvasStrokes.txt">
+            <Border
+                Height="280"
+                MaxWidth="600"
+                HorizontalAlignment="Stretch"
+                Background="White"
+                BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}"
+                BorderThickness="1">
+                <InkCanvas x:Name="strokesCanvas" AutomationProperties.Name="Strokes drawing canvas" />
+            </Border>
+            <controls:ControlExample.Options>
+                <StackPanel Width="240" Spacing="8">
+                    <TextBlock x:Name="strokeCount" Text="0 strokes on canvas" />
+                    <Button AutomationProperties.Name="Save drawing" Click="OnSaveDrawingClick" Content="Save drawing" />
+                    <Button AutomationProperties.Name="Clear saved drawing canvas" Click="OnClearStrokesClick" Content="Clear canvas" />
+                    <Button x:Name="restoreButton" AutomationProperties.Name="Restore saved drawing" Click="OnRestoreDrawingClick" Content="Restore saved drawing" IsEnabled="False" />
+                    <TextBlock x:Name="strokesStatus" Style="{ThemeResource CaptionTextBlockStyle}" Text="Draw something, then save it." TextWrapping="Wrap" />
+                </StackPanel>
+            </controls:ControlExample.Options>
         </controls:ControlExample>
     </StackPanel>
 </Page>

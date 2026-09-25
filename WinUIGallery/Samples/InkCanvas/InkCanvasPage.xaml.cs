@@ -1,15 +1,11 @@
-//*********************************************************
-//
-// Copyright (c) Microsoft. All rights reserved.
-// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-//
-//*********************************************************
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Navigation;
 using System;
 using Windows.Foundation;
 using Windows.Storage.Streams;
@@ -18,106 +14,342 @@ using Windows.UI.Input.Inking;
 
 namespace WinUIGallery.ControlPages;
 
-    // The InkCanvas public surface mirrors the classic
-    // Windows.UI.Xaml.Controls.InkCanvas: a default constructor and a single
-    // InkPresenter property. The control inks by default, so a bare <InkCanvas/>
-    // draws wet ink for mouse, pen, and touch with no app code. Example 2 shows an
-    // InkToolBar driving the canvas via TargetInkCanvas. Example 3 configures the
-    // InkPresenter from code exactly like the classic InkCanvas.
-    public sealed partial class InkCanvasPage : Page
+public sealed partial class InkCanvasPage : Page
+{
+    private bool _updatingToolbarOptions;
+    private InMemoryRandomAccessStream? _savedInk;
+    private int _savedStrokeCount;
+
+    public InkCanvasPage()
     {
-        public InkCanvasPage()
+        InitializeComponent();
+
+        penInput.Checked += OnInputDevicesChanged;
+        penInput.Unchecked += OnInputDevicesChanged;
+        mouseInput.Checked += OnInputDevicesChanged;
+        mouseInput.Unchecked += OnInputDevicesChanged;
+        touchInput.Checked += OnInputDevicesChanged;
+        touchInput.Unchecked += OnInputDevicesChanged;
+        inkColor.SelectionChanged += OnInkColorChanged;
+        strokeWidth.ValueChanged += OnStrokeWidthChanged;
+        inkingEnabled.Toggled += OnInkingEnabledChanged;
+
+        showPencil.Checked += OnToolbarToolsChanged;
+        showPencil.Unchecked += OnToolbarToolsChanged;
+        showHighlighter.Checked += OnToolbarToolsChanged;
+        showHighlighter.Unchecked += OnToolbarToolsChanged;
+        showEraser.Checked += OnToolbarToolsChanged;
+        showEraser.Unchecked += OnToolbarToolsChanged;
+        activeTool.SelectionChanged += OnActiveToolSelectionChanged;
+        buttonFlyoutPlacement.SelectionChanged += OnButtonFlyoutPlacementChanged;
+        sampleToolbar.ActiveToolChanged += OnToolbarActiveToolChanged;
+        sampleToolbar.Loaded += OnToolbarLoaded;
+
+        strokesCanvas.InkPresenter.StrokesCollected += (sender, args) => UpdateSavedStrokeCount();
+        strokesCanvas.InkPresenter.StrokesErased += (sender, args) => UpdateSavedStrokeCount();
+
+        ApplyInputDevices();
+        ApplyDrawingAttributes();
+        drawingCanvas.InkPresenter.IsInputEnabled = inkingEnabled.IsOn;
+        UpdateSavedStrokeCount();
+    }
+
+    protected override void OnNavigatedFrom(NavigationEventArgs e)
+    {
+        _savedInk?.Dispose();
+        _savedInk = null;
+        base.OnNavigatedFrom(e);
+    }
+
+    private void OnInputDevicesChanged(object sender, RoutedEventArgs e)
+    {
+        ApplyInputDevices();
+    }
+
+    private void ApplyInputDevices()
+    {
+        CoreInputDeviceTypes types = default;
+        if (penInput.IsChecked == true)
         {
-            InitializeComponent();
-
-            // Example 3: configure the presenter directly, just like WUXC's InkCanvas.
-            inkCanvas3.InkPresenter.InputDeviceTypes =
-                CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Pen | CoreInputDeviceTypes.Touch;
-            ApplyDrawingAttributes(Microsoft.UI.Colors.Red, 6);
-
-            // Example 4: listen to stroke events through the InkPresenter.
-            inkCanvas4.InkPresenter.StrokesCollected += (s, e) =>
-                statusText4.Text = $"Collected {e.Strokes.Count} stroke(s). Total: {inkCanvas4.InkPresenter.StrokeContainer.GetStrokes().Count}.";
-            inkCanvas4.InkPresenter.StrokesErased += (s, e) =>
-                statusText4.Text = $"Erased {e.Strokes.Count} stroke(s). Total: {inkCanvas4.InkPresenter.StrokeContainer.GetStrokes().Count}.";
+            types |= CoreInputDeviceTypes.Pen;
+        }
+        if (mouseInput.IsChecked == true)
+        {
+            types |= CoreInputDeviceTypes.Mouse;
+        }
+        if (touchInput.IsChecked == true)
+        {
+            types |= CoreInputDeviceTypes.Touch;
         }
 
-        private void ApplyDrawingAttributes(Windows.UI.Color color, double size)
+        drawingCanvas.InkPresenter.InputDeviceTypes = types;
+    }
+
+    private void OnInkColorChanged(object sender, SelectionChangedEventArgs e)
+    {
+        ApplyDrawingAttributes();
+    }
+
+    private void OnStrokeWidthChanged(object sender, RangeBaseValueChangedEventArgs e)
+    {
+        ApplyDrawingAttributes();
+    }
+
+    private void ApplyDrawingAttributes()
+    {
+        Windows.UI.Color color = inkColor.SelectedIndex switch
         {
-            var attributes = inkCanvas3.InkPresenter.CopyDefaultDrawingAttributes();
-            attributes.Color = color;
-            attributes.Size = new Size(size, size);
-            inkCanvas3.InkPresenter.UpdateDefaultDrawingAttributes(attributes);
+            0 => Colors.Black,
+            1 => Colors.Red,
+            2 => Colors.Blue,
+            _ => throw new InvalidOperationException("Unexpected ink color selection."),
+        };
+
+        InkDrawingAttributes attributes = drawingCanvas.InkPresenter.CopyDefaultDrawingAttributes();
+        attributes.Color = color;
+        attributes.Size = new Size(strokeWidth.Value, strokeWidth.Value);
+        drawingCanvas.InkPresenter.UpdateDefaultDrawingAttributes(attributes);
+    }
+
+    private void OnInkingEnabledChanged(object sender, RoutedEventArgs e)
+    {
+        drawingCanvas.InkPresenter.IsInputEnabled = inkingEnabled.IsOn;
+    }
+
+    private void OnClearDrawingClick(object sender, RoutedEventArgs e)
+    {
+        drawingCanvas.InkPresenter.StrokeContainer.Clear();
+    }
+
+    private void OnToolbarLoaded(object sender, RoutedEventArgs e)
+    {
+        if (sampleToolbar.ActiveTool is null)
+        {
+            sampleToolbar.ActiveTool = ballpointButton;
         }
 
-        private void OnRedPenClick(object sender, RoutedEventArgs e)
+        SyncActiveToolSelection();
+    }
+
+    private void OnToolbarActiveToolChanged(InkToolbar sender, object args)
+    {
+        if (!_updatingToolbarOptions)
         {
-            ApplyDrawingAttributes(Microsoft.UI.Colors.Red, 6);
+            SyncActiveToolSelection();
+        }
+    }
+
+    private void OnToolbarToolsChanged(object sender, RoutedEventArgs e)
+    {
+        if (_updatingToolbarOptions)
+        {
+            return;
         }
 
-        private void OnBluePenClick(object sender, RoutedEventArgs e)
+        InkToolbarTool previouslyActive = sampleToolbar.ActiveTool?.ToolKind ?? InkToolbarTool.BallpointPen;
+        _updatingToolbarOptions = true;
+        try
         {
-            ApplyDrawingAttributes(Microsoft.UI.Colors.Blue, 2);
+            UpdateToolbarButtons(previouslyActive);
+        }
+        finally
+        {
+            _updatingToolbarOptions = false;
         }
 
-        private void OnTouchToggled(object sender, RoutedEventArgs e)
+        SyncActiveToolSelection();
+    }
+
+    private void OnActiveToolSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (_updatingToolbarOptions || activeTool.SelectedIndex < 0)
         {
-            // Toggled fires while IsOn="True" is applied during InitializeComponent,
-            // before inkCanvas3 (declared later in the XAML) is assigned. The
-            // constructor configures the presenter, so ignore these early events.
-            if (inkCanvas3 == null)
+            return;
+        }
+
+        InkToolbarTool requestedTool = activeTool.SelectedIndex switch
+        {
+            0 => InkToolbarTool.BallpointPen,
+            1 => InkToolbarTool.Pencil,
+            2 => InkToolbarTool.Highlighter,
+            3 => InkToolbarTool.Eraser,
+            _ => throw new InvalidOperationException("Unexpected toolbar tool selection."),
+        };
+
+        _updatingToolbarOptions = true;
+        try
+        {
+            if (requestedTool == InkToolbarTool.Pencil)
             {
-                return;
+                showPencil.IsChecked = true;
+            }
+            else if (requestedTool == InkToolbarTool.Highlighter)
+            {
+                showHighlighter.IsChecked = true;
+            }
+            else if (requestedTool == InkToolbarTool.Eraser)
+            {
+                showEraser.IsChecked = true;
             }
 
-            var types = CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Pen;
-            if (touchToggle.IsOn)
+            UpdateToolbarButtons(requestedTool);
+        }
+        finally
+        {
+            _updatingToolbarOptions = false;
+        }
+
+        SyncActiveToolSelection();
+    }
+
+    private void OnButtonFlyoutPlacementChanged(object sender, SelectionChangedEventArgs e)
+    {
+        sampleToolbar.ButtonFlyoutPlacement = buttonFlyoutPlacement.SelectedIndex switch
+        {
+            0 => InkToolbarButtonFlyoutPlacement.Auto,
+            1 => InkToolbarButtonFlyoutPlacement.Top,
+            2 => InkToolbarButtonFlyoutPlacement.Bottom,
+            3 => InkToolbarButtonFlyoutPlacement.Left,
+            4 => InkToolbarButtonFlyoutPlacement.Right,
+            _ => throw new InvalidOperationException("Unexpected button flyout placement selection."),
+        };
+    }
+
+    private void UpdateToolbarButtons(InkToolbarTool requestedTool)
+    {
+        InkToolbarToolButton selectedButton = requestedTool switch
+        {
+            InkToolbarTool.Pencil when showPencil.IsChecked == true => pencilButton,
+            InkToolbarTool.Highlighter when showHighlighter.IsChecked == true => highlighterButton,
+            InkToolbarTool.Eraser when showEraser.IsChecked == true => eraserButton,
+            _ => ballpointButton,
+        };
+
+        if (showPencil.IsChecked == true)
+        {
+            pencilButton.Visibility = Visibility.Visible;
+        }
+        if (showHighlighter.IsChecked == true)
+        {
+            highlighterButton.Visibility = Visibility.Visible;
+        }
+        if (showEraser.IsChecked == true)
+        {
+            eraserButton.Visibility = Visibility.Visible;
+        }
+
+        if (!ReferenceEquals(sampleToolbar.ActiveTool, selectedButton))
+        {
+            sampleToolbar.ActiveTool = selectedButton;
+        }
+
+        if (showPencil.IsChecked != true)
+        {
+            pencilButton.Visibility = Visibility.Collapsed;
+        }
+        if (showHighlighter.IsChecked != true)
+        {
+            highlighterButton.Visibility = Visibility.Collapsed;
+        }
+        if (showEraser.IsChecked != true)
+        {
+            eraserButton.Visibility = Visibility.Collapsed;
+        }
+    }
+
+    private void SyncActiveToolSelection()
+    {
+        int index = sampleToolbar.ActiveTool?.ToolKind switch
+        {
+            InkToolbarTool.BallpointPen => 0,
+            InkToolbarTool.Pencil => 1,
+            InkToolbarTool.Highlighter => 2,
+            InkToolbarTool.Eraser => 3,
+            _ => -1,
+        };
+
+        if (index >= 0 && activeTool.SelectedIndex != index)
+        {
+            _updatingToolbarOptions = true;
+            try
             {
-                types |= CoreInputDeviceTypes.Touch;
+                activeTool.SelectedIndex = index;
             }
-
-            inkCanvas3.InkPresenter.InputDeviceTypes = types;
-        }
-
-        private void OnEnabledToggled(object sender, RoutedEventArgs e)
-        {
-            if (inkCanvas3 == null)
+            finally
             {
-                return;
+                _updatingToolbarOptions = false;
             }
-
-            inkCanvas3.InkPresenter.IsInputEnabled = enabledToggle.IsOn;
         }
 
-        private void OnCountStrokesClick(object sender, RoutedEventArgs e)
+    }
+
+    private void OnClearToolbarClick(object sender, RoutedEventArgs e)
+    {
+        toolbarCanvas.InkPresenter.StrokeContainer.Clear();
+    }
+
+    private void UpdateSavedStrokeCount()
+    {
+        int count = strokesCanvas.InkPresenter.StrokeContainer.GetStrokes().Count;
+        strokeCount.Text = $"{count} stroke(s) on canvas";
+        restoreButton.IsEnabled = _savedInk is not null && count == 0;
+    }
+
+    private async void OnSaveDrawingClick(object sender, RoutedEventArgs e)
+    {
+        Microsoft.UI.Xaml.Controls.InkStrokeContainer container = strokesCanvas.InkPresenter.StrokeContainer;
+        int count = container.GetStrokes().Count;
+        if (count == 0)
         {
-            var count = inkCanvas4.InkPresenter.StrokeContainer.GetStrokes().Count;
-            statusText4.Text = $"The canvas has {count} stroke(s).";
+            strokesStatus.Text = "Draw something before saving.";
+            return;
         }
 
-        private void OnClearStrokesClick(object sender, RoutedEventArgs e)
+        InMemoryRandomAccessStream? stream = new();
+        try
         {
-            inkCanvas4.InkPresenter.StrokeContainer.Clear();
-            statusText4.Text = "Cleared all strokes.";
+            using IOutputStream output = stream.GetOutputStreamAt(0);
+            await container.SaveAsync(output);
+            _savedInk?.Dispose();
+            _savedInk = stream;
+            stream = null;
+            _savedStrokeCount = count;
+            UpdateSavedStrokeCount();
+            strokesStatus.Text = $"Saved {count} stroke(s). Clear the canvas to restore them.";
         }
-
-        private async void OnSaveReloadClick(object sender, RoutedEventArgs e)
+        finally
         {
-            var container = inkCanvas4.InkPresenter.StrokeContainer;
-            var before = container.GetStrokes().Count;
-            if (before == 0)
-            {
-                statusText4.Text = "Draw something first, then save & reload.";
-                return;
-            }
-
-            // Round-trip the strokes through an in-memory stream: save, clear, reload.
-            var stream = new InMemoryRandomAccessStream();
-            await container.SaveAsync(stream.GetOutputStreamAt(0));
-            container.Clear();
-            await container.LoadAsync(stream.GetInputStreamAt(0));
-
-            var after = container.GetStrokes().Count;
-            statusText4.Text = $"Saved and reloaded {before} stroke(s); canvas now has {after}.";
+            stream?.Dispose();
         }
+    }
+
+    private void OnClearStrokesClick(object sender, RoutedEventArgs e)
+    {
+        strokesCanvas.InkPresenter.StrokeContainer.Clear();
+        UpdateSavedStrokeCount();
+        strokesStatus.Text = _savedInk is null
+            ? "Canvas cleared. Draw and save something to restore it."
+            : $"Canvas cleared. {_savedStrokeCount} saved stroke(s) are ready to restore.";
+    }
+
+    private async void OnRestoreDrawingClick(object sender, RoutedEventArgs e)
+    {
+        if (_savedInk is not InMemoryRandomAccessStream saved)
+        {
+            strokesStatus.Text = "Save a drawing before restoring it.";
+            return;
+        }
+
+        Microsoft.UI.Xaml.Controls.InkStrokeContainer container = strokesCanvas.InkPresenter.StrokeContainer;
+        if (container.GetStrokes().Count != 0)
+        {
+            strokesStatus.Text = "Clear the canvas before restoring saved ink.";
+            return;
+        }
+
+        using IInputStream input = saved.GetInputStreamAt(0);
+        await container.LoadAsync(input);
+        UpdateSavedStrokeCount();
+        strokesStatus.Text = $"Restored {container.GetStrokes().Count} stroke(s).";
+    }
 }

@@ -1,0 +1,14 @@
+--- header
+Draw and configure an InkCanvas.
+--- xaml
+<InkCanvas x:Name="inkCanvas" />
+--- c#
+inkCanvas.InkPresenter.InputDeviceTypes =
+    default(CoreInputDeviceTypes)$(PenDevice)$(MouseDevice)$(TouchDevice);
+
+InkDrawingAttributes attributes = inkCanvas.InkPresenter.CopyDefaultDrawingAttributes();
+attributes.Color = Colors.$(InkColor);
+attributes.Size = new Size($(StrokeWidth), $(StrokeWidth));
+inkCanvas.InkPresenter.UpdateDefaultDrawingAttributes(attributes);
+
+inkCanvas.InkPresenter.IsInputEnabled = true;

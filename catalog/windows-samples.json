@@ -9,7 +9,7 @@
     "defaultBranch": "main",
     "license": "MIT"
   },
-  "controlCount": 125,
+  "controlCount": 124,
   "controls": [
     {
       "id": "accessibilitycolorcontrast",
@@ -4518,106 +4518,34 @@
     },
     {
       "id": "inkcanvas",
-      "name": "InkCanvas",
-      "description": "A control for freeform inking with pen, touch, or mouse input.",
-      "details": "InkCanvas provides a surface for freeform digital inking. It inks by default and supports pen, touch, and mouse input. All ink configuration flows through its InkPresenter.",
+      "name": "InkCanvas / InkToolbar",
+      "description": "Draw with pen, touch, or mouse and choose tools with an InkToolbar.",
+      "details": "Use InkCanvas to collect freeform ink with pen, touch, or mouse. Pair it with InkToolbar to choose drawing tools. Explore input settings, customize the available tools, and save and restore strokes.",
       "apiNamespace": "Microsoft.UI.Xaml.Controls",
-      "relatedControls": [
-        "InkCanvas",
-        "InkToolbar"
-      ],
       "usings": [
+        "Microsoft.UI",
         "Microsoft.UI.Xaml",
         "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Primitives",
+        "Microsoft.UI.Xaml.Navigation",
         "System",
         "Windows.Foundation",
         "Windows.Storage.Streams",
         "Windows.UI.Core",
         "Windows.UI.Input.Inking"
       ],
+      "curatedKeywords": [
+        "inking",
+        "drawing",
+        "InkToolbar",
+        "pen",
+        "stylus"
+      ],
       "docs": [
         {
           "title": "InkCanvas - API",
           "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.inkcanvas"
-        }
-      ],
-      "gallery": {
-        "uniqueId": "InkCanvas",
-        "group": {
-          "id": "BasicInput",
-          "title": "Basic input"
         },
-        "page": "WinUIGallery/Samples/InkCanvas/InkCanvasPage.xaml",
-        "codeBehind": "WinUIGallery/Samples/InkCanvas/InkCanvasPage.xaml.cs",
-        "badges": [
-          "New"
-        ],
-        "relatedSamples": [
-          "microsoft/WinUI-Gallery#InkCanvas",
-          "microsoft/WinUI-Gallery#InkToolbar"
-        ]
-      },
-      "samples": [
-        {
-          "header": "A default InkCanvas inks out of the box \u2014 just draw on it.",
-          "xaml": "\u003CInkCanvas /\u003E",
-          "gallery": {
-            "snippet": "Example1.txt",
-            "source": "WinUIGallery/Samples/InkCanvas/Example1.txt",
-            "name": "Example1"
-          }
-        },
-        {
-          "header": "Pair an InkToolbar with an InkCanvas to switch pen, eraser, color, and width.",
-          "xaml": "\u003CInkToolBar TargetInkCanvas=\u0022{x:Bind inkCanvas}\u0022 /\u003E\n\u003CInkCanvas x:Name=\u0022inkCanvas\u0022 /\u003E",
-          "gallery": {
-            "snippet": "Example2.txt",
-            "source": "WinUIGallery/Samples/InkCanvas/Example2.txt",
-            "name": "Example2"
-          }
-        },
-        {
-          "header": "Configure the InkPresenter from code, exactly like the classic InkCanvas.",
-          "code": "// Configure the presenter directly, just like the classic InkCanvas.\ninkCanvas.InkPresenter.InputDeviceTypes =\n    CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Pen | CoreInputDeviceTypes.Touch;\n\nvar attributes = inkCanvas.InkPresenter.CopyDefaultDrawingAttributes();\nattributes.Color = Microsoft.UI.Colors.Red;\nattributes.Size = new Windows.Foundation.Size(6, 6);\ninkCanvas.InkPresenter.UpdateDefaultDrawingAttributes(attributes);",
-          "language": "csharp",
-          "gallery": {
-            "snippet": "Example3.txt",
-            "source": "WinUIGallery/Samples/InkCanvas/Example3.txt",
-            "name": "Example3"
-          }
-        },
-        {
-          "header": "Manage strokes and listen to stroke events through InkPresenter.StrokeContainer.",
-          "xaml": "\u003CStackPanel Spacing=\u00228\u0022\u003E\n    \u003CStackPanel Orientation=\u0022Horizontal\u0022 Spacing=\u00228\u0022\u003E\n        \u003CButton Content=\u0022Count strokes\u0022 Click=\u0022OnCountStrokesClick\u0022 /\u003E\n        \u003CButton Content=\u0022Clear\u0022 Click=\u0022OnClearStrokesClick\u0022 /\u003E\n        \u003CButton Content=\u0022Save \u0026amp; reload (in-memory)\u0022 Click=\u0022OnSaveReloadClick\u0022 /\u003E\n    \u003C/StackPanel\u003E\n    \u003CTextBlock\n        x:Name=\u0022statusText\u0022\n        Text=\u0022Draw on the canvas below.\u0022\n        TextWrapping=\u0022Wrap\u0022 /\u003E\n    \u003CBorder\n        Width=\u0022600\u0022\n        Height=\u0022300\u0022\n        Background=\u0022White\u0022\n        BorderBrush=\u0022{ThemeResource SystemControlForegroundChromeHighBrush}\u0022\n        BorderThickness=\u00221\u0022\u003E\n        \u003CInkCanvas x:Name=\u0022inkCanvas\u0022 /\u003E\n    \u003C/Border\u003E\n\u003C/StackPanel\u003E",
-          "code": "// Listen to stroke events.\ninkCanvas.InkPresenter.StrokesCollected \u002B= (s, e) =\u003E\n    statusText.Text = $\u0022Collected {e.Strokes.Count} stroke(s).\u0022;\ninkCanvas.InkPresenter.StrokesErased \u002B= (s, e) =\u003E\n    statusText.Text = $\u0022Erased {e.Strokes.Count} stroke(s).\u0022;\n\n// Enumerate and clear.\nvar strokes = inkCanvas.InkPresenter.StrokeContainer.GetStrokes();\ninkCanvas.InkPresenter.StrokeContainer.Clear();\n\n// Save and reload through a stream.\nvar stream = new InMemoryRandomAccessStream();\nawait inkCanvas.InkPresenter.StrokeContainer.SaveAsync(stream.GetOutputStreamAt(0));\ninkCanvas.InkPresenter.StrokeContainer.Clear();\nawait inkCanvas.InkPresenter.StrokeContainer.LoadAsync(stream.GetInputStreamAt(0));",
-          "language": "csharp",
-          "gallery": {
-            "snippet": "Example4.txt",
-            "source": "WinUIGallery/Samples/InkCanvas/Example4.txt",
-            "name": "Example4"
-          }
-        }
-      ]
-    },
-    {
-      "id": "inktoolbar",
-      "name": "InkToolbar",
-      "description": "A toolbar that pairs with InkCanvas to select inking tools and stencils.",
-      "details": "InkToolbar is a UWP-style command bar for the InkCanvas. It hosts built-in pen, pencil, highlighter, eraser, and stencil tools and supports custom pens, custom tools, and custom toggle buttons.",
-      "apiNamespace": "Microsoft.UI.Xaml.Controls",
-      "relatedControls": [
-        "InkCanvas"
-      ],
-      "usings": [
-        "Microsoft.UI",
-        "Microsoft.UI.Xaml",
-        "Microsoft.UI.Xaml.Controls",
-        "System",
-        "System.Text",
-        "Windows.Foundation",
-        "Windows.UI.Input.Inking"
-      ],
-      "docs": [
         {
           "title": "InkToolbar - API",
           "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.inktoolbar"
@@ -4628,120 +4556,49 @@
         }
       ],
       "gallery": {
-        "uniqueId": "InkToolbar",
+        "uniqueId": "InkCanvas",
         "group": {
-          "id": "BasicInput",
-          "title": "Basic input"
+          "id": "Media",
+          "title": "Media"
         },
-        "page": "WinUIGallery/Samples/InkToolbar/InkToolbarPage.xaml",
-        "codeBehind": "WinUIGallery/Samples/InkToolbar/InkToolbarPage.xaml.cs",
+        "page": "WinUIGallery/Samples/InkCanvas/InkCanvasPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/InkCanvas/InkCanvasPage.xaml.cs",
         "badges": [
           "New"
-        ],
-        "relatedSamples": [
-          "microsoft/WinUI-Gallery#InkCanvas"
         ]
       },
       "samples": [
         {
-          "header": "1. ActiveTool \u002B GetToolButton \u2014 switch tools and read/set ActiveTool.",
-          "xaml": "\u003CInkToolBar x:Name=\u0022inkToolBar\u0022 TargetInkCanvas=\u0022{x:Bind inkCanvas}\u0022 /\u003E\n\u003CInkCanvas x:Name=\u0022inkCanvas\u0022 /\u003E",
-          "code": "// Set ActiveTool programmatically:\nInkToolBarToolButton button = inkToolBar.GetToolButton(InkToolBarTool.Pencil);\ninkToolBar.ActiveTool = button;",
+          "header": "Draw and configure an InkCanvas.",
+          "xaml": "\u003CInkCanvas x:Name=\u0022inkCanvas\u0022 /\u003E",
+          "code": "inkCanvas.InkPresenter.InputDeviceTypes =\n    default(CoreInputDeviceTypes) | CoreInputDeviceTypes.Pen | CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Touch;\n\nInkDrawingAttributes attributes = inkCanvas.InkPresenter.CopyDefaultDrawingAttributes();\nattributes.Color = Colors.Black;\nattributes.Size = new Size(4, 4);\ninkCanvas.InkPresenter.UpdateDefaultDrawingAttributes(attributes);\n\ninkCanvas.InkPresenter.IsInputEnabled = true;",
           "language": "csharp",
           "gallery": {
-            "snippet": "Example1.txt",
-            "source": "WinUIGallery/Samples/InkToolbar/Example1.txt",
-            "name": "Example1"
+            "snippet": "InkCanvasDrawing.txt",
+            "source": "WinUIGallery/Samples/InkCanvas/InkCanvasDrawing.txt",
+            "name": "Drawing"
           }
         },
         {
-          "header": "2. TargetInkCanvas \u2014 rebind the toolbar to a different InkCanvas at runtime.",
-          "code": "inkToolBar.TargetInkCanvas = inkCanvasA;   // or inkCanvasB",
+          "header": "Choose which tools appear in an InkToolbar and select the active tool.",
+          "xaml": "\u003CStackPanel\u003E\n    \u003CInkToolbar x:Name=\u0022inkToolbar\u0022 InitialControls=\u0022None\u0022 ButtonFlyoutPlacement=\u0022Auto\u0022 TargetInkCanvas=\u0022{x:Bind inkCanvas}\u0022\u003E\n        \u003CInkToolbar.Children\u003E\n            \u003CInkToolbarBallpointPenButton /\u003E\n            \u003CInkToolbarPencilButton /\u003E\n            \u003CInkToolbarHighlighterButton /\u003E\n            \u003CInkToolbarEraserButton /\u003E\n        \u003C/InkToolbar.Children\u003E\n    \u003C/InkToolbar\u003E\n    \u003CInkCanvas x:Name=\u0022inkCanvas\u0022 /\u003E\n\u003C/StackPanel\u003E",
+          "code": "inkToolbar.ButtonFlyoutPlacement = InkToolbarButtonFlyoutPlacement.Auto;\n\nInkToolbarToolButton? selected =\n    inkToolbar.GetToolButton(InkToolbarTool.BallpointPen);\nif (selected is not null)\n{\n    inkToolbar.ActiveTool = selected;\n}",
           "language": "csharp",
           "gallery": {
-            "snippet": "Example2.txt",
-            "source": "WinUIGallery/Samples/InkToolbar/Example2.txt",
-            "name": "Example2"
+            "snippet": "InkCanvasToolbar.txt",
+            "source": "WinUIGallery/Samples/InkCanvas/InkCanvasToolbar.txt",
+            "name": "Toolbar"
           }
         },
         {
-          "header": "3. TargetInkPresenter \u2014 wire the toolbar directly to an InkPresenter instead of an InkCanvas.",
-          "code": "inkToolBar.TargetInkPresenter = inkCanvas.InkPresenter;\n// or\ninkToolBar.TargetInkCanvas = inkCanvas;",
+          "header": "Save, clear, and restore ink strokes.",
+          "xaml": "\u003CInkCanvas x:Name=\u0022inkCanvas\u0022 /\u003E",
+          "code": "Microsoft.UI.Xaml.Controls.InkStrokeContainer strokes = inkCanvas.InkPresenter.StrokeContainer;\nusing InMemoryRandomAccessStream savedInk = new();\nusing (IOutputStream output = savedInk.GetOutputStreamAt(0))\n{\n    await strokes.SaveAsync(output);\n}\n\nstrokes.Clear();\n\nusing (IInputStream input = savedInk.GetInputStreamAt(0))\n{\n    await strokes.LoadAsync(input);\n}",
           "language": "csharp",
           "gallery": {
-            "snippet": "Example3.txt",
-            "source": "WinUIGallery/Samples/InkToolbar/Example3.txt",
-            "name": "Example3"
-          }
-        },
-        {
-          "header": "4. InitialControls \u2014 change which default tool buttons the toolbar creates.",
-          "code": "inkToolBar.InitialControls = InkToolBarInitialControls.PensOnly;",
-          "language": "csharp",
-          "gallery": {
-            "snippet": "Example4.txt",
-            "source": "WinUIGallery/Samples/InkToolbar/Example4.txt",
-            "name": "Example4"
-          }
-        },
-        {
-          "header": "5. Orientation \u2014 read/write the layout orientation (visual effect lands in Phase 3).",
-          "code": "inkToolBar.Orientation = Orientation.Vertical;",
-          "language": "csharp",
-          "gallery": {
-            "snippet": "Example5.txt",
-            "source": "WinUIGallery/Samples/InkToolbar/Example5.txt",
-            "name": "Example5"
-          }
-        },
-        {
-          "header": "6. ButtonFlyoutPlacement \u2014 read/write the flyout placement (flyouts pending Phase 3).",
-          "code": "inkToolBar.ButtonFlyoutPlacement = InkToolBarButtonFlyoutPlacement.Right;",
-          "language": "csharp",
-          "gallery": {
-            "snippet": "Example6.txt",
-            "source": "WinUIGallery/Samples/InkToolbar/Example6.txt",
-            "name": "Example6"
-          }
-        },
-        {
-          "header": "7. GetToolButton / GetToggleButton / GetMenuButton \u2014 discover the API surface.",
-          "code": "foreach (InkToolBarTool t in Enum.GetValues(typeof(InkToolBarTool)))\n{\n    var btn = inkToolBar.GetToolButton(t);\n    // ...\n}",
-          "language": "csharp",
-          "gallery": {
-            "snippet": "Example7.txt",
-            "source": "WinUIGallery/Samples/InkToolbar/Example7.txt",
-            "name": "Example7"
-          }
-        },
-        {
-          "header": "8. IsRulerButtonChecked / IsStencilButtonChecked \u2014 toggle stencil-state properties.",
-          "code": "inkToolBar.IsRulerButtonChecked   = true;\ninkToolBar.IsStencilButtonChecked = true;",
-          "language": "csharp",
-          "gallery": {
-            "snippet": "Example8.txt",
-            "source": "WinUIGallery/Samples/InkToolbar/Example8.txt",
-            "name": "Example8"
-          }
-        },
-        {
-          "header": "9. InkDrawingAttributes \u2014 read the attributes the toolbar exposes for its active tool.",
-          "code": "var attrs = inkToolBar.InkDrawingAttributes;\n// attrs.Color, attrs.Size, attrs.PenTip, attrs.DrawAsHighlighter, ...",
-          "language": "csharp",
-          "gallery": {
-            "snippet": "Example9.txt",
-            "source": "WinUIGallery/Samples/InkToolbar/Example9.txt",
-            "name": "Example9"
-          }
-        },
-        {
-          "header": "10. Children \u002B DependencyProperty surface \u2014 verify the collection and every static DP exists.",
-          "code": "int count = inkToolBar.Children.Count;\nDependencyProperty property = InkToolBar.InitialControlsProperty;",
-          "language": "csharp",
-          "gallery": {
-            "snippet": "Example10.txt",
-            "source": "WinUIGallery/Samples/InkToolbar/Example10.txt",
-            "name": "Example10"
+            "snippet": "InkCanvasStrokes.txt",
+            "source": "WinUIGallery/Samples/InkCanvas/InkCanvasStrokes.txt",
+            "name": "Strokes"
           }
         }
       ]
