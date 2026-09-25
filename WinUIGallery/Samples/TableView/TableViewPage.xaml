@@ -1,0 +1,312 @@
+<!--
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    Licensed under the MIT License.
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.TableViewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:local="using:WinUIGallery.ControlPages"
+    xmlns:tabular="using:Microsoft.UI.Xaml.Controls.Tabular">
+    <StackPanel Margin="0,16,0,0" Spacing="16">
+        <controls:ControlExample
+            HeaderText="Sort operational data and show details for the selected row"
+            SampleDefinition="TableView\InventoryTable.txt">
+            <StackPanel Spacing="12">
+                <TextBlock
+                    Text="Select a column header to sort. The frozen asset identifier remains visible while the table scrolls horizontally, and row selection continues to track the same item after sorting."
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    AutomationProperties.LiveSetting="Polite"
+                    Text="{x:Bind InventorySortStatus, Mode=OneWay}"
+                    TextWrapping="Wrap" />
+                <tabular:TableView
+                    x:Name="InventoryTable"
+                    Height="320"
+                    AutomationProperties.AutomationId="TableViewInventoryTable"
+                    AutomationProperties.Name="Warehouse inventory"
+                    AlternatingRowBackground="{ThemeResource SubtleFillColorSecondaryBrush}"
+                    CanUserResizeColumns="False"
+                    CanUserSortColumns="True"
+                    GridLinesVisibility="All"
+                    HeadersVisibility="Column"
+                    IsReadOnly="True"
+                    ItemsSource="{x:Bind Inventory}"
+                    RowBackground="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    SelectionChanged="InventoryTable_SelectionChanged"
+                    SelectionMode="Single"
+                    Sorted="InventoryTable_Sorted"
+                    Sorting="InventoryTable_Sorting">
+                    <tabular:TableView.Columns>
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding AssetId}"
+                            FrozenEdge="Leading"
+                            Header="Asset ID"
+                            HeaderToolTip="Stable inventory asset identifier"
+                            Width="112" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding ItemName}"
+                            CellToolTipBinding="{Binding ItemName}"
+                            Header="Item"
+                            Width="210" />
+                        <tabular:TableViewTemplateColumn
+                            Header="Status"
+                            SortMemberPath="Status"
+                            Width="140">
+                            <tabular:TableViewTemplateColumn.CellTemplate>
+                                <DataTemplate x:DataType="local:InventoryRecord">
+                                    <StackPanel
+                                        HorizontalAlignment="Left"
+                                        Orientation="Horizontal"
+                                        Spacing="8">
+                                        <FontIcon
+                                            AutomationProperties.AccessibilityView="Raw"
+                                            FontSize="18" VerticalAlignment="Center"
+                                            Glyph="{x:Bind StatusGlyph}" />
+                                        <TextBlock Text="{x:Bind Status}" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </tabular:TableViewTemplateColumn.CellTemplate>
+                        </tabular:TableViewTemplateColumn>
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding Warehouse}"
+                            Header="Warehouse"
+                            Width="150" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding Quantity}"
+                            Header="On hand"
+                            SortCycle="DescendingAscendingNone"
+                            Width="96" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding ReorderPoint}"
+                            Header="Reorder at"
+                            Width="104" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding LastAudit}"
+                            CanSort="False"
+                            Header="Last audit"
+                            Width="130" />
+                    </tabular:TableView.Columns>
+                </tabular:TableView>
+
+                <Border
+                    Padding="16"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="{ThemeResource ControlCornerRadius}">
+                    <StackPanel Spacing="8">
+                        <TextBlock
+                            AutomationProperties.HeadingLevel="Level3"
+                            Style="{ThemeResource BodyStrongTextBlockStyle}"
+                            Text="Selected asset" />
+                        <Grid ColumnSpacing="12" RowSpacing="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock FontWeight="SemiBold" Text="Asset ID" />
+                            <TextBlock Grid.Column="1" Text="{x:Bind SelectedInventoryItem.AssetId, Mode=OneWay}" />
+                            <TextBlock Grid.Row="1" FontWeight="SemiBold" Text="Location" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{x:Bind SelectedInventoryItem.Location, Mode=OneWay}" />
+                            <TextBlock Grid.Row="2" FontWeight="SemiBold" Text="Next action" />
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{x:Bind SelectedInventoryItem.NextAction, Mode=OneWay}"
+                                TextWrapping="Wrap" />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            HeaderText="Edit staffing allocations and validate changes"
+            SampleDefinition="TableView\EditableStaffingTable.txt">
+            <StackPanel Spacing="12">
+                <TextBlock
+                    Text="Double-click a cell or press F2 to edit. Press Enter to commit or Esc to cancel. Employee ID is read-only. Invalid values keep the editor open and restore the original value, and the finance-approved allocation demonstrates a synchronous policy veto."
+                    TextWrapping="Wrap" />
+                <InfoBar
+                    x:Name="StaffingValidationInfoBar"
+                    AutomationProperties.LiveSetting="Assertive"
+                    AutomationProperties.Name="Staffing edit validation feedback"
+                    IsClosable="False"
+                    IsOpen="{x:Bind IsValidationMessageOpen, Mode=OneWay}"
+                    Message="{x:Bind ValidationMessage, Mode=OneWay}"
+                    Severity="Error"
+                    Title="The change could not be saved" />
+                <tabular:TableView
+                    x:Name="StaffingTable"
+                    Height="300"
+                    AutomationProperties.AutomationId="TableViewStaffingTable"
+                    AutomationProperties.Name="Editable staffing and budget allocations"
+                    AlternatingRowBackground="{ThemeResource SubtleFillColorSecondaryBrush}"
+                    BeginningEdit="StaffingTable_BeginningEdit"
+                    CanUserResizeColumns="False"
+                    CanUserSortColumns="False"
+                    CellEditEnding="StaffingTable_CellEditEnding"
+                    Density="Compact"
+                    GridLinesVisibility="All"
+                    IsReadOnly="False"
+                    ItemsSource="{x:Bind StaffingRows}"
+                    RowBackground="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    Unloaded="StaffingTable_Unloaded">
+                    <tabular:TableView.Columns>
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding EmployeeId}"
+                            Header="Employee ID"
+                            IsReadOnly="True"
+                            Width="116" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding EmployeeName}"
+                            Header="Employee"
+                            Width="180" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding Role}"
+                            Header="Role"
+                            Width="180" />
+                        <tabular:TableViewTextColumn
+                            x:Name="AllocationColumn"
+                            Binding="{Binding AllocationPercent}"
+                            Header="Allocation %"
+                            Width="120" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding BudgetThousands}"
+                            Header="Budget ($K)"
+                            Width="120" />
+                    </tabular:TableView.Columns>
+                </tabular:TableView>
+            </StackPanel>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            HeaderText="Configure a large virtualized table and its empty state"
+            SampleDefinition="TableView\VirtualizedMetricsTable.txt">
+            <StackPanel Spacing="12">
+                <TextBlock
+                    Text="TableView virtualizes rows, so only rows near the viewport are realized. Change the presentation or clear the collection to display the empty-state template."
+                    TextWrapping="Wrap" />
+                <tabular:TableView
+                    x:Name="VirtualizedTable"
+                    Height="360"
+                    AutomationProperties.AutomationId="TableViewVirtualizedMetricsTable"
+                    AutomationProperties.Name="Virtualized service performance metrics"
+                    AlternatingRowBackground="{ThemeResource SubtleFillColorSecondaryBrush}"
+                    CanUserResizeColumns="False"
+                    CanUserSortColumns="False"
+                    Density="Standard"
+                    GridLinesVisibility="All"
+                    ItemsSource="{x:Bind PerformanceRows}"
+                    RowBackground="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    SelectionMode="None">
+                    <tabular:TableView.EmptyTemplate>
+                        <DataTemplate>
+                            <StackPanel
+                                Padding="32"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Spacing="8">
+                                <FontIcon
+                                    AutomationProperties.AccessibilityView="Raw"
+                                    FontSize="32"
+                                    Glyph="&#xE9D9;" />
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    AutomationProperties.HeadingLevel="Level3"
+                                    Style="{ThemeResource SubtitleTextBlockStyle}"
+                                    Text="No service metrics" />
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Text="Turn off the empty-state option to restore 1,000 rows." />
+                            </StackPanel>
+                        </DataTemplate>
+                    </tabular:TableView.EmptyTemplate>
+                    <tabular:TableView.Columns>
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding ServiceId}"
+                            FrozenEdge="Leading"
+                            Header="Service ID"
+                            Width="120" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding ServiceName}"
+                            Header="Service"
+                            Width="220" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding Region}"
+                            Header="Region"
+                            Width="130" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding RequestsPerMinute}"
+                            Header="Requests/min"
+                            Width="130" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding P95Latency}"
+                            Header="P95 latency"
+                            Width="130" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding Availability}"
+                            Header="Availability"
+                            Width="120" />
+                    </tabular:TableView.Columns>
+                </tabular:TableView>
+            </StackPanel>
+
+            <controls:ControlExample.Options>
+                <StackPanel Width="240" Spacing="12">
+                    <ComboBox
+                        x:Name="DensityComboBox"
+                        AutomationProperties.AutomationId="TableViewDensitySelector"
+                        AutomationProperties.Name="Table density"
+                        Header="Density"
+                        SelectedIndex="1"
+                        SelectionChanged="DensityComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Compact" Tag="Compact" />
+                        <ComboBoxItem Content="Standard" Tag="Standard" />
+                        <ComboBoxItem Content="Comfortable" Tag="Comfortable" />
+                    </ComboBox>
+                    <ComboBox
+                        x:Name="GridLinesComboBox"
+                        AutomationProperties.AutomationId="TableViewGridLinesSelector"
+                        AutomationProperties.Name="Table grid lines"
+                        Header="Grid lines"
+                        SelectedIndex="0"
+                        SelectionChanged="GridLinesComboBox_SelectionChanged">
+                        <ComboBoxItem Content="All" Tag="All" />
+                        <ComboBoxItem Content="Horizontal" Tag="Horizontal" />
+                        <ComboBoxItem Content="Vertical" Tag="Vertical" />
+                        <ComboBoxItem Content="None" Tag="None" />
+                    </ComboBox>
+                    <ToggleSwitch
+                        x:Name="EmptyStateToggle"
+                        AutomationProperties.AutomationId="TableViewEmptyStateToggle"
+                        AutomationProperties.Name="Show the table empty state"
+                        Header="Data"
+                        IsOn="False"
+                        OffContent="1,000 rows"
+                        OnContent="Empty state"
+                        Toggled="EmptyStateToggle_Toggled" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
+                    Key="Density"
+                    Value="{x:Bind ((ComboBoxItem)DensityComboBox.SelectedItem).Tag, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="GridLinesVisibility"
+                    Value="{x:Bind ((ComboBoxItem)GridLinesComboBox.SelectedItem).Tag, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>
