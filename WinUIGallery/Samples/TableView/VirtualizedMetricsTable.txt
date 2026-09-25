@@ -1,0 +1,54 @@
+--- header
+Virtualized rows, display configuration, and an empty state
+--- xaml
+<tabular:TableView
+    x:Name="VirtualizedTable"
+    Height="360"
+    AutomationProperties.AutomationId="TableViewVirtualizedMetricsTable"
+    AutomationProperties.Name="Virtualized service performance metrics"
+    AlternatingRowBackground="{ThemeResource SubtleFillColorSecondaryBrush}"
+    CanUserResizeColumns="False"
+    CanUserSortColumns="False"
+    Density="$(Density)"
+    GridLinesVisibility="$(GridLinesVisibility)"
+    ItemsSource="{x:Bind PerformanceRows}"
+    RowBackground="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+    SelectionMode="None">
+    <tabular:TableView.EmptyTemplate>
+        <DataTemplate>
+            <StackPanel Padding="32" HorizontalAlignment="Center" Spacing="8">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    Style="{ThemeResource SubtitleTextBlockStyle}"
+                    Text="No service metrics" />
+                <TextBlock Text="Rows will appear when metrics are available." />
+            </StackPanel>
+        </DataTemplate>
+    </tabular:TableView.EmptyTemplate>
+    <tabular:TableView.Columns>
+        <tabular:TableViewTextColumn
+            Binding="{Binding ServiceId}"
+            FrozenEdge="Leading"
+            Header="Service ID"
+            Width="120" />
+        <tabular:TableViewTextColumn Binding="{Binding ServiceName}" Header="Service" Width="220" />
+        <tabular:TableViewTextColumn Binding="{Binding Region}" Header="Region" Width="130" />
+        <tabular:TableViewTextColumn Binding="{Binding RequestsPerMinute}" Header="Requests/min" Width="130" />
+        <tabular:TableViewTextColumn Binding="{Binding P95Latency}" Header="P95 latency" Width="130" />
+    </tabular:TableView.Columns>
+</tabular:TableView>
+--- c#
+public ObservableCollection<PerformanceMetric> PerformanceRows { get; } = [];
+
+private void ShowEmptyState(bool showEmptyState)
+{
+    PerformanceRows.Clear();
+
+    if (!showEmptyState)
+    {
+        for (int index = 1; index <= 1000; index++)
+        {
+            PerformanceRows.Add(CreatePerformanceMetric(index));
+        }
+    }
+}

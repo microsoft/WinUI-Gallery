@@ -1073,6 +1073,47 @@
           ]
         },
         {
+          "UniqueId": "TableView",
+          "Tags": [
+            "table",
+            "tabular data",
+            "data grid",
+            "enterprise",
+            "editing",
+            "sorting",
+            "virtualization"
+          ],
+          "Title": "TableView",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+          "Subtitle": "A preview control for presenting and editing virtualized tabular data.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "TableView presents an item collection as virtualized rows and developer-defined columns. It supports sorting, templates, frozen leading columns, single row selection, opt-in cell editing, display density, grid lines, and empty-state content.",
+          "SourcePath": "/TableView",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "TableView - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+            },
+            {
+              "Title": "TableView specification",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+            }
+          ],
+          "RelatedControls": [
+            "ItemsView",
+            "ItemsRepeater",
+            "ListView"
+          ]
+        },
+        {
           "UniqueId": "ListView",
           "Tags": [
             "list",
