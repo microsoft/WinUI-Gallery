@@ -3,6 +3,7 @@
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <RootNamespace>WinUIGallery.UITests</RootNamespace>
         <IsPackable>false</IsPackable>
         <Configurations>Debug;Release;Sideload;Stable;Preview;Store</Configurations>

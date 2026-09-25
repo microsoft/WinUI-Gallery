@@ -254,8 +254,8 @@
                 <StackPanel Margin="12" Spacing="6">
                     <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Lorem Ipsum" />
                     <TextBlock Text="The background of this grid animates when the theme changes." TextWrapping="WrapWholeWords" />
-                    <Button Content="Button" />
-                    <CheckBox Content="CheckBox" />
+                    <Button Content="Action" />
+                    <CheckBox Content="Option" />
                 </StackPanel>
             </Grid>
             <controls:ControlExample.Options>

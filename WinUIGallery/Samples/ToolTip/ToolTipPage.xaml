@@ -21,7 +21,7 @@
     <StackPanel>
         <controls:ControlExample x:Name="Example1" SampleDefinition="ToolTip\ButtonSimpleTooltip.txt">
             <controls:ControlExample.Example>
-                <Button Content="Button with a simple ToolTip." ToolTipService.ToolTip="Simple ToolTip" />
+                <Button Content="Show a simple ToolTip." ToolTipService.ToolTip="Simple ToolTip" />
             </controls:ControlExample.Example>
         </controls:ControlExample>
 
@@ -29,7 +29,7 @@
             <controls:ControlExample.Example>
                 <TextBlock Text="TextBlock with an offset ToolTip.">
                     <ToolTipService.ToolTip>
-                        <ToolTip Content="Offset ToolTip." VerticalOffset="-80" />
+                        <ToolTip Content="Offset information." VerticalOffset="-80" />
                     </ToolTipService.ToolTip>
                 </TextBlock>
             </controls:ControlExample.Example>
@@ -46,7 +46,7 @@
                         <ToolTip
                             PlacementRect="0,0,400,266"
                             AutomationProperties.FullDescription="Non-occluding tooltip"
-                            Content="Non-occluding ToolTip."
+                            Content="Non-occluding information."
                             Placement="Right" />
                     </ToolTipService.ToolTip>
                 </Image>

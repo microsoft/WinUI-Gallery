@@ -43,11 +43,11 @@
                             <Setter Property="MinWidth" Value="200" />
                         </Style>
                     </StackPanel.Resources>
-                    <Button Content="Default button" />
-                    <Button Content="Styled button" Style="{StaticResource CustomButtonStyle}" />
+                    <Button Content="Default style" />
+                    <Button Content="Custom style" Style="{StaticResource CustomButtonStyle}" />
                     <Button
                         Background="{ThemeResource SystemFillColorCriticalBackgroundBrush}"
-                        Content="Styled button (overridden)"
+                        Content="Custom style with overridden background"
                         Style="{StaticResource CustomButtonStyle}" />
                 </StackPanel>
             </controls:ControlExample.Example>
