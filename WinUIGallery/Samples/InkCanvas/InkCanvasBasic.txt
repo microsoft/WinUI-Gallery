@@ -1,0 +1,23 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+--- header
+A basic ink canvas
+--- xaml
+<InkCanvas x:Name="BasicInkCanvas" AutomationProperties.Name="Drawing surface" />
+--- c#
+// InkCanvas draws strokes through its InkPresenter. Enable the input
+// devices the sample should accept, then configure the default pen.
+InkPresenter inkPresenter = BasicInkCanvas.InkPresenter;
+inkPresenter.InputDeviceTypes =
+    CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Pen | CoreInputDeviceTypes.Touch;
+
+InkDrawingAttributes attributes = inkPresenter.CopyDefaultDrawingAttributes();
+attributes.Color = Colors.$(PenColor);
+attributes.Size = new Size($(StrokeSize), $(StrokeSize));
+attributes.DrawAsHighlighter = $(DrawAsHighlighter);
+attributes.PenTip = PenTipShape.$(PenTip);
+inkPresenter.UpdateDefaultDrawingAttributes(attributes);
+
+// Remove every stroke from the canvas.
+inkPresenter.StrokeContainer.Clear();

@@ -3127,6 +3127,81 @@
           ]
         },
         {
+          "UniqueId": "InkCanvas",
+          "Tags": [
+            "ink",
+            "inking",
+            "pen",
+            "stylus",
+            "handwriting",
+            "draw"
+          ],
+          "Title": "InkCanvas",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A control to capture and display strokes.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/InkCanvas.png",
+          "Description": "InkCanvas provides a surface that captures and renders pen, mouse, and touch input as ink strokes. Stroke appearance is configured through the canvas's InkPresenter.",
+          "SourcePath": "/InkCanvas",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "InkCanvas - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.inkcanvas"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/input/pen-and-stylus-interactions"
+            }
+          ],
+          "RelatedControls": [
+            "InkToolbar"
+          ]
+        },
+        {
+          "UniqueId": "InkToolbar",
+          "Tags": [
+            "ink",
+            "inking",
+            "pen",
+            "stylus",
+            "eraser",
+            "highlighter"
+          ],
+          "Title": "InkToolbar",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "A control to change settings of an InkCanvas.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/InkToolbar.png",
+          "Description": "InkToolbar provides a customizable collection of ink tools, such as pens, a highlighter, and an eraser, that act on a targeted InkCanvas.",
+          "SourcePath": "/InkToolbar",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "InkToolbar - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.inktoolbar"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/input/pen-and-stylus-interactions"
+            }
+          ],
+          "RelatedControls": [
+            "InkCanvas"
+          ]
+        },
+        {
           "UniqueId": "MapControl",
           "Tags": [
             "maps",
