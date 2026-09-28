@@ -1,5 +1,0 @@
---- header
-9. InkDrawingAttributes — read the attributes the toolbar exposes for its active tool.
---- c#
-var attrs = inkToolBar.InkDrawingAttributes;
-// attrs.Color, attrs.Size, attrs.PenTip, attrs.DrawAsHighlighter, ...

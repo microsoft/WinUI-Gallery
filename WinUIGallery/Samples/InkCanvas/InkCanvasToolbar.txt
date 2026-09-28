@@ -1,0 +1,23 @@
+--- header
+Choose which tools appear in an InkToolbar and select the active tool.
+--- xaml
+<StackPanel>
+    <InkToolbar x:Name="inkToolbar" InitialControls="None" ButtonFlyoutPlacement="$(FlyoutPlacement)" TargetInkCanvas="{x:Bind inkCanvas}">
+        <InkToolbar.Children>
+            <InkToolbarBallpointPenButton />
+            $(PencilButton)
+            $(HighlighterButton)
+            $(EraserButton)
+        </InkToolbar.Children>
+    </InkToolbar>
+    <InkCanvas x:Name="inkCanvas" />
+</StackPanel>
+--- c#
+inkToolbar.ButtonFlyoutPlacement = InkToolbarButtonFlyoutPlacement.$(FlyoutPlacement);
+
+InkToolbarToolButton? selected =
+    inkToolbar.GetToolButton(InkToolbarTool.$(ActiveTool));
+if (selected is not null)
+{
+    inkToolbar.ActiveTool = selected;
+}

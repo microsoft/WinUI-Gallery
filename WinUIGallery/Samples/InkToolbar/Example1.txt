@@ -1,9 +1,0 @@
---- header
-1. ActiveTool + GetToolButton — switch tools and read/set ActiveTool.
---- xaml
-<InkToolBar x:Name="inkToolBar" TargetInkCanvas="{x:Bind inkCanvas}" />
-<InkCanvas x:Name="inkCanvas" />
---- c#
-// Set ActiveTool programmatically:
-InkToolBarToolButton button = inkToolBar.GetToolButton(InkToolBarTool.Pencil);
-inkToolBar.ActiveTool = button;

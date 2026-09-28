@@ -1,5 +1,0 @@
---- header
-Pair an InkToolbar with an InkCanvas to switch pen, eraser, color, and width.
---- xaml
-<InkToolBar TargetInkCanvas="{x:Bind inkCanvas}" />
-<InkCanvas x:Name="inkCanvas" />
