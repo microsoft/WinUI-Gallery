@@ -55,6 +55,13 @@ public class AxeScanAll : TestBase
             RuleId.NameNotNull,
             RuleId.NameReasonableLength,
         ],
+        // InkToolbar auto-generates its stencil (ruler) button from the control's own
+        // template, which reports both ControlType and LocalizedControlType as "custom".
+        // The element is not reachable from app markup, so this cannot be fixed here.
+        ["InkToolbar"] =
+        [
+            RuleId.LocalizedControlTypeNotCustom,
+        ],
     };
 
     public class ControlInfoData

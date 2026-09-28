@@ -9,7 +9,7 @@
     "defaultBranch": "main",
     "license": "MIT"
   },
-  "controlCount": 123,
+  "controlCount": 125,
   "controls": [
     {
       "id": "accessibilitycolorcontrast",
@@ -4512,6 +4512,164 @@
             "snippet": "ClosableInfobarOptionsDisplay.txt",
             "source": "WinUIGallery/Samples/InfoBar/ClosableInfobarOptionsDisplay.txt",
             "name": "Closable Infobar Options Display"
+          }
+        }
+      ]
+    },
+    {
+      "id": "inkcanvas",
+      "name": "InkCanvas",
+      "description": "A control to capture and display strokes.",
+      "details": "InkCanvas provides a surface that captures and renders pen, mouse, and touch input as ink strokes. Stroke appearance is configured through the canvas\u0027s InkPresenter.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls",
+      "relatedControls": [
+        "InkToolbar"
+      ],
+      "usings": [
+        "Microsoft.UI",
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Primitives",
+        "System.ComponentModel",
+        "System.Runtime.CompilerServices",
+        "Windows.Foundation"
+      ],
+      "keywords": [
+        "Object",
+        "DependencyObject",
+        "UIElement",
+        "FrameworkElement"
+      ],
+      "curatedKeywords": [
+        "ink",
+        "inking",
+        "pen",
+        "stylus",
+        "handwriting",
+        "draw"
+      ],
+      "docs": [
+        {
+          "title": "InkCanvas - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.inkcanvas"
+        },
+        {
+          "title": "Guidelines",
+          "uri": "https://learn.microsoft.com/windows/apps/design/input/pen-and-stylus-interactions"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "InkCanvas",
+        "group": {
+          "id": "Media",
+          "title": "Media"
+        },
+        "page": "WinUIGallery/Samples/InkCanvas/InkCanvasPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/InkCanvas/InkCanvasPage.xaml.cs",
+        "baseClasses": [
+          "Object",
+          "DependencyObject",
+          "UIElement",
+          "FrameworkElement"
+        ],
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#InkToolbar"
+        ]
+      },
+      "samples": [
+        {
+          "header": "A basic ink canvas",
+          "xaml": "\u003CInkCanvas x:Name=\u0022BasicInkCanvas\u0022 AutomationProperties.Name=\u0022Drawing surface\u0022 /\u003E",
+          "code": "// InkCanvas draws strokes through its InkPresenter. Enable the input\n// devices the sample should accept, then configure the default pen.\nInkPresenter inkPresenter = BasicInkCanvas.InkPresenter;\ninkPresenter.InputDeviceTypes =\n    CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Pen | CoreInputDeviceTypes.Touch;\n\nInkDrawingAttributes attributes = inkPresenter.CopyDefaultDrawingAttributes();\nattributes.Color = Colors.$(PenColor);\nattributes.Size = new Size($(StrokeSize), $(StrokeSize));\nattributes.DrawAsHighlighter = $(DrawAsHighlighter);\nattributes.PenTip = PenTipShape.$(PenTip);\ninkPresenter.UpdateDefaultDrawingAttributes(attributes);\n\n// Remove every stroke from the canvas.\ninkPresenter.StrokeContainer.Clear();",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "InkCanvasBasic.txt",
+            "source": "WinUIGallery/Samples/InkCanvas/InkCanvasBasic.txt",
+            "name": "Basic",
+            "codePlaceholdersPresent": [
+              "PenColor",
+              "StrokeSize",
+              "DrawAsHighlighter",
+              "PenTip"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "inktoolbar",
+      "name": "InkToolbar",
+      "description": "A control to change settings of an InkCanvas.",
+      "details": "InkToolbar provides a customizable collection of ink tools, such as pens, a highlighter, and an eraser, that act on a targeted InkCanvas.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls",
+      "relatedControls": [
+        "InkCanvas"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "System.ComponentModel"
+      ],
+      "keywords": [
+        "Object",
+        "DependencyObject",
+        "UIElement",
+        "FrameworkElement",
+        "Control"
+      ],
+      "curatedKeywords": [
+        "ink",
+        "inking",
+        "pen",
+        "stylus",
+        "eraser",
+        "highlighter"
+      ],
+      "docs": [
+        {
+          "title": "InkToolbar - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.inktoolbar"
+        },
+        {
+          "title": "Guidelines",
+          "uri": "https://learn.microsoft.com/windows/apps/design/input/pen-and-stylus-interactions"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "InkToolbar",
+        "group": {
+          "id": "Media",
+          "title": "Media"
+        },
+        "page": "WinUIGallery/Samples/InkToolbar/InkToolbarPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/InkToolbar/InkToolbarPage.xaml.cs",
+        "baseClasses": [
+          "Object",
+          "DependencyObject",
+          "UIElement",
+          "FrameworkElement",
+          "Control"
+        ],
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#InkCanvas"
+        ]
+      },
+      "samples": [
+        {
+          "header": "An ink toolbar attached to an ink canvas",
+          "xaml": "\u003C!-- InkToolbar targets an InkCanvas and updates that canvas\u0027s InkPresenter. --\u003E\n\u003CStackPanel Spacing=\u00228\u0022\u003E\n    \u003CInkToolbar\n        x:Name=\u0022BasicInkToolbar\u0022\n        AutomationProperties.Name=\u0022Ink toolbar\u0022\n        TargetInkCanvas=\u0022{x:Bind BasicInkCanvas}\u0022 /\u003E\n    \u003CInkCanvas x:Name=\u0022BasicInkCanvas\u0022 AutomationProperties.Name=\u0022Drawing surface\u0022 /\u003E\n\u003C/StackPanel\u003E",
+          "code": "// The toolbar can also be attached in code by setting TargetInkCanvas.\nBasicInkToolbar.TargetInkCanvas = BasicInkCanvas;\nBasicInkToolbar.Orientation = Orientation.$(Orientation);\n\n// Remove every stroke from the targeted canvas.\nBasicInkCanvas.InkPresenter.StrokeContainer.Clear();",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "InkToolbarBasic.txt",
+            "source": "WinUIGallery/Samples/InkToolbar/InkToolbarBasic.txt",
+            "name": "Basic",
+            "xamlPlaceholdersDropped": [
+              "Orientation"
+            ],
+            "codePlaceholdersPresent": [
+              "Orientation"
+            ]
           }
         }
       ]

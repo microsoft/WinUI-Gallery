@@ -1,0 +1,22 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+--- header
+An ink toolbar attached to an ink canvas
+--- xaml
+<!-- InkToolbar targets an InkCanvas and updates that canvas's InkPresenter. -->
+<StackPanel Spacing="8">
+    <InkToolbar
+        x:Name="BasicInkToolbar"
+        AutomationProperties.Name="Ink toolbar"
+        Orientation="$(Orientation)"
+        TargetInkCanvas="{x:Bind BasicInkCanvas}" />
+    <InkCanvas x:Name="BasicInkCanvas" AutomationProperties.Name="Drawing surface" />
+</StackPanel>
+--- c#
+// The toolbar can also be attached in code by setting TargetInkCanvas.
+BasicInkToolbar.TargetInkCanvas = BasicInkCanvas;
+BasicInkToolbar.Orientation = Orientation.$(Orientation);
+
+// Remove every stroke from the targeted canvas.
+BasicInkCanvas.InkPresenter.StrokeContainer.Clear();
