@@ -4318,7 +4318,7 @@
         },
         {
           "header": "Implicitly animate when the Grid\u0027s theme changes",
-          "xaml": "\u003CGrid x:Name=\u0022ThemeExampleGrid\u0022 Background=\u0022{ThemeResource SolidBackgroundFillColorBaseBrush}\u0022 \u003E\n    \u003CGrid.BackgroundTransition\u003E\n        \u003CBrushTransition /\u003E\n    \u003C/Grid.BackgroundTransition\u003E\n    \u003CStackPanel Margin=\u002212\u0022 Spacing=\u00226\u0022\u003E\n        \u003CTextBlock Text=\u0022Lorem Ipsum\u0022 Style=\u0022{ThemeResource SubtitleTextBlockStyle}\u0022 /\u003E\n        \u003CTextBlock Text=\u0022The background of this grid animates when the theme changes.\u0022 TextWrapping=\u0022WrapWholeWords\u0022 /\u003E\n        \u003CButton Content=\u0022Button\u0022 /\u003E\n        \u003CCheckBox Content=\u0022CheckBox\u0022 /\u003E\n    \u003C/StackPanel\u003E\n\u003C/Grid\u003E",
+          "xaml": "\u003CGrid x:Name=\u0022ThemeExampleGrid\u0022 Background=\u0022{ThemeResource SolidBackgroundFillColorBaseBrush}\u0022 \u003E\n    \u003CGrid.BackgroundTransition\u003E\n        \u003CBrushTransition /\u003E\n    \u003C/Grid.BackgroundTransition\u003E\n    \u003CStackPanel Margin=\u002212\u0022 Spacing=\u00226\u0022\u003E\n        \u003CTextBlock Text=\u0022Lorem Ipsum\u0022 Style=\u0022{ThemeResource SubtitleTextBlockStyle}\u0022 /\u003E\n        \u003CTextBlock Text=\u0022The background of this grid animates when the theme changes.\u0022 TextWrapping=\u0022WrapWholeWords\u0022 /\u003E\n        \u003CButton Content=\u0022Action\u0022 /\u003E\n        \u003CCheckBox Content=\u0022Option\u0022 /\u003E\n    \u003C/StackPanel\u003E\n\u003C/Grid\u003E",
           "code": "private void ThemeButton_Click(object sender, RoutedEventArgs e)\n{\n    ThemeExampleGrid.RequestedTheme = ThemeExampleGrid.RequestedTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;\n}",
           "language": "csharp",
           "gallery": {
@@ -7785,7 +7785,7 @@
       "samples": [
         {
           "header": "A simple Slider.",
-          "xaml": "\u003CSlider AutomationProperties.Name=\u0022simple slider\u0022 Width=\u0022200\u0022/\u003E",
+          "xaml": "\u003CSlider AutomationProperties.Name=\u0022Simple example\u0022 Width=\u0022200\u0022/\u003E",
           "gallery": {
             "snippet": "SliderSimple.txt",
             "source": "WinUIGallery/Samples/Slider/SliderSimple.txt",
@@ -7803,7 +7803,7 @@
         },
         {
           "header": "A Slider with tick marks.",
-          "xaml": "\u003CSlider\n     AutomationProperties.Name=\u0022Slider with ticks\u0022\n     TickFrequency=\u002220\u0022\n     TickPlacement=\u0022Outside\u0022\n     SnapsTo=\u0022StepValues\u0022 /\u003E",
+          "xaml": "\u003CSlider\n     AutomationProperties.Name=\u0022Example with ticks\u0022\n     TickFrequency=\u002220\u0022\n     TickPlacement=\u0022Outside\u0022\n     SnapsTo=\u0022StepValues\u0022 /\u003E",
           "gallery": {
             "snippet": "SliderTicks.txt",
             "source": "WinUIGallery/Samples/Slider/SliderTicks.txt",
@@ -7812,7 +7812,7 @@
         },
         {
           "header": "A vertical slider with range and tick marks specified.",
-          "xaml": "\u003CSlider AutomationProperties.Name=\u0022vertical slider\u0022 Width=\u0022100\u0022 Orientation=\u0022Vertical\u0022\n    TickFrequency=\u002210\u0022 TickPlacement=\u0022Outside\u0022 Maximum=\u002250\u0022 Minimum=\u0022-50\u0022/\u003E",
+          "xaml": "\u003CSlider AutomationProperties.Name=\u0022Vertical example\u0022 Width=\u0022100\u0022 Orientation=\u0022Vertical\u0022\n    TickFrequency=\u002210\u0022 TickPlacement=\u0022Outside\u0022 Maximum=\u002250\u0022 Minimum=\u0022-50\u0022/\u003E",
           "gallery": {
             "snippet": "SliderVertical.txt",
             "source": "WinUIGallery/Samples/Slider/SliderVertical.txt",
@@ -9778,7 +9778,7 @@
       "samples": [
         {
           "header": "A button with a simple ToolTip.",
-          "xaml": "\u003CButton Content=\u0022Button with a simple ToolTip.\u0022 ToolTipService.ToolTip=\u0022Simple ToolTip\u0022/\u003E",
+          "xaml": "\u003CButton Content=\u0022Show a simple ToolTip.\u0022 ToolTipService.ToolTip=\u0022Simple ToolTip\u0022/\u003E",
           "gallery": {
             "snippet": "ButtonSimpleTooltip.txt",
             "source": "WinUIGallery/Samples/ToolTip/ButtonSimpleTooltip.txt",
@@ -9787,7 +9787,7 @@
         },
         {
           "header": "A TextBlock with an offset ToolTip.",
-          "xaml": "\u003CTextBlock Text=\u0022TextBlock with an offset ToolTip.\u0022\u003E\n    \u003CToolTipService.ToolTip\u003E\n        \u003CToolTip Content=\u0022Offset ToolTip.\u0022 VerticalOffset=\u0022-80\u0022/\u003E\n    \u003C/ToolTipService.ToolTip\u003E\n\u003C/TextBlock\u003E",
+          "xaml": "\u003CTextBlock Text=\u0022TextBlock with an offset ToolTip.\u0022\u003E\n    \u003CToolTipService.ToolTip\u003E\n        \u003CToolTip Content=\u0022Offset information.\u0022 VerticalOffset=\u0022-80\u0022/\u003E\n    \u003C/ToolTipService.ToolTip\u003E\n\u003C/TextBlock\u003E",
           "gallery": {
             "snippet": "TextblockOffsetTooltip.txt",
             "source": "WinUIGallery/Samples/ToolTip/TextblockOffsetTooltip.txt",
@@ -9796,7 +9796,7 @@
         },
         {
           "header": "An Image with a ToolTip using PlacementRect.",
-          "xaml": "\u003CImage Source=\u0022/Assets/SampleMedia/cliff.jpg\u0022 Width=\u0022400\u0022 Height=\u0022266\u0022\u003E\n    \u003CToolTipService.ToolTip\u003E\n        \u003CToolTip Content=\u0022Non-occluding ToolTip.\u0022 PlacementRect=\u00220,0,400,266\u0022/\u003E\n    \u003C/ToolTipService.ToolTip\u003E\n\u003C/Image\u003E",
+          "xaml": "\u003CImage Source=\u0022/Assets/SampleMedia/cliff.jpg\u0022 Width=\u0022400\u0022 Height=\u0022266\u0022\u003E\n    \u003CToolTipService.ToolTip\u003E\n        \u003CToolTip Content=\u0022Non-occluding information.\u0022 PlacementRect=\u00220,0,400,266\u0022/\u003E\n    \u003C/ToolTipService.ToolTip\u003E\n\u003C/Image\u003E",
           "gallery": {
             "snippet": "ImageTooltipPlacementrect.txt",
             "source": "WinUIGallery/Samples/ToolTip/ImageTooltipPlacementrect.txt",
@@ -10556,7 +10556,7 @@
       "samples": [
         {
           "header": "Creating and applying a style",
-          "xaml": "\u003CStackPanel Spacing=\u00228\u0022\u003E\n    \u003CStackPanel.Resources\u003E\n        \u003CStyle x:Key=\u0022CustomButtonStyle\u0022 TargetType=\u0022Button\u0022 BasedOn=\u0022{StaticResource ButtonRevealStyle}\u0022\u003E\n            \u003CSetter Property=\u0022Background\u0022 Value=\u0022{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}\u0022 /\u003E\n            \u003CSetter Property=\u0022MinWidth\u0022 Value=\u0022200\u0022 /\u003E\n        \u003C/Style\u003E\n    \u003C/StackPanel.Resources\u003E\n    \u003CButton Content=\u0022Default button\u0022 /\u003E\n    \u003CButton Content=\u0022Styled button\u0022 Style=\u0022{StaticResource CustomButtonStyle}\u0022 /\u003E\n    \u003CButton Content=\u0022Styled button (overridden)\u0022 Style=\u0022{StaticResource CustomButtonStyle}\u0022\n            Background=\u0022{ThemeResource SystemFillColorCriticalBackgroundBrush}\u0022 /\u003E\n\u003C/StackPanel\u003E",
+          "xaml": "\u003CStackPanel Spacing=\u00228\u0022\u003E\n    \u003CStackPanel.Resources\u003E\n        \u003CStyle x:Key=\u0022CustomButtonStyle\u0022 TargetType=\u0022Button\u0022 BasedOn=\u0022{StaticResource ButtonRevealStyle}\u0022\u003E\n            \u003CSetter Property=\u0022Background\u0022 Value=\u0022{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}\u0022 /\u003E\n            \u003CSetter Property=\u0022MinWidth\u0022 Value=\u0022200\u0022 /\u003E\n        \u003C/Style\u003E\n    \u003C/StackPanel.Resources\u003E\n    \u003CButton Content=\u0022Default style\u0022 /\u003E\n    \u003CButton Content=\u0022Custom style\u0022 Style=\u0022{StaticResource CustomButtonStyle}\u0022 /\u003E\n    \u003CButton Content=\u0022Custom style with overridden background\u0022 Style=\u0022{StaticResource CustomButtonStyle}\u0022\n            Background=\u0022{ThemeResource SystemFillColorCriticalBackgroundBrush}\u0022 /\u003E\n\u003C/StackPanel\u003E",
           "gallery": {
             "snippet": "XamlStylesCreatingApplyingStyle.txt",
             "source": "WinUIGallery/Samples/XamlStyles/XamlStylesCreatingApplyingStyle.txt",

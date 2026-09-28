@@ -19,7 +19,6 @@
             <controls:ControlExample.Options>
                 <Button
                     x:Name="OpenFileButton"
-                    AutomationProperties.Name="Open file button"
                     Click="OpenFileButton_Click">
                     Open a file
                 </Button>
