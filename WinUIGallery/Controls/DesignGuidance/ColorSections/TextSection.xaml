@@ -35,7 +35,6 @@
                     ColorBrushName="TextFillColorPrimaryBrush"
                     ColorExplanation="Rest or Hover"
                     ColorName="Text / Primary"
-                    ColorValue="#000000 (E4, 89.56%)"
                     Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                     ShowSeparator="False" />
                 <local:ColorTile
@@ -44,7 +43,6 @@
                     ColorBrushName="TextFillColorSecondaryBrush"
                     ColorExplanation="Rest or Hover"
                     ColorName="Text / Secondary"
-                    ColorValue="#000000 (9E, 61.86%)"
                     Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                     ShowSeparator="False" />
                 <local:ColorTile
@@ -53,7 +51,6 @@
                     ColorBrushName="TextFillColorTertiaryBrush"
                     ColorExplanation="Pressed only (not accessible)"
                     ColorName="Text / Tertiary"
-                    ColorValue="#000000 (72, 44.58%)"
                     Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                     ShowSeparator="False" />
                 <local:ColorTile
@@ -62,7 +59,6 @@
                     ColorBrushName="TextFillColorDisabledBrush"
                     ColorExplanation="Disabled only (not accessible)"
                     ColorName="Text / Disabled"
-                    ColorValue="#000000 (5C, 36.14%)"
                     Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                     ShowSeparator="False" />
             </Grid>
@@ -91,7 +87,6 @@
                     ColorBrushName="AccentTextFillColorPrimaryBrush"
                     ColorExplanation="Rest or Hover"
                     ColorName="Accent Text / Primary"
-                    ColorValue="Dark 2"
                     Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                     ShowSeparator="False" />
                 <local:ColorTile
@@ -100,7 +95,6 @@
                     ColorBrushName="AccentTextFillColorSecondaryBrush"
                     ColorExplanation="Rest or Hover"
                     ColorName="Accent Text / Secondary"
-                    ColorValue="Dark 3"
                     Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                     ShowSeparator="False" />
                 <local:ColorTile
@@ -109,7 +103,6 @@
                     ColorBrushName="AccentTextFillColorTertiaryBrush"
                     ColorExplanation="Pressed only (not accessible)"
                     ColorName="Accent Text / Tertiary"
-                    ColorValue="Dark 1"
                     Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
                     ShowSeparator="False" />
                 <local:ColorTile
@@ -118,7 +111,6 @@
                     ColorBrushName="AccentTextFillColorDisabledBrush"
                     ColorExplanation="Disabled only (not accessible)"
                     ColorName="Accent Text / Disabled"
-                    ColorValue="#000000 (5C, 36.14%)"
                     Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                     ShowSeparator="False" />
             </Grid>
@@ -148,7 +140,6 @@
                     ColorBrushName="TextOnAccentFillColorPrimaryBrush"
                     ColorExplanation="Rest or Hover"
                     ColorName="Text on Accent / Primary"
-                    ColorValue="#FFFFFF (FF, 100%)"
                     Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
 
                 <local:ColorTile
@@ -157,7 +148,6 @@
                     ColorBrushName="TextOnAccentFillColorSecondaryBrush"
                     ColorExplanation="Pressed only (not accessible)"
                     ColorName="Text on Accent / Secondary"
-                    ColorValue="#FFFFFF (B3, 70%)"
                     Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                     ShowSeparator="False" />
             </Grid>
@@ -173,7 +163,6 @@
                     ColorBrushName="TextOnAccentFillColorDisabledBrush"
                     ColorExplanation="Disabled only (not accessible)"
                     ColorName="Text on Accent / Disabled"
-                    ColorValue="#FFFFFF (FF, 100%)"
                     Foreground="Black" />
                 <local:ColorTile
                     Grid.Column="2"
@@ -181,7 +170,6 @@
                     ColorBrushName="TextOnAccentFillColorSelectedTextBrush"
                     ColorExplanation="For highlighted text in text entry experiences"
                     ColorName="Text on Accent / Selected Text"
-                    ColorValue="#FFFFFF (FF, 100%)"
                     Foreground="Black"
                     ShowSeparator="False" />
             </Grid>

@@ -9,7 +9,7 @@ This app demonstrates all of the WinUI 3 controls and styles available to make a
 
 
 <p align="center">
-  <img src="./.github/assets/Screenshot-light.png" alt="WinUI 3 Gallery" width="400"/>
+  <img src="./.github/assets/Screenshot-light.png" alt="WinUI 3 Gallery" width="800"/>
 </p>
 <p align="center">
   <a style="text-decoration:none" href="https://apps.microsoft.com/detail/9P3JFPWWDZRC?launch=true&mode=full">

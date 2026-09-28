@@ -3127,6 +3127,38 @@
           ]
         },
         {
+          "UniqueId": "InkCanvas",
+          "Tags": [
+            "inking",
+            "drawing",
+            "InkToolbar",
+            "pen",
+            "stylus"
+          ],
+          "Title": "InkCanvas / InkToolbar",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "Subtitle": "Draw with pen, touch, or mouse and choose tools with an InkToolbar.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/InkToolbar.png",
+          "Description": "Use InkCanvas to collect freeform ink with pen, touch, or mouse. Pair it with InkToolbar to choose drawing tools. Explore input settings, customize the available tools, and save and restore strokes.",
+          "Content": "<p><b>InkCanvas</b> captures and renders ink strokes. Configure its <b>InkPresenter</b> to choose input devices and drawing attributes, or connect an <b>InkToolbar</b> with <b>TargetInkCanvas</b> to offer pen, pencil, highlighter, and eraser tools.</p><p>The examples show how to draw, configure the toolbar, and save and restore strokes. Look at <i>InkCanvasPage.xaml</i> in Visual Studio for the full sample.</p>",
+          "IsNew": true,
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "InkCanvas - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.inkcanvas"
+            },
+            {
+              "Title": "InkToolbar - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.inktoolbar"
+            },
+            {
+              "Title": "Inking controls overview",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/inking-controls"
+            }
+          ]
+        },
+        {
           "UniqueId": "MapControl",
           "Tags": [
             "maps",
@@ -4135,45 +4167,6 @@
       "IconGlyph": "",
       "Items": [
         {
-          "UniqueId": "Windowing",
-          "Tags": [
-            "multiple windows",
-            "new window",
-            "multi window",
-            "experimental",
-            "window sizing",
-            "client area",
-            "DIPs",
-            "Width",
-            "Height",
-            "MinWidth",
-            "MinHeight",
-            "MaxWidth",
-            "MaxHeight"
-          ],
-          "Title": "Window",
-          "ApiNamespace": "Microsoft.UI.Xaml",
-          "Subtitle": "Create top-level XAML windows and configure their client-area size.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Windowing.png",
-          "Description": "Create single-threaded top-level XAML windows, then explore experimental client-area sizing and minimum/maximum limits.",
-          "IsNew": true,
-          "Docs": [
-            {
-              "Title": "Windows App SDK release channels",
-              "Uri": "https://learn.microsoft.com/windows/apps/windows-app-sdk/release-channels"
-            },
-            {
-              "Title": "Window - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window?view=windows-app-sdk-2.0-experimental"
-            }
-          ],
-          "RelatedControls": [
-            "AppWindow",
-            "AppWindowTitleBar",
-            "TitleBar"
-          ]
-        },
-        {
           "UniqueId": "AppWindow",
           "Tags": [
             "window management",
@@ -4283,6 +4276,45 @@
           "RelatedControls": [
             "AppWindow",
             "AppWindowTitleBar"
+          ]
+        },
+        {
+          "UniqueId": "Windowing",
+          "Tags": [
+            "multiple windows",
+            "new window",
+            "multi window",
+            "experimental",
+            "window sizing",
+            "client area",
+            "DIPs",
+            "Width",
+            "Height",
+            "MinWidth",
+            "MinHeight",
+            "MaxWidth",
+            "MaxHeight"
+          ],
+          "Title": "Window",
+          "ApiNamespace": "Microsoft.UI.Xaml",
+          "Subtitle": "Create top-level XAML windows and configure their client-area size.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Windowing.png",
+          "Description": "Create single-threaded top-level XAML windows, then explore experimental client-area sizing and minimum/maximum limits.",
+          "IsNew": true,
+          "Docs": [
+            {
+              "Title": "Windows App SDK release channels",
+              "Uri": "https://learn.microsoft.com/windows/apps/windows-app-sdk/release-channels"
+            },
+            {
+              "Title": "Window - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.window?view=windows-app-sdk-2.0-experimental"
+            }
+          ],
+          "RelatedControls": [
+            "AppWindow",
+            "AppWindowTitleBar",
+            "TitleBar"
           ]
         }
       ]

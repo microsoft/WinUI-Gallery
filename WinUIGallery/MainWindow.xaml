@@ -188,6 +188,7 @@
                     x:Name="FundamentalsItem"
                     AutomationProperties.AutomationId="FundamentalsItem"
                     Content="Fundamentals"
+                    SelectsOnInvoked="False"
                     Tag="Fundamentals">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE8F1;" />
@@ -235,6 +236,7 @@
                     x:Name="DesignItem"
                     AutomationProperties.AutomationId="DesignItem"
                     Content="Design"
+                    SelectsOnInvoked="False"
                     Tag="Design">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEB3C;" />
@@ -292,6 +294,7 @@
                     x:Name="AccessibilityItem"
                     AutomationProperties.AutomationId="AccessibilityItem"
                     Content="Accessibility"
+                    SelectsOnInvoked="False"
                     Tag="Accessibility">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE776;" />

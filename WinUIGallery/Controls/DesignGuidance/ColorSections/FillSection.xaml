@@ -31,29 +31,25 @@
                     Background="{ThemeResource ControlFillColorDefaultBrush}"
                     ColorBrushName="ControlFillColorDefaultBrush"
                     ColorExplanation="Rest"
-                    ColorName="Control / Default"
-                    ColorValue="#FFFFFF (B3, 70%)" />
+                    ColorName="Control / Default" />
                 <local:ColorTile
                     Grid.Column="1"
                     Background="{ThemeResource ControlFillColorSecondaryBrush}"
                     ColorBrushName="ControlFillColorSecondaryBrush"
                     ColorExplanation="Hover"
-                    ColorName="Control / Secondary"
-                    ColorValue="#F9F9F9 (50, 50%)" />
+                    ColorName="Control / Secondary" />
                 <local:ColorTile
                     Grid.Column="2"
                     Background="{ThemeResource ControlFillColorTertiaryBrush}"
                     ColorBrushName="ControlFillColorTertiaryBrush"
                     ColorExplanation="Pressed"
-                    ColorName="Control / Tertiary"
-                    ColorValue="#F9F9F9 (4D, 30%)" />
+                    ColorName="Control / Tertiary" />
                 <local:ColorTile
                     Grid.Column="3"
                     Background="{ThemeResource ControlFillColorQuarternaryBrush}"
                     ColorBrushName="ControlFillColorQuarternaryBrush"
                     ColorExplanation="Rest (Pill Button control)"
                     ColorName="Control / Quartenary"
-                    ColorValue="#F9F9F9 (C2, 30%)"
                     ShowSeparator="False" />
             </Grid>
             <Grid Style="{StaticResource GalleryTileGridStyle}">
@@ -67,22 +63,19 @@
                     Background="{ThemeResource ControlFillColorDisabledBrush}"
                     ColorBrushName="ControlFillColorDisabledBrush"
                     ColorExplanation="Disabled"
-                    ColorName="Control / Disabled"
-                    ColorValue="#F3F3F3 (FD, 30%)" />
+                    ColorName="Control / Disabled" />
                 <local:ColorTile
                     Grid.Column="1"
                     Background="{ThemeResource ControlFillColorTransparentBrush}"
                     ColorBrushName="ControlFillColorTransparentBrush"
                     ColorExplanation="Rest"
-                    ColorName="Control / Transparent"
-                    ColorValue="#FFFFFF (00, 0%)" />
+                    ColorName="Control / Transparent" />
                 <local:ColorTile
                     Grid.Column="2"
                     Background="{ThemeResource ControlFillColorInputActiveBrush}"
                     ColorBrushName="ControlFillColorInputActiveBrush"
                     ColorExplanation="Active/focused text input fields"
                     ColorName="Control / Input Active"
-                    ColorValue="#FFFFFF (FF, 100%)"
                     ShowSeparator="False" />
             </Grid>
 
@@ -103,22 +96,19 @@
                 <local:ColorTile
                     Background="{ThemeResource ControlAltFillColorTransparentBrush}"
                     ColorBrushName="ControlAltFillColorTransparentBrush"
-                    ColorName="Control Alt / Transparent"
-                    ColorValue="#FFFFFF (00, 0%)" />
+                    ColorName="Control Alt / Transparent" />
                 <local:ColorTile
                     Grid.Column="1"
                     Background="{ThemeResource ControlAltFillColorSecondaryBrush}"
                     ColorBrushName="ControlAltFillColorSecondaryBrush"
                     ColorExplanation="Rest"
-                    ColorName="Control Alt / Secondary"
-                    ColorValue="#000000 (06, 2.41%)" />
+                    ColorName="Control Alt / Secondary" />
                 <local:ColorTile
                     Grid.Column="2"
                     Background="{ThemeResource ControlAltFillColorTertiaryBrush}"
                     ColorBrushName="ControlAltFillColorTertiaryBrush"
                     ColorExplanation="Hover"
                     ColorName="Control Alt / Tertiary"
-                    ColorValue="#000000 (0F, 5.78%)"
                     ShowSeparator="False" />
             </Grid>
             <Grid Style="{StaticResource GalleryTileGridStyle}">
@@ -130,15 +120,13 @@
                     Background="{ThemeResource ControlAltFillColorQuarternaryBrush}"
                     ColorBrushName="ControlAltFillColorQuarternaryBrush"
                     ColorExplanation="Pressed"
-                    ColorName="Control Alt / Quarternary"
-                    ColorValue="#000000 (12, 6.58%)" />
+                    ColorName="Control Alt / Quarternary" />
                 <local:ColorTile
                     Grid.Column="1"
                     Background="{ThemeResource ControlAltFillColorDisabledBrush}"
                     ColorBrushName="ControlAltFillColorDisabledBrush"
                     ColorExplanation="Disabled"
                     ColorName="Control Alt / Disabled"
-                    ColorValue="#FFFFFF (00, 0%)"
                     ShowSeparator="False" />
             </Grid>
 
@@ -163,7 +151,6 @@
                     ColorBrushName="ControlSolidFillColorDefaultBrush"
                     ColorExplanation="Rest"
                     ColorName="Control Solid / Default"
-                    ColorValue="#FFFFFF (FF, 100%)"
                     ShowSeparator="False" />
             </Grid>
 
@@ -191,7 +178,6 @@
                     ColorBrushName="ControlStrongFillColorDefaultBrush"
                     ColorExplanation="Rest or hover"
                     ColorName="Control Strong / Default"
-                    ColorValue="#000000 (72, 44.58%)"
                     Foreground="{ThemeResource TextFillColorInverseBrush}"
                     ShowSeparator="True" />
                 <local:ColorTile
@@ -200,7 +186,6 @@
                     ColorBrushName="ControlStrongFillColorDisabledBrush"
                     ColorExplanation="Disabled only (not accessible)"
                     ColorName="Control Strong / Disabled"
-                    ColorValue="#FFFFFF (51, 31.73%)"
                     Foreground="{ThemeResource TextFillColorPrimary}"
                     ShowSeparator="False" />
             </Grid>
@@ -239,7 +224,6 @@
                     ColorBrushName="SubtleFillColorTransparentBrush"
                     ColorExplanation="Rest"
                     ColorName="Subtle / Transparent "
-                    ColorValue="#000000 (00, 0%)"
                     Foreground="{ThemeResource TextFillColorPrimary}" />
 
                 <local:ColorTile
@@ -248,7 +232,6 @@
                     ColorBrushName="SubtleFillColorSecondaryBrush"
                     ColorExplanation="Hover"
                     ColorName="Subtle / Secondary"
-                    ColorValue="#000000, (09,3.73%)"
                     Foreground="{ThemeResource TextFillColorPrimary}" />
                 <local:ColorTile
                     Grid.Column="2"
@@ -256,7 +239,6 @@
                     ColorBrushName="SubtleFillColorTertiaryBrush"
                     ColorExplanation="Pressed"
                     ColorName="Subtle / Tertiary "
-                    ColorValue=" #000000 (06, 2.41%)"
                     Foreground="{ThemeResource TextFillColorPrimary}" />
                 <local:ColorTile
                     Grid.Column="3"
@@ -264,7 +246,6 @@
                     ColorBrushName="SubtleFillColorDisabledBrush"
                     ColorExplanation="Disabled only (not accessible)"
                     ColorName="Subtle / Disabled"
-                    ColorValue="#000000 (00, 0%)"
                     Foreground="{ThemeResource TextFillColorPrimary}"
                     ShowSeparator="False" />
             </Grid>
@@ -303,7 +284,6 @@
                     ColorBrushName="ControlOnImageFillColorDefaultBrush"
                     ColorExplanation="Rest"
                     ColorName="Control On Image Fill Default"
-                    ColorValue="#FFFFFF (C9, 79%)"
                     Foreground="{ThemeResource TextFillColorPrimary}" />
                 <local:ColorTile
                     Grid.Column="1"
@@ -311,7 +291,6 @@
                     ColorBrushName="ControlOnImageFillColorSecondaryBrush"
                     ColorExplanation="Hover"
                     ColorName="Control On Image Fill Secondary"
-                    ColorValue="#F3F3F3 (FF, 100%)"
                     Foreground="{ThemeResource TextFillColorPrimary}" />
                 <local:ColorTile
                     Grid.Column="2"
@@ -319,7 +298,6 @@
                     ColorBrushName="ControlOnImageFillColorTertiaryBrush"
                     ColorExplanation="Pressed"
                     ColorName="Control On Image Fill Tertiary"
-                    ColorValue="#EBEBEB (FF, 100%)"
                     Foreground="{ThemeResource TextFillColorPrimary}" />
                 <local:ColorTile
                     Grid.Column="3"
@@ -327,7 +305,6 @@
                     ColorBrushName="ControlOnImageFillColorDisabledBrush"
                     ColorExplanation="Disabled only (not accessible)"
                     ColorName="Control On Image Fill Disabled"
-                    ColorValue="#FFFFFF (00, 0%)"
                     Foreground="{ThemeResource TextFillColorPrimary}"
                     ShowSeparator="False" />
             </Grid>
@@ -354,7 +331,6 @@
                     ColorBrushName="AccentFillColorDefaultBrush"
                     ColorExplanation="Rest"
                     ColorName="Accent / Default"
-                    ColorValue="Dark 1 (100%)"
                     Foreground="{ThemeResource TextOnAccentFillColorDefaultBrush}"
                     ShowSeparator="False" />
                 <local:ColorTile
@@ -363,7 +339,6 @@
                     ColorBrushName="AccentFillColorSecondaryBrush"
                     ColorExplanation="Hover"
                     ColorName="Accent / Secondary"
-                    ColorValue="Dark 1 (90%)"
                     Foreground="{ThemeResource TextOnAccentFillColorDefaultBrush}"
                     ShowSeparator="False" />
                 <local:ColorTile
@@ -372,7 +347,6 @@
                     ColorBrushName="AccentFillColorTertiaryBrush"
                     ColorExplanation="Pressed"
                     ColorName="Accent / Tertiary"
-                    ColorValue="Dark 1 (80%)"
                     Foreground="{ThemeResource TextOnAccentFillColorDefaultBrush}"
                     ShowSeparator="False" />
             </Grid>
@@ -386,7 +360,6 @@
                     ColorBrushName="AccentFillColorDisabledBrush"
                     ColorExplanation="Disabled"
                     ColorName="Accent / Disabled"
-                    ColorValue="#000000 (37, 21.09%)"
                     ShowSeparator="False" />
                 <local:ColorTile
                     Grid.Column="1"
@@ -394,7 +367,6 @@
                     ColorBrushName="AccentFillColorSelectedTextBackgroundBrush"
                     ColorExplanation="Highighted/selected text background"
                     ColorName="Accent / Selected Text Background"
-                    ColorValue="Accent Base"
                     Foreground="{ThemeResource TextOnAccentFillColorDefaultBrush}"
                     ShowSeparator="False" />
             </Grid>
