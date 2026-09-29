@@ -159,9 +159,9 @@
                 </TextBlock>
                 <ItemsView
                     x:Name="SwappableLayoutsItemsView"
-                    Width="500"
                     Height="400"
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Stretch"
+                    MaxWidth="500"
                     ItemTemplate="{StaticResource LinedFlowLayoutItemTemplate}">
                     <ItemsView.Layout>
                         <LinedFlowLayout
@@ -334,9 +334,9 @@
                 <ItemsView
                     x:Name="SwappableSelectionModesItemsView"
                     Grid.Row="1"
-                    Width="500"
                     Height="400"
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Stretch"
+                    MaxWidth="500"
                     ItemInvoked="SwappableSelectionModesItemsView_ItemInvoked"
                     ItemTemplate="{StaticResource UniformGridLayoutItemTemplate}"
                     SelectionChanged="SwappableSelectionModesItemsView_SelectionChanged"
