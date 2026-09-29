@@ -197,10 +197,14 @@ internal sealed class IndexSampleGallery
     public bool? XamlOmittedAsMalformed { get; set; }
 
     /// <summary>
-    /// Namespace prefixes the snippet's XAML binds to that its page never declares. No import can
-    /// be published for them, so the fragment would arrive referencing a namespace nothing binds;
-    /// the XAML is omitted for that reason and the prefixes are named here so the omission reads as
-    /// a known gap in the snippet rather than a sample that simply has no XAML.
+    /// Namespace prefixes the snippet's XAML binds to that neither its page nor its own C# accounts
+    /// for. No import can be published for them, so the fragment would arrive referencing a
+    /// namespace nothing binds; the XAML is omitted for that reason and the prefixes are named here
+    /// so the omission reads as a known gap in the snippet rather than a sample that simply has no
+    /// XAML.
+    ///
+    /// A prefix whose types are all declared in the sample's own code is not listed: an import is
+    /// synthesized from that code's namespace instead, and the XAML is published.
     /// </summary>
     public List<string>? XamlOmittedUnboundPrefixes { get; set; }
 

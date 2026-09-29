@@ -52,13 +52,20 @@ public sealed class ManifestUpToDateTests
         // an element name, <$(EasingFunction)/>, whose value comes from a ComboBox populated in
         // code-behind. Nothing in the markup can resolve it, so it cannot be published as XAML.
         //
-        // The ItemsRepeater, NavigationView, TreeView, FlipView and ConnectedAnimation entries fail
-        // for a different reason: they bind a prefix ("local:", "common:", "l:", "data:") that
-        // their page never declares, so no import can be published for it. Well-formedness cannot
-        // catch that - this exporter and the consumer both synthesize a declaration for every
-        // prefix they see - so the fragment would parse on both sides and break only once a reader
-        // pasted it with the imports we published. These prefixes name gallery-internal types, so
+        // The ItemsRepeater, FlipView and ConnectedAnimation entries fail for a different reason:
+        // they bind a prefix ("local:", "common:", "l:", "data:") that neither their page nor their
+        // own C# declares, so no import can be published for it. Well-formedness cannot catch that
+        // - this exporter and the consumer both synthesize a declaration for every prefix they see
+        // - so the fragment would parse on both sides and break only once a reader pasted it with
+        // the imports we published. These prefixes name types the snippet never hands over, so
         // there is no import that would make them portable; omitting is the only honest option.
+        //
+        // NavigationView's and TreeView's data-binding snippets used to sit in this list and no
+        // longer do: they define the types their "local:" prefix names in the C# published beside
+        // the XAML, so the import is synthesized from that code's own namespace instead.
+        // ItemsRepeaterVirtualizedContentHeavyLayout.txt is the mixed case - "l:Recipe" resolves
+        // that way, "common:VariedImageSizeLayout" does not, and one unaccounted-for type is still
+        // enough to withhold the fragment.
         //
         // FlipviewShowingBoundData.txt and LayingOutNestedItemsrepeaters.txt carry no C#, so they
         // leave the index entirely rather than merely losing their XAML. That is a real cost, and
@@ -82,8 +89,6 @@ public sealed class ManifestUpToDateTests
             "FlipView: 'FlipviewShowingBoundData.txt'",
             "ItemsRepeater: 'ItemsRepeaterVirtualizedContentHeavyLayout.txt'",
             "ItemsRepeater: 'LayingOutNestedItemsrepeaters.txt'",
-            "NavigationView: 'NavigationViewDataBinding.txt'",
-            "TreeView: 'TreeviewDatabindingItemsource.txt'",
             "TreeView: 'TreeviewItemtemplateselector.txt'",
         ];
 
