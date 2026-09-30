@@ -1,0 +1,87 @@
+--- header
+Editing cells and validating changes
+--- xaml
+<tabular:TableView
+    Height="260"
+    AutomationProperties.Name="Editable cells"
+    CanUserResizeColumns="False"
+    CanUserSortColumns="False"
+    IsReadOnly="$(IsReadOnly)"
+    ItemsSource="{x:Bind EditingItems}"
+    SelectionMode="Single">
+    <tabular:TableView.Columns>
+        <tabular:TableViewTextColumn Binding="{Binding Id}" Header="ID" IsReadOnly="True" Width="80" />
+        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="180" />
+        <tabular:TableViewTextColumn Binding="{Binding Category}" Header="Category" Width="180" />
+    </tabular:TableView.Columns>
+</tabular:TableView>
+--- c#
+// TableView checks INotifyDataErrorInfo when committing a cell.
+// An invalid name keeps the editor open and restores the previous value.
+public sealed class TableViewSampleItem : INotifyPropertyChanged, INotifyDataErrorInfo
+{
+    private string _name;
+    private string _category;
+    private string? _nameError;
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+    public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
+
+    public int Id { get; }
+    public int Value { get; }
+    public bool HasErrors => _nameError is not null;
+
+    public string Name
+    {
+        get => _name;
+        set
+        {
+            string normalizedValue = value ?? string.Empty;
+            if (SetProperty(ref _name, normalizedValue))
+            {
+                string? error = string.IsNullOrWhiteSpace(normalizedValue) ? "Name is required." : null;
+                if (_nameError != error)
+                {
+                    _nameError = error;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HasErrors)));
+                    ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(Name)));
+                }
+            }
+        }
+    }
+
+    public string Category
+    {
+        get => _category;
+        set => SetProperty(ref _category, value ?? string.Empty);
+    }
+
+    public TableViewSampleItem(int id, string name, string category, int value)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(name);
+        Id = id;
+        _name = name;
+        _category = category;
+        Value = value;
+    }
+
+    public IEnumerable GetErrors(string? propertyName)
+    {
+        if ((string.IsNullOrEmpty(propertyName) || propertyName == nameof(Name)) && _nameError is not null)
+        {
+            yield return _nameError;
+        }
+    }
+
+    private bool SetProperty(ref string field, string value, [CallerMemberName] string? propertyName = null)
+    {
+        if (field == value)
+        {
+            return false;
+        }
+
+        field = value;
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        return true;
+    }
+}
