@@ -1,0 +1,21 @@
+--- header
+Create a bar chart
+--- xaml
+<charts:Chart>
+    <charts:Chart.Data>
+        <charts:Samples x:Name="Region"
+                        ItemsSource="{x:Bind Regions, Mode=OneTime}" />
+        <charts:Samples x:Name="Units"
+                        ItemsSource="{x:Bind UnitsSold, Mode=OneTime}" />
+    </charts:Chart.Data>
+
+    <charts:BarSeries Title="Units sold"
+                      Orientation="Vertical"
+                      Fill="SeaGreen"
+                      XValues="{x:Bind Region, Mode=OneTime}"
+                      YValues="{x:Bind Units, Mode=OneTime}" />
+</charts:Chart>
+--- c#
+public string[] Regions { get; } = ["North", "South", "East", "West"];
+
+public double[] UnitsSold { get; } = [42, 38, 51, 47];
