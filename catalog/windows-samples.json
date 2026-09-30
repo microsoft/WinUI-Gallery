@@ -8701,6 +8701,7 @@
         "Microsoft.UI.Xaml",
         "Microsoft.UI.Xaml.Controls",
         "Microsoft.UI.Xaml.Controls.Tabular",
+        "Microsoft.UI.Xaml.Media",
         "System",
         "System.Collections.ObjectModel",
         "System.ComponentModel"

@@ -4,6 +4,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Tabular;
+using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -23,6 +24,7 @@ public sealed partial class TableViewPage : Page
     public TableViewPage()
     {
         InitializeComponent();
+        ApplyRowBanding();
         FilteringGroupingTable.ItemsSource = _filteringGroupingSource;
         ApplyGrouping();
     }
@@ -194,6 +196,26 @@ public sealed partial class TableViewPage : Page
         {
             PresentationTable.GridLinesVisibility = Enum.Parse<TableViewGridLinesVisibility>(visibility);
         }
+    }
+
+    private void RowBandingToggle_Toggled(object sender, RoutedEventArgs e)
+    {
+        ApplyRowBanding();
+    }
+
+    private void ApplyRowBanding()
+    {
+        if (PresentationTable is null || RowBandingToggle is null)
+        {
+            return;
+        }
+
+        PresentationTable.AlternatingRowBackground = RowBandingToggle.IsOn
+            ? (Brush)Application.Current.Resources["SubtleFillColorSecondaryBrush"]
+            : null;
+        RowBandingToggle.Tag = RowBandingToggle.IsOn
+            ? "ThemeResource SubtleFillColorSecondaryBrush"
+            : "x:Null";
     }
 
     private void EmptyStateToggle_Toggled(object sender, RoutedEventArgs e)

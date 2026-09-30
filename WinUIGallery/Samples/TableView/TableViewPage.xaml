@@ -369,7 +369,7 @@
             SampleDefinition="TableView\PresentationTable.txt">
             <StackPanel Spacing="12">
                 <TextBlock
-                    Text="Change density and grid lines, or clear the collection to show EmptyTemplate. Alternating row backgrounds help distinguish rows. This table has 1,000 items; only rows near the viewport are realized."
+                    Text="Change density, grid lines, and row banding, or clear the collection to show EmptyTemplate. This table has 1,000 items; only rows near the viewport are realized."
                     TextWrapping="Wrap" />
                 <tabular:TableView
                     x:Name="PresentationTable"
@@ -445,6 +445,16 @@
                         <ComboBoxItem Content="None" Tag="None" />
                     </ComboBox>
                     <ToggleSwitch
+                        x:Name="RowBandingToggle"
+                        AutomationProperties.AutomationId="TableViewRowBandingToggle"
+                        AutomationProperties.Name="Show alternating row backgrounds"
+                        Header="Row banding"
+                        IsOn="True"
+                        OffContent="Off"
+                        OnContent="Alternating rows"
+                        Tag="ThemeResource SubtleFillColorSecondaryBrush"
+                        Toggled="RowBandingToggle_Toggled" />
+                    <ToggleSwitch
                         x:Name="EmptyStateToggle"
                         AutomationProperties.AutomationId="TableViewEmptyStateToggle"
                         AutomationProperties.Name="Show the table empty state"
@@ -463,6 +473,9 @@
                 <controls:ControlExampleSubstitution
                     Key="GridLinesVisibility"
                     Value="{x:Bind ((ComboBoxItem)GridLinesComboBox.SelectedItem).Tag, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="AlternatingRowBackground"
+                    Value="{x:Bind RowBandingToggle.Tag, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>

@@ -98,7 +98,25 @@ public sealed class TableViewSamplesTests
         StringAssert.Contains(editing.Xaml, "Header=\"ID\" IsReadOnly=\"True\"");
         StringAssert.Contains(presentation.Xaml, "Density=\"Standard\"");
         StringAssert.Contains(presentation.Xaml, "GridLinesVisibility=\"All\"");
+        StringAssert.Contains(presentation.Xaml, "AlternatingRowBackground=\"{ThemeResource SubtleFillColorSecondaryBrush}\"");
+        StringAssert.Contains(presentation.Xaml, "RowBackground=\"{ThemeResource CardBackgroundFillColorDefaultBrush}\"");
         StringAssert.Contains(presentation.Xaml, "Text=\"No items\"");
+    }
+
+    [TestMethod]
+    public void AdvancedSampleProvidesRowBandingOption()
+    {
+        string repoRoot = CatalogGenerator.FindRepoRoot(AppContext.BaseDirectory);
+        XDocument page = XDocument.Load(Path.Combine(repoRoot, "WinUIGallery", "Samples", "TableView", "TableViewPage.xaml"));
+        XNamespace x = "http://schemas.microsoft.com/winfx/2006/xaml";
+        XElement toggle = page.Descendants()
+            .Single(element => element.Name.LocalName == "ToggleSwitch" &&
+                element.Attribute(x + "Name")?.Value == "RowBandingToggle");
+
+        Assert.AreEqual("Row banding", toggle.Attribute("Header")?.Value);
+        Assert.AreEqual("True", toggle.Attribute("IsOn")?.Value);
+        Assert.AreEqual("TableViewRowBandingToggle", toggle.Attribute("AutomationProperties.AutomationId")?.Value);
+        Assert.AreEqual("RowBandingToggle_Toggled", toggle.Attribute("Toggled")?.Value);
     }
 
     [TestMethod]

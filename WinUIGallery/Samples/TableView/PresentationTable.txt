@@ -4,7 +4,7 @@ An advanced TableView
 <tabular:TableView
     Height="320"
     AutomationProperties.Name="Advanced table presentation and empty state"
-    AlternatingRowBackground="{ThemeResource SubtleFillColorSecondaryBrush}"
+    AlternatingRowBackground="{$(AlternatingRowBackground)}"
     CanUserResizeColumns="False"
     CanUserSortColumns="False"
     Density="$(Density)"
