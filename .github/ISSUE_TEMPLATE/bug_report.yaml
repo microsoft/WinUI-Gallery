@@ -10,7 +10,7 @@ body:
     attributes:
       label: Which version of the app?
       options:
-        - "WinUI 3 Gallery" 
+        - "WinUI Gallery"
         - "WinUI 2 Gallery"
   - type: textarea
     attributes:

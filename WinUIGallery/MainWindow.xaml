@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
         <TitleBar
             x:Name="titleBar"
-            Title="WinUI 3 Gallery"
+            Title="WinUI Gallery"
             BackRequested="TitleBar_BackRequested"
             IsBackButtonVisible="{x:Bind rootFrame.CanGoBack, Mode=OneWay}"
             IsPaneToggleButtonVisible="True"

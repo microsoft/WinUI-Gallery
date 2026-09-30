@@ -1,6 +1,6 @@
 ![WinUI Gallery hero image](./.github/assets/ReadmeHero-dark.png)
 
-<h1 align="center">WinUI 3 Gallery</h1>
+<h1 align="center">WinUI Gallery</h1>
 <p align="center">Companion app for <a style="text-decoration:none" href="https://docs.microsoft.com/windows/apps/winui">WinUI</a> & <a style="text-decoration:none" href="https://github.com/microsoft/WindowsAppSDK">Windows App SDK</a> APIs</p>
 
 
@@ -9,7 +9,7 @@ This app demonstrates all of the WinUI 3 controls and styles available to make a
 
 
 <p align="center">
-  <img src="./.github/assets/Screenshot-light.png" alt="WinUI 3 Gallery" width="800"/>
+  <img src="./.github/assets/Screenshot-light.png" alt="WinUI Gallery" width="800"/>
 </p>
 <p align="center">
   <a style="text-decoration:none" href="https://apps.microsoft.com/detail/9P3JFPWWDZRC?launch=true&mode=full">
@@ -41,7 +41,7 @@ You can also learn more about current happenings with WinUI Gallery in the [proj
 
 ## 🚀 Getting started
 
-Quick start guide to building the WinUI 3 Gallery:
+Quick start guide to building the WinUI Gallery:
 
 
 ### 1. Set up the environment
@@ -98,6 +98,6 @@ coordinate Microsoft Store publishing with a GitHub release.
 ## 🏆 Contributors
 Thanks to our amazing contributors!
 
-[![WinUI 3 Gallery Contributors](https://contrib.rocks/image?repo=microsoft/WinUI-Gallery)](https://github.com/microsoft/WinUI-Gallery/graphs/contributors)
+[![WinUI Gallery Contributors](https://contrib.rocks/image?repo=microsoft/WinUI-Gallery)](https://github.com/microsoft/WinUI-Gallery/graphs/contributors)
 
 Made with [contrib.rocks](https://contrib.rocks).

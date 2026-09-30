@@ -2,11 +2,11 @@
 
 The UI Test repository is a collection of WinAppDriver-based test scenarios that cover basic interactions with WinUI 3 controls. See the [Windows Platform controls reference](https://learn.microsoft.com/windows/apps/design/controls/) for more information on available controls.
 
-The test scenarios are written to test the controls in the WinUI 3 Gallery app. The procedure below outlines the steps needed to build and deploy WinUI 3 Gallery and WinAppDriver to run the UI Tests. These steps mirror what azure-pipelines.yml does in pipeline runs.
+The test scenarios are written to test the controls in the WinUI Gallery app. The procedure below outlines the steps needed to build and deploy WinUI Gallery and WinAppDriver to run the UI Tests. These steps mirror what azure-pipelines.yml does in pipeline runs.
 
-## Deploy WinUI 3 Gallery
+## Deploy WinUI Gallery
 
-The easiest way to deploy the WinUI 3 Gallery for unit test execution is to simply build WinUIGallery.slnx and F5 deploy it from within Visual Studio.  Alternatively, the following commands can be used for automation.
+The easiest way to deploy the WinUI Gallery for unit test execution is to simply build WinUIGallery.slnx and F5 deploy it from within Visual Studio.  Alternatively, the following commands can be used for automation.
 
 1. Generate the test signing certificate:
 
@@ -14,13 +14,13 @@ The easiest way to deploy the WinUI 3 Gallery for unit test execution is to simp
     PS> .\scripts\GenerateTestPfx.ps1
 ```
 
-1. Build and publish the WinUI 3 Gallery from the command line, e.g.:
+1. Build and publish the WinUI Gallery from the command line, e.g.:
 
 ```powershell
     >dotnet.exe publish WinUIGallery.slnx /p:AppxPackageDir=AppxPackages\ /p:platform=x64 /p:PublishProfile=./WinUIGallery/Properties/PublishProfiles/win-x64.pubxml
 ```
 
-1. Locate the WinUI 3 Gallery package output folder from above and deploy for testing:
+1. Locate the WinUI Gallery package output folder from above and deploy for testing:
 
 ```powershell
     PS> .\WinUIGallery\AppxPackages\WinUIGallery_Test\Install.ps1
@@ -70,7 +70,7 @@ Alternatively, the following commands can be used for automation:
 
 In either scenario above (cmdline or VS), if the tests run successfully, you should see:
 
-* The WinUI 3 Gallery launch and run with automated UI interactions
+* The WinUI Gallery launch and run with automated UI interactions
 * vstest.console.exe spew or Test Explorer indications of test case status
 * Optionally, WinAppDriver console spew indicating successful launch of the test app
 

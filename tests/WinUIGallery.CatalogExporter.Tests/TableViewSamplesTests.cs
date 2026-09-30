@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Xml.Linq;
 using WinUIGallery.CatalogExporter;
 
 namespace WinUIGallery.CatalogExporter.Tests;
@@ -14,6 +15,33 @@ public sealed class TableViewSamplesTests
         string repoRoot = CatalogGenerator.FindRepoRoot(AppContext.BaseDirectory);
         SampleIndex index = CatalogGenerator.Generate(new CatalogGenerationOptions { RepoRoot = repoRoot }).Index;
         return index.Controls.Single(control => control.Gallery.UniqueId == "TableView");
+    }
+
+    [TestMethod]
+    public void ResourceSetupSnippetIsCopyableAndPrecedesExamples()
+    {
+        string repoRoot = CatalogGenerator.FindRepoRoot(AppContext.BaseDirectory);
+        XDocument page = XDocument.Load(Path.Combine(repoRoot, "WinUIGallery", "Samples", "TableView", "TableViewPage.xaml"));
+        XElement panel = page.Root!.Elements().Single(element => element.Name.LocalName == "StackPanel");
+        List<XElement> content = panel.Elements().ToList();
+        XElement presenter = content.Single(element => element.Name.LocalName == "SampleCodePresenter");
+
+        Assert.IsTrue(content.IndexOf(presenter) < content.FindIndex(element => element.Name.LocalName == "ControlExample"));
+        Assert.AreEqual("True", presenter.Attribute("IsCopyButtonVisible")?.Value);
+        Assert.AreEqual("XAML", presenter.Attribute("SampleType")?.Value);
+
+        string code = presenter.Elements()
+            .Single(element => element.Name.LocalName == "SampleCodePresenter.Code")
+            .Elements().Single().Value;
+        XDocument snippet = XDocument.Parse(code);
+        XElement dictionaries = snippet.Descendants()
+            .Single(element => element.Name.LocalName == "ResourceDictionary.MergedDictionaries");
+
+        CollectionAssert.AreEqual(
+            new[] { "XamlControlsResources", "TabularControlsResources" },
+            dictionaries.Elements().Select(element => element.Name.LocalName).ToArray());
+        Assert.AreEqual("using:Microsoft.UI.Xaml.Controls", dictionaries.Elements().First().Name.NamespaceName);
+        Assert.AreEqual("using:Microsoft.UI.Xaml.Controls.Tabular", dictionaries.Elements().Last().Name.NamespaceName);
     }
 
     [TestMethod]

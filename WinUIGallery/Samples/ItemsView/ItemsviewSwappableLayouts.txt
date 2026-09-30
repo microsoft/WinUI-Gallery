@@ -16,7 +16,7 @@ ItemsView with swappable layouts
     </ItemContainer>
 </DataTemplate>
 
-<ItemsView Width="500" Height="400" HorizontalAlignment="Left"
+<ItemsView Height="400" HorizontalAlignment="Stretch" MaxWidth="500"
     ItemTemplate="{StaticResource LinedFlowLayoutItemTemplate}">
     <ItemsView.Layout>
         <LinedFlowLayout ItemsStretch="Fill" LineHeight="160" LineSpacing="5" MinItemSpacing="5"/>

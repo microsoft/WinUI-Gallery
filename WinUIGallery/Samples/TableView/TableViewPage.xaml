@@ -10,6 +10,25 @@
     xmlns:local="using:WinUIGallery.ControlPages"
     xmlns:tabular="using:Microsoft.UI.Xaml.Controls.Tabular">
     <StackPanel Margin="0,16,0,0" Spacing="16">
+        <TextBlock
+            Text="Before using TableView, add TabularControlsResources to the merged resource dictionaries in App.xaml, after XamlControlsResources:"
+            TextWrapping="Wrap" />
+        <controls:SampleCodePresenter
+            AutomationProperties.AutomationId="TableViewResourceCode"
+            IsCopyButtonVisible="True"
+            SampleType="XAML">
+            <controls:SampleCodePresenter.Code>
+                <x:String xml:space="preserve">&lt;Application.Resources&gt;
+    &lt;ResourceDictionary&gt;
+        &lt;ResourceDictionary.MergedDictionaries&gt;
+            &lt;XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" /&gt;
+            &lt;TabularControlsResources xmlns="using:Microsoft.UI.Xaml.Controls.Tabular" /&gt;
+        &lt;/ResourceDictionary.MergedDictionaries&gt;
+    &lt;/ResourceDictionary&gt;
+&lt;/Application.Resources&gt;</x:String>
+            </controls:SampleCodePresenter.Code>
+        </controls:SampleCodePresenter>
+
         <controls:ControlExample
             SampleDefinition="TableView\BasicTable.txt">
             <StackPanel Spacing="12">

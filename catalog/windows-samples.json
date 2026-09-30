@@ -9,7 +9,7 @@
     "defaultBranch": "main",
     "license": "MIT"
   },
-  "controlCount": 124,
+  "controlCount": 125,
   "controls": [
     {
       "id": "accessibilitycolorcontrast",
@@ -1007,7 +1007,7 @@
       "samples": [
         {
           "header": "Basic notification",
-          "code": "AppNotification notification = new AppNotificationBuilder()\n    .AddText(\u0022Welcome to WinUI 3 Gallery\u0022)\n    .AddText(\u0022Explore interactive samples and discover the power of modern Windows UI.\u0022)\n    .BuildNotification();\n\nAppNotificationManager.Default.Show(notification);",
+          "code": "AppNotification notification = new AppNotificationBuilder()\n    .AddText(\u0022Welcome to WinUI Gallery\u0022)\n    .AddText(\u0022Explore interactive samples and discover the power of modern Windows UI.\u0022)\n    .BuildNotification();\n\nAppNotificationManager.Default.Show(notification);",
           "language": "csharp",
           "gallery": {
             "snippet": "AppNotificationBasicNotification.txt",
@@ -4318,7 +4318,7 @@
         },
         {
           "header": "Implicitly animate when the Grid\u0027s theme changes",
-          "xaml": "\u003CGrid x:Name=\u0022ThemeExampleGrid\u0022 Background=\u0022{ThemeResource SolidBackgroundFillColorBaseBrush}\u0022 \u003E\n    \u003CGrid.BackgroundTransition\u003E\n        \u003CBrushTransition /\u003E\n    \u003C/Grid.BackgroundTransition\u003E\n    \u003CStackPanel Margin=\u002212\u0022 Spacing=\u00226\u0022\u003E\n        \u003CTextBlock Text=\u0022Lorem Ipsum\u0022 Style=\u0022{ThemeResource SubtitleTextBlockStyle}\u0022 /\u003E\n        \u003CTextBlock Text=\u0022The background of this grid animates when the theme changes.\u0022 TextWrapping=\u0022WrapWholeWords\u0022 /\u003E\n        \u003CButton Content=\u0022Button\u0022 /\u003E\n        \u003CCheckBox Content=\u0022CheckBox\u0022 /\u003E\n    \u003C/StackPanel\u003E\n\u003C/Grid\u003E",
+          "xaml": "\u003CGrid x:Name=\u0022ThemeExampleGrid\u0022 Background=\u0022{ThemeResource SolidBackgroundFillColorBaseBrush}\u0022 \u003E\n    \u003CGrid.BackgroundTransition\u003E\n        \u003CBrushTransition /\u003E\n    \u003C/Grid.BackgroundTransition\u003E\n    \u003CStackPanel Margin=\u002212\u0022 Spacing=\u00226\u0022\u003E\n        \u003CTextBlock Text=\u0022Lorem Ipsum\u0022 Style=\u0022{ThemeResource SubtitleTextBlockStyle}\u0022 /\u003E\n        \u003CTextBlock Text=\u0022The background of this grid animates when the theme changes.\u0022 TextWrapping=\u0022WrapWholeWords\u0022 /\u003E\n        \u003CButton Content=\u0022Action\u0022 /\u003E\n        \u003CCheckBox Content=\u0022Option\u0022 /\u003E\n    \u003C/StackPanel\u003E\n\u003C/Grid\u003E",
           "code": "private void ThemeButton_Click(object sender, RoutedEventArgs e)\n{\n    ThemeExampleGrid.RequestedTheme = ThemeExampleGrid.RequestedTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;\n}",
           "language": "csharp",
           "gallery": {
@@ -4517,6 +4517,93 @@
       ]
     },
     {
+      "id": "inkcanvas",
+      "name": "InkCanvas / InkToolbar",
+      "description": "Draw with pen, touch, or mouse and choose tools with an InkToolbar.",
+      "details": "Use InkCanvas to collect freeform ink with pen, touch, or mouse. Pair it with InkToolbar to choose drawing tools. Explore input settings, customize the available tools, and save and restore strokes.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls",
+      "usings": [
+        "Microsoft.UI",
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Primitives",
+        "Microsoft.UI.Xaml.Navigation",
+        "System",
+        "Windows.Foundation",
+        "Windows.Storage.Streams",
+        "Windows.UI.Core",
+        "Windows.UI.Input.Inking"
+      ],
+      "curatedKeywords": [
+        "inking",
+        "drawing",
+        "InkToolbar",
+        "pen",
+        "stylus"
+      ],
+      "docs": [
+        {
+          "title": "InkCanvas - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.inkcanvas"
+        },
+        {
+          "title": "InkToolbar - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.inktoolbar"
+        },
+        {
+          "title": "Inking controls overview",
+          "uri": "https://learn.microsoft.com/windows/apps/design/controls/inking-controls"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "InkCanvas",
+        "group": {
+          "id": "Media",
+          "title": "Media"
+        },
+        "page": "WinUIGallery/Samples/InkCanvas/InkCanvasPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/InkCanvas/InkCanvasPage.xaml.cs",
+        "badges": [
+          "New"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Draw and configure an InkCanvas.",
+          "xaml": "\u003CInkCanvas x:Name=\u0022inkCanvas\u0022 /\u003E",
+          "code": "inkCanvas.InkPresenter.InputDeviceTypes =\n    default(CoreInputDeviceTypes) | CoreInputDeviceTypes.Pen | CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Touch;\n\nInkDrawingAttributes attributes = inkCanvas.InkPresenter.CopyDefaultDrawingAttributes();\nattributes.Color = Colors.Black;\nattributes.Size = new Size(4, 4);\ninkCanvas.InkPresenter.UpdateDefaultDrawingAttributes(attributes);\n\ninkCanvas.InkPresenter.IsInputEnabled = true;",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "InkCanvasDrawing.txt",
+            "source": "WinUIGallery/Samples/InkCanvas/InkCanvasDrawing.txt",
+            "name": "Drawing"
+          }
+        },
+        {
+          "header": "Choose which tools appear in an InkToolbar and select the active tool.",
+          "xaml": "\u003CStackPanel\u003E\n    \u003CInkToolbar x:Name=\u0022inkToolbar\u0022 InitialControls=\u0022None\u0022 ButtonFlyoutPlacement=\u0022Auto\u0022 TargetInkCanvas=\u0022{x:Bind inkCanvas}\u0022\u003E\n        \u003CInkToolbar.Children\u003E\n            \u003CInkToolbarBallpointPenButton /\u003E\n            \u003CInkToolbarPencilButton /\u003E\n            \u003CInkToolbarHighlighterButton /\u003E\n            \u003CInkToolbarEraserButton /\u003E\n        \u003C/InkToolbar.Children\u003E\n    \u003C/InkToolbar\u003E\n    \u003CInkCanvas x:Name=\u0022inkCanvas\u0022 /\u003E\n\u003C/StackPanel\u003E",
+          "code": "inkToolbar.ButtonFlyoutPlacement = InkToolbarButtonFlyoutPlacement.Auto;\n\nInkToolbarToolButton? selected =\n    inkToolbar.GetToolButton(InkToolbarTool.BallpointPen);\nif (selected is not null)\n{\n    inkToolbar.ActiveTool = selected;\n}",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "InkCanvasToolbar.txt",
+            "source": "WinUIGallery/Samples/InkCanvas/InkCanvasToolbar.txt",
+            "name": "Toolbar"
+          }
+        },
+        {
+          "header": "Save, clear, and restore ink strokes.",
+          "xaml": "\u003CInkCanvas x:Name=\u0022inkCanvas\u0022 /\u003E",
+          "code": "Microsoft.UI.Xaml.Controls.InkStrokeContainer strokes = inkCanvas.InkPresenter.StrokeContainer;\nusing InMemoryRandomAccessStream savedInk = new();\nusing (IOutputStream output = savedInk.GetOutputStreamAt(0))\n{\n    await strokes.SaveAsync(output);\n}\n\nstrokes.Clear();\n\nusing (IInputStream input = savedInk.GetInputStreamAt(0))\n{\n    await strokes.LoadAsync(input);\n}",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "InkCanvasStrokes.txt",
+            "source": "WinUIGallery/Samples/InkCanvas/InkCanvasStrokes.txt",
+            "name": "Strokes"
+          }
+        }
+      ]
+    },
+    {
       "id": "itemsrepeater",
       "name": "ItemsRepeater",
       "description": "A flexible, primitive control for data-driven layouts.",
@@ -4672,8 +4759,7 @@
             "source": "WinUIGallery/Samples/ItemsRepeater/ItemsRepeaterVirtualizedContentHeavyLayout.txt",
             "name": "Virtualized Content Heavy Layout",
             "xamlOmittedUnboundPrefixes": [
-              "common",
-              "l"
+              "common"
             ]
           }
         }
@@ -4761,7 +4847,7 @@
         },
         {
           "header": "ItemsView with swappable layouts",
-          "xaml": "\u003CDataTemplate x:Key=\u0022LinedFlowLayoutItemTemplate\u0022 x:DataType=\u0022local:CustomDataObject\u0022\u003E\n    \u003CItemContainer AutomationProperties.Name=\u0022{x:Bind Title}\u0022\u003E\n        \u003CGrid\u003E\n            \u003CImage Source=\u0022{x:Bind ImageLocation}\u0022 Stretch=\u0022UniformToFill\u0022 HorizontalAlignment=\u0022Center\u0022 VerticalAlignment=\u0022Center\u0022 MinWidth=\u002270\u0022/\u003E\n            \u003CStackPanel Orientation=\u0022Vertical\u0022 Height=\u002240\u0022 VerticalAlignment=\u0022Bottom\u0022 Padding=\u00225,1,5,1\u0022 Background=\u0022{ThemeResource SystemControlBackgroundBaseMediumBrush}\u0022 Opacity=\u0022.75\u0022\u003E\n                \u003CTextBlock Text=\u0022{x:Bind Title}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                \u003CStackPanel Orientation=\u0022Horizontal\u0022\u003E\n                    \u003CTextBlock Text=\u0022{x:Bind Likes}\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                    \u003CTextBlock Text=\u0022 Likes\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                \u003C/StackPanel\u003E\n            \u003C/StackPanel\u003E\n        \u003C/Grid\u003E\n    \u003C/ItemContainer\u003E\n\u003C/DataTemplate\u003E\n\n\u003CItemsView Width=\u0022500\u0022 Height=\u0022400\u0022 HorizontalAlignment=\u0022Left\u0022\n    ItemTemplate=\u0022{StaticResource LinedFlowLayoutItemTemplate}\u0022\u003E\n    \u003CItemsView.Layout\u003E\n        \u003CLinedFlowLayout ItemsStretch=\u0022Fill\u0022 LineHeight=\u0022160\u0022 LineSpacing=\u00225\u0022 MinItemSpacing=\u00225\u0022/\u003E\n    \u003C/ItemsView.Layout\u003E\n\u003C/ItemsView\u003E",
+          "xaml": "\u003CDataTemplate x:Key=\u0022LinedFlowLayoutItemTemplate\u0022 x:DataType=\u0022local:CustomDataObject\u0022\u003E\n    \u003CItemContainer AutomationProperties.Name=\u0022{x:Bind Title}\u0022\u003E\n        \u003CGrid\u003E\n            \u003CImage Source=\u0022{x:Bind ImageLocation}\u0022 Stretch=\u0022UniformToFill\u0022 HorizontalAlignment=\u0022Center\u0022 VerticalAlignment=\u0022Center\u0022 MinWidth=\u002270\u0022/\u003E\n            \u003CStackPanel Orientation=\u0022Vertical\u0022 Height=\u002240\u0022 VerticalAlignment=\u0022Bottom\u0022 Padding=\u00225,1,5,1\u0022 Background=\u0022{ThemeResource SystemControlBackgroundBaseMediumBrush}\u0022 Opacity=\u0022.75\u0022\u003E\n                \u003CTextBlock Text=\u0022{x:Bind Title}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                \u003CStackPanel Orientation=\u0022Horizontal\u0022\u003E\n                    \u003CTextBlock Text=\u0022{x:Bind Likes}\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                    \u003CTextBlock Text=\u0022 Likes\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                \u003C/StackPanel\u003E\n            \u003C/StackPanel\u003E\n        \u003C/Grid\u003E\n    \u003C/ItemContainer\u003E\n\u003C/DataTemplate\u003E\n\n\u003CItemsView Height=\u0022400\u0022 HorizontalAlignment=\u0022Stretch\u0022 MaxWidth=\u0022500\u0022\n    ItemTemplate=\u0022{StaticResource LinedFlowLayoutItemTemplate}\u0022\u003E\n    \u003CItemsView.Layout\u003E\n        \u003CLinedFlowLayout ItemsStretch=\u0022Fill\u0022 LineHeight=\u0022160\u0022 LineSpacing=\u00225\u0022 MinItemSpacing=\u00225\u0022/\u003E\n    \u003C/ItemsView.Layout\u003E\n\u003C/ItemsView\u003E",
           "gallery": {
             "snippet": "ItemsviewSwappableLayouts.txt",
             "source": "WinUIGallery/Samples/ItemsView/ItemsviewSwappableLayouts.txt",
@@ -4770,7 +4856,7 @@
         },
         {
           "header": "ItemsView item invocation and selection",
-          "xaml": "\u003CDataTemplate x:Key=\u0022UniformGridLayoutItemTemplate\u0022 x:DataType=\u0022local:CustomDataObject\u0022\u003E\n    \u003CItemContainer AutomationProperties.Name=\u0022{x:Bind Title}\u0022\u003E\n        \u003CGrid Width=\u0022150\u0022\u003E\n            \u003CImage Source=\u0022{x:Bind ImageLocation}\u0022 Stretch=\u0022UniformToFill\u0022 HorizontalAlignment=\u0022Center\u0022 VerticalAlignment=\u0022Center\u0022/\u003E\n            \u003CStackPanel Orientation=\u0022Vertical\u0022 Height=\u002240\u0022 VerticalAlignment=\u0022Bottom\u0022 Padding=\u00225,1,5,1\u0022 Background=\u0022{ThemeResource SystemControlBackgroundBaseMediumBrush}\u0022 Opacity=\u0022.75\u0022\u003E\n                \u003CTextBlock Text=\u0022{x:Bind Title}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                \u003CStackPanel Orientation=\u0022Horizontal\u0022\u003E\n                    \u003CTextBlock Text=\u0022{x:Bind Likes}\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                    \u003CTextBlock Text=\u0022 Likes\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                \u003C/StackPanel\u003E\n            \u003C/StackPanel\u003E\n        \u003C/Grid\u003E\n    \u003C/ItemContainer\u003E\n\u003C/DataTemplate\u003E\n\n\u003CItemsView Width=\u0022500\u0022 Height=\u0022400\u0022 HorizontalAlignment=\u0022Left\u0022\n    SelectionMode=\u0022Multiple\u0022\n    ItemTemplate=\u0022{StaticResource UniformGridLayoutItemTemplate}\u0022\n    ItemInvoked=\u0022SwappableSelectionModesItemsView_ItemInvoked\u0022\n    SelectionChanged=\u0022SwappableSelectionModesItemsView_SelectionChanged\u0022\u003E\n    \u003CItemsView.Layout\u003E\n        \u003CUniformGridLayout MinRowSpacing=\u00225\u0022 MinColumnSpacing=\u00225\u0022 MaximumRowsOrColumns=\u00223\u0022/\u003E\n    \u003C/ItemsView.Layout\u003E\n\u003C/ItemsView\u003E",
+          "xaml": "\u003CDataTemplate x:Key=\u0022UniformGridLayoutItemTemplate\u0022 x:DataType=\u0022local:CustomDataObject\u0022\u003E\n    \u003CItemContainer AutomationProperties.Name=\u0022{x:Bind Title}\u0022\u003E\n        \u003CGrid Width=\u0022150\u0022\u003E\n            \u003CImage Source=\u0022{x:Bind ImageLocation}\u0022 Stretch=\u0022UniformToFill\u0022 HorizontalAlignment=\u0022Center\u0022 VerticalAlignment=\u0022Center\u0022/\u003E\n            \u003CStackPanel Orientation=\u0022Vertical\u0022 Height=\u002240\u0022 VerticalAlignment=\u0022Bottom\u0022 Padding=\u00225,1,5,1\u0022 Background=\u0022{ThemeResource SystemControlBackgroundBaseMediumBrush}\u0022 Opacity=\u0022.75\u0022\u003E\n                \u003CTextBlock Text=\u0022{x:Bind Title}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                \u003CStackPanel Orientation=\u0022Horizontal\u0022\u003E\n                    \u003CTextBlock Text=\u0022{x:Bind Likes}\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                    \u003CTextBlock Text=\u0022 Likes\u0022 Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Foreground=\u0022{ThemeResource SystemControlForegroundAltHighBrush}\u0022/\u003E\n                \u003C/StackPanel\u003E\n            \u003C/StackPanel\u003E\n        \u003C/Grid\u003E\n    \u003C/ItemContainer\u003E\n\u003C/DataTemplate\u003E\n\n\u003CItemsView Height=\u0022400\u0022 HorizontalAlignment=\u0022Stretch\u0022 MaxWidth=\u0022500\u0022\n    SelectionMode=\u0022Multiple\u0022\n    ItemTemplate=\u0022{StaticResource UniformGridLayoutItemTemplate}\u0022\n    ItemInvoked=\u0022SwappableSelectionModesItemsView_ItemInvoked\u0022\n    SelectionChanged=\u0022SwappableSelectionModesItemsView_SelectionChanged\u0022\u003E\n    \u003CItemsView.Layout\u003E\n        \u003CUniformGridLayout MinRowSpacing=\u00225\u0022 MinColumnSpacing=\u00225\u0022 MaximumRowsOrColumns=\u00223\u0022/\u003E\n    \u003C/ItemsView.Layout\u003E\n\u003C/ItemsView\u003E",
           "code": "private void SwappableSelectionModesItemsView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs e)\n{\n    tblInvocationOutput.Text = \u0022You invoked \u0022 \u002B (e.InvokedItem as CustomDataObject).Title \u002B \u0022.\u0022;\n}\n\nprivate void SwappableSelectionModesItemsView_SelectionChanged(ItemsView sender, ItemsViewSelectionChangedEventArgs e)\n{\n    tblSelectionOutput.Text = string.Format(\u0022You have selected {0} item(s).\u0022, SwappableSelectionModesItemsView.SelectedItems.Count);\n}",
           "language": "csharp",
           "gallery": {
@@ -5721,15 +5807,16 @@
         },
         {
           "header": "Data binding",
+          "xaml": "\u003CNavigationView x:Name=\u0022nvSample\u0022 \n                MenuItemTemplateSelector=\u0022{StaticResource selector}\u0022 \n                MenuItemsSource=\u0022{x:Bind Categories, Mode=OneWay}\u0022 /\u003E\n \n\u003Clocal:MenuItemTemplateSelector x:Key=\u0022selector\u0022\u003E \n    \u003Clocal:MenuItemTemplateSelector.ItemTemplate\u003E \n        \u003CDataTemplate x:DataType=\u0022local:Category\u0022 \u003E \n            \u003CNavigationViewItem Content=\u0022{x:Bind Name}\u0022 ToolTipService.ToolTip=\u0022{x:Bind Tooltip}\u0022\u003E \n                \u003CNavigationViewItem.Icon\u003E \n                    \u003CSymbolIcon Symbol=\u0022{x:Bind Glyph}\u0022 /\u003E \n                \u003C/NavigationViewItem.Icon\u003E \n            \u003C/NavigationViewItem\u003E\n        \u003C/DataTemplate\u003E \n    \u003C/local:MenuItemTemplateSelector.ItemTemplate \u003E \n\u003C/local:MenuItemTemplateSelector\u003E",
           "code": "//C# code behind\nCategories = new ObservableCollection\u003CCategoryBase\u003E(); \nCategories.Add(new Category { Name = \u0022Category 1\u0022, Glyph = Symbol.Home, Tooltip = \u0022This is category 1\u0022 }); \nCategories.Add(new Category { Name = \u0022Category 2\u0022, Glyph = Symbol.Keyboard, Tooltip = \u0022This is category 2\u0022 }); \nCategories.Add(new Category { Name = \u0022Category 3\u0022, Glyph = Symbol.Library, Tooltip = \u0022This is category 3\u0022 }); \nCategories.Add(new Category { Name = \u0022Category 4\u0022, Glyph = Symbol.Mail, Tooltip = \u0022This is category 4\u0022 }); \n\npublic class CategoryBase { } \n\npublic class Category : CategoryBase\n{\n    public string Name { get; set; } = string.Empty;\n    public string Tooltip { get; set; } = string.Empty;\n    public Symbol Glyph { get; set; }\n}\n\npublic class Separator : CategoryBase { }\n\npublic class Header : CategoryBase\n{\n    public string Name { get; set; }\n}\n\n[ContentProperty(Name = \u0022ItemTemplate\u0022)]\nclass MenuItemTemplateSelector : DataTemplateSelector\n{\n    public DataTemplate? ItemTemplate { get; set; }\n\n    protected override DataTemplate? SelectTemplateCore(object item)\n    {\n        return item is Separator ? SeparatorTemplate : item is Header ? HeaderTemplate : ItemTemplate;\n    }\n}",
           "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:YourNamespace\u0022"
+          ],
           "gallery": {
             "snippet": "NavigationViewDataBinding.txt",
             "source": "WinUIGallery/Samples/NavigationView/NavigationViewDataBinding.txt",
-            "name": "Data Binding",
-            "xamlOmittedUnboundPrefixes": [
-              "local"
-            ]
+            "name": "Data Binding"
           }
         },
         {
@@ -7785,7 +7872,7 @@
       "samples": [
         {
           "header": "A simple Slider.",
-          "xaml": "\u003CSlider AutomationProperties.Name=\u0022simple slider\u0022 Width=\u0022200\u0022/\u003E",
+          "xaml": "\u003CSlider AutomationProperties.Name=\u0022Simple example\u0022 Width=\u0022200\u0022/\u003E",
           "gallery": {
             "snippet": "SliderSimple.txt",
             "source": "WinUIGallery/Samples/Slider/SliderSimple.txt",
@@ -7803,7 +7890,7 @@
         },
         {
           "header": "A Slider with tick marks.",
-          "xaml": "\u003CSlider\n     AutomationProperties.Name=\u0022Slider with ticks\u0022\n     TickFrequency=\u002220\u0022\n     TickPlacement=\u0022Outside\u0022\n     SnapsTo=\u0022StepValues\u0022 /\u003E",
+          "xaml": "\u003CSlider\n     AutomationProperties.Name=\u0022Example with ticks\u0022\n     TickFrequency=\u002220\u0022\n     TickPlacement=\u0022Outside\u0022\n     SnapsTo=\u0022StepValues\u0022 /\u003E",
           "gallery": {
             "snippet": "SliderTicks.txt",
             "source": "WinUIGallery/Samples/Slider/SliderTicks.txt",
@@ -7812,7 +7899,7 @@
         },
         {
           "header": "A vertical slider with range and tick marks specified.",
-          "xaml": "\u003CSlider AutomationProperties.Name=\u0022vertical slider\u0022 Width=\u0022100\u0022 Orientation=\u0022Vertical\u0022\n    TickFrequency=\u002210\u0022 TickPlacement=\u0022Outside\u0022 Maximum=\u002250\u0022 Minimum=\u0022-50\u0022/\u003E",
+          "xaml": "\u003CSlider AutomationProperties.Name=\u0022Vertical example\u0022 Width=\u0022100\u0022 Orientation=\u0022Vertical\u0022\n    TickFrequency=\u002210\u0022 TickPlacement=\u0022Outside\u0022 Maximum=\u002250\u0022 Minimum=\u0022-50\u0022/\u003E",
           "gallery": {
             "snippet": "SliderVertical.txt",
             "source": "WinUIGallery/Samples/Slider/SliderVertical.txt",
@@ -9920,7 +10007,7 @@
       "samples": [
         {
           "header": "A button with a simple ToolTip.",
-          "xaml": "\u003CButton Content=\u0022Button with a simple ToolTip.\u0022 ToolTipService.ToolTip=\u0022Simple ToolTip\u0022/\u003E",
+          "xaml": "\u003CButton Content=\u0022Show a simple ToolTip.\u0022 ToolTipService.ToolTip=\u0022Simple ToolTip\u0022/\u003E",
           "gallery": {
             "snippet": "ButtonSimpleTooltip.txt",
             "source": "WinUIGallery/Samples/ToolTip/ButtonSimpleTooltip.txt",
@@ -9929,7 +10016,7 @@
         },
         {
           "header": "A TextBlock with an offset ToolTip.",
-          "xaml": "\u003CTextBlock Text=\u0022TextBlock with an offset ToolTip.\u0022\u003E\n    \u003CToolTipService.ToolTip\u003E\n        \u003CToolTip Content=\u0022Offset ToolTip.\u0022 VerticalOffset=\u0022-80\u0022/\u003E\n    \u003C/ToolTipService.ToolTip\u003E\n\u003C/TextBlock\u003E",
+          "xaml": "\u003CTextBlock Text=\u0022TextBlock with an offset ToolTip.\u0022\u003E\n    \u003CToolTipService.ToolTip\u003E\n        \u003CToolTip Content=\u0022Offset information.\u0022 VerticalOffset=\u0022-80\u0022/\u003E\n    \u003C/ToolTipService.ToolTip\u003E\n\u003C/TextBlock\u003E",
           "gallery": {
             "snippet": "TextblockOffsetTooltip.txt",
             "source": "WinUIGallery/Samples/ToolTip/TextblockOffsetTooltip.txt",
@@ -9938,7 +10025,7 @@
         },
         {
           "header": "An Image with a ToolTip using PlacementRect.",
-          "xaml": "\u003CImage Source=\u0022/Assets/SampleMedia/cliff.jpg\u0022 Width=\u0022400\u0022 Height=\u0022266\u0022\u003E\n    \u003CToolTipService.ToolTip\u003E\n        \u003CToolTip Content=\u0022Non-occluding ToolTip.\u0022 PlacementRect=\u00220,0,400,266\u0022/\u003E\n    \u003C/ToolTipService.ToolTip\u003E\n\u003C/Image\u003E",
+          "xaml": "\u003CImage Source=\u0022/Assets/SampleMedia/cliff.jpg\u0022 Width=\u0022400\u0022 Height=\u0022266\u0022\u003E\n    \u003CToolTipService.ToolTip\u003E\n        \u003CToolTip Content=\u0022Non-occluding information.\u0022 PlacementRect=\u00220,0,400,266\u0022/\u003E\n    \u003C/ToolTipService.ToolTip\u003E\n\u003C/Image\u003E",
           "gallery": {
             "snippet": "ImageTooltipPlacementrect.txt",
             "source": "WinUIGallery/Samples/ToolTip/ImageTooltipPlacementrect.txt",
@@ -10030,15 +10117,16 @@
         },
         {
           "header": "A TreeView with DataBinding Using ItemSource",
+          "xaml": "\u003CTreeView ItemsSource=\u0022{x:Bind DataSource}\u0022\u003E\n   \u003CTreeView.ItemTemplate\u003E\n      \u003CDataTemplate x:DataType=\u0022local:ExplorerItem\u0022\u003E\n         \u003CTreeViewItem ItemsSource=\u0022{x:Bind Children}\u0022 Content=\u0022{x:Bind Name}\u0022/\u003E\n      \u003C/DataTemplate\u003E\n   \u003C/TreeView.ItemTemplate\u003E\n\u003C/TreeView\u003E",
           "code": "using System.Collections.ObjectModel;\nusing Microsoft.UI.Xaml;\nusing Microsoft.UI.Xaml.Controls;\n\nnamespace YourNamespace\n{\n    public sealed partial class YourPage : Page\n    {\n        // DataSource is the data collection that will be bound to the TreeView\u0027s ItemsSource.\n        public ObservableCollection\u003CExplorerItem\u003E DataSource { get; set; }\n\n        public YourPage()\n        {\n            this.InitializeComponent();\n\n            // Initialize the data source with sample data and set it as the context for data binding.\n            DataSource = GetData();\n            this.DataContext = this; // Bind the DataContext of the page to itself for XAML bindings.\n        }\n\n        // Method to provide sample data for the TreeView.\n        private ObservableCollection\u003CExplorerItem\u003E GetData()\n        {\n            return new ObservableCollection\u003CExplorerItem\u003E\n            {\n                // Root folder with child files.\n                new ExplorerItem\n                {\n                    Name = \u0022Documents\u0022,\n                    Type = ExplorerItem.ExplorerItemType.Folder,\n                    Children =\n                    {\n                        new ExplorerItem\n                        {\n                            Name = \u0022ProjectProposal\u0022,\n                            Type = ExplorerItem.ExplorerItemType.File,\n                        },\n                        new ExplorerItem\n                        {\n                            Name = \u0022BudgetReport\u0022,\n                            Type = ExplorerItem.ExplorerItemType.File,\n                        },\n                    },\n                },\n                // Another root folder with one child file.\n                new ExplorerItem\n                {\n                    Name = \u0022Projects\u0022,\n                    Type = ExplorerItem.ExplorerItemType.Folder,\n                    Children =\n                    {\n                        new ExplorerItem\n                        {\n                            Name = \u0022Project Plan\u0022,\n                            Type = ExplorerItem.ExplorerItemType.File,\n                        },\n                    },\n                },\n            };\n        }\n    }\n\n    // Class to represent items in the TreeView.\n    public class ExplorerItem\n    {\n        // Enum to define the type of the item: Folder or File.\n        public enum ExplorerItemType\n        {\n            Folder,\n            File,\n        }\n\n        // Name of the item (displayed in the TreeView).\n        public string Name { get; set; } = string.Empty;\n\n        // Type of the item (Folder or File).\n        public ExplorerItemType Type { get; set; }\n\n        // Collection of child items. Used for nested nodes in the TreeView.\n        public ObservableCollection\u003CExplorerItem\u003E Children { get; set; } = new ObservableCollection\u003CExplorerItem\u003E();\n    }\n}",
           "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:YourNamespace\u0022"
+          ],
           "gallery": {
             "snippet": "TreeviewDatabindingItemsource.txt",
             "source": "WinUIGallery/Samples/TreeView/TreeviewDatabindingItemsource.txt",
-            "name": "Databinding Itemsource",
-            "xamlOmittedUnboundPrefixes": [
-              "local"
-            ]
+            "name": "Databinding Itemsource"
           }
         },
         {
@@ -10698,7 +10786,7 @@
       "samples": [
         {
           "header": "Creating and applying a style",
-          "xaml": "\u003CStackPanel Spacing=\u00228\u0022\u003E\n    \u003CStackPanel.Resources\u003E\n        \u003CStyle x:Key=\u0022CustomButtonStyle\u0022 TargetType=\u0022Button\u0022 BasedOn=\u0022{StaticResource ButtonRevealStyle}\u0022\u003E\n            \u003CSetter Property=\u0022Background\u0022 Value=\u0022{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}\u0022 /\u003E\n            \u003CSetter Property=\u0022MinWidth\u0022 Value=\u0022200\u0022 /\u003E\n        \u003C/Style\u003E\n    \u003C/StackPanel.Resources\u003E\n    \u003CButton Content=\u0022Default button\u0022 /\u003E\n    \u003CButton Content=\u0022Styled button\u0022 Style=\u0022{StaticResource CustomButtonStyle}\u0022 /\u003E\n    \u003CButton Content=\u0022Styled button (overridden)\u0022 Style=\u0022{StaticResource CustomButtonStyle}\u0022\n            Background=\u0022{ThemeResource SystemFillColorCriticalBackgroundBrush}\u0022 /\u003E\n\u003C/StackPanel\u003E",
+          "xaml": "\u003CStackPanel Spacing=\u00228\u0022\u003E\n    \u003CStackPanel.Resources\u003E\n        \u003CStyle x:Key=\u0022CustomButtonStyle\u0022 TargetType=\u0022Button\u0022 BasedOn=\u0022{StaticResource ButtonRevealStyle}\u0022\u003E\n            \u003CSetter Property=\u0022Background\u0022 Value=\u0022{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}\u0022 /\u003E\n            \u003CSetter Property=\u0022MinWidth\u0022 Value=\u0022200\u0022 /\u003E\n        \u003C/Style\u003E\n    \u003C/StackPanel.Resources\u003E\n    \u003CButton Content=\u0022Default style\u0022 /\u003E\n    \u003CButton Content=\u0022Custom style\u0022 Style=\u0022{StaticResource CustomButtonStyle}\u0022 /\u003E\n    \u003CButton Content=\u0022Custom style with overridden background\u0022 Style=\u0022{StaticResource CustomButtonStyle}\u0022\n            Background=\u0022{ThemeResource SystemFillColorCriticalBackgroundBrush}\u0022 /\u003E\n\u003C/StackPanel\u003E",
           "gallery": {
             "snippet": "XamlStylesCreatingApplyingStyle.txt",
             "source": "WinUIGallery/Samples/XamlStyles/XamlStylesCreatingApplyingStyle.txt",

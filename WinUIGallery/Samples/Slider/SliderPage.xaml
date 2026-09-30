@@ -25,7 +25,7 @@
                 <Slider
                     x:Name="Slider1"
                     Width="200"
-                    AutomationProperties.Name="simple slider" />
+                    AutomationProperties.Name="Simple example" />
             </StackPanel>
             <controls:ControlExample.Output>
                 <TextBlock Text="{x:Bind Slider1.Value.ToString(), Mode=OneWay}" />
@@ -149,7 +149,7 @@
                 <Slider
                     x:Name="Slider3"
                     Width="290"
-                    AutomationProperties.Name="Slider with ticks"
+                    AutomationProperties.Name="Example with ticks"
                     TickFrequency="20"
                     TickPlacement="Outside" />
             </StackPanel>
@@ -180,7 +180,7 @@
                     x:Name="Slider4"
                     Width="100"
                     Height="100"
-                    AutomationProperties.Name="vertical slider"
+                    AutomationProperties.Name="Vertical example"
                     Maximum="50"
                     Minimum="-50"
                     Orientation="Vertical"
