@@ -1,0 +1,27 @@
+--- header
+Plot a time series
+--- xaml
+<charts:Chart
+    x:Name="TimeSeriesChart"
+    AutomationProperties.Name="Weekly temperature area chart" />
+--- c#
+Samples day = new() { ItemsSource = ReadingDates };
+Samples reading = new() { ItemsSource = TemperatureReadings };
+
+DateTimeAxis dayX = new()
+{
+    Label = "Date",
+    IntervalType = DateTimeIntervalType.Week,
+    LabelFormat = "month day",
+};
+
+TimeSeriesChart.Data.Add(day);
+TimeSeriesChart.Data.Add(reading);
+TimeSeriesChart.Axes.Add(dayX);
+TimeSeriesChart.Series.Add(new AreaSeries
+{
+    Title = "Temperature",
+    XAxis = dayX,
+    XValues = day,
+    YValues = reading,
+});

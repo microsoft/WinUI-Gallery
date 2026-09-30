@@ -1,0 +1,66 @@
+--- header
+Style area, bar, and line series
+--- xaml
+<charts:Chart ShowLegend="True" LegendTitle="Monthly results">
+    <charts:Chart.Data>
+        <charts:Samples x:Name="Month" ItemsSource="{x:Bind Months, Mode=OneTime}" />
+        <charts:Samples x:Name="Actual" ItemsSource="{x:Bind Actuals, Mode=OneTime}" />
+        <charts:Samples x:Name="Forecast" ItemsSource="{x:Bind Forecasts, Mode=OneTime}" />
+        <charts:Samples x:Name="Target" ItemsSource="{x:Bind Targets, Mode=OneTime}" />
+    </charts:Chart.Data>
+
+    <charts:Chart.Axes>
+        <charts:CategoryAxis x:Name="MonthX" Label="Month" />
+        <charts:LinearAxis x:Name="RevenueY"
+                           Label="Revenue"
+                           Minimum="0"
+                           Maximum="60"
+                           Spacing="10"
+                           GridLines="Major" />
+    </charts:Chart.Axes>
+
+    <charts:AreaSeries Title="Forecast"
+                       XAxis="{x:Bind MonthX, Mode=OneTime}"
+                       YAxis="{x:Bind RevenueY, Mode=OneTime}"
+                       XValues="{x:Bind Month, Mode=OneTime}"
+                       YValues="{x:Bind Forecast, Mode=OneTime}"
+                       Fill="LightSteelBlue"
+                       Stroke="MidnightBlue"
+                       StrokeThickness="2"
+                       StrokeDashStyle="Dot"
+                       ShowDataMarkers="True"
+                       MarkerShape="Square"
+                       DataMarkerBrush="Crimson" />
+
+    <charts:BarSeries Title="Actual"
+                      Orientation="Vertical"
+                      XAxis="{x:Bind MonthX, Mode=OneTime}"
+                      YAxis="{x:Bind RevenueY, Mode=OneTime}"
+                      XValues="{x:Bind Month, Mode=OneTime}"
+                      YValues="{x:Bind Actual, Mode=OneTime}"
+                      Fill="SeaGreen"
+                      Stroke="Black"
+                      StrokeThickness="1"
+                      ShowDataLabels="True"
+                      DataLabelBrush="Black" />
+
+    <charts:LineSeries x:Name="TargetSeries"
+                       Title="Target"
+                       XAxis="{x:Bind MonthX, Mode=OneTime}"
+                       YAxis="{x:Bind RevenueY, Mode=OneTime}"
+                       XValues="{x:Bind Month, Mode=OneTime}"
+                       YValues="{x:Bind Target, Mode=OneTime}"
+                       Stroke="Firebrick"
+                       StrokeThickness="2"
+                       StrokeDashStyle="Dash"
+                       ShowDataMarkers="True"
+                       MarkerShape="Plus"
+                       DataMarkerBrush="Goldenrod" />
+</charts:Chart>
+--- c#
+SolidColorBrush labelHighlight = new(Colors.Black);
+SolidColorBrush markerHighlight = new(Colors.Magenta);
+TargetSeries.DataLabelOverrides[2] =
+    new DataLabelOverride("Peak", labelHighlight);
+TargetSeries.DataMarkerOverrides[2] =
+    new DataMarkerOverride(MarkerShape.Asterisk, markerHighlight);

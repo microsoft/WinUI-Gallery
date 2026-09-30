@@ -1073,6 +1073,37 @@
           ]
         },
         {
+          "UniqueId": "Chart",
+          "Tags": [
+            "chart",
+            "data visualization",
+            "line chart",
+            "time series",
+            "analytics",
+            "dashboard",
+            "KPI"
+          ],
+          "Title": "Chart",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Charts",
+          "Subtitle": "A preview control for visualizing numeric, category, and date-time data.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "Chart visualizes data with line, area, and bar series. Configure axes, legends, labels, markers, per-point overrides, and observable data sources.",
+          "SourcePath": "/Chart",
+          "IsExperimental": true,
+          "RelatedControls": [
+            "ItemsView",
+            "ProgressBar",
+            "TableView"
+          ]
+        },
+        {
           "UniqueId": "ListView",
           "Tags": [
             "list",

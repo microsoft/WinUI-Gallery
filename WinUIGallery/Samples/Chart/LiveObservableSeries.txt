@@ -1,0 +1,44 @@
+--- header
+Update a series data source
+--- xaml
+<StackPanel Spacing="12">
+    <Button
+        Click="AddResponseTimeSampleButton_Click"
+        Content="Add sample" />
+    <TextBlock
+        AutomationProperties.LiveSetting="Polite"
+        Text="{x:Bind LiveSeriesSummary, Mode=OneWay}"
+        TextWrapping="Wrap" />
+    <charts:Chart AutomationProperties.Name="Live response time chart">
+        <charts:Chart.Data>
+            <charts:Samples x:Name="ResponseTime"
+                            ItemsSource="{x:Bind ResponseTimes, Mode=OneTime}" />
+        </charts:Chart.Data>
+
+        <charts:Chart.Axes>
+            <charts:LinearAxis x:Name="ResponseTimeY"
+                               Label="Milliseconds"
+                               Minimum="0"
+                               GridLines="Major" />
+        </charts:Chart.Axes>
+
+        <charts:LineSeries Title="Response time"
+                           YAxis="{x:Bind ResponseTimeY, Mode=OneTime}"
+                           YValues="{x:Bind ResponseTime, Mode=OneTime}"
+                           ShowDataMarkers="True" />
+    </charts:Chart>
+</StackPanel>
+--- c#
+public ObservableCollection<double> ResponseTimes { get; } =
+[
+    184,
+    179,
+    173,
+    171,
+    168,
+];
+
+private void AddResponseTimeSampleButton_Click(object sender, RoutedEventArgs e)
+{
+    ResponseTimes.Add(176);
+}

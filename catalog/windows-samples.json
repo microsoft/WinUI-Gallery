@@ -9,7 +9,7 @@
     "defaultBranch": "main",
     "license": "MIT"
   },
-  "controlCount": 124,
+  "controlCount": 125,
   "controls": [
     {
       "id": "accessibilitycolorcontrast",
@@ -2166,6 +2166,128 @@
             "codePlaceholdersPresent": [
               "MirrorPreview"
             ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "chart",
+      "name": "Chart",
+      "description": "A preview control for visualizing numeric, category, and date-time data.",
+      "details": "Chart visualizes data with line, area, and bar series. Configure axes, legends, labels, markers, per-point overrides, and observable data sources.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls.Charts",
+      "relatedControls": [
+        "ItemsView",
+        "ProgressBar",
+        "TableView"
+      ],
+      "xmlnsImports": [
+        "xmlns:charts=\u0022using:Microsoft.UI.Xaml.Controls.Charts\u0022"
+      ],
+      "usings": [
+        "Microsoft.UI",
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Charts",
+        "Microsoft.UI.Xaml.Media",
+        "System",
+        "System.Collections.Generic",
+        "System.Collections.ObjectModel",
+        "System.ComponentModel",
+        "System.Linq",
+        "System.Runtime.CompilerServices"
+      ],
+      "keywords": [
+        "Object",
+        "DependencyObject",
+        "UIElement",
+        "FrameworkElement",
+        "Control"
+      ],
+      "curatedKeywords": [
+        "chart",
+        "data visualization",
+        "line chart",
+        "time series",
+        "analytics",
+        "dashboard",
+        "KPI"
+      ],
+      "gallery": {
+        "uniqueId": "Chart",
+        "group": {
+          "id": "Collections",
+          "title": "Collections"
+        },
+        "page": "WinUIGallery/Samples/Chart/ChartPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/Chart/ChartPage.xaml.cs",
+        "baseClasses": [
+          "Object",
+          "DependencyObject",
+          "UIElement",
+          "FrameworkElement",
+          "Control"
+        ],
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#ItemsView",
+          "microsoft/WinUI-Gallery#ProgressBar",
+          "microsoft/WinUI-Gallery#TableView"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Create a line chart with axes and a legend",
+          "xaml": "\u003Ccharts:Chart ShowLegend=\u0022True\u0022 LegendTitle=\u0022Revenue\u0022\u003E\n    \u003Ccharts:Chart.Data\u003E\n        \u003Ccharts:Samples x:Name=\u0022Month\u0022\n                        ItemsSource=\u0022{x:Bind Months, Mode=OneTime}\u0022 /\u003E\n        \u003Ccharts:Samples x:Name=\u0022Profit\u0022\n                        ItemsSource=\u0022{x:Bind Profits, Mode=OneTime}\u0022 /\u003E\n    \u003C/charts:Chart.Data\u003E\n\n    \u003Ccharts:Chart.Axes\u003E\n        \u003Ccharts:CategoryAxis x:Name=\u0022MonthX\u0022 Label=\u0022Month\u0022 /\u003E\n        \u003Ccharts:LinearAxis x:Name=\u0022ProfitY\u0022\n                           Label=\u0022Profit\u0022\n                           Minimum=\u00220\u0022\n                           GridLines=\u0022Major\u0022 /\u003E\n    \u003C/charts:Chart.Axes\u003E\n\n    \u003Ccharts:LineSeries Title=\u00222025\u0022\n                       XAxis=\u0022{x:Bind MonthX, Mode=OneTime}\u0022\n                       YAxis=\u0022{x:Bind ProfitY, Mode=OneTime}\u0022\n                       XValues=\u0022{x:Bind Month, Mode=OneTime}\u0022\n                       YValues=\u0022{x:Bind Profit, Mode=OneTime}\u0022 /\u003E\n\u003C/charts:Chart\u003E",
+          "code": "public string[] Months { get; } =\n[\n    \u0022January\u0022,\n    \u0022February\u0022,\n    \u0022March\u0022,\n    \u0022April\u0022,\n    \u0022May\u0022,\n    \u0022June\u0022,\n];\n\npublic double[] Profits { get; } = [18, 26, 33, 39, 47, 52];",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "BasicLineChart.txt",
+            "source": "WinUIGallery/Samples/Chart/BasicLineChart.txt",
+            "name": "Basic Line Chart"
+          }
+        },
+        {
+          "header": "Style area, bar, and line series",
+          "xaml": "\u003Ccharts:Chart ShowLegend=\u0022True\u0022 LegendTitle=\u0022Monthly results\u0022\u003E\n    \u003Ccharts:Chart.Data\u003E\n        \u003Ccharts:Samples x:Name=\u0022Month\u0022 ItemsSource=\u0022{x:Bind Months, Mode=OneTime}\u0022 /\u003E\n        \u003Ccharts:Samples x:Name=\u0022Actual\u0022 ItemsSource=\u0022{x:Bind Actuals, Mode=OneTime}\u0022 /\u003E\n        \u003Ccharts:Samples x:Name=\u0022Forecast\u0022 ItemsSource=\u0022{x:Bind Forecasts, Mode=OneTime}\u0022 /\u003E\n        \u003Ccharts:Samples x:Name=\u0022Target\u0022 ItemsSource=\u0022{x:Bind Targets, Mode=OneTime}\u0022 /\u003E\n    \u003C/charts:Chart.Data\u003E\n\n    \u003Ccharts:Chart.Axes\u003E\n        \u003Ccharts:CategoryAxis x:Name=\u0022MonthX\u0022 Label=\u0022Month\u0022 /\u003E\n        \u003Ccharts:LinearAxis x:Name=\u0022RevenueY\u0022\n                           Label=\u0022Revenue\u0022\n                           Minimum=\u00220\u0022\n                           Maximum=\u002260\u0022\n                           Spacing=\u002210\u0022\n                           GridLines=\u0022Major\u0022 /\u003E\n    \u003C/charts:Chart.Axes\u003E\n\n    \u003Ccharts:AreaSeries Title=\u0022Forecast\u0022\n                       XAxis=\u0022{x:Bind MonthX, Mode=OneTime}\u0022\n                       YAxis=\u0022{x:Bind RevenueY, Mode=OneTime}\u0022\n                       XValues=\u0022{x:Bind Month, Mode=OneTime}\u0022\n                       YValues=\u0022{x:Bind Forecast, Mode=OneTime}\u0022\n                       Fill=\u0022LightSteelBlue\u0022\n                       Stroke=\u0022MidnightBlue\u0022\n                       StrokeThickness=\u00222\u0022\n                       StrokeDashStyle=\u0022Dot\u0022\n                       ShowDataMarkers=\u0022True\u0022\n                       MarkerShape=\u0022Square\u0022\n                       DataMarkerBrush=\u0022Crimson\u0022 /\u003E\n\n    \u003Ccharts:BarSeries Title=\u0022Actual\u0022\n                      Orientation=\u0022Vertical\u0022\n                      XAxis=\u0022{x:Bind MonthX, Mode=OneTime}\u0022\n                      YAxis=\u0022{x:Bind RevenueY, Mode=OneTime}\u0022\n                      XValues=\u0022{x:Bind Month, Mode=OneTime}\u0022\n                      YValues=\u0022{x:Bind Actual, Mode=OneTime}\u0022\n                      Fill=\u0022SeaGreen\u0022\n                      Stroke=\u0022Black\u0022\n                      StrokeThickness=\u00221\u0022\n                      ShowDataLabels=\u0022True\u0022\n                      DataLabelBrush=\u0022Black\u0022 /\u003E\n\n    \u003Ccharts:LineSeries x:Name=\u0022TargetSeries\u0022\n                       Title=\u0022Target\u0022\n                       XAxis=\u0022{x:Bind MonthX, Mode=OneTime}\u0022\n                       YAxis=\u0022{x:Bind RevenueY, Mode=OneTime}\u0022\n                       XValues=\u0022{x:Bind Month, Mode=OneTime}\u0022\n                       YValues=\u0022{x:Bind Target, Mode=OneTime}\u0022\n                       Stroke=\u0022Firebrick\u0022\n                       StrokeThickness=\u00222\u0022\n                       StrokeDashStyle=\u0022Dash\u0022\n                       ShowDataMarkers=\u0022True\u0022\n                       MarkerShape=\u0022Plus\u0022\n                       DataMarkerBrush=\u0022Goldenrod\u0022 /\u003E\n\u003C/charts:Chart\u003E",
+          "code": "SolidColorBrush labelHighlight = new(Colors.Black);\nSolidColorBrush markerHighlight = new(Colors.Magenta);\nTargetSeries.DataLabelOverrides[2] =\n    new DataLabelOverride(\u0022Peak\u0022, labelHighlight);\nTargetSeries.DataMarkerOverrides[2] =\n    new DataMarkerOverride(MarkerShape.Asterisk, markerHighlight);",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "StyledSeries.txt",
+            "source": "WinUIGallery/Samples/Chart/StyledSeries.txt",
+            "name": "Styled Series"
+          }
+        },
+        {
+          "header": "Create a bar chart",
+          "xaml": "\u003Ccharts:Chart\u003E\n    \u003Ccharts:Chart.Data\u003E\n        \u003Ccharts:Samples x:Name=\u0022Region\u0022\n                        ItemsSource=\u0022{x:Bind Regions, Mode=OneTime}\u0022 /\u003E\n        \u003Ccharts:Samples x:Name=\u0022Units\u0022\n                        ItemsSource=\u0022{x:Bind UnitsSold, Mode=OneTime}\u0022 /\u003E\n    \u003C/charts:Chart.Data\u003E\n\n    \u003Ccharts:BarSeries Title=\u0022Units sold\u0022\n                      Orientation=\u0022Vertical\u0022\n                      Fill=\u0022SeaGreen\u0022\n                      XValues=\u0022{x:Bind Region, Mode=OneTime}\u0022\n                      YValues=\u0022{x:Bind Units, Mode=OneTime}\u0022 /\u003E\n\u003C/charts:Chart\u003E",
+          "code": "public string[] Regions { get; } = [\u0022North\u0022, \u0022South\u0022, \u0022East\u0022, \u0022West\u0022];\n\npublic double[] UnitsSold { get; } = [42, 38, 51, 47];",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "BarChart.txt",
+            "source": "WinUIGallery/Samples/Chart/BarChart.txt",
+            "name": "Bar Chart"
+          }
+        },
+        {
+          "header": "Plot a time series",
+          "xaml": "\u003Ccharts:Chart\n    x:Name=\u0022TimeSeriesChart\u0022\n    AutomationProperties.Name=\u0022Weekly temperature area chart\u0022 /\u003E",
+          "code": "Samples day = new() { ItemsSource = ReadingDates };\nSamples reading = new() { ItemsSource = TemperatureReadings };\n\nDateTimeAxis dayX = new()\n{\n    Label = \u0022Date\u0022,\n    IntervalType = DateTimeIntervalType.Week,\n    LabelFormat = \u0022month day\u0022,\n};\n\nTimeSeriesChart.Data.Add(day);\nTimeSeriesChart.Data.Add(reading);\nTimeSeriesChart.Axes.Add(dayX);\nTimeSeriesChart.Series.Add(new AreaSeries\n{\n    Title = \u0022Temperature\u0022,\n    XAxis = dayX,\n    XValues = day,\n    YValues = reading,\n});",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "TimeSeries.txt",
+            "source": "WinUIGallery/Samples/Chart/TimeSeries.txt",
+            "name": "Time Series"
+          }
+        },
+        {
+          "header": "Update a series data source",
+          "xaml": "\u003CStackPanel Spacing=\u002212\u0022\u003E\n    \u003CButton\n        Click=\u0022AddResponseTimeSampleButton_Click\u0022\n        Content=\u0022Add sample\u0022 /\u003E\n    \u003CTextBlock\n        AutomationProperties.LiveSetting=\u0022Polite\u0022\n        Text=\u0022{x:Bind LiveSeriesSummary, Mode=OneWay}\u0022\n        TextWrapping=\u0022Wrap\u0022 /\u003E\n    \u003Ccharts:Chart AutomationProperties.Name=\u0022Live response time chart\u0022\u003E\n        \u003Ccharts:Chart.Data\u003E\n            \u003Ccharts:Samples x:Name=\u0022ResponseTime\u0022\n                            ItemsSource=\u0022{x:Bind ResponseTimes, Mode=OneTime}\u0022 /\u003E\n        \u003C/charts:Chart.Data\u003E\n\n        \u003Ccharts:Chart.Axes\u003E\n            \u003Ccharts:LinearAxis x:Name=\u0022ResponseTimeY\u0022\n                               Label=\u0022Milliseconds\u0022\n                               Minimum=\u00220\u0022\n                               GridLines=\u0022Major\u0022 /\u003E\n        \u003C/charts:Chart.Axes\u003E\n\n        \u003Ccharts:LineSeries Title=\u0022Response time\u0022\n                           YAxis=\u0022{x:Bind ResponseTimeY, Mode=OneTime}\u0022\n                           YValues=\u0022{x:Bind ResponseTime, Mode=OneTime}\u0022\n                           ShowDataMarkers=\u0022True\u0022 /\u003E\n    \u003C/charts:Chart\u003E\n\u003C/StackPanel\u003E",
+          "code": "public ObservableCollection\u003Cdouble\u003E ResponseTimes { get; } =\n[\n    184,\n    179,\n    173,\n    171,\n    168,\n];\n\nprivate void AddResponseTimeSampleButton_Click(object sender, RoutedEventArgs e)\n{\n    ResponseTimes.Add(176);\n    ResponseTime.ItemsSource = null;\n    ResponseTime.ItemsSource = ResponseTimes;\n}",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "LiveObservableSeries.txt",
+            "source": "WinUIGallery/Samples/Chart/LiveObservableSeries.txt",
+            "name": "Live Observable Series"
           }
         }
       ]
