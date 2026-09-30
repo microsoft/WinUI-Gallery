@@ -1,0 +1,45 @@
+--- header
+Custom columns and cell content
+--- xaml
+<tabular:TableView
+    Height="260"
+    AutomationProperties.Name="Table with custom columns"
+    CanUserResizeColumns="False"
+    CanUserSortColumns="False"
+    IsReadOnly="True"
+    ItemsSource="{x:Bind CustomColumnItems}"
+    SelectionMode="None">
+    <tabular:TableView.Columns>
+        <tabular:TableViewTextColumn Binding="{Binding Id}" Header="ID" Width="80" />
+        <tabular:TableViewTextColumn
+            Binding="{Binding Name}"
+            CellToolTipBinding="{Binding Name}"
+            Header="Name"
+            HeaderToolTip="The item's name"
+            Width="180" />
+        <tabular:TableViewTextColumn Binding="{Binding Category}" Header="Category" Width="140" />
+        <tabular:TableViewTemplateColumn Header="Value" Width="180">
+            <tabular:TableViewTemplateColumn.CellTemplate>
+                <DataTemplate x:DataType="local:TableViewSampleItem">
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="32" />
+                        </Grid.ColumnDefinitions>
+                        <ProgressBar
+                            VerticalAlignment="Center"
+                            AutomationProperties.AccessibilityView="Raw"
+                            IsHitTestVisible="False"
+                            Maximum="100"
+                            Value="{x:Bind Value}" />
+                        <TextBlock
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Text="{x:Bind Value}" />
+                    </Grid>
+                </DataTemplate>
+            </tabular:TableViewTemplateColumn.CellTemplate>
+        </tabular:TableViewTemplateColumn>
+    </tabular:TableView.Columns>
+</tabular:TableView>

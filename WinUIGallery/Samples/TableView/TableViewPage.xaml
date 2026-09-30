@@ -11,203 +11,221 @@
     xmlns:tabular="using:Microsoft.UI.Xaml.Controls.Tabular">
     <StackPanel Margin="0,16,0,0" Spacing="16">
         <controls:ControlExample
-            HeaderText="Sort operational data and show details for the selected row"
-            SampleDefinition="TableView\InventoryTable.txt">
+            SampleDefinition="TableView\BasicTable.txt">
             <StackPanel Spacing="12">
                 <TextBlock
-                    Text="Select a column header to sort. The frozen asset identifier remains visible while the table scrolls horizontally, and row selection continues to track the same item after sorting."
-                    TextWrapping="Wrap" />
-                <TextBlock
-                    AutomationProperties.LiveSetting="Polite"
-                    Text="{x:Bind InventorySortStatus, Mode=OneWay}"
+                    Text="Bind a collection to ItemsSource and define its columns. Select a header to sort or a row to select it. Drag a header's edge to resize, and scroll horizontally to see the frozen ID column stay visible."
                     TextWrapping="Wrap" />
                 <tabular:TableView
-                    x:Name="InventoryTable"
-                    Height="320"
-                    AutomationProperties.AutomationId="TableViewInventoryTable"
-                    AutomationProperties.Name="Warehouse inventory"
-                    AlternatingRowBackground="{ThemeResource SubtleFillColorSecondaryBrush}"
-                    CanUserResizeColumns="False"
+                    x:Name="BasicTable"
+                    Height="280"
+                    MaxWidth="480"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.AutomationId="TableViewBasicTable"
+                    AutomationProperties.Name="Basic table"
+                    CanUserResizeColumns="{x:Bind ResizeColumnsToggle.IsOn, Mode=OneWay}"
                     CanUserSortColumns="True"
-                    GridLinesVisibility="All"
-                    HeadersVisibility="Column"
                     IsReadOnly="True"
-                    ItemsSource="{x:Bind Inventory}"
-                    RowBackground="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                    SelectionChanged="InventoryTable_SelectionChanged"
+                    ItemsSource="{x:Bind BasicItems}"
+                    SelectionChanged="BasicTable_SelectionChanged"
                     SelectionMode="Single"
-                    Sorted="InventoryTable_Sorted"
-                    Sorting="InventoryTable_Sorting">
+                    Sorted="BasicTable_Sorted">
                     <tabular:TableView.Columns>
                         <tabular:TableViewTextColumn
-                            Binding="{Binding AssetId}"
+                            Binding="{Binding Id}"
+                            CanResize="False"
+                            CanSort="False"
                             FrozenEdge="Leading"
-                            Header="Asset ID"
-                            HeaderToolTip="Stable inventory asset identifier"
-                            Width="112" />
+                            Header="ID"
+                            Width="80" />
                         <tabular:TableViewTextColumn
-                            Binding="{Binding ItemName}"
-                            CellToolTipBinding="{Binding ItemName}"
-                            Header="Item"
-                            Width="210" />
-                        <tabular:TableViewTemplateColumn
-                            Header="Status"
-                            SortMemberPath="Status"
-                            Width="140">
+                            Binding="{Binding Name}"
+                            Header="Name"
+                            SortCycle="AscendingDescendingNone"
+                            Width="220" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding Category}"
+                            Header="Category"
+                            SortCycle="AscendingDescendingNone"
+                            Width="180" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding Value}"
+                            Header="Value"
+                            SortCycle="DescendingAscendingNone"
+                            Width="140" />
+                    </tabular:TableView.Columns>
+                </tabular:TableView>
+                <TextBlock
+                    Text="ID cannot be sorted or resized. Value sorts largest first; the third click restores source order."
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    x:Name="SortStatusText"
+                    AutomationProperties.LiveSetting="Polite"
+                    Text="Rows are in source order."
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    x:Name="SelectionStatusText"
+                    AutomationProperties.LiveSetting="Polite"
+                    Text="No row selected."
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <ComboBox
+                        x:Name="SelectionModeComboBox"
+                        AutomationProperties.AutomationId="TableViewSelectionModeSelector"
+                        AutomationProperties.Name="Row selection mode"
+                        Header="Selection mode"
+                        SelectedIndex="0"
+                        SelectionChanged="SelectionModeComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Single" Tag="Single" />
+                        <ComboBoxItem Content="None" Tag="None" />
+                    </ComboBox>
+                    <ToggleSwitch
+                        x:Name="ResizeColumnsToggle"
+                        AutomationProperties.AutomationId="TableViewResizeColumnsToggle"
+                        AutomationProperties.Name="Allow column resizing"
+                        Header="Column resizing"
+                        IsOn="True"
+                        OffContent="Disabled"
+                        OnContent="Enabled" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
+                    Key="SelectionMode"
+                    Value="{x:Bind ((ComboBoxItem)SelectionModeComboBox.SelectedItem).Tag, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="CanUserResizeColumns"
+                    Value="{x:Bind ResizeColumnsToggle.IsOn, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            SampleDefinition="TableView\CustomColumnsTable.txt">
+            <StackPanel Spacing="12">
+                <TextBlock
+                    Text="Use TableViewTemplateColumn to replace a text cell with your own content. Here, the Value cell combines a progress bar with its numeric value."
+                    TextWrapping="Wrap" />
+                <tabular:TableView
+                    Height="260"
+                    AutomationProperties.AutomationId="TableViewCustomColumnsTable"
+                    AutomationProperties.Name="Table with custom columns"
+                    CanUserResizeColumns="False"
+                    CanUserSortColumns="False"
+                    IsReadOnly="True"
+                    ItemsSource="{x:Bind CustomColumnItems}"
+                    SelectionMode="None">
+                    <tabular:TableView.Columns>
+                        <tabular:TableViewTextColumn Binding="{Binding Id}" Header="ID" Width="80" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding Name}"
+                            CellToolTipBinding="{Binding Name}"
+                            Header="Name"
+                            HeaderToolTip="The item's name"
+                            Width="180" />
+                        <tabular:TableViewTextColumn Binding="{Binding Category}" Header="Category" Width="140" />
+                        <tabular:TableViewTemplateColumn Header="Value" Width="180">
                             <tabular:TableViewTemplateColumn.CellTemplate>
-                                <DataTemplate x:DataType="local:InventoryRecord">
-                                    <StackPanel
-                                        HorizontalAlignment="Left"
-                                        Orientation="Horizontal"
-                                        Spacing="8">
-                                        <FontIcon
+                                <DataTemplate x:DataType="local:TableViewSampleItem">
+                                    <Grid ColumnSpacing="12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="32" />
+                                        </Grid.ColumnDefinitions>
+                                        <ProgressBar
+                                            VerticalAlignment="Center"
                                             AutomationProperties.AccessibilityView="Raw"
-                                            FontSize="18" VerticalAlignment="Center"
-                                            Glyph="{x:Bind StatusGlyph}" />
-                                        <TextBlock Text="{x:Bind Status}" VerticalAlignment="Center" />
-                                    </StackPanel>
+                                            IsHitTestVisible="False"
+                                            Maximum="100"
+                                            Value="{x:Bind Value}" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Text="{x:Bind Value}" />
+                                    </Grid>
                                 </DataTemplate>
                             </tabular:TableViewTemplateColumn.CellTemplate>
                         </tabular:TableViewTemplateColumn>
-                        <tabular:TableViewTextColumn
-                            Binding="{Binding Warehouse}"
-                            Header="Warehouse"
-                            Width="150" />
-                        <tabular:TableViewTextColumn
-                            Binding="{Binding Quantity}"
-                            Header="On hand"
-                            SortCycle="DescendingAscendingNone"
-                            Width="96" />
-                        <tabular:TableViewTextColumn
-                            Binding="{Binding ReorderPoint}"
-                            Header="Reorder at"
-                            Width="104" />
-                        <tabular:TableViewTextColumn
-                            Binding="{Binding LastAudit}"
-                            CanSort="False"
-                            Header="Last audit"
-                            Width="130" />
                     </tabular:TableView.Columns>
                 </tabular:TableView>
-
-                <Border
-                    Padding="16"
-                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{ThemeResource ControlCornerRadius}">
-                    <StackPanel Spacing="8">
-                        <TextBlock
-                            AutomationProperties.HeadingLevel="Level3"
-                            Style="{ThemeResource BodyStrongTextBlockStyle}"
-                            Text="Selected asset" />
-                        <Grid ColumnSpacing="12" RowSpacing="4">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <TextBlock FontWeight="SemiBold" Text="Asset ID" />
-                            <TextBlock Grid.Column="1" Text="{x:Bind SelectedInventoryItem.AssetId, Mode=OneWay}" />
-                            <TextBlock Grid.Row="1" FontWeight="SemiBold" Text="Location" />
-                            <TextBlock
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Text="{x:Bind SelectedInventoryItem.Location, Mode=OneWay}" />
-                            <TextBlock Grid.Row="2" FontWeight="SemiBold" Text="Next action" />
-                            <TextBlock
-                                Grid.Row="2"
-                                Grid.Column="1"
-                                Text="{x:Bind SelectedInventoryItem.NextAction, Mode=OneWay}"
-                                TextWrapping="Wrap" />
-                        </Grid>
-                    </StackPanel>
-                </Border>
             </StackPanel>
         </controls:ControlExample>
 
         <controls:ControlExample
-            HeaderText="Edit staffing allocations and validate changes"
-            SampleDefinition="TableView\EditableStaffingTable.txt">
+            SampleDefinition="TableView\EditingCellsTable.txt">
             <StackPanel Spacing="12">
                 <TextBlock
-                    Text="Double-click a cell or press F2 to edit. Press Enter to commit or Esc to cancel. Employee ID is read-only. Invalid values keep the editor open and restore the original value, and the finance-approved allocation demonstrates a synchronous policy veto."
+                    Text="Double-click a Name or Category cell, or press F2, to edit. Press Enter to save or Esc to cancel. ID is always read-only. Clear a name to try INotifyDataErrorInfo validation, or make the whole table read-only."
                     TextWrapping="Wrap" />
                 <InfoBar
-                    x:Name="StaffingValidationInfoBar"
+                    x:Name="ValidationInfoBar"
                     AutomationProperties.LiveSetting="Assertive"
-                    AutomationProperties.Name="Staffing edit validation feedback"
+                    AutomationProperties.Name="Cell validation feedback"
                     IsClosable="False"
-                    IsOpen="{x:Bind IsValidationMessageOpen, Mode=OneWay}"
-                    Message="{x:Bind ValidationMessage, Mode=OneWay}"
+                    IsOpen="False"
                     Severity="Error"
-                    Title="The change could not be saved" />
+                    Title="Invalid value" />
                 <tabular:TableView
-                    x:Name="StaffingTable"
-                    Height="300"
-                    AutomationProperties.AutomationId="TableViewStaffingTable"
-                    AutomationProperties.Name="Editable staffing and budget allocations"
-                    AlternatingRowBackground="{ThemeResource SubtleFillColorSecondaryBrush}"
-                    BeginningEdit="StaffingTable_BeginningEdit"
+                    x:Name="EditingTable"
+                    Height="260"
+                    AutomationProperties.AutomationId="TableViewEditingCellsTable"
+                    AutomationProperties.Name="Editable cells"
+                    BeginningEdit="EditingTable_BeginningEdit"
                     CanUserResizeColumns="False"
                     CanUserSortColumns="False"
-                    CellEditEnding="StaffingTable_CellEditEnding"
-                    Density="Compact"
-                    GridLinesVisibility="All"
-                    IsReadOnly="False"
-                    ItemsSource="{x:Bind StaffingRows}"
-                    RowBackground="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                    Unloaded="StaffingTable_Unloaded">
+                    CellEditEnding="EditingTable_CellEditEnding"
+                    IsReadOnly="{x:Bind ReadOnlyToggle.IsOn, Mode=OneWay}"
+                    ItemsSource="{x:Bind EditingItems}"
+                    SelectionMode="Single"
+                    Unloaded="EditingTable_Unloaded">
                     <tabular:TableView.Columns>
                         <tabular:TableViewTextColumn
-                            Binding="{Binding EmployeeId}"
-                            Header="Employee ID"
+                            Binding="{Binding Id}"
+                            Header="ID"
                             IsReadOnly="True"
-                            Width="116" />
-                        <tabular:TableViewTextColumn
-                            Binding="{Binding EmployeeName}"
-                            Header="Employee"
-                            Width="180" />
-                        <tabular:TableViewTextColumn
-                            Binding="{Binding Role}"
-                            Header="Role"
-                            Width="180" />
-                        <tabular:TableViewTextColumn
-                            x:Name="AllocationColumn"
-                            Binding="{Binding AllocationPercent}"
-                            Header="Allocation %"
-                            Width="120" />
-                        <tabular:TableViewTextColumn
-                            Binding="{Binding BudgetThousands}"
-                            Header="Budget ($K)"
-                            Width="120" />
+                            Width="80" />
+                        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="180" />
+                        <tabular:TableViewTextColumn Binding="{Binding Category}" Header="Category" Width="180" />
                     </tabular:TableView.Columns>
                 </tabular:TableView>
             </StackPanel>
+            <controls:ControlExample.Options>
+                <ToggleSwitch
+                    x:Name="ReadOnlyToggle"
+                    AutomationProperties.AutomationId="TableViewReadOnlyToggle"
+                    AutomationProperties.Name="Make the table read-only"
+                    Header="Read-only"
+                    IsOn="False"
+                    OffContent="Editable"
+                    OnContent="Read-only" />
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
+                    Key="IsReadOnly"
+                    Value="{x:Bind ReadOnlyToggle.IsOn, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
         </controls:ControlExample>
 
         <controls:ControlExample
-            HeaderText="Configure a large virtualized table and its empty state"
-            SampleDefinition="TableView\VirtualizedMetricsTable.txt">
+            SampleDefinition="TableView\PresentationTable.txt">
             <StackPanel Spacing="12">
                 <TextBlock
-                    Text="TableView virtualizes rows, so only rows near the viewport are realized. Change the presentation or clear the collection to display the empty-state template."
+                    Text="Change density and grid lines, or clear the collection to show EmptyTemplate. Alternating row backgrounds help distinguish rows. This table has 1,000 items; only rows near the viewport are realized."
                     TextWrapping="Wrap" />
                 <tabular:TableView
-                    x:Name="VirtualizedTable"
-                    Height="360"
-                    AutomationProperties.AutomationId="TableViewVirtualizedMetricsTable"
-                    AutomationProperties.Name="Virtualized service performance metrics"
+                    x:Name="PresentationTable"
+                    Height="320"
+                    AutomationProperties.AutomationId="TableViewPresentationTable"
+                    AutomationProperties.Name="Table presentation and empty state"
                     AlternatingRowBackground="{ThemeResource SubtleFillColorSecondaryBrush}"
                     CanUserResizeColumns="False"
                     CanUserSortColumns="False"
                     Density="Standard"
                     GridLinesVisibility="All"
-                    ItemsSource="{x:Bind PerformanceRows}"
+                    IsReadOnly="True"
+                    ItemsSource="{x:Bind PresentationItems}"
                     RowBackground="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                     SelectionMode="None">
                     <tabular:TableView.EmptyTemplate>
@@ -225,39 +243,21 @@
                                     HorizontalAlignment="Center"
                                     AutomationProperties.HeadingLevel="Level3"
                                     Style="{ThemeResource SubtitleTextBlockStyle}"
-                                    Text="No service metrics" />
+                                    Text="No items" />
                                 <TextBlock
+                                    MaxWidth="320"
                                     HorizontalAlignment="Center"
-                                    Text="Turn off the empty-state option to restore 1,000 rows." />
+                                    Text="Turn off the empty-state option to restore 1,000 items."
+                                    TextAlignment="Center"
+                                    TextWrapping="Wrap" />
                             </StackPanel>
                         </DataTemplate>
                     </tabular:TableView.EmptyTemplate>
                     <tabular:TableView.Columns>
-                        <tabular:TableViewTextColumn
-                            Binding="{Binding ServiceId}"
-                            FrozenEdge="Leading"
-                            Header="Service ID"
-                            Width="120" />
-                        <tabular:TableViewTextColumn
-                            Binding="{Binding ServiceName}"
-                            Header="Service"
-                            Width="220" />
-                        <tabular:TableViewTextColumn
-                            Binding="{Binding Region}"
-                            Header="Region"
-                            Width="130" />
-                        <tabular:TableViewTextColumn
-                            Binding="{Binding RequestsPerMinute}"
-                            Header="Requests/min"
-                            Width="130" />
-                        <tabular:TableViewTextColumn
-                            Binding="{Binding P95Latency}"
-                            Header="P95 latency"
-                            Width="130" />
-                        <tabular:TableViewTextColumn
-                            Binding="{Binding Availability}"
-                            Header="Availability"
-                            Width="120" />
+                        <tabular:TableViewTextColumn Binding="{Binding Id}" Header="ID" Width="80" />
+                        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="180" />
+                        <tabular:TableViewTextColumn Binding="{Binding Category}" Header="Category" Width="140" />
+                        <tabular:TableViewTextColumn Binding="{Binding Value}" Header="Value" Width="100" />
                     </tabular:TableView.Columns>
                 </tabular:TableView>
             </StackPanel>
@@ -293,7 +293,7 @@
                         AutomationProperties.Name="Show the table empty state"
                         Header="Data"
                         IsOn="False"
-                        OffContent="1,000 rows"
+                        OffContent="1,000 items"
                         OnContent="Empty state"
                         Toggled="EmptyStateToggle_Toggled" />
                 </StackPanel>

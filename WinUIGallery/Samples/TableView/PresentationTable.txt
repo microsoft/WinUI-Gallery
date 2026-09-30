@@ -1,0 +1,79 @@
+--- header
+Density, grid lines, and empty state
+--- xaml
+<tabular:TableView
+    Height="320"
+    AutomationProperties.Name="Table presentation and empty state"
+    AlternatingRowBackground="{ThemeResource SubtleFillColorSecondaryBrush}"
+    CanUserResizeColumns="False"
+    CanUserSortColumns="False"
+    Density="$(Density)"
+    GridLinesVisibility="$(GridLinesVisibility)"
+    IsReadOnly="True"
+    ItemsSource="{x:Bind PresentationItems}"
+    RowBackground="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+    SelectionMode="None">
+    <tabular:TableView.EmptyTemplate>
+        <DataTemplate>
+            <StackPanel
+                Padding="32"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="8">
+                <FontIcon AutomationProperties.AccessibilityView="Raw" FontSize="32" Glyph="&#xE9D9;" />
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    AutomationProperties.HeadingLevel="Level3"
+                    Style="{ThemeResource SubtitleTextBlockStyle}"
+                    Text="No items" />
+                <TextBlock
+                    MaxWidth="320"
+                    HorizontalAlignment="Center"
+                    Text="Turn off the empty-state option to restore 1,000 items."
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </DataTemplate>
+    </tabular:TableView.EmptyTemplate>
+    <tabular:TableView.Columns>
+        <tabular:TableViewTextColumn Binding="{Binding Id}" Header="ID" Width="80" />
+        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="180" />
+        <tabular:TableViewTextColumn Binding="{Binding Category}" Header="Category" Width="140" />
+        <tabular:TableViewTextColumn Binding="{Binding Value}" Header="Value" Width="100" />
+    </tabular:TableView.Columns>
+</tabular:TableView>
+--- c#
+public ObservableCollection<TableViewSampleItem> PresentationItems { get; } = CreateItems();
+
+private void EmptyStateToggle_Toggled(object sender, RoutedEventArgs e)
+{
+    if (EmptyStateToggle.IsOn)
+    {
+        PresentationItems.Clear();
+    }
+    else if (PresentationItems.Count == 0)
+    {
+        foreach (TableViewSampleItem item in CreateItems())
+        {
+            PresentationItems.Add(item);
+        }
+    }
+}
+
+private static ObservableCollection<TableViewSampleItem> CreateItems()
+{
+    string[] categories = ["Alpha", "Beta", "Gamma"];
+    int[] values = [25, 80, 50, 100, 10];
+    ObservableCollection<TableViewSampleItem> items = [];
+
+    for (int index = 0; index < 1000; index++)
+    {
+        items.Add(new TableViewSampleItem(
+            index + 1,
+            $"Item {index + 1}",
+            categories[index % categories.Length],
+            values[index % values.Length]));
+    }
+
+    return items;
+}
