@@ -140,10 +140,10 @@ public sealed partial class MainWindow : Window
     private void SetWindowProperties()
     {
 #if DEBUG || DEBUG_UNPACKAGED
-        this.Title = "WinUI 3 Gallery Dev";
+        this.Title = "WinUI Gallery Dev";
         titleBar.Subtitle = "Dev";
 #else
-        this.Title = "WinUI 3 Gallery";
+        this.Title = "WinUI Gallery";
 #endif
         this.ExtendsContentIntoTitleBar = true;
         this.SetTitleBar(titleBar);

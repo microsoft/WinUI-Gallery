@@ -1007,7 +1007,7 @@
       "samples": [
         {
           "header": "Basic notification",
-          "code": "AppNotification notification = new AppNotificationBuilder()\n    .AddText(\u0022Welcome to WinUI 3 Gallery\u0022)\n    .AddText(\u0022Explore interactive samples and discover the power of modern Windows UI.\u0022)\n    .BuildNotification();\n\nAppNotificationManager.Default.Show(notification);",
+          "code": "AppNotification notification = new AppNotificationBuilder()\n    .AddText(\u0022Welcome to WinUI Gallery\u0022)\n    .AddText(\u0022Explore interactive samples and discover the power of modern Windows UI.\u0022)\n    .BuildNotification();\n\nAppNotificationManager.Default.Show(notification);",
           "language": "csharp",
           "gallery": {
             "snippet": "AppNotificationBasicNotification.txt",
