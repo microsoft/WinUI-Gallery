@@ -1,0 +1,16 @@
+--- header
+Resize columns by dragging the header edge
+--- xaml
+<tabular:TableView
+    Height="300"
+    CanUserResizeColumns="$(CanUserResizeColumns)"
+    ItemsSource="{x:Bind Employees}">
+    <!-- Auto: sizes to the widest cell. -->
+    <tabular:TableViewTextColumn Header="Name" Binding="{Binding Name}" MinWidth="120" Width="Auto" />
+    <!-- Pixel: a fixed start width, clamped while resizing. -->
+    <tabular:TableViewTextColumn Header="Role" Binding="{Binding Role}" MinWidth="120" MaxWidth="320" Width="200" />
+    <!-- Opt a single column out of resizing. -->
+    <tabular:TableViewTextColumn Header="Department" Binding="{Binding Department}" CanResize="False" Width="140" />
+    <!-- Star: takes the remaining space. -->
+    <tabular:TableViewTextColumn Header="Notes" Binding="{Binding Notes}" Width="*" />
+</tabular:TableView>

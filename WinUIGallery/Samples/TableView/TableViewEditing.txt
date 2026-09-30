@@ -1,0 +1,31 @@
+--- header
+Edit cells in place
+--- xaml
+<tabular:TableView
+    Height="300"
+    CellEditEnding="EditingTable_CellEditEnding"
+    IsReadOnly="False"
+    ItemsSource="{x:Bind Employees}">
+    <tabular:TableViewTextColumn Header="ID" Binding="{Binding Id}" IsReadOnly="True" Width="100" />
+    <tabular:TableViewTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+    <tabular:TableViewTextColumn Header="Role" Binding="{Binding Role}" Width="*" />
+    <tabular:TableViewTemplateColumn Header="Notes" Width="*">
+        <tabular:TableViewTemplateColumn.CellTemplate>
+            <DataTemplate>
+                <TextBlock Margin="12,0" VerticalAlignment="Center" Text="{Binding Notes}" />
+            </DataTemplate>
+        </tabular:TableViewTemplateColumn.CellTemplate>
+        <tabular:TableViewTemplateColumn.CellEditingTemplate>
+            <DataTemplate>
+                <!-- Use {Binding}, TwoWay, so the edit is written back on commit. -->
+                <TextBox VerticalAlignment="Center" Text="{Binding Notes, Mode=TwoWay}" />
+            </DataTemplate>
+        </tabular:TableViewTemplateColumn.CellEditingTemplate>
+    </tabular:TableViewTemplateColumn>
+</tabular:TableView>
+--- c#
+private void EditingTable_CellEditEnding(TableView sender, TableViewCellEditEndingEventArgs args)
+{
+    string action = args.EditAction == TableViewEditAction.Commit ? "Committed" : "Canceled";
+    EditingOutput.Text = $"{action} the edit to {args.Column.Header} for {((Employee)args.Item).Id}.";
+}

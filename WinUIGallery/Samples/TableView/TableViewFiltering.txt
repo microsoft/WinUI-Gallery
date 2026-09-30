@@ -1,0 +1,33 @@
+--- header
+Filter rows as you type
+--- xaml
+<TextBox
+    x:Name="FilterBox"
+    Header="Filter by name, role, or department"
+    TextChanged="FilterBox_TextChanged" />
+<tabular:TableView x:Name="FilteringTable" Height="300">
+    <tabular:TableViewTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+    <tabular:TableViewTextColumn Header="Role" Binding="{Binding Role}" Width="*" />
+    <tabular:TableViewTextColumn Header="Department" Binding="{Binding Department}" Width="*" />
+    <tabular:TableViewTextColumn Header="Location" Binding="{Binding Location}" Width="*" />
+</tabular:TableView>
+--- c#
+private readonly TableViewSource _source = TableViewSource.From(Employees);
+
+// In the constructor, after InitializeComponent:
+// FilteringTable.ItemsSource = _source;
+
+private void FilterBox_TextChanged(object sender, TextChangedEventArgs e)
+{
+    string text = FilterBox.Text.Trim();
+    if (text.Length == 0)
+    {
+        _source.ClearFilter();
+        return;
+    }
+
+    _source.Filter(item => item is Employee employee &&
+        (employee.Name.Contains(text, StringComparison.CurrentCultureIgnoreCase) ||
+         employee.Role.Contains(text, StringComparison.CurrentCultureIgnoreCase) ||
+         employee.Department.Contains(text, StringComparison.CurrentCultureIgnoreCase)));
+}
