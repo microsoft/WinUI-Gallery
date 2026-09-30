@@ -1,0 +1,47 @@
+<!--
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    Licensed under the MIT License.
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.TableViewToolTipsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:tabular="using:Microsoft.UI.Xaml.Controls.Tabular">
+    <StackPanel>
+        <controls:ControlExample
+            HeaderText="Show tooltips on headers and cells"
+            HorizontalContentAlignment="Stretch"
+            SampleDefinition="TableViewToolTips\TableViewToolTips.txt">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="12">
+                    <TextBlock
+                        Text="Hover over a column header to see its description. Hover over a Name cell to see the employee's email address."
+                        TextWrapping="Wrap" />
+                    <tabular:TableView
+                        Height="300"
+                        AutomationProperties.Name="Employees with header and cell tooltips"
+                        ItemsSource="{x:Bind ToolTipEmployees}">
+                        <tabular:TableViewTextColumn
+                            Header="Name"
+                            Binding="{Binding Name}"
+                            CellToolTipBinding="{Binding Email}"
+                            HeaderToolTip="Full name. Hover over a cell to see the email address."
+                            Width="*" />
+                        <tabular:TableViewTextColumn
+                            Header="Role"
+                            Binding="{Binding Role}"
+                            HeaderToolTip="Current job title"
+                            Width="*" />
+                        <tabular:TableViewTextColumn
+                            Header="Notes"
+                            Binding="{Binding Notes}"
+                            CellToolTipBinding="{Binding Notes}"
+                            HeaderToolTip="Latest note from the manager"
+                            Width="*" />
+                    </tabular:TableView>
+                </StackPanel>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

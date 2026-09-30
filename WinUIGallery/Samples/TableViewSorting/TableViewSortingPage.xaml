@@ -1,0 +1,53 @@
+<!--
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    Licensed under the MIT License.
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.TableViewSortingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:tabular="using:Microsoft.UI.Xaml.Controls.Tabular">
+    <StackPanel>
+        <controls:ControlExample
+            HeaderText="Sort rows by selecting a column header"
+            HorizontalContentAlignment="Stretch"
+            SampleDefinition="TableViewSorting\TableViewSorting.txt">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="12">
+                    <tabular:TableView
+                        x:Name="SortingTable"
+                        Height="300"
+                        AutomationProperties.Name="Employees, sortable by column"
+                        CanUserSortColumns="True"
+                        ItemsSource="{x:Bind SortingEmployees}"
+                        Sorted="SortingTable_Sorted">
+                        <tabular:TableViewTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+                        <tabular:TableViewTextColumn Header="Department" Binding="{Binding Department}" Width="*" />
+                        <tabular:TableViewTextColumn Header="Location" Binding="{Binding Location}" Width="*" />
+                        <tabular:TableViewTextColumn
+                            Header="Performance"
+                            Binding="{Binding Performance}"
+                            SortCycle="DescendingAscendingNone"
+                            Width="130" />
+                        <tabular:TableViewTextColumn
+                            Header="Notes"
+                            Binding="{Binding Notes}"
+                            CanSort="False"
+                            Width="*" />
+                    </tabular:TableView>
+                    <TextBlock
+                        x:Name="SortingOutput"
+                        AutomationProperties.LiveSetting="Polite"
+                        Text="Select a column header to sort." />
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <Button
+                    AutomationProperties.Name="Clear sort"
+                    Click="ClearSort_Click"
+                    Content="Clear sort" />
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

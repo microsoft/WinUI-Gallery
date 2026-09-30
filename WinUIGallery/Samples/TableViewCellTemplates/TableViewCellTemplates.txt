@@ -1,0 +1,27 @@
+--- header
+Customize cells with a DataTemplate
+--- xaml
+<tabular:TableView Height="360" ItemsSource="{x:Bind Employees}">
+    <!-- SortMemberPath keeps a template column sortable. -->
+    <tabular:TableViewTemplateColumn Header="Employee" SortMemberPath="Name" Width="*">
+        <tabular:TableViewTemplateColumn.CellTemplate>
+            <DataTemplate>
+                <StackPanel Padding="12,6" Orientation="Horizontal" Spacing="12">
+                    <PersonPicture Width="32" Height="32" Initials="{Binding Initials}" />
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="{Binding Name}" />
+                        <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Email}" />
+                    </StackPanel>
+                </StackPanel>
+            </DataTemplate>
+        </tabular:TableViewTemplateColumn.CellTemplate>
+    </tabular:TableViewTemplateColumn>
+    <tabular:TableViewTextColumn Header="Department" Binding="{Binding Department}" Width="140" />
+    <tabular:TableViewTemplateColumn Header="Performance" SortMemberPath="Performance" Width="200">
+        <tabular:TableViewTemplateColumn.CellTemplate>
+            <DataTemplate>
+                <ProgressBar Margin="12,0" VerticalAlignment="Center" Maximum="100" Value="{Binding PerformanceValue}" />
+            </DataTemplate>
+        </tabular:TableViewTemplateColumn.CellTemplate>
+    </tabular:TableViewTemplateColumn>
+</tabular:TableView>

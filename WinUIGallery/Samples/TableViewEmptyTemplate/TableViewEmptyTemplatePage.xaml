@@ -1,0 +1,54 @@
+<!--
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    Licensed under the MIT License.
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.TableViewEmptyTemplatePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:tabular="using:Microsoft.UI.Xaml.Controls.Tabular">
+    <StackPanel>
+        <controls:ControlExample
+            HeaderText="Show custom content when the table has no rows"
+            HorizontalContentAlignment="Stretch"
+            SampleDefinition="TableViewEmptyTemplate\TableViewEmptyTemplate.txt">
+            <controls:ControlExample.Example>
+                <tabular:TableView
+                    Height="300"
+                    AutomationProperties.Name="Employees, with an empty state"
+                    ItemsSource="{x:Bind EmptyStateEmployees}">
+                    <tabular:TableView.EmptyTemplate>
+                        <DataTemplate>
+                            <StackPanel
+                                Padding="32"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Spacing="8">
+                                <FontIcon
+                                    AutomationProperties.AccessibilityView="Raw"
+                                    FontSize="32"
+                                    Glyph="&#xE716;" />
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Style="{ThemeResource BodyStrongTextBlockStyle}"
+                                    Text="No employees to show" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </tabular:TableView.EmptyTemplate>
+                    <tabular:TableViewTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+                    <tabular:TableViewTextColumn Header="Role" Binding="{Binding Role}" Width="*" />
+                    <tabular:TableViewTextColumn Header="Department" Binding="{Binding Department}" Width="*" />
+                    <tabular:TableViewTextColumn Header="Location" Binding="{Binding Location}" Width="*" />
+                </tabular:TableView>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <ToggleSwitch
+                    x:Name="EmptyStateToggle"
+                    Header="Remove all rows"
+                    IsOn="False"
+                    Toggled="EmptyStateToggle_Toggled" />
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

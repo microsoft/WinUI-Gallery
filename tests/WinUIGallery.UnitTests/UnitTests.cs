@@ -38,6 +38,7 @@ public class UnitTests
             "Accessibility",
             "Menus & toolbars",
             "Collections",
+            "TableView",
             "Date & time",
             "Basic input",
             "Status & info",

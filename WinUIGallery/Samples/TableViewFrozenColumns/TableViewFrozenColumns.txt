@@ -1,0 +1,12 @@
+--- header
+Keep the first column visible while scrolling horizontally
+--- xaml
+<tabular:TableView Height="300" ItemsSource="{x:Bind Employees}">
+    <tabular:TableViewTextColumn Header="Name" Binding="{Binding Name}" FrozenEdge="$(FrozenEdge)" Width="170" />
+    <tabular:TableViewTextColumn Header="ID" Binding="{Binding Id}" Width="100" />
+    <tabular:TableViewTextColumn Header="Role" Binding="{Binding Role}" Width="220" />
+    <tabular:TableViewTextColumn Header="Department" Binding="{Binding Department}" Width="160" />
+    <tabular:TableViewTextColumn Header="Location" Binding="{Binding Location}" Width="160" />
+    <tabular:TableViewTextColumn Header="Email" Binding="{Binding Email}" Width="260" />
+    <tabular:TableViewTextColumn Header="Notes" Binding="{Binding Notes}" Width="280" />
+</tabular:TableView>

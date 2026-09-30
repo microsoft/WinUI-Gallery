@@ -1073,47 +1073,6 @@
           ]
         },
         {
-          "UniqueId": "TableView",
-          "Tags": [
-            "table",
-            "tabular data",
-            "data grid",
-            "enterprise",
-            "editing",
-            "sorting",
-            "virtualization"
-          ],
-          "Title": "TableView",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject",
-            "UIElement",
-            "FrameworkElement",
-            "Control"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
-          "Subtitle": "A preview control for presenting and editing virtualized tabular data.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
-          "Description": "TableView presents an item collection as virtualized rows and developer-defined columns. It supports sorting, templates, frozen leading columns, single row selection, opt-in cell editing, display density, grid lines, and empty-state content.",
-          "SourcePath": "/TableView",
-          "IsExperimental": true,
-          "Docs": [
-            {
-              "Title": "TableView - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
-            },
-            {
-              "Title": "TableView specification",
-              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
-            }
-          ],
-          "RelatedControls": [
-            "ItemsView",
-            "ItemsRepeater",
-            "ListView"
-          ]
-        },
-        {
           "UniqueId": "ListView",
           "Tags": [
             "list",
@@ -1241,6 +1200,421 @@
           "RelatedControls": [
             "ListView",
             "ItemsRepeater"
+          ]
+        }
+      ]
+    },
+    {
+      "UniqueId": "TableViewGroup",
+      "Title": "TableView",
+      "IconGlyph": "",
+      "Items": [
+        {
+          "UniqueId": "TableView",
+          "Tags": [
+            "table",
+            "tabular data",
+            "data grid",
+            "enterprise",
+            "editing",
+            "sorting",
+            "virtualization"
+          ],
+          "Title": "TableView overview",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+          "Subtitle": "A preview control for presenting and editing virtualized tabular data.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "TableView presents an item collection as virtualized rows and developer-defined columns. It supports sorting, templates, frozen leading columns, single row selection, opt-in cell editing, display density, grid lines, and empty-state content.",
+          "SourcePath": "/TableView",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "TableView - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+            },
+            {
+              "Title": "TableView specification",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+            }
+          ],
+          "RelatedControls": [
+            "TableViewSorting",
+            "TableViewFiltering",
+            "TableViewGrouping",
+            "TableViewEditing"
+          ]
+        },
+        {
+          "UniqueId": "TableViewSorting",
+          "Tags": [
+            "table",
+            "TableView",
+            "sort",
+            "column header",
+            "order"
+          ],
+          "Title": "Sorting",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+          "Subtitle": "Sort rows by clicking a column header.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "Select a column header to sort by that column. Each column controls its own sort cycle, can opt out of sorting, and the Sorted event reports the current sort.",
+          "SourcePath": "/TableView",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "TableView - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+            },
+            {
+              "Title": "TableView specification",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+            }
+          ],
+          "RelatedControls": [
+            "TableView",
+            "TableViewFiltering",
+            "TableViewGrouping",
+            "TableViewColumnResizing"
+          ]
+        },
+        {
+          "UniqueId": "TableViewFiltering",
+          "Tags": [
+            "table",
+            "TableView",
+            "filter",
+            "search",
+            "TableViewSource"
+          ],
+          "Title": "Filtering",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+          "Subtitle": "Filter rows with a predicate on TableViewSource.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "Wrap the items in a TableViewSource and call Filter with a predicate to show only matching rows. Call ClearFilter to show every row again.",
+          "SourcePath": "/TableView",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "TableView - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+            },
+            {
+              "Title": "TableView specification",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+            }
+          ],
+          "RelatedControls": [
+            "TableView",
+            "TableViewSorting",
+            "TableViewGrouping",
+            "TableViewColumnResizing"
+          ]
+        },
+        {
+          "UniqueId": "TableViewGrouping",
+          "Tags": [
+            "table",
+            "TableView",
+            "group",
+            "group header",
+            "TableViewSource"
+          ],
+          "Title": "Grouping",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+          "Subtitle": "Group rows by a key and expand or collapse the groups.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "Call GroupBy on a TableViewSource with a key selector to bucket rows under group headers. Select a group header to expand or collapse it, or call ExpandAllGroups and CollapseAllGroups.",
+          "SourcePath": "/TableView",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "TableView - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+            },
+            {
+              "Title": "TableView specification",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+            }
+          ],
+          "RelatedControls": [
+            "TableView",
+            "TableViewSorting",
+            "TableViewFiltering",
+            "TableViewColumnResizing"
+          ]
+        },
+        {
+          "UniqueId": "TableViewColumnResizing",
+          "Tags": [
+            "table",
+            "TableView",
+            "resize",
+            "column width",
+            "auto",
+            "star"
+          ],
+          "Title": "Column resizing",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+          "Subtitle": "Let users resize columns within minimum and maximum widths.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "Columns size to content (Auto), to a fixed width in pixels, or proportionally (*). When CanUserResizeColumns is true, drag the edge of a column header to resize it within its MinWidth and MaxWidth. Set CanResize to false to lock a single column.",
+          "SourcePath": "/TableView",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "TableView - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+            },
+            {
+              "Title": "TableView specification",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+            }
+          ],
+          "RelatedControls": [
+            "TableView",
+            "TableViewSorting",
+            "TableViewFiltering",
+            "TableViewGrouping"
+          ]
+        },
+        {
+          "UniqueId": "TableViewToolTips",
+          "Tags": [
+            "table",
+            "TableView",
+            "tooltip",
+            "hover",
+            "help text"
+          ],
+          "Title": "Cell and header tooltips",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+          "Subtitle": "Show tooltips on column headers and on individual cells.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "Set HeaderToolTip on a column to describe it, and set CellToolTipBinding to show a tooltip bound to each row's data.",
+          "SourcePath": "/TableView",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "TableView - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+            },
+            {
+              "Title": "TableView specification",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+            }
+          ],
+          "RelatedControls": [
+            "TableView",
+            "TableViewSorting",
+            "TableViewFiltering",
+            "TableViewGrouping"
+          ]
+        },
+        {
+          "UniqueId": "TableViewEditing",
+          "Tags": [
+            "table",
+            "TableView",
+            "edit",
+            "editing",
+            "CellEditingTemplate"
+          ],
+          "Title": "Editable cells",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+          "Subtitle": "Edit cell values in place.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "Editing is opt-in: set IsReadOnly to false on the TableView. Double-click a cell or press F2 to edit, Enter to commit, and Esc to cancel. Text columns edit with a TextBox; template columns supply a CellEditingTemplate. Set IsReadOnly on a column to lock it.",
+          "SourcePath": "/TableView",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "TableView - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+            },
+            {
+              "Title": "TableView specification",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+            }
+          ],
+          "RelatedControls": [
+            "TableView",
+            "TableViewSorting",
+            "TableViewFiltering",
+            "TableViewGrouping"
+          ]
+        },
+        {
+          "UniqueId": "TableViewCellTemplates",
+          "Tags": [
+            "table",
+            "TableView",
+            "template",
+            "DataTemplate",
+            "TableViewTemplateColumn",
+            "custom cell"
+          ],
+          "Title": "Cell templates",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+          "Subtitle": "Define custom cell content with a DataTemplate.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "Use TableViewTemplateColumn with a CellTemplate to show any content in a cell, such as a picture, a progress bar, or several lines of text. Set SortMemberPath so a template column can still be sorted.",
+          "SourcePath": "/TableView",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "TableView - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+            },
+            {
+              "Title": "TableView specification",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+            }
+          ],
+          "RelatedControls": [
+            "TableView",
+            "TableViewSorting",
+            "TableViewFiltering",
+            "TableViewGrouping"
+          ]
+        },
+        {
+          "UniqueId": "TableViewFrozenColumns",
+          "Tags": [
+            "table",
+            "TableView",
+            "freeze",
+            "pin",
+            "horizontal scrolling",
+            "FrozenEdge"
+          ],
+          "Title": "Frozen columns",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+          "Subtitle": "Keep a leading column visible while the table scrolls horizontally.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "Set FrozenEdge to Leading on a column to pin it to the start of the table, so it stays visible while the rest of the columns scroll horizontally.",
+          "SourcePath": "/TableView",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "TableView - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+            },
+            {
+              "Title": "TableView specification",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+            }
+          ],
+          "RelatedControls": [
+            "TableView",
+            "TableViewSorting",
+            "TableViewFiltering",
+            "TableViewGrouping"
+          ]
+        },
+        {
+          "UniqueId": "TableViewGridLines",
+          "Tags": [
+            "table",
+            "TableView",
+            "grid lines",
+            "borders",
+            "dividers"
+          ],
+          "Title": "Grid lines",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+          "Subtitle": "Choose which grid lines separate rows and columns.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "Set GridLinesVisibility to All, Horizontal, Vertical, or None to control the row dividers and column separators.",
+          "SourcePath": "/TableView",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "TableView - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+            },
+            {
+              "Title": "TableView specification",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+            }
+          ],
+          "RelatedControls": [
+            "TableView",
+            "TableViewSorting",
+            "TableViewFiltering",
+            "TableViewGrouping"
+          ]
+        },
+        {
+          "UniqueId": "TableViewEmptyTemplate",
+          "Tags": [
+            "table",
+            "TableView",
+            "empty state",
+            "no data",
+            "EmptyTemplate"
+          ],
+          "Title": "Empty template",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+          "Subtitle": "Show custom content when there are no rows.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "Set EmptyTemplate to show custom content when the items source is null or has no items.",
+          "SourcePath": "/TableView",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "TableView - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+            },
+            {
+              "Title": "TableView specification",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+            }
+          ],
+          "RelatedControls": [
+            "TableView",
+            "TableViewSorting",
+            "TableViewFiltering",
+            "TableViewGrouping"
+          ]
+        },
+        {
+          "UniqueId": "TableViewSelection",
+          "Tags": [
+            "table",
+            "TableView",
+            "select",
+            "selected item",
+            "SelectionMode"
+          ],
+          "Title": "Selection",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+          "Subtitle": "Select a row and respond to selection changes.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
+          "Description": "TableView supports single-row selection. Read SelectedItem and SelectedIndex in the SelectionChanged event, select a row from code with Select, and clear it with DeselectAll. Set SelectionMode to None for a display-only table.",
+          "SourcePath": "/TableView",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "TableView - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+            },
+            {
+              "Title": "TableView specification",
+              "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+            }
+          ],
+          "RelatedControls": [
+            "TableView",
+            "TableViewSorting",
+            "TableViewFiltering",
+            "TableViewGrouping"
           ]
         }
       ]

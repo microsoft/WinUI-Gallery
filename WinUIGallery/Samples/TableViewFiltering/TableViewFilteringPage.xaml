@@ -1,0 +1,38 @@
+<!--
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    Licensed under the MIT License.
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.TableViewFilteringPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:tabular="using:Microsoft.UI.Xaml.Controls.Tabular">
+    <StackPanel>
+        <controls:ControlExample
+            HeaderText="Filter rows as you type"
+            HorizontalContentAlignment="Stretch"
+            SampleDefinition="TableViewFiltering\TableViewFiltering.txt">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="12">
+                    <TextBox
+                        x:Name="FilterBox"
+                        Width="320"
+                        HorizontalAlignment="Left"
+                        Header="Filter by name, role, or department"
+                        PlaceholderText="For example, engineer"
+                        TextChanged="FilterBox_TextChanged" />
+                    <tabular:TableView
+                        x:Name="FilteringTable"
+                        Height="300"
+                        AutomationProperties.Name="Employees filtered by search text">
+                        <tabular:TableViewTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+                        <tabular:TableViewTextColumn Header="Role" Binding="{Binding Role}" Width="*" />
+                        <tabular:TableViewTextColumn Header="Department" Binding="{Binding Department}" Width="*" />
+                        <tabular:TableViewTextColumn Header="Location" Binding="{Binding Location}" Width="*" />
+                    </tabular:TableView>
+                </StackPanel>
+            </controls:ControlExample.Example>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

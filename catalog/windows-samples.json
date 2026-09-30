@@ -9,7 +9,7 @@
     "defaultBranch": "main",
     "license": "MIT"
   },
-  "controlCount": 124,
+  "controlCount": 136,
   "controls": [
     {
       "id": "accessibilitycolorcontrast",
@@ -8688,14 +8688,15 @@
     },
     {
       "id": "tableview",
-      "name": "TableView",
+      "name": "TableView overview",
       "description": "A preview control for presenting and editing virtualized tabular data.",
       "details": "TableView presents an item collection as virtualized rows and developer-defined columns. It supports sorting, templates, frozen leading columns, single row selection, opt-in cell editing, display density, grid lines, and empty-state content.",
       "apiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
       "relatedControls": [
-        "ItemsView",
-        "ItemsRepeater",
-        "ListView"
+        "Sorting",
+        "Filtering",
+        "Grouping",
+        "Editable cells"
       ],
       "usings": [
         "Microsoft.UI.Xaml",
@@ -8737,8 +8738,8 @@
       "gallery": {
         "uniqueId": "TableView",
         "group": {
-          "id": "Collections",
-          "title": "Collections"
+          "id": "TableViewGroup",
+          "title": "TableView"
         },
         "page": "WinUIGallery/Samples/TableView/TableViewPage.xaml",
         "codeBehind": "WinUIGallery/Samples/TableView/TableViewPage.xaml.cs",
@@ -8750,9 +8751,10 @@
           "Control"
         ],
         "relatedSamples": [
-          "microsoft/WinUI-Gallery#ItemsRepeater",
-          "microsoft/WinUI-Gallery#ItemsView",
-          "microsoft/WinUI-Gallery#ListView"
+          "microsoft/WinUI-Gallery#TableViewEditing",
+          "microsoft/WinUI-Gallery#TableViewFiltering",
+          "microsoft/WinUI-Gallery#TableViewGrouping",
+          "microsoft/WinUI-Gallery#TableViewSorting"
         ]
       },
       "samples": [
@@ -8797,6 +8799,703 @@
             "snippet": "VirtualizedMetricsTable.txt",
             "source": "WinUIGallery/Samples/TableView/VirtualizedMetricsTable.txt",
             "name": "Virtualized Metrics Table"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tableviewcelltemplates",
+      "name": "Cell templates",
+      "description": "Define custom cell content with a DataTemplate.",
+      "details": "Use TableViewTemplateColumn with a CellTemplate to show any content in a cell, such as a picture, a progress bar, or several lines of text. Set SortMemberPath so a template column can still be sorted.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+      "relatedControls": [
+        "TableView overview",
+        "Sorting",
+        "Filtering",
+        "Grouping"
+      ],
+      "xmlnsImports": [
+        "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+      ],
+      "curatedKeywords": [
+        "table",
+        "TableView",
+        "template",
+        "DataTemplate",
+        "TableViewTemplateColumn",
+        "custom cell"
+      ],
+      "docs": [
+        {
+          "title": "TableView - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+        },
+        {
+          "title": "TableView specification",
+          "uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "TableViewCellTemplates",
+        "group": {
+          "id": "TableViewGroup",
+          "title": "TableView"
+        },
+        "page": "WinUIGallery/Samples/TableViewCellTemplates/TableViewCellTemplatesPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/TableViewCellTemplates/TableViewCellTemplatesPage.xaml.cs",
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#TableView",
+          "microsoft/WinUI-Gallery#TableViewFiltering",
+          "microsoft/WinUI-Gallery#TableViewGrouping",
+          "microsoft/WinUI-Gallery#TableViewSorting"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Customize cells with a DataTemplate",
+          "xaml": "\u003Ctabular:TableView Height=\u0022360\u0022 ItemsSource=\u0022{x:Bind Employees}\u0022\u003E\n    \u003C!-- SortMemberPath keeps a template column sortable. --\u003E\n    \u003Ctabular:TableViewTemplateColumn Header=\u0022Employee\u0022 SortMemberPath=\u0022Name\u0022 Width=\u0022*\u0022\u003E\n        \u003Ctabular:TableViewTemplateColumn.CellTemplate\u003E\n            \u003CDataTemplate\u003E\n                \u003CStackPanel Padding=\u002212,6\u0022 Orientation=\u0022Horizontal\u0022 Spacing=\u002212\u0022\u003E\n                    \u003CPersonPicture Width=\u002232\u0022 Height=\u002232\u0022 Initials=\u0022{Binding Initials}\u0022 /\u003E\n                    \u003CStackPanel VerticalAlignment=\u0022Center\u0022\u003E\n                        \u003CTextBlock Style=\u0022{ThemeResource BodyStrongTextBlockStyle}\u0022 Text=\u0022{Binding Name}\u0022 /\u003E\n                        \u003CTextBlock Style=\u0022{ThemeResource CaptionTextBlockStyle}\u0022 Text=\u0022{Binding Email}\u0022 /\u003E\n                    \u003C/StackPanel\u003E\n                \u003C/StackPanel\u003E\n            \u003C/DataTemplate\u003E\n        \u003C/tabular:TableViewTemplateColumn.CellTemplate\u003E\n    \u003C/tabular:TableViewTemplateColumn\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Department\u0022 Binding=\u0022{Binding Department}\u0022 Width=\u0022140\u0022 /\u003E\n    \u003Ctabular:TableViewTemplateColumn Header=\u0022Performance\u0022 SortMemberPath=\u0022Performance\u0022 Width=\u0022200\u0022\u003E\n        \u003Ctabular:TableViewTemplateColumn.CellTemplate\u003E\n            \u003CDataTemplate\u003E\n                \u003CProgressBar Margin=\u002212,0\u0022 VerticalAlignment=\u0022Center\u0022 Maximum=\u0022100\u0022 Value=\u0022{Binding PerformanceValue}\u0022 /\u003E\n            \u003C/DataTemplate\u003E\n        \u003C/tabular:TableViewTemplateColumn.CellTemplate\u003E\n    \u003C/tabular:TableViewTemplateColumn\u003E\n\u003C/tabular:TableView\u003E",
+          "gallery": {
+            "snippet": "TableViewCellTemplates.txt",
+            "source": "WinUIGallery/Samples/TableViewCellTemplates/TableViewCellTemplates.txt",
+            "name": "TableViewCellTemplates"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tableviewcolumnresizing",
+      "name": "Column resizing",
+      "description": "Let users resize columns within minimum and maximum widths.",
+      "details": "Columns size to content (Auto), to a fixed width in pixels, or proportionally (*). When CanUserResizeColumns is true, drag the edge of a column header to resize it within its MinWidth and MaxWidth. Set CanResize to false to lock a single column.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+      "relatedControls": [
+        "TableView overview",
+        "Sorting",
+        "Filtering",
+        "Grouping"
+      ],
+      "xmlnsImports": [
+        "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+      ],
+      "curatedKeywords": [
+        "table",
+        "TableView",
+        "resize",
+        "column width",
+        "auto",
+        "star"
+      ],
+      "docs": [
+        {
+          "title": "TableView - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+        },
+        {
+          "title": "TableView specification",
+          "uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "TableViewColumnResizing",
+        "group": {
+          "id": "TableViewGroup",
+          "title": "TableView"
+        },
+        "page": "WinUIGallery/Samples/TableViewColumnResizing/TableViewColumnResizingPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/TableViewColumnResizing/TableViewColumnResizingPage.xaml.cs",
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#TableView",
+          "microsoft/WinUI-Gallery#TableViewFiltering",
+          "microsoft/WinUI-Gallery#TableViewGrouping",
+          "microsoft/WinUI-Gallery#TableViewSorting"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Resize columns by dragging the header edge",
+          "xaml": "\u003Ctabular:TableView\n    Height=\u0022300\u0022\n    CanUserResizeColumns=\u0022True\u0022\n    ItemsSource=\u0022{x:Bind Employees}\u0022\u003E\n    \u003C!-- Auto: sizes to the widest cell. --\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Name\u0022 Binding=\u0022{Binding Name}\u0022 MinWidth=\u0022120\u0022 Width=\u0022Auto\u0022 /\u003E\n    \u003C!-- Pixel: a fixed start width, clamped while resizing. --\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Role\u0022 Binding=\u0022{Binding Role}\u0022 MinWidth=\u0022120\u0022 MaxWidth=\u0022320\u0022 Width=\u0022200\u0022 /\u003E\n    \u003C!-- Opt a single column out of resizing. --\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Department\u0022 Binding=\u0022{Binding Department}\u0022 CanResize=\u0022False\u0022 Width=\u0022140\u0022 /\u003E\n    \u003C!-- Star: takes the remaining space. --\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Notes\u0022 Binding=\u0022{Binding Notes}\u0022 Width=\u0022*\u0022 /\u003E\n\u003C/tabular:TableView\u003E",
+          "gallery": {
+            "snippet": "TableViewColumnResizing.txt",
+            "source": "WinUIGallery/Samples/TableViewColumnResizing/TableViewColumnResizing.txt",
+            "name": "TableViewColumnResizing"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tableviewediting",
+      "name": "Editable cells",
+      "description": "Edit cell values in place.",
+      "details": "Editing is opt-in: set IsReadOnly to false on the TableView. Double-click a cell or press F2 to edit, Enter to commit, and Esc to cancel. Text columns edit with a TextBox; template columns supply a CellEditingTemplate. Set IsReadOnly on a column to lock it.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+      "relatedControls": [
+        "TableView overview",
+        "Sorting",
+        "Filtering",
+        "Grouping"
+      ],
+      "xmlnsImports": [
+        "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Tabular",
+        "System.Collections.ObjectModel"
+      ],
+      "curatedKeywords": [
+        "table",
+        "TableView",
+        "edit",
+        "editing",
+        "CellEditingTemplate"
+      ],
+      "docs": [
+        {
+          "title": "TableView - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+        },
+        {
+          "title": "TableView specification",
+          "uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "TableViewEditing",
+        "group": {
+          "id": "TableViewGroup",
+          "title": "TableView"
+        },
+        "page": "WinUIGallery/Samples/TableViewEditing/TableViewEditingPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/TableViewEditing/TableViewEditingPage.xaml.cs",
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#TableView",
+          "microsoft/WinUI-Gallery#TableViewFiltering",
+          "microsoft/WinUI-Gallery#TableViewGrouping",
+          "microsoft/WinUI-Gallery#TableViewSorting"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Edit cells in place",
+          "xaml": "\u003Ctabular:TableView\n    Height=\u0022300\u0022\n    CellEditEnding=\u0022EditingTable_CellEditEnding\u0022\n    IsReadOnly=\u0022False\u0022\n    ItemsSource=\u0022{x:Bind Employees}\u0022\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022ID\u0022 Binding=\u0022{Binding Id}\u0022 IsReadOnly=\u0022True\u0022 Width=\u0022100\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Name\u0022 Binding=\u0022{Binding Name}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Role\u0022 Binding=\u0022{Binding Role}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTemplateColumn Header=\u0022Notes\u0022 Width=\u0022*\u0022\u003E\n        \u003Ctabular:TableViewTemplateColumn.CellTemplate\u003E\n            \u003CDataTemplate\u003E\n                \u003CTextBlock Margin=\u002212,0\u0022 VerticalAlignment=\u0022Center\u0022 Text=\u0022{Binding Notes}\u0022 /\u003E\n            \u003C/DataTemplate\u003E\n        \u003C/tabular:TableViewTemplateColumn.CellTemplate\u003E\n        \u003Ctabular:TableViewTemplateColumn.CellEditingTemplate\u003E\n            \u003CDataTemplate\u003E\n                \u003C!-- Use {Binding}, TwoWay, so the edit is written back on commit. --\u003E\n                \u003CTextBox VerticalAlignment=\u0022Center\u0022 Text=\u0022{Binding Notes, Mode=TwoWay}\u0022 /\u003E\n            \u003C/DataTemplate\u003E\n        \u003C/tabular:TableViewTemplateColumn.CellEditingTemplate\u003E\n    \u003C/tabular:TableViewTemplateColumn\u003E\n\u003C/tabular:TableView\u003E",
+          "code": "private void EditingTable_CellEditEnding(TableView sender, TableViewCellEditEndingEventArgs args)\n{\n    string action = args.EditAction == TableViewEditAction.Commit ? \u0022Committed\u0022 : \u0022Canceled\u0022;\n    EditingOutput.Text = $\u0022{action} the edit to {args.Column.Header} for {((Employee)args.Item).Id}.\u0022;\n}",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "TableViewEditing.txt",
+            "source": "WinUIGallery/Samples/TableViewEditing/TableViewEditing.txt",
+            "name": "TableViewEditing"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tableviewemptytemplate",
+      "name": "Empty template",
+      "description": "Show custom content when there are no rows.",
+      "details": "Set EmptyTemplate to show custom content when the items source is null or has no items.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+      "relatedControls": [
+        "TableView overview",
+        "Sorting",
+        "Filtering",
+        "Grouping"
+      ],
+      "xmlnsImports": [
+        "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "System.Collections.ObjectModel"
+      ],
+      "curatedKeywords": [
+        "table",
+        "TableView",
+        "empty state",
+        "no data",
+        "EmptyTemplate"
+      ],
+      "docs": [
+        {
+          "title": "TableView - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+        },
+        {
+          "title": "TableView specification",
+          "uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "TableViewEmptyTemplate",
+        "group": {
+          "id": "TableViewGroup",
+          "title": "TableView"
+        },
+        "page": "WinUIGallery/Samples/TableViewEmptyTemplate/TableViewEmptyTemplatePage.xaml",
+        "codeBehind": "WinUIGallery/Samples/TableViewEmptyTemplate/TableViewEmptyTemplatePage.xaml.cs",
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#TableView",
+          "microsoft/WinUI-Gallery#TableViewFiltering",
+          "microsoft/WinUI-Gallery#TableViewGrouping",
+          "microsoft/WinUI-Gallery#TableViewSorting"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Show custom content when the table has no rows",
+          "xaml": "\u003Ctabular:TableView Height=\u0022300\u0022 ItemsSource=\u0022{x:Bind Employees}\u0022\u003E\n    \u003Ctabular:TableView.EmptyTemplate\u003E\n        \u003CDataTemplate\u003E\n            \u003CStackPanel HorizontalAlignment=\u0022Center\u0022 VerticalAlignment=\u0022Center\u0022 Spacing=\u00228\u0022\u003E\n                \u003CFontIcon FontSize=\u002232\u0022 Glyph=\u0022\u0026#xE716;\u0022 /\u003E\n                \u003CTextBlock Style=\u0022{ThemeResource BodyStrongTextBlockStyle}\u0022 Text=\u0022No employees to show\u0022 /\u003E\n            \u003C/StackPanel\u003E\n        \u003C/DataTemplate\u003E\n    \u003C/tabular:TableView.EmptyTemplate\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Name\u0022 Binding=\u0022{Binding Name}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Role\u0022 Binding=\u0022{Binding Role}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Department\u0022 Binding=\u0022{Binding Department}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Location\u0022 Binding=\u0022{Binding Location}\u0022 Width=\u0022*\u0022 /\u003E\n\u003C/tabular:TableView\u003E",
+          "code": "private void EmptyStateToggle_Toggled(object sender, RoutedEventArgs e)\n{\n    // EmptyTemplate is shown whenever the items source has no items.\n    Employees.Clear();\n}",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "TableViewEmptyTemplate.txt",
+            "source": "WinUIGallery/Samples/TableViewEmptyTemplate/TableViewEmptyTemplate.txt",
+            "name": "TableViewEmptyTemplate"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tableviewfiltering",
+      "name": "Filtering",
+      "description": "Filter rows with a predicate on TableViewSource.",
+      "details": "Wrap the items in a TableViewSource and call Filter with a predicate to show only matching rows. Call ClearFilter to show every row again.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+      "relatedControls": [
+        "TableView overview",
+        "Sorting",
+        "Grouping",
+        "Column resizing"
+      ],
+      "xmlnsImports": [
+        "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Tabular",
+        "System"
+      ],
+      "curatedKeywords": [
+        "table",
+        "TableView",
+        "filter",
+        "search",
+        "TableViewSource"
+      ],
+      "docs": [
+        {
+          "title": "TableView - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+        },
+        {
+          "title": "TableView specification",
+          "uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "TableViewFiltering",
+        "group": {
+          "id": "TableViewGroup",
+          "title": "TableView"
+        },
+        "page": "WinUIGallery/Samples/TableViewFiltering/TableViewFilteringPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/TableViewFiltering/TableViewFilteringPage.xaml.cs",
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#TableView",
+          "microsoft/WinUI-Gallery#TableViewColumnResizing",
+          "microsoft/WinUI-Gallery#TableViewGrouping",
+          "microsoft/WinUI-Gallery#TableViewSorting"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Filter rows as you type",
+          "xaml": "\u003CTextBox\n    x:Name=\u0022FilterBox\u0022\n    Header=\u0022Filter by name, role, or department\u0022\n    TextChanged=\u0022FilterBox_TextChanged\u0022 /\u003E\n\u003Ctabular:TableView x:Name=\u0022FilteringTable\u0022 Height=\u0022300\u0022\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Name\u0022 Binding=\u0022{Binding Name}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Role\u0022 Binding=\u0022{Binding Role}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Department\u0022 Binding=\u0022{Binding Department}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Location\u0022 Binding=\u0022{Binding Location}\u0022 Width=\u0022*\u0022 /\u003E\n\u003C/tabular:TableView\u003E",
+          "code": "private readonly TableViewSource _source = TableViewSource.From(Employees);\n\n// In the constructor, after InitializeComponent:\n// FilteringTable.ItemsSource = _source;\n\nprivate void FilterBox_TextChanged(object sender, TextChangedEventArgs e)\n{\n    string text = FilterBox.Text.Trim();\n    if (text.Length == 0)\n    {\n        _source.ClearFilter();\n        return;\n    }\n\n    _source.Filter(item =\u003E item is Employee employee \u0026\u0026\n        (employee.Name.Contains(text, StringComparison.CurrentCultureIgnoreCase) ||\n         employee.Role.Contains(text, StringComparison.CurrentCultureIgnoreCase) ||\n         employee.Department.Contains(text, StringComparison.CurrentCultureIgnoreCase)));\n}",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "TableViewFiltering.txt",
+            "source": "WinUIGallery/Samples/TableViewFiltering/TableViewFiltering.txt",
+            "name": "TableViewFiltering"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tableviewfrozencolumns",
+      "name": "Frozen columns",
+      "description": "Keep a leading column visible while the table scrolls horizontally.",
+      "details": "Set FrozenEdge to Leading on a column to pin it to the start of the table, so it stays visible while the rest of the columns scroll horizontally.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+      "relatedControls": [
+        "TableView overview",
+        "Sorting",
+        "Filtering",
+        "Grouping"
+      ],
+      "xmlnsImports": [
+        "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+      ],
+      "curatedKeywords": [
+        "table",
+        "TableView",
+        "freeze",
+        "pin",
+        "horizontal scrolling",
+        "FrozenEdge"
+      ],
+      "docs": [
+        {
+          "title": "TableView - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+        },
+        {
+          "title": "TableView specification",
+          "uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "TableViewFrozenColumns",
+        "group": {
+          "id": "TableViewGroup",
+          "title": "TableView"
+        },
+        "page": "WinUIGallery/Samples/TableViewFrozenColumns/TableViewFrozenColumnsPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/TableViewFrozenColumns/TableViewFrozenColumnsPage.xaml.cs",
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#TableView",
+          "microsoft/WinUI-Gallery#TableViewFiltering",
+          "microsoft/WinUI-Gallery#TableViewGrouping",
+          "microsoft/WinUI-Gallery#TableViewSorting"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Keep the first column visible while scrolling horizontally",
+          "xaml": "\u003Ctabular:TableView Height=\u0022300\u0022 ItemsSource=\u0022{x:Bind Employees}\u0022\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Name\u0022 Binding=\u0022{Binding Name}\u0022 FrozenEdge=\u0022Leading\u0022 Width=\u0022170\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022ID\u0022 Binding=\u0022{Binding Id}\u0022 Width=\u0022100\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Role\u0022 Binding=\u0022{Binding Role}\u0022 Width=\u0022220\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Department\u0022 Binding=\u0022{Binding Department}\u0022 Width=\u0022160\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Location\u0022 Binding=\u0022{Binding Location}\u0022 Width=\u0022160\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Email\u0022 Binding=\u0022{Binding Email}\u0022 Width=\u0022260\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Notes\u0022 Binding=\u0022{Binding Notes}\u0022 Width=\u0022280\u0022 /\u003E\n\u003C/tabular:TableView\u003E",
+          "gallery": {
+            "snippet": "TableViewFrozenColumns.txt",
+            "source": "WinUIGallery/Samples/TableViewFrozenColumns/TableViewFrozenColumns.txt",
+            "name": "TableViewFrozenColumns"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tableviewgridlines",
+      "name": "Grid lines",
+      "description": "Choose which grid lines separate rows and columns.",
+      "details": "Set GridLinesVisibility to All, Horizontal, Vertical, or None to control the row dividers and column separators.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+      "relatedControls": [
+        "TableView overview",
+        "Sorting",
+        "Filtering",
+        "Grouping"
+      ],
+      "xmlnsImports": [
+        "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+      ],
+      "curatedKeywords": [
+        "table",
+        "TableView",
+        "grid lines",
+        "borders",
+        "dividers"
+      ],
+      "docs": [
+        {
+          "title": "TableView - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+        },
+        {
+          "title": "TableView specification",
+          "uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "TableViewGridLines",
+        "group": {
+          "id": "TableViewGroup",
+          "title": "TableView"
+        },
+        "page": "WinUIGallery/Samples/TableViewGridLines/TableViewGridLinesPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/TableViewGridLines/TableViewGridLinesPage.xaml.cs",
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#TableView",
+          "microsoft/WinUI-Gallery#TableViewFiltering",
+          "microsoft/WinUI-Gallery#TableViewGrouping",
+          "microsoft/WinUI-Gallery#TableViewSorting"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Choose which grid lines to show",
+          "xaml": "\u003Ctabular:TableView\n    Height=\u0022300\u0022\n    GridLinesVisibility=\u0022All\u0022\n    ItemsSource=\u0022{x:Bind Employees}\u0022\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Name\u0022 Binding=\u0022{Binding Name}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Role\u0022 Binding=\u0022{Binding Role}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Department\u0022 Binding=\u0022{Binding Department}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Location\u0022 Binding=\u0022{Binding Location}\u0022 Width=\u0022*\u0022 /\u003E\n\u003C/tabular:TableView\u003E",
+          "gallery": {
+            "snippet": "TableViewGridLines.txt",
+            "source": "WinUIGallery/Samples/TableViewGridLines/TableViewGridLines.txt",
+            "name": "TableViewGridLines"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tableviewgrouping",
+      "name": "Grouping",
+      "description": "Group rows by a key and expand or collapse the groups.",
+      "details": "Call GroupBy on a TableViewSource with a key selector to bucket rows under group headers. Select a group header to expand or collapse it, or call ExpandAllGroups and CollapseAllGroups.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+      "relatedControls": [
+        "TableView overview",
+        "Sorting",
+        "Filtering",
+        "Column resizing"
+      ],
+      "xmlnsImports": [
+        "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Tabular"
+      ],
+      "curatedKeywords": [
+        "table",
+        "TableView",
+        "group",
+        "group header",
+        "TableViewSource"
+      ],
+      "docs": [
+        {
+          "title": "TableView - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+        },
+        {
+          "title": "TableView specification",
+          "uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "TableViewGrouping",
+        "group": {
+          "id": "TableViewGroup",
+          "title": "TableView"
+        },
+        "page": "WinUIGallery/Samples/TableViewGrouping/TableViewGroupingPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/TableViewGrouping/TableViewGroupingPage.xaml.cs",
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#TableView",
+          "microsoft/WinUI-Gallery#TableViewColumnResizing",
+          "microsoft/WinUI-Gallery#TableViewFiltering",
+          "microsoft/WinUI-Gallery#TableViewSorting"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Group rows by department or location",
+          "xaml": "\u003Ctabular:TableView x:Name=\u0022GroupingTable\u0022 Height=\u0022360\u0022\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Name\u0022 Binding=\u0022{Binding Name}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Role\u0022 Binding=\u0022{Binding Role}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Department\u0022 Binding=\u0022{Binding Department}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Location\u0022 Binding=\u0022{Binding Location}\u0022 Width=\u0022*\u0022 /\u003E\n\u003C/tabular:TableView\u003E",
+          "code": "private readonly TableViewSource _source = TableViewSource.From(Employees);\n\n// In the constructor, after InitializeComponent:\n// GroupingTable.ItemsSource = _source;\n// _source.GroupBy(item =\u003E ((Employee)item).Department);\n\nprivate void GroupByComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)\n{\n    switch (GroupByComboBox.SelectedIndex)\n    {\n        case 1:\n            _source.GroupBy(item =\u003E ((Employee)item).Department);\n            break;\n        case 2:\n            _source.GroupBy(item =\u003E ((Employee)item).Location);\n            break;\n        default:\n            _source.ClearGroupBy();\n            break;\n    }\n}\n\nprivate void ExpandAllGroups_Click(object sender, RoutedEventArgs e) =\u003E GroupingTable.ExpandAllGroups();\n\nprivate void CollapseAllGroups_Click(object sender, RoutedEventArgs e) =\u003E GroupingTable.CollapseAllGroups();",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "TableViewGrouping.txt",
+            "source": "WinUIGallery/Samples/TableViewGrouping/TableViewGrouping.txt",
+            "name": "TableViewGrouping"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tableviewselection",
+      "name": "Selection",
+      "description": "Select a row and respond to selection changes.",
+      "details": "TableView supports single-row selection. Read SelectedItem and SelectedIndex in the SelectionChanged event, select a row from code with Select, and clear it with DeselectAll. Set SelectionMode to None for a display-only table.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+      "relatedControls": [
+        "TableView overview",
+        "Sorting",
+        "Filtering",
+        "Grouping"
+      ],
+      "xmlnsImports": [
+        "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Tabular",
+        "System",
+        "System.Collections.ObjectModel"
+      ],
+      "curatedKeywords": [
+        "table",
+        "TableView",
+        "select",
+        "selected item",
+        "SelectionMode"
+      ],
+      "docs": [
+        {
+          "title": "TableView - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+        },
+        {
+          "title": "TableView specification",
+          "uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "TableViewSelection",
+        "group": {
+          "id": "TableViewGroup",
+          "title": "TableView"
+        },
+        "page": "WinUIGallery/Samples/TableViewSelection/TableViewSelectionPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/TableViewSelection/TableViewSelectionPage.xaml.cs",
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#TableView",
+          "microsoft/WinUI-Gallery#TableViewFiltering",
+          "microsoft/WinUI-Gallery#TableViewGrouping",
+          "microsoft/WinUI-Gallery#TableViewSorting"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Select a row",
+          "xaml": "\u003Ctabular:TableView\n    x:Name=\u0022SelectionTable\u0022\n    Height=\u0022300\u0022\n    ItemsSource=\u0022{x:Bind Employees}\u0022\n    SelectionChanged=\u0022SelectionTable_SelectionChanged\u0022\n    SelectionMode=\u0022Single\u0022\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Name\u0022 Binding=\u0022{Binding Name}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Role\u0022 Binding=\u0022{Binding Role}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Department\u0022 Binding=\u0022{Binding Department}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Location\u0022 Binding=\u0022{Binding Location}\u0022 Width=\u0022*\u0022 /\u003E\n\u003C/tabular:TableView\u003E",
+          "code": "private void SelectionTable_SelectionChanged(TableView sender, SelectionChangedEventArgs args)\n{\n    SelectionOutput.Text = sender.SelectedItem is Employee employee\n        ? $\u0022Selected {employee.Name} (row {sender.SelectedIndex \u002B 1}).\u0022\n        : \u0022No row selected.\u0022;\n}\n\nprivate void SelectFirstRow_Click(object sender, RoutedEventArgs e) =\u003E SelectionTable.Select(0);\n\nprivate void DeselectAll_Click(object sender, RoutedEventArgs e) =\u003E SelectionTable.DeselectAll();",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "TableViewSelection.txt",
+            "source": "WinUIGallery/Samples/TableViewSelection/TableViewSelection.txt",
+            "name": "TableViewSelection"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tableviewsorting",
+      "name": "Sorting",
+      "description": "Sort rows by clicking a column header.",
+      "details": "Select a column header to sort by that column. Each column controls its own sort cycle, can opt out of sorting, and the Sorted event reports the current sort.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+      "relatedControls": [
+        "TableView overview",
+        "Filtering",
+        "Grouping",
+        "Column resizing"
+      ],
+      "xmlnsImports": [
+        "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+      ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Controls.Tabular",
+        "System.Collections.ObjectModel"
+      ],
+      "curatedKeywords": [
+        "table",
+        "TableView",
+        "sort",
+        "column header",
+        "order"
+      ],
+      "docs": [
+        {
+          "title": "TableView - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+        },
+        {
+          "title": "TableView specification",
+          "uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "TableViewSorting",
+        "group": {
+          "id": "TableViewGroup",
+          "title": "TableView"
+        },
+        "page": "WinUIGallery/Samples/TableViewSorting/TableViewSortingPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/TableViewSorting/TableViewSortingPage.xaml.cs",
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#TableView",
+          "microsoft/WinUI-Gallery#TableViewColumnResizing",
+          "microsoft/WinUI-Gallery#TableViewFiltering",
+          "microsoft/WinUI-Gallery#TableViewGrouping"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Sort rows by selecting a column header",
+          "xaml": "\u003Ctabular:TableView\n    x:Name=\u0022SortingTable\u0022\n    Height=\u0022300\u0022\n    CanUserSortColumns=\u0022True\u0022\n    ItemsSource=\u0022{x:Bind Employees}\u0022\n    Sorted=\u0022SortingTable_Sorted\u0022\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Name\u0022 Binding=\u0022{Binding Name}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Department\u0022 Binding=\u0022{Binding Department}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Location\u0022 Binding=\u0022{Binding Location}\u0022 Width=\u0022*\u0022 /\u003E\n    \u003C!-- Metric columns usually open on the largest values. --\u003E\n    \u003Ctabular:TableViewTextColumn\n        Header=\u0022Performance\u0022\n        Binding=\u0022{Binding Performance}\u0022\n        SortCycle=\u0022DescendingAscendingNone\u0022\n        Width=\u0022130\u0022 /\u003E\n    \u003C!-- A column can opt out of sorting. --\u003E\n    \u003Ctabular:TableViewTextColumn Header=\u0022Notes\u0022 Binding=\u0022{Binding Notes}\u0022 CanSort=\u0022False\u0022 Width=\u0022*\u0022 /\u003E\n\u003C/tabular:TableView\u003E",
+          "code": "private void SortingTable_Sorted(TableView sender, TableViewSortedEventArgs args)\n{\n    SortingOutput.Text = args.Direction == SortDirection.None\n        ? \u0022Rows are in source order.\u0022\n        : $\u0022Sorted by {args.Column.Header}, {args.Direction}.\u0022;\n}\n\nprivate void ClearSort_Click(object sender, RoutedEventArgs e)\n{\n    SortingTable.ClearSort();\n}",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "TableViewSorting.txt",
+            "source": "WinUIGallery/Samples/TableViewSorting/TableViewSorting.txt",
+            "name": "TableViewSorting"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tableviewtooltips",
+      "name": "Cell and header tooltips",
+      "description": "Show tooltips on column headers and on individual cells.",
+      "details": "Set HeaderToolTip on a column to describe it, and set CellToolTipBinding to show a tooltip bound to each row\u0027s data.",
+      "apiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
+      "relatedControls": [
+        "TableView overview",
+        "Sorting",
+        "Filtering",
+        "Grouping"
+      ],
+      "xmlnsImports": [
+        "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+      ],
+      "curatedKeywords": [
+        "table",
+        "TableView",
+        "tooltip",
+        "hover",
+        "help text"
+      ],
+      "docs": [
+        {
+          "title": "TableView - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
+        },
+        {
+          "title": "TableView specification",
+          "uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "TableViewToolTips",
+        "group": {
+          "id": "TableViewGroup",
+          "title": "TableView"
+        },
+        "page": "WinUIGallery/Samples/TableViewToolTips/TableViewToolTipsPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/TableViewToolTips/TableViewToolTipsPage.xaml.cs",
+        "relatedSamples": [
+          "microsoft/WinUI-Gallery#TableView",
+          "microsoft/WinUI-Gallery#TableViewFiltering",
+          "microsoft/WinUI-Gallery#TableViewGrouping",
+          "microsoft/WinUI-Gallery#TableViewSorting"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Show tooltips on headers and cells",
+          "xaml": "\u003Ctabular:TableView Height=\u0022300\u0022 ItemsSource=\u0022{x:Bind Employees}\u0022\u003E\n    \u003Ctabular:TableViewTextColumn\n        Header=\u0022Name\u0022\n        Binding=\u0022{Binding Name}\u0022\n        CellToolTipBinding=\u0022{Binding Email}\u0022\n        HeaderToolTip=\u0022Full name. Hover over a cell to see the email address.\u0022\n        Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn\n        Header=\u0022Role\u0022\n        Binding=\u0022{Binding Role}\u0022\n        HeaderToolTip=\u0022Current job title\u0022\n        Width=\u0022*\u0022 /\u003E\n    \u003Ctabular:TableViewTextColumn\n        Header=\u0022Notes\u0022\n        Binding=\u0022{Binding Notes}\u0022\n        CellToolTipBinding=\u0022{Binding Notes}\u0022\n        HeaderToolTip=\u0022Latest note from the manager\u0022\n        Width=\u0022*\u0022 /\u003E\n\u003C/tabular:TableView\u003E",
+          "gallery": {
+            "snippet": "TableViewToolTips.txt",
+            "source": "WinUIGallery/Samples/TableViewToolTips/TableViewToolTips.txt",
+            "name": "TableViewToolTips"
           }
         }
       ]

@@ -1,0 +1,44 @@
+<!--
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    Licensed under the MIT License.
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.TableViewGroupingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:tabular="using:Microsoft.UI.Xaml.Controls.Tabular">
+    <StackPanel>
+        <controls:ControlExample
+            HeaderText="Group rows by department or location"
+            HorizontalContentAlignment="Stretch"
+            SampleDefinition="TableViewGrouping\TableViewGrouping.txt">
+            <controls:ControlExample.Example>
+                <tabular:TableView
+                    x:Name="GroupingTable"
+                    Height="360"
+                    AutomationProperties.Name="Employees grouped by the selected key">
+                    <tabular:TableViewTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+                    <tabular:TableViewTextColumn Header="Role" Binding="{Binding Role}" Width="*" />
+                    <tabular:TableViewTextColumn Header="Department" Binding="{Binding Department}" Width="*" />
+                    <tabular:TableViewTextColumn Header="Location" Binding="{Binding Location}" Width="*" />
+                </tabular:TableView>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <ComboBox
+                        x:Name="GroupByComboBox"
+                        Header="Group by"
+                        SelectedIndex="1"
+                        SelectionChanged="GroupByComboBox_SelectionChanged">
+                        <ComboBoxItem Content="None" />
+                        <ComboBoxItem Content="Department" />
+                        <ComboBoxItem Content="Location" />
+                    </ComboBox>
+                    <Button Click="ExpandAllGroups_Click" Content="Expand all" />
+                    <Button Click="CollapseAllGroups_Click" Content="Collapse all" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>

@@ -1,0 +1,22 @@
+--- header
+Show tooltips on headers and cells
+--- xaml
+<tabular:TableView Height="300" ItemsSource="{x:Bind Employees}">
+    <tabular:TableViewTextColumn
+        Header="Name"
+        Binding="{Binding Name}"
+        CellToolTipBinding="{Binding Email}"
+        HeaderToolTip="Full name. Hover over a cell to see the email address."
+        Width="*" />
+    <tabular:TableViewTextColumn
+        Header="Role"
+        Binding="{Binding Role}"
+        HeaderToolTip="Current job title"
+        Width="*" />
+    <tabular:TableViewTextColumn
+        Header="Notes"
+        Binding="{Binding Notes}"
+        CellToolTipBinding="{Binding Notes}"
+        HeaderToolTip="Latest note from the manager"
+        Width="*" />
+</tabular:TableView>
