@@ -1,9 +1,9 @@
 --- header
-Density, grid lines, and empty state
+An advanced TableView
 --- xaml
 <tabular:TableView
     Height="320"
-    AutomationProperties.Name="Table presentation and empty state"
+    AutomationProperties.Name="Advanced table presentation and empty state"
     AlternatingRowBackground="{ThemeResource SubtleFillColorSecondaryBrush}"
     CanUserResizeColumns="False"
     CanUserSortColumns="False"

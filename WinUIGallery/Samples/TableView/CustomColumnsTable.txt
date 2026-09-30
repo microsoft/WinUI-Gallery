@@ -1,27 +1,67 @@
 --- header
-Custom columns and cell content
+Customizing cells with data templates
 --- xaml
 <tabular:TableView
-    Height="260"
-    AutomationProperties.Name="Table with custom columns"
+    Height="340"
+    MaxWidth="900"
+    HorizontalAlignment="Left"
+    AutomationProperties.Name="Table with custom cell templates"
     CanUserResizeColumns="False"
-    CanUserSortColumns="False"
+    CanUserSortColumns="True"
+    GridLinesVisibility="None"
     IsReadOnly="True"
     ItemsSource="{x:Bind CustomColumnItems}"
     SelectionMode="None">
     <tabular:TableView.Columns>
-        <tabular:TableViewTextColumn Binding="{Binding Id}" Header="ID" Width="80" />
-        <tabular:TableViewTextColumn
-            Binding="{Binding Name}"
+        <tabular:TableViewTextColumn Binding="{Binding Id}" Header="ID" Width="64" />
+        <tabular:TableViewTemplateColumn
             CellToolTipBinding="{Binding Name}"
-            Header="Name"
-            HeaderToolTip="The item's name"
-            Width="180" />
-        <tabular:TableViewTextColumn Binding="{Binding Category}" Header="Category" Width="140" />
-        <tabular:TableViewTemplateColumn Header="Value" Width="180">
+            Header="Item"
+            HeaderToolTip="The item's name and category"
+            SortMemberPath="Name"
+            Width="200">
             <tabular:TableViewTemplateColumn.CellTemplate>
                 <DataTemplate x:DataType="local:TableViewSampleItem">
-                    <Grid ColumnSpacing="12">
+                    <StackPanel Padding="12,6" Orientation="Horizontal" Spacing="12">
+                        <PersonPicture
+                            Width="32"
+                            Height="32"
+                            AutomationProperties.AccessibilityView="Raw"
+                            DisplayName="{x:Bind Name, Mode=OneWay}" />
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock
+                                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                                Text="{x:Bind Name, Mode=OneWay}" />
+                            <TextBlock
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Text="{x:Bind Category, Mode=OneWay}" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </tabular:TableViewTemplateColumn.CellTemplate>
+        </tabular:TableViewTemplateColumn>
+        <tabular:TableViewTemplateColumn Header="Status" SortMemberPath="Status" Width="120">
+            <tabular:TableViewTemplateColumn.CellTemplate>
+                <DataTemplate x:DataType="local:TableViewSampleItem">
+                    <Border
+                        Margin="12,0"
+                        Padding="8,4"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Background="{ThemeResource SubtleFillColorSecondaryBrush}"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <TextBlock
+                            Style="{ThemeResource CaptionTextBlockStyle}"
+                            Text="{x:Bind Status}" />
+                    </Border>
+                </DataTemplate>
+            </tabular:TableViewTemplateColumn.CellTemplate>
+        </tabular:TableViewTemplateColumn>
+        <tabular:TableViewTemplateColumn Header="Value" SortMemberPath="Value" Width="220">
+            <tabular:TableViewTemplateColumn.CellTemplate>
+                <DataTemplate x:DataType="local:TableViewSampleItem">
+                    <Grid Padding="12,0" ColumnSpacing="12">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="32" />
@@ -41,5 +81,38 @@ Custom columns and cell content
                 </DataTemplate>
             </tabular:TableViewTemplateColumn.CellTemplate>
         </tabular:TableViewTemplateColumn>
+        <tabular:TableViewTemplateColumn Header="Rating" SortMemberPath="Rating" Width="180">
+            <tabular:TableViewTemplateColumn.CellTemplate>
+                <DataTemplate x:DataType="local:TableViewSampleItem">
+                    <RatingControl
+                        Margin="12,0"
+                        VerticalAlignment="Center"
+                        AutomationProperties.Name="Item rating"
+                        IsReadOnly="True"
+                        IsTabStop="False"
+                        MaxRating="5"
+                        Value="{x:Bind Rating}" />
+                </DataTemplate>
+            </tabular:TableViewTemplateColumn.CellTemplate>
+        </tabular:TableViewTemplateColumn>
     </tabular:TableView.Columns>
 </tabular:TableView>
+--- c#
+public ObservableCollection<TableViewSampleItem> CustomColumnItems { get; } =
+[
+    new(1, "Item 1", "Alpha", 25),
+    new(2, "Item 2", "Beta", 80),
+    new(3, "Item 3", "Gamma", 50),
+    new(4, "Item 4", "Alpha", 100),
+    new(5, "Item 5", "Beta", 10),
+];
+
+public sealed class TableViewSampleItem(int id, string name, string category, int value)
+{
+    public int Id { get; } = id;
+    public string Name { get; set; } = name;
+    public string Category { get; set; } = category;
+    public int Value { get; } = value;
+    public string Status => Id % 2 == 0 ? "Paused" : "Active";
+    public int Rating => (Id - 1) % 5 + 1;
+}

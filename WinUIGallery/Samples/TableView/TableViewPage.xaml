@@ -14,7 +14,7 @@
             SampleDefinition="TableView\BasicTable.txt">
             <StackPanel Spacing="12">
                 <TextBlock
-                    Text="Bind a collection to ItemsSource and define its columns. Select a header to sort or a row to select it. Drag a header's edge to resize, and scroll horizontally to see the frozen ID column stay visible."
+                    Text="Bind a collection to ItemsSource and define its columns. Select a header to sort or a row to select it. Drag a header's edge to resize. Freeze the first column and scroll horizontally to keep ID visible."
                     TextWrapping="Wrap" />
                 <tabular:TableView
                     x:Name="BasicTable"
@@ -32,6 +32,7 @@
                     Sorted="BasicTable_Sorted">
                     <tabular:TableView.Columns>
                         <tabular:TableViewTextColumn
+                            x:Name="BasicIdColumn"
                             Binding="{Binding Id}"
                             CanResize="False"
                             CanSort="False"
@@ -89,6 +90,15 @@
                         IsOn="True"
                         OffContent="Disabled"
                         OnContent="Enabled" />
+                    <ToggleSwitch
+                        x:Name="FreezeFirstColumnToggle"
+                        AutomationProperties.AutomationId="TableViewFreezeFirstColumnToggle"
+                        AutomationProperties.Name="Freeze the ID column"
+                        Header="First column"
+                        IsOn="True"
+                        OffContent="Scrollable"
+                        OnContent="Frozen"
+                        Toggled="FreezeFirstColumnToggle_Toggled" />
                 </StackPanel>
             </controls:ControlExample.Options>
             <controls:ControlExample.Substitutions>
@@ -98,37 +108,151 @@
                 <controls:ControlExampleSubstitution
                     Key="CanUserResizeColumns"
                     Value="{x:Bind ResizeColumnsToggle.IsOn, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="FrozenEdge"
+                    Value="{x:Bind BasicIdColumn.FrozenEdge, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            SampleDefinition="TableView\FilteringGroupingTable.txt">
+            <StackPanel Spacing="12">
+                <TextBlock
+                    Text="Use one TableViewSource to filter and group the same collection. Filter by name or category, then change the grouping without clearing the filter."
+                    TextWrapping="Wrap" />
+                <TextBox
+                    x:Name="FilterBox"
+                    Width="300"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.AutomationId="TableViewFilterBox"
+                    AutomationProperties.Name="Filter by name or category"
+                    Header="Filter by name or category"
+                    PlaceholderText="Try Alpha or Item 2"
+                    TextChanged="FilterBox_TextChanged" />
+                <tabular:TableView
+                    x:Name="FilteringGroupingTable"
+                    Height="320"
+                    MaxWidth="480"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.AutomationId="TableViewFilteringGroupingTable"
+                    AutomationProperties.Name="Filtered and grouped items"
+                    CanUserResizeColumns="False"
+                    CanUserSortColumns="False"
+                    IsReadOnly="True"
+                    SelectionMode="None">
+                    <tabular:TableView.EmptyTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Margin="24"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="No items match the filter." />
+                        </DataTemplate>
+                    </tabular:TableView.EmptyTemplate>
+                    <tabular:TableView.Columns>
+                        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="*" />
+                        <tabular:TableViewTextColumn Binding="{Binding Category}" Header="Category" Width="140" />
+                        <tabular:TableViewTextColumn Binding="{Binding Value}" Header="Value" Width="100" />
+                    </tabular:TableView.Columns>
+                </tabular:TableView>
+            </StackPanel>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <ComboBox
+                        x:Name="GroupByComboBox"
+                        AutomationProperties.AutomationId="TableViewGroupBySelector"
+                        AutomationProperties.Name="Group rows by"
+                        Header="Group by"
+                        SelectedIndex="1"
+                        SelectionChanged="GroupByComboBox_SelectionChanged">
+                        <ComboBoxItem Content="None" />
+                        <ComboBoxItem Content="Category" />
+                    </ComboBox>
+                    <Button
+                        AutomationProperties.AutomationId="TableViewExpandAllGroupsButton"
+                        AutomationProperties.Name="Expand all groups"
+                        Click="ExpandAllGroups_Click"
+                        Content="Expand all groups" />
+                    <Button
+                        AutomationProperties.AutomationId="TableViewCollapseAllGroupsButton"
+                        AutomationProperties.Name="Collapse all groups"
+                        Click="CollapseAllGroups_Click"
+                        Content="Collapse all groups" />
+                </StackPanel>
+            </controls:ControlExample.Options>
         </controls:ControlExample>
 
         <controls:ControlExample
             SampleDefinition="TableView\CustomColumnsTable.txt">
             <StackPanel Spacing="12">
                 <TextBlock
-                    Text="Use TableViewTemplateColumn to replace a text cell with your own content. Here, the Value cell combines a progress bar with its numeric value."
+                    Text="Combine a text column with custom cells: an avatar and two lines of text, a status badge, a progress bar, and a read-only rating. SortMemberPath lets template columns sort by their underlying values."
                     TextWrapping="Wrap" />
                 <tabular:TableView
-                    Height="260"
+                    Height="340"
+                    MaxWidth="900"
+                    HorizontalAlignment="Left"
                     AutomationProperties.AutomationId="TableViewCustomColumnsTable"
-                    AutomationProperties.Name="Table with custom columns"
+                    AutomationProperties.Name="Table with custom cell templates"
                     CanUserResizeColumns="False"
-                    CanUserSortColumns="False"
+                    CanUserSortColumns="True"
+                    GridLinesVisibility="None"
                     IsReadOnly="True"
                     ItemsSource="{x:Bind CustomColumnItems}"
                     SelectionMode="None">
                     <tabular:TableView.Columns>
-                        <tabular:TableViewTextColumn Binding="{Binding Id}" Header="ID" Width="80" />
-                        <tabular:TableViewTextColumn
-                            Binding="{Binding Name}"
+                        <tabular:TableViewTextColumn Binding="{Binding Id}" Header="ID" Width="64" />
+                        <tabular:TableViewTemplateColumn
                             CellToolTipBinding="{Binding Name}"
-                            Header="Name"
-                            HeaderToolTip="The item's name"
-                            Width="180" />
-                        <tabular:TableViewTextColumn Binding="{Binding Category}" Header="Category" Width="140" />
-                        <tabular:TableViewTemplateColumn Header="Value" Width="180">
+                            Header="Item"
+                            HeaderToolTip="The item's name and category"
+                            SortMemberPath="Name"
+                            Width="200">
                             <tabular:TableViewTemplateColumn.CellTemplate>
                                 <DataTemplate x:DataType="local:TableViewSampleItem">
-                                    <Grid ColumnSpacing="12">
+                                    <StackPanel
+                                        Padding="12,6"
+                                        Orientation="Horizontal"
+                                        Spacing="12">
+                                        <PersonPicture
+                                            Width="32"
+                                            Height="32"
+                                            AutomationProperties.AccessibilityView="Raw"
+                                            DisplayName="{x:Bind Name, Mode=OneWay}" />
+                                        <StackPanel VerticalAlignment="Center">
+                                            <TextBlock
+                                                Style="{ThemeResource BodyStrongTextBlockStyle}"
+                                                Text="{x:Bind Name, Mode=OneWay}" />
+                                            <TextBlock
+                                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                                Text="{x:Bind Category, Mode=OneWay}" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </tabular:TableViewTemplateColumn.CellTemplate>
+                        </tabular:TableViewTemplateColumn>
+                        <tabular:TableViewTemplateColumn Header="Status" SortMemberPath="Status" Width="120">
+                            <tabular:TableViewTemplateColumn.CellTemplate>
+                                <DataTemplate x:DataType="local:TableViewSampleItem">
+                                    <Border
+                                        Margin="12,0"
+                                        Padding="8,4"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Background="{ThemeResource SubtleFillColorSecondaryBrush}"
+                                        CornerRadius="{StaticResource ControlCornerRadius}">
+                                        <TextBlock
+                                            Style="{ThemeResource CaptionTextBlockStyle}"
+                                            Text="{x:Bind Status}" />
+                                    </Border>
+                                </DataTemplate>
+                            </tabular:TableViewTemplateColumn.CellTemplate>
+                        </tabular:TableViewTemplateColumn>
+                        <tabular:TableViewTemplateColumn Header="Value" SortMemberPath="Value" Width="220">
+                            <tabular:TableViewTemplateColumn.CellTemplate>
+                                <DataTemplate x:DataType="local:TableViewSampleItem">
+                                    <Grid Padding="12,0" ColumnSpacing="12">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="32" />
@@ -145,6 +269,20 @@
                                             VerticalAlignment="Center"
                                             Text="{x:Bind Value}" />
                                     </Grid>
+                                </DataTemplate>
+                            </tabular:TableViewTemplateColumn.CellTemplate>
+                        </tabular:TableViewTemplateColumn>
+                        <tabular:TableViewTemplateColumn Header="Rating" SortMemberPath="Rating" Width="180">
+                            <tabular:TableViewTemplateColumn.CellTemplate>
+                                <DataTemplate x:DataType="local:TableViewSampleItem">
+                                    <RatingControl
+                                        Margin="12,0"
+                                        VerticalAlignment="Center"
+                                        AutomationProperties.Name="Item rating"
+                                        IsReadOnly="True"
+                                        IsTabStop="False"
+                                        MaxRating="5"
+                                        Value="{x:Bind Rating}" />
                                 </DataTemplate>
                             </tabular:TableViewTemplateColumn.CellTemplate>
                         </tabular:TableViewTemplateColumn>
@@ -218,7 +356,7 @@
                     x:Name="PresentationTable"
                     Height="320"
                     AutomationProperties.AutomationId="TableViewPresentationTable"
-                    AutomationProperties.Name="Table presentation and empty state"
+                    AutomationProperties.Name="Advanced table presentation and empty state"
                     AlternatingRowBackground="{ThemeResource SubtleFillColorSecondaryBrush}"
                     CanUserResizeColumns="False"
                     CanUserSortColumns="False"

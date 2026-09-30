@@ -20,6 +20,8 @@ public sealed class TableViewSampleItem : INotifyPropertyChanged, INotifyDataErr
 
     public int Id { get; }
     public int Value { get; }
+    public string Status => Id % 2 == 0 ? "Paused" : "Active";
+    public int Rating => (Id - 1) % 5 + 1;
     public bool HasErrors => _nameError is not null;
 
     public string Name

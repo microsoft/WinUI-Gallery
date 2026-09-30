@@ -12,6 +12,7 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class TableViewPage : Page
 {
+    private readonly TableViewSource _filteringGroupingSource = TableViewSource.From(TableViewSampleItem.CreateItems(12));
     private TableViewSampleItem? _editingItem;
 
     public ObservableCollection<TableViewSampleItem> BasicItems { get; } = TableViewSampleItem.CreateItems();
@@ -22,6 +23,8 @@ public sealed partial class TableViewPage : Page
     public TableViewPage()
     {
         InitializeComponent();
+        FilteringGroupingTable.ItemsSource = _filteringGroupingSource;
+        ApplyGrouping();
     }
 
     private void BasicTable_SelectionChanged(TableView sender, SelectionChangedEventArgs args)
@@ -44,6 +47,60 @@ public sealed partial class TableViewPage : Page
         SortStatusText.Text = args.Direction == SortDirection.None
             ? "Rows are in source order."
             : $"Sorted by {args.Column.Header}, {args.Direction.ToString().ToLowerInvariant()}.";
+    }
+
+    private void FreezeFirstColumnToggle_Toggled(object sender, RoutedEventArgs e)
+    {
+        BasicIdColumn.FrozenEdge = FreezeFirstColumnToggle.IsOn
+            ? TableViewFrozenEdge.Leading
+            : TableViewFrozenEdge.None;
+    }
+
+    private void FilterBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        string text = FilterBox.Text.Trim();
+        if (text.Length == 0)
+        {
+            _filteringGroupingSource.ClearFilter();
+            return;
+        }
+
+        _filteringGroupingSource.Filter(item => item is TableViewSampleItem sampleItem &&
+            (sampleItem.Name.Contains(text, StringComparison.CurrentCultureIgnoreCase) ||
+             sampleItem.Category.Contains(text, StringComparison.CurrentCultureIgnoreCase)));
+    }
+
+    private void GroupByComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        ApplyGrouping();
+    }
+
+    private void ApplyGrouping()
+    {
+        // SelectionChanged can run before the named ComboBox is initialized.
+        if (GroupByComboBox is null)
+        {
+            return;
+        }
+
+        if (GroupByComboBox.SelectedIndex == 1)
+        {
+            _filteringGroupingSource.GroupBy(item => ((TableViewSampleItem)item).Category);
+        }
+        else
+        {
+            _filteringGroupingSource.ClearGroupBy();
+        }
+    }
+
+    private void ExpandAllGroups_Click(object sender, RoutedEventArgs e)
+    {
+        FilteringGroupingTable.ExpandAllGroups();
+    }
+
+    private void CollapseAllGroups_Click(object sender, RoutedEventArgs e)
+    {
+        FilteringGroupingTable.CollapseAllGroups();
     }
 
     private void EditingTable_BeginningEdit(TableView sender, TableViewBeginningEditEventArgs args)

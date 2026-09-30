@@ -19,7 +19,7 @@ A basic TableView
             Binding="{Binding Id}"
             CanResize="False"
             CanSort="False"
-            FrozenEdge="Leading"
+            FrozenEdge="$(FrozenEdge)"
             Header="ID"
             Width="80" />
         <tabular:TableViewTextColumn

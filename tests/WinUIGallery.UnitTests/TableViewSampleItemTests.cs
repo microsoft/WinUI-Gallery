@@ -50,6 +50,19 @@ public class TableViewSampleItemTests
             items.Select(item => item.Value).Distinct().OrderBy(value => value).ToArray());
     }
 
+    [TestMethod]
+    public void TemplateItemsHaveStatusAndRatingValues()
+    {
+        ObservableCollection<TableViewSampleItem> items = TableViewSampleItem.CreateItems(6);
+
+        CollectionAssert.AreEqual(
+            new[] { "Active", "Paused", "Active", "Paused", "Active", "Paused" },
+            items.Select(item => item.Status).ToArray());
+        CollectionAssert.AreEqual(
+            new[] { 1, 2, 3, 4, 5, 1 },
+            items.Select(item => item.Rating).ToArray());
+    }
+
     [DataTestMethod]
     [DataRow("")]
     [DataRow(" ")]
