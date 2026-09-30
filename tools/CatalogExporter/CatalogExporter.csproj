@@ -20,4 +20,16 @@
              Windows-only WinUIGallery app project. -->
     </PropertyGroup>
 
+    <ItemGroup>
+        <!-- CodeDeclarations reads the C# beside each snippet to decide whether the snippet hands
+             the reader the types its XAML names. Doing that with regex meant reimplementing C#'s
+             lexer, and every literal form, comment and directive it did not model was a chance to
+             report a declaration that is not there. The compiler's own parser models all of them.
+
+             Pinned to 5.0.0 because nuget.config lists one remote feed and it serves only the
+             versions saved on it, of which this is the newest. A version it lacks restores from a
+             developer's local cache and then fails in CI, where there is no cache to hide it. -->
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
+    </ItemGroup>
+
 </Project>
