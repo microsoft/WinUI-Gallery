@@ -63,6 +63,22 @@ public class TableViewSampleItemTests
             items.Select(item => item.Rating).ToArray());
     }
 
+    [TestMethod]
+    public void AutomationNameSummarizesRowAndTracksEditableValues()
+    {
+        TableViewSampleItem item = new(1, "Item 1", "Alpha", 25);
+        List<string?> changedProperties = [];
+        item.PropertyChanged += (_, args) => changedProperties.Add(args.PropertyName);
+
+        Assert.AreEqual("Item 1, ID 1, Category Alpha, Value 25", item.AutomationName);
+
+        item.Name = "Updated";
+        item.Category = "Beta";
+
+        Assert.AreEqual("Updated, ID 1, Category Beta, Value 25", item.AutomationName);
+        Assert.AreEqual(2, changedProperties.Count(property => property == nameof(item.AutomationName)));
+    }
+
     [DataTestMethod]
     [DataRow("")]
     [DataRow(" ")]

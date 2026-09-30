@@ -2,18 +2,24 @@
 // Licensed under the MIT License.
 
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Tabular;
+using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
 public sealed partial class TableViewPage : Page
 {
     private readonly TableViewSource _filteringGroupingSource = TableViewSource.From(TableViewSampleItem.CreateItems(12));
+    private readonly List<ItemsRepeater> _rowRepeaters = [];
     private TableViewSampleItem? _editingItem;
 
     public ObservableCollection<TableViewSampleItem> BasicItems { get; } = TableViewSampleItem.CreateItems();
@@ -27,6 +33,69 @@ public sealed partial class TableViewPage : Page
         ApplyRowBanding();
         FilteringGroupingTable.ItemsSource = _filteringGroupingSource;
         ApplyGrouping();
+
+        TableView[] tables = [BasicTable, FilteringGroupingTable, CustomColumnsTable, EditingTable, PresentationTable];
+        foreach (TableView table in tables)
+        {
+            table.Loaded += TableView_Loaded;
+        }
+
+        Unloaded += TableViewPage_Unloaded;
+    }
+
+    private void TableView_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (sender is not TableView table)
+        {
+            return;
+        }
+
+        ItemsRepeater? rowsRepeater = table.GetDescendantsOfType<ItemsRepeater>()
+            .FirstOrDefault(element => element.Name == "PART_RowsRepeater");
+        if (rowsRepeater is null)
+        {
+            return;
+        }
+
+        if (!_rowRepeaters.Contains(rowsRepeater))
+        {
+            _rowRepeaters.Add(rowsRepeater);
+            rowsRepeater.ElementPrepared += RowsRepeater_ElementPrepared;
+        }
+
+        foreach (TableViewRow row in rowsRepeater.GetDescendantsOfType<TableViewRow>())
+        {
+            BindRowAutomationName(row);
+        }
+    }
+
+    private static void RowsRepeater_ElementPrepared(ItemsRepeater sender, ItemsRepeaterElementPreparedEventArgs args)
+    {
+        if (args.Element is TableViewRow row)
+        {
+            BindRowAutomationName(row);
+        }
+    }
+
+    private static void BindRowAutomationName(TableViewRow row)
+    {
+        row.SetBinding(
+            AutomationProperties.NameProperty,
+            new Binding
+            {
+                Mode = BindingMode.OneWay,
+                Path = new PropertyPath(nameof(TableViewSampleItem.AutomationName)),
+            });
+    }
+
+    private void TableViewPage_Unloaded(object sender, RoutedEventArgs e)
+    {
+        foreach (ItemsRepeater rowsRepeater in _rowRepeaters)
+        {
+            rowsRepeater.ElementPrepared -= RowsRepeater_ElementPrepared;
+        }
+
+        _rowRepeaters.Clear();
     }
 
     private void BasicTable_SelectionChanged(TableView sender, SelectionChangedEventArgs args)

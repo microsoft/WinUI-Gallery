@@ -208,6 +208,7 @@
                     Text="Combine a text column with custom cells: an avatar and two lines of text, a status badge, a progress bar, and a read-only rating. SortMemberPath lets template columns sort by their underlying values."
                     TextWrapping="Wrap" />
                 <tabular:TableView
+                    x:Name="CustomColumnsTable"
                     Height="340"
                     MaxWidth="900"
                     HorizontalAlignment="Left"

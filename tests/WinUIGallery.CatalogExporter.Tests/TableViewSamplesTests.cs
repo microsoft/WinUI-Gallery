@@ -120,6 +120,19 @@ public sealed class TableViewSamplesTests
     }
 
     [TestMethod]
+    public void RealizedRowsReceiveAccessibleNames()
+    {
+        string repoRoot = CatalogGenerator.FindRepoRoot(AppContext.BaseDirectory);
+        string pageCode = File.ReadAllText(
+            Path.Combine(repoRoot, "WinUIGallery", "Samples", "TableView", "TableViewPage.xaml.cs"));
+
+        StringAssert.Contains(pageCode, "PART_RowsRepeater");
+        StringAssert.Contains(pageCode, "rowsRepeater.ElementPrepared += RowsRepeater_ElementPrepared;");
+        StringAssert.Contains(pageCode, "AutomationProperties.NameProperty");
+        StringAssert.Contains(pageCode, "nameof(TableViewSampleItem.AutomationName)");
+    }
+
+    [TestMethod]
     public void FilteringAndGroupingShareOneSource()
     {
         IndexControl tableView = GenerateTableView();

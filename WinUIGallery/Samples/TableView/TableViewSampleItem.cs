@@ -22,6 +22,7 @@ public sealed class TableViewSampleItem : INotifyPropertyChanged, INotifyDataErr
     public int Value { get; }
     public string Status => Id % 2 == 0 ? "Paused" : "Active";
     public int Rating => (Id - 1) % 5 + 1;
+    public string AutomationName => $"{Name}, ID {Id}, Category {Category}, Value {Value}";
     public bool HasErrors => _nameError is not null;
 
     public string Name
@@ -32,6 +33,7 @@ public sealed class TableViewSampleItem : INotifyPropertyChanged, INotifyDataErr
             string normalizedValue = value ?? string.Empty;
             if (SetProperty(ref _name, normalizedValue))
             {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AutomationName)));
                 string? error = string.IsNullOrWhiteSpace(normalizedValue) ? "Name is required." : null;
                 if (_nameError != error)
                 {
@@ -46,7 +48,13 @@ public sealed class TableViewSampleItem : INotifyPropertyChanged, INotifyDataErr
     public string Category
     {
         get => _category;
-        set => SetProperty(ref _category, value ?? string.Empty);
+        set
+        {
+            if (SetProperty(ref _category, value ?? string.Empty))
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AutomationName)));
+            }
+        }
     }
 
     public TableViewSampleItem(int id, string name, string category, int value)

@@ -8699,12 +8699,16 @@
       ],
       "usings": [
         "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Automation",
         "Microsoft.UI.Xaml.Controls",
         "Microsoft.UI.Xaml.Controls.Tabular",
+        "Microsoft.UI.Xaml.Data",
         "Microsoft.UI.Xaml.Media",
         "System",
+        "System.Collections.Generic",
         "System.Collections.ObjectModel",
-        "System.ComponentModel"
+        "System.ComponentModel",
+        "System.Linq"
       ],
       "keywords": [
         "Object",
