@@ -18,7 +18,7 @@ The releaser needs:
 - Write access to this GitHub repository.
 - Permission to run the Azure DevOps pipeline named
   `WinUI-Gallery-Store-Release`.
-- Access to the WinUI 3 Gallery product in Partner Center.
+- Access to the WinUI Gallery product in Partner Center.
 
 ## 1. Prepare the release commit
 
@@ -81,7 +81,7 @@ While Store certification is running, create a draft GitHub release:
 
 - Tag: `vX.Y.Z`
 - Target: the exact commit SHA used for the Store update
-- Title: `WinUI 3 Gallery vX.Y.Z`
+- Title: `WinUI Gallery vX.Y.Z`
 - Release notes: summarize the release and include the generated comparison
   from the previous release tag
 
