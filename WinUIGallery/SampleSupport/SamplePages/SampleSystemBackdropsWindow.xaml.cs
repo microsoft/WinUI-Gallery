@@ -34,7 +34,6 @@ public sealed partial class SampleSystemBackdropsWindow : Window
         AppWindow.SetIcon(@"Assets\Tiles\GalleryIcon.ico");
         ExtendsContentIntoTitleBar = true;
         ((FrameworkElement)Content).RequestedTheme = ThemeHelper.RootTheme;
-        DispatcherQueue.EnsureSystemDispatcherQueue();
 
         backdropComboBox.SelectedIndex = 0;
         themeComboBox.SelectedIndex = 0;
@@ -136,12 +135,18 @@ public sealed partial class SampleSystemBackdropsWindow : Window
             configurationSource.IsInputActive = true;
             SetConfigurationSourceTheme();
 
-            micaController = new MicaController { Kind = useMicaAlt ? MicaKind.BaseAlt : MicaKind.Base };
+            MicaController controller = new() { Kind = useMicaAlt ? MicaKind.BaseAlt : MicaKind.Base };
 
             // Enable the system backdrop.
             // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
-            micaController.AddSystemBackdropTarget(this.As<ICompositionSupportsSystemBackdrop>());
-            micaController.SetSystemBackdropConfiguration(configurationSource);
+            if (!controller.AddSystemBackdropTarget(this.As<ICompositionSupportsSystemBackdrop>()))
+            {
+                controller.Dispose();
+                return false;
+            }
+
+            controller.SetSystemBackdropConfiguration(configurationSource);
+            micaController = controller;
             return true; // Succeeded.
         }
 
@@ -162,12 +167,18 @@ public sealed partial class SampleSystemBackdropsWindow : Window
             configurationSource.IsInputActive = true;
             SetConfigurationSourceTheme();
 
-            acrylicController = new DesktopAcrylicController { Kind = useAcrylicThin ? DesktopAcrylicKind.Thin : DesktopAcrylicKind.Base };
+            DesktopAcrylicController controller = new() { Kind = useAcrylicThin ? DesktopAcrylicKind.Thin : DesktopAcrylicKind.Base };
 
             // Enable the system backdrop.
             // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
-            acrylicController.AddSystemBackdropTarget(this.As<ICompositionSupportsSystemBackdrop>());
-            acrylicController.SetSystemBackdropConfiguration(configurationSource);
+            if (!controller.AddSystemBackdropTarget(this.As<ICompositionSupportsSystemBackdrop>()))
+            {
+                controller.Dispose();
+                return false;
+            }
+
+            controller.SetSystemBackdropConfiguration(configurationSource);
+            acrylicController = controller;
             return true; // Succeeded.
         }
 

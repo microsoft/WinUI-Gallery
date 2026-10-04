@@ -20,8 +20,10 @@ public sealed partial class XamlCompInteropPage : Page
         this.InitializeComponent();
     }
 
-    Compositor _compositor = Microsoft.UI.Xaml.Media.CompositionTarget.GetCompositorForCurrentThread();
+    private readonly Compositor _compositor = Microsoft.UI.Xaml.Media.CompositionTarget.GetCompositorForCurrentThread();
     private SpringVector3NaturalMotionAnimation? _springAnimation;
+
+    internal Compositor Compositor => _compositor;
 
     private void NaturalMotionExample_Loaded(object sender, RoutedEventArgs e)
     {

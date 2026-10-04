@@ -150,6 +150,9 @@
 	
   <ItemGroup Condition="'$(IsInWinUIRepo)' != 'true'">
     <PackageReference Update="Microsoft.WindowsAppSDK" Version="$(WindowsAppSdkPackageVersion)" />
+    <PackageReference Include="Microsoft.WindowsAppSDK.WinUI"
+                      Version="$(LocalWinUIPackageVersion)"
+                      Condition="'$(UseLocalSystemCompositorPayload)' == 'true'" />
     <PackageReference Remove="ColorCode.Core" />
     <PackageReference Include="ColorCode.WinUI" Version="$(ColorCodeVersion)" />
     <PackageReference Update="CommunityToolkit.WinUI.Controls.SettingsControls" Version="$(CommunityToolkitWinUIVersion)" />
@@ -163,6 +166,65 @@
     <PackageReference Update="Microsoft.Windows.CsWin32" Version="0.3.269" />
     <PackageReference Update="Microsoft.Windows.SDK.BuildTools.MSIX" Version="1.7.260316102" />
   </ItemGroup>
+
+    <ItemGroup Condition="'$(UseLocalSystemCompositorPayload)' == 'true'">
+        <None Include="$(LocalWinUIInternalPath)"
+              Link="Microsoft.UI.Xaml.Internal.dll"
+              TargetPath="Microsoft.UI.Xaml.Internal.dll"
+              CopyToOutputDirectory="PreserveNewest"
+              CopyToPublishDirectory="PreserveNewest" />
+        <None Include="$(LocalDcompiPath)"
+              Link="dcompi.dll"
+              TargetPath="dcompi.dll"
+              CopyToOutputDirectory="PreserveNewest"
+              CopyToPublishDirectory="PreserveNewest" />
+        <None Include="$(LocalFrameworkUdkPath)"
+              Link="Microsoft.Internal.FrameworkUdk.dll"
+              TargetPath="Microsoft.Internal.FrameworkUdk.dll"
+              CopyToOutputDirectory="PreserveNewest"
+              CopyToPublishDirectory="PreserveNewest" />
+    </ItemGroup>
+
+    <Target Name="ReplaceLocalSystemCompositorPayload"
+            Condition="'$(UseLocalSystemCompositorPayload)' == 'true'"
+            AfterTargets="ResolveReferences"
+            BeforeTargets="_CopyFilesMarkedCopyLocal;ComputeFilesToPublish;_ComputeAppxPackagePayload">
+        <Error Condition="'$(LocalWinUIPackageVersion)' == ''" Text="LocalWinUIPackageVersion must be specified." />
+        <Error Condition="!Exists('$(LocalWinUIInternalPath)')" Text="LocalWinUIInternalPath does not exist: $(LocalWinUIInternalPath)" />
+        <Error Condition="!Exists('$(LocalDcompiPath)')" Text="LocalDcompiPath does not exist: $(LocalDcompiPath)" />
+        <Error Condition="!Exists('$(LocalFrameworkUdkPath)')" Text="LocalFrameworkUdkPath does not exist: $(LocalFrameworkUdkPath)" />
+        <ItemGroup>
+            <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)"
+                                     Condition="'%(ReferenceCopyLocalPaths.Filename)%(ReferenceCopyLocalPaths.Extension)' == 'Microsoft.UI.Xaml.Internal.dll' Or
+                                                '%(ReferenceCopyLocalPaths.Filename)%(ReferenceCopyLocalPaths.Extension)' == 'Microsoft.Internal.FrameworkUdk.dll' Or
+                                                '%(ReferenceCopyLocalPaths.Filename)%(ReferenceCopyLocalPaths.Extension)' == 'dcompi.dll' Or
+                                                '%(ReferenceCopyLocalPaths.Filename)%(ReferenceCopyLocalPaths.Extension)' == 'dwmcorei.dll'" />
+        </ItemGroup>
+    </Target>
+
+    <Target Name="FinalizeLocalSystemCompositorPublishPayload"
+            Condition="'$(UseLocalSystemCompositorPayload)' == 'true'"
+            AfterTargets="ComputeFilesToPublish">
+        <ItemGroup>
+            <ResolvedFileToPublish Remove="@(ResolvedFileToPublish)"
+                                   Condition="'%(ResolvedFileToPublish.Filename)%(ResolvedFileToPublish.Extension)' == 'Microsoft.UI.Xaml.Internal.dll' Or
+                                              '%(ResolvedFileToPublish.Filename)%(ResolvedFileToPublish.Extension)' == 'Microsoft.Internal.FrameworkUdk.dll' Or
+                                              '%(ResolvedFileToPublish.Filename)%(ResolvedFileToPublish.Extension)' == 'dcompi.dll' Or
+                                              '%(ResolvedFileToPublish.Filename)%(ResolvedFileToPublish.Extension)' == 'dwmcorei.dll'" />
+            <ResolvedFileToPublish Include="$(LocalWinUIInternalPath)">
+                <RelativePath>Microsoft.UI.Xaml.Internal.dll</RelativePath>
+                <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+            </ResolvedFileToPublish>
+            <ResolvedFileToPublish Include="$(LocalDcompiPath)">
+                <RelativePath>dcompi.dll</RelativePath>
+                <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+            </ResolvedFileToPublish>
+            <ResolvedFileToPublish Include="$(LocalFrameworkUdkPath)">
+                <RelativePath>Microsoft.Internal.FrameworkUdk.dll</RelativePath>
+                <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+            </ResolvedFileToPublish>
+        </ItemGroup>
+    </Target>
 
     <!--Per comment in Microsoft.Common.CurrentVersion.targets, the default GetCopyToPublishDirectoryItems 
         just returns GetCopyToOutputDirectoryItems, which automatically includes the ContentWithTargetPath
