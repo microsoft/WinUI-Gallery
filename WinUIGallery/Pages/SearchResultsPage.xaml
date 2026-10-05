@@ -109,7 +109,7 @@
                             Spacing="8"
                             VerticalAlignment="Center">
 
-                    <FontIcon Glyph="&#xF0E2;"
+                    <FontIcon FontSize="14" Glyph="&#xF0E2;"
                               VerticalAlignment="Center" />
 
                     <TextBlock Text="View all samples"
