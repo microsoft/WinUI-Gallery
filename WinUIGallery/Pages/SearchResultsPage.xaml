@@ -10,52 +10,122 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource HomePageBackgroundBrush}">
-        <NavigationView
-            x:Name="resultsNavView"
-            IsBackButtonVisible="Collapsed"
-            IsSettingsVisible="False"
-            Loaded="OnResultsNavViewLoaded"
-            MenuItemsSource="{x:Bind Filters, Mode=OneWay}"
-            PaneDisplayMode="Top"
-            SelectionChanged="OnResultsNavViewSelectionChanged">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.ThemeDictionaries>
+                    <ResourceDictionary x:Key="Default">
+                        <ImageSource x:Key="ImageSource">ms-appx:///Assets/NoResults.dark.png</ImageSource>
+                    </ResourceDictionary>
+                    <ResourceDictionary x:Key="Light">
+                        <ImageSource x:Key="ImageSource">ms-appx:///Assets/NoResults.light.png</ImageSource>
+                    </ResourceDictionary>
+                </ResourceDictionary.ThemeDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
+
+        <NavigationView x:Name="resultsNavView"
+                        IsBackButtonVisible="Collapsed"
+                        IsSettingsVisible="False"
+                        Loaded="OnResultsNavViewLoaded"
+                        MenuItemsSource="{x:Bind Filters, Mode=OneWay}"
+                        PaneDisplayMode="Top"
+                        SelectionChanged="OnResultsNavViewSelectionChanged">
             <UserControl>
-                <GridView
-                    x:Name="resultsGridView"
-                    Padding="36,24,36,36"
-                    AutomationProperties.AutomationId="ResultsGridView"
-                    AutomationProperties.Name="Search Results"
-                    ContainerContentChanging="OnItemGridViewContainerContentChanging"
-                    IsItemClickEnabled="True"
-                    IsSwipeEnabled="False"
-                    ItemClick="OnItemGridViewItemClick"
-                    ItemContainerStyle="{StaticResource GridViewItemStyle}"
-                    ItemTemplate="{StaticResource ControlItemTemplate}"
-                    ItemsSource="{x:Bind ((local:Filter)resultsNavView.SelectedItem).Items, Mode=OneWay}"
-                    Loaded="OnItemGridViewLoaded"
-                    SelectionMode="None"
-                    TabIndex="1">
+                <GridView x:Name="resultsGridView"
+                          Padding="36,24,36,36"
+                          AutomationProperties.AutomationId="ResultsGridView"
+                          AutomationProperties.Name="Search Results"
+                          ContainerContentChanging="OnItemGridViewContainerContentChanging"
+                          IsItemClickEnabled="True"
+                          IsSwipeEnabled="False"
+                          ItemClick="OnItemGridViewItemClick"
+                          ItemContainerStyle="{StaticResource GridViewItemStyle}"
+                          ItemTemplate="{StaticResource ControlItemTemplate}"
+                          ItemsSource="{x:Bind ((local:Filter)resultsNavView.SelectedItem).Items, Mode=OneWay}"
+                          Loaded="OnItemGridViewLoaded"
+                          SelectionMode="None"
+                          TabIndex="1">
                     <GridView.Resources>
                         <CornerRadius x:Key="GridViewItemCornerRadius">8</CornerRadius>
                     </GridView.Resources>
                 </GridView>
             </UserControl>
         </NavigationView>
+        
+        <StackPanel x:Name="noResultsPanel"
+                    VerticalAlignment="Center"
+                    Spacing="12"
+                    Visibility="Collapsed">
 
-        <TextBlock
-            x:Name="noResultsTextBlock"
-            Margin="24,24,0,0"
-            AutomationProperties.HeadingLevel="Level2"
-            Style="{StaticResource TitleTextBlockStyle}"
-            Text="No results match your search."
-            Visibility="Collapsed" />
+            <Image Source="{ThemeResource ImageSource}"
+                   Height="160"
+                   HorizontalAlignment="Center" />
+
+            <TextBlock x:Name="noResultsTextBlock"
+                       Style="{StaticResource TitleTextBlockStyle}"
+                       HorizontalAlignment="Center" />
+            
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}"
+                       Text="Try a different search term or browse the samples below."
+                       HorizontalAlignment="Center"
+                       TextWrapping="Wrap"
+                       MaxWidth="500" />
+
+            <InfoBar Title="Search tips"
+                     IsOpen="True"
+                     IsClosable="False"
+                     MaxWidth="500"
+                     Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">
+                <InfoBar.IconSource>
+                    <FontIconSource Glyph="&#xEA80;" />
+                </InfoBar.IconSource>
+
+                <InfoBar.Content>
+                    <RichTextBlock Margin="0,-16,16,16"
+                                   Foreground="{ThemeResource TextFillColorPrimaryBrush}">
+                        <Paragraph>
+                            • Search by sample name, for example, Button.
+                        </Paragraph>
+                        <Paragraph>
+                            • Search by concept, for example, Data binding.
+                        </Paragraph>
+                        <Paragraph>
+                            • Search by keyword, for example, Animation.
+                        </Paragraph>
+                    </RichTextBlock>
+                </InfoBar.Content>
+            </InfoBar>
+
+            <Button x:Name="AllSamplesButton"
+                    Margin="0,12,0,0"
+                    Padding="15,9,15,10"
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource AccentButtonStyle}"
+                    CornerRadius="20"
+                    AutomationProperties.Name="View all samples"
+                    Click="AllSamplesButton_Click">
+
+                <StackPanel Orientation="Horizontal"
+                            Spacing="8"
+                            VerticalAlignment="Center">
+
+                    <FontIcon FontSize="14" Glyph="&#xF0E2;"
+                              VerticalAlignment="Center" />
+
+                    <TextBlock Text="View all samples"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ResultStates">
                 <VisualState x:Name="ResultsFound" />
-                <!--  When there are no results, the results panel is replaced with an informational TextBlock  -->
+                <!--  When there are no results, the results panel is replaced with an informational panel  -->
                 <VisualState x:Name="NoResultsFound">
                     <VisualState.Setters>
                         <Setter Target="resultsNavView.Visibility" Value="Collapsed" />
-                        <Setter Target="noResultsTextBlock.Visibility" Value="Visible" />
+                        <Setter Target="noResultsPanel.Visibility" Value="Visible" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
