@@ -1,7 +1,7 @@
 --- header
 Create a line chart with axes and a legend
 --- xaml
-<charts:Chart ShowLegend="True" LegendTitle="Revenue">
+<charts:Chart ShowLegend="$(ShowLegend)" LegendTitle="Profit">
     <charts:Chart.Data>
         <charts:Samples x:Name="Month"
                         ItemsSource="{x:Bind Months, Mode=OneTime}" />

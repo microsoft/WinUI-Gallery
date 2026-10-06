@@ -1,11 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Charts;
-using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Controls.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,6 +20,7 @@ public sealed partial class ChartPage : Page, INotifyPropertyChanged
     private readonly double[] _incomingResponseTimes = [176, 169, 181, 165, 172];
     private int _nextResponseTimeIndex;
     private string _liveSeriesSummary = string.Empty;
+    private DateTimeAxis? _timeSeriesAxis;
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -45,6 +45,14 @@ public sealed partial class ChartPage : Page, INotifyPropertyChanged
     public string[] Regions { get; } = ["North", "South", "East", "West"];
 
     public double[] UnitsSold { get; } = [42, 38, 51, 47];
+
+    public string[] Quarters { get; } = ["Q1", "Q2", "Q3", "Q4"];
+
+    public double[] QuarterlyVisitors { get; } = [35, 62, 48, 81];
+
+    public string[] Days { get; } = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+    public double[] DailyVisits { get; } = [120, 135, 128, 172, 150, 98, 110];
 
     public List<DateTimeOffset> ReadingDates { get; } =
     [
@@ -83,32 +91,177 @@ public sealed partial class ChartPage : Page, INotifyPropertyChanged
     {
         InitializeComponent();
 
-        SolidColorBrush labelHighlight = new(Colors.Black);
-        SolidColorBrush markerHighlight = new(Colors.Magenta);
-        TargetSeries.DataLabelOverrides[2] = new DataLabelOverride("Peak", labelHighlight);
-        TargetSeries.DataMarkerOverrides[2] = new DataMarkerOverride(MarkerShape.Asterisk, markerHighlight);
+        HighlightPeakVisits();
+        CreateTimeSeriesChart();
+        UpdateLiveSeriesSummary();
+    }
 
+    private static T? GetSelectedTag<T>(ComboBox comboBox)
+        where T : struct, Enum
+    {
+        return comboBox.SelectedItem is ComboBoxItem { Tag: string tag } && Enum.TryParse(tag, out T value)
+            ? value
+            : null;
+    }
+
+    // The charts declare their initial values in markup, so option handlers only apply changes
+    // the user makes after the page loads.
+    private void LegendToggle_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (IsLoaded)
+        {
+            BasicLineChart.ShowLegend = LegendToggle.IsOn;
+        }
+    }
+
+    private void BarOrientationComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (IsLoaded && GetSelectedTag<BarOrientation>(BarOrientationComboBox) is BarOrientation orientation)
+        {
+            UnitsSeries.Orientation = orientation;
+        }
+    }
+
+    private void CategorySortComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (!IsLoaded)
+        {
+            return;
+        }
+
+        if (GetSelectedTag<CategorySortKey>(SortKeyComboBox) is CategorySortKey sortKey)
+        {
+            RegionX.SortKey = sortKey;
+        }
+
+        if (GetSelectedTag<SortOrder>(SortOrderComboBox) is SortOrder sortOrder)
+        {
+            RegionX.SortOrder = sortOrder;
+        }
+    }
+
+    private void GridLinesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (IsLoaded && GetSelectedTag<GridLines>(GridLinesComboBox) is GridLines gridLines)
+        {
+            VisitorsY.GridLines = gridLines;
+        }
+    }
+
+    private void AxisOptionToggle_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (!IsLoaded)
+        {
+            return;
+        }
+
+        foreach (CartesianAxis axis in new CartesianAxis[] { QuarterX, VisitorsY })
+        {
+            axis.IsVisible = AxesVisibleToggle.IsOn;
+            axis.ShowTickLabels = TickLabelsToggle.IsOn;
+            axis.ShowTickMarks = TickMarksToggle.IsOn;
+        }
+    }
+
+    private void SeriesVisibilityCheckBox_Click(object sender, RoutedEventArgs e)
+    {
+        ForecastSeries.IsVisible = ForecastCheckBox.IsChecked == true;
+        ActualSeries.IsVisible = ActualCheckBox.IsChecked == true;
+        TargetSeries.IsVisible = TargetCheckBox.IsChecked == true;
+    }
+
+    private void DashStyleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (IsLoaded && GetSelectedTag<StrokeDashStyle>(DashStyleComboBox) is StrokeDashStyle dashStyle)
+        {
+            VisitsSeries.StrokeDashStyle = dashStyle;
+        }
+    }
+
+    private void StrokeThicknessSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+    {
+        if (IsLoaded)
+        {
+            VisitsSeries.StrokeThickness = e.NewValue;
+        }
+    }
+
+    private void MarkerShapeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (IsLoaded && GetSelectedTag<MarkerShape>(MarkerShapeComboBox) is MarkerShape markerShape)
+        {
+            VisitsSeries.MarkerShape = markerShape;
+        }
+    }
+
+    private void DataPointToggle_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (IsLoaded)
+        {
+            VisitsSeries.ShowDataMarkers = DataMarkersToggle.IsOn;
+            VisitsSeries.ShowDataLabels = DataLabelsToggle.IsOn;
+        }
+    }
+
+    private void HighlightPeakVisits()
+    {
+        uint peakIndex = (uint)Array.IndexOf(DailyVisits, DailyVisits.Max());
+
+        // The series leaves DataLabelBrush unset, so passing it keeps the theme-aware default.
+        VisitsSeries.DataLabelOverrides[peakIndex] = new DataLabelOverride("Peak", VisitsSeries.DataLabelBrush);
+        VisitsSeries.DataMarkerOverrides[peakIndex] = new DataMarkerOverride(MarkerShape.Diamond, VisitsSeries.DataMarkerBrush);
+    }
+
+    private void CreateTimeSeriesChart()
+    {
         ChartSamples day = new() { ItemsSource = ReadingDates };
         ChartSamples reading = new() { ItemsSource = TemperatureReadings };
-        DateTimeAxis dayX = new()
+
+        _timeSeriesAxis = new DateTimeAxis
         {
             Label = "Date",
+            Minimum = new DateTimeOffset(2026, 7, 27, 0, 0, 0, TimeSpan.Zero),
+            Maximum = new DateTimeOffset(2026, 9, 7, 0, 0, 0, TimeSpan.Zero),
             IntervalType = DateTimeIntervalType.Week,
             LabelFormat = "month day",
         };
 
+        LinearAxis temperatureY = new()
+        {
+            Label = "Temperature (°F)",
+            GridLines = GridLines.Major,
+        };
+
         TimeSeriesChart.Data.Add(day);
         TimeSeriesChart.Data.Add(reading);
-        TimeSeriesChart.Axes.Add(dayX);
+        TimeSeriesChart.Axes.Add(_timeSeriesAxis);
+        TimeSeriesChart.Axes.Add(temperatureY);
         TimeSeriesChart.Series.Add(new AreaSeries
         {
             Title = "Temperature",
-            XAxis = dayX,
+            XAxis = _timeSeriesAxis,
+            YAxis = temperatureY,
             XValues = day,
             YValues = reading,
         });
+    }
 
-        UpdateLiveSeriesSummary();
+    private void DateTimeAxisOption_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (!IsLoaded || _timeSeriesAxis is null)
+        {
+            return;
+        }
+
+        if (GetSelectedTag<DateTimeIntervalType>(IntervalTypeComboBox) is DateTimeIntervalType intervalType)
+        {
+            _timeSeriesAxis.IntervalType = intervalType;
+        }
+
+        if (LabelFormatComboBox?.SelectedItem is ComboBoxItem { Tag: string labelFormat })
+        {
+            _timeSeriesAxis.LabelFormat = labelFormat;
+        }
     }
 
     private void AddResponseTimeSampleButton_Click(object sender, RoutedEventArgs e)
@@ -120,6 +273,7 @@ public sealed partial class ChartPage : Page, INotifyPropertyChanged
         {
             ResponseTimes.RemoveAt(0);
         }
+
         UpdateLiveSeriesSummary();
     }
 

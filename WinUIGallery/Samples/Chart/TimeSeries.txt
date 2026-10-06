@@ -1,27 +1,50 @@
 --- header
 Plot a time series
 --- xaml
-<charts:Chart
-    x:Name="TimeSeriesChart"
-    AutomationProperties.Name="Weekly temperature area chart" />
+<charts:Chart x:Name="TimeSeriesChart"
+              AutomationProperties.Name="Weekly temperature area chart" />
 --- c#
-Samples day = new() { ItemsSource = ReadingDates };
-Samples reading = new() { ItemsSource = TemperatureReadings };
+public List<DateTimeOffset> ReadingDates { get; } =
+[
+    new DateTimeOffset(2026, 8, 3, 0, 0, 0, TimeSpan.Zero),
+    new DateTimeOffset(2026, 8, 10, 0, 0, 0, TimeSpan.Zero),
+    new DateTimeOffset(2026, 8, 17, 0, 0, 0, TimeSpan.Zero),
+    new DateTimeOffset(2026, 8, 24, 0, 0, 0, TimeSpan.Zero),
+    new DateTimeOffset(2026, 8, 31, 0, 0, 0, TimeSpan.Zero),
+];
 
-DateTimeAxis dayX = new()
-{
-    Label = "Date",
-    IntervalType = DateTimeIntervalType.Week,
-    LabelFormat = "month day",
-};
+public double[] TemperatureReadings { get; } = [72, 76, 74, 79, 77];
 
-TimeSeriesChart.Data.Add(day);
-TimeSeriesChart.Data.Add(reading);
-TimeSeriesChart.Axes.Add(dayX);
-TimeSeriesChart.Series.Add(new AreaSeries
+private void CreateTimeSeriesChart()
 {
-    Title = "Temperature",
-    XAxis = dayX,
-    XValues = day,
-    YValues = reading,
-});
+    Samples day = new() { ItemsSource = ReadingDates };
+    Samples reading = new() { ItemsSource = TemperatureReadings };
+
+    DateTimeAxis dayX = new()
+    {
+        Label = "Date",
+        Minimum = new DateTimeOffset(2026, 7, 27, 0, 0, 0, TimeSpan.Zero),
+        Maximum = new DateTimeOffset(2026, 9, 7, 0, 0, 0, TimeSpan.Zero),
+        IntervalType = DateTimeIntervalType.$(IntervalType),
+        LabelFormat = "$(LabelFormat)",
+    };
+
+    LinearAxis temperatureY = new()
+    {
+        Label = "Temperature (°F)",
+        GridLines = GridLines.Major,
+    };
+
+    TimeSeriesChart.Data.Add(day);
+    TimeSeriesChart.Data.Add(reading);
+    TimeSeriesChart.Axes.Add(dayX);
+    TimeSeriesChart.Axes.Add(temperatureY);
+    TimeSeriesChart.Series.Add(new AreaSeries
+    {
+        Title = "Temperature",
+        XAxis = dayX,
+        YAxis = temperatureY,
+        XValues = day,
+        YValues = reading,
+    });
+}

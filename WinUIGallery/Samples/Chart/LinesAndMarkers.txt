@@ -1,0 +1,46 @@
+--- header
+Customize lines, markers, and data labels
+--- xaml
+<charts:Chart>
+    <charts:Chart.Data>
+        <charts:Samples x:Name="Day"
+                        ItemsSource="{x:Bind Days, Mode=OneTime}" />
+        <charts:Samples x:Name="Visits"
+                        ItemsSource="{x:Bind DailyVisits, Mode=OneTime}" />
+    </charts:Chart.Data>
+
+    <charts:Chart.Axes>
+        <charts:CategoryAxis x:Name="DayX" Label="Day" />
+        <charts:LinearAxis x:Name="VisitsY"
+                           Label="Visits"
+                           Minimum="0"
+                           GridLines="Major" />
+    </charts:Chart.Axes>
+
+    <charts:LineSeries x:Name="VisitsSeries"
+                       Title="Visits"
+                       XAxis="{x:Bind DayX, Mode=OneTime}"
+                       YAxis="{x:Bind VisitsY, Mode=OneTime}"
+                       XValues="{x:Bind Day, Mode=OneTime}"
+                       YValues="{x:Bind Visits, Mode=OneTime}"
+                       Stroke="#8764B8"
+                       StrokeDashStyle="$(StrokeDashStyle)"
+                       StrokeThickness="$(StrokeThickness)"
+                       ShowDataMarkers="$(ShowDataMarkers)"
+                       MarkerShape="$(MarkerShape)"
+                       DataMarkerBrush="#8764B8"
+                       ShowDataLabels="$(ShowDataLabels)" />
+</charts:Chart>
+--- c#
+public string[] Days { get; } = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+public double[] DailyVisits { get; } = [120, 135, 128, 172, 150, 98, 110];
+
+private void HighlightPeakVisits()
+{
+    uint peakIndex = (uint)Array.IndexOf(DailyVisits, DailyVisits.Max());
+
+    // The series leaves DataLabelBrush unset, so passing it keeps the theme-aware default.
+    VisitsSeries.DataLabelOverrides[peakIndex] = new DataLabelOverride("Peak", VisitsSeries.DataLabelBrush);
+    VisitsSeries.DataMarkerOverrides[peakIndex] = new DataMarkerOverride(MarkerShape.Diamond, VisitsSeries.DataMarkerBrush);
+}

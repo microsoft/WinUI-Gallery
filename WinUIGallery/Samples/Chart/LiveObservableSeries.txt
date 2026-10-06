@@ -41,4 +41,10 @@ public ObservableCollection<double> ResponseTimes { get; } =
 private void AddResponseTimeSampleButton_Click(object sender, RoutedEventArgs e)
 {
     ResponseTimes.Add(176);
+
+    // Keep the eight most recent values.
+    if (ResponseTimes.Count > 8)
+    {
+        ResponseTimes.RemoveAt(0);
+    }
 }
