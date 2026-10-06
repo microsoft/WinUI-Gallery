@@ -12,6 +12,7 @@
             "ResourceDictionary",
             "StaticResource",
             "ThemeResource",
+            "SetThemeResourceBinding",
             "Resources",
             "lightweight styling"
           ],

@@ -121,6 +121,11 @@
                     <Run Text="are defined to provide different values for light and dark themes." />
                 </Paragraph>
                 <Paragraph>• A fallback value should always be provided to ensure compatibility with undefined themes.</Paragraph>
+                <Paragraph>
+                    <Run Text="•" />
+                    <Run FontFamily="Consolas" Text="SetThemeResourceBinding" />
+                    <Run Text="(experimental) applies a ThemeResource from code, so the value updates when the theme changes." />
+                </Paragraph>
             </RichTextBlock>
         </StackPanel>
 
@@ -190,6 +195,51 @@
                     </Grid>
                 </StackPanel>
             </controls:ControlExample.Example>
+        </controls:ControlExample>
+
+        <controls:ControlExample SampleDefinition="XamlResources\XamlResourcesSetThemeResourceFromCode.txt">
+            <controls:ControlExample.Example>
+                <StackPanel Spacing="12">
+                    <TextBlock Text="FrameworkElement.SetThemeResourceBinding is an experimental API and is the code equivalent of {ThemeResource Key}. Switch the theme of this example to compare it with a one-time resource lookup." TextWrapping="Wrap" />
+                    <Grid
+                        x:Name="ThemeResourceFromCodeRoot"
+                        Padding="12"
+                        HorizontalAlignment="Left"
+                        Background="{ThemeResource SolidBackgroundFillColorBaseBrush}"
+                        ColumnSpacing="12"
+                        CornerRadius="{StaticResource ControlCornerRadius}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
+                        </Grid.ColumnDefinitions>
+                        <Border
+                            x:Name="OneTimeLookupBorder"
+                            Padding="12"
+                            CornerRadius="{StaticResource ControlCornerRadius}">
+                            <TextBlock
+                                x:Name="OneTimeLookupText"
+                                Text="Resources[&quot;Key&quot;] keeps the value from when it was read."
+                                TextWrapping="Wrap" />
+                        </Border>
+                        <Border
+                            x:Name="ThemeResourceBindingBorder"
+                            Grid.Column="1"
+                            Padding="12"
+                            CornerRadius="{StaticResource ControlCornerRadius}">
+                            <TextBlock
+                                x:Name="ThemeResourceBindingText"
+                                Text="SetThemeResourceBinding updates when the theme changes."
+                                TextWrapping="Wrap" />
+                        </Border>
+                    </Grid>
+                </StackPanel>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Options>
+                <Button
+                    AutomationProperties.Name="Switch the theme of this example"
+                    Click="SwitchThemeButton_Click"
+                    Content="Switch theme" />
+            </controls:ControlExample.Options>
         </controls:ControlExample>
     </StackPanel>
 </Page>
