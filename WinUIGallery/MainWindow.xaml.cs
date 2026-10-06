@@ -300,7 +300,7 @@ public sealed partial class MainWindow : Window
 
     private static IconElement GetIcon(string imagePath)
     {
-        return imagePath.ToLowerInvariant().EndsWith(".png") ?
+        return imagePath.EndsWith(".png", StringComparison.OrdinalIgnoreCase) ?
                     (IconElement)new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute), ShowAsMonochrome = false } :
                     (IconElement)new FontIcon()
                     {
