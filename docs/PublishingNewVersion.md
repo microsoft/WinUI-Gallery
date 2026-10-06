@@ -24,9 +24,9 @@ To test an update with a small group before releasing it to everyone, also set
 up a [package flight](https://learn.microsoft.com/windows/apps/publish/package-flights)
 once in Partner Center:
 
-1. Under **Customers** > **Customer groups**, create a known user group (for
-   example, `WinUI Gallery testers`) that contains the Microsoft accounts of
-   the testers.
+1. Under **Customers** > **Customer groups**, create a known user group that
+   contains the Microsoft accounts of the testers. WinUI Gallery uses the
+   `WinUI 3 Gallery testers` group.
 2. In the WinUI Gallery product, open **Package flights** and create a flight
    (for example, `Insiders`) that targets that group. Record the flight name
    exactly; the pipeline looks it up by name.
@@ -47,6 +47,12 @@ Choose the release version `X.Y.Z`. Update all three checked-in version values t
 Open and merge a version-bump pull request into `main`. Include any final
 dependency updates or release-only changes in that pull request so the merged
 commit is the exact source to release.
+
+If the release changes the app's display name (`DisplayName` in
+`Package.appxmanifest`), first reserve the new name in Partner Center under
+**Product management** > **Manage app names**. Store package validation rejects
+a package whose display name does not exactly match a reserved name. Select the
+new name in the Store listing before the update is released to all customers.
 
 Wait for the required GitHub checks on `main` to pass. Record the merged commit
 SHA; the Store build and GitHub release must both use that commit.
