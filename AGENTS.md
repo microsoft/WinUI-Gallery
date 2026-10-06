@@ -10,3 +10,8 @@ Follow the repository architecture, build, accessibility, and coding guidance in
 - Keep sample data, labels, and supporting models small, neutral, and reusable. Do not introduce business workflows, large domain models, or unrelated application infrastructure unless the control requires them.
 - Prefer several concise, logically separated examples over one comprehensive scenario that combines many features.
 - Add a scenario-based example only after the foundational concepts are covered and only when the scenario is the clearest way to demonstrate how multiple control capabilities work together.
+
+## Releases
+
+- Follow `docs/PublishingNewVersion.md` to ship a new version to the Microsoft Store, including package-flight testing.
+- Use the `.github/skills/winui-gallery-blog-post` skill to draft the release announcement for DevBlogs.
