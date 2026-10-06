@@ -20,20 +20,22 @@ The releaser needs:
   `WinUI-Gallery-Store-Release`.
 - Access to the WinUI Gallery product in Partner Center.
 
-To test an update with a small group before releasing it to everyone, also set
-up a [package flight](https://learn.microsoft.com/windows/apps/publish/package-flights)
-once in Partner Center:
+To test an update with a small group before releasing it to everyone, submit it
+to a [package flight](https://learn.microsoft.com/windows/apps/publish/package-flights)
+first:
 
-1. Under **Customers** > **Customer groups**, create a known user group that
-   contains the Microsoft accounts of the testers. WinUI Gallery uses the
-   `WinUI 3 Gallery testers` group.
-2. In the WinUI Gallery product, open **Package flights** and create a flight
-   (for example, `Insiders`) that targets that group. Record the flight name
-   exactly; the pipeline looks it up by name.
+1. The flight group is the known user group `WinUI 3 Gallery testers` (under
+   **Customers** > **Customer groups** in Partner Center). Add testers'
+   Microsoft accounts there.
+2. For each release, open the product's **Application overview** page, go to
+   **Manage package flights**, and select **Create new package flight**. Name
+   it `WinUI Gallery X.Y.Z`, select the testers group, and make sure the new
+   flight has the highest rank. A flight's name and groups cannot be changed
+   later. The pipeline looks the flight up by this exact name.
 
-Members of a flight group only receive packages from that flight. They do not
-receive non-flighted updates, so keep the flight current or delete it when it is
-no longer needed.
+Members of a flight group only receive packages from the highest-ranked flight
+they belong to. They do not receive non-flighted updates, so delete old flights
+when they are no longer needed.
 
 ## 1. Prepare the release commit
 
@@ -78,7 +80,7 @@ Run the same pipeline again from the same `main` commit with:
 - `releaseVersion`: `X.Y.Z`
 - `publishToStore`: `true`
 - `storeReleaseTrack`: `Flight` (default) or `Production`
-- `storeFlightName`: the Partner Center flight name, for example `Insiders`
+- `storeFlightName`: the Partner Center flight name, for example `WinUI Gallery 3.0.0`
   (required for `Flight`, ignored for `Production`)
 
 This setting is not a dry run. It builds the `X.Y.Z.0` Store package and submits
