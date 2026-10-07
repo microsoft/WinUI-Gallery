@@ -3165,7 +3165,7 @@
           "ApiNamespace": "Microsoft.UI.Xaml.Controls.Charts",
           "Subtitle": "A preview control for visualizing numeric, category, and date-time data.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Chart.png",
-          "Description": "Chart plots Samples with line, area, and bar series on category, linear, and date-time axes. Configure axis ranges, ticks, and grid lines, legends, series visibility, line and marker styles, data labels, per-point label and marker overrides, and observable data sources.",
+          "Description": "Chart plots Samples with line, area, and bar series on category, linear, and date-time axes. Configure axis ranges, ticks, and grid lines, legends, series visibility, line and marker styles, data labels, per-point label and marker overrides, and updating series data.",
           "SourcePath": "/Chart",
           "IsExperimental": true,
           "Docs": [

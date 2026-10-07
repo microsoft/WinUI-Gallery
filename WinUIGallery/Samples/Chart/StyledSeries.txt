@@ -1,7 +1,7 @@
 --- header
 Combine area, bar, and line series
 --- xaml
-<charts:Chart ShowLegend="True" LegendTitle="Monthly results">
+<charts:Chart xmlns:charts="using:Microsoft.UI.Xaml.Controls.Charts" ShowLegend="True" LegendTitle="Monthly results">
     <charts:Chart.Data>
         <charts:Samples x:Name="Month" ItemsSource="{x:Bind Months, Mode=OneTime}" />
         <charts:Samples x:Name="Actual" ItemsSource="{x:Bind Actuals, Mode=OneTime}" />

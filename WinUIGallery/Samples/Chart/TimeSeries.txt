@@ -1,7 +1,7 @@
 --- header
 Plot a time series
 --- xaml
-<charts:Chart x:Name="TimeSeriesChart"
+<charts:Chart xmlns:charts="using:Microsoft.UI.Xaml.Controls.Charts" x:Name="TimeSeriesChart"
               AutomationProperties.Name="Weekly temperature area chart" />
 --- c#
 public List<DateTimeOffset> ReadingDates { get; } =

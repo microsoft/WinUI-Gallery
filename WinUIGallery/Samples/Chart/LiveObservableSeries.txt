@@ -1,7 +1,8 @@
 --- header
 Update a series data source
 --- xaml
-<StackPanel Spacing="12">
+<StackPanel xmlns:charts="using:Microsoft.UI.Xaml.Controls.Charts"
+            Spacing="12">
     <Button
         Click="AddResponseTimeSampleButton_Click"
         Content="Add sample" />
@@ -12,7 +13,7 @@ Update a series data source
     <charts:Chart AutomationProperties.Name="Live response time chart">
         <charts:Chart.Data>
             <charts:Samples x:Name="ResponseTime"
-                            ItemsSource="{x:Bind ResponseTimes, Mode=OneTime}" />
+                            ItemsSource="{x:Bind ResponseTimes, Mode=OneWay}" />
         </charts:Chart.Data>
 
         <charts:Chart.Axes>
@@ -29,22 +30,21 @@ Update a series data source
     </charts:Chart>
 </StackPanel>
 --- c#
-public ObservableCollection<double> ResponseTimes { get; } =
-[
-    184,
-    179,
-    173,
-    171,
-    168,
-];
+private double[] _responseTimes = [184, 179, 173, 171, 168];
+
+public double[] ResponseTimes
+{
+    get => _responseTimes;
+    private set
+    {
+        _responseTimes = value;
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ResponseTimes)));
+    }
+}
 
 private void AddResponseTimeSampleButton_Click(object sender, RoutedEventArgs e)
 {
-    ResponseTimes.Add(176);
-
-    // Keep the eight most recent values.
-    if (ResponseTimes.Count > 8)
-    {
-        ResponseTimes.RemoveAt(0);
-    }
+    // Samples.ItemsSource reads its values when it is set, so assign a new
+    // array instead of changing the existing one. Keep the eight most recent values.
+    ResponseTimes = [.. ResponseTimes.TakeLast(7), 176];
 }

@@ -1,7 +1,7 @@
 --- header
 Configure axes
 --- xaml
-<charts:Chart>
+<charts:Chart xmlns:charts="using:Microsoft.UI.Xaml.Controls.Charts">
     <charts:Chart.Data>
         <charts:Samples x:Name="Quarter"
                         ItemsSource="{x:Bind Quarters, Mode=OneTime}" />

@@ -1,7 +1,7 @@
 --- header
 Customize lines, markers, and data labels
 --- xaml
-<charts:Chart>
+<charts:Chart xmlns:charts="using:Microsoft.UI.Xaml.Controls.Charts">
     <charts:Chart.Data>
         <charts:Samples x:Name="Day"
                         ItemsSource="{x:Bind Days, Mode=OneTime}" />

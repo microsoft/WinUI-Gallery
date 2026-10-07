@@ -72,6 +72,7 @@
             <controls:ControlExample.Options>
                 <ToggleSwitch
                     x:Name="LegendToggle"
+                    VerticalAlignment="Top"
                     AutomationProperties.AutomationId="ChartLegendToggle"
                     AutomationProperties.Name="Show legend"
                     Header="Legend"
@@ -586,14 +587,8 @@
         <controls:ControlExample SampleDefinition="Chart\LiveObservableSeries.txt">
             <StackPanel Spacing="12">
                 <TextBlock
-                    Text="Bind Samples.ItemsSource to an ObservableCollection. The chart redraws when items are added or removed. This example keeps the eight most recent values."
+                    Text="Samples.ItemsSource reads its values when it is set. To update the chart, assign a new collection, for example through a OneWay binding to a property that raises PropertyChanged. This example keeps the eight most recent values."
                     TextWrapping="Wrap" />
-                <Button
-                    HorizontalAlignment="Left"
-                    AutomationProperties.AutomationId="ChartAddResponseTimeSampleButton"
-                    AutomationProperties.Name="Add response time sample"
-                    Click="AddResponseTimeSampleButton_Click"
-                    Content="Add sample" />
                 <TextBlock
                     AutomationProperties.AutomationId="ChartLiveSeriesSummary"
                     AutomationProperties.LiveSetting="Polite"
@@ -607,7 +602,7 @@
                     <charts:Chart.Data>
                         <charts:Samples
                             x:Name="ResponseTime"
-                            ItemsSource="{x:Bind ResponseTimes, Mode=OneTime}" />
+                            ItemsSource="{x:Bind ResponseTimes, Mode=OneWay}" />
                     </charts:Chart.Data>
 
                     <charts:Chart.Axes>
@@ -625,6 +620,14 @@
                         YValues="{x:Bind ResponseTime, Mode=OneTime}" />
                 </charts:Chart>
             </StackPanel>
+            <controls:ControlExample.Options>
+                <Button
+                    VerticalAlignment="Top"
+                    AutomationProperties.AutomationId="ChartAddResponseTimeSampleButton"
+                    AutomationProperties.Name="Add response time sample"
+                    Click="AddResponseTimeSampleButton_Click"
+                    Content="Add sample" />
+            </controls:ControlExample.Options>
         </controls:ControlExample>
     </StackPanel>
 </Page>

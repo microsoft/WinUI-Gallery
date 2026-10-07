@@ -7,7 +7,6 @@ using Microsoft.UI.Xaml.Controls.Charts;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -19,6 +18,7 @@ public sealed partial class ChartPage : Page, INotifyPropertyChanged
 {
     private readonly double[] _incomingResponseTimes = [176, 169, 181, 165, 172];
     private int _nextResponseTimeIndex;
+    private double[] _responseTimes = [184, 179, 173, 171, 168];
     private string _liveSeriesSummary = string.Empty;
     private DateTimeAxis? _timeSeriesAxis;
 
@@ -65,14 +65,15 @@ public sealed partial class ChartPage : Page, INotifyPropertyChanged
 
     public double[] TemperatureReadings { get; } = [72, 76, 74, 79, 77];
 
-    public ObservableCollection<double> ResponseTimes { get; } =
-    [
-        184,
-        179,
-        173,
-        171,
-        168,
-    ];
+    public double[] ResponseTimes
+    {
+        get => _responseTimes;
+        private set
+        {
+            _responseTimes = value;
+            OnPropertyChanged();
+        }
+    }
 
     public string LiveSeriesSummary
     {
@@ -266,13 +267,11 @@ public sealed partial class ChartPage : Page, INotifyPropertyChanged
 
     private void AddResponseTimeSampleButton_Click(object sender, RoutedEventArgs e)
     {
-        ResponseTimes.Add(_incomingResponseTimes[_nextResponseTimeIndex]);
+        double next = _incomingResponseTimes[_nextResponseTimeIndex];
         _nextResponseTimeIndex = (_nextResponseTimeIndex + 1) % _incomingResponseTimes.Length;
 
-        if (ResponseTimes.Count > 8)
-        {
-            ResponseTimes.RemoveAt(0);
-        }
+        // Assign a new array so the chart redraws. Keep the eight most recent values.
+        ResponseTimes = [.. ResponseTimes.TakeLast(7), next];
 
         UpdateLiveSeriesSummary();
     }

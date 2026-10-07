@@ -151,7 +151,7 @@ public sealed class ChartSamplesTests
             "Stroke=", "StrokeThickness=", "StrokeDashStyle=", "Fill",
             "ShowDataMarkers=", "MarkerShape=", "DataMarkerBrush=", "ShowDataLabels=", "DataLabelBrush",
             "DataLabelOverrides[", "DataMarkerOverrides[", "IntervalType =", "LabelFormat =",
-            "ObservableCollection<double>",
+            "ItemsSource=\"{x:Bind ResponseTimes, Mode=OneWay}\"", "ResponseTimes = [",
         ];
 
         foreach (string member in members)
