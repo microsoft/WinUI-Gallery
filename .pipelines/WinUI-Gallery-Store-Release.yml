@@ -14,7 +14,7 @@ parameters:
 - name: releaseVersion
   displayName: Release version (X.Y.Z)
   type: string
-  default: '3.0.0'
+  default: '3.0.1'
 - name: publishToStore
   displayName: Submit package for Store certification
   type: boolean
