@@ -3,6 +3,9 @@ Save, clear, and restore ink strokes.
 --- xaml
 <InkCanvas x:Name="inkCanvas" />
 --- c#
+inkCanvas.InkPresenter.InputDeviceTypes =
+    CoreInputDeviceTypes.Pen | CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Touch;
+
 Microsoft.UI.Xaml.Controls.InkStrokeContainer strokes = inkCanvas.InkPresenter.StrokeContainer;
 using InMemoryRandomAccessStream savedInk = new();
 using (IOutputStream output = savedInk.GetOutputStreamAt(0))
