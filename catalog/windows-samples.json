@@ -5967,7 +5967,7 @@
         {
           "header": "Data binding",
           "xaml": "\u003CNavigationView x:Name=\u0022nvSample\u0022 \n                MenuItemTemplateSelector=\u0022{StaticResource selector}\u0022 \n                MenuItemsSource=\u0022{x:Bind Categories, Mode=OneWay}\u0022 /\u003E\n \n\u003Clocal:MenuItemTemplateSelector x:Key=\u0022selector\u0022\u003E \n    \u003Clocal:MenuItemTemplateSelector.ItemTemplate\u003E \n        \u003CDataTemplate x:DataType=\u0022local:Category\u0022 \u003E \n            \u003CNavigationViewItem Content=\u0022{x:Bind Name}\u0022 ToolTipService.ToolTip=\u0022{x:Bind Tooltip}\u0022\u003E \n                \u003CNavigationViewItem.Icon\u003E \n                    \u003CSymbolIcon Symbol=\u0022{x:Bind Glyph}\u0022 /\u003E \n                \u003C/NavigationViewItem.Icon\u003E \n            \u003C/NavigationViewItem\u003E\n        \u003C/DataTemplate\u003E \n    \u003C/local:MenuItemTemplateSelector.ItemTemplate \u003E \n\u003C/local:MenuItemTemplateSelector\u003E",
-          "code": "//C# code behind\nCategories = new ObservableCollection\u003CCategoryBase\u003E(); \nCategories.Add(new Category { Name = \u0022Category 1\u0022, Glyph = Symbol.Home, Tooltip = \u0022This is category 1\u0022 }); \nCategories.Add(new Category { Name = \u0022Category 2\u0022, Glyph = Symbol.Keyboard, Tooltip = \u0022This is category 2\u0022 }); \nCategories.Add(new Category { Name = \u0022Category 3\u0022, Glyph = Symbol.Library, Tooltip = \u0022This is category 3\u0022 }); \nCategories.Add(new Category { Name = \u0022Category 4\u0022, Glyph = Symbol.Mail, Tooltip = \u0022This is category 4\u0022 }); \n\npublic class CategoryBase { } \n\npublic class Category : CategoryBase\n{\n    public string Name { get; set; } = string.Empty;\n    public string Tooltip { get; set; } = string.Empty;\n    public Symbol Glyph { get; set; }\n}\n\npublic class Separator : CategoryBase { }\n\npublic class Header : CategoryBase\n{\n    public string Name { get; set; }\n}\n\n[ContentProperty(Name = \u0022ItemTemplate\u0022)]\nclass MenuItemTemplateSelector : DataTemplateSelector\n{\n    public DataTemplate? ItemTemplate { get; set; }\n\n    protected override DataTemplate? SelectTemplateCore(object item)\n    {\n        return item is Separator ? SeparatorTemplate : item is Header ? HeaderTemplate : ItemTemplate;\n    }\n}",
+          "code": "//C# code behind\nCategories = new ObservableCollection\u003CCategoryBase\u003E(); \nCategories.Add(new Category { Name = \u0022Category 1\u0022, Glyph = Symbol.Home, Tooltip = \u0022This is category 1\u0022 }); \nCategories.Add(new Category { Name = \u0022Category 2\u0022, Glyph = Symbol.Keyboard, Tooltip = \u0022This is category 2\u0022 }); \nCategories.Add(new Separator()); \nCategories.Add(new Header { Name = \u0022More categories\u0022 }); \nCategories.Add(new Category { Name = \u0022Category 3\u0022, Glyph = Symbol.Library, Tooltip = \u0022This is category 3\u0022 }); \nCategories.Add(new Category { Name = \u0022Category 4\u0022, Glyph = Symbol.Mail, Tooltip = \u0022This is category 4\u0022 }); \n\npublic class CategoryBase { } \n\npublic class Category : CategoryBase\n{\n    public string Name { get; set; } = string.Empty;\n    public string Tooltip { get; set; } = string.Empty;\n    public Symbol Glyph { get; set; }\n}\n\npublic class Separator : CategoryBase { }\n\n[WinRT.GeneratedBindableCustomProperty]\npublic partial class Header : CategoryBase\n{\n    public string Name { get; set; } = string.Empty;\n}\n\n[ContentProperty(Name = \u0022ItemTemplate\u0022)]\nclass MenuItemTemplateSelector : DataTemplateSelector\n{\n    public DataTemplate? ItemTemplate { get; set; }\n\n    protected override DataTemplate? SelectTemplateCore(object item)\n    {\n        return item is Separator ? SeparatorTemplate : item is Header ? HeaderTemplate : ItemTemplate;\n    }\n\n    // Header and separator templates are created in code with the DataTemplate(DataTemplateElementFactory) constructor.\n    private readonly DataTemplate HeaderTemplate = new DataTemplate(() =\u003E\n    {\n        NavigationViewItemHeader header = new NavigationViewItemHeader();\n        header.SetBinding(ContentControl.ContentProperty, new Binding { Path = new PropertyPath(nameof(Header.Name)) });\n        return header;\n    });\n\n    private readonly DataTemplate SeparatorTemplate = new DataTemplate(() =\u003E new NavigationViewItemSeparator());\n}",
           "language": "csharp",
           "xmlnsImports": [
             "xmlns:local=\u0022using:YourNamespace\u0022"
@@ -9268,6 +9268,13 @@
         "Style",
         "Custom \u0026 User Controls"
       ],
+      "usings": [
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls",
+        "Microsoft.UI.Xaml.Data",
+        "System.IO",
+        "Windows.Storage"
+      ],
       "keywords": [
         "Object",
         "DependencyObject",
@@ -9277,7 +9284,8 @@
         "ControlTemplate",
         "DataTemplate",
         "ItemTemplate",
-        "DataTemplateSelector"
+        "DataTemplateSelector",
+        "DataTemplateElementFactory"
       ],
       "docs": [
         {
@@ -9336,6 +9344,17 @@
             "snippet": "TemplatesCustomizeComboboxItemtemplateDatatemplate.txt",
             "source": "WinUIGallery/Samples/Templates/TemplatesCustomizeComboboxItemtemplateDatatemplate.txt",
             "name": "Customize Combobox Itemtemplate Datatemplate"
+          }
+        },
+        {
+          "header": "Create a DataTemplate in code (experimental)",
+          "xaml": "\u003CComboBox x:Name=\u0022CodeTemplateComboBox\u0022 Header=\u0022Options\u0022 SelectedIndex=\u00220\u0022\u003E\n    \u003CComboBox.Items\u003E\n        \u003Cx:String\u003EOption 1\u003C/x:String\u003E\n        \u003Cx:String\u003EOption 2\u003C/x:String\u003E\n        \u003Cx:String\u003EOption 3\u003C/x:String\u003E\n    \u003C/ComboBox.Items\u003E\n\u003C/ComboBox\u003E",
+          "code": "// The factory runs once for every item container that uses the template.\nCodeTemplateComboBox.ItemTemplate = new DataTemplate(() =\u003E\n{\n    FontIcon icon = new FontIcon { Glyph = \u0022\\uE734\u0022, FontSize = 14 };\n\n    TextBlock text = new TextBlock();\n    text.SetBinding(TextBlock.TextProperty, new Binding());\n\n    StackPanel panel = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8 };\n    panel.Children.Add(icon);\n    panel.Children.Add(text);\n    return panel;\n});",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "TemplatesCreateDatatemplateInCode.txt",
+            "source": "WinUIGallery/Samples/Templates/TemplatesCreateDatatemplateInCode.txt",
+            "name": "Create Datatemplate In Code"
           }
         },
         {
