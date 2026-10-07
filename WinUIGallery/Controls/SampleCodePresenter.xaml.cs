@@ -180,7 +180,7 @@ public sealed partial class SampleCodePresenter : UserControl
 
     private async void FormatAndRenderSampleFromFile(string sourceRelativePath, ContentPresenter presenter, ILanguage highlightLanguage)
     {
-        if (sourceRelativePath != null && sourceRelativePath.EndsWith("txt"))
+        if (sourceRelativePath != null && sourceRelativePath.EndsWith("txt", StringComparison.Ordinal))
         {
             StorageFile? file = null;
             if (!NativeMethods.IsAppPackaged)
