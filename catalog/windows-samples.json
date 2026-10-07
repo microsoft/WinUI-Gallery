@@ -2231,8 +2231,8 @@
       "gallery": {
         "uniqueId": "Chart",
         "group": {
-          "id": "Collections",
-          "title": "Collections"
+          "id": "Media",
+          "title": "Media"
         },
         "page": "WinUIGallery/Samples/Chart/ChartPage.xaml",
         "codeBehind": "WinUIGallery/Samples/Chart/ChartPage.xaml.cs",

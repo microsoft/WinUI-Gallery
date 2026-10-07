@@ -1073,53 +1073,6 @@
           ]
         },
         {
-          "UniqueId": "Chart",
-          "Tags": [
-            "chart",
-            "graph",
-            "plot",
-            "data visualization",
-            "line chart",
-            "bar chart",
-            "area chart",
-            "time series",
-            "axis",
-            "legend",
-            "analytics",
-            "dashboard",
-            "KPI"
-          ],
-          "Title": "Chart",
-          "BaseClasses": [
-            "Object",
-            "DependencyObject",
-            "UIElement",
-            "FrameworkElement",
-            "Control"
-          ],
-          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Charts",
-          "Subtitle": "A preview control for visualizing numeric, category, and date-time data.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Chart.png",
-          "Description": "Chart plots Samples with line, area, and bar series on category, linear, and date-time axes. Configure axis ranges, ticks, and grid lines, legends, series visibility, line and marker styles, data labels, per-point label and marker overrides, and observable data sources.",
-          "SourcePath": "/Chart",
-          "IsExperimental": true,
-          "Docs": [
-            {
-              "Title": "Chart - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.charts.chart"
-            },
-            {
-              "Title": "Microsoft.UI.Xaml.Controls.Charts namespace",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.charts"
-            }
-          ],
-          "RelatedControls": [
-            "ItemsView",
-            "ProgressBar",
-            "TableView"
-          ]
-        },
-        {
           "UniqueId": "ListView",
           "Tags": [
             "list",
@@ -3181,6 +3134,53 @@
           "RelatedControls": [
             "MediaPlayerElement",
             "Image"
+          ]
+        },
+        {
+          "UniqueId": "Chart",
+          "Tags": [
+            "chart",
+            "graph",
+            "plot",
+            "data visualization",
+            "line chart",
+            "bar chart",
+            "area chart",
+            "time series",
+            "axis",
+            "legend",
+            "analytics",
+            "dashboard",
+            "KPI"
+          ],
+          "Title": "Chart",
+          "BaseClasses": [
+            "Object",
+            "DependencyObject",
+            "UIElement",
+            "FrameworkElement",
+            "Control"
+          ],
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls.Charts",
+          "Subtitle": "A preview control for visualizing numeric, category, and date-time data.",
+          "ImagePath": "ms-appx:///Assets/ControlImages/Chart.png",
+          "Description": "Chart plots Samples with line, area, and bar series on category, linear, and date-time axes. Configure axis ranges, ticks, and grid lines, legends, series visibility, line and marker styles, data labels, per-point label and marker overrides, and observable data sources.",
+          "SourcePath": "/Chart",
+          "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "Chart - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.charts.chart"
+            },
+            {
+              "Title": "Microsoft.UI.Xaml.Controls.Charts namespace",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.charts"
+            }
+          ],
+          "RelatedControls": [
+            "ItemsView",
+            "ProgressBar",
+            "TableView"
           ]
         },
         {
