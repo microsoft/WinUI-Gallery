@@ -4,7 +4,7 @@ Set a ThemeResource from code (experimental)
 <Grid x:Name="ThemeResourceFromCodeRoot">
     <Border x:Name="OneTimeLookupBorder">
         <TextBlock x:Name="OneTimeLookupText"
-                   Text="Resources[&quot;Key&quot;] keeps the value from when it was read." />
+                   Text="A one-time resource lookup keeps the value from when it was read." />
     </Border>
     <Border x:Name="ThemeResourceBindingBorder" Grid.Column="1">
         <TextBlock x:Name="ThemeResourceBindingText"

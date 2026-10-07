@@ -218,7 +218,7 @@
                             CornerRadius="{StaticResource ControlCornerRadius}">
                             <TextBlock
                                 x:Name="OneTimeLookupText"
-                                Text="Resources[&quot;Key&quot;] keeps the value from when it was read."
+                                Text="A one-time resource lookup keeps the value from when it was read."
                                 TextWrapping="Wrap" />
                         </Border>
                         <Border
