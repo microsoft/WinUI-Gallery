@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 
 namespace WinUIGallery.ControlPages;
 
-public sealed class TableViewSampleItem : INotifyPropertyChanged, INotifyDataErrorInfo
+public sealed partial class TableViewSampleItem : INotifyPropertyChanged, INotifyDataErrorInfo
 {
     private string _name;
     private string _category;
