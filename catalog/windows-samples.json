@@ -4740,7 +4740,7 @@
         {
           "header": "Choose which tools appear in an InkToolbar and select the active tool.",
           "xaml": "\u003CStackPanel\u003E\n    \u003CInkToolbar x:Name=\u0022inkToolbar\u0022 InitialControls=\u0022None\u0022 ButtonFlyoutPlacement=\u0022Auto\u0022 TargetInkCanvas=\u0022{x:Bind inkCanvas}\u0022\u003E\n        \u003CInkToolbar.Children\u003E\n            \u003CInkToolbarBallpointPenButton /\u003E\n            \u003CInkToolbarPencilButton /\u003E\n            \u003CInkToolbarHighlighterButton /\u003E\n            \u003CInkToolbarEraserButton /\u003E\n        \u003C/InkToolbar.Children\u003E\n    \u003C/InkToolbar\u003E\n    \u003CInkCanvas x:Name=\u0022inkCanvas\u0022 /\u003E\n\u003C/StackPanel\u003E",
-          "code": "inkToolbar.ButtonFlyoutPlacement = InkToolbarButtonFlyoutPlacement.Auto;\n\nInkToolbarToolButton? selected =\n    inkToolbar.GetToolButton(InkToolbarTool.BallpointPen);\nif (selected is not null)\n{\n    inkToolbar.ActiveTool = selected;\n}",
+          "code": "inkCanvas.InkPresenter.InputDeviceTypes =\n    CoreInputDeviceTypes.Pen | CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Touch;\n\ninkToolbar.ButtonFlyoutPlacement = InkToolbarButtonFlyoutPlacement.Auto;\n\nInkToolbarToolButton? selected =\n    inkToolbar.GetToolButton(InkToolbarTool.BallpointPen);\nif (selected is not null)\n{\n    inkToolbar.ActiveTool = selected;\n}",
           "language": "csharp",
           "gallery": {
             "snippet": "InkCanvasToolbar.txt",
@@ -4751,7 +4751,7 @@
         {
           "header": "Save, clear, and restore ink strokes.",
           "xaml": "\u003CInkCanvas x:Name=\u0022inkCanvas\u0022 /\u003E",
-          "code": "Microsoft.UI.Xaml.Controls.InkStrokeContainer strokes = inkCanvas.InkPresenter.StrokeContainer;\nusing InMemoryRandomAccessStream savedInk = new();\nusing (IOutputStream output = savedInk.GetOutputStreamAt(0))\n{\n    await strokes.SaveAsync(output);\n}\n\nstrokes.Clear();\n\nusing (IInputStream input = savedInk.GetInputStreamAt(0))\n{\n    await strokes.LoadAsync(input);\n}",
+          "code": "inkCanvas.InkPresenter.InputDeviceTypes =\n    CoreInputDeviceTypes.Pen | CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Touch;\n\nMicrosoft.UI.Xaml.Controls.InkStrokeContainer strokes = inkCanvas.InkPresenter.StrokeContainer;\nusing InMemoryRandomAccessStream savedInk = new();\nusing (IOutputStream output = savedInk.GetOutputStreamAt(0))\n{\n    await strokes.SaveAsync(output);\n}\n\nstrokes.Clear();\n\nusing (IInputStream input = savedInk.GetInputStreamAt(0))\n{\n    await strokes.LoadAsync(input);\n}",
           "language": "csharp",
           "gallery": {
             "snippet": "InkCanvasStrokes.txt",

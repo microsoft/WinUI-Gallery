@@ -13,6 +13,9 @@ Choose which tools appear in an InkToolbar and select the active tool.
     <InkCanvas x:Name="inkCanvas" />
 </StackPanel>
 --- c#
+inkCanvas.InkPresenter.InputDeviceTypes =
+    CoreInputDeviceTypes.Pen | CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Touch;
+
 inkToolbar.ButtonFlyoutPlacement = InkToolbarButtonFlyoutPlacement.$(FlyoutPlacement);
 
 InkToolbarToolButton? selected =
