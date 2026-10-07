@@ -48,6 +48,10 @@ public sealed partial class InkCanvasPage : Page
         strokesCanvas.InkPresenter.StrokesCollected += (sender, args) => UpdateSavedStrokeCount();
         strokesCanvas.InkPresenter.StrokesErased += (sender, args) => UpdateSavedStrokeCount();
 
+        CoreInputDeviceTypes allInputDevices = CoreInputDeviceTypes.Pen | CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Touch;
+        toolbarCanvas.InkPresenter.InputDeviceTypes = allInputDevices;
+        strokesCanvas.InkPresenter.InputDeviceTypes = allInputDevices;
+
         ApplyInputDevices();
         ApplyDrawingAttributes();
         drawingCanvas.InkPresenter.IsInputEnabled = inkingEnabled.IsOn;
