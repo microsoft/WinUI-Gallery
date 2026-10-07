@@ -1,0 +1,37 @@
+--- header
+Create a line chart with axes and a legend
+--- xaml
+<charts:Chart xmlns:charts="using:Microsoft.UI.Xaml.Controls.Charts" ShowLegend="$(ShowLegend)" LegendTitle="Profit">
+    <charts:Chart.Data>
+        <charts:Samples x:Name="Month"
+                        ItemsSource="{x:Bind Months, Mode=OneTime}" />
+        <charts:Samples x:Name="Profit"
+                        ItemsSource="{x:Bind Profits, Mode=OneTime}" />
+    </charts:Chart.Data>
+
+    <charts:Chart.Axes>
+        <charts:CategoryAxis x:Name="MonthX" Label="Month" />
+        <charts:LinearAxis x:Name="ProfitY"
+                           Label="Profit"
+                           Minimum="0"
+                           GridLines="Major" />
+    </charts:Chart.Axes>
+
+    <charts:LineSeries Title="2025"
+                       XAxis="{x:Bind MonthX, Mode=OneTime}"
+                       YAxis="{x:Bind ProfitY, Mode=OneTime}"
+                       XValues="{x:Bind Month, Mode=OneTime}"
+                       YValues="{x:Bind Profit, Mode=OneTime}" />
+</charts:Chart>
+--- c#
+public string[] Months { get; } =
+[
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+];
+
+public double[] Profits { get; } = [18, 26, 33, 39, 47, 52];

@@ -1,0 +1,600 @@
+<!--
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    Licensed under the MIT License.
+-->
+<Page
+    x:Class="WinUIGallery.ControlPages.ChartPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:charts="using:Microsoft.UI.Xaml.Controls.Charts"
+    xmlns:controls="using:WinUIGallery.Controls">
+    <StackPanel Margin="0,16,0,0" Spacing="16">
+        <TextBlock
+            Text="Before using Chart, add XamlChartsResources to the merged resource dictionaries in App.xaml, after XamlControlsResources:"
+            TextWrapping="Wrap" />
+        <controls:SampleCodePresenter
+            AutomationProperties.AutomationId="ChartResourceCode"
+            IsCopyButtonVisible="True"
+            SampleType="XAML">
+            <controls:SampleCodePresenter.Code>
+                <x:String xml:space="preserve">&lt;Application.Resources&gt;
+    &lt;ResourceDictionary&gt;
+        &lt;ResourceDictionary.MergedDictionaries&gt;
+            &lt;XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" /&gt;
+            &lt;XamlChartsResources xmlns="using:Microsoft.UI.Xaml.Controls.Charts" /&gt;
+        &lt;/ResourceDictionary.MergedDictionaries&gt;
+    &lt;/ResourceDictionary&gt;
+&lt;/Application.Resources&gt;</x:String>
+            </controls:SampleCodePresenter.Code>
+        </controls:SampleCodePresenter>
+
+        <controls:ControlExample SampleDefinition="Chart\BasicLineChart.txt">
+            <charts:Chart
+                Height="320"
+                x:Name="BasicLineChart"
+                AutomationProperties.AutomationId="ChartBasicLine"
+                AutomationProperties.HelpText="Monthly profit increases from 18 in January to 52 in June."
+                AutomationProperties.Name="Monthly profit line chart"
+                LegendTitle="Profit"
+                ShowLegend="True">
+                <charts:Chart.Data>
+                    <charts:Samples
+                        x:Name="Month"
+                        ItemsSource="{x:Bind Months, Mode=OneTime}" />
+                    <charts:Samples
+                        x:Name="Profit"
+                        ItemsSource="{x:Bind Profits, Mode=OneTime}" />
+                </charts:Chart.Data>
+
+                <charts:Chart.Axes>
+                    <charts:CategoryAxis
+                        x:Name="MonthX"
+                        Label="Month" />
+                    <charts:LinearAxis
+                        x:Name="ProfitY"
+                        GridLines="Major"
+                        Label="Profit"
+                        Minimum="0" />
+                </charts:Chart.Axes>
+
+                <charts:LineSeries
+                    Title="2025"
+                    XAxis="{x:Bind MonthX, Mode=OneTime}"
+                    XValues="{x:Bind Month, Mode=OneTime}"
+                    YAxis="{x:Bind ProfitY, Mode=OneTime}"
+                    YValues="{x:Bind Profit, Mode=OneTime}" />
+            </charts:Chart>
+            <controls:ControlExample.Options>
+                <ToggleSwitch
+                    x:Name="LegendToggle"
+                    VerticalAlignment="Top"
+                    AutomationProperties.AutomationId="ChartLegendToggle"
+                    AutomationProperties.Name="Show legend"
+                    Header="Legend"
+                    IsOn="True"
+                    OffContent="Hidden"
+                    OnContent="Visible"
+                    Toggled="LegendToggle_Toggled" />
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
+                    Key="ShowLegend"
+                    Value="{x:Bind LegendToggle.IsOn, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample SampleDefinition="Chart\BarChart.txt">
+            <charts:Chart
+                Height="320"
+                AutomationProperties.AutomationId="ChartBar"
+                AutomationProperties.HelpText="Units sold are 42 in North, 38 in South, 51 in East, and 47 in West."
+                AutomationProperties.Name="Units sold by region bar chart">
+                <charts:Chart.Data>
+                    <charts:Samples
+                        x:Name="Region"
+                        ItemsSource="{x:Bind Regions, Mode=OneTime}" />
+                    <charts:Samples
+                        x:Name="Units"
+                        ItemsSource="{x:Bind UnitsSold, Mode=OneTime}" />
+                </charts:Chart.Data>
+
+                <charts:Chart.Axes>
+                    <charts:CategoryAxis
+                        x:Name="RegionX"
+                        Label="Region"
+                        SortKey="Index"
+                        SortOrder="Ascending" />
+                    <charts:LinearAxis
+                        x:Name="UnitsY"
+                        GridLines="Major"
+                        Label="Units sold"
+                        Minimum="0" />
+                </charts:Chart.Axes>
+
+                <charts:BarSeries
+                    x:Name="UnitsSeries"
+                    Title="Units sold"
+                    Fill="#0078D4"
+                    Orientation="Vertical"
+                    XAxis="{x:Bind RegionX, Mode=OneTime}"
+                    XValues="{x:Bind Region, Mode=OneTime}"
+                    YAxis="{x:Bind UnitsY, Mode=OneTime}"
+                    YValues="{x:Bind Units, Mode=OneTime}" />
+            </charts:Chart>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <ComboBox
+                        x:Name="BarOrientationComboBox"
+                        AutomationProperties.AutomationId="ChartBarOrientationSelector"
+                        AutomationProperties.Name="Bar orientation"
+                        Header="Orientation"
+                        SelectedIndex="0"
+                        SelectionChanged="BarOrientationComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Vertical" Tag="Vertical" />
+                        <ComboBoxItem Content="Horizontal" Tag="Horizontal" />
+                    </ComboBox>
+                    <ComboBox
+                        x:Name="SortKeyComboBox"
+                        AutomationProperties.AutomationId="ChartBarSortKeySelector"
+                        AutomationProperties.Name="Sort categories by"
+                        Header="Sort categories by"
+                        SelectedIndex="0"
+                        SelectionChanged="CategorySortComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Data order" Tag="Index" />
+                        <ComboBoxItem Content="Value" Tag="Value" />
+                    </ComboBox>
+                    <ComboBox
+                        x:Name="SortOrderComboBox"
+                        AutomationProperties.AutomationId="ChartBarSortOrderSelector"
+                        AutomationProperties.Name="Sort order"
+                        Header="Sort order"
+                        SelectedIndex="0"
+                        SelectionChanged="CategorySortComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Ascending" Tag="Ascending" />
+                        <ComboBoxItem Content="Descending" Tag="Descending" />
+                    </ComboBox>
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
+                    Key="Orientation"
+                    Value="{x:Bind ((ComboBoxItem)BarOrientationComboBox.SelectedItem).Tag, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="SortKey"
+                    Value="{x:Bind ((ComboBoxItem)SortKeyComboBox.SelectedItem).Tag, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="SortOrder"
+                    Value="{x:Bind ((ComboBoxItem)SortOrderComboBox.SelectedItem).Tag, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample SampleDefinition="Chart\AxisOptions.txt">
+            <charts:Chart
+                Height="320"
+                AutomationProperties.AutomationId="ChartAxisOptions"
+                AutomationProperties.HelpText="Visitors per quarter are 35 in Q1, 62 in Q2, 48 in Q3, and 81 in Q4, on an axis from 0 to 100."
+                AutomationProperties.Name="Quarterly visitors chart with configurable axes">
+                <charts:Chart.Data>
+                    <charts:Samples
+                        x:Name="Quarter"
+                        ItemsSource="{x:Bind Quarters, Mode=OneTime}" />
+                    <charts:Samples
+                        x:Name="Visitors"
+                        ItemsSource="{x:Bind QuarterlyVisitors, Mode=OneTime}" />
+                </charts:Chart.Data>
+
+                <charts:Chart.Axes>
+                    <charts:CategoryAxis
+                        x:Name="QuarterX"
+                        AxisLineBrush="#767676"
+                        IsVisible="True"
+                        Label="Quarter"
+                        ShowTickLabels="True"
+                        ShowTickMarks="True"
+                        TickBrush="#767676" />
+                    <charts:LinearAxis
+                        x:Name="VisitorsY"
+                        AxisLineBrush="#767676"
+                        GridLineMajorBrush="#66808080"
+                        GridLineMinorBrush="#33808080"
+                        GridLines="Major"
+                        IsVisible="True"
+                        Label="Visitors (thousands)"
+                        Maximum="100"
+                        Minimum="0"
+                        ShowTickLabels="True"
+                        ShowTickMarks="True"
+                        Spacing="20"
+                        TickBrush="#767676" />
+                </charts:Chart.Axes>
+
+                <charts:LineSeries
+                    Title="Visitors"
+                    ShowDataMarkers="True"
+                    XAxis="{x:Bind QuarterX, Mode=OneTime}"
+                    XValues="{x:Bind Quarter, Mode=OneTime}"
+                    YAxis="{x:Bind VisitorsY, Mode=OneTime}"
+                    YValues="{x:Bind Visitors, Mode=OneTime}" />
+            </charts:Chart>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <ComboBox
+                        x:Name="GridLinesComboBox"
+                        AutomationProperties.AutomationId="ChartGridLinesSelector"
+                        AutomationProperties.Name="Grid lines"
+                        Header="Grid lines"
+                        SelectedIndex="1"
+                        SelectionChanged="GridLinesComboBox_SelectionChanged">
+                        <ComboBoxItem Content="None" Tag="None" />
+                        <ComboBoxItem Content="Major" Tag="Major" />
+                        <ComboBoxItem Content="Minor" Tag="Minor" />
+                    </ComboBox>
+                    <ToggleSwitch
+                        x:Name="AxesVisibleToggle"
+                        AutomationProperties.AutomationId="ChartAxesVisibleToggle"
+                        AutomationProperties.Name="Show axes"
+                        Header="Axes"
+                        IsOn="True"
+                        OffContent="Hidden"
+                        OnContent="Visible"
+                        Toggled="AxisOptionToggle_Toggled" />
+                    <ToggleSwitch
+                        x:Name="TickLabelsToggle"
+                        AutomationProperties.AutomationId="ChartTickLabelsToggle"
+                        AutomationProperties.Name="Show tick labels"
+                        Header="Tick labels"
+                        IsOn="True"
+                        OffContent="Hidden"
+                        OnContent="Visible"
+                        Toggled="AxisOptionToggle_Toggled" />
+                    <ToggleSwitch
+                        x:Name="TickMarksToggle"
+                        AutomationProperties.AutomationId="ChartTickMarksToggle"
+                        AutomationProperties.Name="Show tick marks"
+                        Header="Tick marks"
+                        IsOn="True"
+                        OffContent="Hidden"
+                        OnContent="Visible"
+                        Toggled="AxisOptionToggle_Toggled" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
+                    Key="GridLines"
+                    Value="{x:Bind ((ComboBoxItem)GridLinesComboBox.SelectedItem).Tag, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="IsVisible"
+                    Value="{x:Bind AxesVisibleToggle.IsOn, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="ShowTickLabels"
+                    Value="{x:Bind TickLabelsToggle.IsOn, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="ShowTickMarks"
+                    Value="{x:Bind TickMarksToggle.IsOn, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample SampleDefinition="Chart\StyledSeries.txt">
+            <charts:Chart
+                Height="360"
+                AutomationProperties.AutomationId="ChartStyledSeries"
+                AutomationProperties.HelpText="Forecast, actual, and target monthly results from January to June."
+                AutomationProperties.Name="Monthly results chart with area, bar, and line series"
+                LegendTitle="Monthly results"
+                ShowLegend="True">
+                <charts:Chart.Data>
+                    <charts:Samples
+                        x:Name="StyledMonth"
+                        ItemsSource="{x:Bind Months, Mode=OneTime}" />
+                    <charts:Samples
+                        x:Name="Actual"
+                        ItemsSource="{x:Bind Actuals, Mode=OneTime}" />
+                    <charts:Samples
+                        x:Name="Forecast"
+                        ItemsSource="{x:Bind Forecasts, Mode=OneTime}" />
+                    <charts:Samples
+                        x:Name="Target"
+                        ItemsSource="{x:Bind Targets, Mode=OneTime}" />
+                </charts:Chart.Data>
+
+                <charts:Chart.Axes>
+                    <charts:CategoryAxis
+                        x:Name="StyledMonthX"
+                        Label="Month" />
+                    <charts:LinearAxis
+                        x:Name="RevenueY"
+                        GridLines="Major"
+                        Label="Revenue"
+                        Maximum="60"
+                        Minimum="0"
+                        Spacing="10" />
+                </charts:Chart.Axes>
+
+                <charts:AreaSeries
+                    x:Name="ForecastSeries"
+                    Title="Forecast"
+                    Fill="#4D0078D4"
+                    IsVisible="True"
+                    Stroke="#0078D4"
+                    StrokeThickness="2"
+                    XAxis="{x:Bind StyledMonthX, Mode=OneTime}"
+                    XValues="{x:Bind StyledMonth, Mode=OneTime}"
+                    YAxis="{x:Bind RevenueY, Mode=OneTime}"
+                    YValues="{x:Bind Forecast, Mode=OneTime}" />
+
+                <charts:BarSeries
+                    x:Name="ActualSeries"
+                    Title="Actual"
+                    Fill="#008575"
+                    IsVisible="True"
+                    Orientation="Vertical"
+                    ShowDataLabels="True"
+                    XAxis="{x:Bind StyledMonthX, Mode=OneTime}"
+                    XValues="{x:Bind StyledMonth, Mode=OneTime}"
+                    YAxis="{x:Bind RevenueY, Mode=OneTime}"
+                    YValues="{x:Bind Actual, Mode=OneTime}" />
+
+                <charts:LineSeries
+                    x:Name="TargetSeries"
+                    Title="Target"
+                    DataMarkerBrush="#D13438"
+                    IsVisible="True"
+                    MarkerShape="Diamond"
+                    ShowDataMarkers="True"
+                    Stroke="#D13438"
+                    StrokeDashStyle="Dash"
+                    StrokeThickness="2"
+                    XAxis="{x:Bind StyledMonthX, Mode=OneTime}"
+                    XValues="{x:Bind StyledMonth, Mode=OneTime}"
+                    YAxis="{x:Bind RevenueY, Mode=OneTime}"
+                    YValues="{x:Bind Target, Mode=OneTime}" />
+            </charts:Chart>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="4">
+                    <TextBlock
+                        AutomationProperties.HeadingLevel="Level3"
+                        Style="{StaticResource BodyStrongTextBlockStyle}"
+                        Text="Visible series" />
+                    <CheckBox
+                        x:Name="ForecastCheckBox"
+                        AutomationProperties.AutomationId="ChartForecastVisibleCheckBox"
+                        Content="Forecast"
+                        IsChecked="True"
+                        Click="SeriesVisibilityCheckBox_Click" />
+                    <CheckBox
+                        x:Name="ActualCheckBox"
+                        AutomationProperties.AutomationId="ChartActualVisibleCheckBox"
+                        Content="Actual"
+                        IsChecked="True"
+                        Click="SeriesVisibilityCheckBox_Click" />
+                    <CheckBox
+                        x:Name="TargetCheckBox"
+                        AutomationProperties.AutomationId="ChartTargetVisibleCheckBox"
+                        Content="Target"
+                        IsChecked="True"
+                        Click="SeriesVisibilityCheckBox_Click" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
+                    Key="ForecastVisible"
+                    Value="{x:Bind ForecastCheckBox.IsChecked, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="ActualVisible"
+                    Value="{x:Bind ActualCheckBox.IsChecked, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="TargetVisible"
+                    Value="{x:Bind TargetCheckBox.IsChecked, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample SampleDefinition="Chart\LinesAndMarkers.txt">
+            <charts:Chart
+                Height="320"
+                AutomationProperties.AutomationId="ChartLinesAndMarkers"
+                AutomationProperties.HelpText="Daily visits from Monday to Sunday are 120, 135, 128, 172, 150, 98, and 110. Thursday is labeled Peak."
+                AutomationProperties.Name="Daily visits line chart with markers and data labels">
+                <charts:Chart.Data>
+                    <charts:Samples
+                        x:Name="Day"
+                        ItemsSource="{x:Bind Days, Mode=OneTime}" />
+                    <charts:Samples
+                        x:Name="Visits"
+                        ItemsSource="{x:Bind DailyVisits, Mode=OneTime}" />
+                </charts:Chart.Data>
+
+                <charts:Chart.Axes>
+                    <charts:CategoryAxis
+                        x:Name="DayX"
+                        Label="Day" />
+                    <charts:LinearAxis
+                        x:Name="VisitsY"
+                        GridLines="Major"
+                        Label="Visits"
+                        Minimum="0" />
+                </charts:Chart.Axes>
+
+                <charts:LineSeries
+                    x:Name="VisitsSeries"
+                    Title="Visits"
+                    DataMarkerBrush="#8764B8"
+                    MarkerShape="Circle"
+                    ShowDataLabels="True"
+                    ShowDataMarkers="True"
+                    Stroke="#8764B8"
+                    StrokeDashStyle="Solid"
+                    StrokeThickness="2"
+                    XAxis="{x:Bind DayX, Mode=OneTime}"
+                    XValues="{x:Bind Day, Mode=OneTime}"
+                    YAxis="{x:Bind VisitsY, Mode=OneTime}"
+                    YValues="{x:Bind Visits, Mode=OneTime}" />
+            </charts:Chart>
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <ComboBox
+                        x:Name="DashStyleComboBox"
+                        AutomationProperties.AutomationId="ChartDashStyleSelector"
+                        AutomationProperties.Name="Line dash style"
+                        Header="Line dash style"
+                        SelectedIndex="0"
+                        SelectionChanged="DashStyleComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Solid" Tag="Solid" />
+                        <ComboBoxItem Content="Dash" Tag="Dash" />
+                        <ComboBoxItem Content="Dot" Tag="Dot" />
+                        <ComboBoxItem Content="DashDot" Tag="DashDot" />
+                        <ComboBoxItem Content="DashDotDot" Tag="DashDotDot" />
+                    </ComboBox>
+                    <Slider
+                        x:Name="StrokeThicknessSlider"
+                        AutomationProperties.AutomationId="ChartStrokeThicknessSlider"
+                        AutomationProperties.Name="Line thickness"
+                        Header="Line thickness"
+                        Maximum="6"
+                        Minimum="1"
+                        StepFrequency="1"
+                        Value="2"
+                        ValueChanged="StrokeThicknessSlider_ValueChanged" />
+                    <ComboBox
+                        x:Name="MarkerShapeComboBox"
+                        AutomationProperties.AutomationId="ChartMarkerShapeSelector"
+                        AutomationProperties.Name="Marker shape"
+                        Header="Marker shape"
+                        SelectedIndex="0"
+                        SelectionChanged="MarkerShapeComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Circle" Tag="Circle" />
+                        <ComboBoxItem Content="Square" Tag="Square" />
+                        <ComboBoxItem Content="Diamond" Tag="Diamond" />
+                        <ComboBoxItem Content="Triangle" Tag="Triangle" />
+                        <ComboBoxItem Content="X" Tag="X" />
+                        <ComboBoxItem Content="Plus" Tag="Plus" />
+                        <ComboBoxItem Content="Asterisk" Tag="Asterisk" />
+                        <ComboBoxItem Content="ShortDash" Tag="ShortDash" />
+                        <ComboBoxItem Content="LongDash" Tag="LongDash" />
+                    </ComboBox>
+                    <ToggleSwitch
+                        x:Name="DataMarkersToggle"
+                        AutomationProperties.AutomationId="ChartDataMarkersToggle"
+                        AutomationProperties.Name="Show data markers"
+                        Header="Data markers"
+                        IsOn="True"
+                        OffContent="Hidden"
+                        OnContent="Visible"
+                        Toggled="DataPointToggle_Toggled" />
+                    <ToggleSwitch
+                        x:Name="DataLabelsToggle"
+                        AutomationProperties.AutomationId="ChartDataLabelsToggle"
+                        AutomationProperties.Name="Show data labels"
+                        Header="Data labels"
+                        IsOn="True"
+                        OffContent="Hidden"
+                        OnContent="Visible"
+                        Toggled="DataPointToggle_Toggled" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
+                    Key="StrokeDashStyle"
+                    Value="{x:Bind ((ComboBoxItem)DashStyleComboBox.SelectedItem).Tag, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="StrokeThickness"
+                    Value="{x:Bind StrokeThicknessSlider.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="MarkerShape"
+                    Value="{x:Bind ((ComboBoxItem)MarkerShapeComboBox.SelectedItem).Tag, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="ShowDataMarkers"
+                    Value="{x:Bind DataMarkersToggle.IsOn, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="ShowDataLabels"
+                    Value="{x:Bind DataLabelsToggle.IsOn, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample SampleDefinition="Chart\TimeSeries.txt">
+            <charts:Chart
+                x:Name="TimeSeriesChart"
+                Height="320"
+                AutomationProperties.AutomationId="ChartTimeSeries"
+                AutomationProperties.HelpText="Weekly temperature readings in August are 72, 76, 74, 79, and 77 degrees."
+                AutomationProperties.Name="Weekly temperature area chart" />
+            <controls:ControlExample.Options>
+                <StackPanel Spacing="12">
+                    <ComboBox
+                        x:Name="IntervalTypeComboBox"
+                        AutomationProperties.AutomationId="ChartIntervalTypeSelector"
+                        AutomationProperties.Name="Tick interval"
+                        Header="Tick interval"
+                        SelectedIndex="2"
+                        SelectionChanged="DateTimeAxisOption_SelectionChanged">
+                        <ComboBoxItem Content="Auto" Tag="Auto" />
+                        <ComboBoxItem Content="Day" Tag="Day" />
+                        <ComboBoxItem Content="Week" Tag="Week" />
+                        <ComboBoxItem Content="Month" Tag="Month" />
+                    </ComboBox>
+                    <ComboBox
+                        x:Name="LabelFormatComboBox"
+                        AutomationProperties.AutomationId="ChartLabelFormatSelector"
+                        AutomationProperties.Name="Tick label format"
+                        Header="Tick label format"
+                        SelectedIndex="0"
+                        SelectionChanged="DateTimeAxisOption_SelectionChanged">
+                        <ComboBoxItem Content="month day" Tag="month day" />
+                        <ComboBoxItem Content="month.abbreviated day" Tag="month.abbreviated day" />
+                        <ComboBoxItem Content="shortdate" Tag="shortdate" />
+                    </ComboBox>
+                </StackPanel>
+            </controls:ControlExample.Options>
+            <controls:ControlExample.Substitutions>
+                <controls:ControlExampleSubstitution
+                    Key="IntervalType"
+                    Value="{x:Bind ((ComboBoxItem)IntervalTypeComboBox.SelectedItem).Tag, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution
+                    Key="LabelFormat"
+                    Value="{x:Bind ((ComboBoxItem)LabelFormatComboBox.SelectedItem).Tag, Mode=OneWay}" />
+            </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample SampleDefinition="Chart\LiveObservableSeries.txt">
+            <charts:Chart
+                Height="320"
+                AutomationProperties.AutomationId="ChartLiveObservableSeries"
+                AutomationProperties.HelpText="A response-time line series that updates when Add sample is selected."
+                AutomationProperties.Name="Live response time chart">
+                <charts:Chart.Data>
+                    <charts:Samples
+                        x:Name="ResponseTime"
+                        ItemsSource="{x:Bind ResponseTimes, Mode=OneWay}" />
+                </charts:Chart.Data>
+
+                <charts:Chart.Axes>
+                    <charts:LinearAxis
+                        x:Name="ResponseTimeY"
+                        GridLines="Major"
+                        Label="Milliseconds"
+                        Minimum="0" />
+                </charts:Chart.Axes>
+
+                <charts:LineSeries
+                    Title="Response time"
+                    ShowDataMarkers="True"
+                    YAxis="{x:Bind ResponseTimeY, Mode=OneTime}"
+                    YValues="{x:Bind ResponseTime, Mode=OneTime}" />
+            </charts:Chart>
+            <controls:ControlExample.Output>
+                <TextBlock
+                    AutomationProperties.AutomationId="ChartLiveSeriesSummary"
+                    AutomationProperties.LiveSetting="Polite"
+                    Text="{x:Bind LiveSeriesSummary, Mode=OneWay}"
+                    TextWrapping="Wrap" />
+            </controls:ControlExample.Output>
+            <controls:ControlExample.Options>
+                <Button
+                    VerticalAlignment="Top"
+                    AutomationProperties.AutomationId="ChartAddResponseTimeSampleButton"
+                    AutomationProperties.Name="Add response time sample"
+                    Click="AddResponseTimeSampleButton_Click"
+                    Content="Add sample" />
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
+    </StackPanel>
+</Page>
