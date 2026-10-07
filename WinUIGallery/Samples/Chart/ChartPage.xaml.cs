@@ -278,7 +278,7 @@ public sealed partial class ChartPage : Page, INotifyPropertyChanged
 
     private void UpdateLiveSeriesSummary()
     {
-        LiveSeriesSummary = $"Current response times in milliseconds: {string.Join(", ", ResponseTimes.Select(value => value.ToString("F0")))}. Latest: {ResponseTimes[^1]:F0} ms.";
+        LiveSeriesSummary = $"Latest: {ResponseTimes[^1]:F0} ms ({ResponseTimes.Length} samples)";
     }
 
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)

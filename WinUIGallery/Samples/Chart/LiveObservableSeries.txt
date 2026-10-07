@@ -6,10 +6,6 @@ Update a series data source
     <Button
         Click="AddResponseTimeSampleButton_Click"
         Content="Add sample" />
-    <TextBlock
-        AutomationProperties.LiveSetting="Polite"
-        Text="{x:Bind LiveSeriesSummary, Mode=OneWay}"
-        TextWrapping="Wrap" />
     <charts:Chart AutomationProperties.Name="Live response time chart">
         <charts:Chart.Data>
             <charts:Samples x:Name="ResponseTime"

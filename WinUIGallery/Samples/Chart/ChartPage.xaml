@@ -29,46 +29,41 @@
         </controls:SampleCodePresenter>
 
         <controls:ControlExample SampleDefinition="Chart\BasicLineChart.txt">
-            <StackPanel Spacing="12">
-                <TextBlock
-                    Text="Add Samples to Chart.Data, then point a series at them with XValues and YValues. Name the axes in Chart.Axes and assign them to the series."
-                    TextWrapping="Wrap" />
-                <charts:Chart
-                    Height="320"
-                    x:Name="BasicLineChart"
-                    AutomationProperties.AutomationId="ChartBasicLine"
-                    AutomationProperties.HelpText="Monthly profit increases from 18 in January to 52 in June."
-                    AutomationProperties.Name="Monthly profit line chart"
-                    LegendTitle="Profit"
-                    ShowLegend="True">
-                    <charts:Chart.Data>
-                        <charts:Samples
-                            x:Name="Month"
-                            ItemsSource="{x:Bind Months, Mode=OneTime}" />
-                        <charts:Samples
-                            x:Name="Profit"
-                            ItemsSource="{x:Bind Profits, Mode=OneTime}" />
-                    </charts:Chart.Data>
+            <charts:Chart
+                Height="320"
+                x:Name="BasicLineChart"
+                AutomationProperties.AutomationId="ChartBasicLine"
+                AutomationProperties.HelpText="Monthly profit increases from 18 in January to 52 in June."
+                AutomationProperties.Name="Monthly profit line chart"
+                LegendTitle="Profit"
+                ShowLegend="True">
+                <charts:Chart.Data>
+                    <charts:Samples
+                        x:Name="Month"
+                        ItemsSource="{x:Bind Months, Mode=OneTime}" />
+                    <charts:Samples
+                        x:Name="Profit"
+                        ItemsSource="{x:Bind Profits, Mode=OneTime}" />
+                </charts:Chart.Data>
 
-                    <charts:Chart.Axes>
-                        <charts:CategoryAxis
-                            x:Name="MonthX"
-                            Label="Month" />
-                        <charts:LinearAxis
-                            x:Name="ProfitY"
-                            GridLines="Major"
-                            Label="Profit"
-                            Minimum="0" />
-                    </charts:Chart.Axes>
+                <charts:Chart.Axes>
+                    <charts:CategoryAxis
+                        x:Name="MonthX"
+                        Label="Month" />
+                    <charts:LinearAxis
+                        x:Name="ProfitY"
+                        GridLines="Major"
+                        Label="Profit"
+                        Minimum="0" />
+                </charts:Chart.Axes>
 
-                    <charts:LineSeries
-                        Title="2025"
-                        XAxis="{x:Bind MonthX, Mode=OneTime}"
-                        XValues="{x:Bind Month, Mode=OneTime}"
-                        YAxis="{x:Bind ProfitY, Mode=OneTime}"
-                        YValues="{x:Bind Profit, Mode=OneTime}" />
-                </charts:Chart>
-            </StackPanel>
+                <charts:LineSeries
+                    Title="2025"
+                    XAxis="{x:Bind MonthX, Mode=OneTime}"
+                    XValues="{x:Bind Month, Mode=OneTime}"
+                    YAxis="{x:Bind ProfitY, Mode=OneTime}"
+                    YValues="{x:Bind Profit, Mode=OneTime}" />
+            </charts:Chart>
             <controls:ControlExample.Options>
                 <ToggleSwitch
                     x:Name="LegendToggle"
@@ -89,48 +84,43 @@
         </controls:ControlExample>
 
         <controls:ControlExample SampleDefinition="Chart\BarChart.txt">
-            <StackPanel Spacing="12">
-                <TextBlock
-                    Text="BarSeries draws one bar per category. Orientation defaults to Horizontal, so set it to Vertical for upright bars. Use CategoryAxis.SortKey and SortOrder to arrange the categories by their data order or by value."
-                    TextWrapping="Wrap" />
-                <charts:Chart
-                    Height="320"
-                    AutomationProperties.AutomationId="ChartBar"
-                    AutomationProperties.HelpText="Units sold are 42 in North, 38 in South, 51 in East, and 47 in West."
-                    AutomationProperties.Name="Units sold by region bar chart">
-                    <charts:Chart.Data>
-                        <charts:Samples
-                            x:Name="Region"
-                            ItemsSource="{x:Bind Regions, Mode=OneTime}" />
-                        <charts:Samples
-                            x:Name="Units"
-                            ItemsSource="{x:Bind UnitsSold, Mode=OneTime}" />
-                    </charts:Chart.Data>
+            <charts:Chart
+                Height="320"
+                AutomationProperties.AutomationId="ChartBar"
+                AutomationProperties.HelpText="Units sold are 42 in North, 38 in South, 51 in East, and 47 in West."
+                AutomationProperties.Name="Units sold by region bar chart">
+                <charts:Chart.Data>
+                    <charts:Samples
+                        x:Name="Region"
+                        ItemsSource="{x:Bind Regions, Mode=OneTime}" />
+                    <charts:Samples
+                        x:Name="Units"
+                        ItemsSource="{x:Bind UnitsSold, Mode=OneTime}" />
+                </charts:Chart.Data>
 
-                    <charts:Chart.Axes>
-                        <charts:CategoryAxis
-                            x:Name="RegionX"
-                            Label="Region"
-                            SortKey="Index"
-                            SortOrder="Ascending" />
-                        <charts:LinearAxis
-                            x:Name="UnitsY"
-                            GridLines="Major"
-                            Label="Units sold"
-                            Minimum="0" />
-                    </charts:Chart.Axes>
+                <charts:Chart.Axes>
+                    <charts:CategoryAxis
+                        x:Name="RegionX"
+                        Label="Region"
+                        SortKey="Index"
+                        SortOrder="Ascending" />
+                    <charts:LinearAxis
+                        x:Name="UnitsY"
+                        GridLines="Major"
+                        Label="Units sold"
+                        Minimum="0" />
+                </charts:Chart.Axes>
 
-                    <charts:BarSeries
-                        x:Name="UnitsSeries"
-                        Title="Units sold"
-                        Fill="#0078D4"
-                        Orientation="Vertical"
-                        XAxis="{x:Bind RegionX, Mode=OneTime}"
-                        XValues="{x:Bind Region, Mode=OneTime}"
-                        YAxis="{x:Bind UnitsY, Mode=OneTime}"
-                        YValues="{x:Bind Units, Mode=OneTime}" />
-                </charts:Chart>
-            </StackPanel>
+                <charts:BarSeries
+                    x:Name="UnitsSeries"
+                    Title="Units sold"
+                    Fill="#0078D4"
+                    Orientation="Vertical"
+                    XAxis="{x:Bind RegionX, Mode=OneTime}"
+                    XValues="{x:Bind Region, Mode=OneTime}"
+                    YAxis="{x:Bind UnitsY, Mode=OneTime}"
+                    YValues="{x:Bind Units, Mode=OneTime}" />
+            </charts:Chart>
             <controls:ControlExample.Options>
                 <StackPanel Spacing="12">
                     <ComboBox
@@ -179,58 +169,53 @@
         </controls:ControlExample>
 
         <controls:ControlExample SampleDefinition="Chart\AxisOptions.txt">
-            <StackPanel Spacing="12">
-                <TextBlock
-                    Text="Set a LinearAxis range with Minimum, Maximum, and Spacing. Every cartesian axis can show or hide itself, its tick labels, its tick marks, and its grid lines, and each part has its own brush."
-                    TextWrapping="Wrap" />
-                <charts:Chart
-                    Height="320"
-                    AutomationProperties.AutomationId="ChartAxisOptions"
-                    AutomationProperties.HelpText="Visitors per quarter are 35 in Q1, 62 in Q2, 48 in Q3, and 81 in Q4, on an axis from 0 to 100."
-                    AutomationProperties.Name="Quarterly visitors chart with configurable axes">
-                    <charts:Chart.Data>
-                        <charts:Samples
-                            x:Name="Quarter"
-                            ItemsSource="{x:Bind Quarters, Mode=OneTime}" />
-                        <charts:Samples
-                            x:Name="Visitors"
-                            ItemsSource="{x:Bind QuarterlyVisitors, Mode=OneTime}" />
-                    </charts:Chart.Data>
+            <charts:Chart
+                Height="320"
+                AutomationProperties.AutomationId="ChartAxisOptions"
+                AutomationProperties.HelpText="Visitors per quarter are 35 in Q1, 62 in Q2, 48 in Q3, and 81 in Q4, on an axis from 0 to 100."
+                AutomationProperties.Name="Quarterly visitors chart with configurable axes">
+                <charts:Chart.Data>
+                    <charts:Samples
+                        x:Name="Quarter"
+                        ItemsSource="{x:Bind Quarters, Mode=OneTime}" />
+                    <charts:Samples
+                        x:Name="Visitors"
+                        ItemsSource="{x:Bind QuarterlyVisitors, Mode=OneTime}" />
+                </charts:Chart.Data>
 
-                    <charts:Chart.Axes>
-                        <charts:CategoryAxis
-                            x:Name="QuarterX"
-                            AxisLineBrush="#767676"
-                            IsVisible="True"
-                            Label="Quarter"
-                            ShowTickLabels="True"
-                            ShowTickMarks="True"
-                            TickBrush="#767676" />
-                        <charts:LinearAxis
-                            x:Name="VisitorsY"
-                            AxisLineBrush="#767676"
-                            GridLineMajorBrush="#66808080"
-                            GridLineMinorBrush="#33808080"
-                            GridLines="Major"
-                            IsVisible="True"
-                            Label="Visitors (thousands)"
-                            Maximum="100"
-                            Minimum="0"
-                            ShowTickLabels="True"
-                            ShowTickMarks="True"
-                            Spacing="20"
-                            TickBrush="#767676" />
-                    </charts:Chart.Axes>
+                <charts:Chart.Axes>
+                    <charts:CategoryAxis
+                        x:Name="QuarterX"
+                        AxisLineBrush="#767676"
+                        IsVisible="True"
+                        Label="Quarter"
+                        ShowTickLabels="True"
+                        ShowTickMarks="True"
+                        TickBrush="#767676" />
+                    <charts:LinearAxis
+                        x:Name="VisitorsY"
+                        AxisLineBrush="#767676"
+                        GridLineMajorBrush="#66808080"
+                        GridLineMinorBrush="#33808080"
+                        GridLines="Major"
+                        IsVisible="True"
+                        Label="Visitors (thousands)"
+                        Maximum="100"
+                        Minimum="0"
+                        ShowTickLabels="True"
+                        ShowTickMarks="True"
+                        Spacing="20"
+                        TickBrush="#767676" />
+                </charts:Chart.Axes>
 
-                    <charts:LineSeries
-                        Title="Visitors"
-                        ShowDataMarkers="True"
-                        XAxis="{x:Bind QuarterX, Mode=OneTime}"
-                        XValues="{x:Bind Quarter, Mode=OneTime}"
-                        YAxis="{x:Bind VisitorsY, Mode=OneTime}"
-                        YValues="{x:Bind Visitors, Mode=OneTime}" />
-                </charts:Chart>
-            </StackPanel>
+                <charts:LineSeries
+                    Title="Visitors"
+                    ShowDataMarkers="True"
+                    XAxis="{x:Bind QuarterX, Mode=OneTime}"
+                    XValues="{x:Bind Quarter, Mode=OneTime}"
+                    YAxis="{x:Bind VisitorsY, Mode=OneTime}"
+                    YValues="{x:Bind Visitors, Mode=OneTime}" />
+            </charts:Chart>
             <controls:ControlExample.Options>
                 <StackPanel Spacing="12">
                     <ComboBox
@@ -290,85 +275,80 @@
         </controls:ControlExample>
 
         <controls:ControlExample SampleDefinition="Chart\StyledSeries.txt">
-            <StackPanel Spacing="12">
-                <TextBlock
-                    Text="One chart can mix AreaSeries, BarSeries, and LineSeries that share axes. Each series appears in the legend, and IsVisible hides a series without removing it."
-                    TextWrapping="Wrap" />
-                <charts:Chart
-                    Height="360"
-                    AutomationProperties.AutomationId="ChartStyledSeries"
-                    AutomationProperties.HelpText="Forecast, actual, and target monthly results from January to June."
-                    AutomationProperties.Name="Monthly results chart with area, bar, and line series"
-                    LegendTitle="Monthly results"
-                    ShowLegend="True">
-                    <charts:Chart.Data>
-                        <charts:Samples
-                            x:Name="StyledMonth"
-                            ItemsSource="{x:Bind Months, Mode=OneTime}" />
-                        <charts:Samples
-                            x:Name="Actual"
-                            ItemsSource="{x:Bind Actuals, Mode=OneTime}" />
-                        <charts:Samples
-                            x:Name="Forecast"
-                            ItemsSource="{x:Bind Forecasts, Mode=OneTime}" />
-                        <charts:Samples
-                            x:Name="Target"
-                            ItemsSource="{x:Bind Targets, Mode=OneTime}" />
-                    </charts:Chart.Data>
+            <charts:Chart
+                Height="360"
+                AutomationProperties.AutomationId="ChartStyledSeries"
+                AutomationProperties.HelpText="Forecast, actual, and target monthly results from January to June."
+                AutomationProperties.Name="Monthly results chart with area, bar, and line series"
+                LegendTitle="Monthly results"
+                ShowLegend="True">
+                <charts:Chart.Data>
+                    <charts:Samples
+                        x:Name="StyledMonth"
+                        ItemsSource="{x:Bind Months, Mode=OneTime}" />
+                    <charts:Samples
+                        x:Name="Actual"
+                        ItemsSource="{x:Bind Actuals, Mode=OneTime}" />
+                    <charts:Samples
+                        x:Name="Forecast"
+                        ItemsSource="{x:Bind Forecasts, Mode=OneTime}" />
+                    <charts:Samples
+                        x:Name="Target"
+                        ItemsSource="{x:Bind Targets, Mode=OneTime}" />
+                </charts:Chart.Data>
 
-                    <charts:Chart.Axes>
-                        <charts:CategoryAxis
-                            x:Name="StyledMonthX"
-                            Label="Month" />
-                        <charts:LinearAxis
-                            x:Name="RevenueY"
-                            GridLines="Major"
-                            Label="Revenue"
-                            Maximum="60"
-                            Minimum="0"
-                            Spacing="10" />
-                    </charts:Chart.Axes>
+                <charts:Chart.Axes>
+                    <charts:CategoryAxis
+                        x:Name="StyledMonthX"
+                        Label="Month" />
+                    <charts:LinearAxis
+                        x:Name="RevenueY"
+                        GridLines="Major"
+                        Label="Revenue"
+                        Maximum="60"
+                        Minimum="0"
+                        Spacing="10" />
+                </charts:Chart.Axes>
 
-                    <charts:AreaSeries
-                        x:Name="ForecastSeries"
-                        Title="Forecast"
-                        Fill="#4D0078D4"
-                        IsVisible="True"
-                        Stroke="#0078D4"
-                        StrokeThickness="2"
-                        XAxis="{x:Bind StyledMonthX, Mode=OneTime}"
-                        XValues="{x:Bind StyledMonth, Mode=OneTime}"
-                        YAxis="{x:Bind RevenueY, Mode=OneTime}"
-                        YValues="{x:Bind Forecast, Mode=OneTime}" />
+                <charts:AreaSeries
+                    x:Name="ForecastSeries"
+                    Title="Forecast"
+                    Fill="#4D0078D4"
+                    IsVisible="True"
+                    Stroke="#0078D4"
+                    StrokeThickness="2"
+                    XAxis="{x:Bind StyledMonthX, Mode=OneTime}"
+                    XValues="{x:Bind StyledMonth, Mode=OneTime}"
+                    YAxis="{x:Bind RevenueY, Mode=OneTime}"
+                    YValues="{x:Bind Forecast, Mode=OneTime}" />
 
-                    <charts:BarSeries
-                        x:Name="ActualSeries"
-                        Title="Actual"
-                        Fill="#008575"
-                        IsVisible="True"
-                        Orientation="Vertical"
-                        ShowDataLabels="True"
-                        XAxis="{x:Bind StyledMonthX, Mode=OneTime}"
-                        XValues="{x:Bind StyledMonth, Mode=OneTime}"
-                        YAxis="{x:Bind RevenueY, Mode=OneTime}"
-                        YValues="{x:Bind Actual, Mode=OneTime}" />
+                <charts:BarSeries
+                    x:Name="ActualSeries"
+                    Title="Actual"
+                    Fill="#008575"
+                    IsVisible="True"
+                    Orientation="Vertical"
+                    ShowDataLabels="True"
+                    XAxis="{x:Bind StyledMonthX, Mode=OneTime}"
+                    XValues="{x:Bind StyledMonth, Mode=OneTime}"
+                    YAxis="{x:Bind RevenueY, Mode=OneTime}"
+                    YValues="{x:Bind Actual, Mode=OneTime}" />
 
-                    <charts:LineSeries
-                        x:Name="TargetSeries"
-                        Title="Target"
-                        DataMarkerBrush="#D13438"
-                        IsVisible="True"
-                        MarkerShape="Diamond"
-                        ShowDataMarkers="True"
-                        Stroke="#D13438"
-                        StrokeDashStyle="Dash"
-                        StrokeThickness="2"
-                        XAxis="{x:Bind StyledMonthX, Mode=OneTime}"
-                        XValues="{x:Bind StyledMonth, Mode=OneTime}"
-                        YAxis="{x:Bind RevenueY, Mode=OneTime}"
-                        YValues="{x:Bind Target, Mode=OneTime}" />
-                </charts:Chart>
-            </StackPanel>
+                <charts:LineSeries
+                    x:Name="TargetSeries"
+                    Title="Target"
+                    DataMarkerBrush="#D13438"
+                    IsVisible="True"
+                    MarkerShape="Diamond"
+                    ShowDataMarkers="True"
+                    Stroke="#D13438"
+                    StrokeDashStyle="Dash"
+                    StrokeThickness="2"
+                    XAxis="{x:Bind StyledMonthX, Mode=OneTime}"
+                    XValues="{x:Bind StyledMonth, Mode=OneTime}"
+                    YAxis="{x:Bind RevenueY, Mode=OneTime}"
+                    YValues="{x:Bind Target, Mode=OneTime}" />
+            </charts:Chart>
             <controls:ControlExample.Options>
                 <StackPanel Spacing="4">
                     <TextBlock
@@ -409,51 +389,46 @@
         </controls:ControlExample>
 
         <controls:ControlExample SampleDefinition="Chart\LinesAndMarkers.txt">
-            <StackPanel Spacing="12">
-                <TextBlock
-                    Text="Change how a series draws its line, markers, and data labels. DataLabelOverrides and DataMarkerOverrides replace the label and marker of a single point; here they call out the busiest day with text and a different shape, so the highlight does not rely on color alone."
-                    TextWrapping="Wrap" />
-                <charts:Chart
-                    Height="320"
-                    AutomationProperties.AutomationId="ChartLinesAndMarkers"
-                    AutomationProperties.HelpText="Daily visits from Monday to Sunday are 120, 135, 128, 172, 150, 98, and 110. Thursday is labeled Peak."
-                    AutomationProperties.Name="Daily visits line chart with markers and data labels">
-                    <charts:Chart.Data>
-                        <charts:Samples
-                            x:Name="Day"
-                            ItemsSource="{x:Bind Days, Mode=OneTime}" />
-                        <charts:Samples
-                            x:Name="Visits"
-                            ItemsSource="{x:Bind DailyVisits, Mode=OneTime}" />
-                    </charts:Chart.Data>
+            <charts:Chart
+                Height="320"
+                AutomationProperties.AutomationId="ChartLinesAndMarkers"
+                AutomationProperties.HelpText="Daily visits from Monday to Sunday are 120, 135, 128, 172, 150, 98, and 110. Thursday is labeled Peak."
+                AutomationProperties.Name="Daily visits line chart with markers and data labels">
+                <charts:Chart.Data>
+                    <charts:Samples
+                        x:Name="Day"
+                        ItemsSource="{x:Bind Days, Mode=OneTime}" />
+                    <charts:Samples
+                        x:Name="Visits"
+                        ItemsSource="{x:Bind DailyVisits, Mode=OneTime}" />
+                </charts:Chart.Data>
 
-                    <charts:Chart.Axes>
-                        <charts:CategoryAxis
-                            x:Name="DayX"
-                            Label="Day" />
-                        <charts:LinearAxis
-                            x:Name="VisitsY"
-                            GridLines="Major"
-                            Label="Visits"
-                            Minimum="0" />
-                    </charts:Chart.Axes>
+                <charts:Chart.Axes>
+                    <charts:CategoryAxis
+                        x:Name="DayX"
+                        Label="Day" />
+                    <charts:LinearAxis
+                        x:Name="VisitsY"
+                        GridLines="Major"
+                        Label="Visits"
+                        Minimum="0" />
+                </charts:Chart.Axes>
 
-                    <charts:LineSeries
-                        x:Name="VisitsSeries"
-                        Title="Visits"
-                        DataMarkerBrush="#8764B8"
-                        MarkerShape="Circle"
-                        ShowDataLabels="True"
-                        ShowDataMarkers="True"
-                        Stroke="#8764B8"
-                        StrokeDashStyle="Solid"
-                        StrokeThickness="2"
-                        XAxis="{x:Bind DayX, Mode=OneTime}"
-                        XValues="{x:Bind Day, Mode=OneTime}"
-                        YAxis="{x:Bind VisitsY, Mode=OneTime}"
-                        YValues="{x:Bind Visits, Mode=OneTime}" />
-                </charts:Chart>
-            </StackPanel>
+                <charts:LineSeries
+                    x:Name="VisitsSeries"
+                    Title="Visits"
+                    DataMarkerBrush="#8764B8"
+                    MarkerShape="Circle"
+                    ShowDataLabels="True"
+                    ShowDataMarkers="True"
+                    Stroke="#8764B8"
+                    StrokeDashStyle="Solid"
+                    StrokeThickness="2"
+                    XAxis="{x:Bind DayX, Mode=OneTime}"
+                    XValues="{x:Bind Day, Mode=OneTime}"
+                    YAxis="{x:Bind VisitsY, Mode=OneTime}"
+                    YValues="{x:Bind Visits, Mode=OneTime}" />
+            </charts:Chart>
             <controls:ControlExample.Options>
                 <StackPanel Spacing="12">
                     <ComboBox
@@ -536,17 +511,12 @@
         </controls:ControlExample>
 
         <controls:ControlExample SampleDefinition="Chart\TimeSeries.txt">
-            <StackPanel Spacing="12">
-                <TextBlock
-                    Text="Create a chart in code and plot dates on a DateTimeAxis. Minimum and Maximum fix the visible date range, IntervalType sets the spacing between ticks, and LabelFormat sets how each tick date is written."
-                    TextWrapping="Wrap" />
-                <charts:Chart
-                    x:Name="TimeSeriesChart"
-                    Height="320"
-                    AutomationProperties.AutomationId="ChartTimeSeries"
-                    AutomationProperties.HelpText="Weekly temperature readings in August are 72, 76, 74, 79, and 77 degrees."
-                    AutomationProperties.Name="Weekly temperature area chart" />
-            </StackPanel>
+            <charts:Chart
+                x:Name="TimeSeriesChart"
+                Height="320"
+                AutomationProperties.AutomationId="ChartTimeSeries"
+                AutomationProperties.HelpText="Weekly temperature readings in August are 72, 76, 74, 79, and 77 degrees."
+                AutomationProperties.Name="Weekly temperature area chart" />
             <controls:ControlExample.Options>
                 <StackPanel Spacing="12">
                     <ComboBox
@@ -585,41 +555,38 @@
         </controls:ControlExample>
 
         <controls:ControlExample SampleDefinition="Chart\LiveObservableSeries.txt">
-            <StackPanel Spacing="12">
-                <TextBlock
-                    Text="Samples.ItemsSource reads its values when it is set. To update the chart, assign a new collection, for example through a OneWay binding to a property that raises PropertyChanged. This example keeps the eight most recent values."
-                    TextWrapping="Wrap" />
+            <charts:Chart
+                Height="320"
+                AutomationProperties.AutomationId="ChartLiveObservableSeries"
+                AutomationProperties.HelpText="A response-time line series that updates when Add sample is selected."
+                AutomationProperties.Name="Live response time chart">
+                <charts:Chart.Data>
+                    <charts:Samples
+                        x:Name="ResponseTime"
+                        ItemsSource="{x:Bind ResponseTimes, Mode=OneWay}" />
+                </charts:Chart.Data>
+
+                <charts:Chart.Axes>
+                    <charts:LinearAxis
+                        x:Name="ResponseTimeY"
+                        GridLines="Major"
+                        Label="Milliseconds"
+                        Minimum="0" />
+                </charts:Chart.Axes>
+
+                <charts:LineSeries
+                    Title="Response time"
+                    ShowDataMarkers="True"
+                    YAxis="{x:Bind ResponseTimeY, Mode=OneTime}"
+                    YValues="{x:Bind ResponseTime, Mode=OneTime}" />
+            </charts:Chart>
+            <controls:ControlExample.Output>
                 <TextBlock
                     AutomationProperties.AutomationId="ChartLiveSeriesSummary"
                     AutomationProperties.LiveSetting="Polite"
                     Text="{x:Bind LiveSeriesSummary, Mode=OneWay}"
                     TextWrapping="Wrap" />
-                <charts:Chart
-                    Height="320"
-                    AutomationProperties.AutomationId="ChartLiveObservableSeries"
-                    AutomationProperties.HelpText="A response-time line series that updates when Add sample is selected."
-                    AutomationProperties.Name="Live response time chart">
-                    <charts:Chart.Data>
-                        <charts:Samples
-                            x:Name="ResponseTime"
-                            ItemsSource="{x:Bind ResponseTimes, Mode=OneWay}" />
-                    </charts:Chart.Data>
-
-                    <charts:Chart.Axes>
-                        <charts:LinearAxis
-                            x:Name="ResponseTimeY"
-                            GridLines="Major"
-                            Label="Milliseconds"
-                            Minimum="0" />
-                    </charts:Chart.Axes>
-
-                    <charts:LineSeries
-                        Title="Response time"
-                        ShowDataMarkers="True"
-                        YAxis="{x:Bind ResponseTimeY, Mode=OneTime}"
-                        YValues="{x:Bind ResponseTime, Mode=OneTime}" />
-                </charts:Chart>
-            </StackPanel>
+            </controls:ControlExample.Output>
             <controls:ControlExample.Options>
                 <Button
                     VerticalAlignment="Top"
