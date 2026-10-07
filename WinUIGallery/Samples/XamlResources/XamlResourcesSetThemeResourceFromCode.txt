@@ -1,0 +1,29 @@
+--- header
+Set a ThemeResource from code (experimental)
+--- xaml
+<Grid x:Name="ThemeResourceFromCodeRoot">
+    <Border x:Name="OneTimeLookupBorder">
+        <TextBlock x:Name="OneTimeLookupText"
+                   Text="A one-time resource lookup keeps the value from when it was read." />
+    </Border>
+    <Border x:Name="ThemeResourceBindingBorder" Grid.Column="1">
+        <TextBlock x:Name="ThemeResourceBindingText"
+                   Text="SetThemeResourceBinding updates when the theme changes." />
+    </Border>
+</Grid>
+--- c#
+// One-time lookup: the brushes are resolved once and don't update when the theme changes.
+OneTimeLookupBorder.Background = (Brush)Application.Current.Resources["AccentFillColorDefaultBrush"];
+OneTimeLookupText.Foreground = (Brush)Application.Current.Resources["TextOnAccentFillColorPrimaryBrush"];
+
+// Theme resource binding: the code equivalent of {ThemeResource Key}.
+// The brushes are re-resolved whenever the element's ActualTheme changes.
+ThemeResourceBindingBorder.SetThemeResourceBinding(Border.BackgroundProperty, "AccentFillColorDefaultBrush");
+ThemeResourceBindingText.SetThemeResourceBinding(TextBlock.ForegroundProperty, "TextOnAccentFillColorPrimaryBrush");
+
+private void SwitchThemeButton_Click(object sender, RoutedEventArgs e)
+{
+    ThemeResourceFromCodeRoot.RequestedTheme = ThemeResourceFromCodeRoot.ActualTheme == ElementTheme.Dark
+        ? ElementTheme.Light
+        : ElementTheme.Dark;
+}

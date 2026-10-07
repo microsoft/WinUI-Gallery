@@ -6,7 +6,6 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Tabular;
 using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -279,9 +278,16 @@ public sealed partial class TableViewPage : Page
             return;
         }
 
-        PresentationTable.AlternatingRowBackground = RowBandingToggle.IsOn
-            ? (Brush)Application.Current.Resources["SubtleFillColorSecondaryBrush"]
-            : null;
+        if (RowBandingToggle.IsOn)
+        {
+            // Equivalent to {ThemeResource SubtleFillColorSecondaryBrush}, so the brush updates when the theme changes.
+            PresentationTable.SetThemeResourceBinding(TableView.AlternatingRowBackgroundProperty, "SubtleFillColorSecondaryBrush");
+        }
+        else
+        {
+            PresentationTable.AlternatingRowBackground = null;
+        }
+
         RowBandingToggle.Tag = RowBandingToggle.IsOn
             ? "ThemeResource SubtleFillColorSecondaryBrush"
             : "x:Null";
