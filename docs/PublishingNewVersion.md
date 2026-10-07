@@ -20,6 +20,23 @@ The releaser needs:
   `WinUI-Gallery-Store-Release`.
 - Access to the WinUI Gallery product in Partner Center.
 
+To test an update with a small group before releasing it to everyone, submit it
+to a [package flight](https://learn.microsoft.com/windows/apps/publish/package-flights)
+first:
+
+1. The flight group is the known user group `WinUI 3 Gallery testers` (under
+   **Customers** > **Customer groups** in Partner Center). Add testers'
+   Microsoft accounts there.
+2. For each release, open the product's **Application overview** page, go to
+   **Manage package flights**, and select **Create new package flight**. Name
+   it `WinUI Gallery X.Y Flight`, select the testers group, and make sure the new
+   flight has the highest rank. A flight's name and groups cannot be changed
+   later. The pipeline looks the flight up by this exact name.
+
+Members of a flight group only receive packages from the highest-ranked flight
+they belong to. They do not receive non-flighted updates, so delete old flights
+when they are no longer needed.
+
 ## 1. Prepare the release commit
 
 Choose the release version `X.Y.Z`. Update all three checked-in version values to
@@ -32,6 +49,12 @@ Choose the release version `X.Y.Z`. Update all three checked-in version values t
 Open and merge a version-bump pull request into `main`. Include any final
 dependency updates or release-only changes in that pull request so the merged
 commit is the exact source to release.
+
+If the release changes the app's display name (`DisplayName` in
+`Package.appxmanifest`), first reserve the new name in Partner Center under
+**Product management** > **Manage app names**. Store package validation rejects
+a package whose display name does not exactly match a reserved name. Select the
+new name in the Store listing before the update is released to all customers.
 
 Wait for the required GitHub checks on `main` to pass. Record the merged commit
 SHA; the Store build and GitHub release must both use that commit.
@@ -56,9 +79,20 @@ Run the same pipeline again from the same `main` commit with:
 
 - `releaseVersion`: `X.Y.Z`
 - `publishToStore`: `true`
+- `storeReleaseTrack`: `Flight` (default) or `Production`
+- `storeFlightName`: the Partner Center flight name, for example `WinUI Gallery 3.0 Flight`
+  (required for `Flight`, ignored for `Production`)
 
 This setting is not a dry run. It builds the `X.Y.Z.0` Store package and submits
 the update for certification.
+
+With `storeReleaseTrack: Flight`, the pipeline creates a submission for the
+package flight only. Store listing metadata is not changed, and customers outside
+the flight group are not affected. Use `Production` only to skip flight testing
+(for example, for an urgent hotfix).
+
+The pipeline does not change the product's Store visibility; the submission
+keeps the visibility of the previous submission.
 
 The pipeline uses manual Store publishing, so passing certification does not
 make the update public. Someone must still select **Publish now** in Partner
@@ -93,7 +127,32 @@ Microsoft Store is the package distribution channel.
 
 ## 5. Publish
 
-After Store certification passes:
+### Flight track: test, then promote
+
+After the flight submission passes certification:
+
+1. Select **Publish now** for the flight submission in Partner Center.
+2. Ask the flight group to install or update WinUI Gallery from the Microsoft
+   Store and to verify version `X.Y.Z.0` (**Settings** > **About**).
+3. Collect feedback. For blocking issues, fix them on `main`, bump the version
+   (for example, `X.Y.Z` to `X.Y.(Z+1)`), and submit a new flight.
+
+When the flight is approved, promote the exact tested packages to everyone:
+
+1. In Partner Center, start an update for the non-flighted submission.
+2. On the **Packages** page, use the option to add packages from a package
+   flight and choose the certified packages from the flight.
+3. Review the Store listing (name, description, screenshots, what's new) for
+   the release, then submit the update for certification.
+4. Continue with the publication steps below.
+
+Promoting the flight packages avoids rebuilding and resubmitting the same
+version through the pipeline, so customers get the exact binaries that were
+tested.
+
+### Publication
+
+After the non-flighted Store certification passes:
 
 1. Review the certified package and release notes one final time.
 2. Select **Publish now** in Partner Center.
@@ -103,6 +162,24 @@ After Store certification passes:
 
 This order avoids announcing a GitHub release while Store users can still only
 install the previous version.
+
+## Alternative: Microsoft Store Developer CLI
+
+The governed pipeline is the supported release path. For local experiments, the
+[Microsoft Store Developer CLI](https://learn.microsoft.com/windows/apps/publish/msstore-dev-cli/overview)
+(`msstore`) can also submit to a package flight. It requires an Entra app
+registered in Partner Center (`msstore reconfigure`).
+
+```powershell
+# Find the flight ID
+msstore flights list 9P3JFPWWDZRC
+
+# Submit a bundle to the flight without committing it for certification
+msstore publish . -i .\WinUIGallery_X.Y.Z.0.msixbundle -id 9P3JFPWWDZRC -f <flightId> -nc
+
+# Check the flight submission
+msstore flights submission status 9P3JFPWWDZRC <flightId>
+```
 
 ## Hotfixes
 

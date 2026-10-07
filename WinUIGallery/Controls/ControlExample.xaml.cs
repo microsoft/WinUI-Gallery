@@ -259,7 +259,7 @@ public sealed partial class ControlExample : UserControl
 
     private async void LoadAndParseSampleDefinitionFile(string sourceRelativePath)
     {
-        if (string.IsNullOrEmpty(sourceRelativePath) || !sourceRelativePath.EndsWith("txt"))
+        if (string.IsNullOrEmpty(sourceRelativePath) || !sourceRelativePath.EndsWith("txt", StringComparison.Ordinal))
         {
             return;
         }

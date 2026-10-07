@@ -14,11 +14,22 @@ parameters:
 - name: releaseVersion
   displayName: Release version (X.Y.Z)
   type: string
-  default: '2.10.0'
+  default: '3.0.0'
 - name: publishToStore
   displayName: Submit package for Store certification
   type: boolean
   default: false
+- name: storeReleaseTrack
+  displayName: Store release track (Flight = test group only, Production = all customers)
+  type: string
+  default: Flight
+  values:
+  - Flight
+  - Production
+- name: storeFlightName
+  displayName: Partner Center package flight name (Flight track only)
+  type: string
+  default: 'none'
 - name: storeServiceEndpoint
   displayName: StoreBroker service connection
   type: string
@@ -144,6 +155,24 @@ extends:
             os: windows
           steps:
           - task: PowerShell@2
+            displayName: Validate Store release track
+            inputs:
+              targetType: inline
+              script: |
+                $track = "${{ parameters.storeReleaseTrack }}"
+                $flightName = "${{ parameters.storeFlightName }}".Trim()
+
+                if ($track -eq 'Flight' -and ([string]::IsNullOrWhiteSpace($flightName) -or $flightName -eq 'none')) {
+                  Write-Error "storeFlightName must be set to an existing Partner Center package flight when storeReleaseTrack is Flight."
+                  exit 1
+                }
+
+                if ($track -eq 'Flight') {
+                  Write-Host "Submitting to package flight '$flightName'. Only members of its flight group will receive this update."
+                } else {
+                  Write-Host "Submitting to Production. All customers will receive this update after it is published."
+                }
+          - task: PowerShell@2
             displayName: Create and validate Store submission bundle
             inputs:
               targetType: inline
@@ -204,10 +233,14 @@ extends:
 
                 Write-Host "Created Store bundle: $bundlePath"
           - task: MS-RDX-MRO.windows-store-publish.publish-task.store-publish@3
-            displayName: Publish WinUI Gallery StoreBroker package
+            displayName: Publish WinUI Gallery StoreBroker package (${{ parameters.storeReleaseTrack }})
             inputs:
               serviceEndpoint: ${{ parameters.storeServiceEndpoint }}
               appId: 9P3JFPWWDZRC
+              releaseTrack: ${{ parameters.storeReleaseTrack }}
+              ${{ if eq(parameters.storeReleaseTrack, 'Flight') }}:
+                flightNameType: FlightName
+                flightName: ${{ parameters.storeFlightName }}
               inputMethod: Packages
               sourceFolder: '$(Pipeline.Workspace)\StoreBundle'
               contents: 'WinUIGallery_*.msixbundle'
@@ -216,4 +249,3 @@ extends:
               deletePackages: true
               numberOfPackagesToKeep: 1
               targetPublishMode: Manual
-              Visibility: Private

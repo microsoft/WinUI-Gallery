@@ -125,7 +125,8 @@
             "ControlTemplate",
             "DataTemplate",
             "ItemTemplate",
-            "DataTemplateSelector"
+            "DataTemplateSelector",
+            "DataTemplateElementFactory"
           ],
           "Title": "Templates",
           "IsNew": true,
