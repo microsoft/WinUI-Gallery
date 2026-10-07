@@ -38,6 +38,22 @@ first:
    flight has the highest rank. A flight's name and groups cannot be changed
    later. The pipeline looks the flight up by this exact name.
 
+The pipeline cannot make the first submission to a new flight. It replaces any
+pending flight submission (`force: true`), and the Store API rejects removing a
+new flight's initial draft submission. In WinUI Gallery 3.0, that failed run
+was followed by the flight disappearing from Partner Center. Make the first
+submission of each new flight manually:
+
+1. Run the pipeline with `publishToStore: false` (step 3) to build the packages.
+2. Download the `MSIX-x64` and `MSIX-ARM64` artifacts from the run and bundle
+   them with the Windows SDK:
+   `makeappx bundle /d <folder with both .msix files> /p WinUIGallery_X.Y.Z.0.msixbundle /bv X.Y.Z.0`
+3. Upload the `.msixbundle` (not the individual `.msix` files) on the flight
+   submission's **Packages** page and submit it.
+
+Later submissions to the same flight (for example, `X.Y.1`) can use the
+pipeline.
+
 Members of a flight group only receive packages from the highest-ranked flight
 they belong to. They do not receive non-flighted updates, so delete old flights
 when they are no longer needed.
@@ -108,7 +124,8 @@ the update for certification. Record the commit SHA of the run (shown in the
 Azure DevOps run summary); the GitHub release must use that commit.
 
 With `storeReleaseTrack: Flight`, the pipeline creates a submission for the
-package flight only. Store listing metadata is not changed, and customers outside
+package flight only. If this is the flight's first submission, submit it
+manually instead (see [Prerequisites](#prerequisites)). Store listing metadata is not changed, and customers outside
 the flight group are not affected. Use `Production` only to skip flight testing
 (for example, for an urgent hotfix).
 
