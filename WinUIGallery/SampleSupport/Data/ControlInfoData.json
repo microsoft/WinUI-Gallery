@@ -1947,7 +1947,7 @@
     {
       "UniqueId": "StatusAndInfo",
       "Title": "Status & info",
-      "IconGlyph": "",
+      "IconGlyph": "",
       "Items": [
         {
           "UniqueId": "InfoBadge",
