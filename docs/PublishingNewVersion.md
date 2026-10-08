@@ -34,9 +34,10 @@ first:
    Microsoft accounts there.
 2. For each release, open the product's **Application overview** page, go to
    **Manage package flights**, and select **Create new package flight**. Name
-   it `WinUI Gallery X.Y Flight`, select the testers group, and make sure the new
+   it `WinUI Gallery X.Y Test Flight`, select the testers group, and make sure the new
    flight has the highest rank. A flight's name and groups cannot be changed
-   later. The pipeline looks the flight up by this exact name.
+   later. The pipeline looks the flight up by this exact name (case-insensitive),
+   so copy it from Partner Center when you run the pipeline.
 
 The pipeline cannot make the first submission to a new flight. It replaces any
 pending flight submission (`force: true`), and the Store API rejects removing a
@@ -116,7 +117,7 @@ Run the same pipeline again from `release/X.Y` with:
 - `releaseVersion`: `X.Y.Z`
 - `publishToStore`: `true`
 - `storeReleaseTrack`: `Flight` (default) or `Production`
-- `storeFlightName`: the Partner Center flight name, for example `WinUI Gallery 3.0 Flight`
+- `storeFlightName`: the Partner Center flight name, for example `WinUI Gallery 3.0 Test Flight`
   (required for `Flight`, ignored for `Production`)
 
 This setting is not a dry run. It builds the `X.Y.Z.0` Store package and submits
