@@ -4,6 +4,8 @@ Follow the repository architecture, build, accessibility, and coding guidance in
 
 ## Designing control samples
 
+For the full sample-authoring guidance, including how little description text to use and where options and output go, see the `gallery-control-samples` skill in `.github/skills/gallery-control-samples/SKILL.md`.
+
 - Structure a control page as a learning progression that explains the control and its capabilities, not as one deep, application-specific scenario.
 - Begin with the simplest useful example, then add focused examples for distinct concepts such as configuration, states, input, events, data binding, selection, customization, and accessibility when they apply.
 - Make each `ControlExample` teach one clear idea. Its heading, UI, and code snippet should make that idea understandable without requiring context from another example.
