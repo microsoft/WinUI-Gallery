@@ -40,7 +40,7 @@ public sealed partial class TabViewWindowingSamplePage : Page
         // Main Window -- add some default items
         for (int i = 0; i < 3; i++)
         {
-            Tabs.TabItems.Add(new TabViewItem() { IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = $"Item {i}", Content = new TabContentSampleControl() { DataContext = $"Page {i}" } });
+            Tabs.TabItems.Add(new TabViewItem() { IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder }, Header = $"Item {i}", Content = new TabContentSampleControl() { DataContext = $"Item {i}" } });
         }
 
         Tabs.SelectedIndex = 0;
@@ -65,12 +65,34 @@ public sealed partial class TabViewWindowingSamplePage : Page
 
     private void Tabs_TabTearOutRequested(TabView sender, TabViewTabTearOutRequestedEventArgs args)
     {
+        // Guard against null or empty tabs collection
+        if (args.Tabs == null || args.Tabs.Count == 0)
+        {
+            return;
+        }
+
+        // Check if any tab is already in the source view (drag was canceled/re-docked before tear-out completed)
+        foreach (TabViewItem tab in args.Tabs.Cast<TabViewItem>())
+        {
+            var parent = GetParentTabView(tab);
+            if (parent == sender)
+            {
+                tabTearOutWindow = null;
+                return;
+            }
+        }
+
         if (tabTearOutWindow == null)
         {
             return;
         }
 
-        var newPage = (TabViewWindowingSamplePage)tabTearOutWindow.Content;
+        var newPage = tabTearOutWindow.Content as TabViewWindowingSamplePage;
+        if (newPage == null)
+        {
+            tabTearOutWindow = null;
+            return;
+        }
 
         foreach (TabViewItem tab in args.Tabs.Cast<TabViewItem>())
         {
@@ -99,14 +121,19 @@ public sealed partial class TabViewWindowingSamplePage : Page
         {
             // Find the source TabView before removing the tab, so we can check if it's empty afterwards.
             TabView? sourceTabView = GetParentTabView(tab);
-            sourceTabView?.TabItems.Remove(tab);
-            sender.TabItems.Insert(args.DropIndex + position, tab);
-            position++;
-
-            // Close the source window if all its tabs have been moved to this window.
-            if (sourceTabView != null && sourceTabView.TabItems.Count == 0)
+            
+            // Only remove and re-insert if tab is not already in the destination
+            if (sourceTabView != sender)
             {
-                CloseWindowIfEmpty(sourceTabView);
+                sourceTabView?.TabItems.Remove(tab);
+                sender.TabItems.Insert(args.DropIndex + position, tab);
+                position++;
+
+                // Close the source window if all its tabs have been moved to this window.
+                if (sourceTabView != null && sourceTabView.TabItems.Count == 0)
+                {
+                    CloseWindowIfEmpty(sourceTabView);
+                }
             }
         }
     }
