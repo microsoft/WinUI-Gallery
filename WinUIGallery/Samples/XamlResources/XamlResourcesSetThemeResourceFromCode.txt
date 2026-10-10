@@ -1,5 +1,5 @@
 --- header
-Set a ThemeResource from code (experimental)
+Set a ThemeResource from code
 --- xaml
 <Grid x:Name="ThemeResourceFromCodeRoot">
     <Border x:Name="OneTimeLookupBorder">
