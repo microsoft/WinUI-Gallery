@@ -131,8 +131,15 @@
 
         <controls:ControlExample SampleDefinition="XamlResources\XamlResourcesStaticresourceVersusThemeresource.txt">
             <controls:ControlExample.Example>
-                <StackPanel>
-                    <TextBlock Margin="0,0,0,16" Text="Toggle the theme using the theme switch button in the top right corner." />
+                <StackPanel Spacing="8">
+                    <InfoBar Message="Toggle the theme using the theme switch button in the top right corner."
+                             IsClosable="False"
+                             IsOpen="True"
+                             HorizontalAlignment="Left">
+                        <InfoBar.IconSource>
+                            <FontIconSource Glyph="&#xE793;" />
+                        </InfoBar.IconSource>
+                    </InfoBar>
 
                     <Grid Background="{StaticResource SolidBackgroundFillColorBaseBrush}">
                         <TextBlock
@@ -156,7 +163,14 @@
         <controls:ControlExample SampleDefinition="XamlResources\XamlResourcesDefineNewThemeResource.txt">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="12">
-                    <TextBlock Text="Toggle the theme using the theme switch button in the top right corner." />
+                    <InfoBar Message="Toggle the theme using the theme switch button in the top right corner."
+                             IsClosable="False"
+                             IsOpen="True"
+                             HorizontalAlignment="Left">
+                        <InfoBar.IconSource>
+                            <FontIconSource Glyph="&#xE793;" />
+                        </InfoBar.IconSource>
+                    </InfoBar>
                     <Grid>
                         <Grid.Resources>
                             <ResourceDictionary>
@@ -197,49 +211,44 @@
             </controls:ControlExample.Example>
         </controls:ControlExample>
 
-        <controls:ControlExample SampleDefinition="XamlResources\XamlResourcesSetThemeResourceFromCode.txt">
+        <controls:ControlExample SampleDefinition="XamlResources\XamlResourcesSetThemeResourceFromCode.txt"
+                                 IsExperimental="True">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="12">
-                    <TextBlock Text="FrameworkElement.SetThemeResourceBinding is an experimental API and is the code equivalent of {ThemeResource Key}. Switch the theme of this example to compare it with a one-time resource lookup." TextWrapping="Wrap" />
-                    <Grid
-                        x:Name="ThemeResourceFromCodeRoot"
-                        Padding="12"
-                        HorizontalAlignment="Left"
-                        Background="{ThemeResource SolidBackgroundFillColorBaseBrush}"
-                        ColumnSpacing="12"
-                        CornerRadius="{StaticResource ControlCornerRadius}">
+                    <InfoBar Message="Toggle the theme using the theme switch button in the top right corner."
+                             IsClosable="False"
+                             IsOpen="True"
+                             HorizontalAlignment="Left">
+                        <InfoBar.IconSource>
+                            <FontIconSource Glyph="&#xE793;" />
+                        </InfoBar.IconSource>
+                    </InfoBar>
+                    <TextBlock Text="FrameworkElement.SetThemeResourceBinding is an experimental API and is the code equivalent of {ThemeResource Key}. Switch the theme of this example to compare it with a one-time resource lookup."
+                               TextWrapping="Wrap" />
+                    <Grid HorizontalAlignment="Left"
+                          ColumnSpacing="12">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="200" />
                             <ColumnDefinition Width="200" />
                         </Grid.ColumnDefinitions>
-                        <Border
-                            x:Name="OneTimeLookupBorder"
-                            Padding="12"
-                            CornerRadius="{StaticResource ControlCornerRadius}">
-                            <TextBlock
-                                x:Name="OneTimeLookupText"
-                                Text="A one-time resource lookup keeps the value from when it was read."
-                                TextWrapping="Wrap" />
+                        <Border x:Name="OneTimeLookupBorder"
+                                Padding="12"
+                                CornerRadius="{StaticResource ControlCornerRadius}">
+                            <TextBlock x:Name="OneTimeLookupText"
+                                       Text="A one-time resource lookup keeps the value from when it was read."
+                                       TextWrapping="Wrap" />
                         </Border>
-                        <Border
-                            x:Name="ThemeResourceBindingBorder"
-                            Grid.Column="1"
-                            Padding="12"
-                            CornerRadius="{StaticResource ControlCornerRadius}">
-                            <TextBlock
-                                x:Name="ThemeResourceBindingText"
-                                Text="SetThemeResourceBinding updates when the theme changes."
-                                TextWrapping="Wrap" />
+                        <Border x:Name="ThemeResourceBindingBorder"
+                                Grid.Column="1"
+                                Padding="12"
+                                CornerRadius="{StaticResource ControlCornerRadius}">
+                            <TextBlock x:Name="ThemeResourceBindingText"
+                                       Text="SetThemeResourceBinding updates when the theme changes."
+                                       TextWrapping="Wrap" />
                         </Border>
                     </Grid>
                 </StackPanel>
             </controls:ControlExample.Example>
-            <controls:ControlExample.Options>
-                <Button
-                    AutomationProperties.Name="Switch the theme of this example"
-                    Click="SwitchThemeButton_Click"
-                    Content="Switch theme" />
-            </controls:ControlExample.Options>
         </controls:ControlExample>
     </StackPanel>
 </Page>

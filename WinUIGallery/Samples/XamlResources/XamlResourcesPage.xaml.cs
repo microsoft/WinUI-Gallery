@@ -23,13 +23,6 @@ public sealed partial class XamlResourcesPage : Page
         ThemeResourceBindingText.SetThemeResourceBinding(TextBlock.ForegroundProperty, "TextOnAccentFillColorPrimaryBrush");
     }
 
-    private void SwitchThemeButton_Click(object sender, RoutedEventArgs e)
-    {
-        ThemeResourceFromCodeRoot.RequestedTheme = ThemeResourceFromCodeRoot.ActualTheme == ElementTheme.Dark
-            ? ElementTheme.Light
-            : ElementTheme.Dark;
-    }
-
     private void Hyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
     {
         App.MainWindow.Navigate(typeof(ItemPage), "Color");
