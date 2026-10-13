@@ -2,7 +2,7 @@
 
 ## Build and Test
 
-**Solution:** Open `WinUIGallery.slnx` in Visual Studio 2022+. Set `WinUIGallery` as the startup project.
+**Solution:** Open `WinUIGallery.slnx` in Visual Studio 2026. Set `WinUIGallery` as the startup project.
 
 ```powershell
 # Restore and build
