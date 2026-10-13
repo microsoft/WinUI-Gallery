@@ -2399,6 +2399,18 @@
     ]
   },
   {
+    "Code": "E833",
+    "Name": "SemanticZoom",
+    "Tags": [
+      "zoom",
+      "semantic",
+      "overview",
+      "grid",
+      "group"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "E835",
     "Name": "ProvisioningPackage",
     "Tags": [
@@ -5809,6 +5821,19 @@
     ]
   },
   {
+    "Code": "E99C",
+    "Name": "SidePanelOpen",
+    "Tags": [
+      "side",
+      "panel",
+      "pane",
+      "open",
+      "sidebar",
+      "expand"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "E9A1",
     "Name": "TapAndSend",
     "Tags": [
@@ -6148,6 +6173,18 @@
     ]
   },
   {
+    "Code": "E9E3",
+    "Name": "ArrowExpand",
+    "Tags": [
+      "arrow",
+      "expand",
+      "enlarge",
+      "fullscreen",
+      "grow"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "E9E9",
     "Name": "Equalizer",
     "Tags": [
@@ -6186,6 +6223,18 @@
     ]
   },
   {
+    "Code": "EA07",
+    "Name": "CinematicFraming",
+    "Tags": [
+      "cinematic",
+      "framing",
+      "camera",
+      "video",
+      "crop"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "EA0C",
     "Name": "VideoSolid",
     "Tags": [
@@ -6220,6 +6269,19 @@
       "protection",
       "safety"
     ]
+  },
+  {
+    "Code": "EA1A",
+    "Name": "PageAdd",
+    "Tags": [
+      "page",
+      "add",
+      "new",
+      "document",
+      "plus",
+      "file"
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EA1F",
@@ -6685,6 +6747,18 @@
       "problem",
       "update"
     ]
+  },
+  {
+    "Code": "EA6B",
+    "Name": "GetHelpApp",
+    "Tags": [
+      "help",
+      "support",
+      "question",
+      "app",
+      "assistance"
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EA6C",
@@ -9566,6 +9640,18 @@
     ]
   },
   {
+    "Code": "ECF6",
+    "Name": "ClearClipboard",
+    "Tags": [
+      "clipboard",
+      "clear",
+      "delete",
+      "paste",
+      "copy"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "ED0C",
     "Name": "ActionCenterNotificationMirrored",
     "Tags": [
@@ -10154,6 +10240,144 @@
     ]
   },
   {
+    "Code": "ED6A",
+    "Name": "CloseForeground",
+    "Tags": [
+      "close",
+      "window",
+      "title bar",
+      "caption",
+      "dismiss"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "ED6B",
+    "Name": "MaximizeForeground",
+    "Tags": [
+      "maximize",
+      "window",
+      "title bar",
+      "caption"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "ED6C",
+    "Name": "MinimizeForeground",
+    "Tags": [
+      "minimize",
+      "window",
+      "title bar",
+      "caption"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "ED6D",
+    "Name": "Snapbottom",
+    "Tags": [
+      "snap",
+      "layout",
+      "window",
+      "bottom",
+      "multitasking"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "ED6E",
+    "Name": "Snaptop",
+    "Tags": [
+      "snap",
+      "layout",
+      "window",
+      "top",
+      "multitasking"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "ED6F",
+    "Name": "Snaptopright",
+    "Tags": [
+      "snap",
+      "layout",
+      "window",
+      "top",
+      "right",
+      "corner",
+      "multitasking"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "ED70",
+    "Name": "Snaptopleft",
+    "Tags": [
+      "snap",
+      "layout",
+      "window",
+      "top",
+      "left",
+      "corner",
+      "multitasking"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "ED71",
+    "Name": "Snapleft",
+    "Tags": [
+      "snap",
+      "layout",
+      "window",
+      "left",
+      "multitasking"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "ED72",
+    "Name": "Snapright",
+    "Tags": [
+      "snap",
+      "layout",
+      "window",
+      "right",
+      "multitasking"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "ED73",
+    "Name": "Snapbottomright",
+    "Tags": [
+      "snap",
+      "layout",
+      "window",
+      "bottom",
+      "right",
+      "corner",
+      "multitasking"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "ED74",
+    "Name": "Snapbottomleft",
+    "Tags": [
+      "snap",
+      "layout",
+      "window",
+      "bottom",
+      "left",
+      "corner",
+      "multitasking"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "EDA2",
     "Name": "HardDrive",
     "Tags": [
@@ -10495,6 +10719,30 @@
     ]
   },
   {
+    "Code": "EE1A",
+    "Name": "FolderSearch",
+    "Tags": [
+      "folder",
+      "search",
+      "find",
+      "directory",
+      "explorer"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EE1B",
+    "Name": "RecordStop",
+    "Tags": [
+      "record",
+      "stop",
+      "recording",
+      "capture",
+      "media"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "EE35",
     "Name": "ReplyMirrored",
     "Tags": [
@@ -10614,6 +10862,69 @@
       "start",
       "begin"
     ]
+  },
+  {
+    "Code": "EE4D",
+    "Name": "DualScreen2",
+    "Tags": [
+      "dual",
+      "screen",
+      "monitor",
+      "display",
+      "multiple"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EE4E",
+    "Name": "Snap3Left",
+    "Tags": [
+      "snap",
+      "layout",
+      "window",
+      "three",
+      "columns",
+      "multitasking"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EE4F",
+    "Name": "Snap4",
+    "Tags": [
+      "snap",
+      "layout",
+      "window",
+      "four",
+      "quadrants",
+      "grid",
+      "multitasking"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EE50",
+    "Name": "Taskview2",
+    "Tags": [
+      "task view",
+      "windows",
+      "desktop",
+      "multitasking",
+      "switch"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "EE51",
+    "Name": "CaptureRecord",
+    "Tags": [
+      "capture",
+      "record",
+      "recording",
+      "video",
+      "screen"
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "EE56",
@@ -11234,6 +11545,18 @@
     ]
   },
   {
+    "Code": "F08A",
+    "Name": "DefenderApp2",
+    "Tags": [
+      "defender",
+      "security",
+      "shield",
+      "protection",
+      "app"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "F08C",
     "Name": "BlueLight",
     "Tags": [
@@ -11434,6 +11757,18 @@
       "communication",
       "status"
     ]
+  },
+  {
+    "Code": "F0C5",
+    "Name": "WindowsUpdate",
+    "Tags": [
+      "update",
+      "windows",
+      "sync",
+      "refresh",
+      "download"
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F0C6",
@@ -11729,6 +12064,19 @@
     ]
   },
   {
+    "Code": "F0F6",
+    "Name": "ProjectToDeviceSettings",
+    "Tags": [
+      "project",
+      "cast",
+      "device",
+      "display",
+      "settings",
+      "wireless"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "F0F7",
     "Name": "OutlineStarLeftHalf",
     "Tags": [
@@ -11782,6 +12130,18 @@
       "portable",
       "screen"
     ]
+  },
+  {
+    "Code": "F106",
+    "Name": "PageList",
+    "Tags": [
+      "page",
+      "list",
+      "document",
+      "lines",
+      "file"
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F108",
@@ -12346,6 +12706,18 @@
     ]
   },
   {
+    "Code": "F160",
+    "Name": "Emoji3",
+    "Tags": [
+      "emoji",
+      "smiley",
+      "face",
+      "happy",
+      "emoticon"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "F161",
     "Name": "TollSolid",
     "Tags": [
@@ -12587,6 +12959,18 @@
     ]
   },
   {
+    "Code": "F1A2",
+    "Name": "FullView",
+    "Tags": [
+      "full",
+      "view",
+      "fullscreen",
+      "expand",
+      "maximize"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "F1AD",
     "Name": "WindowsInsider",
     "Tags": [
@@ -12729,6 +13113,19 @@
     ]
   },
   {
+    "Code": "F1DB",
+    "Name": "MobQuietHoursSolid",
+    "Tags": [
+      "quiet hours",
+      "focus",
+      "do not disturb",
+      "moon",
+      "night",
+      "mobile"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "F1E8",
     "Name": "LeafTwo",
     "Tags": [
@@ -12824,6 +13221,19 @@
       "view",
       "small",
       "square"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F240",
+    "Name": "PhoneSoundOff",
+    "Tags": [
+      "phone",
+      "mobile",
+      "sound",
+      "mute",
+      "silent",
+      "off"
     ],
     "IsSegoeFluentOnly": true
   },
@@ -13032,6 +13442,19 @@
     "IsSegoeFluentOnly": true
   },
   {
+    "Code": "F2AE",
+    "Name": "CubeWithDashedOutline",
+    "Tags": [
+      "cube",
+      "3d",
+      "dashed",
+      "outline",
+      "object",
+      "box"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "F2B7",
     "Name": "LocaleLanguage",
     "Tags": [
@@ -13042,6 +13465,19 @@
       "setting",
       "preferences"
     ]
+  },
+  {
+    "Code": "F2C1",
+    "Name": "CameraArrowUp",
+    "Tags": [
+      "camera",
+      "arrow",
+      "up",
+      "upload",
+      "share",
+      "photo"
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F2C7",
@@ -13059,6 +13495,18 @@
       "bulleted",
       "list",
       "mirrored"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F2CE",
+    "Name": "FolderList",
+    "Tags": [
+      "folder",
+      "list",
+      "directory",
+      "explorer",
+      "files"
     ],
     "IsSegoeFluentOnly": true
   },
@@ -13281,6 +13729,19 @@
     ]
   },
   {
+    "Code": "F40B",
+    "Name": "FindMyPhone",
+    "Tags": [
+      "find",
+      "phone",
+      "mobile",
+      "locate",
+      "device",
+      "location"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "F413",
     "Name": "CopyTo",
     "Tags": [
@@ -13296,6 +13757,19 @@
       "person",
       "user"
     ]
+  },
+  {
+    "Code": "F429",
+    "Name": "ChatAdd",
+    "Tags": [
+      "chat",
+      "add",
+      "new",
+      "message",
+      "conversation",
+      "plus"
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F42F",
@@ -13603,6 +14077,31 @@
     ]
   },
   {
+    "Code": "F539",
+    "Name": "SpeakerShare",
+    "Tags": [
+      "speaker",
+      "share",
+      "audio",
+      "sound",
+      "volume"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
+    "Code": "F53F",
+    "Name": "GrammarOptions",
+    "Tags": [
+      "grammar",
+      "options",
+      "spelling",
+      "proofing",
+      "text",
+      "writing"
+    ],
+    "IsSegoeFluentOnly": true
+  },
+  {
     "Code": "F540",
     "Name": "Safe",
     "Tags": [
@@ -13613,6 +14112,18 @@
       "valuable",
       "bank"
     ]
+  },
+  {
+    "Code": "F54C",
+    "Name": "Agents",
+    "Tags": [
+      "agents",
+      "ai",
+      "copilot",
+      "assistant",
+      "bot"
+    ],
+    "IsSegoeFluentOnly": true
   },
   {
     "Code": "F552",
