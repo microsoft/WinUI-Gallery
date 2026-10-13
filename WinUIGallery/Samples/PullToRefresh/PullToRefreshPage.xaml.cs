@@ -6,7 +6,6 @@ using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Hosting;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 using System;
@@ -87,9 +86,11 @@ public sealed partial class PullToRefreshPage : Page
                 Width = 200,
                 Height = 200,
                 BorderThickness = new Thickness() { Left = 1, Top = 1, Right = 1, Bottom = 1 },
-                HorizontalAlignment = HorizontalAlignment.Center,
-                BorderBrush = (Brush)Application.Current.Resources["TextControlBorderBrush"]
+                HorizontalAlignment = HorizontalAlignment.Center
             };
+
+            // Equivalent to BorderBrush="{ThemeResource TextControlBorderBrush}", so the brush updates when the theme changes.
+            lv2.SetThemeResourceBinding(Control.BorderBrushProperty, "TextControlBorderBrush");
 
 
             rc2.Content = lv2;

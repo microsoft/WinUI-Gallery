@@ -1,0 +1,148 @@
+{
+  "properties": {
+    "helpUri": "https://eng.ms/docs/microsoft-security/security/azure-security/cloudai-security-fundamentals-engineering/security-integration/guardian-wiki/microsoft-guardian/general/baselines"
+  },
+  "version": "1.0.0",
+  "baselines": {
+    "default": {
+      "name": "default",
+      "createdDate": "2026-09-02 19:18:15Z",
+      "lastUpdatedDate": "2026-09-02 19:18:15Z"
+    }
+  },
+  "results": {
+    "506b6a299ec4bb6c0cfa4f64071778199fa0d9c800699b4bcb5ff4874ce50a00": {
+      "signature": "506b6a299ec4bb6c0cfa4f64071778199fa0d9c800699b4bcb5ff4874ce50a00",
+      "alternativeSignatures": [
+        "210e84950678b2cc9bde49e77489065d3278403c6f41c1ed0dc8bf8df10758d6",
+        "c86d3f1f5ad875e5122c5b0ba359c348aeb291faa83b272fd99b7c1392de431c",
+        "2dddcd3f004da5c7b509ced309b6446e1b51c02d22879c6cdc7b38dbd2df9352"
+      ],
+      "target": "WinUIGallery/MainWindow.xaml.cs",
+      "line": 267,
+      "uriBaseId": "file:///D:/a/_work/1/s/",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "roslynanalyzers",
+      "ruleId": "CA1310",
+      "createdDate": "2026-09-02 19:18:15Z",
+      "expirationDate": "2027-02-19 19:23:28Z",
+      "justification": "This error is baselined with an expiration date of 180 days from 2026-09-02 19:23:28Z"
+    },
+    "485c155586ff685496f534675200a373de9636fe7d8c66bef35c3c59b035ebf4": {
+      "signature": "485c155586ff685496f534675200a373de9636fe7d8c66bef35c3c59b035ebf4",
+      "alternativeSignatures": [
+        "e0e5f799ee41141d45dfcfe3047c22231ecb536d95f2929c8d27f7d8b23c01f3",
+        "f8089081292c1f7c594cdb9e548abf7b8c5fd2155d964f8b9d2aa4d20b3eb971",
+        "634a224186db3e54e98d2c9775652068d22450678d6a1ecf8391b8bd25c5fe8b"
+      ],
+      "target": "WinUIGallery/Controls/ControlExample.xaml.cs",
+      "line": 255,
+      "uriBaseId": "file:///D:/a/_work/1/s/",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "roslynanalyzers",
+      "ruleId": "CA1310",
+      "createdDate": "2026-09-02 19:18:15Z",
+      "expirationDate": "2027-02-19 19:23:28Z",
+      "justification": "This error is baselined with an expiration date of 180 days from 2026-09-02 19:23:28Z"
+    },
+    "6defbd7ab0983fd4ce21f2749d2f700486c4e9b7d812c315ce3082f1d62eeb1c": {
+      "signature": "6defbd7ab0983fd4ce21f2749d2f700486c4e9b7d812c315ce3082f1d62eeb1c",
+      "alternativeSignatures": [
+        "309b38761cea954e0eeb018b226ae73d3de98c612ead38f094b97da0442a4dd9",
+        "e07270b08fc903d679acb418121e3ae30d1e4225d847d15371b3c13d390859d9",
+        "825bd193a119506c2ebb7a6ecfcfef01697a3315b257ee203be8f001fdde964f"
+      ],
+      "target": "WinUIGallery/Controls/SampleCodePresenter.xaml.cs",
+      "line": 183,
+      "uriBaseId": "file:///D:/a/_work/1/s/",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "roslynanalyzers",
+      "ruleId": "CA1310",
+      "createdDate": "2026-09-02 19:18:15Z",
+      "expirationDate": "2027-02-19 19:23:28Z",
+      "justification": "This error is baselined with an expiration date of 180 days from 2026-09-02 19:23:28Z"
+    },
+    "f889430de1325a2de028871c0a5761568000da606b84dabb71575156b0a2b606": {
+      "signature": "f889430de1325a2de028871c0a5761568000da606b84dabb71575156b0a2b606",
+      "alternativeSignatures": [
+        "2b840e68232ef5063135faf8d39ad69ca97a2f341d73adeebd1aeb10d6971359",
+        "cb48799ebe40ac3b1277209134dda1ac1b12c241be19bdaa49c20bde4044b886",
+        "11ab22f9823cbc90eb6054f928a914d0c514ad890c109ee6f11aaa6d6dc0b41b"
+      ],
+      "target": "WinUIGallery/Helpers/SettingsHelper/SettingsMigration.cs",
+      "line": 37,
+      "uriBaseId": "file:///D:/a/_work/1/s/",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "roslynanalyzers",
+      "ruleId": "CA1310",
+      "createdDate": "2026-09-02 19:18:15Z",
+      "expirationDate": "2027-02-19 19:23:28Z",
+      "justification": "This error is baselined with an expiration date of 180 days from 2026-09-02 19:23:28Z"
+    },
+    "90948a9b6ae62f4e468e13b1c548388cc9b3cbbc77582baad47383ad2a58aba2": {
+      "signature": "90948a9b6ae62f4e468e13b1c548388cc9b3cbbc77582baad47383ad2a58aba2",
+      "alternativeSignatures": [
+        "ec0e93f6793dc92468c80b2de3919d902b5f113c40adc9608d7d4670840c4155",
+        "34f73dae87f740f985c35f4b9771ad1ae39bb0b4e5e1b319300734b2c1cf9327",
+        "9edfcf4df9ce50f7e8559c52b1bf907c3b65d4e12858e2429b09de3facdbdcf8"
+      ],
+      "target": "WinUIGallery/Samples/ScratchPad/ScratchPadPage.xaml.cs",
+      "line": 384,
+      "uriBaseId": "file:///D:/a/_work/1/s/",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "roslynanalyzers",
+      "ruleId": "CA1310",
+      "createdDate": "2026-09-02 19:18:15Z",
+      "expirationDate": "2027-02-19 19:23:28Z",
+      "justification": "This error is baselined with an expiration date of 180 days from 2026-09-02 19:23:28Z"
+    },
+    "ae27f78d3374e7b207670982064d53815ef0758fa33a35d61c1862fde999413c": {
+      "signature": "ae27f78d3374e7b207670982064d53815ef0758fa33a35d61c1862fde999413c",
+      "alternativeSignatures": [
+        "5f1b471e5c20ef3a6122ced8d9051965d235d5fdf79133063cfdbbeaa168d6bd",
+        "2ff9220144c5619b531299f902a4fd8f542c4d7ac8b3012378ff3c5e54616ba7",
+        "bba5d2fec29628add4757b0ea9468fdec167402789ffe2b6e779bbf9d7bc8bf8"
+      ],
+      "target": "WinUIGallery/Samples/ScratchPad/ScratchPadPage.xaml.cs",
+      "line": 390,
+      "uriBaseId": "file:///D:/a/_work/1/s/",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "roslynanalyzers",
+      "ruleId": "CA1310",
+      "createdDate": "2026-09-02 19:18:15Z",
+      "expirationDate": "2027-02-19 19:23:28Z",
+      "justification": "This error is baselined with an expiration date of 180 days from 2026-09-02 19:23:28Z"
+    },
+    "de70f589f99a5018e090908c177f611b4fa30a479340c93980266473befb13a7": {
+      "signature": "de70f589f99a5018e090908c177f611b4fa30a479340c93980266473befb13a7",
+      "alternativeSignatures": [
+        "c5e5755aa88370b3c8ef0c858edd0be2c3fba943c6882e14065c493b62e9b9a7",
+        "862a8f657abff37c633750425edac2c03f57b99b5e02775478e08dedd1d54a53",
+        "1da54a496321c4d2990e83bba816a5f918c50eb13df17f50e36aa53451598b11"
+      ],
+      "target": "WinUIGallery/Samples/ScratchPad/ScratchPadPage.xaml.cs",
+      "line": 443,
+      "uriBaseId": "file:///D:/a/_work/1/s/",
+      "memberOf": [
+        "default"
+      ],
+      "tool": "roslynanalyzers",
+      "ruleId": "CA1310",
+      "createdDate": "2026-09-02 19:18:15Z",
+      "expirationDate": "2027-02-19 19:23:28Z",
+      "justification": "This error is baselined with an expiration date of 180 days from 2026-09-02 19:23:28Z"
+    }
+  }
+}

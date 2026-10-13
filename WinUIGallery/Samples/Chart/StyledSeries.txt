@@ -1,0 +1,62 @@
+--- header
+Combine area, bar, and line series
+--- xaml
+<charts:Chart xmlns:charts="using:Microsoft.UI.Xaml.Controls.Charts" ShowLegend="True" LegendTitle="Monthly results">
+    <charts:Chart.Data>
+        <charts:Samples x:Name="Month" ItemsSource="{x:Bind Months, Mode=OneTime}" />
+        <charts:Samples x:Name="Actual" ItemsSource="{x:Bind Actuals, Mode=OneTime}" />
+        <charts:Samples x:Name="Forecast" ItemsSource="{x:Bind Forecasts, Mode=OneTime}" />
+        <charts:Samples x:Name="Target" ItemsSource="{x:Bind Targets, Mode=OneTime}" />
+    </charts:Chart.Data>
+
+    <charts:Chart.Axes>
+        <charts:CategoryAxis x:Name="MonthX" Label="Month" />
+        <charts:LinearAxis x:Name="RevenueY"
+                           Label="Revenue"
+                           Minimum="0"
+                           Maximum="60"
+                           Spacing="10"
+                           GridLines="Major" />
+    </charts:Chart.Axes>
+
+    <charts:AreaSeries Title="Forecast"
+                       IsVisible="$(ForecastVisible)"
+                       XAxis="{x:Bind MonthX, Mode=OneTime}"
+                       YAxis="{x:Bind RevenueY, Mode=OneTime}"
+                       XValues="{x:Bind Month, Mode=OneTime}"
+                       YValues="{x:Bind Forecast, Mode=OneTime}"
+                       Stroke="#0078D4"
+                       StrokeThickness="2"
+                       Fill="#4D0078D4" />
+
+    <charts:BarSeries Title="Actual"
+                      Orientation="Vertical"
+                      IsVisible="$(ActualVisible)"
+                      XAxis="{x:Bind MonthX, Mode=OneTime}"
+                      YAxis="{x:Bind RevenueY, Mode=OneTime}"
+                      XValues="{x:Bind Month, Mode=OneTime}"
+                      YValues="{x:Bind Actual, Mode=OneTime}"
+                      Fill="#008575"
+                      ShowDataLabels="True" />
+
+    <charts:LineSeries Title="Target"
+                       IsVisible="$(TargetVisible)"
+                       XAxis="{x:Bind MonthX, Mode=OneTime}"
+                       YAxis="{x:Bind RevenueY, Mode=OneTime}"
+                       XValues="{x:Bind Month, Mode=OneTime}"
+                       YValues="{x:Bind Target, Mode=OneTime}"
+                       Stroke="#D13438"
+                       StrokeThickness="2"
+                       StrokeDashStyle="Dash"
+                       ShowDataMarkers="True"
+                       MarkerShape="Diamond"
+                       DataMarkerBrush="#D13438" />
+</charts:Chart>
+--- c#
+public string[] Months { get; } = ["January", "February", "March", "April", "May", "June"];
+
+public double[] Actuals { get; } = [12, 23, 37, 31, 46, 52];
+
+public double[] Forecasts { get; } = [16, 25, 35, 40, 48, 55];
+
+public double[] Targets { get; } = [20, 25, 40, 40, 50, 50];

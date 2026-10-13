@@ -1,0 +1,3 @@
+--- xaml
+<!-- Add "alt text" to this image so screen reader users can understand it -->
+<Image AutomationProperties.Name="Grapes" Source="ms-appx:///Assets/SampleMedia/grapes.jpg"/>

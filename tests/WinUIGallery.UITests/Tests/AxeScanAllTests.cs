@@ -55,6 +55,13 @@ public class AxeScanAll : TestBase
             RuleId.NameNotNull,
             RuleId.NameReasonableLength,
         ],
+        // TableView's experimental virtualized row/cell peers can remain in the UIA tree without
+        // bounds after recycling. Row names are supplied by the sample; only the framework-level
+        // null-bounds result is excluded.
+        ["TableView"] =
+        [
+            RuleId.BoundingRectangleNotNull,
+        ],
     };
 
     public class ControlInfoData

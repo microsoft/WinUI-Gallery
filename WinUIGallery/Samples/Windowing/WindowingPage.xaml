@@ -31,65 +31,23 @@
 
         <controls:ControlExample
             IsExperimental="True"
-            SampleDefinition="Windowing\WindowClientSize.txt">
+            SampleDefinition="Windowing\WindowSizing.txt">
             <StackPanel Spacing="12">
                 <TextBlock
-                    Text="Choose an initial client size in device-independent pixels (DIPs), which scale with the display setting and exclude the standard title bar and borders. You can still resize the window. Close it with its title bar Close button or Alt+F4."
+                    Text="Configure the initial, minimum, and maximum client-area dimensions in device-independent pixels (DIPs). The initial size must be within the minimum and maximum limits."
                     TextWrapping="Wrap" />
+                <InfoBar
+                    x:Name="SizeValidationInfoBar"
+                    IsClosable="True"
+                    IsOpen="False"
+                    Severity="Error"
+                    Title="Check the window dimensions" />
                 <Button
-                    x:Name="OpenSizedWindowButton"
-                    AutomationProperties.AutomationId="WindowingOpenSizedWindow"
-                    AutomationProperties.Name="Open a window with the selected client size"
-                    Click="OpenSizedWindow_Click"
-                    Content="Open sized window" />
-            </StackPanel>
-            <controls:ControlExample.Options>
-                <StackPanel Spacing="12">
-                    <ComboBox
-                        x:Name="ClientWidthOption"
-                        AutomationProperties.AutomationId="WindowingClientWidth"
-                        AutomationProperties.Name="Client width in DIPs"
-                        HorizontalAlignment="Stretch"
-                        Header="Width (DIPs)"
-                        SelectedIndex="1">
-                        <x:Int32>480</x:Int32>
-                        <x:Int32>640</x:Int32>
-                        <x:Int32>800</x:Int32>
-                        <x:Int32>960</x:Int32>
-                    </ComboBox>
-                    <ComboBox
-                        x:Name="ClientHeightOption"
-                        AutomationProperties.AutomationId="WindowingClientHeight"
-                        AutomationProperties.Name="Client height in DIPs"
-                        HorizontalAlignment="Stretch"
-                        Header="Height (DIPs)"
-                        SelectedIndex="2">
-                        <x:Int32>320</x:Int32>
-                        <x:Int32>400</x:Int32>
-                        <x:Int32>480</x:Int32>
-                        <x:Int32>600</x:Int32>
-                    </ComboBox>
-                </StackPanel>
-            </controls:ControlExample.Options>
-            <controls:ControlExample.Substitutions>
-                <controls:ControlExampleSubstitution Key="Width" Value="{x:Bind ClientWidthOption.SelectedItem, Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="Height" Value="{x:Bind ClientHeightOption.SelectedItem, Mode=OneWay}" />
-            </controls:ControlExample.Substitutions>
-        </controls:ControlExample>
-
-        <controls:ControlExample
-            IsExperimental="True"
-            SampleDefinition="Windowing\WindowSizeConstraints.txt">
-            <StackPanel Spacing="12">
-                <TextBlock
-                    Text="Open a window with an initial 640 by 480 DIP client area, then resize it using its borders. MinWidth, MinHeight, MaxWidth, and MaxHeight constrain the client area to the selected limits. Maximizing is disabled in this example."
-                    TextWrapping="Wrap" />
-                <Button
-                    x:Name="OpenConstrainedWindowButton"
-                    AutomationProperties.AutomationId="WindowingOpenConstrainedWindow"
-                    AutomationProperties.Name="Open a window with the selected minimum and maximum client sizes"
-                    Click="OpenConstrainedWindow_Click"
-                    Content="Open constrained window" />
+                    x:Name="OpenConfiguredWindowButton"
+                    AutomationProperties.AutomationId="WindowingOpenConfiguredWindow"
+                    AutomationProperties.Name="Open a window with the configured client size and constraints"
+                    Click="OpenConfiguredWindow_Click"
+                    Content="Open configured window" />
             </StackPanel>
             <controls:ControlExample.Options>
                 <Grid ColumnSpacing="12" RowSpacing="12">
@@ -100,66 +58,96 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <ComboBox
-                        x:Name="MinimumWidthOption"
+                    <NumberBox
+                        x:Name="ClientWidthInput"
+                        AutomationProperties.AutomationId="WindowingClientWidth"
+                        AutomationProperties.Name="Client width in DIPs"
+                        HorizontalAlignment="Stretch"
+                        Header="Width"
+                        Maximum="10000"
+                        Minimum="1"
+                        SmallChange="10"
+                        SpinButtonPlacementMode="Compact"
+                        ValidationMode="InvalidInputOverwritten"
+                        Value="640" />
+                    <NumberBox
+                        x:Name="ClientHeightInput"
+                        Grid.Column="1"
+                        AutomationProperties.AutomationId="WindowingClientHeight"
+                        AutomationProperties.Name="Client height in DIPs"
+                        HorizontalAlignment="Stretch"
+                        Header="Height"
+                        Maximum="10000"
+                        Minimum="1"
+                        SmallChange="10"
+                        SpinButtonPlacementMode="Compact"
+                        ValidationMode="InvalidInputOverwritten"
+                        Value="480" />
+                    <NumberBox
+                        x:Name="MinimumWidthInput"
+                        Grid.Row="1"
                         AutomationProperties.AutomationId="WindowingMinimumWidth"
                         AutomationProperties.Name="Minimum client width in DIPs"
                         HorizontalAlignment="Stretch"
-                        Header="MinWidth (DIPs)"
-                        SelectedIndex="0">
-                        <x:Int32>320</x:Int32>
-                        <x:Int32>400</x:Int32>
-                        <x:Int32>480</x:Int32>
-                        <x:Int32>560</x:Int32>
-                    </ComboBox>
-                    <ComboBox
-                        x:Name="MinimumHeightOption"
+                        Header="MinWidth"
+                        Maximum="10000"
+                        Minimum="1"
+                        SmallChange="10"
+                        SpinButtonPlacementMode="Compact"
+                        ValidationMode="InvalidInputOverwritten"
+                        Value="320" />
+                    <NumberBox
+                        x:Name="MinimumHeightInput"
                         Grid.Row="1"
+                        Grid.Column="1"
                         AutomationProperties.AutomationId="WindowingMinimumHeight"
                         AutomationProperties.Name="Minimum client height in DIPs"
                         HorizontalAlignment="Stretch"
-                        Header="MinHeight (DIPs)"
-                        SelectedIndex="0">
-                        <x:Int32>240</x:Int32>
-                        <x:Int32>280</x:Int32>
-                        <x:Int32>320</x:Int32>
-                        <x:Int32>360</x:Int32>
-                    </ComboBox>
-                    <ComboBox
-                        x:Name="MaximumWidthOption"
-                        Grid.Column="1"
+                        Header="MinHeight"
+                        Maximum="10000"
+                        Minimum="1"
+                        SmallChange="10"
+                        SpinButtonPlacementMode="Compact"
+                        ValidationMode="InvalidInputOverwritten"
+                        Value="240" />
+                    <NumberBox
+                        x:Name="MaximumWidthInput"
+                        Grid.Row="2"
                         AutomationProperties.AutomationId="WindowingMaximumWidth"
                         AutomationProperties.Name="Maximum client width in DIPs"
                         HorizontalAlignment="Stretch"
-                        Header="MaxWidth (DIPs)"
-                        SelectedIndex="2">
-                        <x:Int32>640</x:Int32>
-                        <x:Int32>800</x:Int32>
-                        <x:Int32>960</x:Int32>
-                        <x:Int32>1280</x:Int32>
-                    </ComboBox>
-                    <ComboBox
-                        x:Name="MaximumHeightOption"
-                        Grid.Row="1"
+                        Header="MaxWidth"
+                        Maximum="10000"
+                        Minimum="1"
+                        SmallChange="10"
+                        SpinButtonPlacementMode="Compact"
+                        ValidationMode="InvalidInputOverwritten"
+                        Value="960" />
+                    <NumberBox
+                        x:Name="MaximumHeightInput"
+                        Grid.Row="2"
                         Grid.Column="1"
                         AutomationProperties.AutomationId="WindowingMaximumHeight"
                         AutomationProperties.Name="Maximum client height in DIPs"
                         HorizontalAlignment="Stretch"
-                        Header="MaxHeight (DIPs)"
-                        SelectedIndex="2">
-                        <x:Int32>480</x:Int32>
-                        <x:Int32>600</x:Int32>
-                        <x:Int32>720</x:Int32>
-                        <x:Int32>900</x:Int32>
-                    </ComboBox>
+                        Header="MaxHeight"
+                        Maximum="10000"
+                        Minimum="1"
+                        SmallChange="10"
+                        SpinButtonPlacementMode="Compact"
+                        ValidationMode="InvalidInputOverwritten"
+                        Value="720" />
                 </Grid>
             </controls:ControlExample.Options>
             <controls:ControlExample.Substitutions>
-                <controls:ControlExampleSubstitution Key="MinWidth" Value="{x:Bind MinimumWidthOption.SelectedItem, Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="MinHeight" Value="{x:Bind MinimumHeightOption.SelectedItem, Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="MaxWidth" Value="{x:Bind MaximumWidthOption.SelectedItem, Mode=OneWay}" />
-                <controls:ControlExampleSubstitution Key="MaxHeight" Value="{x:Bind MaximumHeightOption.SelectedItem, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Width" Value="{x:Bind ClientWidthInput.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="Height" Value="{x:Bind ClientHeightInput.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="MinWidth" Value="{x:Bind MinimumWidthInput.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="MinHeight" Value="{x:Bind MinimumHeightInput.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="MaxWidth" Value="{x:Bind MaximumWidthInput.Value, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="MaxHeight" Value="{x:Bind MaximumHeightInput.Value, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>

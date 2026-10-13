@@ -56,7 +56,7 @@ public sealed partial class AppNotificationPage : Page
     private void ShowNotificationButton_Click(object sender, RoutedEventArgs e)
     {
         AppNotification notification = new AppNotificationBuilder()
-            .AddText("Welcome to WinUI 3 Gallery")
+            .AddText("Welcome to WinUI Gallery")
             .AddText("Explore interactive samples and discover the power of modern Windows UI.")
             .BuildNotification();
 

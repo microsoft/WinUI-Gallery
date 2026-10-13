@@ -1,0 +1,10 @@
+--- xaml
+<StackPanel Spacing="4">
+    <Button Content="First" />
+    <!-- Non-interactive controls should not be in the tab order -->
+    <TextBlock Text="(not present)" />
+    <Button Content="Second" />
+    <!-- Disabled controls should not be in the tab order -->
+    <Button Content="(not present)" IsEnabled="False" />
+    <Button Content="Third" />
+</StackPanel>

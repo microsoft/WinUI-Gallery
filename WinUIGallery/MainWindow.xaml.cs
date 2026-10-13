@@ -143,10 +143,10 @@ public sealed partial class MainWindow : Window
     private void SetWindowProperties()
     {
 #if DEBUG || DEBUG_UNPACKAGED
-        this.Title = "WinUI 3 Gallery Dev";
+        this.Title = "WinUI Gallery Dev";
         titleBar.Subtitle = "Dev";
 #else
-        this.Title = "WinUI 3 Gallery";
+        this.Title = "WinUI Gallery";
 #endif
         this.ExtendsContentIntoTitleBar = true;
         this.SetTitleBar(titleBar);
@@ -303,7 +303,7 @@ public sealed partial class MainWindow : Window
 
     private static IconElement GetIcon(string imagePath)
     {
-        return imagePath.ToLowerInvariant().EndsWith(".png") ?
+        return imagePath.EndsWith(".png", StringComparison.OrdinalIgnoreCase) ?
                     (IconElement)new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute), ShowAsMonochrome = false } :
                     (IconElement)new FontIcon()
                     {

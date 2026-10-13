@@ -1,0 +1,50 @@
+--- header
+Plot a time series
+--- xaml
+<charts:Chart xmlns:charts="using:Microsoft.UI.Xaml.Controls.Charts" x:Name="TimeSeriesChart"
+              AutomationProperties.Name="Weekly temperature area chart" />
+--- c#
+public List<DateTimeOffset> ReadingDates { get; } =
+[
+    new DateTimeOffset(2026, 8, 3, 0, 0, 0, TimeSpan.Zero),
+    new DateTimeOffset(2026, 8, 10, 0, 0, 0, TimeSpan.Zero),
+    new DateTimeOffset(2026, 8, 17, 0, 0, 0, TimeSpan.Zero),
+    new DateTimeOffset(2026, 8, 24, 0, 0, 0, TimeSpan.Zero),
+    new DateTimeOffset(2026, 8, 31, 0, 0, 0, TimeSpan.Zero),
+];
+
+public double[] TemperatureReadings { get; } = [72, 76, 74, 79, 77];
+
+private void CreateTimeSeriesChart()
+{
+    Samples day = new() { ItemsSource = ReadingDates };
+    Samples reading = new() { ItemsSource = TemperatureReadings };
+
+    DateTimeAxis dayX = new()
+    {
+        Label = "Date",
+        Minimum = new DateTimeOffset(2026, 7, 27, 0, 0, 0, TimeSpan.Zero),
+        Maximum = new DateTimeOffset(2026, 9, 7, 0, 0, 0, TimeSpan.Zero),
+        IntervalType = DateTimeIntervalType.$(IntervalType),
+        LabelFormat = "$(LabelFormat)",
+    };
+
+    LinearAxis temperatureY = new()
+    {
+        Label = "Temperature (°F)",
+        GridLines = GridLines.Major,
+    };
+
+    TimeSeriesChart.Data.Add(day);
+    TimeSeriesChart.Data.Add(reading);
+    TimeSeriesChart.Axes.Add(dayX);
+    TimeSeriesChart.Axes.Add(temperatureY);
+    TimeSeriesChart.Series.Add(new AreaSeries
+    {
+        Title = "Temperature",
+        XAxis = dayX,
+        YAxis = temperatureY,
+        XValues = day,
+        YValues = reading,
+    });
+}

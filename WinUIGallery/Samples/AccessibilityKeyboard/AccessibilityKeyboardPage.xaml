@@ -74,7 +74,7 @@
             </Paragraph>
         </RichTextBlock>
 
-        <controls:ControlExample>
+        <controls:ControlExample SampleDefinition="AccessibilityKeyboard\AccessibilityKeyboardAutomaticTabOrder.txt">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="4">
                     <Button Content="First" />
@@ -86,19 +86,6 @@
                     <Button Content="Third" />
                 </StackPanel>
             </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;StackPanel Spacing="4"&gt;
-    &lt;Button Content="First" /&gt;
-    &lt;!-- Non-interactive controls should not be in the tab order --&gt;
-    &lt;TextBlock Text="(not present)" /&gt;
-    &lt;Button Content="Second" /&gt;
-    &lt;!-- Disabled controls should not be in the tab order --&gt;
-    &lt;Button Content="(not present)" IsEnabled="False" /&gt;
-    &lt;Button Content="Third" /&gt;
-&lt;/StackPanel&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
 
         <TextBlock
@@ -112,7 +99,7 @@
             </Paragraph>
         </RichTextBlock>
 
-        <controls:ControlExample>
+        <controls:ControlExample SampleDefinition="AccessibilityKeyboard\AccessibilityKeyboardManualTabOrder.txt">
             <controls:ControlExample.Example>
                 <Grid ColumnSpacing="8" RowSpacing="8">
                     <Grid.RowDefinitions>
@@ -173,38 +160,6 @@
                         IsTabStop="False" />
                 </Grid>
             </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Grid RowSpacing="8" ColumnSpacing="8"&gt;
-    &lt;Grid.RowDefinitions&gt;
-	    &lt;RowDefinition Height="Auto"/&gt;
-	    &lt;RowDefinition Height="Auto"/&gt;
-	    &lt;RowDefinition Height="Auto"/&gt;
-    &lt;/Grid.RowDefinitions&gt;
-    &lt;Grid.ColumnDefinitions&gt;
-	    &lt;ColumnDefinition Width="Auto"/&gt;
-	    &lt;ColumnDefinition Width="Auto"/&gt;
-	    &lt;ColumnDefinition Width="Auto"/&gt;
-    &lt;/Grid.ColumnDefinitions&gt;
-
-    &lt;TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Column 1"/&gt;
-    &lt;TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="Column 2"/&gt;
-
-    &lt;!--
-        This example is a bit contrived, since you could fix the
-        tab order by reordering the elements in the XAML, but
-        sometimes that is not easy to do.
-    --&gt;
-    &lt;TextBlock Grid.Row="1" VerticalAlignment="Center" Text="Row 1"/&gt;
-    &lt;Button Grid.Column="1" Grid.Row="1" Content="First stop" TabIndex="1" HorizontalAlignment="Stretch"/&gt;
-    &lt;Button Grid.Column="2" Grid.Row="1" Content="Third stop" TabIndex="3" HorizontalAlignment="Stretch"/&gt;
-
-    &lt;TextBlock Grid.Row="2" VerticalAlignment="Center" Text="Row 2"/&gt;
-    &lt;Button Grid.Column="1" Grid.Row="2" Content="Second stop" TabIndex="2" HorizontalAlignment="Stretch"/&gt;
-    &lt;Button Grid.Column="2" Grid.Row="2" Content="Not a stop" IsTabStop="False" HorizontalAlignment="Stretch"/&gt;
-&lt;/Grid&gt;
-                    </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
 
         <TextBlock
@@ -248,7 +203,7 @@
             </Paragraph>
         </RichTextBlock>
 
-        <controls:ControlExample>
+        <controls:ControlExample SampleDefinition="AccessibilityKeyboard\AccessibilityKeyboardAutomaticArrowKeys.txt">
             <controls:ControlExample.Example>
                 <StackPanel Orientation="Vertical">
                     <!--  ListViews fully support arrow keys, for example  -->
@@ -261,19 +216,6 @@
                     <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="Tab navigates to the control, arrow keys navigate within the control" />
                 </StackPanel>
             </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;!-- ListViews fully support arrow keys, for example --&gt;
-&lt;ListView
-    Width="300"
-    AutomationProperties.Name="Colors"&gt;
-    &lt;ListViewItem&gt;Red&lt;/ListViewItem&gt;
-    &lt;ListViewItem&gt;Blue&lt;/ListViewItem&gt;
-    &lt;ListViewItem&gt;Green&lt;/ListViewItem&gt;
-    &lt;ListViewItem&gt;Yellow&lt;/ListViewItem&gt;
-&lt;/ListView&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
 
         <TextBlock
@@ -302,7 +244,7 @@
                 .</Paragraph>
         </RichTextBlock>
 
-        <controls:ControlExample>
+        <controls:ControlExample SampleDefinition="AccessibilityKeyboard\AccessibilityKeyboardManualArrowKeys.txt">
             <controls:ControlExample.Example>
                 <StackPanel Spacing="4">
                     <StackPanel
@@ -337,41 +279,6 @@
                     <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="Arrow keys navigate between each button, but tab still navigates between each button, and other buttons like Home/End do not work" />
                 </StackPanel>
             </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;StackPanel
-    Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
-    BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
-    AutomationProperties.Name="Potatoes?"
-    BorderThickness="1"
-    Spacing="8"
-    Padding="8"
-    CornerRadius="4"&gt;
-    &lt;TextBlock
-        Style="{ThemeResource BodyStrongTextBlockStyle}"
-        Text="Potatoes?" /&gt;
-    &lt;!--
-        XYFocusKeyboardNavigation enables arrow keys between the buttons.
-
-        Note that:
-
-            - The buttons are still tabbable by default
-            - Home/End and PgUp/PgDn do not work
-            - Screen readers do not read PositionInSet/SizeOfSet ("1 of 3")
-
-        All of that would require custom work.
-    --&gt;
-    &lt;StackPanel
-        Spacing="4"
-        Orientation="Horizontal"
-        XYFocusKeyboardNavigation="Enabled"&gt;
-        &lt;Button Content="Boil 'em"  /&gt;
-        &lt;Button Content="Mash 'em" /&gt;
-        &lt;Button Content="Stick 'em in a stew" /&gt;
-    &lt;/StackPanel&gt;
-&lt;/StackPanel&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
 
         <TextBlock
@@ -411,7 +318,7 @@
                 .</Paragraph>
         </RichTextBlock>
 
-        <controls:ControlExample>
+        <controls:ControlExample SampleDefinition="AccessibilityKeyboard\AccessibilityKeyboardAccelerators.txt">
             <controls:ControlExample.Example>
                 <Grid ColumnSpacing="8" RowSpacing="8">
                     <Grid.RowDefinitions>
@@ -481,70 +388,6 @@
                 </Grid>
             </controls:ControlExample.Example>
 
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;Grid ColumnSpacing="8" RowSpacing="8"&gt;
-&lt;Grid.RowDefinitions&gt;
-	&lt;RowDefinition Height="Auto" /&gt;
-	&lt;RowDefinition Height="Auto" /&gt;
-&lt;/Grid.RowDefinitions&gt;
-
-&lt;Grid.ColumnDefinitions&gt;
-	&lt;ColumnDefinition Width="Auto"/&gt;
-	&lt;ColumnDefinition Width="Auto"/&gt;
-	&lt;ColumnDefinition Width="Auto"/&gt;
-&lt;/Grid.ColumnDefinitions&gt;
-
-&lt;Rectangle x:Name="ColorRectangle" Fill="Red"
-	Height="30" RadiusX="4" RadiusY="4"
-	Grid.ColumnSpan="3"/&gt;
-
-&lt;Button Click="MakeRedButton_Click" Content="Red" Grid.Row="1"
-	ToolTipService.ToolTip="Shortcut: Ctrl+R"&gt;
-	&lt;Button.KeyboardAccelerators&gt;
-		&lt;KeyboardAccelerator Modifiers="Control" Key="R" /&gt;
-	&lt;/Button.KeyboardAccelerators&gt;
-&lt;/Button&gt;
-	
-&lt;Button Click="MakeBlueButton_Click" Content="Blue"
-	Grid.Row="1" Grid.Column="1"
-	ToolTipService.ToolTip="Shortcut: Ctrl+B"&gt;
-	&lt;Button.KeyboardAccelerators&gt;
-		&lt;KeyboardAccelerator Modifiers="Control" Key="B" /&gt;
-	&lt;/Button.KeyboardAccelerators&gt;
-&lt;/Button&gt;
-
-&lt;!--
-    Chartreuse is an uncommon color, so we explain it in the tooltip.
-    This replaces the auto-generated tooltip, so we manually mention
-    the hotkey in the custom tooltip.
---&gt;
-&lt;Button Click="MakeChartreuseButton_Click" Content="Chartreuse"
-	Grid.Row="1" Grid.Column="1"
-	ToolTipService.ToolTip="A greenish yellow (Ctrl+G)"&gt;
-	&lt;Button.KeyboardAccelerators&gt;
-		&lt;KeyboardAccelerator Modifiers="Control" Key="G" /&gt;
-	&lt;/Button.KeyboardAccelerators&gt;
-&lt;/Button&gt;
-&lt;/Grid&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
-            <controls:ControlExample.CSharp>
-                <x:String xml:space="preserve">
-private void MakeRedButton_Click(object sender, RoutedEventArgs e)
-{
-    ColorRectangle.Fill = new SolidColorBrush(Colors.Red);
-}
-private void MakeBlueButton_Click(object sender, RoutedEventArgs e)
-{
-    ColorRectangle.Fill = new SolidColorBrush(Colors.Blue);
-}
-private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
-{
-    ColorRectangle.Fill = new SolidColorBrush(Colors.Chartreuse);
-}
-                </x:String>
-            </controls:ControlExample.CSharp>
         </controls:ControlExample>
 
         <TextBlock
@@ -568,7 +411,7 @@ private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
                 .</Paragraph>
         </RichTextBlock>
 
-        <controls:ControlExample>
+        <controls:ControlExample SampleDefinition="AccessibilityKeyboard\AccessibilityKeyboardAccessKeys.txt">
             <controls:ControlExample.Example>
                 <StackPanel Orientation="Vertical">
                     <MenuBar>
@@ -593,29 +436,6 @@ private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
                     <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="Press and release Alt to display Key Tips; use Alt+letter to move focus to items" />
                 </StackPanel>
             </controls:ControlExample.Example>
-            <controls:ControlExample.Xaml>
-                <x:String xml:space="preserve">
-&lt;MenuBar&gt;
-    &lt;MenuBarItem Title="File" AccessKey="F"&gt;
-        &lt;MenuFlyoutItem Text="New" AccessKey="N" /&gt;
-        &lt;MenuFlyoutItem Text="Open..." AccessKey="O" /&gt;
-        &lt;MenuFlyoutItem Text="Save" AccessKey="S" /&gt;
-        &lt;MenuFlyoutItem Text="Exit" AccessKey="E" /&gt;
-    &lt;/MenuBarItem&gt;
-
-    &lt;MenuBarItem Title="Edit" AccessKey="E"&gt;
-        &lt;MenuFlyoutItem Text="Undo" AccessKey="U" /&gt;
-        &lt;MenuFlyoutItem Text="Cut" AccessKey="X" /&gt;
-        &lt;MenuFlyoutItem Text="Copy" AccessKey="C" /&gt;
-        &lt;MenuFlyoutItem Text="Paste" AccessKey="V" /&gt;
-    &lt;/MenuBarItem&gt;
-
-    &lt;MenuBarItem Title="Help" AccessKey="H"&gt;
-        &lt;MenuFlyoutItem Text="About" AccessKey="A" /&gt;
-    &lt;/MenuBarItem&gt;
-&lt;/MenuBar&gt;
-                </x:String>
-            </controls:ControlExample.Xaml>
         </controls:ControlExample>
     </StackPanel>
 </Page>

@@ -1,0 +1,3 @@
+--- xaml
+<TextBlock x:Name="InputLabel" AutomationProperties.AccessibilityView="Raw" Text="Searching Photos:"/>
+<TextBox AutomationProperties.LabeledBy="{x:Bind InputLabel}"/>

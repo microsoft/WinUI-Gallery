@@ -3,6 +3,7 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Markup;
 using WinUIGallery.Models;
 
@@ -24,13 +25,12 @@ partial class MenuItemTemplateSelector : DataTemplateSelector
         return item is Separator ? SeparatorTemplate : item is Header ? HeaderTemplate : ItemTemplate;
     }
 
-    internal DataTemplate HeaderTemplate = (DataTemplate)XamlReader.Load(
-        @"<DataTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'>
-                   <NavigationViewItemHeader Content='{Binding Name}' />
-                  </DataTemplate>");
+    internal DataTemplate HeaderTemplate = new DataTemplate(() =>
+    {
+        NavigationViewItemHeader header = new NavigationViewItemHeader();
+        header.SetBinding(ContentControl.ContentProperty, new Binding { Path = new PropertyPath(nameof(Header.Name)) });
+        return header;
+    });
 
-    internal DataTemplate SeparatorTemplate = (DataTemplate)XamlReader.Load(
-        @"<DataTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'>
-                    <NavigationViewItemSeparator />
-                  </DataTemplate>");
+    internal DataTemplate SeparatorTemplate = new DataTemplate(() => new NavigationViewItemSeparator());
 }

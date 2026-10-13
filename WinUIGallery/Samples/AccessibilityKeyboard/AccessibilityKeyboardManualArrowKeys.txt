@@ -1,0 +1,32 @@
+--- xaml
+<StackPanel
+    Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+    BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
+    AutomationProperties.Name="Potatoes?"
+    BorderThickness="1"
+    Spacing="8"
+    Padding="8"
+    CornerRadius="4">
+    <TextBlock
+        Style="{ThemeResource BodyStrongTextBlockStyle}"
+        Text="Potatoes?" />
+    <!--
+        XYFocusKeyboardNavigation enables arrow keys between the buttons.
+
+        Note that:
+
+            - The buttons are still tabbable by default
+            - Home/End and PgUp/PgDn do not work
+            - Screen readers do not read PositionInSet/SizeOfSet ("1 of 3")
+
+        All of that would require custom work.
+    -->
+    <StackPanel
+        Spacing="4"
+        Orientation="Horizontal"
+        XYFocusKeyboardNavigation="Enabled">
+        <Button Content="Boil 'em"  />
+        <Button Content="Mash 'em" />
+        <Button Content="Stick 'em in a stew" />
+    </StackPanel>
+</StackPanel>

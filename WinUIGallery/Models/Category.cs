@@ -15,6 +15,7 @@ public partial class Category : CategoryBase
 
 public partial class Separator : CategoryBase { }
 
+[WinRT.GeneratedBindableCustomProperty]
 public partial class Header : CategoryBase
 {
     public string Name { get; set; } = string.Empty;

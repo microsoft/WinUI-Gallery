@@ -1,0 +1,58 @@
+--- xaml
+<Grid ColumnSpacing="8" RowSpacing="8">
+<Grid.RowDefinitions>
+	<RowDefinition Height="Auto" />
+	<RowDefinition Height="Auto" />
+</Grid.RowDefinitions>
+
+<Grid.ColumnDefinitions>
+	<ColumnDefinition Width="Auto"/>
+	<ColumnDefinition Width="Auto"/>
+	<ColumnDefinition Width="Auto"/>
+</Grid.ColumnDefinitions>
+
+<Rectangle x:Name="ColorRectangle" Fill="Red"
+	Height="30" RadiusX="4" RadiusY="4"
+	Grid.ColumnSpan="3"/>
+
+<Button Click="MakeRedButton_Click" Content="Red" Grid.Row="1"
+	ToolTipService.ToolTip="Shortcut: Ctrl+R">
+	<Button.KeyboardAccelerators>
+		<KeyboardAccelerator Modifiers="Control" Key="R" />
+	</Button.KeyboardAccelerators>
+</Button>
+	
+<Button Click="MakeBlueButton_Click" Content="Blue"
+	Grid.Row="1" Grid.Column="1"
+	ToolTipService.ToolTip="Shortcut: Ctrl+B">
+	<Button.KeyboardAccelerators>
+		<KeyboardAccelerator Modifiers="Control" Key="B" />
+	</Button.KeyboardAccelerators>
+</Button>
+
+<!--
+    Chartreuse is an uncommon color, so we explain it in the tooltip.
+    This replaces the auto-generated tooltip, so we manually mention
+    the hotkey in the custom tooltip.
+-->
+<Button Click="MakeChartreuseButton_Click" Content="Chartreuse"
+	Grid.Row="1" Grid.Column="1"
+	ToolTipService.ToolTip="A greenish yellow (Ctrl+G)">
+	<Button.KeyboardAccelerators>
+		<KeyboardAccelerator Modifiers="Control" Key="G" />
+	</Button.KeyboardAccelerators>
+</Button>
+</Grid>
+--- c#
+private void MakeRedButton_Click(object sender, RoutedEventArgs e)
+{
+    ColorRectangle.Fill = new SolidColorBrush(Colors.Red);
+}
+private void MakeBlueButton_Click(object sender, RoutedEventArgs e)
+{
+    ColorRectangle.Fill = new SolidColorBrush(Colors.Blue);
+}
+private void MakeChartreuseButton_Click(object sender, RoutedEventArgs e)
+{
+    ColorRectangle.Fill = new SolidColorBrush(Colors.Chartreuse);
+}

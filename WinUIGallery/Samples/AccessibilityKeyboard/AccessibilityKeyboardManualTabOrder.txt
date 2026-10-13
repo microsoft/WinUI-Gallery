@@ -1,0 +1,29 @@
+--- xaml
+<Grid RowSpacing="8" ColumnSpacing="8">
+    <Grid.RowDefinitions>
+	    <RowDefinition Height="Auto"/>
+	    <RowDefinition Height="Auto"/>
+	    <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+	    <ColumnDefinition Width="Auto"/>
+	    <ColumnDefinition Width="Auto"/>
+	    <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+
+    <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Column 1"/>
+    <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="Column 2"/>
+
+    <!--
+        This example is a bit contrived, since you could fix the
+        tab order by reordering the elements in the XAML, but
+        sometimes that is not easy to do.
+    -->
+    <TextBlock Grid.Row="1" VerticalAlignment="Center" Text="Row 1"/>
+    <Button Grid.Column="1" Grid.Row="1" Content="First stop" TabIndex="1" HorizontalAlignment="Stretch"/>
+    <Button Grid.Column="2" Grid.Row="1" Content="Third stop" TabIndex="3" HorizontalAlignment="Stretch"/>
+
+    <TextBlock Grid.Row="2" VerticalAlignment="Center" Text="Row 2"/>
+    <Button Grid.Column="1" Grid.Row="2" Content="Second stop" TabIndex="2" HorizontalAlignment="Stretch"/>
+    <Button Grid.Column="2" Grid.Row="2" Content="Not a stop" IsTabStop="False" HorizontalAlignment="Stretch"/>
+</Grid>

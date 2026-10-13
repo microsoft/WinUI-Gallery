@@ -26,10 +26,12 @@ public class AxeHelper
 
     internal static void InitializeAxe()
     {
-        var processes = Process.GetProcessesByName("WinUIGallery");
-        Assert.IsTrue(processes.Length > 0);
+        Process process = Process.GetProcessesByName("WinUIGallery")
+            .OrderByDescending(process => process.StartTime)
+            .FirstOrDefault();
+        Assert.IsNotNull(process);
 
-        var config = Config.Builder.ForProcessId(processes[0].Id).Build();
+        var config = Config.Builder.ForProcessId(process.Id).Build();
 
         AccessibilityScanner = ScannerFactory.CreateScanner(config);
     }
@@ -42,9 +44,21 @@ public class AxeHelper
     /// framework-level issues that only affect certain pages (e.g., BoundingRectangle
     /// rules for pages with off-screen or collapsed elements).
     /// </param>
-    public static void AssertNoAccessibilityErrors(IEnumerable<RuleId> pageRuleExclusions = null)
+    /// <param name="includedRules">
+    /// Optional set of rules to include exclusively for this scan, including rules that
+    /// are otherwise globally excluded.
+    /// </param>
+    public static void AssertNoAccessibilityErrors(
+        IEnumerable<RuleId> pageRuleExclusions = null,
+        IEnumerable<RuleId> includedRules = null)
     {
         HashSet<RuleId> excludedRules = new(GloballyExcludedRules);
+        HashSet<RuleId> includedRuleSet = includedRules?.ToHashSet();
+
+        if (includedRuleSet != null)
+        {
+            excludedRules.ExceptWith(includedRuleSet);
+        }
 
         if (pageRuleExclusions != null)
         {
@@ -53,7 +67,8 @@ public class AxeHelper
 
         var testResult = AccessibilityScanner.Scan(null).WindowScanOutputs
             .SelectMany(output => output.Errors)
-            .Where(rule => !excludedRules.Contains(rule.Rule.ID));
+            .Where(rule => !excludedRules.Contains(rule.Rule.ID))
+            .Where(rule => includedRuleSet == null || includedRuleSet.Contains(rule.Rule.ID));
 
         if (testResult.Any())
         {

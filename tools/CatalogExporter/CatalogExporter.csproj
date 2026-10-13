@@ -1,0 +1,35 @@
+<!--  Copyright (c) Microsoft Corporation. Licensed under the MIT License.  -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <RootNamespace>WinUIGallery.CatalogExporter</RootNamespace>
+        <AssemblyName>WinUIGallery.CatalogExporter</AssemblyName>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <IsPackable>false</IsPackable>
+        <!-- Turns the source-generated contexts in CatalogJsonContext.cs into a guarantee rather
+             than a convention: with reflection disabled, any type reached by the serializer that a
+             context does not cover throws at runtime instead of quietly falling back. -->
+        <JsonSerializerIsReflectionEnabledByDefault>false</JsonSerializerIsReflectionEnabledByDefault>
+        <!-- This is a plain, platform-agnostic console/library project (no WinUI/Windows App SDK
+             dependency) so it can build and run in any CI environment, independent of the
+             Windows-only WinUIGallery app project. -->
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- CodeDeclarations reads the C# beside each snippet to decide whether the snippet hands
+             the reader the types its XAML names. Doing that with regex meant reimplementing C#'s
+             lexer, and every literal form, comment and directive it did not model was a chance to
+             report a declaration that is not there. The compiler's own parser models all of them.
+
+             Pinned to 5.0.0 because nuget.config lists one remote feed and it serves only the
+             versions saved on it, of which this is the newest. A version it lacks restores from a
+             developer's local cache and then fails in CI, where there is no cache to hide it. -->
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
+    </ItemGroup>
+
+</Project>

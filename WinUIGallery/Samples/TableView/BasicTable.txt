@@ -1,0 +1,74 @@
+--- header
+A basic TableView
+--- xaml
+<tabular:TableView
+    x:Name="BasicTable"
+    Height="280"
+    MaxWidth="480"
+    HorizontalAlignment="Left"
+    AutomationProperties.Name="Basic table"
+    CanUserResizeColumns="$(CanUserResizeColumns)"
+    CanUserSortColumns="True"
+    IsReadOnly="True"
+    ItemsSource="{x:Bind BasicItems}"
+    SelectionChanged="BasicTable_SelectionChanged"
+    SelectionMode="$(SelectionMode)"
+    Sorted="BasicTable_Sorted">
+    <tabular:TableView.Columns>
+        <tabular:TableViewTextColumn
+            Binding="{Binding Id}"
+            CanResize="False"
+            CanSort="False"
+            FrozenEdge="$(FrozenEdge)"
+            Header="ID"
+            Width="80" />
+        <tabular:TableViewTextColumn
+            Binding="{Binding Name}"
+            Header="Name"
+            SortCycle="AscendingDescendingNone"
+            Width="220" />
+        <tabular:TableViewTextColumn
+            Binding="{Binding Category}"
+            Header="Category"
+            SortCycle="AscendingDescendingNone"
+            Width="180" />
+        <tabular:TableViewTextColumn
+            Binding="{Binding Value}"
+            Header="Value"
+            SortCycle="DescendingAscendingNone"
+            Width="140" />
+    </tabular:TableView.Columns>
+</tabular:TableView>
+<TextBlock x:Name="SortStatusText" AutomationProperties.LiveSetting="Polite" Text="Rows are in source order." />
+<TextBlock x:Name="SelectionStatusText" AutomationProperties.LiveSetting="Polite" Text="No row selected." />
+--- c#
+public ObservableCollection<TableViewSampleItem> BasicItems { get; } =
+[
+    new(1, "Item 1", "Alpha", 25),
+    new(2, "Item 2", "Beta", 80),
+    new(3, "Item 3", "Gamma", 50),
+    new(4, "Item 4", "Alpha", 100),
+    new(5, "Item 5", "Beta", 10),
+];
+
+private void BasicTable_SelectionChanged(TableView sender, SelectionChangedEventArgs args)
+{
+    SelectionStatusText.Text = sender.SelectedItem is TableViewSampleItem item
+        ? $"Selected: {item.Name} (ID {item.Id})."
+        : "No row selected.";
+}
+
+private void BasicTable_Sorted(TableView sender, TableViewSortedEventArgs args)
+{
+    SortStatusText.Text = args.Direction == SortDirection.None
+        ? "Rows are in source order."
+        : $"Sorted by {args.Column.Header}, {args.Direction.ToString().ToLowerInvariant()}.";
+}
+
+public sealed class TableViewSampleItem(int id, string name, string category, int value)
+{
+    public int Id { get; } = id;
+    public string Name { get; set; } = name;
+    public string Category { get; set; } = category;
+    public int Value { get; } = value;
+}

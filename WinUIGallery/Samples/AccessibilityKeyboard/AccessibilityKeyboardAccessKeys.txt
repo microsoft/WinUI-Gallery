@@ -1,0 +1,20 @@
+--- xaml
+<MenuBar>
+    <MenuBarItem Title="File" AccessKey="F">
+        <MenuFlyoutItem Text="New" AccessKey="N" />
+        <MenuFlyoutItem Text="Open..." AccessKey="O" />
+        <MenuFlyoutItem Text="Save" AccessKey="S" />
+        <MenuFlyoutItem Text="Exit" AccessKey="E" />
+    </MenuBarItem>
+
+    <MenuBarItem Title="Edit" AccessKey="E">
+        <MenuFlyoutItem Text="Undo" AccessKey="U" />
+        <MenuFlyoutItem Text="Cut" AccessKey="X" />
+        <MenuFlyoutItem Text="Copy" AccessKey="C" />
+        <MenuFlyoutItem Text="Paste" AccessKey="V" />
+    </MenuBarItem>
+
+    <MenuBarItem Title="Help" AccessKey="H">
+        <MenuFlyoutItem Text="About" AccessKey="A" />
+    </MenuBarItem>
+</MenuBar>

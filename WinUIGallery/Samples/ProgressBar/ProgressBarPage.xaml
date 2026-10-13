@@ -49,7 +49,7 @@
                 <ProgressBar
                     x:Name="ProgressBar2"
                     Width="130"
-                    AutomationProperties.Name="Determinate ProgressBar example" />
+                    AutomationProperties.Name="Determinate progress example" />
                 <TextBlock
                     x:Name="Control2Output"
                     Width="60"

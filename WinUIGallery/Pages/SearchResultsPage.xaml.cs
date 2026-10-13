@@ -107,6 +107,7 @@ public sealed partial class SearchResultsPage : ItemsPageBase
 
             if (filterList.Count == 0)
             {
+                noResultsTextBlock.Text = $"No results found for \"{queryText}\"";
                 // Display informational text when there are no search results.
                 VisualStateManager.GoToState(this, "NoResultsFound", false);
             }
@@ -138,6 +139,11 @@ public sealed partial class SearchResultsPage : ItemsPageBase
     protected override bool GetIsNarrowLayoutState()
     {
         return LayoutVisualStates.CurrentState == NarrowLayout;
+    }
+
+    private void AllSamplesButton_Click(object sender, RoutedEventArgs e)
+    {
+        App.MainWindow.Navigate(typeof(AllControlsPage));
     }
 }
 

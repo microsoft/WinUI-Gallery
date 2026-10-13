@@ -16,7 +16,7 @@ ItemsView item invocation and selection
     </ItemContainer>
 </DataTemplate>
 
-<ItemsView Width="500" Height="400" HorizontalAlignment="Left"
+<ItemsView Height="400" HorizontalAlignment="Stretch" MaxWidth="500"
     SelectionMode="$(SelectionMode)"
     IsItemInvokedEnabled="$(IsItemInvokedEnabled)"
     ItemTemplate="{StaticResource UniformGridLayoutItemTemplate}"

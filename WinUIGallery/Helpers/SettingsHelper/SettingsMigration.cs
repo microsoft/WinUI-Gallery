@@ -34,7 +34,7 @@ public partial class SettingsMigration
             raw = raw.Trim();
 
             // Only handle old comma-separated format
-            if (raw.StartsWith("[") && raw.EndsWith("]"))
+            if (raw.StartsWith('[') && raw.EndsWith(']'))
             {
                 // Looks like JSON → treat as new format, return null
                 return null;

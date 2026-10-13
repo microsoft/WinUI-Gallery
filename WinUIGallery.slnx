@@ -48,6 +48,24 @@
       <Deploy Solution="Debug|ARM64EC" />
       <Deploy Solution="Release|ARM64EC" />
     </Project>
+    <Project Path="tests/WinUIGallery.CatalogExporter.Tests/WinUIGallery.CatalogExporter.Tests.csproj">
+      <BuildType Solution="Debug-Unpackaged|*" Project="Debug" />
+      <BuildType Solution="Preview|*" Project="Release" />
+      <BuildType Solution="Release-Unpackaged|*" Project="Release" />
+      <BuildType Solution="Sideload|*" Project="Debug" />
+      <BuildType Solution="Stable|*" Project="Release" />
+      <BuildType Solution="Store|*" Project="Debug" />
+    </Project>
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/CatalogExporter/CatalogExporter.csproj">
+      <BuildType Solution="Debug-Unpackaged|*" Project="Debug" />
+      <BuildType Solution="Preview|*" Project="Release" />
+      <BuildType Solution="Release-Unpackaged|*" Project="Release" />
+      <BuildType Solution="Sideload|*" Project="Debug" />
+      <BuildType Solution="Stable|*" Project="Release" />
+      <BuildType Solution="Store|*" Project="Debug" />
+    </Project>
   </Folder>
   <Project Path="WinUIGallery.SourceGenerator/WinUIGallery.SourceGenerator.csproj">
     <BuildType Solution="Debug-Unpackaged|*" Project="Debug" />

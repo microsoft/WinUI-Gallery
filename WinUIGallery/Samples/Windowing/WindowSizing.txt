@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 --- header
-Set the initial client size with Window.Width and Window.Height
+Configure the client size and constraints
 --- xaml
 <!-- SampleWindow.xaml; keep the template's InitializeComponent() constructor. -->
 <Window
@@ -10,7 +10,11 @@ Set the initial client size with Window.Width and Window.Height
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Width="$(Width)"
-    Height="$(Height)">
+    Height="$(Height)"
+    MinWidth="$(MinWidth)"
+    MinHeight="$(MinHeight)"
+    MaxWidth="$(MaxWidth)"
+    MaxHeight="$(MaxHeight)">
     <TextBlock Margin="24" Text="Resize this window." />
 </Window>
 --- c#
@@ -19,8 +23,17 @@ Window window = new Window
 {
     Width = $(Width),
     Height = $(Height),
+    MinWidth = $(MinWidth),
+    MinHeight = $(MinHeight),
+    MaxWidth = $(MaxWidth),
+    MaxHeight = $(MaxHeight),
     Content = new TextBlock { Margin = new Thickness(24), Text = "Resize this window." }
 };
+
+if (window.AppWindow.Presenter is OverlappedPresenter presenter)
+{
+    presenter.IsMaximizable = false;
+}
 
 // Gallery tracks child windows so they close when the app closes.
 WindowHelper.TrackWindow(window);

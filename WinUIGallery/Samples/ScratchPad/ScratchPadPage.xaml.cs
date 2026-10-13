@@ -381,13 +381,13 @@ public class XamlTextFormatter
             {
                 UpdateZone(startIndex, currIndex, currentZoneType);
                 startIndex = currIndex;
-                if (rebText.Substring(currIndex).StartsWith("<!--"))
+                if (rebText.Substring(currIndex).StartsWith("<!--", StringComparison.Ordinal))
                 {
                     currentZoneType = ZoneType.Comment;
                     currIndex += 3;
 
                     // Look for end of comment
-                    var endIndex = rebText.IndexOf("-->", currIndex + 1);
+                    var endIndex = rebText.IndexOf("-->", currIndex + 1, StringComparison.Ordinal);
                     if (endIndex >= 0)
                     {
                         currIndex = endIndex + 2;
@@ -440,7 +440,7 @@ public class XamlTextFormatter
                     // Look for the end of the value
                     if (currIndex < rebText.Length - 2 && rebText[currIndex + 1] == '"')
                     {
-                        var endIndex = rebText.IndexOf("\"", currIndex + 2);
+                        var endIndex = rebText.IndexOf('"', currIndex + 2);
                         if (endIndex >= 0)
                         {
                             currIndex = endIndex;

@@ -1,0 +1,45 @@
+--- header
+Configure axes
+--- xaml
+<charts:Chart xmlns:charts="using:Microsoft.UI.Xaml.Controls.Charts">
+    <charts:Chart.Data>
+        <charts:Samples x:Name="Quarter"
+                        ItemsSource="{x:Bind Quarters, Mode=OneTime}" />
+        <charts:Samples x:Name="Visitors"
+                        ItemsSource="{x:Bind QuarterlyVisitors, Mode=OneTime}" />
+    </charts:Chart.Data>
+
+    <charts:Chart.Axes>
+        <charts:CategoryAxis x:Name="QuarterX"
+                             Label="Quarter"
+                             IsVisible="$(IsVisible)"
+                             ShowTickLabels="$(ShowTickLabels)"
+                             ShowTickMarks="$(ShowTickMarks)"
+                             AxisLineBrush="#767676"
+                             TickBrush="#767676" />
+        <charts:LinearAxis x:Name="VisitorsY"
+                           Label="Visitors (thousands)"
+                           Minimum="0"
+                           Maximum="100"
+                           Spacing="20"
+                           GridLines="$(GridLines)"
+                           IsVisible="$(IsVisible)"
+                           ShowTickLabels="$(ShowTickLabels)"
+                           ShowTickMarks="$(ShowTickMarks)"
+                           AxisLineBrush="#767676"
+                           TickBrush="#767676"
+                           GridLineMajorBrush="#66808080"
+                           GridLineMinorBrush="#33808080" />
+    </charts:Chart.Axes>
+
+    <charts:LineSeries Title="Visitors"
+                       ShowDataMarkers="True"
+                       XAxis="{x:Bind QuarterX, Mode=OneTime}"
+                       YAxis="{x:Bind VisitorsY, Mode=OneTime}"
+                       XValues="{x:Bind Quarter, Mode=OneTime}"
+                       YValues="{x:Bind Visitors, Mode=OneTime}" />
+</charts:Chart>
+--- c#
+public string[] Quarters { get; } = ["Q1", "Q2", "Q3", "Q4"];
+
+public double[] QuarterlyVisitors { get; } = [35, 62, 48, 81];

@@ -1,0 +1,129 @@
+--- header
+Filtering and grouping rows
+--- xaml
+<TextBox
+    x:Name="FilterBox"
+    Width="300"
+    HorizontalAlignment="Left"
+    AutomationProperties.Name="Filter by name or category"
+    Header="Filter by name or category"
+    PlaceholderText="Try Alpha or Item 2"
+    TextChanged="FilterBox_TextChanged" />
+<tabular:TableView
+    x:Name="FilteringGroupingTable"
+    Height="320"
+    MaxWidth="480"
+    HorizontalAlignment="Left"
+    AutomationProperties.Name="Filtered and grouped items"
+    CanUserResizeColumns="False"
+    CanUserSortColumns="False"
+    IsReadOnly="True"
+    SelectionMode="None">
+    <tabular:TableView.EmptyTemplate>
+        <DataTemplate>
+            <TextBlock
+                Margin="24"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="No items match the filter." />
+        </DataTemplate>
+    </tabular:TableView.EmptyTemplate>
+    <tabular:TableView.Columns>
+        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="*" />
+        <tabular:TableViewTextColumn Binding="{Binding Category}" Header="Category" Width="140" />
+        <tabular:TableViewTextColumn Binding="{Binding Value}" Header="Value" Width="100" />
+    </tabular:TableView.Columns>
+</tabular:TableView>
+<ComboBox
+    x:Name="GroupByComboBox"
+    AutomationProperties.Name="Group rows by"
+    Header="Group by"
+    SelectedIndex="1"
+    SelectionChanged="GroupByComboBox_SelectionChanged">
+    <ComboBoxItem Content="None" />
+    <ComboBoxItem Content="Category" />
+</ComboBox>
+<Button AutomationProperties.Name="Expand all groups" Click="ExpandAllGroups_Click" Content="Expand all groups" />
+<Button AutomationProperties.Name="Collapse all groups" Click="CollapseAllGroups_Click" Content="Collapse all groups" />
+--- c#
+private readonly TableViewSource _filteringGroupingSource =
+    TableViewSource.From(TableViewSampleItem.CreateItems(12));
+
+public TableViewPage()
+{
+    InitializeComponent();
+    FilteringGroupingTable.ItemsSource = _filteringGroupingSource;
+    ApplyGrouping();
+}
+
+private void FilterBox_TextChanged(object sender, TextChangedEventArgs e)
+{
+    string text = FilterBox.Text.Trim();
+    if (text.Length == 0)
+    {
+        _filteringGroupingSource.ClearFilter();
+        return;
+    }
+
+    _filteringGroupingSource.Filter(item => item is TableViewSampleItem sampleItem &&
+        (sampleItem.Name.Contains(text, StringComparison.CurrentCultureIgnoreCase) ||
+         sampleItem.Category.Contains(text, StringComparison.CurrentCultureIgnoreCase)));
+}
+
+private void GroupByComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    ApplyGrouping();
+}
+
+private void ApplyGrouping()
+{
+    if (GroupByComboBox is null)
+    {
+        return;
+    }
+
+    if (GroupByComboBox.SelectedIndex == 1)
+    {
+        _filteringGroupingSource.GroupBy(item => ((TableViewSampleItem)item).Category);
+    }
+    else
+    {
+        _filteringGroupingSource.ClearGroupBy();
+    }
+}
+
+private void ExpandAllGroups_Click(object sender, RoutedEventArgs e)
+{
+    FilteringGroupingTable.ExpandAllGroups();
+}
+
+private void CollapseAllGroups_Click(object sender, RoutedEventArgs e)
+{
+    FilteringGroupingTable.CollapseAllGroups();
+}
+
+public sealed class TableViewSampleItem(int id, string name, string category, int value)
+{
+    public int Id { get; } = id;
+    public string Name { get; set; } = name;
+    public string Category { get; set; } = category;
+    public int Value { get; } = value;
+
+    public static ObservableCollection<TableViewSampleItem> CreateItems(int count)
+    {
+        string[] categories = ["Alpha", "Beta", "Gamma"];
+        int[] values = [25, 80, 50, 100, 10];
+        ObservableCollection<TableViewSampleItem> items = [];
+
+        for (int index = 0; index < count; index++)
+        {
+            items.Add(new TableViewSampleItem(
+                index + 1,
+                $"Item {index + 1}",
+                categories[index % categories.Length],
+                values[index % values.Length]));
+        }
+
+        return items;
+    }
+}
