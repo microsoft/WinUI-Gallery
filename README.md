@@ -47,10 +47,15 @@ Quick start guide to building the WinUI Gallery:
 ### 1. Set up the environment
 
 > [!NOTE]
-> The WinUI Gallery requires [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or later to build and Windows 10 or later to execute. If you're building an app with WinUI and Windows App SDK for the first time, follow these [installation instructions](https://learn.microsoft.com/windows/apps/get-started/start-here).
+> The WinUI Gallery requires [Visual Studio 2026](https://visualstudio.microsoft.com/vs/) or the [winapp CLI](https://github.com/microsoft/WinAppCli) to build and Windows 10 or later to execute. If you're building an app with WinUI and Windows App SDK for the first time, follow these [installation instructions](https://learn.microsoft.com/windows/apps/get-started/start-here).
 
-**Required [Visual Studio components](https://learn.microsoft.com/windows/apps/get-started/start-here?tabs=vs-2022-17-10#required-workloads-and-components):**
-- Windows application development
+**Visual Studio 2026:** install the **WinUI application development** workload.
+
+**winapp CLI:** enable [Developer Mode](https://learn.microsoft.com/windows/apps/get-started/enable-your-device-for-development), install the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0), and install the CLI:
+
+```powershell
+winget install --id Microsoft.WinAppCli --exact --source winget
+```
 
 ### 2. Clone the Repository
 
@@ -58,9 +63,15 @@ Quick start guide to building the WinUI Gallery:
 git clone https://github.com/microsoft/WinUI-Gallery.git
 ```
 
-### 3. Open WinUIGallery.slnx with Visual Studio and build!
+### 3. Build and run
 
-Ensure that the `WinUIGallery` project is set as the startup project in Visual Studio.
+**Visual Studio:** open `WinUIGallery.slnx`, make sure `WinUIGallery` is set as the startup project, and press F5.
+
+**winapp CLI:** from the repository root, run:
+
+```powershell
+winapp run WinUIGallery\WinUIGallery.csproj
+```
 
 Gallery uses an experimental Windows App SDK to demonstrate upcoming features.
 Use the normal `Debug` or `Release` configuration; the SDK version is pinned in
