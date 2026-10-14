@@ -1,0 +1,170 @@
+<Page
+    x:Class="WinUIGallery.ControlPages.ListDetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:WinUIGallery.Controls"
+    xmlns:local="using:WinUIGallery.ControlPages"
+    Loaded="OnPageLoaded">
+    <Page.Resources>
+        <DataTemplate x:Key="ListDetailsItemTemplate" x:DataType="local:ListDetailItem">
+            <TextBlock Text="{x:Bind Title}" />
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="StackedStates">
+                <VisualState x:Name="StackedListState">
+                    <VisualState.Setters>
+                        <Setter Target="StackedList.Visibility" Value="Visible" />
+                        <Setter Target="StackedDetails.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="StackedDetailState">
+                    <VisualState.Setters>
+                        <Setter Target="StackedList.Visibility" Value="Collapsed" />
+                        <Setter Target="StackedDetails.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="AdaptiveStates">
+                <VisualState x:Name="AdaptiveWide">
+                    <VisualState.Setters>
+                        <Setter Target="AdaptiveListColumn.Width" Value="2*" />
+                        <Setter Target="AdaptiveDetailColumn.Width" Value="3*" />
+                        <Setter Target="AdaptiveExample.ColumnSpacing" Value="16" />
+                        <Setter Target="AdaptiveList.Visibility" Value="Visible" />
+                        <Setter Target="AdaptiveDetails.Visibility" Value="Visible" />
+                        <Setter Target="AdaptiveBack.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="AdaptiveListOnly">
+                    <VisualState.Setters>
+                        <Setter Target="AdaptiveListColumn.Width" Value="*" />
+                        <Setter Target="AdaptiveDetailColumn.Width" Value="0" />
+                        <Setter Target="AdaptiveExample.ColumnSpacing" Value="0" />
+                        <Setter Target="AdaptiveList.Visibility" Value="Visible" />
+                        <Setter Target="AdaptiveDetails.Visibility" Value="Collapsed" />
+                        <Setter Target="AdaptiveBack.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="AdaptiveDetailOnly">
+                    <VisualState.Setters>
+                        <Setter Target="AdaptiveListColumn.Width" Value="0" />
+                        <Setter Target="AdaptiveDetailColumn.Width" Value="*" />
+                        <Setter Target="AdaptiveExample.ColumnSpacing" Value="0" />
+                        <Setter Target="AdaptiveList.Visibility" Value="Collapsed" />
+                        <Setter Target="AdaptiveDetails.Visibility" Value="Visible" />
+                        <Setter Target="AdaptiveBack.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel>
+            <controls:ControlExample SampleDefinition="ListDetails\SideBySideListDetails.txt" HorizontalContentAlignment="Stretch">
+                <Grid Height="320" ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <ListView
+                        x:Name="SideBySideList"
+                        AutomationProperties.AutomationId="SideBySideList"
+                        AutomationProperties.Name="Side-by-side items"
+                        ItemsSource="{x:Bind Items}"
+                        ItemTemplate="{StaticResource ListDetailsItemTemplate}"
+                        SelectedIndex="0"
+                        SelectionMode="Single" />
+                    <StackPanel Grid.Column="1" Padding="16" Spacing="12" DataContext="{x:Bind SideBySideList.SelectedItem, Mode=OneWay}">
+                        <TextBlock AutomationProperties.HeadingLevel="Level3" Style="{StaticResource SubtitleTextBlockStyle}" Text="{Binding Title}" TextWrapping="Wrap" />
+                        <TextBlock Text="{Binding Text}" TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+            </controls:ControlExample>
+            <controls:ControlExample SampleDefinition="ListDetails\StackedListDetails.txt" HorizontalContentAlignment="Stretch">
+                <Grid Height="320" MaxWidth="400" HorizontalAlignment="Left">
+                    <ListView
+                        x:Name="StackedList"
+                        AutomationProperties.AutomationId="StackedList"
+                        AutomationProperties.Name="Stacked items"
+                        ItemsSource="{x:Bind Items}"
+                        ItemTemplate="{StaticResource ListDetailsItemTemplate}"
+                        SelectionMode="Single"
+                        IsItemClickEnabled="True"
+                        ItemClick="OnStackedItemClick" />
+                    <StackPanel
+                        x:Name="StackedDetails"
+                        Padding="16"
+                        Spacing="12"
+                        Visibility="Collapsed"
+                        DataContext="{x:Bind StackedList.SelectedItem, Mode=OneWay}">
+                        <Button
+                            x:Name="StackedBack"
+                            Content="Back to list"
+                            AutomationProperties.AutomationId="StackedBack"
+                            AutomationProperties.Name="Back to stacked list"
+                            Click="OnStackedBackClick" />
+                        <TextBlock AutomationProperties.HeadingLevel="Level3" Style="{StaticResource SubtitleTextBlockStyle}" Text="{Binding Title}" TextWrapping="Wrap" />
+                        <TextBlock Text="{Binding Text}" TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+            </controls:ControlExample>
+            <controls:ControlExample SampleDefinition="ListDetails\AdaptiveListDetails.txt" HorizontalContentAlignment="Stretch">
+                <StackPanel Spacing="16">
+                    <TextBlock Text="Use the slider or resize the window. Up to 640 effective pixels the example shows one pane; from 641 it shows both. The selection is preserved." TextWrapping="Wrap" />
+                    <Slider
+                        x:Name="PreviewWidth"
+                        Width="300"
+                        HorizontalAlignment="Left"
+                        Header="Requested example width (effective pixels)"
+                        AutomationProperties.AutomationId="ListDetailsPreviewWidth"
+                        AutomationProperties.Name="Requested example width in effective pixels"
+                        Minimum="320"
+                        Maximum="960"
+                        StepFrequency="1"
+                        Value="720" />
+                    <Grid x:Name="AdaptiveHost" HorizontalAlignment="Stretch" SizeChanged="OnAdaptiveHostSizeChanged">
+                        <Grid
+                            x:Name="AdaptiveExample"
+                            Width="{x:Bind PreviewWidth.Value, Mode=OneWay}"
+                            Height="320"
+                            HorizontalAlignment="Left"
+                            ColumnSpacing="16"
+                            SizeChanged="OnAdaptiveSizeChanged">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Name="AdaptiveListColumn" Width="2*" />
+                                <ColumnDefinition x:Name="AdaptiveDetailColumn" Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <ListView
+                                x:Name="AdaptiveList"
+                                AutomationProperties.AutomationId="AdaptiveList"
+                                AutomationProperties.Name="Adaptive items"
+                                ItemsSource="{x:Bind Items}"
+                                ItemTemplate="{StaticResource ListDetailsItemTemplate}"
+                                SelectedIndex="0"
+                                SelectionMode="Single"
+                                IsItemClickEnabled="True"
+                                ItemClick="OnAdaptiveItemClick" />
+                            <StackPanel
+                                x:Name="AdaptiveDetails"
+                                Grid.Column="1"
+                                Padding="16"
+                                Spacing="12"
+                                DataContext="{x:Bind AdaptiveList.SelectedItem, Mode=OneWay}">
+                                <Button
+                                    x:Name="AdaptiveBack"
+                                    Content="Back to list"
+                                    Visibility="Collapsed"
+                                    AutomationProperties.AutomationId="AdaptiveBack"
+                                    AutomationProperties.Name="Back to adaptive list"
+                                    Click="OnAdaptiveBackClick" />
+                                <TextBlock x:Name="AdaptiveDetailTitle" AutomationProperties.HeadingLevel="Level3" Style="{StaticResource SubtitleTextBlockStyle}" Text="{Binding Title}" TextWrapping="Wrap" />
+                                <TextBlock Text="{Binding Text}" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                    <TextBlock x:Name="AdaptiveLayoutStatus" AutomationProperties.AutomationId="AdaptiveLayoutStatus" TextWrapping="Wrap" />
+                </StackPanel>
+            </controls:ControlExample>
+        </StackPanel>
+    </Grid>
+</Page>

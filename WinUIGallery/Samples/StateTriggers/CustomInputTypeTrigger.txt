@@ -1,0 +1,208 @@
+--- header
+Custom input-type trigger and styles (mouse / touch or pen)
+--- xaml
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:local="using:YourNamespace" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Class="YourNamespace.StateTriggersPage" Loaded="OnPageLoaded">
+    <Page.Resources>
+        <Style x:Key="MouseButtonStyle" TargetType="Button">
+            <Setter Property="MinHeight" Value="32" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="Padding" Value="12,4" />
+        </Style>
+        <Style x:Key="TouchPenButtonStyle" TargetType="Button">
+            <Setter Property="MinHeight" Value="48" />
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="Padding" Value="16,12" />
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="InputTypeStates">
+                <VisualState x:Name="MouseInput">
+                    <VisualState.StateTriggers>
+                        <local:InputTypeTrigger TargetElement="{x:Bind InputTarget}" PointerType="Mouse" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="FirstChoice.Style" Value="{StaticResource MouseButtonStyle}" />
+                        <Setter Target="SecondChoice.Style" Value="{StaticResource MouseButtonStyle}" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="TouchOrPenInput">
+                    <VisualState.StateTriggers>
+                        <local:InputTypeTrigger TargetElement="{x:Bind InputTarget}" PointerType="Touch" />
+                        <local:InputTypeTrigger TargetElement="{x:Bind InputTarget}" PointerType="Pen" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="FirstChoice.Style" Value="{StaticResource TouchPenButtonStyle}" />
+                        <Setter Target="SecondChoice.Style" Value="{StaticResource TouchPenButtonStyle}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel Spacing="12">
+            <TextBlock Text="Press either button using a mouse, touch or pen. Touch and pen activate the same state (OR). Keyboard activation does not change the last pointer type." TextWrapping="Wrap" />
+            <Border x:Name="InputTarget" Padding="8" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" CornerRadius="{ThemeResource ControlCornerRadius}" Loaded="OnInputTargetLoaded" Unloaded="OnInputTargetUnloaded">
+                <StackPanel>
+                    <Button x:Name="FirstChoice" Content="First option" AutomationProperties.AutomationId="FirstInputChoice" AutomationProperties.Name="First option" Style="{StaticResource MouseButtonStyle}" Click="OnChoiceClicked" />
+                    <Button x:Name="SecondChoice" Content="Second option" AutomationProperties.AutomationId="SecondInputChoice" AutomationProperties.Name="Second option" Style="{StaticResource MouseButtonStyle}" Click="OnChoiceClicked" />
+                </StackPanel>
+            </Border>
+            <TextBlock x:Name="LastPointerStatus" AutomationProperties.AutomationId="LastPointerStatus" Text="No pointer press yet." />
+            <TextBlock x:Name="ChoiceStatus" Text="No option activated yet." />
+        </StackPanel>
+    </Grid>
+</Page>
+--- c#
+using Microsoft.UI.Input;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using System;
+
+
+namespace YourNamespace;
+
+public sealed partial class StateTriggersPage : Page
+{
+    private readonly PointerEventHandler _pointerHandler;
+    private bool _isListening;
+
+    public StateTriggersPage()
+    {
+        _pointerHandler = OnPointerPressed;
+        InitializeComponent();
+    }
+
+    private void OnPageLoaded(object sender, RoutedEventArgs args)
+    {
+        // Input handlers attach when the target is loaded.
+    }
+
+    private void OnInputTargetLoaded(object sender, RoutedEventArgs args)
+    {
+        if (!_isListening)
+        {
+            InputTarget.AddHandler(UIElement.PointerPressedEvent, _pointerHandler, true);
+            _isListening = true;
+        }
+    }
+
+    private void OnInputTargetUnloaded(object sender, RoutedEventArgs args)
+    {
+        if (_isListening)
+        {
+            InputTarget.RemoveHandler(UIElement.PointerPressedEvent, _pointerHandler);
+            _isListening = false;
+        }
+
+        LastPointerStatus.Text = "No pointer press yet.";
+    }
+
+    private void OnPointerPressed(object sender, PointerRoutedEventArgs args)
+    {
+        LastPointerStatus.Text = $"Last pointer: {args.Pointer.PointerDeviceType}";
+    }
+
+    private void OnChoiceClicked(object sender, RoutedEventArgs args)
+    {
+        ChoiceStatus.Text = $"Activated: {((Button)sender).Content}";
+    }
+}
+
+public sealed partial class InputTypeTrigger : StateTriggerBase
+{
+    public static readonly DependencyProperty TargetElementProperty =
+        DependencyProperty.Register(nameof(TargetElement), typeof(FrameworkElement),
+            typeof(InputTypeTrigger), new PropertyMetadata(null, OnTargetElementChanged));
+
+    public static readonly DependencyProperty PointerTypeProperty =
+        DependencyProperty.Register(nameof(PointerType), typeof(PointerDeviceType),
+            typeof(InputTypeTrigger), new PropertyMetadata(PointerDeviceType.Mouse, OnPointerTypeChanged));
+
+    private readonly PointerEventHandler _pointerHandler;
+    private PointerDeviceType? _lastPointerType;
+    private bool _isListening;
+
+    public InputTypeTrigger()
+    {
+        _pointerHandler = OnPointerPressed;
+    }
+
+    public FrameworkElement? TargetElement
+    {
+        get => (FrameworkElement?)GetValue(TargetElementProperty);
+        set => SetValue(TargetElementProperty, value);
+    }
+
+    public PointerDeviceType PointerType
+    {
+        get => (PointerDeviceType)GetValue(PointerTypeProperty);
+        set => SetValue(PointerTypeProperty, value);
+    }
+
+    private static void OnTargetElementChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
+    {
+        InputTypeTrigger trigger = (InputTypeTrigger)sender;
+        if (args.OldValue is FrameworkElement oldTarget)
+        {
+            oldTarget.Loaded -= trigger.OnTargetLoaded;
+            oldTarget.Unloaded -= trigger.OnTargetUnloaded;
+            trigger.StopListening(oldTarget);
+        }
+
+        trigger._lastPointerType = null;
+        trigger.SetActive(false);
+
+        if (args.NewValue is FrameworkElement newTarget)
+        {
+            newTarget.Loaded += trigger.OnTargetLoaded;
+            newTarget.Unloaded += trigger.OnTargetUnloaded;
+            if (newTarget.IsLoaded)
+            {
+                trigger.StartListening(newTarget);
+            }
+        }
+    }
+
+    private static void OnPointerTypeChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
+    {
+        InputTypeTrigger trigger = (InputTypeTrigger)sender;
+        trigger.SetActive(trigger._lastPointerType == trigger.PointerType);
+    }
+
+    private void OnTargetLoaded(object sender, RoutedEventArgs args)
+    {
+        StartListening((FrameworkElement)sender);
+    }
+
+    private void OnTargetUnloaded(object sender, RoutedEventArgs args)
+    {
+        StopListening((FrameworkElement)sender);
+        _lastPointerType = null;
+        SetActive(false);
+    }
+
+    private void StartListening(FrameworkElement target)
+    {
+        if (!_isListening)
+        {
+            // Buttons can handle PointerPressed before it bubbles to the target.
+            target.AddHandler(UIElement.PointerPressedEvent, _pointerHandler, true);
+            _isListening = true;
+        }
+    }
+
+    private void StopListening(FrameworkElement target)
+    {
+        if (_isListening)
+        {
+            target.RemoveHandler(UIElement.PointerPressedEvent, _pointerHandler);
+            _isListening = false;
+        }
+    }
+
+    private void OnPointerPressed(object sender, PointerRoutedEventArgs args)
+    {
+        _lastPointerType = args.Pointer.PointerDeviceType;
+        SetActive(_lastPointerType == PointerType);
+    }
+}

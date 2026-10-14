@@ -1,0 +1,61 @@
+--- header
+Side-by-side list and selected-item details
+--- xaml
+<Page xmlns:local="using:YourNamespace" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Class="YourNamespace.ListDetailsPage">
+    <Page.Resources>
+        <DataTemplate x:Key="ListDetailsItemTemplate" x:DataType="local:ListDetailItem">
+            <TextBlock Text="{x:Bind Title}" />
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <Grid Height="320" ColumnSpacing="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="SideBySideList" AutomationProperties.AutomationId="SideBySideList" AutomationProperties.Name="Side-by-side items" ItemsSource="{x:Bind Items}" ItemTemplate="{StaticResource ListDetailsItemTemplate}" SelectedIndex="0" SelectionMode="Single" />
+            <StackPanel Grid.Column="1" Padding="16" Spacing="12" DataContext="{x:Bind SideBySideList.SelectedItem, Mode=OneWay}">
+                <TextBlock AutomationProperties.HeadingLevel="Level3" Style="{StaticResource SubtitleTextBlockStyle}" Text="{Binding Title}" TextWrapping="Wrap" />
+                <TextBlock Text="{Binding Text}" TextWrapping="Wrap" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
+--- c#
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using System;
+using System.Collections.Generic;
+
+
+namespace YourNamespace;
+
+public sealed partial class ListDetailsPage : Page
+{
+    public List<ListDetailItem> Items { get; } =
+    [
+        new ListDetailItem { Id = 1, Title = "Item 1", Text = "Select an item to see its details." },
+        new ListDetailItem { Id = 2, Title = "Item 2", Text = "The same data can be presented in one or two panes." },
+        new ListDetailItem { Id = 3, Title = "Item 3", Text = "Changing the layout does not change the selection." },
+        new ListDetailItem { Id = 4, Title = "Item 4", Text = "Use the back button to return to the list in a narrow layout." }
+    ];
+
+    public ListDetailsPage()
+    {
+        InitializeComponent();
+    }
+
+    private void OnPageLoaded(object sender, RoutedEventArgs args)
+    {
+        // No navigation is needed for the side-by-side layout.
+    }
+}
+
+public class ListDetailItem
+{
+    public int Id { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public string Text { get; set; } = string.Empty;
+}

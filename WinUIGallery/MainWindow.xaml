@@ -210,6 +210,11 @@
                             Content="Binding"
                             Tag="Binding" />
                         <NavigationViewItem
+                            x:Name="StateTriggersPage"
+                            AutomationProperties.AutomationId="StateTriggers"
+                            Content="State triggers"
+                            Tag="StateTriggers" />
+                        <NavigationViewItem
                             x:Name="TemplatesPage"
                             AutomationProperties.AutomationId="Templates"
                             Content="Templates"

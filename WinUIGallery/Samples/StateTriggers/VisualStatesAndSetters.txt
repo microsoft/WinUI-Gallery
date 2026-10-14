@@ -1,0 +1,67 @@
+--- header
+Visual states and setters
+--- xaml
+<Page xmlns:local="using:YourNamespace" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Class="YourNamespace.StateTriggersPage" Loaded="OnPageLoaded">
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="BasicStates">
+                <VisualState x:Name="Normal">
+                    <VisualState.Setters>
+                        <Setter Target="MessageBorder.BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" />
+                        <Setter Target="MessageText.FontWeight" Value="Normal" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Emphasized">
+                    <VisualState.Setters>
+                        <Setter Target="MessageBorder.BorderBrush" Value="{ThemeResource AccentFillColorDefaultBrush}" />
+                        <Setter Target="MessageText.FontWeight" Value="SemiBold" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel Spacing="16">
+            <ToggleSwitch x:Name="EmphasisSwitch" Header="Emphasize the message" AutomationProperties.AutomationId="EmphasisSwitch" AutomationProperties.Name="Emphasize the message" Toggled="OnEmphasisToggled" />
+            <Border x:Name="MessageBorder" Padding="16" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="2" CornerRadius="{ThemeResource ControlCornerRadius}">
+                <TextBlock x:Name="MessageText" Text="Visual states change several properties together." TextWrapping="Wrap" />
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>
+--- c#
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
+using System;
+
+
+namespace YourNamespace;
+
+public sealed partial class StateTriggersPage : Page
+{
+    public StateTriggersPage()
+    {
+        InitializeComponent();
+    }
+
+    private void OnPageLoaded(object sender, RoutedEventArgs args)
+    {
+        UpdateEmphasisState();
+    }
+
+    private void OnEmphasisToggled(object sender, RoutedEventArgs args)
+    {
+        if (IsLoaded)
+        {
+            UpdateEmphasisState();
+        }
+    }
+
+    private void UpdateEmphasisState()
+    {
+        string state = EmphasisSwitch.IsOn ? "Emphasized" : "Normal";
+        if (!VisualStateManager.GoToState(this, state, false))
+        {
+            throw new InvalidOperationException($"Visual state '{state}' was not found.");
+        }
+    }
+}

@@ -407,6 +407,10 @@ public sealed partial class MainWindow : Window
             {
                 Navigate(typeof(ItemPage), "Binding");
             }
+            else if (selectedItem == StateTriggersPage)
+            {
+                Navigate(typeof(ItemPage), "StateTriggers");
+            }
             else if (selectedItem == TemplatesPage)
             {
                 Navigate(typeof(ItemPage), "Templates");

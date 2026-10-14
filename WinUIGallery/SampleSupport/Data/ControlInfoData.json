@@ -120,6 +120,40 @@
           ]
         },
         {
+          "UniqueId": "StateTriggers",
+          "Tags": [
+            "VisualStateManager",
+            "VisualState",
+            "Setter",
+            "AdaptiveTrigger",
+            "StateTriggerBase",
+            "InputTypeTrigger",
+            "mouse",
+            "touch",
+            "pen"
+          ],
+          "Title": "State triggers",
+          "IsNew": true,
+          "Subtitle": "Change visual states using code, window width, or custom input conditions.",
+          "ApiNamespace": "Microsoft.UI.Xaml",
+          "ImagePath": "ms-appx:///Assets/ControlImages/CodeTagIcon.png",
+          "Description": "Visual states group property changes. State triggers activate those states when a condition is met. These examples progress from setters and built-in adaptive triggers to a custom mouse, touch, and pen trigger.",
+          "Docs": [
+            {
+              "Title": "Responsive layouts with XAML",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/layouts-with-xaml"
+            },
+            {
+              "Title": "StateTriggerBase - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.statetriggerbase"
+            }
+          ],
+          "RelatedControls": [
+            "XamlStyles",
+            "ListDetails"
+          ]
+        },
+        {
           "UniqueId": "Templates",
           "Tags": [
             "ControlTemplate",
@@ -2664,6 +2698,38 @@
           ],
           "RelatedControls": [
             "ItemsRepeater"
+          ]
+        },
+        {
+          "UniqueId": "ListDetails",
+          "Tags": [
+            "list details",
+            "master detail",
+            "adaptive layout",
+            "selection",
+            "back navigation"
+          ],
+          "Title": "List/details",
+          "IsNew": true,
+          "Subtitle": "Show a list and its selected item's details in one or two panes.",
+          "ApiNamespace": "Microsoft.UI.Xaml.Controls",
+          "ImagePath": "ms-appx:///Assets/ControlImages/ListView.png",
+          "Description": "The list/details pattern combines a list with the selected item's content. Explore side-by-side and stacked layouts, then an adaptive example that preserves selection and restores keyboard focus when returning to the list.",
+          "Docs": [
+            {
+              "Title": "List/details pattern",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/list-details"
+            },
+            {
+              "Title": "Responsive layouts with XAML",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/layouts-with-xaml"
+            }
+          ],
+          "RelatedControls": [
+            "ListView",
+            "Binding",
+            "SplitView",
+            "StateTriggers"
           ]
         },
         {
