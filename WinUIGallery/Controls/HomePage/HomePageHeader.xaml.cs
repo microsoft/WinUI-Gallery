@@ -8,7 +8,11 @@ namespace WinUIGallery.Controls;
 
 public sealed partial class HomePageHeader : UserControl
 {
-    public string WinAppSdkDetails => VersionHelper.WinAppSdkDetails;
+    public string WinAppSdkVersion => VersionHelper.WinAppSdkVersion;
+
+    public string WinAppSdkChannel => VersionHelper.WinAppSdkChannel.ToUpperInvariant();
+
+    public bool HasWinAppSdkChannel => !string.IsNullOrEmpty(VersionHelper.WinAppSdkChannel);
 
     public HomePageHeader()
     {
