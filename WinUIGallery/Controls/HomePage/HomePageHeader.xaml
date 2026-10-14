@@ -96,14 +96,16 @@
                         Style="{StaticResource BodyTextBlockStyle}"
                         Text="{x:Bind WinAppSdkVersion}" />
                     <Border
-                        Padding="6,2"
+                        Padding="5,1"
                         VerticalAlignment="Center"
-                        Background="{ThemeResource AccentFillColorDefaultBrush}"
+                        Background="{ThemeResource ControlAltFillColorQuarternaryBrush}"
                         CornerRadius="4"
+                        ToolTipService.ToolTip="{x:Bind WinAppSdkChannelDescription}"
                         Visibility="{x:Bind HasWinAppSdkChannel}">
                         <TextBlock
-                            Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                            Style="{StaticResource CaptionTextBlockStyle}"
+                            AutomationProperties.HelpText="{x:Bind WinAppSdkChannelDescription}"
+                            FontSize="10"
+                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                             Text="{x:Bind WinAppSdkChannel}" />
                     </Border>
                 </StackPanel>
