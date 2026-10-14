@@ -2,17 +2,29 @@
 // Licensed under the MIT License.
 
 using Axe.Windows.Automation;
+using Axe.Windows.Automation.Data;
 using Axe.Windows.Core.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 
 namespace WinUIGallery.UITests;
 
 public class AxeHelper
 {
     public static IScanner AccessibilityScanner;
+
+    // UIA_E_TIMEOUT. UI Automation reports this when the app's UI thread does not respond in time,
+    // for example while it is still loading the page that was just opened. Axe.Windows then fails with
+    // "Failed to get the root element(s) of the specified process" before it can scan anything.
+    // https://github.com/microsoft/axe-windows/issues/662
+    private const int UiaTimeoutHResult = unchecked((int)0x80131505);
+    private const int MaxScanAttempts = 3;
+    private static readonly TimeSpan ScanRetryDelay = TimeSpan.FromSeconds(2);
 
     // Rules excluded globally due to known WinUI framework issues that affect all pages.
     // These are not fixable from app code and produce false positives.
@@ -65,7 +77,7 @@ public class AxeHelper
             excludedRules.UnionWith(pageRuleExclusions);
         }
 
-        var testResult = AccessibilityScanner.Scan(null).WindowScanOutputs
+        var testResult = Scan().WindowScanOutputs
             .SelectMany(output => output.Errors)
             .Where(rule => !excludedRules.Contains(rule.Rule.ID))
             .Where(rule => includedRuleSet == null || includedRuleSet.Contains(rule.Rule.ID));
@@ -83,5 +95,38 @@ public class AxeHelper
 
             Assert.Fail("Failed with the following accessibility errors \r\n" + string.Join("\r\n", mappedResult));
         }
+    }
+
+    private static ScanOutput Scan()
+    {
+        for (int attempt = 1; ; attempt++)
+        {
+            try
+            {
+                return AccessibilityScanner.Scan(null);
+            }
+            catch (AxeWindowsAutomationException exception) when (attempt < MaxScanAttempts && IsUiaTimeout(exception))
+            {
+                Logger.LogMessage(
+                    "Axe scan timed out waiting for UI Automation (attempt {0} of {1}). Retrying in {2} seconds.",
+                    attempt,
+                    MaxScanAttempts,
+                    ScanRetryDelay.TotalSeconds);
+                Thread.Sleep(ScanRetryDelay);
+            }
+        }
+    }
+
+    private static bool IsUiaTimeout(Exception exception)
+    {
+        for (Exception current = exception; current is not null; current = current.InnerException)
+        {
+            if (current.HResult == UiaTimeoutHResult)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
