@@ -4148,10 +4148,10 @@
     "Name": "Dislike",
     "Tags": [
       "thumb",
-      "positive",
-      "approve",
-      "favor",
-      "agree",
+      "negative",
+      "reject",
+      "disapprove",
+      "oppose",
       "symbol-icon"
     ]
   },
@@ -4160,10 +4160,10 @@
     "Name": "Like",
     "Tags": [
       "thumb",
-      "negative",
-      "reject",
-      "disapprove",
-      "oppose",
+      "positive",
+      "approve",
+      "favor",
+      "agree",
       "symbol-icon"
     ]
   },
