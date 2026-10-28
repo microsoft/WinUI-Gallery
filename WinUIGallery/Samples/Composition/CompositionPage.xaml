@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <Page
     x:Class="WinUIGallery.ControlPages.CompositionPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -9,9 +8,7 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <controls:ControlExample
-            SampleDefinition="Composition\CompositionGetElementVisual.txt"
-            Loaded="ElementVisualExample_Loaded">
+        <controls:ControlExample Loaded="ElementVisualExample_Loaded" SampleDefinition="Composition\CompositionGetElementVisual.txt">
             <controls:ControlExample.Options>
                 <StackPanel MinWidth="180" Spacing="8">
                     <Slider
@@ -53,9 +50,7 @@
             </Grid>
         </controls:ControlExample>
 
-        <controls:ControlExample
-            SampleDefinition="Composition\CompositionChildVisual.txt"
-            Loaded="ChildVisualExample_Loaded">
+        <controls:ControlExample Loaded="ChildVisualExample_Loaded" SampleDefinition="Composition\CompositionChildVisual.txt">
             <controls:ControlExample.Options>
                 <StackPanel MinWidth="180" Spacing="8">
                     <Slider
@@ -63,15 +58,15 @@
                         Header="AnchorPoint X"
                         Maximum="1"
                         StepFrequency="0.1"
-                        Value="0.5"
-                        ValueChanged="AnchorPointSlider_ValueChanged" />
+                        ValueChanged="AnchorPointSlider_ValueChanged"
+                        Value="0.5" />
                     <Slider
                         x:Name="AnchorYSlider"
                         Header="AnchorPoint Y"
                         Maximum="1"
                         StepFrequency="0.1"
-                        Value="0.5"
-                        ValueChanged="AnchorPointSlider_ValueChanged" />
+                        ValueChanged="AnchorPointSlider_ValueChanged"
+                        Value="0.5" />
                 </StackPanel>
             </controls:ControlExample.Options>
 
@@ -92,9 +87,7 @@
             </Grid>
         </controls:ControlExample>
 
-        <controls:ControlExample
-            SampleDefinition="Composition\CompositionTransformMatrix.txt"
-            Loaded="TransformMatrixExample_Loaded">
+        <controls:ControlExample Loaded="TransformMatrixExample_Loaded" SampleDefinition="Composition\CompositionTransformMatrix.txt">
             <controls:ControlExample.Options>
                 <StackPanel MinWidth="180" Spacing="8">
                     <Slider
@@ -109,8 +102,8 @@
                         Maximum="1.5"
                         Minimum="0.5"
                         StepFrequency="0.1"
-                        Value="1"
-                        ValueChanged="TransformMatrixSlider_ValueChanged" />
+                        ValueChanged="TransformMatrixSlider_ValueChanged"
+                        Value="1" />
                 </StackPanel>
             </controls:ControlExample.Options>
 
@@ -133,9 +126,7 @@
             </Grid>
         </controls:ControlExample>
 
-        <controls:ControlExample
-            SampleDefinition="Composition\CompositionClip.txt"
-            Loaded="ClipExample_Loaded">
+        <controls:ControlExample Loaded="ClipExample_Loaded" SampleDefinition="Composition\CompositionClip.txt">
             <controls:ControlExample.Options>
                 <StackPanel MinWidth="180" Spacing="8">
                     <Slider
