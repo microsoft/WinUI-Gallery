@@ -45,7 +45,7 @@ public sealed class TableViewSamplesTests
     }
 
     [TestMethod]
-    public void TableViewPublishesSixCapabilityExamples()
+    public void TableViewPublishesEightCapabilityExamples()
     {
         IndexControl tableView = GenerateTableView();
 
@@ -57,6 +57,8 @@ public sealed class TableViewSamplesTests
                 "Showing hierarchical rows",
                 "Customizing cells with data templates",
                 "Editing cells and validating changes",
+                "Adding context menus to cells, rows, and headers",
+                "Updating rows from live data",
                 "An advanced TableView",
             },
             tableView.Samples.Select(sample => sample.Header).ToArray());
@@ -69,6 +71,8 @@ public sealed class TableViewSamplesTests
                 "HierarchyTable.txt",
                 "CustomColumnsTable.txt",
                 "EditingCellsTable.txt",
+                "ContextMenuTable.txt",
+                "LiveDataTable.txt",
                 "PresentationTable.txt",
             },
             tableView.Samples.Select(sample => sample.Gallery.Snippet).ToArray());
@@ -178,6 +182,46 @@ public sealed class TableViewSamplesTests
         string pageCode = File.ReadAllText(
             Path.Combine(repoRoot, "WinUIGallery", "Samples", "TableView", "TableViewPage.xaml.cs"));
         StringAssert.Contains(pageCode, "_hierarchySource.ParentBy(");
+    }
+
+    [TestMethod]
+    public void ContextMenuSampleCoversEveryMenuLevel()
+    {
+        IndexControl tableView = GenerateTableView();
+        IndexSample contextMenus = tableView.Samples.Single(sample => sample.Gallery.Snippet == "ContextMenuTable.txt");
+
+        Assert.IsNotNull(contextMenus.Code);
+        StringAssert.Contains(contextMenus.Xaml, "CellContextFlyout=\"{StaticResource NameCellMenu}\"");
+        StringAssert.Contains(contextMenus.Xaml, "HeaderContextFlyout=\"{StaticResource HeaderMenu}\"");
+        StringAssert.Contains(contextMenus.Xaml, "<Style TargetType=\"tabular:TableViewRow\">");
+        StringAssert.Contains(contextMenus.Xaml, "<Setter Property=\"ContextFlyout\" Value=\"{StaticResource RowMenu}\" />");
+        StringAssert.Contains(contextMenus.Xaml, "<tabular:TableView.ContextFlyout>");
+        StringAssert.Contains(contextMenus.Xaml, "Opening=\"HeaderMenu_Opening\"");
+        StringAssert.Contains(contextMenus.Code, "DataContext: TableViewSampleItem item");
+        StringAssert.Contains(contextMenus.Code, "menu.Target as TableViewColumnHeader");
+        StringAssert.Contains(contextMenus.Code, "Visibility = Visibility.Collapsed");
+    }
+
+    [TestMethod]
+    public void LiveDataSampleUsesLiveShapingAndStopsItsTimer()
+    {
+        IndexControl tableView = GenerateTableView();
+        IndexSample liveData = tableView.Samples.Single(sample => sample.Gallery.Snippet == "LiveDataTable.txt");
+
+        Assert.IsNotNull(liveData.Code);
+        StringAssert.Contains(liveData.Xaml, "x:Name=\"LiveDataTable\"");
+        StringAssert.Contains(liveData.Xaml, "Toggled=\"LiveShapingToggle_Toggled\"");
+        StringAssert.Contains(liveData.Code, "_liveSource.IsLiveShaping = true;");
+        StringAssert.Contains(liveData.Code, "LiveDataTable.SortByColumn(LiveValueColumn, SortDirection.Descending);");
+        StringAssert.Contains(liveData.Code, "_liveSource.Filter(");
+        StringAssert.Contains(liveData.Code, "_liveTimer.Stop()");
+        StringAssert.Contains(liveData.Code, "public sealed partial class TableViewLiveItem");
+
+        string repoRoot = CatalogGenerator.FindRepoRoot(AppContext.BaseDirectory);
+        string pageCode = File.ReadAllText(
+            Path.Combine(repoRoot, "WinUIGallery", "Samples", "TableView", "TableViewPage.xaml.cs"));
+        StringAssert.Contains(pageCode, "_liveSource.IsLiveShaping = true;");
+        StringAssert.Contains(pageCode, "_liveTimer.Stop();");
     }
 
     [TestMethod]

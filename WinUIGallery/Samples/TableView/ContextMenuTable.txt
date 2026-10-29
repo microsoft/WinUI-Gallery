@@ -1,0 +1,155 @@
+--- header
+Adding context menus to cells, rows, and headers
+--- xaml
+<tabular:TableView
+    x:Name="ContextMenuTable"
+    Height="280"
+    MaxWidth="480"
+    HorizontalAlignment="Left"
+    AutomationProperties.Name="Items with context menus"
+    CanUserResizeColumns="False"
+    CanUserSortColumns="False"
+    IsReadOnly="True"
+    ItemsSource="{x:Bind ContextMenuItems}"
+    SelectionMode="Single">
+    <tabular:TableView.Resources>
+        <!-- Menu items inherit the requested row's item as their DataContext. -->
+        <MenuFlyout x:Key="NameCellMenu">
+            <MenuFlyoutItem Click="CopyName_Click" Text="Copy name">
+                <MenuFlyoutItem.Icon>
+                    <SymbolIcon Symbol="Copy" />
+                </MenuFlyoutItem.Icon>
+            </MenuFlyoutItem>
+        </MenuFlyout>
+        <MenuFlyout x:Key="RowMenu">
+            <MenuFlyoutItem Click="CopyRow_Click" Text="Copy row">
+                <MenuFlyoutItem.Icon>
+                    <SymbolIcon Symbol="Copy" />
+                </MenuFlyoutItem.Icon>
+            </MenuFlyoutItem>
+            <MenuFlyoutItem Click="NextCategory_Click" Text="Move to next category" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Click="RemoveRow_Click" Text="Remove">
+                <MenuFlyoutItem.Icon>
+                    <SymbolIcon Symbol="Delete" />
+                </MenuFlyoutItem.Icon>
+            </MenuFlyoutItem>
+        </MenuFlyout>
+        <!-- One header menu is shared by every column; Opening reads which header it targets. -->
+        <MenuFlyout x:Key="HeaderMenu" Opening="HeaderMenu_Opening">
+            <MenuFlyoutItem Click="HideColumn_Click" Text="Hide column" />
+            <MenuFlyoutItem Click="ShowAllColumns_Click" Text="Show all columns" />
+        </MenuFlyout>
+        <!-- Rows get their menu from an implicit style. -->
+        <Style TargetType="tabular:TableViewRow">
+            <Setter Property="ContextFlyout" Value="{StaticResource RowMenu}" />
+        </Style>
+    </tabular:TableView.Resources>
+    <!-- The table's own menu opens when no cell, row, or header menu applies. -->
+    <tabular:TableView.ContextFlyout>
+        <MenuFlyout>
+            <MenuFlyoutItem Click="RestoreItems_Click" Text="Restore all items" />
+        </MenuFlyout>
+    </tabular:TableView.ContextFlyout>
+    <tabular:TableView.Columns>
+        <tabular:TableViewTextColumn
+            Binding="{Binding Name}"
+            CellContextFlyout="{StaticResource NameCellMenu}"
+            Header="Name"
+            HeaderContextFlyout="{StaticResource HeaderMenu}"
+            Width="*" />
+        <tabular:TableViewTextColumn
+            Binding="{Binding Category}"
+            Header="Category"
+            HeaderContextFlyout="{StaticResource HeaderMenu}"
+            Width="140" />
+        <tabular:TableViewTextColumn
+            Binding="{Binding Value}"
+            Header="Value"
+            HeaderContextFlyout="{StaticResource HeaderMenu}"
+            Width="100" />
+    </tabular:TableView.Columns>
+</tabular:TableView>
+--- c#
+// A column's CellContextFlyout wins over the row's ContextFlyout, and HeaderContextFlyout
+// covers its header. When none applies, the request falls back to TableView.ContextFlyout.
+public ObservableCollection<TableViewSampleItem> ContextMenuItems { get; } = TableViewSampleItem.CreateItems();
+private TableViewColumn? _headerMenuColumn;
+
+private void CopyName_Click(object sender, RoutedEventArgs e)
+{
+    if (sender is FrameworkElement { DataContext: TableViewSampleItem item })
+    {
+        CopyToClipboard(item.Name);
+    }
+}
+
+private void CopyRow_Click(object sender, RoutedEventArgs e)
+{
+    if (sender is FrameworkElement { DataContext: TableViewSampleItem item })
+    {
+        CopyToClipboard($"{item.Id}\t{item.Name}\t{item.Category}\t{item.Value}");
+    }
+}
+
+private void NextCategory_Click(object sender, RoutedEventArgs e)
+{
+    if (sender is FrameworkElement { DataContext: TableViewSampleItem item })
+    {
+        string[] categories = ["Alpha", "Beta", "Gamma"];
+        item.Category = categories[(Array.IndexOf(categories, item.Category) + 1) % categories.Length];
+    }
+}
+
+private void RemoveRow_Click(object sender, RoutedEventArgs e)
+{
+    if (sender is FrameworkElement { DataContext: TableViewSampleItem item })
+    {
+        ContextMenuItems.Remove(item);
+    }
+}
+
+private void RestoreItems_Click(object sender, RoutedEventArgs e)
+{
+    ContextMenuItems.Clear();
+    foreach (TableViewSampleItem item in TableViewSampleItem.CreateItems())
+    {
+        ContextMenuItems.Add(item);
+    }
+}
+
+private void HeaderMenu_Opening(object sender, object e)
+{
+    // The menu's Target is the header that was requested; its Column is the one to hide.
+    var menu = (MenuFlyout)sender;
+    _headerMenuColumn = (menu.Target as TableViewColumnHeader)?.Column;
+    if (menu.Items[0] is MenuFlyoutItem hideItem)
+    {
+        hideItem.Text = $"Hide {_headerMenuColumn?.Header}";
+        hideItem.IsEnabled = _headerMenuColumn is not null &&
+            ContextMenuTable.Columns.Count(column => column.Visibility == Visibility.Visible) > 1;
+    }
+}
+
+private void HideColumn_Click(object sender, RoutedEventArgs e)
+{
+    if (_headerMenuColumn is not null)
+    {
+        _headerMenuColumn.Visibility = Visibility.Collapsed;
+    }
+}
+
+private void ShowAllColumns_Click(object sender, RoutedEventArgs e)
+{
+    foreach (TableViewColumn column in ContextMenuTable.Columns)
+    {
+        column.Visibility = Visibility.Visible;
+    }
+}
+
+private static void CopyToClipboard(string text)
+{
+    DataPackage package = new();
+    package.SetText(text);
+    Clipboard.SetContent(package);
+}

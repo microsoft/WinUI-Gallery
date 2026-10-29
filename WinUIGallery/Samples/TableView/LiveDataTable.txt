@@ -1,0 +1,162 @@
+--- header
+Updating rows from live data
+--- xaml
+<tabular:TableView
+    x:Name="LiveDataTable"
+    Height="320"
+    MaxWidth="480"
+    HorizontalAlignment="Left"
+    AutomationProperties.Name="Live values"
+    CanUserResizeColumns="False"
+    IsReadOnly="True"
+    SelectionMode="Single">
+    <tabular:TableView.EmptyTemplate>
+        <DataTemplate>
+            <TextBlock
+                Margin="24"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="No values of 50 or more right now." />
+        </DataTemplate>
+    </tabular:TableView.EmptyTemplate>
+    <tabular:TableView.Columns>
+        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="*" />
+        <tabular:TableViewTextColumn
+            x:Name="LiveValueColumn"
+            Binding="{Binding Value}"
+            Header="Value"
+            Width="100" />
+        <tabular:TableViewTextColumn
+            Binding="{Binding ChangeText}"
+            Header="Change"
+            SortMemberPath="Change"
+            Width="110" />
+    </tabular:TableView.Columns>
+</tabular:TableView>
+<ToggleSwitch
+    x:Name="LiveUpdatesToggle"
+    Header="Updates"
+    IsOn="True"
+    OffContent="Paused"
+    OnContent="Every second"
+    Toggled="LiveUpdatesToggle_Toggled" />
+<ToggleSwitch
+    x:Name="LiveShapingToggle"
+    Header="Live shaping"
+    IsOn="True"
+    OffContent="Rows stay in place"
+    OnContent="Rows move as values change"
+    Toggled="LiveShapingToggle_Toggled" />
+<ToggleSwitch
+    x:Name="LiveFilterToggle"
+    Header="Filter"
+    OffContent="All rows"
+    OnContent="Values of 50 or more"
+    Toggled="LiveFilterToggle_Toggled" />
+--- c#
+private readonly ObservableCollection<TableViewLiveItem> _liveItems = TableViewLiveItem.CreateItems();
+private readonly TableViewSource _liveSource;
+private readonly DispatcherTimer _liveTimer = new() { Interval = TimeSpan.FromSeconds(1) };
+
+public TableViewPage()
+{
+    // With IsLiveShaping, a PropertyChanged on an item re-applies the sort and filter, so the row
+    // moves (or leaves the filter) and the selection follows it. It's off by default.
+    _liveSource = TableViewSource.From(_liveItems);
+    _liveSource.IsLiveShaping = true;
+
+    InitializeComponent();
+    LiveDataTable.ItemsSource = _liveSource;
+    LiveDataTable.Loaded += LiveDataTable_Loaded;
+    Unloaded += (_, _) => _liveTimer.Stop();
+    _liveTimer.Tick += LiveTimer_Tick;
+}
+
+private void LiveDataTable_Loaded(object sender, RoutedEventArgs e)
+{
+    LiveDataTable.SortByColumn(LiveValueColumn, SortDirection.Descending);
+    if (LiveUpdatesToggle.IsOn)
+    {
+        _liveTimer.Start();
+    }
+}
+
+private void LiveTimer_Tick(object? sender, object e)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        _liveItems[Random.Shared.Next(_liveItems.Count)].Update(Random.Shared.Next(-15, 16));
+    }
+}
+
+private void LiveUpdatesToggle_Toggled(object sender, RoutedEventArgs e)
+{
+    if (LiveUpdatesToggle.IsOn && LiveDataTable is { IsLoaded: true })
+    {
+        _liveTimer.Start();
+    }
+    else
+    {
+        _liveTimer.Stop();
+    }
+}
+
+private void LiveShapingToggle_Toggled(object sender, RoutedEventArgs e)
+{
+    // Off: cells still update, but rows keep their place until the next sort or filter.
+    if (LiveShapingToggle is not null)
+    {
+        _liveSource.IsLiveShaping = LiveShapingToggle.IsOn;
+    }
+}
+
+private void LiveFilterToggle_Toggled(object sender, RoutedEventArgs e)
+{
+    if (LiveFilterToggle.IsOn)
+    {
+        _liveSource.Filter(item => ((TableViewLiveItem)item).Value >= 50);
+    }
+    else
+    {
+        _liveSource.ClearFilter();
+    }
+}
+
+// Raises PropertyChanged so bound cells update and, with IsLiveShaping, the sort and filter
+// follow each new value.
+public sealed partial class TableViewLiveItem(string name, int value) : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    public string Name { get; } = name;
+    public int Value { get; private set; } = Math.Clamp(value, 0, 100);
+    public int Change { get; private set; }
+    public string ChangeText => Change switch
+    {
+        > 0 => $"▲ {Change}",
+        < 0 => $"▼ {-Change}",
+        _ => "–",
+    };
+
+    public void Update(int delta)
+    {
+        int newValue = Math.Clamp(Value + delta, 0, 100);
+        Change = newValue - Value;
+        Value = newValue;
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Value)));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Change)));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ChangeText)));
+    }
+
+    public static ObservableCollection<TableViewLiveItem> CreateItems() =>
+    [
+        new("Alpha", 72),
+        new("Bravo", 45),
+        new("Charlie", 88),
+        new("Delta", 31),
+        new("Echo", 60),
+        new("Foxtrot", 12),
+        new("Golf", 54),
+        new("Hotel", 27),
+    ];
+}
