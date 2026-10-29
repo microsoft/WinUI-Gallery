@@ -8847,7 +8847,7 @@
       "id": "tableview",
       "name": "TableView",
       "description": "A preview control for presenting and editing virtualized tabular data.",
-      "details": "TableView presents an item collection as virtualized rows and developer-defined columns. It supports sorting, filtering, grouping, column resizing, cell templates, frozen leading columns, single row selection, opt-in cell editing, display density, grid lines, and empty-state content.",
+      "details": "TableView presents an item collection as virtualized rows and developer-defined columns. It supports sorting, filtering, grouping, hierarchical rows, column resizing, cell templates, frozen leading columns, single row selection, opt-in cell editing, display density, grid lines, and empty-state content.",
       "apiNamespace": "Microsoft.UI.Xaml.Controls.Tabular",
       "relatedControls": [
         "ItemsView",
@@ -8882,6 +8882,8 @@
         "sorting",
         "filtering",
         "grouping",
+        "hierarchy",
+        "tree",
         "virtualization"
       ],
       "docs": [
@@ -8942,6 +8944,20 @@
             "snippet": "FilteringGroupingTable.txt",
             "source": "WinUIGallery/Samples/TableView/FilteringGroupingTable.txt",
             "name": "Filtering Grouping Table"
+          }
+        },
+        {
+          "header": "Showing hierarchical rows",
+          "xaml": "\u003Ctabular:TableView\n    x:Name=\u0022HierarchyTable\u0022\n    Height=\u0022320\u0022\n    MaxWidth=\u0022480\u0022\n    HorizontalAlignment=\u0022Left\u0022\n    AutomationProperties.Name=\u0022Folders and files\u0022\n    CanUserResizeColumns=\u0022False\u0022\n    CanUserSortColumns=\u0022False\u0022\n    GridLinesVisibility=\u0022Horizontal\u0022\n    IsReadOnly=\u0022True\u0022\n    SelectionMode=\u0022Single\u0022\u003E\n    \u003Ctabular:TableView.EmptyTemplate\u003E\n        \u003CDataTemplate\u003E\n            \u003CTextBlock\n                Margin=\u002224\u0022\n                HorizontalAlignment=\u0022Center\u0022\n                VerticalAlignment=\u0022Center\u0022\n                Text=\u0022No files or folders match the filter.\u0022 /\u003E\n        \u003C/DataTemplate\u003E\n    \u003C/tabular:TableView.EmptyTemplate\u003E\n    \u003Ctabular:TableView.Columns\u003E\n        \u003Ctabular:TableViewTextColumn Binding=\u0022{Binding Name}\u0022 Header=\u0022Name\u0022 Width=\u0022*\u0022 /\u003E\n        \u003Ctabular:TableViewTextColumn Binding=\u0022{Binding Kind}\u0022 Header=\u0022Type\u0022 Width=\u0022130\u0022 /\u003E\n        \u003Ctabular:TableViewTextColumn Binding=\u0022{Binding Size}\u0022 Header=\u0022Size\u0022 Width=\u002290\u0022 /\u003E\n    \u003C/tabular:TableView.Columns\u003E\n\u003C/tabular:TableView\u003E\n\u003CTextBox\n    x:Name=\u0022HierarchyFilterBox\u0022\n    AutomationProperties.Name=\u0022Filter files and folders by name\u0022\n    Header=\u0022Filter by name\u0022\n    PlaceholderText=\u0022Try jpg or Notes\u0022\n    TextChanged=\u0022HierarchyFilterBox_TextChanged\u0022 /\u003E\n\u003CButton AutomationProperties.Name=\u0022Expand all rows\u0022 Click=\u0022ExpandAllRows_Click\u0022 Content=\u0022Expand all rows\u0022 /\u003E\n\u003CButton AutomationProperties.Name=\u0022Collapse all rows\u0022 Click=\u0022CollapseAllRows_Click\u0022 Content=\u0022Collapse all rows\u0022 /\u003E",
+          "code": "private readonly TableViewSource _hierarchySource =\n    TableViewSource.From(TableViewHierarchyItem.CreateItems());\n\npublic TableViewPage()\n{\n    InitializeComponent();\n    HierarchyTable.ItemsSource = _hierarchySource;\n\n    // Each item names its own key and its parent\u0027s key. A null parent key makes a top-level row.\n    // ParentBy is set in code; a hierarchy can\u0027t be declared in XAML.\n    _hierarchySource.ParentBy(\n        item =\u003E ((TableViewHierarchyItem)item).Id,\n        item =\u003E ((TableViewHierarchyItem)item).ParentId);\n}\n\nprivate void HierarchyFilterBox_TextChanged(object sender, TextChangedEventArgs e)\n{\n    string text = HierarchyFilterBox.Text.Trim();\n    if (text.Length == 0)\n    {\n        _hierarchySource.ClearFilter();\n        return;\n    }\n\n    // Matching rows keep their ancestors, which stay expanded while the filter is active.\n    _hierarchySource.Filter(item =\u003E item is TableViewHierarchyItem hierarchyItem \u0026\u0026\n        hierarchyItem.Name.Contains(text, StringComparison.CurrentCultureIgnoreCase));\n}\n\nprivate void ExpandAllRows_Click(object sender, RoutedEventArgs e)\n{\n    HierarchyTable.ExpandAllRows();\n}\n\nprivate void CollapseAllRows_Click(object sender, RoutedEventArgs e)\n{\n    HierarchyTable.CollapseAllRows();\n}\n\n// A flat row: the tree comes from ParentBy, so the item has no children collection,\n// level, or expanded state.\npublic sealed partial class TableViewHierarchyItem(int id, int? parentId, string name, string kind, string size)\n{\n    public int Id { get; } = id;\n    public int? ParentId { get; } = parentId;\n    public string Name { get; } = name;\n    public string Kind { get; } = kind;\n    public string Size { get; } = size;\n\n    public static ObservableCollection\u003CTableViewHierarchyItem\u003E CreateItems() =\u003E\n    [\n        new(1, null, \u0022Documents\u0022, \u0022Folder\u0022, \u0022\u0022),\n        new(2, 1, \u0022Projects\u0022, \u0022Folder\u0022, \u0022\u0022),\n        new(3, 2, \u0022Roadmap.docx\u0022, \u0022Document\u0022, \u002224 KB\u0022),\n        new(4, 2, \u0022Budget.xlsx\u0022, \u0022Spreadsheet\u0022, \u002218 KB\u0022),\n        new(5, 1, \u0022Notes.txt\u0022, \u0022Text file\u0022, \u00222 KB\u0022),\n        new(6, null, \u0022Pictures\u0022, \u0022Folder\u0022, \u0022\u0022),\n        new(7, 6, \u0022Vacation\u0022, \u0022Folder\u0022, \u0022\u0022),\n        new(8, 7, \u0022Beach.jpg\u0022, \u0022Image\u0022, \u00222.4 MB\u0022),\n        new(9, 7, \u0022Sunset.jpg\u0022, \u0022Image\u0022, \u00223.1 MB\u0022),\n        new(10, 6, \u0022Profile.png\u0022, \u0022Image\u0022, \u0022640 KB\u0022),\n        new(11, null, \u0022Music\u0022, \u0022Folder\u0022, \u0022\u0022),\n        new(12, 11, \u0022Playlist.m3u\u0022, \u0022Playlist\u0022, \u00221 KB\u0022),\n        new(13, null, \u0022Readme.md\u0022, \u0022Markdown file\u0022, \u00224 KB\u0022),\n    ];\n}",
+          "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:tabular=\u0022using:Microsoft.UI.Xaml.Controls.Tabular\u0022"
+          ],
+          "gallery": {
+            "snippet": "HierarchyTable.txt",
+            "source": "WinUIGallery/Samples/TableView/HierarchyTable.txt",
+            "name": "Hierarchy Table"
           }
         },
         {

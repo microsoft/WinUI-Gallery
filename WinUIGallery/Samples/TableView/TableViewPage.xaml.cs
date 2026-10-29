@@ -18,6 +18,7 @@ namespace WinUIGallery.ControlPages;
 public sealed partial class TableViewPage : Page
 {
     private readonly TableViewSource _filteringGroupingSource = TableViewSource.From(TableViewSampleItem.CreateItems(12));
+    private readonly TableViewSource _hierarchySource = TableViewSource.From(TableViewHierarchyItem.CreateItems());
     private readonly List<ItemsRepeater> _rowRepeaters = [];
     private TableViewSampleItem? _editingItem;
 
@@ -32,8 +33,10 @@ public sealed partial class TableViewPage : Page
         ApplyRowBanding();
         FilteringGroupingTable.ItemsSource = _filteringGroupingSource;
         ApplyGrouping();
+        HierarchyTable.ItemsSource = _hierarchySource;
+        ApplyHierarchy();
 
-        TableView[] tables = [BasicTable, FilteringGroupingTable, CustomColumnsTable, EditingTable, PresentationTable];
+        TableView[] tables = [BasicTable, FilteringGroupingTable, HierarchyTable, CustomColumnsTable, EditingTable, PresentationTable];
         foreach (TableView table in tables)
         {
             table.Loaded += TableView_Loaded;
@@ -171,6 +174,38 @@ public sealed partial class TableViewPage : Page
     private void CollapseAllGroups_Click(object sender, RoutedEventArgs e)
     {
         FilteringGroupingTable.CollapseAllGroups();
+    }
+
+    private void ApplyHierarchy()
+    {
+        // A null parent key makes a top-level row.
+        _hierarchySource.ParentBy(
+            item => ((TableViewHierarchyItem)item).Id,
+            item => ((TableViewHierarchyItem)item).ParentId);
+    }
+
+    private void HierarchyFilterBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        string text = HierarchyFilterBox.Text.Trim();
+        if (text.Length == 0)
+        {
+            _hierarchySource.ClearFilter();
+            return;
+        }
+
+        // Matching rows keep their ancestors, which stay expanded while the filter is active.
+        _hierarchySource.Filter(item => item is TableViewHierarchyItem hierarchyItem &&
+            hierarchyItem.Name.Contains(text, StringComparison.CurrentCultureIgnoreCase));
+    }
+
+    private void ExpandAllRows_Click(object sender, RoutedEventArgs e)
+    {
+        HierarchyTable.ExpandAllRows();
+    }
+
+    private void CollapseAllRows_Click(object sender, RoutedEventArgs e)
+    {
+        HierarchyTable.CollapseAllRows();
     }
 
     private void EditingTable_BeginningEdit(TableView sender, TableViewBeginningEditEventArgs args)

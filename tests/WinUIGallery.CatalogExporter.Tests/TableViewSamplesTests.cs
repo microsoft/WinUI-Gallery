@@ -45,7 +45,7 @@ public sealed class TableViewSamplesTests
     }
 
     [TestMethod]
-    public void TableViewPublishesFiveCapabilityExamples()
+    public void TableViewPublishesSixCapabilityExamples()
     {
         IndexControl tableView = GenerateTableView();
 
@@ -54,6 +54,7 @@ public sealed class TableViewSamplesTests
             {
                 "A basic TableView",
                 "Filtering and grouping rows",
+                "Showing hierarchical rows",
                 "Customizing cells with data templates",
                 "Editing cells and validating changes",
                 "An advanced TableView",
@@ -65,6 +66,7 @@ public sealed class TableViewSamplesTests
             {
                 "BasicTable.txt",
                 "FilteringGroupingTable.txt",
+                "HierarchyTable.txt",
                 "CustomColumnsTable.txt",
                 "EditingCellsTable.txt",
                 "PresentationTable.txt",
@@ -150,6 +152,32 @@ public sealed class TableViewSamplesTests
         StringAssert.Contains(filteringGrouping.Code, "_filteringGroupingSource.ClearGroupBy();");
         StringAssert.Contains(filteringGrouping.Code, "FilteringGroupingTable.ExpandAllGroups();");
         StringAssert.Contains(filteringGrouping.Code, "FilteringGroupingTable.CollapseAllGroups();");
+    }
+
+    [TestMethod]
+    public void HierarchySampleBuildsTreeFromFlatSource()
+    {
+        IndexControl tableView = GenerateTableView();
+        IndexSample hierarchy = tableView.Samples.Single(sample => sample.Gallery.Snippet == "HierarchyTable.txt");
+
+        Assert.IsNotNull(hierarchy.Code);
+        StringAssert.Contains(hierarchy.Xaml, "x:Name=\"HierarchyTable\"");
+        StringAssert.Contains(hierarchy.Xaml, "TextChanged=\"HierarchyFilterBox_TextChanged\"");
+        StringAssert.Contains(hierarchy.Xaml, "Click=\"ExpandAllRows_Click\"");
+        StringAssert.Contains(hierarchy.Xaml, "Click=\"CollapseAllRows_Click\"");
+        StringAssert.Contains(hierarchy.Code, "TableViewSource.From(TableViewHierarchyItem.CreateItems())");
+        StringAssert.Contains(hierarchy.Code, "HierarchyTable.ItemsSource = _hierarchySource;");
+        StringAssert.Contains(hierarchy.Code, "_hierarchySource.ParentBy(");
+        StringAssert.Contains(hierarchy.Code, "_hierarchySource.Filter(");
+        StringAssert.Contains(hierarchy.Code, "_hierarchySource.ClearFilter();");
+        StringAssert.Contains(hierarchy.Code, "HierarchyTable.ExpandAllRows();");
+        StringAssert.Contains(hierarchy.Code, "HierarchyTable.CollapseAllRows();");
+        StringAssert.Contains(hierarchy.Code, "public sealed partial class TableViewHierarchyItem");
+
+        string repoRoot = CatalogGenerator.FindRepoRoot(AppContext.BaseDirectory);
+        string pageCode = File.ReadAllText(
+            Path.Combine(repoRoot, "WinUIGallery", "Samples", "TableView", "TableViewPage.xaml.cs"));
+        StringAssert.Contains(pageCode, "_hierarchySource.ParentBy(");
     }
 
     [TestMethod]

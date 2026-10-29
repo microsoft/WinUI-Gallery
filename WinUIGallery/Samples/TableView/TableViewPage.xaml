@@ -202,6 +202,63 @@
         </controls:ControlExample>
 
         <controls:ControlExample
+            SampleDefinition="TableView\HierarchyTable.txt">
+            <StackPanel Spacing="12">
+                <TextBlock
+                    Text="Show a flat collection as nested rows by telling TableViewSource how each item finds its parent. Expand a row with its chevron or the Right arrow key; Left collapses it, and * expands everything below the focused row."
+                    TextWrapping="Wrap" />
+                <tabular:TableView
+                    x:Name="HierarchyTable"
+                    Height="320"
+                    MaxWidth="480"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.AutomationId="TableViewHierarchyTable"
+                    AutomationProperties.Name="Folders and files"
+                    CanUserResizeColumns="False"
+                    CanUserSortColumns="False"
+                    GridLinesVisibility="Horizontal"
+                    IsReadOnly="True"
+                    SelectionMode="Single">
+                    <tabular:TableView.EmptyTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Margin="24"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="No files or folders match the filter." />
+                        </DataTemplate>
+                    </tabular:TableView.EmptyTemplate>
+                    <tabular:TableView.Columns>
+                        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="*" />
+                        <tabular:TableViewTextColumn Binding="{Binding Kind}" Header="Type" Width="130" />
+                        <tabular:TableViewTextColumn Binding="{Binding Size}" Header="Size" Width="90" />
+                    </tabular:TableView.Columns>
+                </tabular:TableView>
+            </StackPanel>
+            <controls:ControlExample.Options>
+                <StackPanel Width="240" Spacing="12">
+                    <TextBox
+                        x:Name="HierarchyFilterBox"
+                        AutomationProperties.AutomationId="TableViewHierarchyFilterBox"
+                        AutomationProperties.Name="Filter files and folders by name"
+                        Header="Filter by name"
+                        PlaceholderText="Try jpg or Notes"
+                        TextChanged="HierarchyFilterBox_TextChanged" />
+                    <Button
+                        AutomationProperties.AutomationId="TableViewExpandAllRowsButton"
+                        AutomationProperties.Name="Expand all rows"
+                        Click="ExpandAllRows_Click"
+                        Content="Expand all rows" />
+                    <Button
+                        AutomationProperties.AutomationId="TableViewCollapseAllRowsButton"
+                        AutomationProperties.Name="Collapse all rows"
+                        Click="CollapseAllRows_Click"
+                        Content="Collapse all rows" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
+
+        <controls:ControlExample
             SampleDefinition="TableView\CustomColumnsTable.txt">
             <StackPanel Spacing="12">
                 <TextBlock
