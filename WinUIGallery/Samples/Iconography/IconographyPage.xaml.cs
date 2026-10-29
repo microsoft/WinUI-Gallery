@@ -4,11 +4,15 @@
 using CommunityToolkit.WinUI.Controls;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.Windows.Storage.Pickers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.DataTransfer;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
 
@@ -25,6 +29,7 @@ public sealed partial class IconographyPage : Page
         };
 
     private string currentSearch = string.Empty;
+    private string selectedSvg = string.Empty;
 
     public IconData SelectedItem
     {
@@ -55,7 +60,6 @@ public sealed partial class IconographyPage : Page
             {
                 IconsItemsView.ItemsSource = new List<IconData>(IconsDataSource.Icons);
                 SelectedItem = IconsDataSource.Icons[0];
-                SetSampleCodePresenterCode(IconsDataSource.Icons[0]);
                 IconsItemsView.Select(0);
                 SidePanel.Visibility = Visibility.Visible;
             });
@@ -63,6 +67,23 @@ public sealed partial class IconographyPage : Page
     }
     private void SetSampleCodePresenterCode(IconData value)
     {
+        selectedSvg = string.Empty;
+        SvgActionsButton.IsEnabled = false;
+        SVGCodePresenter.Code = string.Empty;
+        try
+        {
+            selectedSvg = IconSvgExporter.CreateSvg(value);
+            SVGCodePresenter.Code = selectedSvg.Replace('\n', ' ');
+            ToolTipService.SetToolTip(SVGCodePresenter, null);
+            SvgActionsButton.IsEnabled = true;
+        }
+        catch (Exception ex) when (ex is COMException or InvalidOperationException or ArgumentException)
+        {
+            SVGCodePresenter.Code = $"Could not create SVG: {ex.Message}";
+            ToolTipService.SetToolTip(SVGCodePresenter, ex.Message);
+            UIHelper.AnnounceActionForAccessibility(SVGCodePresenter, SVGCodePresenter.Code, "IconExportNotificationId");
+        }
+
         XAMLCodePresenterFont.Code = $"<FontIcon Glyph=\"{value.TextGlyph}\" />";
 
         CSharpCodePresenterFont.Code = "FontIcon icon = new FontIcon();" + Environment.NewLine + $"icon.Glyph = \"{value.CodeGlyph}\";";
@@ -79,6 +100,75 @@ public sealed partial class IconographyPage : Page
 
             CSharpCodePresenterSymbol.Code = string.Empty;
         }
+    }
+
+    private async void CopyGlyphButton_Click(object sender, RoutedEventArgs e)
+    {
+        await CopyTextAsync(SelectedItem.Character, "Glyph copied.", CopyGlyphButton);
+    }
+
+    private async void CopySvgMenuItem_Click(object sender, RoutedEventArgs e)
+    {
+        await CopyTextAsync(selectedSvg, "SVG copied.", SvgActionsButton);
+    }
+
+    private async Task CopyTextAsync(string text, string message, FrameworkElement source)
+    {
+        try
+        {
+            DataPackage package = new();
+            package.SetText(text);
+            Clipboard.SetContent(package);
+            Clipboard.Flush();
+            UIHelper.AnnounceActionForAccessibility(source, message, "IconExportNotificationId");
+        }
+        catch (Exception ex) when (ex is COMException or UnauthorizedAccessException)
+        {
+            await ShowExportErrorAsync("Could not copy icon", ex.Message);
+        }
+    }
+
+    private async void SaveSvgMenuItem_Click(object sender, RoutedEventArgs e)
+    {
+        string svg = selectedSvg;
+        string name = SelectedItem.Name;
+        SvgActionsButton.IsEnabled = false;
+        try
+        {
+            FileSavePicker picker = new(XamlRoot.ContentIslandEnvironment.AppWindowId)
+            {
+                SuggestedFileName = name,
+                DefaultFileExtension = ".svg"
+            };
+            picker.FileTypeChoices.Add("SVG image", new List<string> { ".svg" });
+            var file = await picker.PickSaveFileAsync();
+            if (file != null)
+            {
+                await File.WriteAllTextAsync(file.Path, svg);
+                UIHelper.AnnounceActionForAccessibility(SvgActionsButton, "SVG saved.", "IconExportNotificationId");
+            }
+        }
+        catch (Exception ex) when (ex is COMException or IOException or UnauthorizedAccessException or ArgumentException)
+        {
+            await ShowExportErrorAsync("Could not save SVG", ex.Message);
+        }
+        finally
+        {
+            SvgActionsButton.IsEnabled = !string.IsNullOrEmpty(selectedSvg);
+        }
+    }
+
+    private async Task ShowExportErrorAsync(string title, string message)
+    {
+        ContentDialog dialog = new()
+        {
+            XamlRoot = XamlRoot,
+            RequestedTheme = ActualTheme,
+            Title = title,
+            Content = message,
+            CloseButtonText = "Close"
+        };
+        await dialog.ShowAsync();
     }
 
     private void SearchTextBox_TextChanged(object sender, AutoSuggestBoxTextChangedEventArgs args)
