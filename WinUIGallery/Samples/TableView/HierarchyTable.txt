@@ -1,0 +1,105 @@
+--- header
+Showing hierarchical rows
+--- xaml
+<tabular:TableView
+    x:Name="HierarchyTable"
+    Height="320"
+    MaxWidth="480"
+    HorizontalAlignment="Left"
+    AutomationProperties.Name="Folders and files"
+    CanUserResizeColumns="False"
+    CanUserSortColumns="False"
+    GridLinesVisibility="Horizontal"
+    IsReadOnly="True"
+    SelectionMode="Single">
+    <tabular:TableView.EmptyTemplate>
+        <DataTemplate>
+            <TextBlock
+                Margin="24"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="No files or folders match the filter." />
+        </DataTemplate>
+    </tabular:TableView.EmptyTemplate>
+    <tabular:TableView.Columns>
+        <!-- MinWidth leaves room for the indent of nested rows. -->
+        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="*" MinWidth="200" />
+        <tabular:TableViewTextColumn Binding="{Binding Kind}" Header="Type" Width="130" />
+        <tabular:TableViewTextColumn Binding="{Binding Size}" Header="Size" Width="90" />
+    </tabular:TableView.Columns>
+</tabular:TableView>
+<TextBox
+    x:Name="HierarchyFilterBox"
+    AutomationProperties.Name="Filter files and folders by name"
+    Header="Filter by name"
+    PlaceholderText="Try jpg or Notes"
+    TextChanged="HierarchyFilterBox_TextChanged" />
+<Button AutomationProperties.Name="Expand all rows" Click="ExpandAllRows_Click" Content="Expand all rows" />
+<Button AutomationProperties.Name="Collapse all rows" Click="CollapseAllRows_Click" Content="Collapse all rows" />
+--- c#
+private readonly TableViewSource _hierarchySource =
+    TableViewSource.From(TableViewHierarchyItem.CreateItems());
+
+public TableViewPage()
+{
+    InitializeComponent();
+    HierarchyTable.ItemsSource = _hierarchySource;
+
+    // Each item names its own key and its parent's key. A null parent key makes a top-level row.
+    // ParentBy is set in code; a hierarchy can't be declared in XAML.
+    _hierarchySource.ParentBy(
+        item => ((TableViewHierarchyItem)item).Id,
+        item => ((TableViewHierarchyItem)item).ParentId);
+}
+
+private void HierarchyFilterBox_TextChanged(object sender, TextChangedEventArgs e)
+{
+    string text = HierarchyFilterBox.Text.Trim();
+    if (text.Length == 0)
+    {
+        _hierarchySource.ClearFilter();
+        return;
+    }
+
+    // Matching rows keep their ancestors, which stay expanded while the filter is active.
+    _hierarchySource.Filter(item => item is TableViewHierarchyItem hierarchyItem &&
+        hierarchyItem.Name.Contains(text, StringComparison.CurrentCultureIgnoreCase));
+}
+
+private void ExpandAllRows_Click(object sender, RoutedEventArgs e)
+{
+    HierarchyTable.ExpandAllRows();
+}
+
+private void CollapseAllRows_Click(object sender, RoutedEventArgs e)
+{
+    HierarchyTable.CollapseAllRows();
+}
+
+// A flat row: the tree comes from ParentBy, so the item has no children collection,
+// level, or expanded state.
+public sealed partial class TableViewHierarchyItem(int id, int? parentId, string name, string kind, string size)
+{
+    public int Id { get; } = id;
+    public int? ParentId { get; } = parentId;
+    public string Name { get; } = name;
+    public string Kind { get; } = kind;
+    public string Size { get; } = size;
+
+    public static ObservableCollection<TableViewHierarchyItem> CreateItems() =>
+    [
+        new(1, null, "Documents", "Folder", ""),
+        new(2, 1, "Projects", "Folder", ""),
+        new(3, 2, "Roadmap.docx", "Document", "24 KB"),
+        new(4, 2, "Budget.xlsx", "Spreadsheet", "18 KB"),
+        new(5, 1, "Notes.txt", "Text file", "2 KB"),
+        new(6, null, "Pictures", "Folder", ""),
+        new(7, 6, "Vacation", "Folder", ""),
+        new(8, 7, "Beach.jpg", "Image", "2.4 MB"),
+        new(9, 7, "Sunset.jpg", "Image", "3.1 MB"),
+        new(10, 6, "Profile.png", "Image", "640 KB"),
+        new(11, null, "Music", "Folder", ""),
+        new(12, 11, "Playlist.m3u", "Playlist", "1 KB"),
+        new(13, null, "Readme.md", "Markdown file", "4 KB"),
+    ];
+}

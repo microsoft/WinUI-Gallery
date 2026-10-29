@@ -202,6 +202,64 @@
         </controls:ControlExample>
 
         <controls:ControlExample
+            SampleDefinition="TableView\HierarchyTable.txt">
+            <StackPanel Spacing="12">
+                <TextBlock
+                    Text="Show a flat collection as nested rows by telling TableViewSource how each item finds its parent. Expand a row with its chevron or the Right arrow key; Left collapses it, and * expands everything below the focused row."
+                    TextWrapping="Wrap" />
+                <tabular:TableView
+                    x:Name="HierarchyTable"
+                    Height="320"
+                    MaxWidth="480"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.AutomationId="TableViewHierarchyTable"
+                    AutomationProperties.Name="Folders and files"
+                    CanUserResizeColumns="False"
+                    CanUserSortColumns="False"
+                    GridLinesVisibility="Horizontal"
+                    IsReadOnly="True"
+                    SelectionMode="Single">
+                    <tabular:TableView.EmptyTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Margin="24"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="No files or folders match the filter." />
+                        </DataTemplate>
+                    </tabular:TableView.EmptyTemplate>
+                    <tabular:TableView.Columns>
+                        <!-- MinWidth leaves room for the indent of nested rows. -->
+                        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="*" MinWidth="200" />
+                        <tabular:TableViewTextColumn Binding="{Binding Kind}" Header="Type" Width="130" />
+                        <tabular:TableViewTextColumn Binding="{Binding Size}" Header="Size" Width="90" />
+                    </tabular:TableView.Columns>
+                </tabular:TableView>
+            </StackPanel>
+            <controls:ControlExample.Options>
+                <StackPanel Width="240" Spacing="12">
+                    <TextBox
+                        x:Name="HierarchyFilterBox"
+                        AutomationProperties.AutomationId="TableViewHierarchyFilterBox"
+                        AutomationProperties.Name="Filter files and folders by name"
+                        Header="Filter by name"
+                        PlaceholderText="Try jpg or Notes"
+                        TextChanged="HierarchyFilterBox_TextChanged" />
+                    <Button
+                        AutomationProperties.AutomationId="TableViewExpandAllRowsButton"
+                        AutomationProperties.Name="Expand all rows"
+                        Click="ExpandAllRows_Click"
+                        Content="Expand all rows" />
+                    <Button
+                        AutomationProperties.AutomationId="TableViewCollapseAllRowsButton"
+                        AutomationProperties.Name="Collapse all rows"
+                        Click="CollapseAllRows_Click"
+                        Content="Collapse all rows" />
+                </StackPanel>
+            </controls:ControlExample.Options>
+        </controls:ControlExample>
+
+        <controls:ControlExample
             SampleDefinition="TableView\CustomColumnsTable.txt">
             <StackPanel Spacing="12">
                 <TextBlock
@@ -364,6 +422,166 @@
                     Key="IsReadOnly"
                     Value="{x:Bind ReadOnlyToggle.IsOn, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            SampleDefinition="TableView\ContextMenuTable.txt">
+            <StackPanel Spacing="12">
+                <TextBlock
+                    Text="Right-click, press Shift+F10, or press the Menu key on a Name cell, any other cell, or a column header. Each opens its own menu; empty space below the rows opens the table's menu."
+                    TextWrapping="Wrap" />
+                <tabular:TableView
+                    x:Name="ContextMenuTable"
+                    Height="280"
+                    MaxWidth="480"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.AutomationId="TableViewContextMenuTable"
+                    AutomationProperties.Name="Items with context menus"
+                    CanUserResizeColumns="False"
+                    CanUserSortColumns="False"
+                    IsReadOnly="True"
+                    ItemsSource="{x:Bind ContextMenuItems}"
+                    SelectionMode="Single">
+                    <tabular:TableView.Resources>
+                        <!-- Menu items inherit the requested row's item as their DataContext. -->
+                        <MenuFlyout x:Key="NameCellMenu">
+                            <MenuFlyoutItem Click="CopyName_Click" Text="Copy name">
+                                <MenuFlyoutItem.Icon>
+                                    <SymbolIcon Symbol="Copy" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                        </MenuFlyout>
+                        <MenuFlyout x:Key="RowMenu">
+                            <MenuFlyoutItem Click="CopyRow_Click" Text="Copy row">
+                                <MenuFlyoutItem.Icon>
+                                    <SymbolIcon Symbol="Copy" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem Click="NextCategory_Click" Text="Move to next category" />
+                            <MenuFlyoutSeparator />
+                            <MenuFlyoutItem Click="RemoveRow_Click" Text="Remove">
+                                <MenuFlyoutItem.Icon>
+                                    <SymbolIcon Symbol="Delete" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                        </MenuFlyout>
+                        <!-- One header menu is shared by every column; Opening reads which header it targets. -->
+                        <MenuFlyout x:Key="HeaderMenu" Opening="HeaderMenu_Opening">
+                            <MenuFlyoutItem Click="HideColumn_Click" Text="Hide column" />
+                            <MenuFlyoutItem Click="ShowAllColumns_Click" Text="Show all columns" />
+                        </MenuFlyout>
+                        <!-- Rows get their menu from an implicit style. -->
+                        <Style TargetType="tabular:TableViewRow">
+                            <Setter Property="ContextFlyout" Value="{StaticResource RowMenu}" />
+                        </Style>
+                    </tabular:TableView.Resources>
+                    <!-- The table's own menu opens when no cell, row, or header menu applies. -->
+                    <tabular:TableView.ContextFlyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Click="RestoreItems_Click" Text="Restore all items" />
+                        </MenuFlyout>
+                    </tabular:TableView.ContextFlyout>
+                    <tabular:TableView.Columns>
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding Name}"
+                            CellContextFlyout="{StaticResource NameCellMenu}"
+                            Header="Name"
+                            HeaderContextFlyout="{StaticResource HeaderMenu}"
+                            Width="*" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding Category}"
+                            Header="Category"
+                            HeaderContextFlyout="{StaticResource HeaderMenu}"
+                            Width="140" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding Value}"
+                            Header="Value"
+                            HeaderContextFlyout="{StaticResource HeaderMenu}"
+                            Width="100" />
+                    </tabular:TableView.Columns>
+                </tabular:TableView>
+            </StackPanel>
+            <controls:ControlExample.Output>
+                <TextBlock
+                    x:Name="ContextMenuStatusText"
+                    AutomationProperties.AutomationId="TableViewContextMenuStatus"
+                    AutomationProperties.LiveSetting="Polite"
+                    Text="No menu command chosen."
+                    TextWrapping="Wrap" />
+            </controls:ControlExample.Output>
+        </controls:ControlExample>
+
+        <controls:ControlExample
+            SampleDefinition="TableView\LiveDataTable.txt">
+            <StackPanel Spacing="12">
+                <TextBlock
+                    Text="A timer changes a few values every second. Cells update through their bindings; with live shaping on, rows also move to keep the sort and filter current, and the selected row stays selected."
+                    TextWrapping="Wrap" />
+                <tabular:TableView
+                    x:Name="LiveDataTable"
+                    Height="320"
+                    MaxWidth="480"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.AutomationId="TableViewLiveDataTable"
+                    AutomationProperties.Name="Live values"
+                    CanUserResizeColumns="False"
+                    IsReadOnly="True"
+                    SelectionMode="Single">
+                    <tabular:TableView.EmptyTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Margin="24"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="No values of 50 or more right now." />
+                        </DataTemplate>
+                    </tabular:TableView.EmptyTemplate>
+                    <tabular:TableView.Columns>
+                        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="*" />
+                        <tabular:TableViewTextColumn
+                            x:Name="LiveValueColumn"
+                            Binding="{Binding Value}"
+                            Header="Value"
+                            Width="100" />
+                        <tabular:TableViewTextColumn
+                            Binding="{Binding ChangeText}"
+                            Header="Change"
+                            SortMemberPath="Change"
+                            Width="110" />
+                    </tabular:TableView.Columns>
+                </tabular:TableView>
+            </StackPanel>
+            <controls:ControlExample.Options>
+                <StackPanel Width="240" Spacing="12">
+                    <ToggleSwitch
+                        x:Name="LiveUpdatesToggle"
+                        AutomationProperties.AutomationId="TableViewLiveUpdatesToggle"
+                        AutomationProperties.Name="Update values every second"
+                        Header="Updates"
+                        IsOn="True"
+                        OffContent="Paused"
+                        OnContent="Every second"
+                        Toggled="LiveUpdatesToggle_Toggled" />
+                    <ToggleSwitch
+                        x:Name="LiveShapingToggle"
+                        AutomationProperties.AutomationId="TableViewLiveShapingToggle"
+                        AutomationProperties.Name="Keep the sort and filter current as values change"
+                        Header="Live shaping"
+                        IsOn="True"
+                        OffContent="Rows stay in place"
+                        OnContent="Rows move as values change"
+                        Toggled="LiveShapingToggle_Toggled" />
+                    <ToggleSwitch
+                        x:Name="LiveFilterToggle"
+                        AutomationProperties.AutomationId="TableViewLiveFilterToggle"
+                        AutomationProperties.Name="Show only values of 50 or more"
+                        Header="Filter"
+                        IsOn="False"
+                        OffContent="All rows"
+                        OnContent="Values of 50 or more"
+                        Toggled="LiveFilterToggle_Toggled" />
+                </StackPanel>
+            </controls:ControlExample.Options>
         </controls:ControlExample>
 
         <controls:ControlExample

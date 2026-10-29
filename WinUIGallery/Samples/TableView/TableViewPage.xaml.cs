@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using Windows.ApplicationModel.DataTransfer;
 using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
@@ -18,22 +19,36 @@ namespace WinUIGallery.ControlPages;
 public sealed partial class TableViewPage : Page
 {
     private readonly TableViewSource _filteringGroupingSource = TableViewSource.From(TableViewSampleItem.CreateItems(12));
+    private readonly TableViewSource _hierarchySource = TableViewSource.From(TableViewHierarchyItem.CreateItems());
+    private readonly ObservableCollection<TableViewLiveItem> _liveItems = TableViewLiveItem.CreateItems();
+    private readonly TableViewSource _liveSource;
+    private readonly DispatcherTimer _liveTimer = new() { Interval = TimeSpan.FromSeconds(1) };
+    private TableViewColumn? _headerMenuColumn;
     private readonly List<ItemsRepeater> _rowRepeaters = [];
     private TableViewSampleItem? _editingItem;
 
     public ObservableCollection<TableViewSampleItem> BasicItems { get; } = TableViewSampleItem.CreateItems();
     public ObservableCollection<TableViewSampleItem> CustomColumnItems { get; } = TableViewSampleItem.CreateItems();
     public ObservableCollection<TableViewSampleItem> EditingItems { get; } = TableViewSampleItem.CreateItems();
+    public ObservableCollection<TableViewSampleItem> ContextMenuItems { get; } = TableViewSampleItem.CreateItems();
     public ObservableCollection<TableViewSampleItem> PresentationItems { get; } = TableViewSampleItem.CreateItems(1000);
 
     public TableViewPage()
     {
+        _liveSource = TableViewSource.From(_liveItems);
+        _liveSource.IsLiveShaping = true;
+
         InitializeComponent();
         ApplyRowBanding();
         FilteringGroupingTable.ItemsSource = _filteringGroupingSource;
         ApplyGrouping();
+        HierarchyTable.ItemsSource = _hierarchySource;
+        ApplyHierarchy();
+        LiveDataTable.ItemsSource = _liveSource;
+        LiveDataTable.Loaded += LiveDataTable_Loaded;
+        _liveTimer.Tick += LiveTimer_Tick;
 
-        TableView[] tables = [BasicTable, FilteringGroupingTable, CustomColumnsTable, EditingTable, PresentationTable];
+        TableView[] tables = [BasicTable, FilteringGroupingTable, HierarchyTable, CustomColumnsTable, EditingTable, ContextMenuTable, LiveDataTable, PresentationTable];
         foreach (TableView table in tables)
         {
             table.Loaded += TableView_Loaded;
@@ -89,6 +104,7 @@ public sealed partial class TableViewPage : Page
 
     private void TableViewPage_Unloaded(object sender, RoutedEventArgs e)
     {
+        _liveTimer.Stop();
         foreach (ItemsRepeater rowsRepeater in _rowRepeaters)
         {
             rowsRepeater.ElementPrepared -= RowsRepeater_ElementPrepared;
@@ -173,6 +189,38 @@ public sealed partial class TableViewPage : Page
         FilteringGroupingTable.CollapseAllGroups();
     }
 
+    private void ApplyHierarchy()
+    {
+        // A null parent key makes a top-level row.
+        _hierarchySource.ParentBy(
+            item => ((TableViewHierarchyItem)item).Id,
+            item => ((TableViewHierarchyItem)item).ParentId);
+    }
+
+    private void HierarchyFilterBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        string text = HierarchyFilterBox.Text.Trim();
+        if (text.Length == 0)
+        {
+            _hierarchySource.ClearFilter();
+            return;
+        }
+
+        // Matching rows keep their ancestors, which stay expanded while the filter is active.
+        _hierarchySource.Filter(item => item is TableViewHierarchyItem hierarchyItem &&
+            hierarchyItem.Name.Contains(text, StringComparison.CurrentCultureIgnoreCase));
+    }
+
+    private void ExpandAllRows_Click(object sender, RoutedEventArgs e)
+    {
+        HierarchyTable.ExpandAllRows();
+    }
+
+    private void CollapseAllRows_Click(object sender, RoutedEventArgs e)
+    {
+        HierarchyTable.CollapseAllRows();
+    }
+
     private void EditingTable_BeginningEdit(TableView sender, TableViewBeginningEditEventArgs args)
     {
         if (args.Item is TableViewSampleItem item)
@@ -248,6 +296,146 @@ public sealed partial class TableViewPage : Page
     {
         ValidationInfoBar.IsOpen = false;
         ValidationInfoBar.Message = string.Empty;
+    }
+
+    private void CopyName_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is FrameworkElement { DataContext: TableViewSampleItem item })
+        {
+            CopyToClipboard(item.Name);
+        }
+    }
+
+    private void CopyRow_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is FrameworkElement { DataContext: TableViewSampleItem item })
+        {
+            CopyToClipboard($"{item.Id}\t{item.Name}\t{item.Category}\t{item.Value}");
+        }
+    }
+
+    private void NextCategory_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is FrameworkElement { DataContext: TableViewSampleItem item })
+        {
+            string[] categories = ["Alpha", "Beta", "Gamma"];
+            item.Category = categories[(Array.IndexOf(categories, item.Category) + 1) % categories.Length];
+            ContextMenuStatusText.Text = $"Moved {item.Name} to {item.Category}.";
+        }
+    }
+
+    private void RemoveRow_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is FrameworkElement { DataContext: TableViewSampleItem item } && ContextMenuItems.Remove(item))
+        {
+            ContextMenuStatusText.Text = $"Removed {item.Name}.";
+        }
+    }
+
+    private void RestoreItems_Click(object sender, RoutedEventArgs e)
+    {
+        ContextMenuItems.Clear();
+        foreach (TableViewSampleItem item in TableViewSampleItem.CreateItems())
+        {
+            ContextMenuItems.Add(item);
+        }
+
+        ContextMenuStatusText.Text = "Restored all items.";
+    }
+
+    private void HeaderMenu_Opening(object sender, object e)
+    {
+        // The menu's Target is the header that was requested; its Column is the one to hide.
+        var menu = (MenuFlyout)sender;
+        _headerMenuColumn = (menu.Target as TableViewColumnHeader)?.Column;
+        if (menu.Items[0] is MenuFlyoutItem hideItem)
+        {
+            hideItem.Text = $"Hide {_headerMenuColumn?.Header}";
+            hideItem.IsEnabled = _headerMenuColumn is not null &&
+                ContextMenuTable.Columns.Count(column => column.Visibility == Visibility.Visible) > 1;
+        }
+    }
+
+    private void HideColumn_Click(object sender, RoutedEventArgs e)
+    {
+        if (_headerMenuColumn is not null)
+        {
+            _headerMenuColumn.Visibility = Visibility.Collapsed;
+            ContextMenuStatusText.Text = $"Hid the {_headerMenuColumn.Header} column.";
+        }
+    }
+
+    private void ShowAllColumns_Click(object sender, RoutedEventArgs e)
+    {
+        foreach (TableViewColumn column in ContextMenuTable.Columns)
+        {
+            column.Visibility = Visibility.Visible;
+        }
+
+        ContextMenuStatusText.Text = "Showed all columns.";
+    }
+
+    private void CopyToClipboard(string text)
+    {
+        DataPackage package = new();
+        package.SetText(text);
+        Clipboard.SetContent(package);
+        ContextMenuStatusText.Text = $"Copied \"{text}\".";
+    }
+
+    private void LiveDataTable_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (LiveDataTable.Columns.All(column => column.SortDirection == SortDirection.None))
+        {
+            LiveDataTable.SortByColumn(LiveValueColumn, SortDirection.Descending);
+        }
+
+        if (LiveUpdatesToggle.IsOn)
+        {
+            _liveTimer.Start();
+        }
+    }
+
+    private void LiveTimer_Tick(object? sender, object e)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            _liveItems[Random.Shared.Next(_liveItems.Count)].Update(Random.Shared.Next(-15, 16));
+        }
+    }
+
+    private void LiveUpdatesToggle_Toggled(object sender, RoutedEventArgs e)
+    {
+        // Toggled can run while InitializeComponent applies IsOn; Loaded starts the timer then.
+        if (LiveUpdatesToggle.IsOn && LiveDataTable is { IsLoaded: true })
+        {
+            _liveTimer.Start();
+        }
+        else
+        {
+            _liveTimer.Stop();
+        }
+    }
+
+    private void LiveShapingToggle_Toggled(object sender, RoutedEventArgs e)
+    {
+        // Off: cells still update, but rows keep their place until the next sort or filter.
+        if (LiveShapingToggle is not null)
+        {
+            _liveSource.IsLiveShaping = LiveShapingToggle.IsOn;
+        }
+    }
+
+    private void LiveFilterToggle_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (LiveFilterToggle.IsOn)
+        {
+            _liveSource.Filter(item => ((TableViewLiveItem)item).Value >= 50);
+        }
+        else
+        {
+            _liveSource.ClearFilter();
+        }
     }
 
     private void DensityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

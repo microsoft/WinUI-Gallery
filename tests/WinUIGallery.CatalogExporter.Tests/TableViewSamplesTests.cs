@@ -45,7 +45,7 @@ public sealed class TableViewSamplesTests
     }
 
     [TestMethod]
-    public void TableViewPublishesFiveCapabilityExamples()
+    public void TableViewPublishesEightCapabilityExamples()
     {
         IndexControl tableView = GenerateTableView();
 
@@ -54,8 +54,11 @@ public sealed class TableViewSamplesTests
             {
                 "A basic TableView",
                 "Filtering and grouping rows",
+                "Showing hierarchical rows",
                 "Customizing cells with data templates",
                 "Editing cells and validating changes",
+                "Adding context menus to cells, rows, and headers",
+                "Updating rows from live data",
                 "An advanced TableView",
             },
             tableView.Samples.Select(sample => sample.Header).ToArray());
@@ -65,8 +68,11 @@ public sealed class TableViewSamplesTests
             {
                 "BasicTable.txt",
                 "FilteringGroupingTable.txt",
+                "HierarchyTable.txt",
                 "CustomColumnsTable.txt",
                 "EditingCellsTable.txt",
+                "ContextMenuTable.txt",
+                "LiveDataTable.txt",
                 "PresentationTable.txt",
             },
             tableView.Samples.Select(sample => sample.Gallery.Snippet).ToArray());
@@ -150,6 +156,72 @@ public sealed class TableViewSamplesTests
         StringAssert.Contains(filteringGrouping.Code, "_filteringGroupingSource.ClearGroupBy();");
         StringAssert.Contains(filteringGrouping.Code, "FilteringGroupingTable.ExpandAllGroups();");
         StringAssert.Contains(filteringGrouping.Code, "FilteringGroupingTable.CollapseAllGroups();");
+    }
+
+    [TestMethod]
+    public void HierarchySampleBuildsTreeFromFlatSource()
+    {
+        IndexControl tableView = GenerateTableView();
+        IndexSample hierarchy = tableView.Samples.Single(sample => sample.Gallery.Snippet == "HierarchyTable.txt");
+
+        Assert.IsNotNull(hierarchy.Code);
+        StringAssert.Contains(hierarchy.Xaml, "x:Name=\"HierarchyTable\"");
+        StringAssert.Contains(hierarchy.Xaml, "TextChanged=\"HierarchyFilterBox_TextChanged\"");
+        StringAssert.Contains(hierarchy.Xaml, "Click=\"ExpandAllRows_Click\"");
+        StringAssert.Contains(hierarchy.Xaml, "Click=\"CollapseAllRows_Click\"");
+        StringAssert.Contains(hierarchy.Code, "TableViewSource.From(TableViewHierarchyItem.CreateItems())");
+        StringAssert.Contains(hierarchy.Code, "HierarchyTable.ItemsSource = _hierarchySource;");
+        StringAssert.Contains(hierarchy.Code, "_hierarchySource.ParentBy(");
+        StringAssert.Contains(hierarchy.Code, "_hierarchySource.Filter(");
+        StringAssert.Contains(hierarchy.Code, "_hierarchySource.ClearFilter();");
+        StringAssert.Contains(hierarchy.Code, "HierarchyTable.ExpandAllRows();");
+        StringAssert.Contains(hierarchy.Code, "HierarchyTable.CollapseAllRows();");
+        StringAssert.Contains(hierarchy.Code, "public sealed partial class TableViewHierarchyItem");
+
+        string repoRoot = CatalogGenerator.FindRepoRoot(AppContext.BaseDirectory);
+        string pageCode = File.ReadAllText(
+            Path.Combine(repoRoot, "WinUIGallery", "Samples", "TableView", "TableViewPage.xaml.cs"));
+        StringAssert.Contains(pageCode, "_hierarchySource.ParentBy(");
+    }
+
+    [TestMethod]
+    public void ContextMenuSampleCoversEveryMenuLevel()
+    {
+        IndexControl tableView = GenerateTableView();
+        IndexSample contextMenus = tableView.Samples.Single(sample => sample.Gallery.Snippet == "ContextMenuTable.txt");
+
+        Assert.IsNotNull(contextMenus.Code);
+        StringAssert.Contains(contextMenus.Xaml, "CellContextFlyout=\"{StaticResource NameCellMenu}\"");
+        StringAssert.Contains(contextMenus.Xaml, "HeaderContextFlyout=\"{StaticResource HeaderMenu}\"");
+        StringAssert.Contains(contextMenus.Xaml, "<Style TargetType=\"tabular:TableViewRow\">");
+        StringAssert.Contains(contextMenus.Xaml, "<Setter Property=\"ContextFlyout\" Value=\"{StaticResource RowMenu}\" />");
+        StringAssert.Contains(contextMenus.Xaml, "<tabular:TableView.ContextFlyout>");
+        StringAssert.Contains(contextMenus.Xaml, "Opening=\"HeaderMenu_Opening\"");
+        StringAssert.Contains(contextMenus.Code, "DataContext: TableViewSampleItem item");
+        StringAssert.Contains(contextMenus.Code, "menu.Target as TableViewColumnHeader");
+        StringAssert.Contains(contextMenus.Code, "Visibility = Visibility.Collapsed");
+    }
+
+    [TestMethod]
+    public void LiveDataSampleUsesLiveShapingAndStopsItsTimer()
+    {
+        IndexControl tableView = GenerateTableView();
+        IndexSample liveData = tableView.Samples.Single(sample => sample.Gallery.Snippet == "LiveDataTable.txt");
+
+        Assert.IsNotNull(liveData.Code);
+        StringAssert.Contains(liveData.Xaml, "x:Name=\"LiveDataTable\"");
+        StringAssert.Contains(liveData.Xaml, "Toggled=\"LiveShapingToggle_Toggled\"");
+        StringAssert.Contains(liveData.Code, "_liveSource.IsLiveShaping = true;");
+        StringAssert.Contains(liveData.Code, "LiveDataTable.SortByColumn(LiveValueColumn, SortDirection.Descending);");
+        StringAssert.Contains(liveData.Code, "_liveSource.Filter(");
+        StringAssert.Contains(liveData.Code, "_liveTimer.Stop()");
+        StringAssert.Contains(liveData.Code, "public sealed partial class TableViewLiveItem");
+
+        string repoRoot = CatalogGenerator.FindRepoRoot(AppContext.BaseDirectory);
+        string pageCode = File.ReadAllText(
+            Path.Combine(repoRoot, "WinUIGallery", "Samples", "TableView", "TableViewPage.xaml.cs"));
+        StringAssert.Contains(pageCode, "_liveSource.IsLiveShaping = true;");
+        StringAssert.Contains(pageCode, "_liveTimer.Stop();");
     }
 
     [TestMethod]
