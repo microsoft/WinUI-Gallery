@@ -22,7 +22,8 @@ Showing hierarchical rows
         </DataTemplate>
     </tabular:TableView.EmptyTemplate>
     <tabular:TableView.Columns>
-        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="*" />
+        <!-- MinWidth leaves room for the indent of nested rows. -->
+        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="*" MinWidth="200" />
         <tabular:TableViewTextColumn Binding="{Binding Kind}" Header="Type" Width="130" />
         <tabular:TableViewTextColumn Binding="{Binding Size}" Header="Size" Width="90" />
     </tabular:TableView.Columns>
