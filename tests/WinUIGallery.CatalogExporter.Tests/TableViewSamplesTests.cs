@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using WinUIGallery.CatalogExporter;
 
@@ -214,6 +215,11 @@ public sealed class TableViewSamplesTests
         StringAssert.Contains(liveData.Code, "_liveSource.IsLiveShaping = true;");
         StringAssert.Contains(liveData.Code, "LiveDataTable.SortByColumn(LiveValueColumn, SortDirection.Descending);");
         StringAssert.Contains(liveData.Code, "_liveSource.Filter(");
+        StringAssert.Contains(liveData.Code, "_liveSource.ParentBy(");
+        StringAssert.Contains(liveData.Code, "_liveSource.GroupBy(");
+        StringAssert.Contains(liveData.Code, "LiveDataTable.ExpandAllRows();");
+        StringAssert.Contains(liveData.Xaml, "SelectionChanged=\"LiveShapingModeComboBox_SelectionChanged\"");
+        StringAssert.Contains(liveData.Xaml, "Tag=\"GroupedHierarchy\"");
         StringAssert.Contains(liveData.Code, "_liveTimer.Stop()");
         StringAssert.Contains(liveData.Code, "public sealed partial class TableViewLiveItem");
 
@@ -222,6 +228,88 @@ public sealed class TableViewSamplesTests
             Path.Combine(repoRoot, "WinUIGallery", "Samples", "TableView", "TableViewPage.xaml.cs"));
         StringAssert.Contains(pageCode, "_liveSource.IsLiveShaping = true;");
         StringAssert.Contains(pageCode, "_liveTimer.Stop();");
+    }
+
+    [DataTestMethod]
+    [DataRow("HierarchyTable.txt")]
+    [DataRow("ContextMenuTable.txt")]
+    [DataRow("LiveDataTable.txt")]
+    public void SnippetMatchesThePageImplementation(string snippetFile)
+    {
+        string folder = Path.Combine(CatalogGenerator.FindRepoRoot(AppContext.BaseDirectory), "WinUIGallery", "Samples", "TableView");
+        string snippet = File.ReadAllText(Path.Combine(folder, snippetFile)).Replace("\r\n", "\n");
+        int xamlStart = snippet.IndexOf("--- xaml\n", StringComparison.Ordinal) + "--- xaml\n".Length;
+        int codeStart = snippet.IndexOf("--- c#\n", StringComparison.Ordinal);
+        string snippetXaml = snippet[xamlStart..codeStart];
+        string snippetCode = snippet[(codeStart + "--- c#\n".Length)..];
+
+        // AutomationIds are gallery test plumbing, so the snippet leaves them out.
+        string pageXaml = Normalize(Regex.Replace(
+            File.ReadAllText(Path.Combine(folder, "TableViewPage.xaml")),
+            "AutomationProperties\\.AutomationId=\"[^\"]*\"",
+            string.Empty));
+        foreach (string element in TopLevelBlocks(snippetXaml))
+        {
+            StringAssert.Contains(pageXaml, Normalize(element), $"{snippetFile}: this XAML isn't on the page.");
+        }
+
+        string pageCode = File.ReadAllText(Path.Combine(folder, "TableViewPage.xaml.cs"));
+        string implementation = Normalize(string.Join("\n", Directory.GetFiles(folder, "*.cs").Select(File.ReadAllText)));
+        foreach (string member in TopLevelBlocks(snippetCode))
+        {
+            string[] lines = member.Split('\n');
+            if (lines.All(line => line.TrimStart().StartsWith("//", StringComparison.Ordinal)))
+            {
+                continue;
+            }
+
+            if (lines[0] == "public TableViewPage()")
+            {
+                // The snippet shows only this example's constructor lines, in the page's order.
+                string constructor = pageCode[pageCode.IndexOf("public TableViewPage()", StringComparison.Ordinal)..];
+                constructor = constructor[..constructor.IndexOf("\n    }", StringComparison.Ordinal)];
+                int position = 0;
+                foreach (string line in lines.Select(line => line.Trim()).Where(line => line.Length > 1))
+                {
+                    int found = constructor.IndexOf(line, position, StringComparison.Ordinal);
+                    Assert.IsTrue(found >= 0, $"{snippetFile}: constructor line '{line}' isn't in the page constructor, in this order.");
+                    position = found + line.Length;
+                }
+
+                continue;
+            }
+
+            StringAssert.Contains(implementation, Normalize(member), $"{snippetFile}: this code isn't in the page implementation.");
+        }
+
+        static string Normalize(string text) => Regex.Replace(text, "\\s+", " ").Trim();
+
+        // Splits a snippet section into top-level blocks: each XAML element, or each C# member
+        // (members are separated by a blank line; comments directly above a member stay with it).
+        static IEnumerable<string> TopLevelBlocks(string section)
+        {
+            List<string> current = [];
+            string previous = string.Empty;
+            foreach (string line in section.Split('\n'))
+            {
+                bool atColumnZero = line.Length > 0 && !char.IsWhiteSpace(line[0]);
+                bool startsBlock = atColumnZero &&
+                    (line.StartsWith('<') ? !line.StartsWith("</", StringComparison.Ordinal) : previous.Trim().Length == 0);
+                if (startsBlock && current.Any(text => text.Trim().Length > 0))
+                {
+                    yield return string.Join("\n", current).Trim();
+                    current.Clear();
+                }
+
+                current.Add(line);
+                previous = line;
+            }
+
+            if (current.Any(text => text.Trim().Length > 0))
+            {
+                yield return string.Join("\n", current).Trim();
+            }
+        }
     }
 
     [TestMethod]

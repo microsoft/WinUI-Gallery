@@ -34,19 +34,27 @@ Showing hierarchical rows
     Header="Filter by name"
     PlaceholderText="Try jpg or Notes"
     TextChanged="HierarchyFilterBox_TextChanged" />
-<Button AutomationProperties.Name="Expand all rows" Click="ExpandAllRows_Click" Content="Expand all rows" />
-<Button AutomationProperties.Name="Collapse all rows" Click="CollapseAllRows_Click" Content="Collapse all rows" />
+<Button
+    AutomationProperties.Name="Expand all rows"
+    Click="ExpandAllRows_Click"
+    Content="Expand all rows" />
+<Button
+    AutomationProperties.Name="Collapse all rows"
+    Click="CollapseAllRows_Click"
+    Content="Collapse all rows" />
 --- c#
-private readonly TableViewSource _hierarchySource =
-    TableViewSource.From(TableViewHierarchyItem.CreateItems());
+private readonly TableViewSource _hierarchySource = TableViewSource.From(TableViewHierarchyItem.CreateItems());
 
 public TableViewPage()
 {
     InitializeComponent();
     HierarchyTable.ItemsSource = _hierarchySource;
+    ApplyHierarchy();
+}
 
-    // Each item names its own key and its parent's key. A null parent key makes a top-level row.
-    // ParentBy is set in code; a hierarchy can't be declared in XAML.
+private void ApplyHierarchy()
+{
+    // A null parent key makes a top-level row.
     _hierarchySource.ParentBy(
         item => ((TableViewHierarchyItem)item).Id,
         item => ((TableViewHierarchyItem)item).ParentId);
@@ -76,8 +84,8 @@ private void CollapseAllRows_Click(object sender, RoutedEventArgs e)
     HierarchyTable.CollapseAllRows();
 }
 
-// A flat row: the tree comes from ParentBy, so the item has no children collection,
-// level, or expanded state.
+// A flat row: the tree comes from TableViewSource.ParentBy(Id, ParentId), so the item has
+// no children collection, level, or expanded state.
 public sealed partial class TableViewHierarchyItem(int id, int? parentId, string name, string kind, string size)
 {
     public int Id { get; } = id;
@@ -85,6 +93,7 @@ public sealed partial class TableViewHierarchyItem(int id, int? parentId, string
     public string Name { get; } = name;
     public string Kind { get; } = kind;
     public string Size { get; } = size;
+    public string AutomationName => $"{Name}, {Kind}" + (Size.Length > 0 ? $", {Size}" : string.Empty);
 
     public static ObservableCollection<TableViewHierarchyItem> CreateItems() =>
     [

@@ -70,10 +70,14 @@ Adding context menus to cells, rows, and headers
             Width="100" />
     </tabular:TableView.Columns>
 </tabular:TableView>
+<TextBlock
+    x:Name="ContextMenuStatusText"
+    AutomationProperties.LiveSetting="Polite"
+    Text="No menu command chosen."
+    TextWrapping="Wrap" />
 --- c#
-// A column's CellContextFlyout wins over the row's ContextFlyout, and HeaderContextFlyout
-// covers its header. When none applies, the request falls back to TableView.ContextFlyout.
 public ObservableCollection<TableViewSampleItem> ContextMenuItems { get; } = TableViewSampleItem.CreateItems();
+
 private TableViewColumn? _headerMenuColumn;
 
 private void CopyName_Click(object sender, RoutedEventArgs e)
@@ -98,14 +102,15 @@ private void NextCategory_Click(object sender, RoutedEventArgs e)
     {
         string[] categories = ["Alpha", "Beta", "Gamma"];
         item.Category = categories[(Array.IndexOf(categories, item.Category) + 1) % categories.Length];
+        ContextMenuStatusText.Text = $"Moved {item.Name} to {item.Category}.";
     }
 }
 
 private void RemoveRow_Click(object sender, RoutedEventArgs e)
 {
-    if (sender is FrameworkElement { DataContext: TableViewSampleItem item })
+    if (sender is FrameworkElement { DataContext: TableViewSampleItem item } && ContextMenuItems.Remove(item))
     {
-        ContextMenuItems.Remove(item);
+        ContextMenuStatusText.Text = $"Removed {item.Name}.";
     }
 }
 
@@ -116,6 +121,8 @@ private void RestoreItems_Click(object sender, RoutedEventArgs e)
     {
         ContextMenuItems.Add(item);
     }
+
+    ContextMenuStatusText.Text = "Restored all items.";
 }
 
 private void HeaderMenu_Opening(object sender, object e)
@@ -136,6 +143,7 @@ private void HideColumn_Click(object sender, RoutedEventArgs e)
     if (_headerMenuColumn is not null)
     {
         _headerMenuColumn.Visibility = Visibility.Collapsed;
+        ContextMenuStatusText.Text = $"Hid the {_headerMenuColumn.Header} column.";
     }
 }
 
@@ -145,11 +153,17 @@ private void ShowAllColumns_Click(object sender, RoutedEventArgs e)
     {
         column.Visibility = Visibility.Visible;
     }
+
+    ContextMenuStatusText.Text = "Showed all columns.";
 }
 
-private static void CopyToClipboard(string text)
+private void CopyToClipboard(string text)
 {
     DataPackage package = new();
     package.SetText(text);
     Clipboard.SetContent(package);
+    ContextMenuStatusText.Text = $"Copied \"{text}\".";
 }
+
+// TableViewSampleItem is the item class from the "A basic TableView" example. Its Name and Category
+// setters raise PropertyChanged, so "Move to next category" updates the cell.

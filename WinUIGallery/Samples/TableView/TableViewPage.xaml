@@ -515,11 +515,11 @@
             SampleDefinition="TableView\LiveDataTable.txt">
             <StackPanel Spacing="12">
                 <TextBlock
-                    Text="A timer changes a few values every second. Cells update through their bindings; with live shaping on, rows also move to keep the sort and filter current, and the selected row stays selected."
+                    Text="A timer changes a few values every second. With live shaping on, each change re-applies the sort, filter, grouping, and hierarchy: rows move, switch trend groups, and stay under their parent, and the selected row stays selected."
                     TextWrapping="Wrap" />
                 <tabular:TableView
                     x:Name="LiveDataTable"
-                    Height="320"
+                    Height="360"
                     MaxWidth="480"
                     HorizontalAlignment="Left"
                     AutomationProperties.AutomationId="TableViewLiveDataTable"
@@ -537,7 +537,8 @@
                         </DataTemplate>
                     </tabular:TableView.EmptyTemplate>
                     <tabular:TableView.Columns>
-                        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="*" />
+                        <!-- MinWidth leaves room for the indent of nested rows. -->
+                        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="*" MinWidth="160" />
                         <tabular:TableViewTextColumn
                             x:Name="LiveValueColumn"
                             Binding="{Binding Value}"
@@ -553,6 +554,18 @@
             </StackPanel>
             <controls:ControlExample.Options>
                 <StackPanel Width="240" Spacing="12">
+                    <ComboBox
+                        x:Name="LiveShapingModeComboBox"
+                        AutomationProperties.AutomationId="TableViewLiveShapingModeSelector"
+                        AutomationProperties.Name="Shape rows as"
+                        Header="Shaping"
+                        SelectedIndex="0"
+                        SelectionChanged="LiveShapingModeComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Flat" Tag="Flat" />
+                        <ComboBoxItem Content="Grouped by trend" Tag="Grouped" />
+                        <ComboBoxItem Content="Hierarchy" Tag="Hierarchy" />
+                        <ComboBoxItem Content="Grouped hierarchy" Tag="GroupedHierarchy" />
+                    </ComboBox>
                     <ToggleSwitch
                         x:Name="LiveUpdatesToggle"
                         AutomationProperties.AutomationId="TableViewLiveUpdatesToggle"
@@ -565,7 +578,7 @@
                     <ToggleSwitch
                         x:Name="LiveShapingToggle"
                         AutomationProperties.AutomationId="TableViewLiveShapingToggle"
-                        AutomationProperties.Name="Keep the sort and filter current as values change"
+                        AutomationProperties.Name="Re-apply the sort, filter, grouping, and hierarchy as values change"
                         Header="Live shaping"
                         IsOn="True"
                         OffContent="Rows stay in place"

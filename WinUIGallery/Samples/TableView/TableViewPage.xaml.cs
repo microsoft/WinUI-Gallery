@@ -23,6 +23,7 @@ public sealed partial class TableViewPage : Page
     private readonly ObservableCollection<TableViewLiveItem> _liveItems = TableViewLiveItem.CreateItems();
     private readonly TableViewSource _liveSource;
     private readonly DispatcherTimer _liveTimer = new() { Interval = TimeSpan.FromSeconds(1) };
+    private bool _liveIsNested;
     private TableViewColumn? _headerMenuColumn;
     private readonly List<ItemsRepeater> _rowRepeaters = [];
     private TableViewSampleItem? _editingItem;
@@ -35,6 +36,8 @@ public sealed partial class TableViewPage : Page
 
     public TableViewPage()
     {
+        // With IsLiveShaping, a PropertyChanged on an item re-applies the sort, filter, grouping, and
+        // hierarchy, so the row moves and the selection follows it. It's off by default.
         _liveSource = TableViewSource.From(_liveItems);
         _liveSource.IsLiveShaping = true;
 
@@ -46,6 +49,7 @@ public sealed partial class TableViewPage : Page
         ApplyHierarchy();
         LiveDataTable.ItemsSource = _liveSource;
         LiveDataTable.Loaded += LiveDataTable_Loaded;
+        LiveDataTable.Unloaded += LiveDataTable_Unloaded;
         _liveTimer.Tick += LiveTimer_Tick;
 
         TableView[] tables = [BasicTable, FilteringGroupingTable, HierarchyTable, CustomColumnsTable, EditingTable, ContextMenuTable, LiveDataTable, PresentationTable];
@@ -104,7 +108,6 @@ public sealed partial class TableViewPage : Page
 
     private void TableViewPage_Unloaded(object sender, RoutedEventArgs e)
     {
-        _liveTimer.Stop();
         foreach (ItemsRepeater rowsRepeater in _rowRepeaters)
         {
             rowsRepeater.ElementPrepared -= RowsRepeater_ElementPrepared;
@@ -396,11 +399,62 @@ public sealed partial class TableViewPage : Page
         }
     }
 
+    private void LiveDataTable_Unloaded(object sender, RoutedEventArgs e)
+    {
+        _liveTimer.Stop();
+    }
+
     private void LiveTimer_Tick(object? sender, object e)
     {
         for (int i = 0; i < 3; i++)
         {
             _liveItems[Random.Shared.Next(_liveItems.Count)].Update(Random.Shared.Next(-15, 16));
+        }
+    }
+
+    private void LiveShapingModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        ApplyLiveShaping();
+    }
+
+    private void ApplyLiveShaping()
+    {
+        // SelectionChanged can run before the named controls are initialized.
+        if (LiveShapingModeComboBox?.SelectedItem is not ComboBoxItem { Tag: string mode } || LiveDataTable is null)
+        {
+            return;
+        }
+
+        bool nested = mode is "Hierarchy" or "GroupedHierarchy";
+        bool grouped = mode is "Grouped" or "GroupedHierarchy";
+
+        // A second ParentBy replaces the relation and resets expansion, so declare it only once.
+        if (nested && !_liveIsNested)
+        {
+            _liveSource.ParentBy(
+                item => ((TableViewLiveItem)item).Id,
+                item => ((TableViewLiveItem)item).ParentId);
+        }
+        else if (!nested && _liveIsNested)
+        {
+            _liveSource.ClearParentBy();
+        }
+
+        _liveIsNested = nested;
+
+        // Grouping buckets only the top-level rows; each keeps its nested rows when its trend changes.
+        if (grouped)
+        {
+            _liveSource.GroupBy(item => ((TableViewLiveItem)item).Trend);
+        }
+        else
+        {
+            _liveSource.ClearGroupBy();
+        }
+
+        if (nested)
+        {
+            LiveDataTable.ExpandAllRows();
         }
     }
 
