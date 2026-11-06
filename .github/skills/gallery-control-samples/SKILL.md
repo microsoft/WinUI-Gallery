@@ -17,7 +17,7 @@ A control page teaches a control through a short series of focused examples. The
 ## Keep description text to a minimum
 
 - Don't add prose `TextBlock`s that explain the API inside or above an example. Most gallery examples have none.
-- Let the example header carry the idea. Write it as a short, specific phrase, for example "Create a bar chart and sort its categories".
+- Let the example title (`--- header` in the snippet) carry what the sample does. Write it as a short, specific phrase, for example "Create a bar chart and sort its categories", rather than adding explanatory paragraphs to the sample UI.
 - Explain non-obvious code with a brief comment in the snippet's C# or XAML, where developers copy it.
 - Use one short sentence only when the example can't be understood without it, for example a behavior that isn't visible. Never repeat what the header, the UI, or the docs already say.
 
@@ -32,6 +32,7 @@ A control page teaches a control through a short series of focused examples. The
 | `ControlExample.Output` (column labeled "Output:") | Results and state produced by the example: event messages, selected values, counts. |
 
 - Don't put action buttons or result text in the example area next to the control.
+- Put sample settings in `ControlExample.Options`, not in a custom settings row inside `Example`. For example, a slider that changes another control's value belongs in the right panel; a slider being demonstrated belongs in `Example`.
 - Keep Output text short. The column is at most 320 pixels wide, so prefer "Latest: 165 ms" over a full list of values. Set `AutomationProperties.LiveSetting="Polite"` on output that changes.
 - Top-align options. A lone control in `Options` stretches and centers vertically, so set `VerticalAlignment="Top"` on it, or wrap several options in a `StackPanel`.
 - Give options a `Header` (or an `AutomationProperties.Name`) so they make sense on their own.
@@ -80,11 +81,19 @@ Create a basic example
 
 ## Validate
 
-1. Regenerate the catalog and run its tests:
+1. Whenever you add, edit, rename, or remove a control page, a sample snippet (`.txt`), or a `ControlInfoData.json` entry, regenerate the catalog and run its tests. This includes snippet-only fixes:
 
    ```powershell
    dotnet run --project tools/CatalogExporter -- generate
    dotnet test tests\WinUIGallery.CatalogExporter.Tests
    ```
 
+   Before opening or updating a pull request, review the generated diff and include any changes to `catalog/windows-samples.json` in the same commit as the sample changes. The catalog embeds snippet content; changing only a snippet can make it stale. CI enforces this with `CommittedManifest_MatchesFreshGeneration`, so rerunning CI without regenerating and committing the catalog will not fix that failure. Do not edit the generated catalog by hand.
+
 2. Build and run the app. Open the page and check the result visually: options top-aligned in the right panel, output in the Output column, every action works more than once, and the page looks right in light and dark themes.
+
+## Before opening or updating a pull request
+
+- Check that each example's title explains its purpose without verbose text inside the sample.
+- Check that settings and supporting action controls are in `ControlExample.Options` and results are in `ControlExample.Output`.
+- For sample changes, regenerate the catalog, run its tests, and include the generated catalog changes in the pull request. Skill-only documentation changes do not require catalog regeneration or an app build.
