@@ -61,12 +61,20 @@ when they are no longer needed.
 
 ## 1. Prepare the release commit
 
-Choose the release version `X.Y.Z`. Update all three checked-in version values to
-`X.Y.Z.0`:
+Choose the release version `X.Y.Z`. Set the `<Version>` property in
+`WinUIGallery/WinUIGallery.csproj` to `X.Y.Z.0`. This is the single source of
+truth for the assembly and package versions.
 
-- `WinUIGallery/WinUIGallery.csproj`
-- `WinUIGallery/Package.appxmanifest`
-- `WinUIGallery/Package.Dev.appxmanifest`
+Build the project to synchronize the manifests:
+
+```powershell
+dotnet build WinUIGallery\WinUIGallery.csproj -p:Configuration=Debug -p:Platform=x64
+```
+
+The `UpdateAppxManifest` build target copies `$(Version)` into
+`Package.appxmanifest` and `Package.Dev.appxmanifest`; do not edit those version
+values manually. Commit the project change and both generated manifest changes
+together so all three checked-in values remain synchronized.
 
 Open and merge a version-bump pull request into `main`. Include any final
 dependency updates or release-only changes in that pull request so the merged
