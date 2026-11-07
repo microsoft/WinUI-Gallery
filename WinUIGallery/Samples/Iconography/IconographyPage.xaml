@@ -145,17 +145,25 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Border Margin="0,0,8,0"
+                                <controls:CopyButton x:Name="CopyGlyphButton"
+                                        Margin="0,0,8,0"
                                         Padding="8"
+                                        FontSize="48"
                                         HorizontalAlignment="Left"
                                         Background="{ThemeResource ControlFillColorDefaultBrush}"
                                         BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
                                         BorderThickness="1"
-                                        CornerRadius="{StaticResource ControlCornerRadius}">
+                                        CornerRadius="{StaticResource ControlCornerRadius}"
+                                        AutomationProperties.Name="Copy glyph"
+                                        AutomationProperties.HelpText="Paste into text using Segoe Fluent Icons."
+                                        Click="CopyGlyphButton_Click"
+                                        CopiedMessage="Glyph copied"
+                                        ToolTipService.ToolTip="Copy glyph">
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                               FontSize="48"
+                                              AutomationProperties.AccessibilityView="Raw"
                                               Glyph="{x:Bind SelectedItem.Character, Mode=OneWay}" />
-                                </Border>
+                                </controls:CopyButton>
                                 <StackPanel Grid.Column="1"
                                       Orientation="Horizontal" Margin="0,4,0,0" Spacing="8" VerticalAlignment="Top"
                                       Visibility="{x:Bind SelectedItem.IsSegoeFluentOnly, Mode=OneWay}"
@@ -223,6 +231,50 @@
                                 x:Name="CSharpCodePresenterSymbol"
                                 SampleType="CSharp"
                                 Style="{StaticResource CodeValuePresenterStyle}" />
+                            <TextBlock
+                                Margin="0,8,0,0"
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="SVG" />
+                            <Grid Margin="0,0,0,8">
+                                <controls:SampleCodePresenter
+                                    x:Name="SVGCodePresenter"
+                                    Margin="0,0,40,0"
+                                    IsCopyButtonVisible="False"
+                                    SampleType="Inline"
+                                    Style="{StaticResource CodeValuePresenterStyle}" />
+                                <Border
+                                    Margin="0,1,9,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Background="{ThemeResource ControlOnImageFillColorDefaultBrush}"
+                                    CornerRadius="{ThemeResource ControlCornerRadius}">
+                                    <Button
+                                        x:Name="SvgActionsButton"
+                                        Padding="6"
+                                        MinWidth="0"
+                                        MinHeight="0"
+                                        AutomationProperties.Name="Copy or save SVG"
+                                        IsEnabled="False"
+                                        ToolTipService.ToolTip="Copy or save SVG">
+                                        <FontIcon FontSize="16" Glyph="&#xE8C8;" />
+                                        <Button.Flyout>
+                                            <MenuFlyout>
+                                                <MenuFlyoutItem Text="Copy SVG" Click="CopySvgMenuItem_Click">
+                                                    <MenuFlyoutItem.Icon>
+                                                        <SymbolIcon Symbol="Copy" />
+                                                    </MenuFlyoutItem.Icon>
+                                                </MenuFlyoutItem>
+                                                <MenuFlyoutItem Text="Save SVG..." Click="SaveSvgMenuItem_Click">
+                                                    <MenuFlyoutItem.Icon>
+                                                        <SymbolIcon Symbol="Save" />
+                                                    </MenuFlyoutItem.Icon>
+                                                </MenuFlyoutItem>
+                                            </MenuFlyout>
+                                        </Button.Flyout>
+                                    </Button>
+                                </Border>
+                            </Grid>
                             <TextBlock
                                 x:Name="TagsLabel"
                                 Margin="0,4,0,0"
