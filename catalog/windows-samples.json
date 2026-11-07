@@ -2174,7 +2174,7 @@
       "id": "chart",
       "name": "Chart",
       "description": "A preview control for visualizing numeric, category, and date-time data.",
-      "details": "Chart plots Samples with line, area, and bar series on category, linear, and date-time axes. Configure axis ranges, ticks, and grid lines, legends, series visibility, line and marker styles, data labels, per-point label and marker overrides, and updating series data. Chart and its parts provide UI Automation support for assistive technologies.",
+      "details": "Chart plots Samples with line, area, and bar series on category, linear, and date-time axes. Configure axis ranges, ticks, and grid lines, legends, series visibility, line and marker styles, data labels, per-point label and marker overrides, and updating series data.",
       "apiNamespace": "Microsoft.UI.Xaml.Controls.Charts",
       "relatedControls": [
         "ItemsView",
