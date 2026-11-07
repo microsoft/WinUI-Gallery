@@ -14,4 +14,9 @@ internal static partial class VersionHelper
 
     public static string WinAppSdkRuntimeDetails =>
         WinAppSdkDetails + $", Windows App Runtime {Microsoft.WindowsAppSDK.Runtime.Version.DotQuadString}";
+
+    public static string WinAppSdkVersion => $"Windows App SDK {Microsoft.WindowsAppSDK.Runtime.Version.DotQuadString}";
+
+    // Empty for stable releases; otherwise, for example, "preview" or "experimental".
+    public static string WinAppSdkChannel => Release.Channel;
 }

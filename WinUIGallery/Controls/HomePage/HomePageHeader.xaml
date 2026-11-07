@@ -88,11 +88,27 @@
                 Margin="36,48,0,0"
                 VerticalAlignment="Center"
                 Orientation="Vertical">
-                <TextBlock
-                    x:Name="smallHeaderSubtitleText"
-                    FontSize="18"
-                    Foreground="{ThemeResource ForegroundBrush}"
-                    Text="{x:Bind WinAppSdkDetails}" />
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <TextBlock
+                        x:Name="smallHeaderSubtitleText"
+                        VerticalAlignment="Center"
+                        Foreground="{ThemeResource ForegroundBrush}"
+                        Style="{StaticResource BodyTextBlockStyle}"
+                        Text="{x:Bind WinAppSdkVersion}" />
+                    <Border
+                        Padding="5,1"
+                        VerticalAlignment="Center"
+                        Background="{ThemeResource ControlAltFillColorQuarternaryBrush}"
+                        CornerRadius="4"
+                        ToolTipService.ToolTip="{x:Bind WinAppSdkChannelDescription}"
+                        Visibility="{x:Bind HasWinAppSdkChannel}">
+                        <TextBlock
+                            AutomationProperties.HelpText="{x:Bind WinAppSdkChannelDescription}"
+                            FontSize="10"
+                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                            Text="{x:Bind WinAppSdkChannel}" />
+                    </Border>
+                </StackPanel>
                 <TextBlock
                     x:Name="smallHeaderText"
                     AutomationProperties.HeadingLevel="Level1"

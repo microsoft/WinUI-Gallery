@@ -25,6 +25,8 @@ public class VersionHelperTests
         }
 
         Assert.AreEqual(expectedSdkDetails, sdkDetails);
+        Assert.AreEqual($"Windows App SDK {Microsoft.WindowsAppSDK.Runtime.Version.DotQuadString}", VersionHelper.WinAppSdkVersion);
+        Assert.AreEqual(Release.Channel, VersionHelper.WinAppSdkChannel);
         StringAssert.StartsWith(runtimeDetails, runtimePrefix);
         Assert.IsTrue(Version.TryParse(runtimeDetails[runtimePrefix.Length..], out _));
     }
