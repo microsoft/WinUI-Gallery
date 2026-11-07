@@ -1,0 +1,247 @@
+--- header
+Updating rows from live data
+--- xaml
+<tabular:TableView
+    x:Name="LiveDataTable"
+    Height="360"
+    MaxWidth="480"
+    HorizontalAlignment="Left"
+    AutomationProperties.Name="Live values"
+    CanUserResizeColumns="False"
+    IsReadOnly="True"
+    SelectionMode="Single">
+    <tabular:TableView.EmptyTemplate>
+        <DataTemplate>
+            <TextBlock
+                Margin="24"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="No values of 50 or more right now." />
+        </DataTemplate>
+    </tabular:TableView.EmptyTemplate>
+    <tabular:TableView.Columns>
+        <!-- MinWidth leaves room for the indent of nested rows. -->
+        <tabular:TableViewTextColumn Binding="{Binding Name}" Header="Name" Width="*" MinWidth="160" />
+        <tabular:TableViewTextColumn
+            x:Name="LiveValueColumn"
+            Binding="{Binding Value}"
+            Header="Value"
+            Width="100" />
+        <tabular:TableViewTextColumn
+            Binding="{Binding ChangeText}"
+            Header="Change"
+            SortMemberPath="Change"
+            Width="110" />
+    </tabular:TableView.Columns>
+</tabular:TableView>
+<ComboBox
+    x:Name="LiveShapingModeComboBox"
+    AutomationProperties.Name="Shape rows as"
+    Header="Shaping"
+    SelectedIndex="0"
+    SelectionChanged="LiveShapingModeComboBox_SelectionChanged">
+    <ComboBoxItem Content="Flat" Tag="Flat" />
+    <ComboBoxItem Content="Grouped by trend" Tag="Grouped" />
+    <ComboBoxItem Content="Hierarchy" Tag="Hierarchy" />
+    <ComboBoxItem Content="Grouped hierarchy" Tag="GroupedHierarchy" />
+</ComboBox>
+<ToggleSwitch
+    x:Name="LiveUpdatesToggle"
+    AutomationProperties.Name="Update values every second"
+    Header="Updates"
+    IsOn="True"
+    OffContent="Paused"
+    OnContent="Every second"
+    Toggled="LiveUpdatesToggle_Toggled" />
+<ToggleSwitch
+    x:Name="LiveShapingToggle"
+    AutomationProperties.Name="Re-apply the sort, filter, grouping, and hierarchy as values change"
+    Header="Live shaping"
+    IsOn="True"
+    OffContent="Rows stay in place"
+    OnContent="Rows move as values change"
+    Toggled="LiveShapingToggle_Toggled" />
+<ToggleSwitch
+    x:Name="LiveFilterToggle"
+    AutomationProperties.Name="Show only values of 50 or more"
+    Header="Filter"
+    IsOn="False"
+    OffContent="All rows"
+    OnContent="Values of 50 or more"
+    Toggled="LiveFilterToggle_Toggled" />
+--- c#
+private readonly ObservableCollection<TableViewLiveItem> _liveItems = TableViewLiveItem.CreateItems();
+private readonly TableViewSource _liveSource;
+private readonly DispatcherTimer _liveTimer = new() { Interval = TimeSpan.FromSeconds(1) };
+private bool _liveIsNested;
+
+public TableViewPage()
+{
+    // With IsLiveShaping, a PropertyChanged on an item re-applies the sort, filter, grouping, and
+    // hierarchy, so the row moves and the selection follows it. It's off by default.
+    _liveSource = TableViewSource.From(_liveItems);
+    _liveSource.IsLiveShaping = true;
+
+    InitializeComponent();
+    LiveDataTable.ItemsSource = _liveSource;
+    LiveDataTable.Loaded += LiveDataTable_Loaded;
+    LiveDataTable.Unloaded += LiveDataTable_Unloaded;
+    _liveTimer.Tick += LiveTimer_Tick;
+}
+
+private void LiveDataTable_Loaded(object sender, RoutedEventArgs e)
+{
+    if (LiveDataTable.Columns.All(column => column.SortDirection == SortDirection.None))
+    {
+        LiveDataTable.SortByColumn(LiveValueColumn, SortDirection.Descending);
+    }
+
+    if (LiveUpdatesToggle.IsOn)
+    {
+        _liveTimer.Start();
+    }
+}
+
+private void LiveDataTable_Unloaded(object sender, RoutedEventArgs e)
+{
+    _liveTimer.Stop();
+}
+
+private void LiveTimer_Tick(object? sender, object e)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        _liveItems[Random.Shared.Next(_liveItems.Count)].Update(Random.Shared.Next(-15, 16));
+    }
+}
+
+private void LiveShapingModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    ApplyLiveShaping();
+}
+
+private void ApplyLiveShaping()
+{
+    // SelectionChanged can run before the named controls are initialized.
+    if (LiveShapingModeComboBox?.SelectedItem is not ComboBoxItem { Tag: string mode } || LiveDataTable is null)
+    {
+        return;
+    }
+
+    bool nested = mode is "Hierarchy" or "GroupedHierarchy";
+    bool grouped = mode is "Grouped" or "GroupedHierarchy";
+
+    // A second ParentBy replaces the relation and resets expansion, so declare it only once.
+    if (nested && !_liveIsNested)
+    {
+        _liveSource.ParentBy(
+            item => ((TableViewLiveItem)item).Id,
+            item => ((TableViewLiveItem)item).ParentId);
+    }
+    else if (!nested && _liveIsNested)
+    {
+        _liveSource.ClearParentBy();
+    }
+
+    _liveIsNested = nested;
+
+    // Grouping buckets only the top-level rows; each keeps its nested rows when its trend changes.
+    if (grouped)
+    {
+        _liveSource.GroupBy(item => ((TableViewLiveItem)item).Trend);
+    }
+    else
+    {
+        _liveSource.ClearGroupBy();
+    }
+
+    if (nested)
+    {
+        LiveDataTable.ExpandAllRows();
+    }
+}
+
+private void LiveUpdatesToggle_Toggled(object sender, RoutedEventArgs e)
+{
+    // Toggled can run while InitializeComponent applies IsOn; Loaded starts the timer then.
+    if (LiveUpdatesToggle.IsOn && LiveDataTable is { IsLoaded: true })
+    {
+        _liveTimer.Start();
+    }
+    else
+    {
+        _liveTimer.Stop();
+    }
+}
+
+private void LiveShapingToggle_Toggled(object sender, RoutedEventArgs e)
+{
+    // Off: cells still update, but rows keep their place until the next sort or filter.
+    if (LiveShapingToggle is not null)
+    {
+        _liveSource.IsLiveShaping = LiveShapingToggle.IsOn;
+    }
+}
+
+private void LiveFilterToggle_Toggled(object sender, RoutedEventArgs e)
+{
+    if (LiveFilterToggle.IsOn)
+    {
+        _liveSource.Filter(item => ((TableViewLiveItem)item).Value >= 50);
+    }
+    else
+    {
+        _liveSource.ClearFilter();
+    }
+}
+
+// Raises PropertyChanged so bound cells update and, with TableViewSource.IsLiveShaping,
+// the sort, filter, grouping (by Trend), and hierarchy (by ParentId) follow each new value.
+public sealed partial class TableViewLiveItem(int id, int? parentId, string name, int value) : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    public int Id { get; } = id;
+    public int? ParentId { get; } = parentId;
+    public string Name { get; } = name;
+    public int Value { get; private set; } = Math.Clamp(value, 0, 100);
+    public int Change { get; private set; }
+    public string ChangeText => Change switch
+    {
+        > 0 => $"▲ {Change}",
+        < 0 => $"▼ {-Change}",
+        _ => "–",
+    };
+    public string Trend => Change switch
+    {
+        > 0 => "Rising",
+        < 0 => "Falling",
+        _ => "Steady",
+    };
+    public string AutomationName => $"{Name}, value {Value}, change {Change:+0;-0;0}";
+
+    public void Update(int delta)
+    {
+        int newValue = Math.Clamp(Value + delta, 0, 100);
+        Change = newValue - Value;
+        Value = newValue;
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Value)));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Change)));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ChangeText)));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Trend)));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AutomationName)));
+    }
+
+    public static ObservableCollection<TableViewLiveItem> CreateItems() =>
+    [
+        new(1, null, "Alpha", 72),
+        new(2, 1, "Alpha 1", 45),
+        new(3, 1, "Alpha 2", 88),
+        new(4, null, "Bravo", 31),
+        new(5, 4, "Bravo 1", 60),
+        new(6, 4, "Bravo 2", 12),
+        new(7, null, "Charlie", 54),
+        new(8, 7, "Charlie 1", 27),
+        new(9, 7, "Charlie 2", 66),
+    ];
+}
