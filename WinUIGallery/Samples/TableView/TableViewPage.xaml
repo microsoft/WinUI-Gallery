@@ -465,11 +465,6 @@
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
                         </MenuFlyout>
-                        <!-- One header menu is shared by every column; Opening reads which header it targets. -->
-                        <MenuFlyout x:Key="HeaderMenu" Opening="HeaderMenu_Opening">
-                            <MenuFlyoutItem Click="HideColumn_Click" Text="Hide column" />
-                            <MenuFlyoutItem Click="ShowAllColumns_Click" Text="Show all columns" />
-                        </MenuFlyout>
                         <!-- Rows get their menu from an implicit style. -->
                         <Style TargetType="tabular:TableViewRow">
                             <Setter Property="ContextFlyout" Value="{StaticResource RowMenu}" />
@@ -486,18 +481,36 @@
                             Binding="{Binding Name}"
                             CellContextFlyout="{StaticResource NameCellMenu}"
                             Header="Name"
-                            HeaderContextFlyout="{StaticResource HeaderMenu}"
-                            Width="*" />
+                            Width="*">
+                            <tabular:TableViewTextColumn.HeaderContextFlyout>
+                                <MenuFlyout Opening="HeaderMenu_Opening">
+                                    <MenuFlyoutItem Click="HideColumn_Click" Text="Hide column" />
+                                    <MenuFlyoutItem Click="ShowAllColumns_Click" Text="Show all columns" />
+                                </MenuFlyout>
+                            </tabular:TableViewTextColumn.HeaderContextFlyout>
+                        </tabular:TableViewTextColumn>
                         <tabular:TableViewTextColumn
                             Binding="{Binding Category}"
                             Header="Category"
-                            HeaderContextFlyout="{StaticResource HeaderMenu}"
-                            Width="140" />
+                            Width="140">
+                            <tabular:TableViewTextColumn.HeaderContextFlyout>
+                                <MenuFlyout Opening="HeaderMenu_Opening">
+                                    <MenuFlyoutItem Click="HideColumn_Click" Text="Hide column" />
+                                    <MenuFlyoutItem Click="ShowAllColumns_Click" Text="Show all columns" />
+                                </MenuFlyout>
+                            </tabular:TableViewTextColumn.HeaderContextFlyout>
+                        </tabular:TableViewTextColumn>
                         <tabular:TableViewTextColumn
                             Binding="{Binding Value}"
                             Header="Value"
-                            HeaderContextFlyout="{StaticResource HeaderMenu}"
-                            Width="100" />
+                            Width="100">
+                            <tabular:TableViewTextColumn.HeaderContextFlyout>
+                                <MenuFlyout Opening="HeaderMenu_Opening">
+                                    <MenuFlyoutItem Click="HideColumn_Click" Text="Hide column" />
+                                    <MenuFlyoutItem Click="ShowAllColumns_Click" Text="Show all columns" />
+                                </MenuFlyout>
+                            </tabular:TableViewTextColumn.HeaderContextFlyout>
+                        </tabular:TableViewTextColumn>
                     </tabular:TableView.Columns>
                 </tabular:TableView>
             </StackPanel>

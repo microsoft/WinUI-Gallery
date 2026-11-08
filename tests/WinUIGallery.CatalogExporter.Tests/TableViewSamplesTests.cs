@@ -193,13 +193,14 @@ public sealed class TableViewSamplesTests
 
         Assert.IsNotNull(contextMenus.Code);
         StringAssert.Contains(contextMenus.Xaml, "CellContextFlyout=\"{StaticResource NameCellMenu}\"");
-        StringAssert.Contains(contextMenus.Xaml, "HeaderContextFlyout=\"{StaticResource HeaderMenu}\"");
+        Assert.AreEqual(3, Regex.Matches(contextMenus.Xaml, "<MenuFlyout Opening=\"HeaderMenu_Opening\"").Count);
         StringAssert.Contains(contextMenus.Xaml, "<Style TargetType=\"tabular:TableViewRow\">");
         StringAssert.Contains(contextMenus.Xaml, "<Setter Property=\"ContextFlyout\" Value=\"{StaticResource RowMenu}\" />");
         StringAssert.Contains(contextMenus.Xaml, "<tabular:TableView.ContextFlyout>");
         StringAssert.Contains(contextMenus.Xaml, "Opening=\"HeaderMenu_Opening\"");
         StringAssert.Contains(contextMenus.Code, "DataContext: TableViewSampleItem item");
-        StringAssert.Contains(contextMenus.Code, "menu.Target as TableViewColumnHeader");
+        StringAssert.Contains(contextMenus.Code, "column.HeaderContextFlyout == menu");
+        Assert.IsFalse(contextMenus.Code.Contains("TableViewColumnHeader", StringComparison.Ordinal));
         StringAssert.Contains(contextMenus.Code, "Visibility = Visibility.Collapsed");
     }
 

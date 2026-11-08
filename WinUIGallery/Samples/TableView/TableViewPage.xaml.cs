@@ -348,9 +348,8 @@ public sealed partial class TableViewPage : Page
 
     private void HeaderMenu_Opening(object sender, object e)
     {
-        // The menu's Target is the header that was requested; its Column is the one to hide.
-        var menu = (MenuFlyout)sender;
-        _headerMenuColumn = (menu.Target as TableViewColumnHeader)?.Column;
+        MenuFlyout menu = (MenuFlyout)sender;
+        _headerMenuColumn = ContextMenuTable.Columns.First(column => column.HeaderContextFlyout == menu);
         if (menu.Items[0] is MenuFlyoutItem hideItem)
         {
             hideItem.Text = $"Hide {_headerMenuColumn?.Header}";
