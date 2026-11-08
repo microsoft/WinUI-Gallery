@@ -24,7 +24,7 @@
           "Docs": [
             {
               "Title": "ResourceDictionary and XAML resource references",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-resource-dictionary"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/platform/xaml/xaml-resource-dictionary"
             },
             {
               "Title": "ResourceDictionary - API",
@@ -32,7 +32,7 @@
             },
             {
               "Title": "XAML theme resources",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-theme-resources"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/platform/xaml/xaml-theme-resources"
             }
           ],
           "RelatedControls": [
@@ -66,7 +66,7 @@
             },
             {
               "Title": "XAML styles",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-styles"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/platform/xaml/xaml-styles"
             }
           ],
           "RelatedControls": [
@@ -94,15 +94,15 @@
           "Docs": [
             {
               "Title": "Data binding",
-              "Uri": "https://learn.microsoft.com/windows/apps/develop/data-binding/"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/data-binding"
             },
             {
               "Title": "{x:Bind} markup extension",
-              "Uri": "https://learn.microsoft.com/windows/uwp/xaml-platform/x-bind-markup-extension"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/platform/xaml/x-bind-markup-extension"
             },
             {
               "Title": "{Binding} markup extension",
-              "Uri": "https://learn.microsoft.com/windows/uwp/xaml-platform/binding-markup-extension"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/platform/xaml/binding-markup-extension"
             },
             {
               "Title": "Binding - API",
@@ -142,7 +142,7 @@
           "Docs": [
             {
               "Title": "XAML Control Templates",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-control-templates"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/platform/xaml/xaml-control-templates"
             },
             {
               "Title": "ControlTemplate - API",
@@ -185,7 +185,7 @@
           "Docs": [
             {
               "Title": "Build XAML controls",
-              "Uri": "https://learn.microsoft.com/windows/apps/winui/winui3/xaml-templated-controls-csharp-winui-3"
+              "Uri": "https://learn.microsoft.com/windows/apps/winui/winui3/xaml-templated-controls-winui-3"
             },
             {
               "Title": "Control - API",
@@ -218,6 +218,10 @@
             {
               "Title": "IXamlCondition - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.markup.ixamlcondition"
+            },
+            {
+              "Title": "Create custom XAML conditions",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/testing/conditional-xaml#create-custom-conditions"
             }
           ]
         },
@@ -319,15 +323,15 @@
           "Docs": [
             {
               "Title": "Iconography in Windows",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/iconography#system-icons"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/iconography#system-icons"
             },
             {
               "Title": "Segoe Fluent Icons font",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/iconography/segoe-fluent-icons-font"
             },
             {
               "Title": "Segoe MDL2 Assets font",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/segoe-ui-symbol-font"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/iconography/segoe-ui-symbol-font"
             }
           ]
         },
@@ -364,15 +368,11 @@
           "Docs": [
             {
               "Title": "Typography in Windows Apps",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/typography"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/typography"
             },
             {
               "Title": "XAML theme resources",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/xaml-theme-resources#the-xaml-type-ramp"
-            },
-            {
-              "Title": "Typography in Windows 11",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/typography"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/platform/xaml/xaml-theme-resources#the-xaml-type-ramp"
             }
           ]
         }
@@ -395,8 +395,8 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
           "Docs": [
             {
-              "Title": "Accessibility",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"
+              "Title": "Accessibility overview",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview"
             },
             {
               "Title": "Automation Properties - API",
@@ -418,10 +418,6 @@
           "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
           "Docs": [
             {
-              "Title": "Accessibility",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"
-            },
-            {
               "Title": "Accessibility overview",
               "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview"
             },
@@ -431,19 +427,19 @@
             },
             {
               "Title": "Keyboard interactions",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/input/keyboard-interactions"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/input/keyboard-interactions"
             },
             {
               "Title": "Access keys",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/input/access-keys"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/input/access-keys"
             },
             {
               "Title": "Keyboard accelerators",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/input/keyboard-accelerators"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/input/keyboard-accelerators"
             },
             {
               "Title": "Focus navigation for keyboard, gamepad, remote control, and accessibility tools",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/input/focus-navigation"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/input/focus-navigation"
             },
             {
               "Title": "Automation Properties - API",
@@ -463,10 +459,6 @@
           "Subtitle": "Inclusive design ensures meaningful content for assistive technologies.",
           "ImagePath": "ms-appx:///Assets/ControlImages/Accessibility.png",
           "Docs": [
-            {
-              "Title": "Accessibility",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility"
-            },
             {
               "Title": "Accessibility overview",
               "Uri": "https://learn.microsoft.com/windows/apps/design/accessibility/accessibility-overview"
@@ -542,7 +534,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/command-bar"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/command-bar"
             }
           ],
           "RelatedControls": [
@@ -576,7 +568,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/command-bar"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/command-bar"
             }
           ],
           "RelatedControls": [
@@ -630,7 +622,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/command-bar"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/command-bar"
             }
           ],
           "RelatedControls": [
@@ -668,7 +660,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/command-bar"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/command-bar"
             }
           ],
           "RelatedControls": [
@@ -702,7 +694,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/command-bar-flyout"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/command-bar-flyout"
             }
           ],
           "RelatedControls": [
@@ -740,7 +732,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/menus"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/menus"
             }
           ],
           "RelatedControls": [
@@ -795,8 +787,16 @@
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.radiomenuflyoutitem"
             },
             {
+              "Title": "SplitMenuFlyoutItem - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.splitmenuflyoutitem"
+            },
+            {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/menus"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/menus"
+            },
+            {
+              "Title": "Add a split menu item",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/menus#add-a-split-menu-item"
             }
           ],
           "RelatedControls": [
@@ -836,11 +836,11 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/swipe"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/swipe"
             },
             {
               "Title": "Gesture Actions",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/collection-commanding"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/collection-commanding"
             }
           ],
           "RelatedControls": [
@@ -866,7 +866,7 @@
           "Docs": [
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/commanding#command-experiences-using-the-standarduicommand-class"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/commanding#command-experiences-using-the-standarduicommand-class"
             },
             {
               "Title": "StandardUICommand - API",
@@ -895,7 +895,7 @@
           "Docs": [
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/commanding#command-experiences-using-the-xamluicommand-class"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/commanding#command-experiences-using-the-xamluicommand-class"
             },
             {
               "Title": "XamlUICommand - API",
@@ -945,7 +945,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/flipview"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/flipview"
             }
           ],
           "RelatedControls": [
@@ -983,7 +983,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/lists"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/lists"
             }
           ],
           "RelatedControls": [
@@ -1017,7 +1017,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/items-repeater"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/items-repeater"
             },
             {
               "Title": "StackLayout - API",
@@ -1062,6 +1062,10 @@
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.itemsview"
             },
             {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/itemsview"
+            },
+            {
               "Title": "CollectionViewSource - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.Data.CollectionViewSource"
             }
@@ -1104,7 +1108,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/listview-and-gridview"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/listview-and-gridview"
             },
             {
               "Title": "Drag and Drop - Full Sample",
@@ -1116,11 +1120,11 @@
             },
             {
               "Title": "Filtering collections and lists through user input",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/listview-filtering"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/listview-filtering"
             },
             {
               "Title": "Inverted Lists",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/inverted-lists"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/inverted-lists"
             },
             {
               "Title": "Inverted Lists - Full Sample",
@@ -1159,7 +1163,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/pull-to-refresh"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/pull-to-refresh"
             }
           ],
           "RelatedControls": [
@@ -1205,6 +1209,10 @@
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.tabular.tableview"
             },
             {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/table-view"
+            },
+            {
               "Title": "TableView specification",
               "Uri": "https://github.com/microsoft/microsoft-ui-xaml/blob/main/docs/api-specs/TableView/TableView-spec.md"
             }
@@ -1243,7 +1251,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/tree-view"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/tree-view"
             }
           ],
           "RelatedControls": [
@@ -1283,7 +1291,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/calendar-date-picker"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/calendar-date-picker"
             }
           ],
           "RelatedControls": [
@@ -1317,7 +1325,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/calendar-view"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/calendar-view"
             }
           ],
           "RelatedControls": [
@@ -1351,7 +1359,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/date-picker"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/date-picker"
             }
           ],
           "RelatedControls": [
@@ -1386,7 +1394,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/time-picker"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/time-picker"
             }
           ],
           "RelatedControls": [
@@ -1430,7 +1438,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/buttons"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/buttons"
             }
           ],
           "RelatedControls": [
@@ -1475,7 +1483,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/buttons"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/buttons"
             }
           ],
           "RelatedControls": [
@@ -1516,7 +1524,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/hyperlinks"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/hyperlinks"
             }
           ],
           "RelatedControls": [
@@ -1553,7 +1561,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/buttons"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/buttons"
             }
           ],
           "RelatedControls": [
@@ -1590,7 +1598,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/buttons#create-a-toggle-split-button"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/buttons"
             }
           ],
           "RelatedControls": [
@@ -1629,7 +1637,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/buttons#create-a-split-button"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/buttons#create-a-split-button"
             }
           ],
           "RelatedControls": [
@@ -1668,7 +1676,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/buttons"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/buttons"
             }
           ],
           "RelatedControls": [
@@ -1710,7 +1718,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/checkbox"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/checkbox"
             }
           ],
           "RelatedControls": [
@@ -1747,7 +1755,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/color-picker"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/color-picker"
             }
           ],
           "RelatedControls": [
@@ -1787,7 +1795,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/combo-box"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/combo-box"
             }
           ],
           "RelatedControls": [
@@ -1832,7 +1840,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/radio-button"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/radio-button"
             }
           ],
           "RelatedControls": [
@@ -1867,7 +1875,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/rating"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/rating"
             }
           ],
           "RelatedControls": [
@@ -1903,7 +1911,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/slider"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/slider"
             }
           ],
           "RelatedControls": [
@@ -1936,7 +1944,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/toggles"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/toggles"
             }
           ],
           "RelatedControls": [
@@ -1979,7 +1987,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/info-badge"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/info-badge"
             }
           ],
           "RelatedControls": [
@@ -2016,7 +2024,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/infobar"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/infobar"
             }
           ],
           "RelatedControls": [
@@ -2052,7 +2060,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/progress-controls"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/progress-controls"
             }
           ],
           "RelatedControls": [
@@ -2086,7 +2094,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/progress-controls"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/progress-controls"
             }
           ],
           "RelatedControls": [
@@ -2120,7 +2128,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/tooltips"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/tooltips"
             }
           ],
           "RelatedControls": [
@@ -2164,7 +2172,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/dialogs"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/dialogs-and-flyouts/dialogs"
             }
           ],
           "RelatedControls": [
@@ -2198,7 +2206,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/dialogs-and-flyouts/"
             }
           ],
           "RelatedControls": [
@@ -2231,6 +2239,10 @@
             {
               "Title": "Popup - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.primitives.popup"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/dialogs-and-flyouts/popup"
             }
           ],
           "RelatedControls": [
@@ -2264,7 +2276,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/teaching-tip"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/dialogs-and-flyouts/teaching-tip"
             }
           ],
           "RelatedControls": [
@@ -2303,6 +2315,10 @@
             {
               "Title": "AnnotatedScrollBar - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.annotatedscrollbar"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/annotated-scrollbar"
             }
           ],
           "RelatedControls": [
@@ -2336,7 +2352,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/pipspager"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/pipspager"
             }
           ],
           "RelatedControls": [
@@ -2366,6 +2382,16 @@
           "Description": "PagerControl provides numbered page navigation with multiple display modes and configurable navigation buttons.",
           "SourcePath": "/PagerControl",
           "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "PagerControl - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.pagercontrol?view=windows-app-sdk-2.0-experimental&preserve-view=true"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/pager-control"
+            }
+          ],
           "RelatedControls": [
             "PipsPager",
             "ItemsRepeater",
@@ -2399,7 +2425,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/scroll-controls"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/scroll-controls"
             }
           ],
           "RelatedControls": [
@@ -2441,7 +2467,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/scroll-controls"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/scroll-controls"
             }
           ],
           "RelatedControls": [
@@ -2479,7 +2505,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/semantic-zoom"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/semantic-zoom"
             }
           ],
           "RelatedControls": [
@@ -2516,6 +2542,10 @@
             {
               "Title": "Border - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.border"
+            },
+            {
+              "Title": "Borders and rectangles",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/shapes#rectangle"
             }
           ],
           "RelatedControls": [
@@ -2551,7 +2581,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/layout-panels"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/layout-panels"
             }
           ],
           "RelatedControls": [
@@ -2589,7 +2619,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/expander"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/expander"
             }
           ],
           "RelatedControls": [
@@ -2627,7 +2657,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/layout-panels#grid"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/layout-panels#grid"
             }
           ],
           "RelatedControls": [
@@ -2664,6 +2694,10 @@
             {
               "Title": "LayoutPanel - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.layoutpanel"
+            },
+            {
+              "Title": "Attached layouts",
+              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/attached-layouts#containers-and-context"
             }
           ],
           "RelatedControls": [
@@ -2695,7 +2729,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/layout-panels"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/layout-panels"
             }
           ],
           "RelatedControls": [
@@ -2733,7 +2767,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/split-view"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/split-view"
             }
           ],
           "RelatedControls": [
@@ -2770,7 +2804,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/layout-panels"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/layout-panels"
             }
           ],
           "RelatedControls": [
@@ -2807,7 +2841,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/layout-panels"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/layout-panels"
             }
           ],
           "RelatedControls": [
@@ -2840,6 +2874,16 @@
           "Description": "Use a WrapPanel to arrange child elements sequentially and move overflowing items to a new row or column. You can configure its orientation, spacing, padding, and whether the final item stretches to fill the remaining space.",
           "SourcePath": "/WrapPanel",
           "IsExperimental": true,
+          "Docs": [
+            {
+              "Title": "WrapPanel - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.wrappanel?view=windows-app-sdk-2.0-experimental&preserve-view=true"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/layout-panels#wrappanel"
+            }
+          ],
           "RelatedControls": [
             "StackPanel",
             "VariableSizedWrapGrid",
@@ -2869,6 +2913,10 @@
             {
               "Title": "Viewbox - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.Viewbox"
+            },
+            {
+              "Title": "Constrain a Viewbox to a scroll viewport",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/scroll-controls"
             }
           ],
           "RelatedControls": [
@@ -2912,7 +2960,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/breadcrumbbar"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/breadcrumbbar"
             }
           ],
           "RelatedControls": [
@@ -2949,7 +2997,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/navigationview"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/navigationview"
             }
           ],
           "RelatedControls": [
@@ -2984,7 +3032,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/pivot"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/pivot"
             }
           ],
           "RelatedControls": [
@@ -3019,6 +3067,10 @@
             {
               "Title": "SelectorBarItem - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.selectorbaritem"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/selector-bar"
             }
           ],
           "RelatedControls": [
@@ -3055,11 +3107,11 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/tab-view"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/tab-view"
             },
             {
-              "Title": "Show multiple views for an app",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/show-multiple-views"
+              "Title": "Manage app windows",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/manage-app-windows"
             }
           ],
           "RelatedControls": [
@@ -3097,7 +3149,11 @@
           "Docs": [
             {
               "Title": "AnimatedVisualPlayer - API",
-              "Uri": "https://learn.microsoft.com/windows/winui/api/microsoft.ui.xaml.controls.animatedvisualplayer"
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.animatedvisualplayer"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/animated-visual-player"
             },
             {
               "Title": "Full Samples",
@@ -3135,6 +3191,10 @@
             {
               "Title": "MediaCapture - API",
               "Uri": "https://learn.microsoft.com/uwp/api/windows.media.capture.mediacapture"
+            },
+            {
+              "Title": "Camera preview in WinUI 3",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/camera/camera-quickstart-winui3"
             }
           ],
           "RelatedControls": [
@@ -3214,7 +3274,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/images-imagebrushes"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/images-imagebrushes"
             }
           ],
           "RelatedControls": [
@@ -3250,7 +3310,7 @@
             },
             {
               "Title": "Inking controls overview",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/inking-controls"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/ink-controls"
             }
           ]
         },
@@ -3277,6 +3337,10 @@
             {
               "Title": "MapControl - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.mapcontrol"
+            },
+            {
+              "Title": "Guidelines",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/map-control"
             }
           ]
         },
@@ -3308,7 +3372,7 @@
             },
             {
               "Title": "Media Playback",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/media-playback"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/media-playback"
             }
           ],
           "RelatedControls": [
@@ -3342,7 +3406,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/person-picture"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/person-picture"
             }
           ],
           "RelatedControls": [
@@ -3368,7 +3432,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/sound"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/sound"
             }
           ]
         },
@@ -3398,8 +3462,12 @@
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.webview2"
             },
             {
+              "Title": "WebView2 control",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/webview2"
+            },
+            {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/microsoft-edge/webview2/gettingstarted/winui"
+              "Uri": "https://learn.microsoft.com/microsoft-edge/webview2/get-started/winui"
             },
             {
               "Title": "Examples",
@@ -3473,14 +3541,14 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/animated-icon"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/animated-icon"
             },
             {
               "Title": "Lottie Overview",
               "Uri": "https://learn.microsoft.com/windows/communitytoolkit/animations/lottie"
             },
             {
-              "Title": "Lottie Windows - GitHub",
+              "Title": "AnimatedVisualPlayer - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.animatedvisualplayer"
             }
           ],
@@ -3502,8 +3570,8 @@
           "IsUpdated": true,
           "Docs": [
             {
-              "Title": "Spacing",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/spacing"
+              "Title": "Compact sizing",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/compact-sizing"
             }
           ]
         },
@@ -3552,7 +3620,7 @@
             },
             {
               "Title": "Icon Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/style/icons"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/icons"
             }
           ],
           "RelatedControls": [
@@ -3585,7 +3653,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/previous-versions/windows/apps/hh465055(v=win.10)"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/shapes"
             }
           ],
           "RelatedControls": [
@@ -3620,7 +3688,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/previous-versions/windows/apps/hh465055(v=win.10)"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/shapes"
             }
           ],
           "RelatedControls": [
@@ -3649,6 +3717,10 @@
             {
               "Title": "RadialGradientBrush - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.media.RadialGradientBrush"
+            },
+            {
+              "Title": "XAML brushes",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/platform/xaml/brushes"
             }
           ],
           "RelatedControls": [
@@ -3692,6 +3764,10 @@
             {
               "Title": "DesktopAcrylicController - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.composition.systembackdrops.desktopacryliccontroller"
+            },
+            {
+              "Title": "System backdrops",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/system-backdrops"
             }
           ],
           "RelatedControls": [
@@ -3723,6 +3799,10 @@
             {
               "Title": "SystemBackdropElement - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.systembackdropelement"
+            },
+            {
+              "Title": "Apply a system backdrop to any XAML element",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/system-backdrops#apply-a-system-backdrop-to-any-xaml-element"
             }
           ]
         },
@@ -3746,7 +3826,7 @@
           "Docs": [
             {
               "Title": "Z-depth and shadow design guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/layout/depth-shadow"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/shadows"
             },
             {
               "Title": "ThemeShadow - API",
@@ -3793,7 +3873,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/auto-suggest-box"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/auto-suggest-box"
             }
           ],
           "RelatedControls": [
@@ -3828,7 +3908,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/number-box"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/number-box"
             }
           ],
           "RelatedControls": [
@@ -3864,7 +3944,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/text-controls"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/text-controls"
             }
           ],
           "RelatedControls": [
@@ -3903,7 +3983,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/text-controls"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/text-controls"
             }
           ],
           "RelatedControls": [
@@ -3938,7 +4018,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/text-controls"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/text-controls"
             }
           ],
           "RelatedControls": [
@@ -3974,7 +4054,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/text-controls"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/text-controls"
             }
           ],
           "RelatedControls": [
@@ -4012,7 +4092,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/controls/text-controls"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/text-controls"
             }
           ],
           "RelatedControls": [
@@ -4046,15 +4126,15 @@
           "Docs": [
             {
               "Title": "Quickstart: Motion",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/motion"
             },
             {
               "Title": "Composition Animation - API",
-              "Uri": "https://learn.microsoft.com/windows/apps/windows-app-sdk/composition"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/composition/visual-layer"
             },
             {
               "Title": "Guidelines - Xaml Property Animations",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion/xaml-property-animations"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/motion/xaml-property-animations"
             }
           ],
           "RelatedControls": [
@@ -4087,11 +4167,11 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion/connected-animation"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/motion/connected-animation"
             },
             {
               "Title": "Quickstart: Motion",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/motion"
             }
           ],
           "RelatedControls": [
@@ -4121,7 +4201,7 @@
             },
             {
               "Title": "Quickstart: Motion",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/motion"
             }
           ],
           "RelatedControls": [
@@ -4145,15 +4225,15 @@
           "Docs": [
             {
               "Title": "Transitions - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.uielement.transitions#Windows_UI_Xaml_UIElement_Transitions"
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.uielement.transitions"
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion/motion-in-practice#implicit-animations"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/motion/motion-in-practice#implicit-animations"
             },
             {
               "Title": "Quickstart: Motion",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/motion"
             }
           ],
           "RelatedControls": [
@@ -4180,11 +4260,11 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion/page-transitions"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/motion/page-transitions"
             },
             {
               "Title": "Quickstart: Motion",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/motion"
             }
           ],
           "RelatedControls": [
@@ -4207,15 +4287,15 @@
           "Docs": [
             {
               "Title": "Transitions - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.uielement.transitions#Windows_UI_Xaml_UIElement_Transitions"
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.uielement.transitions"
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion/xaml-animation#animations-available-in-the-library"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/motion/xaml-animation#animations-available-in-the-library"
             },
             {
               "Title": "Quickstart: Motion",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion"
+              "Uri": "https://learn.microsoft.com/windows/apps/design/signature-experiences/motion"
             }
           ],
           "RelatedControls": [
@@ -4247,7 +4327,7 @@
             },
             {
               "Title": "Guidelines",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/motion/parallax"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/motion/parallax"
             }
           ],
           "RelatedControls": [
@@ -4301,6 +4381,14 @@
             {
               "Title": "CompactOverlayPresenter - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.windowing.compactoverlaypresenter"
+            },
+            {
+              "Title": "Manage app windows",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/manage-app-windows"
+            },
+            {
+              "Title": "Windowing overview",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/windowing-overview"
             }
           ],
           "RelatedControls": [
@@ -4361,6 +4449,18 @@
           "IsUpdated": true,
           "Docs": [
             {
+              "Title": "TitleBar - API",
+              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.controls.titlebar"
+            },
+            {
+              "Title": "TitleBar control",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/title-bar"
+            },
+            {
+              "Title": "Customize drag regions",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/title-bar#customize-drag-regions"
+            },
+            {
               "Title": "Title bar customization",
               "Uri": "https://learn.microsoft.com/windows/apps/develop/title-bar"
             },
@@ -4399,8 +4499,12 @@
           "IsNew": true,
           "Docs": [
             {
-              "Title": "Windows App SDK release channels",
-              "Uri": "https://learn.microsoft.com/windows/apps/windows-app-sdk/release-channels"
+              "Title": "Windowing overview",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/windowing-overview"
+            },
+            {
+              "Title": "Manage app windows",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/manage-app-windows"
             },
             {
               "Title": "Window - API",
@@ -4467,6 +4571,10 @@
             {
               "Title": "ContentIsland - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.content.contentisland"
+            },
+            {
+              "Title": "Content islands",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/composition/content-island"
             }
           ]
         },
@@ -4500,6 +4608,14 @@
             {
               "Title": "FolderPicker - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.storage.pickers.folderpicker"
+            },
+            {
+              "Title": "Open files and folders with pickers",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/files/using-file-folder-pickers"
+            },
+            {
+              "Title": "Save a file with a picker",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/files/pickers-save-file"
             }
           ],
           "RelatedControls": [
@@ -4545,7 +4661,7 @@
             },
             {
               "Title": "Toast notifications",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/shell/tiles-and-notifications/toast-notifications-overview"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/notifications/app-notifications/"
             }
           ],
           "RelatedControls": [
@@ -4570,7 +4686,7 @@
           "IsNew": true,
           "Docs": [
             {
-              "Title": "BadgeUpdateManager - API",
+              "Title": "BadgeNotificationManager - API",
               "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.windows.badgenotifications.badgenotificationmanager"
             },
             {
@@ -4579,7 +4695,7 @@
             },
             {
               "Title": "Badge notifications",
-              "Uri": "https://learn.microsoft.com/windows/apps/design/shell/tiles-and-notifications/badges"
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/notifications/badges#set-a-badge-in-a-windows-app-sdk-app"
             }
           ],
           "RelatedControls": [
@@ -4612,6 +4728,10 @@
             {
               "Title": "JumpListItem - API",
               "Uri": "https://learn.microsoft.com/uwp/api/windows.ui.startscreen.jumplistitem"
+            },
+            {
+              "Title": "Jump lists",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/windows-integration/jump-list"
             }
           ]
         }
