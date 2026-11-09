@@ -1,0 +1,25 @@
+--- header
+Apply multiple transforms with TransformMatrix
+--- xaml
+<Border
+    x:Name="TransformMatrixTarget"
+    Width="170"
+    Height="100"
+    SizeChanged="TransformMatrixTarget_SizeChanged">
+    <TextBlock Text="TransformMatrix" />
+</Border>
+--- c#
+private Visual? _visual;
+
+private void UpdateTransform(float horizontalScale, float skewInDegrees)
+{
+    _visual ??= ElementCompositionPreview.GetElementVisual(TransformMatrixTarget);
+    _visual.CenterPoint = new Vector3(TransformMatrixTarget.ActualSize / 2, 0);
+
+    float skewInRadians = skewInDegrees * MathF.PI / 180;
+    Matrix4x4 skewMatrix = Matrix4x4.Identity;
+    skewMatrix.M21 = MathF.Tan(skewInRadians);
+    _visual.TransformMatrix =
+        Matrix4x4.CreateScale(horizontalScale, 1, 1) *
+        skewMatrix;
+}
