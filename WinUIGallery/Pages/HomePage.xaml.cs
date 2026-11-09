@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using WinUIGallery.Helpers;
 using WinUIGallery.Models;
+using WinUIGallery.Telemetry;
 
 namespace WinUIGallery.Pages;
 
@@ -37,6 +38,29 @@ public sealed partial class HomePage : ItemsPageBase
 
         VisualStateManager.GoToState(this, RecentlyVisitedSamplesList.Count > 0 ? "Recent" : "NoRecent", true);
         VisualStateManager.GoToState(this, FavoriteSamplesList.Count > 0 ? "Favorites" : "NoFavorites", true);
+        DiagnosticsInfoBar.IsOpen = SettingsHelper.Current.IsTelemetryConsentRequired;
+    }
+
+    private void DiagnosticsYesButton_Click(object sender, RoutedEventArgs e)
+    {
+        HandleDiagnosticsSetting(true);
+    }
+
+    private void DiagnosticsNoButton_Click(object sender, RoutedEventArgs e)
+    {
+        HandleDiagnosticsSetting(false);
+    }
+
+    private void HandleDiagnosticsSetting(bool isEnabled)
+    {
+        SettingsHelper.Current.IsTelemetryEnabled = isEnabled;
+        SettingsHelper.Current.IsTelemetryConsentDismissed = true;
+        DiagnosticsInfoBar.IsOpen = false;
+
+        if (!isEnabled)
+        {
+            TelemetryService.Current.ClearPendingCrash();
+        }
     }
 
     public List<ControlInfoDataItem> GetValidItems(List<string> items, bool isFavorite)
