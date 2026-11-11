@@ -72,7 +72,40 @@ extends:
             displayName: Setup .NET
             inputs:
               packageType: sdk
-              version: 9.0.x
+              version: 9.0.320
+              installationPath: '$(Agent.TempDirectory)\dotnet'
+          - task: PowerShell@2
+            displayName: Ensure Windows SDK 10.0.22621.0
+            timeoutInMinutes: 20
+            inputs:
+              targetType: inline
+              script: |
+                $platformXml = "${env:ProgramFiles(x86)}\Windows Kits\10\Platforms\UAP\10.0.22621.0\Platform.xml"
+                if (Test-Path $platformXml) {
+                  Write-Host "Windows SDK platform metadata is available at '$platformXml'."
+                  exit 0
+                }
+
+                $installer = "$(Agent.TempDirectory)\winsdksetup.exe"
+                $logPath = "$(Agent.TempDirectory)\winsdksetup.log"
+                Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/?linkid=2311806" -OutFile $installer -UseBasicParsing
+
+                $signature = Get-AuthenticodeSignature $installer
+                if ($signature.Status -ne 'Valid' -or
+                    $signature.SignerCertificate.GetNameInfo([System.Security.Cryptography.X509Certificates.X509NameType]::SimpleName, $false) -ne 'Microsoft Corporation') {
+                  throw "The Windows SDK installer does not have a valid Microsoft signature."
+                }
+
+                $setup = Start-Process -FilePath $installer -ArgumentList "/quiet /norestart /ceip off /features + /log `"$logPath`"" -Wait -PassThru
+                if ($setup.ExitCode -notin @(0, 3010)) {
+                  throw "Windows SDK installation failed with exit code $($setup.ExitCode). See '$logPath'."
+                }
+
+                if (-not (Test-Path $platformXml)) {
+                  throw "Windows SDK installation did not provide '$platformXml'. See '$logPath'."
+                }
+
+                Write-Host "Windows SDK platform metadata is available at '$platformXml'."
           - task: NuGetAuthenticate@1
           - task: PowerShell@2
             displayName: Build Store package - ${{ platform }}

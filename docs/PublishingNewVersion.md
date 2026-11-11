@@ -118,6 +118,20 @@ Store submission. Download and smoke-test the packages before continuing.
 
 This step can be repeated without consuming a Store package version.
 
+The release build requires the Windows SDK `10.0.22621.0` platform metadata,
+including `Platforms\UAP\10.0.22621.0\Platform.xml`, for C#/WinRT. The pipeline
+installs the serviced 22621 SDK from Microsoft's official download when that
+file is missing on an agent, verifies the installer signature, and checks the
+file again before building. The SDK BuildTools NuGet package alone does not
+provide this installed platform metadata.
+
+The release pipeline pins .NET SDK `9.0.320`, the version used by the initial
+3.1 packaging run, in an isolated installation directory. Upgrade it explicitly
+and validate both architectures rather than allowing `9.0.x` to select a new
+toolchain during release preparation. Keep the existing single-feed NuGet
+configuration: the governed pipeline rejects multiple remote feeds, and newer
+SDKs can require upstream packages that are not yet cached in MUX-Dependencies.
+
 ## 4. Submit the Store package for certification
 
 Run the same pipeline again from `release/X.Y` with:
