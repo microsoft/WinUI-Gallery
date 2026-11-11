@@ -72,7 +72,8 @@ extends:
             displayName: Setup .NET
             inputs:
               packageType: sdk
-              version: 9.0.x
+              version: 9.0.320
+              installationPath: '$(Agent.TempDirectory)\dotnet'
           - task: PowerShell@2
             displayName: Ensure Windows SDK 10.0.22621.0
             timeoutInMinutes: 20

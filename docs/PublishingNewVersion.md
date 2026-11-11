@@ -125,9 +125,12 @@ file is missing on an agent, verifies the installer signature, and checks the
 file again before building. The SDK BuildTools NuGet package alone does not
 provide this installed platform metadata.
 
-`nuget.config` maps `Microsoft.NET*` toolchain packages to nuget.org. This avoids
-depending on anonymous access to uncached upstream packages in the
-MUX-Dependencies feed when the build agent installs a newer .NET SDK.
+The release pipeline pins .NET SDK `9.0.320`, the version used by the initial
+3.1 packaging run, in an isolated installation directory. Upgrade it explicitly
+and validate both architectures rather than allowing `9.0.x` to select a new
+toolchain during release preparation. Keep the existing single-feed NuGet
+configuration: the governed pipeline rejects multiple remote feeds, and newer
+SDKs can require upstream packages that are not yet cached in MUX-Dependencies.
 
 ## 4. Submit the Store package for certification
 
