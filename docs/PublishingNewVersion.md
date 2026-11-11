@@ -125,6 +125,10 @@ file is missing on an agent, verifies the installer signature, and checks the
 file again before building. The SDK BuildTools NuGet package alone does not
 provide this installed platform metadata.
 
+`nuget.config` maps `Microsoft.NET*` toolchain packages to nuget.org. This avoids
+depending on anonymous access to uncached upstream packages in the
+MUX-Dependencies feed when the build agent installs a newer .NET SDK.
+
 ## 4. Submit the Store package for certification
 
 Run the same pipeline again from `release/X.Y` with:
