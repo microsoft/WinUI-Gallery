@@ -118,6 +118,13 @@ Store submission. Download and smoke-test the packages before continuing.
 
 This step can be repeated without consuming a Store package version.
 
+The release build requires the Windows SDK `10.0.22621.0` platform metadata,
+including `Platforms\UAP\10.0.22621.0\Platform.xml`, for C#/WinRT. The pipeline
+installs the serviced 22621 SDK from Microsoft's official download when that
+file is missing on an agent, verifies the installer signature, and checks the
+file again before building. The SDK BuildTools NuGet package alone does not
+provide this installed platform metadata.
+
 ## 4. Submit the Store package for certification
 
 Run the same pipeline again from `release/X.Y` with:
