@@ -11,6 +11,13 @@ variables:
     appxPackageDir: '$(Build.ArtifactStagingDirectory)\AppxPackages\\'
 
 steps:
+    - task: UseDotNet@2
+      displayName: Setup .NET 10
+      inputs:
+          packageType: sdk
+          version: 10.0.404
+          installationPath: '$(Agent.TempDirectory)\dotnet'
+
     - task: NuGetToolInstaller@1
       displayName: Install NuGet 5.8.0
       inputs:

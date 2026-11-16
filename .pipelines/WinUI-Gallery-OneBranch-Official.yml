@@ -81,10 +81,11 @@ extends:
             nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
         
         - task: UseDotNet@2
-          continueOnError: true
+          displayName: Setup .NET 10
           inputs:
             packageType: 'sdk'
-            performMultiLevelLookup: true
+            version: 10.0.404
+            installationPath: '$(Agent.TempDirectory)\dotnet'
 
         # Signing
         - task: PowerShell@2
