@@ -131,6 +131,10 @@ and validate both architectures rather than allowing `10.0.x` to select a new
 toolchain during release preparation. Keep the existing single-feed NuGet
 configuration: the governed pipeline rejects multiple remote feeds, and newer
 SDKs can require upstream packages that are not yet cached in MUX-Dependencies.
+If restore reports that an upstream package has no local version in the feed,
+have an authorized feed collaborator download that version through Azure
+Artifacts to cache it, then retry the build. Do not add a second remote feed
+or disable the supply-chain checks to work around the error.
 
 ## 4. Submit the Store package for certification
 
