@@ -9,7 +9,7 @@
     "defaultBranch": "main",
     "license": "MIT"
   },
-  "controlCount": 126,
+  "controlCount": 127,
   "controls": [
     {
       "id": "accessibilitycolorcontrast",
@@ -4786,6 +4786,69 @@
       ]
     },
     {
+      "id": "inputcursor",
+      "name": "Input cursor",
+      "description": "Change the mouse cursor shown over an element.",
+      "details": "Set UIElement.ProtectedCursor from a derived element to change the cursor that appears while the pointer is over it. Use InputSystemCursor.Create to pick one of the system cursor shapes.",
+      "apiNamespace": "Microsoft.UI.Input",
+      "xmlnsImports": [
+        "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
+      ],
+      "usings": [
+        "Microsoft.UI.Input",
+        "Microsoft.UI.Xaml",
+        "Microsoft.UI.Xaml.Controls"
+      ],
+      "curatedKeywords": [
+        "cursor",
+        "mouse pointer",
+        "ProtectedCursor",
+        "InputSystemCursor"
+      ],
+      "docs": [
+        {
+          "title": "UIElement.ProtectedCursor - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.uielement.protectedcursor"
+        },
+        {
+          "title": "InputSystemCursor - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputsystemcursor"
+        },
+        {
+          "title": "InputCursor - API",
+          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputcursor"
+        }
+      ],
+      "gallery": {
+        "uniqueId": "InputCursor",
+        "group": {
+          "id": "System",
+          "title": "System"
+        },
+        "page": "WinUIGallery/Samples/InputCursor/InputCursorPage.xaml",
+        "codeBehind": "WinUIGallery/Samples/InputCursor/InputCursorPage.xaml.cs",
+        "badges": [
+          "New"
+        ]
+      },
+      "samples": [
+        {
+          "header": "Change the cursor shown over an element",
+          "xaml": "\u003Clocal:CursorGrid\n    xmlns:local=\u0022using:YourNamespace\u0022\n    x:Name=\u0022CursorArea\u0022\n    Width=\u0022300\u0022\n    Height=\u0022200\u0022\u003E\n    \u003CTextBlock\n        HorizontalAlignment=\u0022Center\u0022\n        VerticalAlignment=\u0022Center\u0022\n        Text=\u0022Hover over this area\u0022 /\u003E\n\u003C/local:CursorGrid\u003E",
+          "code": "// ProtectedCursor is protected, so expose it from a derived element.\npublic sealed partial class CursorGrid : Grid\n{\n    public void SetCursor(InputCursor cursor)\n    {\n        ProtectedCursor = cursor;\n    }\n}\n\n// Set the cursor after the element has loaded.\nCursorArea.SetCursor(InputSystemCursor.Create(InputSystemCursorShape.$(CursorShape)));",
+          "language": "csharp",
+          "gallery": {
+            "snippet": "InputCursorSystemCursor.txt",
+            "source": "WinUIGallery/Samples/InputCursor/InputCursorSystemCursor.txt",
+            "name": "System Cursor",
+            "codePlaceholdersPresent": [
+              "CursorShape"
+            ]
+          }
+        }
+      ]
+    },
+    {
       "id": "itemsrepeater",
       "name": "ItemsRepeater",
       "description": "A flexible, primitive control for data-driven layouts.",
@@ -5631,6 +5694,10 @@
         {
           "title": "Media Playback",
           "uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/media-playback"
+        },
+        {
+          "title": "Create custom transport controls",
+          "uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/custom-transport-controls"
         }
       ],
       "gallery": {
@@ -5647,6 +5714,9 @@
           "UIElement",
           "FrameworkElement",
           "Control"
+        ],
+        "badges": [
+          "Updated"
         ],
         "relatedSamples": [
           "microsoft/WinUI-Gallery#CaptureElementPreview",
@@ -5672,6 +5742,20 @@
             "snippet": "MediaplayerelementAutoplaysVideo.txt",
             "source": "WinUIGallery/Samples/MediaPlayerElement/MediaplayerelementAutoplaysVideo.txt",
             "name": "Autoplays Video"
+          }
+        },
+        {
+          "header": "Add a custom command to the transport controls",
+          "xaml": "\u003C!-- Themes/Generic.xaml: start from a copy of the default MediaTransportControls template and add a command. --\u003E\n\u003CResourceDictionary\n    xmlns=\u0022http://schemas.microsoft.com/winfx/2006/xaml/presentation\u0022\n    xmlns:x=\u0022http://schemas.microsoft.com/winfx/2006/xaml\u0022\n    xmlns:local=\u0022using:YourNamespace\u0022\u003E\n    \u003CStyle TargetType=\u0022local:CustomMediaTransportControls\u0022\u003E\n        \u003CSetter Property=\u0022Template\u0022\u003E\n            \u003CSetter.Value\u003E\n                \u003CControlTemplate TargetType=\u0022local:CustomMediaTransportControls\u0022\u003E\n                    \u003C!-- ... the rest of the default template ... --\u003E\n                    \u003CCommandBar x:Name=\u0022MediaControlsCommandBar\u0022\u003E\n                        \u003CCommandBar.PrimaryCommands\u003E\n                            \u003C!-- ... default commands ... --\u003E\n                            \u003CAppBarButton\n                                x:Name=\u0022LikeButton\u0022\n                                AutomationProperties.Name=\u0022Like video\u0022\n                                Icon=\u0022Like\u0022\n                                Label=\u0022Like\u0022 /\u003E\n                            \u003C!-- ... default commands ... --\u003E\n                        \u003C/CommandBar.PrimaryCommands\u003E\n                    \u003C/CommandBar\u003E\n                \u003C/ControlTemplate\u003E\n            \u003C/Setter.Value\u003E\n        \u003C/Setter\u003E\n    \u003C/Style\u003E\n\u003C/ResourceDictionary\u003E\n\n\u003C!-- YourPage.xaml --\u003E\n\u003CMediaPlayerElement\n    xmlns:local=\u0022using:YourNamespace\u0022\n    MaxWidth=\u0022400\u0022\n    AreTransportControlsEnabled=\u0022True\u0022\n    AutoPlay=\u0022False\u0022\n    Source=\u0022ms-appx:///Assets/SampleMedia/ladybug.wmv\u0022\u003E\n    \u003CMediaPlayerElement.TransportControls\u003E\n        \u003Clocal:CustomMediaTransportControls IsCompact=\u0022False\u0022 Liked=\u0022CustomMediaTransportControls_Liked\u0022 /\u003E\n    \u003C/MediaPlayerElement.TransportControls\u003E\n\u003C/MediaPlayerElement\u003E",
+          "code": "public sealed partial class CustomMediaTransportControls : MediaTransportControls\n{\n    private Button? likeButton;\n\n    public CustomMediaTransportControls()\n    {\n        DefaultStyleKey = typeof(CustomMediaTransportControls);\n    }\n\n    public event EventHandler? Liked;\n\n    protected override void OnApplyTemplate()\n    {\n        if (likeButton is not null)\n        {\n            likeButton.Click -= LikeButton_Click;\n        }\n\n        base.OnApplyTemplate();\n\n        // Find the command added to the template and raise Liked when it\u0027s clicked.\n        likeButton = GetTemplateChild(\u0022LikeButton\u0022) as Button;\n        if (likeButton is not null)\n        {\n            likeButton.Click \u002B= LikeButton_Click;\n        }\n    }\n\n    private void LikeButton_Click(object sender, RoutedEventArgs e)\n    {\n        Liked?.Invoke(this, EventArgs.Empty);\n    }\n}\n\n// YourPage.xaml.cs\nprivate int likeCount;\n\nprivate void CustomMediaTransportControls_Liked(object sender, EventArgs e)\n{\n    likeCount\u002B\u002B;\n}",
+          "language": "csharp",
+          "xmlnsImports": [
+            "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
+          ],
+          "gallery": {
+            "snippet": "MediaPlayerElementCustomTransportControls.txt",
+            "source": "WinUIGallery/Samples/MediaPlayerElement/MediaPlayerElementCustomTransportControls.txt",
+            "name": "Custom Transport Controls"
           }
         }
       ]

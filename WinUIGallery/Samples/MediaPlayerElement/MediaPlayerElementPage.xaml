@@ -4,8 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUIGallery.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGallery.ControlPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Samples/MediaPlayerElement/CustomMediaTransportControls.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <StackPanel>
         <controls:ControlExample x:Name="Example1" SampleDefinition="MediaPlayerElement\MediaplayerelementTransportControls.txt">
             <controls:ControlExample.Example>
@@ -34,6 +42,28 @@
                     AutoPlay="True"
                     Source="ms-appx:///Assets/SampleMedia/fishes.wmv" />
             </controls:ControlExample.Example>
+        </controls:ControlExample>
+
+        <controls:ControlExample x:Name="Example3" SampleDefinition="MediaPlayerElement\MediaPlayerElementCustomTransportControls.txt">
+            <controls:ControlExample.Example>
+                <MediaPlayerElement
+                    x:Name="Player3"
+                    MaxWidth="400"
+                    AreTransportControlsEnabled="True"
+                    AutoPlay="False"
+                    AutomationProperties.Name="Video player with custom transport controls"
+                    Source="ms-appx:///Assets/SampleMedia/ladybug.wmv">
+                    <MediaPlayerElement.TransportControls>
+                        <local:CustomMediaTransportControls IsCompact="False" Liked="CustomMediaTransportControls_Liked" />
+                    </MediaPlayerElement.TransportControls>
+                </MediaPlayerElement>
+            </controls:ControlExample.Example>
+            <controls:ControlExample.Output>
+                <TextBlock
+                    x:Name="LikeCountTextBlock"
+                    AutomationProperties.LiveSetting="Polite"
+                    Text="Likes: 0" />
+            </controls:ControlExample.Output>
         </controls:ControlExample>
     </StackPanel>
 </Page>

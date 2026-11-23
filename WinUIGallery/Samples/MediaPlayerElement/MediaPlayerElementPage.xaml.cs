@@ -12,6 +12,8 @@ namespace WinUIGallery.ControlPages;
 
 public sealed partial class MediaPlayerElementPage : Page
 {
+    private int likeCount;
+
     public MediaPlayerElementPage()
     {
         this.InitializeComponent();
@@ -30,6 +32,7 @@ public sealed partial class MediaPlayerElementPage : Page
         // Pause media playback since we are no longer visible to the user
         Player1.MediaPlayer.Pause();
         Player2.MediaPlayer.Pause();
+        Player3.MediaPlayer.Pause();
     }
 
     private async void OpenFileButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
@@ -44,5 +47,11 @@ public sealed partial class MediaPlayerElementPage : Page
             var mediaSource = MediaSource.CreateFromStorageFile(await StorageFile.GetFileFromPathAsync(file.Path));
             Player1.Source = mediaSource;
         }
+    }
+
+    private void CustomMediaTransportControls_Liked(object sender, EventArgs e)
+    {
+        likeCount++;
+        LikeCountTextBlock.Text = $"Likes: {likeCount}";
     }
 }

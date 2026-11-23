@@ -1,0 +1,25 @@
+--- header
+Change the cursor shown over an element
+--- xaml
+<local:CursorGrid
+    xmlns:local="using:YourNamespace"
+    x:Name="CursorArea"
+    Width="300"
+    Height="200">
+    <TextBlock
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Text="Hover over this area" />
+</local:CursorGrid>
+--- c#
+// ProtectedCursor is protected, so expose it from a derived element.
+public sealed partial class CursorGrid : Grid
+{
+    public void SetCursor(InputCursor cursor)
+    {
+        ProtectedCursor = cursor;
+    }
+}
+
+// Set the cursor after the element has loaded.
+CursorArea.SetCursor(InputSystemCursor.Create(InputSystemCursorShape.$(CursorShape)));
