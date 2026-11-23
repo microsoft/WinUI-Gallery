@@ -136,6 +136,20 @@ have an authorized feed collaborator download that version through Azure
 Artifacts to cache it, then retry the build. Do not add a second remote feed
 or disable the supply-chain checks to work around the error.
 
+### WinUI source-build compatibility
+
+The WinUI repository builds Gallery from its `Samples/WinUIGallery`
+submodule. While WinUI uses .NET 9, retain its existing Gallery pin at
+[`3669519356c67f1376152c33ed8ea45003a91f3a`](https://github.com/microsoft/WinUI-Gallery/tree/3669519356c67f1376152c33ed8ea45003a91f3a),
+which targets .NET 9. Normal submodule checkout uses that recorded commit,
+not Gallery's latest `main`; do not use `git submodule update --remote`
+to advance it to the .NET 10 sources.
+
+Gallery can release its self-contained .NET 10 packages independently.
+Advance WinUI's submodule to a .NET 10 Gallery commit only together with a
+compatible WinUI build toolchain and downstream sample-build validation.
+Gallery's standalone package builds do not validate that integration.
+
 ## 4. Submit the Store package for certification
 
 Run the same pipeline again from `release/X.Y` with:
