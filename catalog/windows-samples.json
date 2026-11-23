@@ -9,7 +9,7 @@
     "defaultBranch": "main",
     "license": "MIT"
   },
-  "controlCount": 127,
+  "controlCount": 126,
   "controls": [
     {
       "id": "accessibilitycolorcontrast",
@@ -4781,69 +4781,6 @@
             "snippet": "InkCanvasStrokes.txt",
             "source": "WinUIGallery/Samples/InkCanvas/InkCanvasStrokes.txt",
             "name": "Strokes"
-          }
-        }
-      ]
-    },
-    {
-      "id": "inputcursor",
-      "name": "Input cursor",
-      "description": "Change the mouse cursor shown over an element.",
-      "details": "Set UIElement.ProtectedCursor from a derived element to change the cursor that appears while the pointer is over it. Use InputSystemCursor.Create to pick one of the system cursor shapes.",
-      "apiNamespace": "Microsoft.UI.Input",
-      "xmlnsImports": [
-        "xmlns:local=\u0022using:WinUIGallery.ControlPages\u0022"
-      ],
-      "usings": [
-        "Microsoft.UI.Input",
-        "Microsoft.UI.Xaml",
-        "Microsoft.UI.Xaml.Controls"
-      ],
-      "curatedKeywords": [
-        "cursor",
-        "mouse pointer",
-        "ProtectedCursor",
-        "InputSystemCursor"
-      ],
-      "docs": [
-        {
-          "title": "UIElement.ProtectedCursor - API",
-          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.uielement.protectedcursor"
-        },
-        {
-          "title": "InputSystemCursor - API",
-          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputsystemcursor"
-        },
-        {
-          "title": "InputCursor - API",
-          "uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputcursor"
-        }
-      ],
-      "gallery": {
-        "uniqueId": "InputCursor",
-        "group": {
-          "id": "System",
-          "title": "System"
-        },
-        "page": "WinUIGallery/Samples/InputCursor/InputCursorPage.xaml",
-        "codeBehind": "WinUIGallery/Samples/InputCursor/InputCursorPage.xaml.cs",
-        "badges": [
-          "New"
-        ]
-      },
-      "samples": [
-        {
-          "header": "Change the cursor shown over an element",
-          "xaml": "\u003Clocal:CursorGrid\n    xmlns:local=\u0022using:YourNamespace\u0022\n    x:Name=\u0022CursorArea\u0022\n    Width=\u0022300\u0022\n    Height=\u0022200\u0022\u003E\n    \u003CTextBlock\n        HorizontalAlignment=\u0022Center\u0022\n        VerticalAlignment=\u0022Center\u0022\n        Text=\u0022Hover over this area\u0022 /\u003E\n\u003C/local:CursorGrid\u003E",
-          "code": "// ProtectedCursor is protected, so expose it from a derived element.\npublic sealed partial class CursorGrid : Grid\n{\n    public void SetCursor(InputCursor cursor)\n    {\n        ProtectedCursor = cursor;\n    }\n}\n\n// Set the cursor after the element has loaded.\nCursorArea.SetCursor(InputSystemCursor.Create(InputSystemCursorShape.$(CursorShape)));",
-          "language": "csharp",
-          "gallery": {
-            "snippet": "InputCursorSystemCursor.txt",
-            "source": "WinUIGallery/Samples/InputCursor/InputCursorSystemCursor.txt",
-            "name": "System Cursor",
-            "codePlaceholdersPresent": [
-              "CursorShape"
-            ]
           }
         }
       ]

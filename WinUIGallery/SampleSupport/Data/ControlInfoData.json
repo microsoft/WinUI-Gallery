@@ -4584,35 +4584,6 @@
           ]
         },
         {
-          "UniqueId": "InputCursor",
-          "Tags": [
-            "cursor",
-            "mouse pointer",
-            "ProtectedCursor",
-            "InputSystemCursor"
-          ],
-          "Title": "Input cursor",
-          "ApiNamespace": "Microsoft.UI.Input",
-          "Subtitle": "Change the mouse cursor shown over an element.",
-          "ImagePath": "ms-appx:///Assets/ControlImages/Placeholder.png",
-          "Description": "Set UIElement.ProtectedCursor from a derived element to change the cursor that appears while the pointer is over it. Use InputSystemCursor.Create to pick one of the system cursor shapes.",
-          "IsNew": true,
-          "Docs": [
-            {
-              "Title": "UIElement.ProtectedCursor - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.uielement.protectedcursor"
-            },
-            {
-              "Title": "InputSystemCursor - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputsystemcursor"
-            },
-            {
-              "Title": "InputCursor - API",
-              "Uri": "https://learn.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.input.inputcursor"
-            }
-          ]
-        },
-        {
           "UniqueId": "StoragePickers",
           "Tags": [
             "file picker",
