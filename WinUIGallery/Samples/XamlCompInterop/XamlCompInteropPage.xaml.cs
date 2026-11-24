@@ -134,7 +134,7 @@ public sealed partial class XamlCompInteropPage : Page
         String yOffset = "0"; // We don't need to offset y because the buttons naturally layout vertically centered.
 
         // We combine X, Y, and Z subchannels into a single animation because we can only start a single animation on Translation.
-        String expression = string.Format($"Vector3({radius}*cos({theta})+{xOffset}, {radius}*sin({theta})+{yOffset},0)");
+        String expression = $"Vector3({radius}*cos({theta})+{xOffset}, {radius}*sin({theta})+{yOffset},0)";
 
         int totalElements = 8;
         for (int i = 0; i < totalElements; i++)
