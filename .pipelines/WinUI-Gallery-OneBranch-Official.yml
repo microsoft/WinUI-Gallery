@@ -75,13 +75,15 @@ extends:
 
         - task: NuGetAuthenticate@1
 
+        # Keep relative package sources rooted in the checkout, not a temporary config directory.
         - task: DotNetCoreCLI@2
           displayName: Restore NuGet Packages for WinUI Gallery
           inputs:
-            command: 'restore'
+            command: 'custom'
+            custom: 'restore'
             projects: '$(solutionGallery)'
-            feedsToUse: 'config'
-            nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
+            arguments: '--configfile "$(System.DefaultWorkingDirectory)\nuget.config"'
+            workingDirectory: '$(System.DefaultWorkingDirectory)'
 
         # Signing
         - task: PowerShell@2
