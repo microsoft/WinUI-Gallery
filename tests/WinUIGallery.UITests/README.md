@@ -61,9 +61,9 @@ Alternatively, the following commands can be used for automation:
 1. Run test cases built above on command line:
 
 ```shell
-    >dotnet test .\WinUIGallery\WinUIGallery.UITests.csproj
+    >dotnet test .\tests\WinUIGallery.UITests\WinUIGallery.UITests.csproj
     --or--
-    >vstest.console.exe .\WinUIGallery.UITests\bin\x64\Debug\net7.0\WinUIGallery.UITests.dll
+    >vstest.console.exe .\tests\WinUIGallery.UITests\bin\WinUIGallery.UITests\x64\Debug\net10.0\win-x64\WinUIGallery.UITests.dll
 ```
 
 ## Test output
