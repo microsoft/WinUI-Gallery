@@ -139,11 +139,11 @@ or disable the supply-chain checks to work around the error.
 ### WinUI source-build compatibility
 
 The WinUI repository builds Gallery from its `Samples/WinUIGallery`
-submodule. While WinUI uses .NET 9, retain its existing Gallery pin at
-[`3669519356c67f1376152c33ed8ea45003a91f3a`](https://github.com/microsoft/WinUI-Gallery/tree/3669519356c67f1376152c33ed8ea45003a91f3a),
-which targets .NET 9. Normal submodule checkout uses that recorded commit,
-not Gallery's latest `main`; do not use `git submodule update --remote`
-to advance it to the .NET 10 sources.
+submodule. Normal submodule checkout uses the commit recorded in WinUI,
+not Gallery's latest `main`. No additional pin is needed for a Gallery
+release. While WinUI's build toolchain still requires .NET 9, leave its
+submodule at a compatible commit rather than advancing it to .NET 10
+sources.
 
 Gallery can release its self-contained .NET 10 packages independently.
 Advance WinUI's submodule to a .NET 10 Gallery commit only together with a

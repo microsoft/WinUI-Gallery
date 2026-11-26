@@ -142,10 +142,6 @@
         <PackageReference Include="CommunityToolkit.WinUI.Animations" />
         <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" />
         <Manifest Include="$(ApplicationManifest)" />
-        <!-- System.Private.Uri is pulled in transitively through ColorCode.Core and contains vulnerabilities
-          CVE-2019-0657, CVE-2019-0980, and CVE-2019-0981. Since no meta-package depends on version 4.3.2, which
-          addresses those vulnerabilites, we need to pull it in ourselves. -->
-    <PackageReference Include="System.Private.Uri" />
 	<ProjectReference Include="..\WinUIGallery.SourceGenerator\WinUIGallery.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
@@ -164,7 +160,6 @@
     <PackageReference Update="Microsoft.Graphics.Win2D" Version="$(GraphicsWin2DVersion)" />
     <!-- Get latest WinRT.Runtime.dll from C#/WinRT -->
     <PackageReference Update="Microsoft.Windows.CsWinRT" Version="$(MicrosoftCsWinRTPackageVersion)" />
-    <PackageReference Update="System.Private.Uri" Version="4.3.2" />
     <PackageReference Update="Microsoft.Windows.CsWin32" Version="0.3.269" />
     <PackageReference Update="Microsoft.Windows.SDK.BuildTools.MSIX" Version="1.7.260316102" />
   </ItemGroup>

@@ -67,25 +67,24 @@ extends:
 
         steps:
         # Package Restore
-        - task: NuGetToolInstaller@1
-          displayName: Install NuGet 5.8.0
+        - task: UseDotNet@2
+          displayName: Setup .NET 10 SDK
           inputs:
-              versionSpec: 5.8.0
+              packageType: sdk
+              version: 10.0.404
+              installationPath: '$(Agent.TempDirectory)\dotnet'
 
-        - task: NuGetCommand@2
+        - task: NuGetAuthenticate@1
+
+        # Keep relative package sources rooted in the checkout, not a temporary config directory.
+        - task: DotNetCoreCLI@2
           displayName: Restore NuGet Packages for WinUI Gallery
           inputs:
-            command: 'restore'
-            restoreSolution: '**/*.sln'
-            feedsToUse: 'config'
-            nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
-        
-        - task: UseDotNet@2
-          displayName: Setup .NET 10
-          inputs:
-            packageType: 'sdk'
-            version: 10.0.404
-            installationPath: '$(Agent.TempDirectory)\dotnet'
+            command: 'custom'
+            custom: 'restore'
+            projects: '$(solutionGallery)'
+            arguments: '--configfile "$(System.DefaultWorkingDirectory)\nuget.config"'
+            workingDirectory: '$(System.DefaultWorkingDirectory)'
 
         # Signing
         - task: PowerShell@2

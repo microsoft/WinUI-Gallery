@@ -12,24 +12,23 @@ variables:
 
 steps:
     - task: UseDotNet@2
-      displayName: Setup .NET 10
+      displayName: Setup .NET 10 SDK
       inputs:
           packageType: sdk
           version: 10.0.404
           installationPath: '$(Agent.TempDirectory)\dotnet'
 
-    - task: NuGetToolInstaller@1
-      displayName: Install NuGet 5.8.0
-      inputs:
-          versionSpec: 5.8.0
+    - task: NuGetAuthenticate@1
 
-    - task: NuGetCommand@2
+    # Keep relative package sources rooted in the checkout, not a temporary config directory.
+    - task: DotNetCoreCLI@2
       displayName: Restore NuGet Packages for WinUI Gallery
       inputs:
-        command: 'restore'
-        restoreSolution: '**/*.sln'
-        feedsToUse: 'config'
-        nugetConfigPath: '$(System.DefaultWorkingDirectory)\nuget.config'
+        command: 'custom'
+        custom: 'restore'
+        projects: '$(solutionGallery)'
+        arguments: '--configfile "$(System.DefaultWorkingDirectory)\nuget.config"'
+        workingDirectory: '$(System.DefaultWorkingDirectory)'
 
     - task: DotNetCoreCLI@2
       displayName: Verify catalog/windows-samples.json is up to date
