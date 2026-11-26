@@ -71,7 +71,8 @@ extends:
           displayName: Setup .NET 10 SDK
           inputs:
               packageType: sdk
-              version: 10.0.x
+              version: 10.0.404
+              installationPath: '$(Agent.TempDirectory)\dotnet'
 
         - task: NuGetAuthenticate@1
 
