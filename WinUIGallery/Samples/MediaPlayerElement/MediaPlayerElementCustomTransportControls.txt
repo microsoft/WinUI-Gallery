@@ -1,7 +1,7 @@
 --- header
 Add a custom command to the transport controls
 --- xaml
-<!-- Themes/Generic.xaml: start from a copy of the default MediaTransportControls template and add a command. -->
+<!-- Themes/Generic.xaml: copy the default MediaTransportControls style (MediaTransportControls_themeresources.xaml in WinUI) and add a command. -->
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -17,8 +17,13 @@ Add a custom command to the transport controls
                             <AppBarButton
                                 x:Name="LikeButton"
                                 AutomationProperties.Name="Like video"
-                                Icon="Like"
-                                Label="Like" />
+                                MediaTransportControlsHelper.DropoutOrder="20"
+                                Style="{StaticResource AppBarButtonStyle}"
+                                ToolTipService.ToolTip="Like video">
+                                <AppBarButton.Icon>
+                                    <FontIcon Glyph="&#xE8E1;" />
+                                </AppBarButton.Icon>
+                            </AppBarButton>
                             <!-- ... default commands ... -->
                         </CommandBar.PrimaryCommands>
                     </CommandBar>
