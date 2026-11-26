@@ -3362,6 +3362,7 @@
           ],
           "ApiNamespace": "Microsoft.UI.Xaml.Controls",
           "Subtitle": "A control to display video and image content.",
+          "IsUpdated": true,
           "ImagePath": "ms-appx:///Assets/ControlImages/MediaPlayerElement.png",
           "Description": "You can use a MediaPlayerElement control to playback videos and show images. You can show transport controls or make the video autoplay.",
           "SourcePath": "/CommonStyles/MediaTransportControls_themeresources.xaml",
@@ -3373,6 +3374,10 @@
             {
               "Title": "Media Playback",
               "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/media-playback"
+            },
+            {
+              "Title": "Create custom transport controls",
+              "Uri": "https://learn.microsoft.com/windows/apps/develop/ui/controls/custom-transport-controls"
             }
           ],
           "RelatedControls": [
