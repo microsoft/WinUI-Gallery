@@ -39,6 +39,18 @@ Check out these [help wanted](https://github.com/microsoft/WinUI-Gallery/issues?
 
 You can also learn more about current happenings with WinUI Gallery in the [project board](https://github.com/orgs/microsoft/projects/368).
 
+### Updating samples
+
+When adding, editing, renaming, or removing a control page, a sample snippet (`.txt`), or an entry in `WinUIGallery\SampleSupport\Data\ControlInfoData.json`, regenerate the sample index from the repository root:
+
+```powershell
+dotnet run --project tools\CatalogExporter -- generate
+```
+
+Include any resulting changes to `catalog/windows-samples.json` in the same PR. This generated manifest lets tools discover the gallery's samples; do not edit it by hand. CI checks that it matches the sample sources and fails if it is stale.
+
+See the [contributing guide](.github/CONTRIBUTING.md) and [sample index documentation](catalog/README.md#regenerating-and-checking-the-index) for more information.
+
 ## 🚀 Getting started
 
 Quick start guide to building the WinUI Gallery:
