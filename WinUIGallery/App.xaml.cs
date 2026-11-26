@@ -14,6 +14,7 @@ using System.Linq;
 using Windows.ApplicationModel.Activation;
 using WinUIGallery.Helpers;
 using WinUIGallery.Pages;
+using WinUIGallery.Telemetry;
 using static WinUIGallery.Helpers.NativeMethods;
 
 namespace WinUIGallery;
@@ -43,6 +44,7 @@ sealed partial class App : Application
     protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
     {
         IdleSynchronizer.Init();
+        TelemetryService.Current.TrySendPendingCrash();
 
         MainWindow = new MainWindow();
         WindowHelper.TrackWindow(MainWindow);
@@ -181,6 +183,8 @@ sealed partial class App : Application
     /// <param name="e">Details about the exception.</param>
     private void HandleExceptions(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
     {
+        TelemetryService.Current.RecordCrash(e.Exception, MainWindow.ActiveSampleId);
+
         if (NativeMethods.IsAppPackaged)
         {
             e.Handled = true; //Don't crash the app.

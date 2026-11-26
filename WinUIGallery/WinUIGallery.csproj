@@ -40,7 +40,18 @@
         <Nullable>enable</Nullable>
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <Company>Microsoft</Company>
+        <EnableTelemetry Condition="'$(EnableTelemetry)' == ''">false</EnableTelemetry>
     </PropertyGroup>
+
+    <PropertyGroup Condition="'$(EnableTelemetry)' == 'true'">
+        <DefineConstants>$(DefineConstants);TELEMETRY</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(EnableTelemetry)' == 'true'">
+        <AssemblyMetadata Include="TelemetryProviderGroupGuid" Value="$(TelemetryProviderGroupGuid)" />
+        <AssemblyMetadata Include="TelemetryPrivacyProductId" Value="$(TelemetryPrivacyProductId)" />
+        <AssemblyMetadata Include="TelemetryCrashPrivacyTags" Value="$(TelemetryCrashPrivacyTags)" />
+    </ItemGroup>
 
     <PropertyGroup Condition="'$(Packaged)' != 'true'">
         <EnableMsixTooling>false</EnableMsixTooling>
@@ -202,6 +213,13 @@
     <Target Name="UpdateAppxManifest" BeforeTargets="BeforeBuild">
         <XmlPoke XmlInputPath="Package.appxmanifest" Query="/dn:Package/dn:Identity/@Version" Namespaces="$(AppxManifestNamespace)" Value="$(Version)" />
         <XmlPoke XmlInputPath="Package.Dev.appxmanifest" Query="/dn:Package/dn:Identity/@Version" Namespaces="$(AppxManifestNamespace)" Value="$(Version)" />
+    </Target>
+
+    <Target Name="ValidateTelemetryConfiguration" BeforeTargets="CoreCompile" Condition="'$(EnableTelemetry)' == 'true'">
+        <Error Condition="'$(Configuration)' != 'Release'" Text="Telemetry can only be enabled for Release builds." />
+        <Error Condition="'$(TelemetryProviderGroupGuid)' == ''" Text="TelemetryProviderGroupGuid is required when telemetry is enabled." />
+        <Error Condition="'$(TelemetryPrivacyProductId)' == ''" Text="TelemetryPrivacyProductId is required when telemetry is enabled." />
+        <Error Condition="'$(TelemetryCrashPrivacyTags)' == ''" Text="TelemetryCrashPrivacyTags is required when telemetry is enabled." />
     </Target>
 
 </Project>

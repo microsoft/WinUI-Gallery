@@ -103,6 +103,35 @@
                         </StackPanel>
                     </toolkit:SettingsCard>
 
+                    <TextBlock
+                        AutomationProperties.HeadingLevel="Level2"
+                        Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
+                        Text="Privacy" />
+                    <toolkit:SettingsCard Header="Optional diagnostic data">
+                        <toolkit:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE9D9;" />
+                        </toolkit:SettingsCard.HeaderIcon>
+                        <toolkit:SettingsCard.Description>
+                            <StackPanel Spacing="4">
+                                <TextBlock
+                                    HorizontalAlignment="Left"
+                                    Text="Send anonymous sample usage and crash diagnostics to help Microsoft improve WinUI Gallery."
+                                    TextWrapping="Wrap" />
+                                <HyperlinkButton
+                                    Padding="0"
+                                    HorizontalAlignment="Left"
+                                    AutomationProperties.AutomationId="TelemetryLearnMoreLink"
+                                    Content="Learn more about telemetry"
+                                    NavigateUri="https://github.com/microsoft/WinUI-Gallery/blob/main/docs/telemetry.md" />
+                            </StackPanel>
+                        </toolkit:SettingsCard.Description>
+                        <ToggleSwitch
+                            x:Name="telemetryToggle"
+                            AutomationProperties.AutomationId="TelemetryToggle"
+                            AutomationProperties.Name="Send optional diagnostic data"
+                            Toggled="telemetryToggle_Toggled" />
+                    </toolkit:SettingsCard>
+
 
                     <!--  About  -->
                     <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="About" />
