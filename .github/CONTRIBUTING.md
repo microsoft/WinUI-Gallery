@@ -11,3 +11,9 @@ provided by the bot. You will only need to do this once across all repos using o
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+## Updating samples
+
+Sample changes must include an up-to-date `catalog/windows-samples.json`. Follow the
+[sample index regeneration instructions](../README.md#updating-samples) when changing control pages,
+sample snippets, or `ControlInfoData.json`, and include any generated changes in your PR.
